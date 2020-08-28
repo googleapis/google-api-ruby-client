@@ -184,13 +184,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudMlV1ContainerPort
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1ContainerSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudMlV1EncryptionConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudMlV1EndpointMap
+      class GoogleCloudMlV1EnvVar
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -335,6 +347,12 @@ module Google
       end
       
       class GoogleCloudMlV1RequestLoggingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1RouteMap
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -727,6 +745,26 @@ module Google
         end
       end
       
+      class GoogleCloudMlV1ContainerPort
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :container_port, as: 'containerPort'
+        end
+      end
+      
+      class GoogleCloudMlV1ContainerSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :args, as: 'args'
+          collection :command, as: 'command'
+          collection :env, as: 'env', class: Google::Apis::MlV1::GoogleCloudMlV1EnvVar, decorator: Google::Apis::MlV1::GoogleCloudMlV1EnvVar::Representation
+      
+          property :image, as: 'image'
+          collection :ports, as: 'ports', class: Google::Apis::MlV1::GoogleCloudMlV1ContainerPort, decorator: Google::Apis::MlV1::GoogleCloudMlV1ContainerPort::Representation
+      
+        end
+      end
+      
       class GoogleCloudMlV1EncryptionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -734,12 +772,11 @@ module Google
         end
       end
       
-      class GoogleCloudMlV1EndpointMap
+      class GoogleCloudMlV1EnvVar
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :explain, as: 'explain'
-          property :health, as: 'health'
-          property :predict, as: 'predict'
+          property :name, as: 'name'
+          property :value, as: 'value'
         end
       end
       
@@ -1014,6 +1051,14 @@ module Google
         end
       end
       
+      class GoogleCloudMlV1RouteMap
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :health, as: 'health'
+          property :predict, as: 'predict'
+        end
+      end
+      
       class GoogleCloudMlV1SampledShapleyAttribution
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1174,11 +1219,11 @@ module Google
       
           property :auto_scaling, as: 'autoScaling', class: Google::Apis::MlV1::GoogleCloudMlV1AutoScaling, decorator: Google::Apis::MlV1::GoogleCloudMlV1AutoScaling::Representation
       
+          property :container, as: 'container', class: Google::Apis::MlV1::GoogleCloudMlV1ContainerSpec, decorator: Google::Apis::MlV1::GoogleCloudMlV1ContainerSpec::Representation
+      
           property :create_time, as: 'createTime'
           property :deployment_uri, as: 'deploymentUri'
           property :description, as: 'description'
-          property :endpoints, as: 'endpoints', class: Google::Apis::MlV1::GoogleCloudMlV1EndpointMap, decorator: Google::Apis::MlV1::GoogleCloudMlV1EndpointMap::Representation
-      
           property :error_message, as: 'errorMessage'
           property :etag, :base64 => true, as: 'etag'
           property :explanation_config, as: 'explanationConfig', class: Google::Apis::MlV1::GoogleCloudMlV1ExplanationConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1ExplanationConfig::Representation
@@ -1195,6 +1240,8 @@ module Google
           property :prediction_class, as: 'predictionClass'
           property :python_version, as: 'pythonVersion'
           property :request_logging_config, as: 'requestLoggingConfig', class: Google::Apis::MlV1::GoogleCloudMlV1RequestLoggingConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1RequestLoggingConfig::Representation
+      
+          property :routes, as: 'routes', class: Google::Apis::MlV1::GoogleCloudMlV1RouteMap, decorator: Google::Apis::MlV1::GoogleCloudMlV1RouteMap::Representation
       
           property :runtime_version, as: 'runtimeVersion'
           property :service_account, as: 'serviceAccount'

@@ -1147,6 +1147,7 @@ module Google
           property :basic_scaling, as: 'basicScaling', class: Google::Apis::AppengineV1beta::BasicScaling, decorator: Google::Apis::AppengineV1beta::BasicScaling::Representation
       
           hash :beta_settings, as: 'betaSettings'
+          hash :build_env_variables, as: 'buildEnvVariables'
           property :create_time, as: 'createTime'
           property :created_by, as: 'createdBy'
           property :default_expiration, as: 'defaultExpiration'

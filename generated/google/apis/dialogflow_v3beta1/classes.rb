@@ -22,6 +22,127 @@ module Google
   module Apis
     module DialogflowV3beta1
       
+      # Agents are best described as Natural Language Understanding (NLU) modules that
+      # transform user requests into actionable data. You can include agents in your
+      # app, product, or service to determine user intent and respond to the user in a
+      # natural way. After you create an agent, you can add Intents, Entity Types,
+      # Flows, Fulfillments, Webhooks, and so on to manage the conversation flows..
+      class GoogleCloudDialogflowCxV3beta1Agent
+        include Google::Apis::Core::Hashable
+      
+        # The URI of the agent's avatar. Avatars are used throughout the Dialogflow
+        # console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/
+        # docs/integrations/web-demo) integration.
+        # Corresponds to the JSON property `avatarUri`
+        # @return [String]
+        attr_accessor :avatar_uri
+      
+        # Immutable. The default language of the agent as a language tag. See [Language
+        # Support](https://cloud.google.com/dialogflow/docs/reference/language) for a
+        # list of the currently supported language codes. This field cannot be set by
+        # the Agents.UpdateAgent method.
+        # Corresponds to the JSON property `defaultLanguageCode`
+        # @return [String]
+        attr_accessor :default_language_code
+      
+        # The description of the agent. The maximum length is 500 characters. If
+        # exceeded, the request is rejected.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The human-readable name of the agent, unique within the location.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Indicates if automatic spell correction is enabled in detect intent requests.
+        # Corresponds to the JSON property `enableSpellCorrection`
+        # @return [Boolean]
+        attr_accessor :enable_spell_correction
+        alias_method :enable_spell_correction?, :enable_spell_correction
+      
+        # Indicates if stackdriver logging is enabled for the agent.
+        # Corresponds to the JSON property `enableStackdriverLogging`
+        # @return [Boolean]
+        attr_accessor :enable_stackdriver_logging
+        alias_method :enable_stackdriver_logging?, :enable_stackdriver_logging
+      
+        # The unique identifier of the agent. Required for the Agents.UpdateAgent method.
+        # Agents.CreateAgent populates the name automatically. Format: `projects//
+        # locations//agents/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Settings related to speech recognition.
+        # Corresponds to the JSON property `speechToTextSettings`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SpeechToTextSettings]
+        attr_accessor :speech_to_text_settings
+      
+        # Immutable. Name of the start flow in this agent. A start flow will be
+        # automatically created when the agent is created, and can only be deleted by
+        # deleting the agent. Format: `projects//locations//agents//flows/`.
+        # Corresponds to the JSON property `startFlow`
+        # @return [String]
+        attr_accessor :start_flow
+      
+        # Required. The time zone of the agent from the [time zone database](https://www.
+        # iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @avatar_uri = args[:avatar_uri] if args.key?(:avatar_uri)
+          @default_language_code = args[:default_language_code] if args.key?(:default_language_code)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @enable_spell_correction = args[:enable_spell_correction] if args.key?(:enable_spell_correction)
+          @enable_stackdriver_logging = args[:enable_stackdriver_logging] if args.key?(:enable_stackdriver_logging)
+          @name = args[:name] if args.key?(:name)
+          @speech_to_text_settings = args[:speech_to_text_settings] if args.key?(:speech_to_text_settings)
+          @start_flow = args[:start_flow] if args.key?(:start_flow)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
+        end
+      end
+      
+      # Represents the natural speech audio to be processed.
+      class GoogleCloudDialogflowCxV3beta1AudioInput
+        include Google::Apis::Core::Hashable
+      
+        # The natural language speech audio to be processed. A single request can
+        # contain up to 1 minute of speech audio data. The transcribed text cannot
+        # contain more than 256 bytes. For non-streaming audio detect intent, both `
+        # config` and `audio` must be provided. For streaming audio detect intent, `
+        # config` must be provided in the first request and `audio` must be provided in
+        # all following requests.
+        # Corresponds to the JSON property `audio`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :audio
+      
+        # Instructs the speech recognizer on how to process the audio content.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1InputAudioConfig]
+        attr_accessor :config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio = args[:audio] if args.key?(:audio)
+          @config = args[:config] if args.key?(:config)
+        end
+      end
+      
       # Metadata associated with the long running operation for Versions.CreateVersion.
       class GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata
         include Google::Apis::Core::Hashable
@@ -39,6 +160,363 @@ module Google
         # Update properties of this object
         def update!(**args)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # The request to detect user's intent.
+      class GoogleCloudDialogflowCxV3beta1DetectIntentRequest
+        include Google::Apis::Core::Hashable
+      
+        # Instructs the speech synthesizer how to generate the output audio content.
+        # Corresponds to the JSON property `outputAudioConfig`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1OutputAudioConfig]
+        attr_accessor :output_audio_config
+      
+        # Represents the query input. It can contain either: 1. A conversational query
+        # in the form of text. 2. An intent query that specifies which intent to trigger.
+        # Corresponds to the JSON property `queryInput`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1QueryInput]
+        attr_accessor :query_input
+      
+        # Represents the parameters of a conversational query.
+        # Corresponds to the JSON property `queryParams`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1QueryParameters]
+        attr_accessor :query_params
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output_audio_config = args[:output_audio_config] if args.key?(:output_audio_config)
+          @query_input = args[:query_input] if args.key?(:query_input)
+          @query_params = args[:query_params] if args.key?(:query_params)
+        end
+      end
+      
+      # The message returned from the DetectIntent method.
+      class GoogleCloudDialogflowCxV3beta1DetectIntentResponse
+        include Google::Apis::Core::Hashable
+      
+        # The audio data bytes encoded as specified in the request. Note: The output
+        # audio is generated based on the values of default platform text responses
+        # found in the `query_result.response_messages` field. If multiple default text
+        # responses exist, they will be concatenated when generating audio. If no
+        # default platform text responses exist, the generated audio content will be
+        # empty. In some scenarios, multiple output audio fields may be present in the
+        # response structure. In these cases, only the top-most-level audio output has
+        # content.
+        # Corresponds to the JSON property `outputAudio`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :output_audio
+      
+        # Instructs the speech synthesizer how to generate the output audio content.
+        # Corresponds to the JSON property `outputAudioConfig`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1OutputAudioConfig]
+        attr_accessor :output_audio_config
+      
+        # Represents the result of a conversational query.
+        # Corresponds to the JSON property `queryResult`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1QueryResult]
+        attr_accessor :query_result
+      
+        # Output only. The unique identifier of the response. It can be used to locate a
+        # response in the training example set or for reporting issues.
+        # Corresponds to the JSON property `responseId`
+        # @return [String]
+        attr_accessor :response_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output_audio = args[:output_audio] if args.key?(:output_audio)
+          @output_audio_config = args[:output_audio_config] if args.key?(:output_audio_config)
+          @query_result = args[:query_result] if args.key?(:query_result)
+          @response_id = args[:response_id] if args.key?(:response_id)
+        end
+      end
+      
+      # Entities are extracted from user input and represent parameters that are
+      # meaningful to your application. For example, a date range, a proper name such
+      # as a geographic location or landmark, and so on. Entities represent actionable
+      # data for your application. When you define an entity, you can also include
+      # synonyms that all map to that entity. For example, "soft drink", "soda", "pop",
+      # and so on. There are three types of entities: * **System** - entities that
+      # are defined by the Dialogflow API for common data types such as date, time,
+      # currency, and so on. A system entity is represented by the `EntityType` type. *
+      # **Custom** - entities that are defined by you that represent actionable data
+      # that is meaningful to your application. For example, you could define a `pizza.
+      # sauce` entity for red or white pizza sauce, a `pizza.cheese` entity for the
+      # different types of cheese on a pizza, a `pizza.topping` entity for different
+      # toppings, and so on. A custom entity is represented by the `EntityType` type. *
+      # **User** - entities that are built for an individual user such as favorites,
+      # preferences, playlists, and so on. A user entity is represented by the
+      # SessionEntityType type. For more information about entity types, see the [
+      # Dialogflow documentation](https://cloud.google.com/dialogflow/docs/entities-
+      # overview).
+      class GoogleCloudDialogflowCxV3beta1EntityType
+        include Google::Apis::Core::Hashable
+      
+        # Indicates whether the entity type can be automatically expanded.
+        # Corresponds to the JSON property `autoExpansionMode`
+        # @return [String]
+        attr_accessor :auto_expansion_mode
+      
+        # Required. The human-readable name of the entity type, unique within the agent.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Enables fuzzy entity extraction during classification.
+        # Corresponds to the JSON property `enableFuzzyExtraction`
+        # @return [Boolean]
+        attr_accessor :enable_fuzzy_extraction
+        alias_method :enable_fuzzy_extraction?, :enable_fuzzy_extraction
+      
+        # The collection of entity entries associated with the entity type.
+        # Corresponds to the JSON property `entities`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1EntityTypeEntity>]
+        attr_accessor :entities
+      
+        # Collection of exceptional words and phrases that shouldn't be matched. For
+        # example, if you have a size entity type with entry `giant`(an adjective), you
+        # might consider adding `giants`(a noun) as an exclusion. If the kind of entity
+        # type is `KIND_MAP`, then the phrases specified by entities and excluded
+        # phrases should be mutually exclusive.
+        # Corresponds to the JSON property `excludedPhrases`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase>]
+        attr_accessor :excluded_phrases
+      
+        # Required. Indicates the kind of entity type.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The unique identifier of the entity type. Required for EntityTypes.
+        # UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_expansion_mode = args[:auto_expansion_mode] if args.key?(:auto_expansion_mode)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @enable_fuzzy_extraction = args[:enable_fuzzy_extraction] if args.key?(:enable_fuzzy_extraction)
+          @entities = args[:entities] if args.key?(:entities)
+          @excluded_phrases = args[:excluded_phrases] if args.key?(:excluded_phrases)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # An **entity entry** for an associated entity type. Next Id = 8
+      class GoogleCloudDialogflowCxV3beta1EntityTypeEntity
+        include Google::Apis::Core::Hashable
+      
+        # Required. A collection of value synonyms. For example, if the entity type is *
+        # vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For
+        # `KIND_LIST` entity types: * This collection must contain exactly one synonym
+        # equal to `value`.
+        # Corresponds to the JSON property `synonyms`
+        # @return [Array<String>]
+        attr_accessor :synonyms
+      
+        # Required. The primary value associated with this entity entry. For example, if
+        # the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP`
+        # entity types: * A canonical value to be used in place of synonyms. For `
+        # KIND_LIST` entity types: * A string that can contain references to other
+        # entity types (with or without aliases).
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @synonyms = args[:synonyms] if args.key?(:synonyms)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # An excluded entity phrase that should not be matched.
+      class GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase
+        include Google::Apis::Core::Hashable
+      
+        # Required. The word or phrase to be excluded.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Represents an environment for an agent. You can create multiple versions of
+      # your agent and publish them to separate environments. When you edit an agent,
+      # you are editing the draft agent. At any point, you can save the draft agent as
+      # an agent version, which is an immutable snapshot of your agent. When you save
+      # the draft agent, it is published to the default environment. When you create
+      # agent versions, you can publish them to custom environments. You can create a
+      # variety of custom environments for testing, development, production, etc.
+      class GoogleCloudDialogflowCxV3beta1Environment
+        include Google::Apis::Core::Hashable
+      
+        # The human-readable description of the environment. The maximum length is 500
+        # characters. If exceeded, the request is rejected.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The human-readable name of the environment (unique in an agent).
+        # Limit of 64 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The name of the environment. Format: `projects//locations//agents//
+        # environments/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Update time of this environment.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Required. A list of configurations for flow versions. You should include
+        # version configs for all flows that are reachable from `Start Flow` in the
+        # agent. Otherwise, an error will be returned.
+        # Corresponds to the JSON property `versionConfigs`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig>]
+        attr_accessor :version_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @version_configs = args[:version_configs] if args.key?(:version_configs)
+        end
+      end
+      
+      # Configuration for the version.
+      class GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Format: projects//locations//agents//flows//versions/.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # An event handler specifies an event that can be handled during a session. When
+      # the specified event happens, the following actions are taken in order: * If
+      # there is a `trigger_fulfillment` associated with the event, it will be called.
+      # * If there is a `target_page` associated with the event, the session will
+      # transition into the specified page. * If there is a `target_flow` associated
+      # with the event, the session will transition into the specified flow.
+      class GoogleCloudDialogflowCxV3beta1EventHandler
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the event to handle.
+        # Corresponds to the JSON property `event`
+        # @return [String]
+        attr_accessor :event
+      
+        # Output only. The unique identifier of this event handler.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The target flow to transition to. Format: `projects//locations//agents//flows/`
+        # .
+        # Corresponds to the JSON property `targetFlow`
+        # @return [String]
+        attr_accessor :target_flow
+      
+        # The target page to transition to. Format: `projects//locations//agents//flows//
+        # pages/`.
+        # Corresponds to the JSON property `targetPage`
+        # @return [String]
+        attr_accessor :target_page
+      
+        # A fulfillment can do one or more of the following actions at the same time: *
+        # Generate rich message responses. * Set parameter values. * Call the webhook.
+        # Fulfillments can be called at various stages in the Page or Form lifecycle.
+        # For example, when a DetectIntentRequest drives a session to enter a new page,
+        # the page's entry fulfillment can add a static response to the QueryResult in
+        # the returning DetectIntentResponse, call the webhook (for example, to load
+        # user data from a database), or both.
+        # Corresponds to the JSON property `triggerFulfillment`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Fulfillment]
+        attr_accessor :trigger_fulfillment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event = args[:event] if args.key?(:event)
+          @name = args[:name] if args.key?(:name)
+          @target_flow = args[:target_flow] if args.key?(:target_flow)
+          @target_page = args[:target_page] if args.key?(:target_page)
+          @trigger_fulfillment = args[:trigger_fulfillment] if args.key?(:trigger_fulfillment)
+        end
+      end
+      
+      # The request message for Agents.ExportAgent.
+      class GoogleCloudDialogflowCxV3beta1ExportAgentRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The [Google Cloud Storage](https://cloud.google.com/storage/docs/)
+        # URI to export the agent to. The format of this URI must be `gs:///`. If left
+        # unspecified, the serialized agent is returned inline.
+        # Corresponds to the JSON property `agentUri`
+        # @return [String]
+        attr_accessor :agent_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_uri = args[:agent_uri] if args.key?(:agent_uri)
         end
       end
       
@@ -66,6 +544,1369 @@ module Google
         def update!(**args)
           @agent_content = args[:agent_content] if args.key?(:agent_content)
           @agent_uri = args[:agent_uri] if args.key?(:agent_uri)
+        end
+      end
+      
+      # Flows represents the conversation flows when you build your chatbot agent. A
+      # flow consists of many pages connected by the transition routes. Conversations
+      # always start with the built-in Start Flow (with an all-0 ID). Transition
+      # routes can direct the conversation session from the current flow (parent flow)
+      # to another flow (sub flow). When the sub flow is finished, Dialogflow will
+      # bring the session back to the parent flow, where the sub flow is started.
+      # Usually, when a transition route is followed by a matched intent, the intent
+      # will be "consumed". This means the intent won't activate more transition
+      # routes. However, when the followed transition route moves the conversation
+      # session into a different flow, the matched intent can be carried over and to
+      # be consumed in the target flow.
+      class GoogleCloudDialogflowCxV3beta1Flow
+        include Google::Apis::Core::Hashable
+      
+        # The description of the flow. The maximum length is 500 characters. If exceeded,
+        # the request is rejected.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The human-readable name of the flow.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # A flow's event handlers serve two purposes: * They are responsible for
+        # handling events (e.g. no match, webhook errors) in the flow. * They are
+        # inherited by every page's event handlers, which can be used to handle common
+        # events regardless of the current page. Event handlers defined in the page have
+        # higher priority than those defined in the flow. Unlike transition_routes,
+        # these handlers are evaluated on a first-match basis. The first one that
+        # matches the event get executed, with the rest being ignored.
+        # Corresponds to the JSON property `eventHandlers`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1EventHandler>]
+        attr_accessor :event_handlers
+      
+        # The unique identifier of the flow. Format: `projects//locations//agents//flows/
+        # `.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Settings related to NLU.
+        # Corresponds to the JSON property `nluSettings`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1NluSettings]
+        attr_accessor :nlu_settings
+      
+        # A flow's transition routes serve two purposes: * They are responsible for
+        # matching the user's first utterances in the flow. * They are inherited by
+        # every page's transition routes and can support use cases such as the user
+        # saying "help" or "can I talk to a human?", which can be handled in a common
+        # way regardless of the current page. Transition routes defined in the page have
+        # higher priority than those defined in the flow. TransitionRoutes are evalauted
+        # in the following order: * TransitionRoutes with intent specified.. *
+        # TransitionRoutes with only condition specified. TransitionRoutes with intent
+        # specified are inherited by pages in the flow.
+        # Corresponds to the JSON property `transitionRoutes`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionRoute>]
+        attr_accessor :transition_routes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @event_handlers = args[:event_handlers] if args.key?(:event_handlers)
+          @name = args[:name] if args.key?(:name)
+          @nlu_settings = args[:nlu_settings] if args.key?(:nlu_settings)
+          @transition_routes = args[:transition_routes] if args.key?(:transition_routes)
+        end
+      end
+      
+      # A form is a data model that groups related parameters that can be collected
+      # from the user. The process in which the agent prompts the user and collects
+      # parameter values from the user is called form filling. A form can be added to
+      # a page. When form filling is done, the filled parameters will be written to
+      # the session.
+      class GoogleCloudDialogflowCxV3beta1Form
+        include Google::Apis::Core::Hashable
+      
+        # Parameters to collect from the user.
+        # Corresponds to the JSON property `parameters`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FormParameter>]
+        attr_accessor :parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parameters = args[:parameters] if args.key?(:parameters)
+        end
+      end
+      
+      # Represents a form parameter.
+      class GoogleCloudDialogflowCxV3beta1FormParameter
+        include Google::Apis::Core::Hashable
+      
+        # The default value of an optional parameter. If the parameter is required, the
+        # default value will be ignored.
+        # Corresponds to the JSON property `defaultValue`
+        # @return [Object]
+        attr_accessor :default_value
+      
+        # Required. The human-readable name of the parameter, unique within the form.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. The entity type of the parameter. Format: `projects/-/locations/-/
+        # agents/-/entityTypes/` for system entity types (for example, `projects/-/
+        # locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//
+        # entityTypes/` for developer entity types.
+        # Corresponds to the JSON property `entityType`
+        # @return [String]
+        attr_accessor :entity_type
+      
+        # Configuration for how the filling of a parameter should be handled.
+        # Corresponds to the JSON property `fillBehavior`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior]
+        attr_accessor :fill_behavior
+      
+        # Indicates whether the parameter represents a list of values.
+        # Corresponds to the JSON property `isList`
+        # @return [Boolean]
+        attr_accessor :is_list
+        alias_method :is_list?, :is_list
+      
+        # Indicates whether the parameter is required. Optional parameters will not
+        # trigger prompts; however, they are filled if the user specifies them. Required
+        # parameters must be filled before form filling concludes.
+        # Corresponds to the JSON property `required`
+        # @return [Boolean]
+        attr_accessor :required
+        alias_method :required?, :required
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_value = args[:default_value] if args.key?(:default_value)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @entity_type = args[:entity_type] if args.key?(:entity_type)
+          @fill_behavior = args[:fill_behavior] if args.key?(:fill_behavior)
+          @is_list = args[:is_list] if args.key?(:is_list)
+          @required = args[:required] if args.key?(:required)
+        end
+      end
+      
+      # Configuration for how the filling of a parameter should be handled.
+      class GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior
+        include Google::Apis::Core::Hashable
+      
+        # A fulfillment can do one or more of the following actions at the same time: *
+        # Generate rich message responses. * Set parameter values. * Call the webhook.
+        # Fulfillments can be called at various stages in the Page or Form lifecycle.
+        # For example, when a DetectIntentRequest drives a session to enter a new page,
+        # the page's entry fulfillment can add a static response to the QueryResult in
+        # the returning DetectIntentResponse, call the webhook (for example, to load
+        # user data from a database), or both.
+        # Corresponds to the JSON property `initialPromptFulfillment`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Fulfillment]
+        attr_accessor :initial_prompt_fulfillment
+      
+        # The handlers for parameter-level events, used to provide reprompt for the
+        # parameter or transition to a different page/flow. The supported events are: * `
+        # sys.no-match-`, where N can be from 1 to 6 * `sys.no-match-default` * `sys.no-
+        # input-`, where N can be from 1 to 6 * `sys.no-input-default` * `sys.invalid-
+        # parameter` `initial_prompt_fulfillment` provides the first prompt for the
+        # parameter. If the user's response does not fill the parameter, a no-match/no-
+        # input event will be triggered, and the fulfillment associated with the `sys.no-
+        # match-1`/`sys.no-input-1` handler (if defined) will be called to provide a
+        # prompt. The `sys.no-match-2`/`sys.no-input-2` handler (if defined) will
+        # respond to the next no-match/no-input event, and so on. A `sys.no-match-
+        # default` or `sys.no-input-default` handler will be used to handle all
+        # following no-match/no-input events after all numbered no-match/no-input
+        # handlers for the parameter are consumed. A `sys.invalid-parameter` handler can
+        # be defined to handle the case where the parameter values have been `
+        # invalidated` by webhook. For example, if the user's response fill the
+        # parameter, however the parameter was invalidated by webhook, the fulfillment
+        # associated with the `sys.invalid-parameter` handler (if defined) will be
+        # called to provide a prompt. If the event handler for the corresponding event
+        # can't be found on the parameter, `initial_prompt_fulfillment` will be re-
+        # prompted.
+        # Corresponds to the JSON property `repromptEventHandlers`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1EventHandler>]
+        attr_accessor :reprompt_event_handlers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @initial_prompt_fulfillment = args[:initial_prompt_fulfillment] if args.key?(:initial_prompt_fulfillment)
+          @reprompt_event_handlers = args[:reprompt_event_handlers] if args.key?(:reprompt_event_handlers)
+        end
+      end
+      
+      # Request of FulfillIntent
+      class GoogleCloudDialogflowCxV3beta1FulfillIntentRequest
+        include Google::Apis::Core::Hashable
+      
+        # Represents one match result of MatchIntent.
+        # Corresponds to the JSON property `match`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Match]
+        attr_accessor :match
+      
+        # Request of MatchIntent.
+        # Corresponds to the JSON property `matchIntentRequest`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1MatchIntentRequest]
+        attr_accessor :match_intent_request
+      
+        # Instructs the speech synthesizer how to generate the output audio content.
+        # Corresponds to the JSON property `outputAudioConfig`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1OutputAudioConfig]
+        attr_accessor :output_audio_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @match = args[:match] if args.key?(:match)
+          @match_intent_request = args[:match_intent_request] if args.key?(:match_intent_request)
+          @output_audio_config = args[:output_audio_config] if args.key?(:output_audio_config)
+        end
+      end
+      
+      # Response of FulfillIntent
+      class GoogleCloudDialogflowCxV3beta1FulfillIntentResponse
+        include Google::Apis::Core::Hashable
+      
+        # The audio data bytes encoded as specified in the request. Note: The output
+        # audio is generated based on the values of default platform text responses
+        # found in the `query_result.response_messages` field. If multiple default text
+        # responses exist, they will be concatenated when generating audio. If no
+        # default platform text responses exist, the generated audio content will be
+        # empty. In some scenarios, multiple output audio fields may be present in the
+        # response structure. In these cases, only the top-most-level audio output has
+        # content.
+        # Corresponds to the JSON property `outputAudio`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :output_audio
+      
+        # Instructs the speech synthesizer how to generate the output audio content.
+        # Corresponds to the JSON property `outputAudioConfig`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1OutputAudioConfig]
+        attr_accessor :output_audio_config
+      
+        # Represents the result of a conversational query.
+        # Corresponds to the JSON property `queryResult`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1QueryResult]
+        attr_accessor :query_result
+      
+        # Output only. The unique identifier of the response. It can be used to locate a
+        # response in the training example set or for reporting issues.
+        # Corresponds to the JSON property `responseId`
+        # @return [String]
+        attr_accessor :response_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output_audio = args[:output_audio] if args.key?(:output_audio)
+          @output_audio_config = args[:output_audio_config] if args.key?(:output_audio_config)
+          @query_result = args[:query_result] if args.key?(:query_result)
+          @response_id = args[:response_id] if args.key?(:response_id)
+        end
+      end
+      
+      # A fulfillment can do one or more of the following actions at the same time: *
+      # Generate rich message responses. * Set parameter values. * Call the webhook.
+      # Fulfillments can be called at various stages in the Page or Form lifecycle.
+      # For example, when a DetectIntentRequest drives a session to enter a new page,
+      # the page's entry fulfillment can add a static response to the QueryResult in
+      # the returning DetectIntentResponse, call the webhook (for example, to load
+      # user data from a database), or both.
+      class GoogleCloudDialogflowCxV3beta1Fulfillment
+        include Google::Apis::Core::Hashable
+      
+        # Conditional cases for this fulfillment.
+        # Corresponds to the JSON property `conditionalCases`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases>]
+        attr_accessor :conditional_cases
+      
+        # The list of rich message responses to present to the user.
+        # Corresponds to the JSON property `messages`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessage>]
+        attr_accessor :messages
+      
+        # Set parameter values before executing the webhook.
+        # Corresponds to the JSON property `setParameterActions`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction>]
+        attr_accessor :set_parameter_actions
+      
+        # The tag used by the webhook to identify which fulfillment is being called.
+        # This field is required if `webhook` is specified.
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        # The webhook to call. Format: `projects//locations//agents//webhooks/`.
+        # Corresponds to the JSON property `webhook`
+        # @return [String]
+        attr_accessor :webhook
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conditional_cases = args[:conditional_cases] if args.key?(:conditional_cases)
+          @messages = args[:messages] if args.key?(:messages)
+          @set_parameter_actions = args[:set_parameter_actions] if args.key?(:set_parameter_actions)
+          @tag = args[:tag] if args.key?(:tag)
+          @webhook = args[:webhook] if args.key?(:webhook)
+        end
+      end
+      
+      # A list of cascading if-else conditions. Cases are mutually exclusive. The
+      # first one with a matching condition is selected, all the rest ignored.
+      class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases
+        include Google::Apis::Core::Hashable
+      
+        # A list of cascading if-else conditions.
+        # Corresponds to the JSON property `cases`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase>]
+        attr_accessor :cases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cases = args[:cases] if args.key?(:cases)
+        end
+      end
+      
+      # Each case has a Boolean condition. When it is evaluated to be True, the
+      # corresponding messages will be selected and evaluated recursively.
+      class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase
+        include Google::Apis::Core::Hashable
+      
+        # A list of case content.
+        # Corresponds to the JSON property `caseContent`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContent>]
+        attr_accessor :case_content
+      
+        # The condition to activate and select this case. Empty means the condition is
+        # always true. The condition is evaluated against form parameters or session
+        # parameters. See the [conditions reference](https://cloud.google.com/dialogflow/
+        # cx/docs/reference/condition).
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @case_content = args[:case_content] if args.key?(:case_content)
+          @condition = args[:condition] if args.key?(:condition)
+        end
+      end
+      
+      # The list of messages or conditional cases to activate for this case.
+      class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContent
+        include Google::Apis::Core::Hashable
+      
+        # A list of cascading if-else conditions. Cases are mutually exclusive. The
+        # first one with a matching condition is selected, all the rest ignored.
+        # Corresponds to the JSON property `additionalCases`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases]
+        attr_accessor :additional_cases
+      
+        # Represents a response message that can be returned by a conversational agent.
+        # Response messages are also used for output audio synthesis. The approach is as
+        # follows: * If at least one OutputAudioText response is present, then all
+        # OutputAudioText responses are linearly concatenated, and the result is used
+        # for output audio synthesis. * If the OutputAudioText responses are a mixture
+        # of text and SSML, then the concatenated result is treated as SSML; otherwise,
+        # the result is treated as either text or SSML as appropriate. The agent
+        # designer should ideally use either text or SSML consistently throughout the
+        # bot design. * Otherwise, all Text responses are linearly concatenated, and the
+        # result is used for output audio synthesis. This approach allows for more
+        # sophisticated user experience scenarios, where the text displayed to the user
+        # may differ from what is heard.
+        # Corresponds to the JSON property `message`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessage]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_cases = args[:additional_cases] if args.key?(:additional_cases)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Setting a parameter value.
+      class GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction
+        include Google::Apis::Core::Hashable
+      
+        # Display name of the parameter.
+        # Corresponds to the JSON property `parameter`
+        # @return [String]
+        attr_accessor :parameter
+      
+        # The new value of the parameter. A null value clears the parameter.
+        # Corresponds to the JSON property `value`
+        # @return [Object]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parameter = args[:parameter] if args.key?(:parameter)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # The response message for Agents.ImportAgent.
+      class GoogleCloudDialogflowCxV3beta1ImportAgentResponse
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifier of the new agent. Format: `projects//locations//agents/`.
+        # Corresponds to the JSON property `agent`
+        # @return [String]
+        attr_accessor :agent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent = args[:agent] if args.key?(:agent)
+        end
+      end
+      
+      # Instructs the speech recognizer on how to process the audio content.
+      class GoogleCloudDialogflowCxV3beta1InputAudioConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Audio encoding of the audio content to process.
+        # Corresponds to the JSON property `audioEncoding`
+        # @return [String]
+        attr_accessor :audio_encoding
+      
+        # Optional. If `true`, Dialogflow returns SpeechWordInfo in
+        # StreamingRecognitionResult with information about the recognized speech words,
+        # e.g. start and end time offsets. If false or unspecified, Speech doesn't
+        # return any word-level information.
+        # Corresponds to the JSON property `enableWordInfo`
+        # @return [Boolean]
+        attr_accessor :enable_word_info
+        alias_method :enable_word_info?, :enable_word_info
+      
+        # Optional. Which Speech model to select for the given request. Select the model
+        # best suited to your domain to get best results. If a model is not explicitly
+        # specified, then we auto-select a model based on the parameters in the
+        # InputAudioConfig. If enhanced speech model is enabled for the agent and an
+        # enhanced version of the specified model for the language does not exist, then
+        # the speech is recognized using the standard version of the specified model.
+        # Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-
+        # text/docs/basics#select-model) for more details.
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        # Optional. Which variant of the Speech model to use.
+        # Corresponds to the JSON property `modelVariant`
+        # @return [String]
+        attr_accessor :model_variant
+      
+        # Optional. A list of strings containing words and phrases that the speech
+        # recognizer should recognize with higher likelihood. See [the Cloud Speech
+        # documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-
+        # hints) for more details.
+        # Corresponds to the JSON property `phraseHints`
+        # @return [Array<String>]
+        attr_accessor :phrase_hints
+      
+        # Sample rate (in Hertz) of the audio content sent in the query. Refer to [Cloud
+        # Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics)
+        # for more details.
+        # Corresponds to the JSON property `sampleRateHertz`
+        # @return [Fixnum]
+        attr_accessor :sample_rate_hertz
+      
+        # Optional. If `false` (default), recognition does not cease until the client
+        # closes the stream. If `true`, the recognizer will detect a single spoken
+        # utterance in input audio. Recognition ceases when it detects the audio's voice
+        # has stopped or paused. In this case, once a detected intent is received, the
+        # client should close the stream and start a new request with a new stream as
+        # needed. Note: This setting is relevant only for streaming methods.
+        # Corresponds to the JSON property `singleUtterance`
+        # @return [Boolean]
+        attr_accessor :single_utterance
+        alias_method :single_utterance?, :single_utterance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
+          @enable_word_info = args[:enable_word_info] if args.key?(:enable_word_info)
+          @model = args[:model] if args.key?(:model)
+          @model_variant = args[:model_variant] if args.key?(:model_variant)
+          @phrase_hints = args[:phrase_hints] if args.key?(:phrase_hints)
+          @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
+          @single_utterance = args[:single_utterance] if args.key?(:single_utterance)
+        end
+      end
+      
+      # An intent represents a user's intent to interact with a conversational agent.
+      # You can provide information for the Dialogflow API to use to match user input
+      # to an intent by adding training phrases (i.e., examples of user input) to your
+      # intent.
+      class GoogleCloudDialogflowCxV3beta1Intent
+        include Google::Apis::Core::Hashable
+      
+        # Required. The human-readable name of the intent, unique within the agent.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Indicates whether this is a fallback intent. Currently only default fallback
+        # intent is allowed in the agent, which is added upon agent creation. Adding
+        # training phrases to fallback intent is useful in the case of requests that are
+        # mistakenly matched, since training phrases assigned to fallback intents act as
+        # negative examples that triggers no-match event.
+        # Corresponds to the JSON property `isFallback`
+        # @return [Boolean]
+        attr_accessor :is_fallback
+        alias_method :is_fallback?, :is_fallback
+      
+        # The unique identifier of the intent. Required for the Intents.UpdateIntent
+        # method. Intents.CreateIntent populates the name automatically. Format: `
+        # projects//locations//agents//intents/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The collection of parameters associated with the intent.
+        # Corresponds to the JSON property `parameters`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1IntentParameter>]
+        attr_accessor :parameters
+      
+        # The priority of this intent. Higher numbers represent higher priorities. - If
+        # the supplied value is unspecified or 0, the service translates the value to
+        # 500,000, which corresponds to the `Normal` priority in the console. - If the
+        # supplied value is negative, the intent is ignored in runtime detect intent
+        # requests.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
+        # The collection of training phrases the agent is trained on to identify the
+        # intent.
+        # Corresponds to the JSON property `trainingPhrases`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase>]
+        attr_accessor :training_phrases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @is_fallback = args[:is_fallback] if args.key?(:is_fallback)
+          @name = args[:name] if args.key?(:name)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @priority = args[:priority] if args.key?(:priority)
+          @training_phrases = args[:training_phrases] if args.key?(:training_phrases)
+        end
+      end
+      
+      # Represents the intent to trigger programmatically rather than as a result of
+      # natural language processing.
+      class GoogleCloudDialogflowCxV3beta1IntentInput
+        include Google::Apis::Core::Hashable
+      
+        # Required. The unique identifier of the intent. Format: `projects//locations//
+        # agents//intents/`.
+        # Corresponds to the JSON property `intent`
+        # @return [String]
+        attr_accessor :intent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intent = args[:intent] if args.key?(:intent)
+        end
+      end
+      
+      # Represents an intent parameter.
+      class GoogleCloudDialogflowCxV3beta1IntentParameter
+        include Google::Apis::Core::Hashable
+      
+        # Required. The entity type of the parameter. Format: `projects/-/locations/-/
+        # agents/-/entityTypes/` for system entity types (for example, `projects/-/
+        # locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//
+        # entityTypes/` for developer entity types.
+        # Corresponds to the JSON property `entityType`
+        # @return [String]
+        attr_accessor :entity_type
+      
+        # Required. The unique identifier of the parameter. This field is used by
+        # training phrases to annotate their parts.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Indicates whether the parameter represents a list of values.
+        # Corresponds to the JSON property `isList`
+        # @return [Boolean]
+        attr_accessor :is_list
+        alias_method :is_list?, :is_list
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_type = args[:entity_type] if args.key?(:entity_type)
+          @id = args[:id] if args.key?(:id)
+          @is_list = args[:is_list] if args.key?(:is_list)
+        end
+      end
+      
+      # Represents an example that the agent is trained on to identify the intent.
+      class GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The unique identifier of the training phrase.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Required. The ordered list of training phrase parts. The parts are
+        # concatenated in order to form the training phrase. Note: The API does not
+        # automatically annotate training phrases like the Dialogflow Console does. Note:
+        # Do not forget to include whitespace at part boundaries, so the training
+        # phrase is well formatted when the parts are concatenated. If the training
+        # phrase does not need to be annotated with parameters, you just need a single
+        # part with only the Part.text field set. If you want to annotate the training
+        # phrase, you must create multiple parts, where the fields of each part are
+        # populated in one of two ways: - `Part.text` is set to a part of the phrase
+        # that has no parameters. - `Part.text` is set to a part of the phrase that you
+        # want to annotate, and the `parameter_id` field is set.
+        # Corresponds to the JSON property `parts`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart>]
+        attr_accessor :parts
+      
+        # Indicates how many times this example was added to the intent.
+        # Corresponds to the JSON property `repeatCount`
+        # @return [Fixnum]
+        attr_accessor :repeat_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @parts = args[:parts] if args.key?(:parts)
+          @repeat_count = args[:repeat_count] if args.key?(:repeat_count)
+        end
+      end
+      
+      # Represents a part of a training phrase.
+      class GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart
+        include Google::Apis::Core::Hashable
+      
+        # The parameter used to annotate this part of the training phrase. This field is
+        # required for annotated parts of the training phrase.
+        # Corresponds to the JSON property `parameterId`
+        # @return [String]
+        attr_accessor :parameter_id
+      
+        # Required. The text for this part.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parameter_id = args[:parameter_id] if args.key?(:parameter_id)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # The response message for Agents.ListAgents.
+      class GoogleCloudDialogflowCxV3beta1ListAgentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of agents. There will be a maximum number of items returned based on
+        # the page_size field in the request.
+        # Corresponds to the JSON property `agents`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Agent>]
+        attr_accessor :agents
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agents = args[:agents] if args.key?(:agents)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response message for EntityTypes.ListEntityTypes.
+      class GoogleCloudDialogflowCxV3beta1ListEntityTypesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of entity types. There will be a maximum number of items returned
+        # based on the page_size field in the request.
+        # Corresponds to the JSON property `entityTypes`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1EntityType>]
+        attr_accessor :entity_types
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_types = args[:entity_types] if args.key?(:entity_types)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response message for Environments.ListEnvironments.
+      class GoogleCloudDialogflowCxV3beta1ListEnvironmentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of environments. There will be a maximum number of items returned
+        # based on the page_size field in the request. The list may in some cases be
+        # empty or contain fewer entries than page_size even if this isn't the last page.
+        # Corresponds to the JSON property `environments`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Environment>]
+        attr_accessor :environments
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environments = args[:environments] if args.key?(:environments)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response message for Flows.ListFlows.
+      class GoogleCloudDialogflowCxV3beta1ListFlowsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of flows. There will be a maximum number of items returned based on
+        # the page_size field in the request.
+        # Corresponds to the JSON property `flows`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Flow>]
+        attr_accessor :flows
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @flows = args[:flows] if args.key?(:flows)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response message for Intents.ListIntents.
+      class GoogleCloudDialogflowCxV3beta1ListIntentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of intents. There will be a maximum number of items returned based on
+        # the page_size field in the request.
+        # Corresponds to the JSON property `intents`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Intent>]
+        attr_accessor :intents
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intents = args[:intents] if args.key?(:intents)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response message for Pages.ListPages.
+      class GoogleCloudDialogflowCxV3beta1ListPagesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of pages. There will be a maximum number of items returned based on
+        # the page_size field in the request.
+        # Corresponds to the JSON property `pages`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Page>]
+        attr_accessor :pages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @pages = args[:pages] if args.key?(:pages)
+        end
+      end
+      
+      # The response message for SessionEntityTypes.ListSessionEntityTypes.
+      class GoogleCloudDialogflowCxV3beta1ListSessionEntityTypesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of session entity types. There will be a maximum number of items
+        # returned based on the page_size field in the request.
+        # Corresponds to the JSON property `sessionEntityTypes`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SessionEntityType>]
+        attr_accessor :session_entity_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @session_entity_types = args[:session_entity_types] if args.key?(:session_entity_types)
+        end
+      end
+      
+      # The response message for TransitionRouteGroups.ListTransitionRouteGroups.
+      class GoogleCloudDialogflowCxV3beta1ListTransitionRouteGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of transition route groups. There will be a maximum number of items
+        # returned based on the page_size field in the request. The list may in some
+        # cases be empty or contain fewer entries than page_size even if this isn't the
+        # last page.
+        # Corresponds to the JSON property `transitionRouteGroups`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionRouteGroup>]
+        attr_accessor :transition_route_groups
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @transition_route_groups = args[:transition_route_groups] if args.key?(:transition_route_groups)
+        end
+      end
+      
+      # The response message for Versions.ListVersions.
+      class GoogleCloudDialogflowCxV3beta1ListVersionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of versions. There will be a maximum number of items returned based on
+        # the page_size field in the request. The list may in some cases be empty or
+        # contain fewer entries than page_size even if this isn't the last page.
+        # Corresponds to the JSON property `versions`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Version>]
+        attr_accessor :versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @versions = args[:versions] if args.key?(:versions)
+        end
+      end
+      
+      # The response message for Webhooks.ListWebhooks.
+      class GoogleCloudDialogflowCxV3beta1ListWebhooksResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of webhooks. There will be a maximum number of items returned based
+        # on the page_size field in the request.
+        # Corresponds to the JSON property `webhooks`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Webhook>]
+        attr_accessor :webhooks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @webhooks = args[:webhooks] if args.key?(:webhooks)
+        end
+      end
+      
+      # The request message for Versions.LoadVersion.
+      class GoogleCloudDialogflowCxV3beta1LoadVersionRequest
+        include Google::Apis::Core::Hashable
+      
+        # This field is used to prevent accidental overwrite of other agent resources in
+        # the draft version, which can potentially impact other flow's behavior. If `
+        # allow_override_agent_resources` is false, conflicted agent-level resources
+        # will not be overridden (i.e. intents, entities, webhooks).
+        # Corresponds to the JSON property `allowOverrideAgentResources`
+        # @return [Boolean]
+        attr_accessor :allow_override_agent_resources
+        alias_method :allow_override_agent_resources?, :allow_override_agent_resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_override_agent_resources = args[:allow_override_agent_resources] if args.key?(:allow_override_agent_resources)
+        end
+      end
+      
+      # The response message for Environments.LookupEnvironmentHistory.
+      class GoogleCloudDialogflowCxV3beta1LookupEnvironmentHistoryResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents a list of snapshots for an environment. Time of the snapshots is
+        # stored in `update_time`.
+        # Corresponds to the JSON property `environments`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Environment>]
+        attr_accessor :environments
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environments = args[:environments] if args.key?(:environments)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Represents one match result of MatchIntent.
+      class GoogleCloudDialogflowCxV3beta1Match
+        include Google::Apis::Core::Hashable
+      
+        # The confidence of this match. Values range from 0.0 (completely uncertain) to
+        # 1.0 (completely certain). This value is for informational purpose only and is
+        # only used to help match the best intent within the classification threshold.
+        # This value may change for the same end-user expression at any time due to a
+        # model retraining or change in implementation.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # An intent represents a user's intent to interact with a conversational agent.
+        # You can provide information for the Dialogflow API to use to match user input
+        # to an intent by adding training phrases (i.e., examples of user input) to your
+        # intent.
+        # Corresponds to the JSON property `intent`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Intent]
+        attr_accessor :intent
+      
+        # Type of this Match.
+        # Corresponds to the JSON property `matchType`
+        # @return [String]
+        attr_accessor :match_type
+      
+        # The collection of parameters extracted from the query. Depending on your
+        # protocol or client library language, this is a map, associative array, symbol
+        # table, dictionary, or JSON object composed of a collection of (MapKey,
+        # MapValue) pairs: - MapKey type: string - MapKey value: parameter name -
+        # MapValue type: - If parameter's entity type is a composite entity: map - Else:
+        # string or number, depending on parameter value type - MapValue value: - If
+        # parameter's entity type is a composite entity: map from composite entity
+        # property names to property values - Else: parameter value
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :parameters
+      
+        # Final text input which was matched during MatchIntent. This value can be
+        # different from original input sent in request because of spelling correction
+        # or other processing.
+        # Corresponds to the JSON property `resolvedInput`
+        # @return [String]
+        attr_accessor :resolved_input
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @intent = args[:intent] if args.key?(:intent)
+          @match_type = args[:match_type] if args.key?(:match_type)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @resolved_input = args[:resolved_input] if args.key?(:resolved_input)
+        end
+      end
+      
+      # Request of MatchIntent.
+      class GoogleCloudDialogflowCxV3beta1MatchIntentRequest
+        include Google::Apis::Core::Hashable
+      
+        # Represents the query input. It can contain either: 1. A conversational query
+        # in the form of text. 2. An intent query that specifies which intent to trigger.
+        # Corresponds to the JSON property `queryInput`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1QueryInput]
+        attr_accessor :query_input
+      
+        # Represents the parameters of a conversational query.
+        # Corresponds to the JSON property `queryParams`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1QueryParameters]
+        attr_accessor :query_params
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @query_input = args[:query_input] if args.key?(:query_input)
+          @query_params = args[:query_params] if args.key?(:query_params)
+        end
+      end
+      
+      # Response of MatchIntent.
+      class GoogleCloudDialogflowCxV3beta1MatchIntentResponse
+        include Google::Apis::Core::Hashable
+      
+        # A Dialogflow CX conversation (session) can be described and visualized as a
+        # state machine. The states of a CX session are represented by pages. For each
+        # flow, you define many pages, where your combined pages can handle a complete
+        # conversation on the topics the flow is designed for. At any given moment,
+        # exactly one page is the current page, the current page is considered active,
+        # and the flow associated with that page is considered active. Every flow has a
+        # special start page. When a flow initially becomes active, the start page page
+        # becomes the current page. For each conversational turn, the current page will
+        # either stay the same or transition to another page. You configure each page to
+        # collect information from the end-user that is relevant for the conversational
+        # state represented by the page. For more information, see the [Page guide](
+        # https://cloud.google.com/dialogflow/cx/docs/concept/page).
+        # Corresponds to the JSON property `currentPage`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Page]
+        attr_accessor :current_page
+      
+        # Match results, if more than one, ordered descendingly by the confidence we
+        # have that the particular intent matches the query.
+        # Corresponds to the JSON property `matches`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Match>]
+        attr_accessor :matches
+      
+        # If natural language text was provided as input, this field will contain a copy
+        # of the text.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # If natural language speech audio was provided as input, this field will
+        # contain the trascript for the audio.
+        # Corresponds to the JSON property `transcript`
+        # @return [String]
+        attr_accessor :transcript
+      
+        # If an intent was provided as input, this field will contain a copy of the
+        # intent identifier.
+        # Corresponds to the JSON property `triggerIntent`
+        # @return [String]
+        attr_accessor :trigger_intent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_page = args[:current_page] if args.key?(:current_page)
+          @matches = args[:matches] if args.key?(:matches)
+          @text = args[:text] if args.key?(:text)
+          @transcript = args[:transcript] if args.key?(:transcript)
+          @trigger_intent = args[:trigger_intent] if args.key?(:trigger_intent)
+        end
+      end
+      
+      # Settings related to NLU.
+      class GoogleCloudDialogflowCxV3beta1NluSettings
+        include Google::Apis::Core::Hashable
+      
+        # To filter out false positive results and still get variety in matched natural
+        # language inputs for your agent, you can tune the machine learning
+        # classification threshold. If the returned score value is less than the
+        # threshold value, then a no-match event will be triggered. The score values
+        # range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.
+        # 0, the default of 0.3 is used.
+        # Corresponds to the JSON property `classificationThreshold`
+        # @return [Float]
+        attr_accessor :classification_threshold
+      
+        # Indicates if automatic spell correction is enabled in detect intent requests.
+        # Corresponds to the JSON property `enableSpellCorrection`
+        # @return [Boolean]
+        attr_accessor :enable_spell_correction
+        alias_method :enable_spell_correction?, :enable_spell_correction
+      
+        # Indicates NLU model training mode.
+        # Corresponds to the JSON property `modelTrainingMode`
+        # @return [String]
+        attr_accessor :model_training_mode
+      
+        # Indicates the type of NLU model.
+        # Corresponds to the JSON property `modelType`
+        # @return [String]
+        attr_accessor :model_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @classification_threshold = args[:classification_threshold] if args.key?(:classification_threshold)
+          @enable_spell_correction = args[:enable_spell_correction] if args.key?(:enable_spell_correction)
+          @model_training_mode = args[:model_training_mode] if args.key?(:model_training_mode)
+          @model_type = args[:model_type] if args.key?(:model_type)
+        end
+      end
+      
+      # Instructs the speech synthesizer how to generate the output audio content.
+      class GoogleCloudDialogflowCxV3beta1OutputAudioConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Audio encoding of the synthesized audio content.
+        # Corresponds to the JSON property `audioEncoding`
+        # @return [String]
+        attr_accessor :audio_encoding
+      
+        # Optional. The synthesis sample rate (in hertz) for this audio. If not provided,
+        # then the synthesizer will use the default sample rate based on the audio
+        # encoding. If this is different from the voice's natural sample rate, then the
+        # synthesizer will honor this request by converting to the desired sample rate (
+        # which might result in worse audio quality).
+        # Corresponds to the JSON property `sampleRateHertz`
+        # @return [Fixnum]
+        attr_accessor :sample_rate_hertz
+      
+        # Configuration of how speech should be synthesized.
+        # Corresponds to the JSON property `synthesizeSpeechConfig`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig]
+        attr_accessor :synthesize_speech_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
+          @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
+          @synthesize_speech_config = args[:synthesize_speech_config] if args.key?(:synthesize_speech_config)
+        end
+      end
+      
+      # A Dialogflow CX conversation (session) can be described and visualized as a
+      # state machine. The states of a CX session are represented by pages. For each
+      # flow, you define many pages, where your combined pages can handle a complete
+      # conversation on the topics the flow is designed for. At any given moment,
+      # exactly one page is the current page, the current page is considered active,
+      # and the flow associated with that page is considered active. Every flow has a
+      # special start page. When a flow initially becomes active, the start page page
+      # becomes the current page. For each conversational turn, the current page will
+      # either stay the same or transition to another page. You configure each page to
+      # collect information from the end-user that is relevant for the conversational
+      # state represented by the page. For more information, see the [Page guide](
+      # https://cloud.google.com/dialogflow/cx/docs/concept/page).
+      class GoogleCloudDialogflowCxV3beta1Page
+        include Google::Apis::Core::Hashable
+      
+        # Required. The human-readable name of the page, unique within the agent.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # A fulfillment can do one or more of the following actions at the same time: *
+        # Generate rich message responses. * Set parameter values. * Call the webhook.
+        # Fulfillments can be called at various stages in the Page or Form lifecycle.
+        # For example, when a DetectIntentRequest drives a session to enter a new page,
+        # the page's entry fulfillment can add a static response to the QueryResult in
+        # the returning DetectIntentResponse, call the webhook (for example, to load
+        # user data from a database), or both.
+        # Corresponds to the JSON property `entryFulfillment`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Fulfillment]
+        attr_accessor :entry_fulfillment
+      
+        # Handlers associated with the page to handle events such as webhook errors, no
+        # match or no input.
+        # Corresponds to the JSON property `eventHandlers`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1EventHandler>]
+        attr_accessor :event_handlers
+      
+        # A form is a data model that groups related parameters that can be collected
+        # from the user. The process in which the agent prompts the user and collects
+        # parameter values from the user is called form filling. A form can be added to
+        # a page. When form filling is done, the filled parameters will be written to
+        # the session.
+        # Corresponds to the JSON property `form`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Form]
+        attr_accessor :form
+      
+        # The unique identifier of the page. Required for the Pages.UpdatePage method.
+        # Pages.CreatePage populates the name automatically. Format: `projects//
+        # locations//agents//flows//pages/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Ordered list of `TransitionRouteGroups` associated with the page. Transition
+        # route groups must be unique within a page. * If multiple transition routes
+        # within a page scope refer to the same intent, then the precedence order is:
+        # page's transition route -> page's transition route group -> flow's transition
+        # routes. * If multiple transition route groups within a page contain the same
+        # intent, then the first group in the ordered list takes precedence. Format:`
+        # projects//locations//agents//flows//transitionRouteGroups/`.
+        # Corresponds to the JSON property `transitionRouteGroups`
+        # @return [Array<String>]
+        attr_accessor :transition_route_groups
+      
+        # A list of transitions for the transition rules of this page. They route the
+        # conversation to another page in the same flow, or another flow. When we are in
+        # a certain page, the TransitionRoutes are evalauted in the following order: *
+        # TransitionRoutes defined in the page with intent specified. * TransitionRoutes
+        # defined in the transition route groups. * TransitionRoutes defined in flow
+        # with intent specified. * TransitionRoutes defined in the page with only
+        # condition specified.
+        # Corresponds to the JSON property `transitionRoutes`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionRoute>]
+        attr_accessor :transition_routes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @entry_fulfillment = args[:entry_fulfillment] if args.key?(:entry_fulfillment)
+          @event_handlers = args[:event_handlers] if args.key?(:event_handlers)
+          @form = args[:form] if args.key?(:form)
+          @name = args[:name] if args.key?(:name)
+          @transition_route_groups = args[:transition_route_groups] if args.key?(:transition_route_groups)
+          @transition_routes = args[:transition_routes] if args.key?(:transition_routes)
         end
       end
       
@@ -167,6 +2008,242 @@ module Google
           @required = args[:required] if args.key?(:required)
           @state = args[:state] if args.key?(:state)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Represents the query input. It can contain either: 1. A conversational query
+      # in the form of text. 2. An intent query that specifies which intent to trigger.
+      class GoogleCloudDialogflowCxV3beta1QueryInput
+        include Google::Apis::Core::Hashable
+      
+        # Represents the natural speech audio to be processed.
+        # Corresponds to the JSON property `audio`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AudioInput]
+        attr_accessor :audio
+      
+        # Represents the intent to trigger programmatically rather than as a result of
+        # natural language processing.
+        # Corresponds to the JSON property `intent`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1IntentInput]
+        attr_accessor :intent
+      
+        # Required. The language of the input. See [Language Support](https://cloud.
+        # google.com/dialogflow/docs/reference/language) for a list of the currently
+        # supported language codes. Note that queries in the same session do not
+        # necessarily need to specify the same language.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Represents the natural language text to be processed.
+        # Corresponds to the JSON property `text`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TextInput]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio = args[:audio] if args.key?(:audio)
+          @intent = args[:intent] if args.key?(:intent)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Represents the parameters of a conversational query.
+      class GoogleCloudDialogflowCxV3beta1QueryParameters
+        include Google::Apis::Core::Hashable
+      
+        # An object representing a latitude/longitude pair. This is expressed as a pair
+        # of doubles representing degrees latitude and degrees longitude. Unless
+        # specified otherwise, this must conform to the WGS84 standard. Values must be
+        # within normalized ranges.
+        # Corresponds to the JSON property `geoLocation`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleTypeLatLng]
+        attr_accessor :geo_location
+      
+        # Additional parameters to be put into session parameters. To remove a parameter
+        # from the session, clients should explicitly set the parameter value to null.
+        # Depending on your protocol or client library language, this is a map,
+        # associative array, symbol table, dictionary, or JSON object composed of a
+        # collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value:
+        # parameter name - MapValue type: - If parameter's entity type is a composite
+        # entity: map - Else: string or number, depending on parameter value type -
+        # MapValue value: - If parameter's entity type is a composite entity: map from
+        # composite entity property names to property values - Else: parameter value
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :parameters
+      
+        # This field can be used to pass custom data into the webhook associated with
+        # the agent. Arbitrary JSON objects are supported.
+        # Corresponds to the JSON property `payload`
+        # @return [Hash<String,Object>]
+        attr_accessor :payload
+      
+        # Additional session entity types to replace or extend developer entity types
+        # with. The entity synonyms apply to all languages and persist for the session
+        # of this query.
+        # Corresponds to the JSON property `sessionEntityTypes`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SessionEntityType>]
+        attr_accessor :session_entity_types
+      
+        # The time zone of this conversational query from the [time zone database](https:
+        # //www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. If not
+        # provided, the time zone specified in the agent is used.
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @geo_location = args[:geo_location] if args.key?(:geo_location)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @payload = args[:payload] if args.key?(:payload)
+          @session_entity_types = args[:session_entity_types] if args.key?(:session_entity_types)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
+        end
+      end
+      
+      # Represents the result of a conversational query.
+      class GoogleCloudDialogflowCxV3beta1QueryResult
+        include Google::Apis::Core::Hashable
+      
+        # A Dialogflow CX conversation (session) can be described and visualized as a
+        # state machine. The states of a CX session are represented by pages. For each
+        # flow, you define many pages, where your combined pages can handle a complete
+        # conversation on the topics the flow is designed for. At any given moment,
+        # exactly one page is the current page, the current page is considered active,
+        # and the flow associated with that page is considered active. Every flow has a
+        # special start page. When a flow initially becomes active, the start page page
+        # becomes the current page. For each conversational turn, the current page will
+        # either stay the same or transition to another page. You configure each page to
+        # collect information from the end-user that is relevant for the conversational
+        # state represented by the page. For more information, see the [Page guide](
+        # https://cloud.google.com/dialogflow/cx/docs/concept/page).
+        # Corresponds to the JSON property `currentPage`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Page]
+        attr_accessor :current_page
+      
+        # The free-form diagnostic info. For example, this field could contain webhook
+        # call latency. The string keys of the Struct's fields map can change without
+        # notice.
+        # Corresponds to the JSON property `diagnosticInfo`
+        # @return [Hash<String,Object>]
+        attr_accessor :diagnostic_info
+      
+        # An intent represents a user's intent to interact with a conversational agent.
+        # You can provide information for the Dialogflow API to use to match user input
+        # to an intent by adding training phrases (i.e., examples of user input) to your
+        # intent.
+        # Corresponds to the JSON property `intent`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Intent]
+        attr_accessor :intent
+      
+        # The intent detection confidence. Values range from 0.0 (completely uncertain)
+        # to 1.0 (completely certain). This value is for informational purpose only and
+        # is only used to help match the best intent within the classification threshold.
+        # This value may change for the same end-user expression at any time due to a
+        # model retraining or change in implementation. This field is deprecated, please
+        # use QueryResult.match instead.
+        # Corresponds to the JSON property `intentDetectionConfidence`
+        # @return [Float]
+        attr_accessor :intent_detection_confidence
+      
+        # The language that was triggered during intent detection. See [Language Support]
+        # (https://cloud.google.com/dialogflow/docs/reference/language) for a list of
+        # the currently supported language codes.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Represents one match result of MatchIntent.
+        # Corresponds to the JSON property `match`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Match]
+        attr_accessor :match
+      
+        # The collected session parameters. Depending on your protocol or client library
+        # language, this is a map, associative array, symbol table, dictionary, or JSON
+        # object composed of a collection of (MapKey, MapValue) pairs: - MapKey type:
+        # string - MapKey value: parameter name - MapValue type: - If parameter's entity
+        # type is a composite entity: map - Else: string or number, depending on
+        # parameter value type - MapValue value: - If parameter's entity type is a
+        # composite entity: map from composite entity property names to property values -
+        # Else: parameter value
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :parameters
+      
+        # The list of rich messages returned to the client. Responses vary from simple
+        # text messages to more sophisticated, structured payloads used to drive complex
+        # logic.
+        # Corresponds to the JSON property `responseMessages`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessage>]
+        attr_accessor :response_messages
+      
+        # If natural language text was provided as input, this field will contain a copy
+        # of the text.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # If natural language speech audio was provided as input, this field will
+        # contain the trascript for the audio.
+        # Corresponds to the JSON property `transcript`
+        # @return [String]
+        attr_accessor :transcript
+      
+        # If an event was provided as input, this field will contain the name of the
+        # event.
+        # Corresponds to the JSON property `triggerEvent`
+        # @return [String]
+        attr_accessor :trigger_event
+      
+        # If an intent was provided as input, this field will contain a copy of the
+        # intent identifier.
+        # Corresponds to the JSON property `triggerIntent`
+        # @return [String]
+        attr_accessor :trigger_intent
+      
+        # The list of webhook payload in WebhookResponse.payload, in the order of call
+        # sequence. If some webhook call fails or doesn't return any payload, an empty `
+        # Struct` would be used instead.
+        # Corresponds to the JSON property `webhookPayloads`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :webhook_payloads
+      
+        # The list of webhook call status in the order of call sequence.
+        # Corresponds to the JSON property `webhookStatuses`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleRpcStatus>]
+        attr_accessor :webhook_statuses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_page = args[:current_page] if args.key?(:current_page)
+          @diagnostic_info = args[:diagnostic_info] if args.key?(:diagnostic_info)
+          @intent = args[:intent] if args.key?(:intent)
+          @intent_detection_confidence = args[:intent_detection_confidence] if args.key?(:intent_detection_confidence)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @match = args[:match] if args.key?(:match)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @response_messages = args[:response_messages] if args.key?(:response_messages)
+          @text = args[:text] if args.key?(:text)
+          @transcript = args[:transcript] if args.key?(:transcript)
+          @trigger_event = args[:trigger_event] if args.key?(:trigger_event)
+          @trigger_intent = args[:trigger_intent] if args.key?(:trigger_intent)
+          @webhook_payloads = args[:webhook_payloads] if args.key?(:webhook_payloads)
+          @webhook_statuses = args[:webhook_statuses] if args.key?(:webhook_statuses)
         end
       end
       
@@ -468,6 +2545,76 @@ module Google
         end
       end
       
+      # The request message for Agents.RestoreAgent.
+      class GoogleCloudDialogflowCxV3beta1RestoreAgentRequest
+        include Google::Apis::Core::Hashable
+      
+        # Uncompressed raw byte content for agent.
+        # Corresponds to the JSON property `agentContent`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :agent_content
+      
+        # The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to
+        # restore agent from. The format of this URI must be `gs:///`.
+        # Corresponds to the JSON property `agentUri`
+        # @return [String]
+        attr_accessor :agent_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_content = args[:agent_content] if args.key?(:agent_content)
+          @agent_uri = args[:agent_uri] if args.key?(:agent_uri)
+        end
+      end
+      
+      # Session entity types are referred to as **User** entity types and are entities
+      # that are built for an individual user such as favorites, preferences,
+      # playlists, and so on. You can redefine a session entity type at the session
+      # level to extend or replace a custom entity type at the user session level (we
+      # refer to the entity types defined at the agent level as "custom entity types").
+      # Note: session entity types apply to all queries, regardless of the language.
+      # For more information about entity types, see the [Dialogflow documentation](
+      # https://cloud.google.com/dialogflow/docs/entities-overview).
+      class GoogleCloudDialogflowCxV3beta1SessionEntityType
+        include Google::Apis::Core::Hashable
+      
+        # Required. The collection of entities to override or supplement the custom
+        # entity type.
+        # Corresponds to the JSON property `entities`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1EntityTypeEntity>]
+        attr_accessor :entities
+      
+        # Required. Indicates whether the additional data should override or supplement
+        # the custom entity type definition.
+        # Corresponds to the JSON property `entityOverrideMode`
+        # @return [String]
+        attr_accessor :entity_override_mode
+      
+        # Required. The unique identifier of the session entity type. Format: `projects//
+        # locations//agents//sessions//entityTypes/` or `projects//locations//agents//
+        # environments//sessions//entityTypes/`. If `Environment ID` is not specified,
+        # we assume default 'draft' environment.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entities = args[:entities] if args.key?(:entities)
+          @entity_override_mode = args[:entity_override_mode] if args.key?(:entity_override_mode)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Represents session information communicated to and from the webhook.
       class GoogleCloudDialogflowCxV3beta1SessionInfo
         include Google::Apis::Core::Hashable
@@ -496,6 +2643,395 @@ module Google
         def update!(**args)
           @parameters = args[:parameters] if args.key?(:parameters)
           @session = args[:session] if args.key?(:session)
+        end
+      end
+      
+      # Settings related to speech recognition.
+      class GoogleCloudDialogflowCxV3beta1SpeechToTextSettings
+        include Google::Apis::Core::Hashable
+      
+        # Whether to use speech adaptation for speech recognition.
+        # Corresponds to the JSON property `enableSpeechAdaptation`
+        # @return [Boolean]
+        attr_accessor :enable_speech_adaptation
+        alias_method :enable_speech_adaptation?, :enable_speech_adaptation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_speech_adaptation = args[:enable_speech_adaptation] if args.key?(:enable_speech_adaptation)
+        end
+      end
+      
+      # Configuration of how speech should be synthesized.
+      class GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An identifier which selects 'audio effects' profiles that are
+        # applied on (post synthesized) text to speech. Effects are applied on top of
+        # each other in the order they are given.
+        # Corresponds to the JSON property `effectsProfileId`
+        # @return [Array<String>]
+        attr_accessor :effects_profile_id
+      
+        # Optional. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20
+        # semitones from the original pitch. -20 means decrease 20 semitones from the
+        # original pitch.
+        # Corresponds to the JSON property `pitch`
+        # @return [Float]
+        attr_accessor :pitch
+      
+        # Optional. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal
+        # native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is
+        # half as fast. If unset(0.0), defaults to the native 1.0 speed. Any other
+        # values < 0.25 or > 4.0 will return an error.
+        # Corresponds to the JSON property `speakingRate`
+        # @return [Float]
+        attr_accessor :speaking_rate
+      
+        # Description of which voice to use for speech synthesis.
+        # Corresponds to the JSON property `voice`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1VoiceSelectionParams]
+        attr_accessor :voice
+      
+        # Optional. Volume gain (in dB) of the normal native volume supported by the
+        # specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0
+        # (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will
+        # play at approximately half the amplitude of the normal native signal amplitude.
+        # A value of +6.0 (dB) will play at approximately twice the amplitude of the
+        # normal native signal amplitude. We strongly recommend not to exceed +10 (dB)
+        # as there's usually no effective increase in loudness for any value greater
+        # than that.
+        # Corresponds to the JSON property `volumeGainDb`
+        # @return [Float]
+        attr_accessor :volume_gain_db
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effects_profile_id = args[:effects_profile_id] if args.key?(:effects_profile_id)
+          @pitch = args[:pitch] if args.key?(:pitch)
+          @speaking_rate = args[:speaking_rate] if args.key?(:speaking_rate)
+          @voice = args[:voice] if args.key?(:voice)
+          @volume_gain_db = args[:volume_gain_db] if args.key?(:volume_gain_db)
+        end
+      end
+      
+      # Represents the natural language text to be processed.
+      class GoogleCloudDialogflowCxV3beta1TextInput
+        include Google::Apis::Core::Hashable
+      
+        # Required. The UTF-8 encoded natural language text to be processed. Text length
+        # must not exceed 256 characters.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # The request message for Flows.TrainFlow.
+      class GoogleCloudDialogflowCxV3beta1TrainFlowRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A transition route specifies a intent that can be matched and/or a data
+      # condition that can be evaluated during a session. When a specified transition
+      # is matched, the following actions are taken in order: * If there is a `
+      # trigger_fulfillment` associated with the transition, it will be called. * If
+      # there is a `target_page` associated with the transition, the session will
+      # transition into the specified page. * If there is a `target_flow` associated
+      # with the transition, the session will transition into the specified flow.
+      class GoogleCloudDialogflowCxV3beta1TransitionRoute
+        include Google::Apis::Core::Hashable
+      
+        # The condition to evaluate against form parameters or session parameters. See
+        # the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/
+        # reference/condition). At least one of `intent` or `condition` must be
+        # specified. When both `intent` and `condition` are specified, the transition
+        # can only happen when both are fulfilled.
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        # The unique identifier of an Intent. Format: `projects//locations//agents//
+        # intents/`. Indicates that the transition can only happen when the given intent
+        # is matched. At least one of `intent` or `condition` must be specified. When
+        # both `intent` and `condition` are specified, the transition can only happen
+        # when both are fulfilled.
+        # Corresponds to the JSON property `intent`
+        # @return [String]
+        attr_accessor :intent
+      
+        # Output only. The unique identifier of this transition route.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The target flow to transition to. Format: `projects//locations//agents//flows/`
+        # .
+        # Corresponds to the JSON property `targetFlow`
+        # @return [String]
+        attr_accessor :target_flow
+      
+        # The target page to transition to. Format: `projects//locations//agents//flows//
+        # pages/`.
+        # Corresponds to the JSON property `targetPage`
+        # @return [String]
+        attr_accessor :target_page
+      
+        # A fulfillment can do one or more of the following actions at the same time: *
+        # Generate rich message responses. * Set parameter values. * Call the webhook.
+        # Fulfillments can be called at various stages in the Page or Form lifecycle.
+        # For example, when a DetectIntentRequest drives a session to enter a new page,
+        # the page's entry fulfillment can add a static response to the QueryResult in
+        # the returning DetectIntentResponse, call the webhook (for example, to load
+        # user data from a database), or both.
+        # Corresponds to the JSON property `triggerFulfillment`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Fulfillment]
+        attr_accessor :trigger_fulfillment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
+          @intent = args[:intent] if args.key?(:intent)
+          @name = args[:name] if args.key?(:name)
+          @target_flow = args[:target_flow] if args.key?(:target_flow)
+          @target_page = args[:target_page] if args.key?(:target_page)
+          @trigger_fulfillment = args[:trigger_fulfillment] if args.key?(:trigger_fulfillment)
+        end
+      end
+      
+      # An TransitionRouteGroup represents a group of `TransitionRoutes` to be used by
+      # a Page.
+      class GoogleCloudDialogflowCxV3beta1TransitionRouteGroup
+        include Google::Apis::Core::Hashable
+      
+        # Required. The human-readable name of the transition route group, unique within
+        # the Agent. The display name can be no longer than 30 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The unique identifier of the transition route group. TransitionRouteGroups.
+        # CreateTransitionRouteGroup populates the name automatically. Format: `projects/
+        # /locations//agents//flows//transitionRouteGroups/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Transition routes associated with the TransitionRouteGroup. Duplicate
+        # transition routes (i.e. using the same `intent`) are not allowed. Note that
+        # the `name` field is not used in the transition route group scope.
+        # Corresponds to the JSON property `transitionRoutes`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionRoute>]
+        attr_accessor :transition_routes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @transition_routes = args[:transition_routes] if args.key?(:transition_routes)
+        end
+      end
+      
+      # Represents a version of a flow.
+      class GoogleCloudDialogflowCxV3beta1Version
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Create time of the version.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The description of the version. The maximum length is 500 characters. If
+        # exceeded, the request is rejected.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The human-readable name of the version. Limit of 64 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Format: projects//locations//agents//flows//versions/. Version ID is a self-
+        # increasing number generated by Dialogflow upon version creation.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Settings related to NLU.
+        # Corresponds to the JSON property `nluSettings`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1NluSettings]
+        attr_accessor :nlu_settings
+      
+        # Output only. The state of this version. This field is read-only and cannot be
+        # set by create and update methods.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @nlu_settings = args[:nlu_settings] if args.key?(:nlu_settings)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Description of which voice to use for speech synthesis.
+      class GoogleCloudDialogflowCxV3beta1VoiceSelectionParams
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the voice. If not set, the service will choose a voice
+        # based on the other parameters such as language_code and ssml_gender.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The preferred gender of the voice. If not set, the service will
+        # choose a voice based on the other parameters such as language_code and name.
+        # Note that this is only a preference, not requirement. If a voice of the
+        # appropriate gender is not available, the synthesizer should substitute a voice
+        # with a different gender rather than failing the request.
+        # Corresponds to the JSON property `ssmlGender`
+        # @return [String]
+        attr_accessor :ssml_gender
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @ssml_gender = args[:ssml_gender] if args.key?(:ssml_gender)
+        end
+      end
+      
+      # Webhooks host the developer's business logic. During a session, webhooks allow
+      # the developer to use the data extracted by Dialogflow's natural language
+      # processing to generate dynamic responses, validate collected data, or trigger
+      # actions on the backend.
+      class GoogleCloudDialogflowCxV3beta1Webhook
+        include Google::Apis::Core::Hashable
+      
+        # Indicates whether the webhook is disabled.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # Required. The human-readable name of the webhook, unique within the agent.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Represents configuration for a generic web service.
+        # Corresponds to the JSON property `genericWebService`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1WebhookGenericWebService]
+        attr_accessor :generic_web_service
+      
+        # The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook
+        # method. Webhooks.CreateWebhook populates the name automatically. Format: `
+        # projects//locations//agents//webhooks/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Webhook execution timeout. Execution is considered failed if Dialogflow doesn'
+        # t receive a response from webhook at the end of the timeout period. Defaults
+        # to 5 seconds, maximum allowed timeout is 30 seconds.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @generic_web_service = args[:generic_web_service] if args.key?(:generic_web_service)
+          @name = args[:name] if args.key?(:name)
+          @timeout = args[:timeout] if args.key?(:timeout)
+        end
+      end
+      
+      # Represents configuration for a generic web service.
+      class GoogleCloudDialogflowCxV3beta1WebhookGenericWebService
+        include Google::Apis::Core::Hashable
+      
+        # The password for HTTP Basic authentication.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # The HTTP request headers to send together with webhook requests.
+        # Corresponds to the JSON property `requestHeaders`
+        # @return [Hash<String,String>]
+        attr_accessor :request_headers
+      
+        # Required. The webhook URI for receiving POST requests. It must use https
+        # protocol.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        # The user name for HTTP Basic authentication.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @password = args[:password] if args.key?(:password)
+          @request_headers = args[:request_headers] if args.key?(:request_headers)
+          @uri = args[:uri] if args.key?(:uri)
+          @username = args[:username] if args.key?(:username)
         end
       end
       
@@ -5453,6 +7989,25 @@ module Google
         end
       end
       
+      # The response message for Agents.ImportAgent.
+      class GoogleCloudDialogflowV3alpha1ImportAgentResponse
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifier of the new agent. Format: `projects//locations//agents/`.
+        # Corresponds to the JSON property `agent`
+        # @return [String]
+        attr_accessor :agent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent = args[:agent] if args.key?(:agent)
+        end
+      end
+      
       # The response message for Operations.ListOperations.
       class GoogleLongrunningListOperationsResponse
         include Google::Apis::Core::Hashable
@@ -5593,6 +8148,34 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # An object representing a latitude/longitude pair. This is expressed as a pair
+      # of doubles representing degrees latitude and degrees longitude. Unless
+      # specified otherwise, this must conform to the WGS84 standard. Values must be
+      # within normalized ranges.
+      class GoogleTypeLatLng
+        include Google::Apis::Core::Hashable
+      
+        # The latitude in degrees. It must be in the range [-90.0, +90.0].
+        # Corresponds to the JSON property `latitude`
+        # @return [Float]
+        attr_accessor :latitude
+      
+        # The longitude in degrees. It must be in the range [-180.0, +180.0].
+        # Corresponds to the JSON property `longitude`
+        # @return [Float]
+        attr_accessor :longitude
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latitude = args[:latitude] if args.key?(:latitude)
+          @longitude = args[:longitude] if args.key?(:longitude)
         end
       end
     end

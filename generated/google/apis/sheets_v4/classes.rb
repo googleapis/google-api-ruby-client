@@ -124,6 +124,53 @@ module Google
         end
       end
       
+      # Adds a data source. After the data source is added successfully, an associated
+      # DataSource sheet is created and an execution is triggered to refresh the sheet
+      # to read data from the data source. The request requires an additional bigquery.
+      # readonly OAuth scope.
+      class AddDataSourceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Information about an external data source in the spreadsheet.
+        # Corresponds to the JSON property `dataSource`
+        # @return [Google::Apis::SheetsV4::DataSource]
+        attr_accessor :data_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_source = args[:data_source] if args.key?(:data_source)
+        end
+      end
+      
+      # The result of adding a data source.
+      class AddDataSourceResponse
+        include Google::Apis::Core::Hashable
+      
+        # The data execution status.
+        # Corresponds to the JSON property `dataExecutionStatus`
+        # @return [Google::Apis::SheetsV4::DataExecutionStatus]
+        attr_accessor :data_execution_status
+      
+        # Information about an external data source in the spreadsheet.
+        # Corresponds to the JSON property `dataSource`
+        # @return [Google::Apis::SheetsV4::DataSource]
+        attr_accessor :data_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_execution_status = args[:data_execution_status] if args.key?(:data_execution_status)
+          @data_source = args[:data_source] if args.key?(:data_source)
+        end
+      end
+      
       # Creates a group over the specified range. If the requested range is a superset
       # of the range of an existing group G, then the depth of G is incremented and
       # this new group G' has the depth of that group. For example, a group [C:D,
@@ -516,6 +563,11 @@ module Google
       class AutoResizeDimensionsRequest
         include Google::Apis::Core::Hashable
       
+        # A range along a single dimension on a DataSource sheet.
+        # Corresponds to the JSON property `dataSourceSheetDimensions`
+        # @return [Google::Apis::SheetsV4::DataSourceSheetDimensionRange]
+        attr_accessor :data_source_sheet_dimensions
+      
         # A range along a single dimension on a sheet. All indexes are zero-based.
         # Indexes are half open: the start index is inclusive and the end index is
         # exclusive. Missing indexes indicate the range is unbounded on that side.
@@ -529,6 +581,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_source_sheet_dimensions = args[:data_source_sheet_dimensions] if args.key?(:data_source_sheet_dimensions)
           @dimensions = args[:dimensions] if args.key?(:dimensions)
         end
       end
@@ -1272,6 +1325,13 @@ module Google
         # @return [Hash<String,Google::Apis::SheetsV4::FilterCriteria>]
         attr_accessor :criteria
       
+        # The filter criteria per column. Both criteria and filter_specs are populated
+        # in responses. If both fields are specified in an update request, this field
+        # takes precedence.
+        # Corresponds to the JSON property `filterSpecs`
+        # @return [Array<Google::Apis::SheetsV4::FilterSpec>]
+        attr_accessor :filter_specs
+      
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
@@ -1302,6 +1362,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @criteria = args[:criteria] if args.key?(:criteria)
+          @filter_specs = args[:filter_specs] if args.key?(:filter_specs)
           @range = args[:range] if args.key?(:range)
           @sort_specs = args[:sort_specs] if args.key?(:sort_specs)
         end
@@ -1779,6 +1840,89 @@ module Google
         end
       end
       
+      # The specification of a BigQuery data source.
+      class BigQueryDataSourceSpec
+        include Google::Apis::Core::Hashable
+      
+        # The ID of a BigQuery enabled GCP project with a billing account attached. For
+        # any queries executed against the data source, the project is charged.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Specifies a custom BigQuery query.
+        # Corresponds to the JSON property `querySpec`
+        # @return [Google::Apis::SheetsV4::BigQueryQuerySpec]
+        attr_accessor :query_spec
+      
+        # Specifies a BigQuery table definition. Only native tables is allowed.
+        # Corresponds to the JSON property `tableSpec`
+        # @return [Google::Apis::SheetsV4::BigQueryTableSpec]
+        attr_accessor :table_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @query_spec = args[:query_spec] if args.key?(:query_spec)
+          @table_spec = args[:table_spec] if args.key?(:table_spec)
+        end
+      end
+      
+      # Specifies a custom BigQuery query.
+      class BigQueryQuerySpec
+        include Google::Apis::Core::Hashable
+      
+        # The raw query string.
+        # Corresponds to the JSON property `rawQuery`
+        # @return [String]
+        attr_accessor :raw_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @raw_query = args[:raw_query] if args.key?(:raw_query)
+        end
+      end
+      
+      # Specifies a BigQuery table definition. Only native tables is allowed.
+      class BigQueryTableSpec
+        include Google::Apis::Core::Hashable
+      
+        # The BigQuery dataset id.
+        # Corresponds to the JSON property `datasetId`
+        # @return [String]
+        attr_accessor :dataset_id
+      
+        # The BigQuery table id.
+        # Corresponds to the JSON property `tableId`
+        # @return [String]
+        attr_accessor :table_id
+      
+        # The ID of a BigQuery project the table belongs to. If not specified, the
+        # project_id is assumed.
+        # Corresponds to the JSON property `tableProjectId`
+        # @return [String]
+        attr_accessor :table_project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @table_id = args[:table_id] if args.key?(:table_id)
+          @table_project_id = args[:table_project_id] if args.key?(:table_project_id)
+        end
+      end
+      
       # A condition that can evaluate to true or false. BooleanConditions are used by
       # conditional formatting, data validation, and the criteria in filters.
       class BooleanCondition
@@ -2197,6 +2341,17 @@ module Google
       class CellData
         include Google::Apis::Core::Hashable
       
+        # A data source formula.
+        # Corresponds to the JSON property `dataSourceFormula`
+        # @return [Google::Apis::SheetsV4::DataSourceFormula]
+        attr_accessor :data_source_formula
+      
+        # A data source table, allowing to import a static table of data from the
+        # DataSource into Sheets. This is also known as "Extract" in the Sheets editor.
+        # Corresponds to the JSON property `dataSourceTable`
+        # @return [Google::Apis::SheetsV4::DataSourceTable]
+        attr_accessor :data_source_table
+      
         # A data validation rule.
         # Corresponds to the JSON property `dataValidation`
         # @return [Google::Apis::SheetsV4::DataValidationRule]
@@ -2261,6 +2416,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_source_formula = args[:data_source_formula] if args.key?(:data_source_formula)
+          @data_source_table = args[:data_source_table] if args.key?(:data_source_table)
           @data_validation = args[:data_validation] if args.key?(:data_validation)
           @effective_format = args[:effective_format] if args.key?(:effective_format)
           @effective_value = args[:effective_value] if args.key?(:effective_value)
@@ -2468,6 +2625,27 @@ module Google
       class ChartData
         include Google::Apis::Core::Hashable
       
+        # The aggregation type for the series of a data source chart. Not supported for
+        # regular charts.
+        # Corresponds to the JSON property `aggregateType`
+        # @return [String]
+        attr_accessor :aggregate_type
+      
+        # An unique identifier that references to a data source column.
+        # Corresponds to the JSON property `columnReference`
+        # @return [Google::Apis::SheetsV4::DataSourceColumnReference]
+        attr_accessor :column_reference
+      
+        # An optional setting on the ChartData of the domain of a data source chart that
+        # defines buckets for the values in the domain rather than breaking out each
+        # individual value. For example, when plotting a data source chart, you can
+        # specify a histogram rule on the domain (it should only contain numeric values),
+        # grouping its values into buckets. Any values of a chart series that fall into
+        # the same bucket are aggregated based on the aggregate_type.
+        # Corresponds to the JSON property `groupRule`
+        # @return [Google::Apis::SheetsV4::ChartGroupRule]
+        attr_accessor :group_rule
+      
         # Source ranges for a chart.
         # Corresponds to the JSON property `sourceRange`
         # @return [Google::Apis::SheetsV4::ChartSourceRange]
@@ -2479,7 +2657,98 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @aggregate_type = args[:aggregate_type] if args.key?(:aggregate_type)
+          @column_reference = args[:column_reference] if args.key?(:column_reference)
+          @group_rule = args[:group_rule] if args.key?(:group_rule)
           @source_range = args[:source_range] if args.key?(:source_range)
+        end
+      end
+      
+      # Allows you to organize the date-time values in a source data column into
+      # buckets based on selected parts of their date or time values.
+      class ChartDateTimeRule
+        include Google::Apis::Core::Hashable
+      
+        # The type of date-time grouping to apply.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # An optional setting on the ChartData of the domain of a data source chart that
+      # defines buckets for the values in the domain rather than breaking out each
+      # individual value. For example, when plotting a data source chart, you can
+      # specify a histogram rule on the domain (it should only contain numeric values),
+      # grouping its values into buckets. Any values of a chart series that fall into
+      # the same bucket are aggregated based on the aggregate_type.
+      class ChartGroupRule
+        include Google::Apis::Core::Hashable
+      
+        # Allows you to organize the date-time values in a source data column into
+        # buckets based on selected parts of their date or time values.
+        # Corresponds to the JSON property `dateTimeRule`
+        # @return [Google::Apis::SheetsV4::ChartDateTimeRule]
+        attr_accessor :date_time_rule
+      
+        # Allows you to organize numeric values in a source data column into buckets of
+        # constant size.
+        # Corresponds to the JSON property `histogramRule`
+        # @return [Google::Apis::SheetsV4::ChartHistogramRule]
+        attr_accessor :histogram_rule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date_time_rule = args[:date_time_rule] if args.key?(:date_time_rule)
+          @histogram_rule = args[:histogram_rule] if args.key?(:histogram_rule)
+        end
+      end
+      
+      # Allows you to organize numeric values in a source data column into buckets of
+      # constant size.
+      class ChartHistogramRule
+        include Google::Apis::Core::Hashable
+      
+        # The size of the buckets that are created. Must be positive.
+        # Corresponds to the JSON property `intervalSize`
+        # @return [Float]
+        attr_accessor :interval_size
+      
+        # The maximum value at which items are placed into buckets. Values greater than
+        # the maximum are grouped into a single bucket. If omitted, it is determined by
+        # the maximum item value.
+        # Corresponds to the JSON property `maxValue`
+        # @return [Float]
+        attr_accessor :max_value
+      
+        # The minimum value at which items are placed into buckets. Values that are less
+        # than the minimum are grouped into a single bucket. If omitted, it is
+        # determined by the minimum item value.
+        # Corresponds to the JSON property `minValue`
+        # @return [Float]
+        attr_accessor :min_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @interval_size = args[:interval_size] if args.key?(:interval_size)
+          @max_value = args[:max_value] if args.key?(:max_value)
+          @min_value = args[:min_value] if args.key?(:min_value)
         end
       end
       
@@ -2589,6 +2858,17 @@ module Google
         # @return [Google::Apis::SheetsV4::CandlestickChartSpec]
         attr_accessor :candlestick_chart
       
+        # Properties of a data source chart.
+        # Corresponds to the JSON property `dataSourceChartProperties`
+        # @return [Google::Apis::SheetsV4::DataSourceChartProperties]
+        attr_accessor :data_source_chart_properties
+      
+        # The filters applied to the source data of the chart. Only supported for data
+        # source charts.
+        # Corresponds to the JSON property `filterSpecs`
+        # @return [Array<Google::Apis::SheetsV4::FilterSpec>]
+        attr_accessor :filter_specs
+      
         # The name of the font to use by default for all chart text (e.g. title, axis
         # labels, legend). If a font is specified for a specific part of the chart it
         # will override this font name.
@@ -2644,6 +2924,12 @@ module Google
         # @return [Google::Apis::SheetsV4::ScorecardChartSpec]
         attr_accessor :scorecard_chart
       
+        # The order to sort the chart data by. Only a single sort spec is supported.
+        # Only supported for data source charts.
+        # Corresponds to the JSON property `sortSpecs`
+        # @return [Array<Google::Apis::SheetsV4::SortSpec>]
+        attr_accessor :sort_specs
+      
         # The subtitle of the chart.
         # Corresponds to the JSON property `subtitle`
         # @return [String]
@@ -2698,6 +2984,8 @@ module Google
           @basic_chart = args[:basic_chart] if args.key?(:basic_chart)
           @bubble_chart = args[:bubble_chart] if args.key?(:bubble_chart)
           @candlestick_chart = args[:candlestick_chart] if args.key?(:candlestick_chart)
+          @data_source_chart_properties = args[:data_source_chart_properties] if args.key?(:data_source_chart_properties)
+          @filter_specs = args[:filter_specs] if args.key?(:filter_specs)
           @font_name = args[:font_name] if args.key?(:font_name)
           @hidden_dimension_strategy = args[:hidden_dimension_strategy] if args.key?(:hidden_dimension_strategy)
           @histogram_chart = args[:histogram_chart] if args.key?(:histogram_chart)
@@ -2705,6 +2993,7 @@ module Google
           @org_chart = args[:org_chart] if args.key?(:org_chart)
           @pie_chart = args[:pie_chart] if args.key?(:pie_chart)
           @scorecard_chart = args[:scorecard_chart] if args.key?(:scorecard_chart)
+          @sort_specs = args[:sort_specs] if args.key?(:sort_specs)
           @subtitle = args[:subtitle] if args.key?(:subtitle)
           @subtitle_text_format = args[:subtitle_text_format] if args.key?(:subtitle_text_format)
           @subtitle_text_position = args[:subtitle_text_position] if args.key?(:subtitle_text_position)
@@ -3172,6 +3461,43 @@ module Google
         end
       end
       
+      # The data execution status.
+      class DataExecutionStatus
+        include Google::Apis::Core::Hashable
+      
+        # The error code.
+        # Corresponds to the JSON property `errorCode`
+        # @return [String]
+        attr_accessor :error_code
+      
+        # The error message, which may be empty.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # Gets the time the data last successfully refreshed.
+        # Corresponds to the JSON property `lastRefreshTime`
+        # @return [String]
+        attr_accessor :last_refresh_time
+      
+        # The state of the data execution.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_code = args[:error_code] if args.key?(:error_code)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @last_refresh_time = args[:last_refresh_time] if args.key?(:last_refresh_time)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Filter that describes what data should be selected or returned from a request.
       class DataFilter
         include Google::Apis::Core::Hashable
@@ -3254,6 +3580,524 @@ module Google
           @data_filter = args[:data_filter] if args.key?(:data_filter)
           @major_dimension = args[:major_dimension] if args.key?(:major_dimension)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Information about an external data source in the spreadsheet.
+      class DataSource
+        include Google::Apis::Core::Hashable
+      
+        # All calculated columns in the data source.
+        # Corresponds to the JSON property `calculatedColumns`
+        # @return [Array<Google::Apis::SheetsV4::DataSourceColumn>]
+        attr_accessor :calculated_columns
+      
+        # The spreadsheet-scoped unique ID that identifies the data source.
+        # Corresponds to the JSON property `dataSourceId`
+        # @return [String]
+        attr_accessor :data_source_id
+      
+        # The ID of the Sheet connected with the data source. The field cannot be
+        # changed once set. When creating a data source, an associated SheetType.
+        # DATA_SOURCE sheet is also created, if the field is not specified, the ID of
+        # the created sheet will be randomly generated.
+        # Corresponds to the JSON property `sheetId`
+        # @return [Fixnum]
+        attr_accessor :sheet_id
+      
+        # The specification of a data source.
+        # Corresponds to the JSON property `spec`
+        # @return [Google::Apis::SheetsV4::DataSourceSpec]
+        attr_accessor :spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @calculated_columns = args[:calculated_columns] if args.key?(:calculated_columns)
+          @data_source_id = args[:data_source_id] if args.key?(:data_source_id)
+          @sheet_id = args[:sheet_id] if args.key?(:sheet_id)
+          @spec = args[:spec] if args.key?(:spec)
+        end
+      end
+      
+      # Properties of a data source chart.
+      class DataSourceChartProperties
+        include Google::Apis::Core::Hashable
+      
+        # The data execution status.
+        # Corresponds to the JSON property `dataExecutionStatus`
+        # @return [Google::Apis::SheetsV4::DataExecutionStatus]
+        attr_accessor :data_execution_status
+      
+        # ID of the data source that the chart is associated with.
+        # Corresponds to the JSON property `dataSourceId`
+        # @return [String]
+        attr_accessor :data_source_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_execution_status = args[:data_execution_status] if args.key?(:data_execution_status)
+          @data_source_id = args[:data_source_id] if args.key?(:data_source_id)
+        end
+      end
+      
+      # A data source column.
+      class DataSourceColumn
+        include Google::Apis::Core::Hashable
+      
+        # The formula of the calculated column.
+        # Corresponds to the JSON property `formula`
+        # @return [String]
+        attr_accessor :formula
+      
+        # An unique identifier that references to a data source column.
+        # Corresponds to the JSON property `reference`
+        # @return [Google::Apis::SheetsV4::DataSourceColumnReference]
+        attr_accessor :reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @formula = args[:formula] if args.key?(:formula)
+          @reference = args[:reference] if args.key?(:reference)
+        end
+      end
+      
+      # An unique identifier that references to a data source column.
+      class DataSourceColumnReference
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the column. It should be unique within a data source.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A data source formula.
+      class DataSourceFormula
+        include Google::Apis::Core::Hashable
+      
+        # The data execution status.
+        # Corresponds to the JSON property `dataExecutionStatus`
+        # @return [Google::Apis::SheetsV4::DataExecutionStatus]
+        attr_accessor :data_execution_status
+      
+        # The ID of the data source the formula is associated with.
+        # Corresponds to the JSON property `dataSourceId`
+        # @return [String]
+        attr_accessor :data_source_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_execution_status = args[:data_execution_status] if args.key?(:data_execution_status)
+          @data_source_id = args[:data_source_id] if args.key?(:data_source_id)
+        end
+      end
+      
+      # Reference to a data source object.
+      class DataSourceObjectReference
+        include Google::Apis::Core::Hashable
+      
+        # References to a DataSourceChart.
+        # Corresponds to the JSON property `chartId`
+        # @return [Fixnum]
+        attr_accessor :chart_id
+      
+        # A coordinate in a sheet. All indexes are zero-based.
+        # Corresponds to the JSON property `dataSourceFormulaCell`
+        # @return [Google::Apis::SheetsV4::GridCoordinate]
+        attr_accessor :data_source_formula_cell
+      
+        # A coordinate in a sheet. All indexes are zero-based.
+        # Corresponds to the JSON property `dataSourcePivotTableAnchorCell`
+        # @return [Google::Apis::SheetsV4::GridCoordinate]
+        attr_accessor :data_source_pivot_table_anchor_cell
+      
+        # A coordinate in a sheet. All indexes are zero-based.
+        # Corresponds to the JSON property `dataSourceTableAnchorCell`
+        # @return [Google::Apis::SheetsV4::GridCoordinate]
+        attr_accessor :data_source_table_anchor_cell
+      
+        # References to a SheetType.DATA_SOURCE sheet.
+        # Corresponds to the JSON property `sheetId`
+        # @return [String]
+        attr_accessor :sheet_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chart_id = args[:chart_id] if args.key?(:chart_id)
+          @data_source_formula_cell = args[:data_source_formula_cell] if args.key?(:data_source_formula_cell)
+          @data_source_pivot_table_anchor_cell = args[:data_source_pivot_table_anchor_cell] if args.key?(:data_source_pivot_table_anchor_cell)
+          @data_source_table_anchor_cell = args[:data_source_table_anchor_cell] if args.key?(:data_source_table_anchor_cell)
+          @sheet_id = args[:sheet_id] if args.key?(:sheet_id)
+        end
+      end
+      
+      # A list of references to data source objects.
+      class DataSourceObjectReferences
+        include Google::Apis::Core::Hashable
+      
+        # The references.
+        # Corresponds to the JSON property `references`
+        # @return [Array<Google::Apis::SheetsV4::DataSourceObjectReference>]
+        attr_accessor :references
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @references = args[:references] if args.key?(:references)
+        end
+      end
+      
+      # A parameter in a data source's query. The parameter allows user to pass in
+      # values from the spreadsheet into a query.
+      class DataSourceParameter
+        include Google::Apis::Core::Hashable
+      
+        # Named parameter. Must be a legitimate identifier for the DataSource that
+        # supports it. For example, BigQuery identifier
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # ID of a NamedRange. Its size must be 1x1.
+        # Corresponds to the JSON property `namedRangeId`
+        # @return [String]
+        attr_accessor :named_range_id
+      
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+        # sheet_id:0` The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty. Empty
+        # ranges are typically not meaningful and are usually rendered in the UI as `#
+        # REF!`.
+        # Corresponds to the JSON property `range`
+        # @return [Google::Apis::SheetsV4::GridRange]
+        attr_accessor :range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @named_range_id = args[:named_range_id] if args.key?(:named_range_id)
+          @range = args[:range] if args.key?(:range)
+        end
+      end
+      
+      # Schedule refreshes in a time interval everyday.
+      class DataSourceRefreshDailySchedule
+        include Google::Apis::Core::Hashable
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `startTime`
+        # @return [Google::Apis::SheetsV4::TimeOfDay]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Schedule refreshes in a time interval on specified days in a month and repeats
+      # monthly.
+      class DataSourceRefreshMonthlySchedule
+        include Google::Apis::Core::Hashable
+      
+        # Days of the month to refresh. Only 1-28 are supported, mapping to the 1st to
+        # the 28th day. At lesat one day must be specified.
+        # Corresponds to the JSON property `daysOfMonth`
+        # @return [Array<Fixnum>]
+        attr_accessor :days_of_month
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `startTime`
+        # @return [Google::Apis::SheetsV4::TimeOfDay]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @days_of_month = args[:days_of_month] if args.key?(:days_of_month)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # The data source refresh schedule. All data sources in the spreadsheet are
+      # scheduled to refresh in a future time interval. The time interval size
+      # defaults to the one defined in the Sheets editor. For example, if a daily
+      # schedule at start time of 8am is scheduled, and the time interval is 4 hours,
+      # the scheduled refresh will happen between 8am and 12pm every day.
+      class DataSourceRefreshSchedule
+        include Google::Apis::Core::Hashable
+      
+        # Schedule refreshes in a time interval everyday.
+        # Corresponds to the JSON property `dailySchedule`
+        # @return [Google::Apis::SheetsV4::DataSourceRefreshDailySchedule]
+        attr_accessor :daily_schedule
+      
+        # True if the refresh schedule is enabled, or false otherwise.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Schedule refreshes in a time interval on specified days in a month and repeats
+        # monthly.
+        # Corresponds to the JSON property `monthlySchedule`
+        # @return [Google::Apis::SheetsV4::DataSourceRefreshMonthlySchedule]
+        attr_accessor :monthly_schedule
+      
+        # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+        # Timestamp end (exclusive). The start must be less than or equal to the end.
+        # When the start equals the end, the interval is empty (matches no time). When
+        # both start and end are unspecified, the interval matches any time.
+        # Corresponds to the JSON property `nextRun`
+        # @return [Google::Apis::SheetsV4::Interval]
+        attr_accessor :next_run
+      
+        # The scope of the refresh.
+        # Corresponds to the JSON property `refreshScope`
+        # @return [String]
+        attr_accessor :refresh_scope
+      
+        # Schedule refreshes in a time interval on specified days in a week and repeats
+        # weekly.
+        # Corresponds to the JSON property `weeklySchedule`
+        # @return [Google::Apis::SheetsV4::DataSourceRefreshWeeklySchedule]
+        attr_accessor :weekly_schedule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @daily_schedule = args[:daily_schedule] if args.key?(:daily_schedule)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @monthly_schedule = args[:monthly_schedule] if args.key?(:monthly_schedule)
+          @next_run = args[:next_run] if args.key?(:next_run)
+          @refresh_scope = args[:refresh_scope] if args.key?(:refresh_scope)
+          @weekly_schedule = args[:weekly_schedule] if args.key?(:weekly_schedule)
+        end
+      end
+      
+      # Schedule refreshes in a time interval on specified days in a week and repeats
+      # weekly.
+      class DataSourceRefreshWeeklySchedule
+        include Google::Apis::Core::Hashable
+      
+        # Days of the week to refresh. At least one day must be specified.
+        # Corresponds to the JSON property `daysOfWeek`
+        # @return [Array<String>]
+        attr_accessor :days_of_week
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `startTime`
+        # @return [Google::Apis::SheetsV4::TimeOfDay]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @days_of_week = args[:days_of_week] if args.key?(:days_of_week)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # A range along a single dimension on a DataSource sheet.
+      class DataSourceSheetDimensionRange
+        include Google::Apis::Core::Hashable
+      
+        # The columns on the data source sheet.
+        # Corresponds to the JSON property `columnReferences`
+        # @return [Array<Google::Apis::SheetsV4::DataSourceColumnReference>]
+        attr_accessor :column_references
+      
+        # The ID of the data source sheet the range is on.
+        # Corresponds to the JSON property `sheetId`
+        # @return [Fixnum]
+        attr_accessor :sheet_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column_references = args[:column_references] if args.key?(:column_references)
+          @sheet_id = args[:sheet_id] if args.key?(:sheet_id)
+        end
+      end
+      
+      # Additional properties of a SheetType.DATA_SOURCE sheet.
+      class DataSourceSheetProperties
+        include Google::Apis::Core::Hashable
+      
+        # The columns displayed on the sheet, corresponding to the values in RowData.
+        # Corresponds to the JSON property `columns`
+        # @return [Array<Google::Apis::SheetsV4::DataSourceColumn>]
+        attr_accessor :columns
+      
+        # The data execution status.
+        # Corresponds to the JSON property `dataExecutionStatus`
+        # @return [Google::Apis::SheetsV4::DataExecutionStatus]
+        attr_accessor :data_execution_status
+      
+        # ID of the DataSource the sheet connected with.
+        # Corresponds to the JSON property `dataSourceId`
+        # @return [String]
+        attr_accessor :data_source_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @columns = args[:columns] if args.key?(:columns)
+          @data_execution_status = args[:data_execution_status] if args.key?(:data_execution_status)
+          @data_source_id = args[:data_source_id] if args.key?(:data_source_id)
+        end
+      end
+      
+      # The specification of a data source.
+      class DataSourceSpec
+        include Google::Apis::Core::Hashable
+      
+        # The specification of a BigQuery data source.
+        # Corresponds to the JSON property `bigQuery`
+        # @return [Google::Apis::SheetsV4::BigQueryDataSourceSpec]
+        attr_accessor :big_query
+      
+        # The parameters of the data source.
+        # Corresponds to the JSON property `parameters`
+        # @return [Array<Google::Apis::SheetsV4::DataSourceParameter>]
+        attr_accessor :parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @big_query = args[:big_query] if args.key?(:big_query)
+          @parameters = args[:parameters] if args.key?(:parameters)
+        end
+      end
+      
+      # A data source table, allowing to import a static table of data from the
+      # DataSource into Sheets. This is also known as "Extract" in the Sheets editor.
+      class DataSourceTable
+        include Google::Apis::Core::Hashable
+      
+        # The type to select columns for the data source table. Defaults to SELECTED.
+        # Corresponds to the JSON property `columnSelectionType`
+        # @return [String]
+        attr_accessor :column_selection_type
+      
+        # Columns selected for the data source table. The column_selection_type must be
+        # SELECTED.
+        # Corresponds to the JSON property `columns`
+        # @return [Array<Google::Apis::SheetsV4::DataSourceColumnReference>]
+        attr_accessor :columns
+      
+        # The data execution status.
+        # Corresponds to the JSON property `dataExecutionStatus`
+        # @return [Google::Apis::SheetsV4::DataExecutionStatus]
+        attr_accessor :data_execution_status
+      
+        # The ID of the data source the data source table is associated with.
+        # Corresponds to the JSON property `dataSourceId`
+        # @return [String]
+        attr_accessor :data_source_id
+      
+        # Filter specifications in the data source table.
+        # Corresponds to the JSON property `filterSpecs`
+        # @return [Array<Google::Apis::SheetsV4::FilterSpec>]
+        attr_accessor :filter_specs
+      
+        # The limit of rows to return. If not set, a default limit is applied. Please
+        # refer to the Sheets editor for the default and max limit.
+        # Corresponds to the JSON property `rowLimit`
+        # @return [Fixnum]
+        attr_accessor :row_limit
+      
+        # Sort specifications in the data source table. The result of the data source
+        # table is sorted based on the sort specifications in order.
+        # Corresponds to the JSON property `sortSpecs`
+        # @return [Array<Google::Apis::SheetsV4::SortSpec>]
+        attr_accessor :sort_specs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column_selection_type = args[:column_selection_type] if args.key?(:column_selection_type)
+          @columns = args[:columns] if args.key?(:columns)
+          @data_execution_status = args[:data_execution_status] if args.key?(:data_execution_status)
+          @data_source_id = args[:data_source_id] if args.key?(:data_source_id)
+          @filter_specs = args[:filter_specs] if args.key?(:filter_specs)
+          @row_limit = args[:row_limit] if args.key?(:row_limit)
+          @sort_specs = args[:sort_specs] if args.key?(:sort_specs)
         end
       end
       
@@ -3387,6 +4231,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @rule = args[:rule] if args.key?(:rule)
+        end
+      end
+      
+      # Deletes a data source. The request also deletes the associated data source
+      # sheet, and unlinks all associated data source objects.
+      class DeleteDataSourceRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the data source to delete.
+        # Corresponds to the JSON property `dataSourceId`
+        # @return [String]
+        attr_accessor :data_source_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_source_id = args[:data_source_id] if args.key?(:data_source_id)
         end
       end
       
@@ -3912,6 +4776,11 @@ module Google
       class DimensionProperties
         include Google::Apis::Core::Hashable
       
+        # An unique identifier that references to a data source column.
+        # Corresponds to the JSON property `dataSourceColumnReference`
+        # @return [Google::Apis::SheetsV4::DataSourceColumnReference]
+        attr_accessor :data_source_column_reference
+      
         # The developer metadata associated with a single row or column.
         # Corresponds to the JSON property `developerMetadata`
         # @return [Array<Google::Apis::SheetsV4::DeveloperMetadata>]
@@ -3940,6 +4809,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_source_column_reference = args[:data_source_column_reference] if args.key?(:data_source_column_reference)
           @developer_metadata = args[:developer_metadata] if args.key?(:developer_metadata)
           @hidden_by_filter = args[:hidden_by_filter] if args.key?(:hidden_by_filter)
           @hidden_by_user = args[:hidden_by_user] if args.key?(:hidden_by_user)
@@ -4390,6 +5260,37 @@ module Google
         end
       end
       
+      # The filter criteria associated with a specific column.
+      class FilterSpec
+        include Google::Apis::Core::Hashable
+      
+        # The column index.
+        # Corresponds to the JSON property `columnIndex`
+        # @return [Fixnum]
+        attr_accessor :column_index
+      
+        # An unique identifier that references to a data source column.
+        # Corresponds to the JSON property `dataSourceColumnReference`
+        # @return [Google::Apis::SheetsV4::DataSourceColumnReference]
+        attr_accessor :data_source_column_reference
+      
+        # Criteria for showing/hiding rows in a filter or filter view.
+        # Corresponds to the JSON property `filterCriteria`
+        # @return [Google::Apis::SheetsV4::FilterCriteria]
+        attr_accessor :filter_criteria
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column_index = args[:column_index] if args.key?(:column_index)
+          @data_source_column_reference = args[:data_source_column_reference] if args.key?(:data_source_column_reference)
+          @filter_criteria = args[:filter_criteria] if args.key?(:filter_criteria)
+        end
+      end
+      
       # A filter view.
       class FilterView
         include Google::Apis::Core::Hashable
@@ -4399,6 +5300,13 @@ module Google
         # Corresponds to the JSON property `criteria`
         # @return [Hash<String,Google::Apis::SheetsV4::FilterCriteria>]
         attr_accessor :criteria
+      
+        # The filter criteria for showing/hiding values per column. Both criteria and
+        # filter_specs are populated in responses. If both fields are specified in an
+        # update request, this field takes precedence.
+        # Corresponds to the JSON property `filterSpecs`
+        # @return [Array<Google::Apis::SheetsV4::FilterSpec>]
+        attr_accessor :filter_specs
       
         # The ID of the filter view.
         # Corresponds to the JSON property `filterViewId`
@@ -4446,6 +5354,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @criteria = args[:criteria] if args.key?(:criteria)
+          @filter_specs = args[:filter_specs] if args.key?(:filter_specs)
           @filter_view_id = args[:filter_view_id] if args.key?(:filter_view_id)
           @named_range_id = args[:named_range_id] if args.key?(:named_range_id)
           @range = args[:range] if args.key?(:range)
@@ -5182,6 +6091,36 @@ module Google
         end
       end
       
+      # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+      # Timestamp end (exclusive). The start must be less than or equal to the end.
+      # When the start equals the end, the interval is empty (matches no time). When
+      # both start and end are unspecified, the interval matches any time.
+      class Interval
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Exclusive end of the interval. If specified, a Timestamp matching
+        # this interval will have to be before the end.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Optional. Inclusive start of the interval. If specified, a Timestamp matching
+        # this interval will have to be the same or after the start.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # Settings to control how circular dependencies are resolved with iterative
       # calculation.
       class IterativeCalculationSettings
@@ -5867,9 +6806,51 @@ module Google
         end
       end
       
+      # The pivot table filter criteria associated with a specific source column
+      # offset.
+      class PivotFilterSpec
+        include Google::Apis::Core::Hashable
+      
+        # The column offset of the source range.
+        # Corresponds to the JSON property `columnOffsetIndex`
+        # @return [Fixnum]
+        attr_accessor :column_offset_index
+      
+        # An unique identifier that references to a data source column.
+        # Corresponds to the JSON property `dataSourceColumnReference`
+        # @return [Google::Apis::SheetsV4::DataSourceColumnReference]
+        attr_accessor :data_source_column_reference
+      
+        # Criteria for showing/hiding rows in a pivot table.
+        # Corresponds to the JSON property `filterCriteria`
+        # @return [Google::Apis::SheetsV4::PivotFilterCriteria]
+        attr_accessor :filter_criteria
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column_offset_index = args[:column_offset_index] if args.key?(:column_offset_index)
+          @data_source_column_reference = args[:data_source_column_reference] if args.key?(:data_source_column_reference)
+          @filter_criteria = args[:filter_criteria] if args.key?(:filter_criteria)
+        end
+      end
+      
       # A single grouping (either row or column) in a pivot table.
       class PivotGroup
         include Google::Apis::Core::Hashable
+      
+        # An unique identifier that references to a data source column.
+        # Corresponds to the JSON property `dataSourceColumnReference`
+        # @return [Google::Apis::SheetsV4::DataSourceColumnReference]
+        attr_accessor :data_source_column_reference
+      
+        # The count limit on rows or columns in the pivot group.
+        # Corresponds to the JSON property `groupLimit`
+        # @return [Google::Apis::SheetsV4::PivotGroupLimit]
+        attr_accessor :group_limit
       
         # An optional setting on a PivotGroup that defines buckets for the values in the
         # source data column rather than breaking out each individual value. Only one
@@ -5941,6 +6922,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_source_column_reference = args[:data_source_column_reference] if args.key?(:data_source_column_reference)
+          @group_limit = args[:group_limit] if args.key?(:group_limit)
           @group_rule = args[:group_rule] if args.key?(:group_rule)
           @label = args[:label] if args.key?(:label)
           @repeat_headings = args[:repeat_headings] if args.key?(:repeat_headings)
@@ -5949,6 +6932,36 @@ module Google
           @source_column_offset = args[:source_column_offset] if args.key?(:source_column_offset)
           @value_bucket = args[:value_bucket] if args.key?(:value_bucket)
           @value_metadata = args[:value_metadata] if args.key?(:value_metadata)
+        end
+      end
+      
+      # The count limit on rows or columns in the pivot group.
+      class PivotGroupLimit
+        include Google::Apis::Core::Hashable
+      
+        # The order in which the group limit is applied to the pivot table. Pivot group
+        # limits are applied from lower to higher order number. Order numbers are
+        # normalized to consecutive integers from 0. For write request, to fully
+        # customize the applying orders, all pivot group limits should have this field
+        # set with an unique number. Otherwise, the order is determined by the index in
+        # the PivotTable.rows list and then the PivotTable.columns list.
+        # Corresponds to the JSON property `applyOrder`
+        # @return [Fixnum]
+        attr_accessor :apply_order
+      
+        # The count limit.
+        # Corresponds to the JSON property `countLimit`
+        # @return [Fixnum]
+        attr_accessor :count_limit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apply_order = args[:apply_order] if args.key?(:apply_order)
+          @count_limit = args[:count_limit] if args.key?(:count_limit)
         end
       end
       
@@ -6100,6 +7113,23 @@ module Google
         # @return [Hash<String,Google::Apis::SheetsV4::PivotFilterCriteria>]
         attr_accessor :criteria
       
+        # The data execution status.
+        # Corresponds to the JSON property `dataExecutionStatus`
+        # @return [Google::Apis::SheetsV4::DataExecutionStatus]
+        attr_accessor :data_execution_status
+      
+        # The ID of the data source the pivot table is reading data from.
+        # Corresponds to the JSON property `dataSourceId`
+        # @return [String]
+        attr_accessor :data_source_id
+      
+        # The filters applied to the source columns before aggregating data for the
+        # pivot table. Both criteria and filter_specs are populated in responses. If
+        # both fields are specified in an update request, this field takes precedence.
+        # Corresponds to the JSON property `filterSpecs`
+        # @return [Array<Google::Apis::SheetsV4::PivotFilterSpec>]
+        attr_accessor :filter_specs
+      
         # Each row grouping in the pivot table.
         # Corresponds to the JSON property `rows`
         # @return [Array<Google::Apis::SheetsV4::PivotGroup>]
@@ -6141,6 +7171,9 @@ module Google
         def update!(**args)
           @columns = args[:columns] if args.key?(:columns)
           @criteria = args[:criteria] if args.key?(:criteria)
+          @data_execution_status = args[:data_execution_status] if args.key?(:data_execution_status)
+          @data_source_id = args[:data_source_id] if args.key?(:data_source_id)
+          @filter_specs = args[:filter_specs] if args.key?(:filter_specs)
           @rows = args[:rows] if args.key?(:rows)
           @source = args[:source] if args.key?(:source)
           @value_layout = args[:value_layout] if args.key?(:value_layout)
@@ -6155,11 +7188,16 @@ module Google
         # If specified, indicates that pivot values should be displayed as the result of
         # a calculation with another pivot value. For example, if
         # calculated_display_type is specified as PERCENT_OF_GRAND_TOTAL, all the pivot
-        # values are displayed as the percentage of the grand total. In the Sheets UI,
-        # this is referred to as "Show As" in the value section of a pivot table.
+        # values are displayed as the percentage of the grand total. In the Sheets
+        # editor, this is referred to as "Show As" in the value section of a pivot table.
         # Corresponds to the JSON property `calculatedDisplayType`
         # @return [String]
         attr_accessor :calculated_display_type
+      
+        # An unique identifier that references to a data source column.
+        # Corresponds to the JSON property `dataSourceColumnReference`
+        # @return [Google::Apis::SheetsV4::DataSourceColumnReference]
+        attr_accessor :data_source_column_reference
       
         # A custom formula to calculate the value. The formula must start with an `=`
         # character.
@@ -6193,6 +7231,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @calculated_display_type = args[:calculated_display_type] if args.key?(:calculated_display_type)
+          @data_source_column_reference = args[:data_source_column_reference] if args.key?(:data_source_column_reference)
           @formula = args[:formula] if args.key?(:formula)
           @name = args[:name] if args.key?(:name)
           @source_column_offset = args[:source_column_offset] if args.key?(:source_column_offset)
@@ -6315,6 +7354,98 @@ module Google
         end
       end
       
+      # The execution status of refreshing one data source object.
+      class RefreshDataSourceObjectExecutionStatus
+        include Google::Apis::Core::Hashable
+      
+        # The data execution status.
+        # Corresponds to the JSON property `dataExecutionStatus`
+        # @return [Google::Apis::SheetsV4::DataExecutionStatus]
+        attr_accessor :data_execution_status
+      
+        # Reference to a data source object.
+        # Corresponds to the JSON property `reference`
+        # @return [Google::Apis::SheetsV4::DataSourceObjectReference]
+        attr_accessor :reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_execution_status = args[:data_execution_status] if args.key?(:data_execution_status)
+          @reference = args[:reference] if args.key?(:reference)
+        end
+      end
+      
+      # Refreshes one or multiple data source objects in the spreadsheet by the
+      # specified references. The request requires an additional bigquery.readonly
+      # OAuth scope. If there're multiple refresh requests referencing the same data
+      # source objects in one batch, only the last refresh request is processed, and
+      # all those requests will have the same response accordingly.
+      class RefreshDataSourceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Reference to a DataSource. If specified, refreshes all associated data source
+        # objects for the data source.
+        # Corresponds to the JSON property `dataSourceId`
+        # @return [String]
+        attr_accessor :data_source_id
+      
+        # Refreshes the data source objects regardless of the current state. If not set
+        # and a referenced data source object was in error state, the refresh will fail
+        # immediately.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        # Refreshes all existing data source objects in the spreadsheet.
+        # Corresponds to the JSON property `isAll`
+        # @return [Boolean]
+        attr_accessor :is_all
+        alias_method :is_all?, :is_all
+      
+        # A list of references to data source objects.
+        # Corresponds to the JSON property `references`
+        # @return [Google::Apis::SheetsV4::DataSourceObjectReferences]
+        attr_accessor :references
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_source_id = args[:data_source_id] if args.key?(:data_source_id)
+          @force = args[:force] if args.key?(:force)
+          @is_all = args[:is_all] if args.key?(:is_all)
+          @references = args[:references] if args.key?(:references)
+        end
+      end
+      
+      # The response from refreshing one or multiple data source objects.
+      class RefreshDataSourceResponse
+        include Google::Apis::Core::Hashable
+      
+        # All the refresh status for the data source object references specified in the
+        # request. If is_all is specified, the field contains only those in failure
+        # status.
+        # Corresponds to the JSON property `statuses`
+        # @return [Array<Google::Apis::SheetsV4::RefreshDataSourceObjectExecutionStatus>]
+        attr_accessor :statuses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @statuses = args[:statuses] if args.key?(:statuses)
+        end
+      end
+      
       # Updates all cells in the range to the values in the given Cell object. Only
       # the fields listed in the fields field are updated; others are unchanged. If
       # writing a cell with a formula, the formula's ranges will automatically
@@ -6386,6 +7517,14 @@ module Google
         # Corresponds to the JSON property `addConditionalFormatRule`
         # @return [Google::Apis::SheetsV4::AddConditionalFormatRuleRequest]
         attr_accessor :add_conditional_format_rule
+      
+        # Adds a data source. After the data source is added successfully, an associated
+        # DataSource sheet is created and an execution is triggered to refresh the sheet
+        # to read data from the data source. The request requires an additional bigquery.
+        # readonly OAuth scope.
+        # Corresponds to the JSON property `addDataSource`
+        # @return [Google::Apis::SheetsV4::AddDataSourceRequest]
+        attr_accessor :add_data_source
       
         # Creates a group over the specified range. If the requested range is a superset
         # of the range of an existing group G, then the depth of G is incremented and
@@ -6484,6 +7623,12 @@ module Google
         # Corresponds to the JSON property `deleteConditionalFormatRule`
         # @return [Google::Apis::SheetsV4::DeleteConditionalFormatRuleRequest]
         attr_accessor :delete_conditional_format_rule
+      
+        # Deletes a data source. The request also deletes the associated data source
+        # sheet, and unlinks all associated data source objects.
+        # Corresponds to the JSON property `deleteDataSource`
+        # @return [Google::Apis::SheetsV4::DeleteDataSourceRequest]
+        attr_accessor :delete_data_source
       
         # A request to delete developer metadata.
         # Corresponds to the JSON property `deleteDeveloperMetadata`
@@ -6590,6 +7735,15 @@ module Google
         # @return [Google::Apis::SheetsV4::RandomizeRangeRequest]
         attr_accessor :randomize_range
       
+        # Refreshes one or multiple data source objects in the spreadsheet by the
+        # specified references. The request requires an additional bigquery.readonly
+        # OAuth scope. If there're multiple refresh requests referencing the same data
+        # source objects in one batch, only the last refresh request is processed, and
+        # all those requests will have the same response accordingly.
+        # Corresponds to the JSON property `refreshDataSource`
+        # @return [Google::Apis::SheetsV4::RefreshDataSourceRequest]
+        attr_accessor :refresh_data_source
+      
         # Updates all cells in the range to the values in the given Cell object. Only
         # the fields listed in the fields field are updated; others are unchanged. If
         # writing a cell with a formula, the formula's ranges will automatically
@@ -6671,6 +7825,14 @@ module Google
         # @return [Google::Apis::SheetsV4::UpdateConditionalFormatRuleRequest]
         attr_accessor :update_conditional_format_rule
       
+        # Updates a data source. After the data source is updated successfully, an
+        # execution is triggered to refresh the associated DataSource sheet to read data
+        # from the updated data source. The request requires an additional bigquery.
+        # readonly OAuth scope.
+        # Corresponds to the JSON property `updateDataSource`
+        # @return [Google::Apis::SheetsV4::UpdateDataSourceRequest]
+        attr_accessor :update_data_source
+      
         # A request to update properties of developer metadata. Updates the properties
         # of the developer metadata selected by the filters to the values provided in
         # the DeveloperMetadata resource. Callers must specify the properties they wish
@@ -6736,6 +7898,7 @@ module Google
           @add_banding = args[:add_banding] if args.key?(:add_banding)
           @add_chart = args[:add_chart] if args.key?(:add_chart)
           @add_conditional_format_rule = args[:add_conditional_format_rule] if args.key?(:add_conditional_format_rule)
+          @add_data_source = args[:add_data_source] if args.key?(:add_data_source)
           @add_dimension_group = args[:add_dimension_group] if args.key?(:add_dimension_group)
           @add_filter_view = args[:add_filter_view] if args.key?(:add_filter_view)
           @add_named_range = args[:add_named_range] if args.key?(:add_named_range)
@@ -6752,6 +7915,7 @@ module Google
           @cut_paste = args[:cut_paste] if args.key?(:cut_paste)
           @delete_banding = args[:delete_banding] if args.key?(:delete_banding)
           @delete_conditional_format_rule = args[:delete_conditional_format_rule] if args.key?(:delete_conditional_format_rule)
+          @delete_data_source = args[:delete_data_source] if args.key?(:delete_data_source)
           @delete_developer_metadata = args[:delete_developer_metadata] if args.key?(:delete_developer_metadata)
           @delete_dimension = args[:delete_dimension] if args.key?(:delete_dimension)
           @delete_dimension_group = args[:delete_dimension_group] if args.key?(:delete_dimension_group)
@@ -6771,6 +7935,7 @@ module Google
           @move_dimension = args[:move_dimension] if args.key?(:move_dimension)
           @paste_data = args[:paste_data] if args.key?(:paste_data)
           @randomize_range = args[:randomize_range] if args.key?(:randomize_range)
+          @refresh_data_source = args[:refresh_data_source] if args.key?(:refresh_data_source)
           @repeat_cell = args[:repeat_cell] if args.key?(:repeat_cell)
           @set_basic_filter = args[:set_basic_filter] if args.key?(:set_basic_filter)
           @set_data_validation = args[:set_data_validation] if args.key?(:set_data_validation)
@@ -6783,6 +7948,7 @@ module Google
           @update_cells = args[:update_cells] if args.key?(:update_cells)
           @update_chart_spec = args[:update_chart_spec] if args.key?(:update_chart_spec)
           @update_conditional_format_rule = args[:update_conditional_format_rule] if args.key?(:update_conditional_format_rule)
+          @update_data_source = args[:update_data_source] if args.key?(:update_data_source)
           @update_developer_metadata = args[:update_developer_metadata] if args.key?(:update_developer_metadata)
           @update_dimension_group = args[:update_dimension_group] if args.key?(:update_dimension_group)
           @update_dimension_properties = args[:update_dimension_properties] if args.key?(:update_dimension_properties)
@@ -6809,6 +7975,11 @@ module Google
         # Corresponds to the JSON property `addChart`
         # @return [Google::Apis::SheetsV4::AddChartResponse]
         attr_accessor :add_chart
+      
+        # The result of adding a data source.
+        # Corresponds to the JSON property `addDataSource`
+        # @return [Google::Apis::SheetsV4::AddDataSourceResponse]
+        attr_accessor :add_data_source
       
         # The result of adding a group.
         # Corresponds to the JSON property `addDimensionGroup`
@@ -6880,6 +8051,11 @@ module Google
         # @return [Google::Apis::SheetsV4::FindReplaceResponse]
         attr_accessor :find_replace
       
+        # The response from refreshing one or multiple data source objects.
+        # Corresponds to the JSON property `refreshDataSource`
+        # @return [Google::Apis::SheetsV4::RefreshDataSourceResponse]
+        attr_accessor :refresh_data_source
+      
         # The result of trimming whitespace in cells.
         # Corresponds to the JSON property `trimWhitespace`
         # @return [Google::Apis::SheetsV4::TrimWhitespaceResponse]
@@ -6889,6 +8065,11 @@ module Google
         # Corresponds to the JSON property `updateConditionalFormatRule`
         # @return [Google::Apis::SheetsV4::UpdateConditionalFormatRuleResponse]
         attr_accessor :update_conditional_format_rule
+      
+        # The response from updating data source.
+        # Corresponds to the JSON property `updateDataSource`
+        # @return [Google::Apis::SheetsV4::UpdateDataSourceResponse]
+        attr_accessor :update_data_source
       
         # The response from updating developer metadata.
         # Corresponds to the JSON property `updateDeveloperMetadata`
@@ -6908,6 +8089,7 @@ module Google
         def update!(**args)
           @add_banding = args[:add_banding] if args.key?(:add_banding)
           @add_chart = args[:add_chart] if args.key?(:add_chart)
+          @add_data_source = args[:add_data_source] if args.key?(:add_data_source)
           @add_dimension_group = args[:add_dimension_group] if args.key?(:add_dimension_group)
           @add_filter_view = args[:add_filter_view] if args.key?(:add_filter_view)
           @add_named_range = args[:add_named_range] if args.key?(:add_named_range)
@@ -6922,8 +8104,10 @@ module Google
           @duplicate_filter_view = args[:duplicate_filter_view] if args.key?(:duplicate_filter_view)
           @duplicate_sheet = args[:duplicate_sheet] if args.key?(:duplicate_sheet)
           @find_replace = args[:find_replace] if args.key?(:find_replace)
+          @refresh_data_source = args[:refresh_data_source] if args.key?(:refresh_data_source)
           @trim_whitespace = args[:trim_whitespace] if args.key?(:trim_whitespace)
           @update_conditional_format_rule = args[:update_conditional_format_rule] if args.key?(:update_conditional_format_rule)
+          @update_data_source = args[:update_data_source] if args.key?(:update_data_source)
           @update_developer_metadata = args[:update_developer_metadata] if args.key?(:update_developer_metadata)
           @update_embedded_object_position = args[:update_embedded_object_position] if args.key?(:update_embedded_object_position)
         end
@@ -7215,6 +8399,11 @@ module Google
       class SheetProperties
         include Google::Apis::Core::Hashable
       
+        # Additional properties of a SheetType.DATA_SOURCE sheet.
+        # Corresponds to the JSON property `dataSourceSheetProperties`
+        # @return [Google::Apis::SheetsV4::DataSourceSheetProperties]
+        attr_accessor :data_source_sheet_properties
+      
         # Properties of a grid.
         # Corresponds to the JSON property `gridProperties`
         # @return [Google::Apis::SheetsV4::GridProperties]
@@ -7320,6 +8509,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_source_sheet_properties = args[:data_source_sheet_properties] if args.key?(:data_source_sheet_properties)
           @grid_properties = args[:grid_properties] if args.key?(:grid_properties)
           @hidden = args[:hidden] if args.key?(:hidden)
           @index = args[:index] if args.key?(:index)
@@ -7585,6 +8775,11 @@ module Google
         # @return [Google::Apis::SheetsV4::ColorStyle]
         attr_accessor :background_color_style
       
+        # An unique identifier that references to a data source column.
+        # Corresponds to the JSON property `dataSourceColumnReference`
+        # @return [Google::Apis::SheetsV4::DataSourceColumnReference]
+        attr_accessor :data_source_column_reference
+      
         # The dimension the sort should be applied to.
         # Corresponds to the JSON property `dimensionIndex`
         # @return [Fixnum]
@@ -7657,6 +8852,7 @@ module Google
         def update!(**args)
           @background_color = args[:background_color] if args.key?(:background_color)
           @background_color_style = args[:background_color_style] if args.key?(:background_color_style)
+          @data_source_column_reference = args[:data_source_column_reference] if args.key?(:data_source_column_reference)
           @dimension_index = args[:dimension_index] if args.key?(:dimension_index)
           @foreground_color = args[:foreground_color] if args.key?(:foreground_color)
           @foreground_color_style = args[:foreground_color_style] if args.key?(:foreground_color_style)
@@ -7713,6 +8909,16 @@ module Google
       class Spreadsheet
         include Google::Apis::Core::Hashable
       
+        # Output only. A list of data source refresh schedules.
+        # Corresponds to the JSON property `dataSourceSchedules`
+        # @return [Array<Google::Apis::SheetsV4::DataSourceRefreshSchedule>]
+        attr_accessor :data_source_schedules
+      
+        # A list of external data sources connected with the spreadsheet.
+        # Corresponds to the JSON property `dataSources`
+        # @return [Array<Google::Apis::SheetsV4::DataSource>]
+        attr_accessor :data_sources
+      
         # The developer metadata associated with a spreadsheet.
         # Corresponds to the JSON property `developerMetadata`
         # @return [Array<Google::Apis::SheetsV4::DeveloperMetadata>]
@@ -7749,6 +8955,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_source_schedules = args[:data_source_schedules] if args.key?(:data_source_schedules)
+          @data_sources = args[:data_sources] if args.key?(:data_sources)
           @developer_metadata = args[:developer_metadata] if args.key?(:developer_metadata)
           @named_ranges = args[:named_ranges] if args.key?(:named_ranges)
           @properties = args[:properties] if args.key?(:properties)
@@ -8101,6 +9309,47 @@ module Google
         def update!(**args)
           @color = args[:color] if args.key?(:color)
           @color_type = args[:color_type] if args.key?(:color_type)
+        end
+      end
+      
+      # Represents a time of day. The date and time zone are either not significant or
+      # are specified elsewhere. An API may choose to allow leap seconds. Related
+      # types are google.type.Date and `google.protobuf.Timestamp`.
+      class TimeOfDay
+        include Google::Apis::Core::Hashable
+      
+        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
+        # allow the value "24:00:00" for scenarios like business closing time.
+        # Corresponds to the JSON property `hours`
+        # @return [Fixnum]
+        attr_accessor :hours
+      
+        # Minutes of hour of day. Must be from 0 to 59.
+        # Corresponds to the JSON property `minutes`
+        # @return [Fixnum]
+        attr_accessor :minutes
+      
+        # Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+        # allow the value 60 if it allows leap-seconds.
+        # Corresponds to the JSON property `seconds`
+        # @return [Fixnum]
+        attr_accessor :seconds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hours = args[:hours] if args.key?(:hours)
+          @minutes = args[:minutes] if args.key?(:minutes)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @seconds = args[:seconds] if args.key?(:seconds)
         end
       end
       
@@ -8825,6 +10074,61 @@ module Google
         end
       end
       
+      # Updates a data source. After the data source is updated successfully, an
+      # execution is triggered to refresh the associated DataSource sheet to read data
+      # from the updated data source. The request requires an additional bigquery.
+      # readonly OAuth scope.
+      class UpdateDataSourceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Information about an external data source in the spreadsheet.
+        # Corresponds to the JSON property `dataSource`
+        # @return [Google::Apis::SheetsV4::DataSource]
+        attr_accessor :data_source
+      
+        # The fields that should be updated. At least one field must be specified. The
+        # root 'dataSource' is implied and should not be specified. A single `"*"` can
+        # be used as short-hand for listing every field.
+        # Corresponds to the JSON property `fields`
+        # @return [String]
+        attr_accessor :fields
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_source = args[:data_source] if args.key?(:data_source)
+          @fields = args[:fields] if args.key?(:fields)
+        end
+      end
+      
+      # The response from updating data source.
+      class UpdateDataSourceResponse
+        include Google::Apis::Core::Hashable
+      
+        # The data execution status.
+        # Corresponds to the JSON property `dataExecutionStatus`
+        # @return [Google::Apis::SheetsV4::DataExecutionStatus]
+        attr_accessor :data_execution_status
+      
+        # Information about an external data source in the spreadsheet.
+        # Corresponds to the JSON property `dataSource`
+        # @return [Google::Apis::SheetsV4::DataSource]
+        attr_accessor :data_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_execution_status = args[:data_execution_status] if args.key?(:data_execution_status)
+          @data_source = args[:data_source] if args.key?(:data_source)
+        end
+      end
+      
       # A request to update properties of developer metadata. Updates the properties
       # of the developer metadata selected by the filters to the values provided in
       # the DeveloperMetadata resource. Callers must specify the properties they wish
@@ -8921,6 +10225,11 @@ module Google
       class UpdateDimensionPropertiesRequest
         include Google::Apis::Core::Hashable
       
+        # A range along a single dimension on a DataSource sheet.
+        # Corresponds to the JSON property `dataSourceSheetRange`
+        # @return [Google::Apis::SheetsV4::DataSourceSheetDimensionRange]
+        attr_accessor :data_source_sheet_range
+      
         # The fields that should be updated. At least one field must be specified. The
         # root `properties` is implied and should not be specified. A single `"*"` can
         # be used as short-hand for listing every field.
@@ -8946,6 +10255,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_source_sheet_range = args[:data_source_sheet_range] if args.key?(:data_source_sheet_range)
           @fields = args[:fields] if args.key?(:fields)
           @properties = args[:properties] if args.key?(:properties)
           @range = args[:range] if args.key?(:range)

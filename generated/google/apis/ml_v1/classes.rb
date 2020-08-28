@@ -790,6 +790,91 @@ module Google
         end
       end
       
+      # ContainerPort represents a network port in a single container.
+      class GoogleCloudMlV1ContainerPort
+        include Google::Apis::Core::Hashable
+      
+        # Number of port to expose on the pod's IP address. This must be a valid port
+        # number, 0 < x < 65536.
+        # Corresponds to the JSON property `containerPort`
+        # @return [Fixnum]
+        attr_accessor :container_port
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @container_port = args[:container_port] if args.key?(:container_port)
+        end
+      end
+      
+      # Specify a custom container to deploy. Our ContainerSpec is a subset of the
+      # Kubernetes Container specification. https://kubernetes.io/docs/reference/
+      # generated/kubernetes-api/v1.10/#container-v1-core
+      class GoogleCloudMlV1ContainerSpec
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. Arguments to the entrypoint. The docker image's CMD is used if this
+        # is not provided. Variable references $(VAR_NAME) are expanded using the
+        # container's environment. If a variable cannot be resolved, the reference in
+        # the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with
+        # a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
+        # regardless of whether the variable exists or not. More info: https://
+        # kubernetes.io/docs/tasks/inject-data-application/define-command-argument-
+        # container/#running-a-command-in-a-shell
+        # Corresponds to the JSON property `args`
+        # @return [Array<String>]
+        attr_accessor :args
+      
+        # Immutable. Entrypoint array. Not executed within a shell. The docker image's
+        # ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME)
+        # are expanded using the container's environment. If a variable cannot be
+        # resolved, the reference in the input string will be unchanged. The $(VAR_NAME)
+        # syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references
+        # will never be expanded, regardless of whether the variable exists or not. More
+        # info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-
+        # argument-container/#running-a-command-in-a-shell
+        # Corresponds to the JSON property `command`
+        # @return [Array<String>]
+        attr_accessor :command
+      
+        # Immutable. List of environment variables to set in the container.
+        # Corresponds to the JSON property `env`
+        # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1EnvVar>]
+        attr_accessor :env
+      
+        # Docker image name. More info: https://kubernetes.io/docs/concepts/containers/
+        # images
+        # Corresponds to the JSON property `image`
+        # @return [String]
+        attr_accessor :image
+      
+        # Immutable. List of ports to expose from the container. Exposing a port here
+        # gives the system additional information about the network connections a
+        # container uses, but is primarily informational. Not specifying a port here
+        # DOES NOT prevent that port from being exposed. Any port which is listening on
+        # the default "0.0.0.0" address inside a container will be accessible from the
+        # network.
+        # Corresponds to the JSON property `ports`
+        # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1ContainerPort>]
+        attr_accessor :ports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @args = args[:args] if args.key?(:args)
+          @command = args[:command] if args.key?(:command)
+          @env = args[:env] if args.key?(:env)
+          @image = args[:image] if args.key?(:image)
+          @ports = args[:ports] if args.key?(:ports)
+        end
+      end
+      
       # Represents a custom encryption key configuration that can be applied to a
       # resource.
       class GoogleCloudMlV1EncryptionConfig
@@ -813,28 +898,24 @@ module Google
         end
       end
       
-      # EndpointMap is used to provide paths for predict/explain/healthcheck to
-      # customers. It's an output only field in the version proto which can be only
-      # set on the server side. Public endpoints follow the format specified on the
-      # user facing doc, and private endpoints are customized for each privately
-      # deploymed model/version.
-      class GoogleCloudMlV1EndpointMap
+      # EnvVar represents an environment variable present in a Container.
+      class GoogleCloudMlV1EnvVar
         include Google::Apis::Core::Hashable
       
-        # Optional. Http(s) path to send explain requests.
-        # Corresponds to the JSON property `explain`
+        # Name of the environment variable. Must be a C_IDENTIFIER.
+        # Corresponds to the JSON property `name`
         # @return [String]
-        attr_accessor :explain
+        attr_accessor :name
       
-        # Http(s) path to send health check requests.
-        # Corresponds to the JSON property `health`
+        # Variable references $(VAR_NAME) are expanded using the previous defined
+        # environment variables in the container and any service environment variables.
+        # If a variable cannot be resolved, the reference in the input string will be
+        # unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(
+        # VAR_NAME). Escaped references will never be expanded, regardless of whether
+        # the variable exists or not. Defaults to "".
+        # Corresponds to the JSON property `value`
         # @return [String]
-        attr_accessor :health
-      
-        # Http(s) path to send prediction requests.
-        # Corresponds to the JSON property `predict`
-        # @return [String]
-        attr_accessor :predict
+        attr_accessor :value
       
         def initialize(**args)
            update!(**args)
@@ -842,9 +923,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @explain = args[:explain] if args.key?(:explain)
-          @health = args[:health] if args.key?(:health)
-          @predict = args[:predict] if args.key?(:predict)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -883,8 +963,8 @@ module Google
       end
       
       # Message holding configuration options for explaining model predictions. There
-      # are two feature attribution methods supported for TensorFlow models:
-      # integrated gradients and sampled Shapley. [Learn more about feature
+      # are three feature attribution methods supported for TensorFlow models:
+      # integrated gradients, sampled Shapley, and XRAI. [Learn more about feature
       # attributions.](/ai-platform/prediction/docs/ai-explanations/overview)
       class GoogleCloudMlV1ExplanationConfig
         include Google::Apis::Core::Hashable
@@ -1977,6 +2057,33 @@ module Google
         end
       end
       
+      # RouteMap is used to override HTTP paths sent to a Custom Container. If
+      # specified, the HTTP server implemented in the ContainerSpec must support the
+      # route. If unspecified, standard HTTP paths will be used.
+      class GoogleCloudMlV1RouteMap
+        include Google::Apis::Core::Hashable
+      
+        # HTTP path to send health check requests.
+        # Corresponds to the JSON property `health`
+        # @return [String]
+        attr_accessor :health
+      
+        # HTTP path to send prediction requests.
+        # Corresponds to the JSON property `predict`
+        # @return [String]
+        attr_accessor :predict
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @health = args[:health] if args.key?(:health)
+          @predict = args[:predict] if args.key?(:predict)
+        end
+      end
+      
       # An attribution method that approximates Shapley values for features that
       # contribute to the label being predicted. A sampling strategy is used to
       # approximate the value rather than considering all subsets of features.
@@ -2006,18 +2113,39 @@ module Google
         # Optional. The maximum job running time, expressed in seconds. The field can
         # contain up to nine fractional digits, terminated by `s`. If not specified,
         # this field defaults to `604800s` (seven days). If the training job is still
-        # running after this duration, AI Platform Training cancels it. For example, if
+        # running after this duration, AI Platform Training cancels it. The duration is
+        # measured from when the job enters the `RUNNING` state; therefore it does not
+        # overlap with the duration limited by Scheduling.max_wait_time. For example, if
         # you want to ensure your job runs for no more than 2 hours, set this field to `
         # 7200s` (2 hours * 60 minutes / hour * 60 seconds / minute). If you submit your
-        # training job using the `gcloud` tool, you can [provide this field in a `config.
+        # training job using the `gcloud` tool, you can [specify this field in a `config.
         # yaml` file](/ai-platform/training/docs/training-jobs#
         # formatting_your_configuration_parameters). For example: ```yaml trainingInput:
-        # ... scheduling: maxRunningTime: 7200s ... ```
+        # scheduling: maxRunningTime: 7200s ```
         # Corresponds to the JSON property `maxRunningTime`
         # @return [String]
         attr_accessor :max_running_time
       
-        # 
+        # Optional. The maximum job wait time, expressed in seconds. The field can
+        # contain up to nine fractional digits, terminated by `s`. If not specified,
+        # there is no limit to the wait time. The minimum for this field is `1800s` (30
+        # minutes). If the training job has not entered the `RUNNING` state after this
+        # duration, AI Platform Training cancels it. After the job begins running, it
+        # can no longer be cancelled due to the maximum wait time. Therefore the
+        # duration limited by this field does not overlap with the duration limited by
+        # Scheduling.max_running_time. For example, if the job temporarily stops running
+        # and retries due to a [VM restart](/ai-platform/training/docs/overview#restarts)
+        # , this cannot lead to a maximum wait time cancellation. However, independently
+        # of this constraint, AI Platform Training might stop a job if there are too
+        # many retries due to exhausted resources in a region. The following example
+        # describes how you might use this field: To cancel your job if it doesn't start
+        # running within 1 hour, set this field to `3600s` (1 hour * 60 minutes / hour *
+        # 60 seconds / minute). If the job is still in the `QUEUED` or `PREPARING` state
+        # after an hour of waiting, AI Platform Training cancels the job. If you submit
+        # your training job using the `gcloud` tool, you can [specify this field in a `
+        # config.yaml` file](/ai-platform/training/docs/training-jobs#
+        # formatting_your_configuration_parameters). For example: ```yaml trainingInput:
+        # scheduling: maxWaitTime: 3600s ```
         # Corresponds to the JSON property `maxWaitTime`
         # @return [String]
         attr_accessor :max_wait_time
@@ -2657,6 +2785,13 @@ module Google
         # @return [Google::Apis::MlV1::GoogleCloudMlV1AutoScaling]
         attr_accessor :auto_scaling
       
+        # Specify a custom container to deploy. Our ContainerSpec is a subset of the
+        # Kubernetes Container specification. https://kubernetes.io/docs/reference/
+        # generated/kubernetes-api/v1.10/#container-v1-core
+        # Corresponds to the JSON property `container`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1ContainerSpec]
+        attr_accessor :container
+      
         # Output only. The time the version was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -2678,15 +2813,6 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # EndpointMap is used to provide paths for predict/explain/healthcheck to
-        # customers. It's an output only field in the version proto which can be only
-        # set on the server side. Public endpoints follow the format specified on the
-        # user facing doc, and private endpoints are customized for each privately
-        # deploymed model/version.
-        # Corresponds to the JSON property `endpoints`
-        # @return [Google::Apis::MlV1::GoogleCloudMlV1EndpointMap]
-        attr_accessor :endpoints
-      
         # Output only. The details of a failure or a cancellation.
         # Corresponds to the JSON property `errorMessage`
         # @return [String]
@@ -2705,8 +2831,8 @@ module Google
         attr_accessor :etag
       
         # Message holding configuration options for explaining model predictions. There
-        # are two feature attribution methods supported for TensorFlow models:
-        # integrated gradients and sampled Shapley. [Learn more about feature
+        # are three feature attribution methods supported for TensorFlow models:
+        # integrated gradients, sampled Shapley, and XRAI. [Learn more about feature
         # attributions.](/ai-platform/prediction/docs/ai-explanations/overview)
         # Corresponds to the JSON property `explanationConfig`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1ExplanationConfig]
@@ -2838,6 +2964,13 @@ module Google
         # @return [Google::Apis::MlV1::GoogleCloudMlV1RequestLoggingConfig]
         attr_accessor :request_logging_config
       
+        # RouteMap is used to override HTTP paths sent to a Custom Container. If
+        # specified, the HTTP server implemented in the ContainerSpec must support the
+        # route. If unspecified, standard HTTP paths will be used.
+        # Corresponds to the JSON property `routes`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1RouteMap]
+        attr_accessor :routes
+      
         # Required. The AI Platform runtime version to use for this deployment. For more
         # information, see the [runtime version list](/ml-engine/docs/runtime-version-
         # list) and [how to manage runtime versions](/ml-engine/docs/versioning).
@@ -2863,10 +2996,10 @@ module Google
         def update!(**args)
           @accelerator_config = args[:accelerator_config] if args.key?(:accelerator_config)
           @auto_scaling = args[:auto_scaling] if args.key?(:auto_scaling)
+          @container = args[:container] if args.key?(:container)
           @create_time = args[:create_time] if args.key?(:create_time)
           @deployment_uri = args[:deployment_uri] if args.key?(:deployment_uri)
           @description = args[:description] if args.key?(:description)
-          @endpoints = args[:endpoints] if args.key?(:endpoints)
           @error_message = args[:error_message] if args.key?(:error_message)
           @etag = args[:etag] if args.key?(:etag)
           @explanation_config = args[:explanation_config] if args.key?(:explanation_config)
@@ -2881,6 +3014,7 @@ module Google
           @prediction_class = args[:prediction_class] if args.key?(:prediction_class)
           @python_version = args[:python_version] if args.key?(:python_version)
           @request_logging_config = args[:request_logging_config] if args.key?(:request_logging_config)
+          @routes = args[:routes] if args.key?(:routes)
           @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
           @service_account = args[:service_account] if args.key?(:service_account)
           @state = args[:state] if args.key?(:state)

@@ -38,9 +38,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :delegates
       
-        # The desired lifetime duration of the access token in seconds. Must be set to a
-        # value less than or equal to 3600 (1 hour). If a value is not specified, the
-        # token's lifetime will be set to a default value of one hour.
+        # The desired lifetime duration of the access token in seconds. By default, the
+        # maximum allowed value is 1 hour. To set a lifetime of up to 12 hours, you can
+        # add the service account as an allowed value in an Organization Policy that
+        # enforces the `constraints/iam.allowServiceAccountCredentialLifetimeExtension`
+        # constraint. See detailed instructions at https://cloud.google.com/iam/help/
+        # credentials/lifetime If a value is not specified, the token's lifetime will be
+        # set to a default value of 1 hour.
         # Corresponds to the JSON property `lifetime`
         # @return [String]
         attr_accessor :lifetime

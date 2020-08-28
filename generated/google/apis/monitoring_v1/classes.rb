@@ -240,6 +240,13 @@ module Google
         # @return [Google::Apis::MonitoringV1::GridLayout]
         attr_accessor :grid_layout
       
+        # A mosaic layout divides the available space into a grid of squares, and
+        # overlays the grid with tiles. Unlike GridLayout, tiles may span multiple grid
+        # squares and can be placed at arbitrary locations in the grid.
+        # Corresponds to the JSON property `mosaicLayout`
+        # @return [Google::Apis::MonitoringV1::MosaicLayout]
+        attr_accessor :mosaic_layout
+      
         # Immutable. The resource name of the dashboard.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -261,6 +268,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
           @grid_layout = args[:grid_layout] if args.key?(:grid_layout)
+          @mosaic_layout = args[:mosaic_layout] if args.key?(:mosaic_layout)
           @name = args[:name] if args.key?(:name)
           @row_layout = args[:row_layout] if args.key?(:row_layout)
         end
@@ -513,6 +521,33 @@ module Google
         def update!(**args)
           @dashboards = args[:dashboards] if args.key?(:dashboards)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # A mosaic layout divides the available space into a grid of squares, and
+      # overlays the grid with tiles. Unlike GridLayout, tiles may span multiple grid
+      # squares and can be placed at arbitrary locations in the grid.
+      class MosaicLayout
+        include Google::Apis::Core::Hashable
+      
+        # The number of columns in the mosaic grid.
+        # Corresponds to the JSON property `columns`
+        # @return [Fixnum]
+        attr_accessor :columns
+      
+        # The tiles to display.
+        # Corresponds to the JSON property `tiles`
+        # @return [Array<Google::Apis::MonitoringV1::Tile>]
+        attr_accessor :tiles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @columns = args[:columns] if args.key?(:columns)
+          @tiles = args[:tiles] if args.key?(:tiles)
         end
       end
       
@@ -904,6 +939,53 @@ module Google
           @direction = args[:direction] if args.key?(:direction)
           @label = args[:label] if args.key?(:label)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # A single tile in the mosaic. The placement and size of the tile are
+      # configurable.
+      class Tile
+        include Google::Apis::Core::Hashable
+      
+        # The height of the tile, measured in grid squares.
+        # Corresponds to the JSON property `height`
+        # @return [Fixnum]
+        attr_accessor :height
+      
+        # Widget contains a single dashboard component and configuration of how to
+        # present the component in the dashboard.
+        # Corresponds to the JSON property `widget`
+        # @return [Google::Apis::MonitoringV1::Widget]
+        attr_accessor :widget
+      
+        # The width of the tile, measured in grid squares.
+        # Corresponds to the JSON property `width`
+        # @return [Fixnum]
+        attr_accessor :width
+      
+        # The zero-indexed position of the tile in grid squares relative to the left
+        # edge of the grid.
+        # Corresponds to the JSON property `xPos`
+        # @return [Fixnum]
+        attr_accessor :x_pos
+      
+        # The zero-indexed position of the tile in grid squares relative to the top edge
+        # of the grid.
+        # Corresponds to the JSON property `yPos`
+        # @return [Fixnum]
+        attr_accessor :y_pos
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @height = args[:height] if args.key?(:height)
+          @widget = args[:widget] if args.key?(:widget)
+          @width = args[:width] if args.key?(:width)
+          @x_pos = args[:x_pos] if args.key?(:x_pos)
+          @y_pos = args[:y_pos] if args.key?(:y_pos)
         end
       end
       

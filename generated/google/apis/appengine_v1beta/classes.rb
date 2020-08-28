@@ -2714,6 +2714,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :beta_settings
       
+        # Environment variables available to the build environment.Only returned in GET
+        # requests if view=FULL is set.
+        # Corresponds to the JSON property `buildEnvVariables`
+        # @return [Hash<String,String>]
+        attr_accessor :build_env_variables
+      
         # Time that this version was created.@OutputOnly
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -2926,6 +2932,7 @@ module Google
           @automatic_scaling = args[:automatic_scaling] if args.key?(:automatic_scaling)
           @basic_scaling = args[:basic_scaling] if args.key?(:basic_scaling)
           @beta_settings = args[:beta_settings] if args.key?(:beta_settings)
+          @build_env_variables = args[:build_env_variables] if args.key?(:build_env_variables)
           @create_time = args[:create_time] if args.key?(:create_time)
           @created_by = args[:created_by] if args.key?(:created_by)
           @default_expiration = args[:default_expiration] if args.key?(:default_expiration)

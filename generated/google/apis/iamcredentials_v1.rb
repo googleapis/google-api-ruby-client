@@ -20,12 +20,14 @@ module Google
   module Apis
     # IAM Service Account Credentials API
     #
-    # Creates short-lived credentials for impersonating IAM service accounts.
+    # Creates short-lived credentials for impersonating IAM service accounts. *Note:
+    # * This API is tied to the IAM API (iam.googleapis.com). Enabling or disabling
+    # this API will also enable or disable the IAM API.
     #
     # @see https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials
     module IamcredentialsV1
       VERSION = 'V1'
-      REVISION = '20200807'
+      REVISION = '20200821'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

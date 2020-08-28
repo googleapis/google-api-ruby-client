@@ -352,6 +352,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MobileApplication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PerformanceReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1058,6 +1064,7 @@ module Google
           property :is_setup_complete, as: 'isSetupComplete'
           property :kind, as: 'kind'
           property :last_update_time_ms, :numeric_string => true, as: 'lastUpdateTimeMs'
+          property :makegood_requested_reason, as: 'makegoodRequestedReason'
           property :name, as: 'name'
           property :product_id, as: 'productId'
           property :product_revision_number, :numeric_string => true, as: 'productRevisionNumber'
@@ -1106,6 +1113,14 @@ module Google
           property :proposal_id, as: 'proposalId'
           property :proposal_revision_number, :numeric_string => true, as: 'proposalRevisionNumber'
           property :timestamp_ms, :numeric_string => true, as: 'timestampMs'
+        end
+      end
+      
+      class MobileApplication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_store, as: 'appStore'
+          property :external_app_id, as: 'externalAppId'
         end
       end
       
@@ -1351,6 +1366,9 @@ module Google
           property :overview, as: 'overview'
           property :profile_id, as: 'profileId'
           property :programmatic_contact, as: 'programmaticContact'
+          collection :publisher_app_ids, as: 'publisherAppIds'
+          collection :publisher_apps, as: 'publisherApps', class: Google::Apis::AdexchangebuyerV1_4::MobileApplication, decorator: Google::Apis::AdexchangebuyerV1_4::MobileApplication::Representation
+      
           collection :publisher_domains, as: 'publisherDomains'
           property :publisher_profile_id, as: 'publisherProfileId'
           property :publisher_provided_forecast, as: 'publisherProvidedForecast', class: Google::Apis::AdexchangebuyerV1_4::PublisherProvidedForecast, decorator: Google::Apis::AdexchangebuyerV1_4::PublisherProvidedForecast::Representation

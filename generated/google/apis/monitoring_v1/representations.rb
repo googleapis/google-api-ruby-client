@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MosaicLayout
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Option
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,6 +173,12 @@ module Google
       end
       
       class Threshold
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Tile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -259,6 +271,8 @@ module Google
           property :etag, as: 'etag'
           property :grid_layout, as: 'gridLayout', class: Google::Apis::MonitoringV1::GridLayout, decorator: Google::Apis::MonitoringV1::GridLayout::Representation
       
+          property :mosaic_layout, as: 'mosaicLayout', class: Google::Apis::MonitoringV1::MosaicLayout, decorator: Google::Apis::MonitoringV1::MosaicLayout::Representation
+      
           property :name, as: 'name'
           property :row_layout, as: 'rowLayout', class: Google::Apis::MonitoringV1::RowLayout, decorator: Google::Apis::MonitoringV1::RowLayout::Representation
       
@@ -329,6 +343,15 @@ module Google
           collection :dashboards, as: 'dashboards', class: Google::Apis::MonitoringV1::Dashboard, decorator: Google::Apis::MonitoringV1::Dashboard::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class MosaicLayout
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :columns, as: 'columns'
+          collection :tiles, as: 'tiles', class: Google::Apis::MonitoringV1::Tile, decorator: Google::Apis::MonitoringV1::Tile::Representation
+      
         end
       end
       
@@ -434,6 +457,18 @@ module Google
           property :direction, as: 'direction'
           property :label, as: 'label'
           property :value, as: 'value'
+        end
+      end
+      
+      class Tile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :height, as: 'height'
+          property :widget, as: 'widget', class: Google::Apis::MonitoringV1::Widget, decorator: Google::Apis::MonitoringV1::Widget::Representation
+      
+          property :width, as: 'width'
+          property :x_pos, as: 'xPos'
+          property :y_pos, as: 'yPos'
         end
       end
       

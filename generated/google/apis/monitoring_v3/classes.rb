@@ -925,7 +925,7 @@ module Google
       
         # The sum of squared deviations from the mean of the values in the population.
         # For values x_i this is: Sum[i=1..n]((x_i - mean)^2) Knuth, "The Art of
-        # Computer Programming", Vol. 2, page 323, 3rd edition describes Welford's
+        # Computer Programming", Vol. 2, page 232, 3rd edition describes Welford's
         # method for accumulating this sum in one pass.If count is zero then this field
         # must be zero.
         # Corresponds to the JSON property `sumOfSquaredDeviation`
@@ -2985,61 +2985,6 @@ module Google
         end
       end
       
-      # The position of a byte within the text.
-      class Position
-        include Google::Apis::Core::Hashable
-      
-        # The column within the line, starting with 1, where the byte is positioned.
-        # This is a byte index even though the text is UTF-8.
-        # Corresponds to the JSON property `column`
-        # @return [Fixnum]
-        attr_accessor :column
-      
-        # The line, starting with 1, where the byte is positioned.
-        # Corresponds to the JSON property `line`
-        # @return [Fixnum]
-        attr_accessor :line
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @column = args[:column] if args.key?(:column)
-          @line = args[:line] if args.key?(:line)
-        end
-      end
-      
-      # An error associated with a query in the time series query language format.
-      class QueryError
-        include Google::Apis::Core::Hashable
-      
-        # A locator for text. Indicates a particular part of the text of a request or of
-        # an object referenced in the request.For example, suppose the request field
-        # text contains:text: "The quick brown fox jumps over the lazy dog."Then the
-        # locator:source: "text" start_position ` line: 1 column: 17 ` end_position `
-        # line: 1 column: 19 `refers to the part of the text: "fox".
-        # Corresponds to the JSON property `locator`
-        # @return [Google::Apis::MonitoringV3::TextLocator]
-        attr_accessor :locator
-      
-        # The error message.
-        # Corresponds to the JSON property `message`
-        # @return [String]
-        attr_accessor :message
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @locator = args[:locator] if args.key?(:locator)
-          @message = args[:message] if args.key?(:message)
-        end
-      end
-      
       # The QueryTimeSeries request.
       class QueryTimeSeriesRequest
         include Google::Apis::Core::Hashable
@@ -3101,11 +3046,6 @@ module Google
         # @return [Google::Apis::MonitoringV3::TimeSeriesDescriptor]
         attr_accessor :time_series_descriptor
       
-        # Warnings about query, includes unit errors.
-        # Corresponds to the JSON property `warnings`
-        # @return [Array<Google::Apis::MonitoringV3::QueryError>]
-        attr_accessor :warnings
-      
         def initialize(**args)
            update!(**args)
         end
@@ -3116,7 +3056,6 @@ module Google
           @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
           @time_series_data = args[:time_series_data] if args.key?(:time_series_data)
           @time_series_descriptor = args[:time_series_descriptor] if args.key?(:time_series_descriptor)
-          @warnings = args[:warnings] if args.key?(:warnings)
         end
       end
       
@@ -3528,66 +3467,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
-        end
-      end
-      
-      # A locator for text. Indicates a particular part of the text of a request or of
-      # an object referenced in the request.For example, suppose the request field
-      # text contains:text: "The quick brown fox jumps over the lazy dog."Then the
-      # locator:source: "text" start_position ` line: 1 column: 17 ` end_position `
-      # line: 1 column: 19 `refers to the part of the text: "fox".
-      class TextLocator
-        include Google::Apis::Core::Hashable
-      
-        # The position of a byte within the text.
-        # Corresponds to the JSON property `endPosition`
-        # @return [Google::Apis::MonitoringV3::Position]
-        attr_accessor :end_position
-      
-        # A locator for text. Indicates a particular part of the text of a request or of
-        # an object referenced in the request.For example, suppose the request field
-        # text contains:text: "The quick brown fox jumps over the lazy dog."Then the
-        # locator:source: "text" start_position ` line: 1 column: 17 ` end_position `
-        # line: 1 column: 19 `refers to the part of the text: "fox".
-        # Corresponds to the JSON property `nestedLocator`
-        # @return [Google::Apis::MonitoringV3::TextLocator]
-        attr_accessor :nested_locator
-      
-        # When nested_locator is set, this field gives the reason for the nesting.
-        # Usually, the reason is a macro invocation. In that case, the macro name (
-        # including the leading '@') signals the location of the macro call in the text
-        # and a macro argument name (including the leading '$') signals the location of
-        # the macro argument inside the macro body that got substituted away.
-        # Corresponds to the JSON property `nestingReason`
-        # @return [String]
-        attr_accessor :nesting_reason
-      
-        # The source of the text. The source may be a field in the request, in which
-        # case its format is the format of the google.rpc.BadRequest.FieldViolation.
-        # field field in https://cloud.google.com/apis/design/errors#error_details. It
-        # may also be be a source other than the request field (e.g. a macro definition
-        # referenced in the text of the query), in which case this is the name of the
-        # source (e.g. the macro name).
-        # Corresponds to the JSON property `source`
-        # @return [String]
-        attr_accessor :source
-      
-        # The position of a byte within the text.
-        # Corresponds to the JSON property `startPosition`
-        # @return [Google::Apis::MonitoringV3::Position]
-        attr_accessor :start_position
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @end_position = args[:end_position] if args.key?(:end_position)
-          @nested_locator = args[:nested_locator] if args.key?(:nested_locator)
-          @nesting_reason = args[:nesting_reason] if args.key?(:nesting_reason)
-          @source = args[:source] if args.key?(:source)
-          @start_position = args[:start_position] if args.key?(:start_position)
         end
       end
       

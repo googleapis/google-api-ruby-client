@@ -52,6 +52,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AddDataSourceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddDataSourceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AddDimensionGroupRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -280,6 +292,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BigQueryDataSourceSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BigQueryQuerySpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BigQueryTableSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BooleanCondition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -359,6 +389,24 @@ module Google
       end
       
       class ChartData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ChartDateTimeRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ChartGroupRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ChartHistogramRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -448,6 +496,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataExecutionStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DataFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -455,6 +509,102 @@ module Google
       end
       
       class DataFilterValueRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataSourceChartProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataSourceColumn
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataSourceColumnReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataSourceFormula
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataSourceObjectReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataSourceObjectReferences
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataSourceParameter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataSourceRefreshDailySchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataSourceRefreshMonthlySchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataSourceRefreshSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataSourceRefreshWeeklySchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataSourceSheetDimensionRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataSourceSheetProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataSourceSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataSourceTable
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -485,6 +635,12 @@ module Google
       end
       
       class DeleteConditionalFormatRuleResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteDataSourceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -664,6 +820,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FilterSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FilterView
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -749,6 +911,12 @@ module Google
       end
       
       class InterpolationPoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Interval
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -856,7 +1024,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PivotFilterSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PivotGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PivotGroupLimit
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -899,6 +1079,24 @@ module Google
       end
       
       class RandomizeRangeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RefreshDataSourceObjectExecutionStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RefreshDataSourceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RefreshDataSourceResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1054,6 +1252,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TimeOfDay
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TreemapChartColorScale
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1115,6 +1319,18 @@ module Google
       end
       
       class UpdateConditionalFormatRuleResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateDataSourceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateDataSourceResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1281,6 +1497,24 @@ module Google
         end
       end
       
+      class AddDataSourceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source, as: 'dataSource', class: Google::Apis::SheetsV4::DataSource, decorator: Google::Apis::SheetsV4::DataSource::Representation
+      
+        end
+      end
+      
+      class AddDataSourceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_execution_status, as: 'dataExecutionStatus', class: Google::Apis::SheetsV4::DataExecutionStatus, decorator: Google::Apis::SheetsV4::DataExecutionStatus::Representation
+      
+          property :data_source, as: 'dataSource', class: Google::Apis::SheetsV4::DataSource, decorator: Google::Apis::SheetsV4::DataSource::Representation
+      
+        end
+      end
+      
       class AddDimensionGroupRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1420,6 +1654,8 @@ module Google
       class AutoResizeDimensionsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source_sheet_dimensions, as: 'dataSourceSheetDimensions', class: Google::Apis::SheetsV4::DataSourceSheetDimensionRange, decorator: Google::Apis::SheetsV4::DataSourceSheetDimensionRange::Representation
+      
           property :dimensions, as: 'dimensions', class: Google::Apis::SheetsV4::DimensionRange, decorator: Google::Apis::SheetsV4::DimensionRange::Representation
       
         end
@@ -1543,6 +1779,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :criteria, as: 'criteria', class: Google::Apis::SheetsV4::FilterCriteria, decorator: Google::Apis::SheetsV4::FilterCriteria::Representation
+      
+          collection :filter_specs, as: 'filterSpecs', class: Google::Apis::SheetsV4::FilterSpec, decorator: Google::Apis::SheetsV4::FilterSpec::Representation
       
           property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
       
@@ -1683,6 +1921,33 @@ module Google
         end
       end
       
+      class BigQueryDataSourceSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_id, as: 'projectId'
+          property :query_spec, as: 'querySpec', class: Google::Apis::SheetsV4::BigQueryQuerySpec, decorator: Google::Apis::SheetsV4::BigQueryQuerySpec::Representation
+      
+          property :table_spec, as: 'tableSpec', class: Google::Apis::SheetsV4::BigQueryTableSpec, decorator: Google::Apis::SheetsV4::BigQueryTableSpec::Representation
+      
+        end
+      end
+      
+      class BigQueryQuerySpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :raw_query, as: 'rawQuery'
+        end
+      end
+      
+      class BigQueryTableSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_id, as: 'datasetId'
+          property :table_id, as: 'tableId'
+          property :table_project_id, as: 'tableProjectId'
+        end
+      end
+      
       class BooleanCondition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1798,6 +2063,10 @@ module Google
       class CellData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source_formula, as: 'dataSourceFormula', class: Google::Apis::SheetsV4::DataSourceFormula, decorator: Google::Apis::SheetsV4::DataSourceFormula::Representation
+      
+          property :data_source_table, as: 'dataSourceTable', class: Google::Apis::SheetsV4::DataSourceTable, decorator: Google::Apis::SheetsV4::DataSourceTable::Representation
+      
           property :data_validation, as: 'dataValidation', class: Google::Apis::SheetsV4::DataValidationRule, decorator: Google::Apis::SheetsV4::DataValidationRule::Representation
       
           property :effective_format, as: 'effectiveFormat', class: Google::Apis::SheetsV4::CellFormat, decorator: Google::Apis::SheetsV4::CellFormat::Representation
@@ -1863,8 +2132,39 @@ module Google
       class ChartData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregate_type, as: 'aggregateType'
+          property :column_reference, as: 'columnReference', class: Google::Apis::SheetsV4::DataSourceColumnReference, decorator: Google::Apis::SheetsV4::DataSourceColumnReference::Representation
+      
+          property :group_rule, as: 'groupRule', class: Google::Apis::SheetsV4::ChartGroupRule, decorator: Google::Apis::SheetsV4::ChartGroupRule::Representation
+      
           property :source_range, as: 'sourceRange', class: Google::Apis::SheetsV4::ChartSourceRange, decorator: Google::Apis::SheetsV4::ChartSourceRange::Representation
       
+        end
+      end
+      
+      class ChartDateTimeRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+        end
+      end
+      
+      class ChartGroupRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date_time_rule, as: 'dateTimeRule', class: Google::Apis::SheetsV4::ChartDateTimeRule, decorator: Google::Apis::SheetsV4::ChartDateTimeRule::Representation
+      
+          property :histogram_rule, as: 'histogramRule', class: Google::Apis::SheetsV4::ChartHistogramRule, decorator: Google::Apis::SheetsV4::ChartHistogramRule::Representation
+      
+        end
+      end
+      
+      class ChartHistogramRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :interval_size, as: 'intervalSize'
+          property :max_value, as: 'maxValue'
+          property :min_value, as: 'minValue'
         end
       end
       
@@ -1890,6 +2190,10 @@ module Google
       
           property :candlestick_chart, as: 'candlestickChart', class: Google::Apis::SheetsV4::CandlestickChartSpec, decorator: Google::Apis::SheetsV4::CandlestickChartSpec::Representation
       
+          property :data_source_chart_properties, as: 'dataSourceChartProperties', class: Google::Apis::SheetsV4::DataSourceChartProperties, decorator: Google::Apis::SheetsV4::DataSourceChartProperties::Representation
+      
+          collection :filter_specs, as: 'filterSpecs', class: Google::Apis::SheetsV4::FilterSpec, decorator: Google::Apis::SheetsV4::FilterSpec::Representation
+      
           property :font_name, as: 'fontName'
           property :hidden_dimension_strategy, as: 'hiddenDimensionStrategy'
           property :histogram_chart, as: 'histogramChart', class: Google::Apis::SheetsV4::HistogramChartSpec, decorator: Google::Apis::SheetsV4::HistogramChartSpec::Representation
@@ -1900,6 +2204,8 @@ module Google
           property :pie_chart, as: 'pieChart', class: Google::Apis::SheetsV4::PieChartSpec, decorator: Google::Apis::SheetsV4::PieChartSpec::Representation
       
           property :scorecard_chart, as: 'scorecardChart', class: Google::Apis::SheetsV4::ScorecardChartSpec, decorator: Google::Apis::SheetsV4::ScorecardChartSpec::Representation
+      
+          collection :sort_specs, as: 'sortSpecs', class: Google::Apis::SheetsV4::SortSpec, decorator: Google::Apis::SheetsV4::SortSpec::Representation
       
           property :subtitle, as: 'subtitle'
           property :subtitle_text_format, as: 'subtitleTextFormat', class: Google::Apis::SheetsV4::TextFormat, decorator: Google::Apis::SheetsV4::TextFormat::Representation
@@ -2024,6 +2330,16 @@ module Google
         end
       end
       
+      class DataExecutionStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_code, as: 'errorCode'
+          property :error_message, as: 'errorMessage'
+          property :last_refresh_time, as: 'lastRefreshTime'
+          property :state, as: 'state'
+        end
+      end
+      
       class DataFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2045,6 +2361,173 @@ module Google
         include Representable::JSON::Collection
         items
       end
+      
+        end
+      end
+      
+      class DataSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :calculated_columns, as: 'calculatedColumns', class: Google::Apis::SheetsV4::DataSourceColumn, decorator: Google::Apis::SheetsV4::DataSourceColumn::Representation
+      
+          property :data_source_id, as: 'dataSourceId'
+          property :sheet_id, as: 'sheetId'
+          property :spec, as: 'spec', class: Google::Apis::SheetsV4::DataSourceSpec, decorator: Google::Apis::SheetsV4::DataSourceSpec::Representation
+      
+        end
+      end
+      
+      class DataSourceChartProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_execution_status, as: 'dataExecutionStatus', class: Google::Apis::SheetsV4::DataExecutionStatus, decorator: Google::Apis::SheetsV4::DataExecutionStatus::Representation
+      
+          property :data_source_id, as: 'dataSourceId'
+        end
+      end
+      
+      class DataSourceColumn
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :formula, as: 'formula'
+          property :reference, as: 'reference', class: Google::Apis::SheetsV4::DataSourceColumnReference, decorator: Google::Apis::SheetsV4::DataSourceColumnReference::Representation
+      
+        end
+      end
+      
+      class DataSourceColumnReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class DataSourceFormula
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_execution_status, as: 'dataExecutionStatus', class: Google::Apis::SheetsV4::DataExecutionStatus, decorator: Google::Apis::SheetsV4::DataExecutionStatus::Representation
+      
+          property :data_source_id, as: 'dataSourceId'
+        end
+      end
+      
+      class DataSourceObjectReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :chart_id, as: 'chartId'
+          property :data_source_formula_cell, as: 'dataSourceFormulaCell', class: Google::Apis::SheetsV4::GridCoordinate, decorator: Google::Apis::SheetsV4::GridCoordinate::Representation
+      
+          property :data_source_pivot_table_anchor_cell, as: 'dataSourcePivotTableAnchorCell', class: Google::Apis::SheetsV4::GridCoordinate, decorator: Google::Apis::SheetsV4::GridCoordinate::Representation
+      
+          property :data_source_table_anchor_cell, as: 'dataSourceTableAnchorCell', class: Google::Apis::SheetsV4::GridCoordinate, decorator: Google::Apis::SheetsV4::GridCoordinate::Representation
+      
+          property :sheet_id, as: 'sheetId'
+        end
+      end
+      
+      class DataSourceObjectReferences
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :references, as: 'references', class: Google::Apis::SheetsV4::DataSourceObjectReference, decorator: Google::Apis::SheetsV4::DataSourceObjectReference::Representation
+      
+        end
+      end
+      
+      class DataSourceParameter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :named_range_id, as: 'namedRangeId'
+          property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
+      
+        end
+      end
+      
+      class DataSourceRefreshDailySchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :start_time, as: 'startTime', class: Google::Apis::SheetsV4::TimeOfDay, decorator: Google::Apis::SheetsV4::TimeOfDay::Representation
+      
+        end
+      end
+      
+      class DataSourceRefreshMonthlySchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :days_of_month, as: 'daysOfMonth'
+          property :start_time, as: 'startTime', class: Google::Apis::SheetsV4::TimeOfDay, decorator: Google::Apis::SheetsV4::TimeOfDay::Representation
+      
+        end
+      end
+      
+      class DataSourceRefreshSchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :daily_schedule, as: 'dailySchedule', class: Google::Apis::SheetsV4::DataSourceRefreshDailySchedule, decorator: Google::Apis::SheetsV4::DataSourceRefreshDailySchedule::Representation
+      
+          property :enabled, as: 'enabled'
+          property :monthly_schedule, as: 'monthlySchedule', class: Google::Apis::SheetsV4::DataSourceRefreshMonthlySchedule, decorator: Google::Apis::SheetsV4::DataSourceRefreshMonthlySchedule::Representation
+      
+          property :next_run, as: 'nextRun', class: Google::Apis::SheetsV4::Interval, decorator: Google::Apis::SheetsV4::Interval::Representation
+      
+          property :refresh_scope, as: 'refreshScope'
+          property :weekly_schedule, as: 'weeklySchedule', class: Google::Apis::SheetsV4::DataSourceRefreshWeeklySchedule, decorator: Google::Apis::SheetsV4::DataSourceRefreshWeeklySchedule::Representation
+      
+        end
+      end
+      
+      class DataSourceRefreshWeeklySchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :days_of_week, as: 'daysOfWeek'
+          property :start_time, as: 'startTime', class: Google::Apis::SheetsV4::TimeOfDay, decorator: Google::Apis::SheetsV4::TimeOfDay::Representation
+      
+        end
+      end
+      
+      class DataSourceSheetDimensionRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :column_references, as: 'columnReferences', class: Google::Apis::SheetsV4::DataSourceColumnReference, decorator: Google::Apis::SheetsV4::DataSourceColumnReference::Representation
+      
+          property :sheet_id, as: 'sheetId'
+        end
+      end
+      
+      class DataSourceSheetProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :columns, as: 'columns', class: Google::Apis::SheetsV4::DataSourceColumn, decorator: Google::Apis::SheetsV4::DataSourceColumn::Representation
+      
+          property :data_execution_status, as: 'dataExecutionStatus', class: Google::Apis::SheetsV4::DataExecutionStatus, decorator: Google::Apis::SheetsV4::DataExecutionStatus::Representation
+      
+          property :data_source_id, as: 'dataSourceId'
+        end
+      end
+      
+      class DataSourceSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :big_query, as: 'bigQuery', class: Google::Apis::SheetsV4::BigQueryDataSourceSpec, decorator: Google::Apis::SheetsV4::BigQueryDataSourceSpec::Representation
+      
+          collection :parameters, as: 'parameters', class: Google::Apis::SheetsV4::DataSourceParameter, decorator: Google::Apis::SheetsV4::DataSourceParameter::Representation
+      
+        end
+      end
+      
+      class DataSourceTable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column_selection_type, as: 'columnSelectionType'
+          collection :columns, as: 'columns', class: Google::Apis::SheetsV4::DataSourceColumnReference, decorator: Google::Apis::SheetsV4::DataSourceColumnReference::Representation
+      
+          property :data_execution_status, as: 'dataExecutionStatus', class: Google::Apis::SheetsV4::DataExecutionStatus, decorator: Google::Apis::SheetsV4::DataExecutionStatus::Representation
+      
+          property :data_source_id, as: 'dataSourceId'
+          collection :filter_specs, as: 'filterSpecs', class: Google::Apis::SheetsV4::FilterSpec, decorator: Google::Apis::SheetsV4::FilterSpec::Representation
+      
+          property :row_limit, as: 'rowLimit'
+          collection :sort_specs, as: 'sortSpecs', class: Google::Apis::SheetsV4::SortSpec, decorator: Google::Apis::SheetsV4::SortSpec::Representation
       
         end
       end
@@ -2087,6 +2570,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :rule, as: 'rule', class: Google::Apis::SheetsV4::ConditionalFormatRule, decorator: Google::Apis::SheetsV4::ConditionalFormatRule::Representation
       
+        end
+      end
+      
+      class DeleteDataSourceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source_id, as: 'dataSourceId'
         end
       end
       
@@ -2241,6 +2731,8 @@ module Google
       class DimensionProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source_column_reference, as: 'dataSourceColumnReference', class: Google::Apis::SheetsV4::DataSourceColumnReference, decorator: Google::Apis::SheetsV4::DataSourceColumnReference::Representation
+      
           collection :developer_metadata, as: 'developerMetadata', class: Google::Apis::SheetsV4::DeveloperMetadata, decorator: Google::Apis::SheetsV4::DeveloperMetadata::Representation
       
           property :hidden_by_filter, as: 'hiddenByFilter'
@@ -2359,10 +2851,23 @@ module Google
         end
       end
       
+      class FilterSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column_index, as: 'columnIndex'
+          property :data_source_column_reference, as: 'dataSourceColumnReference', class: Google::Apis::SheetsV4::DataSourceColumnReference, decorator: Google::Apis::SheetsV4::DataSourceColumnReference::Representation
+      
+          property :filter_criteria, as: 'filterCriteria', class: Google::Apis::SheetsV4::FilterCriteria, decorator: Google::Apis::SheetsV4::FilterCriteria::Representation
+      
+        end
+      end
+      
       class FilterView
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :criteria, as: 'criteria', class: Google::Apis::SheetsV4::FilterCriteria, decorator: Google::Apis::SheetsV4::FilterCriteria::Representation
+      
+          collection :filter_specs, as: 'filterSpecs', class: Google::Apis::SheetsV4::FilterSpec, decorator: Google::Apis::SheetsV4::FilterSpec::Representation
       
           property :filter_view_id, as: 'filterViewId'
           property :named_range_id, as: 'namedRangeId'
@@ -2529,6 +3034,14 @@ module Google
       
           property :type, as: 'type'
           property :value, as: 'value'
+        end
+      end
+      
+      class Interval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
         end
       end
       
@@ -2707,9 +3220,24 @@ module Google
         end
       end
       
+      class PivotFilterSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column_offset_index, as: 'columnOffsetIndex'
+          property :data_source_column_reference, as: 'dataSourceColumnReference', class: Google::Apis::SheetsV4::DataSourceColumnReference, decorator: Google::Apis::SheetsV4::DataSourceColumnReference::Representation
+      
+          property :filter_criteria, as: 'filterCriteria', class: Google::Apis::SheetsV4::PivotFilterCriteria, decorator: Google::Apis::SheetsV4::PivotFilterCriteria::Representation
+      
+        end
+      end
+      
       class PivotGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source_column_reference, as: 'dataSourceColumnReference', class: Google::Apis::SheetsV4::DataSourceColumnReference, decorator: Google::Apis::SheetsV4::DataSourceColumnReference::Representation
+      
+          property :group_limit, as: 'groupLimit', class: Google::Apis::SheetsV4::PivotGroupLimit, decorator: Google::Apis::SheetsV4::PivotGroupLimit::Representation
+      
           property :group_rule, as: 'groupRule', class: Google::Apis::SheetsV4::PivotGroupRule, decorator: Google::Apis::SheetsV4::PivotGroupRule::Representation
       
           property :label, as: 'label'
@@ -2721,6 +3249,14 @@ module Google
       
           collection :value_metadata, as: 'valueMetadata', class: Google::Apis::SheetsV4::PivotGroupValueMetadata, decorator: Google::Apis::SheetsV4::PivotGroupValueMetadata::Representation
       
+        end
+      end
+      
+      class PivotGroupLimit
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :apply_order, as: 'applyOrder'
+          property :count_limit, as: 'countLimit'
         end
       end
       
@@ -2761,6 +3297,11 @@ module Google
       
           hash :criteria, as: 'criteria', class: Google::Apis::SheetsV4::PivotFilterCriteria, decorator: Google::Apis::SheetsV4::PivotFilterCriteria::Representation
       
+          property :data_execution_status, as: 'dataExecutionStatus', class: Google::Apis::SheetsV4::DataExecutionStatus, decorator: Google::Apis::SheetsV4::DataExecutionStatus::Representation
+      
+          property :data_source_id, as: 'dataSourceId'
+          collection :filter_specs, as: 'filterSpecs', class: Google::Apis::SheetsV4::PivotFilterSpec, decorator: Google::Apis::SheetsV4::PivotFilterSpec::Representation
+      
           collection :rows, as: 'rows', class: Google::Apis::SheetsV4::PivotGroup, decorator: Google::Apis::SheetsV4::PivotGroup::Representation
       
           property :source, as: 'source', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
@@ -2775,6 +3316,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :calculated_display_type, as: 'calculatedDisplayType'
+          property :data_source_column_reference, as: 'dataSourceColumnReference', class: Google::Apis::SheetsV4::DataSourceColumnReference, decorator: Google::Apis::SheetsV4::DataSourceColumnReference::Representation
+      
           property :formula, as: 'formula'
           property :name, as: 'name'
           property :source_column_offset, as: 'sourceColumnOffset'
@@ -2807,6 +3350,35 @@ module Google
         end
       end
       
+      class RefreshDataSourceObjectExecutionStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_execution_status, as: 'dataExecutionStatus', class: Google::Apis::SheetsV4::DataExecutionStatus, decorator: Google::Apis::SheetsV4::DataExecutionStatus::Representation
+      
+          property :reference, as: 'reference', class: Google::Apis::SheetsV4::DataSourceObjectReference, decorator: Google::Apis::SheetsV4::DataSourceObjectReference::Representation
+      
+        end
+      end
+      
+      class RefreshDataSourceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source_id, as: 'dataSourceId'
+          property :force, as: 'force'
+          property :is_all, as: 'isAll'
+          property :references, as: 'references', class: Google::Apis::SheetsV4::DataSourceObjectReferences, decorator: Google::Apis::SheetsV4::DataSourceObjectReferences::Representation
+      
+        end
+      end
+      
+      class RefreshDataSourceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :statuses, as: 'statuses', class: Google::Apis::SheetsV4::RefreshDataSourceObjectExecutionStatus, decorator: Google::Apis::SheetsV4::RefreshDataSourceObjectExecutionStatus::Representation
+      
+        end
+      end
+      
       class RepeatCellRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2826,6 +3398,8 @@ module Google
           property :add_chart, as: 'addChart', class: Google::Apis::SheetsV4::AddChartRequest, decorator: Google::Apis::SheetsV4::AddChartRequest::Representation
       
           property :add_conditional_format_rule, as: 'addConditionalFormatRule', class: Google::Apis::SheetsV4::AddConditionalFormatRuleRequest, decorator: Google::Apis::SheetsV4::AddConditionalFormatRuleRequest::Representation
+      
+          property :add_data_source, as: 'addDataSource', class: Google::Apis::SheetsV4::AddDataSourceRequest, decorator: Google::Apis::SheetsV4::AddDataSourceRequest::Representation
       
           property :add_dimension_group, as: 'addDimensionGroup', class: Google::Apis::SheetsV4::AddDimensionGroupRequest, decorator: Google::Apis::SheetsV4::AddDimensionGroupRequest::Representation
       
@@ -2858,6 +3432,8 @@ module Google
           property :delete_banding, as: 'deleteBanding', class: Google::Apis::SheetsV4::DeleteBandingRequest, decorator: Google::Apis::SheetsV4::DeleteBandingRequest::Representation
       
           property :delete_conditional_format_rule, as: 'deleteConditionalFormatRule', class: Google::Apis::SheetsV4::DeleteConditionalFormatRuleRequest, decorator: Google::Apis::SheetsV4::DeleteConditionalFormatRuleRequest::Representation
+      
+          property :delete_data_source, as: 'deleteDataSource', class: Google::Apis::SheetsV4::DeleteDataSourceRequest, decorator: Google::Apis::SheetsV4::DeleteDataSourceRequest::Representation
       
           property :delete_developer_metadata, as: 'deleteDeveloperMetadata', class: Google::Apis::SheetsV4::DeleteDeveloperMetadataRequest, decorator: Google::Apis::SheetsV4::DeleteDeveloperMetadataRequest::Representation
       
@@ -2897,6 +3473,8 @@ module Google
       
           property :randomize_range, as: 'randomizeRange', class: Google::Apis::SheetsV4::RandomizeRangeRequest, decorator: Google::Apis::SheetsV4::RandomizeRangeRequest::Representation
       
+          property :refresh_data_source, as: 'refreshDataSource', class: Google::Apis::SheetsV4::RefreshDataSourceRequest, decorator: Google::Apis::SheetsV4::RefreshDataSourceRequest::Representation
+      
           property :repeat_cell, as: 'repeatCell', class: Google::Apis::SheetsV4::RepeatCellRequest, decorator: Google::Apis::SheetsV4::RepeatCellRequest::Representation
       
           property :set_basic_filter, as: 'setBasicFilter', class: Google::Apis::SheetsV4::SetBasicFilterRequest, decorator: Google::Apis::SheetsV4::SetBasicFilterRequest::Representation
@@ -2920,6 +3498,8 @@ module Google
           property :update_chart_spec, as: 'updateChartSpec', class: Google::Apis::SheetsV4::UpdateChartSpecRequest, decorator: Google::Apis::SheetsV4::UpdateChartSpecRequest::Representation
       
           property :update_conditional_format_rule, as: 'updateConditionalFormatRule', class: Google::Apis::SheetsV4::UpdateConditionalFormatRuleRequest, decorator: Google::Apis::SheetsV4::UpdateConditionalFormatRuleRequest::Representation
+      
+          property :update_data_source, as: 'updateDataSource', class: Google::Apis::SheetsV4::UpdateDataSourceRequest, decorator: Google::Apis::SheetsV4::UpdateDataSourceRequest::Representation
       
           property :update_developer_metadata, as: 'updateDeveloperMetadata', class: Google::Apis::SheetsV4::UpdateDeveloperMetadataRequest, decorator: Google::Apis::SheetsV4::UpdateDeveloperMetadataRequest::Representation
       
@@ -2951,6 +3531,8 @@ module Google
       
           property :add_chart, as: 'addChart', class: Google::Apis::SheetsV4::AddChartResponse, decorator: Google::Apis::SheetsV4::AddChartResponse::Representation
       
+          property :add_data_source, as: 'addDataSource', class: Google::Apis::SheetsV4::AddDataSourceResponse, decorator: Google::Apis::SheetsV4::AddDataSourceResponse::Representation
+      
           property :add_dimension_group, as: 'addDimensionGroup', class: Google::Apis::SheetsV4::AddDimensionGroupResponse, decorator: Google::Apis::SheetsV4::AddDimensionGroupResponse::Representation
       
           property :add_filter_view, as: 'addFilterView', class: Google::Apis::SheetsV4::AddFilterViewResponse, decorator: Google::Apis::SheetsV4::AddFilterViewResponse::Representation
@@ -2979,9 +3561,13 @@ module Google
       
           property :find_replace, as: 'findReplace', class: Google::Apis::SheetsV4::FindReplaceResponse, decorator: Google::Apis::SheetsV4::FindReplaceResponse::Representation
       
+          property :refresh_data_source, as: 'refreshDataSource', class: Google::Apis::SheetsV4::RefreshDataSourceResponse, decorator: Google::Apis::SheetsV4::RefreshDataSourceResponse::Representation
+      
           property :trim_whitespace, as: 'trimWhitespace', class: Google::Apis::SheetsV4::TrimWhitespaceResponse, decorator: Google::Apis::SheetsV4::TrimWhitespaceResponse::Representation
       
           property :update_conditional_format_rule, as: 'updateConditionalFormatRule', class: Google::Apis::SheetsV4::UpdateConditionalFormatRuleResponse, decorator: Google::Apis::SheetsV4::UpdateConditionalFormatRuleResponse::Representation
+      
+          property :update_data_source, as: 'updateDataSource', class: Google::Apis::SheetsV4::UpdateDataSourceResponse, decorator: Google::Apis::SheetsV4::UpdateDataSourceResponse::Representation
       
           property :update_developer_metadata, as: 'updateDeveloperMetadata', class: Google::Apis::SheetsV4::UpdateDeveloperMetadataResponse, decorator: Google::Apis::SheetsV4::UpdateDeveloperMetadataResponse::Representation
       
@@ -3086,6 +3672,8 @@ module Google
       class SheetProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source_sheet_properties, as: 'dataSourceSheetProperties', class: Google::Apis::SheetsV4::DataSourceSheetProperties, decorator: Google::Apis::SheetsV4::DataSourceSheetProperties::Representation
+      
           property :grid_properties, as: 'gridProperties', class: Google::Apis::SheetsV4::GridProperties, decorator: Google::Apis::SheetsV4::GridProperties::Representation
       
           property :hidden, as: 'hidden'
@@ -3149,6 +3737,8 @@ module Google
       
           property :background_color_style, as: 'backgroundColorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
       
+          property :data_source_column_reference, as: 'dataSourceColumnReference', class: Google::Apis::SheetsV4::DataSourceColumnReference, decorator: Google::Apis::SheetsV4::DataSourceColumnReference::Representation
+      
           property :dimension_index, as: 'dimensionIndex'
           property :foreground_color, as: 'foregroundColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
       
@@ -3171,6 +3761,10 @@ module Google
       class Spreadsheet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_source_schedules, as: 'dataSourceSchedules', class: Google::Apis::SheetsV4::DataSourceRefreshSchedule, decorator: Google::Apis::SheetsV4::DataSourceRefreshSchedule::Representation
+      
+          collection :data_sources, as: 'dataSources', class: Google::Apis::SheetsV4::DataSource, decorator: Google::Apis::SheetsV4::DataSource::Representation
+      
           collection :developer_metadata, as: 'developerMetadata', class: Google::Apis::SheetsV4::DeveloperMetadata, decorator: Google::Apis::SheetsV4::DeveloperMetadata::Representation
       
           collection :named_ranges, as: 'namedRanges', class: Google::Apis::SheetsV4::NamedRange, decorator: Google::Apis::SheetsV4::NamedRange::Representation
@@ -3265,6 +3859,16 @@ module Google
           property :color, as: 'color', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
       
           property :color_type, as: 'colorType'
+        end
+      end
+      
+      class TimeOfDay
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hours, as: 'hours'
+          property :minutes, as: 'minutes'
+          property :nanos, as: 'nanos'
+          property :seconds, as: 'seconds'
         end
       end
       
@@ -3414,6 +4018,25 @@ module Google
         end
       end
       
+      class UpdateDataSourceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source, as: 'dataSource', class: Google::Apis::SheetsV4::DataSource, decorator: Google::Apis::SheetsV4::DataSource::Representation
+      
+          property :fields, as: 'fields'
+        end
+      end
+      
+      class UpdateDataSourceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_execution_status, as: 'dataExecutionStatus', class: Google::Apis::SheetsV4::DataExecutionStatus, decorator: Google::Apis::SheetsV4::DataExecutionStatus::Representation
+      
+          property :data_source, as: 'dataSource', class: Google::Apis::SheetsV4::DataSource, decorator: Google::Apis::SheetsV4::DataSource::Representation
+      
+        end
+      end
+      
       class UpdateDeveloperMetadataRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3445,6 +4068,8 @@ module Google
       class UpdateDimensionPropertiesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source_sheet_range, as: 'dataSourceSheetRange', class: Google::Apis::SheetsV4::DataSourceSheetDimensionRange, decorator: Google::Apis::SheetsV4::DataSourceSheetDimensionRange::Representation
+      
           property :fields, as: 'fields'
           property :properties, as: 'properties', class: Google::Apis::SheetsV4::DimensionProperties, decorator: Google::Apis::SheetsV4::DimensionProperties::Representation
       

@@ -386,6 +386,56 @@ module Google
         end
       end
       
+      # Added to the error payload.
+      class FailureTrace
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `frames`
+        # @return [Array<Google::Apis::BigtableadminV1::Frame>]
+        attr_accessor :frames
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @frames = args[:frames] if args.key?(:frames)
+        end
+      end
+      
+      # 
+      class Frame
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `targetName`
+        # @return [String]
+        attr_accessor :target_name
+      
+        # 
+        # Corresponds to the JSON property `workflowGuid`
+        # @return [String]
+        attr_accessor :workflow_guid
+      
+        # 
+        # Corresponds to the JSON property `zoneId`
+        # @return [String]
+        attr_accessor :zone_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_name = args[:target_name] if args.key?(:target_name)
+          @workflow_guid = args[:workflow_guid] if args.key?(:workflow_guid)
+          @zone_id = args[:zone_id] if args.key?(:zone_id)
+        end
+      end
+      
       # A collection of Bigtable Tables and
       # the resources that serve them.
       # All tables in an instance are served from all

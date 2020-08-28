@@ -44,8 +44,8 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://www.googleapis.com/', 'doubleclickbidmanager/v1/')
-          @batch_path = 'batch/doubleclickbidmanager'
+          super('https://doubleclickbidmanager.googleapis.com/', 'doubleclickbidmanager/v1/')
+          @batch_path = 'batch'
         end
         
         # Retrieves line items in CSV format. YouTube & partners line items are not

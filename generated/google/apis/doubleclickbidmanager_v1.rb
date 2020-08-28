@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/bid-manager/
     module DoubleclickbidmanagerV1
       VERSION = 'V1'
-      REVISION = '20200811'
+      REVISION = '20200819'
 
       # View and manage your reports in DoubleClick Bid Manager
       AUTH_DOUBLECLICKBIDMANAGER = 'https://www.googleapis.com/auth/doubleclickbidmanager'

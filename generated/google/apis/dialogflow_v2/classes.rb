@@ -69,6 +69,25 @@ module Google
         end
       end
       
+      # The response message for Agents.ImportAgent.
+      class GoogleCloudDialogflowCxV3beta1ImportAgentResponse
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifier of the new agent. Format: `projects//locations//agents/`.
+        # Corresponds to the JSON property `agent`
+        # @return [String]
+        attr_accessor :agent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent = args[:agent] if args.key?(:agent)
+        end
+      end
+      
       # Represents page information communicated to and from the webhook.
       class GoogleCloudDialogflowCxV3beta1PageInfo
         include Google::Apis::Core::Hashable
@@ -6833,6 +6852,25 @@ module Google
         def update!(**args)
           @agent_content = args[:agent_content] if args.key?(:agent_content)
           @agent_uri = args[:agent_uri] if args.key?(:agent_uri)
+        end
+      end
+      
+      # The response message for Agents.ImportAgent.
+      class GoogleCloudDialogflowV3alpha1ImportAgentResponse
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifier of the new agent. Format: `projects//locations//agents/`.
+        # Corresponds to the JSON property `agent`
+        # @return [String]
+        attr_accessor :agent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent = args[:agent] if args.key?(:agent)
         end
       end
       

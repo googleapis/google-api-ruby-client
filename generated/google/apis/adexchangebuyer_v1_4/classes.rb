@@ -506,8 +506,8 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :advertiser_id
       
-        # The name of the company being advertised in the creative. The value provided
-        # must exist in the advertisers.txt file.
+        # The name of the company being advertised in the creative. A list of
+        # advertisers is provided in the advertisers.txt file.
         # Corresponds to the JSON property `advertiserName`
         # @return [String]
         attr_accessor :advertiser_name
@@ -2022,6 +2022,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :last_update_time_ms
       
+        # 
+        # Corresponds to the JSON property `makegoodRequestedReason`
+        # @return [String]
+        attr_accessor :makegood_requested_reason
+      
         # The name of the deal. (updatable)
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2097,6 +2102,7 @@ module Google
           @is_setup_complete = args[:is_setup_complete] if args.key?(:is_setup_complete)
           @kind = args[:kind] if args.key?(:kind)
           @last_update_time_ms = args[:last_update_time_ms] if args.key?(:last_update_time_ms)
+          @makegood_requested_reason = args[:makegood_requested_reason] if args.key?(:makegood_requested_reason)
           @name = args[:name] if args.key?(:name)
           @product_id = args[:product_id] if args.key?(:product_id)
           @product_revision_number = args[:product_revision_number] if args.key?(:product_revision_number)
@@ -2235,6 +2241,31 @@ module Google
           @proposal_id = args[:proposal_id] if args.key?(:proposal_id)
           @proposal_revision_number = args[:proposal_revision_number] if args.key?(:proposal_revision_number)
           @timestamp_ms = args[:timestamp_ms] if args.key?(:timestamp_ms)
+        end
+      end
+      
+      # 
+      class MobileApplication
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `appStore`
+        # @return [String]
+        attr_accessor :app_store
+      
+        # 
+        # Corresponds to the JSON property `externalAppId`
+        # @return [String]
+        attr_accessor :external_app_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_store = args[:app_store] if args.key?(:app_store)
+          @external_app_id = args[:external_app_id] if args.key?(:external_app_id)
         end
       end
       
@@ -3308,6 +3339,18 @@ module Google
         # @return [String]
         attr_accessor :programmatic_contact
       
+        # The list of app IDs represented in this pubisher profile. Empty if this is a
+        # parent profile. Deprecated in favor of publisher_app.
+        # Corresponds to the JSON property `publisherAppIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :publisher_app_ids
+      
+        # The list of apps represented in this pubisher profile. Empty if this is a
+        # parent profile.
+        # Corresponds to the JSON property `publisherApps`
+        # @return [Array<Google::Apis::AdexchangebuyerV1_4::MobileApplication>]
+        attr_accessor :publisher_apps
+      
         # The list of domains represented in this publisher profile. Empty if this is a
         # parent profile.
         # Corresponds to the JSON property `publisherDomains`
@@ -3369,6 +3412,8 @@ module Google
           @overview = args[:overview] if args.key?(:overview)
           @profile_id = args[:profile_id] if args.key?(:profile_id)
           @programmatic_contact = args[:programmatic_contact] if args.key?(:programmatic_contact)
+          @publisher_app_ids = args[:publisher_app_ids] if args.key?(:publisher_app_ids)
+          @publisher_apps = args[:publisher_apps] if args.key?(:publisher_apps)
           @publisher_domains = args[:publisher_domains] if args.key?(:publisher_domains)
           @publisher_profile_id = args[:publisher_profile_id] if args.key?(:publisher_profile_id)
           @publisher_provided_forecast = args[:publisher_provided_forecast] if args.key?(:publisher_provided_forecast)

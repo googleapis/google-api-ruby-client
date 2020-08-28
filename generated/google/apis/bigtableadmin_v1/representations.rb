@@ -70,6 +70,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FailureTrace
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Frame
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Instance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +221,23 @@ module Google
       
           property :instance_id, as: 'instanceId'
           property :parent, as: 'parent'
+        end
+      end
+      
+      class FailureTrace
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :frames, as: 'frames', class: Google::Apis::BigtableadminV1::Frame, decorator: Google::Apis::BigtableadminV1::Frame::Representation
+      
+        end
+      end
+      
+      class Frame
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_name, as: 'targetName'
+          property :workflow_guid, as: 'workflowGuid'
+          property :zone_id, as: 'zoneId'
         end
       end
       
