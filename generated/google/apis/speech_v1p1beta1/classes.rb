@@ -41,14 +41,14 @@ module Google
         end
       end
       
-      # A set of words or phrases that represents a common concept likely to appear
-      # in your audio, for example a list of passenger ship names. CustomClass items
-      # can be substituted into placeholders that you set in PhraseSet phrases.
+      # A set of words or phrases that represents a common concept likely to appear in
+      # your audio, for example a list of passenger ship names. CustomClass items can
+      # be substituted into placeholders that you set in PhraseSet phrases.
       class CustomClass
         include Google::Apis::Core::Hashable
       
-        # If this custom class is a resource, the custom_class_id is the resource id
-        # of the CustomClass. Case sensitive.
+        # If this custom class is a resource, the custom_class_id is the resource id of
+        # the CustomClass. Case sensitive.
         # Corresponds to the JSON property `customClassId`
         # @return [String]
         attr_accessor :custom_class_id
@@ -101,8 +101,8 @@ module Google
       end
       
       # Describes the progress of a long-running `LongRunningRecognize` call. It is
-      # included in the `metadata` field of the `Operation` returned by the
-      # `GetOperation` call of the `google::longrunning::Operations` service.
+      # included in the `metadata` field of the `Operation` returned by the `
+      # GetOperation` call of the `google::longrunning::Operations` service.
       class LongRunningRecognizeMetadata
         include Google::Apis::Core::Hashable
       
@@ -111,8 +111,8 @@ module Google
         # @return [String]
         attr_accessor :last_update_time
       
-        # Approximate percentage of audio processed thus far. Guaranteed to be 100
-        # when the audio is fully processed and the results are available.
+        # Approximate percentage of audio processed thus far. Guaranteed to be 100 when
+        # the audio is fully processed and the results are available.
         # Corresponds to the JSON property `progressPercent`
         # @return [Fixnum]
         attr_accessor :progress_percent
@@ -123,8 +123,7 @@ module Google
         attr_accessor :start_time
       
         # Output only. The URI of the audio file being transcribed. Empty if the audio
-        # was sent
-        # as byte content.
+        # was sent as byte content.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -142,15 +141,14 @@ module Google
         end
       end
       
-      # The top-level message sent by the client for the `LongRunningRecognize`
-      # method.
+      # The top-level message sent by the client for the `LongRunningRecognize` method.
       class LongRunningRecognizeRequest
         include Google::Apis::Core::Hashable
       
         # Contains audio data in the encoding specified in the `RecognitionConfig`.
-        # Either `content` or `uri` must be supplied. Supplying both or neither
-        # returns google.rpc.Code.INVALID_ARGUMENT. See
-        # [content limits](https://cloud.google.com/speech-to-text/quotas#content).
+        # Either `content` or `uri` must be supplied. Supplying both or neither returns
+        # google.rpc.Code.INVALID_ARGUMENT. See [content limits](https://cloud.google.
+        # com/speech-to-text/quotas#content).
         # Corresponds to the JSON property `audio`
         # @return [Google::Apis::SpeechV1p1beta1::RecognitionAudio]
         attr_accessor :audio
@@ -180,8 +178,8 @@ module Google
       class LongRunningRecognizeResponse
         include Google::Apis::Core::Hashable
       
-        # Sequential list of transcription results corresponding to
-        # sequential portions of audio.
+        # Sequential list of transcription results corresponding to sequential portions
+        # of audio.
         # Corresponds to the JSON property `results`
         # @return [Array<Google::Apis::SpeechV1p1beta1::SpeechRecognitionResult>]
         attr_accessor :results
@@ -201,47 +199,45 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
-        # If the value is `false`, it means the operation is still in progress.
-        # If `true`, the operation is completed, and either `error` or `response` is
-        # available.
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::SpeechV1p1beta1::Status]
         attr_accessor :error
       
-        # Service-specific metadata associated with the operation.  It typically
-        # contains progress information and common metadata such as create time.
-        # Some services might not provide such metadata.  Any method that returns a
-        # long-running operation should document the metadata type, if any.
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
         # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the
-        # `name` should be a resource name ending with `operations/`unique_id``.
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success.  If the original
-        # method returns no data on success, such as `Delete`, the response is
-        # `google.protobuf.Empty`.  If the original method is standard
-        # `Get`/`Create`/`Update`, the response should be the resource.  For other
-        # methods, the response should have the type `XxxResponse`, where `Xxx`
-        # is the original method name.  For example, if the original method name
-        # is `TakeSnapshot()`, the inferred response type is
-        # `TakeSnapshotResponse`.
+        # The normal response of the operation in case of success. If the original
+        # method returns no data on success, such as `Delete`, the response is `google.
+        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
+        # the response should be the resource. For other methods, the response should
+        # have the type `XxxResponse`, where `Xxx` is the original method name. For
+        # example, if the original method name is `TakeSnapshot()`, the inferred
+        # response type is `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -260,37 +256,35 @@ module Google
         end
       end
       
-      # A phrases containing words and phrase "hints" so that
-      # the speech recognition is more likely to recognize them. This can be used
-      # to improve the accuracy for specific words and phrases, for example, if
-      # specific commands are typically spoken by the user. This can also be used
-      # to add additional words to the vocabulary of the recognizer. See
-      # [usage limits](https://cloud.google.com/speech-to-text/quotas#content).
-      # List items can also include pre-built or custom classes containing groups
-      # of words that represent common concepts that occur in natural language. For
-      # example, rather than providing a phrase hint for every month of the
-      # year (e.g. "i was born in january", "i was born in febuary", ...), use the
-      # pre-built `$MONTH` class improves the likelihood of correctly transcribing
-      # audio that includes months (e.g. "i was born in $month").
-      # To refer to pre-built classes, use the class' symbol prepended with `$`
-      # e.g. `$MONTH`. To refer to custom classes that were defined inline in the
-      # request, set the class's `custom_class_id` to a string unique to all class
-      # resources and inline classes. Then use the class' id wrapped in $``...``
-      # e.g. "$`my-months`". To refer to custom classes resources, use the class'
-      # id wrapped in `$``` (e.g. `$`my-months``).
+      # A phrases containing words and phrase "hints" so that the speech recognition
+      # is more likely to recognize them. This can be used to improve the accuracy for
+      # specific words and phrases, for example, if specific commands are typically
+      # spoken by the user. This can also be used to add additional words to the
+      # vocabulary of the recognizer. See [usage limits](https://cloud.google.com/
+      # speech-to-text/quotas#content). List items can also include pre-built or
+      # custom classes containing groups of words that represent common concepts that
+      # occur in natural language. For example, rather than providing a phrase hint
+      # for every month of the year (e.g. "i was born in january", "i was born in
+      # febuary", ...), use the pre-built `$MONTH` class improves the likelihood of
+      # correctly transcribing audio that includes months (e.g. "i was born in $month")
+      # . To refer to pre-built classes, use the class' symbol prepended with `$` e.g.
+      # `$MONTH`. To refer to custom classes that were defined inline in the request,
+      # set the class's `custom_class_id` to a string unique to all class resources
+      # and inline classes. Then use the class' id wrapped in $``...`` e.g. "$`my-
+      # months`". To refer to custom classes resources, use the class' id wrapped in `$
+      # ``` (e.g. `$`my-months``).
       class Phrase
         include Google::Apis::Core::Hashable
       
-        # Hint Boost. Overrides the boost set at the phrase set level.
-        # Positive value will increase the probability that a specific phrase will
-        # be recognized over other similar sounding phrases. The higher the boost,
-        # the higher the chance of false positive recognition as well. Negative
-        # boost values would correspond to anti-biasing. Anti-biasing is not
-        # enabled, so negative boost will simply be ignored. Though `boost` can
-        # accept a wide range of positive values, most use cases are best served
-        # with values between 0 and 20. We recommend using a binary search approach
-        # to finding the optimal value for your use case. Speech recognition
-        # will skip PhraseSets with a boost value of 0.
+        # Hint Boost. Overrides the boost set at the phrase set level. Positive value
+        # will increase the probability that a specific phrase will be recognized over
+        # other similar sounding phrases. The higher the boost, the higher the chance of
+        # false positive recognition as well. Negative boost values would correspond to
+        # anti-biasing. Anti-biasing is not enabled, so negative boost will simply be
+        # ignored. Though `boost` can accept a wide range of positive values, most use
+        # cases are best served with values between 0 and 20. We recommend using a
+        # binary search approach to finding the optimal value for your use case. Speech
+        # recognition will skip PhraseSets with a boost value of 0.
         # Corresponds to the JSON property `boost`
         # @return [Float]
         attr_accessor :boost
@@ -317,14 +311,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Hint Boost. Positive value will increase the probability that a specific
-        # phrase will be recognized over other similar sounding phrases. The higher
-        # the boost, the higher the chance of false positive recognition as well.
-        # Negative boost values would correspond to anti-biasing. Anti-biasing is not
-        # enabled, so negative boost will simply be ignored. Though `boost` can
-        # accept a wide range of positive values, most use cases are best served with
-        # values between 0 (exclusive) and 20. We recommend using a binary search
-        # approach to finding the optimal value for your use case. Speech recognition
-        # will skip PhraseSets with a boost value of 0.
+        # phrase will be recognized over other similar sounding phrases. The higher the
+        # boost, the higher the chance of false positive recognition as well. Negative
+        # boost values would correspond to anti-biasing. Anti-biasing is not enabled, so
+        # negative boost will simply be ignored. Though `boost` can accept a wide range
+        # of positive values, most use cases are best served with values between 0 (
+        # exclusive) and 20. We recommend using a binary search approach to finding the
+        # optimal value for your use case. Speech recognition will skip PhraseSets with
+        # a boost value of 0.
         # Corresponds to the JSON property `boost`
         # @return [Float]
         attr_accessor :boost
@@ -352,27 +346,26 @@ module Google
       end
       
       # Contains audio data in the encoding specified in the `RecognitionConfig`.
-      # Either `content` or `uri` must be supplied. Supplying both or neither
-      # returns google.rpc.Code.INVALID_ARGUMENT. See
-      # [content limits](https://cloud.google.com/speech-to-text/quotas#content).
+      # Either `content` or `uri` must be supplied. Supplying both or neither returns
+      # google.rpc.Code.INVALID_ARGUMENT. See [content limits](https://cloud.google.
+      # com/speech-to-text/quotas#content).
       class RecognitionAudio
         include Google::Apis::Core::Hashable
       
-        # The audio data bytes encoded as specified in
-        # `RecognitionConfig`. Note: as with all bytes fields, proto buffers use a
-        # pure binary representation, whereas JSON representations use base64.
+        # The audio data bytes encoded as specified in `RecognitionConfig`. Note: as
+        # with all bytes fields, proto buffers use a pure binary representation, whereas
+        # JSON representations use base64.
         # Corresponds to the JSON property `content`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :content
       
-        # URI that points to a file that contains audio data bytes as specified in
-        # `RecognitionConfig`. The file must not be compressed (for example, gzip).
-        # Currently, only Google Cloud Storage URIs are
-        # supported, which must be specified in the following format:
-        # `gs://bucket_name/object_name` (other URI formats return
-        # google.rpc.Code.INVALID_ARGUMENT). For more information, see
-        # [Request URIs](https://cloud.google.com/storage/docs/reference-uris).
+        # URI that points to a file that contains audio data bytes as specified in `
+        # RecognitionConfig`. The file must not be compressed (for example, gzip).
+        # Currently, only Google Cloud Storage URIs are supported, which must be
+        # specified in the following format: `gs://bucket_name/object_name` (other URI
+        # formats return google.rpc.Code.INVALID_ARGUMENT). For more information, see [
+        # Request URIs](https://cloud.google.com/storage/docs/reference-uris).
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -398,31 +391,27 @@ module Google
         # @return [Google::Apis::SpeechV1p1beta1::SpeechAdaptation]
         attr_accessor :adaptation
       
-        # A list of up to 3 additional
-        # [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags,
-        # listing possible alternative languages of the supplied audio.
-        # See [Language
-        # Support](https://cloud.google.com/speech-to-text/docs/languages) for a list
-        # of the currently supported language codes. If alternative languages are
-        # listed, recognition result will contain recognition in the most likely
-        # language detected including the main language_code. The recognition result
-        # will include the language tag of the language detected in the audio. Note:
-        # This feature is only supported for Voice Command and Voice Search use cases
-        # and performance may vary for other use cases (e.g., phone call
-        # transcription).
+        # A list of up to 3 additional [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.
+        # txt) language tags, listing possible alternative languages of the supplied
+        # audio. See [Language Support](https://cloud.google.com/speech-to-text/docs/
+        # languages) for a list of the currently supported language codes. If
+        # alternative languages are listed, recognition result will contain recognition
+        # in the most likely language detected including the main language_code. The
+        # recognition result will include the language tag of the language detected in
+        # the audio. Note: This feature is only supported for Voice Command and Voice
+        # Search use cases and performance may vary for other use cases (e.g., phone
+        # call transcription).
         # Corresponds to the JSON property `alternativeLanguageCodes`
         # @return [Array<String>]
         attr_accessor :alternative_language_codes
       
-        # The number of channels in the input audio data.
-        # ONLY set this for MULTI-CHANNEL recognition.
-        # Valid values for LINEAR16 and FLAC are `1`-`8`.
-        # Valid values for OGG_OPUS are '1'-'254'.
-        # Valid value for MULAW, AMR, AMR_WB and SPEEX_WITH_HEADER_BYTE is only `1`.
-        # If `0` or omitted, defaults to one channel (mono).
-        # Note: We only recognize the first channel by default.
-        # To perform independent recognition on each channel set
-        # `enable_separate_recognition_per_channel` to 'true'.
+        # The number of channels in the input audio data. ONLY set this for MULTI-
+        # CHANNEL recognition. Valid values for LINEAR16 and FLAC are `1`-`8`. Valid
+        # values for OGG_OPUS are '1'-'254'. Valid value for MULAW, AMR, AMR_WB and
+        # SPEEX_WITH_HEADER_BYTE is only `1`. If `0` or omitted, defaults to one channel
+        # (mono). Note: We only recognize the first channel by default. To perform
+        # independent recognition on each channel set `
+        # enable_separate_recognition_per_channel` to 'true'.
         # Corresponds to the JSON property `audioChannelCount`
         # @return [Fixnum]
         attr_accessor :audio_channel_count
@@ -439,75 +428,70 @@ module Google
         # @return [Fixnum]
         attr_accessor :diarization_speaker_count
       
-        # If 'true', adds punctuation to recognition result hypotheses.
-        # This feature is only available in select languages. Setting this for
-        # requests in other languages has no effect at all.
-        # The default 'false' value does not add punctuation to result hypotheses.
+        # If 'true', adds punctuation to recognition result hypotheses. This feature is
+        # only available in select languages. Setting this for requests in other
+        # languages has no effect at all. The default 'false' value does not add
+        # punctuation to result hypotheses.
         # Corresponds to the JSON property `enableAutomaticPunctuation`
         # @return [Boolean]
         attr_accessor :enable_automatic_punctuation
         alias_method :enable_automatic_punctuation?, :enable_automatic_punctuation
       
-        # This needs to be set to `true` explicitly and `audio_channel_count` > 1
-        # to get each channel recognized separately. The recognition result will
-        # contain a `channel_tag` field to state which channel that result belongs
-        # to. If this is not true, we will only recognize the first channel. The
-        # request is billed cumulatively for all channels recognized:
-        # `audio_channel_count` multiplied by the length of the audio.
+        # This needs to be set to `true` explicitly and `audio_channel_count` > 1 to get
+        # each channel recognized separately. The recognition result will contain a `
+        # channel_tag` field to state which channel that result belongs to. If this is
+        # not true, we will only recognize the first channel. The request is billed
+        # cumulatively for all channels recognized: `audio_channel_count` multiplied by
+        # the length of the audio.
         # Corresponds to the JSON property `enableSeparateRecognitionPerChannel`
         # @return [Boolean]
         attr_accessor :enable_separate_recognition_per_channel
         alias_method :enable_separate_recognition_per_channel?, :enable_separate_recognition_per_channel
       
-        # If 'true', enables speaker detection for each recognized word in
-        # the top alternative of the recognition result using a speaker_tag provided
-        # in the WordInfo.
-        # Note: Use diarization_config instead.
+        # If 'true', enables speaker detection for each recognized word in the top
+        # alternative of the recognition result using a speaker_tag provided in the
+        # WordInfo. Note: Use diarization_config instead.
         # Corresponds to the JSON property `enableSpeakerDiarization`
         # @return [Boolean]
         attr_accessor :enable_speaker_diarization
         alias_method :enable_speaker_diarization?, :enable_speaker_diarization
       
-        # If `true`, the top result includes a list of words and the
-        # confidence for those words. If `false`, no word-level confidence
-        # information is returned. The default is `false`.
+        # If `true`, the top result includes a list of words and the confidence for
+        # those words. If `false`, no word-level confidence information is returned. The
+        # default is `false`.
         # Corresponds to the JSON property `enableWordConfidence`
         # @return [Boolean]
         attr_accessor :enable_word_confidence
         alias_method :enable_word_confidence?, :enable_word_confidence
       
-        # If `true`, the top result includes a list of words and
-        # the start and end time offsets (timestamps) for those words. If
-        # `false`, no word-level time offset information is returned. The default is
-        # `false`.
+        # If `true`, the top result includes a list of words and the start and end time
+        # offsets (timestamps) for those words. If `false`, no word-level time offset
+        # information is returned. The default is `false`.
         # Corresponds to the JSON property `enableWordTimeOffsets`
         # @return [Boolean]
         attr_accessor :enable_word_time_offsets
         alias_method :enable_word_time_offsets?, :enable_word_time_offsets
       
-        # Encoding of audio data sent in all `RecognitionAudio` messages.
-        # This field is optional for `FLAC` and `WAV` audio files and required
-        # for all other audio formats. For details, see AudioEncoding.
+        # Encoding of audio data sent in all `RecognitionAudio` messages. This field is
+        # optional for `FLAC` and `WAV` audio files and required for all other audio
+        # formats. For details, see AudioEncoding.
         # Corresponds to the JSON property `encoding`
         # @return [String]
         attr_accessor :encoding
       
-        # Required. The language of the supplied audio as a
-        # [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
-        # Example: "en-US".
-        # See [Language
-        # Support](https://cloud.google.com/speech-to-text/docs/languages) for a list
-        # of the currently supported language codes.
+        # Required. The language of the supplied audio as a [BCP-47](https://www.rfc-
+        # editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US". See [Language
+        # Support](https://cloud.google.com/speech-to-text/docs/languages) for a list of
+        # the currently supported language codes.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
       
-        # Maximum number of recognition hypotheses to be returned.
-        # Specifically, the maximum number of `SpeechRecognitionAlternative` messages
-        # within each `SpeechRecognitionResult`.
-        # The server may return fewer than `max_alternatives`.
-        # Valid values are `0`-`30`. A value of `0` or `1` will return a maximum of
-        # one. If omitted, will return a maximum of one.
+        # Maximum number of recognition hypotheses to be returned. Specifically, the
+        # maximum number of `SpeechRecognitionAlternative` messages within each `
+        # SpeechRecognitionResult`. The server may return fewer than `max_alternatives`.
+        # Valid values are `0`-`30`. A value of `0` or `1` will return a maximum of one.
+        # If omitted, will return a maximum of one.
         # Corresponds to the JSON property `maxAlternatives`
         # @return [Fixnum]
         attr_accessor :max_alternatives
@@ -517,78 +501,51 @@ module Google
         # @return [Google::Apis::SpeechV1p1beta1::RecognitionMetadata]
         attr_accessor :metadata
       
-        # Which model to select for the given request. Select the model
-        # best suited to your domain to get best results. If a model is not
-        # explicitly specified, then we auto-select a model based on the parameters
-        # in the RecognitionConfig.
-        # <table>
-        # <tr>
-        # <td><b>Model</b></td>
-        # <td><b>Description</b></td>
-        # </tr>
-        # <tr>
-        # <td><code>command_and_search</code></td>
-        # <td>Best for short queries such as voice commands or voice search.</td>
-        # </tr>
-        # <tr>
-        # <td><code>phone_call</code></td>
-        # <td>Best for audio that originated from a phone call (typically
-        # recorded at an 8khz sampling rate).</td>
-        # </tr>
-        # <tr>
-        # <td><code>video</code></td>
-        # <td>Best for audio that originated from from video or includes multiple
-        # speakers. Ideally the audio is recorded at a 16khz or greater
-        # sampling rate. This is a premium model that costs more than the
-        # standard rate.</td>
-        # </tr>
-        # <tr>
-        # <td><code>default</code></td>
-        # <td>Best for audio that is not one of the specific audio models.
-        # For example, long-form audio. Ideally the audio is high-fidelity,
-        # recorded at a 16khz or greater sampling rate.</td>
-        # </tr>
-        # </table>
+        # Which model to select for the given request. Select the model best suited to
+        # your domain to get best results. If a model is not explicitly specified, then
+        # we auto-select a model based on the parameters in the RecognitionConfig. *
+        # Model* *Description* command_and_search Best for short queries such as voice
+        # commands or voice search. phone_call Best for audio that originated from a
+        # phone call (typically recorded at an 8khz sampling rate). video Best for audio
+        # that originated from from video or includes multiple speakers. Ideally the
+        # audio is recorded at a 16khz or greater sampling rate. This is a premium model
+        # that costs more than the standard rate. default Best for audio that is not one
+        # of the specific audio models. For example, long-form audio. Ideally the audio
+        # is high-fidelity, recorded at a 16khz or greater sampling rate.
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
       
-        # If set to `true`, the server will attempt to filter out
-        # profanities, replacing all but the initial character in each filtered word
-        # with asterisks, e.g. "f***". If set to `false` or omitted, profanities
-        # won't be filtered out.
+        # If set to `true`, the server will attempt to filter out profanities, replacing
+        # all but the initial character in each filtered word with asterisks, e.g. "f***"
+        # . If set to `false` or omitted, profanities won't be filtered out.
         # Corresponds to the JSON property `profanityFilter`
         # @return [Boolean]
         attr_accessor :profanity_filter
         alias_method :profanity_filter?, :profanity_filter
       
-        # Sample rate in Hertz of the audio data sent in all
-        # `RecognitionAudio` messages. Valid values are: 8000-48000.
-        # 16000 is optimal. For best results, set the sampling rate of the audio
-        # source to 16000 Hz. If that's not possible, use the native sample rate of
-        # the audio source (instead of re-sampling).
-        # This field is optional for FLAC and WAV audio files, but is
-        # required for all other audio formats. For details, see AudioEncoding.
+        # Sample rate in Hertz of the audio data sent in all `RecognitionAudio` messages.
+        # Valid values are: 8000-48000. 16000 is optimal. For best results, set the
+        # sampling rate of the audio source to 16000 Hz. If that's not possible, use the
+        # native sample rate of the audio source (instead of re-sampling). This field is
+        # optional for FLAC and WAV audio files, but is required for all other audio
+        # formats. For details, see AudioEncoding.
         # Corresponds to the JSON property `sampleRateHertz`
         # @return [Fixnum]
         attr_accessor :sample_rate_hertz
       
-        # Array of SpeechContext.
-        # A means to provide context to assist the speech recognition. For more
-        # information, see
-        # [speech
-        # adaptation](https://cloud.google.com/speech-to-text/docs/context-strength).
+        # Array of SpeechContext. A means to provide context to assist the speech
+        # recognition. For more information, see [speech adaptation](https://cloud.
+        # google.com/speech-to-text/docs/context-strength).
         # Corresponds to the JSON property `speechContexts`
         # @return [Array<Google::Apis::SpeechV1p1beta1::SpeechContext>]
         attr_accessor :speech_contexts
       
-        # Set to true to use an enhanced model for speech recognition.
-        # If `use_enhanced` is set to true and the `model` field is not set, then
-        # an appropriate enhanced model is chosen if an enhanced model exists for
-        # the audio.
-        # If `use_enhanced` is true and an enhanced version of the specified model
-        # does not exist, then the speech is recognized using the standard version
-        # of the specified model.
+        # Set to true to use an enhanced model for speech recognition. If `use_enhanced`
+        # is set to true and the `model` field is not set, then an appropriate enhanced
+        # model is chosen if an enhanced model exists for the audio. If `use_enhanced`
+        # is true and an enhanced version of the specified model does not exist, then
+        # the speech is recognized using the standard version of the specified model.
         # Corresponds to the JSON property `useEnhanced`
         # @return [Boolean]
         attr_accessor :use_enhanced
@@ -626,16 +583,16 @@ module Google
       class RecognitionMetadata
         include Google::Apis::Core::Hashable
       
-        # Description of the content. Eg. "Recordings of federal supreme court
-        # hearings from 2012".
+        # Description of the content. Eg. "Recordings of federal supreme court hearings
+        # from 2012".
         # Corresponds to the JSON property `audioTopic`
         # @return [String]
         attr_accessor :audio_topic
       
-        # The industry vertical to which this speech recognition request most
-        # closely applies. This is most indicative of the topics contained
-        # in the audio.  Use the 6-digit NAICS code to identify the industry
-        # vertical - see https://www.naics.com/search/.
+        # The industry vertical to which this speech recognition request most closely
+        # applies. This is most indicative of the topics contained in the audio. Use the
+        # 6-digit NAICS code to identify the industry vertical - see https://www.naics.
+        # com/search/.
         # Corresponds to the JSON property `industryNaicsCodeOfAudio`
         # @return [Fixnum]
         attr_accessor :industry_naics_code_of_audio
@@ -650,8 +607,8 @@ module Google
         # @return [String]
         attr_accessor :microphone_distance
       
-        # Obfuscated (privacy-protected) ID of the user, to identify number of
-        # unique users using the service.
+        # Obfuscated (privacy-protected) ID of the user, to identify number of unique
+        # users using the service.
         # Corresponds to the JSON property `obfuscatedId`
         # @return [Fixnum]
         attr_accessor :obfuscated_id
@@ -661,17 +618,16 @@ module Google
         # @return [String]
         attr_accessor :original_media_type
       
-        # Mime type of the original audio file.  For example `audio/m4a`,
-        # `audio/x-alaw-basic`, `audio/mp3`, `audio/3gpp`.
-        # A list of possible audio mime types is maintained at
-        # http://www.iana.org/assignments/media-types/media-types.xhtml#audio
+        # Mime type of the original audio file. For example `audio/m4a`, `audio/x-alaw-
+        # basic`, `audio/mp3`, `audio/3gpp`. A list of possible audio mime types is
+        # maintained at http://www.iana.org/assignments/media-types/media-types.xhtml#
+        # audio
         # Corresponds to the JSON property `originalMimeType`
         # @return [String]
         attr_accessor :original_mime_type
       
-        # The device used to make the recording.  Examples 'Nexus 5X' or
-        # 'Polycom SoundStation IP 6000' or 'POTS' or 'VoIP' or
-        # 'Cardioid Microphone'.
+        # The device used to make the recording. Examples 'Nexus 5X' or 'Polycom
+        # SoundStation IP 6000' or 'POTS' or 'VoIP' or 'Cardioid Microphone'.
         # Corresponds to the JSON property `recordingDeviceName`
         # @return [String]
         attr_accessor :recording_device_name
@@ -704,9 +660,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Contains audio data in the encoding specified in the `RecognitionConfig`.
-        # Either `content` or `uri` must be supplied. Supplying both or neither
-        # returns google.rpc.Code.INVALID_ARGUMENT. See
-        # [content limits](https://cloud.google.com/speech-to-text/quotas#content).
+        # Either `content` or `uri` must be supplied. Supplying both or neither returns
+        # google.rpc.Code.INVALID_ARGUMENT. See [content limits](https://cloud.google.
+        # com/speech-to-text/quotas#content).
         # Corresponds to the JSON property `audio`
         # @return [Google::Apis::SpeechV1p1beta1::RecognitionAudio]
         attr_accessor :audio
@@ -728,14 +684,13 @@ module Google
         end
       end
       
-      # The only message returned to the client by the `Recognize` method. It
-      # contains the result as zero or more sequential `SpeechRecognitionResult`
-      # messages.
+      # The only message returned to the client by the `Recognize` method. It contains
+      # the result as zero or more sequential `SpeechRecognitionResult` messages.
       class RecognizeResponse
         include Google::Apis::Core::Hashable
       
-        # Sequential list of transcription results corresponding to
-        # sequential portions of audio.
+        # Sequential list of transcription results corresponding to sequential portions
+        # of audio.
         # Corresponds to the JSON property `results`
         # @return [Array<Google::Apis::SpeechV1p1beta1::SpeechRecognitionResult>]
         attr_accessor :results
@@ -754,9 +709,9 @@ module Google
       class SpeakerDiarizationConfig
         include Google::Apis::Core::Hashable
       
-        # If 'true', enables speaker detection for each recognized word in
-        # the top alternative of the recognition result using a speaker_tag provided
-        # in the WordInfo.
+        # If 'true', enables speaker detection for each recognized word in the top
+        # alternative of the recognition result using a speaker_tag provided in the
+        # WordInfo.
         # Corresponds to the JSON property `enableSpeakerDiarization`
         # @return [Boolean]
         attr_accessor :enable_speaker_diarization
@@ -798,17 +753,17 @@ module Google
       class SpeechAdaptation
         include Google::Apis::Core::Hashable
       
-        # A collection of custom classes. To specify the classes inline, leave the
-        # class' `name` blank and fill in the rest of its fields, giving it a unique
-        # `custom_class_id`. Refer to the inline defined class in phrase hints by its
-        # `custom_class_id`.
+        # A collection of custom classes. To specify the classes inline, leave the class'
+        # `name` blank and fill in the rest of its fields, giving it a unique `
+        # custom_class_id`. Refer to the inline defined class in phrase hints by its `
+        # custom_class_id`.
         # Corresponds to the JSON property `customClasses`
         # @return [Array<Google::Apis::SpeechV1p1beta1::CustomClass>]
         attr_accessor :custom_classes
       
-        # A collection of phrase sets. To specify the hints inline, leave the
-        # phrase set's `name` blank and fill in the rest of its fields. Any
-        # phrase set can use any custom class.
+        # A collection of phrase sets. To specify the hints inline, leave the phrase set'
+        # s `name` blank and fill in the rest of its fields. Any phrase set can use any
+        # custom class.
         # Corresponds to the JSON property `phraseSets`
         # @return [Array<Google::Apis::SpeechV1p1beta1::PhraseSet>]
         attr_accessor :phrase_sets
@@ -830,28 +785,27 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Hint Boost. Positive value will increase the probability that a specific
-        # phrase will be recognized over other similar sounding phrases. The higher
-        # the boost, the higher the chance of false positive recognition as well.
-        # Negative boost values would correspond to anti-biasing. Anti-biasing is not
-        # enabled, so negative boost will simply be ignored. Though `boost` can
-        # accept a wide range of positive values, most use cases are best served with
-        # values between 0 and 20. We recommend using a binary search approach to
-        # finding the optimal value for your use case.
+        # phrase will be recognized over other similar sounding phrases. The higher the
+        # boost, the higher the chance of false positive recognition as well. Negative
+        # boost values would correspond to anti-biasing. Anti-biasing is not enabled, so
+        # negative boost will simply be ignored. Though `boost` can accept a wide range
+        # of positive values, most use cases are best served with values between 0 and
+        # 20. We recommend using a binary search approach to finding the optimal value
+        # for your use case.
         # Corresponds to the JSON property `boost`
         # @return [Float]
         attr_accessor :boost
       
-        # A list of strings containing words and phrases "hints" so that
-        # the speech recognition is more likely to recognize them. This can be used
-        # to improve the accuracy for specific words and phrases, for example, if
-        # specific commands are typically spoken by the user. This can also be used
-        # to add additional words to the vocabulary of the recognizer. See
-        # [usage limits](https://cloud.google.com/speech-to-text/quotas#content).
-        # List items can also be set to classes for groups of words that represent
-        # common concepts that occur in natural language. For example, rather than
-        # providing phrase hints for every month of the year, using the $MONTH class
-        # improves the likelihood of correctly transcribing audio that includes
-        # months.
+        # A list of strings containing words and phrases "hints" so that the speech
+        # recognition is more likely to recognize them. This can be used to improve the
+        # accuracy for specific words and phrases, for example, if specific commands are
+        # typically spoken by the user. This can also be used to add additional words to
+        # the vocabulary of the recognizer. See [usage limits](https://cloud.google.com/
+        # speech-to-text/quotas#content). List items can also be set to classes for
+        # groups of words that represent common concepts that occur in natural language.
+        # For example, rather than providing phrase hints for every month of the year,
+        # using the $MONTH class improves the likelihood of correctly transcribing audio
+        # that includes months.
         # Corresponds to the JSON property `phrases`
         # @return [Array<String>]
         attr_accessor :phrases
@@ -871,13 +825,12 @@ module Google
       class SpeechRecognitionAlternative
         include Google::Apis::Core::Hashable
       
-        # The confidence estimate between 0.0 and 1.0. A higher number
-        # indicates an estimated greater likelihood that the recognized words are
-        # correct. This field is set only for the top alternative of a non-streaming
-        # result or, of a streaming result where `is_final=true`.
-        # This field is not guaranteed to be accurate and users should not rely on it
-        # to be always provided.
-        # The default of 0.0 is a sentinel value indicating `confidence` was not set.
+        # The confidence estimate between 0.0 and 1.0. A higher number indicates an
+        # estimated greater likelihood that the recognized words are correct. This field
+        # is set only for the top alternative of a non-streaming result or, of a
+        # streaming result where `is_final=true`. This field is not guaranteed to be
+        # accurate and users should not rely on it to be always provided. The default of
+        # 0.0 is a sentinel value indicating `confidence` was not set.
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
@@ -887,9 +840,9 @@ module Google
         # @return [String]
         attr_accessor :transcript
       
-        # A list of word-specific information for each recognized word.
-        # Note: When `enable_speaker_diarization` is true, you will see all the words
-        # from the beginning of the audio.
+        # A list of word-specific information for each recognized word. Note: When `
+        # enable_speaker_diarization` is true, you will see all the words from the
+        # beginning of the audio.
         # Corresponds to the JSON property `words`
         # @return [Array<Google::Apis::SpeechV1p1beta1::WordInfo>]
         attr_accessor :words
@@ -910,25 +863,24 @@ module Google
       class SpeechRecognitionResult
         include Google::Apis::Core::Hashable
       
-        # May contain one or more recognition hypotheses (up to the
-        # maximum specified in `max_alternatives`).
-        # These alternatives are ordered in terms of accuracy, with the top (first)
-        # alternative being the most probable, as ranked by the recognizer.
+        # May contain one or more recognition hypotheses (up to the maximum specified in
+        # `max_alternatives`). These alternatives are ordered in terms of accuracy, with
+        # the top (first) alternative being the most probable, as ranked by the
+        # recognizer.
         # Corresponds to the JSON property `alternatives`
         # @return [Array<Google::Apis::SpeechV1p1beta1::SpeechRecognitionAlternative>]
         attr_accessor :alternatives
       
         # For multi-channel audio, this is the channel number corresponding to the
-        # recognized result for the audio from that channel.
-        # For audio_channel_count = N, its output values can range from '1' to 'N'.
+        # recognized result for the audio from that channel. For audio_channel_count = N,
+        # its output values can range from '1' to 'N'.
         # Corresponds to the JSON property `channelTag`
         # @return [Fixnum]
         attr_accessor :channel_tag
       
         # Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
-        # language tag
-        # of the language in this result. This language code was detected to have
-        # the most likelihood of being spoken in the audio.
+        # language tag of the language in this result. This language code was detected
+        # to have the most likelihood of being spoken in the audio.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -945,12 +897,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -959,15 +911,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -988,42 +940,37 @@ module Google
       class WordInfo
         include Google::Apis::Core::Hashable
       
-        # The confidence estimate between 0.0 and 1.0. A higher number
-        # indicates an estimated greater likelihood that the recognized words are
-        # correct. This field is set only for the top alternative of a non-streaming
-        # result or, of a streaming result where `is_final=true`.
-        # This field is not guaranteed to be accurate and users should not rely on it
-        # to be always provided.
-        # The default of 0.0 is a sentinel value indicating `confidence` was not set.
+        # The confidence estimate between 0.0 and 1.0. A higher number indicates an
+        # estimated greater likelihood that the recognized words are correct. This field
+        # is set only for the top alternative of a non-streaming result or, of a
+        # streaming result where `is_final=true`. This field is not guaranteed to be
+        # accurate and users should not rely on it to be always provided. The default of
+        # 0.0 is a sentinel value indicating `confidence` was not set.
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
       
-        # Time offset relative to the beginning of the audio,
-        # and corresponding to the end of the spoken word.
-        # This field is only set if `enable_word_time_offsets=true` and only
-        # in the top hypothesis.
-        # This is an experimental feature and the accuracy of the time offset can
-        # vary.
+        # Time offset relative to the beginning of the audio, and corresponding to the
+        # end of the spoken word. This field is only set if `enable_word_time_offsets=
+        # true` and only in the top hypothesis. This is an experimental feature and the
+        # accuracy of the time offset can vary.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # Output only. A distinct integer value is assigned for every speaker within
-        # the audio. This field specifies which one of those speakers was detected to
-        # have spoken this word. Value ranges from '1' to diarization_speaker_count.
-        # speaker_tag is set if enable_speaker_diarization = 'true' and only in the
-        # top alternative.
+        # Output only. A distinct integer value is assigned for every speaker within the
+        # audio. This field specifies which one of those speakers was detected to have
+        # spoken this word. Value ranges from '1' to diarization_speaker_count.
+        # speaker_tag is set if enable_speaker_diarization = 'true' and only in the top
+        # alternative.
         # Corresponds to the JSON property `speakerTag`
         # @return [Fixnum]
         attr_accessor :speaker_tag
       
-        # Time offset relative to the beginning of the audio,
-        # and corresponding to the start of the spoken word.
-        # This field is only set if `enable_word_time_offsets=true` and only
-        # in the top hypothesis.
-        # This is an experimental feature and the accuracy of the time offset can
-        # vary.
+        # Time offset relative to the beginning of the audio, and corresponding to the
+        # start of the spoken word. This field is only set if `enable_word_time_offsets=
+        # true` and only in the top hypothesis. This is an experimental feature and the
+        # accuracy of the time offset can vary.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time

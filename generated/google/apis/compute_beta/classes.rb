@@ -1199,7 +1199,20 @@ module Google
         # @return [String]
         attr_accessor :device_name
       
-        # Represents a customer-supplied encryption key
+        # Encrypts or decrypts a disk using a customer-supplied encryption key.
+        # If you are creating a new disk, this field encrypts the new disk using an
+        # encryption key that you provide. If you are attaching an existing disk that is
+        # already encrypted, this field decrypts the disk using the customer-supplied
+        # encryption key.
+        # If you encrypt a disk using a customer-supplied key, you must provide the same
+        # key again when you attempt to use this resource at a later time. For example,
+        # you must provide the key when you create a snapshot or an image from the disk
+        # or when you attach the disk to a virtual machine instance.
+        # If you do not provide an encryption key, then the disk will be encrypted using
+        # an automatically generated key and you do not need to provide a key to use the
+        # disk later.
+        # Instance templates do not store customer-supplied encryption keys, so you
+        # cannot use your own keys to encrypt disks in a managed instance group.
         # Corresponds to the JSON property `diskEncryptionKey`
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :disk_encryption_key
@@ -1407,7 +1420,11 @@ module Google
         # @return [String]
         attr_accessor :source_image
       
-        # Represents a customer-supplied encryption key
+        # The customer-supplied encryption key of the source image. Required if the
+        # source image is protected by a customer-supplied encryption key.
+        # Instance templates do not store customer-supplied encryption keys, so you
+        # cannot create disks for instances in a managed instance group if the source
+        # images are encrypted with your own keys.
         # Corresponds to the JSON property `sourceImageEncryptionKey`
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :source_image_encryption_key
@@ -1423,7 +1440,7 @@ module Google
         # @return [String]
         attr_accessor :source_snapshot
       
-        # Represents a customer-supplied encryption key
+        # The customer-supplied encryption key of the source snapshot.
         # Corresponds to the JSON property `sourceSnapshotEncryptionKey`
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :source_snapshot_encryption_key
@@ -2614,6 +2631,13 @@ module Google
       class BackendBucketCdnPolicy
         include Google::Apis::Core::Hashable
       
+        # Bypass the cache when the specified request headers are matched - e.g. Pragma
+        # or Authorization headers. Up to 5 headers can be specified. The cache is
+        # bypassed for all cdnPolicy.cacheMode settings.
+        # Corresponds to the JSON property `bypassCacheOnRequestHeaders`
+        # @return [Array<Google::Apis::ComputeBeta::BackendBucketCdnPolicyBypassCacheOnRequestHeader>]
+        attr_accessor :bypass_cache_on_request_headers
+      
         # 
         # Corresponds to the JSON property `cacheMode`
         # @return [String]
@@ -2674,6 +2698,18 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::BackendBucketCdnPolicyNegativeCachingPolicy>]
         attr_accessor :negative_caching_policy
       
+        # Serve existing content from the cache (if available) when revalidating content
+        # with the origin, or when an error is encountered when refreshing the cache.
+        # This setting defines the default "max-stale" duration for any cached responses
+        # that do not specify a max-stale directive. Stale responses that exceed the TTL
+        # configured here will not be served. The default limit (max-stale) is 86400s (1
+        # day), which will allow stale content to be served up to this limit beyond the
+        # max-age (or s-max-age) of a cached response. The maximum allowed value is
+        # 604800(1 week). Set this to zero (0) to disable serve-while-stale.
+        # Corresponds to the JSON property `serveWhileStale`
+        # @return [Fixnum]
+        attr_accessor :serve_while_stale
+      
         # Maximum number of seconds the response to a signed URL request will be
         # considered fresh. After this time period, the response will be revalidated
         # before being served. Defaults to 1hr (3600s). When serving responses to signed
@@ -2696,14 +2732,38 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bypass_cache_on_request_headers = args[:bypass_cache_on_request_headers] if args.key?(:bypass_cache_on_request_headers)
           @cache_mode = args[:cache_mode] if args.key?(:cache_mode)
           @client_ttl = args[:client_ttl] if args.key?(:client_ttl)
           @default_ttl = args[:default_ttl] if args.key?(:default_ttl)
           @max_ttl = args[:max_ttl] if args.key?(:max_ttl)
           @negative_caching = args[:negative_caching] if args.key?(:negative_caching)
           @negative_caching_policy = args[:negative_caching_policy] if args.key?(:negative_caching_policy)
+          @serve_while_stale = args[:serve_while_stale] if args.key?(:serve_while_stale)
           @signed_url_cache_max_age_sec = args[:signed_url_cache_max_age_sec] if args.key?(:signed_url_cache_max_age_sec)
           @signed_url_key_names = args[:signed_url_key_names] if args.key?(:signed_url_key_names)
+        end
+      end
+      
+      # Bypass the cache when the specified request headers are present, e.g. Pragma
+      # or Authorization headers. Values are case insensitive. The presence of such a
+      # header overrides the cache_mode setting.
+      class BackendBucketCdnPolicyBypassCacheOnRequestHeader
+        include Google::Apis::Core::Hashable
+      
+        # The header field name to match on when bypassing cache. Values are case-
+        # insensitive.
+        # Corresponds to the JSON property `headerName`
+        # @return [String]
+        attr_accessor :header_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header_name = args[:header_name] if args.key?(:header_name)
         end
       end
       
@@ -2873,6 +2933,8 @@ module Google
       
         # If set to 0, the cookie is non-persistent and lasts only until the end of the
         # browser session (or equivalent). The maximum allowed value is one day (86,400).
+        # Not supported when the backend service is referenced by a URL map that is
+        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `affinityCookieTtlSec`
         # @return [Fixnum]
         attr_accessor :affinity_cookie_ttl_sec
@@ -3014,8 +3076,11 @@ module Google
         # HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED.
         # - A global backend service with the load_balancing_scheme set to
         # INTERNAL_SELF_MANAGED.
-        # If sessionAffinity is not NONE, and this field is not set to >MAGLEV or
+        # If sessionAffinity is not NONE, and this field is not set to MAGLEV or
         # RING_HASH, session affinity settings will not take effect.
+        # Only the default ROUND_ROBIN policy is supported when the backend service is
+        # referenced by a URL map that is bound to target gRPC proxy that has
+        # validateForProxyless field set to true.
         # Corresponds to the JSON property `localityLbPolicy`
         # @return [String]
         attr_accessor :locality_lb_policy
@@ -3072,6 +3137,8 @@ module Google
         # the chosen load balancer or Traffic Director configuration. Refer to the
         # documentation for the load balancer or for Traffic Director for more
         # information.
+        # Must be set to GRPC when the backend service is referenced by a URL map that
+        # is bound to target gRPC proxy.
         # Corresponds to the JSON property `protocol`
         # @return [String]
         attr_accessor :protocol
@@ -3110,6 +3177,8 @@ module Google
         # When the loadBalancingScheme is INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED,
         # possible values are NONE, CLIENT_IP, GENERATED_COOKIE, HEADER_FIELD, or
         # HTTP_COOKIE.
+        # Not supported when the backend service is referenced by a URL map that is
+        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `sessionAffinity`
         # @return [String]
         attr_accessor :session_affinity
@@ -3283,6 +3352,13 @@ module Google
       class BackendServiceCdnPolicy
         include Google::Apis::Core::Hashable
       
+        # Bypass the cache when the specified request headers are matched - e.g. Pragma
+        # or Authorization headers. Up to 5 headers can be specified. The cache is
+        # bypassed for all cdnPolicy.cacheMode settings.
+        # Corresponds to the JSON property `bypassCacheOnRequestHeaders`
+        # @return [Array<Google::Apis::ComputeBeta::BackendServiceCdnPolicyBypassCacheOnRequestHeader>]
+        attr_accessor :bypass_cache_on_request_headers
+      
         # Message containing what to include in the cache key for a request for Cloud
         # CDN.
         # Corresponds to the JSON property `cacheKeyPolicy`
@@ -3349,6 +3425,18 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::BackendServiceCdnPolicyNegativeCachingPolicy>]
         attr_accessor :negative_caching_policy
       
+        # Serve existing content from the cache (if available) when revalidating content
+        # with the origin, or when an error is encountered when refreshing the cache.
+        # This setting defines the default "max-stale" duration for any cached responses
+        # that do not specify a max-stale directive. Stale responses that exceed the TTL
+        # configured here will not be served. The default limit (max-stale) is 86400s (1
+        # day), which will allow stale content to be served up to this limit beyond the
+        # max-age (or s-max-age) of a cached response. The maximum allowed value is
+        # 604800(1 week). Set this to zero (0) to disable serve-while-stale.
+        # Corresponds to the JSON property `serveWhileStale`
+        # @return [Fixnum]
+        attr_accessor :serve_while_stale
+      
         # Maximum number of seconds the response to a signed URL request will be
         # considered fresh. After this time period, the response will be revalidated
         # before being served. Defaults to 1hr (3600s). When serving responses to signed
@@ -3371,6 +3459,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bypass_cache_on_request_headers = args[:bypass_cache_on_request_headers] if args.key?(:bypass_cache_on_request_headers)
           @cache_key_policy = args[:cache_key_policy] if args.key?(:cache_key_policy)
           @cache_mode = args[:cache_mode] if args.key?(:cache_mode)
           @client_ttl = args[:client_ttl] if args.key?(:client_ttl)
@@ -3378,8 +3467,31 @@ module Google
           @max_ttl = args[:max_ttl] if args.key?(:max_ttl)
           @negative_caching = args[:negative_caching] if args.key?(:negative_caching)
           @negative_caching_policy = args[:negative_caching_policy] if args.key?(:negative_caching_policy)
+          @serve_while_stale = args[:serve_while_stale] if args.key?(:serve_while_stale)
           @signed_url_cache_max_age_sec = args[:signed_url_cache_max_age_sec] if args.key?(:signed_url_cache_max_age_sec)
           @signed_url_key_names = args[:signed_url_key_names] if args.key?(:signed_url_key_names)
+        end
+      end
+      
+      # Bypass the cache when the specified request headers are present, e.g. Pragma
+      # or Authorization headers. Values are case insensitive. The presence of such a
+      # header overrides the cache_mode setting.
+      class BackendServiceCdnPolicyBypassCacheOnRequestHeader
+        include Google::Apis::Core::Hashable
+      
+        # The header field name to match on when bypassing cache. Values are case-
+        # insensitive.
+        # Corresponds to the JSON property `headerName`
+        # @return [String]
+        attr_accessor :header_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header_name = args[:header_name] if args.key?(:header_name)
         end
       end
       
@@ -4965,7 +5077,7 @@ module Google
         end
       end
       
-      # Represents a customer-supplied encryption key
+      # 
       class CustomerEncryptionKey
         include Google::Apis::Core::Hashable
       
@@ -5022,7 +5134,7 @@ module Google
       class CustomerEncryptionKeyProtectedDisk
         include Google::Apis::Core::Hashable
       
-        # Represents a customer-supplied encryption key
+        # Decrypts data associated with the disk with a customer-supplied encryption key.
         # Corresponds to the JSON property `diskEncryptionKey`
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :disk_encryption_key
@@ -5126,7 +5238,16 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Represents a customer-supplied encryption key
+        # Encrypts the disk using a customer-supplied encryption key.
+        # After you encrypt a disk with a customer-supplied key, you must provide the
+        # same key if you use the disk later (e.g. to create a disk snapshot, to create
+        # a disk image, to create a machine image, or to attach the disk to a virtual
+        # machine).
+        # Customer-supplied encryption keys do not protect access to metadata of the
+        # disk.
+        # If you do not provide an encryption key when creating the disk, then the disk
+        # will be encrypted using an automatically generated key and you do not need to
+        # provide a key to use the disk later.
         # Corresponds to the JSON property `diskEncryptionKey`
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :disk_encryption_key
@@ -5299,7 +5420,8 @@ module Google
         # @return [String]
         attr_accessor :source_image
       
-        # Represents a customer-supplied encryption key
+        # The customer-supplied encryption key of the source image. Required if the
+        # source image is protected by a customer-supplied encryption key.
         # Corresponds to the JSON property `sourceImageEncryptionKey`
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :source_image_encryption_key
@@ -5324,7 +5446,8 @@ module Google
         # @return [String]
         attr_accessor :source_snapshot
       
-        # Represents a customer-supplied encryption key
+        # The customer-supplied encryption key of the source snapshot. Required if the
+        # source snapshot is protected by a customer-supplied encryption key.
         # Corresponds to the JSON property `sourceSnapshotEncryptionKey`
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :source_snapshot_encryption_key
@@ -5337,6 +5460,14 @@ module Google
         # Corresponds to the JSON property `sourceSnapshotId`
         # @return [String]
         attr_accessor :source_snapshot_id
+      
+        # The full Google Cloud Storage URI where the disk image is stored. This file
+        # must be a gzip-compressed tarball whose name ends in .tar.gz or virtual
+        # machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https:
+        # //storage.googleapis.com/.
+        # Corresponds to the JSON property `sourceStorageObject`
+        # @return [String]
+        attr_accessor :source_storage_object
       
         # [Output Only] The status of disk creation. CREATING: Disk is provisioning.
         # RESTORING: Source data is being copied into the disk. FAILED: Disk creation
@@ -5407,6 +5538,7 @@ module Google
           @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
           @source_snapshot_encryption_key = args[:source_snapshot_encryption_key] if args.key?(:source_snapshot_encryption_key)
           @source_snapshot_id = args[:source_snapshot_id] if args.key?(:source_snapshot_id)
+          @source_storage_object = args[:source_storage_object] if args.key?(:source_storage_object)
           @status = args[:status] if args.key?(:status)
           @storage_type = args[:storage_type] if args.key?(:storage_type)
           @type = args[:type] if args.key?(:type)
@@ -7383,6 +7515,8 @@ module Google
         # IP address that you can use. For detailed information, refer to [IP address
         # specifications](/load-balancing/docs/forwarding-rule-concepts#
         # ip_address_specifications).
+        # Must be set to `0.0.0.0` when the target is targetGrpcProxy that has
+        # validateForProxyless field set to true.
         # Corresponds to the JSON property `IPAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -7521,7 +7655,7 @@ module Google
       
         # Opaque filter criteria used by Loadbalancer to restrict routing configuration
         # to a limited set of xDS compliant clients. In their xDS requests to
-        # Loadbalancer, xDS clients present node metadata. If a match takes place, the
+        # Loadbalancer, xDS clients present node metadata. When there is a match, the
         # relevant configuration is made available to those proxies. Otherwise, all the
         # resources (e.g. TargetHttpProxy, UrlMap) referenced by the ForwardingRule will
         # not be visible to those proxies.
@@ -7529,7 +7663,8 @@ module Google
         # MATCH_ANY, at least one of the filterLabels must match the corresponding label
         # provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then
         # all of its filterLabels must match with corresponding labels provided in the
-        # metadata.
+        # metadata. If multiple metadataFilters are specified, all of them need to be
+        # satisfied in order to be considered a match.
         # metadataFilters specified here will be applifed before those specified in the
         # UrlMap that this ForwardingRule references.
         # metadataFilters only applies to Loadbalancers that have their
@@ -7615,6 +7750,12 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # Service Directory resources to register this forwarding rule with. Currently,
+        # only supports a single Service Directory resource.
+        # Corresponds to the JSON property `serviceDirectoryRegistrations`
+        # @return [Array<Google::Apis::ComputeBeta::ForwardingRuleServiceDirectoryRegistration>]
+        attr_accessor :service_directory_registrations
+      
         # An optional prefix to the service name for this Forwarding Rule. If specified,
         # the prefix is the first label of the fully qualified service name.
         # The label must be 1-63 characters long, and comply with RFC1035. Specifically,
@@ -7683,6 +7824,7 @@ module Google
           @ports = args[:ports] if args.key?(:ports)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @service_directory_registrations = args[:service_directory_registrations] if args.key?(:service_directory_registrations)
           @service_label = args[:service_label] if args.key?(:service_label)
           @service_name = args[:service_name] if args.key?(:service_name)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
@@ -7941,6 +8083,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
+        end
+      end
+      
+      # Describes the auto-registration of the Forwarding Rule to Service Directory.
+      # The region and project of the Service Directory resource generated from this
+      # registration will be the same as this Forwarding Rule.
+      class ForwardingRuleServiceDirectoryRegistration
+        include Google::Apis::Core::Hashable
+      
+        # Service Directory namespace to register the forwarding rule under.
+        # Corresponds to the JSON property `namespace`
+        # @return [String]
+        attr_accessor :namespace
+      
+        # Service Directory service to register the forwarding rule under.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @namespace = args[:namespace] if args.key?(:namespace)
+          @service = args[:service] if args.key?(:service)
         end
       end
       
@@ -9473,6 +9642,8 @@ module Google
         # port numbers in the format host:port. * matches any string of ([a-z0-9-.]*).
         # In that case, * must be the first character and must be followed in the
         # pattern by either - or ..
+        # * based matching is not supported when the URL map is bound to target gRPC
+        # proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `hosts`
         # @return [Array<String>]
         attr_accessor :hosts
@@ -10354,13 +10525,14 @@ module Google
       
         # Opaque filter criteria used by Loadbalancer to restrict routing configuration
         # to a limited set of xDS compliant clients. In their xDS requests to
-        # Loadbalancer, xDS clients present node metadata. If a match takes place, the
+        # Loadbalancer, xDS clients present node metadata. When there is a match, the
         # relevant routing configuration is made available to those proxies.
         # For each metadataFilter in this list, if its filterMatchCriteria is set to
         # MATCH_ANY, at least one of the filterLabels must match the corresponding label
         # provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then
         # all of its filterLabels must match with corresponding labels provided in the
-        # metadata.
+        # metadata. If multiple metadataFilters are specified, all of them need to be
+        # satisfied in order to be considered a match.
         # metadataFilters specified here will be applied after those specified in
         # ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to.
         # metadataFilters only applies to Loadbalancers that have their
@@ -10687,7 +10859,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # Represents a customer-supplied encryption key
+        # Encrypts the image using a customer-supplied encryption key.
+        # After you encrypt an image with a customer-supplied key, you must provide the
+        # same key if you use the image later (e.g. to create a disk from the image).
+        # Customer-supplied encryption keys do not protect access to metadata of the
+        # disk.
+        # If you do not provide an encryption key when creating the image, then the disk
+        # will be encrypted using an automatically generated key and you do not need to
+        # provide a key to use the image later.
         # Corresponds to the JSON property `imageEncryptionKey`
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :image_encryption_key
@@ -10762,7 +10941,8 @@ module Google
         # @return [String]
         attr_accessor :source_disk
       
-        # Represents a customer-supplied encryption key
+        # The customer-supplied encryption key of the source disk. Required if the
+        # source disk is protected by a customer-supplied encryption key.
         # Corresponds to the JSON property `sourceDiskEncryptionKey`
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :source_disk_encryption_key
@@ -10785,7 +10965,8 @@ module Google
         # @return [String]
         attr_accessor :source_image
       
-        # Represents a customer-supplied encryption key
+        # The customer-supplied encryption key of the source image. Required if the
+        # source image is protected by a customer-supplied encryption key.
         # Corresponds to the JSON property `sourceImageEncryptionKey`
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :source_image_encryption_key
@@ -10809,7 +10990,8 @@ module Google
         # @return [String]
         attr_accessor :source_snapshot
       
-        # Represents a customer-supplied encryption key
+        # The customer-supplied encryption key of the source snapshot. Required if the
+        # source snapshot is protected by a customer-supplied encryption key.
         # Corresponds to the JSON property `sourceSnapshotEncryptionKey`
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :source_snapshot_encryption_key
@@ -11291,7 +11473,7 @@ module Google
         # @return [String]
         attr_accessor :source_machine_image
       
-        # Represents a customer-supplied encryption key
+        # Source GMI encryption key when creating an instance from GMI.
         # Corresponds to the JSON property `sourceMachineImageEncryptionKey`
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :source_machine_image_encryption_key
@@ -14424,7 +14606,11 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::CustomerEncryptionKeyProtectedDisk>]
         attr_accessor :disks
       
-        # Represents a customer-supplied encryption key
+        # Decrypts data associated with an instance that is protected with a customer-
+        # supplied encryption key.
+        # If the instance you are starting is protected with a customer-supplied
+        # encryption key, the correct key must be provided otherwise the instance resume
+        # will not succeed.
         # Corresponds to the JSON property `instanceEncryptionKey`
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :instance_encryption_key
@@ -16824,7 +17010,16 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Represents a customer-supplied encryption key
+        # Encrypts the machine image using a customer-supplied encryption key.
+        # After you encrypt a machine image using a customer-supplied key, you must
+        # provide the same key if you use the machine image later. For example, you must
+        # provide the encryption key when you create an instance from the encrypted
+        # machine image in a future request.
+        # Customer-supplied encryption keys do not protect access to metadata of the
+        # machine image.
+        # If you do not provide an encryption key when creating the machine image, then
+        # the machine image will be encrypted using an automatically generated key and
+        # you do not need to provide a key to use the machine image later.
         # Corresponds to the JSON property `machineImageEncryptionKey`
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :machine_image_encryption_key
@@ -19428,7 +19623,9 @@ module Google
         attr_accessor :kind
       
         # Specifies how to handle instances when a node in the group undergoes
-        # maintenance.
+        # maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or
+        # MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information,
+        # see  Maintenance policies.
         # Corresponds to the JSON property `maintenancePolicy`
         # @return [String]
         attr_accessor :maintenance_policy
@@ -19624,7 +19821,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_nodes
       
-        # The autoscaling mode.
+        # The autoscaling mode. Set to one of: ON, OFF, or ONLY_SCALE_OUT. For more
+        # information, see  Autoscaler modes.
         # Corresponds to the JSON property `mode`
         # @return [String]
         attr_accessor :mode
@@ -22673,6 +22871,8 @@ module Google
         # Only one of defaultRouteAction or defaultUrlRedirect must be set.
         # UrlMaps for external HTTP(S) load balancers support only the urlRewrite action
         # within a pathMatcher's defaultRouteAction.
+        # Not supported when the backend service is referenced by a URL map that is
+        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `defaultRouteAction`
         # @return [Google::Apis::ComputeBeta::HttpRouteAction]
         attr_accessor :default_route_action
@@ -22695,6 +22895,8 @@ module Google
         # the specified resource default_service:
         # - compute.backendBuckets.use
         # - compute.backendServices.use
+        # pathMatchers[].defaultService is the only option available when the URL map is
+        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `defaultService`
         # @return [String]
         attr_accessor :default_service
@@ -22728,6 +22930,8 @@ module Google
         # For example: a pathRule with a path /a/b/c/* will match before /a/b/*
         # irrespective of the order in which those paths appear in this list.
         # Within a given pathMatcher, only one of pathRules or routeRules must be set.
+        # Not supported when the backend service is referenced by a URL map that is
+        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `pathRules`
         # @return [Array<Google::Apis::ComputeBeta::PathRule>]
         attr_accessor :path_rules
@@ -22736,6 +22940,8 @@ module Google
         # route matching and routing actions are desired. routeRules are evaluated in
         # order of priority, from the lowest to highest number.
         # Within a given pathMatcher, you can set only one of pathRules or routeRules.
+        # Not supported when the backend service is referenced by a URL map that is
+        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `routeRules`
         # @return [Array<Google::Apis::ComputeBeta::HttpRouteRule>]
         attr_accessor :route_rules
@@ -23130,7 +23336,8 @@ module Google
         attr_accessor :usage_export_location
       
         # [Output Only] The role this project has in a shared VPC configuration.
-        # Currently only HOST projects are differentiated.
+        # Currently, only projects with the host role, which is specified by the value
+        # HOST, are differentiated.
         # Corresponds to the JSON property `xpnProjectStatus`
         # @return [String]
         attr_accessor :xpn_project_status
@@ -24054,7 +24261,7 @@ module Google
         end
       end
       
-      # InstanceGroupManagers.applyUpdatesToInstances
+      # RegionInstanceGroupManagers.applyUpdatesToInstances
       class RegionInstanceGroupManagersApplyUpdatesRequest
         include Google::Apis::Core::Hashable
       
@@ -24812,6 +25019,10 @@ module Google
         # Traffic Director.
         # * urlMaps are used by external HTTP(S) load balancers and Traffic Director. *
         # regionUrlMaps are used by internal HTTP(S) load balancers.
+        # For a list of supported URL map features by load balancer type, see the  Load
+        # balancing features: Routing and traffic management table.
+        # For a list of supported URL map features for Traffic Director, see the
+        # Traffic Director features: Routing and traffic management table.
         # This resource defines mappings from host names and URL paths to either a
         # backend service or a backend bucket.
         # To use the global urlMaps resource, the backend service must have a
@@ -27749,7 +27960,7 @@ module Google
         # @return [String]
         attr_accessor :device_name
       
-        # Represents a customer-supplied encryption key
+        # The encryption key for the disk.
         # Corresponds to the JSON property `diskEncryptionKey`
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :disk_encryption_key
@@ -28554,6 +28765,7 @@ module Google
         # clientTlsPolicy only applies to a global BackendService with the
         # loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         # If left blank, communications are not encrypted.
+        # Note: This field currently has no impact.
         # Corresponds to the JSON property `clientTlsPolicy`
         # @return [String]
         attr_accessor :client_tls_policy
@@ -28570,6 +28782,7 @@ module Google
         # Only applies to a global BackendService with loadBalancingScheme set to
         # INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached
         # clientTlsPolicy with clientCertificate (mTLS mode).
+        # Note: This field currently has no impact.
         # Corresponds to the JSON property `subjectAltNames`
         # @return [Array<String>]
         attr_accessor :subject_alt_names
@@ -29037,7 +29250,16 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # Represents a customer-supplied encryption key
+        # Encrypts the snapshot using a customer-supplied encryption key.
+        # After you encrypt a snapshot using a customer-supplied key, you must provide
+        # the same key if you use the snapshot later. For example, you must provide the
+        # encryption key when you create a disk from the encrypted snapshot in a future
+        # request.
+        # Customer-supplied encryption keys do not protect access to metadata of the
+        # snapshot.
+        # If you do not provide an encryption key when creating the snapshot, then the
+        # snapshot will be encrypted using an automatically generated key and you do not
+        # need to provide a key to use the snapshot later.
         # Corresponds to the JSON property `snapshotEncryptionKey`
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :snapshot_encryption_key
@@ -29047,7 +29269,8 @@ module Google
         # @return [String]
         attr_accessor :source_disk
       
-        # Represents a customer-supplied encryption key
+        # The customer-supplied encryption key of the source disk. Required if the
+        # source disk is protected by a customer-supplied encryption key.
         # Corresponds to the JSON property `sourceDiskEncryptionKey`
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :source_disk_encryption_key
@@ -29237,7 +29460,8 @@ module Google
       class SourceDiskEncryptionKey
         include Google::Apis::Core::Hashable
       
-        # Represents a customer-supplied encryption key
+        # The customer-supplied encryption key of the source disk. Required if the
+        # source disk is protected by a customer-supplied encryption key.
         # Corresponds to the JSON property `diskEncryptionKey`
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :disk_encryption_key
@@ -31860,6 +32084,7 @@ module Google
         # authorizationPolicy only applies to a global TargetHttpsProxy attached to
         # globalForwardingRules with the loadBalancingScheme set to
         # INTERNAL_SELF_MANAGED.
+        # Note: This field currently has no impact.
         # Corresponds to the JSON property `authorizationPolicy`
         # @return [String]
         attr_accessor :authorization_policy
@@ -31935,6 +32160,7 @@ module Google
         # globalForwardingRules with the loadBalancingScheme set to
         # INTERNAL_SELF_MANAGED.
         # If left blank, communications are not encrypted.
+        # Note: This field currently has no impact.
         # Corresponds to the JSON property `serverTlsPolicy`
         # @return [String]
         attr_accessor :server_tls_policy
@@ -32283,6 +32509,13 @@ module Google
         # @return [String]
         attr_accessor :nat_policy
       
+        # The URL of the network this target instance uses to forward traffic. If not
+        # specified, the traffic will be forwarded to the network that the default
+        # network interface belongs to.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -32308,6 +32541,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @nat_policy = args[:nat_policy] if args.key?(:nat_policy)
+          @network = args[:network] if args.key?(:network)
           @self_link = args[:self_link] if args.key?(:self_link)
           @zone = args[:zone] if args.key?(:zone)
         end
@@ -34248,6 +34482,10 @@ module Google
       # Traffic Director.
       # * urlMaps are used by external HTTP(S) load balancers and Traffic Director. *
       # regionUrlMaps are used by internal HTTP(S) load balancers.
+      # For a list of supported URL map features by load balancer type, see the  Load
+      # balancing features: Routing and traffic management table.
+      # For a list of supported URL map features for Traffic Director, see the
+      # Traffic Director features: Routing and traffic management table.
       # This resource defines mappings from host names and URL paths to either a
       # backend service or a backend bucket.
       # To use the global urlMaps resource, the backend service must have a
@@ -34271,6 +34509,9 @@ module Google
         # Only one of defaultRouteAction or defaultUrlRedirect must be set.
         # UrlMaps for external HTTP(S) load balancers support only the urlRewrite action
         # within defaultRouteAction.
+        # defaultRouteAction has no effect when the backend service is referenced by a
+        # URL map that is bound to target gRPC proxy that has validateForProxyless field
+        # set to true.
         # Corresponds to the JSON property `defaultRouteAction`
         # @return [Google::Apis::ComputeBeta::HttpRouteAction]
         attr_accessor :default_route_action
@@ -34284,6 +34525,9 @@ module Google
         # specified.
         # Only one of defaultService, defaultUrlRedirect  or defaultRouteAction.
         # weightedBackendService must be set.
+        # defaultService has no effect when the backend service is referenced by a URL
+        # map that is bound to target gRPC proxy that has validateForProxyless field set
+        # to true.
         # Corresponds to the JSON property `defaultService`
         # @return [String]
         attr_accessor :default_service
@@ -34362,6 +34606,8 @@ module Google
         # The list of expected URL mapping tests. Request to update this UrlMap will
         # succeed only if all of the test cases pass. You can specify a maximum of 100
         # tests per UrlMap.
+        # Not supported when the backend service is referenced by a URL map that is
+        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `tests`
         # @return [Array<Google::Apis::ComputeBeta::UrlMapTest>]
         attr_accessor :tests
@@ -34824,6 +35070,10 @@ module Google
         # Traffic Director.
         # * urlMaps are used by external HTTP(S) load balancers and Traffic Director. *
         # regionUrlMaps are used by internal HTTP(S) load balancers.
+        # For a list of supported URL map features by load balancer type, see the  Load
+        # balancing features: Routing and traffic management table.
+        # For a list of supported URL map features for Traffic Director, see the
+        # Traffic Director features: Routing and traffic management table.
         # This resource defines mappings from host names and URL paths to either a
         # backend service or a backend bucket.
         # To use the global urlMaps resource, the backend service must have a

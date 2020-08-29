@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/search-ads
     module DoubleclicksearchV2
       VERSION = 'V2'
-      REVISION = '20200723'
+      REVISION = '20200825'
 
       # View and manage your advertising data in DoubleClick Search
       AUTH_DOUBLECLICKSEARCH = 'https://www.googleapis.com/auth/doubleclicksearch'

@@ -47,9 +47,8 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -79,15 +78,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists operations that match the specified filter in the request. If the
-        # server doesn't support this method, it returns `UNIMPLEMENTED`.
-        # NOTE: the `name` binding allows API services to override the binding
-        # to use different resource name schemes, such as `users/*/operations`. To
-        # override the binding, API services can add a binding such as
-        # `"/v1/`name=users/*`/operations"` to their service configuration.
-        # For backwards compatibility, the default name includes the operations
-        # collection id, however overriding users must ensure the name binding
-        # is the parent resource, without the operations collection id.
+        # Lists operations that match the specified filter in the request. If the server
+        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
+        # binding allows API services to override the binding to use different resource
+        # name schemes, such as `users/*/operations`. To override the binding, API
+        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
+        # service configuration. For backwards compatibility, the default name includes
+        # the operations collection id, however overriding users must ensure the name
+        # binding is the parent resource, without the operations collection id.
         # @param [String] filter
         #   The standard list filter.
         # @param [String] name
@@ -126,9 +124,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -158,15 +155,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists operations that match the specified filter in the request. If the
-        # server doesn't support this method, it returns `UNIMPLEMENTED`.
-        # NOTE: the `name` binding allows API services to override the binding
-        # to use different resource name schemes, such as `users/*/operations`. To
-        # override the binding, API services can add a binding such as
-        # `"/v1/`name=users/*`/operations"` to their service configuration.
-        # For backwards compatibility, the default name includes the operations
-        # collection id, however overriding users must ensure the name binding
-        # is the parent resource, without the operations collection id.
+        # Lists operations that match the specified filter in the request. If the server
+        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
+        # binding allows API services to override the binding to use different resource
+        # name schemes, such as `users/*/operations`. To override the binding, API
+        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
+        # service configuration. For backwards compatibility, the default name includes
+        # the operations collection id, however overriding users must ensure the name
+        # binding is the parent resource, without the operations collection id.
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] filter
@@ -205,12 +201,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Performs asynchronous speech recognition: receive results via the
-        # google.longrunning.Operations interface. Returns either an
-        # `Operation.error` or an `Operation.response` which contains
-        # a `LongRunningRecognizeResponse` message.
-        # For more information on asynchronous speech recognition, see the
-        # [how-to](https://cloud.google.com/speech-to-text/docs/async-recognize).
+        # Performs asynchronous speech recognition: receive results via the google.
+        # longrunning.Operations interface. Returns either an `Operation.error` or an `
+        # Operation.response` which contains a `LongRunningRecognizeResponse` message.
+        # For more information on asynchronous speech recognition, see the [how-to](
+        # https://cloud.google.com/speech-to-text/docs/async-recognize).
         # @param [Google::Apis::SpeechV1p1beta1::LongRunningRecognizeRequest] long_running_recognize_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -240,8 +235,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Performs synchronous speech recognition: receive results after all audio
-        # has been sent and processed.
+        # Performs synchronous speech recognition: receive results after all audio has
+        # been sent and processed.
         # @param [Google::Apis::SpeechV1p1beta1::RecognizeRequest] recognize_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

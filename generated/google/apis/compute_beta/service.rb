@@ -16767,7 +16767,9 @@ module Google
         # request.
         # @param [Google::Apis::ComputeBeta::SecurityPolicy] security_policy_object
         # @param [String] parent_id
-        #   Parent ID for this request.
+        #   Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]" if
+        #   the parent is a folder or "organizations/[ORGANIZATION_ID]" if the parent is
+        #   an organization.
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the

@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/maps/contact-sales/
     module PlayablelocationsV3
       VERSION = 'V3'
-      REVISION = '20200808'
+      REVISION = '20200826'
     end
   end
 end

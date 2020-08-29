@@ -352,6 +352,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendBucketCdnPolicyBypassCacheOnRequestHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendBucketCdnPolicyNegativeCachingPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -401,6 +407,12 @@ module Google
       end
       
       class BackendServiceCdnPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceCdnPolicyBypassCacheOnRequestHeader
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1043,6 +1055,12 @@ module Google
       end
       
       class ForwardingRuleReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ForwardingRuleServiceDirectoryRegistration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5786,6 +5804,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_nested_virtualization, as: 'enableNestedVirtualization'
+          property :threads_per_core, as: 'threadsPerCore'
         end
       end
       
@@ -6169,6 +6188,8 @@ module Google
       class BackendBucketCdnPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bypass_cache_on_request_headers, as: 'bypassCacheOnRequestHeaders', class: Google::Apis::ComputeAlpha::BackendBucketCdnPolicyBypassCacheOnRequestHeader, decorator: Google::Apis::ComputeAlpha::BackendBucketCdnPolicyBypassCacheOnRequestHeader::Representation
+      
           property :cache_mode, as: 'cacheMode'
           property :client_ttl, as: 'clientTtl'
           property :default_ttl, as: 'defaultTtl'
@@ -6177,8 +6198,16 @@ module Google
           collection :negative_caching_policy, as: 'negativeCachingPolicy', class: Google::Apis::ComputeAlpha::BackendBucketCdnPolicyNegativeCachingPolicy, decorator: Google::Apis::ComputeAlpha::BackendBucketCdnPolicyNegativeCachingPolicy::Representation
       
           property :request_coalescing, as: 'requestCoalescing'
+          property :serve_while_stale, as: 'serveWhileStale'
           property :signed_url_cache_max_age_sec, :numeric_string => true, as: 'signedUrlCacheMaxAgeSec'
           collection :signed_url_key_names, as: 'signedUrlKeyNames'
+        end
+      end
+      
+      class BackendBucketCdnPolicyBypassCacheOnRequestHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header_name, as: 'headerName'
         end
       end
       
@@ -6307,6 +6336,8 @@ module Google
       class BackendServiceCdnPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bypass_cache_on_request_headers, as: 'bypassCacheOnRequestHeaders', class: Google::Apis::ComputeAlpha::BackendServiceCdnPolicyBypassCacheOnRequestHeader, decorator: Google::Apis::ComputeAlpha::BackendServiceCdnPolicyBypassCacheOnRequestHeader::Representation
+      
           property :cache_key_policy, as: 'cacheKeyPolicy', class: Google::Apis::ComputeAlpha::CacheKeyPolicy, decorator: Google::Apis::ComputeAlpha::CacheKeyPolicy::Representation
       
           property :cache_mode, as: 'cacheMode'
@@ -6317,8 +6348,16 @@ module Google
           collection :negative_caching_policy, as: 'negativeCachingPolicy', class: Google::Apis::ComputeAlpha::BackendServiceCdnPolicyNegativeCachingPolicy, decorator: Google::Apis::ComputeAlpha::BackendServiceCdnPolicyNegativeCachingPolicy::Representation
       
           property :request_coalescing, as: 'requestCoalescing'
+          property :serve_while_stale, as: 'serveWhileStale'
           property :signed_url_cache_max_age_sec, :numeric_string => true, as: 'signedUrlCacheMaxAgeSec'
           collection :signed_url_key_names, as: 'signedUrlKeyNames'
+        end
+      end
+      
+      class BackendServiceCdnPolicyBypassCacheOnRequestHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header_name, as: 'headerName'
         end
       end
       
@@ -6825,6 +6864,7 @@ module Google
           property :region, as: 'region'
           collection :replica_zones, as: 'replicaZones'
           collection :resource_policies, as: 'resourcePolicies'
+          property :satisfies_physical_zone_separation, as: 'satisfiesPhysicalZoneSeparation'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :size_gb, :numeric_string => true, as: 'sizeGb'
@@ -6836,6 +6876,8 @@ module Google
           property :source_image_id, as: 'sourceImageId'
           property :source_in_place_snapshot, as: 'sourceInPlaceSnapshot'
           property :source_in_place_snapshot_id, as: 'sourceInPlaceSnapshotId'
+          property :source_instant_snapshot, as: 'sourceInstantSnapshot'
+          property :source_instant_snapshot_id, as: 'sourceInstantSnapshotId'
           property :source_snapshot, as: 'sourceSnapshot'
           property :source_snapshot_encryption_key, as: 'sourceSnapshotEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
@@ -7464,6 +7506,8 @@ module Google
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
+          collection :service_directory_registrations, as: 'serviceDirectoryRegistrations', class: Google::Apis::ComputeAlpha::ForwardingRuleServiceDirectoryRegistration, decorator: Google::Apis::ComputeAlpha::ForwardingRuleServiceDirectoryRegistration::Representation
+      
           property :service_label, as: 'serviceLabel'
           property :service_name, as: 'serviceName'
           property :subnetwork, as: 'subnetwork'
@@ -7540,6 +7584,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :forwarding_rule, as: 'forwardingRule'
+        end
+      end
+      
+      class ForwardingRuleServiceDirectoryRegistration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :namespace, as: 'namespace'
+          property :service, as: 'service'
         end
       end
       
@@ -8408,6 +8460,7 @@ module Google
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeAlpha::ReservationAffinity, decorator: Google::Apis::ComputeAlpha::ReservationAffinity::Representation
       
           collection :resource_policies, as: 'resourcePolicies'
+          property :satisfies_physical_zone_separation, as: 'satisfiesPhysicalZoneSeparation'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeAlpha::Scheduling, decorator: Google::Apis::ComputeAlpha::Scheduling::Representation
       
           property :self_link, as: 'selfLink'
@@ -9406,9 +9459,11 @@ module Google
           property :customer_router_ip_address, as: 'customerRouterIpAddress'
           property :description, as: 'description'
           property :edge_availability_domain, as: 'edgeAvailabilityDomain'
+          property :encryption, as: 'encryption'
           property :google_reference_id, as: 'googleReferenceId'
           property :id, :numeric_string => true, as: 'id'
           property :interconnect, as: 'interconnect'
+          collection :ipsec_internal_addresses, as: 'ipsecInternalAddresses'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
@@ -10775,6 +10830,7 @@ module Google
           collection :instances, as: 'instances'
           property :name, as: 'name'
           property :node_type, as: 'nodeType'
+          property :satisfies_physical_zone_separation, as: 'satisfiesPhysicalZoneSeparation'
           property :server_binding, as: 'serverBinding', class: Google::Apis::ComputeAlpha::ServerBinding, decorator: Google::Apis::ComputeAlpha::ServerBinding::Representation
       
           property :server_id, as: 'serverId'
@@ -11796,7 +11852,9 @@ module Google
       class PublicAdvertisedPrefixPublicDelegatedPrefix
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_range, as: 'ipRange'
           property :name, as: 'name'
+          property :project, as: 'project'
           property :region, as: 'region'
           property :status, as: 'status'
         end
@@ -11974,6 +12032,7 @@ module Google
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :status, as: 'status'
+          property :supports_physical_zone_separation, as: 'supportsPhysicalZoneSeparation'
           collection :zones, as: 'zones'
         end
       end
@@ -13652,6 +13711,7 @@ module Google
           collection :license_codes, as: 'licenseCodes'
           collection :licenses, as: 'licenses'
           property :name, as: 'name'
+          property :satisfies_physical_zone_separation, as: 'satisfiesPhysicalZoneSeparation'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :snapshot_encryption_key, as: 'snapshotEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
@@ -15486,6 +15546,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
+          property :interconnect_attachment, as: 'interconnectAttachment'
           property :ip_address, as: 'ipAddress'
         end
       end
@@ -15730,6 +15791,7 @@ module Google
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
+          property :supports_physical_zone_separation, as: 'supportsPhysicalZoneSeparation'
         end
       end
       

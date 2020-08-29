@@ -328,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendBucketCdnPolicyBypassCacheOnRequestHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendBucketCdnPolicyNegativeCachingPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -377,6 +383,12 @@ module Google
       end
       
       class BackendServiceCdnPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceCdnPolicyBypassCacheOnRequestHeader
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -941,6 +953,12 @@ module Google
       end
       
       class ForwardingRuleReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ForwardingRuleServiceDirectoryRegistration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5570,6 +5588,8 @@ module Google
       class BackendBucketCdnPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bypass_cache_on_request_headers, as: 'bypassCacheOnRequestHeaders', class: Google::Apis::ComputeBeta::BackendBucketCdnPolicyBypassCacheOnRequestHeader, decorator: Google::Apis::ComputeBeta::BackendBucketCdnPolicyBypassCacheOnRequestHeader::Representation
+      
           property :cache_mode, as: 'cacheMode'
           property :client_ttl, as: 'clientTtl'
           property :default_ttl, as: 'defaultTtl'
@@ -5577,8 +5597,16 @@ module Google
           property :negative_caching, as: 'negativeCaching'
           collection :negative_caching_policy, as: 'negativeCachingPolicy', class: Google::Apis::ComputeBeta::BackendBucketCdnPolicyNegativeCachingPolicy, decorator: Google::Apis::ComputeBeta::BackendBucketCdnPolicyNegativeCachingPolicy::Representation
       
+          property :serve_while_stale, as: 'serveWhileStale'
           property :signed_url_cache_max_age_sec, :numeric_string => true, as: 'signedUrlCacheMaxAgeSec'
           collection :signed_url_key_names, as: 'signedUrlKeyNames'
+        end
+      end
+      
+      class BackendBucketCdnPolicyBypassCacheOnRequestHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header_name, as: 'headerName'
         end
       end
       
@@ -5705,6 +5733,8 @@ module Google
       class BackendServiceCdnPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bypass_cache_on_request_headers, as: 'bypassCacheOnRequestHeaders', class: Google::Apis::ComputeBeta::BackendServiceCdnPolicyBypassCacheOnRequestHeader, decorator: Google::Apis::ComputeBeta::BackendServiceCdnPolicyBypassCacheOnRequestHeader::Representation
+      
           property :cache_key_policy, as: 'cacheKeyPolicy', class: Google::Apis::ComputeBeta::CacheKeyPolicy, decorator: Google::Apis::ComputeBeta::CacheKeyPolicy::Representation
       
           property :cache_mode, as: 'cacheMode'
@@ -5714,8 +5744,16 @@ module Google
           property :negative_caching, as: 'negativeCaching'
           collection :negative_caching_policy, as: 'negativeCachingPolicy', class: Google::Apis::ComputeBeta::BackendServiceCdnPolicyNegativeCachingPolicy, decorator: Google::Apis::ComputeBeta::BackendServiceCdnPolicyNegativeCachingPolicy::Representation
       
+          property :serve_while_stale, as: 'serveWhileStale'
           property :signed_url_cache_max_age_sec, :numeric_string => true, as: 'signedUrlCacheMaxAgeSec'
           collection :signed_url_key_names, as: 'signedUrlKeyNames'
+        end
+      end
+      
+      class BackendServiceCdnPolicyBypassCacheOnRequestHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header_name, as: 'headerName'
         end
       end
       
@@ -6171,6 +6209,7 @@ module Google
           property :source_snapshot_encryption_key, as: 'sourceSnapshotEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
           property :source_snapshot_id, as: 'sourceSnapshotId'
+          property :source_storage_object, as: 'sourceStorageObject'
           property :status, as: 'status'
           property :storage_type, as: 'storageType'
           property :type, as: 'type'
@@ -6690,6 +6729,8 @@ module Google
           collection :ports, as: 'ports'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          collection :service_directory_registrations, as: 'serviceDirectoryRegistrations', class: Google::Apis::ComputeBeta::ForwardingRuleServiceDirectoryRegistration, decorator: Google::Apis::ComputeBeta::ForwardingRuleServiceDirectoryRegistration::Representation
+      
           property :service_label, as: 'serviceLabel'
           property :service_name, as: 'serviceName'
           property :subnetwork, as: 'subnetwork'
@@ -6765,6 +6806,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :forwarding_rule, as: 'forwardingRule'
+        end
+      end
+      
+      class ForwardingRuleServiceDirectoryRegistration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :namespace, as: 'namespace'
+          property :service, as: 'service'
         end
       end
       
@@ -12875,6 +12924,7 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :nat_policy, as: 'natPolicy'
+          property :network, as: 'network'
           property :self_link, as: 'selfLink'
           property :zone, as: 'zone'
         end

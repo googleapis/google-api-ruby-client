@@ -3532,6 +3532,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Screenshot
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityPoliciesListPreconfiguredExpressionSetsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -11192,6 +11198,14 @@ module Google
           property :key, as: 'key'
           property :operator, as: 'operator'
           collection :values, as: 'values'
+        end
+      end
+      
+      class Screenshot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contents, as: 'contents'
+          property :kind, as: 'kind'
         end
       end
       

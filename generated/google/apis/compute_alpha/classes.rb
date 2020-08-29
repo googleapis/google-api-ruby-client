@@ -1086,6 +1086,13 @@ module Google
         attr_accessor :enable_nested_virtualization
         alias_method :enable_nested_virtualization?, :enable_nested_virtualization
       
+        # The number of threads per physical core. To disable simultaneous
+        # multithreading (SMT) set this to 1. If unset, the maximum number of threads
+        # supported per core by the underlying processor is assumed.
+        # Corresponds to the JSON property `threadsPerCore`
+        # @return [Fixnum]
+        attr_accessor :threads_per_core
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1093,6 +1100,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable_nested_virtualization = args[:enable_nested_virtualization] if args.key?(:enable_nested_virtualization)
+          @threads_per_core = args[:threads_per_core] if args.key?(:threads_per_core)
         end
       end
       
@@ -1275,7 +1283,20 @@ module Google
         # @return [String]
         attr_accessor :device_name
       
-        # Represents a customer-supplied encryption key
+        # Encrypts or decrypts a disk using a customer-supplied encryption key.
+        # If you are creating a new disk, this field encrypts the new disk using an
+        # encryption key that you provide. If you are attaching an existing disk that is
+        # already encrypted, this field decrypts the disk using the customer-supplied
+        # encryption key.
+        # If you encrypt a disk using a customer-supplied key, you must provide the same
+        # key again when you attempt to use this resource at a later time. For example,
+        # you must provide the key when you create a snapshot or an image from the disk
+        # or when you attach the disk to a virtual machine instance.
+        # If you do not provide an encryption key, then the disk will be encrypted using
+        # an automatically generated key and you do not need to provide a key to use the
+        # disk later.
+        # Instance templates do not store customer-supplied encryption keys, so you
+        # cannot use your own keys to encrypt disks in a managed instance group.
         # Corresponds to the JSON property `diskEncryptionKey`
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :disk_encryption_key
@@ -1503,7 +1524,11 @@ module Google
         # @return [String]
         attr_accessor :source_image
       
-        # Represents a customer-supplied encryption key
+        # The customer-supplied encryption key of the source image. Required if the
+        # source image is protected by a customer-supplied encryption key.
+        # Instance templates do not store customer-supplied encryption keys, so you
+        # cannot create disks for instances in a managed instance group if the source
+        # images are encrypted with your own keys.
         # Corresponds to the JSON property `sourceImageEncryptionKey`
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :source_image_encryption_key
@@ -1519,7 +1544,7 @@ module Google
         # @return [String]
         attr_accessor :source_snapshot
       
-        # Represents a customer-supplied encryption key
+        # The customer-supplied encryption key of the source snapshot.
         # Corresponds to the JSON property `sourceSnapshotEncryptionKey`
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :source_snapshot_encryption_key
@@ -2895,6 +2920,13 @@ module Google
       class BackendBucketCdnPolicy
         include Google::Apis::Core::Hashable
       
+        # Bypass the cache when the specified request headers are matched - e.g. Pragma
+        # or Authorization headers. Up to 5 headers can be specified. The cache is
+        # bypassed for all cdnPolicy.cacheMode settings.
+        # Corresponds to the JSON property `bypassCacheOnRequestHeaders`
+        # @return [Array<Google::Apis::ComputeAlpha::BackendBucketCdnPolicyBypassCacheOnRequestHeader>]
+        attr_accessor :bypass_cache_on_request_headers
+      
         # 
         # Corresponds to the JSON property `cacheMode`
         # @return [String]
@@ -2962,6 +2994,18 @@ module Google
         attr_accessor :request_coalescing
         alias_method :request_coalescing?, :request_coalescing
       
+        # Serve existing content from the cache (if available) when revalidating content
+        # with the origin, or when an error is encountered when refreshing the cache.
+        # This setting defines the default "max-stale" duration for any cached responses
+        # that do not specify a max-stale directive. Stale responses that exceed the TTL
+        # configured here will not be served. The default limit (max-stale) is 86400s (1
+        # day), which will allow stale content to be served up to this limit beyond the
+        # max-age (or s-max-age) of a cached response. The maximum allowed value is
+        # 604800(1 week). Set this to zero (0) to disable serve-while-stale.
+        # Corresponds to the JSON property `serveWhileStale`
+        # @return [Fixnum]
+        attr_accessor :serve_while_stale
+      
         # Maximum number of seconds the response to a signed URL request will be
         # considered fresh. After this time period, the response will be revalidated
         # before being served. Defaults to 1hr (3600s). When serving responses to signed
@@ -2984,6 +3028,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bypass_cache_on_request_headers = args[:bypass_cache_on_request_headers] if args.key?(:bypass_cache_on_request_headers)
           @cache_mode = args[:cache_mode] if args.key?(:cache_mode)
           @client_ttl = args[:client_ttl] if args.key?(:client_ttl)
           @default_ttl = args[:default_ttl] if args.key?(:default_ttl)
@@ -2991,8 +3036,31 @@ module Google
           @negative_caching = args[:negative_caching] if args.key?(:negative_caching)
           @negative_caching_policy = args[:negative_caching_policy] if args.key?(:negative_caching_policy)
           @request_coalescing = args[:request_coalescing] if args.key?(:request_coalescing)
+          @serve_while_stale = args[:serve_while_stale] if args.key?(:serve_while_stale)
           @signed_url_cache_max_age_sec = args[:signed_url_cache_max_age_sec] if args.key?(:signed_url_cache_max_age_sec)
           @signed_url_key_names = args[:signed_url_key_names] if args.key?(:signed_url_key_names)
+        end
+      end
+      
+      # Bypass the cache when the specified request headers are present, e.g. Pragma
+      # or Authorization headers. Values are case insensitive. The presence of such a
+      # header overrides the cache_mode setting.
+      class BackendBucketCdnPolicyBypassCacheOnRequestHeader
+        include Google::Apis::Core::Hashable
+      
+        # The header field name to match on when bypassing cache. Values are case-
+        # insensitive.
+        # Corresponds to the JSON property `headerName`
+        # @return [String]
+        attr_accessor :header_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header_name = args[:header_name] if args.key?(:header_name)
         end
       end
       
@@ -3162,6 +3230,8 @@ module Google
       
         # If set to 0, the cookie is non-persistent and lasts only until the end of the
         # browser session (or equivalent). The maximum allowed value is one day (86,400).
+        # Not supported when the backend service is referenced by a URL map that is
+        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `affinityCookieTtlSec`
         # @return [Fixnum]
         attr_accessor :affinity_cookie_ttl_sec
@@ -3303,8 +3373,11 @@ module Google
         # HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED.
         # - A global backend service with the load_balancing_scheme set to
         # INTERNAL_SELF_MANAGED.
-        # If sessionAffinity is not NONE, and this field is not set to >MAGLEV or
+        # If sessionAffinity is not NONE, and this field is not set to MAGLEV or
         # RING_HASH, session affinity settings will not take effect.
+        # Only the default ROUND_ROBIN policy is supported when the backend service is
+        # referenced by a URL map that is bound to target gRPC proxy that has
+        # validateForProxyless field set to true.
         # Corresponds to the JSON property `localityLbPolicy`
         # @return [String]
         attr_accessor :locality_lb_policy
@@ -3361,6 +3434,8 @@ module Google
         # the chosen load balancer or Traffic Director configuration. Refer to the
         # documentation for the load balancer or for Traffic Director for more
         # information.
+        # Must be set to GRPC when the backend service is referenced by a URL map that
+        # is bound to target gRPC proxy.
         # Corresponds to the JSON property `protocol`
         # @return [String]
         attr_accessor :protocol
@@ -3404,6 +3479,8 @@ module Google
         # When the loadBalancingScheme is INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED,
         # possible values are NONE, CLIENT_IP, GENERATED_COOKIE, HEADER_FIELD, or
         # HTTP_COOKIE.
+        # Not supported when the backend service is referenced by a URL map that is
+        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `sessionAffinity`
         # @return [String]
         attr_accessor :session_affinity
@@ -3584,6 +3661,13 @@ module Google
       class BackendServiceCdnPolicy
         include Google::Apis::Core::Hashable
       
+        # Bypass the cache when the specified request headers are matched - e.g. Pragma
+        # or Authorization headers. Up to 5 headers can be specified. The cache is
+        # bypassed for all cdnPolicy.cacheMode settings.
+        # Corresponds to the JSON property `bypassCacheOnRequestHeaders`
+        # @return [Array<Google::Apis::ComputeAlpha::BackendServiceCdnPolicyBypassCacheOnRequestHeader>]
+        attr_accessor :bypass_cache_on_request_headers
+      
         # Message containing what to include in the cache key for a request for Cloud
         # CDN.
         # Corresponds to the JSON property `cacheKeyPolicy`
@@ -3657,6 +3741,18 @@ module Google
         attr_accessor :request_coalescing
         alias_method :request_coalescing?, :request_coalescing
       
+        # Serve existing content from the cache (if available) when revalidating content
+        # with the origin, or when an error is encountered when refreshing the cache.
+        # This setting defines the default "max-stale" duration for any cached responses
+        # that do not specify a max-stale directive. Stale responses that exceed the TTL
+        # configured here will not be served. The default limit (max-stale) is 86400s (1
+        # day), which will allow stale content to be served up to this limit beyond the
+        # max-age (or s-max-age) of a cached response. The maximum allowed value is
+        # 604800(1 week). Set this to zero (0) to disable serve-while-stale.
+        # Corresponds to the JSON property `serveWhileStale`
+        # @return [Fixnum]
+        attr_accessor :serve_while_stale
+      
         # Maximum number of seconds the response to a signed URL request will be
         # considered fresh. After this time period, the response will be revalidated
         # before being served. Defaults to 1hr (3600s). When serving responses to signed
@@ -3679,6 +3775,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bypass_cache_on_request_headers = args[:bypass_cache_on_request_headers] if args.key?(:bypass_cache_on_request_headers)
           @cache_key_policy = args[:cache_key_policy] if args.key?(:cache_key_policy)
           @cache_mode = args[:cache_mode] if args.key?(:cache_mode)
           @client_ttl = args[:client_ttl] if args.key?(:client_ttl)
@@ -3687,8 +3784,31 @@ module Google
           @negative_caching = args[:negative_caching] if args.key?(:negative_caching)
           @negative_caching_policy = args[:negative_caching_policy] if args.key?(:negative_caching_policy)
           @request_coalescing = args[:request_coalescing] if args.key?(:request_coalescing)
+          @serve_while_stale = args[:serve_while_stale] if args.key?(:serve_while_stale)
           @signed_url_cache_max_age_sec = args[:signed_url_cache_max_age_sec] if args.key?(:signed_url_cache_max_age_sec)
           @signed_url_key_names = args[:signed_url_key_names] if args.key?(:signed_url_key_names)
+        end
+      end
+      
+      # Bypass the cache when the specified request headers are present, e.g. Pragma
+      # or Authorization headers. Values are case insensitive. The presence of such a
+      # header overrides the cache_mode setting.
+      class BackendServiceCdnPolicyBypassCacheOnRequestHeader
+        include Google::Apis::Core::Hashable
+      
+        # The header field name to match on when bypassing cache. Values are case-
+        # insensitive.
+        # Corresponds to the JSON property `headerName`
+        # @return [String]
+        attr_accessor :header_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header_name = args[:header_name] if args.key?(:header_name)
         end
       end
       
@@ -5523,7 +5643,7 @@ module Google
         end
       end
       
-      # Represents a customer-supplied encryption key
+      # 
       class CustomerEncryptionKey
         include Google::Apis::Core::Hashable
       
@@ -5580,7 +5700,7 @@ module Google
       class CustomerEncryptionKeyProtectedDisk
         include Google::Apis::Core::Hashable
       
-        # Represents a customer-supplied encryption key
+        # Decrypts data associated with the disk with a customer-supplied encryption key.
         # Corresponds to the JSON property `diskEncryptionKey`
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :disk_encryption_key
@@ -5684,7 +5804,16 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Represents a customer-supplied encryption key
+        # Encrypts the disk using a customer-supplied encryption key.
+        # After you encrypt a disk with a customer-supplied key, you must provide the
+        # same key if you use the disk later (e.g. to create a disk snapshot, to create
+        # a disk image, to create a machine image, or to attach the disk to a virtual
+        # machine).
+        # Customer-supplied encryption keys do not protect access to metadata of the
+        # disk.
+        # If you do not provide an encryption key when creating the disk, then the disk
+        # will be encrypted using an automatically generated key and you do not need to
+        # provide a key to use the disk later.
         # Corresponds to the JSON property `diskEncryptionKey`
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :disk_encryption_key
@@ -5811,6 +5940,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
+        # [Output Only] Specifies whether this disk satisfies zone separation.
+        # Corresponds to the JSON property `satisfiesPhysicalZoneSeparation`
+        # @return [Boolean]
+        attr_accessor :satisfies_physical_zone_separation
+        alias_method :satisfies_physical_zone_separation?, :satisfies_physical_zone_separation
+      
         # [Output Only] Server-defined fully-qualified URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -5867,7 +6002,8 @@ module Google
         # @return [String]
         attr_accessor :source_image
       
-        # Represents a customer-supplied encryption key
+        # The customer-supplied encryption key of the source image. Required if the
+        # source image is protected by a customer-supplied encryption key.
         # Corresponds to the JSON property `sourceImageEncryptionKey`
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :source_image_encryption_key
@@ -5902,6 +6038,27 @@ module Google
         # @return [String]
         attr_accessor :source_in_place_snapshot_id
       
+        # The source instant snapshot used to create this disk. You can provide this as
+        # a partial or full URL to the resource. For example, the following are valid
+        # values:
+        # - https://www.googleapis.com/compute/v1/projects/project/zones/zone/
+        # instantSnapshots/instantSnapshot
+        # - projects/project/zones/zone/instantSnapshots/instantSnapshot
+        # - zones/zone/instantSnapshots/instantSnapshot
+        # Corresponds to the JSON property `sourceInstantSnapshot`
+        # @return [String]
+        attr_accessor :source_instant_snapshot
+      
+        # [Output Only] The unique ID of the instant snapshot used to create this disk.
+        # This value identifies the exact instant snapshot that was used to create this
+        # persistent disk. For example, if you created the persistent disk from an
+        # instant snapshot that was later deleted and recreated under the same name, the
+        # source instant snapshot ID would identify the exact version of the instant
+        # snapshot that was used.
+        # Corresponds to the JSON property `sourceInstantSnapshotId`
+        # @return [String]
+        attr_accessor :source_instant_snapshot_id
+      
         # The source snapshot used to create this disk. You can provide this as a
         # partial or full URL to the resource. For example, the following are valid
         # values:
@@ -5913,7 +6070,8 @@ module Google
         # @return [String]
         attr_accessor :source_snapshot
       
-        # Represents a customer-supplied encryption key
+        # The customer-supplied encryption key of the source snapshot. Required if the
+        # source snapshot is protected by a customer-supplied encryption key.
         # Corresponds to the JSON property `sourceSnapshotEncryptionKey`
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :source_snapshot_encryption_key
@@ -5995,6 +6153,7 @@ module Google
           @region = args[:region] if args.key?(:region)
           @replica_zones = args[:replica_zones] if args.key?(:replica_zones)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
+          @satisfies_physical_zone_separation = args[:satisfies_physical_zone_separation] if args.key?(:satisfies_physical_zone_separation)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
@@ -6005,6 +6164,8 @@ module Google
           @source_image_id = args[:source_image_id] if args.key?(:source_image_id)
           @source_in_place_snapshot = args[:source_in_place_snapshot] if args.key?(:source_in_place_snapshot)
           @source_in_place_snapshot_id = args[:source_in_place_snapshot_id] if args.key?(:source_in_place_snapshot_id)
+          @source_instant_snapshot = args[:source_instant_snapshot] if args.key?(:source_instant_snapshot)
+          @source_instant_snapshot_id = args[:source_instant_snapshot_id] if args.key?(:source_instant_snapshot_id)
           @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
           @source_snapshot_encryption_key = args[:source_snapshot_encryption_key] if args.key?(:source_snapshot_encryption_key)
           @source_snapshot_id = args[:source_snapshot_id] if args.key?(:source_snapshot_id)
@@ -8443,6 +8604,8 @@ module Google
         # IP address that you can use. For detailed information, refer to [IP address
         # specifications](/load-balancing/docs/forwarding-rule-concepts#
         # ip_address_specifications).
+        # Must be set to `0.0.0.0` when the target is targetGrpcProxy that has
+        # validateForProxyless field set to true.
         # Corresponds to the JSON property `IPAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -8581,7 +8744,7 @@ module Google
       
         # Opaque filter criteria used by Loadbalancer to restrict routing configuration
         # to a limited set of xDS compliant clients. In their xDS requests to
-        # Loadbalancer, xDS clients present node metadata. If a match takes place, the
+        # Loadbalancer, xDS clients present node metadata. When there is a match, the
         # relevant configuration is made available to those proxies. Otherwise, all the
         # resources (e.g. TargetHttpProxy, UrlMap) referenced by the ForwardingRule will
         # not be visible to those proxies.
@@ -8589,7 +8752,8 @@ module Google
         # MATCH_ANY, at least one of the filterLabels must match the corresponding label
         # provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then
         # all of its filterLabels must match with corresponding labels provided in the
-        # metadata.
+        # metadata. If multiple metadataFilters are specified, all of them need to be
+        # satisfied in order to be considered a match.
         # metadataFilters specified here will be applifed before those specified in the
         # UrlMap that this ForwardingRule references.
         # metadataFilters only applies to Loadbalancers that have their
@@ -8680,6 +8844,12 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
+        # Service Directory resources to register this forwarding rule with. Currently,
+        # only supports a single Service Directory resource.
+        # Corresponds to the JSON property `serviceDirectoryRegistrations`
+        # @return [Array<Google::Apis::ComputeAlpha::ForwardingRuleServiceDirectoryRegistration>]
+        attr_accessor :service_directory_registrations
+      
         # An optional prefix to the service name for this Forwarding Rule. If specified,
         # the prefix is the first label of the fully qualified service name.
         # The label must be 1-63 characters long, and comply with RFC1035. Specifically,
@@ -8749,6 +8919,7 @@ module Google
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @service_directory_registrations = args[:service_directory_registrations] if args.key?(:service_directory_registrations)
           @service_label = args[:service_label] if args.key?(:service_label)
           @service_name = args[:service_name] if args.key?(:service_name)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
@@ -9013,6 +9184,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
+        end
+      end
+      
+      # Describes the auto-registration of the Forwarding Rule to Service Directory.
+      # The region and project of the Service Directory resource generated from this
+      # registration will be the same as this Forwarding Rule.
+      class ForwardingRuleServiceDirectoryRegistration
+        include Google::Apis::Core::Hashable
+      
+        # Service Directory namespace to register the forwarding rule under.
+        # Corresponds to the JSON property `namespace`
+        # @return [String]
+        attr_accessor :namespace
+      
+        # Service Directory service to register the forwarding rule under.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @namespace = args[:namespace] if args.key?(:namespace)
+          @service = args[:service] if args.key?(:service)
         end
       end
       
@@ -10622,6 +10820,8 @@ module Google
         # port numbers in the format host:port. * matches any string of ([a-z0-9-.]*).
         # In that case, * must be the first character and must be followed in the
         # pattern by either - or ..
+        # * based matching is not supported when the URL map is bound to target gRPC
+        # proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `hosts`
         # @return [Array<String>]
         attr_accessor :hosts
@@ -11565,13 +11765,14 @@ module Google
       
         # Opaque filter criteria used by Loadbalancer to restrict routing configuration
         # to a limited set of xDS compliant clients. In their xDS requests to
-        # Loadbalancer, xDS clients present node metadata. If a match takes place, the
+        # Loadbalancer, xDS clients present node metadata. When there is a match, the
         # relevant routing configuration is made available to those proxies.
         # For each metadataFilter in this list, if its filterMatchCriteria is set to
         # MATCH_ANY, at least one of the filterLabels must match the corresponding label
         # provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then
         # all of its filterLabels must match with corresponding labels provided in the
-        # metadata.
+        # metadata. If multiple metadataFilters are specified, all of them need to be
+        # satisfied in order to be considered a match.
         # metadataFilters specified here will be applied after those specified in
         # ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to.
         # metadataFilters only applies to Loadbalancers that have their
@@ -11904,7 +12105,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # Represents a customer-supplied encryption key
+        # Encrypts the image using a customer-supplied encryption key.
+        # After you encrypt an image with a customer-supplied key, you must provide the
+        # same key if you use the image later (e.g. to create a disk from the image).
+        # Customer-supplied encryption keys do not protect access to metadata of the
+        # disk.
+        # If you do not provide an encryption key when creating the image, then the disk
+        # will be encrypted using an automatically generated key and you do not need to
+        # provide a key to use the image later.
         # Corresponds to the JSON property `imageEncryptionKey`
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :image_encryption_key
@@ -11984,7 +12192,8 @@ module Google
         # @return [String]
         attr_accessor :source_disk
       
-        # Represents a customer-supplied encryption key
+        # The customer-supplied encryption key of the source disk. Required if the
+        # source disk is protected by a customer-supplied encryption key.
         # Corresponds to the JSON property `sourceDiskEncryptionKey`
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :source_disk_encryption_key
@@ -12007,7 +12216,8 @@ module Google
         # @return [String]
         attr_accessor :source_image
       
-        # Represents a customer-supplied encryption key
+        # The customer-supplied encryption key of the source image. Required if the
+        # source image is protected by a customer-supplied encryption key.
         # Corresponds to the JSON property `sourceImageEncryptionKey`
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :source_image_encryption_key
@@ -12031,7 +12241,8 @@ module Google
         # @return [String]
         attr_accessor :source_snapshot
       
-        # Represents a customer-supplied encryption key
+        # The customer-supplied encryption key of the source snapshot. Required if the
+        # source snapshot is protected by a customer-supplied encryption key.
         # Corresponds to the JSON property `sourceSnapshotEncryptionKey`
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :source_snapshot_encryption_key
@@ -12653,7 +12864,19 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # Represents a customer-supplied encryption key
+        # Encrypts or decrypts data for an instance with a customer-supplied encryption
+        # key.
+        # If you are creating a new instance, this field encrypts the local SSD and in-
+        # memory contents of the instance using a key that you provide.
+        # If you are restarting an instance protected with a customer-supplied
+        # encryption key, you must provide the correct key in order to successfully
+        # restart the instance.
+        # If you do not provide an encryption key when creating the instance, then the
+        # local SSD and in-memory contents will be encrypted using an automatically
+        # generated key and you do not need to provide a key to start the instance later.
+        # Instance templates do not store customer-supplied encryption keys, so you
+        # cannot use your own keys to encrypt local SSDs and in-memory content in a
+        # managed instance group.
         # Corresponds to the JSON property `instanceEncryptionKey`
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :instance_encryption_key
@@ -12768,6 +12991,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
+        # [Output Only] Specifies whether this instance satisfies zone separation.
+        # Corresponds to the JSON property `satisfiesPhysicalZoneSeparation`
+        # @return [Boolean]
+        attr_accessor :satisfies_physical_zone_separation
+        alias_method :satisfies_physical_zone_separation?, :satisfies_physical_zone_separation
+      
         # Sets the scheduling options for an Instance. NextID: 12
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeAlpha::Scheduling]
@@ -12819,7 +13048,7 @@ module Google
         # @return [String]
         attr_accessor :source_machine_image
       
-        # Represents a customer-supplied encryption key
+        # Source GMI encryption key when creating an instance from GMI.
         # Corresponds to the JSON property `sourceMachineImageEncryptionKey`
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :source_machine_image_encryption_key
@@ -12897,6 +13126,7 @@ module Google
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
+          @satisfies_physical_zone_separation = args[:satisfies_physical_zone_separation] if args.key?(:satisfies_physical_zone_separation)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
@@ -16038,7 +16268,11 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::CustomerEncryptionKeyProtectedDisk>]
         attr_accessor :disks
       
-        # Represents a customer-supplied encryption key
+        # Decrypts data associated with an instance that is protected with a customer-
+        # supplied encryption key.
+        # If the instance you are starting is protected with a customer-supplied
+        # encryption key, the correct key must be provided otherwise the instance resume
+        # will not succeed.
         # Corresponds to the JSON property `instanceEncryptionKey`
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :instance_encryption_key
@@ -16297,7 +16531,11 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::CustomerEncryptionKeyProtectedDisk>]
         attr_accessor :disks
       
-        # Represents a customer-supplied encryption key
+        # Decrypts data associated with an instance that is protected with a customer-
+        # supplied encryption key.
+        # If the instance you are starting is protected with a customer-supplied
+        # encryption key, the correct key must be provided otherwise the instance start
+        # will not succeed.
         # Corresponds to the JSON property `instanceEncryptionKey`
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :instance_encryption_key
@@ -16643,6 +16881,11 @@ module Google
         # @return [String]
         attr_accessor :edge_availability_domain
       
+        # Indicates the user-supplied encryption option of this interconnect attachment.
+        # Corresponds to the JSON property `encryption`
+        # @return [String]
+        attr_accessor :encryption
+      
         # [Output Only] Google reference ID, to be used when raising support tickets
         # with Google or otherwise to debug backend connectivity issues. [Deprecated]
         # This field is not used.
@@ -16661,6 +16904,22 @@ module Google
         # Corresponds to the JSON property `interconnect`
         # @return [String]
         attr_accessor :interconnect
+      
+        # URL of addresses that have been reserved for the interconnect attachment, Used
+        # only for interconnect attachment that has the encryption option as IPSEC. The
+        # addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway
+        # over the interconnect attachment, if the attachment is configured to use an
+        # RFC 1918 IP address, then the VPN gateway?s IP address will be allocated from
+        # the IP address range specified here. For example, if the HA VPN gateway?s
+        # interface 0 is paired to this interconnect attachment, then an RFC 1918 IP
+        # address for the VPN gateway interface 0 will be allocated from the IP address
+        # specified for this interconnect attachment. If this field is not specified for
+        # interconnect attachment that has encryption option as IPSEC, later on when
+        # creating HA VPN gateway on this interconnect attachment, the HA VPN gateway's
+        # IP address will be allocated from regional external IP address pool.
+        # Corresponds to the JSON property `ipsecInternalAddresses`
+        # @return [Array<String>]
+        attr_accessor :ipsec_internal_addresses
       
         # [Output Only] Type of the resource. Always compute#interconnectAttachment for
         # interconnect attachments.
@@ -16820,9 +17079,11 @@ module Google
           @customer_router_ip_address = args[:customer_router_ip_address] if args.key?(:customer_router_ip_address)
           @description = args[:description] if args.key?(:description)
           @edge_availability_domain = args[:edge_availability_domain] if args.key?(:edge_availability_domain)
+          @encryption = args[:encryption] if args.key?(:encryption)
           @google_reference_id = args[:google_reference_id] if args.key?(:google_reference_id)
           @id = args[:id] if args.key?(:id)
           @interconnect = args[:interconnect] if args.key?(:interconnect)
+          @ipsec_internal_addresses = args[:ipsec_internal_addresses] if args.key?(:ipsec_internal_addresses)
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
@@ -18939,7 +19200,16 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Represents a customer-supplied encryption key
+        # Encrypts the machine image using a customer-supplied encryption key.
+        # After you encrypt a machine image using a customer-supplied key, you must
+        # provide the same key if you use the machine image later. For example, you must
+        # provide the encryption key when you create an instance from the encrypted
+        # machine image in a future request.
+        # Customer-supplied encryption keys do not protect access to metadata of the
+        # machine image.
+        # If you do not provide an encryption key when creating the machine image, then
+        # the machine image will be encrypted using an automatically generated key and
+        # you do not need to provide a key to use the machine image later.
         # Corresponds to the JSON property `machineImageEncryptionKey`
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :machine_image_encryption_key
@@ -21707,7 +21977,9 @@ module Google
         attr_accessor :location_hint
       
         # Specifies how to handle instances when a node in the group undergoes
-        # maintenance.
+        # maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or
+        # MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information,
+        # see  Maintenance policies.
         # Corresponds to the JSON property `maintenancePolicy`
         # @return [String]
         attr_accessor :maintenance_policy
@@ -21923,7 +22195,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_nodes
       
-        # The autoscaling mode.
+        # The autoscaling mode. Set to one of: ON, OFF, or ONLY_SCALE_OUT. For more
+        # information, see  Autoscaler modes.
         # Corresponds to the JSON property `mode`
         # @return [String]
         attr_accessor :mode
@@ -22121,6 +22394,12 @@ module Google
         # @return [String]
         attr_accessor :node_type
       
+        # [Output Only] Specifies whether this node satisfies zone separation.
+        # Corresponds to the JSON property `satisfiesPhysicalZoneSeparation`
+        # @return [Boolean]
+        attr_accessor :satisfies_physical_zone_separation
+        alias_method :satisfies_physical_zone_separation?, :satisfies_physical_zone_separation
+      
         # Binding properties for the physical server.
         # Corresponds to the JSON property `serverBinding`
         # @return [Google::Apis::ComputeAlpha::ServerBinding]
@@ -22148,6 +22427,7 @@ module Google
           @instances = args[:instances] if args.key?(:instances)
           @name = args[:name] if args.key?(:name)
           @node_type = args[:node_type] if args.key?(:node_type)
+          @satisfies_physical_zone_separation = args[:satisfies_physical_zone_separation] if args.key?(:satisfies_physical_zone_separation)
           @server_binding = args[:server_binding] if args.key?(:server_binding)
           @server_id = args[:server_id] if args.key?(:server_id)
           @status = args[:status] if args.key?(:status)
@@ -25101,6 +25381,8 @@ module Google
         # Only one of defaultRouteAction or defaultUrlRedirect must be set.
         # UrlMaps for external HTTP(S) load balancers support only the urlRewrite action
         # within a pathMatcher's defaultRouteAction.
+        # Not supported when the backend service is referenced by a URL map that is
+        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `defaultRouteAction`
         # @return [Google::Apis::ComputeAlpha::HttpRouteAction]
         attr_accessor :default_route_action
@@ -25123,6 +25405,8 @@ module Google
         # the specified resource default_service:
         # - compute.backendBuckets.use
         # - compute.backendServices.use
+        # pathMatchers[].defaultService is the only option available when the URL map is
+        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `defaultService`
         # @return [String]
         attr_accessor :default_service
@@ -25156,6 +25440,8 @@ module Google
         # For example: a pathRule with a path /a/b/c/* will match before /a/b/*
         # irrespective of the order in which those paths appear in this list.
         # Within a given pathMatcher, only one of pathRules or routeRules must be set.
+        # Not supported when the backend service is referenced by a URL map that is
+        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `pathRules`
         # @return [Array<Google::Apis::ComputeAlpha::PathRule>]
         attr_accessor :path_rules
@@ -25164,6 +25450,8 @@ module Google
         # route matching and routing actions are desired. routeRules are evaluated in
         # order of priority, from the lowest to highest number.
         # Within a given pathMatcher, you can set only one of pathRules or routeRules.
+        # Not supported when the backend service is referenced by a URL map that is
+        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `routeRules`
         # @return [Array<Google::Apis::ComputeAlpha::HttpRouteRule>]
         attr_accessor :route_rules
@@ -25751,7 +26039,8 @@ module Google
         attr_accessor :usage_export_location
       
         # [Output Only] The role this project has in a shared VPC configuration.
-        # Currently only HOST projects are differentiated.
+        # Currently, only projects with the host role, which is specified by the value
+        # HOST, are differentiated.
         # Corresponds to the JSON property `xpnProjectStatus`
         # @return [String]
         attr_accessor :xpn_project_status
@@ -26144,10 +26433,20 @@ module Google
       class PublicAdvertisedPrefixPublicDelegatedPrefix
         include Google::Apis::Core::Hashable
       
+        # The IP address range of the public delegated prefix
+        # Corresponds to the JSON property `ipRange`
+        # @return [String]
+        attr_accessor :ip_range
+      
         # The name of the public delegated prefix
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # The project number of the public delegated prefix
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
       
         # The region of the public delegated prefix if it is regional. If absent, the
         # prefix is global.
@@ -26168,7 +26467,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ip_range = args[:ip_range] if args.key?(:ip_range)
           @name = args[:name] if args.key?(:name)
+          @project = args[:project] if args.key?(:project)
           @region = args[:region] if args.key?(:region)
           @status = args[:status] if args.key?(:status)
         end
@@ -26850,6 +27151,12 @@ module Google
         # @return [String]
         attr_accessor :status
       
+        # [Output Only] Specifies whether this region supports physical zone separation.
+        # Corresponds to the JSON property `supportsPhysicalZoneSeparation`
+        # @return [Boolean]
+        attr_accessor :supports_physical_zone_separation
+        alias_method :supports_physical_zone_separation?, :supports_physical_zone_separation
+      
         # [Output Only] A list of zones available in this region, in the form of
         # resource URLs.
         # Corresponds to the JSON property `zones`
@@ -26872,6 +27179,7 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @status = args[:status] if args.key?(:status)
+          @supports_physical_zone_separation = args[:supports_physical_zone_separation] if args.key?(:supports_physical_zone_separation)
           @zones = args[:zones] if args.key?(:zones)
         end
       end
@@ -27503,7 +27811,7 @@ module Google
         end
       end
       
-      # InstanceGroupManagers.applyUpdatesToInstances
+      # RegionInstanceGroupManagers.applyUpdatesToInstances
       class RegionInstanceGroupManagersApplyUpdatesRequest
         include Google::Apis::Core::Hashable
       
@@ -28268,6 +28576,10 @@ module Google
         # Traffic Director.
         # * urlMaps are used by external HTTP(S) load balancers and Traffic Director. *
         # regionUrlMaps are used by internal HTTP(S) load balancers.
+        # For a list of supported URL map features by load balancer type, see the  Load
+        # balancing features: Routing and traffic management table.
+        # For a list of supported URL map features for Traffic Director, see the
+        # Traffic Director features: Routing and traffic management table.
         # This resource defines mappings from host names and URL paths to either a
         # backend service or a backend bucket.
         # To use the global urlMaps resource, the backend service must have a
@@ -31590,7 +31902,7 @@ module Google
         # @return [String]
         attr_accessor :device_name
       
-        # Represents a customer-supplied encryption key
+        # The encryption key for the disk.
         # Corresponds to the JSON property `diskEncryptionKey`
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :disk_encryption_key
@@ -32537,7 +32849,7 @@ module Google
       class SecurityPolicyRuleRateLimitOptions
         include Google::Apis::Core::Hashable
       
-        # Can only be specifed if the action for the rule is "rate_based_blacklist" If
+        # Can only be specified if the action for the rule is "rate_based_blacklist" If
         # specified, determines the time (in seconds) the traffic will continue to be
         # blocked by the rate limit after the rate falls below the threshold. The
         # default value is 0 seconds.
@@ -32610,6 +32922,7 @@ module Google
         # clientTlsPolicy only applies to a global BackendService with the
         # loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         # If left blank, communications are not encrypted.
+        # Note: This field currently has no impact.
         # Corresponds to the JSON property `clientTlsPolicy`
         # @return [String]
         attr_accessor :client_tls_policy
@@ -32632,6 +32945,7 @@ module Google
         # Only applies to a global BackendService with loadBalancingScheme set to
         # INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached
         # clientTlsPolicy with clientCertificate (mTLS mode).
+        # Note: This field currently has no impact.
         # Corresponds to the JSON property `subjectAltNames`
         # @return [Array<String>]
         attr_accessor :subject_alt_names
@@ -33382,6 +33696,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] Specifies whether this snapshot satisfies zone separation.
+        # Corresponds to the JSON property `satisfiesPhysicalZoneSeparation`
+        # @return [Boolean]
+        attr_accessor :satisfies_physical_zone_separation
+        alias_method :satisfies_physical_zone_separation?, :satisfies_physical_zone_separation
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -33392,7 +33712,16 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
-        # Represents a customer-supplied encryption key
+        # Encrypts the snapshot using a customer-supplied encryption key.
+        # After you encrypt a snapshot using a customer-supplied key, you must provide
+        # the same key if you use the snapshot later. For example, you must provide the
+        # encryption key when you create a disk from the encrypted snapshot in a future
+        # request.
+        # Customer-supplied encryption keys do not protect access to metadata of the
+        # snapshot.
+        # If you do not provide an encryption key when creating the snapshot, then the
+        # snapshot will be encrypted using an automatically generated key and you do not
+        # need to provide a key to use the snapshot later.
         # Corresponds to the JSON property `snapshotEncryptionKey`
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :snapshot_encryption_key
@@ -33402,7 +33731,8 @@ module Google
         # @return [String]
         attr_accessor :source_disk
       
-        # Represents a customer-supplied encryption key
+        # The customer-supplied encryption key of the source disk. Required if the
+        # source disk is protected by a customer-supplied encryption key.
         # Corresponds to the JSON property `sourceDiskEncryptionKey`
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :source_disk_encryption_key
@@ -33460,6 +33790,7 @@ module Google
           @license_codes = args[:license_codes] if args.key?(:license_codes)
           @licenses = args[:licenses] if args.key?(:licenses)
           @name = args[:name] if args.key?(:name)
+          @satisfies_physical_zone_separation = args[:satisfies_physical_zone_separation] if args.key?(:satisfies_physical_zone_separation)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @snapshot_encryption_key = args[:snapshot_encryption_key] if args.key?(:snapshot_encryption_key)
@@ -33594,7 +33925,8 @@ module Google
       class SourceDiskEncryptionKey
         include Google::Apis::Core::Hashable
       
-        # Represents a customer-supplied encryption key
+        # The customer-supplied encryption key of the source disk. Required if the
+        # source disk is protected by a customer-supplied encryption key.
         # Corresponds to the JSON property `diskEncryptionKey`
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :disk_encryption_key
@@ -36350,6 +36682,7 @@ module Google
         # authorizationPolicy only applies to a global TargetHttpsProxy attached to
         # globalForwardingRules with the loadBalancingScheme set to
         # INTERNAL_SELF_MANAGED.
+        # Note: This field currently has no impact.
         # Corresponds to the JSON property `authorizationPolicy`
         # @return [String]
         attr_accessor :authorization_policy
@@ -36437,6 +36770,7 @@ module Google
         # globalForwardingRules with the loadBalancingScheme set to
         # INTERNAL_SELF_MANAGED.
         # If left blank, communications are not encrypted.
+        # Note: This field currently has no impact.
         # Corresponds to the JSON property `serverTlsPolicy`
         # @return [String]
         attr_accessor :server_tls_policy
@@ -38985,13 +39319,13 @@ module Google
         include Google::Apis::Core::Hashable
       
         # [Output Only] The date when the maintenance will take place. This value is in
-        # RFC3339 text format.
+        # RFC3339 text format. DEPRECATED: Use start_time_window instead.
         # Corresponds to the JSON property `date`
         # @return [String]
         attr_accessor :date
       
         # [Output Only] The time when the maintenance will take place. This value is in
-        # RFC3339 text format.
+        # RFC3339 text format. DEPRECATED: Use start_time_window instead.
         # Corresponds to the JSON property `time`
         # @return [String]
         attr_accessor :time
@@ -39021,6 +39355,10 @@ module Google
       # Traffic Director.
       # * urlMaps are used by external HTTP(S) load balancers and Traffic Director. *
       # regionUrlMaps are used by internal HTTP(S) load balancers.
+      # For a list of supported URL map features by load balancer type, see the  Load
+      # balancing features: Routing and traffic management table.
+      # For a list of supported URL map features for Traffic Director, see the
+      # Traffic Director features: Routing and traffic management table.
       # This resource defines mappings from host names and URL paths to either a
       # backend service or a backend bucket.
       # To use the global urlMaps resource, the backend service must have a
@@ -39044,6 +39382,9 @@ module Google
         # Only one of defaultRouteAction or defaultUrlRedirect must be set.
         # UrlMaps for external HTTP(S) load balancers support only the urlRewrite action
         # within defaultRouteAction.
+        # defaultRouteAction has no effect when the backend service is referenced by a
+        # URL map that is bound to target gRPC proxy that has validateForProxyless field
+        # set to true.
         # Corresponds to the JSON property `defaultRouteAction`
         # @return [Google::Apis::ComputeAlpha::HttpRouteAction]
         attr_accessor :default_route_action
@@ -39057,6 +39398,9 @@ module Google
         # specified.
         # Only one of defaultService, defaultUrlRedirect  or defaultRouteAction.
         # weightedBackendService must be set.
+        # defaultService has no effect when the backend service is referenced by a URL
+        # map that is bound to target gRPC proxy that has validateForProxyless field set
+        # to true.
         # Corresponds to the JSON property `defaultService`
         # @return [String]
         attr_accessor :default_service
@@ -39135,6 +39479,8 @@ module Google
         # The list of expected URL mapping tests. Request to update this UrlMap will
         # succeed only if all of the test cases pass. You can specify a maximum of 100
         # tests per UrlMap.
+        # Not supported when the backend service is referenced by a URL map that is
+        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `tests`
         # @return [Array<Google::Apis::ComputeAlpha::UrlMapTest>]
         attr_accessor :tests
@@ -39617,6 +39963,10 @@ module Google
         # Traffic Director.
         # * urlMaps are used by external HTTP(S) load balancers and Traffic Director. *
         # regionUrlMaps are used by internal HTTP(S) load balancers.
+        # For a list of supported URL map features by load balancer type, see the  Load
+        # balancing features: Routing and traffic management table.
+        # For a list of supported URL map features for Traffic Director, see the
+        # Traffic Director features: Routing and traffic management table.
         # This resource defines mappings from host names and URL paths to either a
         # backend service or a backend bucket.
         # To use the global urlMaps resource, the backend service must have a
@@ -40633,6 +40983,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
+        # URL of the interconnect attachment resource. When the value of this field is
+        # present, the VPN Gateway will be used for IPsec over Interconnect; all Egress
+        # or Ingress traffic for this VPN Gateway interface will go through the
+        # specified interconnect attachment resource.
+        # Corresponds to the JSON property `interconnectAttachment`
+        # @return [String]
+        attr_accessor :interconnect_attachment
+      
         # [Output Only] The external IP address for this VPN gateway interface.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
@@ -40645,6 +41003,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
+          @interconnect_attachment = args[:interconnect_attachment] if args.key?(:interconnect_attachment)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
         end
       end
@@ -41609,6 +41968,12 @@ module Google
         # @return [String]
         attr_accessor :status
       
+        # [Output Only] Specifies whether this zone supports physical zone separation.
+        # Corresponds to the JSON property `supportsPhysicalZoneSeparation`
+        # @return [Boolean]
+        attr_accessor :supports_physical_zone_separation
+        alias_method :supports_physical_zone_separation?, :supports_physical_zone_separation
+      
         def initialize(**args)
            update!(**args)
         end
@@ -41625,6 +41990,7 @@ module Google
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
+          @supports_physical_zone_separation = args[:supports_physical_zone_separation] if args.key?(:supports_physical_zone_separation)
         end
       end
       

@@ -48,8 +48,8 @@ module Google
       end
       
       # Describes the progress of a long-running `LongRunningRecognize` call. It is
-      # included in the `metadata` field of the `Operation` returned by the
-      # `GetOperation` call of the `google::longrunning::Operations` service.
+      # included in the `metadata` field of the `Operation` returned by the `
+      # GetOperation` call of the `google::longrunning::Operations` service.
       class LongRunningRecognizeMetadata
         include Google::Apis::Core::Hashable
       
@@ -59,8 +59,7 @@ module Google
         attr_accessor :last_update_time
       
         # Output only. Approximate percentage of audio processed thus far. Guaranteed to
-        # be 100
-        # when the audio is fully processed and the results are available.
+        # be 100 when the audio is fully processed and the results are available.
         # Corresponds to the JSON property `progressPercent`
         # @return [Fixnum]
         attr_accessor :progress_percent
@@ -70,8 +69,8 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
-        # The URI of the audio file being transcribed. Empty if the audio was sent
-        # as byte content.
+        # The URI of the audio file being transcribed. Empty if the audio was sent as
+        # byte content.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -118,47 +117,45 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
-        # If the value is `false`, it means the operation is still in progress.
-        # If `true`, the operation is completed, and either `error` or `response` is
-        # available.
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::SpeechV2beta1::Status]
         attr_accessor :error
       
-        # Service-specific metadata associated with the operation.  It typically
-        # contains progress information and common metadata such as create time.
-        # Some services might not provide such metadata.  Any method that returns a
-        # long-running operation should document the metadata type, if any.
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
         # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the
-        # `name` should be a resource name ending with `operations/`unique_id``.
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success.  If the original
-        # method returns no data on success, such as `Delete`, the response is
-        # `google.protobuf.Empty`.  If the original method is standard
-        # `Get`/`Create`/`Update`, the response should be the resource.  For other
-        # methods, the response should have the type `XxxResponse`, where `Xxx`
-        # is the original method name.  For example, if the original method name
-        # is `TakeSnapshot()`, the inferred response type is
-        # `TakeSnapshotResponse`.
+        # The normal response of the operation in case of success. If the original
+        # method returns no data on success, such as `Delete`, the response is `google.
+        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
+        # the response should be the resource. For other methods, the response should
+        # have the type `XxxResponse`, where `Xxx` is the original method name. For
+        # example, if the original method name is `TakeSnapshot()`, the inferred
+        # response type is `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -184,10 +181,10 @@ module Google
         # Output only. The confidence estimate between 0.0 and 1.0. A higher number
         # indicates an estimated greater likelihood that the recognized words are
         # correct. This field is set only for the top alternative of a non-streaming
-        # result or, of a streaming result where `is_final=true`.
-        # This field is not guaranteed to be accurate and users should not rely on it
-        # to be always provided.
-        # The default of 0.0 is a sentinel value indicating `confidence` was not set.
+        # result or, of a streaming result where `is_final=true`. This field is not
+        # guaranteed to be accurate and users should not rely on it to be always
+        # provided. The default of 0.0 is a sentinel value indicating `confidence` was
+        # not set.
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
@@ -220,26 +217,24 @@ module Google
       class SpeechRecognitionResult
         include Google::Apis::Core::Hashable
       
-        # Output only. May contain one or more recognition hypotheses (up to the
-        # maximum specified in `max_alternatives`).
-        # These alternatives are ordered in terms of accuracy, with the top (first)
-        # alternative being the most probable, as ranked by the recognizer.
+        # Output only. May contain one or more recognition hypotheses (up to the maximum
+        # specified in `max_alternatives`). These alternatives are ordered in terms of
+        # accuracy, with the top (first) alternative being the most probable, as ranked
+        # by the recognizer.
         # Corresponds to the JSON property `alternatives`
         # @return [Array<Google::Apis::SpeechV2beta1::SpeechRecognitionAlternative>]
         attr_accessor :alternatives
       
         # Output only. For multi-channel audio, this is the channel number corresponding
-        # to the
-        # recognized result for the audio from that channel.
-        # For `audio_channel_count` = N, its output values can range from `1` to `N`.
+        # to the recognized result for the audio from that channel. For `
+        # audio_channel_count` = N, its output values can range from `1` to `N`.
         # Corresponds to the JSON property `channelTag`
         # @return [Fixnum]
         attr_accessor :channel_tag
       
-        # Output only. The
-        # [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the
-        # language in this result. This language code was detected to have the most
-        # likelihood of being spoken in the audio.
+        # Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
+        # language tag of the language in this result. This language code was detected
+        # to have the most likelihood of being spoken in the audio.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -256,12 +251,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -270,15 +265,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -302,40 +297,35 @@ module Google
         # Output only. The confidence estimate between 0.0 and 1.0. A higher number
         # indicates an estimated greater likelihood that the recognized words are
         # correct. This field is set only for the top alternative of a non-streaming
-        # result or, of a streaming result where `is_final=true`.
-        # This field is not guaranteed to be accurate and users should not rely on it
-        # to be always provided.
-        # The default of 0.0 is a sentinel value indicating `confidence` was not set.
+        # result or, of a streaming result where `is_final=true`. This field is not
+        # guaranteed to be accurate and users should not rely on it to be always
+        # provided. The default of 0.0 is a sentinel value indicating `confidence` was
+        # not set.
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
       
-        # Output only. Time offset relative to the beginning of the audio,
-        # and corresponding to the end of the spoken word.
-        # This field is only set if `enable_word_time_offsets=true` and only
-        # in the top hypothesis.
-        # This is an experimental feature and the accuracy of the time offset can
-        # vary.
+        # Output only. Time offset relative to the beginning of the audio, and
+        # corresponding to the end of the spoken word. This field is only set if `
+        # enable_word_time_offsets=true` and only in the top hypothesis. This is an
+        # experimental feature and the accuracy of the time offset can vary.
         # Corresponds to the JSON property `endOffset`
         # @return [String]
         attr_accessor :end_offset
       
-        # Output only. A distinct integer value is assigned for every speaker within
-        # the audio. This field specifies which one of those speakers was detected to
-        # have spoken this word. Value ranges from `1` to
-        # `diarization_config.max_speaker_count` . `speaker_tag` is set if
-        # `diarization_config.enable_speaker_diarization` = `true` and only in the
-        # top alternative.
+        # Output only. A distinct integer value is assigned for every speaker within the
+        # audio. This field specifies which one of those speakers was detected to have
+        # spoken this word. Value ranges from `1` to `diarization_config.
+        # max_speaker_count` . `speaker_tag` is set if `diarization_config.
+        # enable_speaker_diarization` = `true` and only in the top alternative.
         # Corresponds to the JSON property `speakerTag`
         # @return [Fixnum]
         attr_accessor :speaker_tag
       
-        # Output only. Time offset relative to the beginning of the audio,
-        # and corresponding to the start of the spoken word.
-        # This field is only set if `enable_word_time_offsets=true` and only
-        # in the top hypothesis.
-        # This is an experimental feature and the accuracy of the time offset can
-        # vary.
+        # Output only. Time offset relative to the beginning of the audio, and
+        # corresponding to the start of the spoken word. This field is only set if `
+        # enable_word_time_offsets=true` and only in the top hypothesis. This is an
+        # experimental feature and the accuracy of the time offset can vary.
         # Corresponds to the JSON property `startOffset`
         # @return [String]
         attr_accessor :start_offset
