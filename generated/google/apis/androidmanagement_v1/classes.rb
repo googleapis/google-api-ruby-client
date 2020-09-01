@@ -2226,7 +2226,7 @@ module Google
         end
       end
       
-      # Policies for apps on the personal profile of a company-owned device with a
+      # Policies for apps in the personal profile of a company-owned device with a
       # work profile.
       class PersonalApplicationPolicy
         include Google::Apis::Core::Hashable
@@ -2273,12 +2273,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_days_with_work_off
       
-        # Policy applied to applications on the personal profile.
+        # Policy applied to applications in the personal profile.
         # Corresponds to the JSON property `personalApplications`
         # @return [Array<Google::Apis::AndroidmanagementV1::PersonalApplicationPolicy>]
         attr_accessor :personal_applications
       
-        # Controls how apps on the personal profile are allowed or blocked.
+        # Used together with personal_applications to control how apps in the personal
+        # profile are allowed or blocked.
         # Corresponds to the JSON property `personalPlayStoreMode`
         # @return [String]
         attr_accessor :personal_play_store_mode

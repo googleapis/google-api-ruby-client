@@ -520,6 +520,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1OperationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1812,16 +1818,24 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :methods_prop, as: 'methods'
+          property :resource, as: 'resource'
+        end
+      end
+      
       class GoogleCloudApigeeV1OperationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_source, as: 'apiSource'
           collection :attributes, as: 'attributes', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute::Representation
       
-          collection :methods_prop, as: 'methods'
+          collection :operations, as: 'operations', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Operation, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Operation::Representation
+      
           property :quota, as: 'quota', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Quota, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Quota::Representation
       
-          collection :resources, as: 'resources'
         end
       end
       

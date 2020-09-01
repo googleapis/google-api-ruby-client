@@ -3520,6 +3520,34 @@ module Google
         end
       end
       
+      # Operation represents the pairing of REST resource path and the actions (verbs)
+      # allowed on the resource path.
+      class GoogleCloudApigeeV1Operation
+        include Google::Apis::Core::Hashable
+      
+        # methods refers to the REST verbs as in https://www.w3.org/Protocols/rfc2616/
+        # rfc2616-sec9.html. When none specified, all verb types are allowed.
+        # Corresponds to the JSON property `methods`
+        # @return [Array<String>]
+        attr_accessor :methods_prop
+      
+        # Required. resource represents REST resource path associated with the proxy/
+        # remote service.
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @methods_prop = args[:methods_prop] if args.key?(:methods_prop)
+          @resource = args[:resource] if args.key?(:resource)
+        end
+      end
+      
       # OperationConfig binds the resources in a proxy or remote service with the
       # allowed REST methods and its associated quota enforcement.
       class GoogleCloudApigeeV1OperationConfig
@@ -3536,11 +3564,12 @@ module Google
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute>]
         attr_accessor :attributes
       
-        # methods refers to the REST verbs as in https://www.w3.org/Protocols/rfc2616/
-        # rfc2616-sec9.html. When none specified, all verb types are allowed.
-        # Corresponds to the JSON property `methods`
-        # @return [Array<String>]
-        attr_accessor :methods_prop
+        # operations is the list of resource/methods pair, belonging to proxy/remote
+        # service, upon which quota will applied on. Note that currently we allow only a
+        # single operation. The call will fail if more than one is provided.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Operation>]
+        attr_accessor :operations
       
         # Quota contains the essential parameters needed that can be applied on a proxy/
         # remote service, resources and methods combination associated with this API
@@ -3550,12 +3579,6 @@ module Google
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Quota]
         attr_accessor :quota
       
-        # Required. resources represents a list of REST resource path associated with
-        # the proxy/remote service.
-        # Corresponds to the JSON property `resources`
-        # @return [Array<String>]
-        attr_accessor :resources
-      
         def initialize(**args)
            update!(**args)
         end
@@ -3564,9 +3587,8 @@ module Google
         def update!(**args)
           @api_source = args[:api_source] if args.key?(:api_source)
           @attributes = args[:attributes] if args.key?(:attributes)
-          @methods_prop = args[:methods_prop] if args.key?(:methods_prop)
+          @operations = args[:operations] if args.key?(:operations)
           @quota = args[:quota] if args.key?(:quota)
-          @resources = args[:resources] if args.key?(:resources)
         end
       end
       
@@ -3802,7 +3824,7 @@ module Google
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Properties]
         attr_accessor :properties
       
-        # Output only. Runtime type of the Apigee organization based on the Apigee
+        # Required. Runtime type of the Apigee organization based on the Apigee
         # subscription purchased.
         # Corresponds to the JSON property `runtimeType`
         # @return [String]
