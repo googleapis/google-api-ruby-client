@@ -1,3 +1,11 @@
+# 0.44.1
+* Backwards compatible changes:
+  * Added `workflows_v1beta`
+  * Updated `androidmanagement_v1`
+  * Updated `apigee_v1`
+  * Updated `websecurityscanner_v1alpha`
+  * Updated `websecurityscanner_v1beta`
+
 # 0.44.0
 * Breaking changes:
   * Deleted `dns_v2beta1`
