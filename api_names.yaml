@@ -705,6 +705,7 @@
 "/dfareporting:v2.6/UserRolesListResponse": list_user_roles_response
 "/dfareporting:v2.6/dfareporting.floodlightActivities.generatetag": generate_floodlight_activity_tag
 "/dfareporting:v2.6/dfareporting.placements.generatetags": generate_placement_tags
+"/displayvideo:v1beta/displayvideo.sdfdownloadtasks.operations.get": get_sdfdownloadtasks_operation
 "/discovery:v1/RestDescription/methods": api_methods
 "/discovery:v1/RestResource/methods": api_methods
 "/discovery:v1/discovery.apis.getRest": get_rest_api
