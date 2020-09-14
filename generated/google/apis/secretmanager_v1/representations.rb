@@ -52,7 +52,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutomaticStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomerManagedEncryption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomerManagedEncryptionStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -124,7 +142,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReplicaStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Replication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReplicationStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -172,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserManagedStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccessSecretVersionResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -209,16 +245,41 @@ module Google
       class Automatic
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_managed_encryption, as: 'customerManagedEncryption', class: Google::Apis::SecretmanagerV1::CustomerManagedEncryption, decorator: Google::Apis::SecretmanagerV1::CustomerManagedEncryption::Representation
+      
+        end
+      end
+      
+      class AutomaticStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_managed_encryption, as: 'customerManagedEncryption', class: Google::Apis::SecretmanagerV1::CustomerManagedEncryptionStatus, decorator: Google::Apis::SecretmanagerV1::CustomerManagedEncryptionStatus::Representation
+      
         end
       end
       
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :binding_id, as: 'bindingId'
           property :condition, as: 'condition', class: Google::Apis::SecretmanagerV1::Expr, decorator: Google::Apis::SecretmanagerV1::Expr::Representation
       
           collection :members, as: 'members'
           property :role, as: 'role'
+        end
+      end
+      
+      class CustomerManagedEncryption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
+        end
+      end
+      
+      class CustomerManagedEncryptionStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_version_name, as: 'kmsKeyVersionName'
         end
       end
       
@@ -311,6 +372,17 @@ module Google
       class Replica
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_managed_encryption, as: 'customerManagedEncryption', class: Google::Apis::SecretmanagerV1::CustomerManagedEncryption, decorator: Google::Apis::SecretmanagerV1::CustomerManagedEncryption::Representation
+      
+          property :location, as: 'location'
+        end
+      end
+      
+      class ReplicaStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_managed_encryption, as: 'customerManagedEncryption', class: Google::Apis::SecretmanagerV1::CustomerManagedEncryptionStatus, decorator: Google::Apis::SecretmanagerV1::CustomerManagedEncryptionStatus::Representation
+      
           property :location, as: 'location'
         end
       end
@@ -321,6 +393,16 @@ module Google
           property :automatic, as: 'automatic', class: Google::Apis::SecretmanagerV1::Automatic, decorator: Google::Apis::SecretmanagerV1::Automatic::Representation
       
           property :user_managed, as: 'userManaged', class: Google::Apis::SecretmanagerV1::UserManaged, decorator: Google::Apis::SecretmanagerV1::UserManaged::Representation
+      
+        end
+      end
+      
+      class ReplicationStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :automatic, as: 'automatic', class: Google::Apis::SecretmanagerV1::AutomaticStatus, decorator: Google::Apis::SecretmanagerV1::AutomaticStatus::Representation
+      
+          property :user_managed, as: 'userManaged', class: Google::Apis::SecretmanagerV1::UserManagedStatus, decorator: Google::Apis::SecretmanagerV1::UserManagedStatus::Representation
       
         end
       end
@@ -349,6 +431,8 @@ module Google
           property :create_time, as: 'createTime'
           property :destroy_time, as: 'destroyTime'
           property :name, as: 'name'
+          property :replication_status, as: 'replicationStatus', class: Google::Apis::SecretmanagerV1::ReplicationStatus, decorator: Google::Apis::SecretmanagerV1::ReplicationStatus::Representation
+      
           property :state, as: 'state'
         end
       end
@@ -380,6 +464,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :replicas, as: 'replicas', class: Google::Apis::SecretmanagerV1::Replica, decorator: Google::Apis::SecretmanagerV1::Replica::Representation
+      
+        end
+      end
+      
+      class UserManagedStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :replicas, as: 'replicas', class: Google::Apis::SecretmanagerV1::ReplicaStatus, decorator: Google::Apis::SecretmanagerV1::ReplicaStatus::Representation
       
         end
       end

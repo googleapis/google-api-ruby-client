@@ -530,7 +530,8 @@ module Google
       class MosaicLayout
         include Google::Apis::Core::Hashable
       
-        # The number of columns in the mosaic grid.
+        # The number of columns in the mosaic grid. The number of columns must be
+        # between 1 and 12, inclusive.
         # Corresponds to the JSON property `columns`
         # @return [Fixnum]
         attr_accessor :columns
@@ -947,7 +948,8 @@ module Google
       class Tile
         include Google::Apis::Core::Hashable
       
-        # The height of the tile, measured in grid squares.
+        # The height of the tile, measured in grid squares. Tiles must have a minimum
+        # height of 1.
         # Corresponds to the JSON property `height`
         # @return [Fixnum]
         attr_accessor :height
@@ -958,19 +960,21 @@ module Google
         # @return [Google::Apis::MonitoringV1::Widget]
         attr_accessor :widget
       
-        # The width of the tile, measured in grid squares.
+        # The width of the tile, measured in grid squares. Tiles must have a minimum
+        # width of 1.
         # Corresponds to the JSON property `width`
         # @return [Fixnum]
         attr_accessor :width
       
         # The zero-indexed position of the tile in grid squares relative to the left
-        # edge of the grid.
+        # edge of the grid. Tiles must be contained within the specified number of
+        # columns. x_pos cannot be negative.
         # Corresponds to the JSON property `xPos`
         # @return [Fixnum]
         attr_accessor :x_pos
       
         # The zero-indexed position of the tile in grid squares relative to the top edge
-        # of the grid.
+        # of the grid. y_pos cannot be negative.
         # Corresponds to the JSON property `yPos`
         # @return [Fixnum]
         attr_accessor :y_pos

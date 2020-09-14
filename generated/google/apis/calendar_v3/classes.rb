@@ -1111,7 +1111,8 @@ module Google
         # @return [Google::Apis::CalendarV3::Event::ExtendedProperties]
         attr_accessor :extended_properties
       
-        # A gadget that extends this event.
+        # A gadget that extends this event. Gadgets are deprecated; this structure is
+        # instead only used for returning birthday calendar metadata.
         # Corresponds to the JSON property `gadget`
         # @return [Google::Apis::CalendarV3::Event::Gadget]
         attr_accessor :gadget
@@ -1431,11 +1432,12 @@ module Google
           end
         end
         
-        # A gadget that extends this event.
+        # A gadget that extends this event. Gadgets are deprecated; this structure is
+        # instead only used for returning birthday calendar metadata.
         class Gadget
           include Google::Apis::Core::Hashable
         
-          # The gadget's display mode. Optional. Possible values are:
+          # The gadget's display mode. Deprecated. Possible values are:
           # - "icon" - The gadget displays next to the event's title in the calendar view.
           # - "chip" - The gadget displays when the event is clicked.
           # Corresponds to the JSON property `display`
@@ -1443,17 +1445,17 @@ module Google
           attr_accessor :display_mode
         
           # The gadget's height in pixels. The height must be an integer greater than 0.
-          # Optional.
+          # Optional. Deprecated.
           # Corresponds to the JSON property `height`
           # @return [Fixnum]
           attr_accessor :height
         
-          # The gadget's icon URL. The URL scheme must be HTTPS.
+          # The gadget's icon URL. The URL scheme must be HTTPS. Deprecated.
           # Corresponds to the JSON property `iconLink`
           # @return [String]
           attr_accessor :icon_link
         
-          # The gadget's URL. The URL scheme must be HTTPS.
+          # The gadget's URL. The URL scheme must be HTTPS. Deprecated.
           # Corresponds to the JSON property `link`
           # @return [String]
           attr_accessor :link
@@ -1463,18 +1465,18 @@ module Google
           # @return [Hash<String,String>]
           attr_accessor :preferences
         
-          # The gadget's title.
+          # The gadget's title. Deprecated.
           # Corresponds to the JSON property `title`
           # @return [String]
           attr_accessor :title
         
-          # The gadget's type.
+          # The gadget's type. Deprecated.
           # Corresponds to the JSON property `type`
           # @return [String]
           attr_accessor :type
         
           # The gadget's width in pixels. The width must be an integer greater than 0.
-          # Optional.
+          # Optional. Deprecated.
           # Corresponds to the JSON property `width`
           # @return [Fixnum]
           attr_accessor :width

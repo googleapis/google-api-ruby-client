@@ -1243,6 +1243,7 @@ module Google
       class GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_playback_interruption, as: 'allowPlaybackInterruption'
           property :ssml, as: 'ssml'
           property :text, as: 'text'
         end

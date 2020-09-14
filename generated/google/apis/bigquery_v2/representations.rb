@@ -790,6 +790,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TransactionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UserDefinedFunctionResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1643,6 +1649,8 @@ module Google
           property :start_time, :numeric_string => true, as: 'startTime'
           property :total_bytes_processed, :numeric_string => true, as: 'totalBytesProcessed'
           property :total_slot_ms, :numeric_string => true, as: 'totalSlotMs'
+          property :transaction_info_template, as: 'transactionInfoTemplate', class: Google::Apis::BigqueryV2::TransactionInfo, decorator: Google::Apis::BigqueryV2::TransactionInfo::Representation
+      
         end
         
         class ReservationUsage
@@ -2434,6 +2442,13 @@ module Google
           property :start_time, as: 'startTime'
           property :training_options, as: 'trainingOptions', class: Google::Apis::BigqueryV2::TrainingOptions, decorator: Google::Apis::BigqueryV2::TrainingOptions::Representation
       
+        end
+      end
+      
+      class TransactionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :transaction_id, as: 'transactionId'
         end
       end
       

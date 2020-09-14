@@ -3046,6 +3046,35 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Turn off 2-Step Verification for user.
+        # @param [String] user_key
+        #   Identifies the user in the API request. The value can be the user's primary
+        #   email address, alias email address, or unique user ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def turn_two_step_verification_off(user_key, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'admin/directory/v1/users/{userKey}/twoStepVerification/turnOff', options)
+          command.params['userKey'] = user_key unless user_key.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Delete user
         # @param [String] user_key
         #   Email or immutable ID of the user
@@ -3273,6 +3302,36 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Sign a user out of all web and device sessions and reset their sign-in cookies.
+        # User will have to sign in by authenticating again.
+        # @param [String] user_key
+        #   Identifies the target user in the API request. The value can be the user's
+        #   primary email address, alias email address, or unique user ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def sign_user_out(user_key, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'admin/directory/v1/users/{userKey}/signOut', options)
+          command.params['userKey'] = user_key unless user_key.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Undelete a deleted user
         # @param [String] user_key
         #   The immutable id of the user
@@ -3340,6 +3399,9 @@ module Google
         
         # Watch for changes in users list
         # @param [Google::Apis::AdminDirectoryV1::Channel] channel_object
+        # @param [String] custom_field_mask
+        #   Comma-separated list of schema names. All fields from these schemas are
+        #   fetched. This should only be set when projection=custom.
         # @param [String] customer
         #   Immutable ID of the G Suite account. In case of multi-domain, to fetch all
         #   users for a customer, fill this field instead of domain.
@@ -3348,6 +3410,23 @@ module Google
         #   return all users in a multi-domain fill customer field instead."
         # @param [String] event
         #   Event on which subscription is intended
+        # @param [Fixnum] max_results
+        #   Maximum number of results to return.
+        # @param [String] order_by
+        #   Column to use for sorting results
+        # @param [String] page_token
+        #   Token to specify next page in the list
+        # @param [String] projection
+        #   What subset of fields to fetch for this user.
+        # @param [String] query
+        #   Query string search. Should be of the form "". Complete documentation is at
+        #   https: //developers.google.com/admin-sdk/directory/v1/guides/search-users
+        # @param [String] show_deleted
+        #   If set to true, retrieves the list of deleted users. (Default: false)
+        # @param [String] sort_order
+        #   Whether to return results in ascending or descending order.
+        # @param [String] view_type
+        #   Whether to fetch the ADMIN_VIEW or DOMAIN_PUBLIC view of the user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3365,15 +3444,24 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def watch_user(channel_object = nil, customer: nil, domain: nil, event: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def watch_user(channel_object = nil, custom_field_mask: nil, customer: nil, domain: nil, event: nil, max_results: nil, order_by: nil, page_token: nil, projection: nil, query: nil, show_deleted: nil, sort_order: nil, view_type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'admin/directory/v1/users/watch', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::Channel::Representation
           command.request_object = channel_object
           command.response_representation = Google::Apis::AdminDirectoryV1::Channel::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::Channel
+          command.query['customFieldMask'] = custom_field_mask unless custom_field_mask.nil?
           command.query['customer'] = customer unless customer.nil?
           command.query['domain'] = domain unless domain.nil?
           command.query['event'] = event unless event.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['projection'] = projection unless projection.nil?
+          command.query['query'] = query unless query.nil?
+          command.query['showDeleted'] = show_deleted unless show_deleted.nil?
+          command.query['sortOrder'] = sort_order unless sort_order.nil?
+          command.query['viewType'] = view_type unless view_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -160,6 +160,9 @@ module Google
         # @param [String] project_id
         #   Required. ID of the project.
         # @param [Google::Apis::CloudbuildV1::Build] build_object
+        # @param [String] parent
+        #   The parent resource where this build will be created. Format: `projects/`
+        #   project`/locations/`location``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -177,13 +180,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_build(project_id, build_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_build(project_id, build_object = nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{projectId}/builds', options)
           command.request_representation = Google::Apis::CloudbuildV1::Build::Representation
           command.request_object = build_object
           command.response_representation = Google::Apis::CloudbuildV1::Operation::Representation
           command.response_class = Google::Apis::CloudbuildV1::Operation
           command.params['projectId'] = project_id unless project_id.nil?
+          command.query['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -196,6 +200,9 @@ module Google
         #   Required. ID of the project.
         # @param [String] id
         #   Required. ID of the build.
+        # @param [String] name
+        #   The name of the `Build` to retrieve. Format: `projects/`project`/locations/`
+        #   location`/builds/`build``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -213,12 +220,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_build(project_id, id, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_build(project_id, id, name: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/projects/{projectId}/builds/{id}', options)
           command.response_representation = Google::Apis::CloudbuildV1::Build::Representation
           command.response_class = Google::Apis::CloudbuildV1::Build
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['id'] = id unless id.nil?
+          command.query['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -234,6 +242,9 @@ module Google
         #   Number of results to return in the list.
         # @param [String] page_token
         #   Token to provide to skip to a particular spot in the list.
+        # @param [String] parent
+        #   The parent of the collection of `Builds`. Format: `projects/`project`/
+        #   locations/location`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -251,7 +262,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_builds(project_id, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_builds(project_id, filter: nil, page_size: nil, page_token: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/projects/{projectId}/builds', options)
           command.response_representation = Google::Apis::CloudbuildV1::ListBuildsResponse::Representation
           command.response_class = Google::Apis::CloudbuildV1::ListBuildsResponse
@@ -259,6 +270,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -310,6 +322,208 @@ module Google
           command.response_class = Google::Apis::CloudbuildV1::Operation
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['id'] = id unless id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Cancels a build in progress.
+        # @param [String] name
+        #   The name of the `Build` to retrieve. Format: `projects/`project`/locations/`
+        #   location`/builds/`build``
+        # @param [Google::Apis::CloudbuildV1::CancelBuildRequest] cancel_build_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::Build] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::Build]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_project_location_build(name, cancel_build_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command.request_representation = Google::Apis::CloudbuildV1::CancelBuildRequest::Representation
+          command.request_object = cancel_build_request_object
+          command.response_representation = Google::Apis::CloudbuildV1::Build::Representation
+          command.response_class = Google::Apis::CloudbuildV1::Build
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Starts a build with the specified configuration. This method returns a long-
+        # running `Operation`, which includes the build ID. Pass the build ID to `
+        # GetBuild` to determine the build status (such as `SUCCESS` or `FAILURE`).
+        # @param [String] parent
+        #   The parent resource where this build will be created. Format: `projects/`
+        #   project`/locations/`location``
+        # @param [Google::Apis::CloudbuildV1::CreateBuildRequest] create_build_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_build(parent, create_build_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/builds', options)
+          command.request_representation = Google::Apis::CloudbuildV1::CreateBuildRequest::Representation
+          command.request_object = create_build_request_object
+          command.response_representation = Google::Apis::CloudbuildV1::Operation::Representation
+          command.response_class = Google::Apis::CloudbuildV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns information about a previously requested build. The `Build` that is
+        # returned includes its status (such as `SUCCESS`, `FAILURE`, or `WORKING`), and
+        # timing information.
+        # @param [String] name
+        #   The name of the `Build` to retrieve. Format: `projects/`project`/locations/`
+        #   location`/builds/`build``
+        # @param [String] id
+        #   Required. ID of the build.
+        # @param [String] project_id
+        #   Required. ID of the project.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::Build] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::Build]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_build(name, id: nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudbuildV1::Build::Representation
+          command.response_class = Google::Apis::CloudbuildV1::Build
+          command.params['name'] = name unless name.nil?
+          command.query['id'] = id unless id.nil?
+          command.query['projectId'] = project_id unless project_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists previously requested builds. Previously requested builds may still be in-
+        # progress, or may have finished successfully or unsuccessfully.
+        # @param [String] parent
+        #   The parent of the collection of `Builds`. Format: `projects/`project`/
+        #   locations/location`
+        # @param [String] filter
+        #   The raw filter text to constrain the results.
+        # @param [Fixnum] page_size
+        #   Number of results to return in the list.
+        # @param [String] page_token
+        #   Token to provide to skip to a particular spot in the list.
+        # @param [String] project_id
+        #   Required. ID of the project.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::ListBuildsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::ListBuildsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_builds(parent, filter: nil, page_size: nil, page_token: nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/builds', options)
+          command.response_representation = Google::Apis::CloudbuildV1::ListBuildsResponse::Representation
+          command.response_class = Google::Apis::CloudbuildV1::ListBuildsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['projectId'] = project_id unless project_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new build based on the specified build. This method creates a new
+        # build using the original build request, which may or may not result in an
+        # identical build. For triggered builds: * Triggered builds resolve to a precise
+        # revision; therefore a retry of a triggered build will result in a build that
+        # uses the same revision. For non-triggered builds that specify `RepoSource`: *
+        # If the original build built from the tip of a branch, the retried build will
+        # build from the tip of that branch, which may not be the same revision as the
+        # original build. * If the original build specified a commit sha or revision ID,
+        # the retried build will use the identical source. For builds that specify `
+        # StorageSource`: * If the original build pulled source from Google Cloud
+        # Storage without specifying the generation of the object, the new build will
+        # use the current object, which may be different from the original build source.
+        # * If the original build pulled source from Cloud Storage and specified the
+        # generation of the object, the new build will attempt to use the same object,
+        # which may or may not be available depending on the bucket's lifecycle
+        # management settings.
+        # @param [String] name
+        #   The name of the `Build` to retry. Format: `projects/`project`/locations/`
+        #   location`/builds/`build``
+        # @param [Google::Apis::CloudbuildV1::RetryBuildRequest] retry_build_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def retry_project_location_build(name, retry_build_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:retry', options)
+          command.request_representation = Google::Apis::CloudbuildV1::RetryBuildRequest::Representation
+          command.request_object = retry_build_request_object
+          command.response_representation = Google::Apis::CloudbuildV1::Operation::Representation
+          command.response_class = Google::Apis::CloudbuildV1::Operation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -272,6 +272,7 @@ module Google
           collection :images, as: 'images'
           property :log_url, as: 'logUrl'
           property :logs_bucket, as: 'logsBucket'
+          property :name, as: 'name'
           property :options, as: 'options', class: Google::Apis::CloudbuildV1alpha2::BuildOptions, decorator: Google::Apis::CloudbuildV1alpha2::BuildOptions::Representation
       
           property :project_id, as: 'projectId'

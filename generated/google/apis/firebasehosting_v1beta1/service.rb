@@ -151,6 +151,178 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new channel in the specified site.
+        # @param [String] parent
+        #   Required. The site in which this channel should be created.
+        # @param [Google::Apis::FirebasehostingV1beta1::Channel] channel_object
+        # @param [String] channel_id
+        #   Required. Immutable. A unique id within the site to identify the channel.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::Channel] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::Channel]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_site_channel(parent, channel_object = nil, channel_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/channels', options)
+          command.request_representation = Google::Apis::FirebasehostingV1beta1::Channel::Representation
+          command.request_object = channel_object
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::Channel::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::Channel
+          command.params['parent'] = parent unless parent.nil?
+          command.query['channelId'] = channel_id unless channel_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a channel of a site. The `live` channel cannot be deleted.
+        # @param [String] name
+        #   Required. The fully-qualified identifier for the site.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_site_channel(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::Empty::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves information for the specified channel of a site.
+        # @param [String] name
+        #   Required. The fully-qualified identifier for the channel.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::Channel] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::Channel]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_site_channel(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::Channel::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::Channel
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the channels for the specified site. All sites have a default "live"
+        # channel.
+        # @param [String] parent
+        #   Required. The site from which to list channels.
+        # @param [Fixnum] page_size
+        #   The maximum number of versions to return. The service may return fewer than
+        #   this value. If unspecified, at most 25 channels will be returned. The maximum
+        #   value is 100; valuupdateses above 100 will be coerced to 100
+        # @param [String] page_token
+        #   The next_page_token from a previous request, if provided.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::ListChannelsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::ListChannelsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_site_channels(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/channels', options)
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::ListChannelsResponse::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::ListChannelsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates information for the specified channel of a site. This method will
+        # implicitly create a channel if it doesn't exist.
+        # @param [String] name
+        #   The fully-qualified identifier of the Channel.
+        # @param [Google::Apis::FirebasehostingV1beta1::Channel] channel_object
+        # @param [String] update_mask
+        #   A comma-separated list of fields to be updated in this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::Channel] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::Channel]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_site_channel(name, channel_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::FirebasehostingV1beta1::Channel::Representation
+          command.request_object = channel_object
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::Channel::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::Channel
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new release which makes the content of the specified version
         # actively display on the appropriate URL(s).
         # @param [String] parent
@@ -471,6 +643,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new version on the target site using the content of the specified
+        # version.
+        # @param [String] parent
+        #   Required. The target site where the cloned version will reside, in the format:
+        #   `sites/`site``
+        # @param [Google::Apis::FirebasehostingV1beta1::CloneVersionRequest] clone_version_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def clone_project_site_version(parent, clone_version_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/versions:clone', options)
+          command.request_representation = Google::Apis::FirebasehostingV1beta1::CloneVersionRequest::Representation
+          command.request_object = clone_version_request_object
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::Operation::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new version for a site.
         # @param [String] parent
         #   Required. The parent to create the version for, in the format: sites/ site-
@@ -772,6 +979,178 @@ module Google
           command.request_object = site_config_object
           command.response_representation = Google::Apis::FirebasehostingV1beta1::SiteConfig::Representation
           command.response_class = Google::Apis::FirebasehostingV1beta1::SiteConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new channel in the specified site.
+        # @param [String] parent
+        #   Required. The site in which this channel should be created.
+        # @param [Google::Apis::FirebasehostingV1beta1::Channel] channel_object
+        # @param [String] channel_id
+        #   Required. Immutable. A unique id within the site to identify the channel.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::Channel] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::Channel]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_site_channel(parent, channel_object = nil, channel_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/channels', options)
+          command.request_representation = Google::Apis::FirebasehostingV1beta1::Channel::Representation
+          command.request_object = channel_object
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::Channel::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::Channel
+          command.params['parent'] = parent unless parent.nil?
+          command.query['channelId'] = channel_id unless channel_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a channel of a site. The `live` channel cannot be deleted.
+        # @param [String] name
+        #   Required. The fully-qualified identifier for the site.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_site_channel(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::Empty::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves information for the specified channel of a site.
+        # @param [String] name
+        #   Required. The fully-qualified identifier for the channel.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::Channel] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::Channel]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_site_channel(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::Channel::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::Channel
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the channels for the specified site. All sites have a default "live"
+        # channel.
+        # @param [String] parent
+        #   Required. The site from which to list channels.
+        # @param [Fixnum] page_size
+        #   The maximum number of versions to return. The service may return fewer than
+        #   this value. If unspecified, at most 25 channels will be returned. The maximum
+        #   value is 100; valuupdateses above 100 will be coerced to 100
+        # @param [String] page_token
+        #   The next_page_token from a previous request, if provided.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::ListChannelsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::ListChannelsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_site_channels(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/channels', options)
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::ListChannelsResponse::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::ListChannelsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates information for the specified channel of a site. This method will
+        # implicitly create a channel if it doesn't exist.
+        # @param [String] name
+        #   The fully-qualified identifier of the Channel.
+        # @param [Google::Apis::FirebasehostingV1beta1::Channel] channel_object
+        # @param [String] update_mask
+        #   A comma-separated list of fields to be updated in this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::Channel] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::Channel]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_site_channel(name, channel_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::FirebasehostingV1beta1::Channel::Representation
+          command.request_object = channel_object
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::Channel::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::Channel
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1094,6 +1473,41 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new version on the target site using the content of the specified
+        # version.
+        # @param [String] parent
+        #   Required. The target site where the cloned version will reside, in the format:
+        #   `sites/`site``
+        # @param [Google::Apis::FirebasehostingV1beta1::CloneVersionRequest] clone_version_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def clone_site_version(parent, clone_version_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/versions:clone', options)
+          command.request_representation = Google::Apis::FirebasehostingV1beta1::CloneVersionRequest::Representation
+          command.request_object = clone_version_request_object
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::Operation::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::Operation
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

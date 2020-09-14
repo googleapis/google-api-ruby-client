@@ -3021,7 +3021,7 @@ module Google
       
         # Custom fields of the user.
         # Corresponds to the JSON property `customSchemas`
-        # @return [Hash<String,Google::Apis::AdminDirectoryV1::UserCustomProperties>]
+        # @return [Hash<String,Hash<String,Object>>]
         attr_accessor :custom_schemas
       
         # Output only. CustomerId of User (Read-only)
@@ -3404,20 +3404,6 @@ module Google
           @source_is_structured = args[:source_is_structured] if args.key?(:source_is_structured)
           @street_address = args[:street_address] if args.key?(:street_address)
           @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # JSON template for a set of custom properties (i.e. all fields in a particular
-      # schema)
-      class UserCustomProperties
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       

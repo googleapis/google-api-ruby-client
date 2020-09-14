@@ -232,6 +232,12 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
+        # A client-specified ID for this binding. Expected to be globally unique to
+        # support the internal bindings-by-ID API.
+        # Corresponds to the JSON property `bindingId`
+        # @return [String]
+        attr_accessor :binding_id
+      
         # Represents a textual expression in the Common Expression Language (CEL) syntax.
         # CEL is a C-like expression language. The syntax and semantics of CEL are
         # documented at https://github.com/google/cel-spec.Example (Comparison): title: "
@@ -292,6 +298,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @binding_id = args[:binding_id] if args.key?(:binding_id)
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
@@ -412,7 +419,7 @@ module Google
         attr_accessor :endpoint_config
       
         # Common config settings for resources of Compute Engine cluster instances,
-        # applicable to all instances in the cluster.
+        # applicable to all instances in the cluster. NEXT ID: 13
         # Corresponds to the JSON property `gceClusterConfig`
         # @return [Google::Apis::DataprocV1::GceClusterConfig]
         attr_accessor :gce_cluster_config
@@ -907,7 +914,7 @@ module Google
       end
       
       # Common config settings for resources of Compute Engine cluster instances,
-      # applicable to all instances in the cluster.
+      # applicable to all instances in the cluster. NEXT ID: 13
       class GceClusterConfig
         include Google::Apis::Core::Hashable
       
@@ -940,6 +947,11 @@ module Google
         # Corresponds to the JSON property `networkUri`
         # @return [String]
         attr_accessor :network_uri
+      
+        # Optional. The type of IPv6 access for a cluster.
+        # Corresponds to the JSON property `privateIpv6GoogleAccess`
+        # @return [String]
+        attr_accessor :private_ipv6_google_access
       
         # Reservation Affinity for consuming Zonal reservation.
         # Corresponds to the JSON property `reservationAffinity`
@@ -1005,6 +1017,7 @@ module Google
           @internal_ip_only = args[:internal_ip_only] if args.key?(:internal_ip_only)
           @metadata = args[:metadata] if args.key?(:metadata)
           @network_uri = args[:network_uri] if args.key?(:network_uri)
+          @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @service_account = args[:service_account] if args.key?(:service_account)
           @service_account_scopes = args[:service_account_scopes] if args.key?(:service_account_scopes)
@@ -1661,8 +1674,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Maximum number of times per hour a driver may be restarted as a
-        # result of driver terminating with non-zero code before job is reported failed.
-        # A job may be reported as thrashing if driver exits with non-zero code 4 times
+        # result of driver exiting with non-zero code before job is reported failed.A
+        # job may be reported as thrashing if driver exits with non-zero code 4 times
         # within 10 minute window.Maximum value is 10.
         # Corresponds to the JSON property `maxFailuresPerHour`
         # @return [Fixnum]
@@ -2614,11 +2627,11 @@ module Google
       class QueryList
         include Google::Apis::Core::Hashable
       
-        # Required. The queries to execute. You do not need to terminate a query with a
-        # semicolon. Multiple queries can be specified in one string by separating each
-        # with a semicolon. Here is an example of an Cloud Dataproc API snippet that
-        # uses a QueryList to specify a HiveJob: "hiveJob": ` "queryList": ` "queries": [
-        # "query1", "query2", "query3;query4", ] ` `
+        # Required. The queries to execute. You do not need to end a query expression
+        # with a semicolon. Multiple queries can be specified in one string by
+        # separating each with a semicolon. Here is an example of a Dataproc API snippet
+        # that uses a QueryList to specify a HiveJob: "hiveJob": ` "queryList": ` "
+        # queries": [ "query1", "query2", "query3;query4", ] ` `
         # Corresponds to the JSON property `queries`
         # @return [Array<String>]
         attr_accessor :queries

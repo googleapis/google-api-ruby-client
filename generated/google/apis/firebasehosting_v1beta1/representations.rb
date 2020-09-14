@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Channel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloneVersionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudRunRewrite
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -82,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListChannelsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDomainsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,6 +125,12 @@ module Google
       end
       
       class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PathFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -202,6 +226,34 @@ module Google
         end
       end
       
+      class Channel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :expire_time, as: 'expireTime'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :release, as: 'release', class: Google::Apis::FirebasehostingV1beta1::Release, decorator: Google::Apis::FirebasehostingV1beta1::Release::Representation
+      
+          property :retained_release_count, as: 'retainedReleaseCount'
+          property :ttl, as: 'ttl'
+          property :update_time, as: 'updateTime'
+          property :url, as: 'url'
+        end
+      end
+      
+      class CloneVersionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exclude, as: 'exclude', class: Google::Apis::FirebasehostingV1beta1::PathFilter, decorator: Google::Apis::FirebasehostingV1beta1::PathFilter::Representation
+      
+          property :finalize, as: 'finalize'
+          property :include, as: 'include', class: Google::Apis::FirebasehostingV1beta1::PathFilter, decorator: Google::Apis::FirebasehostingV1beta1::PathFilter::Representation
+      
+          property :source_version, as: 'sourceVersion'
+        end
+      end
+      
       class CloudRunRewrite
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -270,6 +322,15 @@ module Google
         end
       end
       
+      class ListChannelsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :channels, as: 'channels', class: Google::Apis::FirebasehostingV1beta1::Channel, decorator: Google::Apis::FirebasehostingV1beta1::Channel::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListDomainsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -315,6 +376,13 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+        end
+      end
+      
+      class PathFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :regexes, as: 'regexes'
         end
       end
       

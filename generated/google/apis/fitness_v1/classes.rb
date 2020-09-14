@@ -120,7 +120,7 @@ module Google
         # @return [Array<Google::Apis::FitnessV1::AggregateBy>]
         attr_accessor :aggregate_by
       
-        # Specifies that data be aggregated each activity segment recored for a user.
+        # Specifies that data be aggregated each activity segment recorded for a user.
         # Similar to bucketByActivitySegment, but bucketing is done for each activity
         # segment rather than all segments of the same type. Mutually exclusive of other
         # bucketing specifications.
@@ -639,10 +639,10 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # A partial list of data points contained in the dataset, ordered by largest
-        # endTimeNanos first. This list is considered complete when retrieving a small
-        # dataset and partial when patching a dataset or retrieving a dataset that is
-        # too large to include in a single response.
+        # A partial list of data points contained in the dataset, ordered by
+        # endTimeNanos. This list is considered complete when retrieving a small dataset
+        # and partial when patching a dataset or retrieving a dataset that is too large
+        # to include in a single response.
         # Corresponds to the JSON property `point`
         # @return [Array<Google::Apis::FitnessV1::DataPoint>]
         attr_accessor :point

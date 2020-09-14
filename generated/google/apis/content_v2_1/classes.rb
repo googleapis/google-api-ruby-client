@@ -131,7 +131,8 @@ module Google
       class AccountAddress
         include Google::Apis::Core::Hashable
       
-        # CLDR country code (e.g. "US").
+        # CLDR country code (e.g. "US"). This value cannot be set for a sub-account of
+        # an MCA. All MCA sub-accounts inherit the country of their parent MCA.
         # Corresponds to the JSON property `country`
         # @return [String]
         attr_accessor :country
@@ -6209,16 +6210,25 @@ module Google
       class OrderreturnsRefundOperation
         include Google::Apis::Core::Hashable
       
-        # If true, the item will be fully refunded.
+        # If true, the item will be fully refunded. // Allowed only when payment_type is
+        # FOP. Merchant can choose this refund option to indicate the full remaining
+        # amount of corresponding object to be refunded to the customer via FOP.
         # Corresponds to the JSON property `fullRefund`
         # @return [Boolean]
         attr_accessor :full_refund
         alias_method :full_refund?, :full_refund
       
-        # If this is set, the item will be partially refunded.
+        # If this is set, the item will be partially refunded. Merchant can choose this
+        # refund option to specify the customized amount that to be refunded to the
+        # customer.
         # Corresponds to the JSON property `partialRefund`
         # @return [Google::Apis::ContentV2_1::OrderreturnsPartialRefund]
         attr_accessor :partial_refund
+      
+        # The payment way of issuing refund. Default value is ORIGINAL_FOP if not set.
+        # Corresponds to the JSON property `paymentType`
+        # @return [String]
+        attr_accessor :payment_type
       
         # The explanation of the reason.
         # Corresponds to the JSON property `reasonText`
@@ -6238,6 +6248,7 @@ module Google
         def update!(**args)
           @full_refund = args[:full_refund] if args.key?(:full_refund)
           @partial_refund = args[:partial_refund] if args.key?(:partial_refund)
+          @payment_type = args[:payment_type] if args.key?(:payment_type)
           @reason_text = args[:reason_text] if args.key?(:reason_text)
           @return_refund_reason = args[:return_refund_reason] if args.key?(:return_refund_reason)
         end

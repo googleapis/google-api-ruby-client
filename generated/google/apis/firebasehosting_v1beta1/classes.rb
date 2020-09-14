@@ -102,6 +102,120 @@ module Google
         end
       end
       
+      # A `Channel` represents a stream of releases for a site. All sites have a
+      # default `live` channel that serves content to the live Firebase-provided
+      # domains and any connected custom domains.
+      class Channel
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which the channel was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The time at which the channel will be automatically deleted. If null, the
+        # channel will not be automatically deleted. This field is present in output
+        # whether set directly or via the `ttl` field.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Text labels used for extra metadata and/or filtering.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The fully-qualified identifier of the Channel.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A `Release` is a particular [collection of configurations and files](sites.
+        # versions) that is set to be public at a particular time.
+        # Corresponds to the JSON property `release`
+        # @return [Google::Apis::FirebasehostingV1beta1::Release]
+        attr_accessor :release
+      
+        # The number of previous releases to retain on the channel for rollback or other
+        # purposes. Must be a number between 1-100. Defaults to 10 for new channels.
+        # Corresponds to the JSON property `retainedReleaseCount`
+        # @return [Fixnum]
+        attr_accessor :retained_release_count
+      
+        # Input only. A time-to-live for this channel. Sets `expire_time` to the
+        # provided duration past the time of the request.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        # Output only. The time at which the channel was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Output only. The URL at which the channel can be viewed. For the `live`
+        # channel, the content of the current release may also be visible at other URLs.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @release = args[:release] if args.key?(:release)
+          @retained_release_count = args[:retained_release_count] if args.key?(:retained_release_count)
+          @ttl = args[:ttl] if args.key?(:ttl)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # The request sent to CloneVersion.
+      class CloneVersionRequest
+        include Google::Apis::Core::Hashable
+      
+        # A representation of filter path.
+        # Corresponds to the JSON property `exclude`
+        # @return [Google::Apis::FirebasehostingV1beta1::PathFilter]
+        attr_accessor :exclude
+      
+        # If true, immediately finalize the version after cloning is complete.
+        # Corresponds to the JSON property `finalize`
+        # @return [Boolean]
+        attr_accessor :finalize
+        alias_method :finalize?, :finalize
+      
+        # A representation of filter path.
+        # Corresponds to the JSON property `include`
+        # @return [Google::Apis::FirebasehostingV1beta1::PathFilter]
+        attr_accessor :include
+      
+        # Required. The name of the version to be cloned, in the format: `sites/`site`/
+        # versions/`version``
+        # Corresponds to the JSON property `sourceVersion`
+        # @return [String]
+        attr_accessor :source_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclude = args[:exclude] if args.key?(:exclude)
+          @finalize = args[:finalize] if args.key?(:finalize)
+          @include = args[:include] if args.key?(:include)
+          @source_version = args[:source_version] if args.key?(:source_version)
+        end
+      end
+      
       # A configured rewrite that directs requests to a Cloud Run service. If the
       # Cloud Run service does not exist when setting or updating your Firebase
       # Hosting configuration, then the request fails. Any errors from the Cloud Run
@@ -344,6 +458,33 @@ module Google
         end
       end
       
+      # The response returned by ListChannels.
+      class ListChannelsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of channels.
+        # Corresponds to the JSON property `channels`
+        # @return [Array<Google::Apis::FirebasehostingV1beta1::Channel>]
+        attr_accessor :channels
+      
+        # If there are additional releases remaining beyond the ones in this response,
+        # then supply this token in the next [`list`](../sites.channels/list) call to
+        # continue with the next set of releases.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channels = args[:channels] if args.key?(:channels)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response to listing Domains.
       class ListDomainsResponse
         include Google::Apis::Core::Hashable
@@ -505,6 +646,25 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # A representation of filter path.
+      class PathFilter
+        include Google::Apis::Core::Hashable
+      
+        # An array of regexes to filter by.
+        # Corresponds to the JSON property `regexes`
+        # @return [Array<String>]
+        attr_accessor :regexes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @regexes = args[:regexes] if args.key?(:regexes)
         end
       end
       

@@ -310,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkUtilization
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -777,6 +783,7 @@ module Google
           property :vm_debug_enabled, as: 'vmDebugEnabled'
           property :vm_id, as: 'vmId'
           property :vm_ip, as: 'vmIp'
+          property :vm_liveness, as: 'vmLiveness'
           property :vm_name, as: 'vmName'
           property :vm_status, as: 'vmStatus'
           property :vm_zone_name, as: 'vmZoneName'
@@ -930,6 +937,13 @@ module Google
         end
       end
       
+      class NetworkSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ingress_traffic_allowed, as: 'ingressTrafficAllowed'
+        end
+      end
+      
       class NetworkUtilization
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1057,6 +1071,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :name, as: 'name'
+          property :network_settings, as: 'networkSettings', class: Google::Apis::AppengineV1beta::NetworkSettings, decorator: Google::Apis::AppengineV1beta::NetworkSettings::Representation
+      
           property :split, as: 'split', class: Google::Apis::AppengineV1beta::TrafficSplit, decorator: Google::Apis::AppengineV1beta::TrafficSplit::Representation
       
         end

@@ -116,6 +116,12 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
+        # A client-specified ID for this binding. Expected to be globally unique to
+        # support the internal bindings-by-ID API.
+        # Corresponds to the JSON property `bindingId`
+        # @return [String]
+        attr_accessor :binding_id
+      
         # Represents a textual expression in the Common Expression Language (CEL) syntax.
         # CEL is a C-like expression language. The syntax and semantics of CEL are
         # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -177,6 +183,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @binding_id = args[:binding_id] if args.key?(:binding_id)
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
@@ -291,6 +298,13 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # User-managed service account to set on Dataproc when Cloud Data Fusion creates
+        # Dataproc to run data processing pipelines. This allows users to have fine-
+        # grained access control on Dataproc's accesses to cloud resources.
+        # Corresponds to the JSON property `dataprocServiceAccount`
+        # @return [String]
+        attr_accessor :dataproc_service_account
       
         # A description of this instance.
         # Corresponds to the JSON property `description`
@@ -419,6 +433,7 @@ module Google
           @api_endpoint = args[:api_endpoint] if args.key?(:api_endpoint)
           @available_version = args[:available_version] if args.key?(:available_version)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @dataproc_service_account = args[:dataproc_service_account] if args.key?(:dataproc_service_account)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @enable_stackdriver_logging = args[:enable_stackdriver_logging] if args.key?(:enable_stackdriver_logging)

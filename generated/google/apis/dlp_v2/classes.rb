@@ -1107,7 +1107,7 @@ module Google
         attr_accessor :location_id
       
         # The template id can contain uppercase and lowercase letters, numbers, and
-        # hyphens; that is, it must match the regular expression: `[a-zA-Z\\d-_]+`. The
+        # hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The
         # maximum length is 100 characters. Can be empty to allow the system to generate
         # one.
         # Corresponds to the JSON property `templateId`
@@ -1137,7 +1137,7 @@ module Google
         attr_accessor :inspect_job
       
         # The job id can contain uppercase and lowercase letters, numbers, and hyphens;
-        # that is, it must match the regular expression: `[a-zA-Z\\d-_]+`. The maximum
+        # that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum
         # length is 100 characters. Can be empty to allow the system to generate one.
         # Corresponds to the JSON property `jobId`
         # @return [String]
@@ -1185,7 +1185,7 @@ module Google
         attr_accessor :location_id
       
         # The template id can contain uppercase and lowercase letters, numbers, and
-        # hyphens; that is, it must match the regular expression: `[a-zA-Z\\d-_]+`. The
+        # hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The
         # maximum length is 100 characters. Can be empty to allow the system to generate
         # one.
         # Corresponds to the JSON property `templateId`
@@ -1220,7 +1220,7 @@ module Google
         attr_accessor :location_id
       
         # The trigger id can contain uppercase and lowercase letters, numbers, and
-        # hyphens; that is, it must match the regular expression: `[a-zA-Z\\d-_]+`. The
+        # hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The
         # maximum length is 100 characters. Can be empty to allow the system to generate
         # one.
         # Corresponds to the JSON property `triggerId`
@@ -1256,7 +1256,7 @@ module Google
         attr_accessor :location_id
       
         # The storedInfoType ID can contain uppercase and lowercase letters, numbers,
-        # and hyphens; that is, it must match the regular expression: `[a-zA-Z\\d-_]+`.
+        # and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`.
         # The maximum length is 100 characters. Can be empty to allow the system to
         # generate one.
         # Corresponds to the JSON property `storedInfoTypeId`

@@ -48,52 +48,39 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Completes the specified prefix with keyword suggestions.
-        # Intended for use by a job search auto-complete search box.
+        # Completes the specified prefix with keyword suggestions. Intended for use by a
+        # job search auto-complete search box.
         # @param [String] name
-        #   Required. Resource name of project the completion is performed within.
-        #   The format is "projects/`project_id`", for example,
-        #   "projects/api-test-project".
+        #   Required. Resource name of project the completion is performed within. The
+        #   format is "projects/`project_id`", for example, "projects/api-test-project".
         # @param [String] company_name
-        #   Optional. If provided, restricts completion to specified company.
-        #   The format is "projects/`project_id`/companies/`company_id`", for example,
-        #   "projects/api-test-project/companies/foo".
+        #   Optional. If provided, restricts completion to specified company. The format
+        #   is "projects/`project_id`/companies/`company_id`", for example, "projects/api-
+        #   test-project/companies/foo".
         # @param [String] language_code
-        #   Deprecated. Use language_codes instead.
-        #   Optional.
-        #   The language of the query. This is
-        #   the BCP-47 language code, such as "en-US" or "sr-Latn".
-        #   For more information, see
-        #   [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
-        #   For CompletionType.JOB_TITLE type, only open jobs with the same
-        #   language_code are returned.
-        #   For CompletionType.COMPANY_NAME type,
-        #   only companies having open jobs with the same language_code are
-        #   returned.
-        #   For CompletionType.COMBINED type, only open jobs with the same
-        #   language_code or companies having open jobs with the same
-        #   language_code are returned.
-        #   The maximum number of allowed characters is 255.
+        #   Deprecated. Use language_codes instead. Optional. The language of the query.
+        #   This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more
+        #   information, see [Tags for Identifying Languages](https://tools.ietf.org/html/
+        #   bcp47). For CompletionType.JOB_TITLE type, only open jobs with the same
+        #   language_code are returned. For CompletionType.COMPANY_NAME type, only
+        #   companies having open jobs with the same language_code are returned. For
+        #   CompletionType.COMBINED type, only open jobs with the same language_code or
+        #   companies having open jobs with the same language_code are returned. The
+        #   maximum number of allowed characters is 255.
         # @param [Array<String>, String] language_codes
-        #   Optional. The list of languages of the query. This is
-        #   the BCP-47 language code, such as "en-US" or "sr-Latn".
-        #   For more information, see
-        #   [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
-        #   For CompletionType.JOB_TITLE type, only open jobs with the same
-        #   language_codes are returned.
-        #   For CompletionType.COMPANY_NAME type,
-        #   only companies having open jobs with the same language_codes are
-        #   returned.
-        #   For CompletionType.COMBINED type, only open jobs with the same
-        #   language_codes or companies having open jobs with the same
-        #   language_codes are returned.
-        #   The maximum number of allowed characters is 255.
+        #   Optional. The list of languages of the query. This is the BCP-47 language code,
+        #   such as "en-US" or "sr-Latn". For more information, see [Tags for Identifying
+        #   Languages](https://tools.ietf.org/html/bcp47). For CompletionType.JOB_TITLE
+        #   type, only open jobs with the same language_codes are returned. For
+        #   CompletionType.COMPANY_NAME type, only companies having open jobs with the
+        #   same language_codes are returned. For CompletionType.COMBINED type, only open
+        #   jobs with the same language_codes or companies having open jobs with the same
+        #   language_codes are returned. The maximum number of allowed characters is 255.
         # @param [Fixnum] page_size
-        #   Required. Completion result count.
-        #   The maximum allowed page size is 10.
+        #   Required. Completion result count. The maximum allowed page size is 10.
         # @param [String] query
-        #   Required. The query used to generate suggestions.
-        #   The maximum number of allowed characters is 255.
+        #   Required. The query used to generate suggestions. The maximum number of
+        #   allowed characters is 255.
         # @param [String] scope
         #   Optional. The scope of the completion. The defaults is CompletionScope.PUBLIC.
         # @param [String] type
@@ -132,12 +119,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Report events issued when end user interacts with customer's application
-        # that uses Cloud Talent Solution. You may inspect the created events in
-        # [self service
-        # tools](https://console.cloud.google.com/talent-solution/overview).
-        # [Learn
-        # more](https://cloud.google.com/talent-solution/docs/management-tools)
+        # Report events issued when end user interacts with customer's application that
+        # uses Cloud Talent Solution. You may inspect the created events in [self
+        # service tools](https://console.cloud.google.com/talent-solution/overview). [
+        # Learn more](https://cloud.google.com/talent-solution/docs/management-tools)
         # about self service tools.
         # @param [String] parent
         #   Parent project name.
@@ -173,9 +158,8 @@ module Google
         
         # Creates a new company entity.
         # @param [String] parent
-        #   Required. Resource name of the project under which the company is created.
-        #   The format is "projects/`project_id`", for example,
-        #   "projects/api-test-project".
+        #   Required. Resource name of the project under which the company is created. The
+        #   format is "projects/`project_id`", for example, "projects/api-test-project".
         # @param [Google::Apis::JobsV3::CreateCompanyRequest] create_company_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -206,12 +190,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes specified company.
-        # Prerequisite: The company has no jobs associated with it.
+        # Deletes specified company. Prerequisite: The company has no jobs associated
+        # with it.
         # @param [String] name
-        #   Required. The resource name of the company to be deleted.
-        #   The format is "projects/`project_id`/companies/`company_id`", for example,
-        #   "projects/api-test-project/companies/foo".
+        #   Required. The resource name of the company to be deleted. The format is "
+        #   projects/`project_id`/companies/`company_id`", for example, "projects/api-test-
+        #   project/companies/foo".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -241,9 +225,9 @@ module Google
         
         # Retrieves specified company.
         # @param [String] name
-        #   Required. The resource name of the company to be retrieved.
-        #   The format is "projects/`project_id`/companies/`company_id`", for example,
-        #   "projects/api-test-project/companies/foo".
+        #   Required. The resource name of the company to be retrieved. The format is "
+        #   projects/`project_id`/companies/`company_id`", for example, "projects/api-test-
+        #   project/companies/foo".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -273,18 +257,16 @@ module Google
         
         # Lists all companies associated with the service account.
         # @param [String] parent
-        #   Required. Resource name of the project under which the company is created.
-        #   The format is "projects/`project_id`", for example,
-        #   "projects/api-test-project".
+        #   Required. Resource name of the project under which the company is created. The
+        #   format is "projects/`project_id`", for example, "projects/api-test-project".
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of companies to be returned, at most 100.
-        #   Default is 100 if a non-positive number is provided.
+        #   Optional. The maximum number of companies to be returned, at most 100. Default
+        #   is 100 if a non-positive number is provided.
         # @param [String] page_token
         #   Optional. The starting indicator from which to return results.
         # @param [Boolean] require_open_jobs
-        #   Optional. Set to true if the companies requested must have open jobs.
-        #   Defaults to false.
-        #   If true, at most page_size of companies are fetched, among which
+        #   Optional. Set to true if the companies requested must have open jobs. Defaults
+        #   to false. If true, at most page_size of companies are fetched, among which
         #   only those with open jobs are returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -316,15 +298,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates specified company. Company names can't be updated. To update a
-        # company name, delete the company and all jobs associated with it, and only
-        # then re-create them.
+        # Updates specified company. Company names can't be updated. To update a company
+        # name, delete the company and all jobs associated with it, and only then re-
+        # create them.
         # @param [String] name
-        #   Required during company update.
-        #   The resource name for a company. This is generated by the service when a
-        #   company is created.
-        #   The format is "projects/`project_id`/companies/`company_id`", for example,
-        #   "projects/api-test-project/companies/foo".
+        #   Required during company update. The resource name for a company. This is
+        #   generated by the service when a company is created. The format is "projects/`
+        #   project_id`/companies/`company_id`", for example, "projects/api-test-project/
+        #   companies/foo".
         # @param [Google::Apis::JobsV3::UpdateCompanyRequest] update_company_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -357,9 +338,8 @@ module Google
         
         # Deletes a list of Jobs by filter.
         # @param [String] parent
-        #   Required. The resource name of the project under which the job is created.
-        #   The format is "projects/`project_id`", for example,
-        #   "projects/api-test-project".
+        #   Required. The resource name of the project under which the job is created. The
+        #   format is "projects/`project_id`", for example, "projects/api-test-project".
         # @param [Google::Apis::JobsV3::BatchDeleteJobsRequest] batch_delete_jobs_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -390,13 +370,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new job.
-        # Typically, the job becomes searchable within 10 seconds, but it may take
-        # up to 5 minutes.
+        # Creates a new job. Typically, the job becomes searchable within 10 seconds,
+        # but it may take up to 5 minutes.
         # @param [String] parent
-        #   Required. The resource name of the project under which the job is created.
-        #   The format is "projects/`project_id`", for example,
-        #   "projects/api-test-project".
+        #   Required. The resource name of the project under which the job is created. The
+        #   format is "projects/`project_id`", for example, "projects/api-test-project".
         # @param [Google::Apis::JobsV3::CreateJobRequest] create_job_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -427,13 +405,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified job.
-        # Typically, the job becomes unsearchable within 10 seconds, but it may take
-        # up to 5 minutes.
+        # Deletes the specified job. Typically, the job becomes unsearchable within 10
+        # seconds, but it may take up to 5 minutes.
         # @param [String] name
-        #   Required. The resource name of the job to be deleted.
-        #   The format is "projects/`project_id`/jobs/`job_id`",
-        #   for example, "projects/api-test-project/jobs/1234".
+        #   Required. The resource name of the job to be deleted. The format is "projects/`
+        #   project_id`/jobs/`job_id`", for example, "projects/api-test-project/jobs/1234".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -461,12 +437,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the specified job, whose status is OPEN or recently EXPIRED
-        # within the last 90 days.
+        # Retrieves the specified job, whose status is OPEN or recently EXPIRED within
+        # the last 90 days.
         # @param [String] name
-        #   Required. The resource name of the job to retrieve.
-        #   The format is "projects/`project_id`/jobs/`job_id`",
-        #   for example, "projects/api-test-project/jobs/1234".
+        #   Required. The resource name of the job to retrieve. The format is "projects/`
+        #   project_id`/jobs/`job_id`", for example, "projects/api-test-project/jobs/1234".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -496,28 +471,22 @@ module Google
         
         # Lists jobs by filter.
         # @param [String] parent
-        #   Required. The resource name of the project under which the job is created.
-        #   The format is "projects/`project_id`", for example,
-        #   "projects/api-test-project".
+        #   Required. The resource name of the project under which the job is created. The
+        #   format is "projects/`project_id`", for example, "projects/api-test-project".
         # @param [String] filter
-        #   Required. The filter string specifies the jobs to be enumerated.
-        #   Supported operator: =, AND
-        #   The fields eligible for filtering are:
-        #   * `companyName` (Required)
-        #   * `requisitionId` (Optional)
-        #   Sample Query:
-        #   * companyName = "projects/api-test-project/companies/123"
-        #   * companyName = "projects/api-test-project/companies/123" AND requisitionId
-        #   = "req-1"
+        #   Required. The filter string specifies the jobs to be enumerated. Supported
+        #   operator: =, AND The fields eligible for filtering are: * `companyName` (
+        #   Required) * `requisitionId` (Optional) Sample Query: * companyName = "projects/
+        #   api-test-project/companies/123" * companyName = "projects/api-test-project/
+        #   companies/123" AND requisitionId = "req-1"
         # @param [String] job_view
-        #   Optional. The desired job attributes returned for jobs in the
-        #   search response. Defaults to JobView.JOB_VIEW_FULL if no value is
-        #   specified.
+        #   Optional. The desired job attributes returned for jobs in the search response.
+        #   Defaults to JobView.JOB_VIEW_FULL if no value is specified.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of jobs to be returned per page of results.
-        #   If job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum allowed
-        #   page size is 1000. Otherwise, the maximum allowed page size is 100.
-        #   Default is 100 if empty or a number < 1 is specified.
+        #   Optional. The maximum number of jobs to be returned per page of results. If
+        #   job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum allowed page size is
+        #   1000. Otherwise, the maximum allowed page size is 100. Default is 100 if empty
+        #   or a number < 1 is specified.
         # @param [String] page_token
         #   Optional. The starting point of a query result.
         # @param [String] fields
@@ -551,16 +520,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates specified job.
-        # Typically, updated contents become visible in search results within 10
-        # seconds, but it may take up to 5 minutes.
+        # Updates specified job. Typically, updated contents become visible in search
+        # results within 10 seconds, but it may take up to 5 minutes.
         # @param [String] name
-        #   Required during job update.
-        #   The resource name for the job. This is generated by the service when a
-        #   job is created.
-        #   The format is "projects/`project_id`/jobs/`job_id`",
-        #   for example, "projects/api-test-project/jobs/1234".
-        #   Use of this field in job queries and API calls is preferred over the use of
+        #   Required during job update. The resource name for the job. This is generated
+        #   by the service when a job is created. The format is "projects/`project_id`/
+        #   jobs/`job_id`", for example, "projects/api-test-project/jobs/1234". Use of
+        #   this field in job queries and API calls is preferred over the use of
         #   requisition_id since this value is unique.
         # @param [Google::Apis::JobsV3::UpdateJobRequest] update_job_request_object
         # @param [String] fields
@@ -592,14 +558,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Searches for jobs using the provided SearchJobsRequest.
-        # This call constrains the visibility of jobs
-        # present in the database, and only returns jobs that the caller has
-        # permission to search against.
+        # Searches for jobs using the provided SearchJobsRequest. This call constrains
+        # the visibility of jobs present in the database, and only returns jobs that the
+        # caller has permission to search against.
         # @param [String] parent
-        #   Required. The resource name of the project to search within.
-        #   The format is "projects/`project_id`", for example,
-        #   "projects/api-test-project".
+        #   Required. The resource name of the project to search within. The format is "
+        #   projects/`project_id`", for example, "projects/api-test-project".
         # @param [Google::Apis::JobsV3::SearchJobsRequest] search_jobs_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -630,18 +594,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Searches for jobs using the provided SearchJobsRequest.
-        # This API call is intended for the use case of targeting passive job
-        # seekers (for example, job seekers who have signed up to receive email
-        # alerts about potential job opportunities), and has different algorithmic
-        # adjustments that are targeted to passive job seekers.
-        # This call constrains the visibility of jobs
-        # present in the database, and only returns jobs the caller has
-        # permission to search against.
+        # Searches for jobs using the provided SearchJobsRequest. This API call is
+        # intended for the use case of targeting passive job seekers (for example, job
+        # seekers who have signed up to receive email alerts about potential job
+        # opportunities), and has different algorithmic adjustments that are targeted to
+        # passive job seekers. This call constrains the visibility of jobs present in
+        # the database, and only returns jobs the caller has permission to search
+        # against.
         # @param [String] parent
-        #   Required. The resource name of the project to search within.
-        #   The format is "projects/`project_id`", for example,
-        #   "projects/api-test-project".
+        #   Required. The resource name of the project to search within. The format is "
+        #   projects/`project_id`", for example, "projects/api-test-project".
         # @param [Google::Apis::JobsV3::SearchJobsRequest] search_jobs_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

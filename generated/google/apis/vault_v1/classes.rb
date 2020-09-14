@@ -41,23 +41,23 @@ module Google
         end
       end
       
-      # A status detailing the status of each account creation, and the
-      # HeldAccount, if successful.
+      # A status detailing the status of each account creation, and the HeldAccount,
+      # if successful.
       class AddHeldAccountResult
         include Google::Apis::Core::Hashable
       
-        # An account being held in a particular hold. This structure is immutable.
-        # This can be either a single user or a google group, depending on the corpus.
+        # An account being held in a particular hold. This structure is immutable. This
+        # can be either a single user or a google group, depending on the corpus.
         # Corresponds to the JSON property `account`
         # @return [Google::Apis::VaultV1::HeldAccount]
         attr_accessor :account
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::VaultV1::Status]
         attr_accessor :status
@@ -77,8 +77,8 @@ module Google
       class AddHeldAccountsRequest
         include Google::Apis::Core::Hashable
       
-        # Account IDs to identify which accounts to add. Only account_ids or only
-        # emails should be specified, but not both.
+        # Account IDs to identify which accounts to add. Only account_ids or only emails
+        # should be specified, but not both.
         # Corresponds to the JSON property `accountIds`
         # @return [Array<String>]
         attr_accessor :account_ids
@@ -119,29 +119,27 @@ module Google
         end
       end
       
-      # Add an account with the permission specified. The role cannot be owner.
-      # If an account already has a role in the matter, it will be
-      # overwritten.
+      # Add an account with the permission specified. The role cannot be owner. If an
+      # account already has a role in the matter, it will be overwritten.
       class AddMatterPermissionsRequest
         include Google::Apis::Core::Hashable
       
-        # Only relevant if send_emails is true.
-        # True to CC requestor in the email message.
-        # False to not CC requestor.
+        # Only relevant if send_emails is true. True to CC requestor in the email
+        # message. False to not CC requestor.
         # Corresponds to the JSON property `ccMe`
         # @return [Boolean]
         attr_accessor :cc_me
         alias_method :cc_me?, :cc_me
       
         # Currently each matter only has one owner, and all others are collaborators.
-        # When an account is purged, its corresponding MatterPermission resources
-        # cease to exist.
+        # When an account is purged, its corresponding MatterPermission resources cease
+        # to exist.
         # Corresponds to the JSON property `matterPermission`
         # @return [Google::Apis::VaultV1::MatterPermission]
         attr_accessor :matter_permission
       
-        # True to send notification email to the added account.
-        # False to not send notification email.
+        # True to send notification email to the added account. False to not send
+        # notification email.
         # Corresponds to the JSON property `sendEmails`
         # @return [Boolean]
         attr_accessor :send_emails
@@ -195,11 +193,9 @@ module Google
       class CloudStorageFile
         include Google::Apis::Core::Hashable
       
-        # The cloud storage bucket name of this export file.
-        # Can be used in cloud storage JSON/XML API, but not to list the bucket
-        # contents. Instead, you can <a
-        # href="https://cloud.google.com/storage/docs/json_api/v1/objects/get">
-        # get individual export files</a> by object name.
+        # The cloud storage bucket name of this export file. Can be used in cloud
+        # storage JSON/XML API, but not to list the bucket contents. Instead, you can
+        # get individual export files by object name.
         # Corresponds to the JSON property `bucketName`
         # @return [String]
         attr_accessor :bucket_name
@@ -209,8 +205,8 @@ module Google
         # @return [String]
         attr_accessor :md5_hash
       
-        # The cloud storage object name of this export file.
-        # Can be used in cloud storage JSON/XML API.
+        # The cloud storage object name of this export file. Can be used in cloud
+        # storage JSON/XML API.
         # Corresponds to the JSON property `objectName`
         # @return [String]
         attr_accessor :object_name
@@ -293,10 +289,8 @@ module Google
       class DriveExportOptions
         include Google::Apis::Core::Hashable
       
-        # Set to true to include access level information for users
-        # with <a
-        # href="https://support.google.com/vault/answer/6099459#metadata">indirect
-        # access</a> to files.
+        # Set to true to include access level information for users with indirect access
+        # to files.
         # Corresponds to the JSON property `includeAccessInfo`
         # @return [Boolean]
         attr_accessor :include_access_info
@@ -328,9 +322,8 @@ module Google
         attr_accessor :include_team_drives
         alias_method :include_team_drives?, :include_team_drives
       
-        # Search the versions of the Drive file
-        # as of the reference date. These timestamps are in GMT and
-        # rounded down to the given date.
+        # Search the versions of the Drive file as of the reference date. These
+        # timestamps are in GMT and rounded down to the given date.
         # Corresponds to the JSON property `versionDate`
         # @return [String]
         attr_accessor :version_date
@@ -347,13 +340,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -590,13 +581,12 @@ module Google
         end
       end
       
-      # An account being held in a particular hold. This structure is immutable.
-      # This can be either a single user or a google group, depending on the corpus.
+      # An account being held in a particular hold. This structure is immutable. This
+      # can be either a single user or a google group, depending on the corpus.
       class HeldAccount
         include Google::Apis::Core::Hashable
       
-        # The account's ID as provided by the
-        # <a href="https://developers.google.com/admin-sdk/">Admin SDK</a>.
+        # The account's ID as provided by the Admin SDK.
         # Corresponds to the JSON property `accountId`
         # @return [String]
         attr_accessor :account_id
@@ -749,8 +739,8 @@ module Google
         end
       end
       
-      # A organizational unit being held in a particular hold.
-      # This structure is immutable.
+      # A organizational unit being held in a particular hold. This structure is
+      # immutable.
       class HeldOrgUnit
         include Google::Apis::Core::Hashable
       
@@ -775,15 +765,14 @@ module Google
         end
       end
       
-      # Represents a hold within Vault. A hold restricts purging of
-      # artifacts based on the combination of the query and accounts restrictions.
-      # A hold can be configured to either apply to an explicitly configured set
-      # of accounts, or can be applied to all members of an organizational unit.
+      # Represents a hold within Vault. A hold restricts purging of artifacts based on
+      # the combination of the query and accounts restrictions. A hold can be
+      # configured to either apply to an explicitly configured set of accounts, or can
+      # be applied to all members of an organizational unit.
       class Hold
         include Google::Apis::Core::Hashable
       
-        # If set, the hold applies to the enumerated accounts and org_unit must be
-        # empty.
+        # If set, the hold applies to the enumerated accounts and org_unit must be empty.
         # Corresponds to the JSON property `accounts`
         # @return [Array<Google::Apis::VaultV1::HeldAccount>]
         attr_accessor :accounts
@@ -803,8 +792,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # A organizational unit being held in a particular hold.
-        # This structure is immutable.
+        # A organizational unit being held in a particular hold. This structure is
+        # immutable.
         # Corresponds to the JSON property `orgUnit`
         # @return [Google::Apis::VaultV1::HeldOrgUnit]
         attr_accessor :org_unit
@@ -888,8 +877,8 @@ module Google
         # @return [Array<Google::Apis::VaultV1::Hold>]
         attr_accessor :holds
       
-        # Page token to retrieve the next page of results in the list.
-        # If this is empty, then there are no more holds to list.
+        # Page token to retrieve the next page of results in the list. If this is empty,
+        # then there are no more holds to list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -934,8 +923,8 @@ module Google
       class ListSavedQueriesResponse
         include Google::Apis::Core::Hashable
       
-        # Page token to retrieve the next page of results in the list.
-        # If this is empty, then there are no more saved queries to list.
+        # Page token to retrieve the next page of results in the list. If this is empty,
+        # then there are no more saved queries to list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1011,8 +1000,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The matter ID which is generated by the server.
-        # Should be blank when creating a new matter.
+        # The matter ID which is generated by the server. Should be blank when creating
+        # a new matter.
         # Corresponds to the JSON property `matterId`
         # @return [String]
         attr_accessor :matter_id
@@ -1048,13 +1037,12 @@ module Google
       end
       
       # Currently each matter only has one owner, and all others are collaborators.
-      # When an account is purged, its corresponding MatterPermission resources
-      # cease to exist.
+      # When an account is purged, its corresponding MatterPermission resources cease
+      # to exist.
       class MatterPermission
         include Google::Apis::Core::Hashable
       
-        # The account ID, as provided by <a
-        # href="https://developers.google.com/admin-sdk/">Admin SDK</a>.
+        # The account ID, as provided by Admin SDK.
         # Corresponds to the JSON property `accountId`
         # @return [String]
         attr_accessor :account_id
@@ -1079,9 +1067,7 @@ module Google
       class OrgUnitInfo
         include Google::Apis::Core::Hashable
       
-        # Org unit to search, as provided by the
-        # <a href="https://developers.google.com/admin-sdk/directory/">Admin SDK
-        # Directory API</a>.
+        # Org unit to search, as provided by the Admin SDK Directory API.
         # Corresponds to the JSON property `orgUnitId`
         # @return [String]
         attr_accessor :org_unit_id
@@ -1141,10 +1127,10 @@ module Google
         # @return [Google::Apis::VaultV1::MailOptions]
         attr_accessor :mail_options
       
-        # The search method to use. This field is similar to the search_method field
-        # but is introduced to support shared drives. It supports all
-        # search method types. In case the search_method is TEAM_DRIVE the response
-        # of this field will be SHARED_DRIVE only.
+        # The search method to use. This field is similar to the search_method field but
+        # is introduced to support shared drives. It supports all search method types.
+        # In case the search_method is TEAM_DRIVE the response of this field will be
+        # SHARED_DRIVE only.
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -1175,18 +1161,13 @@ module Google
         # @return [Google::Apis::VaultV1::TeamDriveInfo]
         attr_accessor :team_drive_info
       
-        # The corpus-specific
-        # <a href="https://support.google.com/vault/answer/2474474">search
-        # operators</a> used to generate search results.
+        # The corpus-specific search operators used to generate search results.
         # Corresponds to the JSON property `terms`
         # @return [String]
         attr_accessor :terms
       
-        # The time zone name.
-        # It should be an IANA TZ name, such as "America/Los_Angeles".
-        # For more information, see
-        # <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">Time
-        # Zone</a>.
+        # The time zone name. It should be an IANA TZ name, such as "America/Los_Angeles"
+        # . For more information, see Time Zone.
         # Corresponds to the JSON property `timeZone`
         # @return [String]
         attr_accessor :time_zone
@@ -1239,8 +1220,8 @@ module Google
       class RemoveHeldAccountsResponse
         include Google::Apis::Core::Hashable
       
-        # A list of statuses for deleted accounts. Results have the
-        # same order as the request.
+        # A list of statuses for deleted accounts. Results have the same order as the
+        # request.
         # Corresponds to the JSON property `statuses`
         # @return [Array<Google::Apis::VaultV1::Status>]
         attr_accessor :statuses
@@ -1310,8 +1291,7 @@ module Google
       class SavedQuery
         include Google::Apis::Core::Hashable
       
-        # Output only. The server generated timestamp at which saved query was
-        # created.
+        # Output only. The server generated timestamp at which saved query was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -1321,9 +1301,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. The matter ID of the associated matter.
-        # The server does not look at this field during create and always uses matter
-        # id in the URL.
+        # Output only. The matter ID of the associated matter. The server does not look
+        # at this field during create and always uses matter id in the URL.
         # Corresponds to the JSON property `matterId`
         # @return [String]
         attr_accessor :matter_id
@@ -1356,8 +1335,7 @@ module Google
       class SharedDriveInfo
         include Google::Apis::Core::Hashable
       
-        # List of Shared drive IDs, as provided by <a
-        # href="https://developers.google.com/drive">Drive API</a>.
+        # List of Shared drive IDs, as provided by Drive API.
         # Corresponds to the JSON property `sharedDriveIds`
         # @return [Array<String>]
         attr_accessor :shared_drive_ids
@@ -1372,12 +1350,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -1386,15 +1364,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -1415,8 +1393,7 @@ module Google
       class TeamDriveInfo
         include Google::Apis::Core::Hashable
       
-        # List of Team Drive IDs, as provided by <a
-        # href="https://developers.google.com/drive">Drive API</a>.
+        # List of Team Drive IDs, as provided by Drive API.
         # Corresponds to the JSON property `teamDriveIds`
         # @return [Array<String>]
         attr_accessor :team_drive_ids

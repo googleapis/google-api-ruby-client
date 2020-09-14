@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/display-video/
     module DisplayvideoV1
       VERSION = 'V1'
-      REVISION = '20200820'
+      REVISION = '20200901'
 
       # Create, see, edit, and permanently delete your Display & Video 360 entities and reports
       AUTH_DISPLAY_VIDEO = 'https://www.googleapis.com/auth/display-video'

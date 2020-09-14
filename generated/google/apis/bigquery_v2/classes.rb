@@ -3583,6 +3583,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_slot_ms
       
+        # [Output-only] [Alpha] Information of the multi-statement transaction if this
+        # job is part of one.
+        # Corresponds to the JSON property `transactionInfoTemplate`
+        # @return [Google::Apis::BigqueryV2::TransactionInfo]
+        attr_accessor :transaction_info_template
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3605,6 +3611,7 @@ module Google
           @start_time = args[:start_time] if args.key?(:start_time)
           @total_bytes_processed = args[:total_bytes_processed] if args.key?(:total_bytes_processed)
           @total_slot_ms = args[:total_slot_ms] if args.key?(:total_slot_ms)
+          @transaction_info_template = args[:transaction_info_template] if args.key?(:transaction_info_template)
         end
         
         # 
@@ -6747,6 +6754,25 @@ module Google
           @results = args[:results] if args.key?(:results)
           @start_time = args[:start_time] if args.key?(:start_time)
           @training_options = args[:training_options] if args.key?(:training_options)
+        end
+      end
+      
+      # 
+      class TransactionInfo
+        include Google::Apis::Core::Hashable
+      
+        # [Output-only] // [Alpha] Id of the transaction.
+        # Corresponds to the JSON property `transactionId`
+        # @return [String]
+        attr_accessor :transaction_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @transaction_id = args[:transaction_id] if args.key?(:transaction_id)
         end
       end
       

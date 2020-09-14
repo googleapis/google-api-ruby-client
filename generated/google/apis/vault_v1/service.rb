@@ -113,9 +113,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new matter with the given name and description. The initial state
-        # is open, and the owner is the method caller. Returns the created matter
-        # with default view.
+        # Creates a new matter with the given name and description. The initial state is
+        # open, and the owner is the method caller. Returns the created matter with
+        # default view.
         # @param [Google::Apis::VaultV1::Matter] matter_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -210,8 +210,7 @@ module Google
         
         # Lists matters the user has access to.
         # @param [Fixnum] page_size
-        #   The number of matters to return in the response.
-        #   Default and maximum are 100.
+        #   The number of matters to return in the response. Default and maximum are 100.
         # @param [String] page_token
         #   The pagination token as returned in the response.
         # @param [String] state
@@ -348,9 +347,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified matter.
-        # This updates only the name and description of the matter, identified by
-        # matter ID. Changes to any other fields are ignored.
+        # Updates the specified matter. This updates only the name and description of
+        # the matter, identified by matter ID. Changes to any other fields are ignored.
         # Returns the default view of the matter.
         # @param [String] matter_id
         #   The matter ID.
@@ -659,16 +657,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists holds within a matter. An empty page token in ListHoldsResponse
-        # denotes no more holds to list.
+        # Lists holds within a matter. An empty page token in ListHoldsResponse denotes
+        # no more holds to list.
         # @param [String] matter_id
         #   The matter ID.
         # @param [Fixnum] page_size
         #   The number of holds to return in the response, between 0 and 100 inclusive.
         #   Leaving this empty, or as 0, is the same as page_size = 100.
         # @param [String] page_token
-        #   The pagination token as returned in the response.
-        #   An empty token means start from the beginning.
+        #   The pagination token as returned in the response. An empty token means start
+        #   from the beginning.
         # @param [String] view
         #   Specifies which parts of the Hold to return.
         # @param [String] fields
@@ -701,9 +699,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes HeldAccounts from a hold. Returns a list of statuses in the same
-        # order as the request. If this request leaves the hold with no held
-        # accounts, the hold will not apply to any accounts.
+        # Removes HeldAccounts from a hold. Returns a list of statuses in the same order
+        # as the request. If this request leaves the hold with no held accounts, the
+        # hold will not apply to any accounts.
         # @param [String] matter_id
         #   The matter ID.
         # @param [String] hold_id
@@ -739,9 +737,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the OU and/or query parameters of a hold. You cannot add accounts
-        # to a hold that covers an OU, nor can you add OUs to a hold that covers
-        # individual accounts. Accounts listed in the hold will be ignored.
+        # Updates the OU and/or query parameters of a hold. You cannot add accounts to a
+        # hold that covers an OU, nor can you add OUs to a hold that covers individual
+        # accounts. Accounts listed in the hold will be ignored.
         # @param [String] matter_id
         #   The matter ID.
         # @param [String] hold_id
@@ -777,9 +775,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds a HeldAccount to a hold. Accounts can only be added to a hold that
-        # has no held_org_unit set. Attempting to add an account to an OU-based
-        # hold will result in an error.
+        # Adds a HeldAccount to a hold. Accounts can only be added to a hold that has no
+        # held_org_unit set. Attempting to add an account to an OU-based hold will
+        # result in an error.
         # @param [String] matter_id
         #   The matter ID.
         # @param [String] hold_id
@@ -815,8 +813,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes a HeldAccount from a hold. If this request leaves the hold with
-        # no held accounts, the hold will not apply to any accounts.
+        # Removes a HeldAccount from a hold. If this request leaves the hold with no
+        # held accounts, the hold will not apply to any accounts.
         # @param [String] matter_id
         #   The matter ID.
         # @param [String] hold_id
@@ -852,10 +850,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists HeldAccounts for a hold. This will only list individually specified
-        # held accounts. If the hold is on an OU, then use
-        # <a href="https://developers.google.com/admin-sdk/">Admin SDK</a>
-        # to enumerate its members.
+        # Lists HeldAccounts for a hold. This will only list individually specified held
+        # accounts. If the hold is on an OU, then use Admin SDK to enumerate its members.
         # @param [String] matter_id
         #   The matter ID.
         # @param [String] hold_id
@@ -890,8 +886,7 @@ module Google
         
         # Creates a saved query.
         # @param [String] matter_id
-        #   The matter ID of the parent matter for which the saved query is to be
-        #   created.
+        #   The matter ID of the parent matter for which the saved query is to be created.
         # @param [Google::Apis::VaultV1::SavedQuery] saved_query_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -924,8 +919,7 @@ module Google
         
         # Deletes a saved query by Id.
         # @param [String] matter_id
-        #   The matter ID of the parent matter for which the saved query is to be
-        #   deleted.
+        #   The matter ID of the parent matter for which the saved query is to be deleted.
         # @param [String] saved_query_id
         #   ID of the saved query to be deleted.
         # @param [String] fields
@@ -998,8 +992,8 @@ module Google
         # @param [Fixnum] page_size
         #   The maximum number of saved queries to return.
         # @param [String] page_token
-        #   The pagination token as returned in the previous response.
-        #   An empty token means start from the beginning.
+        #   The pagination token as returned in the previous response. An empty token
+        #   means start from the beginning.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1029,10 +1023,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a long-running operation. This method indicates that the client is
-        # no longer interested in the operation result. It does not cancel the
-        # operation. If the server doesn't support this method, it returns
-        # `google.rpc.Code.UNIMPLEMENTED`.
+        # Deletes a long-running operation. This method indicates that the client is no
+        # longer interested in the operation result. It does not cancel the operation.
+        # If the server doesn't support this method, it returns `google.rpc.Code.
+        # UNIMPLEMENTED`.
         # @param [String] name
         #   The name of the operation resource to be deleted.
         # @param [String] fields

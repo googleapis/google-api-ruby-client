@@ -298,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkUtilization
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -896,6 +902,13 @@ module Google
         end
       end
       
+      class NetworkSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ingress_traffic_allowed, as: 'ingressTrafficAllowed'
+        end
+      end
+      
       class NetworkUtilization
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1023,6 +1036,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :name, as: 'name'
+          property :network_settings, as: 'networkSettings', class: Google::Apis::AppengineV1::NetworkSettings, decorator: Google::Apis::AppengineV1::NetworkSettings::Representation
+      
           property :split, as: 'split', class: Google::Apis::AppengineV1::TrafficSplit, decorator: Google::Apis::AppengineV1::TrafficSplit::Representation
       
         end

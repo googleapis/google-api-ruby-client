@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/chrome/verified-access
     module VerifiedaccessV1
       VERSION = 'V1'
-      REVISION = '20200512'
+      REVISION = '20200828'
 
       # Verify your enterprise credentials
       AUTH_VERIFIEDACCESS = 'https://www.googleapis.com/auth/verifiedaccess'

@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Symptom
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TensorFlowVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -231,6 +237,8 @@ module Google
       
           property :service_account, as: 'serviceAccount'
           property :state, as: 'state'
+          collection :symptoms, as: 'symptoms', class: Google::Apis::TpuV1::Symptom, decorator: Google::Apis::TpuV1::Symptom::Representation
+      
           property :tensorflow_version, as: 'tensorflowVersion'
           property :use_service_networking, as: 'useServiceNetworking'
         end
@@ -294,6 +302,16 @@ module Google
       class StopNodeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Symptom
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :details, as: 'details'
+          property :symptom_type, as: 'symptomType'
+          property :worker_id, as: 'workerId'
         end
       end
       

@@ -560,6 +560,7 @@ module Google
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :binding_id, as: 'bindingId'
           property :condition, as: 'condition', class: Google::Apis::DataprocV1beta2::Expr, decorator: Google::Apis::DataprocV1beta2::Expr::Representation
       
           collection :members, as: 'members'
@@ -745,6 +746,7 @@ module Google
           property :internal_ip_only, as: 'internalIpOnly'
           hash :metadata, as: 'metadata'
           property :network_uri, as: 'networkUri'
+          property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::DataprocV1beta2::ReservationAffinity, decorator: Google::Apis::DataprocV1beta2::ReservationAffinity::Representation
       
           property :service_account, as: 'serviceAccount'

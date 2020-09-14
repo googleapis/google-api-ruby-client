@@ -47,13 +47,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -102,12 +100,11 @@ module Google
         # @return [Google::Apis::VerifiedaccessV1::SignedData]
         attr_accessor :challenge_response
       
-        # Service can optionally provide identity information about the device
-        # or user associated with the key.
-        # For an EMK, this value is the enrolled domain.
-        # For an EUK, this value is the user's email address.
-        # If present, this value will be checked against contents
-        # of the response, and verification will fail if there is no match.
+        # Service can optionally provide identity information about the device or user
+        # associated with the key. For an EMK, this value is the enrolled domain. For an
+        # EUK, this value is the user's email address. If present, this value will be
+        # checked against contents of the response, and verification will fail if there
+        # is no match.
         # Corresponds to the JSON property `expectedIdentity`
         # @return [String]
         attr_accessor :expected_identity
@@ -127,32 +124,28 @@ module Google
       class VerifyChallengeResponseResult
         include Google::Apis::Core::Hashable
       
-        # Device enrollment id is returned in this field (for the machine response
-        # only).
+        # Device enrollment id is returned in this field (for the machine response only).
         # Corresponds to the JSON property `deviceEnrollmentId`
         # @return [String]
         attr_accessor :device_enrollment_id
       
-        # Device permanent id is returned in this field (for the machine response
-        # only).
+        # Device permanent id is returned in this field (for the machine response only).
         # Corresponds to the JSON property `devicePermanentId`
         # @return [String]
         attr_accessor :device_permanent_id
       
-        # Certificate Signing Request (in the SPKAC format, base64 encoded) is
-        # returned in this field. This field will be set only if device has included
-        # CSR in its challenge response.
-        # (the option to include CSR is now available for both user and machine
-        # responses)
+        # Certificate Signing Request (in the SPKAC format, base64 encoded) is returned
+        # in this field. This field will be set only if device has included CSR in its
+        # challenge response. (the option to include CSR is now available for both user
+        # and machine responses)
         # Corresponds to the JSON property `signedPublicKeyAndChallenge`
         # @return [String]
         attr_accessor :signed_public_key_and_challenge
       
-        # For EMCert check, device permanent id is returned here.
-        # For EUCert check, signed_public_key_and_challenge [base64 encoded]
-        # is returned if present, otherwise empty string is returned.
-        # This field is deprecated, please use device_permanent_id or
-        # signed_public_key_and_challenge fields.
+        # For EMCert check, device permanent id is returned here. For EUCert check,
+        # signed_public_key_and_challenge [base64 encoded] is returned if present,
+        # otherwise empty string is returned. This field is deprecated, please use
+        # device_permanent_id or signed_public_key_and_challenge fields.
         # Corresponds to the JSON property `verificationOutput`
         # @return [String]
         attr_accessor :verification_output

@@ -145,6 +145,7 @@ module Google
       class TfLiteModel
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :automl_model, as: 'automlModel'
           property :gcs_tflite_uri, as: 'gcsTfliteUri'
           property :size_bytes, as: 'sizeBytes'
         end

@@ -1755,12 +1755,6 @@ module Google
         # @return [Float]
         attr_accessor :classification_threshold
       
-        # Indicates if automatic spell correction is enabled in detect intent requests.
-        # Corresponds to the JSON property `enableSpellCorrection`
-        # @return [Boolean]
-        attr_accessor :enable_spell_correction
-        alias_method :enable_spell_correction?, :enable_spell_correction
-      
         # Indicates NLU model training mode.
         # Corresponds to the JSON property `modelTrainingMode`
         # @return [String]
@@ -1778,7 +1772,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @classification_threshold = args[:classification_threshold] if args.key?(:classification_threshold)
-          @enable_spell_correction = args[:enable_spell_correction] if args.key?(:enable_spell_correction)
           @model_training_mode = args[:model_training_mode] if args.key?(:model_training_mode)
           @model_type = args[:model_type] if args.key?(:model_type)
         end
@@ -2468,6 +2461,13 @@ module Google
       class GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText
         include Google::Apis::Core::Hashable
       
+        # Output only. Whether the playback of this message can be interrupted by the
+        # end user's speech and the client can then starts the next Dialogflow request.
+        # Corresponds to the JSON property `allowPlaybackInterruption`
+        # @return [Boolean]
+        attr_accessor :allow_playback_interruption
+        alias_method :allow_playback_interruption?, :allow_playback_interruption
+      
         # The SSML text to be synthesized. For more information, see [SSML](/speech/text-
         # to-speech/docs/ssml).
         # Corresponds to the JSON property `ssml`
@@ -2485,6 +2485,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allow_playback_interruption = args[:allow_playback_interruption] if args.key?(:allow_playback_interruption)
           @ssml = args[:ssml] if args.key?(:ssml)
           @text = args[:text] if args.key?(:text)
         end
@@ -4911,8 +4912,8 @@ module Google
         # may provide additional information in the payload. In particular, for the
         # Dialogflow Phone Gateway integration, this field has the form: ` "telephony": `
         # "caller_id": "+18558363987" ` ` Note: The caller ID field (`caller_id`) will
-        # be redacted for Standard Edition agents and populated with the caller ID in [E.
-        # 164 format](https://en.wikipedia.org/wiki/E.164) for Enterprise Edition agents.
+        # be redacted for Trial Edition agents and populated with the caller ID in [E.
+        # 164 format](https://en.wikipedia.org/wiki/E.164) for Essentials Edition agents.
         # Corresponds to the JSON property `payload`
         # @return [Hash<String,Object>]
         attr_accessor :payload
@@ -5475,15 +5476,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :lifespan_count
       
-        # Required. The unique identifier of the context. Format: `projects//agent/
-        # sessions//contexts/`, or `projects//agent/environments//users//sessions//
-        # contexts/`. The `Context ID` is always converted to lowercase, may only
-        # contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `
-        # Environment ID` is not specified, we assume default 'draft' environment. If `
-        # User ID` is not specified, we assume default '-' user. The following context
-        # names are reserved for internal use by Dialogflow. You should not use these
-        # contexts or create contexts with these names: * `__system_counters__` * `*
-        # _id_dialog_context` * `*_dialog_params_size`
+        # Required. The unique identifier of the context. Supported formats: - `projects/
+        # /agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`
+        # , - `projects//agent/environments//users//sessions//contexts/`, - `projects//
+        # locations//agent/environments//users//sessions//contexts/`, The `Context ID`
+        # is always converted to lowercase, may only contain characters in a-zA-Z0-9_-%
+        # and may be at most 250 bytes long. If `Environment ID` is not specified, we
+        # assume default 'draft' environment. If `User ID` is not specified, we assume
+        # default '-' user. The following context names are reserved for internal use by
+        # Dialogflow. You should not use these contexts or create contexts with these
+        # names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -5551,8 +5553,9 @@ module Google
         attr_accessor :kind
       
         # The unique identifier of the entity type. Required for EntityTypes.
-        # UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Format: `
-        # projects//agent/entityTypes/`.
+        # UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported
+        # formats: - `projects//agent/entityTypes/` - `projects//locations//agent/
+        # entityTypes/`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -5725,7 +5728,8 @@ module Google
         attr_accessor :followup_intent_info
       
         # Optional. The list of context names required for this intent to be triggered.
-        # Format: `projects//agent/sessions/-/contexts/`.
+        # Formats: - `projects//agent/sessions/-/contexts/` - `projects//locations//
+        # agent/sessions/-/contexts/`
         # Corresponds to the JSON property `inputContextNames`
         # @return [Array<String>]
         attr_accessor :input_context_names
@@ -5765,8 +5769,8 @@ module Google
         alias_method :ml_enabled?, :ml_enabled
       
         # Optional. The unique identifier of this intent. Required for Intents.
-        # UpdateIntent and Intents.BatchUpdateIntents methods. Format: `projects//agent/
-        # intents/`.
+        # UpdateIntent and Intents.BatchUpdateIntents methods. Supported formats: - `
+        # projects//agent/intents/` - `projects//locations//agent/intents/`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -7514,8 +7518,8 @@ module Google
         # may provide additional information in the payload. In particular, for the
         # Dialogflow Phone Gateway integration, this field has the form: ` "telephony": `
         # "caller_id": "+18558363987" ` ` Note: The caller ID field (`caller_id`) will
-        # be redacted for Standard Edition agents and populated with the caller ID in [E.
-        # 164 format](https://en.wikipedia.org/wiki/E.164) for Enterprise Edition agents.
+        # be redacted for Trial Edition agents and populated with the caller ID in [E.
+        # 164 format](https://en.wikipedia.org/wiki/E.164) for Essentials Edition agents.
         # Corresponds to the JSON property `payload`
         # @return [Hash<String,Object>]
         attr_accessor :payload
@@ -7779,12 +7783,15 @@ module Google
         # @return [String]
         attr_accessor :entity_override_mode
       
-        # Required. The unique identifier of this session entity type. Format: `projects/
-        # /agent/sessions//entityTypes/`, or `projects//agent/environments//users//
-        # sessions//entityTypes/`. If `Environment ID` is not specified, we assume
-        # default 'draft' environment. If `User ID` is not specified, we assume default '
-        # -' user. `` must be the display name of an existing entity type in the same
-        # agent that will be overridden or supplemented.
+        # Required. The unique identifier of this session entity type. Supported formats:
+        # - `projects//agent/sessions//entityTypes/` - `projects//locations//agent/
+        # sessions//entityTypes/` - `projects//agent/environments//users//sessions//
+        # entityTypes/` - `projects//locations//agent/environments/ /users//sessions//
+        # entityTypes/` If `Location ID` is not specified we assume default 'us'
+        # location. If `Environment ID` is not specified, we assume default 'draft'
+        # environment. If `User ID` is not specified, we assume default '-' user. ``
+        # must be the display name of an existing entity type in the same agent that
+        # will be overridden or supplemented.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -7828,8 +7835,10 @@ module Google
         attr_accessor :response_id
       
         # The unique identifier of detectIntent request session. Can be used to identify
-        # end-user inside webhook implementation. Format: `projects//agent/sessions/`,
-        # or `projects//agent/environments//users//sessions/`.
+        # end-user inside webhook implementation. Supported formats: - `projects//agent/
+        # sessions/, - `projects//locations//agent/sessions/`, - `projects//agent/
+        # environments//users//sessions/`, - `projects//locations//agent/environments//
+        # users//sessions/`,
         # Corresponds to the JSON property `session`
         # @return [String]
         attr_accessor :session

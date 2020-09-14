@@ -230,6 +230,12 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
+        # A client-specified ID for this binding. Expected to be globally unique to
+        # support the internal bindings-by-ID API.
+        # Corresponds to the JSON property `bindingId`
+        # @return [String]
+        attr_accessor :binding_id
+      
         # Represents a textual expression in the Common Expression Language (CEL) syntax.
         # CEL is a C-like expression language. The syntax and semantics of CEL are
         # documented at https://github.com/google/cel-spec.Example (Comparison): title: "
@@ -290,6 +296,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @binding_id = args[:binding_id] if args.key?(:binding_id)
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
@@ -410,7 +417,7 @@ module Google
         attr_accessor :endpoint_config
       
         # Common config settings for resources of Compute Engine cluster instances,
-        # applicable to all instances in the cluster.
+        # applicable to all instances in the cluster. NEXT ID: 14
         # Corresponds to the JSON property `gceClusterConfig`
         # @return [Google::Apis::DataprocV1beta2::GceClusterConfig]
         attr_accessor :gce_cluster_config
@@ -917,7 +924,7 @@ module Google
       end
       
       # Common config settings for resources of Compute Engine cluster instances,
-      # applicable to all instances in the cluster.
+      # applicable to all instances in the cluster. NEXT ID: 14
       class GceClusterConfig
         include Google::Apis::Core::Hashable
       
@@ -950,6 +957,11 @@ module Google
         # Corresponds to the JSON property `networkUri`
         # @return [String]
         attr_accessor :network_uri
+      
+        # Optional. The type of IPv6 access for a cluster.
+        # Corresponds to the JSON property `privateIpv6GoogleAccess`
+        # @return [String]
+        attr_accessor :private_ipv6_google_access
       
         # Reservation Affinity for consuming Zonal reservation.
         # Corresponds to the JSON property `reservationAffinity`
@@ -1015,6 +1027,7 @@ module Google
           @internal_ip_only = args[:internal_ip_only] if args.key?(:internal_ip_only)
           @metadata = args[:metadata] if args.key?(:metadata)
           @network_uri = args[:network_uri] if args.key?(:network_uri)
+          @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @service_account = args[:service_account] if args.key?(:service_account)
           @service_account_scopes = args[:service_account_scopes] if args.key?(:service_account_scopes)
@@ -2707,11 +2720,11 @@ module Google
       class QueryList
         include Google::Apis::Core::Hashable
       
-        # Required. The queries to execute. You do not need to terminate a query with a
-        # semicolon. Multiple queries can be specified in one string by separating each
-        # with a semicolon. Here is an example of an Cloud Dataproc API snippet that
-        # uses a QueryList to specify a HiveJob: "hiveJob": ` "queryList": ` "queries": [
-        # "query1", "query2", "query3;query4", ] ` `
+        # Required. The queries to execute. You do not need to end a query expression
+        # with a semicolon. Multiple queries can be specified in one string by
+        # separating each with a semicolon. Here is an example of a Dataproc API snippet
+        # that uses a QueryList to specify a HiveJob: "hiveJob": ` "queryList": ` "
+        # queries": [ "query1", "query2", "query3;query4", ] ` `
         # Corresponds to the JSON property `queries`
         # @return [Array<String>]
         attr_accessor :queries
@@ -3510,8 +3523,8 @@ module Google
         # The timeout duration must be from 10 minutes ("10m") to 24 hours ("24h" or "1d"
         # ). The timer begins when the first job is submitted. If the workflow is
         # running at the end of the timeout period, any remaining jobs are cancelled,
-        # the workflow is terminated, and if the workflow was running on a managed
-        # cluster, the cluster is deleted.
+        # the workflow is ended, and if the workflow was running on a managed cluster,
+        # the cluster is deleted.
         # Corresponds to the JSON property `dagTimeout`
         # @return [String]
         attr_accessor :dag_timeout

@@ -34,7 +34,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -46,7 +58,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -82,7 +106,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAppsCloudidentityDevicesV1ListClientStatesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1ListDevicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1WipeDeviceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAppsCloudidentityDevicesV1WipeDeviceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -172,11 +232,25 @@ module Google
         end
       end
       
+      class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
+        end
+      end
+      
       class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :device_user, as: 'deviceUser', class: Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1DeviceUser, decorator: Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1DeviceUser::Representation
       
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
         end
       end
       
@@ -188,11 +262,25 @@ module Google
         end
       end
       
+      class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
+        end
+      end
+      
       class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :device, as: 'device', class: Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1Device, decorator: Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1Device::Representation
       
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
         end
       end
       
@@ -283,11 +371,61 @@ module Google
         end
       end
       
+      class GoogleAppsCloudidentityDevicesV1ListClientStatesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :client_states, as: 'clientStates', class: Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ClientState, decorator: Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ClientState::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :device_users, as: 'deviceUsers', class: Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1DeviceUser, decorator: Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1DeviceUser::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1ListDevicesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :devices, as: 'devices', class: Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1Device, decorator: Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1Device::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
+          collection :names, as: 'names'
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1WipeDeviceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
+        end
+      end
+      
       class GoogleAppsCloudidentityDevicesV1WipeDeviceResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :device, as: 'device', class: Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1Device, decorator: Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1Device::Representation
       
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
         end
       end
       
@@ -355,6 +493,7 @@ module Google
       
           collection :roles, as: 'roles', class: Google::Apis::CloudidentityV1::MembershipRole, decorator: Google::Apis::CloudidentityV1::MembershipRole::Representation
       
+          property :type, as: 'type'
           property :update_time, as: 'updateTime'
         end
       end

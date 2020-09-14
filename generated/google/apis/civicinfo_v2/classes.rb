@@ -96,6 +96,18 @@ module Google
         # @return [String]
         attr_accessor :election_info_url
       
+        # A last minute or emergency notification text provided by this administrative
+        # body.
+        # Corresponds to the JSON property `electionNoticeText`
+        # @return [String]
+        attr_accessor :election_notice_text
+      
+        # A URL provided by this administrative body for additional information related
+        # to the last minute or emergency notification.
+        # Corresponds to the JSON property `electionNoticeUrl`
+        # @return [String]
+        attr_accessor :election_notice_url
+      
         # The election officials for this election administrative body.
         # Corresponds to the JSON property `electionOfficials`
         # @return [Array<Google::Apis::CivicinfoV2::ElectionOfficial>]
@@ -154,6 +166,8 @@ module Google
           @ballot_info_url = args[:ballot_info_url] if args.key?(:ballot_info_url)
           @correspondence_address = args[:correspondence_address] if args.key?(:correspondence_address)
           @election_info_url = args[:election_info_url] if args.key?(:election_info_url)
+          @election_notice_text = args[:election_notice_text] if args.key?(:election_notice_text)
+          @election_notice_url = args[:election_notice_url] if args.key?(:election_notice_url)
           @election_officials = args[:election_officials] if args.key?(:election_officials)
           @election_registration_confirmation_url = args[:election_registration_confirmation_url] if args.key?(:election_registration_confirmation_url)
           @election_registration_url = args[:election_registration_url] if args.key?(:election_registration_url)
@@ -838,18 +852,14 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Latitude of the location, in degrees north of the equator. Only some locations
-        # -- generally, ballot drop boxes for vote-by-mail elections -- will have this
-        # set; for others, use a geocoding service like the Google Maps API to resolve
-        # the address to a geographic point.
+        # Latitude of the location, in degrees north of the equator. Note this field may
+        # not be available for some locations.
         # Corresponds to the JSON property `latitude`
         # @return [Float]
         attr_accessor :latitude
       
-        # Longitude of the location, in degrees east of the Prime Meridian. Only some
-        # locations -- generally, ballot drop boxes for vote-by-mail elections -- will
-        # have this set; for others, use a geocoding service like the Google Maps API to
-        # resolve the address to a geographic point.
+        # Longitude of the location, in degrees east of the Prime Meridian. Note this
+        # field may not be available for some locations.
         # Corresponds to the JSON property `longitude`
         # @return [Float]
         attr_accessor :longitude

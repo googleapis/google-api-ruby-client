@@ -97,6 +97,29 @@ module Google
         end
       end
       
+      # Request message for approving the device to access user data.
+      class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        # of the customer. If you're using this API for your own organization, use `
+        # customers/my_customer` If you're using this API to manage another organization,
+        # use `customers/`customer_id``, where customer_id is the customer to whom the
+        # device belongs.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
+        end
+      end
+      
       # Response message for approving the device to access user data.
       class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse
         include Google::Apis::Core::Hashable
@@ -114,6 +137,29 @@ module Google
         # Update properties of this object
         def update!(**args)
           @device_user = args[:device_user] if args.key?(:device_user)
+        end
+      end
+      
+      # Request message for blocking account on device.
+      class GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        # of the customer. If you're using this API for your own organization, use `
+        # customers/my_customer` If you're using this API to manage another organization,
+        # use `customers/`customer_id``, where customer_id is the customer to whom the
+        # device belongs.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
         end
       end
       
@@ -137,6 +183,29 @@ module Google
         end
       end
       
+      # Request message for cancelling an unfinished device wipe.
+      class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        # of the customer. If you're using this API for your own organization, use `
+        # customers/my_customer` If you're using this API to manage another organization,
+        # use `customers/`customer_id``, where customer_id is the customer to whom the
+        # device belongs.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
+        end
+      end
+      
       # Response message for cancelling an unfinished device wipe.
       class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse
         include Google::Apis::Core::Hashable
@@ -155,6 +224,29 @@ module Google
         # Update properties of this object
         def update!(**args)
           @device = args[:device] if args.key?(:device)
+        end
+      end
+      
+      # Request message for cancelling an unfinished user account wipe.
+      class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        # of the customer. If you're using this API for your own organization, use `
+        # customers/my_customer` If you're using this API to manage another organization,
+        # use `customers/`customer_id``, where customer_id is the customer to whom the
+        # device belongs.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
         end
       end
       
@@ -210,7 +302,10 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The Health score of the resource
+        # The Health score of the resource. The Health score is the callers
+        # specification of the condition of the device from a usability point of view.
+        # For example, a third-party device management provider may specify a health
+        # score based on its compliance with organizational policies.
         # Corresponds to the JSON property `healthScore`
         # @return [String]
         attr_accessor :health_score
@@ -235,7 +330,17 @@ module Google
         # Output only. [Resource name](https://cloud.google.com/apis/design/
         # resource_names) of the ClientState in format: `devices/`device_id`/deviceUsers/
         # `device_user_id`/clientState/`partner_id``, where partner_id corresponds to
-        # the partner storing the data.
+        # the partner storing the data. For partners belonging to the "BeyondCorp
+        # Alliance", this is the partner ID specified to you by Google. For all other
+        # callers, this is a string of the form: ``customer_id`-suffix`, where `
+        # customer_id` is your customer ID. The *suffix* is any string the caller
+        # specifies. This string will be displayed verbatim in the administration
+        # console. This suffix is used in setting up Custom Access Levels in Context-
+        # Aware Access. Your organization's customer ID can be obtained from the URL: `
+        # GET https://www.googleapis.com/admin/directory/v1/customers/my_customer` The `
+        # id` field in the response contains the customer ID starting with the letter 'C'
+        # . The customer ID to be used in this API is the string after the letter 'C' (
+        # not including 'C')
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -572,6 +677,140 @@ module Google
         end
       end
       
+      # Response message that is returned in ListClientStates.
+      class GoogleAppsCloudidentityDevicesV1ListClientStatesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Client states meeting the list restrictions.
+        # Corresponds to the JSON property `clientStates`
+        # @return [Array<Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ClientState>]
+        attr_accessor :client_states
+      
+        # Token to retrieve the next page of results. Empty if there are no more results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_states = args[:client_states] if args.key?(:client_states)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message that is returned from the ListDeviceUsers method.
+      class GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse
+        include Google::Apis::Core::Hashable
+      
+        # Devices meeting the list restrictions.
+        # Corresponds to the JSON property `deviceUsers`
+        # @return [Array<Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1DeviceUser>]
+        attr_accessor :device_users
+      
+        # Token to retrieve the next page of results. Empty if there are no more results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_users = args[:device_users] if args.key?(:device_users)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message that is returned from the ListDevices method.
+      class GoogleAppsCloudidentityDevicesV1ListDevicesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Devices meeting the list restrictions.
+        # Corresponds to the JSON property `devices`
+        # @return [Array<Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1Device>]
+        attr_accessor :devices
+      
+        # Token to retrieve the next page of results. Empty if there are no more results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @devices = args[:devices] if args.key?(:devices)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response containing resource names of the DeviceUsers associated with the
+      # caller's credentials.
+      class GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse
+        include Google::Apis::Core::Hashable
+      
+        # The obfuscated customer Id that may be passed back to other Devices API
+        # methods such as List, Get, etc.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
+        # [Resource names](https://cloud.google.com/apis/design/resource_names) of the
+        # DeviceUsers in the format: `devices/`device_id`/deviceUsers/`user_resource_id``
+        # , where device_id is the unique ID assigned to a Device and user_resource_id
+        # is the unique user ID
+        # Corresponds to the JSON property `names`
+        # @return [Array<String>]
+        attr_accessor :names
+      
+        # Token to retrieve the next page of results. Empty if there are no more results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
+          @names = args[:names] if args.key?(:names)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Request message for wiping all data on the device.
+      class GoogleAppsCloudidentityDevicesV1WipeDeviceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        # of the customer. If you're using this API for your own organization, use `
+        # customers/my_customer` If you're using this API to manage another organization,
+        # use `customers/`customer_id``, where customer_id is the customer to whom the
+        # device belongs.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
+        end
+      end
+      
       # Response message for wiping all data on the device.
       class GoogleAppsCloudidentityDevicesV1WipeDeviceResponse
         include Google::Apis::Core::Hashable
@@ -590,6 +829,29 @@ module Google
         # Update properties of this object
         def update!(**args)
           @device = args[:device] if args.key?(:device)
+        end
+      end
+      
+      # Request message for starting an account wipe on device.
+      class GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        # of the customer. If you're using this API for your own organization, use `
+        # customers/my_customer` If you're using this API to manage another organization,
+        # use `customers/`customer_id``, where customer_id is the customer to whom the
+        # device belongs.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
         end
       end
       
@@ -812,6 +1074,11 @@ module Google
         # @return [Array<Google::Apis::CloudidentityV1::MembershipRole>]
         attr_accessor :roles
       
+        # Output only. The type of the membership.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         # Output only. Last updated timestamp of the Membership. Output only.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -827,6 +1094,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @preferred_member_key = args[:preferred_member_key] if args.key?(:preferred_member_key)
           @roles = args[:roles] if args.key?(:roles)
+          @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end

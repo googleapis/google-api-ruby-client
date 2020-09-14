@@ -145,18 +145,51 @@ module Google
       class Automatic
         include Google::Apis::Core::Hashable
       
+        # Configuration for encrypting secret payloads using customer-managed encryption
+        # keys (CMEK).
+        # Corresponds to the JSON property `customerManagedEncryption`
+        # @return [Google::Apis::SecretmanagerV1::CustomerManagedEncryption]
+        attr_accessor :customer_managed_encryption
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @customer_managed_encryption = args[:customer_managed_encryption] if args.key?(:customer_managed_encryption)
+        end
+      end
+      
+      # The replication status of a SecretVersion using automatic replication. Only
+      # populated if the parent Secret has an automatic replication policy.
+      class AutomaticStatus
+        include Google::Apis::Core::Hashable
+      
+        # Describes the status of customer-managed encryption.
+        # Corresponds to the JSON property `customerManagedEncryption`
+        # @return [Google::Apis::SecretmanagerV1::CustomerManagedEncryptionStatus]
+        attr_accessor :customer_managed_encryption
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer_managed_encryption = args[:customer_managed_encryption] if args.key?(:customer_managed_encryption)
         end
       end
       
       # Associates `members` with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
+      
+        # A client-specified ID for this binding. Expected to be globally unique to
+        # support the internal bindings-by-ID API.
+        # Corresponds to the JSON property `bindingId`
+        # @return [String]
+        attr_accessor :binding_id
       
         # Represents a textual expression in the Common Expression Language (CEL) syntax.
         # CEL is a C-like expression language. The syntax and semantics of CEL are
@@ -219,9 +252,56 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @binding_id = args[:binding_id] if args.key?(:binding_id)
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # Configuration for encrypting secret payloads using customer-managed encryption
+      # keys (CMEK).
+      class CustomerManagedEncryption
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name of the Cloud KMS CryptoKey used to encrypt secret
+        # payloads. For secrets using the UserManaged replication policy type, Cloud KMS
+        # CryptoKeys must reside in the same location as the replica location. For
+        # secrets using the Automatic replication policy type, Cloud KMS CryptoKeys must
+        # reside in `global`. The expected format is `projects/*/locations/*/keyRings/*/
+        # cryptoKeys/*`.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+        end
+      end
+      
+      # Describes the status of customer-managed encryption.
+      class CustomerManagedEncryptionStatus
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name of the Cloud KMS CryptoKeyVersion used to encrypt
+        # the secret payload, in the following format: `projects/*/locations/*/keyRings/*
+        # /cryptoKeys/*/versions/*`.
+        # Corresponds to the JSON property `kmsKeyVersionName`
+        # @return [String]
+        attr_accessor :kms_key_version_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key_version_name = args[:kms_key_version_name] if args.key?(:kms_key_version_name)
         end
       end
       
@@ -565,6 +645,12 @@ module Google
       class Replica
         include Google::Apis::Core::Hashable
       
+        # Configuration for encrypting secret payloads using customer-managed encryption
+        # keys (CMEK).
+        # Corresponds to the JSON property `customerManagedEncryption`
+        # @return [Google::Apis::SecretmanagerV1::CustomerManagedEncryption]
+        attr_accessor :customer_managed_encryption
+      
         # The canonical IDs of the location to replicate data. For example: `"us-east1"`.
         # Corresponds to the JSON property `location`
         # @return [String]
@@ -576,11 +662,38 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @customer_managed_encryption = args[:customer_managed_encryption] if args.key?(:customer_managed_encryption)
           @location = args[:location] if args.key?(:location)
         end
       end
       
-      # A policy that defines the replication configuration of data.
+      # Describes the status of a user-managed replica for the SecretVersion.
+      class ReplicaStatus
+        include Google::Apis::Core::Hashable
+      
+        # Describes the status of customer-managed encryption.
+        # Corresponds to the JSON property `customerManagedEncryption`
+        # @return [Google::Apis::SecretmanagerV1::CustomerManagedEncryptionStatus]
+        attr_accessor :customer_managed_encryption
+      
+        # Output only. The canonical ID of the replica location. For example: `"us-east1"
+        # `.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer_managed_encryption = args[:customer_managed_encryption] if args.key?(:customer_managed_encryption)
+          @location = args[:location] if args.key?(:location)
+        end
+      end
+      
+      # A policy that defines the replication and encryption configuration of data.
       class Replication
         include Google::Apis::Core::Hashable
       
@@ -594,6 +707,33 @@ module Google
         # specified in Secret.replication.user_managed.replicas
         # Corresponds to the JSON property `userManaged`
         # @return [Google::Apis::SecretmanagerV1::UserManaged]
+        attr_accessor :user_managed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @automatic = args[:automatic] if args.key?(:automatic)
+          @user_managed = args[:user_managed] if args.key?(:user_managed)
+        end
+      end
+      
+      # The replication status of a SecretVersion.
+      class ReplicationStatus
+        include Google::Apis::Core::Hashable
+      
+        # The replication status of a SecretVersion using automatic replication. Only
+        # populated if the parent Secret has an automatic replication policy.
+        # Corresponds to the JSON property `automatic`
+        # @return [Google::Apis::SecretmanagerV1::AutomaticStatus]
+        attr_accessor :automatic
+      
+        # The replication status of a SecretVersion using user-managed replication. Only
+        # populated if the parent Secret has a user-managed replication policy.
+        # Corresponds to the JSON property `userManaged`
+        # @return [Google::Apis::SecretmanagerV1::UserManagedStatus]
         attr_accessor :user_managed
       
         def initialize(**args)
@@ -634,7 +774,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # A policy that defines the replication configuration of data.
+        # A policy that defines the replication and encryption configuration of data.
         # Corresponds to the JSON property `replication`
         # @return [Google::Apis::SecretmanagerV1::Replication]
         attr_accessor :replication
@@ -695,6 +835,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The replication status of a SecretVersion.
+        # Corresponds to the JSON property `replicationStatus`
+        # @return [Google::Apis::SecretmanagerV1::ReplicationStatus]
+        attr_accessor :replication_status
+      
         # Output only. The current state of the SecretVersion.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -709,6 +854,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @destroy_time = args[:destroy_time] if args.key?(:destroy_time)
           @name = args[:name] if args.key?(:name)
+          @replication_status = args[:replication_status] if args.key?(:replication_status)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -814,6 +960,26 @@ module Google
         # Required. The list of Replicas for this Secret. Cannot be empty.
         # Corresponds to the JSON property `replicas`
         # @return [Array<Google::Apis::SecretmanagerV1::Replica>]
+        attr_accessor :replicas
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @replicas = args[:replicas] if args.key?(:replicas)
+        end
+      end
+      
+      # The replication status of a SecretVersion using user-managed replication. Only
+      # populated if the parent Secret has a user-managed replication policy.
+      class UserManagedStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The list of replica statuses for the SecretVersion.
+        # Corresponds to the JSON property `replicas`
+        # @return [Array<Google::Apis::SecretmanagerV1::ReplicaStatus>]
         attr_accessor :replicas
       
         def initialize(**args)

@@ -164,6 +164,8 @@ module Google
           property :correspondence_address, as: 'correspondenceAddress', class: Google::Apis::CivicinfoV2::SimpleAddressType, decorator: Google::Apis::CivicinfoV2::SimpleAddressType::Representation
       
           property :election_info_url, as: 'electionInfoUrl'
+          property :election_notice_text, as: 'electionNoticeText'
+          property :election_notice_url, as: 'electionNoticeUrl'
           collection :election_officials, as: 'electionOfficials', class: Google::Apis::CivicinfoV2::ElectionOfficial, decorator: Google::Apis::CivicinfoV2::ElectionOfficial::Representation
       
           property :election_registration_confirmation_url, as: 'electionRegistrationConfirmationUrl'

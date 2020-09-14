@@ -764,6 +764,26 @@ module Google
         end
       end
       
+      # Request for MoveDeployment method.
+      class SasPortalMoveDeploymentRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the new parent resource Node or Customer to reparent the
+        # deployment under.
+        # Corresponds to the JSON property `destination`
+        # @return [String]
+        attr_accessor :destination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination = args[:destination] if args.key?(:destination)
+        end
+      end
+      
       # Request for MoveDevice method.
       class SasPortalMoveDeviceRequest
         include Google::Apis::Core::Hashable

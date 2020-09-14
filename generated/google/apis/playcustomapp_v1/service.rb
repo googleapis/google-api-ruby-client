@@ -43,8 +43,8 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://www.googleapis.com/', '')
-          @batch_path = 'batch/playcustomapp/v1'
+          super('https://playcustomapp.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
         # Creates a new custom app.

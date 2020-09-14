@@ -1140,91 +1140,91 @@ module Google
       class Instance
         include Google::Apis::Core::Hashable
       
-        # App Engine release this instance is running on.@OutputOnly
+        # Output only. App Engine release this instance is running on.
         # Corresponds to the JSON property `appEngineRelease`
         # @return [String]
         attr_accessor :app_engine_release
       
-        # Availability of the instance.@OutputOnly
+        # Output only. Availability of the instance.
         # Corresponds to the JSON property `availability`
         # @return [String]
         attr_accessor :availability
       
-        # Average latency (ms) over the last minute.@OutputOnly
+        # Output only. Average latency (ms) over the last minute.
         # Corresponds to the JSON property `averageLatency`
         # @return [Fixnum]
         attr_accessor :average_latency
       
-        # Number of errors since this instance was started.@OutputOnly
+        # Output only. Number of errors since this instance was started.
         # Corresponds to the JSON property `errors`
         # @return [Fixnum]
         attr_accessor :errors
       
-        # Relative name of the instance within the version. Example: instance-1.@
-        # OutputOnly
+        # Output only. Relative name of the instance within the version. Example:
+        # instance-1.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Total memory in use (bytes).@OutputOnly
+        # Output only. Total memory in use (bytes).
         # Corresponds to the JSON property `memoryUsage`
         # @return [Fixnum]
         attr_accessor :memory_usage
       
-        # Full path to the Instance resource in the API. Example: apps/myapp/services/
-        # default/versions/v1/instances/instance-1.@OutputOnly
+        # Output only. Full path to the Instance resource in the API. Example: apps/
+        # myapp/services/default/versions/v1/instances/instance-1.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Average queries per second (QPS) over the last minute.@OutputOnly
+        # Output only. Average queries per second (QPS) over the last minute.
         # Corresponds to the JSON property `qps`
         # @return [Float]
         attr_accessor :qps
       
-        # Number of requests since this instance was started.@OutputOnly
+        # Output only. Number of requests since this instance was started.
         # Corresponds to the JSON property `requests`
         # @return [Fixnum]
         attr_accessor :requests
       
-        # Time that this instance was started.@OutputOnly
+        # Output only. Time that this instance was started.@OutputOnly
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
       
-        # Whether this instance is in debug mode. Only applicable for instances in App
-        # Engine flexible environment.@OutputOnly
+        # Output only. Whether this instance is in debug mode. Only applicable for
+        # instances in App Engine flexible environment.
         # Corresponds to the JSON property `vmDebugEnabled`
         # @return [Boolean]
         attr_accessor :vm_debug_enabled
         alias_method :vm_debug_enabled?, :vm_debug_enabled
       
-        # Virtual machine ID of this instance. Only applicable for instances in App
-        # Engine flexible environment.@OutputOnly
+        # Output only. Virtual machine ID of this instance. Only applicable for
+        # instances in App Engine flexible environment.
         # Corresponds to the JSON property `vmId`
         # @return [String]
         attr_accessor :vm_id
       
-        # The IP address of this instance. Only applicable for instances in App Engine
-        # flexible environment.@OutputOnly
+        # Output only. The IP address of this instance. Only applicable for instances in
+        # App Engine flexible environment.
         # Corresponds to the JSON property `vmIp`
         # @return [String]
         attr_accessor :vm_ip
       
-        # Name of the virtual machine where this instance lives. Only applicable for
-        # instances in App Engine flexible environment.@OutputOnly
+        # Output only. Name of the virtual machine where this instance lives. Only
+        # applicable for instances in App Engine flexible environment.
         # Corresponds to the JSON property `vmName`
         # @return [String]
         attr_accessor :vm_name
       
-        # Status of the virtual machine where this instance lives. Only applicable for
-        # instances in App Engine flexible environment.@OutputOnly
+        # Output only. Status of the virtual machine where this instance lives. Only
+        # applicable for instances in App Engine flexible environment.
         # Corresponds to the JSON property `vmStatus`
         # @return [String]
         attr_accessor :vm_status
       
-        # Zone where the virtual machine is located. Only applicable for instances in
-        # App Engine flexible environment.@OutputOnly
+        # Output only. Zone where the virtual machine is located. Only applicable for
+        # instances in App Engine flexible environment.
         # Corresponds to the JSON property `vmZoneName`
         # @return [String]
         attr_accessor :vm_zone_name
@@ -1747,6 +1747,26 @@ module Google
         end
       end
       
+      # A NetworkSettings resource is a container for ingress settings for a version
+      # or service.
+      class NetworkSettings
+        include Google::Apis::Core::Hashable
+      
+        # The ingress settings for version or service.
+        # Corresponds to the JSON property `ingressTrafficAllowed`
+        # @return [String]
+        attr_accessor :ingress_traffic_allowed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ingress_traffic_allowed = args[:ingress_traffic_allowed] if args.key?(:ingress_traffic_allowed)
+        end
+      end
+      
       # Target scaling by network usage. Only applicable in the App Engine flexible
       # environment.
       class NetworkUtilization
@@ -2257,6 +2277,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # A NetworkSettings resource is a container for ingress settings for a version
+        # or service.
+        # Corresponds to the JSON property `networkSettings`
+        # @return [Google::Apis::AppengineV1::NetworkSettings]
+        attr_accessor :network_settings
+      
         # Traffic routing configuration for versions within a single service. Traffic
         # splits define how traffic directed to the service is assigned to versions.
         # Corresponds to the JSON property `split`
@@ -2271,6 +2297,7 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
+          @network_settings = args[:network_settings] if args.key?(:network_settings)
           @split = args[:split] if args.key?(:split)
         end
       end

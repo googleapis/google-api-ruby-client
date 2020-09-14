@@ -461,8 +461,7 @@ module Google
         # @return [String]
         attr_accessor :frequency
       
-        # Time of day at which a new report will be generated, represented as minutes
-        # past midnight. Range is 0 to 1439. Only applies to scheduled reports.
+        # Deprecated. This field has no effect.
         # Corresponds to the JSON property `nextRunMinuteOfDay`
         # @return [Fixnum]
         attr_accessor :next_run_minute_of_day

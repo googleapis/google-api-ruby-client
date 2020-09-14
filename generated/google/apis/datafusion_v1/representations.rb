@@ -187,6 +187,7 @@ module Google
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :binding_id, as: 'bindingId'
           property :condition, as: 'condition', class: Google::Apis::DatafusionV1::Expr, decorator: Google::Apis::DatafusionV1::Expr::Representation
       
           collection :members, as: 'members'
@@ -225,6 +226,7 @@ module Google
           collection :available_version, as: 'availableVersion', class: Google::Apis::DatafusionV1::Version, decorator: Google::Apis::DatafusionV1::Version::Representation
       
           property :create_time, as: 'createTime'
+          property :dataproc_service_account, as: 'dataprocServiceAccount'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :enable_stackdriver_logging, as: 'enableStackdriverLogging'

@@ -47,6 +47,765 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Cancels an unfinished device wipe. This operation can be used to cancel device
+        # wipe in the gap between the wipe operation returning success and the device
+        # being wiped. This operation is possible when the device is in a "pending wipe"
+        # state. The device enters the "pending wipe" state when a wipe device command
+        # is issued, but has not yet been sent to the device. The cancel wipe will fail
+        # if the wipe command has already been issued to the device.
+        # @param [String] name
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the Device in format: `devices/`device_id``, where device_id is the unique
+        #   ID assigned to the Device, and device_user_id is the unique ID assigned to the
+        #   User.
+        # @param [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest] google_apps_cloudidentity_devices_v1_cancel_wipe_device_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_device_wipe(name, google_apps_cloudidentity_devices_v1_cancel_wipe_device_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:cancelWipe', options)
+          command.request_representation = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest::Representation
+          command.request_object = google_apps_cloudidentity_devices_v1_cancel_wipe_device_request_object
+          command.response_representation = Google::Apis::CloudidentityV1::Operation::Representation
+          command.response_class = Google::Apis::CloudidentityV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a device. Only company-owned device may be created.
+        # @param [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1Device] google_apps_cloudidentity_devices_v1_device_object
+        # @param [String] customer
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the customer. If you're using this API for your own organization, use `
+        #   customers/my_customer` If you're using this API to manage another organization,
+        #   use `customers/`customer_id``, where customer_id is the customer to whom the
+        #   device belongs.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_device(google_apps_cloudidentity_devices_v1_device_object = nil, customer: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/devices', options)
+          command.request_representation = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1Device::Representation
+          command.request_object = google_apps_cloudidentity_devices_v1_device_object
+          command.response_representation = Google::Apis::CloudidentityV1::Operation::Representation
+          command.response_class = Google::Apis::CloudidentityV1::Operation
+          command.query['customer'] = customer unless customer.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified device.
+        # @param [String] name
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the Device in format: `devices/`device_id``, where device_id is the unique
+        #   ID assigned to the Device.
+        # @param [String] customer
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the customer. If you're using this API for your own organization, use `
+        #   customers/my_customer` If you're using this API to manage another organization,
+        #   use `customers/`customer_id``, where customer_id is the customer to whom the
+        #   device belongs.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_device(name, customer: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudidentityV1::Operation::Representation
+          command.response_class = Google::Apis::CloudidentityV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['customer'] = customer unless customer.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the specified device.
+        # @param [String] name
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the Device in the format: `devices/`device_id``, where device_id is the
+        #   unique ID assigned to the Device.
+        # @param [String] customer
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the Customer in the format: `customers/`customer_id``, where customer_id is
+        #   the customer to whom the device belongs. If you're using this API for your own
+        #   organization, use `customers/my_customer`. If you're using this API to manage
+        #   another organization, use `customers/`customer_id``, where customer_id is the
+        #   customer to whom the device belongs.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1Device] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1Device]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_device(name, customer: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1Device::Representation
+          command.response_class = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1Device
+          command.params['name'] = name unless name.nil?
+          command.query['customer'] = customer unless customer.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists/Searches devices.
+        # @param [String] customer
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the customer in the format: `customers/`customer_id``, where customer_id is
+        #   the customer to whom the device belongs. If you're using this API for your own
+        #   organization, use `customers/my_customer`. If you're using this API to manage
+        #   another organization, use `customers/`customer_id``, where customer_id is the
+        #   customer to whom the device belongs.
+        # @param [String] filter
+        #   Optional. Additional restrictions when fetching list of devices. [Help Center
+        #   article link](https://support.google.com/a/answer/7549103)
+        # @param [String] order_by
+        #   Optional. Order specification for devices in the response. Only one of the
+        #   following field names may be used to specify the order: `create_time`, `
+        #   last_sync_time`, `model`, `os_version`, `device_type` and `serial_number`. `
+        #   desc` may be specified optionally at the end to specify results to be sorted
+        #   in descending order. Default order is ascending.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of Devices to return. If unspecified, at most 20
+        #   Devices will be returned. The maximum value is 100; values above 100 will be
+        #   coerced to 100.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListDevices` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListDevices` must match the call that provided the page token.
+        # @param [String] view
+        #   Optional. The view to use for the List request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ListDevicesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ListDevicesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_devices(customer: nil, filter: nil, order_by: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/devices', options)
+          command.response_representation = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ListDevicesResponse::Representation
+          command.response_class = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ListDevicesResponse
+          command.query['customer'] = customer unless customer.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Wipes all data on the specified device.
+        # @param [String] name
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the Device in format: `devices/`device_id`/deviceUsers/`device_user_id``,
+        #   where device_id is the unique ID assigned to the Device, and device_user_id is
+        #   the unique ID assigned to the User.
+        # @param [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1WipeDeviceRequest] google_apps_cloudidentity_devices_v1_wipe_device_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def wipe_device(name, google_apps_cloudidentity_devices_v1_wipe_device_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:wipe', options)
+          command.request_representation = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1WipeDeviceRequest::Representation
+          command.request_object = google_apps_cloudidentity_devices_v1_wipe_device_request_object
+          command.response_representation = Google::Apis::CloudidentityV1::Operation::Representation
+          command.response_class = Google::Apis::CloudidentityV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Approves device to access user data.
+        # @param [String] name
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the Device in format: `devices/`device_id`/deviceUsers/`device_user_id``,
+        #   where device_id is the unique ID assigned to the Device, and device_user_id is
+        #   the unique ID assigned to the User.
+        # @param [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest] google_apps_cloudidentity_devices_v1_approve_device_user_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def approve_device_device_user(name, google_apps_cloudidentity_devices_v1_approve_device_user_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:approve', options)
+          command.request_representation = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest::Representation
+          command.request_object = google_apps_cloudidentity_devices_v1_approve_device_user_request_object
+          command.response_representation = Google::Apis::CloudidentityV1::Operation::Representation
+          command.response_class = Google::Apis::CloudidentityV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Blocks device from accessing user data
+        # @param [String] name
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the Device in format: `devices/`device_id`/deviceUsers/`device_user_id``,
+        #   where device_id is the unique ID assigned to the Device, and device_user_id is
+        #   the unique ID assigned to the User.
+        # @param [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest] google_apps_cloudidentity_devices_v1_block_device_user_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def block_device_device_user(name, google_apps_cloudidentity_devices_v1_block_device_user_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:block', options)
+          command.request_representation = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest::Representation
+          command.request_object = google_apps_cloudidentity_devices_v1_block_device_user_request_object
+          command.response_representation = Google::Apis::CloudidentityV1::Operation::Representation
+          command.response_class = Google::Apis::CloudidentityV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Cancels an unfinished user account wipe. This operation can be used to cancel
+        # device wipe in the gap between the wipe operation returning success and the
+        # device being wiped.
+        # @param [String] name
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the Device in format: `devices/`device_id`/deviceUsers/`device_user_id``,
+        #   where device_id is the unique ID assigned to the Device, and device_user_id is
+        #   the unique ID assigned to the User.
+        # @param [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest] google_apps_cloudidentity_devices_v1_cancel_wipe_device_user_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_device_device_user_wipe(name, google_apps_cloudidentity_devices_v1_cancel_wipe_device_user_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:cancelWipe', options)
+          command.request_representation = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest::Representation
+          command.request_object = google_apps_cloudidentity_devices_v1_cancel_wipe_device_user_request_object
+          command.response_representation = Google::Apis::CloudidentityV1::Operation::Representation
+          command.response_class = Google::Apis::CloudidentityV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified DeviceUser. This also revokes the user's access to
+        # device data.
+        # @param [String] name
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the Device in format: `devices/`device_id`/deviceUsers/`device_user_id``,
+        #   where device_id is the unique ID assigned to the Device, and device_user_id is
+        #   the unique ID assigned to the User.
+        # @param [String] customer
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the customer. If you're using this API for your own organization, use `
+        #   customers/my_customer` If you're using this API to manage another organization,
+        #   use `customers/`customer_id``, where customer_id is the customer to whom the
+        #   device belongs.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_device_device_user(name, customer: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudidentityV1::Operation::Representation
+          command.response_class = Google::Apis::CloudidentityV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['customer'] = customer unless customer.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the specified DeviceUser
+        # @param [String] name
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the Device in format: `devices/`device_id`/deviceUsers/`device_user_id``,
+        #   where device_id is the unique ID assigned to the Device, and device_user_id is
+        #   the unique ID assigned to the User.
+        # @param [String] customer
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the customer. If you're using this API for your own organization, use `
+        #   customers/my_customer` If you're using this API to manage another organization,
+        #   use `customers/`customer_id``, where customer_id is the customer to whom the
+        #   device belongs.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1DeviceUser] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1DeviceUser]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_device_device_user(name, customer: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1DeviceUser::Representation
+          command.response_class = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1DeviceUser
+          command.params['name'] = name unless name.nil?
+          command.query['customer'] = customer unless customer.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists/Searches DeviceUsers.
+        # @param [String] parent
+        #   Required. To list all DeviceUsers, set this to "devices/-". To list all
+        #   DeviceUsers owned by a device, set this to the resource name of the device.
+        #   Format: devices/`device`
+        # @param [String] customer
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the customer. If you're using this API for your own organization, use `
+        #   customers/my_customer` If you're using this API to manage another organization,
+        #   use `customers/`customer_id``, where customer_id is the customer to whom the
+        #   device belongs.
+        # @param [String] filter
+        #   Optional. Additional restrictions when fetching list of devices. [HC article](
+        #   https://support.google.com/a/answer/7549103)
+        # @param [String] order_by
+        #   Optional. Order specification for devices in the response.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of DeviceUsers to return. If unspecified, at most
+        #   5 DeviceUsers will be returned. The maximum value is 20; values above 20 will
+        #   be coerced to 20.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListDeviceUsers` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListBooks` must match the call that provided the page
+        #   token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_device_device_users(parent, customer: nil, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/deviceUsers', options)
+          command.response_representation = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse::Representation
+          command.response_class = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['customer'] = customer unless customer.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Looks up resource names of the DeviceUsers associated with the caller's
+        # credentials, as well as the properties provided in the request. This method
+        # must be called with end-user credentials with the scope: https://www.
+        # googleapis.com/auth/cloud-identity.devices.lookup If multiple properties are
+        # provided, only DeviceUsers having all of these properties are considered as
+        # matches - i.e. the query behaves like an AND. Different platforms require
+        # different amounts of information from the caller to ensure that the DeviceUser
+        # is uniquely identified. - iOS: No properties need to be passed, the caller's
+        # credentials are sufficient to identify the corresponding DeviceUser. - Android:
+        # Specifying the 'android_id' field is required. - Desktop: Specifying the '
+        # raw_resource_id' field is required.
+        # @param [String] parent
+        #   Must be set to "devices/-/deviceUsers" to search across all DeviceUser
+        #   belonging to the user.
+        # @param [String] android_id
+        #   Android Id returned by [Settings.Secure#ANDROID_ID](https://developer.android.
+        #   com/reference/android/provider/Settings.Secure.html#ANDROID_ID).
+        # @param [Fixnum] page_size
+        #   The maximum number of DeviceUsers to return. If unspecified, at most 20
+        #   DeviceUsers will be returned. The maximum value is 20; values above 20 will be
+        #   coerced to 20.
+        # @param [String] page_token
+        #   A page token, received from a previous `LookupDeviceUsers` call. Provide this
+        #   to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `LookupDeviceUsers` must match the call that provided the page
+        #   token.
+        # @param [String] raw_resource_id
+        #   Raw Resource Id used by Google Endpoint Verification. If the user is enrolled
+        #   into Google Endpoint Verification, this id will be saved as the '
+        #   device_resource_id' field in the following platform dependent files. Mac: ~/.
+        #   secureConnect/context_aware_config.json Windows: C:\Users\%USERPROFILE%\.
+        #   secureConnect\context_aware_config.json Linux: ~/.secureConnect/
+        #   context_aware_config.json
+        # @param [String] user_id
+        #   The user whose DeviceUser's resource name will be fetched. Must be set to 'me'
+        #   to fetch the DeviceUser's resource name for the calling user.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def lookup_device_device_user(parent, android_id: nil, page_size: nil, page_token: nil, raw_resource_id: nil, user_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}:lookup', options)
+          command.response_representation = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse::Representation
+          command.response_class = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['androidId'] = android_id unless android_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['rawResourceId'] = raw_resource_id unless raw_resource_id.nil?
+          command.query['userId'] = user_id unless user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Wipes the user's account on a device. Other data on the device that is not
+        # associated with the user's work account is not affected. For example, if a
+        # Gmail app is installed on a device that is used for personal and work purposes,
+        # and the user is logged in to the Gmail app with their personal account as
+        # well as their work account, wiping the "deviceUser" by their work
+        # administrator will not affect their personal account within Gmail or other
+        # apps such as Photos.
+        # @param [String] name
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the Device in format: `devices/`device_id`/deviceUsers/`device_user_id``,
+        #   where device_id is the unique ID assigned to the Device, and device_user_id is
+        #   the unique ID assigned to the User.
+        # @param [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest] google_apps_cloudidentity_devices_v1_wipe_device_user_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def wipe_device_device_user(name, google_apps_cloudidentity_devices_v1_wipe_device_user_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:wipe', options)
+          command.request_representation = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest::Representation
+          command.request_object = google_apps_cloudidentity_devices_v1_wipe_device_user_request_object
+          command.response_representation = Google::Apis::CloudidentityV1::Operation::Representation
+          command.response_class = Google::Apis::CloudidentityV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the client state for the device user
+        # @param [String] name
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the ClientState in format: `devices/`device_id`/deviceUsers/`device_user_id`
+        #   /clientStates/`partner_id``, where device_id is the unique ID assigned to the
+        #   Device, device_user_id is the unique ID assigned to the User and partner_id
+        #   identifies the partner storing the data.
+        # @param [String] customer
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the customer. If you're using this API for your own organization, use `
+        #   customers/my_customer` If you're using this API to manage another organization,
+        #   use `customers/`customer_id``, where customer_id is the customer to whom the
+        #   device belongs.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ClientState] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ClientState]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_device_device_user_client_state(name, customer: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ClientState::Representation
+          command.response_class = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ClientState
+          command.params['name'] = name unless name.nil?
+          command.query['customer'] = customer unless customer.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the client states for the given search query.
+        # @param [String] parent
+        #   Required. To list all ClientStates, set this to "devices/-/deviceUsers/-". To
+        #   list all ClientStates owned by a DeviceUser, set this to the resource name of
+        #   the DeviceUser. Format: devices/`device`/deviceUsers/`deviceUser`
+        # @param [String] customer
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the customer. If you're using this API for your own organization, use `
+        #   customers/my_customer` If you're using this API to manage another organization,
+        #   use `customers/`customer_id``, where customer_id is the customer to whom the
+        #   device belongs.
+        # @param [String] filter
+        #   Optional. Additional restrictions when fetching list of client states.
+        # @param [String] order_by
+        #   Optional. Order specification for client states in the response.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListClientStates` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListClientStates` must match the call that provided
+        #   the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ListClientStatesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ListClientStatesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_device_device_user_client_states(parent, customer: nil, filter: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/clientStates', options)
+          command.response_representation = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ListClientStatesResponse::Representation
+          command.response_class = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ListClientStatesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['customer'] = customer unless customer.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the client state for the device user
+        # @param [String] name
+        #   Output only. [Resource name](https://cloud.google.com/apis/design/
+        #   resource_names) of the ClientState in format: `devices/`device_id`/deviceUsers/
+        #   `device_user_id`/clientState/`partner_id``, where partner_id corresponds to
+        #   the partner storing the data. For partners belonging to the "BeyondCorp
+        #   Alliance", this is the partner ID specified to you by Google. For all other
+        #   callers, this is a string of the form: ``customer_id`-suffix`, where `
+        #   customer_id` is your customer ID. The *suffix* is any string the caller
+        #   specifies. This string will be displayed verbatim in the administration
+        #   console. This suffix is used in setting up Custom Access Levels in Context-
+        #   Aware Access. Your organization's customer ID can be obtained from the URL: `
+        #   GET https://www.googleapis.com/admin/directory/v1/customers/my_customer` The `
+        #   id` field in the response contains the customer ID starting with the letter 'C'
+        #   . The customer ID to be used in this API is the string after the letter 'C' (
+        #   not including 'C')
+        # @param [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ClientState] google_apps_cloudidentity_devices_v1_client_state_object
+        # @param [String] customer
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the customer. If you're using this API for your own organization, use `
+        #   customers/my_customer` If you're using this API to manage another organization,
+        #   use `customers/`customer_id``, where customer_id is the customer to whom the
+        #   device belongs.
+        # @param [String] update_mask
+        #   Optional. Comma-separated list of fully qualified names of fields to be
+        #   updated. If not specified, all updatable fields in ClientState are updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_device_device_user_client_state(name, google_apps_cloudidentity_devices_v1_client_state_object = nil, customer: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ClientState::Representation
+          command.request_object = google_apps_cloudidentity_devices_v1_client_state_object
+          command.response_representation = Google::Apis::CloudidentityV1::Operation::Representation
+          command.response_class = Google::Apis::CloudidentityV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['customer'] = customer unless customer.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a Group.
         # @param [Google::Apis::CloudidentityV1::Group] group_object
         # @param [String] fields

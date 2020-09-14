@@ -1361,6 +1361,84 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves all infocards for a given video.
+        # @param [Array<String>, String] part
+        #   The properties to return.
+        # @param [String] on_behalf_of_content_owner
+        #   Content owner of the video.
+        # @param [String] video_id
+        #   Encrypted id of the video.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubeV3::InfocardListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubeV3::InfocardListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_infocards(part, on_behalf_of_content_owner: nil, video_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'youtube/v3/infocards', options)
+          command.response_representation = Google::Apis::YoutubeV3::InfocardListResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::InfocardListResponse
+          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
+          command.query['part'] = part unless part.nil?
+          command.query['videoId'] = video_id unless video_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates infocards for a given video. Note: * If the card id is not provided, a
+        # new card will be created. * If the card id is provided, that card will be
+        # updated. * Existing cards will be discarded if they're not included in the
+        # request.
+        # @param [Array<String>, String] part
+        #   The properties to update.
+        # @param [Google::Apis::YoutubeV3::InfoCards] info_cards_object
+        # @param [String] on_behalf_of_content_owner
+        #   Content owner of the video.
+        # @param [String] video_id
+        #   Encrypted id of the video.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubeV3::InfoCards] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubeV3::InfoCards]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_infocard(part, info_cards_object = nil, on_behalf_of_content_owner: nil, video_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'youtube/v3/infocards', options)
+          command.request_representation = Google::Apis::YoutubeV3::InfoCards::Representation
+          command.request_object = info_cards_object
+          command.response_representation = Google::Apis::YoutubeV3::InfoCards::Representation
+          command.response_class = Google::Apis::YoutubeV3::InfoCards
+          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
+          command.query['part'] = part unless part.nil?
+          command.query['videoId'] = video_id unless video_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Bind a broadcast to a stream.
         # @param [String] id
         #   Broadcast to bind to the stream
@@ -4037,84 +4115,6 @@ module Google
           command = make_simple_command(:post, 'youtube/v3/watermarks/unset', options)
           command.query['channelId'] = channel_id unless channel_id.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates infocards for a given video. Note: * If the card id is not provided, a
-        # new card will be created. * If the card id is provided, that card will be
-        # updated. * Existing cards will be discarded if they're not included in the
-        # request.
-        # @param [Array<String>, String] part
-        #   The properties to update.
-        # @param [Google::Apis::YoutubeV3::InfoCards] info_cards_object
-        # @param [String] on_behalf_of_content_owner
-        #   Content owner of the video.
-        # @param [String] video_id
-        #   Encrypted id of the video.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeV3::InfoCards] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::YoutubeV3::InfoCards]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def infocards_youtube_v3(part, info_cards_object = nil, on_behalf_of_content_owner: nil, video_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'youtube/v3/infocards', options)
-          command.request_representation = Google::Apis::YoutubeV3::InfoCards::Representation
-          command.request_object = info_cards_object
-          command.response_representation = Google::Apis::YoutubeV3::InfoCards::Representation
-          command.response_class = Google::Apis::YoutubeV3::InfoCards
-          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
-          command.query['part'] = part unless part.nil?
-          command.query['videoId'] = video_id unless video_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Retrieves all infocards for a given video.
-        # @param [Array<String>, String] part
-        #   The properties to return.
-        # @param [String] on_behalf_of_content_owner
-        #   Content owner of the video.
-        # @param [String] video_id
-        #   Encrypted id of the video.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeV3::InfocardListResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::YoutubeV3::InfocardListResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_youtube_v3_infocards(part, on_behalf_of_content_owner: nil, video_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'youtube/v3/infocards', options)
-          command.response_representation = Google::Apis::YoutubeV3::InfocardListResponse::Representation
-          command.response_class = Google::Apis::YoutubeV3::InfocardListResponse
-          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
-          command.query['part'] = part unless part.nil?
-          command.query['videoId'] = video_id unless video_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

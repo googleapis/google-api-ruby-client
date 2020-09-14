@@ -26,30 +26,26 @@ module Google
       class Backup
         include Google::Apis::Core::Hashable
       
-        # Output only. `end_time` is the time that the backup was finished. The row
-        # data in the backup will be no newer than this timestamp.
+        # Output only. `end_time` is the time that the backup was finished. The row data
+        # in the backup will be no newer than this timestamp.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # Required. The expiration time of the backup, with microseconds
-        # granularity that must be at least 6 hours and at most 30 days
-        # from the time the request is received. Once the `expire_time`
-        # has passed, Cloud Bigtable will delete the backup and free the
-        # resources used by the backup.
+        # Required. The expiration time of the backup, with microseconds granularity
+        # that must be at least 6 hours and at most 30 days from the time the request is
+        # received. Once the `expire_time` has passed, Cloud Bigtable will delete the
+        # backup and free the resources used by the backup.
         # Corresponds to the JSON property `expireTime`
         # @return [String]
         attr_accessor :expire_time
       
-        # A globally unique identifier for the backup which cannot be
-        # changed. Values are of the form
-        # `projects/`project`/instances/`instance`/clusters/`cluster`/
-        # backups/_a-zA-Z0-9*`
-        # The final segment of the name must be between 1 and 50 characters
-        # in length.
-        # The backup is stored in the cluster identified by the prefix of the backup
-        # name of the form
-        # `projects/`project`/instances/`instance`/clusters/`cluster``.
+        # A globally unique identifier for the backup which cannot be changed. Values
+        # are of the form `projects/`project`/instances/`instance`/clusters/`cluster`/
+        # backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50
+        # characters in length. The backup is stored in the cluster identified by the
+        # prefix of the backup name of the form `projects/`project`/instances/`instance`/
+        # clusters/`cluster``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -60,17 +56,15 @@ module Google
         attr_accessor :size_bytes
       
         # Required. Immutable. Name of the table from which this backup was created.
-        # This needs
-        # to be in the same instance as the backup. Values are of the form
-        # `projects/`project`/instances/`instance`/tables/`source_table``.
+        # This needs to be in the same instance as the backup. Values are of the form `
+        # projects/`project`/instances/`instance`/tables/`source_table``.
         # Corresponds to the JSON property `sourceTable`
         # @return [String]
         attr_accessor :source_table
       
-        # Output only. `start_time` is the time that the backup was started
-        # (i.e. approximately the time the
-        # CreateBackup request is received).  The
-        # row data in this backup will be no older than this timestamp.
+        # Output only. `start_time` is the time that the backup was started (i.e.
+        # approximately the time the CreateBackup request is received). The row data in
+        # this backup will be no older than this timestamp.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -105,8 +99,8 @@ module Google
         # @return [String]
         attr_accessor :backup
       
-        # Output only. This time that the backup was finished. Row data in the
-        # backup will be no newer than this timestamp.
+        # Output only. This time that the backup was finished. Row data in the backup
+        # will be no newer than this timestamp.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
@@ -116,8 +110,8 @@ module Google
         # @return [String]
         attr_accessor :source_table
       
-        # Output only. The time that the backup was started. Row data in the backup
-        # will be no older than this timestamp.
+        # Output only. The time that the backup was started. Row data in the backup will
+        # be no older than this timestamp.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -135,36 +129,33 @@ module Google
         end
       end
       
-      # A resizable group of nodes in a particular cloud location, capable
-      # of serving all Tables in the parent
-      # Instance.
+      # A resizable group of nodes in a particular cloud location, capable of serving
+      # all Tables in the parent Instance.
       class Cluster
         include Google::Apis::Core::Hashable
       
-        # Immutable. The type of storage used by this cluster to serve its
-        # parent instance's tables, unless explicitly overridden.
+        # Immutable. The type of storage used by this cluster to serve its parent
+        # instance's tables, unless explicitly overridden.
         # Corresponds to the JSON property `defaultStorageType`
         # @return [String]
         attr_accessor :default_storage_type
       
         # Immutable. The location where this cluster's nodes and storage reside. For
-        # best
-        # performance, clients should be located as close as possible to this
-        # cluster. Currently only zones are supported, so values should be of the
-        # form `projects/`project`/locations/`zone``.
+        # best performance, clients should be located as close as possible to this
+        # cluster. Currently only zones are supported, so values should be of the form `
+        # projects/`project`/locations/`zone``.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # The unique name of the cluster. Values are of the form
-        # `projects/`project`/instances/`instance`/clusters/a-z*`.
+        # The unique name of the cluster. Values are of the form `projects/`project`/
+        # instances/`instance`/clusters/a-z*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # Required. The number of nodes allocated to this cluster. More nodes enable
-        # higher
-        # throughput and more consistent performance.
+        # higher throughput and more consistent performance.
         # Corresponds to the JSON property `serveNodes`
         # @return [Fixnum]
         attr_accessor :serve_nodes
@@ -188,8 +179,7 @@ module Google
         end
       end
       
-      # Metadata type for the operation returned by
-      # CreateBackup.
+      # Metadata type for the operation returned by CreateBackup.
       class CreateBackupMetadata
         include Google::Apis::Core::Hashable
       
@@ -246,12 +236,10 @@ module Google
         attr_accessor :request_time
       
         # Keys: the full `name` of each table that existed in the instance when
-        # CreateCluster was first called, i.e.
-        # `projects/<project>/instances/<instance>/tables/<table>`. Any table added
-        # to the instance by a later API call will be created in the new cluster by
-        # that API call, not this one.
-        # Values: information on how much of a table's data has been copied to the
-        # newly-created cluster so far.
+        # CreateCluster was first called, i.e. `projects//instances//tables/`. Any table
+        # added to the instance by a later API call will be created in the new cluster
+        # by that API call, not this one. Values: information on how much of a table's
+        # data has been copied to the newly-created cluster so far.
         # Corresponds to the JSON property `tables`
         # @return [Hash<String,Google::Apis::BigtableadminV1::TableProgress>]
         attr_accessor :tables
@@ -273,24 +261,21 @@ module Google
       class CreateClusterRequest
         include Google::Apis::Core::Hashable
       
-        # A resizable group of nodes in a particular cloud location, capable
-        # of serving all Tables in the parent
-        # Instance.
+        # A resizable group of nodes in a particular cloud location, capable of serving
+        # all Tables in the parent Instance.
         # Corresponds to the JSON property `cluster`
         # @return [Google::Apis::BigtableadminV1::Cluster]
         attr_accessor :cluster
       
         # Required. The ID to be used when referring to the new cluster within its
-        # instance,
-        # e.g., just `mycluster` rather than
-        # `projects/myproject/instances/myinstance/clusters/mycluster`.
+        # instance, e.g., just `mycluster` rather than `projects/myproject/instances/
+        # myinstance/clusters/mycluster`.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
         attr_accessor :cluster_id
       
         # Required. The unique name of the instance in which to create the new cluster.
-        # Values are of the form
-        # `projects/`project`/instances/`instance``.
+        # Values are of the form `projects/`project`/instances/`instance``.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -343,26 +328,22 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The clusters to be created within the instance, mapped by desired
-        # cluster ID, e.g., just `mycluster` rather than
-        # `projects/myproject/instances/myinstance/clusters/mycluster`.
-        # Fields marked `OutputOnly` must be left blank.
+        # cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/
+        # myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank.
         # Currently, at most four clusters can be specified.
         # Corresponds to the JSON property `clusters`
         # @return [Hash<String,Google::Apis::BigtableadminV1::Cluster>]
         attr_accessor :clusters
       
-        # A collection of Bigtable Tables and
-        # the resources that serve them.
-        # All tables in an instance are served from all
-        # Clusters in the instance.
+        # A collection of Bigtable Tables and the resources that serve them. All tables
+        # in an instance are served from all Clusters in the instance.
         # Corresponds to the JSON property `instance`
         # @return [Google::Apis::BigtableadminV1::Instance]
         attr_accessor :instance
       
         # Required. The ID to be used when referring to the new instance within its
-        # project,
-        # e.g., just `myinstance` rather than
-        # `projects/myproject/instances/myinstance`.
+        # project, e.g., just `myinstance` rather than `projects/myproject/instances/
+        # myinstance`.
         # Corresponds to the JSON property `instanceId`
         # @return [String]
         attr_accessor :instance_id
@@ -436,16 +417,13 @@ module Google
         end
       end
       
-      # A collection of Bigtable Tables and
-      # the resources that serve them.
-      # All tables in an instance are served from all
-      # Clusters in the instance.
+      # A collection of Bigtable Tables and the resources that serve them. All tables
+      # in an instance are served from all Clusters in the instance.
       class Instance
         include Google::Apis::Core::Hashable
       
-        # Required. The descriptive name for this instance as it appears in UIs.
-        # Can be changed at any time, but should be kept globally unique
-        # to avoid confusion.
+        # Required. The descriptive name for this instance as it appears in UIs. Can be
+        # changed at any time, but should be kept globally unique to avoid confusion.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -453,19 +431,17 @@ module Google
         # Required. Labels are a flexible and lightweight mechanism for organizing cloud
         # resources into groups that reflect a customer's organizational needs and
         # deployment strategies. They can be used to filter resources and aggregate
-        # metrics.
-        # * Label keys must be between 1 and 63 characters long and must conform to
-        # the regular expression: `\p`Ll`\p`Lo``0,62``.
-        # * Label values must be between 0 and 63 characters long and must conform to
-        # the regular expression: `[\p`Ll`\p`Lo`\p`N`_-]`0,63``.
-        # * No more than 64 labels can be associated with a given resource.
-        # * Keys and values must both be under 128 bytes.
+        # metrics. * Label keys must be between 1 and 63 characters long and must
+        # conform to the regular expression: `\p`Ll`\p`Lo``0,62``. * Label values must
+        # be between 0 and 63 characters long and must conform to the regular expression:
+        # `[\p`Ll`\p`Lo`\p`N`_-]`0,63``. * No more than 64 labels can be associated
+        # with a given resource. * Keys and values must both be under 128 bytes.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The unique name of the instance. Values are of the form
-        # `projects/`project`/instances/a-z+[a-z0-9]`.
+        # The unique name of the instance. Values are of the form `projects/`project`/
+        # instances/a-z+[a-z0-9]`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -494,19 +470,17 @@ module Google
         end
       end
       
-      # Encapsulates progress related information for a Cloud Bigtable long
-      # running operation.
+      # Encapsulates progress related information for a Cloud Bigtable long running
+      # operation.
       class OperationProgress
         include Google::Apis::Core::Hashable
       
-        # If set, the time at which this operation failed or was completed
-        # successfully.
+        # If set, the time at which this operation failed or was completed successfully.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # Percent completion of the operation.
-        # Values are between 0 and 100 inclusive.
+        # Percent completion of the operation. Values are between 0 and 100 inclusive.
         # Corresponds to the JSON property `progressPercent`
         # @return [Fixnum]
         attr_accessor :progress_percent
@@ -528,10 +502,10 @@ module Google
         end
       end
       
-      # Metadata type for the long-running operation used to track the progress
-      # of optimizations performed on a newly restored table. This long-running
-      # operation is automatically created by the system after the successful
-      # completion of a table restore, and cannot be cancelled.
+      # Metadata type for the long-running operation used to track the progress of
+      # optimizations performed on a newly restored table. This long-running operation
+      # is automatically created by the system after the successful completion of a
+      # table restore, and cannot be cancelled.
       class OptimizeRestoredTableMetadata
         include Google::Apis::Core::Hashable
       
@@ -540,8 +514,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Encapsulates progress related information for a Cloud Bigtable long
-        # running operation.
+        # Encapsulates progress related information for a Cloud Bigtable long running
+        # operation.
         # Corresponds to the JSON property `progress`
         # @return [Google::Apis::BigtableadminV1::OperationProgress]
         attr_accessor :progress
@@ -561,16 +535,14 @@ module Google
       class PartialUpdateInstanceRequest
         include Google::Apis::Core::Hashable
       
-        # A collection of Bigtable Tables and
-        # the resources that serve them.
-        # All tables in an instance are served from all
-        # Clusters in the instance.
+        # A collection of Bigtable Tables and the resources that serve them. All tables
+        # in an instance are served from all Clusters in the instance.
         # Corresponds to the JSON property `instance`
         # @return [Google::Apis::BigtableadminV1::Instance]
         attr_accessor :instance
       
-        # Required. The subset of Instance fields which should be replaced.
-        # Must be explicitly set.
+        # Required. The subset of Instance fields which should be replaced. Must be
+        # explicitly set.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -586,8 +558,7 @@ module Google
         end
       end
       
-      # Metadata type for the long-running operation returned by
-      # RestoreTable.
+      # Metadata type for the long-running operation returned by RestoreTable.
       class RestoreTableMetadata
         include Google::Apis::Core::Hashable
       
@@ -601,21 +572,20 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # If exists, the name of the long-running operation that will be used to
-        # track the post-restore optimization process to optimize the performance of
-        # the restored table. The metadata type of the long-running operation is
-        # OptimizeRestoreTableMetadata. The response type is
-        # Empty. This long-running operation may be
-        # automatically created by the system if applicable after the
-        # RestoreTable long-running operation completes successfully. This operation
-        # may not be created if the table is already optimized or the restore was
-        # not successful.
+        # If exists, the name of the long-running operation that will be used to track
+        # the post-restore optimization process to optimize the performance of the
+        # restored table. The metadata type of the long-running operation is
+        # OptimizeRestoreTableMetadata. The response type is Empty. This long-running
+        # operation may be automatically created by the system if applicable after the
+        # RestoreTable long-running operation completes successfully. This operation may
+        # not be created if the table is already optimized or the restore was not
+        # successful.
         # Corresponds to the JSON property `optimizeTableOperationName`
         # @return [String]
         attr_accessor :optimize_table_operation_name
       
-        # Encapsulates progress related information for a Cloud Bigtable long
-        # running operation.
+        # Encapsulates progress related information for a Cloud Bigtable long running
+        # operation.
         # Corresponds to the JSON property `progress`
         # @return [Google::Apis::BigtableadminV1::OperationProgress]
         attr_accessor :progress
@@ -643,9 +613,8 @@ module Google
       class TableProgress
         include Google::Apis::Core::Hashable
       
-        # Estimate of the number of bytes copied so far for this table.
-        # This will eventually reach 'estimated_size_bytes' unless the table copy
-        # is CANCELLED.
+        # Estimate of the number of bytes copied so far for this table. This will
+        # eventually reach 'estimated_size_bytes' unless the table copy is CANCELLED.
         # Corresponds to the JSON property `estimatedCopiedBytes`
         # @return [Fixnum]
         attr_accessor :estimated_copied_bytes
@@ -694,9 +663,8 @@ module Google
         # @return [String]
         attr_accessor :finish_time
       
-        # A resizable group of nodes in a particular cloud location, capable
-        # of serving all Tables in the parent
-        # Instance.
+        # A resizable group of nodes in a particular cloud location, capable of serving
+        # all Tables in the parent Instance.
         # Corresponds to the JSON property `originalRequest`
         # @return [Google::Apis::BigtableadminV1::Cluster]
         attr_accessor :original_request

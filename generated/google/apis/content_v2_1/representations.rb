@@ -3443,6 +3443,7 @@ module Google
           property :full_refund, as: 'fullRefund'
           property :partial_refund, as: 'partialRefund', class: Google::Apis::ContentV2_1::OrderreturnsPartialRefund, decorator: Google::Apis::ContentV2_1::OrderreturnsPartialRefund::Representation
       
+          property :payment_type, as: 'paymentType'
           property :reason_text, as: 'reasonText'
           property :return_refund_reason, as: 'returnRefundReason'
         end

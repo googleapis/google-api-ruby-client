@@ -307,6 +307,13 @@ module Google
       class TfLiteModel
         include Google::Apis::Core::Hashable
       
+        # The AutoML model id referencing a model you created with the AutoML API. The
+        # name should have format 'projects//locations//models/' (This is the model
+        # resource name returned from the AutoML API)
+        # Corresponds to the JSON property `automlModel`
+        # @return [String]
+        attr_accessor :automl_model
+      
         # The TfLite file containing the model. (Stored in Google Cloud). The
         # gcs_tflite_uri should have form: gs://some-bucket/some-model.tflite Note: If
         # you update the file in the original location, it is necessary to call
@@ -326,6 +333,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @automl_model = args[:automl_model] if args.key?(:automl_model)
           @gcs_tflite_uri = args[:gcs_tflite_uri] if args.key?(:gcs_tflite_uri)
           @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
         end

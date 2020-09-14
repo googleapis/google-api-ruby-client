@@ -717,11 +717,16 @@ module Google
       class AutoprovisioningNodePoolDefaults
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :boot_disk_kms_key, as: 'bootDiskKmsKey'
+          property :disk_size_gb, as: 'diskSizeGb'
+          property :disk_type, as: 'diskType'
           property :management, as: 'management', class: Google::Apis::ContainerV1beta1::NodeManagement, decorator: Google::Apis::ContainerV1beta1::NodeManagement::Representation
       
           property :min_cpu_platform, as: 'minCpuPlatform'
           collection :oauth_scopes, as: 'oauthScopes'
           property :service_account, as: 'serviceAccount'
+          property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::ContainerV1beta1::ShieldedInstanceConfig, decorator: Google::Apis::ContainerV1beta1::ShieldedInstanceConfig::Representation
+      
           property :upgrade_settings, as: 'upgradeSettings', class: Google::Apis::ContainerV1beta1::UpgradeSettings, decorator: Google::Apis::ContainerV1beta1::UpgradeSettings::Representation
       
         end
@@ -778,6 +783,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disabled, as: 'disabled'
+          property :load_balancer_type, as: 'loadBalancerType'
         end
       end
       

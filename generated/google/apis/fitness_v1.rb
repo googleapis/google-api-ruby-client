@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/fit/rest/v1/get-started
     module FitnessV1
       VERSION = 'V1'
-      REVISION = '20200825'
+      REVISION = '20200907'
 
       # Use Google Fit to see and store your physical activity data
       AUTH_FITNESS_ACTIVITY_READ = 'https://www.googleapis.com/auth/fitness.activity.read'
@@ -75,10 +75,10 @@ module Google
       # See and add info about your oxygen saturation in Google Fit. I consent to Google sharing my oxygen saturation information with this app.
       AUTH_FITNESS_OXYGEN_SATURATION_WRITE = 'https://www.googleapis.com/auth/fitness.oxygen_saturation.write'
 
-      # See info about your reproductive health in Google Fit. I consent to Google sharing my reporductive health information with this app.
+      # See info about your reproductive health in Google Fit. I consent to Google sharing my reproductive health information with this app.
       AUTH_FITNESS_REPRODUCTIVE_HEALTH_READ = 'https://www.googleapis.com/auth/fitness.reproductive_health.read'
 
-      # See and add info about your reproductive health in Google Fit. I consent to Google sharing my reporductive health information with this app.
+      # See and add info about your reproductive health in Google Fit. I consent to Google sharing my reproductive health information with this app.
       AUTH_FITNESS_REPRODUCTIVE_HEALTH_WRITE = 'https://www.googleapis.com/auth/fitness.reproductive_health.write'
     end
   end

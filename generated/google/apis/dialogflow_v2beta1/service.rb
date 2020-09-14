@@ -51,7 +51,7 @@ module Google
         # Deletes the specified agent.
         # @param [String] parent
         #   Required. The project that the agent to delete is associated with. Format: `
-        #   projects/`.
+        #   projects/` or `projects//locations/`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -82,7 +82,7 @@ module Google
         # Retrieves the specified agent.
         # @param [String] parent
         #   Required. The project that the agent to fetch is associated with. Format: `
-        #   projects/`.
+        #   projects/` or `projects//locations/`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -112,7 +112,8 @@ module Google
         
         # Creates/updates the specified agent.
         # @param [String] parent
-        #   Required. The project of this agent. Format: `projects/`.
+        #   Required. The project of this agent. Format: `projects/` or `projects//
+        #   locations/`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Agent] google_cloud_dialogflow_v2beta1_agent_object
         # @param [String] update_mask
         #   Optional. The mask to control which fields get updated.
@@ -149,7 +150,7 @@ module Google
         # Exports the specified agent to a ZIP file. Operation
         # @param [String] parent
         #   Required. The project that the agent to export is associated with. Format: `
-        #   projects/`.
+        #   projects/` or `projects//locations/`.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ExportAgentRequest] google_cloud_dialogflow_v2beta1_export_agent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -182,7 +183,8 @@ module Google
         
         # Retrieves the fulfillment.
         # @param [String] name
-        #   Required. The name of the fulfillment. Format: `projects//agent/fulfillment`.
+        #   Required. The name of the fulfillment. Supported formats: - `projects//agent/
+        #   fulfillment` - `projects//locations//agent/fulfillment`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -213,7 +215,8 @@ module Google
         # Gets agent validation result. Agent validation is performed during training
         # time and is updated automatically when training is completed.
         # @param [String] parent
-        #   Required. The project that the agent is associated with. Format: `projects/`.
+        #   Required. The project that the agent is associated with. Format: `projects/`
+        #   or `projects//locations/`.
         # @param [String] language_code
         #   Optional. The language for which you want a validation result. If not
         #   specified, the agent's default language is used. [Many languages](https://
@@ -258,7 +261,7 @@ module Google
         # it is done training.
         # @param [String] parent
         #   Required. The project that the agent to import is associated with. Format: `
-        #   projects/`.
+        #   projects/` or `projects//locations/`.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ImportAgentRequest] google_cloud_dialogflow_v2beta1_import_agent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -299,7 +302,7 @@ module Google
         # draft agent is updated not when it is done training.
         # @param [String] parent
         #   Required. The project that the agent to restore is associated with. Format: `
-        #   projects/`.
+        #   projects/` or `projects//locations/`.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1RestoreAgentRequest] google_cloud_dialogflow_v2beta1_restore_agent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -336,7 +339,8 @@ module Google
         # project collection id "-". Refer to [List Sub-Collections](https://cloud.
         # google.com/apis/design/design_patterns#list_sub-collections).
         # @param [String] parent
-        #   Required. The project to list agents from. Format: `projects/`.
+        #   Required. The project to list agents from. Format: `projects/` or `projects//
+        #   locations/`.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. By default
         #   100 and at most 1000.
@@ -374,7 +378,7 @@ module Google
         # Trains the specified agent. Operation
         # @param [String] parent
         #   Required. The project that the agent to train is associated with. Format: `
-        #   projects/`.
+        #   projects/` or `projects//locations/`.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1TrainAgentRequest] google_cloud_dialogflow_v2beta1_train_agent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -407,8 +411,8 @@ module Google
         
         # Updates the fulfillment.
         # @param [String] name
-        #   Required. The unique identifier of the fulfillment. Format: `projects//agent/
-        #   fulfillment`.
+        #   Required. The unique identifier of the fulfillment. Supported formats: - `
+        #   projects//agent/fulfillment` - `projects//locations//agent/fulfillment`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Fulfillment] google_cloud_dialogflow_v2beta1_fulfillment_object
         # @param [String] update_mask
         #   Required. The mask to control which fields get updated. If the mask is not
@@ -445,8 +449,8 @@ module Google
         
         # Deletes entity types in the specified agent. Operation
         # @param [String] parent
-        #   Required. The name of the agent to delete all entities types for. Format: `
-        #   projects//agent`.
+        #   Required. The name of the agent to delete all entities types for. Supported
+        #   formats: - `projects//agent`, - `projects//locations//agent`.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchDeleteEntityTypesRequest] google_cloud_dialogflow_v2beta1_batch_delete_entity_types_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -479,8 +483,8 @@ module Google
         
         # Updates/Creates multiple entity types in the specified agent. Operation
         # @param [String] parent
-        #   Required. The name of the agent to update or create entity types in. Format: `
-        #   projects//agent`.
+        #   Required. The name of the agent to update or create entity types in. Supported
+        #   formats: - `projects//agent` - `projects//locations//agent`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesRequest] google_cloud_dialogflow_v2beta1_batch_update_entity_types_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -513,7 +517,8 @@ module Google
         
         # Creates an entity type in the specified agent.
         # @param [String] parent
-        #   Required. The agent to create a entity type for. Format: `projects//agent`.
+        #   Required. The agent to create a entity type for. Supported formats: - `
+        #   projects//agent` - `projects//locations//agent`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EntityType] google_cloud_dialogflow_v2beta1_entity_type_object
         # @param [String] language_code
         #   Optional. The language used to access language-specific data. If not specified,
@@ -552,8 +557,8 @@ module Google
         
         # Deletes the specified entity type.
         # @param [String] name
-        #   Required. The name of the entity type to delete. Format: `projects//agent/
-        #   entityTypes/`.
+        #   Required. The name of the entity type to delete. Supported formats: - `
+        #   projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -583,7 +588,8 @@ module Google
         
         # Retrieves the specified entity type.
         # @param [String] name
-        #   Required. The name of the entity type. Format: `projects//agent/entityTypes/`.
+        #   Required. The name of the entity type. Supported formats: - `projects//agent/
+        #   entityTypes/` - `projects//locations//agent/entityTypes/`
         # @param [String] language_code
         #   Optional. The language used to access language-specific data. If not specified,
         #   the agent's default language is used. For more information, see [Multilingual
@@ -619,7 +625,8 @@ module Google
         
         # Returns the list of all entity types in the specified agent.
         # @param [String] parent
-        #   Required. The agent to list all entity types from. Format: `projects//agent`.
+        #   Required. The agent to list all entity types from. Supported formats: - `
+        #   projects//agent` - `projects//locations//agent`
         # @param [String] language_code
         #   Optional. The language used to access language-specific data. If not specified,
         #   the agent's default language is used. For more information, see [Multilingual
@@ -663,8 +670,9 @@ module Google
         # Updates the specified entity type.
         # @param [String] name
         #   The unique identifier of the entity type. Required for EntityTypes.
-        #   UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Format: `
-        #   projects//agent/entityTypes/`.
+        #   UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported
+        #   formats: - `projects//agent/entityTypes/` - `projects//locations//agent/
+        #   entityTypes/`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EntityType] google_cloud_dialogflow_v2beta1_entity_type_object
         # @param [String] language_code
         #   Optional. The language used to access language-specific data. If not specified,
@@ -706,8 +714,8 @@ module Google
         
         # Creates multiple new entities in the specified entity type. Operation
         # @param [String] parent
-        #   Required. The name of the entity type to create entities in. Format: `projects/
-        #   /agent/entityTypes/`.
+        #   Required. The name of the entity type to create entities in. Supported formats:
+        #   - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest] google_cloud_dialogflow_v2beta1_batch_create_entities_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -740,8 +748,8 @@ module Google
         
         # Deletes entities in the specified entity type. Operation
         # @param [String] parent
-        #   Required. The name of the entity type to delete entries for. Format: `projects/
-        #   /agent/entityTypes/`.
+        #   Required. The name of the entity type to delete entries for. Supported formats:
+        #   - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchDeleteEntitiesRequest] google_cloud_dialogflow_v2beta1_batch_delete_entities_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -776,8 +784,9 @@ module Google
         # does not affect entities in the entity type that aren't explicitly specified
         # in the request. Operation
         # @param [String] parent
-        #   Required. The name of the entity type to update or create entities in. Format:
-        #   `projects//agent/entityTypes/`.
+        #   Required. The name of the entity type to update or create entities in.
+        #   Supported formats: - `projects//agent/entityTypes/` - `projects//locations//
+        #   agent/entityTypes/`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchUpdateEntitiesRequest] google_cloud_dialogflow_v2beta1_batch_update_entities_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -811,7 +820,7 @@ module Google
         # Returns the list of all non-draft environments of the specified agent.
         # @param [String] parent
         #   Required. The agent to list all environments from. Format: - `projects//agent`
-        #   - `projects//locations//agent
+        #   - `projects//locations//agent`
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. By default
         #   100 and at most 1000.
@@ -848,10 +857,13 @@ module Google
         
         # Deletes all active contexts in the specified session.
         # @param [String] parent
-        #   Required. The name of the session to delete all contexts from. Format: `
-        #   projects//agent/sessions/` or `projects//agent/environments//users//sessions/`.
-        #   If `Environment ID` is not specified we assume default 'draft' environment.
-        #   If `User ID` is not specified, we assume default '-' user.
+        #   Required. The name of the session to delete all contexts from. Supported
+        #   formats: - `projects//agent/sessions/, - `projects//locations//agent/sessions/`
+        #   , - `projects//agent/environments//users//sessions/`, - `projects//locations//
+        #   agent/environments//users//sessions/`, If `Location ID` is not specified we
+        #   assume default 'us' location. If `Environment ID` is not specified we assume
+        #   default 'draft' environment. If `User ID` is not specified, we assume default '
+        #   -' user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -884,15 +896,17 @@ module Google
         # session entity types to be updated, which in turn might affect results of
         # future queries.
         # @param [String] session
-        #   Required. The name of the session this query is sent to. Format: `projects//
-        #   agent/sessions/`, or `projects//agent/environments//users//sessions/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we are using "-". It's up to the API caller to
-        #   choose an appropriate `Session ID` and `User Id`. They can be a random number
-        #   or some type of user and session identifiers (preferably hashed). The length
-        #   of the `Session ID` and `User ID` must not exceed 36 characters. For more
-        #   information, see the [API interactions guide](https://cloud.google.com/
-        #   dialogflow/docs/api-overview).
+        #   Required. The name of the session this query is sent to. Supported formats: - `
+        #   projects//agent/sessions/, - `projects//locations//agent/sessions/`, - `
+        #   projects//agent/environments//users//sessions/`, - `projects//locations//agent/
+        #   environments//users//sessions/`, If `Location ID` is not specified we assume
+        #   default 'us' location. If `Environment ID` is not specified, we assume default
+        #   'draft' environment. If `User ID` is not specified, we are using "-". It's up
+        #   to the API caller to choose an appropriate `Session ID` and `User Id`. They
+        #   can be a random number or some type of user and session identifiers (
+        #   preferably hashed). The length of the `Session ID` and `User ID` must not
+        #   exceed 36 characters. For more information, see the [API interactions guide](
+        #   https://cloud.google.com/dialogflow/docs/api-overview).
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentRequest] google_cloud_dialogflow_v2beta1_detect_intent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -926,10 +940,12 @@ module Google
         # Creates a context. If the specified context already exists, overrides the
         # context.
         # @param [String] parent
-        #   Required. The session to create a context for. Format: `projects//agent/
-        #   sessions/` or `projects//agent/environments//users//sessions/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we assume default '-' user.
+        #   Required. The session to create a context for. Supported formats: - `projects//
+        #   agent/sessions/, - `projects//locations//agent/sessions/`, - `projects//agent/
+        #   environments//users//sessions/`, - `projects//locations//agent/environments//
+        #   users//sessions/`, If `Location ID` is not specified we assume default 'us'
+        #   location. If `Environment ID` is not specified, we assume default 'draft'
+        #   environment. If `User ID` is not specified, we assume default '-' user.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context] google_cloud_dialogflow_v2beta1_context_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -962,10 +978,13 @@ module Google
         
         # Deletes the specified context.
         # @param [String] name
-        #   Required. The name of the context to delete. Format: `projects//agent/sessions/
-        #   /contexts/` or `projects//agent/environments//users//sessions//contexts/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we assume default '-' user.
+        #   Required. The name of the context to delete. Supported formats: - `projects//
+        #   agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`,
+        #   - `projects//agent/environments//users//sessions//contexts/`, - `projects//
+        #   locations//agent/environments//users//sessions//contexts/`, If `Location ID`
+        #   is not specified we assume default 'us' location. If `Environment ID` is not
+        #   specified, we assume default 'draft' environment. If `User ID` is not
+        #   specified, we assume default '-' user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -995,10 +1014,13 @@ module Google
         
         # Retrieves the specified context.
         # @param [String] name
-        #   Required. The name of the context. Format: `projects//agent/sessions//contexts/
-        #   ` or `projects//agent/environments//users//sessions//contexts/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we assume default '-' user.
+        #   Required. The name of the context. Supported formats: - `projects//agent/
+        #   sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`, - `
+        #   projects//agent/environments//users//sessions//contexts/`, - `projects//
+        #   locations//agent/environments//users//sessions//contexts/`, If `Location ID`
+        #   is not specified we assume default 'us' location. If `Environment ID` is not
+        #   specified, we assume default 'draft' environment. If `User ID` is not
+        #   specified, we assume default '-' user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1028,10 +1050,12 @@ module Google
         
         # Returns the list of all contexts in the specified session.
         # @param [String] parent
-        #   Required. The session to list all contexts from. Format: `projects//agent/
-        #   sessions/` or `projects//agent/environments//users//sessions/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we assume default '-' user.
+        #   Required. The session to list all contexts from. Supported formats: - `
+        #   projects//agent/sessions/, - `projects//locations//agent/sessions/`, - `
+        #   projects//agent/environments//users//sessions/`, - `projects//locations//agent/
+        #   environments//users//sessions/`, If `Location ID` is not specified we assume
+        #   default 'us' location. If `Environment ID` is not specified, we assume default
+        #   'draft' environment. If `User ID` is not specified, we assume default '-' user.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. By default
         #   100 and at most 1000.
@@ -1068,15 +1092,16 @@ module Google
         
         # Updates the specified context.
         # @param [String] name
-        #   Required. The unique identifier of the context. Format: `projects//agent/
-        #   sessions//contexts/`, or `projects//agent/environments//users//sessions//
-        #   contexts/`. The `Context ID` is always converted to lowercase, may only
-        #   contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we assume default '-' user. The following context
-        #   names are reserved for internal use by Dialogflow. You should not use these
-        #   contexts or create contexts with these names: * `__system_counters__` * `*
-        #   _id_dialog_context` * `*_dialog_params_size`
+        #   Required. The unique identifier of the context. Supported formats: - `projects/
+        #   /agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`
+        #   , - `projects//agent/environments//users//sessions//contexts/`, - `projects//
+        #   locations//agent/environments//users//sessions//contexts/`, The `Context ID`
+        #   is always converted to lowercase, may only contain characters in a-zA-Z0-9_-%
+        #   and may be at most 250 bytes long. If `Environment ID` is not specified, we
+        #   assume default 'draft' environment. If `User ID` is not specified, we assume
+        #   default '-' user. The following context names are reserved for internal use by
+        #   Dialogflow. You should not use these contexts or create contexts with these
+        #   names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context] google_cloud_dialogflow_v2beta1_context_object
         # @param [String] update_mask
         #   Optional. The mask to control which fields get updated.
@@ -1115,10 +1140,12 @@ module Google
         # Google Assistant integration. Contact Dialogflow support if you need to use
         # session entities with Google Assistant integration.
         # @param [String] parent
-        #   Required. The session to create a session entity type for. Format: `projects//
-        #   agent/sessions/` or `projects//agent/environments//users// sessions/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we assume default '-' user.
+        #   Required. The session to create a session entity type for. Supported formats: -
+        #   `projects//agent/sessions/, - `projects//locations//agent/sessions/`, - `
+        #   projects//agent/environments//users//sessions/`, - `projects//locations//agent/
+        #   environments//users//sessions/`, If `Location ID` is not specified we assume
+        #   default 'us' location. If `Environment ID` is not specified, we assume default
+        #   'draft' environment. If `User ID` is not specified, we assume default '-' user.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType] google_cloud_dialogflow_v2beta1_session_entity_type_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1153,10 +1180,13 @@ module Google
         # Google Assistant integration. Contact Dialogflow support if you need to use
         # session entities with Google Assistant integration.
         # @param [String] name
-        #   Required. The name of the entity type to delete. Format: `projects//agent/
-        #   sessions//entityTypes/` or `projects//agent/environments//users//sessions//
-        #   entityTypes/`. If `Environment ID` is not specified, we assume default 'draft'
-        #   environment. If `User ID` is not specified, we assume default '-' user.
+        #   Required. The name of the entity type to delete. Supported formats: - `
+        #   projects//agent/sessions//entityTypes/` - `projects//locations//agent/sessions/
+        #   /entityTypes/` - `projects//agent/environments//users//sessions//entityTypes/`
+        #   - `projects//locations//agent/environments/ /users//sessions//entityTypes/` If
+        #   `Location ID` is not specified we assume default 'us' location. If `
+        #   Environment ID` is not specified, we assume default 'draft' environment. If `
+        #   User ID` is not specified, we assume default '-' user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1188,10 +1218,13 @@ module Google
         # Google Assistant integration. Contact Dialogflow support if you need to use
         # session entities with Google Assistant integration.
         # @param [String] name
-        #   Required. The name of the session entity type. Format: `projects//agent/
-        #   sessions//entityTypes/` or `projects//agent/environments//users//sessions//
-        #   entityTypes/`. If `Environment ID` is not specified, we assume default 'draft'
-        #   environment. If `User ID` is not specified, we assume default '-' user.
+        #   Required. The name of the session entity type. Supported formats: - `projects//
+        #   agent/sessions//entityTypes/` - `projects//locations//agent/sessions//
+        #   entityTypes/` - `projects//agent/environments//users//sessions//entityTypes/` -
+        #   `projects//locations//agent/environments/ /users//sessions//entityTypes/` If `
+        #   Location ID` is not specified we assume default 'us' location. If `Environment
+        #   ID` is not specified, we assume default 'draft' environment. If `User ID` is
+        #   not specified, we assume default '-' user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1223,10 +1256,12 @@ module Google
         # method doesn't work with Google Assistant integration. Contact Dialogflow
         # support if you need to use session entities with Google Assistant integration.
         # @param [String] parent
-        #   Required. The session to list all session entity types from. Format: `projects/
-        #   /agent/sessions/` or `projects//agent/environments//users// sessions/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we assume default '-' user.
+        #   Required. The session to list all session entity types from. Supported formats:
+        #   - `projects//agent/sessions/, - `projects//locations//agent/sessions/`, - `
+        #   projects//agent/environments//users//sessions/`, - `projects//locations//agent/
+        #   environments//users//sessions/`, If `Location ID` is not specified we assume
+        #   default 'us' location. If `Environment ID` is not specified, we assume default
+        #   'draft' environment. If `User ID` is not specified, we assume default '-' user.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. By default
         #   100 and at most 1000.
@@ -1265,12 +1300,15 @@ module Google
         # Google Assistant integration. Contact Dialogflow support if you need to use
         # session entities with Google Assistant integration.
         # @param [String] name
-        #   Required. The unique identifier of this session entity type. Format: `projects/
-        #   /agent/sessions//entityTypes/`, or `projects//agent/environments//users//
-        #   sessions//entityTypes/`. If `Environment ID` is not specified, we assume
-        #   default 'draft' environment. If `User ID` is not specified, we assume default '
-        #   -' user. `` must be the display name of an existing entity type in the same
-        #   agent that will be overridden or supplemented.
+        #   Required. The unique identifier of this session entity type. Supported formats:
+        #   - `projects//agent/sessions//entityTypes/` - `projects//locations//agent/
+        #   sessions//entityTypes/` - `projects//agent/environments//users//sessions//
+        #   entityTypes/` - `projects//locations//agent/environments/ /users//sessions//
+        #   entityTypes/` If `Location ID` is not specified we assume default 'us'
+        #   location. If `Environment ID` is not specified, we assume default 'draft'
+        #   environment. If `User ID` is not specified, we assume default '-' user. ``
+        #   must be the display name of an existing entity type in the same agent that
+        #   will be overridden or supplemented.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType] google_cloud_dialogflow_v2beta1_session_entity_type_object
         # @param [String] update_mask
         #   Optional. The mask to control which fields get updated.
@@ -1306,8 +1344,8 @@ module Google
         
         # Deletes intents in the specified agent. Operation
         # @param [String] parent
-        #   Required. The name of the agent to delete all entities types for. Format: `
-        #   projects//agent`.
+        #   Required. The name of the agent to delete all entities types for. Supported
+        #   formats: - `projects//agent` - `projects//locations//agent`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest] google_cloud_dialogflow_v2beta1_batch_delete_intents_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1340,8 +1378,8 @@ module Google
         
         # Updates/Creates multiple intents in the specified agent. Operation
         # @param [String] parent
-        #   Required. The name of the agent to update or create intents in. Format: `
-        #   projects//agent`.
+        #   Required. The name of the agent to update or create intents in. Supported
+        #   formats: - `projects//agent` - `projects//locations//agent`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchUpdateIntentsRequest] google_cloud_dialogflow_v2beta1_batch_update_intents_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1374,7 +1412,8 @@ module Google
         
         # Creates an intent in the specified agent.
         # @param [String] parent
-        #   Required. The agent to create a intent for. Format: `projects//agent`.
+        #   Required. The agent to create a intent for. Supported formats: - `projects//
+        #   agent` - `projects//locations//agent`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Intent] google_cloud_dialogflow_v2beta1_intent_object
         # @param [String] intent_view
         #   Optional. The resource view to apply to the returned intent.
@@ -1417,8 +1456,8 @@ module Google
         # Deletes the specified intent and its direct or indirect followup intents.
         # @param [String] name
         #   Required. The name of the intent to delete. If this intent has direct or
-        #   indirect followup intents, we also delete them. Format: `projects//agent/
-        #   intents/`.
+        #   indirect followup intents, we also delete them. Supported formats: - `projects/
+        #   /agent/intents/` - `projects//locations//agent/intents/`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1448,7 +1487,8 @@ module Google
         
         # Retrieves the specified intent.
         # @param [String] name
-        #   Required. The name of the intent. Format: `projects//agent/intents/`.
+        #   Required. The name of the intent. Supported formats: - `projects//agent/
+        #   intents/` - `projects//locations//agent/intents/`
         # @param [String] intent_view
         #   Optional. The resource view to apply to the returned intent.
         # @param [String] language_code
@@ -1534,8 +1574,8 @@ module Google
         # Updates the specified intent.
         # @param [String] name
         #   Optional. The unique identifier of this intent. Required for Intents.
-        #   UpdateIntent and Intents.BatchUpdateIntents methods. Format: `projects//agent/
-        #   intents/`.
+        #   UpdateIntent and Intents.BatchUpdateIntents methods. Supported formats: - `
+        #   projects//agent/intents/` - `projects//locations//agent/intents/`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Intent] google_cloud_dialogflow_v2beta1_intent_object
         # @param [String] intent_view
         #   Optional. The resource view to apply to the returned intent.
@@ -1982,10 +2022,13 @@ module Google
         
         # Deletes all active contexts in the specified session.
         # @param [String] parent
-        #   Required. The name of the session to delete all contexts from. Format: `
-        #   projects//agent/sessions/` or `projects//agent/environments//users//sessions/`.
-        #   If `Environment ID` is not specified we assume default 'draft' environment.
-        #   If `User ID` is not specified, we assume default '-' user.
+        #   Required. The name of the session to delete all contexts from. Supported
+        #   formats: - `projects//agent/sessions/, - `projects//locations//agent/sessions/`
+        #   , - `projects//agent/environments//users//sessions/`, - `projects//locations//
+        #   agent/environments//users//sessions/`, If `Location ID` is not specified we
+        #   assume default 'us' location. If `Environment ID` is not specified we assume
+        #   default 'draft' environment. If `User ID` is not specified, we assume default '
+        #   -' user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2018,15 +2061,17 @@ module Google
         # session entity types to be updated, which in turn might affect results of
         # future queries.
         # @param [String] session
-        #   Required. The name of the session this query is sent to. Format: `projects//
-        #   agent/sessions/`, or `projects//agent/environments//users//sessions/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we are using "-". It's up to the API caller to
-        #   choose an appropriate `Session ID` and `User Id`. They can be a random number
-        #   or some type of user and session identifiers (preferably hashed). The length
-        #   of the `Session ID` and `User ID` must not exceed 36 characters. For more
-        #   information, see the [API interactions guide](https://cloud.google.com/
-        #   dialogflow/docs/api-overview).
+        #   Required. The name of the session this query is sent to. Supported formats: - `
+        #   projects//agent/sessions/, - `projects//locations//agent/sessions/`, - `
+        #   projects//agent/environments//users//sessions/`, - `projects//locations//agent/
+        #   environments//users//sessions/`, If `Location ID` is not specified we assume
+        #   default 'us' location. If `Environment ID` is not specified, we assume default
+        #   'draft' environment. If `User ID` is not specified, we are using "-". It's up
+        #   to the API caller to choose an appropriate `Session ID` and `User Id`. They
+        #   can be a random number or some type of user and session identifiers (
+        #   preferably hashed). The length of the `Session ID` and `User ID` must not
+        #   exceed 36 characters. For more information, see the [API interactions guide](
+        #   https://cloud.google.com/dialogflow/docs/api-overview).
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentRequest] google_cloud_dialogflow_v2beta1_detect_intent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2060,10 +2105,12 @@ module Google
         # Creates a context. If the specified context already exists, overrides the
         # context.
         # @param [String] parent
-        #   Required. The session to create a context for. Format: `projects//agent/
-        #   sessions/` or `projects//agent/environments//users//sessions/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we assume default '-' user.
+        #   Required. The session to create a context for. Supported formats: - `projects//
+        #   agent/sessions/, - `projects//locations//agent/sessions/`, - `projects//agent/
+        #   environments//users//sessions/`, - `projects//locations//agent/environments//
+        #   users//sessions/`, If `Location ID` is not specified we assume default 'us'
+        #   location. If `Environment ID` is not specified, we assume default 'draft'
+        #   environment. If `User ID` is not specified, we assume default '-' user.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context] google_cloud_dialogflow_v2beta1_context_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2096,10 +2143,13 @@ module Google
         
         # Deletes the specified context.
         # @param [String] name
-        #   Required. The name of the context to delete. Format: `projects//agent/sessions/
-        #   /contexts/` or `projects//agent/environments//users//sessions//contexts/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we assume default '-' user.
+        #   Required. The name of the context to delete. Supported formats: - `projects//
+        #   agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`,
+        #   - `projects//agent/environments//users//sessions//contexts/`, - `projects//
+        #   locations//agent/environments//users//sessions//contexts/`, If `Location ID`
+        #   is not specified we assume default 'us' location. If `Environment ID` is not
+        #   specified, we assume default 'draft' environment. If `User ID` is not
+        #   specified, we assume default '-' user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2129,10 +2179,13 @@ module Google
         
         # Retrieves the specified context.
         # @param [String] name
-        #   Required. The name of the context. Format: `projects//agent/sessions//contexts/
-        #   ` or `projects//agent/environments//users//sessions//contexts/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we assume default '-' user.
+        #   Required. The name of the context. Supported formats: - `projects//agent/
+        #   sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`, - `
+        #   projects//agent/environments//users//sessions//contexts/`, - `projects//
+        #   locations//agent/environments//users//sessions//contexts/`, If `Location ID`
+        #   is not specified we assume default 'us' location. If `Environment ID` is not
+        #   specified, we assume default 'draft' environment. If `User ID` is not
+        #   specified, we assume default '-' user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2162,10 +2215,12 @@ module Google
         
         # Returns the list of all contexts in the specified session.
         # @param [String] parent
-        #   Required. The session to list all contexts from. Format: `projects//agent/
-        #   sessions/` or `projects//agent/environments//users//sessions/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we assume default '-' user.
+        #   Required. The session to list all contexts from. Supported formats: - `
+        #   projects//agent/sessions/, - `projects//locations//agent/sessions/`, - `
+        #   projects//agent/environments//users//sessions/`, - `projects//locations//agent/
+        #   environments//users//sessions/`, If `Location ID` is not specified we assume
+        #   default 'us' location. If `Environment ID` is not specified, we assume default
+        #   'draft' environment. If `User ID` is not specified, we assume default '-' user.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. By default
         #   100 and at most 1000.
@@ -2202,15 +2257,16 @@ module Google
         
         # Updates the specified context.
         # @param [String] name
-        #   Required. The unique identifier of the context. Format: `projects//agent/
-        #   sessions//contexts/`, or `projects//agent/environments//users//sessions//
-        #   contexts/`. The `Context ID` is always converted to lowercase, may only
-        #   contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we assume default '-' user. The following context
-        #   names are reserved for internal use by Dialogflow. You should not use these
-        #   contexts or create contexts with these names: * `__system_counters__` * `*
-        #   _id_dialog_context` * `*_dialog_params_size`
+        #   Required. The unique identifier of the context. Supported formats: - `projects/
+        #   /agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`
+        #   , - `projects//agent/environments//users//sessions//contexts/`, - `projects//
+        #   locations//agent/environments//users//sessions//contexts/`, The `Context ID`
+        #   is always converted to lowercase, may only contain characters in a-zA-Z0-9_-%
+        #   and may be at most 250 bytes long. If `Environment ID` is not specified, we
+        #   assume default 'draft' environment. If `User ID` is not specified, we assume
+        #   default '-' user. The following context names are reserved for internal use by
+        #   Dialogflow. You should not use these contexts or create contexts with these
+        #   names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context] google_cloud_dialogflow_v2beta1_context_object
         # @param [String] update_mask
         #   Optional. The mask to control which fields get updated.
@@ -2249,10 +2305,12 @@ module Google
         # Google Assistant integration. Contact Dialogflow support if you need to use
         # session entities with Google Assistant integration.
         # @param [String] parent
-        #   Required. The session to create a session entity type for. Format: `projects//
-        #   agent/sessions/` or `projects//agent/environments//users// sessions/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we assume default '-' user.
+        #   Required. The session to create a session entity type for. Supported formats: -
+        #   `projects//agent/sessions/, - `projects//locations//agent/sessions/`, - `
+        #   projects//agent/environments//users//sessions/`, - `projects//locations//agent/
+        #   environments//users//sessions/`, If `Location ID` is not specified we assume
+        #   default 'us' location. If `Environment ID` is not specified, we assume default
+        #   'draft' environment. If `User ID` is not specified, we assume default '-' user.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType] google_cloud_dialogflow_v2beta1_session_entity_type_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2287,10 +2345,13 @@ module Google
         # Google Assistant integration. Contact Dialogflow support if you need to use
         # session entities with Google Assistant integration.
         # @param [String] name
-        #   Required. The name of the entity type to delete. Format: `projects//agent/
-        #   sessions//entityTypes/` or `projects//agent/environments//users//sessions//
-        #   entityTypes/`. If `Environment ID` is not specified, we assume default 'draft'
-        #   environment. If `User ID` is not specified, we assume default '-' user.
+        #   Required. The name of the entity type to delete. Supported formats: - `
+        #   projects//agent/sessions//entityTypes/` - `projects//locations//agent/sessions/
+        #   /entityTypes/` - `projects//agent/environments//users//sessions//entityTypes/`
+        #   - `projects//locations//agent/environments/ /users//sessions//entityTypes/` If
+        #   `Location ID` is not specified we assume default 'us' location. If `
+        #   Environment ID` is not specified, we assume default 'draft' environment. If `
+        #   User ID` is not specified, we assume default '-' user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2322,10 +2383,13 @@ module Google
         # Google Assistant integration. Contact Dialogflow support if you need to use
         # session entities with Google Assistant integration.
         # @param [String] name
-        #   Required. The name of the session entity type. Format: `projects//agent/
-        #   sessions//entityTypes/` or `projects//agent/environments//users//sessions//
-        #   entityTypes/`. If `Environment ID` is not specified, we assume default 'draft'
-        #   environment. If `User ID` is not specified, we assume default '-' user.
+        #   Required. The name of the session entity type. Supported formats: - `projects//
+        #   agent/sessions//entityTypes/` - `projects//locations//agent/sessions//
+        #   entityTypes/` - `projects//agent/environments//users//sessions//entityTypes/` -
+        #   `projects//locations//agent/environments/ /users//sessions//entityTypes/` If `
+        #   Location ID` is not specified we assume default 'us' location. If `Environment
+        #   ID` is not specified, we assume default 'draft' environment. If `User ID` is
+        #   not specified, we assume default '-' user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2357,10 +2421,12 @@ module Google
         # method doesn't work with Google Assistant integration. Contact Dialogflow
         # support if you need to use session entities with Google Assistant integration.
         # @param [String] parent
-        #   Required. The session to list all session entity types from. Format: `projects/
-        #   /agent/sessions/` or `projects//agent/environments//users// sessions/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we assume default '-' user.
+        #   Required. The session to list all session entity types from. Supported formats:
+        #   - `projects//agent/sessions/, - `projects//locations//agent/sessions/`, - `
+        #   projects//agent/environments//users//sessions/`, - `projects//locations//agent/
+        #   environments//users//sessions/`, If `Location ID` is not specified we assume
+        #   default 'us' location. If `Environment ID` is not specified, we assume default
+        #   'draft' environment. If `User ID` is not specified, we assume default '-' user.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. By default
         #   100 and at most 1000.
@@ -2399,12 +2465,15 @@ module Google
         # Google Assistant integration. Contact Dialogflow support if you need to use
         # session entities with Google Assistant integration.
         # @param [String] name
-        #   Required. The unique identifier of this session entity type. Format: `projects/
-        #   /agent/sessions//entityTypes/`, or `projects//agent/environments//users//
-        #   sessions//entityTypes/`. If `Environment ID` is not specified, we assume
-        #   default 'draft' environment. If `User ID` is not specified, we assume default '
-        #   -' user. `` must be the display name of an existing entity type in the same
-        #   agent that will be overridden or supplemented.
+        #   Required. The unique identifier of this session entity type. Supported formats:
+        #   - `projects//agent/sessions//entityTypes/` - `projects//locations//agent/
+        #   sessions//entityTypes/` - `projects//agent/environments//users//sessions//
+        #   entityTypes/` - `projects//locations//agent/environments/ /users//sessions//
+        #   entityTypes/` If `Location ID` is not specified we assume default 'us'
+        #   location. If `Environment ID` is not specified, we assume default 'draft'
+        #   environment. If `User ID` is not specified, we assume default '-' user. ``
+        #   must be the display name of an existing entity type in the same agent that
+        #   will be overridden or supplemented.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType] google_cloud_dialogflow_v2beta1_session_entity_type_object
         # @param [String] update_mask
         #   Optional. The mask to control which fields get updated.
@@ -2843,7 +2912,7 @@ module Google
         # Deletes the specified agent.
         # @param [String] parent
         #   Required. The project that the agent to delete is associated with. Format: `
-        #   projects/`.
+        #   projects/` or `projects//locations/`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2874,7 +2943,7 @@ module Google
         # Retrieves the specified agent.
         # @param [String] parent
         #   Required. The project that the agent to fetch is associated with. Format: `
-        #   projects/`.
+        #   projects/` or `projects//locations/`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2904,7 +2973,8 @@ module Google
         
         # Creates/updates the specified agent.
         # @param [String] parent
-        #   Required. The project of this agent. Format: `projects/`.
+        #   Required. The project of this agent. Format: `projects/` or `projects//
+        #   locations/`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Agent] google_cloud_dialogflow_v2beta1_agent_object
         # @param [String] update_mask
         #   Optional. The mask to control which fields get updated.
@@ -2941,7 +3011,7 @@ module Google
         # Exports the specified agent to a ZIP file. Operation
         # @param [String] parent
         #   Required. The project that the agent to export is associated with. Format: `
-        #   projects/`.
+        #   projects/` or `projects//locations/`.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ExportAgentRequest] google_cloud_dialogflow_v2beta1_export_agent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2974,7 +3044,8 @@ module Google
         
         # Retrieves the fulfillment.
         # @param [String] name
-        #   Required. The name of the fulfillment. Format: `projects//agent/fulfillment`.
+        #   Required. The name of the fulfillment. Supported formats: - `projects//agent/
+        #   fulfillment` - `projects//locations//agent/fulfillment`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3005,7 +3076,8 @@ module Google
         # Gets agent validation result. Agent validation is performed during training
         # time and is updated automatically when training is completed.
         # @param [String] parent
-        #   Required. The project that the agent is associated with. Format: `projects/`.
+        #   Required. The project that the agent is associated with. Format: `projects/`
+        #   or `projects//locations/`.
         # @param [String] language_code
         #   Optional. The language for which you want a validation result. If not
         #   specified, the agent's default language is used. [Many languages](https://
@@ -3050,7 +3122,7 @@ module Google
         # it is done training.
         # @param [String] parent
         #   Required. The project that the agent to import is associated with. Format: `
-        #   projects/`.
+        #   projects/` or `projects//locations/`.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ImportAgentRequest] google_cloud_dialogflow_v2beta1_import_agent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3091,7 +3163,7 @@ module Google
         # draft agent is updated not when it is done training.
         # @param [String] parent
         #   Required. The project that the agent to restore is associated with. Format: `
-        #   projects/`.
+        #   projects/` or `projects//locations/`.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1RestoreAgentRequest] google_cloud_dialogflow_v2beta1_restore_agent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3128,7 +3200,8 @@ module Google
         # project collection id "-". Refer to [List Sub-Collections](https://cloud.
         # google.com/apis/design/design_patterns#list_sub-collections).
         # @param [String] parent
-        #   Required. The project to list agents from. Format: `projects/`.
+        #   Required. The project to list agents from. Format: `projects/` or `projects//
+        #   locations/`.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. By default
         #   100 and at most 1000.
@@ -3166,7 +3239,7 @@ module Google
         # Trains the specified agent. Operation
         # @param [String] parent
         #   Required. The project that the agent to train is associated with. Format: `
-        #   projects/`.
+        #   projects/` or `projects//locations/`.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1TrainAgentRequest] google_cloud_dialogflow_v2beta1_train_agent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3199,8 +3272,8 @@ module Google
         
         # Updates the fulfillment.
         # @param [String] name
-        #   Required. The unique identifier of the fulfillment. Format: `projects//agent/
-        #   fulfillment`.
+        #   Required. The unique identifier of the fulfillment. Supported formats: - `
+        #   projects//agent/fulfillment` - `projects//locations//agent/fulfillment`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Fulfillment] google_cloud_dialogflow_v2beta1_fulfillment_object
         # @param [String] update_mask
         #   Required. The mask to control which fields get updated. If the mask is not
@@ -3237,8 +3310,8 @@ module Google
         
         # Deletes entity types in the specified agent. Operation
         # @param [String] parent
-        #   Required. The name of the agent to delete all entities types for. Format: `
-        #   projects//agent`.
+        #   Required. The name of the agent to delete all entities types for. Supported
+        #   formats: - `projects//agent`, - `projects//locations//agent`.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchDeleteEntityTypesRequest] google_cloud_dialogflow_v2beta1_batch_delete_entity_types_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3271,8 +3344,8 @@ module Google
         
         # Updates/Creates multiple entity types in the specified agent. Operation
         # @param [String] parent
-        #   Required. The name of the agent to update or create entity types in. Format: `
-        #   projects//agent`.
+        #   Required. The name of the agent to update or create entity types in. Supported
+        #   formats: - `projects//agent` - `projects//locations//agent`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesRequest] google_cloud_dialogflow_v2beta1_batch_update_entity_types_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3305,7 +3378,8 @@ module Google
         
         # Creates an entity type in the specified agent.
         # @param [String] parent
-        #   Required. The agent to create a entity type for. Format: `projects//agent`.
+        #   Required. The agent to create a entity type for. Supported formats: - `
+        #   projects//agent` - `projects//locations//agent`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EntityType] google_cloud_dialogflow_v2beta1_entity_type_object
         # @param [String] language_code
         #   Optional. The language used to access language-specific data. If not specified,
@@ -3344,8 +3418,8 @@ module Google
         
         # Deletes the specified entity type.
         # @param [String] name
-        #   Required. The name of the entity type to delete. Format: `projects//agent/
-        #   entityTypes/`.
+        #   Required. The name of the entity type to delete. Supported formats: - `
+        #   projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3375,7 +3449,8 @@ module Google
         
         # Retrieves the specified entity type.
         # @param [String] name
-        #   Required. The name of the entity type. Format: `projects//agent/entityTypes/`.
+        #   Required. The name of the entity type. Supported formats: - `projects//agent/
+        #   entityTypes/` - `projects//locations//agent/entityTypes/`
         # @param [String] language_code
         #   Optional. The language used to access language-specific data. If not specified,
         #   the agent's default language is used. For more information, see [Multilingual
@@ -3411,7 +3486,8 @@ module Google
         
         # Returns the list of all entity types in the specified agent.
         # @param [String] parent
-        #   Required. The agent to list all entity types from. Format: `projects//agent`.
+        #   Required. The agent to list all entity types from. Supported formats: - `
+        #   projects//agent` - `projects//locations//agent`
         # @param [String] language_code
         #   Optional. The language used to access language-specific data. If not specified,
         #   the agent's default language is used. For more information, see [Multilingual
@@ -3455,8 +3531,9 @@ module Google
         # Updates the specified entity type.
         # @param [String] name
         #   The unique identifier of the entity type. Required for EntityTypes.
-        #   UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Format: `
-        #   projects//agent/entityTypes/`.
+        #   UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported
+        #   formats: - `projects//agent/entityTypes/` - `projects//locations//agent/
+        #   entityTypes/`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EntityType] google_cloud_dialogflow_v2beta1_entity_type_object
         # @param [String] language_code
         #   Optional. The language used to access language-specific data. If not specified,
@@ -3498,8 +3575,8 @@ module Google
         
         # Creates multiple new entities in the specified entity type. Operation
         # @param [String] parent
-        #   Required. The name of the entity type to create entities in. Format: `projects/
-        #   /agent/entityTypes/`.
+        #   Required. The name of the entity type to create entities in. Supported formats:
+        #   - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest] google_cloud_dialogflow_v2beta1_batch_create_entities_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3532,8 +3609,8 @@ module Google
         
         # Deletes entities in the specified entity type. Operation
         # @param [String] parent
-        #   Required. The name of the entity type to delete entries for. Format: `projects/
-        #   /agent/entityTypes/`.
+        #   Required. The name of the entity type to delete entries for. Supported formats:
+        #   - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchDeleteEntitiesRequest] google_cloud_dialogflow_v2beta1_batch_delete_entities_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3568,8 +3645,9 @@ module Google
         # does not affect entities in the entity type that aren't explicitly specified
         # in the request. Operation
         # @param [String] parent
-        #   Required. The name of the entity type to update or create entities in. Format:
-        #   `projects//agent/entityTypes/`.
+        #   Required. The name of the entity type to update or create entities in.
+        #   Supported formats: - `projects//agent/entityTypes/` - `projects//locations//
+        #   agent/entityTypes/`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchUpdateEntitiesRequest] google_cloud_dialogflow_v2beta1_batch_update_entities_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3603,7 +3681,7 @@ module Google
         # Returns the list of all non-draft environments of the specified agent.
         # @param [String] parent
         #   Required. The agent to list all environments from. Format: - `projects//agent`
-        #   - `projects//locations//agent
+        #   - `projects//locations//agent`
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. By default
         #   100 and at most 1000.
@@ -3640,10 +3718,13 @@ module Google
         
         # Deletes all active contexts in the specified session.
         # @param [String] parent
-        #   Required. The name of the session to delete all contexts from. Format: `
-        #   projects//agent/sessions/` or `projects//agent/environments//users//sessions/`.
-        #   If `Environment ID` is not specified we assume default 'draft' environment.
-        #   If `User ID` is not specified, we assume default '-' user.
+        #   Required. The name of the session to delete all contexts from. Supported
+        #   formats: - `projects//agent/sessions/, - `projects//locations//agent/sessions/`
+        #   , - `projects//agent/environments//users//sessions/`, - `projects//locations//
+        #   agent/environments//users//sessions/`, If `Location ID` is not specified we
+        #   assume default 'us' location. If `Environment ID` is not specified we assume
+        #   default 'draft' environment. If `User ID` is not specified, we assume default '
+        #   -' user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3676,15 +3757,17 @@ module Google
         # session entity types to be updated, which in turn might affect results of
         # future queries.
         # @param [String] session
-        #   Required. The name of the session this query is sent to. Format: `projects//
-        #   agent/sessions/`, or `projects//agent/environments//users//sessions/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we are using "-". It's up to the API caller to
-        #   choose an appropriate `Session ID` and `User Id`. They can be a random number
-        #   or some type of user and session identifiers (preferably hashed). The length
-        #   of the `Session ID` and `User ID` must not exceed 36 characters. For more
-        #   information, see the [API interactions guide](https://cloud.google.com/
-        #   dialogflow/docs/api-overview).
+        #   Required. The name of the session this query is sent to. Supported formats: - `
+        #   projects//agent/sessions/, - `projects//locations//agent/sessions/`, - `
+        #   projects//agent/environments//users//sessions/`, - `projects//locations//agent/
+        #   environments//users//sessions/`, If `Location ID` is not specified we assume
+        #   default 'us' location. If `Environment ID` is not specified, we assume default
+        #   'draft' environment. If `User ID` is not specified, we are using "-". It's up
+        #   to the API caller to choose an appropriate `Session ID` and `User Id`. They
+        #   can be a random number or some type of user and session identifiers (
+        #   preferably hashed). The length of the `Session ID` and `User ID` must not
+        #   exceed 36 characters. For more information, see the [API interactions guide](
+        #   https://cloud.google.com/dialogflow/docs/api-overview).
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentRequest] google_cloud_dialogflow_v2beta1_detect_intent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3718,10 +3801,12 @@ module Google
         # Creates a context. If the specified context already exists, overrides the
         # context.
         # @param [String] parent
-        #   Required. The session to create a context for. Format: `projects//agent/
-        #   sessions/` or `projects//agent/environments//users//sessions/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we assume default '-' user.
+        #   Required. The session to create a context for. Supported formats: - `projects//
+        #   agent/sessions/, - `projects//locations//agent/sessions/`, - `projects//agent/
+        #   environments//users//sessions/`, - `projects//locations//agent/environments//
+        #   users//sessions/`, If `Location ID` is not specified we assume default 'us'
+        #   location. If `Environment ID` is not specified, we assume default 'draft'
+        #   environment. If `User ID` is not specified, we assume default '-' user.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context] google_cloud_dialogflow_v2beta1_context_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3754,10 +3839,13 @@ module Google
         
         # Deletes the specified context.
         # @param [String] name
-        #   Required. The name of the context to delete. Format: `projects//agent/sessions/
-        #   /contexts/` or `projects//agent/environments//users//sessions//contexts/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we assume default '-' user.
+        #   Required. The name of the context to delete. Supported formats: - `projects//
+        #   agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`,
+        #   - `projects//agent/environments//users//sessions//contexts/`, - `projects//
+        #   locations//agent/environments//users//sessions//contexts/`, If `Location ID`
+        #   is not specified we assume default 'us' location. If `Environment ID` is not
+        #   specified, we assume default 'draft' environment. If `User ID` is not
+        #   specified, we assume default '-' user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3787,10 +3875,13 @@ module Google
         
         # Retrieves the specified context.
         # @param [String] name
-        #   Required. The name of the context. Format: `projects//agent/sessions//contexts/
-        #   ` or `projects//agent/environments//users//sessions//contexts/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we assume default '-' user.
+        #   Required. The name of the context. Supported formats: - `projects//agent/
+        #   sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`, - `
+        #   projects//agent/environments//users//sessions//contexts/`, - `projects//
+        #   locations//agent/environments//users//sessions//contexts/`, If `Location ID`
+        #   is not specified we assume default 'us' location. If `Environment ID` is not
+        #   specified, we assume default 'draft' environment. If `User ID` is not
+        #   specified, we assume default '-' user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3820,10 +3911,12 @@ module Google
         
         # Returns the list of all contexts in the specified session.
         # @param [String] parent
-        #   Required. The session to list all contexts from. Format: `projects//agent/
-        #   sessions/` or `projects//agent/environments//users//sessions/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we assume default '-' user.
+        #   Required. The session to list all contexts from. Supported formats: - `
+        #   projects//agent/sessions/, - `projects//locations//agent/sessions/`, - `
+        #   projects//agent/environments//users//sessions/`, - `projects//locations//agent/
+        #   environments//users//sessions/`, If `Location ID` is not specified we assume
+        #   default 'us' location. If `Environment ID` is not specified, we assume default
+        #   'draft' environment. If `User ID` is not specified, we assume default '-' user.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. By default
         #   100 and at most 1000.
@@ -3860,15 +3953,16 @@ module Google
         
         # Updates the specified context.
         # @param [String] name
-        #   Required. The unique identifier of the context. Format: `projects//agent/
-        #   sessions//contexts/`, or `projects//agent/environments//users//sessions//
-        #   contexts/`. The `Context ID` is always converted to lowercase, may only
-        #   contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we assume default '-' user. The following context
-        #   names are reserved for internal use by Dialogflow. You should not use these
-        #   contexts or create contexts with these names: * `__system_counters__` * `*
-        #   _id_dialog_context` * `*_dialog_params_size`
+        #   Required. The unique identifier of the context. Supported formats: - `projects/
+        #   /agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`
+        #   , - `projects//agent/environments//users//sessions//contexts/`, - `projects//
+        #   locations//agent/environments//users//sessions//contexts/`, The `Context ID`
+        #   is always converted to lowercase, may only contain characters in a-zA-Z0-9_-%
+        #   and may be at most 250 bytes long. If `Environment ID` is not specified, we
+        #   assume default 'draft' environment. If `User ID` is not specified, we assume
+        #   default '-' user. The following context names are reserved for internal use by
+        #   Dialogflow. You should not use these contexts or create contexts with these
+        #   names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context] google_cloud_dialogflow_v2beta1_context_object
         # @param [String] update_mask
         #   Optional. The mask to control which fields get updated.
@@ -3907,10 +4001,12 @@ module Google
         # Google Assistant integration. Contact Dialogflow support if you need to use
         # session entities with Google Assistant integration.
         # @param [String] parent
-        #   Required. The session to create a session entity type for. Format: `projects//
-        #   agent/sessions/` or `projects//agent/environments//users// sessions/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we assume default '-' user.
+        #   Required. The session to create a session entity type for. Supported formats: -
+        #   `projects//agent/sessions/, - `projects//locations//agent/sessions/`, - `
+        #   projects//agent/environments//users//sessions/`, - `projects//locations//agent/
+        #   environments//users//sessions/`, If `Location ID` is not specified we assume
+        #   default 'us' location. If `Environment ID` is not specified, we assume default
+        #   'draft' environment. If `User ID` is not specified, we assume default '-' user.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType] google_cloud_dialogflow_v2beta1_session_entity_type_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3945,10 +4041,13 @@ module Google
         # Google Assistant integration. Contact Dialogflow support if you need to use
         # session entities with Google Assistant integration.
         # @param [String] name
-        #   Required. The name of the entity type to delete. Format: `projects//agent/
-        #   sessions//entityTypes/` or `projects//agent/environments//users//sessions//
-        #   entityTypes/`. If `Environment ID` is not specified, we assume default 'draft'
-        #   environment. If `User ID` is not specified, we assume default '-' user.
+        #   Required. The name of the entity type to delete. Supported formats: - `
+        #   projects//agent/sessions//entityTypes/` - `projects//locations//agent/sessions/
+        #   /entityTypes/` - `projects//agent/environments//users//sessions//entityTypes/`
+        #   - `projects//locations//agent/environments/ /users//sessions//entityTypes/` If
+        #   `Location ID` is not specified we assume default 'us' location. If `
+        #   Environment ID` is not specified, we assume default 'draft' environment. If `
+        #   User ID` is not specified, we assume default '-' user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3980,10 +4079,13 @@ module Google
         # Google Assistant integration. Contact Dialogflow support if you need to use
         # session entities with Google Assistant integration.
         # @param [String] name
-        #   Required. The name of the session entity type. Format: `projects//agent/
-        #   sessions//entityTypes/` or `projects//agent/environments//users//sessions//
-        #   entityTypes/`. If `Environment ID` is not specified, we assume default 'draft'
-        #   environment. If `User ID` is not specified, we assume default '-' user.
+        #   Required. The name of the session entity type. Supported formats: - `projects//
+        #   agent/sessions//entityTypes/` - `projects//locations//agent/sessions//
+        #   entityTypes/` - `projects//agent/environments//users//sessions//entityTypes/` -
+        #   `projects//locations//agent/environments/ /users//sessions//entityTypes/` If `
+        #   Location ID` is not specified we assume default 'us' location. If `Environment
+        #   ID` is not specified, we assume default 'draft' environment. If `User ID` is
+        #   not specified, we assume default '-' user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4015,10 +4117,12 @@ module Google
         # method doesn't work with Google Assistant integration. Contact Dialogflow
         # support if you need to use session entities with Google Assistant integration.
         # @param [String] parent
-        #   Required. The session to list all session entity types from. Format: `projects/
-        #   /agent/sessions/` or `projects//agent/environments//users// sessions/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we assume default '-' user.
+        #   Required. The session to list all session entity types from. Supported formats:
+        #   - `projects//agent/sessions/, - `projects//locations//agent/sessions/`, - `
+        #   projects//agent/environments//users//sessions/`, - `projects//locations//agent/
+        #   environments//users//sessions/`, If `Location ID` is not specified we assume
+        #   default 'us' location. If `Environment ID` is not specified, we assume default
+        #   'draft' environment. If `User ID` is not specified, we assume default '-' user.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. By default
         #   100 and at most 1000.
@@ -4057,12 +4161,15 @@ module Google
         # Google Assistant integration. Contact Dialogflow support if you need to use
         # session entities with Google Assistant integration.
         # @param [String] name
-        #   Required. The unique identifier of this session entity type. Format: `projects/
-        #   /agent/sessions//entityTypes/`, or `projects//agent/environments//users//
-        #   sessions//entityTypes/`. If `Environment ID` is not specified, we assume
-        #   default 'draft' environment. If `User ID` is not specified, we assume default '
-        #   -' user. `` must be the display name of an existing entity type in the same
-        #   agent that will be overridden or supplemented.
+        #   Required. The unique identifier of this session entity type. Supported formats:
+        #   - `projects//agent/sessions//entityTypes/` - `projects//locations//agent/
+        #   sessions//entityTypes/` - `projects//agent/environments//users//sessions//
+        #   entityTypes/` - `projects//locations//agent/environments/ /users//sessions//
+        #   entityTypes/` If `Location ID` is not specified we assume default 'us'
+        #   location. If `Environment ID` is not specified, we assume default 'draft'
+        #   environment. If `User ID` is not specified, we assume default '-' user. ``
+        #   must be the display name of an existing entity type in the same agent that
+        #   will be overridden or supplemented.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType] google_cloud_dialogflow_v2beta1_session_entity_type_object
         # @param [String] update_mask
         #   Optional. The mask to control which fields get updated.
@@ -4098,8 +4205,8 @@ module Google
         
         # Deletes intents in the specified agent. Operation
         # @param [String] parent
-        #   Required. The name of the agent to delete all entities types for. Format: `
-        #   projects//agent`.
+        #   Required. The name of the agent to delete all entities types for. Supported
+        #   formats: - `projects//agent` - `projects//locations//agent`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest] google_cloud_dialogflow_v2beta1_batch_delete_intents_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4132,8 +4239,8 @@ module Google
         
         # Updates/Creates multiple intents in the specified agent. Operation
         # @param [String] parent
-        #   Required. The name of the agent to update or create intents in. Format: `
-        #   projects//agent`.
+        #   Required. The name of the agent to update or create intents in. Supported
+        #   formats: - `projects//agent` - `projects//locations//agent`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchUpdateIntentsRequest] google_cloud_dialogflow_v2beta1_batch_update_intents_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4166,7 +4273,8 @@ module Google
         
         # Creates an intent in the specified agent.
         # @param [String] parent
-        #   Required. The agent to create a intent for. Format: `projects//agent`.
+        #   Required. The agent to create a intent for. Supported formats: - `projects//
+        #   agent` - `projects//locations//agent`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Intent] google_cloud_dialogflow_v2beta1_intent_object
         # @param [String] intent_view
         #   Optional. The resource view to apply to the returned intent.
@@ -4209,8 +4317,8 @@ module Google
         # Deletes the specified intent and its direct or indirect followup intents.
         # @param [String] name
         #   Required. The name of the intent to delete. If this intent has direct or
-        #   indirect followup intents, we also delete them. Format: `projects//agent/
-        #   intents/`.
+        #   indirect followup intents, we also delete them. Supported formats: - `projects/
+        #   /agent/intents/` - `projects//locations//agent/intents/`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4240,7 +4348,8 @@ module Google
         
         # Retrieves the specified intent.
         # @param [String] name
-        #   Required. The name of the intent. Format: `projects//agent/intents/`.
+        #   Required. The name of the intent. Supported formats: - `projects//agent/
+        #   intents/` - `projects//locations//agent/intents/`
         # @param [String] intent_view
         #   Optional. The resource view to apply to the returned intent.
         # @param [String] language_code
@@ -4326,8 +4435,8 @@ module Google
         # Updates the specified intent.
         # @param [String] name
         #   Optional. The unique identifier of this intent. Required for Intents.
-        #   UpdateIntent and Intents.BatchUpdateIntents methods. Format: `projects//agent/
-        #   intents/`.
+        #   UpdateIntent and Intents.BatchUpdateIntents methods. Supported formats: - `
+        #   projects//agent/intents/` - `projects//locations//agent/intents/`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Intent] google_cloud_dialogflow_v2beta1_intent_object
         # @param [String] intent_view
         #   Optional. The resource view to apply to the returned intent.
@@ -4372,10 +4481,13 @@ module Google
         
         # Deletes all active contexts in the specified session.
         # @param [String] parent
-        #   Required. The name of the session to delete all contexts from. Format: `
-        #   projects//agent/sessions/` or `projects//agent/environments//users//sessions/`.
-        #   If `Environment ID` is not specified we assume default 'draft' environment.
-        #   If `User ID` is not specified, we assume default '-' user.
+        #   Required. The name of the session to delete all contexts from. Supported
+        #   formats: - `projects//agent/sessions/, - `projects//locations//agent/sessions/`
+        #   , - `projects//agent/environments//users//sessions/`, - `projects//locations//
+        #   agent/environments//users//sessions/`, If `Location ID` is not specified we
+        #   assume default 'us' location. If `Environment ID` is not specified we assume
+        #   default 'draft' environment. If `User ID` is not specified, we assume default '
+        #   -' user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4408,15 +4520,17 @@ module Google
         # session entity types to be updated, which in turn might affect results of
         # future queries.
         # @param [String] session
-        #   Required. The name of the session this query is sent to. Format: `projects//
-        #   agent/sessions/`, or `projects//agent/environments//users//sessions/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we are using "-". It's up to the API caller to
-        #   choose an appropriate `Session ID` and `User Id`. They can be a random number
-        #   or some type of user and session identifiers (preferably hashed). The length
-        #   of the `Session ID` and `User ID` must not exceed 36 characters. For more
-        #   information, see the [API interactions guide](https://cloud.google.com/
-        #   dialogflow/docs/api-overview).
+        #   Required. The name of the session this query is sent to. Supported formats: - `
+        #   projects//agent/sessions/, - `projects//locations//agent/sessions/`, - `
+        #   projects//agent/environments//users//sessions/`, - `projects//locations//agent/
+        #   environments//users//sessions/`, If `Location ID` is not specified we assume
+        #   default 'us' location. If `Environment ID` is not specified, we assume default
+        #   'draft' environment. If `User ID` is not specified, we are using "-". It's up
+        #   to the API caller to choose an appropriate `Session ID` and `User Id`. They
+        #   can be a random number or some type of user and session identifiers (
+        #   preferably hashed). The length of the `Session ID` and `User ID` must not
+        #   exceed 36 characters. For more information, see the [API interactions guide](
+        #   https://cloud.google.com/dialogflow/docs/api-overview).
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentRequest] google_cloud_dialogflow_v2beta1_detect_intent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4450,10 +4564,12 @@ module Google
         # Creates a context. If the specified context already exists, overrides the
         # context.
         # @param [String] parent
-        #   Required. The session to create a context for. Format: `projects//agent/
-        #   sessions/` or `projects//agent/environments//users//sessions/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we assume default '-' user.
+        #   Required. The session to create a context for. Supported formats: - `projects//
+        #   agent/sessions/, - `projects//locations//agent/sessions/`, - `projects//agent/
+        #   environments//users//sessions/`, - `projects//locations//agent/environments//
+        #   users//sessions/`, If `Location ID` is not specified we assume default 'us'
+        #   location. If `Environment ID` is not specified, we assume default 'draft'
+        #   environment. If `User ID` is not specified, we assume default '-' user.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context] google_cloud_dialogflow_v2beta1_context_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4486,10 +4602,13 @@ module Google
         
         # Deletes the specified context.
         # @param [String] name
-        #   Required. The name of the context to delete. Format: `projects//agent/sessions/
-        #   /contexts/` or `projects//agent/environments//users//sessions//contexts/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we assume default '-' user.
+        #   Required. The name of the context to delete. Supported formats: - `projects//
+        #   agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`,
+        #   - `projects//agent/environments//users//sessions//contexts/`, - `projects//
+        #   locations//agent/environments//users//sessions//contexts/`, If `Location ID`
+        #   is not specified we assume default 'us' location. If `Environment ID` is not
+        #   specified, we assume default 'draft' environment. If `User ID` is not
+        #   specified, we assume default '-' user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4519,10 +4638,13 @@ module Google
         
         # Retrieves the specified context.
         # @param [String] name
-        #   Required. The name of the context. Format: `projects//agent/sessions//contexts/
-        #   ` or `projects//agent/environments//users//sessions//contexts/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we assume default '-' user.
+        #   Required. The name of the context. Supported formats: - `projects//agent/
+        #   sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`, - `
+        #   projects//agent/environments//users//sessions//contexts/`, - `projects//
+        #   locations//agent/environments//users//sessions//contexts/`, If `Location ID`
+        #   is not specified we assume default 'us' location. If `Environment ID` is not
+        #   specified, we assume default 'draft' environment. If `User ID` is not
+        #   specified, we assume default '-' user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4552,10 +4674,12 @@ module Google
         
         # Returns the list of all contexts in the specified session.
         # @param [String] parent
-        #   Required. The session to list all contexts from. Format: `projects//agent/
-        #   sessions/` or `projects//agent/environments//users//sessions/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we assume default '-' user.
+        #   Required. The session to list all contexts from. Supported formats: - `
+        #   projects//agent/sessions/, - `projects//locations//agent/sessions/`, - `
+        #   projects//agent/environments//users//sessions/`, - `projects//locations//agent/
+        #   environments//users//sessions/`, If `Location ID` is not specified we assume
+        #   default 'us' location. If `Environment ID` is not specified, we assume default
+        #   'draft' environment. If `User ID` is not specified, we assume default '-' user.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. By default
         #   100 and at most 1000.
@@ -4592,15 +4716,16 @@ module Google
         
         # Updates the specified context.
         # @param [String] name
-        #   Required. The unique identifier of the context. Format: `projects//agent/
-        #   sessions//contexts/`, or `projects//agent/environments//users//sessions//
-        #   contexts/`. The `Context ID` is always converted to lowercase, may only
-        #   contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we assume default '-' user. The following context
-        #   names are reserved for internal use by Dialogflow. You should not use these
-        #   contexts or create contexts with these names: * `__system_counters__` * `*
-        #   _id_dialog_context` * `*_dialog_params_size`
+        #   Required. The unique identifier of the context. Supported formats: - `projects/
+        #   /agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`
+        #   , - `projects//agent/environments//users//sessions//contexts/`, - `projects//
+        #   locations//agent/environments//users//sessions//contexts/`, The `Context ID`
+        #   is always converted to lowercase, may only contain characters in a-zA-Z0-9_-%
+        #   and may be at most 250 bytes long. If `Environment ID` is not specified, we
+        #   assume default 'draft' environment. If `User ID` is not specified, we assume
+        #   default '-' user. The following context names are reserved for internal use by
+        #   Dialogflow. You should not use these contexts or create contexts with these
+        #   names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context] google_cloud_dialogflow_v2beta1_context_object
         # @param [String] update_mask
         #   Optional. The mask to control which fields get updated.
@@ -4639,10 +4764,12 @@ module Google
         # Google Assistant integration. Contact Dialogflow support if you need to use
         # session entities with Google Assistant integration.
         # @param [String] parent
-        #   Required. The session to create a session entity type for. Format: `projects//
-        #   agent/sessions/` or `projects//agent/environments//users// sessions/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we assume default '-' user.
+        #   Required. The session to create a session entity type for. Supported formats: -
+        #   `projects//agent/sessions/, - `projects//locations//agent/sessions/`, - `
+        #   projects//agent/environments//users//sessions/`, - `projects//locations//agent/
+        #   environments//users//sessions/`, If `Location ID` is not specified we assume
+        #   default 'us' location. If `Environment ID` is not specified, we assume default
+        #   'draft' environment. If `User ID` is not specified, we assume default '-' user.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType] google_cloud_dialogflow_v2beta1_session_entity_type_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4677,10 +4804,13 @@ module Google
         # Google Assistant integration. Contact Dialogflow support if you need to use
         # session entities with Google Assistant integration.
         # @param [String] name
-        #   Required. The name of the entity type to delete. Format: `projects//agent/
-        #   sessions//entityTypes/` or `projects//agent/environments//users//sessions//
-        #   entityTypes/`. If `Environment ID` is not specified, we assume default 'draft'
-        #   environment. If `User ID` is not specified, we assume default '-' user.
+        #   Required. The name of the entity type to delete. Supported formats: - `
+        #   projects//agent/sessions//entityTypes/` - `projects//locations//agent/sessions/
+        #   /entityTypes/` - `projects//agent/environments//users//sessions//entityTypes/`
+        #   - `projects//locations//agent/environments/ /users//sessions//entityTypes/` If
+        #   `Location ID` is not specified we assume default 'us' location. If `
+        #   Environment ID` is not specified, we assume default 'draft' environment. If `
+        #   User ID` is not specified, we assume default '-' user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4712,10 +4842,13 @@ module Google
         # Google Assistant integration. Contact Dialogflow support if you need to use
         # session entities with Google Assistant integration.
         # @param [String] name
-        #   Required. The name of the session entity type. Format: `projects//agent/
-        #   sessions//entityTypes/` or `projects//agent/environments//users//sessions//
-        #   entityTypes/`. If `Environment ID` is not specified, we assume default 'draft'
-        #   environment. If `User ID` is not specified, we assume default '-' user.
+        #   Required. The name of the session entity type. Supported formats: - `projects//
+        #   agent/sessions//entityTypes/` - `projects//locations//agent/sessions//
+        #   entityTypes/` - `projects//agent/environments//users//sessions//entityTypes/` -
+        #   `projects//locations//agent/environments/ /users//sessions//entityTypes/` If `
+        #   Location ID` is not specified we assume default 'us' location. If `Environment
+        #   ID` is not specified, we assume default 'draft' environment. If `User ID` is
+        #   not specified, we assume default '-' user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4747,10 +4880,12 @@ module Google
         # method doesn't work with Google Assistant integration. Contact Dialogflow
         # support if you need to use session entities with Google Assistant integration.
         # @param [String] parent
-        #   Required. The session to list all session entity types from. Format: `projects/
-        #   /agent/sessions/` or `projects//agent/environments//users// sessions/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
-        #   User ID` is not specified, we assume default '-' user.
+        #   Required. The session to list all session entity types from. Supported formats:
+        #   - `projects//agent/sessions/, - `projects//locations//agent/sessions/`, - `
+        #   projects//agent/environments//users//sessions/`, - `projects//locations//agent/
+        #   environments//users//sessions/`, If `Location ID` is not specified we assume
+        #   default 'us' location. If `Environment ID` is not specified, we assume default
+        #   'draft' environment. If `User ID` is not specified, we assume default '-' user.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. By default
         #   100 and at most 1000.
@@ -4789,12 +4924,15 @@ module Google
         # Google Assistant integration. Contact Dialogflow support if you need to use
         # session entities with Google Assistant integration.
         # @param [String] name
-        #   Required. The unique identifier of this session entity type. Format: `projects/
-        #   /agent/sessions//entityTypes/`, or `projects//agent/environments//users//
-        #   sessions//entityTypes/`. If `Environment ID` is not specified, we assume
-        #   default 'draft' environment. If `User ID` is not specified, we assume default '
-        #   -' user. `` must be the display name of an existing entity type in the same
-        #   agent that will be overridden or supplemented.
+        #   Required. The unique identifier of this session entity type. Supported formats:
+        #   - `projects//agent/sessions//entityTypes/` - `projects//locations//agent/
+        #   sessions//entityTypes/` - `projects//agent/environments//users//sessions//
+        #   entityTypes/` - `projects//locations//agent/environments/ /users//sessions//
+        #   entityTypes/` If `Location ID` is not specified we assume default 'us'
+        #   location. If `Environment ID` is not specified, we assume default 'draft'
+        #   environment. If `User ID` is not specified, we assume default '-' user. ``
+        #   must be the display name of an existing entity type in the same agent that
+        #   will be overridden or supplemented.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType] google_cloud_dialogflow_v2beta1_session_entity_type_object
         # @param [String] update_mask
         #   Optional. The mask to control which fields get updated.

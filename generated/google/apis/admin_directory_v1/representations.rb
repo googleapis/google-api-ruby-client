@@ -394,12 +394,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UserCustomProperties
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class UserEmail
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1270,8 +1264,7 @@ module Google
           property :change_password_at_next_login, as: 'changePasswordAtNextLogin'
           property :creation_time, as: 'creationTime', type: DateTime
       
-          hash :custom_schemas, as: 'customSchemas', class: Google::Apis::AdminDirectoryV1::UserCustomProperties, decorator: Google::Apis::AdminDirectoryV1::UserCustomProperties::Representation
-      
+          hash :custom_schemas, as: 'customSchemas'
           property :customer_id, as: 'customerId'
           property :deletion_time, as: 'deletionTime', type: DateTime
       
@@ -1341,12 +1334,6 @@ module Google
           property :source_is_structured, as: 'sourceIsStructured'
           property :street_address, as: 'streetAddress'
           property :type, as: 'type'
-        end
-      end
-      
-      class UserCustomProperties
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

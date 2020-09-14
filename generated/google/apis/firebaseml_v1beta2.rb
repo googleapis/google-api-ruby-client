@@ -25,7 +25,7 @@ module Google
     # @see https://firebase.google.com
     module FirebasemlV1beta2
       VERSION = 'V1beta2'
-      REVISION = '20200814'
+      REVISION = '20200905'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

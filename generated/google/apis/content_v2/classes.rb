@@ -125,7 +125,8 @@ module Google
       class AccountAddress
         include Google::Apis::Core::Hashable
       
-        # CLDR country code (e.g. "US").
+        # CLDR country code (e.g. "US"). This value cannot be set for a sub-account of
+        # an MCA. All MCA sub-accounts inherit the country of their parent MCA.
         # Corresponds to the JSON property `country`
         # @return [String]
         attr_accessor :country

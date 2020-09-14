@@ -985,7 +985,10 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The Health score of the resource
+        # The Health score of the resource. The Health score is the callers
+        # specification of the condition of the device from a usability point of view.
+        # For example, a third-party device management provider may specify a health
+        # score based on its compliance with organizational policies.
         # Corresponds to the JSON property `healthScore`
         # @return [String]
         attr_accessor :health_score
@@ -1010,7 +1013,17 @@ module Google
         # Output only. [Resource name](https://cloud.google.com/apis/design/
         # resource_names) of the ClientState in format: `devices/`device_id`/deviceUsers/
         # `device_user_id`/clientState/`partner_id``, where partner_id corresponds to
-        # the partner storing the data.
+        # the partner storing the data. For partners belonging to the "BeyondCorp
+        # Alliance", this is the partner ID specified to you by Google. For all other
+        # callers, this is a string of the form: ``customer_id`-suffix`, where `
+        # customer_id` is your customer ID. The *suffix* is any string the caller
+        # specifies. This string will be displayed verbatim in the administration
+        # console. This suffix is used in setting up Custom Access Levels in Context-
+        # Aware Access. Your organization's customer ID can be obtained from the URL: `
+        # GET https://www.googleapis.com/admin/directory/v1/customers/my_customer` The `
+        # id` field in the response contains the customer ID starting with the letter 'C'
+        # . The customer ID to be used in this API is the string after the letter 'C' (
+        # not including 'C')
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1430,13 +1443,13 @@ module Google
       
         # Required. One or more label entries that apply to the Group. Currently
         # supported labels contain a key with an empty value. Google Groups are the
-        # default type of group and have a label with a key of 'cloudidentity.googleapis.
-        # com/groups.discussion_forum' and an empty value. Existing Google Groups can
-        # have an additional label with a key of 'cloudidentity.googleapis.com/groups.
-        # security' and an empty value added to them. **This is an immutable change and
+        # default type of group and have a label with a key of `cloudidentity.googleapis.
+        # com/groups.discussion_forum` and an empty value. Existing Google Groups can
+        # have an additional label with a key of `cloudidentity.googleapis.com/groups.
+        # security` and an empty value added to them. **This is an immutable change and
         # the security label cannot be removed once added.** Dynamic groups have a label
         # with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped
-        # groups for Cloud Search have a label with a key of 'system/groups/external'
+        # groups for Cloud Search have a label with a key of `system/groups/external`
         # and an empty value. Examples: `"cloudidentity.googleapis.com/groups.
         # discussion_forum": ""` or `"system/groups/external": ""`.
         # Corresponds to the JSON property `labels`

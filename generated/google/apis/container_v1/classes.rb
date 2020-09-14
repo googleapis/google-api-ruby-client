@@ -171,11 +171,43 @@ module Google
       class AutoprovisioningNodePoolDefaults
         include Google::Apis::Core::Hashable
       
+        # The Customer Managed Encryption Key used to encrypt the boot disk attached to
+        # each node in the node pool. This should be of the form projects/[
+        # KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]
+        # . For more information about protecting resources with Cloud KMS Keys please
+        # see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+        # Corresponds to the JSON property `bootDiskKmsKey`
+        # @return [String]
+        attr_accessor :boot_disk_kms_key
+      
+        # Size of the disk attached to each node, specified in GB. The smallest allowed
+        # disk size is 10GB. If unspecified, the default disk size is 100GB.
+        # Corresponds to the JSON property `diskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :disk_size_gb
+      
+        # Type of the disk attached to each node (e.g. 'pd-standard' or 'pd-ssd') If
+        # unspecified, the default disk type is 'pd-standard'
+        # Corresponds to the JSON property `diskType`
+        # @return [String]
+        attr_accessor :disk_type
+      
         # NodeManagement defines the set of node management services turned on for the
         # node pool.
         # Corresponds to the JSON property `management`
         # @return [Google::Apis::ContainerV1::NodeManagement]
         attr_accessor :management
+      
+        # Minimum CPU platform to be used for NAP created node pools. The instance may
+        # be scheduled on the specified or newer CPU platform. Applicable values are the
+        # friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or
+        # minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify
+        # min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-
+        # cpu-platform) To unset the min cpu platform field pass "automatic" as field
+        # value.
+        # Corresponds to the JSON property `minCpuPlatform`
+        # @return [String]
+        attr_accessor :min_cpu_platform
       
         # Scopes that are used by NAP when creating node pools.
         # Corresponds to the JSON property `oauthScopes`
@@ -186,6 +218,11 @@ module Google
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
+      
+        # A set of Shielded Instance options.
+        # Corresponds to the JSON property `shieldedInstanceConfig`
+        # @return [Google::Apis::ContainerV1::ShieldedInstanceConfig]
+        attr_accessor :shielded_instance_config
       
         # These upgrade settings control the level of parallelism and the level of
         # disruption caused by an upgrade. maxUnavailable controls the number of nodes
@@ -211,9 +248,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @boot_disk_kms_key = args[:boot_disk_kms_key] if args.key?(:boot_disk_kms_key)
+          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @disk_type = args[:disk_type] if args.key?(:disk_type)
           @management = args[:management] if args.key?(:management)
+          @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @oauth_scopes = args[:oauth_scopes] if args.key?(:oauth_scopes)
           @service_account = args[:service_account] if args.key?(:service_account)
+          @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @upgrade_settings = args[:upgrade_settings] if args.key?(:upgrade_settings)
         end
       end
@@ -356,6 +398,11 @@ module Google
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
+        # Which load balancer type is installed for Cloud Run.
+        # Corresponds to the JSON property `loadBalancerType`
+        # @return [String]
+        attr_accessor :load_balancer_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -363,6 +410,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disabled = args[:disabled] if args.key?(:disabled)
+          @load_balancer_type = args[:load_balancer_type] if args.key?(:load_balancer_type)
         end
       end
       
@@ -1907,14 +1955,21 @@ module Google
         # The password to use for HTTP basic authentication to the master endpoint.
         # Because the master endpoint is open to the Internet, you should create a
         # strong password. If a password is provided for cluster creation, username must
-        # be non-empty.
+        # be non-empty. Warning: basic authentication is deprecated, and will be removed
+        # in GKE control plane versions 1.19 and newer. For a list of recommended
+        # authentication methods, see: https://cloud.google.com/kubernetes-engine/docs/
+        # how-to/api-server-authentication
         # Corresponds to the JSON property `password`
         # @return [String]
         attr_accessor :password
       
         # The username to use for HTTP basic authentication to the master endpoint. For
         # clusters v1.6.0 and later, basic authentication can be disabled by leaving
-        # username unspecified (or setting it to the empty string).
+        # username unspecified (or setting it to the empty string). Warning: basic
+        # authentication is deprecated, and will be removed in GKE control plane
+        # versions 1.19 and newer. For a list of recommended authentication methods, see:
+        # https://cloud.google.com/kubernetes-engine/docs/how-to/api-server-
+        # authentication
         # Corresponds to the JSON property `username`
         # @return [String]
         attr_accessor :username

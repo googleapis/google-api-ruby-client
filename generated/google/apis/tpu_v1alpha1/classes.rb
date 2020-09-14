@@ -374,6 +374,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Output only. The Symptoms that have occurred to the TPU Node.
+        # Corresponds to the JSON property `symptoms`
+        # @return [Array<Google::Apis::TpuV1alpha1::Symptom>]
+        attr_accessor :symptoms
+      
         # The version of Tensorflow running in the Node. Required.
         # Corresponds to the JSON property `tensorflowVersion`
         # @return [String]
@@ -410,6 +415,7 @@ module Google
           @scheduling_config = args[:scheduling_config] if args.key?(:scheduling_config)
           @service_account = args[:service_account] if args.key?(:service_account)
           @state = args[:state] if args.key?(:state)
+          @symptoms = args[:symptoms] if args.key?(:symptoms)
           @tensorflow_version = args[:tensorflow_version] if args.key?(:tensorflow_version)
           @use_service_networking = args[:use_service_networking] if args.key?(:use_service_networking)
         end
@@ -644,6 +650,43 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A Symptom instance.
+      class Symptom
+        include Google::Apis::Core::Hashable
+      
+        # Timestamp when the Symptom is created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Detailed information of the current Symptom.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
+        # Type of the Symptom.
+        # Corresponds to the JSON property `symptomType`
+        # @return [String]
+        attr_accessor :symptom_type
+      
+        # A string used to uniquely distinguish a worker within a TPU node.
+        # Corresponds to the JSON property `workerId`
+        # @return [String]
+        attr_accessor :worker_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @details = args[:details] if args.key?(:details)
+          @symptom_type = args[:symptom_type] if args.key?(:symptom_type)
+          @worker_id = args[:worker_id] if args.key?(:worker_id)
         end
       end
       

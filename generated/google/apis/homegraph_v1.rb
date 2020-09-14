@@ -25,7 +25,10 @@ module Google
     # @see https://developers.google.com/actions/smarthome/create-app#request-sync
     module HomegraphV1
       VERSION = 'V1'
-      REVISION = '20200810'
+      REVISION = '20200827'
+
+      # New Service: https://www.googleapis.com/auth/homegraph
+      AUTH_HOMEGRAPH = 'https://www.googleapis.com/auth/homegraph'
     end
   end
 end
