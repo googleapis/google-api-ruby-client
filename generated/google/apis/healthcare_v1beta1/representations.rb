@@ -1645,6 +1645,7 @@ module Google
           property :schema, as: 'schema', class: Google::Apis::HealthcareV1beta1::SchemaPackage, decorator: Google::Apis::HealthcareV1beta1::SchemaPackage::Representation
       
           property :segment_terminator, :base64 => true, as: 'segmentTerminator'
+          property :version, as: 'version'
         end
       end
       

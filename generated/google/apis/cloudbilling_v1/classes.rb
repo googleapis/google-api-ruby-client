@@ -143,10 +143,10 @@ module Google
         # @return [String]
         attr_accessor :master_billing_account
       
-        # The resource name of the billing account. The resource name has the form `
-        # billingAccounts/`billing_account_id``. For example, `billingAccounts/012345-
-        # 567890-ABCDEF` would be the resource name for billing account `012345-567890-
-        # ABCDEF`.
+        # Output only. The resource name of the billing account. The resource name has
+        # the form `billingAccounts/`billing_account_id``. For example, `billingAccounts/
+        # 012345-567890-ABCDEF` would be the resource name for billing account `012345-
+        # 567890-ABCDEF`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

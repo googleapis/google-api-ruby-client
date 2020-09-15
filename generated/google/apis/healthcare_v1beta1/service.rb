@@ -118,9 +118,7 @@ module Google
         
         # Creates a new health dataset. Results are returned through the Operation
         # interface which returns either an `Operation.response` which contains a
-        # Dataset or `Operation.error`. The metadata field type is OperationMetadata. A
-        # Google Cloud Platform project can contain up to 500 datasets across all
-        # regions.
+        # Dataset or `Operation.error`. The metadata field type is OperationMetadata.
         # @param [String] parent
         #   The name of the project where the server creates the dataset. For example, `
         #   projects/`project_id`/locations/`location_id``.

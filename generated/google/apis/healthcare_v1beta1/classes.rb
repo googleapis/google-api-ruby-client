@@ -3231,6 +3231,12 @@ module Google
         # @return [String]
         attr_accessor :segment_terminator
       
+        # Immutable. Determines the version of the unschematized parser to be used when `
+        # schema` is not given. This field is immutable after store creation.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3240,6 +3246,7 @@ module Google
           @allow_null_header = args[:allow_null_header] if args.key?(:allow_null_header)
           @schema = args[:schema] if args.key?(:schema)
           @segment_terminator = args[:segment_terminator] if args.key?(:segment_terminator)
+          @version = args[:version] if args.key?(:version)
         end
       end
       

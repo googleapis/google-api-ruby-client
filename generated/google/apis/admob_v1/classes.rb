@@ -345,7 +345,7 @@ module Google
       
         # Maximum number of report data rows to return. If the value is not set, the API
         # returns as many rows as possible, up to 100000. Acceptable values are 1-100000,
-        # inclusive. Any other values are treated as 100000.
+        # inclusive. Values larger than 100000 return an error.
         # Corresponds to the JSON property `maxReportRows`
         # @return [Fixnum]
         attr_accessor :max_report_rows
@@ -485,7 +485,7 @@ module Google
       
         # Maximum number of report data rows to return. If the value is not set, the API
         # returns as many rows as possible, up to 100000. Acceptable values are 1-100000,
-        # inclusive. Any other values are treated as 100000.
+        # inclusive. Values larger than 100000 return an error.
         # Corresponds to the JSON property `maxReportRows`
         # @return [Fixnum]
         attr_accessor :max_report_rows

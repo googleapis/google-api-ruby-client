@@ -27,12 +27,21 @@ module Google
       class GoogleCloudBillingBudgetsV1beta1AllUpdatesRule
         include Google::Apis::Core::Hashable
       
+        # Optional. When set to true, disables default notifications sent when a
+        # threshold is exceeded. Default notifications are sent to those with Billing
+        # Account Administrator and Billing Account User IAM roles for the target
+        # account.
+        # Corresponds to the JSON property `disableDefaultIamRecipients`
+        # @return [Boolean]
+        attr_accessor :disable_default_iam_recipients
+        alias_method :disable_default_iam_recipients?, :disable_default_iam_recipients
+      
         # Optional. Targets to send notifications to when a threshold is exceeded. This
-        # is in addition to default recipients who have billing account roles. The value
-        # is the full REST resource name of a monitoring notification channel with the
-        # form `projects/`project_id`/notificationChannels/`channel_id``. A maximum of 5
-        # channels are allowed. See https://cloud.google.com/billing/docs/how-to/budgets-
-        # notification-recipients for more details.
+        # is in addition to default recipients who have billing account IAM roles. The
+        # value is the full REST resource name of a monitoring notification channel with
+        # the form `projects/`project_id`/notificationChannels/`channel_id``. A maximum
+        # of 5 channels are allowed. See https://cloud.google.com/billing/docs/how-to/
+        # budgets-notification-recipients for more details.
         # Corresponds to the JSON property `monitoringNotificationChannels`
         # @return [Array<String>]
         attr_accessor :monitoring_notification_channels
@@ -64,6 +73,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disable_default_iam_recipients = args[:disable_default_iam_recipients] if args.key?(:disable_default_iam_recipients)
           @monitoring_notification_channels = args[:monitoring_notification_channels] if args.key?(:monitoring_notification_channels)
           @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
           @schema_version = args[:schema_version] if args.key?(:schema_version)

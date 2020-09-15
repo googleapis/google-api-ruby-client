@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SasPortalMoveDeploymentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SasPortalMoveDeviceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -432,6 +438,13 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :nodes, as: 'nodes', class: Google::Apis::SasportalV1alpha1::SasPortalNode, decorator: Google::Apis::SasportalV1alpha1::SasPortalNode::Representation
       
+        end
+      end
+      
+      class SasPortalMoveDeploymentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination, as: 'destination'
         end
       end
       

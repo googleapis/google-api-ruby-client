@@ -9032,7 +9032,7 @@ module Google
       class SpreadsheetTheme
         include Google::Apis::Core::Hashable
       
-        # / Name of the primary font family.
+        # Name of the primary font family.
         # Corresponds to the JSON property `primaryFontFamily`
         # @return [String]
         attr_accessor :primary_font_family
