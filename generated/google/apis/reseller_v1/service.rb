@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module ResellerV1
-      # Google Apps Reseller API
+      # Enterprise Apps Reseller API
       #
       # Perform common functions that are available on the Google Apps Reseller
       #  Console at scale like placing orders and viewing customer information
@@ -50,11 +50,10 @@ module Google
         
         # Get a customer account.
         # @param [String] customer_id
-        #   Either the customer&#39;s primary domain name or the customer's unique
-        #   identifier. If using the domain name, we do not recommend using a
-        #   <code>customerId</code> as a key for persistent data. If the domain name
-        #   for a <code>customerId</code> is changed, the Google system automatically
-        #   updates.
+        #   Either the customer's primary domain name or the customer's unique identifier.
+        #   If using the domain name, we do not recommend using a customerId as a key for
+        #   persistent data. If the domain name for a customerId is changed, the Google
+        #   system automatically updates.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -85,13 +84,11 @@ module Google
         # Order a new customer's account.
         # @param [Google::Apis::ResellerV1::Customer] customer_object
         # @param [String] customer_auth_token
-        #   The <code>customerAuthToken</code> query string is required when creating a
-        #   resold account that transfers a direct customer&#39;s subscription or
-        #   transfers another reseller customer&#39;s subscription to your reseller
-        #   management. This is a hexadecimal authentication token needed to complete
-        #   the subscription transfer. For more information, see the <a
-        #   href="//support.google.com/a/bin/answer.py?answer=142336">administrator
-        #   help center</a>.
+        #   The customerAuthToken query string is required when creating a resold account
+        #   that transfers a direct customer's subscription or transfers another reseller
+        #   customer's subscription to your reseller management. This is a hexadecimal
+        #   authentication token needed to complete the subscription transfer. For more
+        #   information, see the administrator help center.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -123,11 +120,10 @@ module Google
         
         # Patch a customer account's settings via Apiary Patch Orchestration
         # @param [String] customer_id
-        #   Either the customer&#39;s primary domain name or the customer's unique
-        #   identifier. If using the domain name, we do not recommend using a
-        #   <code>customerId</code> as a key for persistent data. If the domain name
-        #   for a <code>customerId</code> is changed, the Google system automatically
-        #   updates.
+        #   Either the customer's primary domain name or the customer's unique identifier.
+        #   If using the domain name, we do not recommend using a customerId as a key for
+        #   persistent data. If the domain name for a customerId is changed, the Google
+        #   system automatically updates.
         # @param [Google::Apis::ResellerV1::Customer] customer_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -160,11 +156,10 @@ module Google
         
         # Update a customer account's settings.
         # @param [String] customer_id
-        #   Either the customer&#39;s primary domain name or the customer's unique
-        #   identifier. If using the domain name, we do not recommend using a
-        #   <code>customerId</code> as a key for persistent data. If the domain name
-        #   for a <code>customerId</code> is changed, the Google system automatically
-        #   updates.
+        #   Either the customer's primary domain name or the customer's unique identifier.
+        #   If using the domain name, we do not recommend using a customerId as a key for
+        #   persistent data. If the domain name for a customerId is changed, the Google
+        #   system automatically updates.
         # @param [Google::Apis::ResellerV1::Customer] customer_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -284,20 +279,16 @@ module Google
         
         # Activates a subscription previously suspended by the reseller
         # @param [String] customer_id
-        #   Either the customer&#39;s primary domain name or the customer's unique
-        #   identifier. If using the domain name, we do not recommend using a
-        #   <code>customerId</code> as a key for persistent data. If the domain name
-        #   for a <code>customerId</code> is changed, the Google system automatically
-        #   updates.
+        #   Either the customer's primary domain name or the customer's unique identifier.
+        #   If using the domain name, we do not recommend using a customerId as a key for
+        #   persistent data. If the domain name for a customerId is changed, the Google
+        #   system automatically updates.
         # @param [String] subscription_id
-        #   This is a required property. The <code>subscriptionId</code> is the
-        #   subscription identifier and is unique for each customer. Since a
-        #   <code>subscriptionId</code> changes when a subscription is updated, we
-        #   recommend to not use this ID as a key for persistent data. And the
-        #   <code>subscriptionId</code> can be found using the <a
-        #   href="/admin-sdk/reseller/v1/how-tos/manage_subscriptions#
-        #   get_all_subscriptions">retrieve
-        #   all reseller subscriptions</a> method.
+        #   This is a required property. The subscriptionId is the subscription identifier
+        #   and is unique for each customer. Since a subscriptionId changes when a
+        #   subscription is updated, we recommend to not use this ID as a key for
+        #   persistent data. And the subscriptionId can be found using the retrieve all
+        #   reseller subscriptions method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -330,20 +321,16 @@ module Google
         # trial or a flexible plan subscription to an annual commitment plan with
         # monthly or yearly payments.
         # @param [String] customer_id
-        #   Either the customer&#39;s primary domain name or the customer's unique
-        #   identifier. If using the domain name, we do not recommend using a
-        #   <code>customerId</code> as a key for persistent data. If the domain name
-        #   for a <code>customerId</code> is changed, the Google system automatically
-        #   updates.
+        #   Either the customer's primary domain name or the customer's unique identifier.
+        #   If using the domain name, we do not recommend using a customerId as a key for
+        #   persistent data. If the domain name for a customerId is changed, the Google
+        #   system automatically updates.
         # @param [String] subscription_id
-        #   This is a required property. The <code>subscriptionId</code> is the
-        #   subscription identifier and is unique for each customer. Since a
-        #   <code>subscriptionId</code> changes when a subscription is updated, we
-        #   recommend to not use this ID as a key for persistent data. And the
-        #   <code>subscriptionId</code> can be found using the <a
-        #   href="/admin-sdk/reseller/v1/how-tos/manage_subscriptions#
-        #   get_all_subscriptions">retrieve
-        #   all reseller subscriptions</a> method.
+        #   This is a required property. The subscriptionId is the subscription identifier
+        #   and is unique for each customer. Since a subscriptionId changes when a
+        #   subscription is updated, we recommend to not use this ID as a key for
+        #   persistent data. And the subscriptionId can be found using the retrieve all
+        #   reseller subscriptions method.
         # @param [Google::Apis::ResellerV1::ChangePlanRequest] change_plan_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -375,23 +362,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update a user license&#39;s renewal settings. This is applicable for
-        # accounts with annual commitment plans only.
+        # Update a user license's renewal settings. This is applicable for accounts with
+        # annual commitment plans only.
         # @param [String] customer_id
-        #   Either the customer&#39;s primary domain name or the customer's unique
-        #   identifier. If using the domain name, we do not recommend using a
-        #   <code>customerId</code> as a key for persistent data. If the domain name
-        #   for a <code>customerId</code> is changed, the Google system automatically
-        #   updates.
+        #   Either the customer's primary domain name or the customer's unique identifier.
+        #   If using the domain name, we do not recommend using a customerId as a key for
+        #   persistent data. If the domain name for a customerId is changed, the Google
+        #   system automatically updates.
         # @param [String] subscription_id
-        #   This is a required property. The <code>subscriptionId</code> is the
-        #   subscription identifier and is unique for each customer. Since a
-        #   <code>subscriptionId</code> changes when a subscription is updated, we
-        #   recommend to not use this ID as a key for persistent data. And the
-        #   <code>subscriptionId</code> can be found using the <a
-        #   href="/admin-sdk/reseller/v1/how-tos/manage_subscriptions#
-        #   get_all_subscriptions">retrieve
-        #   all reseller subscriptions</a> method.
+        #   This is a required property. The subscriptionId is the subscription identifier
+        #   and is unique for each customer. Since a subscriptionId changes when a
+        #   subscription is updated, we recommend to not use this ID as a key for
+        #   persistent data. And the subscriptionId can be found using the retrieve all
+        #   reseller subscriptions method.
         # @param [Google::Apis::ResellerV1::RenewalSettings] renewal_settings_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -423,22 +406,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update a subscription&#39;s user license settings.
+        # Update a subscription's user license settings.
         # @param [String] customer_id
-        #   Either the customer&#39;s primary domain name or the customer's unique
-        #   identifier. If using the domain name, we do not recommend using a
-        #   <code>customerId</code> as a key for persistent data. If the domain name
-        #   for a <code>customerId</code> is changed, the Google system automatically
-        #   updates.
+        #   Either the customer's primary domain name or the customer's unique identifier.
+        #   If using the domain name, we do not recommend using a customerId as a key for
+        #   persistent data. If the domain name for a customerId is changed, the Google
+        #   system automatically updates.
         # @param [String] subscription_id
-        #   This is a required property. The <code>subscriptionId</code> is the
-        #   subscription identifier and is unique for each customer. Since a
-        #   <code>subscriptionId</code> changes when a subscription is updated, we
-        #   recommend to not use this ID as a key for persistent data. And the
-        #   <code>subscriptionId</code> can be found using the <a
-        #   href="/admin-sdk/reseller/v1/how-tos/manage_subscriptions#
-        #   get_all_subscriptions">retrieve
-        #   all reseller subscriptions</a> method.
+        #   This is a required property. The subscriptionId is the subscription identifier
+        #   and is unique for each customer. Since a subscriptionId changes when a
+        #   subscription is updated, we recommend to not use this ID as a key for
+        #   persistent data. And the subscriptionId can be found using the retrieve all
+        #   reseller subscriptions method.
         # @param [Google::Apis::ResellerV1::Seats] seats_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -472,23 +451,19 @@ module Google
         
         # Cancel, suspend, or transfer a subscription to direct.
         # @param [String] customer_id
-        #   Either the customer&#39;s primary domain name or the customer's unique
-        #   identifier. If using the domain name, we do not recommend using a
-        #   <code>customerId</code> as a key for persistent data. If the domain name
-        #   for a <code>customerId</code> is changed, the Google system automatically
-        #   updates.
+        #   Either the customer's primary domain name or the customer's unique identifier.
+        #   If using the domain name, we do not recommend using a customerId as a key for
+        #   persistent data. If the domain name for a customerId is changed, the Google
+        #   system automatically updates.
         # @param [String] subscription_id
-        #   This is a required property. The <code>subscriptionId</code> is the
-        #   subscription identifier and is unique for each customer. Since a
-        #   <code>subscriptionId</code> changes when a subscription is updated, we
-        #   recommend to not use this ID as a key for persistent data. And the
-        #   <code>subscriptionId</code> can be found using the <a
-        #   href="/admin-sdk/reseller/v1/how-tos/manage_subscriptions#
-        #   get_all_subscriptions">retrieve
-        #   all reseller subscriptions</a> method.
+        #   This is a required property. The subscriptionId is the subscription identifier
+        #   and is unique for each customer. Since a subscriptionId changes when a
+        #   subscription is updated, we recommend to not use this ID as a key for
+        #   persistent data. And the subscriptionId can be found using the retrieve all
+        #   reseller subscriptions method.
         # @param [String] deletion_type
-        #   The <code>deletionType</code> query string enables the cancellation,
-        #   downgrade, or suspension of a subscription.
+        #   The deletionType query string enables the cancellation, downgrade, or
+        #   suspension of a subscription.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -518,20 +493,16 @@ module Google
         
         # Get a specific subscription.
         # @param [String] customer_id
-        #   Either the customer&#39;s primary domain name or the customer's unique
-        #   identifier. If using the domain name, we do not recommend using a
-        #   <code>customerId</code> as a key for persistent data. If the domain name
-        #   for a <code>customerId</code> is changed, the Google system automatically
-        #   updates.
+        #   Either the customer's primary domain name or the customer's unique identifier.
+        #   If using the domain name, we do not recommend using a customerId as a key for
+        #   persistent data. If the domain name for a customerId is changed, the Google
+        #   system automatically updates.
         # @param [String] subscription_id
-        #   This is a required property. The <code>subscriptionId</code> is the
-        #   subscription identifier and is unique for each customer. Since a
-        #   <code>subscriptionId</code> changes when a subscription is updated, we
-        #   recommend to not use this ID as a key for persistent data. And the
-        #   <code>subscriptionId</code> can be found using the <a
-        #   href="/admin-sdk/reseller/v1/how-tos/manage_subscriptions#
-        #   get_all_subscriptions">retrieve
-        #   all reseller subscriptions</a> method.
+        #   This is a required property. The subscriptionId is the subscription identifier
+        #   and is unique for each customer. Since a subscriptionId changes when a
+        #   subscription is updated, we recommend to not use this ID as a key for
+        #   persistent data. And the subscriptionId can be found using the retrieve all
+        #   reseller subscriptions method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -562,21 +533,17 @@ module Google
         
         # Create or transfer a subscription.
         # @param [String] customer_id
-        #   Either the customer&#39;s primary domain name or the customer's unique
-        #   identifier. If using the domain name, we do not recommend using a
-        #   <code>customerId</code> as a key for persistent data. If the domain name
-        #   for a <code>customerId</code> is changed, the Google system automatically
-        #   updates.
+        #   Either the customer's primary domain name or the customer's unique identifier.
+        #   If using the domain name, we do not recommend using a customerId as a key for
+        #   persistent data. If the domain name for a customerId is changed, the Google
+        #   system automatically updates.
         # @param [Google::Apis::ResellerV1::Subscription] subscription_object
         # @param [String] customer_auth_token
-        #   The <code>customerAuthToken</code> query string is required when creating a
-        #   resold account that transfers a direct
-        #   customer's subscription or transfers another reseller customer's
-        #   subscription to your reseller management. This is a hexadecimal
+        #   The customerAuthToken query string is required when creating a resold account
+        #   that transfers a direct customer's subscription or transfers another reseller
+        #   customer's subscription to your reseller management. This is a hexadecimal
         #   authentication token needed to complete the subscription transfer. For more
-        #   information, see the <a
-        #   href="//support.google.com/a/bin/answer.py?answer=142336">administrator
-        #   help center</a>.
+        #   information, see the administrator help center.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -608,40 +575,30 @@ module Google
         end
         
         # List of subscriptions managed by the reseller. The list can be all
-        # subscriptions, all of a customer&#39;s subscriptions, or all of a
-        # customer&#39;s transferable subscriptions.
+        # subscriptions, all of a customer's subscriptions, or all of a customer's
+        # transferable subscriptions.
         # @param [String] customer_auth_token
-        #   The <code>customerAuthToken</code> query string is required when creating a
-        #   resold account that transfers a direct
-        #   customer's subscription or transfers another reseller customer's
-        #   subscription to your reseller management. This is a hexadecimal
+        #   The customerAuthToken query string is required when creating a resold account
+        #   that transfers a direct customer's subscription or transfers another reseller
+        #   customer's subscription to your reseller management. This is a hexadecimal
         #   authentication token needed to complete the subscription transfer. For more
-        #   information, see the <a
-        #   href="//support.google.com/a/bin/answer.py?answer=142336">administrator
-        #   help center</a>.
+        #   information, see the administrator help center.
         # @param [String] customer_id
-        #   Either the customer&#39;s primary domain name or the customer's unique
-        #   identifier. If using the domain name, we do not recommend using a
-        #   <code>customerId</code> as a key for persistent data. If the domain name
-        #   for a <code>customerId</code> is changed, the Google system automatically
-        #   updates.
+        #   Either the customer's primary domain name or the customer's unique identifier.
+        #   If using the domain name, we do not recommend using a customerId as a key for
+        #   persistent data. If the domain name for a customerId is changed, the Google
+        #   system automatically updates.
         # @param [String] customer_name_prefix
-        #   When retrieving all of your subscriptions and filtering for specific
-        #   customers, you can enter a prefix for a customer name. Using an example
-        #   customer group that includes <code>exam.com</code>,
-        #   <code>example20.com</code> and <code>example.com</code>:
-        #   <ul>
-        #   <li><code>exa</code> -- Returns all customer names that start with
-        #   &#39;exa&#39; which could include <code>exam.com</code>,
-        #   <code>example20.com</code>, and <code>example.com</code>. A name prefix is
-        #   similar to using a regular expression&#39;s asterisk, exa*.</li>
-        #   <li><code>example</code> -- Returns <code>example20.com</code> and
-        #   <code>example.com</code>.</li>
-        #   </ul>
+        #   When retrieving all of your subscriptions and filtering for specific customers,
+        #   you can enter a prefix for a customer name. Using an example customer group
+        #   that includes exam.com, example20.com and example.com: - exa -- Returns all
+        #   customer names that start with 'exa' which could include exam.com, example20.
+        #   com, and example.com. A name prefix is similar to using a regular expression's
+        #   asterisk, exa*. - example -- Returns example20.com and example.com.
         # @param [Fixnum] max_results
-        #   When retrieving a large list, the <code>maxResults</code> is the maximum
-        #   number of results per page. The <code>nextPageToken</code> value takes you
-        #   to the next page. The default is 20.
+        #   When retrieving a large list, the maxResults is the maximum number of results
+        #   per page. The nextPageToken value takes you to the next page. The default is
+        #   20.
         # @param [String] page_token
         #   Token to specify next page in the list
         # @param [String] fields
@@ -678,20 +635,16 @@ module Google
         # Immediately move a 30-day free trial subscription to a paid service
         # subscription.
         # @param [String] customer_id
-        #   Either the customer&#39;s primary domain name or the customer's unique
-        #   identifier. If using the domain name, we do not recommend using a
-        #   <code>customerId</code> as a key for persistent data. If the domain name
-        #   for a <code>customerId</code> is changed, the Google system automatically
-        #   updates.
+        #   Either the customer's primary domain name or the customer's unique identifier.
+        #   If using the domain name, we do not recommend using a customerId as a key for
+        #   persistent data. If the domain name for a customerId is changed, the Google
+        #   system automatically updates.
         # @param [String] subscription_id
-        #   This is a required property. The <code>subscriptionId</code> is the
-        #   subscription identifier and is unique for each customer. Since a
-        #   <code>subscriptionId</code> changes when a subscription is updated, we
-        #   recommend to not use this ID as a key for persistent data. And the
-        #   <code>subscriptionId</code> can be found using the <a
-        #   href="/admin-sdk/reseller/v1/how-tos/manage_subscriptions#
-        #   get_all_subscriptions">retrieve
-        #   all reseller subscriptions</a> method.
+        #   This is a required property. The subscriptionId is the subscription identifier
+        #   and is unique for each customer. Since a subscriptionId changes when a
+        #   subscription is updated, we recommend to not use this ID as a key for
+        #   persistent data. And the subscriptionId can be found using the retrieve all
+        #   reseller subscriptions method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -722,20 +675,16 @@ module Google
         
         # Suspends an active subscription.
         # @param [String] customer_id
-        #   Either the customer&#39;s primary domain name or the customer's unique
-        #   identifier. If using the domain name, we do not recommend using a
-        #   <code>customerId</code> as a key for persistent data. If the domain name
-        #   for a <code>customerId</code> is changed, the Google system automatically
-        #   updates.
+        #   Either the customer's primary domain name or the customer's unique identifier.
+        #   If using the domain name, we do not recommend using a customerId as a key for
+        #   persistent data. If the domain name for a customerId is changed, the Google
+        #   system automatically updates.
         # @param [String] subscription_id
-        #   This is a required property. The <code>subscriptionId</code> is the
-        #   subscription identifier and is unique for each customer. Since a
-        #   <code>subscriptionId</code> changes when a subscription is updated, we
-        #   recommend to not use this ID as a key for persistent data. And the
-        #   <code>subscriptionId</code> can be found using the <a
-        #   href="/admin-sdk/reseller/v1/how-tos/manage_subscriptions#
-        #   get_all_subscriptions">retrieve
-        #   all reseller subscriptions</a> method.
+        #   This is a required property. The subscriptionId is the subscription identifier
+        #   and is unique for each customer. Since a subscriptionId changes when a
+        #   subscription is updated, we recommend to not use this ID as a key for
+        #   persistent data. And the subscriptionId can be found using the retrieve all
+        #   reseller subscriptions method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

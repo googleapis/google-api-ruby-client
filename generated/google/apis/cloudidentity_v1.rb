@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/identity/
     module CloudidentityV1
       VERSION = 'V1'
-      REVISION = '20200908'
+      REVISION = '20200912'
 
       # See your device details
       AUTH_CLOUD_IDENTITY_DEVICES_LOOKUP = 'https://www.googleapis.com/auth/cloud-identity.devices.lookup'

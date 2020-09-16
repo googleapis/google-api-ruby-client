@@ -20,9 +20,10 @@ require 'google/apis/errors'
 module Google
   module Apis
     module LicensingV1
-      # Licensing API
+      # Enterprise License Manager API
       #
-      # Licensing API to view and manage licenses for your domain
+      # The Google Enterprise License Manager API's allows you to license apps for all
+      #  the users of a domain managed by you.
       #
       # @example
       #    require 'google/apis/licensing_v1'
@@ -38,16 +39,12 @@ module Google
         attr_accessor :key
 
         # @return [String]
-        #  An opaque string that represents a user for quota purposes. Must not exceed 40
-        #  characters.
+        #  Available to use for quota purposes for server-side applications. Can be any
+        #  arbitrary string assigned to a user, but should not exceed 40 characters.
         attr_accessor :quota_user
 
-        # @return [String]
-        #  Deprecated. Please use quotaUser instead.
-        attr_accessor :user_ip
-
         def initialize
-          super('https://www.googleapis.com/', 'apps/licensing/v1/product/')
+          super('https://www.googleapis.com/', '')
           @batch_path = 'batch/licensing/v1'
         end
         
@@ -60,18 +57,15 @@ module Google
         #   in this version of the API, see Products and SKUs.
         # @param [String] user_id
         #   The user's current primary email address. If the user's email address changes,
-        #   use the new email address in your API requests.
-        #   Since a userId is subject to change, do not use a userId value as a key for
-        #   persistent data. This key could break if the current user's email address
-        #   changes.
-        #   If the userId is suspended, the license status changes.
+        #   use the new email address in your API requests. Since a userId is subject to
+        #   change, do not use a userId value as a key for persistent data. This key could
+        #   break if the current user's email address changes. If the userId is suspended,
+        #   the license status changes.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -84,14 +78,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_license_assignment(product_id, sku_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:delete, '{productId}/sku/{skuId}/user/{userId}', options)
+        def delete_license_assignment(product_id, sku_id, user_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}', options)
           command.params['productId'] = product_id unless product_id.nil?
           command.params['skuId'] = sku_id unless sku_id.nil?
           command.params['userId'] = user_id unless user_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -104,18 +97,15 @@ module Google
         #   in this version of the API, see Products and SKUs.
         # @param [String] user_id
         #   The user's current primary email address. If the user's email address changes,
-        #   use the new email address in your API requests.
-        #   Since a userId is subject to change, do not use a userId value as a key for
-        #   persistent data. This key could break if the current user's email address
-        #   changes.
-        #   If the userId is suspended, the license status changes.
+        #   use the new email address in your API requests. Since a userId is subject to
+        #   change, do not use a userId value as a key for persistent data. This key could
+        #   break if the current user's email address changes. If the userId is suspended,
+        #   the license status changes.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -128,8 +118,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_license_assignment(product_id, sku_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{productId}/sku/{skuId}/user/{userId}', options)
+        def get_license_assignment(product_id, sku_id, user_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}', options)
           command.response_representation = Google::Apis::LicensingV1::LicenseAssignment::Representation
           command.response_class = Google::Apis::LicensingV1::LicenseAssignment
           command.params['productId'] = product_id unless product_id.nil?
@@ -137,7 +127,6 @@ module Google
           command.params['userId'] = user_id unless user_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -152,10 +141,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -168,8 +155,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_license_assignment(product_id, sku_id, license_assignment_insert_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, '{productId}/sku/{skuId}/user', options)
+        def insert_license_assignment(product_id, sku_id, license_assignment_insert_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'apps/licensing/v1/product/{productId}/sku/{skuId}/user', options)
           command.request_representation = Google::Apis::LicensingV1::LicenseAssignmentInsert::Representation
           command.request_object = license_assignment_insert_object
           command.response_representation = Google::Apis::LicensingV1::LicenseAssignment::Representation
@@ -178,7 +165,6 @@ module Google
           command.params['skuId'] = sku_id unless sku_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -188,8 +174,8 @@ module Google
         #   version of the API, see Products and SKUs.
         # @param [String] customer_id
         #   Customer's customerId. A previous version of this API accepted the primary
-        #   domain name as a value for this field.
-        #   If the customer is suspended, the server returns an error.
+        #   domain name as a value for this field. If the customer is suspended, the
+        #   server returns an error.
         # @param [Fixnum] max_results
         #   The maxResults query string determines how many entries are returned on each
         #   page of a large response. This is an optional parameter. The value must be a
@@ -202,10 +188,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -218,8 +202,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_license_assignments_for_product(product_id, customer_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{productId}/users', options)
+        def list_license_assignments_for_product(product_id, customer_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'apps/licensing/v1/product/{productId}/users', options)
           command.response_representation = Google::Apis::LicensingV1::LicenseAssignmentList::Representation
           command.response_class = Google::Apis::LicensingV1::LicenseAssignmentList
           command.params['productId'] = product_id unless product_id.nil?
@@ -228,7 +212,6 @@ module Google
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -241,8 +224,8 @@ module Google
         #   in this version of the API, see Products and SKUs.
         # @param [String] customer_id
         #   Customer's customerId. A previous version of this API accepted the primary
-        #   domain name as a value for this field.
-        #   If the customer is suspended, the server returns an error.
+        #   domain name as a value for this field. If the customer is suspended, the
+        #   server returns an error.
         # @param [Fixnum] max_results
         #   The maxResults query string determines how many entries are returned on each
         #   page of a large response. This is an optional parameter. The value must be a
@@ -255,10 +238,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -271,8 +252,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_license_assignments_for_product_and_sku(product_id, sku_id, customer_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{productId}/sku/{skuId}/users', options)
+        def list_license_assignments_for_product_and_sku(product_id, sku_id, customer_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'apps/licensing/v1/product/{productId}/sku/{skuId}/users', options)
           command.response_representation = Google::Apis::LicensingV1::LicenseAssignmentList::Representation
           command.response_class = Google::Apis::LicensingV1::LicenseAssignmentList
           command.params['productId'] = product_id unless product_id.nil?
@@ -282,12 +263,10 @@ module Google
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Reassign a user's product SKU with a different SKU in the same product. This
-        # method supports patch semantics.
+        # Patch a Licensing info via Apiary Patch Orchestration
         # @param [String] product_id
         #   A product's unique identifier. For more information about products in this
         #   version of the API, see Products and SKUs.
@@ -296,19 +275,16 @@ module Google
         #   in this version of the API, see Products and SKUs.
         # @param [String] user_id
         #   The user's current primary email address. If the user's email address changes,
-        #   use the new email address in your API requests.
-        #   Since a userId is subject to change, do not use a userId value as a key for
-        #   persistent data. This key could break if the current user's email address
-        #   changes.
-        #   If the userId is suspended, the license status changes.
+        #   use the new email address in your API requests. Since a userId is subject to
+        #   change, do not use a userId value as a key for persistent data. This key could
+        #   break if the current user's email address changes. If the userId is suspended,
+        #   the license status changes.
         # @param [Google::Apis::LicensingV1::LicenseAssignment] license_assignment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -321,8 +297,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_license_assignment(product_id, sku_id, user_id, license_assignment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:patch, '{productId}/sku/{skuId}/user/{userId}', options)
+        def patch_license_assignment(product_id, sku_id, user_id, license_assignment_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}', options)
           command.request_representation = Google::Apis::LicensingV1::LicenseAssignment::Representation
           command.request_object = license_assignment_object
           command.response_representation = Google::Apis::LicensingV1::LicenseAssignment::Representation
@@ -332,7 +308,6 @@ module Google
           command.params['userId'] = user_id unless user_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -345,19 +320,16 @@ module Google
         #   in this version of the API, see Products and SKUs.
         # @param [String] user_id
         #   The user's current primary email address. If the user's email address changes,
-        #   use the new email address in your API requests.
-        #   Since a userId is subject to change, do not use a userId value as a key for
-        #   persistent data. This key could break if the current user's email address
-        #   changes.
-        #   If the userId is suspended, the license status changes.
+        #   use the new email address in your API requests. Since a userId is subject to
+        #   change, do not use a userId value as a key for persistent data. This key could
+        #   break if the current user's email address changes. If the userId is suspended,
+        #   the license status changes.
         # @param [Google::Apis::LicensingV1::LicenseAssignment] license_assignment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -370,8 +342,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_license_assignment(product_id, sku_id, user_id, license_assignment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:put, '{productId}/sku/{skuId}/user/{userId}', options)
+        def update_license_assignment(product_id, sku_id, user_id, license_assignment_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}', options)
           command.request_representation = Google::Apis::LicensingV1::LicenseAssignment::Representation
           command.request_object = license_assignment_object
           command.response_representation = Google::Apis::LicensingV1::LicenseAssignment::Representation
@@ -381,7 +353,6 @@ module Google
           command.params['userId'] = user_id unless user_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
 
@@ -390,7 +361,6 @@ module Google
         def apply_command_defaults(command)
           command.query['key'] = key unless key.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
         end
       end
     end

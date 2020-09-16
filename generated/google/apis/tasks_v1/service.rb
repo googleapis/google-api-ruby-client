@@ -43,8 +43,8 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://www.googleapis.com/', '')
-          @batch_path = 'batch/tasks/v1'
+          super('https://tasks.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
         # Deletes the authenticated user's specified task list.
@@ -393,7 +393,8 @@ module Google
         #   Token specifying the result page to return. Optional.
         # @param [Boolean] show_completed
         #   Flag indicating whether completed tasks are returned in the result. Optional.
-        #   The default is True.
+        #   The default is True. Note that showHidden must also be True to show tasks
+        #   completed in first party clients, such as the web UI and Google's mobile apps.
         # @param [Boolean] show_deleted
         #   Flag indicating whether deleted tasks are returned in the result. Optional.
         #   The default is False.

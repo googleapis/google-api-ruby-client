@@ -687,8 +687,8 @@ module Google
         #   The self-reported size of the version. This value is used for a pre-emptive
         #   quota check for legacy version uploads.
         # @param [String] version_id
-        #   A unique id for the new version. This is only specified for legacy version
-        #   creations.
+        #   A unique id for the new version. This is was only specified for legacy version
+        #   creations, and should be blank.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1522,8 +1522,8 @@ module Google
         #   The self-reported size of the version. This value is used for a pre-emptive
         #   quota check for legacy version uploads.
         # @param [String] version_id
-        #   A unique id for the new version. This is only specified for legacy version
-        #   creations.
+        #   A unique id for the new version. This is was only specified for legacy version
+        #   creations, and should be blank.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

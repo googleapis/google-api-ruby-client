@@ -679,6 +679,14 @@ module Google
         attr_accessor :is_list
         alias_method :is_list?, :is_list
       
+        # Indicates whether the parameter content is logged in text and audio. If it is
+        # set to true, the parameter content will be replaced to parameter name in both
+        # request and response. The default value is false.
+        # Corresponds to the JSON property `redact`
+        # @return [Boolean]
+        attr_accessor :redact
+        alias_method :redact?, :redact
+      
         # Indicates whether the parameter is required. Optional parameters will not
         # trigger prompts; however, they are filled if the user specifies them. Required
         # parameters must be filled before form filling concludes.
@@ -698,6 +706,7 @@ module Google
           @entity_type = args[:entity_type] if args.key?(:entity_type)
           @fill_behavior = args[:fill_behavior] if args.key?(:fill_behavior)
           @is_list = args[:is_list] if args.key?(:is_list)
+          @redact = args[:redact] if args.key?(:redact)
           @required = args[:required] if args.key?(:required)
         end
       end
@@ -1195,6 +1204,14 @@ module Google
         attr_accessor :is_list
         alias_method :is_list?, :is_list
       
+        # Indicates whether the parameter content is logged in text and audio. If it is
+        # set to true, the parameter content will be replaced to parameter id in both
+        # request and response. The default value is false.
+        # Corresponds to the JSON property `redact`
+        # @return [Boolean]
+        attr_accessor :redact
+        alias_method :redact?, :redact
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1204,6 +1221,7 @@ module Google
           @entity_type = args[:entity_type] if args.key?(:entity_type)
           @id = args[:id] if args.key?(:id)
           @is_list = args[:is_list] if args.key?(:is_list)
+          @redact = args[:redact] if args.key?(:redact)
         end
       end
       

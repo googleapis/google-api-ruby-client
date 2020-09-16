@@ -2350,6 +2350,12 @@ module Google
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1TargetServerConfig>]
         attr_accessor :targets
       
+        # NEXT ID: 8 RuntimeTraceConfig defines the configurations for distributed trace
+        # in an environment.
+        # Corresponds to the JSON property `traceConfig`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceConfig]
+        attr_accessor :trace_config
+      
         # Unique ID for the environment configuration. The ID will only change if the
         # environment is deleted and recreated.
         # Corresponds to the JSON property `uid`
@@ -2377,6 +2383,7 @@ module Google
           @revision_id = args[:revision_id] if args.key?(:revision_id)
           @sequence_number = args[:sequence_number] if args.key?(:sequence_number)
           @targets = args[:targets] if args.key?(:targets)
+          @trace_config = args[:trace_config] if args.key?(:trace_config)
           @uid = args[:uid] if args.key?(:uid)
         end
       end
@@ -3599,9 +3606,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Identfies whether the configuration is for Apigee proxy or a remote service.
-        # Possible values are "proxy" and "remote_service". If none specified, the
+        # Possible values are "proxy" and "remoteservice". If none specified, the
         # default is "proxy". "proxy" is used when Apigee proxies are associated with
-        # the API product. "remote_service" is used when non-Apigee proxy like Envoy is
+        # the API product. "remoteservice" is used when non-Apigee proxy like Envoy is
         # used, and is associated with the API product.
         # Corresponds to the JSON property `operationConfigType`
         # @return [String]
@@ -4674,6 +4681,203 @@ module Google
         def update!(**args)
           @basepath = args[:basepath] if args.key?(:basepath)
           @environment = args[:environment] if args.key?(:environment)
+        end
+      end
+      
+      # NEXT ID: 8 RuntimeTraceConfig defines the configurations for distributed trace
+      # in an environment.
+      class GoogleCloudApigeeV1RuntimeTraceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Endpoint of the exporter.
+        # Corresponds to the JSON property `endpoint`
+        # @return [String]
+        attr_accessor :endpoint
+      
+        # Exporter that is used to view the distributed trace captured using OpenCensus.
+        # An exporter sends traces to any backend that is capable of consuming them.
+        # Recorded spans can be exported by registered exporters.
+        # Corresponds to the JSON property `exporter`
+        # @return [String]
+        attr_accessor :exporter
+      
+        # Name of the trace config in the following format: `organizations/`org`/
+        # environment/`env`/traceConfig`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # List of trace configuration overrides for spicific API proxies.
+        # Corresponds to the JSON property `overrides`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceConfigOverride>]
+        attr_accessor :overrides
+      
+        # The timestamp that the revision was created or updated.
+        # Corresponds to the JSON property `revisionCreateTime`
+        # @return [String]
+        attr_accessor :revision_create_time
+      
+        # Revision number which can be used by the runtime to detect if the trace config
+        # has changed between two versions.
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
+        # NEXT ID: 6 RuntimeTraceSamplingConfig represents the detail settings of
+        # distributed tracing. Only the fields that are defined in the distributed trace
+        # configuration can be overridden using the distribute trace configuration
+        # override APIs.
+        # Corresponds to the JSON property `samplingConfig`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceSamplingConfig]
+        attr_accessor :sampling_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @exporter = args[:exporter] if args.key?(:exporter)
+          @name = args[:name] if args.key?(:name)
+          @overrides = args[:overrides] if args.key?(:overrides)
+          @revision_create_time = args[:revision_create_time] if args.key?(:revision_create_time)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+          @sampling_config = args[:sampling_config] if args.key?(:sampling_config)
+        end
+      end
+      
+      # NEXT ID: 7 Trace configuration override for a specific API proxy in an
+      # environment.
+      class GoogleCloudApigeeV1RuntimeTraceConfigOverride
+        include Google::Apis::Core::Hashable
+      
+        # Name of the API proxy that will have its trace configuration overridden
+        # following format: `organizations/`org`/apis/`api``
+        # Corresponds to the JSON property `apiProxy`
+        # @return [String]
+        attr_accessor :api_proxy
+      
+        # Name of the trace config override in the following format: `organizations/`org`
+        # /environment/`env`/traceConfig/overrides/`override``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The timestamp that the revision was created or updated.
+        # Corresponds to the JSON property `revisionCreateTime`
+        # @return [String]
+        attr_accessor :revision_create_time
+      
+        # Revision number which can be used by the runtime to detect if the trace config
+        # override has changed between two versions.
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
+        # NEXT ID: 6 RuntimeTraceSamplingConfig represents the detail settings of
+        # distributed tracing. Only the fields that are defined in the distributed trace
+        # configuration can be overridden using the distribute trace configuration
+        # override APIs.
+        # Corresponds to the JSON property `samplingConfig`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceSamplingConfig]
+        attr_accessor :sampling_config
+      
+        # Unique ID for the configuration override. The ID will only change if the
+        # override is deleted and recreated.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_proxy = args[:api_proxy] if args.key?(:api_proxy)
+          @name = args[:name] if args.key?(:name)
+          @revision_create_time = args[:revision_create_time] if args.key?(:revision_create_time)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+          @sampling_config = args[:sampling_config] if args.key?(:sampling_config)
+          @uid = args[:uid] if args.key?(:uid)
+        end
+      end
+      
+      # NEXT ID: 6 RuntimeTraceSamplingConfig represents the detail settings of
+      # distributed tracing. Only the fields that are defined in the distributed trace
+      # configuration can be overridden using the distribute trace configuration
+      # override APIs.
+      class GoogleCloudApigeeV1RuntimeTraceSamplingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Error sources from which to capture errors. If none are specified, error codes
+        # are captured from all sources.
+        # Corresponds to the JSON property `errorSources`
+        # @return [Array<String>]
+        attr_accessor :error_sources
+      
+        # List of response code ranges.
+        # Corresponds to the JSON property `responseCodeRanges`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange>]
+        attr_accessor :response_code_ranges
+      
+        # List of single response codes.
+        # Corresponds to the JSON property `responseCodes`
+        # @return [Array<Fixnum>]
+        attr_accessor :response_codes
+      
+        # Sampler of distributed tracing. OFF is the default value.
+        # Corresponds to the JSON property `sampler`
+        # @return [String]
+        attr_accessor :sampler
+      
+        # Field sampling rate. This value is only valid when is only applicable when
+        # sampling value is probabilistic(PROBABILITY). The supported values are > 0 and
+        # <= 0.5.
+        # Corresponds to the JSON property `samplingRate`
+        # @return [Float]
+        attr_accessor :sampling_rate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_sources = args[:error_sources] if args.key?(:error_sources)
+          @response_code_ranges = args[:response_code_ranges] if args.key?(:response_code_ranges)
+          @response_codes = args[:response_codes] if args.key?(:response_codes)
+          @sampler = args[:sampler] if args.key?(:sampler)
+          @sampling_rate = args[:sampling_rate] if args.key?(:sampling_rate)
+        end
+      end
+      
+      # ResponseCodeRange represents a group of response codes to capture, from the
+      # first response code to the last response code. Each range is a close interval.
+      # For example, if an interval is [400, 403], then that means 400, 401, 402, 403
+      # will be all captured.
+      class GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange
+        include Google::Apis::Core::Hashable
+      
+        # The first response code to capture.
+        # Corresponds to the JSON property `firstResponseCode`
+        # @return [Fixnum]
+        attr_accessor :first_response_code
+      
+        # The last response code to capture.
+        # Corresponds to the JSON property `lastResponseCode`
+        # @return [Fixnum]
+        attr_accessor :last_response_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @first_response_code = args[:first_response_code] if args.key?(:first_response_code)
+          @last_response_code = args[:last_response_code] if args.key?(:last_response_code)
         end
       end
       

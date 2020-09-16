@@ -694,6 +694,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1RuntimeTraceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1RuntimeTraceConfigOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1RuntimeTraceSamplingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1Schema
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1459,6 +1483,8 @@ module Google
           property :sequence_number, :numeric_string => true, as: 'sequenceNumber'
           collection :targets, as: 'targets', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TargetServerConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TargetServerConfig::Representation
       
+          property :trace_config, as: 'traceConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceConfig::Representation
+      
           property :uid, as: 'uid'
         end
       end
@@ -2117,6 +2143,54 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :basepath, as: 'basepath'
           property :environment, as: 'environment'
+        end
+      end
+      
+      class GoogleCloudApigeeV1RuntimeTraceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :endpoint, as: 'endpoint'
+          property :exporter, as: 'exporter'
+          property :name, as: 'name'
+          collection :overrides, as: 'overrides', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceConfigOverride, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceConfigOverride::Representation
+      
+          property :revision_create_time, as: 'revisionCreateTime'
+          property :revision_id, as: 'revisionId'
+          property :sampling_config, as: 'samplingConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceSamplingConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceSamplingConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1RuntimeTraceConfigOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_proxy, as: 'apiProxy'
+          property :name, as: 'name'
+          property :revision_create_time, as: 'revisionCreateTime'
+          property :revision_id, as: 'revisionId'
+          property :sampling_config, as: 'samplingConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceSamplingConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceSamplingConfig::Representation
+      
+          property :uid, as: 'uid'
+        end
+      end
+      
+      class GoogleCloudApigeeV1RuntimeTraceSamplingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :error_sources, as: 'errorSources'
+          collection :response_code_ranges, as: 'responseCodeRanges', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange::Representation
+      
+          collection :response_codes, as: 'responseCodes'
+          property :sampler, as: 'sampler'
+          property :sampling_rate, as: 'samplingRate'
+        end
+      end
+      
+      class GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :first_response_code, as: 'firstResponseCode'
+          property :last_response_code, as: 'lastResponseCode'
         end
       end
       

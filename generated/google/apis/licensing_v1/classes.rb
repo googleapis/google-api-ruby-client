@@ -108,7 +108,7 @@ module Google
         end
       end
       
-      # LicesnseAssignment List for a given product/sku for a customer.
+      # 
       class LicenseAssignmentList
         include Google::Apis::Core::Hashable
       

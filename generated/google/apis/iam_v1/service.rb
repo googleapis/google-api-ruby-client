@@ -1371,7 +1371,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a ServiceAccountKey.
+        # Deletes a ServiceAccountKey. Deleting a service account key does not revoke
+        # short-lived credentials that have been issued based on the service account key.
         # @param [String] name
         #   Required. The resource name of the service account key in the following format:
         #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`/keys/`key``. Using `-` as a

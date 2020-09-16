@@ -1441,6 +1441,7 @@ module Google
           property :fill_behavior, as: 'fillBehavior', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior::Representation
       
           property :is_list, as: 'isList'
+          property :redact, as: 'redact'
           property :required, as: 'required'
         end
       end
@@ -1575,6 +1576,7 @@ module Google
           property :entity_type, as: 'entityType'
           property :id, as: 'id'
           property :is_list, as: 'isList'
+          property :redact, as: 'redact'
         end
       end
       

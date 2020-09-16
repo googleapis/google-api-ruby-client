@@ -513,6 +513,12 @@ module Google
         # @return [Array<Google::Apis::ContainerV1beta1::StatusCondition>]
         attr_accessor :conditions
       
+        # ConfidentialNodes is configuration for the confidential nodes feature, which
+        # makes nodes run on confidential VMs.
+        # Corresponds to the JSON property `confidentialNodes`
+        # @return [Google::Apis::ContainerV1beta1::ConfidentialNodes]
+        attr_accessor :confidential_nodes
+      
         # [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.
         # org/rfc/rfc3339.txt) text format.
         # Corresponds to the JSON property `createTime`
@@ -866,6 +872,7 @@ module Google
           @cluster_ipv4_cidr = args[:cluster_ipv4_cidr] if args.key?(:cluster_ipv4_cidr)
           @cluster_telemetry = args[:cluster_telemetry] if args.key?(:cluster_telemetry)
           @conditions = args[:conditions] if args.key?(:conditions)
+          @confidential_nodes = args[:confidential_nodes] if args.key?(:confidential_nodes)
           @create_time = args[:create_time] if args.key?(:create_time)
           @current_master_version = args[:current_master_version] if args.key?(:current_master_version)
           @current_node_count = args[:current_node_count] if args.key?(:current_node_count)
@@ -1250,6 +1257,27 @@ module Google
           @name = args[:name] if args.key?(:name)
           @project_id = args[:project_id] if args.key?(:project_id)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # ConfidentialNodes is configuration for the confidential nodes feature, which
+      # makes nodes run on confidential VMs.
+      class ConfidentialNodes
+        include Google::Apis::Core::Hashable
+      
+        # Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
