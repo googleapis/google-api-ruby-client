@@ -244,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FlexTemplateRuntimeEnvironment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FloatingPointList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1445,6 +1451,27 @@ module Google
         end
       end
       
+      class FlexTemplateRuntimeEnvironment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_experiments, as: 'additionalExperiments'
+          hash :additional_user_labels, as: 'additionalUserLabels'
+          property :enable_streaming_engine, as: 'enableStreamingEngine'
+          property :ip_configuration, as: 'ipConfiguration'
+          property :kms_key_name, as: 'kmsKeyName'
+          property :machine_type, as: 'machineType'
+          property :max_workers, as: 'maxWorkers'
+          property :network, as: 'network'
+          property :num_workers, as: 'numWorkers'
+          property :service_account_email, as: 'serviceAccountEmail'
+          property :subnetwork, as: 'subnetwork'
+          property :temp_location, as: 'tempLocation'
+          property :worker_region, as: 'workerRegion'
+          property :worker_zone, as: 'workerZone'
+          property :zone, as: 'zone'
+        end
+      end
+      
       class FloatingPointList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1593,6 +1620,7 @@ module Google
       class JobExecutionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
           collection :stages, as: 'stages', class: Google::Apis::DataflowV1b3::StageSummary, decorator: Google::Apis::DataflowV1b3::StageSummary::Representation
       
         end
@@ -1678,6 +1706,8 @@ module Google
           property :container_spec, as: 'containerSpec', class: Google::Apis::DataflowV1b3::ContainerSpec, decorator: Google::Apis::DataflowV1b3::ContainerSpec::Representation
       
           property :container_spec_gcs_path, as: 'containerSpecGcsPath'
+          property :environment, as: 'environment', class: Google::Apis::DataflowV1b3::FlexTemplateRuntimeEnvironment, decorator: Google::Apis::DataflowV1b3::FlexTemplateRuntimeEnvironment::Representation
+      
           property :job_name, as: 'jobName'
           hash :launch_options, as: 'launchOptions'
           hash :parameters, as: 'parameters'

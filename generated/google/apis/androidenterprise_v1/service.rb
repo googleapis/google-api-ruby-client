@@ -43,8 +43,8 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://www.googleapis.com/', '')
-          @batch_path = 'batch/androidenterprise/v1'
+          super('https://androidenterprise.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
         # Uploads a report containing any changes in app states on the device since the

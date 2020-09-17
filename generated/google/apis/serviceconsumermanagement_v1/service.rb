@@ -199,8 +199,8 @@ module Google
         
         # Search tenancy units for a managed service.
         # @param [String] parent
-        #   Service for which search is performed. services/`service` `service` the name
-        #   of a service, for example 'service.googleapis.com'.
+        #   Required. Service for which search is performed. services/`service` `service`
+        #   the name of a service, for example 'service.googleapis.com'.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results returned by this request. Currently,
         #   the default maximum is set to 1000. If `page_size` isn't provided or the size
@@ -257,8 +257,8 @@ module Google
         # resolve them before you can make another call to `AddTenantProject` with the
         # same tag. Operation.
         # @param [String] parent
-        #   Name of the tenancy unit. Such as 'services/service.googleapis.com/projects/
-        #   12345/tenancyUnits/abcd'.
+        #   Required. Name of the tenancy unit. Such as 'services/service.googleapis.com/
+        #   projects/12345/tenancyUnits/abcd'.
         # @param [Google::Apis::ServiceconsumermanagementV1::AddTenantProjectRequest] add_tenant_project_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -303,8 +303,8 @@ module Google
         # isn't supported. The operation fails if any of the steps fail, but no rollback
         # of already applied configuration changes is attempted. Operation.
         # @param [String] name
-        #   Name of the tenancy unit. Such as 'services/service.googleapis.com/projects/
-        #   12345/tenancyUnits/abcd'.
+        #   Required. Name of the tenancy unit. Such as 'services/service.googleapis.com/
+        #   projects/12345/tenancyUnits/abcd'.
         # @param [Google::Apis::ServiceconsumermanagementV1::ApplyTenantProjectConfigRequest] apply_tenant_project_config_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -345,8 +345,8 @@ module Google
         # of that project. These two requirements are already met if the project is
         # reserved by calling `AddTenantProject`. Operation.
         # @param [String] name
-        #   Name of the tenancy unit that the project will be attached to. Such as '
-        #   services/service.googleapis.com/projects/12345/tenancyUnits/abcd'.
+        #   Required. Name of the tenancy unit that the project will be attached to. Such
+        #   as 'services/service.googleapis.com/projects/12345/tenancyUnits/abcd'.
         # @param [Google::Apis::ServiceconsumermanagementV1::AttachTenantProjectRequest] attach_tenant_project_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -382,11 +382,12 @@ module Google
         # not have tenant_resources field set and ListTenancyUnits has to be used to get
         # a complete TenancyUnit with all fields populated.
         # @param [String] parent
-        #   services/`service`/`collection id`/`resource id` `collection id` is the cloud
-        #   resource collection type representing the service consumer, for example '
-        #   projects', or 'organizations'. `resource id` is the consumer numeric id, such
-        #   as project number: '123456'. `service` the name of a managed service, such as '
-        #   service.googleapis.com'. Enables service binding using the new tenancy unit.
+        #   Required. services/`service`/`collection id`/`resource id` `collection id` is
+        #   the cloud resource collection type representing the service consumer, for
+        #   example 'projects', or 'organizations'. `resource id` is the consumer numeric
+        #   id, such as project number: '123456'. `service` the name of a managed service,
+        #   such as 'service.googleapis.com'. Enables service binding using the new
+        #   tenancy unit.
         # @param [Google::Apis::ServiceconsumermanagementV1::CreateTenancyUnitRequest] create_tenancy_unit_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -420,7 +421,7 @@ module Google
         # Delete a tenancy unit. Before you delete the tenancy unit, there should be no
         # tenant resources in it that aren't in a DELETED state. Operation.
         # @param [String] name
-        #   Name of the tenancy unit to be deleted.
+        #   Required. Name of the tenancy unit to be deleted.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -456,8 +457,8 @@ module Google
         # call the `RemoveTenantProject` method. New resources with the same tag can't
         # be added if there are existing resources in a DELETED state. Operation.
         # @param [String] name
-        #   Name of the tenancy unit. Such as 'services/service.googleapis.com/projects/
-        #   12345/tenancyUnits/abcd'.
+        #   Required. Name of the tenancy unit. Such as 'services/service.googleapis.com/
+        #   projects/12345/tenancyUnits/abcd'.
         # @param [Google::Apis::ServiceconsumermanagementV1::DeleteTenantProjectRequest] delete_tenant_project_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -493,18 +494,19 @@ module Google
         # the tenant project number when creating VMs. Service producers must persist
         # the tenant project's information after the project is created.
         # @param [String] parent
-        #   Managed service and service consumer. Required. services/`service`/`collection
-        #   id`/`resource id` `collection id` is the cloud resource collection type
-        #   representing the service consumer, for example 'projects', or 'organizations'.
-        #   `resource id` is the consumer numeric id, such as project number: '123456'. `
-        #   service` the name of a service, such as 'service.googleapis.com'.
+        #   Required. Managed service and service consumer. Required. services/`service`/`
+        #   collection id`/`resource id` `collection id` is the cloud resource collection
+        #   type representing the service consumer, for example 'projects', or '
+        #   organizations'. `resource id` is the consumer numeric id, such as project
+        #   number: '123456'. `service` the name of a service, such as 'service.googleapis.
+        #   com'.
         # @param [String] filter
-        #   Filter expression over tenancy resources field. Optional.
+        #   Optional. Filter expression over tenancy resources field. Optional.
         # @param [Fixnum] page_size
-        #   The maximum number of results returned by this request.
+        #   Optional. The maximum number of results returned by this request.
         # @param [String] page_token
-        #   The continuation token, which is used to page through large result sets. To
-        #   get the next page of results, set this parameter to the value of `
+        #   Optional. The continuation token, which is used to page through large result
+        #   sets. To get the next page of results, set this parameter to the value of `
         #   nextPageToken` from the previous response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -544,8 +546,8 @@ module Google
         # DELETED state, resource metadata is permanently removed from the tenancy unit.
         # Operation.
         # @param [String] name
-        #   Name of the tenancy unit. Such as 'services/service.googleapis.com/projects/
-        #   12345/tenancyUnits/abcd'.
+        #   Required. Name of the tenancy unit. Such as 'services/service.googleapis.com/
+        #   projects/12345/tenancyUnits/abcd'.
         # @param [Google::Apis::ServiceconsumermanagementV1::RemoveTenantProjectRequest] remove_tenant_project_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -582,8 +584,8 @@ module Google
         # method to update its configuration and then validate all managed service
         # resources. Operation.
         # @param [String] name
-        #   Name of the tenancy unit. Such as 'services/service.googleapis.com/projects/
-        #   12345/tenancyUnits/abcd'.
+        #   Required. Name of the tenancy unit. Such as 'services/service.googleapis.com/
+        #   projects/12345/tenancyUnits/abcd'.
         # @param [Google::Apis::ServiceconsumermanagementV1::UndeleteTenantProjectRequest] undelete_tenant_project_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

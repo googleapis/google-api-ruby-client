@@ -25,7 +25,8 @@ module Google
       # Specifies roles and/or permissions to analyze, to determine both the
       # identities possessing them and the resources they control. If multiple values
       # are specified, results will include identities and resources matching any of
-      # them.
+      # them. The total number of roles and permissions should be equal or less than
+      # 10.
       class AccessSelector
         include Google::Apis::Core::Hashable
       
@@ -551,7 +552,8 @@ module Google
         # Specifies roles and/or permissions to analyze, to determine both the
         # identities possessing them and the resources they control. If multiple values
         # are specified, results will include identities and resources matching any of
-        # them.
+        # them. The total number of roles and permissions should be equal or less than
+        # 10.
         # Corresponds to the JSON property `accessSelector`
         # @return [Google::Apis::CloudassetV1p4beta1::AccessSelector]
         attr_accessor :access_selector

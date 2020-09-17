@@ -1490,6 +1490,128 @@ module Google
         end
       end
       
+      # The environment values to be set at runtime for flex template.
+      class FlexTemplateRuntimeEnvironment
+        include Google::Apis::Core::Hashable
+      
+        # Additional experiment flags for the job.
+        # Corresponds to the JSON property `additionalExperiments`
+        # @return [Array<String>]
+        attr_accessor :additional_experiments
+      
+        # Additional user labels to be specified for the job. Keys and values must
+        # follow the restrictions specified in the [labeling restrictions](https://cloud.
+        # google.com/compute/docs/labeling-resources#restrictions) page.
+        # Corresponds to the JSON property `additionalUserLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :additional_user_labels
+      
+        # Whether to enable Streaming Engine for the job.
+        # Corresponds to the JSON property `enableStreamingEngine`
+        # @return [Boolean]
+        attr_accessor :enable_streaming_engine
+        alias_method :enable_streaming_engine?, :enable_streaming_engine
+      
+        # Configuration for VM IPs.
+        # Corresponds to the JSON property `ipConfiguration`
+        # @return [String]
+        attr_accessor :ip_configuration
+      
+        # Name for the Cloud KMS key for the job. Key format is: projects//locations//
+        # keyRings//cryptoKeys/
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        # The machine type to use for the job. Defaults to the value from the template
+        # if not specified.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        # The maximum number of Google Compute Engine instances to be made available to
+        # your pipeline during execution, from 1 to 1000.
+        # Corresponds to the JSON property `maxWorkers`
+        # @return [Fixnum]
+        attr_accessor :max_workers
+      
+        # Network to which VMs will be assigned. If empty or unspecified, the service
+        # will use the network "default".
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # The initial number of Google Compute Engine instances for the job.
+        # Corresponds to the JSON property `numWorkers`
+        # @return [Fixnum]
+        attr_accessor :num_workers
+      
+        # The email address of the service account to run the job as.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
+        # Subnetwork to which VMs will be assigned, if desired. Expected to be of the
+        # form "regions/REGION/subnetworks/SUBNETWORK".
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
+        # The Cloud Storage path to use for temporary files. Must be a valid Cloud
+        # Storage URL, beginning with `gs://`.
+        # Corresponds to the JSON property `tempLocation`
+        # @return [String]
+        attr_accessor :temp_location
+      
+        # The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/
+        # regions-zones) in which worker processing should occur, e.g. "us-west1".
+        # Mutually exclusive with worker_zone. If neither worker_region nor worker_zone
+        # is specified, default to the control plane's region.
+        # Corresponds to the JSON property `workerRegion`
+        # @return [String]
+        attr_accessor :worker_region
+      
+        # The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/
+        # regions-zones) in which worker processing should occur, e.g. "us-west1-a".
+        # Mutually exclusive with worker_region. If neither worker_region nor
+        # worker_zone is specified, a zone in the control plane's region is chosen based
+        # on available capacity. If both `worker_zone` and `zone` are set, `worker_zone`
+        # takes precedence.
+        # Corresponds to the JSON property `workerZone`
+        # @return [String]
+        attr_accessor :worker_zone
+      
+        # The Compute Engine [availability zone](https://cloud.google.com/compute/docs/
+        # regions-zones/regions-zones) for launching worker instances to run your
+        # pipeline. In the future, worker_zone will take precedence.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_experiments = args[:additional_experiments] if args.key?(:additional_experiments)
+          @additional_user_labels = args[:additional_user_labels] if args.key?(:additional_user_labels)
+          @enable_streaming_engine = args[:enable_streaming_engine] if args.key?(:enable_streaming_engine)
+          @ip_configuration = args[:ip_configuration] if args.key?(:ip_configuration)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @max_workers = args[:max_workers] if args.key?(:max_workers)
+          @network = args[:network] if args.key?(:network)
+          @num_workers = args[:num_workers] if args.key?(:num_workers)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+          @temp_location = args[:temp_location] if args.key?(:temp_location)
+          @worker_region = args[:worker_region] if args.key?(:worker_region)
+          @worker_zone = args[:worker_zone] if args.key?(:worker_zone)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
       # A metric value representing a list of floating point numbers.
       class FloatingPointList
         include Google::Apis::Core::Hashable
@@ -2053,6 +2175,12 @@ module Google
       class JobExecutionDetails
         include Google::Apis::Core::Hashable
       
+        # If present, this response does not contain all requested tasks. To obtain the
+        # next page of results, repeat the request with page_token set to this value.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
         # The stages of the job execution.
         # Corresponds to the JSON property `stages`
         # @return [Array<Google::Apis::DataflowV1b3::StageSummary>]
@@ -2064,6 +2192,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @stages = args[:stages] if args.key?(:stages)
         end
       end
@@ -2329,6 +2458,11 @@ module Google
         # @return [String]
         attr_accessor :container_spec_gcs_path
       
+        # The environment values to be set at runtime for flex template.
+        # Corresponds to the JSON property `environment`
+        # @return [Google::Apis::DataflowV1b3::FlexTemplateRuntimeEnvironment]
+        attr_accessor :environment
+      
         # Required. The job name to use for the created job.
         # Corresponds to the JSON property `jobName`
         # @return [String]
@@ -2353,6 +2487,7 @@ module Google
         def update!(**args)
           @container_spec = args[:container_spec] if args.key?(:container_spec)
           @container_spec_gcs_path = args[:container_spec_gcs_path] if args.key?(:container_spec_gcs_path)
+          @environment = args[:environment] if args.key?(:environment)
           @job_name = args[:job_name] if args.key?(:job_name)
           @launch_options = args[:launch_options] if args.key?(:launch_options)
           @parameters = args[:parameters] if args.key?(:parameters)

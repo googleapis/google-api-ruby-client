@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CourseWorkMaterial
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Date
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,6 +185,12 @@ module Google
       end
       
       class ListCourseAliasesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListCourseWorkMaterialResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -537,6 +549,28 @@ module Google
         end
       end
       
+      class CourseWorkMaterial
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alternate_link, as: 'alternateLink'
+          property :assignee_mode, as: 'assigneeMode'
+          property :course_id, as: 'courseId'
+          property :creation_time, as: 'creationTime'
+          property :creator_user_id, as: 'creatorUserId'
+          property :description, as: 'description'
+          property :id, as: 'id'
+          property :individual_students_options, as: 'individualStudentsOptions', class: Google::Apis::ClassroomV1::IndividualStudentsOptions, decorator: Google::Apis::ClassroomV1::IndividualStudentsOptions::Representation
+      
+          collection :materials, as: 'materials', class: Google::Apis::ClassroomV1::Material, decorator: Google::Apis::ClassroomV1::Material::Representation
+      
+          property :scheduled_time, as: 'scheduledTime'
+          property :state, as: 'state'
+          property :title, as: 'title'
+          property :topic_id, as: 'topicId'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class Date
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -671,6 +705,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :aliases, as: 'aliases', class: Google::Apis::ClassroomV1::CourseAlias, decorator: Google::Apis::ClassroomV1::CourseAlias::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListCourseWorkMaterialResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :course_work_material, as: 'courseWorkMaterial', class: Google::Apis::ClassroomV1::CourseWorkMaterial, decorator: Google::Apis::ClassroomV1::CourseWorkMaterial::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end

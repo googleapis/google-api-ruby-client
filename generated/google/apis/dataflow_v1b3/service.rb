@@ -1028,6 +1028,13 @@ module Google
         #   regional-endpoints) that contains the job specified by job_id.
         # @param [String] job_id
         #   The job to get execution details for.
+        # @param [Fixnum] page_size
+        #   If specified, determines the maximum number of stages to return. If
+        #   unspecified, the service may choose an appropriate default, or may return an
+        #   arbitrarily large number of results.
+        # @param [String] page_token
+        #   If supplied, this should be the value of next_page_token returned by an
+        #   earlier call. This will cause the next page of results to be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1045,13 +1052,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_job_execution_details(project_id, location, job_id, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_job_execution_details(project_id, location, job_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/executionDetails', options)
           command.response_representation = Google::Apis::DataflowV1b3::JobExecutionDetails::Representation
           command.response_class = Google::Apis::DataflowV1b3::JobExecutionDetails
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['location'] = location unless location.nil?
           command.params['jobId'] = job_id unless job_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

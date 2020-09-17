@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PartitionSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Permissions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -332,6 +338,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dataset, as: 'dataset'
           property :force, as: 'force'
+          property :partition_spec, as: 'partitionSpec', class: Google::Apis::CloudassetV1::PartitionSpec, decorator: Google::Apis::CloudassetV1::PartitionSpec::Representation
+      
+          property :separate_tables_per_asset_type, as: 'separateTablesPerAssetType'
           property :table, as: 'table'
         end
       end
@@ -608,6 +617,13 @@ module Google
       
           property :gcs_destination, as: 'gcsDestination', class: Google::Apis::CloudassetV1::GcsDestination, decorator: Google::Apis::CloudassetV1::GcsDestination::Representation
       
+        end
+      end
+      
+      class PartitionSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :partition_key, as: 'partitionKey'
         end
       end
       

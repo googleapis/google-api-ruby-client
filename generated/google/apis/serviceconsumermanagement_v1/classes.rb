@@ -34,7 +34,7 @@ module Google
         # @return [Google::Apis::ServiceconsumermanagementV1::TenantProjectConfig]
         attr_accessor :project_config
       
-        # Tag of the added project. Must be less than 128 characters. Required.
+        # Required. Tag of the added project. Must be less than 128 characters. Required.
         # Corresponds to the JSON property `tag`
         # @return [String]
         attr_accessor :tag
@@ -137,7 +137,7 @@ module Google
         # @return [Google::Apis::ServiceconsumermanagementV1::TenantProjectConfig]
         attr_accessor :project_config
       
-        # Tag of the project. Must be less than 128 characters. Required.
+        # Required. Tag of the project. Must be less than 128 characters. Required.
         # Corresponds to the JSON property `tag`
         # @return [String]
         attr_accessor :tag
@@ -171,8 +171,8 @@ module Google
         # @return [String]
         attr_accessor :reserved_resource
       
-        # Tag of the tenant resource after attachment. Must be less than 128 characters.
-        # Required.
+        # Required. Tag of the tenant resource after attachment. Must be less than 128
+        # characters. Required.
         # Corresponds to the JSON property `tag`
         # @return [String]
         attr_accessor :tag
@@ -805,7 +805,7 @@ module Google
       class DeleteTenantProjectRequest
         include Google::Apis::Core::Hashable
       
-        # Tag of the resource within the tenancy unit.
+        # Required. Tag of the resource within the tenancy unit.
         # Corresponds to the JSON property `tag`
         # @return [String]
         attr_accessor :tag
@@ -2462,7 +2462,7 @@ module Google
       class RemoveTenantProjectRequest
         include Google::Apis::Core::Hashable
       
-        # Tag of the resource within the tenancy unit.
+        # Required. Tag of the resource within the tenancy unit.
         # Corresponds to the JSON property `tag`
         # @return [String]
         attr_accessor :tag
@@ -3069,13 +3069,13 @@ module Google
       class TenancyUnit
         include Google::Apis::Core::Hashable
       
-        # @OutputOnly Cloud resource name of the consumer of this service. For example '
-        # projects/123456'.
+        # Output only. @OutputOnly Cloud resource name of the consumer of this service.
+        # For example 'projects/123456'.
         # Corresponds to the JSON property `consumer`
         # @return [String]
         attr_accessor :consumer
       
-        # @OutputOnly The time this tenancy unit was created.
+        # Output only. @OutputOnly The time this tenancy unit was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -3198,8 +3198,8 @@ module Google
       class TenantResource
         include Google::Apis::Core::Hashable
       
-        # @OutputOnly Identifier of the tenant resource. For cloud projects, it is in
-        # the form 'projects/`number`'. For example 'projects/123456'.
+        # Output only. @OutputOnly Identifier of the tenant resource. For cloud projects,
+        # it is in the form 'projects/`number`'. For example 'projects/123456'.
         # Corresponds to the JSON property `resource`
         # @return [String]
         attr_accessor :resource
@@ -3281,7 +3281,7 @@ module Google
       class UndeleteTenantProjectRequest
         include Google::Apis::Core::Hashable
       
-        # Tag of the resource within the tenancy unit.
+        # Required. Tag of the resource within the tenancy unit.
         # Corresponds to the JSON property `tag`
         # @return [String]
         attr_accessor :tag

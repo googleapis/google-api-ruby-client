@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProbingDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReachabilityDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -319,6 +325,8 @@ module Google
           property :display_name, as: 'displayName'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :probing_details, as: 'probingDetails', class: Google::Apis::NetworkmanagementV1beta1::ProbingDetails, decorator: Google::Apis::NetworkmanagementV1beta1::ProbingDetails::Representation
+      
           property :protocol, as: 'protocol'
           property :reachability_details, as: 'reachabilityDetails', class: Google::Apis::NetworkmanagementV1beta1::ReachabilityDetails, decorator: Google::Apis::NetworkmanagementV1beta1::ReachabilityDetails::Representation
       
@@ -552,6 +560,21 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class ProbingDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :abort_cause, as: 'abortCause'
+          property :endpoint_info, as: 'endpointInfo', class: Google::Apis::NetworkmanagementV1beta1::EndpointInfo, decorator: Google::Apis::NetworkmanagementV1beta1::EndpointInfo::Representation
+      
+          property :error, as: 'error', class: Google::Apis::NetworkmanagementV1beta1::Status, decorator: Google::Apis::NetworkmanagementV1beta1::Status::Representation
+      
+          property :result, as: 'result'
+          property :sent_probe_count, as: 'sentProbeCount'
+          property :successful_probe_count, as: 'successfulProbeCount'
+          property :verify_time, as: 'verifyTime'
         end
       end
       

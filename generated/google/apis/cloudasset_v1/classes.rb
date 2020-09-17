@@ -264,6 +264,37 @@ module Google
         attr_accessor :force
         alias_method :force?, :force
       
+        # Specifications of BigQuery partitioned table as export destination.
+        # Corresponds to the JSON property `partitionSpec`
+        # @return [Google::Apis::CloudassetV1::PartitionSpec]
+        attr_accessor :partition_spec
+      
+        # If this flag is `TRUE`, the snapshot results will be written to one or
+        # multiple tables, each of which contains results of one asset type. The [force]
+        # and [partition_spec] fields will apply to each of them. Field [table] will be
+        # concatenated with "_" and the asset type names (see https://cloud.google.com/
+        # asset-inventory/docs/supported-asset-types for supported asset types) to
+        # construct per-asset-type table names, in which all non-alphanumeric characters
+        # like "." and "/" will be substituted by "_". Example: if field [table] is "
+        # mytable" and snapshot results contain "storage.googleapis.com/Bucket" assets,
+        # the corresponding table name will be "mytable_storage_googleapis_com_Bucket".
+        # If any of these tables does not exist, a new table with the concatenated name
+        # will be created. When [content_type] in the ExportAssetsRequest is `RESOURCE`,
+        # the schema of each table will include RECORD-type columns mapped to the nested
+        # fields in the Asset.resource.data field of that asset type (up to the 15
+        # nested level BigQuery supports (https://cloud.google.com/bigquery/docs/nested-
+        # repeated#limitations)). The fields in >15 nested levels will be stored in JSON
+        # format string as a child column of its parent RECORD column. If error occurs
+        # when exporting to any table, the whole export call will return an error but
+        # the export results that already succeed will persist. Example: if exporting to
+        # table_type_A succeeds when exporting to table_type_B fails during one export
+        # call, the results in table_type_A will persist and there will not be partial
+        # results persisting in a table.
+        # Corresponds to the JSON property `separateTablesPerAssetType`
+        # @return [Boolean]
+        attr_accessor :separate_tables_per_asset_type
+        alias_method :separate_tables_per_asset_type?, :separate_tables_per_asset_type
+      
         # Required. The BigQuery table to which the snapshot result should be written.
         # If this table does not exist, a new table with the given name will be created.
         # Corresponds to the JSON property `table`
@@ -278,6 +309,8 @@ module Google
         def update!(**args)
           @dataset = args[:dataset] if args.key?(:dataset)
           @force = args[:force] if args.key?(:force)
+          @partition_spec = args[:partition_spec] if args.key?(:partition_spec)
+          @separate_tables_per_asset_type = args[:separate_tables_per_asset_type] if args.key?(:separate_tables_per_asset_type)
           @table = args[:table] if args.key?(:table)
         end
       end
@@ -1607,6 +1640,25 @@ module Google
         def update!(**args)
           @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+        end
+      end
+      
+      # Specifications of BigQuery partitioned table as export destination.
+      class PartitionSpec
+        include Google::Apis::Core::Hashable
+      
+        # The partition key for BigQuery partitioned table.
+        # Corresponds to the JSON property `partitionKey`
+        # @return [String]
+        attr_accessor :partition_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @partition_key = args[:partition_key] if args.key?(:partition_key)
         end
       end
       

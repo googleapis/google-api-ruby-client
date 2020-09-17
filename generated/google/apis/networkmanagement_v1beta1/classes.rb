@@ -288,6 +288,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The details of probing from the latest run.
+        # Corresponds to the JSON property `probingDetails`
+        # @return [Google::Apis::NetworkmanagementV1beta1::ProbingDetails]
+        attr_accessor :probing_details
+      
         # IP Protocol of the test. When not provided, "TCP" is assumed.
         # Corresponds to the JSON property `protocol`
         # @return [String]
@@ -326,6 +331,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @probing_details = args[:probing_details] if args.key?(:probing_details)
           @protocol = args[:protocol] if args.key?(:protocol)
           @reachability_details = args[:reachability_details] if args.key?(:reachability_details)
           @related_projects = args[:related_projects] if args.key?(:related_projects)
@@ -1276,6 +1282,68 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # The details of probing from the latest run.
+      class ProbingDetails
+        include Google::Apis::Core::Hashable
+      
+        # Causes that the probing was aborted.
+        # Corresponds to the JSON property `abortCause`
+        # @return [String]
+        attr_accessor :abort_cause
+      
+        # For display only. The specification of the endpoints for the test.
+        # EndpointInfo is derived from source and destination Endpoint and validated by
+        # the backend data plane model.
+        # Corresponds to the JSON property `endpointInfo`
+        # @return [Google::Apis::NetworkmanagementV1beta1::EndpointInfo]
+        attr_accessor :endpoint_info
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::NetworkmanagementV1beta1::Status]
+        attr_accessor :error
+      
+        # The overall reachability result of the test.
+        # Corresponds to the JSON property `result`
+        # @return [String]
+        attr_accessor :result
+      
+        # Number of probes sent.
+        # Corresponds to the JSON property `sentProbeCount`
+        # @return [Fixnum]
+        attr_accessor :sent_probe_count
+      
+        # Number of probes that reached destination.
+        # Corresponds to the JSON property `successfulProbeCount`
+        # @return [Fixnum]
+        attr_accessor :successful_probe_count
+      
+        # The time the reachability state was verified.
+        # Corresponds to the JSON property `verifyTime`
+        # @return [String]
+        attr_accessor :verify_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @abort_cause = args[:abort_cause] if args.key?(:abort_cause)
+          @endpoint_info = args[:endpoint_info] if args.key?(:endpoint_info)
+          @error = args[:error] if args.key?(:error)
+          @result = args[:result] if args.key?(:result)
+          @sent_probe_count = args[:sent_probe_count] if args.key?(:sent_probe_count)
+          @successful_probe_count = args[:successful_probe_count] if args.key?(:successful_probe_count)
+          @verify_time = args[:verify_time] if args.key?(:verify_time)
         end
       end
       
