@@ -28,6 +28,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ComputeMessageStatsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ComputeMessageStatsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Cursor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -111,6 +123,27 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :publish_mib_per_sec, as: 'publishMibPerSec'
           property :subscribe_mib_per_sec, as: 'subscribeMibPerSec'
+        end
+      end
+      
+      class ComputeMessageStatsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_cursor, as: 'endCursor', class: Google::Apis::PubsubliteV1::Cursor, decorator: Google::Apis::PubsubliteV1::Cursor::Representation
+      
+          property :partition, :numeric_string => true, as: 'partition'
+          property :start_cursor, as: 'startCursor', class: Google::Apis::PubsubliteV1::Cursor, decorator: Google::Apis::PubsubliteV1::Cursor::Representation
+      
+        end
+      end
+      
+      class ComputeMessageStatsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message_bytes, :numeric_string => true, as: 'messageBytes'
+          property :message_count, :numeric_string => true, as: 'messageCount'
+          property :minimum_event_time, as: 'minimumEventTime'
+          property :minimum_publish_time, as: 'minimumPublishTime'
         end
       end
       

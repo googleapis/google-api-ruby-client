@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/sql_v1beta4/service.rb'
-require 'google/apis/sql_v1beta4/classes.rb'
-require 'google/apis/sql_v1beta4/representations.rb'
+require 'google/apis/sqladmin_v1beta4/service.rb'
+require 'google/apis/sqladmin_v1beta4/classes.rb'
+require 'google/apis/sqladmin_v1beta4/representations.rb'
 
 module Google
   module Apis
@@ -23,9 +23,9 @@ module Google
     # API for Cloud SQL database instance management
     #
     # @see https://developers.google.com/cloud-sql/
-    module SqlV1beta4
+    module SqladminV1beta4
       VERSION = 'V1beta4'
-      REVISION = '20200828'
+      REVISION = '20200903'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

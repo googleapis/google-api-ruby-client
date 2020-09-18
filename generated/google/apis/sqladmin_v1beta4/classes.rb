@@ -20,7 +20,7 @@ require 'google/apis/errors'
 
 module Google
   module Apis
-    module SqlV1beta4
+    module SqladminV1beta4
       
       # An entry for an Access Control list.
       class AclEntry
@@ -162,12 +162,12 @@ module Google
       
         # Disk encryption configuration for an instance.
         # Corresponds to the JSON property `diskEncryptionConfiguration`
-        # @return [Google::Apis::SqlV1beta4::DiskEncryptionConfiguration]
+        # @return [Google::Apis::SqladminV1beta4::DiskEncryptionConfiguration]
         attr_accessor :disk_encryption_configuration
       
         # Disk encryption status for an instance.
         # Corresponds to the JSON property `diskEncryptionStatus`
-        # @return [Google::Apis::SqlV1beta4::DiskEncryptionStatus]
+        # @return [Google::Apis::SqladminV1beta4::DiskEncryptionStatus]
         attr_accessor :disk_encryption_status
       
         # The time the backup operation completed in UTC timezone in RFC 3339 format,
@@ -184,7 +184,7 @@ module Google
       
         # Database instance operation error.
         # Corresponds to the JSON property `error`
-        # @return [Google::Apis::SqlV1beta4::OperationError]
+        # @return [Google::Apis::SqladminV1beta4::OperationError]
         attr_accessor :error
       
         # The identifier for this backup run. Unique only for a specific Cloud SQL
@@ -261,12 +261,12 @@ module Google
       end
       
       # Backup run list results.
-      class BackupRunsListResponse
+      class ListBackupRunsResponse
         include Google::Apis::Core::Hashable
       
         # A list of backup runs in reverse chronological order of the enqueued time.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::SqlV1beta4::BackupRun>]
+        # @return [Array<Google::Apis::SqladminV1beta4::BackupRun>]
         attr_accessor :items
       
         # This is always *sql#backupRunsList*.
@@ -329,7 +329,7 @@ module Google
       
         # Binary log coordinates.
         # Corresponds to the JSON property `binLogCoordinates`
-        # @return [Google::Apis::SqlV1beta4::BinLogCoordinates]
+        # @return [Google::Apis::SqladminV1beta4::BinLogCoordinates]
         attr_accessor :bin_log_coordinates
       
         # Name of the Cloud SQL instance to be created as a clone.
@@ -414,7 +414,7 @@ module Google
       
         # Represents a Sql Server database on the Cloud SQL instance.
         # Corresponds to the JSON property `sqlserverDatabaseDetails`
-        # @return [Google::Apis::SqlV1beta4::SqlServerDatabaseDetails]
+        # @return [Google::Apis::SqladminV1beta4::SqlServerDatabaseDetails]
         attr_accessor :sqlserver_database_details
       
         def initialize(**args)
@@ -464,7 +464,7 @@ module Google
         end
       end
       
-      # A Cloud SQL instance resource. Next field: 35
+      # A Cloud SQL instance resource. Next field: 36
       class DatabaseInstance
         include Google::Apis::Core::Hashable
       
@@ -499,12 +499,12 @@ module Google
       
         # Disk encryption configuration for an instance.
         # Corresponds to the JSON property `diskEncryptionConfiguration`
-        # @return [Google::Apis::SqlV1beta4::DiskEncryptionConfiguration]
+        # @return [Google::Apis::SqladminV1beta4::DiskEncryptionConfiguration]
         attr_accessor :disk_encryption_configuration
       
         # Disk encryption status for an instance.
         # Corresponds to the JSON property `diskEncryptionStatus`
-        # @return [Google::Apis::SqlV1beta4::DiskEncryptionStatus]
+        # @return [Google::Apis::SqladminV1beta4::DiskEncryptionStatus]
         attr_accessor :disk_encryption_status
       
         # This field is deprecated and will be removed from a future version of the API.
@@ -516,7 +516,7 @@ module Google
         # The name and status of the failover replica. This property is applicable only
         # to Second Generation instances.
         # Corresponds to the JSON property `failoverReplica`
-        # @return [Google::Apis::SqlV1beta4::DatabaseInstance::FailoverReplica]
+        # @return [Google::Apis::SqladminV1beta4::DatabaseInstance::FailoverReplica]
         attr_accessor :failover_replica
       
         # The Compute Engine zone that the instance is currently serving from. This
@@ -527,7 +527,7 @@ module Google
         attr_accessor :gce_zone
       
         # The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*: A
-        # Cloud SQL instance that is not replicating from a master. *
+        # Cloud SQL instance that is not replicating from a primary instance. *
         # ON_PREMISES_INSTANCE*: An instance running on the customer's premises. *
         # READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.
         # Corresponds to the JSON property `instanceType`
@@ -536,7 +536,7 @@ module Google
       
         # The assigned IP addresses for the instance.
         # Corresponds to the JSON property `ipAddresses`
-        # @return [Array<Google::Apis::SqlV1beta4::IpMapping>]
+        # @return [Array<Google::Apis::SqladminV1beta4::IpMapping>]
         attr_accessor :ip_addresses
       
         # The IPv6 address assigned to the instance. (Deprecated) This property was
@@ -550,7 +550,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The name of the instance which will act as master in the replication setup.
+        # The name of the instance which will act as primary in the replication setup.
         # Corresponds to the JSON property `masterInstanceName`
         # @return [String]
         attr_accessor :master_instance_name
@@ -567,7 +567,7 @@ module Google
       
         # On-premises instance configuration.
         # Corresponds to the JSON property `onPremisesConfiguration`
-        # @return [Google::Apis::SqlV1beta4::OnPremisesConfiguration]
+        # @return [Google::Apis::SqladminV1beta4::OnPremisesConfiguration]
         attr_accessor :on_premises_configuration
       
         # The project ID of the project containing the Cloud SQL instance. The Google
@@ -584,9 +584,9 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # Read-replica configuration for connecting to the master.
+        # Read-replica configuration for connecting to the primary instance.
         # Corresponds to the JSON property `replicaConfiguration`
-        # @return [Google::Apis::SqlV1beta4::ReplicaConfiguration]
+        # @return [Google::Apis::SqladminV1beta4::ReplicaConfiguration]
         attr_accessor :replica_configuration
       
         # The replicas of the instance.
@@ -601,7 +601,7 @@ module Google
       
         # Any scheduled maintenancce for this instance.
         # Corresponds to the JSON property `scheduledMaintenance`
-        # @return [Google::Apis::SqlV1beta4::SqlScheduledMaintenance]
+        # @return [Google::Apis::SqladminV1beta4::SqlScheduledMaintenance]
         attr_accessor :scheduled_maintenance
       
         # The URI of this resource.
@@ -611,7 +611,7 @@ module Google
       
         # SslCerts Resource
         # Corresponds to the JSON property `serverCaCert`
-        # @return [Google::Apis::SqlV1beta4::SslCert]
+        # @return [Google::Apis::SqladminV1beta4::SslCert]
         attr_accessor :server_ca_cert
       
         # The service account email address assigned to the instance. This property is
@@ -622,7 +622,7 @@ module Google
       
         # Database instance settings.
         # Corresponds to the JSON property `settings`
-        # @return [Google::Apis::SqlV1beta4::Settings]
+        # @return [Google::Apis::SqladminV1beta4::Settings]
         attr_accessor :settings
       
         # The current serving state of the Cloud SQL instance. This can be one of the
@@ -683,8 +683,8 @@ module Google
           include Google::Apis::Core::Hashable
         
           # The availability status of the failover replica. A false status indicates that
-          # the failover replica is out of sync. The master can only failover to the
-          # failover replica when the status is true.
+          # the failover replica is out of sync. The primary instance can only failover to
+          # the failover replica when the status is true.
           # Corresponds to the JSON property `available`
           # @return [Boolean]
           attr_accessor :available
@@ -710,12 +710,12 @@ module Google
       end
       
       # Database list response.
-      class DatabasesListResponse
+      class ListDatabasesResponse
         include Google::Apis::Core::Hashable
       
         # List of database resources in the instance.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::SqlV1beta4::Database>]
+        # @return [Array<Google::Apis::SqladminV1beta4::Database>]
         attr_accessor :items
       
         # This is always *sql#databasesList*.
@@ -734,7 +734,7 @@ module Google
         end
       end
       
-      # Read-replica configuration for connecting to the on-premises master.
+      # Read-replica configuration for connecting to the on-premises primary instance.
       class DemoteMasterConfiguration
         include Google::Apis::Core::Hashable
       
@@ -745,7 +745,7 @@ module Google
       
         # Read-replica configuration specific to MySQL databases.
         # Corresponds to the JSON property `mysqlReplicaConfiguration`
-        # @return [Google::Apis::SqlV1beta4::DemoteMasterMySqlReplicaConfiguration]
+        # @return [Google::Apis::SqladminV1beta4::DemoteMasterMySqlReplicaConfiguration]
         attr_accessor :mysql_replica_configuration
       
         def initialize(**args)
@@ -759,7 +759,7 @@ module Google
         end
       end
       
-      # Database instance demote master context.
+      # Database instance demote primary instance context.
       class DemoteMasterContext
         include Google::Apis::Core::Hashable
       
@@ -768,24 +768,24 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The name of the instance which will act as on-premises master in the
+        # The name of the instance which will act as on-premises primary instance in the
         # replication setup.
         # Corresponds to the JSON property `masterInstanceName`
         # @return [String]
         attr_accessor :master_instance_name
       
-        # Read-replica configuration for connecting to the on-premises master.
+        # Read-replica configuration for connecting to the on-premises primary instance.
         # Corresponds to the JSON property `replicaConfiguration`
-        # @return [Google::Apis::SqlV1beta4::DemoteMasterConfiguration]
+        # @return [Google::Apis::SqladminV1beta4::DemoteMasterConfiguration]
         attr_accessor :replica_configuration
       
         # Verify GTID consistency for demote operation. Default value: *True*. Second
         # Generation instances only. Setting this flag to false enables you to bypass
-        # GTID consistency check between on-premises master and Cloud SQL instance
-        # during the demotion operation but also exposes you to the risk of future
-        # replication failures. Change the value only if you know the reason for the
-        # GTID divergence and are confident that doing so will not cause any replication
-        # issues.
+        # GTID consistency check between on-premises primary instance and Cloud SQL
+        # instance during the demotion operation but also exposes you to the risk of
+        # future replication failures. Change the value only if you know the reason for
+        # the GTID divergence and are confident that doing so will not cause any
+        # replication issues.
         # Corresponds to the JSON property `verifyGtidConsistency`
         # @return [Boolean]
         attr_accessor :verify_gtid_consistency
@@ -911,7 +911,7 @@ module Google
       
         # Options for exporting data as CSV.
         # Corresponds to the JSON property `csvExportOptions`
-        # @return [Google::Apis::SqlV1beta4::ExportContext::CsvExportOptions]
+        # @return [Google::Apis::SqladminV1beta4::ExportContext::CsvExportOptions]
         attr_accessor :csv_export_options
       
         # Databases to be exported. *MySQL instances:* If *fileType* is *SQL* and no
@@ -944,7 +944,7 @@ module Google
       
         # Options for exporting data as SQL statements.
         # Corresponds to the JSON property `sqlExportOptions`
-        # @return [Google::Apis::SqlV1beta4::ExportContext::SqlExportOptions]
+        # @return [Google::Apis::SqladminV1beta4::ExportContext::SqlExportOptions]
         attr_accessor :sql_export_options
       
         # The path to the file in Google Cloud Storage where the export will be stored.
@@ -995,7 +995,7 @@ module Google
         
           # Options for exporting from MySQL.
           # Corresponds to the JSON property `mysqlExportOptions`
-          # @return [Google::Apis::SqlV1beta4::ExportContext::SqlExportOptions::MysqlExportOptions]
+          # @return [Google::Apis::SqladminV1beta4::ExportContext::SqlExportOptions::MysqlExportOptions]
           attr_accessor :mysql_export_options
         
           # Export only schemas.
@@ -1154,12 +1154,12 @@ module Google
       end
       
       # Flags list response.
-      class FlagsListResponse
+      class ListFlagsResponse
         include Google::Apis::Core::Hashable
       
         # List of flags.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::SqlV1beta4::Flag>]
+        # @return [Array<Google::Apis::SqladminV1beta4::Flag>]
         attr_accessor :items
       
         # This is always *sql#flagsList*.
@@ -1184,12 +1184,12 @@ module Google
       
         # Import parameters specific to SQL Server .BAK files
         # Corresponds to the JSON property `bakImportOptions`
-        # @return [Google::Apis::SqlV1beta4::ImportContext::BakImportOptions]
+        # @return [Google::Apis::SqladminV1beta4::ImportContext::BakImportOptions]
         attr_accessor :bak_import_options
       
         # Options for importing data as CSV.
         # Corresponds to the JSON property `csvImportOptions`
-        # @return [Google::Apis::SqlV1beta4::ImportContext::CsvImportOptions]
+        # @return [Google::Apis::SqladminV1beta4::ImportContext::CsvImportOptions]
         attr_accessor :csv_import_options
       
         # The target database for the import. If *fileType* is *SQL*, this field is
@@ -1245,7 +1245,7 @@ module Google
         
           # 
           # Corresponds to the JSON property `encryptionOptions`
-          # @return [Google::Apis::SqlV1beta4::ImportContext::BakImportOptions::EncryptionOptions]
+          # @return [Google::Apis::SqladminV1beta4::ImportContext::BakImportOptions::EncryptionOptions]
           attr_accessor :encryption_options
         
           def initialize(**args)
@@ -1321,12 +1321,12 @@ module Google
       end
       
       # Database instance clone request.
-      class InstancesCloneRequest
+      class CloneInstancesRequest
         include Google::Apis::Core::Hashable
       
         # Database instance clone context.
         # Corresponds to the JSON property `cloneContext`
-        # @return [Google::Apis::SqlV1beta4::CloneContext]
+        # @return [Google::Apis::SqladminV1beta4::CloneContext]
         attr_accessor :clone_context
       
         def initialize(**args)
@@ -1339,13 +1339,13 @@ module Google
         end
       end
       
-      # Database demote master request.
+      # Database demote primary instance request.
       class InstancesDemoteMasterRequest
         include Google::Apis::Core::Hashable
       
-        # Database instance demote master context.
+        # Database instance demote primary instance context.
         # Corresponds to the JSON property `demoteMasterContext`
-        # @return [Google::Apis::SqlV1beta4::DemoteMasterContext]
+        # @return [Google::Apis::SqladminV1beta4::DemoteMasterContext]
         attr_accessor :demote_master_context
       
         def initialize(**args)
@@ -1359,12 +1359,12 @@ module Google
       end
       
       # Database instance export request.
-      class InstancesExportRequest
+      class ExportInstancesRequest
         include Google::Apis::Core::Hashable
       
         # Database instance export context.
         # Corresponds to the JSON property `exportContext`
-        # @return [Google::Apis::SqlV1beta4::ExportContext]
+        # @return [Google::Apis::SqladminV1beta4::ExportContext]
         attr_accessor :export_context
       
         def initialize(**args)
@@ -1383,7 +1383,7 @@ module Google
       
         # Database instance failover context.
         # Corresponds to the JSON property `failoverContext`
-        # @return [Google::Apis::SqlV1beta4::FailoverContext]
+        # @return [Google::Apis::SqladminV1beta4::FailoverContext]
         attr_accessor :failover_context
       
         def initialize(**args)
@@ -1397,12 +1397,12 @@ module Google
       end
       
       # Database instance import request.
-      class InstancesImportRequest
+      class ImportInstancesRequest
         include Google::Apis::Core::Hashable
       
         # Database instance import context.
         # Corresponds to the JSON property `importContext`
-        # @return [Google::Apis::SqlV1beta4::ImportContext]
+        # @return [Google::Apis::SqladminV1beta4::ImportContext]
         attr_accessor :import_context
       
         def initialize(**args)
@@ -1416,12 +1416,12 @@ module Google
       end
       
       # Database instances list response.
-      class InstancesListResponse
+      class ListInstancesResponse
         include Google::Apis::Core::Hashable
       
         # List of database instance resources.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::SqlV1beta4::DatabaseInstance>]
+        # @return [Array<Google::Apis::SqladminV1beta4::DatabaseInstance>]
         attr_accessor :items
       
         # This is always *sql#instancesList*.
@@ -1437,7 +1437,7 @@ module Google
       
         # List of warnings that occurred while handling the request.
         # Corresponds to the JSON property `warnings`
-        # @return [Array<Google::Apis::SqlV1beta4::ApiWarning>]
+        # @return [Array<Google::Apis::SqladminV1beta4::ApiWarning>]
         attr_accessor :warnings
       
         def initialize(**args)
@@ -1464,7 +1464,7 @@ module Google
       
         # List of server CA certificates for the instance.
         # Corresponds to the JSON property `certs`
-        # @return [Array<Google::Apis::SqlV1beta4::SslCert>]
+        # @return [Array<Google::Apis::SqladminV1beta4::SslCert>]
         attr_accessor :certs
       
         # This is always *sql#instancesListServerCas*.
@@ -1485,13 +1485,13 @@ module Google
       end
       
       # Database instance restore backup request.
-      class InstancesRestoreBackupRequest
+      class RestoreInstancesBackupRequest
         include Google::Apis::Core::Hashable
       
         # Database instance restore from backup context. Backup context contains source
         # instance id and project id.
         # Corresponds to the JSON property `restoreBackupContext`
-        # @return [Google::Apis::SqlV1beta4::RestoreBackupContext]
+        # @return [Google::Apis::SqladminV1beta4::RestoreBackupContext]
         attr_accessor :restore_backup_context
       
         def initialize(**args)
@@ -1510,7 +1510,7 @@ module Google
       
         # Instance rotate server CA context.
         # Corresponds to the JSON property `rotateServerCaContext`
-        # @return [Google::Apis::SqlV1beta4::RotateServerCaContext]
+        # @return [Google::Apis::SqladminV1beta4::RotateServerCaContext]
         attr_accessor :rotate_server_ca_context
       
         def initialize(**args)
@@ -1529,7 +1529,7 @@ module Google
       
         # Database Instance truncate log context.
         # Corresponds to the JSON property `truncateLogContext`
-        # @return [Google::Apis::SqlV1beta4::TruncateLogContext]
+        # @return [Google::Apis::SqladminV1beta4::TruncateLogContext]
         attr_accessor :truncate_log_context
       
         def initialize(**args)
@@ -1550,7 +1550,7 @@ module Google
         # using the IP. In 'CIDR' notation, also known as 'slash' notation (for example:
         # *192.168.100.0/24*).
         # Corresponds to the JSON property `authorizedNetworks`
-        # @return [Array<Google::Apis::SqlV1beta4::AclEntry>]
+        # @return [Array<Google::Apis::SqladminV1beta4::AclEntry>]
         attr_accessor :authorized_networks
       
         # Whether the instance is assigned a public IP address or not.
@@ -1659,6 +1659,45 @@ module Google
         end
       end
       
+      # Maintenance Deny Periods. This specifies a date range during when all CSA
+      # rollout will be denied.
+      class MaintenanceDenyPeriod
+        include Google::Apis::Core::Hashable
+      
+        # "maintenance deny period" end date. If the year of the end date is empty, the
+        # year of the start date also must be empty. In this case, it means the no
+        # maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e.,
+        # 2020-11-01, or mm-dd, i.e., 11-01
+        # Corresponds to the JSON property `endDate`
+        # @return [String]
+        attr_accessor :end_date
+      
+        # "maintenance deny period" start date. If the year of the start date is empty,
+        # the year of the end date also must be empty. In this case, it means the no
+        # maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e.,
+        # 2020-11-01, or mm-dd, i.e., 11-01
+        # Corresponds to the JSON property `startDate`
+        # @return [String]
+        attr_accessor :start_date
+      
+        # Time in UTC when the "no maintenance interval" starts on start_date and ends
+        # on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
+        # Corresponds to the JSON property `time`
+        # @return [String]
+        attr_accessor :time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @start_date = args[:start_date] if args.key?(:start_date)
+          @time = args[:time] if args.key?(:time)
+        end
+      end
+      
       # Maintenance window. This specifies when a Cloud SQL instance is restarted for
       # system maintenance purposes.
       class MaintenanceWindow
@@ -1756,8 +1795,8 @@ module Google
         # @return [String]
         attr_accessor :username
       
-        # Whether or not to check the master's Common Name value in the certificate that
-        # it sends during the SSL handshake.
+        # Whether or not to check the primary instance's Common Name value in the
+        # certificate that it sends during the SSL handshake.
         # Corresponds to the JSON property `verifyServerCertificate`
         # @return [Boolean]
         attr_accessor :verify_server_certificate
@@ -1859,17 +1898,17 @@ module Google
       
         # Database instance operation errors list wrapper.
         # Corresponds to the JSON property `error`
-        # @return [Google::Apis::SqlV1beta4::OperationErrors]
+        # @return [Google::Apis::SqladminV1beta4::OperationErrors]
         attr_accessor :error
       
         # Database instance export context.
         # Corresponds to the JSON property `exportContext`
-        # @return [Google::Apis::SqlV1beta4::ExportContext]
+        # @return [Google::Apis::SqladminV1beta4::ExportContext]
         attr_accessor :export_context
       
         # Database instance import context.
         # Corresponds to the JSON property `importContext`
-        # @return [Google::Apis::SqlV1beta4::ImportContext]
+        # @return [Google::Apis::SqladminV1beta4::ImportContext]
         attr_accessor :import_context
       
         # The time this operation was enqueued in UTC timezone in RFC 3339 format, for
@@ -1995,7 +2034,7 @@ module Google
       
         # The list of errors encountered while processing this operation.
         # Corresponds to the JSON property `errors`
-        # @return [Array<Google::Apis::SqlV1beta4::OperationError>]
+        # @return [Array<Google::Apis::SqladminV1beta4::OperationError>]
         attr_accessor :errors
       
         # This is always *sql#operationErrors*.
@@ -2015,12 +2054,12 @@ module Google
       end
       
       # Database instance list operations response.
-      class OperationsListResponse
+      class ListOperationsResponse
         include Google::Apis::Core::Hashable
       
         # List of operation resources.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::SqlV1beta4::Operation>]
+        # @return [Array<Google::Apis::SqladminV1beta4::Operation>]
         attr_accessor :items
       
         # This is always *sql#operationsList*.
@@ -2046,15 +2085,15 @@ module Google
         end
       end
       
-      # Read-replica configuration for connecting to the master.
+      # Read-replica configuration for connecting to the primary instance.
       class ReplicaConfiguration
         include Google::Apis::Core::Hashable
       
         # Specifies if the replica is the failover target. If the field is set to *true*
-        # the replica will be designated as a failover replica. In case the master
-        # instance fails, the replica instance will be promoted as the new master
+        # the replica will be designated as a failover replica. In case the primary
+        # instance fails, the replica instance will be promoted as the new primary
         # instance. Only one replica can be specified as failover target, and the
-        # replica has to be in different zone with the master instance.
+        # replica has to be in different zone with the primary instance.
         # Corresponds to the JSON property `failoverTarget`
         # @return [Boolean]
         attr_accessor :failover_target
@@ -2067,7 +2106,7 @@ module Google
       
         # Read-replica configuration specific to MySQL databases.
         # Corresponds to the JSON property `mysqlReplicaConfiguration`
-        # @return [Google::Apis::SqlV1beta4::MySqlReplicaConfiguration]
+        # @return [Google::Apis::SqladminV1beta4::MySqlReplicaConfiguration]
         attr_accessor :mysql_replica_configuration
       
         def initialize(**args)
@@ -2203,7 +2242,7 @@ module Google
       
         # Database instance backup configuration.
         # Corresponds to the JSON property `backupConfiguration`
-        # @return [Google::Apis::SqlV1beta4::BackupConfiguration]
+        # @return [Google::Apis::SqladminV1beta4::BackupConfiguration]
         attr_accessor :backup_configuration
       
         # The name of server Instance collation.
@@ -2232,7 +2271,7 @@ module Google
       
         # The database flags passed to the instance at startup.
         # Corresponds to the JSON property `databaseFlags`
-        # @return [Array<Google::Apis::SqlV1beta4::DatabaseFlags>]
+        # @return [Array<Google::Apis::SqladminV1beta4::DatabaseFlags>]
         attr_accessor :database_flags
       
         # Configuration specific to read replica instances. Indicates whether
@@ -2244,7 +2283,7 @@ module Google
       
         # IP Management configuration.
         # Corresponds to the JSON property `ipConfiguration`
-        # @return [Google::Apis::SqlV1beta4::IpConfiguration]
+        # @return [Google::Apis::SqladminV1beta4::IpConfiguration]
         attr_accessor :ip_configuration
       
         # This is always *sql#settings*.
@@ -2258,13 +2297,18 @@ module Google
         # instance will be located as close as possible within the region. Only one
         # location may be specified.
         # Corresponds to the JSON property `locationPreference`
-        # @return [Google::Apis::SqlV1beta4::LocationPreference]
+        # @return [Google::Apis::SqladminV1beta4::LocationPreference]
         attr_accessor :location_preference
+      
+        # Maintenance deny periods
+        # Corresponds to the JSON property `maintenanceDenyPeriods`
+        # @return [Array<Google::Apis::SqladminV1beta4::MaintenanceDenyPeriod>]
+        attr_accessor :maintenance_deny_periods
       
         # Maintenance window. This specifies when a Cloud SQL instance is restarted for
         # system maintenance purposes.
         # Corresponds to the JSON property `maintenanceWindow`
-        # @return [Google::Apis::SqlV1beta4::MaintenanceWindow]
+        # @return [Google::Apis::SqladminV1beta4::MaintenanceWindow]
         attr_accessor :maintenance_window
       
         # The pricing plan for this instance. This can be either *PER_USE* or *PACKAGE*.
@@ -2332,6 +2376,7 @@ module Google
           @ip_configuration = args[:ip_configuration] if args.key?(:ip_configuration)
           @kind = args[:kind] if args.key?(:kind)
           @location_preference = args[:location_preference] if args.key?(:location_preference)
+          @maintenance_deny_periods = args[:maintenance_deny_periods] if args.key?(:maintenance_deny_periods)
           @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
           @pricing_plan = args[:pricing_plan] if args.key?(:pricing_plan)
           @replication_type = args[:replication_type] if args.key?(:replication_type)
@@ -2343,7 +2388,7 @@ module Google
         end
       end
       
-      # External master migration setting error.
+      # External primary instance migration setting error.
       class SqlExternalSyncSettingError
         include Google::Apis::Core::Hashable
       
@@ -2380,7 +2425,7 @@ module Google
       
         # Required. The type of the reschedule the user wants.
         # Corresponds to the JSON property `reschedule`
-        # @return [Google::Apis::SqlV1beta4::Reschedule]
+        # @return [Google::Apis::SqladminV1beta4::Reschedule]
         attr_accessor :reschedule
       
         def initialize(**args)
@@ -2399,7 +2444,7 @@ module Google
       
         # List of migration violations.
         # Corresponds to the JSON property `errors`
-        # @return [Array<Google::Apis::SqlV1beta4::SqlExternalSyncSettingError>]
+        # @return [Array<Google::Apis::SqladminV1beta4::SqlExternalSyncSettingError>]
         attr_accessor :errors
       
         # This is always *sql#migrationSettingErrorList*.
@@ -2577,7 +2622,7 @@ module Google
       
         # SslCerts Resource
         # Corresponds to the JSON property `certInfo`
-        # @return [Google::Apis::SqlV1beta4::SslCert]
+        # @return [Google::Apis::SqladminV1beta4::SslCert]
         attr_accessor :cert_info
       
         # The private key for the client cert, in pem format. Keep private in order to
@@ -2617,7 +2662,7 @@ module Google
       end
       
       # SslCerts insert request.
-      class SslCertsInsertRequest
+      class InsertSslCertsRequest
         include Google::Apis::Core::Hashable
       
         # User supplied name. Must be a distinct name from the other certificates for
@@ -2637,12 +2682,12 @@ module Google
       end
       
       # SslCert insert response.
-      class SslCertsInsertResponse
+      class InsertSslCertsResponse
         include Google::Apis::Core::Hashable
       
         # SslCertDetail.
         # Corresponds to the JSON property `clientCert`
-        # @return [Google::Apis::SqlV1beta4::SslCertDetail]
+        # @return [Google::Apis::SqladminV1beta4::SslCertDetail]
         attr_accessor :client_cert
       
         # This is always *sql#sslCertsInsert*.
@@ -2654,12 +2699,12 @@ module Google
         # resource, only the fields relevant to the operation are populated in the
         # resource.
         # Corresponds to the JSON property `operation`
-        # @return [Google::Apis::SqlV1beta4::Operation]
+        # @return [Google::Apis::SqladminV1beta4::Operation]
         attr_accessor :operation
       
         # SslCerts Resource
         # Corresponds to the JSON property `serverCaCert`
-        # @return [Google::Apis::SqlV1beta4::SslCert]
+        # @return [Google::Apis::SqladminV1beta4::SslCert]
         attr_accessor :server_ca_cert
       
         def initialize(**args)
@@ -2676,12 +2721,12 @@ module Google
       end
       
       # SslCerts list response.
-      class SslCertsListResponse
+      class ListSslCertsResponse
         include Google::Apis::Core::Hashable
       
         # List of client certificates for the instance.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::SqlV1beta4::SslCert>]
+        # @return [Array<Google::Apis::SqladminV1beta4::SslCert>]
         attr_accessor :items
       
         # This is always *sql#sslCertsList*.
@@ -2745,12 +2790,12 @@ module Google
       end
       
       # Tiers list response.
-      class TiersListResponse
+      class ListTiersResponse
         include Google::Apis::Core::Hashable
       
         # List of tiers.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::SqlV1beta4::Tier>]
+        # @return [Array<Google::Apis::SqladminV1beta4::Tier>]
         attr_accessor :items
       
         # This is always *sql#tiersList*.
@@ -2842,7 +2887,7 @@ module Google
       
         # Represents a Sql Server user on the Cloud SQL instance.
         # Corresponds to the JSON property `sqlserverUserDetails`
-        # @return [Google::Apis::SqlV1beta4::SqlServerUserDetails]
+        # @return [Google::Apis::SqladminV1beta4::SqlServerUserDetails]
         attr_accessor :sqlserver_user_details
       
         # The user type. It determines the method to authenticate the user during login.
@@ -2870,12 +2915,12 @@ module Google
       end
       
       # User list response.
-      class UsersListResponse
+      class ListUsersResponse
         include Google::Apis::Core::Hashable
       
         # List of user resources in the instance.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::SqlV1beta4::User>]
+        # @return [Array<Google::Apis::SqladminV1beta4::User>]
         attr_accessor :items
       
         # This is always *sql#usersList*.

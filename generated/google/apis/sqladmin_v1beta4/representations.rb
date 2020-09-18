@@ -20,7 +20,7 @@ require 'google/apis/errors'
 
 module Google
   module Apis
-    module SqlV1beta4
+    module SqladminV1beta4
       
       class AclEntry
         class Representation < Google::Apis::Core::JsonRepresentation; end
@@ -46,7 +46,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class BackupRunsListResponse
+      class ListBackupRunsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -88,7 +88,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DatabasesListResponse
+      class ListDatabasesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -160,7 +160,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FlagsListResponse
+      class ListFlagsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -190,7 +190,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class InstancesCloneRequest
+      class CloneInstancesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -202,7 +202,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class InstancesExportRequest
+      class ExportInstancesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -214,13 +214,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class InstancesImportRequest
+      class ImportInstancesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class InstancesListResponse
+      class ListInstancesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -232,7 +232,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class InstancesRestoreBackupRequest
+      class RestoreInstancesBackupRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -263,6 +263,12 @@ module Google
       end
       
       class LocationPreference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MaintenanceDenyPeriod
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -304,7 +310,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class OperationsListResponse
+      class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -394,19 +400,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SslCertsInsertRequest
+      class InsertSslCertsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SslCertsInsertResponse
+      class InsertSslCertsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SslCertsListResponse
+      class ListSslCertsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -418,7 +424,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TiersListResponse
+      class ListTiersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -436,7 +442,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UsersListResponse
+      class ListUsersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -478,13 +484,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup_kind, as: 'backupKind'
           property :description, as: 'description'
-          property :disk_encryption_configuration, as: 'diskEncryptionConfiguration', class: Google::Apis::SqlV1beta4::DiskEncryptionConfiguration, decorator: Google::Apis::SqlV1beta4::DiskEncryptionConfiguration::Representation
+          property :disk_encryption_configuration, as: 'diskEncryptionConfiguration', class: Google::Apis::SqladminV1beta4::DiskEncryptionConfiguration, decorator: Google::Apis::SqladminV1beta4::DiskEncryptionConfiguration::Representation
       
-          property :disk_encryption_status, as: 'diskEncryptionStatus', class: Google::Apis::SqlV1beta4::DiskEncryptionStatus, decorator: Google::Apis::SqlV1beta4::DiskEncryptionStatus::Representation
+          property :disk_encryption_status, as: 'diskEncryptionStatus', class: Google::Apis::SqladminV1beta4::DiskEncryptionStatus, decorator: Google::Apis::SqladminV1beta4::DiskEncryptionStatus::Representation
       
           property :end_time, as: 'endTime'
           property :enqueued_time, as: 'enqueuedTime'
-          property :error, as: 'error', class: Google::Apis::SqlV1beta4::OperationError, decorator: Google::Apis::SqlV1beta4::OperationError::Representation
+          property :error, as: 'error', class: Google::Apis::SqladminV1beta4::OperationError, decorator: Google::Apis::SqladminV1beta4::OperationError::Representation
       
           property :id, :numeric_string => true, as: 'id'
           property :instance, as: 'instance'
@@ -498,10 +504,10 @@ module Google
         end
       end
       
-      class BackupRunsListResponse
+      class ListBackupRunsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :items, as: 'items', class: Google::Apis::SqlV1beta4::BackupRun, decorator: Google::Apis::SqlV1beta4::BackupRun::Representation
+          collection :items, as: 'items', class: Google::Apis::SqladminV1beta4::BackupRun, decorator: Google::Apis::SqladminV1beta4::BackupRun::Representation
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -520,7 +526,7 @@ module Google
       class CloneContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :bin_log_coordinates, as: 'binLogCoordinates', class: Google::Apis::SqlV1beta4::BinLogCoordinates, decorator: Google::Apis::SqlV1beta4::BinLogCoordinates::Representation
+          property :bin_log_coordinates, as: 'binLogCoordinates', class: Google::Apis::SqladminV1beta4::BinLogCoordinates, decorator: Google::Apis::SqladminV1beta4::BinLogCoordinates::Representation
       
           property :destination_instance_name, as: 'destinationInstanceName'
           property :kind, as: 'kind'
@@ -540,7 +546,7 @@ module Google
           property :name, as: 'name'
           property :project, as: 'project'
           property :self_link, as: 'selfLink'
-          property :sqlserver_database_details, as: 'sqlserverDatabaseDetails', class: Google::Apis::SqlV1beta4::SqlServerDatabaseDetails, decorator: Google::Apis::SqlV1beta4::SqlServerDatabaseDetails::Representation
+          property :sqlserver_database_details, as: 'sqlserverDatabaseDetails', class: Google::Apis::SqladminV1beta4::SqlServerDatabaseDetails, decorator: Google::Apis::SqladminV1beta4::SqlServerDatabaseDetails::Representation
       
         end
       end
@@ -560,37 +566,37 @@ module Google
           property :connection_name, as: 'connectionName'
           property :current_disk_size, :numeric_string => true, as: 'currentDiskSize'
           property :database_version, as: 'databaseVersion'
-          property :disk_encryption_configuration, as: 'diskEncryptionConfiguration', class: Google::Apis::SqlV1beta4::DiskEncryptionConfiguration, decorator: Google::Apis::SqlV1beta4::DiskEncryptionConfiguration::Representation
+          property :disk_encryption_configuration, as: 'diskEncryptionConfiguration', class: Google::Apis::SqladminV1beta4::DiskEncryptionConfiguration, decorator: Google::Apis::SqladminV1beta4::DiskEncryptionConfiguration::Representation
       
-          property :disk_encryption_status, as: 'diskEncryptionStatus', class: Google::Apis::SqlV1beta4::DiskEncryptionStatus, decorator: Google::Apis::SqlV1beta4::DiskEncryptionStatus::Representation
+          property :disk_encryption_status, as: 'diskEncryptionStatus', class: Google::Apis::SqladminV1beta4::DiskEncryptionStatus, decorator: Google::Apis::SqladminV1beta4::DiskEncryptionStatus::Representation
       
           property :etag, as: 'etag'
-          property :failover_replica, as: 'failoverReplica', class: Google::Apis::SqlV1beta4::DatabaseInstance::FailoverReplica, decorator: Google::Apis::SqlV1beta4::DatabaseInstance::FailoverReplica::Representation
+          property :failover_replica, as: 'failoverReplica', class: Google::Apis::SqladminV1beta4::DatabaseInstance::FailoverReplica, decorator: Google::Apis::SqladminV1beta4::DatabaseInstance::FailoverReplica::Representation
       
           property :gce_zone, as: 'gceZone'
           property :instance_type, as: 'instanceType'
-          collection :ip_addresses, as: 'ipAddresses', class: Google::Apis::SqlV1beta4::IpMapping, decorator: Google::Apis::SqlV1beta4::IpMapping::Representation
+          collection :ip_addresses, as: 'ipAddresses', class: Google::Apis::SqladminV1beta4::IpMapping, decorator: Google::Apis::SqladminV1beta4::IpMapping::Representation
       
           property :ipv6_address, as: 'ipv6Address'
           property :kind, as: 'kind'
           property :master_instance_name, as: 'masterInstanceName'
           property :max_disk_size, :numeric_string => true, as: 'maxDiskSize'
           property :name, as: 'name'
-          property :on_premises_configuration, as: 'onPremisesConfiguration', class: Google::Apis::SqlV1beta4::OnPremisesConfiguration, decorator: Google::Apis::SqlV1beta4::OnPremisesConfiguration::Representation
+          property :on_premises_configuration, as: 'onPremisesConfiguration', class: Google::Apis::SqladminV1beta4::OnPremisesConfiguration, decorator: Google::Apis::SqladminV1beta4::OnPremisesConfiguration::Representation
       
           property :project, as: 'project'
           property :region, as: 'region'
-          property :replica_configuration, as: 'replicaConfiguration', class: Google::Apis::SqlV1beta4::ReplicaConfiguration, decorator: Google::Apis::SqlV1beta4::ReplicaConfiguration::Representation
+          property :replica_configuration, as: 'replicaConfiguration', class: Google::Apis::SqladminV1beta4::ReplicaConfiguration, decorator: Google::Apis::SqladminV1beta4::ReplicaConfiguration::Representation
       
           collection :replica_names, as: 'replicaNames'
           property :root_password, as: 'rootPassword'
-          property :scheduled_maintenance, as: 'scheduledMaintenance', class: Google::Apis::SqlV1beta4::SqlScheduledMaintenance, decorator: Google::Apis::SqlV1beta4::SqlScheduledMaintenance::Representation
+          property :scheduled_maintenance, as: 'scheduledMaintenance', class: Google::Apis::SqladminV1beta4::SqlScheduledMaintenance, decorator: Google::Apis::SqladminV1beta4::SqlScheduledMaintenance::Representation
       
           property :self_link, as: 'selfLink'
-          property :server_ca_cert, as: 'serverCaCert', class: Google::Apis::SqlV1beta4::SslCert, decorator: Google::Apis::SqlV1beta4::SslCert::Representation
+          property :server_ca_cert, as: 'serverCaCert', class: Google::Apis::SqladminV1beta4::SslCert, decorator: Google::Apis::SqladminV1beta4::SslCert::Representation
       
           property :service_account_email_address, as: 'serviceAccountEmailAddress'
-          property :settings, as: 'settings', class: Google::Apis::SqlV1beta4::Settings, decorator: Google::Apis::SqlV1beta4::Settings::Representation
+          property :settings, as: 'settings', class: Google::Apis::SqladminV1beta4::Settings, decorator: Google::Apis::SqladminV1beta4::Settings::Representation
       
           property :state, as: 'state'
           collection :suspension_reason, as: 'suspensionReason'
@@ -605,10 +611,10 @@ module Google
         end
       end
       
-      class DatabasesListResponse
+      class ListDatabasesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :items, as: 'items', class: Google::Apis::SqlV1beta4::Database, decorator: Google::Apis::SqlV1beta4::Database::Representation
+          collection :items, as: 'items', class: Google::Apis::SqladminV1beta4::Database, decorator: Google::Apis::SqladminV1beta4::Database::Representation
       
           property :kind, as: 'kind'
         end
@@ -618,7 +624,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
-          property :mysql_replica_configuration, as: 'mysqlReplicaConfiguration', class: Google::Apis::SqlV1beta4::DemoteMasterMySqlReplicaConfiguration, decorator: Google::Apis::SqlV1beta4::DemoteMasterMySqlReplicaConfiguration::Representation
+          property :mysql_replica_configuration, as: 'mysqlReplicaConfiguration', class: Google::Apis::SqladminV1beta4::DemoteMasterMySqlReplicaConfiguration, decorator: Google::Apis::SqladminV1beta4::DemoteMasterMySqlReplicaConfiguration::Representation
       
         end
       end
@@ -628,7 +634,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :master_instance_name, as: 'masterInstanceName'
-          property :replica_configuration, as: 'replicaConfiguration', class: Google::Apis::SqlV1beta4::DemoteMasterConfiguration, decorator: Google::Apis::SqlV1beta4::DemoteMasterConfiguration::Representation
+          property :replica_configuration, as: 'replicaConfiguration', class: Google::Apis::SqladminV1beta4::DemoteMasterConfiguration, decorator: Google::Apis::SqladminV1beta4::DemoteMasterConfiguration::Representation
       
           property :verify_gtid_consistency, as: 'verifyGtidConsistency'
         end
@@ -665,13 +671,13 @@ module Google
       class ExportContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :csv_export_options, as: 'csvExportOptions', class: Google::Apis::SqlV1beta4::ExportContext::CsvExportOptions, decorator: Google::Apis::SqlV1beta4::ExportContext::CsvExportOptions::Representation
+          property :csv_export_options, as: 'csvExportOptions', class: Google::Apis::SqladminV1beta4::ExportContext::CsvExportOptions, decorator: Google::Apis::SqladminV1beta4::ExportContext::CsvExportOptions::Representation
       
           collection :databases, as: 'databases'
           property :file_type, as: 'fileType'
           property :kind, as: 'kind'
           property :offload, as: 'offload'
-          property :sql_export_options, as: 'sqlExportOptions', class: Google::Apis::SqlV1beta4::ExportContext::SqlExportOptions, decorator: Google::Apis::SqlV1beta4::ExportContext::SqlExportOptions::Representation
+          property :sql_export_options, as: 'sqlExportOptions', class: Google::Apis::SqladminV1beta4::ExportContext::SqlExportOptions, decorator: Google::Apis::SqladminV1beta4::ExportContext::SqlExportOptions::Representation
       
           property :uri, as: 'uri'
         end
@@ -686,7 +692,7 @@ module Google
         class SqlExportOptions
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
-            property :mysql_export_options, as: 'mysqlExportOptions', class: Google::Apis::SqlV1beta4::ExportContext::SqlExportOptions::MysqlExportOptions, decorator: Google::Apis::SqlV1beta4::ExportContext::SqlExportOptions::MysqlExportOptions::Representation
+            property :mysql_export_options, as: 'mysqlExportOptions', class: Google::Apis::SqladminV1beta4::ExportContext::SqlExportOptions::MysqlExportOptions, decorator: Google::Apis::SqladminV1beta4::ExportContext::SqlExportOptions::MysqlExportOptions::Representation
         
             property :schema_only, as: 'schemaOnly'
             collection :tables, as: 'tables'
@@ -725,10 +731,10 @@ module Google
         end
       end
       
-      class FlagsListResponse
+      class ListFlagsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :items, as: 'items', class: Google::Apis::SqlV1beta4::Flag, decorator: Google::Apis::SqlV1beta4::Flag::Representation
+          collection :items, as: 'items', class: Google::Apis::SqladminV1beta4::Flag, decorator: Google::Apis::SqladminV1beta4::Flag::Representation
       
           property :kind, as: 'kind'
         end
@@ -737,9 +743,9 @@ module Google
       class ImportContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :bak_import_options, as: 'bakImportOptions', class: Google::Apis::SqlV1beta4::ImportContext::BakImportOptions, decorator: Google::Apis::SqlV1beta4::ImportContext::BakImportOptions::Representation
+          property :bak_import_options, as: 'bakImportOptions', class: Google::Apis::SqladminV1beta4::ImportContext::BakImportOptions, decorator: Google::Apis::SqladminV1beta4::ImportContext::BakImportOptions::Representation
       
-          property :csv_import_options, as: 'csvImportOptions', class: Google::Apis::SqlV1beta4::ImportContext::CsvImportOptions, decorator: Google::Apis::SqlV1beta4::ImportContext::CsvImportOptions::Representation
+          property :csv_import_options, as: 'csvImportOptions', class: Google::Apis::SqladminV1beta4::ImportContext::CsvImportOptions, decorator: Google::Apis::SqladminV1beta4::ImportContext::CsvImportOptions::Representation
       
           property :database, as: 'database'
           property :file_type, as: 'fileType'
@@ -751,7 +757,7 @@ module Google
         class BakImportOptions
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
-            property :encryption_options, as: 'encryptionOptions', class: Google::Apis::SqlV1beta4::ImportContext::BakImportOptions::EncryptionOptions, decorator: Google::Apis::SqlV1beta4::ImportContext::BakImportOptions::EncryptionOptions::Representation
+            property :encryption_options, as: 'encryptionOptions', class: Google::Apis::SqladminV1beta4::ImportContext::BakImportOptions::EncryptionOptions, decorator: Google::Apis::SqladminV1beta4::ImportContext::BakImportOptions::EncryptionOptions::Representation
         
           end
           
@@ -774,10 +780,10 @@ module Google
         end
       end
       
-      class InstancesCloneRequest
+      class CloneInstancesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :clone_context, as: 'cloneContext', class: Google::Apis::SqlV1beta4::CloneContext, decorator: Google::Apis::SqlV1beta4::CloneContext::Representation
+          property :clone_context, as: 'cloneContext', class: Google::Apis::SqladminV1beta4::CloneContext, decorator: Google::Apis::SqladminV1beta4::CloneContext::Representation
       
         end
       end
@@ -785,15 +791,15 @@ module Google
       class InstancesDemoteMasterRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :demote_master_context, as: 'demoteMasterContext', class: Google::Apis::SqlV1beta4::DemoteMasterContext, decorator: Google::Apis::SqlV1beta4::DemoteMasterContext::Representation
+          property :demote_master_context, as: 'demoteMasterContext', class: Google::Apis::SqladminV1beta4::DemoteMasterContext, decorator: Google::Apis::SqladminV1beta4::DemoteMasterContext::Representation
       
         end
       end
       
-      class InstancesExportRequest
+      class ExportInstancesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :export_context, as: 'exportContext', class: Google::Apis::SqlV1beta4::ExportContext, decorator: Google::Apis::SqlV1beta4::ExportContext::Representation
+          property :export_context, as: 'exportContext', class: Google::Apis::SqladminV1beta4::ExportContext, decorator: Google::Apis::SqladminV1beta4::ExportContext::Representation
       
         end
       end
@@ -801,27 +807,27 @@ module Google
       class InstancesFailoverRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :failover_context, as: 'failoverContext', class: Google::Apis::SqlV1beta4::FailoverContext, decorator: Google::Apis::SqlV1beta4::FailoverContext::Representation
+          property :failover_context, as: 'failoverContext', class: Google::Apis::SqladminV1beta4::FailoverContext, decorator: Google::Apis::SqladminV1beta4::FailoverContext::Representation
       
         end
       end
       
-      class InstancesImportRequest
+      class ImportInstancesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :import_context, as: 'importContext', class: Google::Apis::SqlV1beta4::ImportContext, decorator: Google::Apis::SqlV1beta4::ImportContext::Representation
+          property :import_context, as: 'importContext', class: Google::Apis::SqladminV1beta4::ImportContext, decorator: Google::Apis::SqladminV1beta4::ImportContext::Representation
       
         end
       end
       
-      class InstancesListResponse
+      class ListInstancesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :items, as: 'items', class: Google::Apis::SqlV1beta4::DatabaseInstance, decorator: Google::Apis::SqlV1beta4::DatabaseInstance::Representation
+          collection :items, as: 'items', class: Google::Apis::SqladminV1beta4::DatabaseInstance, decorator: Google::Apis::SqladminV1beta4::DatabaseInstance::Representation
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
-          collection :warnings, as: 'warnings', class: Google::Apis::SqlV1beta4::ApiWarning, decorator: Google::Apis::SqlV1beta4::ApiWarning::Representation
+          collection :warnings, as: 'warnings', class: Google::Apis::SqladminV1beta4::ApiWarning, decorator: Google::Apis::SqladminV1beta4::ApiWarning::Representation
       
         end
       end
@@ -830,16 +836,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :active_version, as: 'activeVersion'
-          collection :certs, as: 'certs', class: Google::Apis::SqlV1beta4::SslCert, decorator: Google::Apis::SqlV1beta4::SslCert::Representation
+          collection :certs, as: 'certs', class: Google::Apis::SqladminV1beta4::SslCert, decorator: Google::Apis::SqladminV1beta4::SslCert::Representation
       
           property :kind, as: 'kind'
         end
       end
       
-      class InstancesRestoreBackupRequest
+      class RestoreInstancesBackupRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :restore_backup_context, as: 'restoreBackupContext', class: Google::Apis::SqlV1beta4::RestoreBackupContext, decorator: Google::Apis::SqlV1beta4::RestoreBackupContext::Representation
+          property :restore_backup_context, as: 'restoreBackupContext', class: Google::Apis::SqladminV1beta4::RestoreBackupContext, decorator: Google::Apis::SqladminV1beta4::RestoreBackupContext::Representation
       
         end
       end
@@ -847,7 +853,7 @@ module Google
       class InstancesRotateServerCaRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :rotate_server_ca_context, as: 'rotateServerCaContext', class: Google::Apis::SqlV1beta4::RotateServerCaContext, decorator: Google::Apis::SqlV1beta4::RotateServerCaContext::Representation
+          property :rotate_server_ca_context, as: 'rotateServerCaContext', class: Google::Apis::SqladminV1beta4::RotateServerCaContext, decorator: Google::Apis::SqladminV1beta4::RotateServerCaContext::Representation
       
         end
       end
@@ -855,7 +861,7 @@ module Google
       class InstancesTruncateLogRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :truncate_log_context, as: 'truncateLogContext', class: Google::Apis::SqlV1beta4::TruncateLogContext, decorator: Google::Apis::SqlV1beta4::TruncateLogContext::Representation
+          property :truncate_log_context, as: 'truncateLogContext', class: Google::Apis::SqladminV1beta4::TruncateLogContext, decorator: Google::Apis::SqladminV1beta4::TruncateLogContext::Representation
       
         end
       end
@@ -863,7 +869,7 @@ module Google
       class IpConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :authorized_networks, as: 'authorizedNetworks', class: Google::Apis::SqlV1beta4::AclEntry, decorator: Google::Apis::SqlV1beta4::AclEntry::Representation
+          collection :authorized_networks, as: 'authorizedNetworks', class: Google::Apis::SqladminV1beta4::AclEntry, decorator: Google::Apis::SqladminV1beta4::AclEntry::Representation
       
           property :ipv4_enabled, as: 'ipv4Enabled'
           property :private_network, as: 'privateNetwork'
@@ -886,6 +892,15 @@ module Google
           property :follow_gae_application, as: 'followGaeApplication'
           property :kind, as: 'kind'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class MaintenanceDenyPeriod
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_date, as: 'endDate'
+          property :start_date, as: 'startDate'
+          property :time, as: 'time'
         end
       end
       
@@ -934,11 +949,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
-          property :error, as: 'error', class: Google::Apis::SqlV1beta4::OperationErrors, decorator: Google::Apis::SqlV1beta4::OperationErrors::Representation
+          property :error, as: 'error', class: Google::Apis::SqladminV1beta4::OperationErrors, decorator: Google::Apis::SqladminV1beta4::OperationErrors::Representation
       
-          property :export_context, as: 'exportContext', class: Google::Apis::SqlV1beta4::ExportContext, decorator: Google::Apis::SqlV1beta4::ExportContext::Representation
+          property :export_context, as: 'exportContext', class: Google::Apis::SqladminV1beta4::ExportContext, decorator: Google::Apis::SqladminV1beta4::ExportContext::Representation
       
-          property :import_context, as: 'importContext', class: Google::Apis::SqlV1beta4::ImportContext, decorator: Google::Apis::SqlV1beta4::ImportContext::Representation
+          property :import_context, as: 'importContext', class: Google::Apis::SqladminV1beta4::ImportContext, decorator: Google::Apis::SqladminV1beta4::ImportContext::Representation
       
           property :insert_time, as: 'insertTime'
           property :kind, as: 'kind'
@@ -966,16 +981,16 @@ module Google
       class OperationErrors
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :errors, as: 'errors', class: Google::Apis::SqlV1beta4::OperationError, decorator: Google::Apis::SqlV1beta4::OperationError::Representation
+          collection :errors, as: 'errors', class: Google::Apis::SqladminV1beta4::OperationError, decorator: Google::Apis::SqladminV1beta4::OperationError::Representation
       
           property :kind, as: 'kind'
         end
       end
       
-      class OperationsListResponse
+      class ListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :items, as: 'items', class: Google::Apis::SqlV1beta4::Operation, decorator: Google::Apis::SqlV1beta4::Operation::Representation
+          collection :items, as: 'items', class: Google::Apis::SqladminV1beta4::Operation, decorator: Google::Apis::SqladminV1beta4::Operation::Representation
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -987,7 +1002,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :failover_target, as: 'failoverTarget'
           property :kind, as: 'kind'
-          property :mysql_replica_configuration, as: 'mysqlReplicaConfiguration', class: Google::Apis::SqlV1beta4::MySqlReplicaConfiguration, decorator: Google::Apis::SqlV1beta4::MySqlReplicaConfiguration::Representation
+          property :mysql_replica_configuration, as: 'mysqlReplicaConfiguration', class: Google::Apis::SqladminV1beta4::MySqlReplicaConfiguration, decorator: Google::Apis::SqladminV1beta4::MySqlReplicaConfiguration::Representation
       
         end
       end
@@ -1024,21 +1039,23 @@ module Google
           property :activation_policy, as: 'activationPolicy'
           collection :authorized_gae_applications, as: 'authorizedGaeApplications'
           property :availability_type, as: 'availabilityType'
-          property :backup_configuration, as: 'backupConfiguration', class: Google::Apis::SqlV1beta4::BackupConfiguration, decorator: Google::Apis::SqlV1beta4::BackupConfiguration::Representation
+          property :backup_configuration, as: 'backupConfiguration', class: Google::Apis::SqladminV1beta4::BackupConfiguration, decorator: Google::Apis::SqladminV1beta4::BackupConfiguration::Representation
       
           property :collation, as: 'collation'
           property :crash_safe_replication_enabled, as: 'crashSafeReplicationEnabled'
           property :data_disk_size_gb, :numeric_string => true, as: 'dataDiskSizeGb'
           property :data_disk_type, as: 'dataDiskType'
-          collection :database_flags, as: 'databaseFlags', class: Google::Apis::SqlV1beta4::DatabaseFlags, decorator: Google::Apis::SqlV1beta4::DatabaseFlags::Representation
+          collection :database_flags, as: 'databaseFlags', class: Google::Apis::SqladminV1beta4::DatabaseFlags, decorator: Google::Apis::SqladminV1beta4::DatabaseFlags::Representation
       
           property :database_replication_enabled, as: 'databaseReplicationEnabled'
-          property :ip_configuration, as: 'ipConfiguration', class: Google::Apis::SqlV1beta4::IpConfiguration, decorator: Google::Apis::SqlV1beta4::IpConfiguration::Representation
+          property :ip_configuration, as: 'ipConfiguration', class: Google::Apis::SqladminV1beta4::IpConfiguration, decorator: Google::Apis::SqladminV1beta4::IpConfiguration::Representation
       
           property :kind, as: 'kind'
-          property :location_preference, as: 'locationPreference', class: Google::Apis::SqlV1beta4::LocationPreference, decorator: Google::Apis::SqlV1beta4::LocationPreference::Representation
+          property :location_preference, as: 'locationPreference', class: Google::Apis::SqladminV1beta4::LocationPreference, decorator: Google::Apis::SqladminV1beta4::LocationPreference::Representation
       
-          property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::SqlV1beta4::MaintenanceWindow, decorator: Google::Apis::SqlV1beta4::MaintenanceWindow::Representation
+          collection :maintenance_deny_periods, as: 'maintenanceDenyPeriods', class: Google::Apis::SqladminV1beta4::MaintenanceDenyPeriod, decorator: Google::Apis::SqladminV1beta4::MaintenanceDenyPeriod::Representation
+      
+          property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::SqladminV1beta4::MaintenanceWindow, decorator: Google::Apis::SqladminV1beta4::MaintenanceWindow::Representation
       
           property :pricing_plan, as: 'pricingPlan'
           property :replication_type, as: 'replicationType'
@@ -1062,7 +1079,7 @@ module Google
       class SqlInstancesRescheduleMaintenanceRequestBody
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :reschedule, as: 'reschedule', class: Google::Apis::SqlV1beta4::Reschedule, decorator: Google::Apis::SqlV1beta4::Reschedule::Representation
+          property :reschedule, as: 'reschedule', class: Google::Apis::SqladminV1beta4::Reschedule, decorator: Google::Apis::SqladminV1beta4::Reschedule::Representation
       
         end
       end
@@ -1070,7 +1087,7 @@ module Google
       class SqlInstancesVerifyExternalSyncSettingsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :errors, as: 'errors', class: Google::Apis::SqlV1beta4::SqlExternalSyncSettingError, decorator: Google::Apis::SqlV1beta4::SqlExternalSyncSettingError::Representation
+          collection :errors, as: 'errors', class: Google::Apis::SqladminV1beta4::SqlExternalSyncSettingError, decorator: Google::Apis::SqladminV1beta4::SqlExternalSyncSettingError::Representation
       
           property :kind, as: 'kind'
         end
@@ -1119,7 +1136,7 @@ module Google
       class SslCertDetail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :cert_info, as: 'certInfo', class: Google::Apis::SqlV1beta4::SslCert, decorator: Google::Apis::SqlV1beta4::SslCert::Representation
+          property :cert_info, as: 'certInfo', class: Google::Apis::SqladminV1beta4::SslCert, decorator: Google::Apis::SqladminV1beta4::SslCert::Representation
       
           property :cert_private_key, as: 'certPrivateKey'
         end
@@ -1132,30 +1149,30 @@ module Google
         end
       end
       
-      class SslCertsInsertRequest
+      class InsertSslCertsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common_name, as: 'commonName'
         end
       end
       
-      class SslCertsInsertResponse
+      class InsertSslCertsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :client_cert, as: 'clientCert', class: Google::Apis::SqlV1beta4::SslCertDetail, decorator: Google::Apis::SqlV1beta4::SslCertDetail::Representation
+          property :client_cert, as: 'clientCert', class: Google::Apis::SqladminV1beta4::SslCertDetail, decorator: Google::Apis::SqladminV1beta4::SslCertDetail::Representation
       
           property :kind, as: 'kind'
-          property :operation, as: 'operation', class: Google::Apis::SqlV1beta4::Operation, decorator: Google::Apis::SqlV1beta4::Operation::Representation
+          property :operation, as: 'operation', class: Google::Apis::SqladminV1beta4::Operation, decorator: Google::Apis::SqladminV1beta4::Operation::Representation
       
-          property :server_ca_cert, as: 'serverCaCert', class: Google::Apis::SqlV1beta4::SslCert, decorator: Google::Apis::SqlV1beta4::SslCert::Representation
+          property :server_ca_cert, as: 'serverCaCert', class: Google::Apis::SqladminV1beta4::SslCert, decorator: Google::Apis::SqladminV1beta4::SslCert::Representation
       
         end
       end
       
-      class SslCertsListResponse
+      class ListSslCertsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :items, as: 'items', class: Google::Apis::SqlV1beta4::SslCert, decorator: Google::Apis::SqlV1beta4::SslCert::Representation
+          collection :items, as: 'items', class: Google::Apis::SqladminV1beta4::SslCert, decorator: Google::Apis::SqladminV1beta4::SslCert::Representation
       
           property :kind, as: 'kind'
         end
@@ -1172,10 +1189,10 @@ module Google
         end
       end
       
-      class TiersListResponse
+      class ListTiersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :items, as: 'items', class: Google::Apis::SqlV1beta4::Tier, decorator: Google::Apis::SqlV1beta4::Tier::Representation
+          collection :items, as: 'items', class: Google::Apis::SqladminV1beta4::Tier, decorator: Google::Apis::SqladminV1beta4::Tier::Representation
       
           property :kind, as: 'kind'
         end
@@ -1199,16 +1216,16 @@ module Google
           property :name, as: 'name'
           property :password, as: 'password'
           property :project, as: 'project'
-          property :sqlserver_user_details, as: 'sqlserverUserDetails', class: Google::Apis::SqlV1beta4::SqlServerUserDetails, decorator: Google::Apis::SqlV1beta4::SqlServerUserDetails::Representation
+          property :sqlserver_user_details, as: 'sqlserverUserDetails', class: Google::Apis::SqladminV1beta4::SqlServerUserDetails, decorator: Google::Apis::SqladminV1beta4::SqlServerUserDetails::Representation
       
           property :type, as: 'type'
         end
       end
       
-      class UsersListResponse
+      class ListUsersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :items, as: 'items', class: Google::Apis::SqlV1beta4::User, decorator: Google::Apis::SqlV1beta4::User::Representation
+          collection :items, as: 'items', class: Google::Apis::SqladminV1beta4::User, decorator: Google::Apis::SqladminV1beta4::User::Representation
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'

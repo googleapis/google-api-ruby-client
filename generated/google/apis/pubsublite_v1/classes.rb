@@ -47,6 +47,78 @@ module Google
         end
       end
       
+      # Compute statistics about a range of messages in a given topic and partition.
+      class ComputeMessageStatsRequest
+        include Google::Apis::Core::Hashable
+      
+        # A cursor that describes the position of a message within a topic partition.
+        # Corresponds to the JSON property `endCursor`
+        # @return [Google::Apis::PubsubliteV1::Cursor]
+        attr_accessor :end_cursor
+      
+        # Required. The partition for which we should compute message stats.
+        # Corresponds to the JSON property `partition`
+        # @return [Fixnum]
+        attr_accessor :partition
+      
+        # A cursor that describes the position of a message within a topic partition.
+        # Corresponds to the JSON property `startCursor`
+        # @return [Google::Apis::PubsubliteV1::Cursor]
+        attr_accessor :start_cursor
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_cursor = args[:end_cursor] if args.key?(:end_cursor)
+          @partition = args[:partition] if args.key?(:partition)
+          @start_cursor = args[:start_cursor] if args.key?(:start_cursor)
+        end
+      end
+      
+      # Response containing stats for messages in the requested topic and partition.
+      class ComputeMessageStatsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The number of quota bytes accounted to these messages.
+        # Corresponds to the JSON property `messageBytes`
+        # @return [Fixnum]
+        attr_accessor :message_bytes
+      
+        # The count of messages.
+        # Corresponds to the JSON property `messageCount`
+        # @return [Fixnum]
+        attr_accessor :message_count
+      
+        # The minimum event timestamp across these messages. For the purposes of this
+        # computation, if a message does not have an event time, we use the publish time.
+        # The timestamp will be unset if there are no messages.
+        # Corresponds to the JSON property `minimumEventTime`
+        # @return [String]
+        attr_accessor :minimum_event_time
+      
+        # The minimum publish timestamp across these messages. Note that publish
+        # timestamps within a partition are non-decreasing. The timestamp will be unset
+        # if there are no messages.
+        # Corresponds to the JSON property `minimumPublishTime`
+        # @return [String]
+        attr_accessor :minimum_publish_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message_bytes = args[:message_bytes] if args.key?(:message_bytes)
+          @message_count = args[:message_count] if args.key?(:message_count)
+          @minimum_event_time = args[:minimum_event_time] if args.key?(:minimum_event_time)
+          @minimum_publish_time = args[:minimum_publish_time] if args.key?(:minimum_publish_time)
+        end
+      end
+      
       # A cursor that describes the position of a message within a topic partition.
       class Cursor
         include Google::Apis::Core::Hashable
