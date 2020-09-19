@@ -240,9 +240,9 @@ module Google
         # @return [Google::Apis::MonitoringV1::GridLayout]
         attr_accessor :grid_layout
       
-        # A mosaic layout divides the available space into a grid of squares, and
+        # A mosaic layout divides the available space into a grid of blocks, and
         # overlays the grid with tiles. Unlike GridLayout, tiles may span multiple grid
-        # squares and can be placed at arbitrary locations in the grid.
+        # blocks and can be placed at arbitrary locations in the grid.
         # Corresponds to the JSON property `mosaicLayout`
         # @return [Google::Apis::MonitoringV1::MosaicLayout]
         attr_accessor :mosaic_layout
@@ -524,9 +524,9 @@ module Google
         end
       end
       
-      # A mosaic layout divides the available space into a grid of squares, and
+      # A mosaic layout divides the available space into a grid of blocks, and
       # overlays the grid with tiles. Unlike GridLayout, tiles may span multiple grid
-      # squares and can be placed at arbitrary locations in the grid.
+      # blocks and can be placed at arbitrary locations in the grid.
       class MosaicLayout
         include Google::Apis::Core::Hashable
       
@@ -948,7 +948,7 @@ module Google
       class Tile
         include Google::Apis::Core::Hashable
       
-        # The height of the tile, measured in grid squares. Tiles must have a minimum
+        # The height of the tile, measured in grid blocks. Tiles must have a minimum
         # height of 1.
         # Corresponds to the JSON property `height`
         # @return [Fixnum]
@@ -960,20 +960,20 @@ module Google
         # @return [Google::Apis::MonitoringV1::Widget]
         attr_accessor :widget
       
-        # The width of the tile, measured in grid squares. Tiles must have a minimum
+        # The width of the tile, measured in grid blocks. Tiles must have a minimum
         # width of 1.
         # Corresponds to the JSON property `width`
         # @return [Fixnum]
         attr_accessor :width
       
-        # The zero-indexed position of the tile in grid squares relative to the left
-        # edge of the grid. Tiles must be contained within the specified number of
-        # columns. x_pos cannot be negative.
+        # The zero-indexed position of the tile in grid blocks relative to the left edge
+        # of the grid. Tiles must be contained within the specified number of columns.
+        # x_pos cannot be negative.
         # Corresponds to the JSON property `xPos`
         # @return [Fixnum]
         attr_accessor :x_pos
       
-        # The zero-indexed position of the tile in grid squares relative to the top edge
+        # The zero-indexed position of the tile in grid blocks relative to the top edge
         # of the grid. y_pos cannot be negative.
         # Corresponds to the JSON property `yPos`
         # @return [Fixnum]

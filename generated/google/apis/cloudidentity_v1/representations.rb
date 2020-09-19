@@ -196,6 +196,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ModifyMembershipRolesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ModifyMembershipRolesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +221,12 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateMembershipRolesParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -505,6 +523,25 @@ module Google
         end
       end
       
+      class ModifyMembershipRolesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :add_roles, as: 'addRoles', class: Google::Apis::CloudidentityV1::MembershipRole, decorator: Google::Apis::CloudidentityV1::MembershipRole::Representation
+      
+          collection :remove_roles, as: 'removeRoles'
+          collection :update_roles_params, as: 'updateRolesParams', class: Google::Apis::CloudidentityV1::UpdateMembershipRolesParams, decorator: Google::Apis::CloudidentityV1::UpdateMembershipRolesParams::Representation
+      
+        end
+      end
+      
+      class ModifyMembershipRolesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :membership, as: 'membership', class: Google::Apis::CloudidentityV1::Membership, decorator: Google::Apis::CloudidentityV1::Membership::Representation
+      
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -532,6 +569,15 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class UpdateMembershipRolesParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field_mask, as: 'fieldMask'
+          property :membership_role, as: 'membershipRole', class: Google::Apis::CloudidentityV1::MembershipRole, decorator: Google::Apis::CloudidentityV1::MembershipRole::Representation
+      
         end
       end
     end

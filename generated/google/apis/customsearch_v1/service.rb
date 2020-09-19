@@ -28,10 +28,10 @@ module Google
       #    require 'google/apis/customsearch_v1'
       #
       #    Customsearch = Google::Apis::CustomsearchV1 # Alias the module
-      #    service = Customsearch::CustomsearchService.new
+      #    service = Customsearch::CustomSearchAPIService.new
       #
       # @see https://developers.google.com/custom-search/v1/introduction
-      class CustomsearchService < Google::Apis::Core::BaseService
+      class CustomSearchAPIService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.

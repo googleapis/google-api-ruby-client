@@ -508,7 +508,7 @@ module Google
         attr_accessor :type_instance
       
         # The measured values during this time interval. Each value must have a
-        # different dataSourceName.
+        # different data_source_name.
         # Corresponds to the JSON property `values`
         # @return [Array<Google::Apis::MonitoringV3::CollectdValue>]
         attr_accessor :values
@@ -572,8 +572,8 @@ module Google
       class CollectdValue
         include Google::Apis::Core::Hashable
       
-        # The data source for the collectd value. For example there are two data sources
-        # for network measurements: "rx" and "tx".
+        # The data source for the collectd value. For example, there are two data
+        # sources for network measurements: "rx" and "tx".
         # Corresponds to the JSON property `dataSourceName`
         # @return [String]
         attr_accessor :data_source_name
@@ -2897,15 +2897,17 @@ module Google
       
         # A closed time interval. It extends from the start time to the end time, and
         # includes both: [startTime, endTime]. Valid time intervals depend on the
-        # MetricKind of the metric value. In no case can the end time be earlier than
-        # the start time. For GAUGE metrics, the startTime value is technically optional;
-        # if no value is specified, the start time defaults to the value of the end
-        # time, and the interval represents a single point in time. If both start and
-        # end times are specified, they must be identical. Such an interval is valid
-        # only for GAUGE metrics, which are point-in-time measurements. The end time of
-        # a new interval must be at least a millisecond after the end time of the
-        # previous interval. For DELTA metrics, the start time and end time must specify
-        # a non-zero interval, with subsequent points specifying contiguous and non-
+        # MetricKind of the metric value. The end time must not be earlier than the
+        # start time. When writing data points, the start time must not be more than 25
+        # hours in the past and the end time must not be more than five minutes in the
+        # future. For GAUGE metrics, the startTime value is technically optional; if no
+        # value is specified, the start time defaults to the value of the end time, and
+        # the interval represents a single point in time. If both start and end times
+        # are specified, they must be identical. Such an interval is valid only for
+        # GAUGE metrics, which are point-in-time measurements. The end time of a new
+        # interval must be at least a millisecond after the end time of the previous
+        # interval. For DELTA metrics, the start time and end time must specify a non-
+        # zero interval, with subsequent points specifying contiguous and non-
         # overlapping intervals. For DELTA metrics, the start time of the next interval
         # must be at least a millisecond after the end time of the previous interval.
         # For CUMULATIVE metrics, the start time and end time must specify a a non-zero
@@ -2945,15 +2947,17 @@ module Google
       
         # A closed time interval. It extends from the start time to the end time, and
         # includes both: [startTime, endTime]. Valid time intervals depend on the
-        # MetricKind of the metric value. In no case can the end time be earlier than
-        # the start time. For GAUGE metrics, the startTime value is technically optional;
-        # if no value is specified, the start time defaults to the value of the end
-        # time, and the interval represents a single point in time. If both start and
-        # end times are specified, they must be identical. Such an interval is valid
-        # only for GAUGE metrics, which are point-in-time measurements. The end time of
-        # a new interval must be at least a millisecond after the end time of the
-        # previous interval. For DELTA metrics, the start time and end time must specify
-        # a non-zero interval, with subsequent points specifying contiguous and non-
+        # MetricKind of the metric value. The end time must not be earlier than the
+        # start time. When writing data points, the start time must not be more than 25
+        # hours in the past and the end time must not be more than five minutes in the
+        # future. For GAUGE metrics, the startTime value is technically optional; if no
+        # value is specified, the start time defaults to the value of the end time, and
+        # the interval represents a single point in time. If both start and end times
+        # are specified, they must be identical. Such an interval is valid only for
+        # GAUGE metrics, which are point-in-time measurements. The end time of a new
+        # interval must be at least a millisecond after the end time of the previous
+        # interval. For DELTA metrics, the start time and end time must specify a non-
+        # zero interval, with subsequent points specifying contiguous and non-
         # overlapping intervals. For DELTA metrics, the start time of the next interval
         # must be at least a millisecond after the end time of the previous interval.
         # For CUMULATIVE metrics, the start time and end time must specify a a non-zero
@@ -3472,15 +3476,17 @@ module Google
       
       # A closed time interval. It extends from the start time to the end time, and
       # includes both: [startTime, endTime]. Valid time intervals depend on the
-      # MetricKind of the metric value. In no case can the end time be earlier than
-      # the start time. For GAUGE metrics, the startTime value is technically optional;
-      # if no value is specified, the start time defaults to the value of the end
-      # time, and the interval represents a single point in time. If both start and
-      # end times are specified, they must be identical. Such an interval is valid
-      # only for GAUGE metrics, which are point-in-time measurements. The end time of
-      # a new interval must be at least a millisecond after the end time of the
-      # previous interval. For DELTA metrics, the start time and end time must specify
-      # a non-zero interval, with subsequent points specifying contiguous and non-
+      # MetricKind of the metric value. The end time must not be earlier than the
+      # start time. When writing data points, the start time must not be more than 25
+      # hours in the past and the end time must not be more than five minutes in the
+      # future. For GAUGE metrics, the startTime value is technically optional; if no
+      # value is specified, the start time defaults to the value of the end time, and
+      # the interval represents a single point in time. If both start and end times
+      # are specified, they must be identical. Such an interval is valid only for
+      # GAUGE metrics, which are point-in-time measurements. The end time of a new
+      # interval must be at least a millisecond after the end time of the previous
+      # interval. For DELTA metrics, the start time and end time must specify a non-
+      # zero interval, with subsequent points specifying contiguous and non-
       # overlapping intervals. For DELTA metrics, the start time of the next interval
       # must be at least a millisecond after the end time of the previous interval.
       # For CUMULATIVE metrics, the start time and end time must specify a a non-zero
