@@ -449,7 +449,7 @@ module Google
         # @return [Google::Apis::DataprocV1beta2::InstanceGroupConfig]
         attr_accessor :master_config
       
-        # Specifies the metastore configuration.
+        # Specifies a Metastore configuration.
         # Corresponds to the JSON property `metastoreConfig`
         # @return [Google::Apis::DataprocV1beta2::MetastoreConfig]
         attr_accessor :metastore_config
@@ -1423,7 +1423,7 @@ module Google
         attr_accessor :instance_id
       
         # Optional. Map from parameter names to values that should be used for those
-        # parameters. Values may not exceed 100 characters.
+        # parameters. Values may not exceed 1000 characters.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,String>]
         attr_accessor :parameters
@@ -2161,11 +2161,12 @@ module Google
         end
       end
       
-      # Specifies the metastore configuration.
+      # Specifies a Metastore configuration.
       class MetastoreConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. Relative resource name of an existing Dataproc Metastore service.
+        # Required. Resource name of an existing Dataproc Metastore service.Example:
+        # projects/[project_id]/locations/[dataproc_region]/services/[service-name]
         # Corresponds to the JSON property `dataprocMetastoreService`
         # @return [String]
         attr_accessor :dataproc_metastore_service

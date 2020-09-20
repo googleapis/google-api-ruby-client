@@ -419,7 +419,7 @@ module Google
         attr_accessor :endpoint_config
       
         # Common config settings for resources of Compute Engine cluster instances,
-        # applicable to all instances in the cluster. NEXT ID: 13
+        # applicable to all instances in the cluster. NEXT ID: 14
         # Corresponds to the JSON property `gceClusterConfig`
         # @return [Google::Apis::DataprocV1::GceClusterConfig]
         attr_accessor :gce_cluster_config
@@ -914,7 +914,7 @@ module Google
       end
       
       # Common config settings for resources of Compute Engine cluster instances,
-      # applicable to all instances in the cluster. NEXT ID: 13
+      # applicable to all instances in the cluster. NEXT ID: 14
       class GceClusterConfig
         include Google::Apis::Core::Hashable
       
@@ -1389,7 +1389,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Map from parameter names to values that should be used for those
-        # parameters. Values may not exceed 100 characters.
+        # parameters. Values may not exceed 1000 characters.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,String>]
         attr_accessor :parameters
