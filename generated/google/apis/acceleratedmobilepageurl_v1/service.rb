@@ -48,8 +48,8 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Returns AMP URL(s) and equivalent
-        # [AMP Cache URL(s)](/amp/cache/overview#amp-cache-url-format).
+        # Returns AMP URL(s) and equivalent [AMP Cache URL(s)](/amp/cache/overview#amp-
+        # cache-url-format).
         # @param [Google::Apis::AcceleratedmobilepageurlV1::BatchGetAmpUrlsRequest] batch_get_amp_urls_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

@@ -601,74 +601,6 @@ module Google
         end
       end
       
-      # Security Command Center representation of a Google Cloud resource. The Asset
-      # is a Security Command Center resource that captures information about a single
-      # Google Cloud resource. All modifications to an Asset are only within the
-      # context of Security Command Center and don't affect the referenced Google
-      # Cloud resource.
-      class GoogleCloudSecuritycenterV1p1beta1Asset
-        include Google::Apis::Core::Hashable
-      
-        # The time at which the asset was created in Security Command Center.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Cloud IAM Policy information associated with the Google Cloud resource
-        # described by the Security Command Center asset. This information is managed
-        # and defined by the Google Cloud resource and cannot be modified by the user.
-        # Corresponds to the JSON property `iamPolicy`
-        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1p1beta1IamPolicy]
-        attr_accessor :iam_policy
-      
-        # The relative resource name of this asset. See: https://cloud.google.com/apis/
-        # design/resource_names#relative_resource_name Example: "organizations/`
-        # organization_id`/assets/`asset_id`".
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Resource managed properties. These properties are managed and defined by the
-        # Google Cloud resource and cannot be modified by the user.
-        # Corresponds to the JSON property `resourceProperties`
-        # @return [Hash<String,Object>]
-        attr_accessor :resource_properties
-      
-        # Security Command Center managed properties. These properties are managed by
-        # Security Command Center and cannot be modified by the user.
-        # Corresponds to the JSON property `securityCenterProperties`
-        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1p1beta1SecurityCenterProperties]
-        attr_accessor :security_center_properties
-      
-        # User specified security marks that are attached to the parent Security Command
-        # Center resource. Security marks are scoped within a Security Command Center
-        # organization -- they can be modified and viewed by all users who have proper
-        # permissions on the organization.
-        # Corresponds to the JSON property `securityMarks`
-        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1p1beta1SecurityMarks]
-        attr_accessor :security_marks
-      
-        # The time at which the asset was last updated, added, or deleted in Cloud SCC.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @iam_policy = args[:iam_policy] if args.key?(:iam_policy)
-          @name = args[:name] if args.key?(:name)
-          @resource_properties = args[:resource_properties] if args.key?(:resource_properties)
-          @security_center_properties = args[:security_center_properties] if args.key?(:security_center_properties)
-          @security_marks = args[:security_marks] if args.key?(:security_marks)
-          @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
       # Security Command Center finding. A finding is a record of assessment data (
       # security, risk, health or privacy) ingested into Security Command Center for
       # presentation, notification, analysis, policy testing, and enforcement. For
@@ -735,7 +667,8 @@ module Google
         # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1p1beta1SecurityMarks]
         attr_accessor :security_marks
       
-        # The severity of the finding.
+        # The severity of the finding. This field is managed by the source that writes
+        # the finding.
         # Corresponds to the JSON property `severity`
         # @return [String]
         attr_accessor :severity
@@ -773,28 +706,6 @@ module Google
         end
       end
       
-      # Cloud IAM Policy information associated with the Google Cloud resource
-      # described by the Security Command Center asset. This information is managed
-      # and defined by the Google Cloud resource and cannot be modified by the user.
-      class GoogleCloudSecuritycenterV1p1beta1IamPolicy
-        include Google::Apis::Core::Hashable
-      
-        # The JSON representation of the Policy associated with the asset. See https://
-        # cloud.google.com/iam/docs/reference/rest/v1/Policy for format details.
-        # Corresponds to the JSON property `policyBlob`
-        # @return [String]
-        attr_accessor :policy_blob
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @policy_blob = args[:policy_blob] if args.key?(:policy_blob)
-        end
-      end
-      
       # Security Command Center's Notification
       class GoogleCloudSecuritycenterV1p1beta1NotificationMessage
         include Google::Apis::Core::Hashable
@@ -817,12 +728,6 @@ module Google
         # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1p1beta1Resource]
         attr_accessor :resource
       
-        # Wrapper over asset object that also captures the state change for the asset e.
-        # g. if it was a newly created asset vs updated or deleted asset.
-        # Corresponds to the JSON property `temporalAsset`
-        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1p1beta1TemporalAsset]
-        attr_accessor :temporal_asset
-      
         def initialize(**args)
            update!(**args)
         end
@@ -832,7 +737,6 @@ module Google
           @finding = args[:finding] if args.key?(:finding)
           @notification_config_name = args[:notification_config_name] if args.key?(:notification_config_name)
           @resource = args[:resource] if args.key?(:resource)
-          @temporal_asset = args[:temporal_asset] if args.key?(:temporal_asset)
         end
       end
       
@@ -905,74 +809,6 @@ module Google
         end
       end
       
-      # Security Command Center managed properties. These properties are managed by
-      # Security Command Center and cannot be modified by the user.
-      class GoogleCloudSecuritycenterV1p1beta1SecurityCenterProperties
-        include Google::Apis::Core::Hashable
-      
-        # The user defined display name for this resource.
-        # Corresponds to the JSON property `resourceDisplayName`
-        # @return [String]
-        attr_accessor :resource_display_name
-      
-        # The full resource name of the Google Cloud resource this asset represents.
-        # This field is immutable after create time. See: https://cloud.google.com/apis/
-        # design/resource_names#full_resource_name
-        # Corresponds to the JSON property `resourceName`
-        # @return [String]
-        attr_accessor :resource_name
-      
-        # Owners of the Google Cloud resource.
-        # Corresponds to the JSON property `resourceOwners`
-        # @return [Array<String>]
-        attr_accessor :resource_owners
-      
-        # The full resource name of the immediate parent of the resource. See: https://
-        # cloud.google.com/apis/design/resource_names#full_resource_name
-        # Corresponds to the JSON property `resourceParent`
-        # @return [String]
-        attr_accessor :resource_parent
-      
-        # The user defined display name for the parent of this resource.
-        # Corresponds to the JSON property `resourceParentDisplayName`
-        # @return [String]
-        attr_accessor :resource_parent_display_name
-      
-        # The full resource name of the project the resource belongs to. See: https://
-        # cloud.google.com/apis/design/resource_names#full_resource_name
-        # Corresponds to the JSON property `resourceProject`
-        # @return [String]
-        attr_accessor :resource_project
-      
-        # The user defined display name for the project of this resource.
-        # Corresponds to the JSON property `resourceProjectDisplayName`
-        # @return [String]
-        attr_accessor :resource_project_display_name
-      
-        # The type of the Google Cloud resource. Examples include: APPLICATION, PROJECT,
-        # and ORGANIZATION. This is a case insensitive field defined by Security Command
-        # Center and/or the producer of the resource and is immutable after create time.
-        # Corresponds to the JSON property `resourceType`
-        # @return [String]
-        attr_accessor :resource_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @resource_display_name = args[:resource_display_name] if args.key?(:resource_display_name)
-          @resource_name = args[:resource_name] if args.key?(:resource_name)
-          @resource_owners = args[:resource_owners] if args.key?(:resource_owners)
-          @resource_parent = args[:resource_parent] if args.key?(:resource_parent)
-          @resource_parent_display_name = args[:resource_parent_display_name] if args.key?(:resource_parent_display_name)
-          @resource_project = args[:resource_project] if args.key?(:resource_project)
-          @resource_project_display_name = args[:resource_project_display_name] if args.key?(:resource_project_display_name)
-          @resource_type = args[:resource_type] if args.key?(:resource_type)
-        end
-      end
-      
       # User specified security marks that are attached to the parent Security Command
       # Center resource. Security marks are scoped within a Security Command Center
       # organization -- they can be modified and viewed by all users who have proper
@@ -1005,36 +841,6 @@ module Google
         def update!(**args)
           @marks = args[:marks] if args.key?(:marks)
           @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # Wrapper over asset object that also captures the state change for the asset e.
-      # g. if it was a newly created asset vs updated or deleted asset.
-      class GoogleCloudSecuritycenterV1p1beta1TemporalAsset
-        include Google::Apis::Core::Hashable
-      
-        # Security Command Center representation of a Google Cloud resource. The Asset
-        # is a Security Command Center resource that captures information about a single
-        # Google Cloud resource. All modifications to an Asset are only within the
-        # context of Security Command Center and don't affect the referenced Google
-        # Cloud resource.
-        # Corresponds to the JSON property `asset`
-        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1p1beta1Asset]
-        attr_accessor :asset
-      
-        # Represents if the asset was created/updated/deleted.
-        # Corresponds to the JSON property `changeType`
-        # @return [String]
-        attr_accessor :change_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @asset = args[:asset] if args.key?(:asset)
-          @change_type = args[:change_type] if args.key?(:change_type)
         end
       end
       
@@ -1609,14 +1415,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The PubSub topic to send notifications to. Its format is "projects/[project_id]
-        # /topics/[topic]".
+        # The Pub/Sub topic to send notifications to. Its format is "projects/[
+        # project_id]/topics/[topic]".
         # Corresponds to the JSON property `pubsubTopic`
         # @return [String]
         attr_accessor :pubsub_topic
       
         # Output only. The service account that needs "pubsub.topics.publish" permission
-        # to publish to the PubSub topic.
+        # to publish to the Pub/Sub topic.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account

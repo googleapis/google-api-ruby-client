@@ -31,8 +31,8 @@ module Google
         # @return [String]
         attr_accessor :amp_url
       
-        # The [AMP Cache URL](/amp/cache/overview#amp-cache-url-format) pointing to
-        # the cached document in the Google AMP Cache.
+        # The [AMP Cache URL](/amp/cache/overview#amp-cache-url-format) pointing to the
+        # cached document in the Google AMP Cache.
         # Corresponds to the JSON property `cdnAmpUrl`
         # @return [String]
         attr_accessor :cdn_amp_url
@@ -94,9 +94,8 @@ module Google
         # @return [String]
         attr_accessor :lookup_strategy
       
-        # List of URLs to look up for the paired AMP URLs.
-        # The URLs are case-sensitive. Up to 50 URLs per lookup
-        # (see [Usage Limits](/amp/cache/reference/limits)).
+        # List of URLs to look up for the paired AMP URLs. The URLs are case-sensitive.
+        # Up to 50 URLs per lookup (see [Usage Limits](/amp/cache/reference/limits)).
         # Corresponds to the JSON property `urls`
         # @return [Array<String>]
         attr_accessor :urls
@@ -116,10 +115,9 @@ module Google
       class BatchGetAmpUrlsResponse
         include Google::Apis::Core::Hashable
       
-        # For each URL in BatchAmpUrlsRequest, the URL response. The response might
-        # not be in the same order as URLs in the batch request.
-        # If BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated
-        # only once.
+        # For each URL in BatchAmpUrlsRequest, the URL response. The response might not
+        # be in the same order as URLs in the batch request. If BatchAmpUrlsRequest
+        # contains duplicate URLs, AmpUrl is generated only once.
         # Corresponds to the JSON property `ampUrls`
         # @return [Array<Google::Apis::AcceleratedmobilepageurlV1::AmpUrl>]
         attr_accessor :amp_urls

@@ -26,7 +26,13 @@ module Google
     # @see https://developers.google.com/webmaster-tools/search-console-api/
     module SearchconsoleV1
       VERSION = 'V1'
-      REVISION = '20200803'
+      REVISION = '20200919'
+
+      # View and manage Search Console data for your verified sites
+      AUTH_WEBMASTERS = 'https://www.googleapis.com/auth/webmasters'
+
+      # View Search Console data for your verified sites
+      AUTH_WEBMASTERS_READONLY = 'https://www.googleapis.com/auth/webmasters.readonly'
     end
   end
 end
