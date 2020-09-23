@@ -1726,10 +1726,10 @@ module Google
         # @param [String] parent
         #   Required. The project to list of knowledge bases for. Format: `projects/`.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of items to return in a single page. By default
-        #   10 and at most 100.
+        #   The maximum number of items to return in a single page. By default 10 and at
+        #   most 100.
         # @param [String] page_token
-        #   Optional. The next_page_token value returned from a previous list request.
+        #   The next_page_token value returned from a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2615,10 +2615,10 @@ module Google
         # @param [String] parent
         #   Required. The project to list of knowledge bases for. Format: `projects/`.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of items to return in a single page. By default
-        #   10 and at most 100.
+        #   The maximum number of items to return in a single page. By default 10 and at
+        #   most 100.
         # @param [String] page_token
-        #   Optional. The next_page_token value returned from a previous list request.
+        #   The next_page_token value returned from a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

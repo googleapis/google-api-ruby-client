@@ -934,6 +934,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2RequestedRiskAnalysisOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2Result
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1212,6 +1218,8 @@ module Google
           property :l_diversity_result, as: 'lDiversityResult', class: Google::Apis::DlpV2::GooglePrivacyDlpV2LDiversityResult, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2LDiversityResult::Representation
       
           property :numerical_stats_result, as: 'numericalStatsResult', class: Google::Apis::DlpV2::GooglePrivacyDlpV2NumericalStatsResult, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2NumericalStatsResult::Representation
+      
+          property :requested_options, as: 'requestedOptions', class: Google::Apis::DlpV2::GooglePrivacyDlpV2RequestedRiskAnalysisOptions, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2RequestedRiskAnalysisOptions::Representation
       
           property :requested_privacy_metric, as: 'requestedPrivacyMetric', class: Google::Apis::DlpV2::GooglePrivacyDlpV2PrivacyMetric, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2PrivacyMetric::Representation
       
@@ -2734,6 +2742,14 @@ module Google
           property :job_config, as: 'jobConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectJobConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectJobConfig::Representation
       
           property :snapshot_inspect_template, as: 'snapshotInspectTemplate', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2RequestedRiskAnalysisOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :job_config, as: 'jobConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2RiskAnalysisJobConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2RiskAnalysisJobConfig::Representation
       
         end
       end

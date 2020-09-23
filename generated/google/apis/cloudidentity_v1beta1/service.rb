@@ -992,6 +992,44 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Check a potential member for membership in a group.
+        # @param [String] parent
+        #   [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+        #   group to check the transitive membership in. Format: `groups/`group_id``,
+        #   where `group_id` is the unique id assigned to the Group to which the
+        #   Membership belongs to.
+        # @param [String] query
+        #   Required. A CEL expression that MUST include member specification. This is a `
+        #   required` field. Example query: member_key_id == ‘member_key_id_value’ [ &&
+        #   member_key_namespace == ‘member_key_namespace_value’ ]
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1beta1::CheckTransitiveMembershipResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1beta1::CheckTransitiveMembershipResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def check_group_membership_transitive_membership(parent, query: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/memberships:checkTransitiveMembership', options)
+          command.response_representation = Google::Apis::CloudidentityV1beta1::CheckTransitiveMembershipResponse::Representation
+          command.response_class = Google::Apis::CloudidentityV1beta1::CheckTransitiveMembershipResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['query'] = query unless query.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a `Membership`.
         # @param [String] parent
         #   Required. The parent `Group` resource under which to create the `Membership`.
@@ -1085,6 +1123,48 @@ module Google
           command.response_representation = Google::Apis::CloudidentityV1beta1::Membership::Representation
           command.response_class = Google::Apis::CloudidentityV1beta1::Membership
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a membership graph of a member or member/group.
+        # @param [String] parent
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the group to search transitive memberships in. Format: `groups/`group_id``,
+        #   where `group_id` is the unique ID assigned to the Group to which the
+        #   Membership belongs to. group_id can be a wildcard collection id "-". When a
+        #   group_id is specified, the membership graph will be constrained to paths
+        #   between the member (defined in the query) and the parent. If a wildcard
+        #   collection is provided, all membership paths connected to the member will be
+        #   returned.
+        # @param [String] query
+        #   Required. A CEL expression that MUST include member specification AND label(s).
+        #   Example query: member_key_id == ‘member_key_id_value’ [ &&
+        #   member_key_namespace == ‘member_key_namespace_value’ ] && in labels
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_group_membership_membership_graph(parent, query: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/memberships:getMembershipGraph', options)
+          command.response_representation = Google::Apis::CloudidentityV1beta1::Operation::Representation
+          command.response_class = Google::Apis::CloudidentityV1beta1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['query'] = query unless query.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1211,6 +1291,90 @@ module Google
           command.response_representation = Google::Apis::CloudidentityV1beta1::ModifyMembershipRolesResponse::Representation
           command.response_class = Google::Apis::CloudidentityV1beta1::ModifyMembershipRolesResponse
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Search transitive groups of a member.
+        # @param [String] parent
+        #   [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+        #   group to search transitive memberships in. Format: `groups/`group_id``, where `
+        #   group_id` is always '-' as this API will search across all groups for a given
+        #   member.
+        # @param [Fixnum] page_size
+        #   The default page size is 200 (max 1000).
+        # @param [String] page_token
+        #   The next_page_token value returned from a previous list request, if any.
+        # @param [String] query
+        #   Required. A CEL expression that MUST include member specification AND label(s).
+        #   This is a `required` field. Users can search on label attributes of groups.
+        #   CONTAINS match ('in') is supported on labels. Example query: member_key_id == ‘
+        #   member_key_id_value’ [ && member_key_namespace == ‘member_key_namespace_value’
+        #   ] && in labels
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1beta1::SearchTransitiveGroupsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1beta1::SearchTransitiveGroupsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_group_membership_transitive_groups(parent, page_size: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/memberships:searchTransitiveGroups', options)
+          command.response_representation = Google::Apis::CloudidentityV1beta1::SearchTransitiveGroupsResponse::Representation
+          command.response_class = Google::Apis::CloudidentityV1beta1::SearchTransitiveGroupsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['query'] = query unless query.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Search transitive memberships of a group.
+        # @param [String] parent
+        #   [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+        #   group to search transitive memberships in. Format: `groups/`group_id``, where `
+        #   group_id` is the unique ID assigned to the Group.
+        # @param [Fixnum] page_size
+        #   The default page size is 200 (max 1000).
+        # @param [String] page_token
+        #   The next_page_token value returned from a previous list request, if any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1beta1::SearchTransitiveMembershipsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1beta1::SearchTransitiveMembershipsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_group_membership_transitive_memberships(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/memberships:searchTransitiveMemberships', options)
+          command.response_representation = Google::Apis::CloudidentityV1beta1::SearchTransitiveMembershipsResponse::Representation
+          command.response_class = Google::Apis::CloudidentityV1beta1::SearchTransitiveMembershipsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

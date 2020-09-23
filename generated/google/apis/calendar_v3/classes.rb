@@ -1044,7 +1044,8 @@ module Google
         attr_accessor :attachments
       
         # The attendees of the event. See the Events with attendees guide for more
-        # information on scheduling events with other calendar users.
+        # information on scheduling events with other calendar users. Service accounts
+        # need to use domain-wide delegation of authority to populate the attendee list.
         # Corresponds to the JSON property `attendees`
         # @return [Array<Google::Apis::CalendarV3::EventAttendee>]
         attr_accessor :attendees

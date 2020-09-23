@@ -856,18 +856,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class MediaRequestInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class MediaResponseInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Metric
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3011,10 +2999,6 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :last_modified_time, :numeric_string => true, as: 'lastModifiedTime'
-          property :media_request_info, as: 'mediaRequestInfo', class: Google::Apis::DfareportingV3_4::MediaRequestInfo, decorator: Google::Apis::DfareportingV3_4::MediaRequestInfo::Representation
-      
-          property :media_response_info, as: 'mediaResponseInfo', class: Google::Apis::DfareportingV3_4::MediaResponseInfo, decorator: Google::Apis::DfareportingV3_4::MediaResponseInfo::Representation
-      
           property :report_id, :numeric_string => true, as: 'reportId'
           property :status, as: 'status'
           property :urls, as: 'urls', class: Google::Apis::DfareportingV3_4::File::Urls, decorator: Google::Apis::DfareportingV3_4::File::Urls::Representation
@@ -3394,32 +3378,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :click_duration, as: 'clickDuration'
           property :post_impression_activities_duration, as: 'postImpressionActivitiesDuration'
-        end
-      end
-      
-      class MediaRequestInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :current_bytes, :numeric_string => true, as: 'currentBytes'
-          property :custom_data, as: 'customData'
-          property :diff_object_version, as: 'diffObjectVersion'
-          property :notification_type, as: 'notificationType'
-          property :request_id, as: 'requestId'
-          property :total_bytes, :numeric_string => true, as: 'totalBytes'
-          property :total_bytes_is_estimated, as: 'totalBytesIsEstimated'
-        end
-      end
-      
-      class MediaResponseInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :custom_data, as: 'customData'
-          property :data_storage_transform, :base64 => true, as: 'dataStorageTransform'
-          property :dynamic_drop_target, :base64 => true, as: 'dynamicDropTarget'
-          property :dynamic_dropzone, as: 'dynamicDropzone'
-          property :request_class, as: 'requestClass'
-          property :traffic_class_field, as: 'trafficClassField'
-          property :verify_hash_from_header, as: 'verifyHashFromHeader'
         end
       end
       

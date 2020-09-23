@@ -1139,13 +1139,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :remove_roles
       
-        # The `MembershipRole`s to be updated. Updating roles in the same request as
-        # adding or removing roles is not supported. Must not be set if either `
-        # add_roles` or `remove_roles` is set.
-        # Corresponds to the JSON property `updateRolesParams`
-        # @return [Array<Google::Apis::CloudidentityV1::UpdateMembershipRolesParams>]
-        attr_accessor :update_roles_params
-      
         def initialize(**args)
            update!(**args)
         end
@@ -1154,7 +1147,6 @@ module Google
         def update!(**args)
           @add_roles = args[:add_roles] if args.key?(:add_roles)
           @remove_roles = args[:remove_roles] if args.key?(:remove_roles)
-          @update_roles_params = args[:update_roles_params] if args.key?(:update_roles_params)
         end
       end
       
@@ -1301,32 +1293,6 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
-        end
-      end
-      
-      # The details of an update to a `MembershipRole`.
-      class UpdateMembershipRolesParams
-        include Google::Apis::Core::Hashable
-      
-        # The fully-qualified names of fields to update. May only contain the field `
-        # expiry_detail`.
-        # Corresponds to the JSON property `fieldMask`
-        # @return [String]
-        attr_accessor :field_mask
-      
-        # Resource representing a role within a Membership.
-        # Corresponds to the JSON property `membershipRole`
-        # @return [Google::Apis::CloudidentityV1::MembershipRole]
-        attr_accessor :membership_role
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @field_mask = args[:field_mask] if args.key?(:field_mask)
-          @membership_role = args[:membership_role] if args.key?(:membership_role)
         end
       end
     end

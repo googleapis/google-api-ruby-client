@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/healthcare
     module HealthcareV1
       VERSION = 'V1'
-      REVISION = '20200909'
+      REVISION = '20200917'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

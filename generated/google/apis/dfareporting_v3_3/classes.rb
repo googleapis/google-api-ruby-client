@@ -5523,23 +5523,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :last_modified_time
       
-        # Extra information added to operations that support Scotty media requests.
-        # Corresponds to the JSON property `mediaRequestInfo`
-        # @return [Google::Apis::DfareportingV3_3::MediaRequestInfo]
-        attr_accessor :media_request_info
-      
-        # This message is for backends to pass their scotty media specific fields to ESF.
-        # Backend will include this in their response message to ESF. Example:
-        # ExportFile is an rpc defined for upload using scotty from ESF. rpc ExportFile(
-        # ExportFileRequest) returns (ExportFileResponse) Message ExportFileResponse
-        # will include apiserving.MediaResponseInfo to tell ESF about data like
-        # dynamic_dropzone it needs to pass to Scotty. message ExportFileResponse `
-        # optional gdata.Media blob = 1; optional apiserving.MediaResponseInfo
-        # media_response_info = 2 `
-        # Corresponds to the JSON property `mediaResponseInfo`
-        # @return [Google::Apis::DfareportingV3_3::MediaResponseInfo]
-        attr_accessor :media_response_info
-      
         # The ID of the report this file was generated from.
         # Corresponds to the JSON property `reportId`
         # @return [Fixnum]
@@ -5568,8 +5551,6 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
-          @media_request_info = args[:media_request_info] if args.key?(:media_request_info)
-          @media_response_info = args[:media_response_info] if args.key?(:media_response_info)
           @report_id = args[:report_id] if args.key?(:report_id)
           @status = args[:status] if args.key?(:status)
           @urls = args[:urls] if args.key?(:urls)
@@ -7042,151 +7023,6 @@ module Google
         def update!(**args)
           @click_duration = args[:click_duration] if args.key?(:click_duration)
           @post_impression_activities_duration = args[:post_impression_activities_duration] if args.key?(:post_impression_activities_duration)
-        end
-      end
-      
-      # Extra information added to operations that support Scotty media requests.
-      class MediaRequestInfo
-        include Google::Apis::Core::Hashable
-      
-        # The number of current bytes uploaded or downloaded.
-        # Corresponds to the JSON property `currentBytes`
-        # @return [Fixnum]
-        attr_accessor :current_bytes
-      
-        # Data to be copied to backend requests. Custom data is returned to Scotty in
-        # the agent_state field, which Scotty will then provide in subsequent upload
-        # notifications.
-        # Corresponds to the JSON property `customData`
-        # @return [String]
-        attr_accessor :custom_data
-      
-        # Set if the http request info is diff encoded. The value of this field is the
-        # version number of the base revision. This is corresponding to Apiary's
-        # mediaDiffObjectVersion (//depot/google3/java/com/google/api/server/media/
-        # variable/DiffObjectVersionVariable.java). See go/esf-scotty-diff-upload for
-        # more information.
-        # Corresponds to the JSON property `diffObjectVersion`
-        # @return [String]
-        attr_accessor :diff_object_version
-      
-        # The type of notification received from Scotty.
-        # Corresponds to the JSON property `notificationType`
-        # @return [String]
-        attr_accessor :notification_type
-      
-        # The Scotty request ID.
-        # Corresponds to the JSON property `requestId`
-        # @return [String]
-        attr_accessor :request_id
-      
-        # The total size of the file.
-        # Corresponds to the JSON property `totalBytes`
-        # @return [Fixnum]
-        attr_accessor :total_bytes
-      
-        # Whether the total bytes field contains an estimated data.
-        # Corresponds to the JSON property `totalBytesIsEstimated`
-        # @return [Boolean]
-        attr_accessor :total_bytes_is_estimated
-        alias_method :total_bytes_is_estimated?, :total_bytes_is_estimated
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @current_bytes = args[:current_bytes] if args.key?(:current_bytes)
-          @custom_data = args[:custom_data] if args.key?(:custom_data)
-          @diff_object_version = args[:diff_object_version] if args.key?(:diff_object_version)
-          @notification_type = args[:notification_type] if args.key?(:notification_type)
-          @request_id = args[:request_id] if args.key?(:request_id)
-          @total_bytes = args[:total_bytes] if args.key?(:total_bytes)
-          @total_bytes_is_estimated = args[:total_bytes_is_estimated] if args.key?(:total_bytes_is_estimated)
-        end
-      end
-      
-      # This message is for backends to pass their scotty media specific fields to ESF.
-      # Backend will include this in their response message to ESF. Example:
-      # ExportFile is an rpc defined for upload using scotty from ESF. rpc ExportFile(
-      # ExportFileRequest) returns (ExportFileResponse) Message ExportFileResponse
-      # will include apiserving.MediaResponseInfo to tell ESF about data like
-      # dynamic_dropzone it needs to pass to Scotty. message ExportFileResponse `
-      # optional gdata.Media blob = 1; optional apiserving.MediaResponseInfo
-      # media_response_info = 2 `
-      class MediaResponseInfo
-        include Google::Apis::Core::Hashable
-      
-        # Data to copy from backend response to the next backend requests. Custom data
-        # is returned to Scotty in the agent_state field, which Scotty will then provide
-        # in subsequent upload notifications.
-        # Corresponds to the JSON property `customData`
-        # @return [String]
-        attr_accessor :custom_data
-      
-        # Specifies any transformation to be applied to data before persisting it or
-        # retrieving from storage. E.g., encryption options for blobstore2. This should
-        # be of the form uploader_service.DataStorageTransform.
-        # Corresponds to the JSON property `dataStorageTransform`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :data_storage_transform
-      
-        # Specifies the Scotty Drop Target to use for uploads. If present in a media
-        # response, Scotty does not upload to a standard drop zone. Instead, Scotty
-        # saves the upload directly to the location specified in this drop target.
-        # Unlike drop zones, the drop target is the final storage location for an upload.
-        # So, the agent does not need to clone the blob at the end of the upload. The
-        # agent is responsible for garbage collecting any orphaned blobs that may occur
-        # due to aborted uploads. For more information, see the drop target design doc
-        # here: http://goto/ScottyDropTarget This field will be preferred to
-        # dynamicDropzone. If provided, the identified field in the response must be of
-        # the type uploader.agent.DropTarget.
-        # Corresponds to the JSON property `dynamicDropTarget`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :dynamic_drop_target
-      
-        # Specifies the Scotty dropzone to use for uploads.
-        # Corresponds to the JSON property `dynamicDropzone`
-        # @return [String]
-        attr_accessor :dynamic_dropzone
-      
-        # Request class to use for all Blobstore operations for this request.
-        # Corresponds to the JSON property `requestClass`
-        # @return [String]
-        attr_accessor :request_class
-      
-        # Specifies the TrafficClass that Scotty should use for any RPCs to fetch the
-        # response bytes. Will override the traffic class GTOS of the incoming http
-        # request. This is a temporary field to facilitate whitelisting and
-        # experimentation by the bigstore agent only. For instance, this does not apply
-        # to RTMP reads. WARNING: DO NOT USE WITHOUT PERMISSION FROM THE SCOTTY TEAM.
-        # Corresponds to the JSON property `trafficClassField`
-        # @return [String]
-        attr_accessor :traffic_class_field
-      
-        # Tells Scotty to verify hashes on the agent's behalf by parsing out the X-Goog-
-        # Hash header.
-        # Corresponds to the JSON property `verifyHashFromHeader`
-        # @return [Boolean]
-        attr_accessor :verify_hash_from_header
-        alias_method :verify_hash_from_header?, :verify_hash_from_header
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @custom_data = args[:custom_data] if args.key?(:custom_data)
-          @data_storage_transform = args[:data_storage_transform] if args.key?(:data_storage_transform)
-          @dynamic_drop_target = args[:dynamic_drop_target] if args.key?(:dynamic_drop_target)
-          @dynamic_dropzone = args[:dynamic_dropzone] if args.key?(:dynamic_dropzone)
-          @request_class = args[:request_class] if args.key?(:request_class)
-          @traffic_class_field = args[:traffic_class_field] if args.key?(:traffic_class_field)
-          @verify_hash_from_header = args[:verify_hash_from_header] if args.key?(:verify_hash_from_header)
         end
       end
       

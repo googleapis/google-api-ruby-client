@@ -22,6 +22,12 @@ module Google
   module Apis
     module HealthcareV1beta1
       
+      class ActivateConsentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Annotation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -41,6 +47,30 @@ module Google
       end
       
       class AnnotationStore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ArchiveUserDataMappingRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ArchiveUserDataMappingResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Attribute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AttributeDefinition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -82,7 +112,49 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CheckDataAccessRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CheckDataAccessResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudHealthcareSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Consent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConsentArtifact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConsentEvaluation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConsentList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConsentStore
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -196,6 +268,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EvaluateUserConsentsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EvaluateUserConsentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExportAnnotationsErrorDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -299,6 +383,18 @@ module Google
       end
       
       class GoogleCloudHealthcareV1beta1AnnotationGcsSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudHealthcareV1beta1ConsentGcsDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudHealthcareV1beta1ConsentPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -418,6 +514,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Image
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImageAnnotation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -520,6 +622,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAttributeDefinitionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListConsentArtifactsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListConsentRevisionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListConsentStoresResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListConsentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDatasetsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -557,6 +689,12 @@ module Google
       end
       
       class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListUserDataMappingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -622,7 +760,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QueryAccessibleDataRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RedactConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RejectConsentRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -641,6 +791,18 @@ module Google
       end
       
       class Resources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Result
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RevokeConsentRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -700,6 +862,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Signature
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -742,6 +910,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserDataMapping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VersionSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -752,6 +926,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ActivateConsentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consent_artifact, as: 'consentArtifact'
+          property :expire_time, as: 'expireTime'
+          property :ttl, as: 'ttl'
+        end
       end
       
       class Annotation
@@ -790,6 +973,38 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :labels, as: 'labels'
+          property :name, as: 'name'
+        end
+      end
+      
+      class ArchiveUserDataMappingRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ArchiveUserDataMappingResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Attribute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribute_definition_id, as: 'attributeDefinitionId'
+          collection :values, as: 'values'
+        end
+      end
+      
+      class AttributeDefinition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_values, as: 'allowedValues'
+          property :category, as: 'category'
+          collection :consent_default_values, as: 'consentDefaultValues'
+          property :data_mapping_default_value, as: 'dataMappingDefaultValue'
+          property :description, as: 'description'
           property :name, as: 'name'
         end
       end
@@ -843,9 +1058,87 @@ module Google
         end
       end
       
+      class CheckDataAccessRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consent_list, as: 'consentList', class: Google::Apis::HealthcareV1beta1::ConsentList, decorator: Google::Apis::HealthcareV1beta1::ConsentList::Representation
+      
+          property :data_id, as: 'dataId'
+          hash :request_attributes, as: 'requestAttributes'
+          property :response_view, as: 'responseView'
+        end
+      end
+      
+      class CheckDataAccessResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :consent_details, as: 'consentDetails', class: Google::Apis::HealthcareV1beta1::ConsentEvaluation, decorator: Google::Apis::HealthcareV1beta1::ConsentEvaluation::Representation
+      
+          property :consented, as: 'consented'
+        end
+      end
+      
       class CloudHealthcareSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class Consent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consent_artifact, as: 'consentArtifact'
+          property :expire_time, as: 'expireTime'
+          property :name, as: 'name'
+          collection :policies, as: 'policies', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1ConsentPolicy, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1ConsentPolicy::Representation
+      
+          property :revision_create_time, as: 'revisionCreateTime'
+          property :revision_id, as: 'revisionId'
+          property :state, as: 'state'
+          property :ttl, as: 'ttl'
+          property :user_id, as: 'userId'
+        end
+      end
+      
+      class ConsentArtifact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :consent_content_screenshots, as: 'consentContentScreenshots', class: Google::Apis::HealthcareV1beta1::Image, decorator: Google::Apis::HealthcareV1beta1::Image::Representation
+      
+          property :consent_content_version, as: 'consentContentVersion'
+          property :guardian_signature, as: 'guardianSignature', class: Google::Apis::HealthcareV1beta1::Signature, decorator: Google::Apis::HealthcareV1beta1::Signature::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          property :user_id, as: 'userId'
+          property :user_signature, as: 'userSignature', class: Google::Apis::HealthcareV1beta1::Signature, decorator: Google::Apis::HealthcareV1beta1::Signature::Representation
+      
+          property :witness_signature, as: 'witnessSignature', class: Google::Apis::HealthcareV1beta1::Signature, decorator: Google::Apis::HealthcareV1beta1::Signature::Representation
+      
+        end
+      end
+      
+      class ConsentEvaluation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :evaluation_result, as: 'evaluationResult'
+        end
+      end
+      
+      class ConsentList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :consents, as: 'consents'
+        end
+      end
+      
+      class ConsentStore
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_consent_ttl, as: 'defaultConsentTtl'
+          property :enable_consent_create_on_update, as: 'enableConsentCreateOnUpdate'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
         end
       end
@@ -1024,6 +1317,29 @@ module Google
         end
       end
       
+      class EvaluateUserConsentsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consent_list, as: 'consentList', class: Google::Apis::HealthcareV1beta1::ConsentList, decorator: Google::Apis::HealthcareV1beta1::ConsentList::Representation
+      
+          property :page_size, as: 'pageSize'
+          property :page_token, as: 'pageToken'
+          hash :request_attributes, as: 'requestAttributes'
+          hash :resource_attributes, as: 'resourceAttributes'
+          property :response_view, as: 'responseView'
+          property :user_id, as: 'userId'
+        end
+      end
+      
+      class EvaluateUserConsentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :results, as: 'results', class: Google::Apis::HealthcareV1beta1::Result, decorator: Google::Apis::HealthcareV1beta1::Result::Representation
+      
+        end
+      end
+      
       class ExportAnnotationsErrorDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1184,6 +1500,23 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudHealthcareV1beta1ConsentGcsDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri_prefix, as: 'uriPrefix'
+        end
+      end
+      
+      class GoogleCloudHealthcareV1beta1ConsentPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorization_rule, as: 'authorizationRule', class: Google::Apis::HealthcareV1beta1::Expr, decorator: Google::Apis::HealthcareV1beta1::Expr::Representation
+      
+          collection :resource_attributes, as: 'resourceAttributes', class: Google::Apis::HealthcareV1beta1::Attribute, decorator: Google::Apis::HealthcareV1beta1::Attribute::Representation
+      
         end
       end
       
@@ -1355,6 +1688,14 @@ module Google
         end
       end
       
+      class Image
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_uri, as: 'gcsUri'
+          property :raw_bytes, :base64 => true, as: 'rawBytes'
+        end
+      end
+      
       class ImageAnnotation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1505,6 +1846,51 @@ module Google
         end
       end
       
+      class ListAttributeDefinitionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attribute_definitions, as: 'attributeDefinitions', class: Google::Apis::HealthcareV1beta1::AttributeDefinition, decorator: Google::Apis::HealthcareV1beta1::AttributeDefinition::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListConsentArtifactsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :consent_artifacts, as: 'consentArtifacts', class: Google::Apis::HealthcareV1beta1::ConsentArtifact, decorator: Google::Apis::HealthcareV1beta1::ConsentArtifact::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListConsentRevisionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :consents, as: 'consents', class: Google::Apis::HealthcareV1beta1::Consent, decorator: Google::Apis::HealthcareV1beta1::Consent::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListConsentStoresResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :consent_stores, as: 'consentStores', class: Google::Apis::HealthcareV1beta1::ConsentStore, decorator: Google::Apis::HealthcareV1beta1::ConsentStore::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListConsentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :consents, as: 'consents', class: Google::Apis::HealthcareV1beta1::Consent, decorator: Google::Apis::HealthcareV1beta1::Consent::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListDatasetsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1564,6 +1950,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::HealthcareV1beta1::Operation, decorator: Google::Apis::HealthcareV1beta1::Operation::Representation
+      
+        end
+      end
+      
+      class ListUserDataMappingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :user_data_mappings, as: 'userDataMappings', class: Google::Apis::HealthcareV1beta1::UserDataMapping, decorator: Google::Apis::HealthcareV1beta1::UserDataMapping::Representation
       
         end
       end
@@ -1678,9 +2073,26 @@ module Google
         end
       end
       
+      class QueryAccessibleDataRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1ConsentGcsDestination, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1ConsentGcsDestination::Representation
+      
+          hash :request_attributes, as: 'requestAttributes'
+          hash :resource_attributes, as: 'resourceAttributes'
+        end
+      end
+      
       class RedactConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RejectConsentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consent_artifact, as: 'consentArtifact'
         end
       end
       
@@ -1701,6 +2113,23 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :resources, as: 'resources'
+        end
+      end
+      
+      class Result
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :consent_details, as: 'consentDetails', class: Google::Apis::HealthcareV1beta1::ConsentEvaluation, decorator: Google::Apis::HealthcareV1beta1::ConsentEvaluation::Representation
+      
+          property :consented, as: 'consented'
+          property :data_id, as: 'dataId'
+        end
+      end
+      
+      class RevokeConsentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consent_artifact, as: 'consentArtifact'
         end
       end
       
@@ -1787,6 +2216,17 @@ module Google
         end
       end
       
+      class Signature
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image, as: 'image', class: Google::Apis::HealthcareV1beta1::Image, decorator: Google::Apis::HealthcareV1beta1::Image::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :signature_time, as: 'signatureTime'
+          property :user_id, as: 'userId'
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1841,6 +2281,19 @@ module Google
       
           property :name, as: 'name'
           property :primitive, as: 'primitive'
+        end
+      end
+      
+      class UserDataMapping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :archive_time, as: 'archiveTime'
+          property :archived, as: 'archived'
+          property :data_id, as: 'dataId'
+          property :name, as: 'name'
+          collection :resource_attributes, as: 'resourceAttributes', class: Google::Apis::HealthcareV1beta1::Attribute, decorator: Google::Apis::HealthcareV1beta1::Attribute::Representation
+      
+          property :user_id, as: 'userId'
         end
       end
       

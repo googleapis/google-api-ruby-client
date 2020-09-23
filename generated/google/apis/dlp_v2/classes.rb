@@ -144,6 +144,11 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2NumericalStatsResult]
         attr_accessor :numerical_stats_result
       
+        # Risk analysis options.
+        # Corresponds to the JSON property `requestedOptions`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2RequestedRiskAnalysisOptions]
+        attr_accessor :requested_options
+      
         # Privacy metric to compute for reidentification risk analysis.
         # Corresponds to the JSON property `requestedPrivacyMetric`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PrivacyMetric]
@@ -168,6 +173,7 @@ module Google
           @k_map_estimation_result = args[:k_map_estimation_result] if args.key?(:k_map_estimation_result)
           @l_diversity_result = args[:l_diversity_result] if args.key?(:l_diversity_result)
           @numerical_stats_result = args[:numerical_stats_result] if args.key?(:numerical_stats_result)
+          @requested_options = args[:requested_options] if args.key?(:requested_options)
           @requested_privacy_metric = args[:requested_privacy_metric] if args.key?(:requested_privacy_metric)
           @requested_source_table = args[:requested_source_table] if args.key?(:requested_source_table)
         end
@@ -5291,6 +5297,26 @@ module Google
         def update!(**args)
           @job_config = args[:job_config] if args.key?(:job_config)
           @snapshot_inspect_template = args[:snapshot_inspect_template] if args.key?(:snapshot_inspect_template)
+        end
+      end
+      
+      # Risk analysis options.
+      class GooglePrivacyDlpV2RequestedRiskAnalysisOptions
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for a risk analysis job. See https://cloud.google.com/dlp/docs/
+        # concepts-risk-analysis to learn more.
+        # Corresponds to the JSON property `jobConfig`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2RiskAnalysisJobConfig]
+        attr_accessor :job_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @job_config = args[:job_config] if args.key?(:job_config)
         end
       end
       

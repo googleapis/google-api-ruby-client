@@ -367,7 +367,9 @@ module Google
         # @param [String] parent
         #   The parent resource where this build will be created. Format: `projects/`
         #   project`/locations/`location``
-        # @param [Google::Apis::CloudbuildV1::CreateBuildRequest] create_build_request_object
+        # @param [Google::Apis::CloudbuildV1::Build] build_object
+        # @param [String] project_id
+        #   Required. ID of the project.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -385,13 +387,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_build(parent, create_build_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_build(parent, build_object = nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/builds', options)
-          command.request_representation = Google::Apis::CloudbuildV1::CreateBuildRequest::Representation
-          command.request_object = create_build_request_object
+          command.request_representation = Google::Apis::CloudbuildV1::Build::Representation
+          command.request_object = build_object
           command.response_representation = Google::Apis::CloudbuildV1::Operation::Representation
           command.response_class = Google::Apis::CloudbuildV1::Operation
           command.params['parent'] = parent unless parent.nil?
+          command.query['projectId'] = project_id unless project_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1EventInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1ExportAgentRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -407,6 +413,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1RestoreAgentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1SentimentAnalysisResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1240,7 +1252,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV3alpha1ExportTestCasesMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV3alpha1ExportTestCasesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV3alpha1ImportAgentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV3alpha1ImportTestCasesMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV3alpha1ImportTestCasesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1391,6 +1427,13 @@ module Google
           property :target_page, as: 'targetPage'
           property :trigger_fulfillment, as: 'triggerFulfillment', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Fulfillment, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Fulfillment::Representation
       
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1EventInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event, as: 'event'
         end
       end
       
@@ -1808,6 +1851,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio, as: 'audio', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AudioInput, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AudioInput::Representation
       
+          property :event, as: 'event', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1EventInput, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1EventInput::Representation
+      
           property :intent, as: 'intent', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1IntentInput, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1IntentInput::Representation
       
           property :language_code, as: 'languageCode'
@@ -1819,6 +1864,7 @@ module Google
       class GoogleCloudDialogflowCxV3beta1QueryParameters
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :analyze_query_text_sentiment, as: 'analyzeQueryTextSentiment'
           property :geo_location, as: 'geoLocation', class: Google::Apis::DialogflowV3beta1::GoogleTypeLatLng, decorator: Google::Apis::DialogflowV3beta1::GoogleTypeLatLng::Representation
       
           hash :parameters, as: 'parameters'
@@ -1843,6 +1889,8 @@ module Google
       
           hash :parameters, as: 'parameters'
           collection :response_messages, as: 'responseMessages', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessage, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessage::Representation
+      
+          property :sentiment_analysis_result, as: 'sentimentAnalysisResult', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SentimentAnalysisResult, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SentimentAnalysisResult::Representation
       
           property :text, as: 'text'
           property :transcript, as: 'transcript'
@@ -1942,6 +1990,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_content, :base64 => true, as: 'agentContent'
           property :agent_uri, as: 'agentUri'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1SentimentAnalysisResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :magnitude, as: 'magnitude'
+          property :score, as: 'score'
         end
       end
       
@@ -3406,10 +3462,37 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV3alpha1ExportTestCasesMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDialogflowV3alpha1ExportTestCasesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, :base64 => true, as: 'content'
+          property :gcs_uri, as: 'gcsUri'
+        end
+      end
+      
       class GoogleCloudDialogflowV3alpha1ImportAgentResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent, as: 'agent'
+        end
+      end
+      
+      class GoogleCloudDialogflowV3alpha1ImportTestCasesMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDialogflowV3alpha1ImportTestCasesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :names, as: 'names'
         end
       end
       

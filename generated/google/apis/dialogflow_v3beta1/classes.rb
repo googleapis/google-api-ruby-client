@@ -499,6 +499,25 @@ module Google
         end
       end
       
+      # Represents the event to trigger.
+      class GoogleCloudDialogflowCxV3beta1EventInput
+        include Google::Apis::Core::Hashable
+      
+        # Name of the event.
+        # Corresponds to the JSON property `event`
+        # @return [String]
+        attr_accessor :event
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event = args[:event] if args.key?(:event)
+        end
+      end
+      
       # The request message for Agents.ExportAgent.
       class GoogleCloudDialogflowCxV3beta1ExportAgentRequest
         include Google::Apis::Core::Hashable
@@ -2032,6 +2051,11 @@ module Google
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AudioInput]
         attr_accessor :audio
       
+        # Represents the event to trigger.
+        # Corresponds to the JSON property `event`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1EventInput]
+        attr_accessor :event
+      
         # Represents the intent to trigger programmatically rather than as a result of
         # natural language processing.
         # Corresponds to the JSON property `intent`
@@ -2058,6 +2082,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audio = args[:audio] if args.key?(:audio)
+          @event = args[:event] if args.key?(:event)
           @intent = args[:intent] if args.key?(:intent)
           @language_code = args[:language_code] if args.key?(:language_code)
           @text = args[:text] if args.key?(:text)
@@ -2067,6 +2092,13 @@ module Google
       # Represents the parameters of a conversational query.
       class GoogleCloudDialogflowCxV3beta1QueryParameters
         include Google::Apis::Core::Hashable
+      
+        # Configures whether sentiment analysis should be performed. If not provided,
+        # sentiment analysis is not performed.
+        # Corresponds to the JSON property `analyzeQueryTextSentiment`
+        # @return [Boolean]
+        attr_accessor :analyze_query_text_sentiment
+        alias_method :analyze_query_text_sentiment?, :analyze_query_text_sentiment
       
         # An object representing a latitude/longitude pair. This is expressed as a pair
         # of doubles representing degrees latitude and degrees longitude. Unless
@@ -2115,6 +2147,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @analyze_query_text_sentiment = args[:analyze_query_text_sentiment] if args.key?(:analyze_query_text_sentiment)
           @geo_location = args[:geo_location] if args.key?(:geo_location)
           @parameters = args[:parameters] if args.key?(:parameters)
           @payload = args[:payload] if args.key?(:payload)
@@ -2199,6 +2232,13 @@ module Google
         # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessage>]
         attr_accessor :response_messages
       
+        # The result of sentiment analysis. Sentiment analysis inspects user input and
+        # identifies the prevailing subjective opinion, especially to determine a user's
+        # attitude as positive, negative, or neutral.
+        # Corresponds to the JSON property `sentimentAnalysisResult`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SentimentAnalysisResult]
+        attr_accessor :sentiment_analysis_result
+      
         # If natural language text was provided as input, this field will contain a copy
         # of the text.
         # Corresponds to the JSON property `text`
@@ -2249,6 +2289,7 @@ module Google
           @match = args[:match] if args.key?(:match)
           @parameters = args[:parameters] if args.key?(:parameters)
           @response_messages = args[:response_messages] if args.key?(:response_messages)
+          @sentiment_analysis_result = args[:sentiment_analysis_result] if args.key?(:sentiment_analysis_result)
           @text = args[:text] if args.key?(:text)
           @transcript = args[:transcript] if args.key?(:transcript)
           @trigger_event = args[:trigger_event] if args.key?(:trigger_event)
@@ -2588,6 +2629,34 @@ module Google
         def update!(**args)
           @agent_content = args[:agent_content] if args.key?(:agent_content)
           @agent_uri = args[:agent_uri] if args.key?(:agent_uri)
+        end
+      end
+      
+      # The result of sentiment analysis. Sentiment analysis inspects user input and
+      # identifies the prevailing subjective opinion, especially to determine a user's
+      # attitude as positive, negative, or neutral.
+      class GoogleCloudDialogflowCxV3beta1SentimentAnalysisResult
+        include Google::Apis::Core::Hashable
+      
+        # A non-negative number in the [0, +inf) range, which represents the absolute
+        # magnitude of sentiment, regardless of score (positive or negative).
+        # Corresponds to the JSON property `magnitude`
+        # @return [Float]
+        attr_accessor :magnitude
+      
+        # Sentiment score between -1.0 (negative sentiment) and 1.0 (positive sentiment).
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @magnitude = args[:magnitude] if args.key?(:magnitude)
+          @score = args[:score] if args.key?(:score)
         end
       end
       
@@ -8016,6 +8085,46 @@ module Google
         end
       end
       
+      # Metadata returned for the TestCases.ExportTestCases long running operation.
+      class GoogleCloudDialogflowV3alpha1ExportTestCasesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response message for TestCases.ExportTestCases.
+      class GoogleCloudDialogflowV3alpha1ExportTestCasesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Uncompressed raw byte content for test cases.
+        # Corresponds to the JSON property `content`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :content
+      
+        # The URI to a file containing the exported test cases. This field is populated
+        # only if `gcs_uri` is specified in ExportTestCasesRequest.
+        # Corresponds to the JSON property `gcsUri`
+        # @return [String]
+        attr_accessor :gcs_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+        end
+      end
+      
       # The response message for Agents.ImportAgent.
       class GoogleCloudDialogflowV3alpha1ImportAgentResponse
         include Google::Apis::Core::Hashable
@@ -8032,6 +8141,39 @@ module Google
         # Update properties of this object
         def update!(**args)
           @agent = args[:agent] if args.key?(:agent)
+        end
+      end
+      
+      # Metadata returned for the TestCases.ImportTestCases long running operation.
+      class GoogleCloudDialogflowV3alpha1ImportTestCasesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response message for TestCases.ImportTestCases.
+      class GoogleCloudDialogflowV3alpha1ImportTestCasesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifiers of the new test cases. Format: `projects//locations//
+        # agents//testCases/`.
+        # Corresponds to the JSON property `names`
+        # @return [Array<String>]
+        attr_accessor :names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @names = args[:names] if args.key?(:names)
         end
       end
       

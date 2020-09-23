@@ -1612,11 +1612,6 @@ module Google
         # @return [String]
         attr_accessor :api_proxy
       
-        # Base path for the deployment.
-        # Corresponds to the JSON property `basePath`
-        # @return [String]
-        attr_accessor :base_path
-      
         # Time the API proxy was marked `deployed` in the control plane in millisconds
         # since epoch.
         # Corresponds to the JSON property `deployStartTime`
@@ -1672,7 +1667,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @api_proxy = args[:api_proxy] if args.key?(:api_proxy)
-          @base_path = args[:base_path] if args.key?(:base_path)
           @deploy_start_time = args[:deploy_start_time] if args.key?(:deploy_start_time)
           @environment = args[:environment] if args.key?(:environment)
           @errors = args[:errors] if args.key?(:errors)

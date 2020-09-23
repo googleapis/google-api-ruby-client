@@ -28,7 +28,7 @@ module Google
     # @see https://developers.google.com/authorized-buyers/apis/realtimebidding/reference/rest/
     module RealtimebiddingV1
       VERSION = 'V1'
-      REVISION = '20200822'
+      REVISION = '20200922'
 
       # See, create, edit, and delete your Authorized Buyers and Open Bidding account entities
       AUTH_REALTIME_BIDDING = 'https://www.googleapis.com/auth/realtime-bidding'

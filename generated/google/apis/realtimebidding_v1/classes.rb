@@ -213,10 +213,10 @@ module Google
         # @return [Array<String>]
         attr_accessor :impression_tracking_urls
       
-        # Output only. Name of the creative. Follows the pattern `buyers/`buyer`/
-        # creatives/`creative``, where ``buyer`` represents the account ID of the buyer
-        # who owns the creative, and ``creative`` is the buyer-specific creative ID that
-        # references this creative in the bid response.
+        # Name of the creative. Follows the pattern `buyers/`buyer`/creatives/`creative``
+        # , where ``buyer`` represents the account ID of the buyer who owns the creative,
+        # and ``creative`` is the buyer-specific creative ID that references this
+        # creative in the bid response.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

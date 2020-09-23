@@ -1624,7 +1624,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a filter.
+        # Creates a filter. Note: you can only create a maximum of 1,000 filters.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.

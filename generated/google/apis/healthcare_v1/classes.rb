@@ -1798,7 +1798,9 @@ module Google
         # that send notifications to fail. If a notification can't be published to Cloud
         # Pub/Sub, errors are logged to Cloud Logging (see [Viewing logs](/healthcare/
         # docs/how-tos/logging)). If the number of errors exceeds a certain rate, some
-        # aren't submitted.
+        # aren't submitted. Note that not all operations trigger notifications, see [
+        # Configuring Pub/Sub notifications](https://cloud.google.com/healthcare/docs/
+        # how-tos/pubsub) for specific details.
         # Corresponds to the JSON property `pubsubTopic`
         # @return [String]
         attr_accessor :pubsub_topic

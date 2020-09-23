@@ -39,7 +39,7 @@ module Google
         end
       end
       
-      # A response message from importing an SSH public key.
+      # A response message for importing an SSH public key.
       class ImportSshPublicKeyResponse
         include Google::Apis::Core::Hashable
       
@@ -70,7 +70,7 @@ module Google
       class LoginProfile
         include Google::Apis::Core::Hashable
       
-        # A unique user ID.
+        # Required. A unique user ID.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

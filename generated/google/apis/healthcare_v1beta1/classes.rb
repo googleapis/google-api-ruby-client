@@ -22,6 +22,43 @@ module Google
   module Apis
     module HealthcareV1beta1
       
+      # Activates the latest revision of the specified Consent by committing a new
+      # revision with `state` updated to `ACTIVE`. If the latest revision of the given
+      # consent is in the `ACTIVE` state, no new revision is committed.
+      class ActivateConsentRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name of the consent artifact that contains proof of the
+        # end user's consent, of the form `projects/`project_id`/locations/`location_id`/
+        # datasets/`dataset_id`/consentStores/`consent_store_id`/consentArtifacts/`
+        # consent_artifact_id``. If the draft consent had a consent artifact, this
+        # consent artifact overwrites it.
+        # Corresponds to the JSON property `consentArtifact`
+        # @return [String]
+        attr_accessor :consent_artifact
+      
+        # Timestamp in UTC of when this consent is considered expired.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # The time to live for this consent from when it is marked as active.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consent_artifact = args[:consent_artifact] if args.key?(:consent_artifact)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @ttl = args[:ttl] if args.key?(:ttl)
+        end
+      end
+      
       # An annotation record.
       class Annotation
         include Google::Apis::Core::Hashable
@@ -156,6 +193,118 @@ module Google
         # Update properties of this object
         def update!(**args)
           @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Archives the specified User data mapping.
+      class ArchiveUserDataMappingRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Archives the specified User data mapping.
+      class ArchiveUserDataMappingResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # An attribute value for a consent or data mapping. Each Attribute must have a
+      # corresponding AttributeDefinition in the consent store that defines the
+      # default and allowed values.
+      class Attribute
+        include Google::Apis::Core::Hashable
+      
+        # Indicates the name of an attribute defined at the consent store.
+        # Corresponds to the JSON property `attributeDefinitionId`
+        # @return [String]
+        attr_accessor :attribute_definition_id
+      
+        # The value of the attribute. Must be an acceptable value as defined in the
+        # consent store. For example, if the consent store defines "data type" with
+        # acceptable values "questionnaire" and "step-count", when the attribute name is
+        # data type, this field must contain one of those values.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_definition_id = args[:attribute_definition_id] if args.key?(:attribute_definition_id)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # A client-defined consent attribute.
+      class AttributeDefinition
+        include Google::Apis::Core::Hashable
+      
+        # Required. Possible values for the attribute. An empty list is invalid. The
+        # list can only be expanded after creation.
+        # Corresponds to the JSON property `allowedValues`
+        # @return [Array<String>]
+        attr_accessor :allowed_values
+      
+        # Required. The category of the attribute. The value of this field cannot be
+        # changed after creation.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Default values of the attribute in consents. If no default values are
+        # specified, it defaults to an empty value.
+        # Corresponds to the JSON property `consentDefaultValues`
+        # @return [Array<String>]
+        attr_accessor :consent_default_values
+      
+        # Default value of the attribute in user data mappings. If no default value is
+        # specified, it defaults to an empty value. This field is only applicable to
+        # attributes of the category `RESOURCE`.
+        # Corresponds to the JSON property `dataMappingDefaultValue`
+        # @return [String]
+        attr_accessor :data_mapping_default_value
+      
+        # A description of the attribute.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Resource name of the attribute definition, of the form `projects/`project_id`/
+        # locations/`location_id`/datasets/`dataset_id`/consentStores/`consent_store_id`/
+        # attributeDefinitions/`attribute_definition_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_values = args[:allowed_values] if args.key?(:allowed_values)
+          @category = args[:category] if args.key?(:category)
+          @consent_default_values = args[:consent_default_values] if args.key?(:consent_default_values)
+          @data_mapping_default_value = args[:data_mapping_default_value] if args.key?(:data_mapping_default_value)
+          @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
         end
       end
@@ -359,6 +508,72 @@ module Google
         end
       end
       
+      # Checks if a particular data_id of a User data mapping in the given Consent
+      # store is consented for a given use.
+      class CheckDataAccessRequest
+        include Google::Apis::Core::Hashable
+      
+        # List of resource names of Consent resources.
+        # Corresponds to the JSON property `consentList`
+        # @return [Google::Apis::HealthcareV1beta1::ConsentList]
+        attr_accessor :consent_list
+      
+        # The unique identifier of the data to check access for. It must exist in the
+        # given `consent_store`.
+        # Corresponds to the JSON property `dataId`
+        # @return [String]
+        attr_accessor :data_id
+      
+        # The values of request attributes associated with this access request.
+        # Corresponds to the JSON property `requestAttributes`
+        # @return [Hash<String,String>]
+        attr_accessor :request_attributes
+      
+        # The view for CheckDataAccessResponse.
+        # Corresponds to the JSON property `responseView`
+        # @return [String]
+        attr_accessor :response_view
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consent_list = args[:consent_list] if args.key?(:consent_list)
+          @data_id = args[:data_id] if args.key?(:data_id)
+          @request_attributes = args[:request_attributes] if args.key?(:request_attributes)
+          @response_view = args[:response_view] if args.key?(:response_view)
+        end
+      end
+      
+      # Checks if a particular data_id of a User data mapping in the given Consent
+      # store is consented for a given use.
+      class CheckDataAccessResponse
+        include Google::Apis::Core::Hashable
+      
+        # The resource names of all evaluated Consents mapped to their evaluation.
+        # Corresponds to the JSON property `consentDetails`
+        # @return [Hash<String,Google::Apis::HealthcareV1beta1::ConsentEvaluation>]
+        attr_accessor :consent_details
+      
+        # Whether the requested data is consented for the given use.
+        # Corresponds to the JSON property `consented`
+        # @return [Boolean]
+        attr_accessor :consented
+        alias_method :consented?, :consented
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consent_details = args[:consent_details] if args.key?(:consent_details)
+          @consented = args[:consented] if args.key?(:consented)
+        end
+      end
+      
       # Cloud Healthcare API resource.
       class CloudHealthcareSource
         include Google::Apis::Core::Hashable
@@ -374,6 +589,232 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Represents an end user's consent.
+      class Consent
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name of the consent artifact that contains proof of the
+        # end user's consent, of the form `projects/`project_id`/locations/`location_id`/
+        # datasets/`dataset_id`/consentStores/`consent_store_id`/consentArtifacts/`
+        # consent_artifact_id``.
+        # Corresponds to the JSON property `consentArtifact`
+        # @return [String]
+        attr_accessor :consent_artifact
+      
+        # Timestamp in UTC of when this consent is considered expired.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Resource name of the Consent, of the form `projects/`project_id`/locations/`
+        # location_id`/datasets/`dataset_id`/consentStores/`consent_store_id`/consents/`
+        # consent_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Represents an end user's consent in terms of the resources that can be
+        # accessed and under what conditions.
+        # Corresponds to the JSON property `policies`
+        # @return [Array<Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1ConsentPolicy>]
+        attr_accessor :policies
+      
+        # Output only. The timestamp that the revision was created.
+        # Corresponds to the JSON property `revisionCreateTime`
+        # @return [String]
+        attr_accessor :revision_create_time
+      
+        # Output only. The revision ID of the consent. The format is an 8-character
+        # hexadecimal string. Refer to a specific revision of a Consent by appending `@`
+        # revision_id`` to the Consent's resource name.
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
+        # Indicates the current state of this consent.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Input only. The time to live for this consent from when it is created.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        # Required. User's UUID provided by the client.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consent_artifact = args[:consent_artifact] if args.key?(:consent_artifact)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @name = args[:name] if args.key?(:name)
+          @policies = args[:policies] if args.key?(:policies)
+          @revision_create_time = args[:revision_create_time] if args.key?(:revision_create_time)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+          @state = args[:state] if args.key?(:state)
+          @ttl = args[:ttl] if args.key?(:ttl)
+          @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Proof of an end user's consent.
+      class ConsentArtifact
+        include Google::Apis::Core::Hashable
+      
+        # Screenshots of the consent content.
+        # Corresponds to the JSON property `consentContentScreenshots`
+        # @return [Array<Google::Apis::HealthcareV1beta1::Image>]
+        attr_accessor :consent_content_screenshots
+      
+        # An string indicating the version of the consent content.
+        # Corresponds to the JSON property `consentContentVersion`
+        # @return [String]
+        attr_accessor :consent_content_version
+      
+        # User signature.
+        # Corresponds to the JSON property `guardianSignature`
+        # @return [Google::Apis::HealthcareV1beta1::Signature]
+        attr_accessor :guardian_signature
+      
+        # Metadata associated with the consent artifact. For example, the consent locale
+        # or user agent version.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
+        # Resource name of the Consent artifact, of the form `projects/`project_id`/
+        # locations/`location_id`/datasets/`dataset_id`/consentStores/`consent_store_id`/
+        # consentArtifacts/`consent_artifact_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. User's UUID provided by the client.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        # User signature.
+        # Corresponds to the JSON property `userSignature`
+        # @return [Google::Apis::HealthcareV1beta1::Signature]
+        attr_accessor :user_signature
+      
+        # User signature.
+        # Corresponds to the JSON property `witnessSignature`
+        # @return [Google::Apis::HealthcareV1beta1::Signature]
+        attr_accessor :witness_signature
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consent_content_screenshots = args[:consent_content_screenshots] if args.key?(:consent_content_screenshots)
+          @consent_content_version = args[:consent_content_version] if args.key?(:consent_content_version)
+          @guardian_signature = args[:guardian_signature] if args.key?(:guardian_signature)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+          @user_id = args[:user_id] if args.key?(:user_id)
+          @user_signature = args[:user_signature] if args.key?(:user_signature)
+          @witness_signature = args[:witness_signature] if args.key?(:witness_signature)
+        end
+      end
+      
+      # The detailed evaluation of a particular Consent.
+      class ConsentEvaluation
+        include Google::Apis::Core::Hashable
+      
+        # The evaluation result.
+        # Corresponds to the JSON property `evaluationResult`
+        # @return [String]
+        attr_accessor :evaluation_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @evaluation_result = args[:evaluation_result] if args.key?(:evaluation_result)
+        end
+      end
+      
+      # List of resource names of Consent resources.
+      class ConsentList
+        include Google::Apis::Core::Hashable
+      
+        # The resource names of the Consents to evaluate against, of the form `projects/`
+        # project_id`/locations/`location_id`/datasets/`dataset_id`/consentStores/`
+        # consent_store_id`/consents/`consent_id``.
+        # Corresponds to the JSON property `consents`
+        # @return [Array<String>]
+        attr_accessor :consents
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consents = args[:consents] if args.key?(:consents)
+        end
+      end
+      
+      # Represents a Consent store.
+      class ConsentStore
+        include Google::Apis::Core::Hashable
+      
+        # Default time to live for consents in this store. Must be at least 24 hours.
+        # Updating this field will not affect the expiration time of existing consents.
+        # Corresponds to the JSON property `defaultConsentTtl`
+        # @return [String]
+        attr_accessor :default_consent_ttl
+      
+        # If true, UpdateConsent creates the consent if it does not already exist.
+        # Corresponds to the JSON property `enableConsentCreateOnUpdate`
+        # @return [Boolean]
+        attr_accessor :enable_consent_create_on_update
+        alias_method :enable_consent_create_on_update?, :enable_consent_create_on_update
+      
+        # User-supplied key-value pairs used to organize Consent stores. Label keys must
+        # be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
+        # bytes, and must conform to the following PCRE regular expression: \p`Ll`\p`Lo``
+        # 0,62` Label values must be between 1 and 63 characters long, have a UTF-8
+        # encoding of maximum 128 bytes, and must conform to the following PCRE regular
+        # expression: [\p`Ll`\p`Lo`\p`N`_-]`0,63` No more than 64 labels can be
+        # associated with a given store.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Resource name of the Consent store, of the form `projects/`project_id`/
+        # locations/`location_id`/datasets/`dataset_id`/consentStores/`consent_store_id``
+        # .
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_consent_ttl = args[:default_consent_ttl] if args.key?(:default_consent_ttl)
+          @enable_consent_create_on_update = args[:enable_consent_create_on_update] if args.key?(:enable_consent_create_on_update)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
         end
       end
@@ -992,6 +1433,89 @@ module Google
           @golden_count = args[:golden_count] if args.key?(:golden_count)
           @golden_store = args[:golden_store] if args.key?(:golden_store)
           @matched_count = args[:matched_count] if args.key?(:matched_count)
+        end
+      end
+      
+      # Evaluate an end user's Consents for all matching User data mappings.
+      class EvaluateUserConsentsRequest
+        include Google::Apis::Core::Hashable
+      
+        # List of resource names of Consent resources.
+        # Corresponds to the JSON property `consentList`
+        # @return [Google::Apis::HealthcareV1beta1::ConsentList]
+        attr_accessor :consent_list
+      
+        # Limit on the number of user data mappings to return in a single response. If
+        # zero the default page size of 100 is used.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # Token to retrieve the next page of results to get the first page.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # The values of request attributes associated with this access request.
+        # Corresponds to the JSON property `requestAttributes`
+        # @return [Hash<String,String>]
+        attr_accessor :request_attributes
+      
+        # The values of resources attributes associated with the type of data being
+        # requested. If no values are specified, then all data types are queried.
+        # Corresponds to the JSON property `resourceAttributes`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_attributes
+      
+        # The view for EvaluateUserConsentsResponse.
+        # Corresponds to the JSON property `responseView`
+        # @return [String]
+        attr_accessor :response_view
+      
+        # Required. User ID to evaluate consents for.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consent_list = args[:consent_list] if args.key?(:consent_list)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @request_attributes = args[:request_attributes] if args.key?(:request_attributes)
+          @resource_attributes = args[:resource_attributes] if args.key?(:resource_attributes)
+          @response_view = args[:response_view] if args.key?(:response_view)
+          @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Evaluate an end user's Consents for all matching User data mappings.
+      class EvaluateUserConsentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results or empty if there are no more
+        # results in the list. This token is valid for 72 hours after it is created.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The consent evaluation result for each `data_id`.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::HealthcareV1beta1::Result>]
+        attr_accessor :results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @results = args[:results] if args.key?(:results)
         end
       end
       
@@ -1624,6 +2148,70 @@ module Google
         # Update properties of this object
         def update!(**args)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # The Cloud Storage location for export.
+      class GoogleCloudHealthcareV1beta1ConsentGcsDestination
+        include Google::Apis::Core::Hashable
+      
+        # URI for a Cloud Storage directory where the server writes result files, in the
+        # format `gs://`bucket-id`/`path/to/destination/dir``. If there is no trailing
+        # slash, the service appends one when composing the object path. The user is
+        # responsible for creating the Cloud Storage bucket and directory referenced in `
+        # uri_prefix`.
+        # Corresponds to the JSON property `uriPrefix`
+        # @return [String]
+        attr_accessor :uri_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri_prefix = args[:uri_prefix] if args.key?(:uri_prefix)
+        end
+      end
+      
+      # Represents an end user's consent in terms of the resources that can be
+      # accessed and under what conditions.
+      class GoogleCloudHealthcareV1beta1ConsentPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+        # "Summary size limit" description: "Determines if a summary is less than 100
+        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+        # Requestor is owner" description: "Determines if requestor is the document
+        # owner" expression: "document.owner == request.auth.claims.email" Example (
+        # Logic): title: "Public documents" description: "Determine whether the document
+        # should be publicly visible" expression: "document.type != 'private' &&
+        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+        # string" description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)" The
+        # exact variables and functions that may be referenced within an expression are
+        # determined by the service that evaluates it. See the service documentation for
+        # additional information.
+        # Corresponds to the JSON property `authorizationRule`
+        # @return [Google::Apis::HealthcareV1beta1::Expr]
+        attr_accessor :authorization_rule
+      
+        # The data resources that this policy applies to. A data resource is a match if
+        # it matches all the attributes listed here.
+        # Corresponds to the JSON property `resourceAttributes`
+        # @return [Array<Google::Apis::HealthcareV1beta1::Attribute>]
+        attr_accessor :resource_attributes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorization_rule = args[:authorization_rule] if args.key?(:authorization_rule)
+          @resource_attributes = args[:resource_attributes] if args.key?(:resource_attributes)
         end
       end
       
@@ -2275,6 +2863,39 @@ module Google
         end
       end
       
+      # An image.
+      class Image
+        include Google::Apis::Core::Hashable
+      
+        # Input only. Points to a Cloud Storage URI containing the image. The URI must
+        # be in the following format: `gs://`bucket_id`/`object_id``. The Cloud
+        # Healthcare API service account must have the `roles/storage.objectViewer`
+        # Cloud IAM role for this Cloud Storage location. The image at this URI is
+        # copied to a Cloud Storage location managed by the Cloud Healthcare API.
+        # Responses to image fetching requests return the image in raw_bytes.
+        # Corresponds to the JSON property `gcsUri`
+        # @return [String]
+        attr_accessor :gcs_uri
+      
+        # Image content represented as a stream of bytes. This field is populated when
+        # returned in GetConsentArtifact response, but not included in
+        # CreateConsentArtifact and ListConsentArtifact response.
+        # Corresponds to the JSON property `rawBytes`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :raw_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+          @raw_bytes = args[:raw_bytes] if args.key?(:raw_bytes)
+        end
+      end
+      
       # Image annotation.
       class ImageAnnotation
         include Google::Apis::Core::Hashable
@@ -2728,6 +3349,141 @@ module Google
         end
       end
       
+      # Lists the Attribute definitions in the given Consent store.
+      class ListAttributeDefinitionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The returned attribute definitions. The maximum number of attributes returned
+        # is determined by the value of page_size in the ListAttributeDefinitionsRequest.
+        # Corresponds to the JSON property `attributeDefinitions`
+        # @return [Array<Google::Apis::HealthcareV1beta1::AttributeDefinition>]
+        attr_accessor :attribute_definitions
+      
+        # Token to retrieve the next page of results or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_definitions = args[:attribute_definitions] if args.key?(:attribute_definitions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Lists the Consent artifacts in the given Consent store.
+      class ListConsentArtifactsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The returned consent artifacts. The maximum number of artifacts returned is
+        # determined by the value of page_size in the ListConsentArtifactsRequest.
+        # Corresponds to the JSON property `consentArtifacts`
+        # @return [Array<Google::Apis::HealthcareV1beta1::ConsentArtifact>]
+        attr_accessor :consent_artifacts
+      
+        # Token to retrieve the next page of results or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consent_artifacts = args[:consent_artifacts] if args.key?(:consent_artifacts)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Lists the revisions of the given Consent in reverse chronological order.
+      class ListConsentRevisionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The returned consent revisions. The maximum number of revisions returned is
+        # determined by the value of `page_size` in the ListConsentRevisionsRequest.
+        # Corresponds to the JSON property `consents`
+        # @return [Array<Google::Apis::HealthcareV1beta1::Consent>]
+        attr_accessor :consents
+      
+        # Token to retrieve the next page of results or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consents = args[:consents] if args.key?(:consents)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Lists the Consent stores in the given dataset.
+      class ListConsentStoresResponse
+        include Google::Apis::Core::Hashable
+      
+        # The returned Consent stores. The maximum number of stores returned is
+        # determined by the value of page_size in the ListConsentStoresRequest.
+        # Corresponds to the JSON property `consentStores`
+        # @return [Array<Google::Apis::HealthcareV1beta1::ConsentStore>]
+        attr_accessor :consent_stores
+      
+        # Token to retrieve the next page of results or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consent_stores = args[:consent_stores] if args.key?(:consent_stores)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Lists the Consents in the given Consent store.
+      class ListConsentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The returned consents. The maximum number of consents returned is determined
+        # by the value of page_size in the ListConsentsRequest.
+        # Corresponds to the JSON property `consents`
+        # @return [Array<Google::Apis::HealthcareV1beta1::Consent>]
+        attr_accessor :consents
+      
+        # Token to retrieve the next page of results or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consents = args[:consents] if args.key?(:consents)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Lists the available datasets.
       class ListDatasetsResponse
         include Google::Apis::Core::Hashable
@@ -2912,6 +3668,34 @@ module Google
         end
       end
       
+      # Lists the User data mappings in the given Consent store.
+      class ListUserDataMappingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The returned user data mappings. The maximum number of user data mappings
+        # returned is determined by the value of page_size in the
+        # ListUserDataMappingsRequest.
+        # Corresponds to the JSON property `userDataMappings`
+        # @return [Array<Google::Apis::HealthcareV1beta1::UserDataMapping>]
+        attr_accessor :user_data_mappings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @user_data_mappings = args[:user_data_mappings] if args.key?(:user_data_mappings)
+        end
+      end
+      
       # A resource that represents Google Cloud Platform location.
       class Location
         include Google::Apis::Core::Hashable
@@ -3059,7 +3843,9 @@ module Google
         # that send notifications to fail. If a notification can't be published to Cloud
         # Pub/Sub, errors are logged to Cloud Logging (see [Viewing logs](/healthcare/
         # docs/how-tos/logging)). If the number of errors exceeds a certain rate, some
-        # aren't submitted.
+        # aren't submitted. Note that not all operations trigger notifications, see [
+        # Configuring Pub/Sub notifications](https://cloud.google.com/healthcare/docs/
+        # how-tos/pubsub) for specific details.
         # Corresponds to the JSON property `pubsubTopic`
         # @return [String]
         attr_accessor :pubsub_topic
@@ -3396,6 +4182,43 @@ module Google
         end
       end
       
+      # Queries all data_ids that are consented for a given use in the given Consent
+      # store and writes them to a specified destination. The returned Operation
+      # includes a progress counter for the number of User data mappings processed.
+      # Errors are logged to Cloud Logging (see [Viewing logs] (/healthcare/docs/how-
+      # tos/logging) and [QueryAccessibleData] for a sample log entry).
+      class QueryAccessibleDataRequest
+        include Google::Apis::Core::Hashable
+      
+        # The Cloud Storage location for export.
+        # Corresponds to the JSON property `gcsDestination`
+        # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1ConsentGcsDestination]
+        attr_accessor :gcs_destination
+      
+        # The values of request attributes associated with this access request.
+        # Corresponds to the JSON property `requestAttributes`
+        # @return [Hash<String,String>]
+        attr_accessor :request_attributes
+      
+        # The values of resources attributes associated with the type of data being
+        # requested. If no values are specified, then all data types are included in the
+        # output.
+        # Corresponds to the JSON property `resourceAttributes`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_attributes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+          @request_attributes = args[:request_attributes] if args.key?(:request_attributes)
+          @resource_attributes = args[:resource_attributes] if args.key?(:resource_attributes)
+        end
+      end
+      
       # Define how to redact sensitive values. Default behaviour is erase. For example,
       # "My name is Jane." becomes "My name is ."
       class RedactConfig
@@ -3407,6 +4230,31 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Rejects the latest revision of the specified Consent by committing a new
+      # revision with `state` updated to `REJECTED`. If the latest revision of the
+      # given consent is in the `REJECTED` state, no new revision is committed.
+      class RejectConsentRequest
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the consent artifact that contains proof of the end user'
+        # s rejection of the draft consent, of the form `projects/`project_id`/locations/
+        # `location_id`/datasets/`dataset_id`/consentStores/`consent_store_id`/
+        # consentArtifacts/`consent_artifact_id``. If the draft consent had a consent
+        # artifact, this consent artifact overwrites it.
+        # Corresponds to the JSON property `consentArtifact`
+        # @return [String]
+        attr_accessor :consent_artifact
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consent_artifact = args[:consent_artifact] if args.key?(:consent_artifact)
         end
       end
       
@@ -3460,6 +4308,62 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
+      # The consent evaluation result for a single `data_id`.
+      class Result
+        include Google::Apis::Core::Hashable
+      
+        # The resource names of all evaluated Consents mapped to their evaluation.
+        # Corresponds to the JSON property `consentDetails`
+        # @return [Hash<String,Google::Apis::HealthcareV1beta1::ConsentEvaluation>]
+        attr_accessor :consent_details
+      
+        # Whether the requested data is consented for the given use.
+        # Corresponds to the JSON property `consented`
+        # @return [Boolean]
+        attr_accessor :consented
+        alias_method :consented?, :consented
+      
+        # The unique identifier of the data the consents were checked for.
+        # Corresponds to the JSON property `dataId`
+        # @return [String]
+        attr_accessor :data_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consent_details = args[:consent_details] if args.key?(:consent_details)
+          @consented = args[:consented] if args.key?(:consented)
+          @data_id = args[:data_id] if args.key?(:data_id)
+        end
+      end
+      
+      # Revokes the latest revision of the specified Consent by committing a new
+      # revision with `state` updated to `REVOKED`. If the latest revision of the
+      # given consent is in the `REVOKED` state, no new revision is committed.
+      class RevokeConsentRequest
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the consent artifact that contains proof of the end user'
+        # s revocation of the consent, of the form `projects/`project_id`/locations/`
+        # location_id`/datasets/`dataset_id`/consentStores/`consent_store_id`/
+        # consentArtifacts/`consent_artifact_id``.
+        # Corresponds to the JSON property `consentArtifact`
+        # @return [String]
+        attr_accessor :consent_artifact
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consent_artifact = args[:consent_artifact] if args.key?(:consent_artifact)
         end
       end
       
@@ -3787,6 +4691,44 @@ module Google
         end
       end
       
+      # User signature.
+      class Signature
+        include Google::Apis::Core::Hashable
+      
+        # An image.
+        # Corresponds to the JSON property `image`
+        # @return [Google::Apis::HealthcareV1beta1::Image]
+        attr_accessor :image
+      
+        # Metadata associated with the user's signature. For example, the user's name or
+        # the user's title.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
+        # Timestamp of the signature.
+        # Corresponds to the JSON property `signatureTime`
+        # @return [String]
+        attr_accessor :signature_time
+      
+        # User's UUID provided by the client.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image = args[:image] if args.key?(:image)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @signature_time = args[:signature_time] if args.key?(:signature_time)
+          @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -3965,6 +4907,62 @@ module Google
           @fields = args[:fields] if args.key?(:fields)
           @name = args[:name] if args.key?(:name)
           @primitive = args[:primitive] if args.key?(:primitive)
+        end
+      end
+      
+      # Maps a user data entry to its end user and Attributes.
+      class UserDataMapping
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Indicates the time when this data mapping was archived.
+        # Corresponds to the JSON property `archiveTime`
+        # @return [String]
+        attr_accessor :archive_time
+      
+        # Output only. Indicates whether this data mapping is archived.
+        # Corresponds to the JSON property `archived`
+        # @return [Boolean]
+        attr_accessor :archived
+        alias_method :archived?, :archived
+      
+        # Required. A unique identifier for the mapped data.
+        # Corresponds to the JSON property `dataId`
+        # @return [String]
+        attr_accessor :data_id
+      
+        # Resource name of the User data mapping, of the form `projects/`project_id`/
+        # locations/`location_id`/datasets/`dataset_id`/consentStores/`consent_store_id`/
+        # userDataMappings/`user_data_mapping_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Attributes of end user data. Each attribute can have exactly one value
+        # specified. Only explicitly set attributes are displayed here. Attribute
+        # definitions with defaults set implicitly apply to these User data mappings.
+        # Attributes listed here must be single valued, that is, exactly one value is
+        # specified for the field "values" in each Attribute.
+        # Corresponds to the JSON property `resourceAttributes`
+        # @return [Array<Google::Apis::HealthcareV1beta1::Attribute>]
+        attr_accessor :resource_attributes
+      
+        # Required. User's UUID provided by the client.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @archive_time = args[:archive_time] if args.key?(:archive_time)
+          @archived = args[:archived] if args.key?(:archived)
+          @data_id = args[:data_id] if args.key?(:data_id)
+          @name = args[:name] if args.key?(:name)
+          @resource_attributes = args[:resource_attributes] if args.key?(:resource_attributes)
+          @user_id = args[:user_id] if args.key?(:user_id)
         end
       end
       

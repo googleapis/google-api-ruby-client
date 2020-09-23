@@ -6871,6 +6871,46 @@ module Google
         end
       end
       
+      # Metadata returned for the TestCases.ExportTestCases long running operation.
+      class GoogleCloudDialogflowV3alpha1ExportTestCasesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response message for TestCases.ExportTestCases.
+      class GoogleCloudDialogflowV3alpha1ExportTestCasesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Uncompressed raw byte content for test cases.
+        # Corresponds to the JSON property `content`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :content
+      
+        # The URI to a file containing the exported test cases. This field is populated
+        # only if `gcs_uri` is specified in ExportTestCasesRequest.
+        # Corresponds to the JSON property `gcsUri`
+        # @return [String]
+        attr_accessor :gcs_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+        end
+      end
+      
       # The response message for Agents.ImportAgent.
       class GoogleCloudDialogflowV3alpha1ImportAgentResponse
         include Google::Apis::Core::Hashable
@@ -6887,6 +6927,39 @@ module Google
         # Update properties of this object
         def update!(**args)
           @agent = args[:agent] if args.key?(:agent)
+        end
+      end
+      
+      # Metadata returned for the TestCases.ImportTestCases long running operation.
+      class GoogleCloudDialogflowV3alpha1ImportTestCasesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response message for TestCases.ImportTestCases.
+      class GoogleCloudDialogflowV3alpha1ImportTestCasesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifiers of the new test cases. Format: `projects//locations//
+        # agents//testCases/`.
+        # Corresponds to the JSON property `names`
+        # @return [Array<String>]
+        attr_accessor :names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @names = args[:names] if args.key?(:names)
         end
       end
       

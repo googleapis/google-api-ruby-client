@@ -1296,7 +1296,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_proxy, as: 'apiProxy'
-          property :base_path, as: 'basePath'
           property :deploy_start_time, :numeric_string => true, as: 'deployStartTime'
           property :environment, as: 'environment'
           collection :errors, as: 'errors', class: Google::Apis::ApigeeV1::GoogleRpcStatus, decorator: Google::Apis::ApigeeV1::GoogleRpcStatus::Representation

@@ -226,12 +226,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UpdateMembershipRolesParams
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class EntityKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -529,8 +523,6 @@ module Google
           collection :add_roles, as: 'addRoles', class: Google::Apis::CloudidentityV1::MembershipRole, decorator: Google::Apis::CloudidentityV1::MembershipRole::Representation
       
           collection :remove_roles, as: 'removeRoles'
-          collection :update_roles_params, as: 'updateRolesParams', class: Google::Apis::CloudidentityV1::UpdateMembershipRolesParams, decorator: Google::Apis::CloudidentityV1::UpdateMembershipRolesParams::Representation
-      
         end
       end
       
@@ -569,15 +561,6 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
-        end
-      end
-      
-      class UpdateMembershipRolesParams
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :field_mask, as: 'fieldMask'
-          property :membership_role, as: 'membershipRole', class: Google::Apis::CloudidentityV1::MembershipRole, decorator: Google::Apis::CloudidentityV1::MembershipRole::Representation
-      
         end
       end
     end
