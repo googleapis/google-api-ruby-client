@@ -977,12 +977,6 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Describes an invideo promotion campaign consisting of multiple promoted items.
-        # A campaign belongs to a single channel_id.
-        # Corresponds to the JSON property `invideoPromotion`
-        # @return [Google::Apis::YoutubeV3::InvideoPromotion]
-        attr_accessor :invideo_promotion
-      
         # Identifies what kind of resource this is. Value: the fixed string "youtube#
         # channel".
         # Corresponds to the JSON property `kind`
@@ -1028,7 +1022,6 @@ module Google
           @conversion_pings = args[:conversion_pings] if args.key?(:conversion_pings)
           @etag = args[:etag] if args.key?(:etag)
           @id = args[:id] if args.key?(:id)
-          @invideo_promotion = args[:invideo_promotion] if args.key?(:invideo_promotion)
           @kind = args[:kind] if args.key?(:kind)
           @localizations = args[:localizations] if args.key?(:localizations)
           @snippet = args[:snippet] if args.key?(:snippet)
@@ -3423,49 +3416,6 @@ module Google
         def update!(**args)
           @corner_position = args[:corner_position] if args.key?(:corner_position)
           @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # Describes an invideo promotion campaign consisting of multiple promoted items.
-      # A campaign belongs to a single channel_id.
-      class InvideoPromotion
-        include Google::Apis::Core::Hashable
-      
-        # Describes a temporal position of a visual widget inside a video.
-        # Corresponds to the JSON property `defaultTiming`
-        # @return [Google::Apis::YoutubeV3::InvideoTiming]
-        attr_accessor :default_timing
-      
-        # List of promoted items in decreasing priority.
-        # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::YoutubeV3::PromotedItem>]
-        attr_accessor :items
-      
-        # Describes the spatial position of a visual widget inside a video. It is a
-        # union of various position types, out of which only will be set one.
-        # Corresponds to the JSON property `position`
-        # @return [Google::Apis::YoutubeV3::InvideoPosition]
-        attr_accessor :position
-      
-        # Indicates whether the channel's promotional campaign uses "smart timing." This
-        # feature attempts to show promotions at a point in the video when they are more
-        # likely to be clicked and less likely to disrupt the viewing experience. This
-        # feature also picks up a single promotion to show on each video.
-        # Corresponds to the JSON property `useSmartTiming`
-        # @return [Boolean]
-        attr_accessor :use_smart_timing
-        alias_method :use_smart_timing?, :use_smart_timing
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @default_timing = args[:default_timing] if args.key?(:default_timing)
-          @items = args[:items] if args.key?(:items)
-          @position = args[:position] if args.key?(:position)
-          @use_smart_timing = args[:use_smart_timing] if args.key?(:use_smart_timing)
         end
       end
       
@@ -6058,90 +6008,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @privacy_status = args[:privacy_status] if args.key?(:privacy_status)
-        end
-      end
-      
-      # Describes a single promoted item.
-      class PromotedItem
-        include Google::Apis::Core::Hashable
-      
-        # A custom message to display for this promotion. This field is currently
-        # ignored unless the promoted item is a website.
-        # Corresponds to the JSON property `customMessage`
-        # @return [String]
-        attr_accessor :custom_message
-      
-        # Describes a single promoted item id. It is a union of various possible types.
-        # Corresponds to the JSON property `id`
-        # @return [Google::Apis::YoutubeV3::PromotedItemId]
-        attr_accessor :id
-      
-        # If true, the content owner's name will be used when displaying the promotion.
-        # This field can only be set when the update is made on behalf of the content
-        # owner.
-        # Corresponds to the JSON property `promotedByContentOwner`
-        # @return [Boolean]
-        attr_accessor :promoted_by_content_owner
-        alias_method :promoted_by_content_owner?, :promoted_by_content_owner
-      
-        # Describes a temporal position of a visual widget inside a video.
-        # Corresponds to the JSON property `timing`
-        # @return [Google::Apis::YoutubeV3::InvideoTiming]
-        attr_accessor :timing
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @custom_message = args[:custom_message] if args.key?(:custom_message)
-          @id = args[:id] if args.key?(:id)
-          @promoted_by_content_owner = args[:promoted_by_content_owner] if args.key?(:promoted_by_content_owner)
-          @timing = args[:timing] if args.key?(:timing)
-        end
-      end
-      
-      # Describes a single promoted item id. It is a union of various possible types.
-      class PromotedItemId
-        include Google::Apis::Core::Hashable
-      
-        # If type is recentUpload, this field identifies the channel from which to take
-        # the recent upload. If missing, the channel is assumed to be the same channel
-        # for which the invideoPromotion is set.
-        # Corresponds to the JSON property `recentlyUploadedBy`
-        # @return [String]
-        attr_accessor :recently_uploaded_by
-      
-        # Describes the type of the promoted item.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        # If the promoted item represents a video, this field represents the unique
-        # YouTube ID identifying it. This field will be present only if type has the
-        # value video.
-        # Corresponds to the JSON property `videoId`
-        # @return [String]
-        attr_accessor :video_id
-      
-        # If the promoted item represents a website, this field represents the url
-        # pointing to the website. This field will be present only if type has the value
-        # website.
-        # Corresponds to the JSON property `websiteUrl`
-        # @return [String]
-        attr_accessor :website_url
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @recently_uploaded_by = args[:recently_uploaded_by] if args.key?(:recently_uploaded_by)
-          @type = args[:type] if args.key?(:type)
-          @video_id = args[:video_id] if args.key?(:video_id)
-          @website_url = args[:website_url] if args.key?(:website_url)
         end
       end
       

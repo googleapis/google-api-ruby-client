@@ -424,12 +424,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class InvideoPromotion
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class InvideoTiming
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -767,18 +761,6 @@ module Google
       end
       
       class PlaylistStatus
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PromotedItem
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PromotedItemId
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1419,8 +1401,6 @@ module Google
       
           property :etag, as: 'etag'
           property :id, as: 'id'
-          property :invideo_promotion, as: 'invideoPromotion', class: Google::Apis::YoutubeV3::InvideoPromotion, decorator: Google::Apis::YoutubeV3::InvideoPromotion::Representation
-      
           property :kind, as: 'kind'
           hash :localizations, as: 'localizations', class: Google::Apis::YoutubeV3::ChannelLocalization, decorator: Google::Apis::YoutubeV3::ChannelLocalization::Representation
       
@@ -2014,19 +1994,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :corner_position, as: 'cornerPosition'
           property :type, as: 'type'
-        end
-      end
-      
-      class InvideoPromotion
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :default_timing, as: 'defaultTiming', class: Google::Apis::YoutubeV3::InvideoTiming, decorator: Google::Apis::YoutubeV3::InvideoTiming::Representation
-      
-          collection :items, as: 'items', class: Google::Apis::YoutubeV3::PromotedItem, decorator: Google::Apis::YoutubeV3::PromotedItem::Representation
-      
-          property :position, as: 'position', class: Google::Apis::YoutubeV3::InvideoPosition, decorator: Google::Apis::YoutubeV3::InvideoPosition::Representation
-      
-          property :use_smart_timing, as: 'useSmartTiming'
         end
       end
       
@@ -2711,28 +2678,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :privacy_status, as: 'privacyStatus'
-        end
-      end
-      
-      class PromotedItem
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :custom_message, as: 'customMessage'
-          property :id, as: 'id', class: Google::Apis::YoutubeV3::PromotedItemId, decorator: Google::Apis::YoutubeV3::PromotedItemId::Representation
-      
-          property :promoted_by_content_owner, as: 'promotedByContentOwner'
-          property :timing, as: 'timing', class: Google::Apis::YoutubeV3::InvideoTiming, decorator: Google::Apis::YoutubeV3::InvideoTiming::Representation
-      
-        end
-      end
-      
-      class PromotedItemId
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :recently_uploaded_by, as: 'recentlyUploadedBy'
-          property :type, as: 'type'
-          property :video_id, as: 'videoId'
-          property :website_url, as: 'websiteUrl'
         end
       end
       

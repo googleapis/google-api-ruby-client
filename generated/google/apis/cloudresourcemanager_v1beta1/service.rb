@@ -323,7 +323,7 @@ module Google
         # with GetProject, and the Project remains visible to ListProjects. However, you
         # cannot update the project. After the deletion completes, the Project is not
         # retrievable by the GetProject and ListProjects methods. The caller must have
-        # modify permissions for this Project.
+        # delete permissions for this Project.
         # @param [String] project_id
         #   The Project ID (for example, `foo-bar-123`).
         # @param [String] fields
@@ -620,7 +620,7 @@ module Google
         # Restores the Project identified by the specified `project_id` (for example, `
         # my-project-123`). You can only use this method for a Project that has a
         # lifecycle state of DELETE_REQUESTED. After deletion starts, the Project cannot
-        # be restored. The caller must have modify permissions for this Project.
+        # be restored. The caller must have undelete permissions for this Project.
         # @param [String] project_id
         #   Required. The project ID (for example, `foo-bar-123`).
         # @param [Google::Apis::CloudresourcemanagerV1beta1::UndeleteProjectRequest] undelete_project_request_object

@@ -22,7 +22,7 @@ module Google
     module WorkflowexecutionsV1beta
       # Workflow Executions API
       #
-      # Manages user-provided workflows.
+      # Execute workflows created with Workflows API.
       #
       # @example
       #    require 'google/apis/workflowexecutions_v1beta'

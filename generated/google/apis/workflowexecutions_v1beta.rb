@@ -20,12 +20,12 @@ module Google
   module Apis
     # Workflow Executions API
     #
-    # Manages user-provided workflows.
+    # Execute workflows created with Workflows API.
     #
     # @see https://cloud.google.com/workflows
     module WorkflowexecutionsV1beta
       VERSION = 'V1beta'
-      REVISION = '20200901'
+      REVISION = '20200923'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
