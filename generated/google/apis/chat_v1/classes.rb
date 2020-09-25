@@ -90,6 +90,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :length
       
+        # Annotation metadata for slash commands (/).
+        # Corresponds to the JSON property `slashCommand`
+        # @return [Google::Apis::ChatV1::SlashCommandMetadata]
+        attr_accessor :slash_command
+      
         # Start index (0-based, inclusive) in the plain-text message body this
         # annotation corresponds to.
         # Corresponds to the JSON property `startIndex`
@@ -113,6 +118,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @length = args[:length] if args.key?(:length)
+          @slash_command = args[:slash_command] if args.key?(:slash_command)
           @start_index = args[:start_index] if args.key?(:start_index)
           @type = args[:type] if args.key?(:type)
           @user_mention = args[:user_mention] if args.key?(:user_mention)
@@ -695,8 +701,7 @@ module Google
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :member
       
-        # Resource name of the membership, in the form "spaces/*/members/*". Example:
-        # spaces/AAAAMpdlehY/members/105115627578887013105
+        # 
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -779,6 +784,11 @@ module Google
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :sender
       
+        # A Slash Command in Hangouts Chat.
+        # Corresponds to the JSON property `slashCommand`
+        # @return [Google::Apis::ChatV1::SlashCommand]
+        attr_accessor :slash_command
+      
         # A room or DM in Hangouts Chat.
         # Corresponds to the JSON property `space`
         # @return [Google::Apis::ChatV1::Space]
@@ -810,6 +820,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @preview_text = args[:preview_text] if args.key?(:preview_text)
           @sender = args[:sender] if args.key?(:sender)
+          @slash_command = args[:slash_command] if args.key?(:slash_command)
           @space = args[:space] if args.key?(:space)
           @text = args[:text] if args.key?(:text)
           @thread = args[:thread] if args.key?(:thread)
@@ -885,6 +896,69 @@ module Google
         def update!(**args)
           @header = args[:header] if args.key?(:header)
           @widgets = args[:widgets] if args.key?(:widgets)
+        end
+      end
+      
+      # A Slash Command in Hangouts Chat.
+      class SlashCommand
+        include Google::Apis::Core::Hashable
+      
+        # The id of the slash command invoked.
+        # Corresponds to the JSON property `commandId`
+        # @return [Fixnum]
+        attr_accessor :command_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @command_id = args[:command_id] if args.key?(:command_id)
+        end
+      end
+      
+      # Annotation metadata for slash commands (/).
+      class SlashCommandMetadata
+        include Google::Apis::Core::Hashable
+      
+        # A user in Hangouts Chat.
+        # Corresponds to the JSON property `bot`
+        # @return [Google::Apis::ChatV1::User]
+        attr_accessor :bot
+      
+        # The command id of the invoked slash command.
+        # Corresponds to the JSON property `commandId`
+        # @return [Fixnum]
+        attr_accessor :command_id
+      
+        # The name of the invoked slash command.
+        # Corresponds to the JSON property `commandName`
+        # @return [String]
+        attr_accessor :command_name
+      
+        # Indicating whether the slash command is for a dialog.
+        # Corresponds to the JSON property `triggersDialog`
+        # @return [Boolean]
+        attr_accessor :triggers_dialog
+        alias_method :triggers_dialog?, :triggers_dialog
+      
+        # The type of slash command.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bot = args[:bot] if args.key?(:bot)
+          @command_id = args[:command_id] if args.key?(:command_id)
+          @command_name = args[:command_name] if args.key?(:command_name)
+          @triggers_dialog = args[:triggers_dialog] if args.key?(:triggers_dialog)
+          @type = args[:type] if args.key?(:type)
         end
       end
       

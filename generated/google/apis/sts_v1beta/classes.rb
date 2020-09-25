@@ -150,7 +150,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # An OAuth 2.0 security token, issued by Google, in response to the token
-        # exchange request.
+        # exchange request. Tokens can vary in size (mainly depending on the size of
+        # mapped claims), currently up to the 12288 bytes (12 KB) size limit. Google
+        # reserves the right to change token size, including increasing these limits.
+        # Your application must support variable token sizes accordingly.
         # Corresponds to the JSON property `access_token`
         # @return [String]
         attr_accessor :access_token

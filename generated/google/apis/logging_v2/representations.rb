@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListViewsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LogBucket
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,6 +173,12 @@ module Google
       end
       
       class LogSink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LogView
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -402,6 +414,15 @@ module Google
         end
       end
       
+      class ListViewsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :views, as: 'views', class: Google::Apis::LoggingV2::LogView, decorator: Google::Apis::LoggingV2::LogView::Representation
+      
+        end
+      end
+      
       class LogBucket
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -520,6 +541,17 @@ module Google
           property :output_version_format, as: 'outputVersionFormat'
           property :update_time, as: 'updateTime'
           property :writer_identity, as: 'writerIdentity'
+        end
+      end
+      
+      class LogView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :filter, as: 'filter'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
         end
       end
       

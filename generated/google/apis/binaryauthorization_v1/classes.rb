@@ -83,6 +83,53 @@ module Google
         end
       end
       
+      # Occurrence that represents a single "attestation". The authenticity of an
+      # attestation can be verified using the attached signature. If the verifier
+      # trusts the public key of the signer, then verifying the signature is
+      # sufficient to establish trust. In this circumstance, the authority to which
+      # this attestation is attached is primarily useful for lookup (how to find this
+      # attestation if you already know the authority and artifact to be verified) and
+      # intent (for which authority this attestation was intended to sign.
+      class AttestationOccurrence
+        include Google::Apis::Core::Hashable
+      
+        # One or more JWTs encoding a self-contained attestation. Each JWT encodes the
+        # payload that it verifies within the JWT itself. Verifier implementation SHOULD
+        # ignore the `serialized_payload` field when verifying these JWTs. If only JWTs
+        # are present on this AttestationOccurrence, then the `serialized_payload`
+        # SHOULD be left empty. Each JWT SHOULD encode a claim specific to the `
+        # resource_uri` of this Occurrence, but this is not validated by Grafeas
+        # metadata API implementations. The JWT itself is opaque to Grafeas.
+        # Corresponds to the JSON property `jwts`
+        # @return [Array<Google::Apis::BinaryauthorizationV1::Jwt>]
+        attr_accessor :jwts
+      
+        # Required. The serialized payload that is verified by one or more `signatures`.
+        # Corresponds to the JSON property `serializedPayload`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :serialized_payload
+      
+        # One or more signatures over `serialized_payload`. Verifier implementations
+        # should consider this attestation message verified if at least one `signature`
+        # verifies `serialized_payload`. See `Signature` in common.proto for more
+        # details on signature structure and verification.
+        # Corresponds to the JSON property `signatures`
+        # @return [Array<Google::Apis::BinaryauthorizationV1::Signature>]
+        attr_accessor :signatures
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @jwts = args[:jwts] if args.key?(:jwts)
+          @serialized_payload = args[:serialized_payload] if args.key?(:serialized_payload)
+          @signatures = args[:signatures] if args.key?(:signatures)
+        end
+      end
+      
       # An attestor that attests to container image artifacts. An existing attestor
       # cannot be modified except where indicated.
       class Attestor
@@ -406,6 +453,27 @@ module Google
         end
       end
       
+      # 
+      class Jwt
+        include Google::Apis::Core::Hashable
+      
+        # The compact encoding of a JWS, which is always three base64 encoded strings
+        # joined by periods. For details, see: https://tools.ietf.org/html/rfc7515.html#
+        # section-3.1
+        # Corresponds to the JSON property `compactJwt`
+        # @return [String]
+        attr_accessor :compact_jwt
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compact_jwt = args[:compact_jwt] if args.key?(:compact_jwt)
+        end
+      end
+      
       # Response message for BinauthzManagementService.ListAttestors.
       class ListAttestorsResponse
         include Google::Apis::Core::Hashable
@@ -578,6 +646,61 @@ module Google
         end
       end
       
+      # Verifiers (e.g. Kritis implementations) MUST verify signatures with respect to
+      # the trust anchors defined in policy (e.g. a Kritis policy). Typically this
+      # means that the verifier has been configured with a map from `public_key_id` to
+      # public key material (and any required parameters, e.g. signing algorithm). In
+      # particular, verification implementations MUST NOT treat the signature `
+      # public_key_id` as anything more than a key lookup hint. The `public_key_id`
+      # DOES NOT validate or authenticate a public key; it only provides a mechanism
+      # for quickly selecting a public key ALREADY CONFIGURED on the verifier through
+      # a trusted channel. Verification implementations MUST reject signatures in any
+      # of the following circumstances: * The `public_key_id` is not recognized by the
+      # verifier. * The public key that `public_key_id` refers to does not verify the
+      # signature with respect to the payload. The `signature` contents SHOULD NOT be "
+      # attached" (where the payload is included with the serialized `signature` bytes)
+      # . Verifiers MUST ignore any "attached" payload and only verify signatures with
+      # respect to explicitly provided payload (e.g. a `payload` field on the proto
+      # message that holds this Signature, or the canonical serialization of the proto
+      # message that holds this signature).
+      class Signature
+        include Google::Apis::Core::Hashable
+      
+        # The identifier for the public key that verifies this signature. * The `
+        # public_key_id` is required. * The `public_key_id` SHOULD be an RFC3986
+        # conformant URI. * When possible, the `public_key_id` SHOULD be an immutable
+        # reference, such as a cryptographic digest. Examples of valid `public_key_id`s:
+        # OpenPGP V4 public key fingerprint: * "openpgp4fpr:
+        # 74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA" See https://www.iana.org/assignments/
+        # uri-schemes/prov/openpgp4fpr for more details on this scheme. RFC6920 digest-
+        # named SubjectPublicKeyInfo (digest of the DER serialization): * "ni:///sha-256;
+        # cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU" * "nih:///sha-256;
+        # 703f68f42aba2c6de30f488a5ea122fef76324679c9bf89791ba95a1271589a5"
+        # Corresponds to the JSON property `publicKeyId`
+        # @return [String]
+        attr_accessor :public_key_id
+      
+        # The content of the signature, an opaque bytestring. The payload that this
+        # signature verifies MUST be unambiguously provided with the Signature during
+        # verification. A wrapper message might provide the payload explicitly.
+        # Alternatively, a message might have a canonical serialization that can always
+        # be unambiguously computed to derive the payload.
+        # Corresponds to the JSON property `signature`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :signature
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @public_key_id = args[:public_key_id] if args.key?(:public_key_id)
+          @signature = args[:signature] if args.key?(:signature)
+        end
+      end
+      
       # Request message for `TestIamPermissions` method.
       class TestIamPermissionsRequest
         include Google::Apis::Core::Hashable
@@ -662,6 +785,70 @@ module Google
           @delegation_service_account_email = args[:delegation_service_account_email] if args.key?(:delegation_service_account_email)
           @note_reference = args[:note_reference] if args.key?(:note_reference)
           @public_keys = args[:public_keys] if args.key?(:public_keys)
+        end
+      end
+      
+      # Request message for ValidationHelperV1.ValidateAttestationOccurrence.
+      class ValidateAttestationOccurrenceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Occurrence that represents a single "attestation". The authenticity of an
+        # attestation can be verified using the attached signature. If the verifier
+        # trusts the public key of the signer, then verifying the signature is
+        # sufficient to establish trust. In this circumstance, the authority to which
+        # this attestation is attached is primarily useful for lookup (how to find this
+        # attestation if you already know the authority and artifact to be verified) and
+        # intent (for which authority this attestation was intended to sign.
+        # Corresponds to the JSON property `attestation`
+        # @return [Google::Apis::BinaryauthorizationV1::AttestationOccurrence]
+        attr_accessor :attestation
+      
+        # Required. The resource name of the Note to which the containing Occurrence is
+        # associated.
+        # Corresponds to the JSON property `occurrenceNote`
+        # @return [String]
+        attr_accessor :occurrence_note
+      
+        # Required. The URI of the artifact (e.g. container image) that is the subject
+        # of the containing Occurrence.
+        # Corresponds to the JSON property `occurrenceResourceUri`
+        # @return [String]
+        attr_accessor :occurrence_resource_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attestation = args[:attestation] if args.key?(:attestation)
+          @occurrence_note = args[:occurrence_note] if args.key?(:occurrence_note)
+          @occurrence_resource_uri = args[:occurrence_resource_uri] if args.key?(:occurrence_resource_uri)
+        end
+      end
+      
+      # Response message for ValidationHelperV1.ValidateAttestationOccurrence.
+      class ValidateAttestationOccurrenceResponse
+        include Google::Apis::Core::Hashable
+      
+        # The reason for denial if the Attestation couldn't be validated.
+        # Corresponds to the JSON property `denialReason`
+        # @return [String]
+        attr_accessor :denial_reason
+      
+        # The result of the Attestation validation.
+        # Corresponds to the JSON property `result`
+        # @return [String]
+        attr_accessor :result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @denial_reason = args[:denial_reason] if args.key?(:denial_reason)
+          @result = args[:result] if args.key?(:result)
         end
       end
     end

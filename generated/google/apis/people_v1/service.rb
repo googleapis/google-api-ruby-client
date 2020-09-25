@@ -574,12 +574,14 @@ module Google
         #   Each path should start with `person.`: for example, `person.names` or `person.
         #   photos`.
         # @param [Array<String>, String] resource_names
-        #   Required. The resource names of the people to provide information about. - To
-        #   get information about the authenticated user, specify `people/me`. - To get
-        #   information about a google account, specify `people/`account_id``. - To get
-        #   information about a contact, specify the resource name that identifies the
-        #   contact as returned by [`people.connections.list`](/people/api/rest/v1/people.
-        #   connections/list). You can include up to 50 resource names in one request.
+        #   Required. The resource names of the people to provide information about. It's
+        #   repeatable. The URL query parameter should be resourceNames=<name1>&
+        #   resourceNames=<name2>&... - To get information about the authenticated user,
+        #   specify `people/me`. - To get information about a google account, specify `
+        #   people/`account_id``. - To get information about a contact, specify the
+        #   resource name that identifies the contact as returned by [`people.connections.
+        #   list`](/people/api/rest/v1/people.connections/list). You can include up to 50
+        #   resource names in one request.
         # @param [Array<String>, String] sources
         #   Optional. A mask of what source types to return. Defaults to ReadSourceType.
         #   CONTACT and ReadSourceType.PROFILE if not set.

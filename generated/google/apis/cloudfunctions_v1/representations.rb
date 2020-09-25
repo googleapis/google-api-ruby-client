@@ -231,6 +231,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :available_memory_mb, as: 'availableMemoryMb'
+          hash :build_environment_variables, as: 'buildEnvironmentVariables'
           property :build_id, as: 'buildId'
           property :description, as: 'description'
           property :entry_point, as: 'entryPoint'

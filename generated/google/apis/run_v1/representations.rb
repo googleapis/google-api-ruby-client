@@ -232,24 +232,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Namespace
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class NamespaceSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class NamespaceStatus
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ObjectMeta
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -323,12 +305,6 @@ module Google
       end
       
       class RouteStatus
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Secret
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -816,32 +792,6 @@ module Google
         end
       end
       
-      class Namespace
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ObjectMeta, decorator: Google::Apis::RunV1::ObjectMeta::Representation
-      
-          property :spec, as: 'spec', class: Google::Apis::RunV1::NamespaceSpec, decorator: Google::Apis::RunV1::NamespaceSpec::Representation
-      
-          property :status, as: 'status', class: Google::Apis::RunV1::NamespaceStatus, decorator: Google::Apis::RunV1::NamespaceStatus::Representation
-      
-        end
-      end
-      
-      class NamespaceSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :finalizers, as: 'finalizers'
-        end
-      end
-      
-      class NamespaceStatus
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :phase, as: 'phase'
-        end
-      end
-      
       class ObjectMeta
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1004,17 +954,6 @@ module Google
           collection :traffic, as: 'traffic', class: Google::Apis::RunV1::TrafficTarget, decorator: Google::Apis::RunV1::TrafficTarget::Representation
       
           property :url, as: 'url'
-        end
-      end
-      
-      class Secret
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :data, as: 'data'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ObjectMeta, decorator: Google::Apis::RunV1::ObjectMeta::Representation
-      
-          hash :string_data, as: 'stringData'
-          property :type, as: 'type'
         end
       end
       

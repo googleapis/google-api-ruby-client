@@ -85,6 +85,38 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets a view.
+        # @param [String] name
+        #   Required. The resource name of the policy: "projects/[PROJECT_ID]/locations/[
+        #   LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "projects/my-
+        #   project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogView] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogView]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_billing_account_bucket_view(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::LogView::Representation
+          command.response_class = Google::Apis::LoggingV2::LogView
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new exclusion in a specified parent resource. Only log entries
         # belonging to that resource can be excluded. You can have up to 10 exclusions
         # in a resource.
@@ -488,6 +520,164 @@ module Google
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a view over logs in a bucket. A bucket may contain a maximum of 50
+        # views.
+        # @param [String] parent
+        #   Required. The bucket in which to create the view "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-logging-
+        #   project/locations/my-location/buckets/my-bucket"
+        # @param [Google::Apis::LoggingV2::LogView] log_view_object
+        # @param [String] view_id
+        #   Required. The id to use for this view.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogView] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogView]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_billing_account_location_bucket_view(parent, log_view_object = nil, view_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/views', options)
+          command.request_representation = Google::Apis::LoggingV2::LogView::Representation
+          command.request_object = log_view_object
+          command.response_representation = Google::Apis::LoggingV2::LogView::Representation
+          command.response_class = Google::Apis::LoggingV2::LogView
+          command.params['parent'] = parent unless parent.nil?
+          command.query['viewId'] = view_id unless view_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a view from a bucket.
+        # @param [String] name
+        #   Required. The full resource name of the view to delete: "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "
+        #   projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-
+        #   view-id".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_billing_account_location_bucket_view(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::Empty::Representation
+          command.response_class = Google::Apis::LoggingV2::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists views on a bucket..
+        # @param [String] parent
+        #   Required. The bucket whose views are to be listed: "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request. Non-
+        #   positive values are ignored. The presence of nextPageToken in the response
+        #   indicates that more results might be available.
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. pageToken must be the value of nextPageToken
+        #   from the previous response. The values of other method parameters should be
+        #   identical to those in the previous call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::ListViewsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::ListViewsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_billing_account_location_bucket_views(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/views', options)
+          command.response_representation = Google::Apis::LoggingV2::ListViewsResponse::Representation
+          command.response_class = Google::Apis::LoggingV2::ListViewsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a view. This method replaces the following fields in the existing view
+        # with values from the new view: filter.
+        # @param [String] name
+        #   Required. The full resource name of the view to update "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "
+        #   projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-
+        #   view-id".
+        # @param [Google::Apis::LoggingV2::LogView] log_view_object
+        # @param [String] update_mask
+        #   Optional. Field mask that specifies the fields in view that need an update. A
+        #   field will be overwritten if, and only if, it is in the update mask. name and
+        #   output only fields cannot be updated.For a detailed FieldMask definition, see
+        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        #   google.protobuf.FieldMaskExample: updateMask=filter.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogView] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogView]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_billing_account_location_bucket_view(name, log_view_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::LoggingV2::LogView::Representation
+          command.request_object = log_view_object
+          command.response_representation = Google::Apis::LoggingV2::LogView::Representation
+          command.response_class = Google::Apis::LoggingV2::LogView
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1557,6 +1747,196 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a view over logs in a bucket. A bucket may contain a maximum of 50
+        # views.
+        # @param [String] parent
+        #   Required. The bucket in which to create the view "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-logging-
+        #   project/locations/my-location/buckets/my-bucket"
+        # @param [Google::Apis::LoggingV2::LogView] log_view_object
+        # @param [String] view_id
+        #   Required. The id to use for this view.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogView] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogView]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_folder_location_bucket_view(parent, log_view_object = nil, view_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/views', options)
+          command.request_representation = Google::Apis::LoggingV2::LogView::Representation
+          command.request_object = log_view_object
+          command.response_representation = Google::Apis::LoggingV2::LogView::Representation
+          command.response_class = Google::Apis::LoggingV2::LogView
+          command.params['parent'] = parent unless parent.nil?
+          command.query['viewId'] = view_id unless view_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a view from a bucket.
+        # @param [String] name
+        #   Required. The full resource name of the view to delete: "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "
+        #   projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-
+        #   view-id".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_folder_location_bucket_view(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::Empty::Representation
+          command.response_class = Google::Apis::LoggingV2::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a view.
+        # @param [String] name
+        #   Required. The resource name of the policy: "projects/[PROJECT_ID]/locations/[
+        #   LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "projects/my-
+        #   project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogView] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogView]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_folder_location_bucket_view(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::LogView::Representation
+          command.response_class = Google::Apis::LoggingV2::LogView
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists views on a bucket..
+        # @param [String] parent
+        #   Required. The bucket whose views are to be listed: "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request. Non-
+        #   positive values are ignored. The presence of nextPageToken in the response
+        #   indicates that more results might be available.
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. pageToken must be the value of nextPageToken
+        #   from the previous response. The values of other method parameters should be
+        #   identical to those in the previous call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::ListViewsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::ListViewsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_folder_location_bucket_views(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/views', options)
+          command.response_representation = Google::Apis::LoggingV2::ListViewsResponse::Representation
+          command.response_class = Google::Apis::LoggingV2::ListViewsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a view. This method replaces the following fields in the existing view
+        # with values from the new view: filter.
+        # @param [String] name
+        #   Required. The full resource name of the view to update "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "
+        #   projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-
+        #   view-id".
+        # @param [Google::Apis::LoggingV2::LogView] log_view_object
+        # @param [String] update_mask
+        #   Optional. Field mask that specifies the fields in view that need an update. A
+        #   field will be overwritten if, and only if, it is in the update mask. name and
+        #   output only fields cannot be updated.For a detailed FieldMask definition, see
+        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        #   google.protobuf.FieldMaskExample: updateMask=filter.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogView] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogView]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_folder_location_bucket_view(name, log_view_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::LoggingV2::LogView::Representation
+          command.request_object = log_view_object
+          command.response_representation = Google::Apis::LoggingV2::LogView::Representation
+          command.response_class = Google::Apis::LoggingV2::LogView
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes all the log entries in a log. The log reappears if it receives new
         # entries. Log entries written shortly before the delete operation might not be
         # deleted. Entries received after the delete operation with a timestamp before
@@ -2162,6 +2542,196 @@ module Google
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a view over logs in a bucket. A bucket may contain a maximum of 50
+        # views.
+        # @param [String] parent
+        #   Required. The bucket in which to create the view "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-logging-
+        #   project/locations/my-location/buckets/my-bucket"
+        # @param [Google::Apis::LoggingV2::LogView] log_view_object
+        # @param [String] view_id
+        #   Required. The id to use for this view.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogView] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogView]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_location_bucket_view(parent, log_view_object = nil, view_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/views', options)
+          command.request_representation = Google::Apis::LoggingV2::LogView::Representation
+          command.request_object = log_view_object
+          command.response_representation = Google::Apis::LoggingV2::LogView::Representation
+          command.response_class = Google::Apis::LoggingV2::LogView
+          command.params['parent'] = parent unless parent.nil?
+          command.query['viewId'] = view_id unless view_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a view from a bucket.
+        # @param [String] name
+        #   Required. The full resource name of the view to delete: "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "
+        #   projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-
+        #   view-id".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_location_bucket_view(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::Empty::Representation
+          command.response_class = Google::Apis::LoggingV2::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a view.
+        # @param [String] name
+        #   Required. The resource name of the policy: "projects/[PROJECT_ID]/locations/[
+        #   LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "projects/my-
+        #   project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogView] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogView]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_location_bucket_view(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::LogView::Representation
+          command.response_class = Google::Apis::LoggingV2::LogView
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists views on a bucket..
+        # @param [String] parent
+        #   Required. The bucket whose views are to be listed: "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request. Non-
+        #   positive values are ignored. The presence of nextPageToken in the response
+        #   indicates that more results might be available.
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. pageToken must be the value of nextPageToken
+        #   from the previous response. The values of other method parameters should be
+        #   identical to those in the previous call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::ListViewsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::ListViewsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_location_bucket_views(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/views', options)
+          command.response_representation = Google::Apis::LoggingV2::ListViewsResponse::Representation
+          command.response_class = Google::Apis::LoggingV2::ListViewsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a view. This method replaces the following fields in the existing view
+        # with values from the new view: filter.
+        # @param [String] name
+        #   Required. The full resource name of the view to update "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "
+        #   projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-
+        #   view-id".
+        # @param [Google::Apis::LoggingV2::LogView] log_view_object
+        # @param [String] update_mask
+        #   Optional. Field mask that specifies the fields in view that need an update. A
+        #   field will be overwritten if, and only if, it is in the update mask. name and
+        #   output only fields cannot be updated.For a detailed FieldMask definition, see
+        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        #   google.protobuf.FieldMaskExample: updateMask=filter.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogView] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogView]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_location_bucket_view(name, log_view_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::LoggingV2::LogView::Representation
+          command.request_object = log_view_object
+          command.response_representation = Google::Apis::LoggingV2::LogView::Representation
+          command.response_class = Google::Apis::LoggingV2::LogView
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2815,6 +3385,196 @@ module Google
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a view over logs in a bucket. A bucket may contain a maximum of 50
+        # views.
+        # @param [String] parent
+        #   Required. The bucket in which to create the view "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-logging-
+        #   project/locations/my-location/buckets/my-bucket"
+        # @param [Google::Apis::LoggingV2::LogView] log_view_object
+        # @param [String] view_id
+        #   Required. The id to use for this view.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogView] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogView]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_location_bucket_view(parent, log_view_object = nil, view_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/views', options)
+          command.request_representation = Google::Apis::LoggingV2::LogView::Representation
+          command.request_object = log_view_object
+          command.response_representation = Google::Apis::LoggingV2::LogView::Representation
+          command.response_class = Google::Apis::LoggingV2::LogView
+          command.params['parent'] = parent unless parent.nil?
+          command.query['viewId'] = view_id unless view_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a view from a bucket.
+        # @param [String] name
+        #   Required. The full resource name of the view to delete: "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "
+        #   projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-
+        #   view-id".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_location_bucket_view(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::Empty::Representation
+          command.response_class = Google::Apis::LoggingV2::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a view.
+        # @param [String] name
+        #   Required. The resource name of the policy: "projects/[PROJECT_ID]/locations/[
+        #   LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "projects/my-
+        #   project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogView] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogView]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_location_bucket_view(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::LogView::Representation
+          command.response_class = Google::Apis::LoggingV2::LogView
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists views on a bucket..
+        # @param [String] parent
+        #   Required. The bucket whose views are to be listed: "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request. Non-
+        #   positive values are ignored. The presence of nextPageToken in the response
+        #   indicates that more results might be available.
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. pageToken must be the value of nextPageToken
+        #   from the previous response. The values of other method parameters should be
+        #   identical to those in the previous call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::ListViewsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::ListViewsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_bucket_views(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/views', options)
+          command.response_representation = Google::Apis::LoggingV2::ListViewsResponse::Representation
+          command.response_class = Google::Apis::LoggingV2::ListViewsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a view. This method replaces the following fields in the existing view
+        # with values from the new view: filter.
+        # @param [String] name
+        #   Required. The full resource name of the view to update "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "
+        #   projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-
+        #   view-id".
+        # @param [Google::Apis::LoggingV2::LogView] log_view_object
+        # @param [String] update_mask
+        #   Optional. Field mask that specifies the fields in view that need an update. A
+        #   field will be overwritten if, and only if, it is in the update mask. name and
+        #   output only fields cannot be updated.For a detailed FieldMask definition, see
+        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        #   google.protobuf.FieldMaskExample: updateMask=filter.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogView] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogView]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_location_bucket_view(name, log_view_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::LoggingV2::LogView::Representation
+          command.request_object = log_view_object
+          command.response_representation = Google::Apis::LoggingV2::LogView::Representation
+          command.response_class = Google::Apis::LoggingV2::LogView
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3619,6 +4379,196 @@ module Google
           command.response_representation = Google::Apis::LoggingV2::Empty::Representation
           command.response_class = Google::Apis::LoggingV2::Empty
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a view over logs in a bucket. A bucket may contain a maximum of 50
+        # views.
+        # @param [String] parent
+        #   Required. The bucket in which to create the view "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-logging-
+        #   project/locations/my-location/buckets/my-bucket"
+        # @param [Google::Apis::LoggingV2::LogView] log_view_object
+        # @param [String] view_id
+        #   Required. The id to use for this view.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogView] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogView]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_bucket_view(parent, log_view_object = nil, view_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/views', options)
+          command.request_representation = Google::Apis::LoggingV2::LogView::Representation
+          command.request_object = log_view_object
+          command.response_representation = Google::Apis::LoggingV2::LogView::Representation
+          command.response_class = Google::Apis::LoggingV2::LogView
+          command.params['parent'] = parent unless parent.nil?
+          command.query['viewId'] = view_id unless view_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a view from a bucket.
+        # @param [String] name
+        #   Required. The full resource name of the view to delete: "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "
+        #   projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-
+        #   view-id".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_bucket_view(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::Empty::Representation
+          command.response_class = Google::Apis::LoggingV2::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a view.
+        # @param [String] name
+        #   Required. The resource name of the policy: "projects/[PROJECT_ID]/locations/[
+        #   LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "projects/my-
+        #   project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogView] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogView]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_bucket_view(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::LogView::Representation
+          command.response_class = Google::Apis::LoggingV2::LogView
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists views on a bucket..
+        # @param [String] parent
+        #   Required. The bucket whose views are to be listed: "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request. Non-
+        #   positive values are ignored. The presence of nextPageToken in the response
+        #   indicates that more results might be available.
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. pageToken must be the value of nextPageToken
+        #   from the previous response. The values of other method parameters should be
+        #   identical to those in the previous call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::ListViewsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::ListViewsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_bucket_views(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/views', options)
+          command.response_representation = Google::Apis::LoggingV2::ListViewsResponse::Representation
+          command.response_class = Google::Apis::LoggingV2::ListViewsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a view. This method replaces the following fields in the existing view
+        # with values from the new view: filter.
+        # @param [String] name
+        #   Required. The full resource name of the view to update "projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "
+        #   projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-
+        #   view-id".
+        # @param [Google::Apis::LoggingV2::LogView] log_view_object
+        # @param [String] update_mask
+        #   Optional. Field mask that specifies the fields in view that need an update. A
+        #   field will be overwritten if, and only if, it is in the update mask. name and
+        #   output only fields cannot be updated.For a detailed FieldMask definition, see
+        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        #   google.protobuf.FieldMaskExample: updateMask=filter.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogView] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogView]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_bucket_view(name, log_view_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::LoggingV2::LogView::Representation
+          command.request_object = log_view_object
+          command.response_representation = Google::Apis::LoggingV2::LogView::Representation
+          command.response_class = Google::Apis::LoggingV2::LogView
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

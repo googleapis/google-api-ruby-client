@@ -534,8 +534,13 @@ module Google
       
         # Required. Names of one or more parent resources from which to retrieve log
         # entries: "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "
-        # billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Projects listed in
-        # the project_ids field are added to this list.
+        # billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" May alternatively
+        # be one or more views projects/PROJECT_ID/locations/LOCATION_ID/buckets/
+        # BUCKET_ID/views/VIEW_ID organization/ORGANIZATION_ID/locations/LOCATION_ID/
+        # buckets/BUCKET_ID/views/VIEW_ID billingAccounts/BILLING_ACCOUNT_ID/locations/
+        # LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID folders/FOLDER_ID/locations/
+        # LOCATION_ID/buckets/BUCKET_ID/views/VIEW_IDProjects listed in the project_ids
+        # field are added to this list.
         # Corresponds to the JSON property `resourceNames`
         # @return [Array<String>]
         attr_accessor :resource_names
@@ -696,6 +701,33 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @sinks = args[:sinks] if args.key?(:sinks)
+        end
+      end
+      
+      # The response from ListViews.
+      class ListViewsResponse
+        include Google::Apis::Core::Hashable
+      
+        # If there might be more results than appear in this response, then
+        # nextPageToken is included. To get the next set of results, call the same
+        # method again using the value of nextPageToken as pageToken.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of views.
+        # Corresponds to the JSON property `views`
+        # @return [Array<Google::Apis::LoggingV2::LogView>]
+        attr_accessor :views
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @views = args[:views] if args.key?(:views)
         end
       end
       
@@ -1188,13 +1220,7 @@ module Google
       
         # Defines a metric type and its schema. Once a metric descriptor is created,
         # deleting or altering it stops data collection and makes the metric type's
-        # existing data unusable.The following are specific rules for service defined
-        # Monitoring metric descriptors: type, metric_kind, value_type and description
-        # fields are all required. The unit field must be specified if the value_type is
-        # any of DOUBLE, INT64, DISTRIBUTION. Maximum of default 500 metric descriptors
-        # per service is allowed. Maximum of default 10 labels per metric descriptor is
-        # allowed.The default maximum limit can be overridden. Please follow https://
-        # cloud.google.com/monitoring/quotas
+        # existing data unusable.
         # Corresponds to the JSON property `metricDescriptor`
         # @return [Google::Apis::LoggingV2::MetricDescriptor]
         attr_accessor :metric_descriptor
@@ -1388,15 +1414,55 @@ module Google
         end
       end
       
+      # Describes a view over logs in a bucket.
+      class LogView
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The creation timestamp of the view.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Describes this view.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Filter that restricts which log entries in a bucket are visible in this view.
+        # Filters are restricted to be a logical AND of ==/!= of any of the following:
+        # originating project/folder/organization/billing account. resource type log id
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # The resource name of the view. For example "projects/my-project-id/locations/
+        # my-location/buckets/my-bucket-id/views/my-view
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The last update timestamp of the view.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @filter = args[:filter] if args.key?(:filter)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Defines a metric type and its schema. Once a metric descriptor is created,
       # deleting or altering it stops data collection and makes the metric type's
-      # existing data unusable.The following are specific rules for service defined
-      # Monitoring metric descriptors: type, metric_kind, value_type and description
-      # fields are all required. The unit field must be specified if the value_type is
-      # any of DOUBLE, INT64, DISTRIBUTION. Maximum of default 500 metric descriptors
-      # per service is allowed. Maximum of default 10 labels per metric descriptor is
-      # allowed.The default maximum limit can be overridden. Please follow https://
-      # cloud.google.com/monitoring/quotas
+      # existing data unusable.
       class MetricDescriptor
         include Google::Apis::Core::Hashable
       
@@ -1414,12 +1480,10 @@ module Google
         attr_accessor :display_name
       
         # The set of labels that can be used to describe a specific instance of this
-        # metric type.The label key name must follow: Only upper and lower-case letters,
-        # digits and underscores (_) are allowed. Label name must start with a letter or
-        # digit. The maximum length of a label name is 100 characters.For example, the
-        # appengine.googleapis.com/http/server/response_latencies metric type has a
-        # label for the HTTP response code, response_code, so you can look at latencies
-        # for successful responses or just for responses that failed.
+        # metric type. For example, the appengine.googleapis.com/http/server/
+        # response_latencies metric type has a label for the HTTP response code,
+        # response_code, so you can look at latencies for successful responses or just
+        # for responses that failed.
         # Corresponds to the JSON property `labels`
         # @return [Array<Google::Apis::LoggingV2::LabelDescriptor>]
         attr_accessor :labels
@@ -1454,16 +1518,11 @@ module Google
         attr_accessor :name
       
         # The metric type, including its DNS name prefix. The type is not URL-encoded.
-        # All service defined metrics must be prefixed with the service name, in the
-        # format of `service name`/`relative metric name`, such as cloudsql.googleapis.
-        # com/database/cpu/utilization. The relative metric name must follow: Only upper
-        # and lower-case letters, digits, '/' and underscores '_' are allowed. The
-        # maximum number of characters allowed for the relative_metric_name is 100.All
-        # user-defined metric types have the DNS name custom.googleapis.com, external.
-        # googleapis.com, or logging.googleapis.com/user/.Metric types should use a
-        # natural hierarchical grouping. For example: "custom.googleapis.com/invoice/
-        # paid/amount" "external.googleapis.com/prometheus/up" "appengine.googleapis.com/
-        # http/server/response_latencies"
+        # All user-defined metric types have the DNS name custom.googleapis.com or
+        # external.googleapis.com. Metric types should use a natural hierarchical
+        # grouping. For example: "custom.googleapis.com/invoice/paid/amount" "external.
+        # googleapis.com/prometheus/up" "appengine.googleapis.com/http/server/
+        # response_latencies"
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1619,16 +1678,9 @@ module Google
       # name and a set of labels. For example, the monitored resource descriptor for
       # Google Compute Engine VM instances has a type of "gce_instance" and specifies
       # the use of the labels "instance_id" and "zone" to identify particular VM
-      # instances.Different services can support different monitored resource types.
-      # The following are specific rules to service defined monitored resources for
-      # Monitoring and Logging: The type, display_name, description, labels and
-      # launch_stage fields are all required. The first label of the monitored
-      # resource descriptor must be resource_container. There are legacy monitored
-      # resource descritptors start with project_id. It must include a location label.
-      # Maximum of default 5 service defined monitored resource descriptors is allowed
-      # per service. Maximum of default 10 labels per monitored resource is allowed.
-      # The default maximum limit can be overridden. Please follow https://cloud.
-      # google.com/monitoring/quotas
+      # instances.Different APIs can support different monitored resource types. APIs
+      # generally provide a list method that returns the monitored resource
+      # descriptors used by the API.
       class MonitoredResourceDescriptor
         include Google::Apis::Core::Hashable
       
@@ -1646,11 +1698,8 @@ module Google
         attr_accessor :display_name
       
         # Required. A set of labels used to describe instances of this monitored
-        # resource type. The label key name must follow: Only upper and lower-case
-        # letters, digits and underscores (_) are allowed. Label name must start with a
-        # letter or digit. The maximum length of a label name is 100 characters.For
-        # example, an individual Google Cloud SQL database is identified by values for
-        # the labels database_id and location.
+        # resource type. For example, an individual Google Cloud SQL database is
+        # identified by values for the labels "database_id" and "zone".
         # Corresponds to the JSON property `labels`
         # @return [Array<Google::Apis::LoggingV2::LabelDescriptor>]
         attr_accessor :labels
@@ -1670,14 +1719,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. The monitored resource type. For example, the type cloudsql_database
-        # represents databases in Google Cloud SQL.All service defined monitored
-        # resource types must be prefixed with the service name, in the format of `
-        # service name`/`relative resource name`. The relative resource name must follow:
-        # Only upper and lower-case letters and digits are allowed. It must start with
-        # upper case character and is recommended to use Upper Camel Case style. The
-        # maximum number of characters allowed for the relative_resource_name is 100.
-        # Note there are legacy service monitored resources not following this rule.
+        # Required. The monitored resource type. For example, the type "
+        # cloudsql_database" represents databases in Google Cloud SQL.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type

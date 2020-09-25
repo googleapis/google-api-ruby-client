@@ -166,6 +166,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SlashCommand
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SlashCommandMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Space
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -228,6 +240,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :length, as: 'length'
+          property :slash_command, as: 'slashCommand', class: Google::Apis::ChatV1::SlashCommandMetadata, decorator: Google::Apis::ChatV1::SlashCommandMetadata::Representation
+      
           property :start_index, as: 'startIndex'
           property :type, as: 'type'
           property :user_mention, as: 'userMention', class: Google::Apis::ChatV1::UserMentionMetadata, decorator: Google::Apis::ChatV1::UserMentionMetadata::Representation
@@ -432,6 +446,8 @@ module Google
           property :preview_text, as: 'previewText'
           property :sender, as: 'sender', class: Google::Apis::ChatV1::User, decorator: Google::Apis::ChatV1::User::Representation
       
+          property :slash_command, as: 'slashCommand', class: Google::Apis::ChatV1::SlashCommand, decorator: Google::Apis::ChatV1::SlashCommand::Representation
+      
           property :space, as: 'space', class: Google::Apis::ChatV1::Space, decorator: Google::Apis::ChatV1::Space::Representation
       
           property :text, as: 'text'
@@ -463,6 +479,25 @@ module Google
           property :header, as: 'header'
           collection :widgets, as: 'widgets', class: Google::Apis::ChatV1::WidgetMarkup, decorator: Google::Apis::ChatV1::WidgetMarkup::Representation
       
+        end
+      end
+      
+      class SlashCommand
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :command_id, :numeric_string => true, as: 'commandId'
+        end
+      end
+      
+      class SlashCommandMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bot, as: 'bot', class: Google::Apis::ChatV1::User, decorator: Google::Apis::ChatV1::User::Representation
+      
+          property :command_id, :numeric_string => true, as: 'commandId'
+          property :command_name, as: 'commandName'
+          property :triggers_dialog, as: 'triggersDialog'
+          property :type, as: 'type'
         end
       end
       

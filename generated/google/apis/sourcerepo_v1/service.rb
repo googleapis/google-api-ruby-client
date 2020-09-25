@@ -49,8 +49,7 @@ module Google
         
         # Returns the Cloud Source Repositories configuration of the project.
         # @param [String] name
-        #   The name of the requested project. Values are of the form
-        #   `projects/<project>`.
+        #   The name of the requested project. Values are of the form `projects/`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -80,8 +79,7 @@ module Google
         
         # Updates the Cloud Source Repositories configuration of the project.
         # @param [String] name
-        #   The name of the requested project. Values are of the form
-        #   `projects/<project>`.
+        #   The name of the requested project. Values are of the form `projects/`.
         # @param [Google::Apis::SourcerepoV1::UpdateProjectConfigRequest] update_project_config_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -112,12 +110,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a repo in the given project with the given name.
-        # If the named repository already exists, `CreateRepo` returns
-        # `ALREADY_EXISTS`.
+        # Creates a repo in the given project with the given name. If the named
+        # repository already exists, `CreateRepo` returns `ALREADY_EXISTS`.
         # @param [String] parent
-        #   The project in which to create the repo. Values are of the form
-        #   `projects/<project>`.
+        #   The project in which to create the repo. Values are of the form `projects/`.
         # @param [Google::Apis::SourcerepoV1::Repo] repo_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -150,8 +146,7 @@ module Google
         
         # Deletes a repo.
         # @param [String] name
-        #   The name of the repo to delete. Values are of the form
-        #   `projects/<project>/repos/<repo>`.
+        #   The name of the repo to delete. Values are of the form `projects//repos/`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -181,8 +176,8 @@ module Google
         
         # Returns information about a repo.
         # @param [String] name
-        #   The name of the requested repository. Values are of the form
-        #   `projects/<project>/repos/<repo>`.
+        #   The name of the requested repository. Values are of the form `projects//repos/`
+        #   .
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -210,22 +205,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a resource.
-        # Returns an empty policy if the resource exists and does not have a policy
-        # set.
+        # Gets the access control policy for a resource. Returns an empty policy if the
+        # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned.
-        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-        #   rejected.
-        #   Requests for policies with any conditional bindings must specify version 3.
-        #   Policies without any conditional bindings may specify any valid value or
-        #   leave the field unset.
-        #   To learn which resources support conditions in their IAM policies, see the
-        #   [IAM
-        #   documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        #   Optional. The policy format version to be returned. Valid values are 0, 1, and
+        #   3. Requests specifying an invalid value will be rejected. Requests for
+        #   policies with any conditional bindings must specify version 3. Policies
+        #   without any conditional bindings may specify any valid value or leave the
+        #   field unset. To learn which resources support conditions in their IAM policies,
+        #   see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        #   resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -254,18 +246,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns all repos belonging to a project. The sizes of the repos are
-        # not set by ListRepos.  To get the size of a repo, use GetRepo.
+        # Returns all repos belonging to a project. The sizes of the repos are not set
+        # by ListRepos. To get the size of a repo, use GetRepo.
         # @param [String] name
-        #   The project ID whose repos should be listed. Values are of the form
-        #   `projects/<project>`.
+        #   The project ID whose repos should be listed. Values are of the form `projects/`
+        #   .
         # @param [Fixnum] page_size
-        #   Maximum number of repositories to return; between 1 and 500.
-        #   If not set or zero, defaults to 100 at the server.
+        #   Maximum number of repositories to return; between 1 and 500. If not set or
+        #   zero, defaults to 100 at the server.
         # @param [String] page_token
-        #   Resume listing repositories where a prior ListReposResponse
-        #   left off. This is an opaque token that must be obtained from
-        #   a recent, prior ListReposResponse's next_page_token field.
+        #   Resume listing repositories where a prior ListReposResponse left off. This is
+        #   an opaque token that must be obtained from a recent, prior ListReposResponse's
+        #   next_page_token field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -297,8 +289,8 @@ module Google
         
         # Updates information about a repo.
         # @param [String] name
-        #   The name of the requested repository. Values are of the form
-        #   `projects/<project>/repos/<repo>`.
+        #   The name of the requested repository. Values are of the form `projects//repos/`
+        #   .
         # @param [Google::Apis::SourcerepoV1::UpdateRepoRequest] update_repo_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -332,8 +324,8 @@ module Google
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::SourcerepoV1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -364,11 +356,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Synchronize a connected repo.
-        # The response contains SyncRepoMetadata in the metadata field.
+        # Synchronize a connected repo. The response contains SyncRepoMetadata in the
+        # metadata field.
         # @param [String] name
-        #   The name of the repo to synchronize. Values are of the form
-        #   `projects/<project>/repos/<repo>`.
+        #   The name of the repo to synchronize. Values are of the form `projects//repos/`.
         # @param [Google::Apis::SourcerepoV1::SyncRepoRequest] sync_repo_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -399,12 +390,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource.
-        # If the resource does not exist, this will return an empty set of
-        # permissions, not a NOT_FOUND error.
+        # Returns permissions that a caller has on the specified resource. If the
+        # resource does not exist, this will return an empty set of permissions, not a
+        # NOT_FOUND error.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::SourcerepoV1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

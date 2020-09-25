@@ -1495,6 +1495,7 @@ module Google
           property :clustering, as: 'clustering', class: Google::Apis::BigqueryV2::Clustering, decorator: Google::Apis::BigqueryV2::Clustering::Representation
       
           property :create_disposition, as: 'createDisposition'
+          collection :decimal_target_types, as: 'decimalTargetTypes'
           property :destination_encryption_configuration, as: 'destinationEncryptionConfiguration', class: Google::Apis::BigqueryV2::EncryptionConfiguration, decorator: Google::Apis::BigqueryV2::EncryptionConfiguration::Representation
       
           property :destination_table, as: 'destinationTable', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation

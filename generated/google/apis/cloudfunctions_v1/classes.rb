@@ -226,6 +226,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :available_memory_mb
       
+        # Build environment variables that shall be available during build time.
+        # Corresponds to the JSON property `buildEnvironmentVariables`
+        # @return [Hash<String,String>]
+        attr_accessor :build_environment_variables
+      
         # Output only. The Cloud Build ID of the latest successful deployment of the
         # function.
         # Corresponds to the JSON property `buildId`
@@ -272,7 +277,12 @@ module Google
         attr_accessor :labels
       
         # The limit on the maximum number of function instances that may coexist at a
-        # given time.
+        # given time. In some cases, such as rapid traffic surges, Cloud Functions may,
+        # for a short period of time, create more instances than the specified max
+        # instances limit. If your function cannot tolerate this temporary behavior, you
+        # may want to factor in a safety margin and set a lower max instances value than
+        # your function can tolerate. See the [Max Instances](https://cloud.google.com/
+        # functions/docs/max-instances) Guide for more details.
         # Corresponds to the JSON property `maxInstances`
         # @return [Fixnum]
         attr_accessor :max_instances
@@ -375,6 +385,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @available_memory_mb = args[:available_memory_mb] if args.key?(:available_memory_mb)
+          @build_environment_variables = args[:build_environment_variables] if args.key?(:build_environment_variables)
           @build_id = args[:build_id] if args.key?(:build_id)
           @description = args[:description] if args.key?(:description)
           @entry_point = args[:entry_point] if args.key?(:entry_point)

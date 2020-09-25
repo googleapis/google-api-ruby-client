@@ -2775,6 +2775,7 @@ module Google
           property :partner_revenue_model, as: 'partnerRevenueModel', class: Google::Apis::DisplayvideoV1::PartnerRevenueModel, decorator: Google::Apis::DisplayvideoV1::PartnerRevenueModel::Representation
       
           property :update_time, as: 'updateTime'
+          collection :warning_messages, as: 'warningMessages'
         end
       end
       

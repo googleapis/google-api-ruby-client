@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AttestationOccurrence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Attestor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -70,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Jwt
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListAttestorsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -94,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Signature
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TestIamPermissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -112,6 +130,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ValidateAttestationOccurrenceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ValidateAttestationOccurrenceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdmissionRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -125,6 +155,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name_pattern, as: 'namePattern'
+        end
+      end
+      
+      class AttestationOccurrence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :jwts, as: 'jwts', class: Google::Apis::BinaryauthorizationV1beta1::Jwt, decorator: Google::Apis::BinaryauthorizationV1beta1::Jwt::Representation
+      
+          property :serialized_payload, :base64 => true, as: 'serializedPayload'
+          collection :signatures, as: 'signatures', class: Google::Apis::BinaryauthorizationV1beta1::Signature, decorator: Google::Apis::BinaryauthorizationV1beta1::Signature::Representation
+      
         end
       end
       
@@ -187,6 +228,13 @@ module Google
         end
       end
       
+      class Jwt
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compact_jwt, as: 'compactJwt'
+        end
+      end
+      
       class ListAttestorsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -228,6 +276,14 @@ module Google
         end
       end
       
+      class Signature
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :public_key_id, as: 'publicKeyId'
+          property :signature, :base64 => true, as: 'signature'
+        end
+      end
+      
       class TestIamPermissionsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -249,6 +305,24 @@ module Google
           property :note_reference, as: 'noteReference'
           collection :public_keys, as: 'publicKeys', class: Google::Apis::BinaryauthorizationV1beta1::AttestorPublicKey, decorator: Google::Apis::BinaryauthorizationV1beta1::AttestorPublicKey::Representation
       
+        end
+      end
+      
+      class ValidateAttestationOccurrenceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attestation, as: 'attestation', class: Google::Apis::BinaryauthorizationV1beta1::AttestationOccurrence, decorator: Google::Apis::BinaryauthorizationV1beta1::AttestationOccurrence::Representation
+      
+          property :occurrence_note, as: 'occurrenceNote'
+          property :occurrence_resource_uri, as: 'occurrenceResourceUri'
+        end
+      end
+      
+      class ValidateAttestationOccurrenceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :denial_reason, as: 'denialReason'
+          property :result, as: 'result'
         end
       end
     end

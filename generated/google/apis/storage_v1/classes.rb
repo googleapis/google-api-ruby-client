@@ -1446,8 +1446,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Cloud KMS Key used to encrypt this object, if the object is encrypted by such
-        # a key.
+        # Not currently supported. Specifying the parameter causes the request to fail
+        # with status code 400 - Bad Request.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name

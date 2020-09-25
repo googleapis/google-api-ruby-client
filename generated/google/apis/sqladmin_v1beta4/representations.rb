@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DenyMaintenancePeriod
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DiskEncryptionConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -268,12 +274,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class MaintenanceDenyPeriod
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class MaintenanceWindow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -341,6 +341,12 @@ module Google
       end
       
       class Settings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlActiveDirectoryConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -652,6 +658,15 @@ module Google
         end
       end
       
+      class DenyMaintenancePeriod
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_date, as: 'endDate'
+          property :start_date, as: 'startDate'
+          property :time, as: 'time'
+        end
+      end
+      
       class DiskEncryptionConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -895,15 +910,6 @@ module Google
         end
       end
       
-      class MaintenanceDenyPeriod
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_date, as: 'endDate'
-          property :start_date, as: 'startDate'
-          property :time, as: 'time'
-        end
-      end
-      
       class MaintenanceWindow
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1037,6 +1043,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :activation_policy, as: 'activationPolicy'
+          property :active_directory_config, as: 'activeDirectoryConfig', class: Google::Apis::SqladminV1beta4::SqlActiveDirectoryConfig, decorator: Google::Apis::SqladminV1beta4::SqlActiveDirectoryConfig::Representation
+      
           collection :authorized_gae_applications, as: 'authorizedGaeApplications'
           property :availability_type, as: 'availabilityType'
           property :backup_configuration, as: 'backupConfiguration', class: Google::Apis::SqladminV1beta4::BackupConfiguration, decorator: Google::Apis::SqladminV1beta4::BackupConfiguration::Representation
@@ -1048,12 +1056,12 @@ module Google
           collection :database_flags, as: 'databaseFlags', class: Google::Apis::SqladminV1beta4::DatabaseFlags, decorator: Google::Apis::SqladminV1beta4::DatabaseFlags::Representation
       
           property :database_replication_enabled, as: 'databaseReplicationEnabled'
+          collection :deny_maintenance_periods, as: 'denyMaintenancePeriods', class: Google::Apis::SqladminV1beta4::DenyMaintenancePeriod, decorator: Google::Apis::SqladminV1beta4::DenyMaintenancePeriod::Representation
+      
           property :ip_configuration, as: 'ipConfiguration', class: Google::Apis::SqladminV1beta4::IpConfiguration, decorator: Google::Apis::SqladminV1beta4::IpConfiguration::Representation
       
           property :kind, as: 'kind'
           property :location_preference, as: 'locationPreference', class: Google::Apis::SqladminV1beta4::LocationPreference, decorator: Google::Apis::SqladminV1beta4::LocationPreference::Representation
-      
-          collection :maintenance_deny_periods, as: 'maintenanceDenyPeriods', class: Google::Apis::SqladminV1beta4::MaintenanceDenyPeriod, decorator: Google::Apis::SqladminV1beta4::MaintenanceDenyPeriod::Representation
       
           property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::SqladminV1beta4::MaintenanceWindow, decorator: Google::Apis::SqladminV1beta4::MaintenanceWindow::Representation
       
@@ -1064,6 +1072,14 @@ module Google
           property :storage_auto_resize_limit, :numeric_string => true, as: 'storageAutoResizeLimit'
           property :tier, as: 'tier'
           hash :user_labels, as: 'userLabels'
+        end
+      end
+      
+      class SqlActiveDirectoryConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+          property :kind, as: 'kind'
         end
       end
       

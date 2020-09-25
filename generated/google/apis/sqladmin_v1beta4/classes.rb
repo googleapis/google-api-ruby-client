@@ -488,11 +488,11 @@ module Google
         attr_accessor :current_disk_size
       
         # The database engine type and version. The *databaseVersion* field cannot be
-        # changed after instance creation. MySQL instances: *MYSQL_5_7* (default), or *
-        # MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*
-        # or *POSTGRES_12* (default). SQL Server instances: *SQLSERVER_2017_STANDARD* (
-        # default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *
-        # SQLSERVER_2017_WEB*.
+        # changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (
+        # default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*,
+        # *POSTGRES_11* or *POSTGRES_12* (default). SQL Server instances: *
+        # SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *
+        # SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
         # Corresponds to the JSON property `databaseVersion`
         # @return [String]
         attr_accessor :database_version
@@ -855,6 +855,45 @@ module Google
         end
       end
       
+      # Deny Maintenance Periods. This specifies a date range during when all CSA
+      # rollout will be denied.
+      class DenyMaintenancePeriod
+        include Google::Apis::Core::Hashable
+      
+        # "deny maintenance period" end date. If the year of the end date is empty, the
+        # year of the start date also must be empty. In this case, it means the deny
+        # maintenance period recurs every year. The date is in format yyyy-mm-dd i.e.,
+        # 2020-11-01, or mm-dd, i.e., 11-01
+        # Corresponds to the JSON property `endDate`
+        # @return [String]
+        attr_accessor :end_date
+      
+        # "deny maintenance period" start date. If the year of the start date is empty,
+        # the year of the end date also must be empty. In this case, it means the deny
+        # maintenance period recurs every year. The date is in format yyyy-mm-dd i.e.,
+        # 2020-11-01, or mm-dd, i.e., 11-01
+        # Corresponds to the JSON property `startDate`
+        # @return [String]
+        attr_accessor :start_date
+      
+        # Time in UTC when the "deny maintenance period" starts on start_date and ends
+        # on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
+        # Corresponds to the JSON property `time`
+        # @return [String]
+        attr_accessor :time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @start_date = args[:start_date] if args.key?(:start_date)
+          @time = args[:time] if args.key?(:time)
+        end
+      end
+      
       # Disk encryption configuration for an instance.
       class DiskEncryptionConfiguration
         include Google::Apis::Core::Hashable
@@ -1087,8 +1126,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :allowed_string_values
       
-        # The database version this flag applies to. Can be *MYSQL_5_5*, *MYSQL_5_6*, or
-        # *MYSQL_5_7*. *MYSQL_5_7* is applicable only to Second Generation instances.
+        # The database version this flag applies to. Can be *MYSQL_8_0*, *MYSQL_5_6*, or
+        # *MYSQL_5_7*.
         # Corresponds to the JSON property `appliesTo`
         # @return [Array<String>]
         attr_accessor :applies_to
@@ -1659,45 +1698,6 @@ module Google
         end
       end
       
-      # Maintenance Deny Periods. This specifies a date range during when all CSA
-      # rollout will be denied.
-      class MaintenanceDenyPeriod
-        include Google::Apis::Core::Hashable
-      
-        # "maintenance deny period" end date. If the year of the end date is empty, the
-        # year of the start date also must be empty. In this case, it means the no
-        # maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e.,
-        # 2020-11-01, or mm-dd, i.e., 11-01
-        # Corresponds to the JSON property `endDate`
-        # @return [String]
-        attr_accessor :end_date
-      
-        # "maintenance deny period" start date. If the year of the start date is empty,
-        # the year of the end date also must be empty. In this case, it means the no
-        # maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e.,
-        # 2020-11-01, or mm-dd, i.e., 11-01
-        # Corresponds to the JSON property `startDate`
-        # @return [String]
-        attr_accessor :start_date
-      
-        # Time in UTC when the "no maintenance interval" starts on start_date and ends
-        # on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
-        # Corresponds to the JSON property `time`
-        # @return [String]
-        attr_accessor :time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @end_date = args[:end_date] if args.key?(:end_date)
-          @start_date = args[:start_date] if args.key?(:start_date)
-          @time = args[:time] if args.key?(:time)
-        end
-      end
-      
       # Maintenance window. This specifies when a Cloud SQL instance is restarted for
       # system maintenance purposes.
       class MaintenanceWindow
@@ -2225,6 +2225,11 @@ module Google
         # @return [String]
         attr_accessor :activation_policy
       
+        # Active Directory configuration, for now relevant only for SQL Server
+        # Corresponds to the JSON property `activeDirectoryConfig`
+        # @return [Google::Apis::SqladminV1beta4::SqlActiveDirectoryConfig]
+        attr_accessor :active_directory_config
+      
         # The App Engine app IDs that can access this instance. (Deprecated) Applied to
         # First Generation instances only.
         # Corresponds to the JSON property `authorizedGaeApplications`
@@ -2281,6 +2286,11 @@ module Google
         attr_accessor :database_replication_enabled
         alias_method :database_replication_enabled?, :database_replication_enabled
       
+        # Deny maintenance periods
+        # Corresponds to the JSON property `denyMaintenancePeriods`
+        # @return [Array<Google::Apis::SqladminV1beta4::DenyMaintenancePeriod>]
+        attr_accessor :deny_maintenance_periods
+      
         # IP Management configuration.
         # Corresponds to the JSON property `ipConfiguration`
         # @return [Google::Apis::SqladminV1beta4::IpConfiguration]
@@ -2299,11 +2309,6 @@ module Google
         # Corresponds to the JSON property `locationPreference`
         # @return [Google::Apis::SqladminV1beta4::LocationPreference]
         attr_accessor :location_preference
-      
-        # Maintenance deny periods
-        # Corresponds to the JSON property `maintenanceDenyPeriods`
-        # @return [Array<Google::Apis::SqladminV1beta4::MaintenanceDenyPeriod>]
-        attr_accessor :maintenance_deny_periods
       
         # Maintenance window. This specifies when a Cloud SQL instance is restarted for
         # system maintenance purposes.
@@ -2364,6 +2369,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @activation_policy = args[:activation_policy] if args.key?(:activation_policy)
+          @active_directory_config = args[:active_directory_config] if args.key?(:active_directory_config)
           @authorized_gae_applications = args[:authorized_gae_applications] if args.key?(:authorized_gae_applications)
           @availability_type = args[:availability_type] if args.key?(:availability_type)
           @backup_configuration = args[:backup_configuration] if args.key?(:backup_configuration)
@@ -2373,10 +2379,10 @@ module Google
           @data_disk_type = args[:data_disk_type] if args.key?(:data_disk_type)
           @database_flags = args[:database_flags] if args.key?(:database_flags)
           @database_replication_enabled = args[:database_replication_enabled] if args.key?(:database_replication_enabled)
+          @deny_maintenance_periods = args[:deny_maintenance_periods] if args.key?(:deny_maintenance_periods)
           @ip_configuration = args[:ip_configuration] if args.key?(:ip_configuration)
           @kind = args[:kind] if args.key?(:kind)
           @location_preference = args[:location_preference] if args.key?(:location_preference)
-          @maintenance_deny_periods = args[:maintenance_deny_periods] if args.key?(:maintenance_deny_periods)
           @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
           @pricing_plan = args[:pricing_plan] if args.key?(:pricing_plan)
           @replication_type = args[:replication_type] if args.key?(:replication_type)
@@ -2385,6 +2391,31 @@ module Google
           @storage_auto_resize_limit = args[:storage_auto_resize_limit] if args.key?(:storage_auto_resize_limit)
           @tier = args[:tier] if args.key?(:tier)
           @user_labels = args[:user_labels] if args.key?(:user_labels)
+        end
+      end
+      
+      # Active Directory configuration, for now relevant only for SQL Server
+      class SqlActiveDirectoryConfig
+        include Google::Apis::Core::Hashable
+      
+        # Domain name
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # This will be always sql#activeDirectoryConfig.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       

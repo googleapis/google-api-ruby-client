@@ -2855,6 +2855,27 @@ module Google
         # @return [String]
         attr_accessor :create_disposition
       
+        # [Trusted Tester] Defines the list of possible SQL data types to which the
+        # source decimal values are converted. This list and the precision and the scale
+        # parameters of the decimal field determine the target type. In the order of
+        # NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified
+        # list and if it supports the precision and the scale. STRING supports all
+        # precision and scale values. If none of the listed types supports the precision
+        # and the scale, the type supporting the widest range in the specified list is
+        # picked, and if a value exceeds the supported range when reading the data, an
+        # error will be thrown. For example: suppose decimal_target_type = ["NUMERIC", "
+        # BIGNUMERIC"]. Then if (precision,scale) is: * (38,9) -> NUMERIC; * (39,9) ->
+        # BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (
+        # NUMERIC cannot hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -
+        # > BIGNUMERIC (error if value exeeds supported range). For duplicated types in
+        # this field, only one will be considered and the rest will be ignored. The
+        # order of the types in this field is ignored. For example, ["BIGNUMERIC", "
+        # NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes
+        # precedence over BIGNUMERIC.
+        # Corresponds to the JSON property `decimalTargetTypes`
+        # @return [Array<String>]
+        attr_accessor :decimal_target_types
+      
         # Custom encryption configuration (e.g., Cloud KMS keys).
         # Corresponds to the JSON property `destinationEncryptionConfiguration`
         # @return [Google::Apis::BigqueryV2::EncryptionConfiguration]
@@ -3044,6 +3065,7 @@ module Google
           @autodetect = args[:autodetect] if args.key?(:autodetect)
           @clustering = args[:clustering] if args.key?(:clustering)
           @create_disposition = args[:create_disposition] if args.key?(:create_disposition)
+          @decimal_target_types = args[:decimal_target_types] if args.key?(:decimal_target_types)
           @destination_encryption_configuration = args[:destination_encryption_configuration] if args.key?(:destination_encryption_configuration)
           @destination_table = args[:destination_table] if args.key?(:destination_table)
           @destination_table_properties = args[:destination_table_properties] if args.key?(:destination_table_properties)

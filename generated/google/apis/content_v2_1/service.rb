@@ -1582,7 +1582,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the local inventory of a product in your Merchant Center account.
+        # Updates the local inventory of a product in your Merchant Center account.
         # @param [Fixnum] merchant_id
         #   The ID of the account that contains the product. This account cannot be a
         #   multi-client account.

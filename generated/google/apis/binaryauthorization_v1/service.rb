@@ -409,6 +409,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns whether the given Attestation for the given image URI was signed by
+        # the given Attestor
+        # @param [String] attestor
+        #   Required. The resource name of the Attestor of the occurrence, in the format `
+        #   projects/*/attestors/*`.
+        # @param [Google::Apis::BinaryauthorizationV1::ValidateAttestationOccurrenceRequest] validate_attestation_occurrence_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BinaryauthorizationV1::ValidateAttestationOccurrenceResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BinaryauthorizationV1::ValidateAttestationOccurrenceResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def validate_attestor_attestation_occurrence(attestor, validate_attestation_occurrence_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+attestor}:validateAttestationOccurrence', options)
+          command.request_representation = Google::Apis::BinaryauthorizationV1::ValidateAttestationOccurrenceRequest::Representation
+          command.request_object = validate_attestation_occurrence_request_object
+          command.response_representation = Google::Apis::BinaryauthorizationV1::ValidateAttestationOccurrenceResponse::Representation
+          command.response_class = Google::Apis::BinaryauthorizationV1::ValidateAttestationOccurrenceResponse
+          command.params['attestor'] = attestor unless attestor.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource

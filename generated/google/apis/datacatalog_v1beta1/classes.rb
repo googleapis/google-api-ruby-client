@@ -1088,7 +1088,7 @@ module Google
         # Unreachable locations. Search result does not include data from those
         # locations. Users can get additional information on the error by repeating the
         # search request with a more restrictive parameter -- setting the value for `
-        # SearchDataCatalogRequest.scope.include_locations`.
+        # SearchDataCatalogRequest.scope.restricted_locations`.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
