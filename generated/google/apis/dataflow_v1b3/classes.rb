@@ -1501,7 +1501,9 @@ module Google
       
         # Additional user labels to be specified for the job. Keys and values must
         # follow the restrictions specified in the [labeling restrictions](https://cloud.
-        # google.com/compute/docs/labeling-resources#restrictions) page.
+        # google.com/compute/docs/labeling-resources#restrictions) page. An object
+        # containing a list of "key": value pairs. Example: ` "name": "wrench", "mass": "
+        # 1kg", "count": "3" `.
         # Corresponds to the JSON property `additionalUserLabels`
         # @return [Hash<String,String>]
         attr_accessor :additional_user_labels
@@ -1551,8 +1553,12 @@ module Google
         # @return [String]
         attr_accessor :service_account_email
       
-        # Subnetwork to which VMs will be assigned, if desired. Expected to be of the
-        # form "regions/REGION/subnetworks/SUBNETWORK".
+        # Subnetwork to which VMs will be assigned, if desired. You can specify a
+        # subnetwork using either a complete URL or an abbreviated path. Expected to be
+        # of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/
+        # regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/
+        # SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must
+        # use the complete URL.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -3929,7 +3935,9 @@ module Google
       
         # Additional user labels to be specified for the job. Keys and values should
         # follow the restrictions specified in the [labeling restrictions](https://cloud.
-        # google.com/compute/docs/labeling-resources#restrictions) page.
+        # google.com/compute/docs/labeling-resources#restrictions) page. An object
+        # containing a list of "key": value pairs. Example: ` "name": "wrench", "mass": "
+        # 1kg", "count": "3" `.
         # Corresponds to the JSON property `additionalUserLabels`
         # @return [Hash<String,String>]
         attr_accessor :additional_user_labels
@@ -3952,8 +3960,8 @@ module Google
         # @return [String]
         attr_accessor :ip_configuration
       
-        # Optional. Name for the Cloud KMS key for the job. Key format is: projects//
-        # locations//keyRings//cryptoKeys/
+        # Name for the Cloud KMS key for the job. Key format is: projects//locations//
+        # keyRings//cryptoKeys/
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
@@ -3986,8 +3994,12 @@ module Google
         # @return [String]
         attr_accessor :service_account_email
       
-        # Subnetwork to which VMs will be assigned, if desired. Expected to be of the
-        # form "regions/REGION/subnetworks/SUBNETWORK".
+        # Subnetwork to which VMs will be assigned, if desired. You can specify a
+        # subnetwork using either a complete URL or an abbreviated path. Expected to be
+        # of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/
+        # regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/
+        # SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must
+        # use the complete URL.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
