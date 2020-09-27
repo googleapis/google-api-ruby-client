@@ -371,8 +371,7 @@ module Google
         attr_accessor :principal_email
       
         # String representation of identity of requesting party. Populated for both
-        # first and third party identities. Only present for APIs that support third-
-        # party identities.
+        # first and third party identities.
         # Corresponds to the JSON property `principalSubject`
         # @return [String]
         attr_accessor :principal_subject
