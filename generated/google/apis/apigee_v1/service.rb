@@ -83,8 +83,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an Apigee organization. See [Create an organization](https://docs.
-        # apigee.com/hybrid/latest/precog-provision).
+        # Creates an Apigee organization. See [Create an Apigee organization](https://
+        # cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Organization] google_cloud_apigee_v1_organization_object
         # @param [String] parent
         #   Required. Name of the GCP project in which to associate the Apigee
@@ -119,8 +119,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the profile for an Apigee organization. See [Organizations](https://docs.
-        # apigee.com/hybrid/latest/terminology#organizations).
+        # Gets the profile for an Apigee organization. See [Understanding organizations](
+        # https://cloud.google.com/apigee/docs/api-platform/fundamentals/organization-
+        # structure).
         # @param [String] name
         #   Required. Apigee organization name in the following format: `organizations/`
         #   org``
@@ -188,9 +189,9 @@ module Google
         # calling [setSyncAuthorization](setSyncAuthorization) to ensure that you are
         # updating the correct version. If you don't pass the ETag in the call to `
         # setSyncAuthorization`, then the existing authorization is overwritten
-        # indiscriminately. For more information, see [Enable Synchronizer access](https:
-        # //docs.apigee.com/hybrid/latest/synchronizer-access#enable-synchronizer-access)
-        # . **Note**: Available to Apigee hybrid only.
+        # indiscriminately. For more information, see [Configure the Synchronizer](https:
+        # //cloud.google.com/apigee/docs/hybrid/latest/synchronizer-access). **Note**:
+        # Available to Apigee hybrid only.
         # @param [String] name
         #   Required. Name of the Apigee organization. Use the following structure in your
         #   request: `organizations/`org``
@@ -225,8 +226,8 @@ module Google
         end
         
         # Lists the Apigee organizations and associated GCP projects that you have
-        # permission to access. See [Organizations](https://docs.apigee.com/hybrid/
-        # latest/terminology#organizations).
+        # permission to access. See [Understanding organizations](https://cloud.google.
+        # com/apigee/docs/api-platform/fundamentals/organization-structure).
         # @param [String] parent
         #   Required. Use the following structure in your request: `organizations`
         # @param [String] fields
@@ -262,9 +263,9 @@ module Google
         # to ensure that you are updating the correct version. To get an ETag, call [
         # getSyncAuthorization](getSyncAuthorization). If you don't pass the ETag in the
         # call to `setSyncAuthorization`, then the existing authorization is overwritten
-        # indiscriminately. For more information, see [Enable Synchronizer access](https:
-        # //docs.apigee.com/hybrid/latest/synchronizer-access#enable-synchronizer-access)
-        # . **Note**: Available to Apigee hybrid only.
+        # indiscriminately. For more information, see [Configure the Synchronizer](https:
+        # //cloud.google.com/apigee/docs/hybrid/latest/synchronizer-access). **Note**:
+        # Available to Apigee hybrid only.
         # @param [String] name
         #   Required. Name of the Apigee organization. Use the following structure in your
         #   request: `organizations/`org``
@@ -2912,8 +2913,8 @@ module Google
         
         # Lists all attachments of an environment group.
         # @param [String] parent
-        #   Required. Name of the organization in the following format: `organizations/`
-        #   org``.
+        #   Required. Name of the environment group in the following format: `
+        #   organizations/`org`/envgroups/`envgroup``.
         # @param [Fixnum] page_size
         #   Maximum number of environment group attachments to return. The page size
         #   defaults to 25.
@@ -3113,9 +3114,9 @@ module Google
         end
         
         # Gets the IAM policy on an environment. For more information, see [Manage users,
-        # roles, and permissions using the API](https://docs.apigee.com/hybrid/latest/
-        # manage-users-roles). You must have the `apigee.environments.getIamPolicy`
-        # permission to call this API.
+        # roles, and permissions using the API](https://cloud.google.com/apigee/docs/
+        # api-platform/system-administration/manage-users-roles). You must have the `
+        # apigee.environments.getIamPolicy` permission to call this API.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested. See the
         #   operation documentation for the appropriate value for this field.
@@ -3157,8 +3158,9 @@ module Google
         
         # Sets the IAM policy on an environment, if the policy already exists it will be
         # replaced. For more information, see [Manage users, roles, and permissions
-        # using the API](https://docs.apigee.com/hybrid/latest/manage-users-roles). You
-        # must have the `apigee.environments.setIamPolicy` permission to call this API.
+        # using the API](https://cloud.google.com/apigee/docs/api-platform/system-
+        # administration/manage-users-roles). You must have the `apigee.environments.
+        # setIamPolicy` permission to call this API.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified. See the
         #   operation documentation for the appropriate value for this field.

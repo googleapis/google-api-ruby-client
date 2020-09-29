@@ -3749,8 +3749,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. Primary GCP region for analytics data storage. For valid values, see
-        # [Create an organization](https://docs.apigee.com/hybrid/latest/precog-
-        # provision).
+        # [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-
+        # platform/get-started/create-org).
         # Corresponds to the JSON property `analyticsRegion`
         # @return [String]
         attr_accessor :analytics_region
@@ -3760,7 +3760,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :attributes
       
-        # Compute Engine network used for ServiceNetworking to be peered with Apigee
+        # Compute Engine network used for Service Networking to be peered with Apigee
         # runtime instances. See [Getting started with the Service Networking API](https:
         # //cloud.google.com/service-infrastructure/docs/service-networking/getting-
         # started). Valid only when [RuntimeType] is set to CLOUD. The value can be
@@ -5264,8 +5264,8 @@ module Google
         # com` You might specify multiple service accounts, for example, if you have
         # multiple environments and wish to assign a unique service account to each one.
         # The service accounts must have **Apigee Synchronizer Manager** role. See also [
-        # Create service accounts](https://docs.apigee.com/hybrid/latest/sa-about#create-
-        # the-service-accounts).
+        # Create service accounts](https://cloud.google.com/apigee/docs/hybrid/latest/sa-
+        # about#create-the-service-accounts).
         # Corresponds to the JSON property `identities`
         # @return [Array<String>]
         attr_accessor :identities

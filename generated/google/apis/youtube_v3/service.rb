@@ -1511,7 +1511,7 @@ module Google
         #   The *part* parameter specifies a comma-separated list of one or more
         #   liveBroadcast resource properties that the API response will include. The part
         #   names that you can include in the parameter value are id, snippet,
-        #   contentDetails, and status.
+        #   contentDetails, status and statistics.
         # @param [String] broadcast_status
         #   Return broadcasts with a certain status, e.g. active broadcasts.
         # @param [String] broadcast_type

@@ -716,6 +716,7 @@ module Google
           property :purchase_token, as: 'purchaseToken'
           property :purchase_type, as: 'purchaseType'
           property :quantity, as: 'quantity'
+          property :region_code, as: 'regionCode'
         end
       end
       

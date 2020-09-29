@@ -125,9 +125,9 @@ module Google
       end
       
       # Adds a data source. After the data source is added successfully, an associated
-      # DataSource sheet is created and an execution is triggered to refresh the sheet
-      # to read data from the data source. The request requires an additional bigquery.
-      # readonly OAuth scope.
+      # DATA_SOURCE sheet is created and an execution is triggered to refresh the
+      # sheet to read data from the data source. The request requires an additional `
+      # bigquery.readonly` OAuth scope.
       class AddDataSourceRequest
         include Google::Apis::Core::Hashable
       
@@ -150,7 +150,15 @@ module Google
       class AddDataSourceResponse
         include Google::Apis::Core::Hashable
       
-        # The data execution status.
+        # The data execution status. A data execution is created to sync a data source
+        # object with the latest data from a DataSource. It is usually scheduled to run
+        # at background, you can check its state to tell if an execution completes There
+        # are several scenarios where a data execution is triggered to run: * Adding a
+        # data source creates an associated data source sheet as well as a data
+        # execution to sync the data from the data source to the sheet. * Updating a
+        # data source creates a data execution to refresh the associated data source
+        # sheet similarly. * You can send refresh request to explicitly refresh one or
+        # multiple data source objects.
         # Corresponds to the JSON property `dataExecutionStatus`
         # @return [Google::Apis::SheetsV4::DataExecutionStatus]
         attr_accessor :data_execution_status
@@ -563,7 +571,7 @@ module Google
       class AutoResizeDimensionsRequest
         include Google::Apis::Core::Hashable
       
-        # A range along a single dimension on a DataSource sheet.
+        # A range along a single dimension on a DATA_SOURCE sheet.
         # Corresponds to the JSON property `dataSourceSheetDimensions`
         # @return [Google::Apis::SheetsV4::DataSourceSheetDimensionRange]
         attr_accessor :data_source_sheet_dimensions
@@ -1320,7 +1328,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The criteria for showing/hiding values per column. The map's key is the column
-        # index, and the value is the criteria for that column.
+        # index, and the value is the criteria for that column. This field is deprecated
+        # in favor of filter_specs.
         # Corresponds to the JSON property `criteria`
         # @return [Hash<String,Google::Apis::SheetsV4::FilterCriteria>]
         attr_accessor :criteria
@@ -1840,7 +1849,7 @@ module Google
         end
       end
       
-      # The specification of a BigQuery data source.
+      # The specification of a BigQuery data source that's connected to a sheet.
       class BigQueryDataSourceSpec
         include Google::Apis::Core::Hashable
       
@@ -1855,7 +1864,8 @@ module Google
         # @return [Google::Apis::SheetsV4::BigQueryQuerySpec]
         attr_accessor :query_spec
       
-        # Specifies a BigQuery table definition. Only native tables is allowed.
+        # Specifies a BigQuery table definition. Only [native tables](https://cloud.
+        # google.com/bigquery/docs/tables-intro) is allowed.
         # Corresponds to the JSON property `tableSpec`
         # @return [Google::Apis::SheetsV4::BigQueryTableSpec]
         attr_accessor :table_spec
@@ -1891,7 +1901,8 @@ module Google
         end
       end
       
-      # Specifies a BigQuery table definition. Only native tables is allowed.
+      # Specifies a BigQuery table definition. Only [native tables](https://cloud.
+      # google.com/bigquery/docs/tables-intro) is allowed.
       class BigQueryTableSpec
         include Google::Apis::Core::Hashable
       
@@ -2346,8 +2357,9 @@ module Google
         # @return [Google::Apis::SheetsV4::DataSourceFormula]
         attr_accessor :data_source_formula
       
-        # A data source table, allowing to import a static table of data from the
-        # DataSource into Sheets. This is also known as "Extract" in the Sheets editor.
+        # A data source table, which allows the user to import a static table of data
+        # from the DataSource into Sheets. This is also known as "Extract" in the Sheets
+        # editor.
         # Corresponds to the JSON property `dataSourceTable`
         # @return [Google::Apis::SheetsV4::DataSourceTable]
         attr_accessor :data_source_table
@@ -2631,7 +2643,7 @@ module Google
         # @return [String]
         attr_accessor :aggregate_type
       
-        # An unique identifier that references to a data source column.
+        # An unique identifier that references a data source column.
         # Corresponds to the JSON property `columnReference`
         # @return [Google::Apis::SheetsV4::DataSourceColumnReference]
         attr_accessor :column_reference
@@ -3461,7 +3473,15 @@ module Google
         end
       end
       
-      # The data execution status.
+      # The data execution status. A data execution is created to sync a data source
+      # object with the latest data from a DataSource. It is usually scheduled to run
+      # at background, you can check its state to tell if an execution completes There
+      # are several scenarios where a data execution is triggered to run: * Adding a
+      # data source creates an associated data source sheet as well as a data
+      # execution to sync the data from the data source to the sheet. * Updating a
+      # data source creates a data execution to refresh the associated data source
+      # sheet similarly. * You can send refresh request to explicitly refresh one or
+      # multiple data source objects.
       class DataExecutionStatus
         include Google::Apis::Core::Hashable
       
@@ -3592,20 +3612,22 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::DataSourceColumn>]
         attr_accessor :calculated_columns
       
-        # The spreadsheet-scoped unique ID that identifies the data source.
+        # The spreadsheet-scoped unique ID that identifies the data source. Example:
+        # 1080547365.
         # Corresponds to the JSON property `dataSourceId`
         # @return [String]
         attr_accessor :data_source_id
       
         # The ID of the Sheet connected with the data source. The field cannot be
-        # changed once set. When creating a data source, an associated SheetType.
-        # DATA_SOURCE sheet is also created, if the field is not specified, the ID of
-        # the created sheet will be randomly generated.
+        # changed once set. When creating a data source, an associated DATA_SOURCE sheet
+        # is also created, if the field is not specified, the ID of the created sheet
+        # will be randomly generated.
         # Corresponds to the JSON property `sheetId`
         # @return [Fixnum]
         attr_accessor :sheet_id
       
-        # The specification of a data source.
+        # This specifies the details of the data source. For example, for BigQuery, this
+        # specifies information about the BigQuery source.
         # Corresponds to the JSON property `spec`
         # @return [Google::Apis::SheetsV4::DataSourceSpec]
         attr_accessor :spec
@@ -3627,7 +3649,15 @@ module Google
       class DataSourceChartProperties
         include Google::Apis::Core::Hashable
       
-        # The data execution status.
+        # The data execution status. A data execution is created to sync a data source
+        # object with the latest data from a DataSource. It is usually scheduled to run
+        # at background, you can check its state to tell if an execution completes There
+        # are several scenarios where a data execution is triggered to run: * Adding a
+        # data source creates an associated data source sheet as well as a data
+        # execution to sync the data from the data source to the sheet. * Updating a
+        # data source creates a data execution to refresh the associated data source
+        # sheet similarly. * You can send refresh request to explicitly refresh one or
+        # multiple data source objects.
         # Corresponds to the JSON property `dataExecutionStatus`
         # @return [Google::Apis::SheetsV4::DataExecutionStatus]
         attr_accessor :data_execution_status
@@ -3648,7 +3678,7 @@ module Google
         end
       end
       
-      # A data source column.
+      # A column in a data source.
       class DataSourceColumn
         include Google::Apis::Core::Hashable
       
@@ -3657,7 +3687,7 @@ module Google
         # @return [String]
         attr_accessor :formula
       
-        # An unique identifier that references to a data source column.
+        # An unique identifier that references a data source column.
         # Corresponds to the JSON property `reference`
         # @return [Google::Apis::SheetsV4::DataSourceColumnReference]
         attr_accessor :reference
@@ -3673,7 +3703,7 @@ module Google
         end
       end
       
-      # An unique identifier that references to a data source column.
+      # An unique identifier that references a data source column.
       class DataSourceColumnReference
         include Google::Apis::Core::Hashable
       
@@ -3696,7 +3726,15 @@ module Google
       class DataSourceFormula
         include Google::Apis::Core::Hashable
       
-        # The data execution status.
+        # The data execution status. A data execution is created to sync a data source
+        # object with the latest data from a DataSource. It is usually scheduled to run
+        # at background, you can check its state to tell if an execution completes There
+        # are several scenarios where a data execution is triggered to run: * Adding a
+        # data source creates an associated data source sheet as well as a data
+        # execution to sync the data from the data source to the sheet. * Updating a
+        # data source creates a data execution to refresh the associated data source
+        # sheet similarly. * You can send refresh request to explicitly refresh one or
+        # multiple data source objects.
         # Corresponds to the JSON property `dataExecutionStatus`
         # @return [Google::Apis::SheetsV4::DataExecutionStatus]
         attr_accessor :data_execution_status
@@ -3721,7 +3759,7 @@ module Google
       class DataSourceObjectReference
         include Google::Apis::Core::Hashable
       
-        # References to a DataSourceChart.
+        # References to a data source chart.
         # Corresponds to the JSON property `chartId`
         # @return [Fixnum]
         attr_accessor :chart_id
@@ -3741,7 +3779,7 @@ module Google
         # @return [Google::Apis::SheetsV4::GridCoordinate]
         attr_accessor :data_source_table_anchor_cell
       
-        # References to a SheetType.DATA_SOURCE sheet.
+        # References to a DATA_SOURCE sheet.
         # Corresponds to the JSON property `sheetId`
         # @return [String]
         attr_accessor :sheet_id
@@ -3779,13 +3817,14 @@ module Google
         end
       end
       
-      # A parameter in a data source's query. The parameter allows user to pass in
+      # A parameter in a data source's query. The parameter allows the user to pass in
       # values from the spreadsheet into a query.
       class DataSourceParameter
         include Google::Apis::Core::Hashable
       
         # Named parameter. Must be a legitimate identifier for the DataSource that
-        # supports it. For example, BigQuery identifier
+        # supports it. For example, [BigQuery identifier](https://cloud.google.com/
+        # bigquery/docs/reference/standard-sql/lexical#identifiers).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3824,7 +3863,7 @@ module Google
         end
       end
       
-      # Schedule refreshes in a time interval everyday.
+      # A schedule for data to refresh every day in a given time interval.
       class DataSourceRefreshDailySchedule
         include Google::Apis::Core::Hashable
       
@@ -3845,8 +3884,8 @@ module Google
         end
       end
       
-      # Schedule refreshes in a time interval on specified days in a month and repeats
-      # monthly.
+      # A monthly schedule for data to refresh on specific days in the month in a
+      # given time interval.
       class DataSourceRefreshMonthlySchedule
         include Google::Apis::Core::Hashable
       
@@ -3874,15 +3913,15 @@ module Google
         end
       end
       
-      # The data source refresh schedule. All data sources in the spreadsheet are
-      # scheduled to refresh in a future time interval. The time interval size
-      # defaults to the one defined in the Sheets editor. For example, if a daily
-      # schedule at start time of 8am is scheduled, and the time interval is 4 hours,
-      # the scheduled refresh will happen between 8am and 12pm every day.
+      # Schedule for refreshing the data source. Data sources in the spreadsheet are
+      # refreshed within a time interval. You can specify the start time by clicking
+      # the Scheduled Refresh button in the Sheets editor, but the interval is fixed
+      # at 4 hours. For example, if you specify a start time of 8am , the refresh will
+      # take place between 8am and 12pm every day.
       class DataSourceRefreshSchedule
         include Google::Apis::Core::Hashable
       
-        # Schedule refreshes in a time interval everyday.
+        # A schedule for data to refresh every day in a given time interval.
         # Corresponds to the JSON property `dailySchedule`
         # @return [Google::Apis::SheetsV4::DataSourceRefreshDailySchedule]
         attr_accessor :daily_schedule
@@ -3893,8 +3932,8 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
-        # Schedule refreshes in a time interval on specified days in a month and repeats
-        # monthly.
+        # A monthly schedule for data to refresh on specific days in the month in a
+        # given time interval.
         # Corresponds to the JSON property `monthlySchedule`
         # @return [Google::Apis::SheetsV4::DataSourceRefreshMonthlySchedule]
         attr_accessor :monthly_schedule
@@ -3907,13 +3946,13 @@ module Google
         # @return [Google::Apis::SheetsV4::Interval]
         attr_accessor :next_run
       
-        # The scope of the refresh.
+        # The scope of the refresh. Must be ALL_DATA_SOURCES.
         # Corresponds to the JSON property `refreshScope`
         # @return [String]
         attr_accessor :refresh_scope
       
-        # Schedule refreshes in a time interval on specified days in a week and repeats
-        # weekly.
+        # A weekly schedule for data to refresh on specific days in a given time
+        # interval.
         # Corresponds to the JSON property `weeklySchedule`
         # @return [Google::Apis::SheetsV4::DataSourceRefreshWeeklySchedule]
         attr_accessor :weekly_schedule
@@ -3933,8 +3972,8 @@ module Google
         end
       end
       
-      # Schedule refreshes in a time interval on specified days in a week and repeats
-      # weekly.
+      # A weekly schedule for data to refresh on specific days in a given time
+      # interval.
       class DataSourceRefreshWeeklySchedule
         include Google::Apis::Core::Hashable
       
@@ -3961,7 +4000,7 @@ module Google
         end
       end
       
-      # A range along a single dimension on a DataSource sheet.
+      # A range along a single dimension on a DATA_SOURCE sheet.
       class DataSourceSheetDimensionRange
         include Google::Apis::Core::Hashable
       
@@ -3986,7 +4025,7 @@ module Google
         end
       end
       
-      # Additional properties of a SheetType.DATA_SOURCE sheet.
+      # Additional properties of a DATA_SOURCE sheet.
       class DataSourceSheetProperties
         include Google::Apis::Core::Hashable
       
@@ -3995,12 +4034,20 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::DataSourceColumn>]
         attr_accessor :columns
       
-        # The data execution status.
+        # The data execution status. A data execution is created to sync a data source
+        # object with the latest data from a DataSource. It is usually scheduled to run
+        # at background, you can check its state to tell if an execution completes There
+        # are several scenarios where a data execution is triggered to run: * Adding a
+        # data source creates an associated data source sheet as well as a data
+        # execution to sync the data from the data source to the sheet. * Updating a
+        # data source creates a data execution to refresh the associated data source
+        # sheet similarly. * You can send refresh request to explicitly refresh one or
+        # multiple data source objects.
         # Corresponds to the JSON property `dataExecutionStatus`
         # @return [Google::Apis::SheetsV4::DataExecutionStatus]
         attr_accessor :data_execution_status
       
-        # ID of the DataSource the sheet connected with.
+        # ID of the DataSource the sheet is connected to.
         # Corresponds to the JSON property `dataSourceId`
         # @return [String]
         attr_accessor :data_source_id
@@ -4017,16 +4064,17 @@ module Google
         end
       end
       
-      # The specification of a data source.
+      # This specifies the details of the data source. For example, for BigQuery, this
+      # specifies information about the BigQuery source.
       class DataSourceSpec
         include Google::Apis::Core::Hashable
       
-        # The specification of a BigQuery data source.
+        # The specification of a BigQuery data source that's connected to a sheet.
         # Corresponds to the JSON property `bigQuery`
         # @return [Google::Apis::SheetsV4::BigQueryDataSourceSpec]
         attr_accessor :big_query
       
-        # The parameters of the data source.
+        # The parameters of the data source, used when querying the data source.
         # Corresponds to the JSON property `parameters`
         # @return [Array<Google::Apis::SheetsV4::DataSourceParameter>]
         attr_accessor :parameters
@@ -4042,8 +4090,9 @@ module Google
         end
       end
       
-      # A data source table, allowing to import a static table of data from the
-      # DataSource into Sheets. This is also known as "Extract" in the Sheets editor.
+      # A data source table, which allows the user to import a static table of data
+      # from the DataSource into Sheets. This is also known as "Extract" in the Sheets
+      # editor.
       class DataSourceTable
         include Google::Apis::Core::Hashable
       
@@ -4058,7 +4107,15 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::DataSourceColumnReference>]
         attr_accessor :columns
       
-        # The data execution status.
+        # The data execution status. A data execution is created to sync a data source
+        # object with the latest data from a DataSource. It is usually scheduled to run
+        # at background, you can check its state to tell if an execution completes There
+        # are several scenarios where a data execution is triggered to run: * Adding a
+        # data source creates an associated data source sheet as well as a data
+        # execution to sync the data from the data source to the sheet. * Updating a
+        # data source creates a data execution to refresh the associated data source
+        # sheet similarly. * You can send refresh request to explicitly refresh one or
+        # multiple data source objects.
         # Corresponds to the JSON property `dataExecutionStatus`
         # @return [Google::Apis::SheetsV4::DataExecutionStatus]
         attr_accessor :data_execution_status
@@ -4539,7 +4596,8 @@ module Google
       class DeleteSheetRequest
         include Google::Apis::Core::Hashable
       
-        # The ID of the sheet to delete.
+        # The ID of the sheet to delete. If the sheet is of SheetType.DATA_SOURCE type,
+        # the associated DataSource is also deleted.
         # Corresponds to the JSON property `sheetId`
         # @return [Fixnum]
         attr_accessor :sheet_id
@@ -4776,7 +4834,7 @@ module Google
       class DimensionProperties
         include Google::Apis::Core::Hashable
       
-        # An unique identifier that references to a data source column.
+        # An unique identifier that references a data source column.
         # Corresponds to the JSON property `dataSourceColumnReference`
         # @return [Google::Apis::SheetsV4::DataSourceColumnReference]
         attr_accessor :data_source_column_reference
@@ -4915,7 +4973,10 @@ module Google
         # @return [String]
         attr_accessor :new_sheet_name
       
-        # The sheet to duplicate.
+        # The sheet to duplicate. If the source sheet is of DATA_SOURCE type, its
+        # backing DataSource is also duplicated and associated with the new copy of the
+        # sheet. No data execution is triggered, the grid data of this sheet is also
+        # copied over but only available after the batch request completes.
         # Corresponds to the JSON property `sourceSheetId`
         # @return [Fixnum]
         attr_accessor :source_sheet_id
@@ -5269,7 +5330,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :column_index
       
-        # An unique identifier that references to a data source column.
+        # An unique identifier that references a data source column.
         # Corresponds to the JSON property `dataSourceColumnReference`
         # @return [Google::Apis::SheetsV4::DataSourceColumnReference]
         attr_accessor :data_source_column_reference
@@ -5296,7 +5357,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The criteria for showing/hiding values per column. The map's key is the column
-        # index, and the value is the criteria for that column.
+        # index, and the value is the criteria for that column. This field is deprecated
+        # in favor of filter_specs.
         # Corresponds to the JSON property `criteria`
         # @return [Hash<String,Google::Apis::SheetsV4::FilterCriteria>]
         attr_accessor :criteria
@@ -6816,7 +6878,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :column_offset_index
       
-        # An unique identifier that references to a data source column.
+        # An unique identifier that references a data source column.
         # Corresponds to the JSON property `dataSourceColumnReference`
         # @return [Google::Apis::SheetsV4::DataSourceColumnReference]
         attr_accessor :data_source_column_reference
@@ -6842,7 +6904,7 @@ module Google
       class PivotGroup
         include Google::Apis::Core::Hashable
       
-        # An unique identifier that references to a data source column.
+        # An unique identifier that references a data source column.
         # Corresponds to the JSON property `dataSourceColumnReference`
         # @return [Google::Apis::SheetsV4::DataSourceColumnReference]
         attr_accessor :data_source_column_reference
@@ -7108,12 +7170,20 @@ module Google
         # column offset of the source range that you want to filter, and the value is
         # the criteria for that column. For example, if the source was `C10:E15`, a key
         # of `0` will have the filter for column `C`, whereas the key `1` is for column `
-        # D`.
+        # D`. This field is deprecated in favor of filter_specs.
         # Corresponds to the JSON property `criteria`
         # @return [Hash<String,Google::Apis::SheetsV4::PivotFilterCriteria>]
         attr_accessor :criteria
       
-        # The data execution status.
+        # The data execution status. A data execution is created to sync a data source
+        # object with the latest data from a DataSource. It is usually scheduled to run
+        # at background, you can check its state to tell if an execution completes There
+        # are several scenarios where a data execution is triggered to run: * Adding a
+        # data source creates an associated data source sheet as well as a data
+        # execution to sync the data from the data source to the sheet. * Updating a
+        # data source creates a data execution to refresh the associated data source
+        # sheet similarly. * You can send refresh request to explicitly refresh one or
+        # multiple data source objects.
         # Corresponds to the JSON property `dataExecutionStatus`
         # @return [Google::Apis::SheetsV4::DataExecutionStatus]
         attr_accessor :data_execution_status
@@ -7194,7 +7264,7 @@ module Google
         # @return [String]
         attr_accessor :calculated_display_type
       
-        # An unique identifier that references to a data source column.
+        # An unique identifier that references a data source column.
         # Corresponds to the JSON property `dataSourceColumnReference`
         # @return [Google::Apis::SheetsV4::DataSourceColumnReference]
         attr_accessor :data_source_column_reference
@@ -7358,7 +7428,15 @@ module Google
       class RefreshDataSourceObjectExecutionStatus
         include Google::Apis::Core::Hashable
       
-        # The data execution status.
+        # The data execution status. A data execution is created to sync a data source
+        # object with the latest data from a DataSource. It is usually scheduled to run
+        # at background, you can check its state to tell if an execution completes There
+        # are several scenarios where a data execution is triggered to run: * Adding a
+        # data source creates an associated data source sheet as well as a data
+        # execution to sync the data from the data source to the sheet. * Updating a
+        # data source creates a data execution to refresh the associated data source
+        # sheet similarly. * You can send refresh request to explicitly refresh one or
+        # multiple data source objects.
         # Corresponds to the JSON property `dataExecutionStatus`
         # @return [Google::Apis::SheetsV4::DataExecutionStatus]
         attr_accessor :data_execution_status
@@ -7380,8 +7458,8 @@ module Google
       end
       
       # Refreshes one or multiple data source objects in the spreadsheet by the
-      # specified references. The request requires an additional bigquery.readonly
-      # OAuth scope. If there're multiple refresh requests referencing the same data
+      # specified references. The request requires an additional `bigquery.readonly`
+      # OAuth scope. If there are multiple refresh requests referencing the same data
       # source objects in one batch, only the last refresh request is processed, and
       # all those requests will have the same response accordingly.
       class RefreshDataSourceRequest
@@ -7519,9 +7597,9 @@ module Google
         attr_accessor :add_conditional_format_rule
       
         # Adds a data source. After the data source is added successfully, an associated
-        # DataSource sheet is created and an execution is triggered to refresh the sheet
-        # to read data from the data source. The request requires an additional bigquery.
-        # readonly OAuth scope.
+        # DATA_SOURCE sheet is created and an execution is triggered to refresh the
+        # sheet to read data from the data source. The request requires an additional `
+        # bigquery.readonly` OAuth scope.
         # Corresponds to the JSON property `addDataSource`
         # @return [Google::Apis::SheetsV4::AddDataSourceRequest]
         attr_accessor :add_data_source
@@ -7736,8 +7814,8 @@ module Google
         attr_accessor :randomize_range
       
         # Refreshes one or multiple data source objects in the spreadsheet by the
-        # specified references. The request requires an additional bigquery.readonly
-        # OAuth scope. If there're multiple refresh requests referencing the same data
+        # specified references. The request requires an additional `bigquery.readonly`
+        # OAuth scope. If there are multiple refresh requests referencing the same data
         # source objects in one batch, only the last refresh request is processed, and
         # all those requests will have the same response accordingly.
         # Corresponds to the JSON property `refreshDataSource`
@@ -7826,9 +7904,9 @@ module Google
         attr_accessor :update_conditional_format_rule
       
         # Updates a data source. After the data source is updated successfully, an
-        # execution is triggered to refresh the associated DataSource sheet to read data
-        # from the updated data source. The request requires an additional bigquery.
-        # readonly OAuth scope.
+        # execution is triggered to refresh the associated DATA_SOURCE sheet to read
+        # data from the updated data source. The request requires an additional `
+        # bigquery.readonly` OAuth scope.
         # Corresponds to the JSON property `updateDataSource`
         # @return [Google::Apis::SheetsV4::UpdateDataSourceRequest]
         attr_accessor :update_data_source
@@ -8141,7 +8219,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The aggregation type for key and baseline chart data in scorecard chart. This
-        # field is optional.
+        # field is not supported for data source charts. Use the ChartData.aggregateType
+        # field of the key_value_data or baseline_value_data instead for data source
+        # charts. This field is optional.
         # Corresponds to the JSON property `aggregateType`
         # @return [String]
         attr_accessor :aggregate_type
@@ -8332,7 +8412,9 @@ module Google
         # example, if this is representing `Sheet1`, and the spreadsheet was requested
         # with ranges `Sheet1!A1:C10` and `Sheet1!D15:E20`, then the first GridData will
         # have a startRow/startColumn of `0`, while the second one will have `startRow
-        # 14` (zero-based row 15), and `startColumn 3` (zero-based column D).
+        # 14` (zero-based row 15), and `startColumn 3` (zero-based column D). For a
+        # DATA_SOURCE sheet, you can not request a specific range, the GridData contains
+        # all the values.
         # Corresponds to the JSON property `data`
         # @return [Array<Google::Apis::SheetsV4::GridData>]
         attr_accessor :data
@@ -8399,7 +8481,7 @@ module Google
       class SheetProperties
         include Google::Apis::Core::Hashable
       
-        # Additional properties of a SheetType.DATA_SOURCE sheet.
+        # Additional properties of a DATA_SOURCE sheet.
         # Corresponds to the JSON property `dataSourceSheetProperties`
         # @return [Google::Apis::SheetsV4::DataSourceSheetProperties]
         attr_accessor :data_source_sheet_properties
@@ -8775,7 +8857,7 @@ module Google
         # @return [Google::Apis::SheetsV4::ColorStyle]
         attr_accessor :background_color_style
       
-        # An unique identifier that references to a data source column.
+        # An unique identifier that references a data source column.
         # Corresponds to the JSON property `dataSourceColumnReference`
         # @return [Google::Apis::SheetsV4::DataSourceColumnReference]
         attr_accessor :data_source_column_reference
@@ -10075,9 +10157,9 @@ module Google
       end
       
       # Updates a data source. After the data source is updated successfully, an
-      # execution is triggered to refresh the associated DataSource sheet to read data
-      # from the updated data source. The request requires an additional bigquery.
-      # readonly OAuth scope.
+      # execution is triggered to refresh the associated DATA_SOURCE sheet to read
+      # data from the updated data source. The request requires an additional `
+      # bigquery.readonly` OAuth scope.
       class UpdateDataSourceRequest
         include Google::Apis::Core::Hashable
       
@@ -10087,7 +10169,7 @@ module Google
         attr_accessor :data_source
       
         # The fields that should be updated. At least one field must be specified. The
-        # root 'dataSource' is implied and should not be specified. A single `"*"` can
+        # root `dataSource` is implied and should not be specified. A single `"*"` can
         # be used as short-hand for listing every field.
         # Corresponds to the JSON property `fields`
         # @return [String]
@@ -10108,7 +10190,15 @@ module Google
       class UpdateDataSourceResponse
         include Google::Apis::Core::Hashable
       
-        # The data execution status.
+        # The data execution status. A data execution is created to sync a data source
+        # object with the latest data from a DataSource. It is usually scheduled to run
+        # at background, you can check its state to tell if an execution completes There
+        # are several scenarios where a data execution is triggered to run: * Adding a
+        # data source creates an associated data source sheet as well as a data
+        # execution to sync the data from the data source to the sheet. * Updating a
+        # data source creates a data execution to refresh the associated data source
+        # sheet similarly. * You can send refresh request to explicitly refresh one or
+        # multiple data source objects.
         # Corresponds to the JSON property `dataExecutionStatus`
         # @return [Google::Apis::SheetsV4::DataExecutionStatus]
         attr_accessor :data_execution_status
@@ -10225,7 +10315,7 @@ module Google
       class UpdateDimensionPropertiesRequest
         include Google::Apis::Core::Hashable
       
-        # A range along a single dimension on a DataSource sheet.
+        # A range along a single dimension on a DATA_SOURCE sheet.
         # Corresponds to the JSON property `dataSourceSheetRange`
         # @return [Google::Apis::SheetsV4::DataSourceSheetDimensionRange]
         attr_accessor :data_source_sheet_range

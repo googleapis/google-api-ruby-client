@@ -22,6 +22,54 @@ module Google
   module Apis
     module AssuredworkloadsV1beta1
       
+      class GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1Workload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1WorkloadCjisSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1WorkloadFedrampHighSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1WorkloadFedrampModerateSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1WorkloadIl4Settings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1WorkloadKmsSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1WorkloadResourceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -98,6 +146,87 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compliance_regime, as: 'complianceRegime'
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :parent, as: 'parent'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1Workload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :billing_account, as: 'billingAccount'
+          property :cjis_settings, as: 'cjisSettings', class: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadCjisSettings, decorator: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadCjisSettings::Representation
+      
+          property :compliance_regime, as: 'complianceRegime'
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
+          property :fedramp_high_settings, as: 'fedrampHighSettings', class: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadFedrampHighSettings, decorator: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadFedrampHighSettings::Representation
+      
+          property :fedramp_moderate_settings, as: 'fedrampModerateSettings', class: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadFedrampModerateSettings, decorator: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadFedrampModerateSettings::Representation
+      
+          property :il4_settings, as: 'il4Settings', class: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadIl4Settings, decorator: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadIl4Settings::Representation
+      
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          collection :resources, as: 'resources', class: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadResourceInfo, decorator: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadResourceInfo::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1WorkloadCjisSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_settings, as: 'kmsSettings', class: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadKmsSettings, decorator: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadKmsSettings::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1WorkloadFedrampHighSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_settings, as: 'kmsSettings', class: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadKmsSettings, decorator: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadKmsSettings::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1WorkloadFedrampModerateSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_settings, as: 'kmsSettings', class: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadKmsSettings, decorator: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadKmsSettings::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1WorkloadIl4Settings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_settings, as: 'kmsSettings', class: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadKmsSettings, decorator: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadKmsSettings::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1WorkloadKmsSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_rotation_time, as: 'nextRotationTime'
+          property :rotation_period, as: 'rotationPeriod'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1WorkloadResourceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_id, :numeric_string => true, as: 'resourceId'
+          property :resource_type, as: 'resourceType'
+        end
       end
       
       class GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata

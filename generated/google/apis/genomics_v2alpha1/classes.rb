@@ -565,6 +565,32 @@ module Google
         end
       end
       
+      # Configuration for an existing disk to be attached to the VM.
+      class ExistingDisk
+        include Google::Apis::Core::Hashable
+      
+        # If `disk` contains slashes, the Cloud Life Sciences API assumes that it is a
+        # complete URL for the disk. If `disk` does not contain slashes, the Cloud Life
+        # Sciences API assumes that the disk is a zonal disk and a URL will be generated
+        # of the form `zones//disks/`, where `` is the zone in which the instance is
+        # allocated. The disk must be ext4 formatted. If all `Mount` references to this
+        # disk have the `read_only` flag set to true, the disk will be attached in `read-
+        # only` mode and can be shared with other instances. Otherwise, the disk will be
+        # available for writing but cannot be shared.
+        # Corresponds to the JSON property `disk`
+        # @return [String]
+        attr_accessor :disk
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk = args[:disk] if args.key?(:disk)
+        end
+      end
+      
       # An event generated when the execution of a pipeline has failed. Note that
       # other events can continue to occur after this event.
       class FailedEvent
@@ -897,6 +923,43 @@ module Google
           @request = args[:request] if args.key?(:request)
           @runtime_metadata = args[:runtime_metadata] if args.key?(:runtime_metadata)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Configuration for a persistent disk to be attached to the VM. See https://
+      # cloud.google.com/compute/docs/disks/performance for more information about
+      # disk type, size, and performance considerations.
+      class PersistentDisk
+        include Google::Apis::Core::Hashable
+      
+        # The size, in GB, of the disk to attach. If the size is not specified, a
+        # default is chosen to ensure reasonable I/O performance. If the disk type is
+        # specified as `local-ssd`, multiple local drives are automatically combined to
+        # provide the requested size. Note, however, that each physical SSD is 375GB in
+        # size, and no more than 8 drives can be attached to a single instance.
+        # Corresponds to the JSON property `sizeGb`
+        # @return [Fixnum]
+        attr_accessor :size_gb
+      
+        # An image to put on the disk before attaching it to the VM.
+        # Corresponds to the JSON property `sourceImage`
+        # @return [String]
+        attr_accessor :source_image
+      
+        # The Compute Engine disk type. If unspecified, `pd-standard` is used.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
+          @source_image = args[:source_image] if args.key?(:source_image)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1342,6 +1405,11 @@ module Google
         # @return [Google::Apis::GenomicsV2alpha1::ServiceAccount]
         attr_accessor :service_account
       
+        # The list of disks and other storage to create or attach to the VM.
+        # Corresponds to the JSON property `volumes`
+        # @return [Array<Google::Apis::GenomicsV2alpha1::Volume>]
+        attr_accessor :volumes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1361,6 +1429,42 @@ module Google
           @nvidia_driver_version = args[:nvidia_driver_version] if args.key?(:nvidia_driver_version)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @service_account = args[:service_account] if args.key?(:service_account)
+          @volumes = args[:volumes] if args.key?(:volumes)
+        end
+      end
+      
+      # Carries information about storage that can be attached to a VM.
+      class Volume
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for an existing disk to be attached to the VM.
+        # Corresponds to the JSON property `existingDisk`
+        # @return [Google::Apis::GenomicsV2alpha1::ExistingDisk]
+        attr_accessor :existing_disk
+      
+        # Configuration for a persistent disk to be attached to the VM. See https://
+        # cloud.google.com/compute/docs/disks/performance for more information about
+        # disk type, size, and performance considerations.
+        # Corresponds to the JSON property `persistentDisk`
+        # @return [Google::Apis::GenomicsV2alpha1::PersistentDisk]
+        attr_accessor :persistent_disk
+      
+        # A user-supplied name for the volume. Used when mounting the volume into `
+        # Actions`. The name must contain only upper and lowercase alphanumeric
+        # characters and hyphens and cannot start with a hyphen.
+        # Corresponds to the JSON property `volume`
+        # @return [String]
+        attr_accessor :volume
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @existing_disk = args[:existing_disk] if args.key?(:existing_disk)
+          @persistent_disk = args[:persistent_disk] if args.key?(:persistent_disk)
+          @volume = args[:volume] if args.key?(:volume)
         end
       end
       

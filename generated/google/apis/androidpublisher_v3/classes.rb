@@ -1225,6 +1225,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :quantity
       
+        # ISO 3166-1 alpha-2 billing region code of the user at the time the product was
+        # granted.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1244,6 +1250,7 @@ module Google
           @purchase_token = args[:purchase_token] if args.key?(:purchase_token)
           @purchase_type = args[:purchase_type] if args.key?(:purchase_type)
           @quantity = args[:quantity] if args.key?(:quantity)
+          @region_code = args[:region_code] if args.key?(:region_code)
         end
       end
       
