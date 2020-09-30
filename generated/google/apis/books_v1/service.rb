@@ -43,8 +43,8 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://www.googleapis.com/', '')
-          @batch_path = 'batch/books/v1'
+          super('https://books.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
         # Retrieves metadata for a specific bookshelf for the specified user.

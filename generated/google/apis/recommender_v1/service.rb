@@ -84,7 +84,8 @@ module Google
         #   Required. The container resource on which to execute the request. Acceptable
         #   formats: 1. "projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[
         #   INSIGHT_TYPE_ID]", LOCATION here refers to GCP Locations: https://cloud.google.
-        #   com/about/locations/
+        #   com/about/locations/ INSIGHT_TYPE_ID refers to supported insight types: https:/
+        #   /cloud.google.com/recommender/docs/insights/insight-types.)
         # @param [String] filter
         #   Optional. Filter expression to restrict the insights returned. Supported
         #   filter fields: state Eg: `state:"DISMISSED" or state:"ACTIVE"
@@ -201,7 +202,8 @@ module Google
         #   Required. The container resource on which to execute the request. Acceptable
         #   formats: 1. "projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[
         #   RECOMMENDER_ID]", LOCATION here refers to GCP Locations: https://cloud.google.
-        #   com/about/locations/
+        #   com/about/locations/ RECOMMENDER_ID refers to supported recommenders: https://
+        #   cloud.google.com/recommender/docs/recommenders.
         # @param [String] filter
         #   Filter expression to restrict the recommendations returned. Supported filter
         #   fields: state_info.state Eg: `state_info.state:"DISMISSED" or state_info.state:

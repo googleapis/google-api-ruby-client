@@ -304,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodeGroupAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodeInitializationAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -712,6 +718,8 @@ module Google
           property :internal_ip_only, as: 'internalIpOnly'
           hash :metadata, as: 'metadata'
           property :network_uri, as: 'networkUri'
+          property :node_group_affinity, as: 'nodeGroupAffinity', class: Google::Apis::DataprocV1::NodeGroupAffinity, decorator: Google::Apis::DataprocV1::NodeGroupAffinity::Representation
+      
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::DataprocV1::ReservationAffinity, decorator: Google::Apis::DataprocV1::ReservationAffinity::Representation
       
@@ -994,6 +1002,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :instance_group_manager_name, as: 'instanceGroupManagerName'
           property :instance_template_name, as: 'instanceTemplateName'
+        end
+      end
+      
+      class NodeGroupAffinity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :node_group_uri, as: 'nodeGroupUri'
         end
       end
       

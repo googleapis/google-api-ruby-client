@@ -1883,6 +1883,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Each edge contains information about the member that belongs to this group.
+        # Note: Fields returned here will help identify the specific Membership resource
+        # (e.g name, preferred_member_key and role), but may not be a comprehensive list
+        # of all fields.
         # Corresponds to the JSON property `edges`
         # @return [Array<Google::Apis::CloudidentityV1beta1::Membership>]
         attr_accessor :edges

@@ -839,11 +839,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a Group.
+        # Deletes a `Group`.
         # @param [String] name
-        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        #   of the Group in the format: `groups/`group_id``, where `group_id` is the
-        #   unique ID assigned to the Group.
+        #   Required. The [resource name](https://cloud.google.com/apis/design/
+        #   resource_names) of the `Group` to retrieve. Must be of the form `groups/`
+        #   group_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -871,11 +871,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a Group.
+        # Retrieves a `Group`.
         # @param [String] name
-        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        #   of the Group in the format: `groups/`group_id``, where `group_id` is the
-        #   unique ID assigned to the Group.
+        #   Required. The [resource name](https://cloud.google.com/apis/design/
+        #   resource_names) of the `Group` to retrieve. Must be of the form `groups/`
+        #   group_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -903,16 +903,22 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists groups within a customer or a domain.
+        # Lists the `Group`s under a customer or namespace.
         # @param [Fixnum] page_size
-        #   The default page size is 200 (max 1000) for the BASIC view, and 50 (max 500)
-        #   for the FULL view.
+        #   The maximum number of results to return. Note that the number of results
+        #   returned may be less than this value even if there are more available results.
+        #   To fetch all results, clients must continue calling this method repeatedly
+        #   until the response no longer contains a `next_page_token`. If unspecified,
+        #   defaults to 200 for `View.BASIC` and to 50 for `View.FULL`. Must not be
+        #   greater than 1000 for `View.BASIC` or 500 for `View.FULL`.
         # @param [String] page_token
-        #   The next_page_token value returned from a previous list request, if any.
+        #   The `next_page_token` value returned from a previous list request, if any.
         # @param [String] parent
-        #   Required. Customer ID to list all groups from.
+        #   Required. The parent resource under which to list all `Group`s. Must be of the
+        #   form `identitysources/`identity_source_id`` for external- identity-mapped
+        #   groups or `customers/`customer_id`` for Google Groups.
         # @param [String] view
-        #   Group resource view to be returned. Defaults to [View.BASIC]().
+        #   The level of detail to be returned. If unspecified, defaults to `View.BASIC`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -943,16 +949,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Looks up [resource name](https://cloud.google.com/apis/design/resource_names)
-        # of a Group by its EntityKey.
+        # Looks up the [resource name](https://cloud.google.com/apis/design/
+        # resource_names) of a `Group` by its `EntityKey`.
         # @param [String] group_key_id
-        #   The ID of the entity within the given namespace. The ID must be unique within
-        #   its namespace.
+        #   The ID of the entity. For Google-managed entities, the `id` should be the
+        #   email address of an existing group or user. For external-identity-mapped
+        #   entities, the `id` must be a string conforming to the Identity Source's
+        #   requirements. Must be unique within a `namespace`.
         # @param [String] group_key_namespace
-        #   Namespaces provide isolation for IDs, so an ID only needs to be unique within
-        #   its namespace. Namespaces are currently only created as part of IdentitySource
-        #   creation from Admin Console. A namespace `"identitysources/`identity_source_id`
-        #   "` is created corresponding to every Identity Source `identity_source_id`.
+        #   The namespace in which the entity exists. If not specified, the `EntityKey`
+        #   represents a Google-managed entity such as a Google user or a Google Group. If
+        #   specified, the `EntityKey` represents an external-identity-mapped group. The
+        #   namespace must correspond to an identity source created in Admin Console and
+        #   must be in the form of `identitysources/`identity_source_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -981,15 +990,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a Group.
+        # Updates a `Group`.
         # @param [String] name
-        #   Output only. [Resource name](https://cloud.google.com/apis/design/
-        #   resource_names) of the Group in the format: `groups/`group_id``, where
-        #   group_id is the unique ID assigned to the Group. Must be left blank while
-        #   creating a Group.
+        #   Output only. The [resource name](https://cloud.google.com/apis/design/
+        #   resource_names) of the `Group`. Shall be of the form `groups/`group_id``.
         # @param [Google::Apis::CloudidentityV1::Group] group_object
         # @param [String] update_mask
-        #   Required. Editable fields: `display_name`, `description`
+        #   Required. The fully-qualified names of fields to update. May only contain the
+        #   following fields: `display_name`, `description`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1020,18 +1028,24 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Searches for Groups.
+        # Searches for `Group`s matching a specified query.
         # @param [Fixnum] page_size
-        #   The default page size is 200 (max 1000) for the BASIC view, and 50 (max 500)
-        #   for the FULL view.
+        #   The maximum number of results to return. Note that the number of results
+        #   returned may be less than this value even if there are more available results.
+        #   To fetch all results, clients must continue calling this method repeatedly
+        #   until the response no longer contains a `next_page_token`. If unspecified,
+        #   defaults to 200 for `GroupView.BASIC` and 50 for `GroupView.FULL`. Must not be
+        #   greater than 1000 for `GroupView.BASIC` or 500 for `GroupView.FULL`.
         # @param [String] page_token
-        #   The next_page_token value returned from a previous search request, if any.
+        #   The `next_page_token` value returned from a previous search request, if any.
         # @param [String] query
-        #   Required. `Required`. Query string for performing search on groups. Users can
-        #   search on parent and label attributes of groups. EXACT match ('==') is
-        #   supported on parent, and CONTAINS match ('in') is supported on labels.
+        #   Required. The search query. Must be specified in [Common Expression Language](
+        #   https://opensource.google/projects/cel). May only contain equality operators
+        #   on the parent and inclusion operators on labels (e.g., `parent == 'customers/`
+        #   customer_id`' && 'cloudidentity.googleapis.com/groups.discussion_forum' in
+        #   labels`).
         # @param [String] view
-        #   Group resource view to be returned. Defaults to [View.BASIC]().
+        #   The level of detail to be returned. If unspecified, defaults to `View.BASIC`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1062,11 +1076,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a Membership.
+        # Creates a `Membership`.
         # @param [String] parent
-        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        #   of the Group to create Membership within. Format: `groups/`group_id``, where `
-        #   group_id` is the unique ID assigned to the Group.
+        #   Required. The parent `Group` resource under which to create the `Membership`.
+        #   Must be of the form `groups/`group_id``.
         # @param [Google::Apis::CloudidentityV1::Membership] membership_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1097,12 +1110,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a Membership.
+        # Deletes a `Membership`.
         # @param [String] name
-        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        #   of the Membership to be deleted. Format: `groups/`group_id`/memberships/`
-        #   member_id``, where `group_id` is the unique ID assigned to the Group to which
-        #   Membership belongs to, and member_id is the unique ID assigned to the member.
+        #   Required. The [resource name](https://cloud.google.com/apis/design/
+        #   resource_names) of the `Membership` to delete. Must be of the form `groups/`
+        #   group_id`/memberships/`membership_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1130,12 +1142,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a Membership.
+        # Retrieves a `Membership`.
         # @param [String] name
-        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        #   of the Membership to be retrieved. Format: `groups/`group_id`/memberships/`
-        #   member_id``, where `group_id` is the unique id assigned to the Group to which
-        #   Membership belongs to, and `member_id` is the unique ID assigned to the member.
+        #   Required. The [resource name](https://cloud.google.com/apis/design/
+        #   resource_names) of the `Membership` to retrieve. Must be of the form `groups/`
+        #   group_id`/memberships/`membership_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1163,18 +1174,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists Memberships within a Group.
+        # Lists the `Membership`s within a `Group`.
         # @param [String] parent
-        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        #   of the Group to list Memberships within. Format: `groups/`group_id``, where `
-        #   group_id` is the unique ID assigned to the Group.
+        #   Required. The parent `Group` resource under which to lookup the `Membership`
+        #   name. Must be of the form `groups/`group_id``.
         # @param [Fixnum] page_size
-        #   The default page size is 200 (max 1000) for the BASIC view, and 50 (max 500)
-        #   for the FULL view.
+        #   The maximum number of results to return. Note that the number of results
+        #   returned may be less than this value even if there are more available results.
+        #   To fetch all results, clients must continue calling this method repeatedly
+        #   until the response no longer contains a `next_page_token`. If unspecified,
+        #   defaults to 200 for `GroupView.BASIC` and to 50 for `GroupView.FULL`. Must not
+        #   be greater than 1000 for `GroupView.BASIC` or 500 for `GroupView.FULL`.
         # @param [String] page_token
-        #   The next_page_token value returned from a previous list request, if any.
+        #   The `next_page_token` value returned from a previous search request, if any.
         # @param [String] view
-        #   Membership resource view to be returned. Defaults to View.BASIC.
+        #   The level of detail to be returned. If unspecified, defaults to `View.BASIC`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1205,20 +1219,22 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Looks up [resource name](https://cloud.google.com/apis/design/resource_names)
-        # of a Membership within a Group by member's EntityKey.
+        # Looks up the [resource name](https://cloud.google.com/apis/design/
+        # resource_names) of a `Membership` by its `EntityKey`.
         # @param [String] parent
-        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        #   of the Group to lookup Membership within. Format: `groups/`group_id``, where `
-        #   group_id` is the unique ID assigned to the Group.
+        #   Required. The parent `Group` resource under which to lookup the `Membership`
+        #   name. Must be of the form `groups/`group_id``.
         # @param [String] member_key_id
-        #   The ID of the entity within the given namespace. The ID must be unique within
-        #   its namespace.
+        #   The ID of the entity. For Google-managed entities, the `id` should be the
+        #   email address of an existing group or user. For external-identity-mapped
+        #   entities, the `id` must be a string conforming to the Identity Source's
+        #   requirements. Must be unique within a `namespace`.
         # @param [String] member_key_namespace
-        #   Namespaces provide isolation for IDs, so an ID only needs to be unique within
-        #   its namespace. Namespaces are currently only created as part of IdentitySource
-        #   creation from Admin Console. A namespace `"identitysources/`identity_source_id`
-        #   "` is created corresponding to every Identity Source `identity_source_id`.
+        #   The namespace in which the entity exists. If not specified, the `EntityKey`
+        #   represents a Google-managed entity such as a Google user or a Google Group. If
+        #   specified, the `EntityKey` represents an external-identity-mapped group. The
+        #   namespace must correspond to an identity source created in Admin Console and
+        #   must be in the form of `identitysources/`identity_source_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

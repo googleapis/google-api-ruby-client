@@ -682,7 +682,8 @@ module Google
         attr_accessor :cloud_sql_ipv4_cidr_block
       
         # Optional. If `true`, a Private IP Cloud Composer environment is created. If
-        # this field is true, `use_ip_aliases` must be true.
+        # this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to
+        # true.
         # Corresponds to the JSON property `enablePrivateEnvironment`
         # @return [Boolean]
         attr_accessor :enable_private_environment

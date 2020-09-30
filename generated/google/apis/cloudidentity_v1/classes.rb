@@ -22,22 +22,26 @@ module Google
   module Apis
     module CloudidentityV1
       
-      # An EntityKey uniquely identifies an Entity. Namespaces are used to provide
-      # isolation for IDs. A single ID can be reused across namespaces but the
-      # combination of a namespace and an ID must be unique.
+      # A unique identifier for an entity in the Cloud Identity Groups API. An entity
+      # can represent either a group with an optional `namespace` or a user without a `
+      # namespace`. The combination of `id` and `namespace` must be unique; however,
+      # the same `id` can be used with different `namespace`s.
       class EntityKey
         include Google::Apis::Core::Hashable
       
-        # The ID of the entity within the given namespace. The ID must be unique within
-        # its namespace.
+        # The ID of the entity. For Google-managed entities, the `id` should be the
+        # email address of an existing group or user. For external-identity-mapped
+        # entities, the `id` must be a string conforming to the Identity Source's
+        # requirements. Must be unique within a `namespace`.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Namespaces provide isolation for IDs, so an ID only needs to be unique within
-        # its namespace. Namespaces are currently only created as part of IdentitySource
-        # creation from Admin Console. A namespace `"identitysources/`identity_source_id`
-        # "` is created corresponding to every Identity Source `identity_source_id`.
+        # The namespace in which the entity exists. If not specified, the `EntityKey`
+        # represents a Google-managed entity such as a Google user or a Google Group. If
+        # specified, the `EntityKey` represents an external-identity-mapped group. The
+        # namespace must correspond to an identity source created in Admin Console and
+        # must be in the form of `identitysources/`identity_source_id`.
         # Corresponds to the JSON property `namespace`
         # @return [String]
         attr_accessor :namespace
@@ -875,58 +879,66 @@ module Google
         end
       end
       
-      # Resource representing a Group.
+      # A group within the Cloud Identity Groups API. A `Group` is a collection of
+      # entities, where each entity is either a user, another group, or a service
+      # account.
       class Group
         include Google::Apis::Core::Hashable
       
-        # Output only. The time when the Group was created. Output only.
+        # Output only. The time when the `Group` was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # An extended description to help users determine the purpose of a Group. For
-        # example, you can include information about who should join the Group, the
-        # types of messages to send to the Group, links to FAQs about the Group, or
-        # related Groups. Maximum length is 4,096 characters.
+        # An extended description to help users determine the purpose of a `Group`. Must
+        # not be longer than 4,096 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # The Group's display name.
+        # The display name of the `Group`.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # An EntityKey uniquely identifies an Entity. Namespaces are used to provide
-        # isolation for IDs. A single ID can be reused across namespaces but the
-        # combination of a namespace and an ID must be unique.
+        # A unique identifier for an entity in the Cloud Identity Groups API. An entity
+        # can represent either a group with an optional `namespace` or a user without a `
+        # namespace`. The combination of `id` and `namespace` must be unique; however,
+        # the same `id` can be used with different `namespace`s.
         # Corresponds to the JSON property `groupKey`
         # @return [Google::Apis::CloudidentityV1::EntityKey]
         attr_accessor :group_key
       
-        # Required. `Required`. Labels for Group resource. For creating Groups under a
-        # namespace, set label key to 'labels/system/groups/external' and label value as
-        # empty.
+        # Required. One or more label entries that apply to the Group. Currently
+        # supported labels contain a key with an empty value. Google Groups are the
+        # default type of group and have a label with a key of `cloudidentity.googleapis.
+        # com/groups.discussion_forum` and an empty value. Existing Google Groups can
+        # have an additional label with a key of `cloudidentity.googleapis.com/groups.
+        # security` and an empty value added to them. **This is an immutable change and
+        # the security label cannot be removed once added.** Dynamic groups have a label
+        # with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped
+        # groups for Cloud Search have a label with a key of `system/groups/external`
+        # and an empty value. Examples: `"cloudidentity.googleapis.com/groups.
+        # discussion_forum": ""` or `"system/groups/external": ""`.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. [Resource name](https://cloud.google.com/apis/design/
-        # resource_names) of the Group in the format: `groups/`group_id``, where
-        # group_id is the unique ID assigned to the Group. Must be left blank while
-        # creating a Group.
+        # Output only. The [resource name](https://cloud.google.com/apis/design/
+        # resource_names) of the `Group`. Shall be of the form `groups/`group_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Required. Immutable. The entity under which this Group resides in Cloud
-        # Identity resource hierarchy. Must be set when creating a Group, read-only
-        # afterwards. Currently allowed types: `identitysources`.
+        # Required. Immutable. The resource name of the entity under which this `Group`
+        # resides in the Cloud Identity resource hierarchy. Must be of the form `
+        # identitysources/`identity_source_id`` for external- identity-mapped groups or `
+        # customers/`customer_id`` for Google Groups.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
       
-        # Output only. The time when the Group was last updated. Output only.
+        # Output only. The time when the `Group` was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -974,17 +986,17 @@ module Google
         end
       end
       
-      # 
+      # The response message for MembershipsService.ListMemberships.
       class ListMembershipsResponse
         include Google::Apis::Core::Hashable
       
-        # List of Memberships.
+        # The `Membership`s under the specified `parent`.
         # Corresponds to the JSON property `memberships`
         # @return [Array<Google::Apis::CloudidentityV1::Membership>]
         attr_accessor :memberships
       
-        # Token to retrieve the next page of results, or empty if there are no more
-        # results available for listing.
+        # A continuation token to retrieve the next page of results, or empty if there
+        # are no more results available.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1000,13 +1012,12 @@ module Google
         end
       end
       
-      # 
+      # The response message for GroupsService.LookupGroupName.
       class LookupGroupNameResponse
         include Google::Apis::Core::Hashable
       
-        # [Resource name](https://cloud.google.com/apis/design/resource_names) of the
-        # Group in the format: `groups/`group_id``, where `group_id` is the unique ID
-        # assigned to the Group.
+        # The [resource name](https://cloud.google.com/apis/design/resource_names) of
+        # the looked-up `Group`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1021,14 +1032,13 @@ module Google
         end
       end
       
-      # 
+      # The response message for MembershipsService.LookupMembershipName.
       class LookupMembershipNameResponse
         include Google::Apis::Core::Hashable
       
-        # [Resource name](https://cloud.google.com/apis/design/resource_names) of the
-        # Membership being looked up. Format: `groups/`group_id`/memberships/`member_id``
-        # , where `group_id` is the unique ID assigned to the Group to which Membership
-        # belongs to, and `member_id` is the unique ID assigned to the member.
+        # The [resource name](https://cloud.google.com/apis/design/resource_names) of
+        # the looked-up `Membership`. Must be of the form `groups/`group_id`/memberships/
+        # `membership_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1043,33 +1053,35 @@ module Google
         end
       end
       
-      # Resource representing a Membership within a Group
+      # A membership within the Cloud Identity Groups API. A `Membership` defines a
+      # relationship between a `Group` and an entity belonging to that `Group`,
+      # referred to as a "member".
       class Membership
         include Google::Apis::Core::Hashable
       
-        # Output only. Creation timestamp of the Membership. Output only.
+        # Output only. The time when the `Membership` was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Output only. [Resource name](https://cloud.google.com/apis/design/
-        # resource_names) of the Membership in the format: `groups/`group_id`/
-        # memberships/`member_id``, where group_id is the unique ID assigned to the
-        # Group to which Membership belongs to, and member_id is the unique ID assigned
-        # to the member Must be left blank while creating a Membership.
+        # Output only. The [resource name](https://cloud.google.com/apis/design/
+        # resource_names) of the `Membership`. Shall be of the form `groups/`group_id`/
+        # memberships/`membership_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # An EntityKey uniquely identifies an Entity. Namespaces are used to provide
-        # isolation for IDs. A single ID can be reused across namespaces but the
-        # combination of a namespace and an ID must be unique.
+        # A unique identifier for an entity in the Cloud Identity Groups API. An entity
+        # can represent either a group with an optional `namespace` or a user without a `
+        # namespace`. The combination of `id` and `namespace` must be unique; however,
+        # the same `id` can be used with different `namespace`s.
         # Corresponds to the JSON property `preferredMemberKey`
         # @return [Google::Apis::CloudidentityV1::EntityKey]
         attr_accessor :preferred_member_key
       
-        # Roles for a member within the Group. Currently supported MembershipRoles: `"
-        # MEMBER"`.
+        # The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults
+        # to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `
+        # MembershipRole`s with the same `name`.
         # Corresponds to the JSON property `roles`
         # @return [Array<Google::Apis::CloudidentityV1::MembershipRole>]
         attr_accessor :roles
@@ -1079,7 +1091,7 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # Output only. Last updated timestamp of the Membership. Output only.
+        # Output only. The time when the `Membership` was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -1099,12 +1111,12 @@ module Google
         end
       end
       
-      # Resource representing a role within a Membership.
+      # A membership role within the Cloud Identity Groups API. A `MembershipRole`
+      # defines the privileges granted to a `Membership`.
       class MembershipRole
         include Google::Apis::Core::Hashable
       
-        # MembershipRole in string format. Currently supported MembershipRoles: `"MEMBER"
-        # `.
+        # The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1154,7 +1166,9 @@ module Google
       class ModifyMembershipRolesResponse
         include Google::Apis::Core::Hashable
       
-        # Resource representing a Membership within a Group
+        # A membership within the Cloud Identity Groups API. A `Membership` defines a
+        # relationship between a `Group` and an entity belonging to that `Group`,
+        # referred to as a "member".
         # Corresponds to the JSON property `membership`
         # @return [Google::Apis::CloudidentityV1::Membership]
         attr_accessor :membership
@@ -1231,17 +1245,17 @@ module Google
         end
       end
       
-      # 
+      # The response message for GroupsService.SearchGroups.
       class SearchGroupsResponse
         include Google::Apis::Core::Hashable
       
-        # List of Groups satisfying the search query.
+        # The `Group`s that match the search query.
         # Corresponds to the JSON property `groups`
         # @return [Array<Google::Apis::CloudidentityV1::Group>]
         attr_accessor :groups
       
-        # Token to retrieve the next page of results, or empty if there are no more
-        # results available for specified query.
+        # A continuation token to retrieve the next page of results, or empty if there
+        # are no more results available.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token

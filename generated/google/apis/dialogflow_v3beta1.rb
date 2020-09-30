@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/dialogflow/
     module DialogflowV3beta1
       VERSION = 'V3beta1'
-      REVISION = '20200920'
+      REVISION = '20200928'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

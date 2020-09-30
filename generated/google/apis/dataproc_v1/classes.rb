@@ -419,7 +419,7 @@ module Google
         attr_accessor :endpoint_config
       
         # Common config settings for resources of Compute Engine cluster instances,
-        # applicable to all instances in the cluster. NEXT ID: 14
+        # applicable to all instances in the cluster.
         # Corresponds to the JSON property `gceClusterConfig`
         # @return [Google::Apis::DataprocV1::GceClusterConfig]
         attr_accessor :gce_cluster_config
@@ -914,7 +914,7 @@ module Google
       end
       
       # Common config settings for resources of Compute Engine cluster instances,
-      # applicable to all instances in the cluster. NEXT ID: 14
+      # applicable to all instances in the cluster.
       class GceClusterConfig
         include Google::Apis::Core::Hashable
       
@@ -947,6 +947,11 @@ module Google
         # Corresponds to the JSON property `networkUri`
         # @return [String]
         attr_accessor :network_uri
+      
+        # Node Group Affinity for clusters using sole-tenant node groups.
+        # Corresponds to the JSON property `nodeGroupAffinity`
+        # @return [Google::Apis::DataprocV1::NodeGroupAffinity]
+        attr_accessor :node_group_affinity
       
         # Optional. The type of IPv6 access for a cluster.
         # Corresponds to the JSON property `privateIpv6GoogleAccess`
@@ -1017,6 +1022,7 @@ module Google
           @internal_ip_only = args[:internal_ip_only] if args.key?(:internal_ip_only)
           @metadata = args[:metadata] if args.key?(:metadata)
           @network_uri = args[:network_uri] if args.key?(:network_uri)
+          @node_group_affinity = args[:node_group_affinity] if args.key?(:node_group_affinity)
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @service_account = args[:service_account] if args.key?(:service_account)
@@ -2113,6 +2119,26 @@ module Google
         def update!(**args)
           @instance_group_manager_name = args[:instance_group_manager_name] if args.key?(:instance_group_manager_name)
           @instance_template_name = args[:instance_template_name] if args.key?(:instance_template_name)
+        end
+      end
+      
+      # Node Group Affinity for clusters using sole-tenant node groups.
+      class NodeGroupAffinity
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of a single node group (https://cloud.google.com/compute/
+        # docs/reference/rest/v1/nodeGroups) a cluster will be created on.
+        # Corresponds to the JSON property `nodeGroupUri`
+        # @return [String]
+        attr_accessor :node_group_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @node_group_uri = args[:node_group_uri] if args.key?(:node_group_uri)
         end
       end
       

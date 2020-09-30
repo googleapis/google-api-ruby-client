@@ -532,6 +532,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1BatchUpdateSmartMessagingEntriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1Context
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1067,6 +1073,18 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1SessionEntityType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1SmartMessagingEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1SmartMessagingEntryInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2087,6 +2105,14 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2beta1BatchUpdateSmartMessagingEntriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :smart_messaging_entries, as: 'smartMessagingEntries', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SmartMessagingEntry, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SmartMessagingEntry::Representation
+      
+        end
+      end
+      
       class GoogleCloudDialogflowV2beta1Context
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3021,6 +3047,25 @@ module Google
       
           property :entity_override_mode, as: 'entityOverrideMode'
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1SmartMessagingEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message_info, as: 'messageInfo', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SmartMessagingEntryInfo, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SmartMessagingEntryInfo::Representation
+      
+          property :name, as: 'name'
+          property :raw_text, as: 'rawText'
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1SmartMessagingEntryInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_method, as: 'creationMethod'
+          property :occurrence_count, as: 'occurrenceCount'
         end
       end
       

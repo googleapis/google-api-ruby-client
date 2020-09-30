@@ -5540,6 +5540,25 @@ module Google
         end
       end
       
+      # Response message for [Documents.BatchUpdateSmartMessagingEntries]
+      class GoogleCloudDialogflowV2beta1BatchUpdateSmartMessagingEntriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of updated smart message entries.
+        # Corresponds to the JSON property `smartMessagingEntries`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1SmartMessagingEntry>]
+        attr_accessor :smart_messaging_entries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @smart_messaging_entries = args[:smart_messaging_entries] if args.key?(:smart_messaging_entries)
+        end
+      end
+      
       # Dialogflow contexts are similar to natural language context. If a person says
       # to you "they are orange", you need context in order to understand what "they"
       # is referring to. Similarly, for Dialogflow to handle an end-user expression
@@ -7892,6 +7911,74 @@ module Google
           @entities = args[:entities] if args.key?(:entities)
           @entity_override_mode = args[:entity_override_mode] if args.key?(:entity_override_mode)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Smart Messaging Entry resource.
+      class GoogleCloudDialogflowV2beta1SmartMessagingEntry
+        include Google::Apis::Core::Hashable
+      
+        # Smart messaging entry info.
+        # Corresponds to the JSON property `messageInfo`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1SmartMessagingEntryInfo]
+        attr_accessor :message_info
+      
+        # The unique identifier of this message entry. Required for [Documents.
+        # GetSmartMessagingEntry], [Documents.CreateSmartMessagingEntry], [Documents.
+        # UpdateSmartMessagingEntry], and [Documents.DeleteSmartMessagingEntry]. Format:
+        # `projects//knowledgeBases//documents//smartMessagingEntries/`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The raw text of the message.
+        # Corresponds to the JSON property `rawText`
+        # @return [String]
+        attr_accessor :raw_text
+      
+        # Required. Smart Messaging Entry's enabled/disabled state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message_info = args[:message_info] if args.key?(:message_info)
+          @name = args[:name] if args.key?(:name)
+          @raw_text = args[:raw_text] if args.key?(:raw_text)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Smart messaging entry info.
+      class GoogleCloudDialogflowV2beta1SmartMessagingEntryInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Method of how the smart messaging entry was created. When the
+        # smart messaging entry was generated from GenerateDocument, the value is
+        # AUTOMATIC; when the entry was manually added through CreateSmartMessagingEntry,
+        # the value is MANUAL.
+        # Corresponds to the JSON property `creationMethod`
+        # @return [String]
+        attr_accessor :creation_method
+      
+        # The number of times an entry's message text has been uttered
+        # Corresponds to the JSON property `occurrenceCount`
+        # @return [Fixnum]
+        attr_accessor :occurrence_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_method = args[:creation_method] if args.key?(:creation_method)
+          @occurrence_count = args[:occurrence_count] if args.key?(:occurrence_count)
         end
       end
       

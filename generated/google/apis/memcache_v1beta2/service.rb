@@ -117,8 +117,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ApplyParameters will update current set of Parameters to the set of specified
-        # nodes of the Memcached Instance.
+        # ApplyParameters will restart the set of specified nodes in order to update
+        # them to the current set of parameters for the Memcached Instance.
         # @param [String] name
         #   Required. Resource name of the Memcached instance for which parameter group
         #   updates should be applied.
@@ -152,7 +152,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new Instance in a given project and location.
+        # Creates a new Instance in a given location.
         # @param [String] parent
         #   Required. The resource name of the instance location using the form: `projects/
         #   `project_id`/locations/`location_id`` where `location_id` refers to a GCP
@@ -163,7 +163,7 @@ module Google
         #   the following restrictions: * Must contain only lowercase letters, numbers,
         #   and hyphens. * Must start with a letter. * Must be between 1-40 characters. *
         #   Must end with a number or a letter. * Must be unique within the user project /
-        #   location
+        #   location If any of the above are not met, will raise an invalid argument error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -258,7 +258,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists Instances in a given project and location.
+        # Lists Instances in a given location.
         # @param [String] parent
         #   Required. The resource name of the instance location using the form: `projects/
         #   `project_id`/locations/`location_id`` where `location_id` refers to a GCP
