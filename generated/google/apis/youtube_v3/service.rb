@@ -45,7 +45,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', '')
-          @batch_path = 'batch/youtube'
+          @batch_path = 'batch/youtube/v3'
         end
         
         # Inserts a new resource into this collection.

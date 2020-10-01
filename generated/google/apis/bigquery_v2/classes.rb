@@ -1443,6 +1443,12 @@ module Google
         # @return [String]
         attr_accessor :location
       
+        # [Output-only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPZS`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # [Output-only] A URL that can be used to access the resource again. You can use
         # this URL in Get or Update requests to the resource.
         # Corresponds to the JSON property `selfLink`
@@ -1469,6 +1475,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
           @location = args[:location] if args.key?(:location)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
         end
         
@@ -2472,25 +2479,36 @@ module Google
       class HivePartitioningOptions
         include Google::Apis::Core::Hashable
       
-        # [Optional, Trusted Tester] When set, what mode of hive partitioning to use
-        # when reading data. Two modes are supported. (1) AUTO: automatically infer
-        # partition key name(s) and type(s). (2) STRINGS: automatically infer partition
-        # key name(s). All types are interpreted as strings. Not all storage formats
-        # support hive partitioning. Requesting hive partitioning on an unsupported
-        # format will lead to an error. Currently supported types include: AVRO, CSV,
-        # JSON, ORC and Parquet.
+        # [Optional] When set, what mode of hive partitioning to use when reading data.
+        # The following modes are supported. (1) AUTO: automatically infer partition key
+        # name(s) and type(s). (2) STRINGS: automatically infer partition key name(s).
+        # All types are interpreted as strings. (3) CUSTOM: partition key schema is
+        # encoded in the source URI prefix. Not all storage formats support hive
+        # partitioning. Requesting hive partitioning on an unsupported format will lead
+        # to an error. Currently supported types include: AVRO, CSV, JSON, ORC and
+        # Parquet.
         # Corresponds to the JSON property `mode`
         # @return [String]
         attr_accessor :mode
       
-        # [Optional, Trusted Tester] When hive partition detection is requested, a
-        # common prefix for all source uris should be supplied. The prefix must end
-        # immediately before the partition key encoding begins. For example, consider
-        # files following this data layout. gs://bucket/path_to_table/dt=2019-01-01/
-        # country=BR/id=7/file.avro gs://bucket/path_to_table/dt=2018-12-31/country=CA/
-        # id=3/file.avro When hive partitioning is requested with either AUTO or STRINGS
-        # detection, the common prefix can be either of gs://bucket/path_to_table or gs:/
-        # /bucket/path_to_table/ (trailing slash does not matter).
+        # [Optional] If set to true, queries over this table require a partition filter
+        # that can be used for partition elimination to be specified. Note that this
+        # field should only be true when creating a permanent external table or querying
+        # a temporary external table. Hive-partitioned loads with requirePartitionFilter
+        # explicitly set to true will fail.
+        # Corresponds to the JSON property `requirePartitionFilter`
+        # @return [Boolean]
+        attr_accessor :require_partition_filter
+        alias_method :require_partition_filter?, :require_partition_filter
+      
+        # [Optional] When hive partition detection is requested, a common prefix for all
+        # source uris should be supplied. The prefix must end immediately before the
+        # partition key encoding begins. For example, consider files following this data
+        # layout. gs://bucket/path_to_table/dt=2019-01-01/country=BR/id=7/file.avro gs://
+        # bucket/path_to_table/dt=2018-12-31/country=CA/id=3/file.avro When hive
+        # partitioning is requested with either AUTO or STRINGS detection, the common
+        # prefix can be either of gs://bucket/path_to_table or gs://bucket/path_to_table/
+        # (trailing slash does not matter).
         # Corresponds to the JSON property `sourceUriPrefix`
         # @return [String]
         attr_accessor :source_uri_prefix
@@ -2502,6 +2520,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @mode = args[:mode] if args.key?(:mode)
+          @require_partition_filter = args[:require_partition_filter] if args.key?(:require_partition_filter)
           @source_uri_prefix = args[:source_uri_prefix] if args.key?(:source_uri_prefix)
         end
       end
@@ -2739,7 +2758,7 @@ module Google
         attr_accessor :compression
       
         # [Optional] The exported file format. Possible values include CSV,
-        # NEWLINE_DELIMITED_JSON or AVRO for tables and ML_TF_SAVED_MODEL or
+        # NEWLINE_DELIMITED_JSON, PARQUET or AVRO for tables and ML_TF_SAVED_MODEL or
         # ML_XGBOOST_BOOSTER for models. The default value for tables is CSV. Tables
         # with nested or repeated fields cannot be exported as CSV. The default value
         # for models is ML_TF_SAVED_MODEL.
@@ -6415,8 +6434,9 @@ module Google
         attr_accessor :require_partition_filter
         alias_method :require_partition_filter?, :require_partition_filter
       
-        # [Required] The only type supported is DAY, which will generate one partition
-        # per day.
+        # [Required] The supported types are DAY, HOUR, MONTH, and YEAR, which will
+        # generate one partition per day, hour, month, and year, respectively. When the
+        # type is not specified, the default behavior is DAY.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type

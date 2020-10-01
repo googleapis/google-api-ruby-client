@@ -1157,6 +1157,7 @@ module Google
           hash :labels, as: 'labels'
           property :last_modified_time, :numeric_string => true, as: 'lastModifiedTime'
           property :location, as: 'location'
+          property :satisfies_pzs, as: 'satisfiesPZS'
           property :self_link, as: 'selfLink'
         end
         
@@ -1404,6 +1405,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :mode, as: 'mode'
+          property :require_partition_filter, as: 'requirePartitionFilter'
           property :source_uri_prefix, as: 'sourceUriPrefix'
         end
       end
