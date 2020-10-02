@@ -161,6 +161,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::AcceleratorTypeAggregatedList::Warning]
@@ -177,6 +182,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -741,6 +747,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::AddressAggregatedList::Warning]
@@ -757,6 +768,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -1113,13 +1125,6 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
-        # Specifies whether this VM may be a stable fleet VM. Setting this to "Periodic"
-        # designates this VM as a Stable Fleet VM.
-        # See go/stable-fleet-ug for more details.
-        # Corresponds to the JSON property `maintenanceInterval`
-        # @return [String]
-        attr_accessor :maintenance_interval
-      
         # Minimum cpu platform the reservation.
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
@@ -1134,7 +1139,6 @@ module Google
           @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
           @local_ssds = args[:local_ssds] if args.key?(:local_ssds)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
-          @maintenance_interval = args[:maintenance_interval] if args.key?(:maintenance_interval)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
         end
       end
@@ -1729,6 +1733,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::AutoscalerAggregatedList::Warning]
@@ -1745,6 +1754,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -2171,6 +2181,18 @@ module Google
       class AutoscalingPolicyCpuUtilization
         include Google::Apis::Core::Hashable
       
+        # Indicates which method of prediction is used for CPU utilization metric, if
+        # any. Current set of possible values: * NONE: No predictions are made based on
+        # the scaling metric when calculating the number of VM instances. *
+        # OPTIMIZE_AVAILABILITY: Standard predictive autoscaling predicts the future
+        # values of the scaling metric and then scales a MIG to ensure that new VM
+        # instances are ready in time to cover the predicted peak. New values might be
+        # added in the future. Some of the values might not be available in all API
+        # versions.
+        # Corresponds to the JSON property `predictiveMethod`
+        # @return [String]
+        attr_accessor :predictive_method
+      
         # The target CPU utilization that the autoscaler should maintain. Must be a
         # float value in the range (0, 1]. If not specified, the default is 0.6.
         # If the CPU level is below the target utilization, the autoscaler scales down
@@ -2190,6 +2212,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @predictive_method = args[:predictive_method] if args.key?(:predictive_method)
           @utilization_target = args[:utilization_target] if args.key?(:utilization_target)
         end
       end
@@ -2653,12 +2676,12 @@ module Google
       
         # Specifies the default TTL for cached content served by this origin for
         # responses that do not have an existing valid TTL (max-age or s-max-age).
-        # Setting a TTL of "0" means "always revalidate" and a value of "-1" disables
-        # caching for that status code. The value of defaultTTL cannot be set to a value
-        # greater than that of maxTTL, but can be equal. When the cacheMode is set to
-        # FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses.
-        # The maximum allowed value is 31,622,400s (1 year), noting that infrequently
-        # accessed objects may be evicted from the cache before the defined TTL.
+        # Setting a TTL of "0" means "always revalidate". The value of defaultTTL cannot
+        # be set to a value greater than that of maxTTL, but can be equal. When the
+        # cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set
+        # in all responses. The maximum allowed value is 31,622,400s (1 year), noting
+        # that infrequently accessed objects may be evicted from the cache before the
+        # defined TTL.
         # Corresponds to the JSON property `defaultTtl`
         # @return [Fixnum]
         attr_accessor :default_ttl
@@ -2667,10 +2690,10 @@ module Google
         # Cache directives that attempt to set a max-age or s-maxage higher than this,
         # or an Expires header more than maxTTL seconds in the future will be capped at
         # the value of maxTTL, as if it were the value of an s-maxage Cache-Control
-        # directive. Setting a TTL of "0" means "always revalidate" and a value of "-1"
-        # disables caching for that status code. The maximum allowed value is 31,622,
-        # 400s (1 year), noting that infrequently accessed objects may be evicted from
-        # the cache before the defined TTL.
+        # directive. Headers sent to the client will not be modified. Setting a TTL of "
+        # 0" means "always revalidate". The maximum allowed value is 31,622,400s (1 year)
+        # , noting that infrequently accessed objects may be evicted from the cache
+        # before the defined TTL.
         # Corresponds to the JSON property `maxTtl`
         # @return [Fixnum]
         attr_accessor :max_ttl
@@ -2681,8 +2704,8 @@ module Google
         # default, Cloud CDN will apply the following default TTLs to these status codes:
         # HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not
         # Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method
-        # Not Found), 414 (URI Too Long), 501 (Not Implemented): 60s These defaults can
-        # be overridden in negative_caching_policy
+        # Not Found), 421 (Misdirected Request), 501 (Not Implemented): 60s These
+        # defaults can be overridden in negative_caching_policy
         # Corresponds to the JSON property `negativeCaching`
         # @return [Boolean]
         attr_accessor :negative_caching
@@ -2705,7 +2728,7 @@ module Google
         # configured here will not be served. The default limit (max-stale) is 86400s (1
         # day), which will allow stale content to be served up to this limit beyond the
         # max-age (or s-max-age) of a cached response. The maximum allowed value is
-        # 604800(1 week). Set this to zero (0) to disable serve-while-stale.
+        # 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
         # Corresponds to the JSON property `serveWhileStale`
         # @return [Fixnum]
         attr_accessor :serve_while_stale
@@ -2772,17 +2795,15 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The HTTP status code to define a TTL against. Only HTTP status codes 300, 301,
-        # 308, 404, 405, 410, 414, 451 and 501 are can be specified as values, and you
+        # 308, 404, 405, 410, 421, 451 and 501 are can be specified as values, and you
         # cannot specify a status code more than once.
         # Corresponds to the JSON property `code`
         # @return [Fixnum]
         attr_accessor :code
       
         # The TTL (in seconds) to cache responses with the corresponding status code for.
-        # A TTL of "0" means "always revalidate" and a value of "-1" disables caching
-        # for that status code. The maximum allowed value is 1800s (30 minutes), noting
-        # that infrequently accessed objects may be evicted from the cache before the
-        # defined TTL.
+        # The maximum allowed value is 1800s (30 minutes), noting that infrequently
+        # accessed objects may be evicted from the cache before the defined TTL.
         # Corresponds to the JSON property `ttl`
         # @return [Fixnum]
         attr_accessor :ttl
@@ -2931,6 +2952,9 @@ module Google
       class BackendService
         include Google::Apis::Core::Hashable
       
+        # Lifetime of cookies in seconds. Only applicable if the loadBalancingScheme is
+        # EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, the protocol is HTTP or
+        # HTTPS, and the sessionAffinity is GENERATED_COOKIE, or HTTP_COOKIE.
         # If set to 0, the cookie is non-persistent and lasts only until the end of the
         # browser session (or equivalent). The maximum allowed value is one day (86,400).
         # Not supported when the backend service is referenced by a URL map that is
@@ -3264,6 +3288,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::BackendServiceAggregatedList::Warning]
@@ -3280,6 +3309,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -3380,12 +3410,12 @@ module Google
       
         # Specifies the default TTL for cached content served by this origin for
         # responses that do not have an existing valid TTL (max-age or s-max-age).
-        # Setting a TTL of "0" means "always revalidate" and a value of "-1" disables
-        # caching for that status code. The value of defaultTTL cannot be set to a value
-        # greater than that of maxTTL, but can be equal. When the cacheMode is set to
-        # FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses.
-        # The maximum allowed value is 31,622,400s (1 year), noting that infrequently
-        # accessed objects may be evicted from the cache before the defined TTL.
+        # Setting a TTL of "0" means "always revalidate". The value of defaultTTL cannot
+        # be set to a value greater than that of maxTTL, but can be equal. When the
+        # cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set
+        # in all responses. The maximum allowed value is 31,622,400s (1 year), noting
+        # that infrequently accessed objects may be evicted from the cache before the
+        # defined TTL.
         # Corresponds to the JSON property `defaultTtl`
         # @return [Fixnum]
         attr_accessor :default_ttl
@@ -3394,10 +3424,10 @@ module Google
         # Cache directives that attempt to set a max-age or s-maxage higher than this,
         # or an Expires header more than maxTTL seconds in the future will be capped at
         # the value of maxTTL, as if it were the value of an s-maxage Cache-Control
-        # directive. Setting a TTL of "0" means "always revalidate" and a value of "-1"
-        # disables caching for that status code. The maximum allowed value is 31,622,
-        # 400s (1 year), noting that infrequently accessed objects may be evicted from
-        # the cache before the defined TTL.
+        # directive. Headers sent to the client will not be modified. Setting a TTL of "
+        # 0" means "always revalidate". The maximum allowed value is 31,622,400s (1 year)
+        # , noting that infrequently accessed objects may be evicted from the cache
+        # before the defined TTL.
         # Corresponds to the JSON property `maxTtl`
         # @return [Fixnum]
         attr_accessor :max_ttl
@@ -3408,8 +3438,8 @@ module Google
         # default, Cloud CDN will apply the following default TTLs to these status codes:
         # HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not
         # Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method
-        # Not Found), 414 (URI Too Long), 501 (Not Implemented): 60s These defaults can
-        # be overridden in negative_caching_policy
+        # Not Found), 421 (Misdirected Request), 501 (Not Implemented): 60s These
+        # defaults can be overridden in negative_caching_policy
         # Corresponds to the JSON property `negativeCaching`
         # @return [Boolean]
         attr_accessor :negative_caching
@@ -3432,7 +3462,7 @@ module Google
         # configured here will not be served. The default limit (max-stale) is 86400s (1
         # day), which will allow stale content to be served up to this limit beyond the
         # max-age (or s-max-age) of a cached response. The maximum allowed value is
-        # 604800(1 week). Set this to zero (0) to disable serve-while-stale.
+        # 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
         # Corresponds to the JSON property `serveWhileStale`
         # @return [Fixnum]
         attr_accessor :serve_while_stale
@@ -3500,17 +3530,15 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The HTTP status code to define a TTL against. Only HTTP status codes 300, 301,
-        # 308, 404, 405, 410, 414, 451 and 501 are can be specified as values, and you
+        # 308, 404, 405, 410, 421, 451 and 501 are can be specified as values, and you
         # cannot specify a status code more than once.
         # Corresponds to the JSON property `code`
         # @return [Fixnum]
         attr_accessor :code
       
         # The TTL (in seconds) to cache responses with the corresponding status code for.
-        # A TTL of "0" means "always revalidate" and a value of "-1" disables caching
-        # for that status code. The maximum allowed value is 1800s (30 minutes), noting
-        # that infrequently accessed objects may be evicted from the cache before the
-        # defined TTL.
+        # The maximum allowed value is 1800s (30 minutes), noting that infrequently
+        # accessed objects may be evicted from the cache before the defined TTL.
         # Corresponds to the JSON property `ttl`
         # @return [Fixnum]
         attr_accessor :ttl
@@ -4163,6 +4191,12 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
+        # A client-specified ID for this binding. Expected to be globally unique to
+        # support the internal bindings-by-ID API.
+        # Corresponds to the JSON property `bindingId`
+        # @return [String]
+        attr_accessor :binding_id
+      
         # Represents a textual expression in the Common Expression Language (CEL) syntax.
         # CEL is a C-like expression language. The syntax and semantics of CEL are
         # documented at https://github.com/google/cel-spec.
@@ -4233,6 +4267,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @binding_id = args[:binding_id] if args.key?(:binding_id)
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
@@ -4553,6 +4588,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::CommitmentAggregatedList::Warning]
@@ -4569,6 +4609,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -5581,6 +5622,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::DiskAggregatedList::Warning]
@@ -5597,6 +5643,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -5996,6 +6043,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::DiskTypeAggregatedList::Warning]
@@ -6012,6 +6064,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -7684,9 +7737,9 @@ module Google
         attr_accessor :name
       
         # This field is not used for external load balancing.
-        # For INTERNAL and INTERNAL_SELF_MANAGED load balancing, this field identifies
-        # the network that the load balanced IP should belong to for this Forwarding
-        # Rule. If this field is not specified, the default network will be used.
+        # For internal load balancing, this field identifies the network that the load
+        # balanced IP should belong to for this Forwarding Rule. If this field is not
+        # specified, the default network will be used.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -7775,7 +7828,7 @@ module Google
         # @return [String]
         attr_accessor :service_name
       
-        # This field is only used for INTERNAL load balancing.
+        # This field is only used for internal load balancing.
         # For internal load balancing, this field identifies the subnetwork that the
         # load balanced IP should belong to for this Forwarding Rule.
         # If the network specified is in auto subnet mode, this field is optional.
@@ -7866,6 +7919,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::ForwardingRuleAggregatedList::Warning]
@@ -7882,6 +7940,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -9351,6 +9410,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::HealthChecksAggregatedList::Warning]
@@ -9367,6 +9431,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -9756,6 +9821,43 @@ module Google
         end
       end
       
+      # HttpFilterConfiguration supplies additional contextual settings for
+      # networkservices.HttpFilter resources enabled by Traffic Director.
+      class HttpFilterConfig
+        include Google::Apis::Core::Hashable
+      
+        # The configuration needed to enable the networkservices.HttpFilter resource.
+        # The configuration must be YAML formatted and only contain fields defined in
+        # the protobuf identified in configTypeUrl
+        # Corresponds to the JSON property `config`
+        # @return [String]
+        attr_accessor :config
+      
+        # The fully qualified versioned proto3 type url of the protobuf that the filter
+        # expects for its contextual settings, for example: type.googleapis.com/google.
+        # protobuf.Struct
+        # Corresponds to the JSON property `configTypeUrl`
+        # @return [String]
+        attr_accessor :config_type_url
+      
+        # Name of the networkservices.HttpFilter resource this configuration belongs to.
+        # This name must be known to the xDS client. Example: envoy.wasm
+        # Corresponds to the JSON property `filterName`
+        # @return [String]
+        attr_accessor :filter_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @config_type_url = args[:config_type_url] if args.key?(:config_type_url)
+          @filter_name = args[:filter_name] if args.key?(:filter_name)
+        end
+      end
+      
       # The request and response header transformations that take effect before the
       # request is passed along to the selected backendService.
       class HttpHeaderAction
@@ -9812,6 +9914,13 @@ module Google
         # For matching against the HTTP request's authority, use a headerMatch with the
         # header name ":authority".
         # For matching a request's method, use the headerName ":method".
+        # When the URL map is bound to target gRPC proxy that has validateForProxyless
+        # field set to true, only non-binary user-specified custom metadata and the `
+        # content-type` header are supported. The following transport-level headers
+        # cannot be used in header matching rules: `:authority`, `:method`, `:path`, `:
+        # scheme`, `user-agent`, `accept-encoding`, `content-encoding`, `grpc-accept-
+        # encoding`, `grpc-encoding`, `grpc-previous-rpc-attempts`, `grpc-tags-bin`, `
+        # grpc-timeout` and `grpc-trace-bin.
         # Corresponds to the JSON property `headerName`
         # @return [String]
         attr_accessor :header_name
@@ -10381,10 +10490,10 @@ module Google
         # A list of weighted backend services to send traffic to when a route match
         # occurs. The weights determine the fraction of traffic that flows to their
         # corresponding backend service. If all traffic needs to go to a single backend
-        # service, there must be one  weightedBackendService with weight set to a non 0
-        # number.
+        # service, there must be one  weightedBackendService with weight set to a non-
+        # zero number.
         # Once a backendService is identified and before forwarding the request to the
-        # backend service, advanced routing actions like Url rewrites and header
+        # backend service, advanced routing actions such as URL rewrites and header
         # transformations are applied depending on additional settings specified in this
         # HttpRouteAction.
         # Corresponds to the JSON property `weightedBackendServices`
@@ -10423,6 +10532,27 @@ module Google
         # Corresponds to the JSON property `headerAction`
         # @return [Google::Apis::ComputeBeta::HttpHeaderAction]
         attr_accessor :header_action
+      
+        # Outbound route specific configuration for networkservices.HttpFilter resources
+        # enabled by Traffic Director. httpFilterConfigs only applies for Loadbalancers
+        # with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for
+        # more details.
+        # Not supported when the URL map is bound to target gRPC proxy that has
+        # validateForProxyless field set to true.
+        # Corresponds to the JSON property `httpFilterConfigs`
+        # @return [Array<Google::Apis::ComputeBeta::HttpFilterConfig>]
+        attr_accessor :http_filter_configs
+      
+        # Outbound route specific metadata supplied to networkservices.HttpFilter
+        # resources enabled by Traffic Director. httpFilterMetadata only applies for
+        # Loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See
+        # ForwardingRule for more details.
+        # The only configTypeUrl supported is type.googleapis.com/google.protobuf.Struct
+        # Not supported when the URL map is bound to target gRPC proxy that has
+        # validateForProxyless field set to true.
+        # Corresponds to the JSON property `httpFilterMetadata`
+        # @return [Array<Google::Apis::ComputeBeta::HttpFilterConfig>]
+        attr_accessor :http_filter_metadata
       
         # The list of criteria for matching attributes of a request to this routeRule.
         # This list has OR semantics: the request matches this routeRule when any of the
@@ -10487,6 +10617,8 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @header_action = args[:header_action] if args.key?(:header_action)
+          @http_filter_configs = args[:http_filter_configs] if args.key?(:http_filter_configs)
+          @http_filter_metadata = args[:http_filter_metadata] if args.key?(:http_filter_metadata)
           @match_rules = args[:match_rules] if args.key?(:match_rules)
           @priority = args[:priority] if args.key?(:priority)
           @route_action = args[:route_action] if args.key?(:route_action)
@@ -10518,6 +10650,7 @@ module Google
         # Specifies that prefixMatch and fullPathMatch matches are case sensitive.
         # The default value is false.
         # ignoreCase must not be used with regexMatch.
+        # Not supported when the URL map is bound to target gRPC proxy.
         # Corresponds to the JSON property `ignoreCase`
         # @return [Boolean]
         attr_accessor :ignore_case
@@ -10537,6 +10670,8 @@ module Google
         # ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to.
         # metadataFilters only applies to Loadbalancers that have their
         # loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        # Not supported when the URL map is bound to target gRPC proxy that has
+        # validateForProxyless field set to true.
         # Corresponds to the JSON property `metadataFilters`
         # @return [Array<Google::Apis::ComputeBeta::MetadataFilter>]
         attr_accessor :metadata_filters
@@ -10551,6 +10686,7 @@ module Google
       
         # Specifies a list of query parameter match criteria, all of which must match
         # corresponding query parameters in the request.
+        # Not supported when the URL map is bound to target gRPC proxy.
         # Corresponds to the JSON property `queryParameterMatches`
         # @return [Array<Google::Apis::ComputeBeta::HttpQueryParameterMatch>]
         attr_accessor :query_parameter_matches
@@ -11427,7 +11563,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
-        # Sets the scheduling options for an Instance. NextID: 12
+        # Sets the scheduling options for an Instance. NextID: 13
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeBeta::Scheduling]
         attr_accessor :scheduling
@@ -11590,6 +11726,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::InstanceAggregatedList::Warning]
@@ -11606,6 +11747,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -11829,6 +11971,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::InstanceGroupAggregatedList::Warning]
@@ -11845,6 +11992,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -12364,6 +12512,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::InstanceGroupManagerAggregatedList::Warning]
@@ -12380,6 +12533,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -14194,7 +14348,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
-        # Sets the scheduling options for an Instance. NextID: 12
+        # Sets the scheduling options for an Instance. NextID: 13
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeBeta::Scheduling]
         attr_accessor :scheduling
@@ -14805,6 +14959,32 @@ module Google
       end
       
       # 
+      class InstancesSetNameRequest
+        include Google::Apis::Core::Hashable
+      
+        # The current name of this resource, used to prevent conflicts. Provide the
+        # latest name when making a request to change name.
+        # Corresponds to the JSON property `currentName`
+        # @return [String]
+        attr_accessor :current_name
+      
+        # The name to be applied to the instance. Needs to be RFC 1035 compliant.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_name = args[:current_name] if args.key?(:current_name)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # 
       class InstancesSetServiceAccountRequest
         include Google::Apis::Core::Hashable
       
@@ -15398,6 +15578,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::InterconnectAttachmentAggregatedList::Warning]
@@ -15414,6 +15599,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -16810,6 +16996,39 @@ module Google
         end
       end
       
+      # 
+      class LocalDisk
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the number of such disks.
+        # Corresponds to the JSON property `diskCount`
+        # @return [Fixnum]
+        attr_accessor :disk_count
+      
+        # Specifies the size of the disk in base-2 GB.
+        # Corresponds to the JSON property `diskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :disk_size_gb
+      
+        # Specifies the desired disk type on the node. This disk type must be a local
+        # storage type (e.g.: local-ssd). Note that for nodeTemplates, this should be
+        # the name of the disk type and not its URL.
+        # Corresponds to the JSON property `diskType`
+        # @return [String]
+        attr_accessor :disk_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_count = args[:disk_count] if args.key?(:disk_count)
+          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @disk_type = args[:disk_type] if args.key?(:disk_type)
+        end
+      end
+      
       # Specifies what kind of log the caller must write
       class LogConfig
         include Google::Apis::Core::Hashable
@@ -16990,7 +17209,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # [Input Only] Specifies to create an application consistent machine image by
+        # [Input Only] Whether to attempt an application consistent machine image by
         # informing the OS to prepare for the snapshot process. Currently only supported
         # on Windows instances using the Volume Shadow Copy Service (VSS).
         # Corresponds to the JSON property `guestFlush`
@@ -17385,6 +17604,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::MachineTypeAggregatedList::Warning]
@@ -17401,6 +17625,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -18118,6 +18343,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Maximum Transmission Unit in bytes. The minimum value for this field is 1460
+        # and the maximum value is 1500 bytes.
+        # Corresponds to the JSON property `mtu`
+        # @return [Fixnum]
+        attr_accessor :mtu
+      
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
@@ -18164,6 +18395,7 @@ module Google
           @gateway_i_pv4 = args[:gateway_i_pv4] if args.key?(:gateway_i_pv4)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @mtu = args[:mtu] if args.key?(:mtu)
           @name = args[:name] if args.key?(:name)
           @peerings = args[:peerings] if args.key?(:peerings)
           @routing_config = args[:routing_config] if args.key?(:routing_config)
@@ -18414,6 +18646,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::NetworkEndpointGroupAggregatedList::Warning]
@@ -18430,6 +18667,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -19387,6 +19625,11 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Maximum Transmission Unit in bytes.
+        # Corresponds to the JSON property `peerMtu`
+        # @return [Fixnum]
+        attr_accessor :peer_mtu
+      
         # [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The
         # peering is `ACTIVE` when there's a matching configuration in the peer network.
         # Corresponds to the JSON property `state`
@@ -19412,6 +19655,7 @@ module Google
           @import_subnet_routes_with_public_ip = args[:import_subnet_routes_with_public_ip] if args.key?(:import_subnet_routes_with_public_ip)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @peer_mtu = args[:peer_mtu] if args.key?(:peer_mtu)
           @state = args[:state] if args.key?(:state)
           @state_details = args[:state_details] if args.key?(:state_details)
         end
@@ -19723,6 +19967,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::NodeGroupAggregatedList::Warning]
@@ -19739,6 +19988,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -19961,10 +20211,20 @@ module Google
       class NodeGroupNode
         include Google::Apis::Core::Hashable
       
+        # Accelerators for this node.
+        # Corresponds to the JSON property `accelerators`
+        # @return [Array<Google::Apis::ComputeBeta::AcceleratorConfig>]
+        attr_accessor :accelerators
+      
         # CPU overcommit.
         # Corresponds to the JSON property `cpuOvercommitType`
         # @return [String]
         attr_accessor :cpu_overcommit_type
+      
+        # Local disk configurations.
+        # Corresponds to the JSON property `disks`
+        # @return [Array<Google::Apis::ComputeBeta::LocalDisk>]
+        attr_accessor :disks
       
         # Instances scheduled on this node.
         # Corresponds to the JSON property `instances`
@@ -20002,7 +20262,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accelerators = args[:accelerators] if args.key?(:accelerators)
           @cpu_overcommit_type = args[:cpu_overcommit_type] if args.key?(:cpu_overcommit_type)
+          @disks = args[:disks] if args.key?(:disks)
           @instances = args[:instances] if args.key?(:instances)
           @name = args[:name] if args.key?(:name)
           @node_type = args[:node_type] if args.key?(:node_type)
@@ -20286,6 +20548,11 @@ module Google
       class NodeTemplate
         include Google::Apis::Core::Hashable
       
+        # 
+        # Corresponds to the JSON property `accelerators`
+        # @return [Array<Google::Apis::ComputeBeta::AcceleratorConfig>]
+        attr_accessor :accelerators
+      
         # CPU overcommit.
         # Corresponds to the JSON property `cpuOvercommitType`
         # @return [String]
@@ -20301,6 +20568,11 @@ module Google
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # 
+        # Corresponds to the JSON property `disks`
+        # @return [Array<Google::Apis::ComputeBeta::LocalDisk>]
+        attr_accessor :disks
       
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
@@ -20381,9 +20653,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accelerators = args[:accelerators] if args.key?(:accelerators)
           @cpu_overcommit_type = args[:cpu_overcommit_type] if args.key?(:cpu_overcommit_type)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @disks = args[:disks] if args.key?(:disks)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
@@ -20432,6 +20706,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::NodeTemplateAggregatedList::Warning]
@@ -20448,6 +20727,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -20883,6 +21163,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::NodeTypeAggregatedList::Warning]
@@ -20899,6 +21184,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -21765,6 +22051,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::OperationAggregatedList::Warning]
@@ -21781,6 +22072,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -22393,6 +22685,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::PacketMirroringAggregatedList::Warning]
@@ -22409,6 +22706,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -22871,8 +23169,6 @@ module Google
         # Only one of defaultRouteAction or defaultUrlRedirect must be set.
         # UrlMaps for external HTTP(S) load balancers support only the urlRewrite action
         # within a pathMatcher's defaultRouteAction.
-        # Not supported when the backend service is referenced by a URL map that is
-        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `defaultRouteAction`
         # @return [Google::Apis::ComputeBeta::HttpRouteAction]
         attr_accessor :default_route_action
@@ -22895,8 +23191,6 @@ module Google
         # the specified resource default_service:
         # - compute.backendBuckets.use
         # - compute.backendServices.use
-        # pathMatchers[].defaultService is the only option available when the URL map is
-        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `defaultService`
         # @return [String]
         attr_accessor :default_service
@@ -22930,8 +23224,6 @@ module Google
         # For example: a pathRule with a path /a/b/c/* will match before /a/b/*
         # irrespective of the order in which those paths appear in this list.
         # Within a given pathMatcher, only one of pathRules or routeRules must be set.
-        # Not supported when the backend service is referenced by a URL map that is
-        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `pathRules`
         # @return [Array<Google::Apis::ComputeBeta::PathRule>]
         attr_accessor :path_rules
@@ -22940,8 +23232,6 @@ module Google
         # route matching and routing actions are desired. routeRules are evaluated in
         # order of priority, from the lowest to highest number.
         # Within a given pathMatcher, you can set only one of pathRules or routeRules.
-        # Not supported when the backend service is referenced by a URL map that is
-        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `routeRules`
         # @return [Array<Google::Apis::ComputeBeta::HttpRouteRule>]
         attr_accessor :route_rules
@@ -25229,6 +25519,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::ReservationAggregatedList::Warning]
@@ -25245,6 +25540,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -25816,6 +26112,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::ResourcePolicyAggregatedList::Warning]
@@ -25833,6 +26134,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -26808,6 +27110,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::RouterAggregatedList::Warning]
@@ -26824,6 +27131,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -28060,7 +28368,7 @@ module Google
         end
       end
       
-      # Sets the scheduling options for an Instance. NextID: 12
+      # Sets the scheduling options for an Instance. NextID: 13
       class Scheduling
         include Google::Apis::Core::Hashable
       
@@ -29192,6 +29500,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :download_bytes
       
+        # [Input Only] Whether to attempt an application consistent snapshot by
+        # informing the OS to prepare for the snapshot process. Currently only supported
+        # on Windows instances using the Volume Shadow Copy Service (VSS).
+        # Corresponds to the JSON property `guestFlush`
+        # @return [Boolean]
+        attr_accessor :guest_flush
+        alias_method :guest_flush?, :guest_flush
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -29264,7 +29580,7 @@ module Google
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :snapshot_encryption_key
       
-        # [Output Only] The source disk used to create this snapshot.
+        # The source disk used to create this snapshot.
         # Corresponds to the JSON property `sourceDisk`
         # @return [String]
         attr_accessor :source_disk
@@ -29320,6 +29636,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @download_bytes = args[:download_bytes] if args.key?(:download_bytes)
+          @guest_flush = args[:guest_flush] if args.key?(:guest_flush)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
@@ -29578,7 +29895,7 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::NetworkInterface>]
         attr_accessor :network_interfaces
       
-        # Sets the scheduling options for an Instance. NextID: 12
+        # Sets the scheduling options for an Instance. NextID: 13
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeBeta::Scheduling]
         attr_accessor :scheduling
@@ -29636,9 +29953,9 @@ module Google
       class SslCertificate
         include Google::Apis::Core::Hashable
       
-        # A local certificate file. The certificate must be in PEM format. The
-        # certificate chain must be no greater than 5 certs long. The chain must include
-        # at least one intermediate cert.
+        # A value read into memory from a certificate file. The certificate file must be
+        # in PEM format. The certificate chain must be no greater than 5 certs long. The
+        # chain must include at least one intermediate cert.
         # Corresponds to the JSON property `certificate`
         # @return [String]
         attr_accessor :certificate
@@ -29686,7 +30003,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # A write-only private key in PEM format. Only insert requests will include this
+        # A value read into memory from a write-only private key file. The private key
+        # file must be in PEM format. For security, only insert requests include this
         # field.
         # Corresponds to the JSON property `privateKey`
         # @return [String]
@@ -29778,6 +30096,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::SslCertificateAggregatedList::Warning]
@@ -29794,6 +30117,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -30764,6 +31088,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::SubnetworkAggregatedList::Warning]
@@ -30780,6 +31109,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -31622,6 +31952,32 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Fingerprint of this resource. A hash of the contents stored in this object.
+        # This field is used in optimistic locking. This field will be ignored when
+        # inserting a TargetHttpProxy. An up-to-date fingerprint must be provided in
+        # order to patch/update the TargetHttpProxy; otherwise, the request will fail
+        # with error 412 conditionNotMet. To see the latest fingerprint, make a get()
+        # request to retrieve the TargetHttpProxy.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # URLs to networkservices.HttpFilter resources enabled for xDS clients using
+        # this configuration. For example, https://networkservices.googleapis.com/
+        # v1alpha1/projects/project/locations/locationhttpFilters/httpFilter Only
+        # filters that handle outbound connection and stream events may be specified.
+        # These filters work in conjunction with a default set of HTTP filters that may
+        # already be configured by Traffic Director. Traffic Director will determine the
+        # final location of these filters within xDS configuration based on the name of
+        # the HTTP filter. If Traffic Director positions multiple filters at the same
+        # location, those filters will be in the same order as specified in this list.
+        # httpFilters only applies for loadbalancers with loadBalancingScheme set to
+        # INTERNAL_SELF_MANAGED. See ForwardingRule for more details.
+        # Corresponds to the JSON property `httpFilters`
+        # @return [Array<String>]
+        attr_accessor :http_filters
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -31677,6 +32033,8 @@ module Google
         def update!(**args)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @http_filters = args[:http_filters] if args.key?(:http_filters)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
@@ -31721,6 +32079,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::TargetHttpProxyAggregatedList::Warning]
@@ -31737,6 +32100,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -32248,6 +32612,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::TargetHttpsProxyAggregatedList::Warning]
@@ -32264,6 +32633,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -32580,6 +32950,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::TargetInstanceAggregatedList::Warning]
@@ -32596,6 +32971,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -33032,6 +33408,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::TargetPoolAggregatedList::Warning]
@@ -33048,6 +33429,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -34105,6 +34487,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::TargetVpnGatewayAggregatedList::Warning]
@@ -34121,6 +34508,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -34402,22 +34790,23 @@ module Google
       class TestFailure
         include Google::Apis::Core::Hashable
       
-        # 
+        # BackendService or BackendBucket returned by load balancer.
         # Corresponds to the JSON property `actualService`
         # @return [String]
         attr_accessor :actual_service
       
-        # 
+        # Expected BackendService or BackendBucket resource the given URL should be
+        # mapped to.
         # Corresponds to the JSON property `expectedService`
         # @return [String]
         attr_accessor :expected_service
       
-        # 
+        # Host portion of the URL.
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
       
-        # 
+        # Path portion including query parameters in the URL.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
@@ -34509,9 +34898,8 @@ module Google
         # Only one of defaultRouteAction or defaultUrlRedirect must be set.
         # UrlMaps for external HTTP(S) load balancers support only the urlRewrite action
         # within defaultRouteAction.
-        # defaultRouteAction has no effect when the backend service is referenced by a
-        # URL map that is bound to target gRPC proxy that has validateForProxyless field
-        # set to true.
+        # defaultRouteAction has no effect when the URL map is bound to target gRPC
+        # proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `defaultRouteAction`
         # @return [Google::Apis::ComputeBeta::HttpRouteAction]
         attr_accessor :default_route_action
@@ -34525,9 +34913,8 @@ module Google
         # specified.
         # Only one of defaultService, defaultUrlRedirect  or defaultRouteAction.
         # weightedBackendService must be set.
-        # defaultService has no effect when the backend service is referenced by a URL
-        # map that is bound to target gRPC proxy that has validateForProxyless field set
-        # to true.
+        # defaultService has no effect when the URL map is bound to target gRPC proxy
+        # that has validateForProxyless field set to true.
         # Corresponds to the JSON property `defaultService`
         # @return [String]
         attr_accessor :default_service
@@ -34606,8 +34993,8 @@ module Google
         # The list of expected URL mapping tests. Request to update this UrlMap will
         # succeed only if all of the test cases pass. You can specify a maximum of 100
         # tests per UrlMap.
-        # Not supported when the backend service is referenced by a URL map that is
-        # bound to target gRPC proxy that has validateForProxyless field set to true.
+        # Not supported when the URL map is bound to target gRPC proxy that has
+        # validateForProxyless field set to true.
         # Corresponds to the JSON property `tests`
         # @return [Array<Google::Apis::ComputeBeta::UrlMapTest>]
         attr_accessor :tests
@@ -34781,7 +35168,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Host portion of the URL.
+        # Host portion of the URL. If headers contains a host header, then host must
+        # also match the header value.
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
@@ -34791,7 +35179,9 @@ module Google
         # @return [String]
         attr_accessor :path
       
-        # Expected BackendService resource the given URL should be mapped to.
+        # Expected BackendService or BackendBucket resource the given URL should be
+        # mapped to.
+        # service cannot be set if expectedRedirectResponseCode is set.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -34883,6 +35273,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::UrlMapsAggregatedList::Warning]
@@ -34899,6 +35294,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -35694,6 +36090,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::VpnGatewayAggregatedList::Warning]
@@ -35710,6 +36111,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -36403,6 +36805,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeBeta::VpnTunnelAggregatedList::Warning]
@@ -36419,6 +36826,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         

@@ -390,7 +390,8 @@ module Google
         # @return [String]
         attr_accessor :country
       
-        # The destination the issue applies to.
+        # The destination the issue applies to. If this field is empty then the issue
+        # applies to all available destinations.
         # Corresponds to the JSON property `destination`
         # @return [String]
         attr_accessor :destination

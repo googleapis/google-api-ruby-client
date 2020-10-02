@@ -526,6 +526,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConfidentialInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConnectionDraining
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4795,6 +4801,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::AcceleratorTypeAggregatedList::Warning, decorator: Google::Apis::ComputeV1::AcceleratorTypeAggregatedList::Warning::Representation
       
         end
@@ -4923,6 +4930,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::AddressAggregatedList::Warning, decorator: Google::Apis::ComputeV1::AddressAggregatedList::Warning::Representation
       
         end
@@ -5030,7 +5038,6 @@ module Google
           collection :local_ssds, as: 'localSsds', class: Google::Apis::ComputeV1::AllocationSpecificSkuAllocationAllocatedInstancePropertiesReservedDisk, decorator: Google::Apis::ComputeV1::AllocationSpecificSkuAllocationAllocatedInstancePropertiesReservedDisk::Representation
       
           property :machine_type, as: 'machineType'
-          property :maintenance_interval, as: 'maintenanceInterval'
           property :min_cpu_platform, as: 'minCpuPlatform'
         end
       end
@@ -5145,6 +5152,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::AutoscalerAggregatedList::Warning, decorator: Google::Apis::ComputeV1::AutoscalerAggregatedList::Warning::Representation
       
         end
@@ -5414,6 +5422,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::BackendServiceAggregatedList::Warning, decorator: Google::Apis::ComputeV1::BackendServiceAggregatedList::Warning::Representation
       
         end
@@ -5554,6 +5563,7 @@ module Google
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :binding_id, as: 'bindingId'
           property :condition, as: 'condition', class: Google::Apis::ComputeV1::Expr, decorator: Google::Apis::ComputeV1::Expr::Representation
       
           collection :members, as: 'members'
@@ -5625,6 +5635,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::CommitmentAggregatedList::Warning, decorator: Google::Apis::ComputeV1::CommitmentAggregatedList::Warning::Representation
       
         end
@@ -5716,6 +5727,13 @@ module Google
           property :svc, as: 'svc'
           property :sys, as: 'sys'
           collection :values, as: 'values'
+        end
+      end
+      
+      class ConfidentialInstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_confidential_compute, as: 'enableConfidentialCompute'
         end
       end
       
@@ -5841,6 +5859,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::DiskAggregatedList::Warning, decorator: Google::Apis::ComputeV1::DiskAggregatedList::Warning::Representation
       
         end
@@ -5941,6 +5960,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::DiskTypeAggregatedList::Warning, decorator: Google::Apis::ComputeV1::DiskTypeAggregatedList::Warning::Representation
       
         end
@@ -6356,6 +6376,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::ForwardingRuleAggregatedList::Warning, decorator: Google::Apis::ComputeV1::ForwardingRuleAggregatedList::Warning::Representation
       
         end
@@ -6702,6 +6723,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::HealthChecksAggregatedList::Warning, decorator: Google::Apis::ComputeV1::HealthChecksAggregatedList::Warning::Representation
       
         end
@@ -7141,6 +7163,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :can_ip_forward, as: 'canIpForward'
+          property :confidential_instance_config, as: 'confidentialInstanceConfig', class: Google::Apis::ComputeV1::ConfidentialInstanceConfig, decorator: Google::Apis::ComputeV1::ConfidentialInstanceConfig::Representation
+      
           property :cpu_platform, as: 'cpuPlatform'
           property :creation_timestamp, as: 'creationTimestamp'
           property :deletion_protection, as: 'deletionProtection'
@@ -7195,6 +7219,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::InstanceAggregatedList::Warning, decorator: Google::Apis::ComputeV1::InstanceAggregatedList::Warning::Representation
       
         end
@@ -7247,6 +7272,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::InstanceGroupAggregatedList::Warning, decorator: Google::Apis::ComputeV1::InstanceGroupAggregatedList::Warning::Representation
       
         end
@@ -7362,6 +7388,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::InstanceGroupManagerAggregatedList::Warning, decorator: Google::Apis::ComputeV1::InstanceGroupManagerAggregatedList::Warning::Representation
       
         end
@@ -7832,6 +7859,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :can_ip_forward, as: 'canIpForward'
+          property :confidential_instance_config, as: 'confidentialInstanceConfig', class: Google::Apis::ComputeV1::ConfidentialInstanceConfig, decorator: Google::Apis::ComputeV1::ConfidentialInstanceConfig::Representation
+      
           property :description, as: 'description'
           collection :disks, as: 'disks', class: Google::Apis::ComputeV1::AttachedDisk, decorator: Google::Apis::ComputeV1::AttachedDisk::Representation
       
@@ -8092,6 +8121,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::InterconnectAttachmentAggregatedList::Warning, decorator: Google::Apis::ComputeV1::InterconnectAttachmentAggregatedList::Warning::Representation
       
         end
@@ -8553,6 +8583,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::MachineTypeAggregatedList::Warning, decorator: Google::Apis::ComputeV1::MachineTypeAggregatedList::Warning::Representation
       
         end
@@ -8750,6 +8781,7 @@ module Google
           property :gateway_i_pv4, as: 'gatewayIPv4'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :mtu, as: 'mtu'
           property :name, as: 'name'
           collection :peerings, as: 'peerings', class: Google::Apis::ComputeV1::NetworkPeering, decorator: Google::Apis::ComputeV1::NetworkPeering::Representation
       
@@ -8806,6 +8838,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::NetworkEndpointGroupAggregatedList::Warning, decorator: Google::Apis::ComputeV1::NetworkEndpointGroupAggregatedList::Warning::Representation
       
         end
@@ -9039,6 +9072,7 @@ module Google
           property :import_subnet_routes_with_public_ip, as: 'importSubnetRoutesWithPublicIp'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :peer_mtu, as: 'peerMtu'
           property :state, as: 'state'
           property :state_details, as: 'stateDetails'
         end
@@ -9106,6 +9140,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::NodeGroupAggregatedList::Warning, decorator: Google::Apis::ComputeV1::NodeGroupAggregatedList::Warning::Representation
       
         end
@@ -9296,6 +9331,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::NodeTemplateAggregatedList::Warning, decorator: Google::Apis::ComputeV1::NodeTemplateAggregatedList::Warning::Representation
       
         end
@@ -9416,6 +9452,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::NodeTypeAggregatedList::Warning, decorator: Google::Apis::ComputeV1::NodeTypeAggregatedList::Warning::Representation
       
         end
@@ -9633,6 +9670,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::OperationAggregatedList::Warning, decorator: Google::Apis::ComputeV1::OperationAggregatedList::Warning::Representation
       
         end
@@ -9767,6 +9805,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::PacketMirroringAggregatedList::Warning, decorator: Google::Apis::ComputeV1::PacketMirroringAggregatedList::Warning::Representation
       
         end
@@ -10514,6 +10553,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::ReservationAggregatedList::Warning, decorator: Google::Apis::ComputeV1::ReservationAggregatedList::Warning::Representation
       
         end
@@ -10676,6 +10716,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::ResourcePolicyAggregatedList::Warning, decorator: Google::Apis::ComputeV1::ResourcePolicyAggregatedList::Warning::Representation
       
         end
@@ -10931,6 +10972,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::RouterAggregatedList::Warning, decorator: Google::Apis::ComputeV1::RouterAggregatedList::Warning::Representation
       
         end
@@ -11478,6 +11520,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::SslCertificateAggregatedList::Warning, decorator: Google::Apis::ComputeV1::SslCertificateAggregatedList::Warning::Representation
       
         end
@@ -11721,6 +11764,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::SubnetworkAggregatedList::Warning, decorator: Google::Apis::ComputeV1::SubnetworkAggregatedList::Warning::Representation
       
         end
@@ -11939,6 +11983,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -11957,6 +12002,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
         end
       end
       
@@ -12060,6 +12106,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::TargetHttpsProxyAggregatedList::Warning, decorator: Google::Apis::ComputeV1::TargetHttpsProxyAggregatedList::Warning::Representation
       
         end
@@ -12139,6 +12186,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::TargetInstanceAggregatedList::Warning, decorator: Google::Apis::ComputeV1::TargetInstanceAggregatedList::Warning::Representation
       
         end
@@ -12249,6 +12297,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::TargetPoolAggregatedList::Warning, decorator: Google::Apis::ComputeV1::TargetPoolAggregatedList::Warning::Representation
       
         end
@@ -12535,6 +12584,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::TargetVpnGatewayAggregatedList::Warning, decorator: Google::Apis::ComputeV1::TargetVpnGatewayAggregatedList::Warning::Representation
       
         end
@@ -12738,6 +12788,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::UrlMapsAggregatedList::Warning, decorator: Google::Apis::ComputeV1::UrlMapsAggregatedList::Warning::Representation
       
         end
@@ -12952,6 +13003,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::VpnGatewayAggregatedList::Warning, decorator: Google::Apis::ComputeV1::VpnGatewayAggregatedList::Warning::Representation
       
         end
@@ -13125,6 +13177,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeV1::VpnTunnelAggregatedList::Warning, decorator: Google::Apis::ComputeV1::VpnTunnelAggregatedList::Warning::Representation
       
         end

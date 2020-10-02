@@ -172,6 +172,90 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudTalentV4BatchCreateJobsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudTalentV4BatchDeleteJobsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudTalentV4BatchOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudTalentV4BatchUpdateJobsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudTalentV4CompensationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudTalentV4CompensationInfoCompensationEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudTalentV4CompensationInfoCompensationRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudTalentV4CustomAttribute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudTalentV4Job
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudTalentV4JobApplicationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudTalentV4JobDerivedInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudTalentV4JobProcessingOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudTalentV4JobResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudTalentV4Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HistogramFacets
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -317,6 +401,12 @@ module Google
       end
       
       class SpellingCorrection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -591,6 +681,179 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudTalentV4BatchCreateJobsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :job_results, as: 'jobResults', class: Google::Apis::JobsV3::GoogleCloudTalentV4JobResult, decorator: Google::Apis::JobsV3::GoogleCloudTalentV4JobResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudTalentV4BatchDeleteJobsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :job_results, as: 'jobResults', class: Google::Apis::JobsV3::GoogleCloudTalentV4JobResult, decorator: Google::Apis::JobsV3::GoogleCloudTalentV4JobResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudTalentV4BatchOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :failure_count, as: 'failureCount'
+          property :state, as: 'state'
+          property :state_description, as: 'stateDescription'
+          property :success_count, as: 'successCount'
+          property :total_count, as: 'totalCount'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudTalentV4BatchUpdateJobsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :job_results, as: 'jobResults', class: Google::Apis::JobsV3::GoogleCloudTalentV4JobResult, decorator: Google::Apis::JobsV3::GoogleCloudTalentV4JobResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudTalentV4CompensationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :annualized_base_compensation_range, as: 'annualizedBaseCompensationRange', class: Google::Apis::JobsV3::GoogleCloudTalentV4CompensationInfoCompensationRange, decorator: Google::Apis::JobsV3::GoogleCloudTalentV4CompensationInfoCompensationRange::Representation
+      
+          property :annualized_total_compensation_range, as: 'annualizedTotalCompensationRange', class: Google::Apis::JobsV3::GoogleCloudTalentV4CompensationInfoCompensationRange, decorator: Google::Apis::JobsV3::GoogleCloudTalentV4CompensationInfoCompensationRange::Representation
+      
+          collection :entries, as: 'entries', class: Google::Apis::JobsV3::GoogleCloudTalentV4CompensationInfoCompensationEntry, decorator: Google::Apis::JobsV3::GoogleCloudTalentV4CompensationInfoCompensationEntry::Representation
+      
+        end
+      end
+      
+      class GoogleCloudTalentV4CompensationInfoCompensationEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount, as: 'amount', class: Google::Apis::JobsV3::Money, decorator: Google::Apis::JobsV3::Money::Representation
+      
+          property :description, as: 'description'
+          property :expected_units_per_year, as: 'expectedUnitsPerYear'
+          property :range, as: 'range', class: Google::Apis::JobsV3::GoogleCloudTalentV4CompensationInfoCompensationRange, decorator: Google::Apis::JobsV3::GoogleCloudTalentV4CompensationInfoCompensationRange::Representation
+      
+          property :type, as: 'type'
+          property :unit, as: 'unit'
+        end
+      end
+      
+      class GoogleCloudTalentV4CompensationInfoCompensationRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_compensation, as: 'maxCompensation', class: Google::Apis::JobsV3::Money, decorator: Google::Apis::JobsV3::Money::Representation
+      
+          property :min_compensation, as: 'minCompensation', class: Google::Apis::JobsV3::Money, decorator: Google::Apis::JobsV3::Money::Representation
+      
+        end
+      end
+      
+      class GoogleCloudTalentV4CustomAttribute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filterable, as: 'filterable'
+          property :keyword_searchable, as: 'keywordSearchable'
+          collection :long_values, as: 'longValues'
+          collection :string_values, as: 'stringValues'
+        end
+      end
+      
+      class GoogleCloudTalentV4Job
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :addresses, as: 'addresses'
+          property :application_info, as: 'applicationInfo', class: Google::Apis::JobsV3::GoogleCloudTalentV4JobApplicationInfo, decorator: Google::Apis::JobsV3::GoogleCloudTalentV4JobApplicationInfo::Representation
+      
+          property :company, as: 'company'
+          property :company_display_name, as: 'companyDisplayName'
+          property :compensation_info, as: 'compensationInfo', class: Google::Apis::JobsV3::GoogleCloudTalentV4CompensationInfo, decorator: Google::Apis::JobsV3::GoogleCloudTalentV4CompensationInfo::Representation
+      
+          hash :custom_attributes, as: 'customAttributes', class: Google::Apis::JobsV3::GoogleCloudTalentV4CustomAttribute, decorator: Google::Apis::JobsV3::GoogleCloudTalentV4CustomAttribute::Representation
+      
+          collection :degree_types, as: 'degreeTypes'
+          property :department, as: 'department'
+          property :derived_info, as: 'derivedInfo', class: Google::Apis::JobsV3::GoogleCloudTalentV4JobDerivedInfo, decorator: Google::Apis::JobsV3::GoogleCloudTalentV4JobDerivedInfo::Representation
+      
+          property :description, as: 'description'
+          collection :employment_types, as: 'employmentTypes'
+          property :incentives, as: 'incentives'
+          collection :job_benefits, as: 'jobBenefits'
+          property :job_end_time, as: 'jobEndTime'
+          property :job_level, as: 'jobLevel'
+          property :job_start_time, as: 'jobStartTime'
+          property :language_code, as: 'languageCode'
+          property :name, as: 'name'
+          property :posting_create_time, as: 'postingCreateTime'
+          property :posting_expire_time, as: 'postingExpireTime'
+          property :posting_publish_time, as: 'postingPublishTime'
+          property :posting_region, as: 'postingRegion'
+          property :posting_update_time, as: 'postingUpdateTime'
+          property :processing_options, as: 'processingOptions', class: Google::Apis::JobsV3::GoogleCloudTalentV4JobProcessingOptions, decorator: Google::Apis::JobsV3::GoogleCloudTalentV4JobProcessingOptions::Representation
+      
+          property :promotion_value, as: 'promotionValue'
+          property :qualifications, as: 'qualifications'
+          property :requisition_id, as: 'requisitionId'
+          property :responsibilities, as: 'responsibilities'
+          property :title, as: 'title'
+          property :visibility, as: 'visibility'
+        end
+      end
+      
+      class GoogleCloudTalentV4JobApplicationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :emails, as: 'emails'
+          property :instruction, as: 'instruction'
+          collection :uris, as: 'uris'
+        end
+      end
+      
+      class GoogleCloudTalentV4JobDerivedInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :job_categories, as: 'jobCategories'
+          collection :locations, as: 'locations', class: Google::Apis::JobsV3::GoogleCloudTalentV4Location, decorator: Google::Apis::JobsV3::GoogleCloudTalentV4Location::Representation
+      
+        end
+      end
+      
+      class GoogleCloudTalentV4JobProcessingOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_street_address_resolution, as: 'disableStreetAddressResolution'
+          property :html_sanitization, as: 'htmlSanitization'
+        end
+      end
+      
+      class GoogleCloudTalentV4JobResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :job, as: 'job', class: Google::Apis::JobsV3::GoogleCloudTalentV4Job, decorator: Google::Apis::JobsV3::GoogleCloudTalentV4Job::Representation
+      
+          property :status, as: 'status', class: Google::Apis::JobsV3::Status, decorator: Google::Apis::JobsV3::Status::Representation
+      
+        end
+      end
+      
+      class GoogleCloudTalentV4Location
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :lat_lng, as: 'latLng', class: Google::Apis::JobsV3::LatLng, decorator: Google::Apis::JobsV3::LatLng::Representation
+      
+          property :location_type, as: 'locationType'
+          property :postal_address, as: 'postalAddress', class: Google::Apis::JobsV3::PostalAddress, decorator: Google::Apis::JobsV3::PostalAddress::Representation
+      
+          property :radius_miles, as: 'radiusMiles'
         end
       end
       
@@ -918,6 +1181,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :corrected, as: 'corrected'
           property :corrected_text, as: 'correctedText'
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
       

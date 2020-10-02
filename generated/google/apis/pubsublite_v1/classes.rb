@@ -100,8 +100,8 @@ module Google
         attr_accessor :minimum_event_time
       
         # The minimum publish timestamp across these messages. Note that publish
-        # timestamps within a partition are non-decreasing. The timestamp will be unset
-        # if there are no messages.
+        # timestamps within a partition are not guaranteed to be non-decreasing. The
+        # timestamp will be unset if there are no messages.
         # Corresponds to the JSON property `minimumPublishTime`
         # @return [String]
         attr_accessor :minimum_publish_time

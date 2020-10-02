@@ -1195,13 +1195,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :maintenance_freeze_duration_hours
       
-        # Specifies whether this VM may be a stable fleet VM. Setting this to "Periodic"
-        # designates this VM as a Stable Fleet VM.
-        # See go/stable-fleet-ug for more details.
-        # Corresponds to the JSON property `maintenanceInterval`
-        # @return [String]
-        attr_accessor :maintenance_interval
-      
         # Minimum cpu platform the reservation.
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
@@ -1218,7 +1211,6 @@ module Google
           @location_hint = args[:location_hint] if args.key?(:location_hint)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @maintenance_freeze_duration_hours = args[:maintenance_freeze_duration_hours] if args.key?(:maintenance_freeze_duration_hours)
-          @maintenance_interval = args[:maintenance_interval] if args.key?(:maintenance_interval)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
         end
       end
@@ -2379,11 +2371,12 @@ module Google
       
         # Indicates which method of prediction is used for CPU utilization metric, if
         # any. Current set of possible values: * NONE: No predictions are made based on
-        # the scaling metric when calculating the number of VM instances. * STANDARD:
-        # Standard predictive autoscaling predicts the future values of the scaling
-        # metric and then scales a MIG to ensure that new VM instances are ready in time
-        # to cover the predicted peak. New values might be added in the future. Some of
-        # the values might not be available in all API versions.
+        # the scaling metric when calculating the number of VM instances. *
+        # OPTIMIZE_AVAILABILITY: Standard predictive autoscaling predicts the future
+        # values of the scaling metric and then scales a MIG to ensure that new VM
+        # instances are ready in time to cover the predicted peak. New values might be
+        # added in the future. Some of the values might not be available in all API
+        # versions.
         # Corresponds to the JSON property `predictiveMethod`
         # @return [String]
         attr_accessor :predictive_method
@@ -2942,12 +2935,12 @@ module Google
       
         # Specifies the default TTL for cached content served by this origin for
         # responses that do not have an existing valid TTL (max-age or s-max-age).
-        # Setting a TTL of "0" means "always revalidate" and a value of "-1" disables
-        # caching for that status code. The value of defaultTTL cannot be set to a value
-        # greater than that of maxTTL, but can be equal. When the cacheMode is set to
-        # FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses.
-        # The maximum allowed value is 31,622,400s (1 year), noting that infrequently
-        # accessed objects may be evicted from the cache before the defined TTL.
+        # Setting a TTL of "0" means "always revalidate". The value of defaultTTL cannot
+        # be set to a value greater than that of maxTTL, but can be equal. When the
+        # cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set
+        # in all responses. The maximum allowed value is 31,622,400s (1 year), noting
+        # that infrequently accessed objects may be evicted from the cache before the
+        # defined TTL.
         # Corresponds to the JSON property `defaultTtl`
         # @return [Fixnum]
         attr_accessor :default_ttl
@@ -2956,10 +2949,10 @@ module Google
         # Cache directives that attempt to set a max-age or s-maxage higher than this,
         # or an Expires header more than maxTTL seconds in the future will be capped at
         # the value of maxTTL, as if it were the value of an s-maxage Cache-Control
-        # directive. Setting a TTL of "0" means "always revalidate" and a value of "-1"
-        # disables caching for that status code. The maximum allowed value is 31,622,
-        # 400s (1 year), noting that infrequently accessed objects may be evicted from
-        # the cache before the defined TTL.
+        # directive. Headers sent to the client will not be modified. Setting a TTL of "
+        # 0" means "always revalidate". The maximum allowed value is 31,622,400s (1 year)
+        # , noting that infrequently accessed objects may be evicted from the cache
+        # before the defined TTL.
         # Corresponds to the JSON property `maxTtl`
         # @return [Fixnum]
         attr_accessor :max_ttl
@@ -2970,8 +2963,8 @@ module Google
         # default, Cloud CDN will apply the following default TTLs to these status codes:
         # HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not
         # Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method
-        # Not Found), 414 (URI Too Long), 501 (Not Implemented): 60s These defaults can
-        # be overridden in negative_caching_policy
+        # Not Found), 421 (Misdirected Request), 501 (Not Implemented): 60s These
+        # defaults can be overridden in negative_caching_policy
         # Corresponds to the JSON property `negativeCaching`
         # @return [Boolean]
         attr_accessor :negative_caching
@@ -3001,7 +2994,7 @@ module Google
         # configured here will not be served. The default limit (max-stale) is 86400s (1
         # day), which will allow stale content to be served up to this limit beyond the
         # max-age (or s-max-age) of a cached response. The maximum allowed value is
-        # 604800(1 week). Set this to zero (0) to disable serve-while-stale.
+        # 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
         # Corresponds to the JSON property `serveWhileStale`
         # @return [Fixnum]
         attr_accessor :serve_while_stale
@@ -3069,17 +3062,15 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The HTTP status code to define a TTL against. Only HTTP status codes 300, 301,
-        # 308, 404, 405, 410, 414, 451 and 501 are can be specified as values, and you
+        # 308, 404, 405, 410, 421, 451 and 501 are can be specified as values, and you
         # cannot specify a status code more than once.
         # Corresponds to the JSON property `code`
         # @return [Fixnum]
         attr_accessor :code
       
         # The TTL (in seconds) to cache responses with the corresponding status code for.
-        # A TTL of "0" means "always revalidate" and a value of "-1" disables caching
-        # for that status code. The maximum allowed value is 1800s (30 minutes), noting
-        # that infrequently accessed objects may be evicted from the cache before the
-        # defined TTL.
+        # The maximum allowed value is 1800s (30 minutes), noting that infrequently
+        # accessed objects may be evicted from the cache before the defined TTL.
         # Corresponds to the JSON property `ttl`
         # @return [Fixnum]
         attr_accessor :ttl
@@ -3228,6 +3219,9 @@ module Google
       class BackendService
         include Google::Apis::Core::Hashable
       
+        # Lifetime of cookies in seconds. Only applicable if the loadBalancingScheme is
+        # EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, the protocol is HTTP or
+        # HTTPS, and the sessionAffinity is GENERATED_COOKIE, or HTTP_COOKIE.
         # If set to 0, the cookie is non-persistent and lasts only until the end of the
         # browser session (or equivalent). The maximum allowed value is one day (86,400).
         # Not supported when the backend service is referenced by a URL map that is
@@ -3485,6 +3479,11 @@ module Google
         # @return [String]
         attr_accessor :session_affinity
       
+        # Subsetting options to make L4 ILB support any number of backend instances
+        # Corresponds to the JSON property `subsetting`
+        # @return [Google::Apis::ComputeAlpha::Subsetting]
+        attr_accessor :subsetting
+      
         # The backend service timeout has a different meaning depending on the type of
         # load balancer. For more information see,  Backend service settings The default
         # is 30 seconds.
@@ -3530,6 +3529,7 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
+          @subsetting = args[:subsetting] if args.key?(:subsetting)
           @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
         end
       end
@@ -3689,12 +3689,12 @@ module Google
       
         # Specifies the default TTL for cached content served by this origin for
         # responses that do not have an existing valid TTL (max-age or s-max-age).
-        # Setting a TTL of "0" means "always revalidate" and a value of "-1" disables
-        # caching for that status code. The value of defaultTTL cannot be set to a value
-        # greater than that of maxTTL, but can be equal. When the cacheMode is set to
-        # FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses.
-        # The maximum allowed value is 31,622,400s (1 year), noting that infrequently
-        # accessed objects may be evicted from the cache before the defined TTL.
+        # Setting a TTL of "0" means "always revalidate". The value of defaultTTL cannot
+        # be set to a value greater than that of maxTTL, but can be equal. When the
+        # cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set
+        # in all responses. The maximum allowed value is 31,622,400s (1 year), noting
+        # that infrequently accessed objects may be evicted from the cache before the
+        # defined TTL.
         # Corresponds to the JSON property `defaultTtl`
         # @return [Fixnum]
         attr_accessor :default_ttl
@@ -3703,10 +3703,10 @@ module Google
         # Cache directives that attempt to set a max-age or s-maxage higher than this,
         # or an Expires header more than maxTTL seconds in the future will be capped at
         # the value of maxTTL, as if it were the value of an s-maxage Cache-Control
-        # directive. Setting a TTL of "0" means "always revalidate" and a value of "-1"
-        # disables caching for that status code. The maximum allowed value is 31,622,
-        # 400s (1 year), noting that infrequently accessed objects may be evicted from
-        # the cache before the defined TTL.
+        # directive. Headers sent to the client will not be modified. Setting a TTL of "
+        # 0" means "always revalidate". The maximum allowed value is 31,622,400s (1 year)
+        # , noting that infrequently accessed objects may be evicted from the cache
+        # before the defined TTL.
         # Corresponds to the JSON property `maxTtl`
         # @return [Fixnum]
         attr_accessor :max_ttl
@@ -3717,8 +3717,8 @@ module Google
         # default, Cloud CDN will apply the following default TTLs to these status codes:
         # HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not
         # Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method
-        # Not Found), 414 (URI Too Long), 501 (Not Implemented): 60s These defaults can
-        # be overridden in negative_caching_policy
+        # Not Found), 421 (Misdirected Request), 501 (Not Implemented): 60s These
+        # defaults can be overridden in negative_caching_policy
         # Corresponds to the JSON property `negativeCaching`
         # @return [Boolean]
         attr_accessor :negative_caching
@@ -3748,7 +3748,7 @@ module Google
         # configured here will not be served. The default limit (max-stale) is 86400s (1
         # day), which will allow stale content to be served up to this limit beyond the
         # max-age (or s-max-age) of a cached response. The maximum allowed value is
-        # 604800(1 week). Set this to zero (0) to disable serve-while-stale.
+        # 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
         # Corresponds to the JSON property `serveWhileStale`
         # @return [Fixnum]
         attr_accessor :serve_while_stale
@@ -3817,17 +3817,15 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The HTTP status code to define a TTL against. Only HTTP status codes 300, 301,
-        # 308, 404, 405, 410, 414, 451 and 501 are can be specified as values, and you
+        # 308, 404, 405, 410, 421, 451 and 501 are can be specified as values, and you
         # cannot specify a status code more than once.
         # Corresponds to the JSON property `code`
         # @return [Fixnum]
         attr_accessor :code
       
         # The TTL (in seconds) to cache responses with the corresponding status code for.
-        # A TTL of "0" means "always revalidate" and a value of "-1" disables caching
-        # for that status code. The maximum allowed value is 1800s (30 minutes), noting
-        # that infrequently accessed objects may be evicted from the cache before the
-        # defined TTL.
+        # The maximum allowed value is 1800s (30 minutes), noting that infrequently
+        # accessed objects may be evicted from the cache before the defined TTL.
         # Corresponds to the JSON property `ttl`
         # @return [Fixnum]
         attr_accessor :ttl
@@ -4544,6 +4542,12 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
+        # A client-specified ID for this binding. Expected to be globally unique to
+        # support the internal bindings-by-ID API.
+        # Corresponds to the JSON property `bindingId`
+        # @return [String]
+        attr_accessor :binding_id
+      
         # Represents a textual expression in the Common Expression Language (CEL) syntax.
         # CEL is a C-like expression language. The syntax and semantics of CEL are
         # documented at https://github.com/google/cel-spec.
@@ -4614,6 +4618,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @binding_id = args[:binding_id] if args.key?(:binding_id)
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
@@ -5940,11 +5945,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
-        # [Output Only] Specifies whether this disk satisfies zone separation.
-        # Corresponds to the JSON property `satisfiesPhysicalZoneSeparation`
+        # [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
-        attr_accessor :satisfies_physical_zone_separation
-        alias_method :satisfies_physical_zone_separation?, :satisfies_physical_zone_separation
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
       
         # [Output Only] Server-defined fully-qualified URL for this resource.
         # Corresponds to the JSON property `selfLink`
@@ -6153,7 +6158,7 @@ module Google
           @region = args[:region] if args.key?(:region)
           @replica_zones = args[:replica_zones] if args.key?(:replica_zones)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
-          @satisfies_physical_zone_separation = args[:satisfies_physical_zone_separation] if args.key?(:satisfies_physical_zone_separation)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
@@ -8773,9 +8778,9 @@ module Google
         attr_accessor :name
       
         # This field is not used for external load balancing.
-        # For INTERNAL and INTERNAL_SELF_MANAGED load balancing, this field identifies
-        # the network that the load balanced IP should belong to for this Forwarding
-        # Rule. If this field is not specified, the default network will be used.
+        # For internal load balancing, this field identifies the network that the load
+        # balanced IP should belong to for this Forwarding Rule. If this field is not
+        # specified, the default network will be used.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -8869,7 +8874,7 @@ module Google
         # @return [String]
         attr_accessor :service_name
       
-        # This field is only used for INTERNAL load balancing.
+        # This field is only used for internal load balancing.
         # For internal load balancing, this field identifies the subnetwork that the
         # load balanced IP should belong to for this Forwarding Rule.
         # If the network specified is in auto subnet mode, this field is optional.
@@ -11027,6 +11032,13 @@ module Google
         # For matching against the HTTP request's authority, use a headerMatch with the
         # header name ":authority".
         # For matching a request's method, use the headerName ":method".
+        # When the URL map is bound to target gRPC proxy that has validateForProxyless
+        # field set to true, only non-binary user-specified custom metadata and the `
+        # content-type` header are supported. The following transport-level headers
+        # cannot be used in header matching rules: `:authority`, `:method`, `:path`, `:
+        # scheme`, `user-agent`, `accept-encoding`, `content-encoding`, `grpc-accept-
+        # encoding`, `grpc-encoding`, `grpc-previous-rpc-attempts`, `grpc-tags-bin`, `
+        # grpc-timeout` and `grpc-trace-bin.
         # Corresponds to the JSON property `headerName`
         # @return [String]
         attr_accessor :header_name
@@ -11602,10 +11614,10 @@ module Google
         # A list of weighted backend services to send traffic to when a route match
         # occurs. The weights determine the fraction of traffic that flows to their
         # corresponding backend service. If all traffic needs to go to a single backend
-        # service, there must be one  weightedBackendService with weight set to a non 0
-        # number.
+        # service, there must be one  weightedBackendService with weight set to a non-
+        # zero number.
         # Once a backendService is identified and before forwarding the request to the
-        # backend service, advanced routing actions like Url rewrites and header
+        # backend service, advanced routing actions such as URL rewrites and header
         # transformations are applied depending on additional settings specified in this
         # HttpRouteAction.
         # Corresponds to the JSON property `weightedBackendServices`
@@ -11649,6 +11661,8 @@ module Google
         # enabled by Traffic Director. httpFilterConfigs only applies for Loadbalancers
         # with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for
         # more details.
+        # Not supported when the URL map is bound to target gRPC proxy that has
+        # validateForProxyless field set to true.
         # Corresponds to the JSON property `httpFilterConfigs`
         # @return [Array<Google::Apis::ComputeAlpha::HttpFilterConfig>]
         attr_accessor :http_filter_configs
@@ -11658,6 +11672,8 @@ module Google
         # Loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See
         # ForwardingRule for more details.
         # The only configTypeUrl supported is type.googleapis.com/google.protobuf.Struct
+        # Not supported when the URL map is bound to target gRPC proxy that has
+        # validateForProxyless field set to true.
         # Corresponds to the JSON property `httpFilterMetadata`
         # @return [Array<Google::Apis::ComputeAlpha::HttpFilterConfig>]
         attr_accessor :http_filter_metadata
@@ -11758,6 +11774,7 @@ module Google
         # Specifies that prefixMatch and fullPathMatch matches are case sensitive.
         # The default value is false.
         # ignoreCase must not be used with regexMatch.
+        # Not supported when the URL map is bound to target gRPC proxy.
         # Corresponds to the JSON property `ignoreCase`
         # @return [Boolean]
         attr_accessor :ignore_case
@@ -11777,6 +11794,8 @@ module Google
         # ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to.
         # metadataFilters only applies to Loadbalancers that have their
         # loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        # Not supported when the URL map is bound to target gRPC proxy that has
+        # validateForProxyless field set to true.
         # Corresponds to the JSON property `metadataFilters`
         # @return [Array<Google::Apis::ComputeAlpha::MetadataFilter>]
         attr_accessor :metadata_filters
@@ -11791,6 +11810,7 @@ module Google
       
         # Specifies a list of query parameter match criteria, all of which must match
         # corresponding query parameters in the request.
+        # Not supported when the URL map is bound to target gRPC proxy.
         # Corresponds to the JSON property `queryParameterMatches`
         # @return [Array<Google::Apis::ComputeAlpha::HttpQueryParameterMatch>]
         attr_accessor :query_parameter_matches
@@ -12965,7 +12985,7 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::NetworkInterface>]
         attr_accessor :network_interfaces
       
-        # Specifies whether this instance will be shut down on key revocation.
+        # PostKeyRevocationActionType of the instance.
         # Corresponds to the JSON property `postKeyRevocationActionType`
         # @return [String]
         attr_accessor :post_key_revocation_action_type
@@ -12991,16 +13011,22 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
-        # [Output Only] Specifies whether this instance satisfies zone separation.
-        # Corresponds to the JSON property `satisfiesPhysicalZoneSeparation`
+        # [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
-        attr_accessor :satisfies_physical_zone_separation
-        alias_method :satisfies_physical_zone_separation?, :satisfies_physical_zone_separation
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
       
-        # Sets the scheduling options for an Instance. NextID: 12
+        # Sets the scheduling options for an Instance. NextID: 13
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeAlpha::Scheduling]
         attr_accessor :scheduling
+      
+        # Secure labels to apply to this instance. These can be later modified by the
+        # update method. Maximum number of secure labels allowed is 300.
+        # Corresponds to the JSON property `secureLabels`
+        # @return [Array<String>]
+        attr_accessor :secure_labels
       
         # [Output Only] Server-defined URL for this resource.
         # Corresponds to the JSON property `selfLink`
@@ -13126,8 +13152,9 @@ module Google
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
-          @satisfies_physical_zone_separation = args[:satisfies_physical_zone_separation] if args.key?(:satisfies_physical_zone_separation)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
+          @secure_labels = args[:secure_labels] if args.key?(:secure_labels)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
@@ -15826,7 +15853,7 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::NetworkInterface>]
         attr_accessor :network_interfaces
       
-        # Specifies whether instances will be shut down on key revocation.
+        # PostKeyRevocationActionType of the instance.
         # Corresponds to the JSON property `postKeyRevocationActionType`
         # @return [String]
         attr_accessor :post_key_revocation_action_type
@@ -15848,7 +15875,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
-        # Sets the scheduling options for an Instance. NextID: 12
+        # Sets the scheduling options for an Instance. NextID: 13
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeAlpha::Scheduling]
         attr_accessor :scheduling
@@ -16548,6 +16575,267 @@ module Google
         def update!(**args)
           @disks = args[:disks] if args.key?(:disks)
           @instance_encryption_key = args[:instance_encryption_key] if args.key?(:instance_encryption_key)
+        end
+      end
+      
+      # Represents a InstantSnapshot resource.
+      # You can use instant snapshots to create disk rollback points quickly.. (==
+      # resource_for `$api_version`.instantSnapshots ==)
+      class InstantSnapshot
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] Size of the source disk, specified in GB.
+        # Corresponds to the JSON property `diskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :disk_size_gb
+      
+        # Whether to attempt an application consistent instant snapshot by informing the
+        # OS to prepare for the snapshot process. Currently only supported on Windows
+        # instances using the Volume Shadow Copy Service (VSS).
+        # Corresponds to the JSON property `guestFlush`
+        # @return [Boolean]
+        attr_accessor :guest_flush
+        alias_method :guest_flush?, :guest_flush
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] Type of the resource. Always compute#instantSnapshot for
+        # InstantSnapshot resources.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # A fingerprint for the labels being applied to this InstantSnapshot, which is
+        # essentially a hash of the labels set used for optimistic locking. The
+        # fingerprint is initially generated by Compute Engine and changes after every
+        # request to modify or update labels. You must always provide an up-to-date
+        # fingerprint hash in order to update or change labels, otherwise the request
+        # will fail with error 412 conditionNotMet.
+        # To see the latest fingerprint, make a get() request to retrieve a
+        # InstantSnapshot.
+        # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :label_fingerprint
+      
+        # Labels to apply to this InstantSnapshot. These can be later modified by the
+        # setLabels method. Label values may be empty.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Name of the resource; provided by the client when the resource is created. The
+        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
+        # and all following characters must be a dash, lowercase letter, or digit,
+        # except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] URL of the region where the instant snapshot resides. You must
+        # specify this field as part of the HTTP request URL. It is not settable as a
+        # field in the request body.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Server-defined URL for this resource's resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
+        # URL of the source disk used to create this instant snapshot. Note that the
+        # source disk must be in the same zone/region as the instant snapshot to be
+        # created. This can be a full or valid partial URL. For example, the following
+        # are valid values:
+        # - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk
+        # - projects/project/zones/zone/disks/disk
+        # - zones/zone/disks/disk
+        # Corresponds to the JSON property `sourceDisk`
+        # @return [String]
+        attr_accessor :source_disk
+      
+        # [Output Only] The ID value of the disk used to create this InstantSnapshot.
+        # This value may be used to determine whether the InstantSnapshot was taken from
+        # the current or a previous instance of a given disk name.
+        # Corresponds to the JSON property `sourceDiskId`
+        # @return [String]
+        attr_accessor :source_disk_id
+      
+        # [Output Only] The status of the instantSnapshot. This can be CREATING,
+        # DELETING, FAILED, or READY.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # [Output Only] URL of the zone where the instant snapshot resides. You must
+        # specify this field as part of the HTTP request URL. It is not settable as a
+        # field in the request body.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @guest_flush = args[:guest_flush] if args.key?(:guest_flush)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @region = args[:region] if args.key?(:region)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @source_disk = args[:source_disk] if args.key?(:source_disk)
+          @source_disk_id = args[:source_disk_id] if args.key?(:source_disk_id)
+          @status = args[:status] if args.key?(:status)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # Contains a list of InstantSnapshot resources.
+      class InstantSnapshotList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of InstantSnapshot resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeAlpha::InstantSnapshot>]
+        attr_accessor :items
+      
+        # Type of resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::InstantSnapshotList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::InstantSnapshotList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
@@ -19180,7 +19468,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # [Input Only] Specifies to create an application consistent machine image by
+        # [Input Only] Whether to attempt an application consistent machine image by
         # informing the OS to prepare for the snapshot process. Currently only supported
         # on Windows instances using the Volume Shadow Copy Service (VSS).
         # Corresponds to the JSON property `guestFlush`
@@ -21482,6 +21770,15 @@ module Google
         # @return [String]
         attr_accessor :network_ip
       
+        # The networking queue count for the network interface. Both Rx and Tx queues
+        # will be set to this number. If it's not specified by the user, a default
+        # number of queues will be assigned. For Virtio-net, each interface will get (
+        # min(#vCPU, 32) / #vNIC) queues. For gVNIC, each interface will get (min(#vCPU /
+        # 2, 16) / #vNIC) qeueus.
+        # Corresponds to the JSON property `queueCount`
+        # @return [Fixnum]
+        attr_accessor :queue_count
+      
         # The URL of the Subnetwork resource for this instance. If the network resource
         # is in legacy mode, do not specify this field. If the network is in auto subnet
         # mode, specifying the subnetwork is optional. If the network is in custom
@@ -21509,6 +21806,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @network_ip = args[:network_ip] if args.key?(:network_ip)
+          @queue_count = args[:queue_count] if args.key?(:queue_count)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
         end
       end
@@ -22394,11 +22692,11 @@ module Google
         # @return [String]
         attr_accessor :node_type
       
-        # [Output Only] Specifies whether this node satisfies zone separation.
-        # Corresponds to the JSON property `satisfiesPhysicalZoneSeparation`
+        # [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
-        attr_accessor :satisfies_physical_zone_separation
-        alias_method :satisfies_physical_zone_separation?, :satisfies_physical_zone_separation
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
       
         # Binding properties for the physical server.
         # Corresponds to the JSON property `serverBinding`
@@ -22427,7 +22725,7 @@ module Google
           @instances = args[:instances] if args.key?(:instances)
           @name = args[:name] if args.key?(:name)
           @node_type = args[:node_type] if args.key?(:node_type)
-          @satisfies_physical_zone_separation = args[:satisfies_physical_zone_separation] if args.key?(:satisfies_physical_zone_separation)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @server_binding = args[:server_binding] if args.key?(:server_binding)
           @server_id = args[:server_id] if args.key?(:server_id)
           @status = args[:status] if args.key?(:status)
@@ -25381,8 +25679,6 @@ module Google
         # Only one of defaultRouteAction or defaultUrlRedirect must be set.
         # UrlMaps for external HTTP(S) load balancers support only the urlRewrite action
         # within a pathMatcher's defaultRouteAction.
-        # Not supported when the backend service is referenced by a URL map that is
-        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `defaultRouteAction`
         # @return [Google::Apis::ComputeAlpha::HttpRouteAction]
         attr_accessor :default_route_action
@@ -25405,8 +25701,6 @@ module Google
         # the specified resource default_service:
         # - compute.backendBuckets.use
         # - compute.backendServices.use
-        # pathMatchers[].defaultService is the only option available when the URL map is
-        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `defaultService`
         # @return [String]
         attr_accessor :default_service
@@ -25440,8 +25734,6 @@ module Google
         # For example: a pathRule with a path /a/b/c/* will match before /a/b/*
         # irrespective of the order in which those paths appear in this list.
         # Within a given pathMatcher, only one of pathRules or routeRules must be set.
-        # Not supported when the backend service is referenced by a URL map that is
-        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `pathRules`
         # @return [Array<Google::Apis::ComputeAlpha::PathRule>]
         attr_accessor :path_rules
@@ -25450,8 +25742,6 @@ module Google
         # route matching and routing actions are desired. routeRules are evaluated in
         # order of priority, from the lowest to highest number.
         # Within a given pathMatcher, you can set only one of pathRules or routeRules.
-        # Not supported when the backend service is referenced by a URL map that is
-        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `routeRules`
         # @return [Array<Google::Apis::ComputeAlpha::HttpRouteRule>]
         attr_accessor :route_rules
@@ -27151,11 +27441,11 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # [Output Only] Specifies whether this region supports physical zone separation.
-        # Corresponds to the JSON property `supportsPhysicalZoneSeparation`
+        # [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `supportsPzs`
         # @return [Boolean]
-        attr_accessor :supports_physical_zone_separation
-        alias_method :supports_physical_zone_separation?, :supports_physical_zone_separation
+        attr_accessor :supports_pzs
+        alias_method :supports_pzs?, :supports_pzs
       
         # [Output Only] A list of zones available in this region, in the form of
         # resource URLs.
@@ -27179,7 +27469,7 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @status = args[:status] if args.key?(:status)
-          @supports_physical_zone_separation = args[:supports_physical_zone_separation] if args.key?(:supports_physical_zone_separation)
+          @supports_pzs = args[:supports_pzs] if args.key?(:supports_pzs)
           @zones = args[:zones] if args.key?(:zones)
         end
       end
@@ -32038,7 +32328,7 @@ module Google
         end
       end
       
-      # Sets the scheduling options for an Instance. NextID: 12
+      # Sets the scheduling options for an Instance. NextID: 13
       class Scheduling
         include Google::Apis::Core::Hashable
       
@@ -32849,10 +33139,26 @@ module Google
       class SecurityPolicyRuleRateLimitOptions
         include Google::Apis::Core::Hashable
       
-        # Can only be specified if the action for the rule is "rate_based_blacklist" If
+        # Can only be specified if the action for the rule is "rate_based_ban". If
+        # specified, the key will be banned for the configured 'ban_duration' when the
+        # number of requests that exceed the 'rate_limit_threshold' also exceed this '
+        # ban_threshold'.
+        # Corresponds to the JSON property `banDurationSec`
+        # @return [Fixnum]
+        attr_accessor :ban_duration_sec
+      
+        # Can only be specified if the action for the rule is "rate_based_ban". If
+        # specified, the key will be banned for the configured 'ban_duration' when the
+        # number of requests that exceed the 'rate_limit_threshold' also exceed this '
+        # ban_threshold'.
+        # Corresponds to the JSON property `banThreshold`
+        # @return [Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptionsThreshold]
+        attr_accessor :ban_threshold
+      
+        # Can only be specified if the action for the rule is "rate_based_ban" If
         # specified, determines the time (in seconds) the traffic will continue to be
         # blocked by the rate limit after the rate falls below the threshold. The
-        # default value is 0 seconds.
+        # default value is 0 seconds. [Deprecated] This field is deprecated.
         # Corresponds to the JSON property `blockDuration`
         # @return [Fixnum]
         attr_accessor :block_duration
@@ -32877,7 +33183,13 @@ module Google
         # @return [String]
         attr_accessor :exceed_action
       
-        # Rate in requests per second at which to begin ratelimiting.
+        # Threshold at which to begin ratelimiting.
+        # Corresponds to the JSON property `rateLimitThreshold`
+        # @return [Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptionsThreshold]
+        attr_accessor :rate_limit_threshold
+      
+        # Rate in requests per second at which to begin ratelimiting. [Deprecated] This
+        # field is deprecated.
         # Corresponds to the JSON property `thresholdRps`
         # @return [Fixnum]
         attr_accessor :threshold_rps
@@ -32888,11 +33200,39 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ban_duration_sec = args[:ban_duration_sec] if args.key?(:ban_duration_sec)
+          @ban_threshold = args[:ban_threshold] if args.key?(:ban_threshold)
           @block_duration = args[:block_duration] if args.key?(:block_duration)
           @conform_action = args[:conform_action] if args.key?(:conform_action)
           @enforce_on_key = args[:enforce_on_key] if args.key?(:enforce_on_key)
           @exceed_action = args[:exceed_action] if args.key?(:exceed_action)
+          @rate_limit_threshold = args[:rate_limit_threshold] if args.key?(:rate_limit_threshold)
           @threshold_rps = args[:threshold_rps] if args.key?(:threshold_rps)
+        end
+      end
+      
+      # 
+      class SecurityPolicyRuleRateLimitOptionsThreshold
+        include Google::Apis::Core::Hashable
+      
+        # Number of HTTP(S) requests for calculating the threshold.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # Interval over which the threshold is computed.
+        # Corresponds to the JSON property `intervalSec`
+        # @return [Fixnum]
+        attr_accessor :interval_sec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @interval_sec = args[:interval_sec] if args.key?(:interval_sec)
         end
       end
       
@@ -33150,12 +33490,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # An array of IP CIDR ranges where each range is the url of the address resource
-        # which represents the range provided by the service producer to use for NAT in
-        # this service attachment.
-        # Corresponds to the JSON property `natIpCidrRanges`
+        # An array of URLs where each entry is the URL of a subnet provided by the
+        # service producer to use for NAT in this service attachment.
+        # Corresponds to the JSON property `natSubnets`
         # @return [Array<String>]
-        attr_accessor :nat_ip_cidr_ranges
+        attr_accessor :nat_subnets
       
         # The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is
         # serving the endpoint identified by this service attachment.
@@ -33188,7 +33527,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
-          @nat_ip_cidr_ranges = args[:nat_ip_cidr_ranges] if args.key?(:nat_ip_cidr_ranges)
+          @nat_subnets = args[:nat_subnets] if args.key?(:nat_subnets)
           @producer_forwarding_rule = args[:producer_forwarding_rule] if args.key?(:producer_forwarding_rule)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -33636,6 +33975,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :download_bytes
       
+        # [Input Only] Whether to attempt an application consistent snapshot by
+        # informing the OS to prepare for the snapshot process. Currently only supported
+        # on Windows instances using the Volume Shadow Copy Service (VSS).
+        # Corresponds to the JSON property `guestFlush`
+        # @return [Boolean]
+        attr_accessor :guest_flush
+        alias_method :guest_flush?, :guest_flush
+      
         # [Output Only] A list of features to enable on the guest operating system.
         # Applicable only for bootable images. Read  Enabling guest operating system
         # features to see a list of available options.
@@ -33696,11 +34043,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # [Output Only] Specifies whether this snapshot satisfies zone separation.
-        # Corresponds to the JSON property `satisfiesPhysicalZoneSeparation`
+        # [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
-        attr_accessor :satisfies_physical_zone_separation
-        alias_method :satisfies_physical_zone_separation?, :satisfies_physical_zone_separation
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
       
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
@@ -33726,7 +34073,7 @@ module Google
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :snapshot_encryption_key
       
-        # [Output Only] The source disk used to create this snapshot.
+        # The source disk used to create this snapshot.
         # Corresponds to the JSON property `sourceDisk`
         # @return [String]
         attr_accessor :source_disk
@@ -33782,6 +34129,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @download_bytes = args[:download_bytes] if args.key?(:download_bytes)
+          @guest_flush = args[:guest_flush] if args.key?(:guest_flush)
           @guest_os_features = args[:guest_os_features] if args.key?(:guest_os_features)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
@@ -33790,7 +34138,7 @@ module Google
           @license_codes = args[:license_codes] if args.key?(:license_codes)
           @licenses = args[:licenses] if args.key?(:licenses)
           @name = args[:name] if args.key?(:name)
-          @satisfies_physical_zone_separation = args[:satisfies_physical_zone_separation] if args.key?(:satisfies_physical_zone_separation)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @snapshot_encryption_key = args[:snapshot_encryption_key] if args.key?(:snapshot_encryption_key)
@@ -34043,7 +34391,7 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::NetworkInterface>]
         attr_accessor :network_interfaces
       
-        # Sets the scheduling options for an Instance. NextID: 12
+        # Sets the scheduling options for an Instance. NextID: 13
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeAlpha::Scheduling]
         attr_accessor :scheduling
@@ -34101,9 +34449,9 @@ module Google
       class SslCertificate
         include Google::Apis::Core::Hashable
       
-        # A local certificate file. The certificate must be in PEM format. The
-        # certificate chain must be no greater than 5 certs long. The chain must include
-        # at least one intermediate cert.
+        # A value read into memory from a certificate file. The certificate file must be
+        # in PEM format. The certificate chain must be no greater than 5 certs long. The
+        # chain must include at least one intermediate cert.
         # Corresponds to the JSON property `certificate`
         # @return [String]
         attr_accessor :certificate
@@ -34151,7 +34499,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # A write-only private key in PEM format. Only insert requests will include this
+        # A value read into memory from a write-only private key file. The private key
+        # file must be in PEM format. For security, only insert requests include this
         # field.
         # Corresponds to the JSON property `privateKey`
         # @return [String]
@@ -35742,6 +36091,25 @@ module Google
         end
       end
       
+      # Subsetting options to make L4 ILB support any number of backend instances
+      class Subsetting
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
       # 
       class TcpHealthCheck
         include Google::Apis::Core::Hashable
@@ -36173,7 +36541,18 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Urls to networkservices.HttpFilter resources enabled for xDS clients using
+        # Fingerprint of this resource. A hash of the contents stored in this object.
+        # This field is used in optimistic locking. This field will be ignored when
+        # inserting a TargetHttpProxy. An up-to-date fingerprint must be provided in
+        # order to patch/update the TargetHttpProxy; otherwise, the request will fail
+        # with error 412 conditionNotMet. To see the latest fingerprint, make a get()
+        # request to retrieve the TargetHttpProxy.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # URLs to networkservices.HttpFilter resources enabled for xDS clients using
         # this configuration. For example, https://networkservices.googleapis.com/
         # v1alpha1/projects/project/locations/locationhttpFilters/httpFilter Only
         # filters that handle outbound connection and stream events may be specified.
@@ -36248,6 +36627,7 @@ module Google
         def update!(**args)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @http_filters = args[:http_filters] if args.key?(:http_filters)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
@@ -39077,22 +39457,23 @@ module Google
       class TestFailure
         include Google::Apis::Core::Hashable
       
-        # 
+        # BackendService or BackendBucket returned by load balancer.
         # Corresponds to the JSON property `actualService`
         # @return [String]
         attr_accessor :actual_service
       
-        # 
+        # Expected BackendService or BackendBucket resource the given URL should be
+        # mapped to.
         # Corresponds to the JSON property `expectedService`
         # @return [String]
         attr_accessor :expected_service
       
-        # 
+        # Host portion of the URL.
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
       
-        # 
+        # Path portion including query parameters in the URL.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
@@ -39382,9 +39763,8 @@ module Google
         # Only one of defaultRouteAction or defaultUrlRedirect must be set.
         # UrlMaps for external HTTP(S) load balancers support only the urlRewrite action
         # within defaultRouteAction.
-        # defaultRouteAction has no effect when the backend service is referenced by a
-        # URL map that is bound to target gRPC proxy that has validateForProxyless field
-        # set to true.
+        # defaultRouteAction has no effect when the URL map is bound to target gRPC
+        # proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `defaultRouteAction`
         # @return [Google::Apis::ComputeAlpha::HttpRouteAction]
         attr_accessor :default_route_action
@@ -39398,9 +39778,8 @@ module Google
         # specified.
         # Only one of defaultService, defaultUrlRedirect  or defaultRouteAction.
         # weightedBackendService must be set.
-        # defaultService has no effect when the backend service is referenced by a URL
-        # map that is bound to target gRPC proxy that has validateForProxyless field set
-        # to true.
+        # defaultService has no effect when the URL map is bound to target gRPC proxy
+        # that has validateForProxyless field set to true.
         # Corresponds to the JSON property `defaultService`
         # @return [String]
         attr_accessor :default_service
@@ -39479,8 +39858,8 @@ module Google
         # The list of expected URL mapping tests. Request to update this UrlMap will
         # succeed only if all of the test cases pass. You can specify a maximum of 100
         # tests per UrlMap.
-        # Not supported when the backend service is referenced by a URL map that is
-        # bound to target gRPC proxy that has validateForProxyless field set to true.
+        # Not supported when the URL map is bound to target gRPC proxy that has
+        # validateForProxyless field set to true.
         # Corresponds to the JSON property `tests`
         # @return [Array<Google::Apis::ComputeAlpha::UrlMapTest>]
         attr_accessor :tests
@@ -39661,12 +40040,13 @@ module Google
         attr_accessor :description
       
         # The expected URL that should be redirected to for the host and path being
-        # tested.
+        # tested. [Deprecated] This field is deprecated. Use expected_output_url instead.
         # Corresponds to the JSON property `expectedUrlRedirect`
         # @return [String]
         attr_accessor :expected_url_redirect
       
-        # Host portion of the URL.
+        # Host portion of the URL. If headers contains a host header, then host must
+        # also match the header value.
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
@@ -39676,7 +40056,9 @@ module Google
         # @return [String]
         attr_accessor :path
       
-        # Expected BackendService resource the given URL should be mapped to.
+        # Expected BackendService or BackendBucket resource the given URL should be
+        # mapped to.
+        # service cannot be set if expectedRedirectResponseCode is set.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -41968,11 +42350,11 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # [Output Only] Specifies whether this zone supports physical zone separation.
-        # Corresponds to the JSON property `supportsPhysicalZoneSeparation`
+        # [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `supportsPzs`
         # @return [Boolean]
-        attr_accessor :supports_physical_zone_separation
-        alias_method :supports_physical_zone_separation?, :supports_physical_zone_separation
+        attr_accessor :supports_pzs
+        alias_method :supports_pzs?, :supports_pzs
       
         def initialize(**args)
            update!(**args)
@@ -41990,7 +42372,7 @@ module Google
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
-          @supports_physical_zone_separation = args[:supports_physical_zone_separation] if args.key?(:supports_physical_zone_separation)
+          @supports_pzs = args[:supports_pzs] if args.key?(:supports_pzs)
         end
       end
       

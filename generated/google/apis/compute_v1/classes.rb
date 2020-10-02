@@ -161,6 +161,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::AcceleratorTypeAggregatedList::Warning]
@@ -177,6 +182,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -720,6 +726,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::AddressAggregatedList::Warning]
@@ -736,6 +747,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -1092,13 +1104,6 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
-        # Specifies whether this VM may be a stable fleet VM. Setting this to "Periodic"
-        # designates this VM as a Stable Fleet VM.
-        # See go/stable-fleet-ug for more details.
-        # Corresponds to the JSON property `maintenanceInterval`
-        # @return [String]
-        attr_accessor :maintenance_interval
-      
         # Minimum cpu platform the reservation.
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
@@ -1113,7 +1118,6 @@ module Google
           @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
           @local_ssds = args[:local_ssds] if args.key?(:local_ssds)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
-          @maintenance_interval = args[:maintenance_interval] if args.key?(:maintenance_interval)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
         end
       end
@@ -1690,6 +1694,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::AutoscalerAggregatedList::Warning]
@@ -1706,6 +1715,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -2663,6 +2673,9 @@ module Google
       class BackendService
         include Google::Apis::Core::Hashable
       
+        # Lifetime of cookies in seconds. Only applicable if the loadBalancingScheme is
+        # EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, the protocol is HTTP or
+        # HTTPS, and the sessionAffinity is GENERATED_COOKIE, or HTTP_COOKIE.
         # If set to 0, the cookie is non-persistent and lasts only until the end of the
         # browser session (or equivalent). The maximum allowed value is one day (86,400).
         # Not supported when the backend service is referenced by a URL map that is
@@ -2984,6 +2997,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::BackendServiceAggregatedList::Warning]
@@ -3000,6 +3018,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -3494,6 +3513,12 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
+        # A client-specified ID for this binding. Expected to be globally unique to
+        # support the internal bindings-by-ID API.
+        # Corresponds to the JSON property `bindingId`
+        # @return [String]
+        attr_accessor :binding_id
+      
         # Represents a textual expression in the Common Expression Language (CEL) syntax.
         # CEL is a C-like expression language. The syntax and semantics of CEL are
         # documented at https://github.com/google/cel-spec.
@@ -3564,6 +3589,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @binding_id = args[:binding_id] if args.key?(:binding_id)
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
@@ -3866,6 +3892,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::CommitmentAggregatedList::Warning]
@@ -3882,6 +3913,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -4200,6 +4232,26 @@ module Google
           @svc = args[:svc] if args.key?(:svc)
           @sys = args[:sys] if args.key?(:sys)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # A set of Confidential Instance options.
+      class ConfidentialInstanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Defines whether the instance should have confidential compute enabled.
+        # Corresponds to the JSON property `enableConfidentialCompute`
+        # @return [Boolean]
+        attr_accessor :enable_confidential_compute
+        alias_method :enable_confidential_compute?, :enable_confidential_compute
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_confidential_compute = args[:enable_confidential_compute] if args.key?(:enable_confidential_compute)
         end
       end
       
@@ -4823,6 +4875,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::DiskAggregatedList::Warning]
@@ -4839,6 +4896,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -5238,6 +5296,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::DiskTypeAggregatedList::Warning]
@@ -5254,6 +5317,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -6897,9 +6961,9 @@ module Google
         attr_accessor :name
       
         # This field is not used for external load balancing.
-        # For INTERNAL and INTERNAL_SELF_MANAGED load balancing, this field identifies
-        # the network that the load balanced IP should belong to for this Forwarding
-        # Rule. If this field is not specified, the default network will be used.
+        # For internal load balancing, this field identifies the network that the load
+        # balanced IP should belong to for this Forwarding Rule. If this field is not
+        # specified, the default network will be used.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -6982,7 +7046,7 @@ module Google
         # @return [String]
         attr_accessor :service_name
       
-        # This field is only used for INTERNAL load balancing.
+        # This field is only used for internal load balancing.
         # For internal load balancing, this field identifies the subnetwork that the
         # load balanced IP should belong to for this Forwarding Rule.
         # If the network specified is in auto subnet mode, this field is optional.
@@ -7070,6 +7134,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::ForwardingRuleAggregatedList::Warning]
@@ -7086,6 +7155,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -8486,6 +8556,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::HealthChecksAggregatedList::Warning]
@@ -8502,6 +8577,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -8947,6 +9023,13 @@ module Google
         # For matching against the HTTP request's authority, use a headerMatch with the
         # header name ":authority".
         # For matching a request's method, use the headerName ":method".
+        # When the URL map is bound to target gRPC proxy that has validateForProxyless
+        # field set to true, only non-binary user-specified custom metadata and the `
+        # content-type` header are supported. The following transport-level headers
+        # cannot be used in header matching rules: `:authority`, `:method`, `:path`, `:
+        # scheme`, `user-agent`, `accept-encoding`, `content-encoding`, `grpc-accept-
+        # encoding`, `grpc-encoding`, `grpc-previous-rpc-attempts`, `grpc-tags-bin`, `
+        # grpc-timeout` and `grpc-trace-bin.
         # Corresponds to the JSON property `headerName`
         # @return [String]
         attr_accessor :header_name
@@ -9516,10 +9599,10 @@ module Google
         # A list of weighted backend services to send traffic to when a route match
         # occurs. The weights determine the fraction of traffic that flows to their
         # corresponding backend service. If all traffic needs to go to a single backend
-        # service, there must be one  weightedBackendService with weight set to a non 0
-        # number.
+        # service, there must be one  weightedBackendService with weight set to a non-
+        # zero number.
         # Once a backendService is identified and before forwarding the request to the
-        # backend service, advanced routing actions like Url rewrites and header
+        # backend service, advanced routing actions such as URL rewrites and header
         # transformations are applied depending on additional settings specified in this
         # HttpRouteAction.
         # Corresponds to the JSON property `weightedBackendServices`
@@ -9653,6 +9736,7 @@ module Google
         # Specifies that prefixMatch and fullPathMatch matches are case sensitive.
         # The default value is false.
         # ignoreCase must not be used with regexMatch.
+        # Not supported when the URL map is bound to target gRPC proxy.
         # Corresponds to the JSON property `ignoreCase`
         # @return [Boolean]
         attr_accessor :ignore_case
@@ -9672,6 +9756,8 @@ module Google
         # ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to.
         # metadataFilters only applies to Loadbalancers that have their
         # loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        # Not supported when the URL map is bound to target gRPC proxy that has
+        # validateForProxyless field set to true.
         # Corresponds to the JSON property `metadataFilters`
         # @return [Array<Google::Apis::ComputeV1::MetadataFilter>]
         attr_accessor :metadata_filters
@@ -9686,6 +9772,7 @@ module Google
       
         # Specifies a list of query parameter match criteria, all of which must match
         # corresponding query parameters in the request.
+        # Not supported when the URL map is bound to target gRPC proxy.
         # Corresponds to the JSON property `queryParameterMatches`
         # @return [Array<Google::Apis::ComputeV1::HttpQueryParameterMatch>]
         attr_accessor :query_parameter_matches
@@ -10402,6 +10489,11 @@ module Google
         attr_accessor :can_ip_forward
         alias_method :can_ip_forward?, :can_ip_forward
       
+        # A set of Confidential Instance options.
+        # Corresponds to the JSON property `confidentialInstanceConfig`
+        # @return [Google::Apis::ComputeV1::ConfidentialInstanceConfig]
+        attr_accessor :confidential_instance_config
+      
         # [Output Only] The CPU platform used by this instance.
         # Corresponds to the JSON property `cpuPlatform`
         # @return [String]
@@ -10550,7 +10642,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
-        # Sets the scheduling options for an Instance. NextID: 12
+        # Sets the scheduling options for an Instance. NextID: 13
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeV1::Scheduling]
         attr_accessor :scheduling
@@ -10618,6 +10710,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @can_ip_forward = args[:can_ip_forward] if args.key?(:can_ip_forward)
+          @confidential_instance_config = args[:confidential_instance_config] if args.key?(:confidential_instance_config)
           @cpu_platform = args[:cpu_platform] if args.key?(:cpu_platform)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @deletion_protection = args[:deletion_protection] if args.key?(:deletion_protection)
@@ -10686,6 +10779,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::InstanceAggregatedList::Warning]
@@ -10702,6 +10800,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -10925,6 +11024,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::InstanceGroupAggregatedList::Warning]
@@ -10941,6 +11045,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -11434,6 +11539,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::InstanceGroupManagerAggregatedList::Warning]
@@ -11450,6 +11560,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -13052,6 +13163,11 @@ module Google
         attr_accessor :can_ip_forward
         alias_method :can_ip_forward?, :can_ip_forward
       
+        # A set of Confidential Instance options.
+        # Corresponds to the JSON property `confidentialInstanceConfig`
+        # @return [Google::Apis::ComputeV1::ConfidentialInstanceConfig]
+        attr_accessor :confidential_instance_config
+      
         # An optional text description for the instances that are created from these
         # properties.
         # Corresponds to the JSON property `description`
@@ -13116,7 +13232,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
-        # Sets the scheduling options for an Instance. NextID: 12
+        # Sets the scheduling options for an Instance. NextID: 13
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeV1::Scheduling]
         attr_accessor :scheduling
@@ -13146,6 +13262,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @can_ip_forward = args[:can_ip_forward] if args.key?(:can_ip_forward)
+          @confidential_instance_config = args[:confidential_instance_config] if args.key?(:confidential_instance_config)
           @description = args[:description] if args.key?(:description)
           @disks = args[:disks] if args.key?(:disks)
           @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
@@ -14183,6 +14300,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::InterconnectAttachmentAggregatedList::Warning]
@@ -14199,6 +14321,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -15953,6 +16076,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::MachineTypeAggregatedList::Warning]
@@ -15969,6 +16097,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -16686,6 +16815,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Maximum Transmission Unit in bytes. The minimum value for this field is 1460
+        # and the maximum value is 1500 bytes.
+        # Corresponds to the JSON property `mtu`
+        # @return [Fixnum]
+        attr_accessor :mtu
+      
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
@@ -16732,6 +16867,7 @@ module Google
           @gateway_i_pv4 = args[:gateway_i_pv4] if args.key?(:gateway_i_pv4)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @mtu = args[:mtu] if args.key?(:mtu)
           @name = args[:name] if args.key?(:name)
           @peerings = args[:peerings] if args.key?(:peerings)
           @routing_config = args[:routing_config] if args.key?(:routing_config)
@@ -16976,6 +17112,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::NetworkEndpointGroupAggregatedList::Warning]
@@ -16992,6 +17133,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -17881,6 +18023,11 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Maximum Transmission Unit in bytes.
+        # Corresponds to the JSON property `peerMtu`
+        # @return [Fixnum]
+        attr_accessor :peer_mtu
+      
         # [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The
         # peering is `ACTIVE` when there's a matching configuration in the peer network.
         # Corresponds to the JSON property `state`
@@ -17906,6 +18053,7 @@ module Google
           @import_subnet_routes_with_public_ip = args[:import_subnet_routes_with_public_ip] if args.key?(:import_subnet_routes_with_public_ip)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @peer_mtu = args[:peer_mtu] if args.key?(:peer_mtu)
           @state = args[:state] if args.key?(:state)
           @state_details = args[:state_details] if args.key?(:state_details)
         end
@@ -18166,6 +18314,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::NodeGroupAggregatedList::Warning]
@@ -18182,6 +18335,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -18875,6 +19029,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::NodeTemplateAggregatedList::Warning]
@@ -18891,6 +19050,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -19326,6 +19486,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::NodeTypeAggregatedList::Warning]
@@ -19342,6 +19507,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -20208,6 +20374,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::OperationAggregatedList::Warning]
@@ -20224,6 +20395,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -20760,6 +20932,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::PacketMirroringAggregatedList::Warning]
@@ -20776,6 +20953,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -21238,8 +21416,6 @@ module Google
         # Only one of defaultRouteAction or defaultUrlRedirect must be set.
         # UrlMaps for external HTTP(S) load balancers support only the urlRewrite action
         # within a pathMatcher's defaultRouteAction.
-        # Not supported when the backend service is referenced by a URL map that is
-        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `defaultRouteAction`
         # @return [Google::Apis::ComputeV1::HttpRouteAction]
         attr_accessor :default_route_action
@@ -21262,8 +21438,6 @@ module Google
         # the specified resource default_service:
         # - compute.backendBuckets.use
         # - compute.backendServices.use
-        # pathMatchers[].defaultService is the only option available when the URL map is
-        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `defaultService`
         # @return [String]
         attr_accessor :default_service
@@ -21297,8 +21471,6 @@ module Google
         # For example: a pathRule with a path /a/b/c/* will match before /a/b/*
         # irrespective of the order in which those paths appear in this list.
         # Within a given pathMatcher, only one of pathRules or routeRules must be set.
-        # Not supported when the backend service is referenced by a URL map that is
-        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `pathRules`
         # @return [Array<Google::Apis::ComputeV1::PathRule>]
         attr_accessor :path_rules
@@ -21307,8 +21479,6 @@ module Google
         # route matching and routing actions are desired. routeRules are evaluated in
         # order of priority, from the lowest to highest number.
         # Within a given pathMatcher, you can set only one of pathRules or routeRules.
-        # Not supported when the backend service is referenced by a URL map that is
-        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `routeRules`
         # @return [Array<Google::Apis::ComputeV1::HttpRouteRule>]
         attr_accessor :route_rules
@@ -23550,6 +23720,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::ReservationAggregatedList::Warning]
@@ -23566,6 +23741,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -24137,6 +24313,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::ResourcePolicyAggregatedList::Warning]
@@ -24154,6 +24335,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -25115,6 +25297,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::RouterAggregatedList::Warning]
@@ -25131,6 +25318,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -26149,7 +26337,7 @@ module Google
         end
       end
       
-      # Sets the scheduling options for an Instance. NextID: 12
+      # Sets the scheduling options for an Instance. NextID: 13
       class Scheduling
         include Google::Apis::Core::Hashable
       
@@ -26998,7 +27186,7 @@ module Google
         # @return [Google::Apis::ComputeV1::CustomerEncryptionKey]
         attr_accessor :snapshot_encryption_key
       
-        # [Output Only] The source disk used to create this snapshot.
+        # The source disk used to create this snapshot.
         # Corresponds to the JSON property `sourceDisk`
         # @return [String]
         attr_accessor :source_disk
@@ -27230,9 +27418,9 @@ module Google
       class SslCertificate
         include Google::Apis::Core::Hashable
       
-        # A local certificate file. The certificate must be in PEM format. The
-        # certificate chain must be no greater than 5 certs long. The chain must include
-        # at least one intermediate cert.
+        # A value read into memory from a certificate file. The certificate file must be
+        # in PEM format. The certificate chain must be no greater than 5 certs long. The
+        # chain must include at least one intermediate cert.
         # Corresponds to the JSON property `certificate`
         # @return [String]
         attr_accessor :certificate
@@ -27280,7 +27468,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # A write-only private key in PEM format. Only insert requests will include this
+        # A value read into memory from a write-only private key file. The private key
+        # file must be in PEM format. For security, only insert requests include this
         # field.
         # Corresponds to the JSON property `privateKey`
         # @return [String]
@@ -27372,6 +27561,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::SslCertificateAggregatedList::Warning]
@@ -27388,6 +27582,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -28341,6 +28536,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::SubnetworkAggregatedList::Warning]
@@ -28357,6 +28557,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -29199,6 +29400,17 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Fingerprint of this resource. A hash of the contents stored in this object.
+        # This field is used in optimistic locking. This field will be ignored when
+        # inserting a TargetHttpProxy. An up-to-date fingerprint must be provided in
+        # order to patch/update the TargetHttpProxy; otherwise, the request will fail
+        # with error 412 conditionNotMet. To see the latest fingerprint, make a get()
+        # request to retrieve the TargetHttpProxy.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -29246,6 +29458,7 @@ module Google
         def update!(**args)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
@@ -29289,6 +29502,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         def initialize(**args)
            update!(**args)
         end
@@ -29300,6 +29518,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
         end
       end
       
@@ -29700,6 +29919,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::TargetHttpsProxyAggregatedList::Warning]
@@ -29716,6 +29940,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -30024,6 +30249,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::TargetInstanceAggregatedList::Warning]
@@ -30040,6 +30270,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -30476,6 +30707,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::TargetPoolAggregatedList::Warning]
@@ -30492,6 +30728,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -31527,6 +31764,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::TargetVpnGatewayAggregatedList::Warning]
@@ -31543,6 +31785,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -31824,22 +32067,23 @@ module Google
       class TestFailure
         include Google::Apis::Core::Hashable
       
-        # 
+        # BackendService or BackendBucket returned by load balancer.
         # Corresponds to the JSON property `actualService`
         # @return [String]
         attr_accessor :actual_service
       
-        # 
+        # Expected BackendService or BackendBucket resource the given URL should be
+        # mapped to.
         # Corresponds to the JSON property `expectedService`
         # @return [String]
         attr_accessor :expected_service
       
-        # 
+        # Host portion of the URL.
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
       
-        # 
+        # Path portion including query parameters in the URL.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
@@ -31931,9 +32175,8 @@ module Google
         # Only one of defaultRouteAction or defaultUrlRedirect must be set.
         # UrlMaps for external HTTP(S) load balancers support only the urlRewrite action
         # within defaultRouteAction.
-        # defaultRouteAction has no effect when the backend service is referenced by a
-        # URL map that is bound to target gRPC proxy that has validateForProxyless field
-        # set to true.
+        # defaultRouteAction has no effect when the URL map is bound to target gRPC
+        # proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `defaultRouteAction`
         # @return [Google::Apis::ComputeV1::HttpRouteAction]
         attr_accessor :default_route_action
@@ -31947,9 +32190,8 @@ module Google
         # specified.
         # Only one of defaultService, defaultUrlRedirect  or defaultRouteAction.
         # weightedBackendService must be set.
-        # defaultService has no effect when the backend service is referenced by a URL
-        # map that is bound to target gRPC proxy that has validateForProxyless field set
-        # to true.
+        # defaultService has no effect when the URL map is bound to target gRPC proxy
+        # that has validateForProxyless field set to true.
         # Corresponds to the JSON property `defaultService`
         # @return [String]
         attr_accessor :default_service
@@ -32028,8 +32270,8 @@ module Google
         # The list of expected URL mapping tests. Request to update this UrlMap will
         # succeed only if all of the test cases pass. You can specify a maximum of 100
         # tests per UrlMap.
-        # Not supported when the backend service is referenced by a URL map that is
-        # bound to target gRPC proxy that has validateForProxyless field set to true.
+        # Not supported when the URL map is bound to target gRPC proxy that has
+        # validateForProxyless field set to true.
         # Corresponds to the JSON property `tests`
         # @return [Array<Google::Apis::ComputeV1::UrlMapTest>]
         attr_accessor :tests
@@ -32203,7 +32445,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Host portion of the URL.
+        # Host portion of the URL. If headers contains a host header, then host must
+        # also match the header value.
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
@@ -32213,7 +32456,9 @@ module Google
         # @return [String]
         attr_accessor :path
       
-        # Expected BackendService resource the given URL should be mapped to.
+        # Expected BackendService or BackendBucket resource the given URL should be
+        # mapped to.
+        # service cannot be set if expectedRedirectResponseCode is set.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -32305,6 +32550,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::UrlMapsAggregatedList::Warning]
@@ -32321,6 +32571,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -33116,6 +33367,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::VpnGatewayAggregatedList::Warning]
@@ -33132,6 +33388,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         
@@ -33804,6 +34061,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
         # [Output Only] Informational warning message.
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ComputeV1::VpnTunnelAggregatedList::Warning]
@@ -33820,6 +34082,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
           @warning = args[:warning] if args.key?(:warning)
         end
         

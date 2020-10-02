@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceAuthString
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListInstancesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -218,6 +224,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :alternative_location_id, as: 'alternativeLocationId'
+          property :auth_enabled, as: 'authEnabled'
           property :authorized_network, as: 'authorizedNetwork'
           property :connect_mode, as: 'connectMode'
           property :create_time, as: 'createTime'
@@ -236,6 +243,13 @@ module Google
           property :state, as: 'state'
           property :status_message, as: 'statusMessage'
           property :tier, as: 'tier'
+        end
+      end
+      
+      class InstanceAuthString
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auth_string, as: 'authString'
         end
       end
       

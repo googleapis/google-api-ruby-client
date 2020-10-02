@@ -235,8 +235,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Initiates a failover of the master node to current replica node for a specific
-        # STANDARD tier Cloud Memorystore for Redis instance.
+        # Initiates a failover of the primary node to current replica node for a
+        # specific STANDARD tier Cloud Memorystore for Redis instance.
         # @param [String] name
         #   Required. Redis instance resource name using the form: `projects/`project_id`/
         #   locations/`location_id`/instances/`instance_id`` where `location_id` refers to

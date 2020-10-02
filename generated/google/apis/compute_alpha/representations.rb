@@ -2008,6 +2008,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstantSnapshot
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstantSnapshotList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Int64RangeMatch
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4240,6 +4264,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityPolicyRuleRateLimitOptionsThreshold
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecuritySettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4613,6 +4643,12 @@ module Google
       end
       
       class SubnetworksSetPrivateIpGoogleAccessRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Subsetting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5834,7 +5870,6 @@ module Google
           property :location_hint, as: 'locationHint'
           property :machine_type, as: 'machineType'
           property :maintenance_freeze_duration_hours, as: 'maintenanceFreezeDurationHours'
-          property :maintenance_interval, as: 'maintenanceInterval'
           property :min_cpu_platform, as: 'minCpuPlatform'
         end
       end
@@ -6296,6 +6331,8 @@ module Google
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :session_affinity, as: 'sessionAffinity'
+          property :subsetting, as: 'subsetting', class: Google::Apis::ComputeAlpha::Subsetting, decorator: Google::Apis::ComputeAlpha::Subsetting::Representation
+      
           property :timeout_sec, as: 'timeoutSec'
         end
       end
@@ -6545,6 +6582,7 @@ module Google
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :binding_id, as: 'bindingId'
           property :condition, as: 'condition', class: Google::Apis::ComputeAlpha::Expr, decorator: Google::Apis::ComputeAlpha::Expr::Representation
       
           collection :members, as: 'members'
@@ -6864,7 +6902,7 @@ module Google
           property :region, as: 'region'
           collection :replica_zones, as: 'replicaZones'
           collection :resource_policies, as: 'resourcePolicies'
-          property :satisfies_physical_zone_separation, as: 'satisfiesPhysicalZoneSeparation'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :size_gb, :numeric_string => true, as: 'sizeGb'
@@ -8460,9 +8498,10 @@ module Google
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeAlpha::ReservationAffinity, decorator: Google::Apis::ComputeAlpha::ReservationAffinity::Representation
       
           collection :resource_policies, as: 'resourcePolicies'
-          property :satisfies_physical_zone_separation, as: 'satisfiesPhysicalZoneSeparation'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeAlpha::Scheduling, decorator: Google::Apis::ComputeAlpha::Scheduling::Representation
       
+          collection :secure_labels, as: 'secureLabels'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::ComputeAlpha::ServiceAccount, decorator: Google::Apis::ComputeAlpha::ServiceAccount::Representation
@@ -9404,6 +9443,60 @@ module Google
       
           property :instance_encryption_key, as: 'instanceEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
+        end
+      end
+      
+      class InstantSnapshot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          property :guest_flush, as: 'guestFlush'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          property :source_disk, as: 'sourceDisk'
+          property :source_disk_id, as: 'sourceDiskId'
+          property :status, as: 'status'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class InstantSnapshotList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::InstantSnapshot, decorator: Google::Apis::ComputeAlpha::InstantSnapshot::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::InstantSnapshotList::Warning, decorator: Google::Apis::ComputeAlpha::InstantSnapshotList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::InstantSnapshotList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::InstantSnapshotList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -10605,6 +10698,7 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :network_ip, as: 'networkIP'
+          property :queue_count, as: 'queueCount'
           property :subnetwork, as: 'subnetwork'
         end
       end
@@ -10830,7 +10924,7 @@ module Google
           collection :instances, as: 'instances'
           property :name, as: 'name'
           property :node_type, as: 'nodeType'
-          property :satisfies_physical_zone_separation, as: 'satisfiesPhysicalZoneSeparation'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :server_binding, as: 'serverBinding', class: Google::Apis::ComputeAlpha::ServerBinding, decorator: Google::Apis::ComputeAlpha::ServerBinding::Representation
       
           property :server_id, as: 'serverId'
@@ -12032,7 +12126,7 @@ module Google
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :status, as: 'status'
-          property :supports_physical_zone_separation, as: 'supportsPhysicalZoneSeparation'
+          property :supports_pzs, as: 'supportsPzs'
           collection :zones, as: 'zones'
         end
       end
@@ -13498,11 +13592,24 @@ module Google
       class SecurityPolicyRuleRateLimitOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ban_duration_sec, as: 'banDurationSec'
+          property :ban_threshold, as: 'banThreshold', class: Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptionsThreshold, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptionsThreshold::Representation
+      
           property :block_duration, as: 'blockDuration'
           property :conform_action, as: 'conformAction'
           property :enforce_on_key, as: 'enforceOnKey'
           property :exceed_action, as: 'exceedAction'
+          property :rate_limit_threshold, as: 'rateLimitThreshold', class: Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptionsThreshold, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptionsThreshold::Representation
+      
           property :threshold_rps, as: 'thresholdRps'
+        end
+      end
+      
+      class SecurityPolicyRuleRateLimitOptionsThreshold
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, as: 'count'
+          property :interval_sec, as: 'intervalSec'
         end
       end
       
@@ -13568,7 +13675,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
-          collection :nat_ip_cidr_ranges, as: 'natIpCidrRanges'
+          collection :nat_subnets, as: 'natSubnets'
           property :producer_forwarding_rule, as: 'producerForwardingRule'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
@@ -13702,6 +13809,7 @@ module Google
           property :description, as: 'description'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :download_bytes, :numeric_string => true, as: 'downloadBytes'
+          property :guest_flush, as: 'guestFlush'
           collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeAlpha::GuestOsFeature, decorator: Google::Apis::ComputeAlpha::GuestOsFeature::Representation
       
           property :id, :numeric_string => true, as: 'id'
@@ -13711,7 +13819,7 @@ module Google
           collection :license_codes, as: 'licenseCodes'
           collection :licenses, as: 'licenses'
           property :name, as: 'name'
-          property :satisfies_physical_zone_separation, as: 'satisfiesPhysicalZoneSeparation'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :snapshot_encryption_key, as: 'snapshotEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
@@ -14206,6 +14314,13 @@ module Google
         end
       end
       
+      class Subsetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy'
+        end
+      end
+      
       class TcpHealthCheck
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -14307,6 +14422,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
           collection :http_filters, as: 'httpFilters'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
@@ -15791,7 +15907,7 @@ module Google
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
-          property :supports_physical_zone_separation, as: 'supportsPhysicalZoneSeparation'
+          property :supports_pzs, as: 'supportsPzs'
         end
       end
       

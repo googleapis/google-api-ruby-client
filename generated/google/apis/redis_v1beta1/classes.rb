@@ -263,6 +263,14 @@ module Google
         # @return [String]
         attr_accessor :alternative_location_id
       
+        # Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set
+        # to "true" AUTH is enabled on the instance. Default value is "false" meaning
+        # AUTH is disabled.
+        # Corresponds to the JSON property `authEnabled`
+        # @return [Boolean]
+        attr_accessor :auth_enabled
+        alias_method :auth_enabled?, :auth_enabled
+      
         # Optional. The full name of the Google Compute Engine [network](https://cloud.
         # google.com/vpc/docs/vpc) to which the instance is connected. If left
         # unspecified, the `default` network will be used.
@@ -391,6 +399,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @alternative_location_id = args[:alternative_location_id] if args.key?(:alternative_location_id)
+          @auth_enabled = args[:auth_enabled] if args.key?(:auth_enabled)
           @authorized_network = args[:authorized_network] if args.key?(:authorized_network)
           @connect_mode = args[:connect_mode] if args.key?(:connect_mode)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -412,6 +421,25 @@ module Google
         end
       end
       
+      # Instance AUTH string details.
+      class InstanceAuthString
+        include Google::Apis::Core::Hashable
+      
+        # AUTH string set on the instance.
+        # Corresponds to the JSON property `authString`
+        # @return [String]
+        attr_accessor :auth_string
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_string = args[:auth_string] if args.key?(:auth_string)
+        end
+      end
+      
       # Response for ListInstances.
       class ListInstancesResponse
         include Google::Apis::Core::Hashable
@@ -419,11 +447,11 @@ module Google
         # A list of Redis instances in the project in the specified location, or across
         # all locations. If the `location_id` in the parent field of the request is "-",
         # all regions available to the project are queried, and the results aggregated.
-        # If in such an aggregated query a location is unavailable, a dummy Redis entry
-        # is included in the response with the `name` field set to a value of the form `
-        # projects/`project_id`/locations/`location_id`/instances/`- and the `status`
-        # field set to ERROR and `status_message` field set to "location not available
-        # for ListInstances".
+        # If in such an aggregated query a location is unavailable, a placeholder Redis
+        # entry is included in the response with the `name` field set to a value of the
+        # form `projects/`project_id`/locations/`location_id`/instances/`- and the `
+        # status` field set to ERROR and `status_message` field set to "location not
+        # available for ListInstances".
         # Corresponds to the JSON property `instances`
         # @return [Array<Google::Apis::RedisV1beta1::Instance>]
         attr_accessor :instances
