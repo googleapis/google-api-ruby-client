@@ -49,9 +49,9 @@ module Google
         # @return [Array<Google::Apis::AccessapprovalV1::EnrolledService>]
         attr_accessor :enrolled_services
       
-        # The resource name of the settings. Format is one of: 1. "projects/`project_id`/
-        # accessApprovalSettings" 2. "folders/`folder_id`/accessApprovalSettings" 3. "
-        # organizations/`organization_id`/accessApprovalSettings"
+        # The resource name of the settings. Format is one of: * "projects/`project`/
+        # accessApprovalSettings" * "folders/`folder`/accessApprovalSettings" * "
+        # organizations/`organization`/accessApprovalSettings"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -84,9 +84,9 @@ module Google
         # The "home office" location of the principal. A two-letter country code (ISO
         # 3166-1 alpha-2), such as "US", "DE" or "GB" or a region code. In some limited
         # situations Google systems may refer refer to a region code instead of a
-        # country code. Possible Region Codes: 1. ASI: Asia 2. EUR: Europe 3. OCE:
-        # Oceania 4. AFR: Africa 5. NAM: North America 6. SAM: South America 7. ANT:
-        # Antarctica 8. ANY: Any location
+        # country code. Possible Region Codes: * ASI: Asia * EUR: Europe * OCE: Oceania *
+        # AFR: Africa * NAM: North America * SAM: South America * ANT: Antarctica * ANY:
+        # Any location
         # Corresponds to the JSON property `principalOfficeCountry`
         # @return [String]
         attr_accessor :principal_office_country
@@ -94,9 +94,9 @@ module Google
         # Physical location of the principal at the time of the access. A two-letter
         # country code (ISO 3166-1 alpha-2), such as "US", "DE" or "GB" or a region code.
         # In some limited situations Google systems may refer refer to a region code
-        # instead of a country code. Possible Region Codes: 1. ASI: Asia 2. EUR: Europe
-        # 3. OCE: Oceania 4. AFR: Africa 5. NAM: North America 6. SAM: South America 7.
-        # ANT: Antarctica 8. ANY: Any location
+        # instead of a country code. Possible Region Codes: * ASI: Asia * EUR: Europe *
+        # OCE: Oceania * AFR: Africa * NAM: North America * SAM: South America * ANT:
+        # Antarctica * ANY: Any location
         # Corresponds to the JSON property `principalPhysicalLocationCountry`
         # @return [String]
         attr_accessor :principal_physical_location_country
@@ -152,7 +152,7 @@ module Google
         attr_accessor :dismiss
       
         # The resource name of the request. Format is "`projects|folders|organizations`/`
-        # id`/approvalRequests/`approval_request_id`".
+        # id`/approvalRequests/`approval_request`".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -317,12 +317,21 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The product for which Access Approval will be enrolled. Allowed values are
-        # listed below (case-sensitive): 1. all 2. ga-only 3. appengine.googleapis.com 4.
-        # bigquery.googleapis.com 5. bigtable.googleapis.com 6. cloudkms.googleapis.com
-        # 7. compute.googleapis.com 8. dataflow.googleapis.com 9. iam.googleapis.com 10.
-        # pubsub.googleapis.com 11. storage.googleapis.com Note: 'all' will enroll the
-        # resource in all products supported at both 'GA' and 'Preview' levels. 'ga-only'
-        # will only enroll the resource in products supported at 'GA' level.
+        # listed below (case-sensitive): * all * GA * App Engine * BigQuery * Cloud
+        # Bigtable * Cloud Key Management Service * Compute Engine * Cloud Dataflow *
+        # Cloud Identity and Access Management * Cloud Pub/Sub * Cloud Storage *
+        # Persistent Disk Note: These values are supported as input for legacy purposes,
+        # but will not be returned from the API. * all * ga-only * appengine.googleapis.
+        # com * bigquery.googleapis.com * bigtable.googleapis.com * cloudkms.googleapis.
+        # com * compute.googleapis.com * dataflow.googleapis.com * iam.googleapis.com *
+        # pubsub.googleapis.com * storage.googleapis.com Calls to
+        # UpdateAccessApprovalSettings using 'all', 'ga-only', or any of the XXX.
+        # googleapis.com will be translated to the associated product name ('all', 'GA',
+        # 'App Engine', etc.). Note: 'all' will enroll the resource in all products
+        # supported at both 'GA' and 'Preview' levels. 'ga-only'/'GA' will only enroll
+        # the resource in products supported at 'GA' level. More information about
+        # levels of support is available at https://cloud.google.com/access-approval/
+        # docs/supported-services
         # Corresponds to the JSON property `cloudProduct`
         # @return [String]
         attr_accessor :cloud_product

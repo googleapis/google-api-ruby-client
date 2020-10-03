@@ -2217,7 +2217,7 @@ module Google
       class NodeGroupAffinity
         include Google::Apis::Core::Hashable
       
-        # Optional. The name of a single node group (https://cloud.google.com/compute/
+        # Required. The name of a single node group (https://cloud.google.com/compute/
         # docs/reference/rest/v1/nodeGroups) a cluster will be created on.
         # Corresponds to the JSON property `nodeGroupUri`
         # @return [String]

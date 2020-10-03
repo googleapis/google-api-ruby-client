@@ -18,15 +18,15 @@ require 'google/apis/osconfig_v1beta/representations.rb'
 
 module Google
   module Apis
-    # Cloud OS Config API
+    # OS Config API
     #
     # OS management tools that can be used for patch management, patch compliance,
     # and configuration management on VM instances.
     #
-    # @see https://cloud.google.com/
+    # @see https://cloud.google.com/compute/docs/manage-os
     module OsconfigV1beta
       VERSION = 'V1beta'
-      REVISION = '20200903'
+      REVISION = '20200930'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

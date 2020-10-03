@@ -49,11 +49,11 @@ module Google
         # The alignment_period specifies a time interval, in seconds, that is used to
         # divide the data in all the time series into consistent blocks of time. This
         # will be done before the per-series aligner can be applied to the data.The
-        # value must be at least 60 seconds, at most 104 weeks. If a per-series aligner
-        # other than ALIGN_NONE is specified, this field is required or an error is
-        # returned. If no per-series aligner is specified, or the aligner ALIGN_NONE is
-        # specified, then this field is ignored.The maximum value of the
-        # alignment_period is 2 years, or 104 weeks.
+        # value must be at least 60 seconds. If a per-series aligner other than
+        # ALIGN_NONE is specified, this field is required or an error is returned. If no
+        # per-series aligner is specified, or the aligner ALIGN_NONE is specified, then
+        # this field is ignored.The maximum value of the alignment_period is 104 weeks (
+        # 2 years) for charts, and 90,000 seconds (25 hours) for alerting policies.
         # Corresponds to the JSON property `alignmentPeriod`
         # @return [String]
         attr_accessor :alignment_period
@@ -3005,8 +3005,8 @@ module Google
         # @return [String]
         attr_accessor :page_token
       
-        # Required. The query in the monitoring query language format. The default time
-        # zone is in UTC.
+        # Required. The query in the Monitoring Query Language (https://cloud.google.com/
+        # monitoring/mql/reference) format. The default time zone is in UTC.
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query

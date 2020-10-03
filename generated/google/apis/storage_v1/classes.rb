@@ -197,13 +197,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :zone_affinity
       
-        # If set, objects placed in this bucket are required to be separated by disaster
-        # domain.
-        # Corresponds to the JSON property `zoneSeparation`
-        # @return [Boolean]
-        attr_accessor :zone_separation
-        alias_method :zone_separation?, :zone_separation
-      
         def initialize(**args)
            update!(**args)
         end
@@ -237,7 +230,6 @@ module Google
           @versioning = args[:versioning] if args.key?(:versioning)
           @website = args[:website] if args.key?(:website)
           @zone_affinity = args[:zone_affinity] if args.key?(:zone_affinity)
-          @zone_separation = args[:zone_separation] if args.key?(:zone_separation)
         end
         
         # The bucket's billing configuration.
@@ -1446,8 +1438,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Cloud KMS Key used to encrypt this object, if the object is encrypted by such
-        # a key.
+        # Not currently supported. Specifying the parameter causes the request to fail
+        # with status code 400 - Bad Request.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name

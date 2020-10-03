@@ -114,9 +114,9 @@ module Google
         # Updates the settings associated with a project, folder, or organization.
         # Settings to update are determined by the value of field_mask.
         # @param [String] name
-        #   The resource name of the settings. Format is one of: 1. "projects/`project_id`/
-        #   accessApprovalSettings" 2. "folders/`folder_id`/accessApprovalSettings" 3. "
-        #   organizations/`organization_id`/accessApprovalSettings"
+        #   The resource name of the settings. Format is one of: * "projects/`project`/
+        #   accessApprovalSettings" * "folders/`folder`/accessApprovalSettings" * "
+        #   organizations/`organization`/accessApprovalSettings"
         # @param [Google::Apis::AccessapprovalV1::AccessApprovalSettings] access_approval_settings_object
         # @param [String] update_mask
         #   The update mask applies to the settings. Only the top level fields of
@@ -262,14 +262,14 @@ module Google
         # Approval requests can be filtered by state (pending, active, dismissed). The
         # order is reverse chronological.
         # @param [String] parent
-        #   The parent resource. This may be "projects/`project_id`", "folders/`folder_id`"
-        #   , or "organizations/`organization_id`".
+        #   The parent resource. This may be "projects/`project`", "folders/`folder`", or "
+        #   organizations/`organization`".
         # @param [String] filter
         #   A filter on the type of approval requests to retrieve. Must be one of the
-        #   following values: 1. [not set]: Requests that are pending or have active
-        #   approvals. 2. ALL: All requests. 3. PENDING: Only pending requests. 4. ACTIVE:
-        #   Only active (i.e. currently approved) requests. 5. DISMISSED: Only dismissed (
-        #   including expired) requests. 6. HISTORY: Active and dismissed (including
+        #   following values: * [not set]: Requests that are pending or have active
+        #   approvals. * ALL: All requests. * PENDING: Only pending requests. * ACTIVE:
+        #   Only active (i.e. currently approved) requests. * DISMISSED: Only dismissed (
+        #   including expired) requests. * HISTORY: Active and dismissed (including
         #   expired) requests.
         # @param [Fixnum] page_size
         #   Requested page size.
@@ -372,9 +372,9 @@ module Google
         # Updates the settings associated with a project, folder, or organization.
         # Settings to update are determined by the value of field_mask.
         # @param [String] name
-        #   The resource name of the settings. Format is one of: 1. "projects/`project_id`/
-        #   accessApprovalSettings" 2. "folders/`folder_id`/accessApprovalSettings" 3. "
-        #   organizations/`organization_id`/accessApprovalSettings"
+        #   The resource name of the settings. Format is one of: * "projects/`project`/
+        #   accessApprovalSettings" * "folders/`folder`/accessApprovalSettings" * "
+        #   organizations/`organization`/accessApprovalSettings"
         # @param [Google::Apis::AccessapprovalV1::AccessApprovalSettings] access_approval_settings_object
         # @param [String] update_mask
         #   The update mask applies to the settings. Only the top level fields of
@@ -520,14 +520,14 @@ module Google
         # Approval requests can be filtered by state (pending, active, dismissed). The
         # order is reverse chronological.
         # @param [String] parent
-        #   The parent resource. This may be "projects/`project_id`", "folders/`folder_id`"
-        #   , or "organizations/`organization_id`".
+        #   The parent resource. This may be "projects/`project`", "folders/`folder`", or "
+        #   organizations/`organization`".
         # @param [String] filter
         #   A filter on the type of approval requests to retrieve. Must be one of the
-        #   following values: 1. [not set]: Requests that are pending or have active
-        #   approvals. 2. ALL: All requests. 3. PENDING: Only pending requests. 4. ACTIVE:
-        #   Only active (i.e. currently approved) requests. 5. DISMISSED: Only dismissed (
-        #   including expired) requests. 6. HISTORY: Active and dismissed (including
+        #   following values: * [not set]: Requests that are pending or have active
+        #   approvals. * ALL: All requests. * PENDING: Only pending requests. * ACTIVE:
+        #   Only active (i.e. currently approved) requests. * DISMISSED: Only dismissed (
+        #   including expired) requests. * HISTORY: Active and dismissed (including
         #   expired) requests.
         # @param [Fixnum] page_size
         #   Requested page size.
@@ -630,9 +630,9 @@ module Google
         # Updates the settings associated with a project, folder, or organization.
         # Settings to update are determined by the value of field_mask.
         # @param [String] name
-        #   The resource name of the settings. Format is one of: 1. "projects/`project_id`/
-        #   accessApprovalSettings" 2. "folders/`folder_id`/accessApprovalSettings" 3. "
-        #   organizations/`organization_id`/accessApprovalSettings"
+        #   The resource name of the settings. Format is one of: * "projects/`project`/
+        #   accessApprovalSettings" * "folders/`folder`/accessApprovalSettings" * "
+        #   organizations/`organization`/accessApprovalSettings"
         # @param [Google::Apis::AccessapprovalV1::AccessApprovalSettings] access_approval_settings_object
         # @param [String] update_mask
         #   The update mask applies to the settings. Only the top level fields of
@@ -778,14 +778,14 @@ module Google
         # Approval requests can be filtered by state (pending, active, dismissed). The
         # order is reverse chronological.
         # @param [String] parent
-        #   The parent resource. This may be "projects/`project_id`", "folders/`folder_id`"
-        #   , or "organizations/`organization_id`".
+        #   The parent resource. This may be "projects/`project`", "folders/`folder`", or "
+        #   organizations/`organization`".
         # @param [String] filter
         #   A filter on the type of approval requests to retrieve. Must be one of the
-        #   following values: 1. [not set]: Requests that are pending or have active
-        #   approvals. 2. ALL: All requests. 3. PENDING: Only pending requests. 4. ACTIVE:
-        #   Only active (i.e. currently approved) requests. 5. DISMISSED: Only dismissed (
-        #   including expired) requests. 6. HISTORY: Active and dismissed (including
+        #   following values: * [not set]: Requests that are pending or have active
+        #   approvals. * ALL: All requests. * PENDING: Only pending requests. * ACTIVE:
+        #   Only active (i.e. currently approved) requests. * DISMISSED: Only dismissed (
+        #   including expired) requests. * HISTORY: Active and dismissed (including
         #   expired) requests.
         # @param [Fixnum] page_size
         #   Requested page size.
