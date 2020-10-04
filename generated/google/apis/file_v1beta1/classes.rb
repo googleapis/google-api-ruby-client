@@ -211,7 +211,7 @@ module Google
         attr_accessor :maintenance_policy_names
       
         # The MaintenanceSchedule contains the scheduling information of published
-        # maintenance schedule.
+        # maintenance schedule with same key as software_versions.
         # Corresponds to the JSON property `maintenanceSchedules`
         # @return [Hash<String,Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule>]
         attr_accessor :maintenance_schedules

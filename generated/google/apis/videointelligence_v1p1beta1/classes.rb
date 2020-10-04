@@ -215,6 +215,25 @@ module Google
         end
       end
       
+      # Face detection annotation.
+      class GoogleCloudVideointelligenceV1FaceDetectionAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # Label annotation.
       class GoogleCloudVideointelligenceV1LabelAnnotation
         include Google::Apis::Core::Hashable
@@ -513,6 +532,31 @@ module Google
         def update!(**args)
           @normalized_bounding_box = args[:normalized_bounding_box] if args.key?(:normalized_bounding_box)
           @time_offset = args[:time_offset] if args.key?(:time_offset)
+        end
+      end
+      
+      # Person detection annotation per video.
+      class GoogleCloudVideointelligenceV1PersonDetectionAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # The detected tracks of a person.
+        # Corresponds to the JSON property `tracks`
+        # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1Track>]
+        attr_accessor :tracks
+      
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tracks = args[:tracks] if args.key?(:tracks)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -831,6 +875,11 @@ module Google
         # @return [Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1ExplicitContentAnnotation]
         attr_accessor :explicit_annotation
       
+        # Face detection annotations.
+        # Corresponds to the JSON property `faceDetectionAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1FaceDetectionAnnotation>]
+        attr_accessor :face_detection_annotations
+      
         # Label annotations on frame level. There is exactly one element for each unique
         # label.
         # Corresponds to the JSON property `frameLabelAnnotations`
@@ -851,6 +900,11 @@ module Google
         # Corresponds to the JSON property `objectAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1ObjectTrackingAnnotation>]
         attr_accessor :object_annotations
+      
+        # Person detection annotations.
+        # Corresponds to the JSON property `personDetectionAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1PersonDetectionAnnotation>]
+        attr_accessor :person_detection_annotations
       
         # Video segment.
         # Corresponds to the JSON property `segment`
@@ -912,10 +966,12 @@ module Google
         def update!(**args)
           @error = args[:error] if args.key?(:error)
           @explicit_annotation = args[:explicit_annotation] if args.key?(:explicit_annotation)
+          @face_detection_annotations = args[:face_detection_annotations] if args.key?(:face_detection_annotations)
           @frame_label_annotations = args[:frame_label_annotations] if args.key?(:frame_label_annotations)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @logo_recognition_annotations = args[:logo_recognition_annotations] if args.key?(:logo_recognition_annotations)
           @object_annotations = args[:object_annotations] if args.key?(:object_annotations)
+          @person_detection_annotations = args[:person_detection_annotations] if args.key?(:person_detection_annotations)
           @segment = args[:segment] if args.key?(:segment)
           @segment_label_annotations = args[:segment_label_annotations] if args.key?(:segment_label_annotations)
           @segment_presence_label_annotations = args[:segment_presence_label_annotations] if args.key?(:segment_presence_label_annotations)
@@ -1203,6 +1259,25 @@ module Google
         def update!(**args)
           @pornography_likelihood = args[:pornography_likelihood] if args.key?(:pornography_likelihood)
           @time_offset = args[:time_offset] if args.key?(:time_offset)
+        end
+      end
+      
+      # Face detection annotation.
+      class GoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -1504,6 +1579,31 @@ module Google
         def update!(**args)
           @normalized_bounding_box = args[:normalized_bounding_box] if args.key?(:normalized_bounding_box)
           @time_offset = args[:time_offset] if args.key?(:time_offset)
+        end
+      end
+      
+      # Person detection annotation per video.
+      class GoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # The detected tracks of a person.
+        # Corresponds to the JSON property `tracks`
+        # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1beta2Track>]
+        attr_accessor :tracks
+      
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tracks = args[:tracks] if args.key?(:tracks)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -1822,6 +1922,11 @@ module Google
         # @return [Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation]
         attr_accessor :explicit_annotation
       
+        # Face detection annotations.
+        # Corresponds to the JSON property `faceDetectionAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation>]
+        attr_accessor :face_detection_annotations
+      
         # Label annotations on frame level. There is exactly one element for each unique
         # label.
         # Corresponds to the JSON property `frameLabelAnnotations`
@@ -1842,6 +1947,11 @@ module Google
         # Corresponds to the JSON property `objectAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation>]
         attr_accessor :object_annotations
+      
+        # Person detection annotations.
+        # Corresponds to the JSON property `personDetectionAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation>]
+        attr_accessor :person_detection_annotations
       
         # Video segment.
         # Corresponds to the JSON property `segment`
@@ -1903,10 +2013,12 @@ module Google
         def update!(**args)
           @error = args[:error] if args.key?(:error)
           @explicit_annotation = args[:explicit_annotation] if args.key?(:explicit_annotation)
+          @face_detection_annotations = args[:face_detection_annotations] if args.key?(:face_detection_annotations)
           @frame_label_annotations = args[:frame_label_annotations] if args.key?(:frame_label_annotations)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @logo_recognition_annotations = args[:logo_recognition_annotations] if args.key?(:logo_recognition_annotations)
           @object_annotations = args[:object_annotations] if args.key?(:object_annotations)
+          @person_detection_annotations = args[:person_detection_annotations] if args.key?(:person_detection_annotations)
           @segment = args[:segment] if args.key?(:segment)
           @segment_label_annotations = args[:segment_label_annotations] if args.key?(:segment_label_annotations)
           @segment_presence_label_annotations = args[:segment_presence_label_annotations] if args.key?(:segment_presence_label_annotations)
@@ -2284,6 +2396,60 @@ module Google
         end
       end
       
+      # Face detection annotation.
+      class GoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Config for FACE_DETECTION.
+      class GoogleCloudVideointelligenceV1p1beta1FaceDetectionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether to enable face attributes detection, such as glasses, dark_glasses,
+        # mouth_open etc. Ignored if 'include_bounding_boxes' is set to false.
+        # Corresponds to the JSON property `includeAttributes`
+        # @return [Boolean]
+        attr_accessor :include_attributes
+        alias_method :include_attributes?, :include_attributes
+      
+        # Whether bounding boxes are included in the face annotation output.
+        # Corresponds to the JSON property `includeBoundingBoxes`
+        # @return [Boolean]
+        attr_accessor :include_bounding_boxes
+        alias_method :include_bounding_boxes?, :include_bounding_boxes
+      
+        # Model to use for face detection. Supported values: "builtin/stable" (the
+        # default if unset) and "builtin/latest".
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @include_attributes = args[:include_attributes] if args.key?(:include_attributes)
+          @include_bounding_boxes = args[:include_bounding_boxes] if args.key?(:include_bounding_boxes)
+          @model = args[:model] if args.key?(:model)
+        end
+      end
+      
       # Label annotation.
       class GoogleCloudVideointelligenceV1p1beta1LabelAnnotation
         include Google::Apis::Core::Hashable
@@ -2658,6 +2824,68 @@ module Google
         def update!(**args)
           @normalized_bounding_box = args[:normalized_bounding_box] if args.key?(:normalized_bounding_box)
           @time_offset = args[:time_offset] if args.key?(:time_offset)
+        end
+      end
+      
+      # Person detection annotation per video.
+      class GoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # The detected tracks of a person.
+        # Corresponds to the JSON property `tracks`
+        # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p1beta1Track>]
+        attr_accessor :tracks
+      
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tracks = args[:tracks] if args.key?(:tracks)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Config for PERSON_DETECTION.
+      class GoogleCloudVideointelligenceV1p1beta1PersonDetectionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether to enable person attributes detection, such as cloth color (black,
+        # blue, etc), type (coat, dress, etc), pattern (plain, floral, etc), hair, etc.
+        # Ignored if 'include_bounding_boxes' is set to false.
+        # Corresponds to the JSON property `includeAttributes`
+        # @return [Boolean]
+        attr_accessor :include_attributes
+        alias_method :include_attributes?, :include_attributes
+      
+        # Whether bounding boxes are included in the person detection annotation output.
+        # Corresponds to the JSON property `includeBoundingBoxes`
+        # @return [Boolean]
+        attr_accessor :include_bounding_boxes
+        alias_method :include_bounding_boxes?, :include_bounding_boxes
+      
+        # Whether to enable pose landmarks detection. Ignored if 'include_bounding_boxes'
+        # is set to false.
+        # Corresponds to the JSON property `includePoseLandmarks`
+        # @return [Boolean]
+        attr_accessor :include_pose_landmarks
+        alias_method :include_pose_landmarks?, :include_pose_landmarks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @include_attributes = args[:include_attributes] if args.key?(:include_attributes)
+          @include_bounding_boxes = args[:include_bounding_boxes] if args.key?(:include_bounding_boxes)
+          @include_pose_landmarks = args[:include_pose_landmarks] if args.key?(:include_pose_landmarks)
         end
       end
       
@@ -3145,6 +3373,11 @@ module Google
         # @return [Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p1beta1ExplicitContentAnnotation]
         attr_accessor :explicit_annotation
       
+        # Face detection annotations.
+        # Corresponds to the JSON property `faceDetectionAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation>]
+        attr_accessor :face_detection_annotations
+      
         # Label annotations on frame level. There is exactly one element for each unique
         # label.
         # Corresponds to the JSON property `frameLabelAnnotations`
@@ -3165,6 +3398,11 @@ module Google
         # Corresponds to the JSON property `objectAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation>]
         attr_accessor :object_annotations
+      
+        # Person detection annotations.
+        # Corresponds to the JSON property `personDetectionAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation>]
+        attr_accessor :person_detection_annotations
       
         # Video segment.
         # Corresponds to the JSON property `segment`
@@ -3226,10 +3464,12 @@ module Google
         def update!(**args)
           @error = args[:error] if args.key?(:error)
           @explicit_annotation = args[:explicit_annotation] if args.key?(:explicit_annotation)
+          @face_detection_annotations = args[:face_detection_annotations] if args.key?(:face_detection_annotations)
           @frame_label_annotations = args[:frame_label_annotations] if args.key?(:frame_label_annotations)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @logo_recognition_annotations = args[:logo_recognition_annotations] if args.key?(:logo_recognition_annotations)
           @object_annotations = args[:object_annotations] if args.key?(:object_annotations)
+          @person_detection_annotations = args[:person_detection_annotations] if args.key?(:person_detection_annotations)
           @segment = args[:segment] if args.key?(:segment)
           @segment_label_annotations = args[:segment_label_annotations] if args.key?(:segment_label_annotations)
           @segment_presence_label_annotations = args[:segment_presence_label_annotations] if args.key?(:segment_presence_label_annotations)
@@ -3250,6 +3490,11 @@ module Google
         # @return [Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p1beta1ExplicitContentDetectionConfig]
         attr_accessor :explicit_content_detection_config
       
+        # Config for FACE_DETECTION.
+        # Corresponds to the JSON property `faceDetectionConfig`
+        # @return [Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p1beta1FaceDetectionConfig]
+        attr_accessor :face_detection_config
+      
         # Config for LABEL_DETECTION.
         # Corresponds to the JSON property `labelDetectionConfig`
         # @return [Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p1beta1LabelDetectionConfig]
@@ -3259,6 +3504,11 @@ module Google
         # Corresponds to the JSON property `objectTrackingConfig`
         # @return [Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p1beta1ObjectTrackingConfig]
         attr_accessor :object_tracking_config
+      
+        # Config for PERSON_DETECTION.
+        # Corresponds to the JSON property `personDetectionConfig`
+        # @return [Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p1beta1PersonDetectionConfig]
+        attr_accessor :person_detection_config
       
         # Video segments to annotate. The segments may overlap and are not required to
         # be contiguous or span the whole video. If unspecified, each video is treated
@@ -3289,8 +3539,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @explicit_content_detection_config = args[:explicit_content_detection_config] if args.key?(:explicit_content_detection_config)
+          @face_detection_config = args[:face_detection_config] if args.key?(:face_detection_config)
           @label_detection_config = args[:label_detection_config] if args.key?(:label_detection_config)
           @object_tracking_config = args[:object_tracking_config] if args.key?(:object_tracking_config)
+          @person_detection_config = args[:person_detection_config] if args.key?(:person_detection_config)
           @segments = args[:segments] if args.key?(:segments)
           @shot_change_detection_config = args[:shot_change_detection_config] if args.key?(:shot_change_detection_config)
           @speech_transcription_config = args[:speech_transcription_config] if args.key?(:speech_transcription_config)
@@ -3574,6 +3826,25 @@ module Google
         def update!(**args)
           @pornography_likelihood = args[:pornography_likelihood] if args.key?(:pornography_likelihood)
           @time_offset = args[:time_offset] if args.key?(:time_offset)
+        end
+      end
+      
+      # Face detection annotation.
+      class GoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -3875,6 +4146,31 @@ module Google
         def update!(**args)
           @normalized_bounding_box = args[:normalized_bounding_box] if args.key?(:normalized_bounding_box)
           @time_offset = args[:time_offset] if args.key?(:time_offset)
+        end
+      end
+      
+      # Person detection annotation per video.
+      class GoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # The detected tracks of a person.
+        # Corresponds to the JSON property `tracks`
+        # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p2beta1Track>]
+        attr_accessor :tracks
+      
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tracks = args[:tracks] if args.key?(:tracks)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -4193,6 +4489,11 @@ module Google
         # @return [Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation]
         attr_accessor :explicit_annotation
       
+        # Face detection annotations.
+        # Corresponds to the JSON property `faceDetectionAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation>]
+        attr_accessor :face_detection_annotations
+      
         # Label annotations on frame level. There is exactly one element for each unique
         # label.
         # Corresponds to the JSON property `frameLabelAnnotations`
@@ -4213,6 +4514,11 @@ module Google
         # Corresponds to the JSON property `objectAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation>]
         attr_accessor :object_annotations
+      
+        # Person detection annotations.
+        # Corresponds to the JSON property `personDetectionAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation>]
+        attr_accessor :person_detection_annotations
       
         # Video segment.
         # Corresponds to the JSON property `segment`
@@ -4274,10 +4580,12 @@ module Google
         def update!(**args)
           @error = args[:error] if args.key?(:error)
           @explicit_annotation = args[:explicit_annotation] if args.key?(:explicit_annotation)
+          @face_detection_annotations = args[:face_detection_annotations] if args.key?(:face_detection_annotations)
           @frame_label_annotations = args[:frame_label_annotations] if args.key?(:frame_label_annotations)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @logo_recognition_annotations = args[:logo_recognition_annotations] if args.key?(:logo_recognition_annotations)
           @object_annotations = args[:object_annotations] if args.key?(:object_annotations)
+          @person_detection_annotations = args[:person_detection_annotations] if args.key?(:person_detection_annotations)
           @segment = args[:segment] if args.key?(:segment)
           @segment_label_annotations = args[:segment_label_annotations] if args.key?(:segment_label_annotations)
           @segment_presence_label_annotations = args[:segment_presence_label_annotations] if args.key?(:segment_presence_label_annotations)
@@ -4658,17 +4966,6 @@ module Google
       class GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation
         include Google::Apis::Core::Hashable
       
-        # The thumbnail of a person's face.
-        # Corresponds to the JSON property `thumbnail`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :thumbnail
-      
-        # The face tracks with attributes.
-        # Corresponds to the JSON property `tracks`
-        # @return [Array<Google::Apis::VideointelligenceV1p1beta1::GoogleCloudVideointelligenceV1p3beta1Track>]
-        attr_accessor :tracks
-      
         # Feature version.
         # Corresponds to the JSON property `version`
         # @return [String]
@@ -4680,8 +4977,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @thumbnail = args[:thumbnail] if args.key?(:thumbnail)
-          @tracks = args[:tracks] if args.key?(:tracks)
           @version = args[:version] if args.key?(:version)
         end
       end
