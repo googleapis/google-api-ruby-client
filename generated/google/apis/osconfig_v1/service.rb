@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module OsconfigV1
-      # Cloud OS Config API
+      # OS Config API
       #
       # OS management tools that can be used for patch management, patch compliance,
       #  and configuration management on VM instances.
@@ -29,10 +29,10 @@ module Google
       #    require 'google/apis/osconfig_v1'
       #
       #    Osconfig = Google::Apis::OsconfigV1 # Alias the module
-      #    service = Osconfig::SystemsManagementService.new
+      #    service = Osconfig::OSConfigService.new
       #
-      # @see https://cloud.google.com/
-      class SystemsManagementService < Google::Apis::Core::BaseService
+      # @see https://cloud.google.com/compute/docs/manage-os
+      class OSConfigService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
