@@ -22,7 +22,8 @@ module Google
     module AdmobV1
       # AdMob API
       #
-      # The Google AdMob API lets you programmatically get reports on earnings.
+      # The AdMob API allows publishers to programmatically get information about
+      #  their AdMob account.
       #
       # @example
       #    require 'google/apis/admob_v1'

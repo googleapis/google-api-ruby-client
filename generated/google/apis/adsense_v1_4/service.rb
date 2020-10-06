@@ -129,6 +129,8 @@ module Google
         #   Account which contains the ad client.
         # @param [String] ad_client_id
         #   Ad client to get the code for.
+        # @param [String] tag_partner
+        #   Tag partner to include in the ad code snippet.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -148,12 +150,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_account_adclient_ad_code(account_id, ad_client_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_account_adclient_ad_code(account_id, ad_client_id, tag_partner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'accounts/{accountId}/adclients/{adClientId}/adcode', options)
           command.response_representation = Google::Apis::AdsenseV1_4::AdCode::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdCode
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
+          command.query['tagPartner'] = tag_partner unless tag_partner.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

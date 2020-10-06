@@ -496,6 +496,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TargetingValueRequestPlatformTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TargetingValueSize
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1423,6 +1429,8 @@ module Google
           property :demog_gender_criteria_value, as: 'demogGenderCriteriaValue', class: Google::Apis::AdexchangebuyerV1_4::TargetingValueDemogGenderCriteria, decorator: Google::Apis::AdexchangebuyerV1_4::TargetingValueDemogGenderCriteria::Representation
       
           property :long_value, :numeric_string => true, as: 'longValue'
+          property :request_platform_targeting_value, as: 'requestPlatformTargetingValue', class: Google::Apis::AdexchangebuyerV1_4::TargetingValueRequestPlatformTargeting, decorator: Google::Apis::AdexchangebuyerV1_4::TargetingValueRequestPlatformTargeting::Representation
+      
           property :string_value, as: 'stringValue'
         end
       end
@@ -1472,6 +1480,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :demog_gender_criteria_ids, as: 'demogGenderCriteriaIds'
+        end
+      end
+      
+      class TargetingValueRequestPlatformTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :request_platforms, as: 'requestPlatforms'
         end
       end
       

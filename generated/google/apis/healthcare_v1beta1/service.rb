@@ -526,7 +526,7 @@ module Google
         # EvaluateAnnotationStoreResponse, contained in the response. The metadata field
         # type is OperationMetadata. Errors are logged to Cloud Logging (see [Viewing
         # logs](/healthcare/docs/how-tos/logging)).
-        # @param [String] eval_store
+        # @param [String] name
         #   The Annotation store to compare against `golden_store`, in the format of `
         #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   annotationStores/`annotation_store_id``.
@@ -548,13 +548,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def evaluate_annotation_store(eval_store, evaluate_annotation_store_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta1/{+evalStore}:evaluate', options)
+        def evaluate_annotation_store(name, evaluate_annotation_store_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:evaluate', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::EvaluateAnnotationStoreRequest::Representation
           command.request_object = evaluate_annotation_store_request_object
           command.response_representation = Google::Apis::HealthcareV1beta1::Operation::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::Operation
-          command.params['evalStore'] = eval_store unless eval_store.nil?
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -565,7 +565,7 @@ module Google
         # the response field when the operation finishes. The metadata field type is
         # OperationMetadata. Errors are logged to Cloud Logging (see [Viewing logs](/
         # healthcare/docs/how-tos/logging)).
-        # @param [String] annotation_store
+        # @param [String] name
         #   The name of the Annotation store to export annotations to, in the format of `
         #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   annotationStores/`annotation_store_id``.
@@ -587,13 +587,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def export_annotation_store_annotations(annotation_store, export_annotations_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta1/{+annotationStore}:export', options)
+        def export_annotation_store_annotations(name, export_annotations_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:export', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::ExportAnnotationsRequest::Representation
           command.request_object = export_annotations_request_object
           command.response_representation = Google::Apis::HealthcareV1beta1::Operation::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::Operation
-          command.params['annotationStore'] = annotation_store unless annotation_store.nil?
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -675,7 +675,7 @@ module Google
         # type ImportAnnotationsResponse, contained in the response field when the
         # operation finishes. The metadata field type is OperationMetadata. Errors are
         # logged to Cloud Logging (see [Viewing logs](/healthcare/docs/how-tos/logging)).
-        # @param [String] annotation_store
+        # @param [String] name
         #   The name of the Annotation store to which the server imports annotations, in
         #   the format `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`
         #   /annotationStores/`annotation_store_id``.
@@ -697,13 +697,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def import_annotation_store_annotations(annotation_store, import_annotations_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta1/{+annotationStore}:import', options)
+        def import_annotation_store_annotations(name, import_annotations_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:import', options)
           command.request_representation = Google::Apis::HealthcareV1beta1::ImportAnnotationsRequest::Representation
           command.request_object = import_annotations_request_object
           command.response_representation = Google::Apis::HealthcareV1beta1::Operation::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::Operation
-          command.params['annotationStore'] = annotation_store unless annotation_store.nil?
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1623,10 +1623,10 @@ module Google
         # @param [String] update_mask
         #   The update mask that applies to the resource. For the `FieldMask` definition,
         #   see https://developers.google.com/protocol-buffers/docs/reference/google.
-        #   protobuf#fieldmask. The `description`, `possible_values`, `
+        #   protobuf#fieldmask. The `description`, `allowed_values`, `
         #   consent_default_values`, and `data_mapping_default_value` fields are allowed
-        #   to be updated. The updated `possible_values` must contain all values from the
-        #   previous `possible_values`.
+        #   to be updated. The updated `allowed_values` must contain all values from the
+        #   previous `allowed_values`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1980,7 +1980,7 @@ module Google
         #   Restricts the consents returned to those matching a filter. Syntax: https://
         #   cloud.google.com/appengine/docs/standard/python/search/query_strings The
         #   fields available for filtering are: - user_id - consent_artifact - state -
-        #   state_change_time
+        #   revision_create_time
         # @param [Fixnum] page_size
         #   Limit on the number of consents to return in a single response. If zero the
         #   default page size of 100 is used.
@@ -2978,11 +2978,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # DeleteStudy deletes all instances within the given study. Delete requests are
-        # equivalent to the GET requests specified in the Retrieve transaction. For
-        # samples that show how to call DeleteStudy, see [Deleting a study, series, or
-        # instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#
-        # deleting_a_study_series_or_instance).
+        # DeleteStudyAsync deletes all instances within the given study using an
+        # operation. Delete requests are equivalent to the GET requests specified in the
+        # Retrieve transaction. The method returns an Operation which will be marked
+        # successful when the deletion is complete. Warning: Inserting instances into a
+        # study while a delete operation is running for that study could result in the
+        # new instances not appearing in search results until the deletion operation
+        # finishes.
         # @param [String] parent
         # @param [String] dicom_web_path
         #   The path of the DeleteStudy request. For example, `studies/`study_uid``.
@@ -2995,18 +2997,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::HealthcareV1beta1::Empty] parsed result object
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::Operation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::HealthcareV1beta1::Empty]
+        # @return [Google::Apis::HealthcareV1beta1::Operation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_dataset_dicom_store_study(parent, dicom_web_path, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
-          command.response_representation = Google::Apis::HealthcareV1beta1::Empty::Representation
-          command.response_class = Google::Apis::HealthcareV1beta1::Empty
+          command.response_representation = Google::Apis::HealthcareV1beta1::Operation::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::Operation
           command.params['parent'] = parent unless parent.nil?
           command.params['dicomWebPath'] = dicom_web_path unless dicom_web_path.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -3234,11 +3236,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # DeleteSeries deletes all instances within the given study and series. Delete
-        # requests are equivalent to the GET requests specified in the Retrieve
-        # transaction. For samples that show how to call DeleteSeries, see [Deleting a
-        # study, series, or instance](https://cloud.google.com/healthcare/docs/how-tos/
-        # dicomweb#deleting_a_study_series_or_instance).
+        # DeleteSeriesAsync deletes all instances within the given study and series
+        # using an operation. Delete requests are equivalent to the GET requests
+        # specified in the Retrieve transaction. The method returns an Operation which
+        # will be marked successful when the deletion is complete. Warning: Inserting
+        # instances into a series while a delete operation is running for that series
+        # could result in the new instances not appearing in search results until the
+        # deletion operation finishes.
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example, `projects/`
         #   project_id`/locations/`location_id`/datasets/`dataset_id`/dicomStores/`
@@ -3255,18 +3259,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::HealthcareV1beta1::Empty] parsed result object
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::Operation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::HealthcareV1beta1::Empty]
+        # @return [Google::Apis::HealthcareV1beta1::Operation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_dataset_dicom_store_study_series(parent, dicom_web_path, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1beta1/{+parent}/dicomWeb/{+dicomWebPath}', options)
-          command.response_representation = Google::Apis::HealthcareV1beta1::Empty::Representation
-          command.response_class = Google::Apis::HealthcareV1beta1::Empty
+          command.response_representation = Google::Apis::HealthcareV1beta1::Operation::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::Operation
           command.params['parent'] = parent unless parent.nil?
           command.params['dicomWebPath'] = dicom_web_path unless dicom_web_path.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -3775,13 +3779,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Export resources from the FHIR store to the specified destination. This
-        # method returns an Operation that can be used to track the status of the export
-        # by calling GetOperation. Immediate fatal errors appear in the error field,
-        # errors are also logged to Cloud Logging (see [Viewing logs](/healthcare/docs/
-        # how-tos/logging)). Otherwise, when the operation finishes, a detailed response
-        # of type ExportResourcesResponse is returned in the response field. The
-        # metadata field type for this operation is OperationMetadata.
+        # Export resources from the FHIR store to the specified destination. This method
+        # returns an Operation that can be used to track the status of the export by
+        # calling GetOperation. Immediate fatal errors appear in the error field, errors
+        # are also logged to Cloud Logging (see [Viewing error logs in Cloud Logging](/
+        # healthcare/docs/how-tos/logging)). Otherwise, when the operation finishes, a
+        # detailed response of type ExportResourcesResponse is returned in the response
+        # field. The metadata field type for this operation is OperationMetadata.
         # @param [String] name
         #   The name of the FHIR store to export resource from, in the format of `projects/
         #   `project_id`/locations/`location_id`/datasets/`dataset_id`/fhirStores/`
@@ -3901,10 +3905,10 @@ module Google
         # considering grouping or ordering, but if the input data contains invalid
         # references or if some resources fail to be imported, the FHIR store might be
         # left in a state that violates referential integrity. The import process does
-        # not trigger Cloud Pub/Sub notification or BigQuery streaming update,
-        # regardless of how those are configured on the FHIR store. If a resource with
-        # the specified ID already exists, the most recent version of the resource is
-        # overwritten without creating a new historical version, regardless of the
+        # not trigger Pub/Sub notification or BigQuery streaming update, regardless of
+        # how those are configured on the FHIR store. If a resource with the specified
+        # ID already exists, the most recent version of the resource is overwritten
+        # without creating a new historical version, regardless of the
         # disable_resource_versioning setting on the FHIR store. If transient failures
         # occur during the import, it is possible that successfully imported resources
         # will be overwritten more than once. The import operation is idempotent unless
@@ -3919,22 +3923,22 @@ module Google
         # copy of a resource such as Practitioner that might be referred to by many
         # patients. If some resources fail to import, for example due to parsing errors,
         # successfully imported resources are not rolled back. The location and format
-        # of the input data is specified by the parameters below. Note that if no format
-        # is specified, this method assumes the `BUNDLE` format. When using the `BUNDLE`
-        # format this method ignores the `Bundle.type` field, except that `history`
-        # bundles are rejected, and does not apply any of the bundle processing
-        # semantics for batch or transaction bundles. Unlike in ExecuteBundle,
-        # transaction bundles are not executed as a single transaction and bundle-
-        # internal references are not rewritten. The bundle is treated as a collection
-        # of resources to be written as provided in `Bundle.entry.resource`, ignoring `
-        # Bundle.entry.request`. As an example, this allows the import of `searchset`
-        # bundles produced by a FHIR search or Patient-everything operation. This method
-        # returns an Operation that can be used to track the status of the import by
-        # calling GetOperation. Immediate fatal errors appear in the error field, errors
-        # are also logged to Cloud Logging (see [Viewing logs](/healthcare/docs/how-tos/
-        # logging)). Otherwise, when the operation finishes, a detailed response of type
-        # ImportResourcesResponse is returned in the response field. The metadata field
-        # type for this operation is OperationMetadata.
+        # of the input data are specified by the parameters in ImportResourcesRequest.
+        # Note that if no format is specified, this method assumes the `BUNDLE` format.
+        # When using the `BUNDLE` format this method ignores the `Bundle.type` field,
+        # except that `history` bundles are rejected, and does not apply any of the
+        # bundle processing semantics for batch or transaction bundles. Unlike in
+        # ExecuteBundle, transaction bundles are not executed as a single transaction
+        # and bundle-internal references are not rewritten. The bundle is treated as a
+        # collection of resources to be written as provided in `Bundle.entry.resource`,
+        # ignoring `Bundle.entry.request`. As an example, this allows the import of `
+        # searchset` bundles produced by a FHIR search or Patient-everything operation.
+        # This method returns an Operation that can be used to track the status of the
+        # import by calling GetOperation. Immediate fatal errors appear in the error
+        # field, errors are also logged to Cloud Logging (see [Viewing logs](/healthcare/
+        # docs/how-tos/logging)). Otherwise, when the operation finishes, a detailed
+        # response of type ImportResourcesResponse is returned in the response field.
+        # The metadata field type for this operation is OperationMetadata.
         # @param [String] name
         #   The name of the FHIR store to import FHIR resources to, in the format of `
         #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/fhirStores/

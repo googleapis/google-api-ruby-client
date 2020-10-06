@@ -156,6 +156,9 @@ module Google
         # @param [String] name
         #   Required. Name of the deployed configuration for the organization in the
         #   following format: 'organizations/`org`/deployedIngressConfig'.
+        # @param [String] view
+        #   When set to FULL, additional details about the specific deployments receiving
+        #   traffic will be included in the IngressConfig response's RoutingRules.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -173,11 +176,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_organization_deployed_ingress_config(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_organization_deployed_ingress_config(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1IngressConfig::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1IngressConfig
           command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -6484,6 +6488,202 @@ module Google
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListDeploymentsResponse::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListDeploymentsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new category on the portal.
+        # @param [String] parent
+        #   Required. Name of the portal. Use the following structure in your request: `
+        #   organizations/`org`/sites/`site``
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategoryData] google_cloud_apigee_v1_api_category_data_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategory] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategory]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_site_apicategory(parent, google_cloud_apigee_v1_api_category_data_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/apicategories', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategoryData::Representation
+          command.request_object = google_cloud_apigee_v1_api_category_data_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategory::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategory
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a category from the portal.
+        # @param [String] name
+        #   Required. Name of the category. Use the following structure in your request: `
+        #   organizations/`org`/sites/`site`/apicategories/`apicategory``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiResponseWrapper] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiResponseWrapper]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_site_apicategory(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiResponseWrapper::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiResponseWrapper
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a category on the portal.
+        # @param [String] name
+        #   Required. Name of the category. Use the following structure in your request: `
+        #   organizations/`org`/sites/`site`/apicategories/`apicategory``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategory] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategory]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_site_apicategory(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategory::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategory
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the categories on the portal.
+        # @param [String] parent
+        #   Required. Name of the portal. Use the following structure in your request: `
+        #   organizations/`org`/sites/`site``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListApiCategoriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListApiCategoriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_site_apicategories(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/apicategories', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListApiCategoriesResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListApiCategoriesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a category on the portal.
+        # @param [String] name
+        #   Required. Name of the category. Use the following structure in your request: `
+        #   organizations/`org`/sites/`site`/apicategories/`apicategory``
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategoryData] google_cloud_apigee_v1_api_category_data_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategory] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategory]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_site_apicategory(name, google_cloud_apigee_v1_api_category_data_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategoryData::Representation
+          command.request_object = google_cloud_apigee_v1_api_category_data_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategory::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategory
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Provisions a new Apigee organization with a functioning runtime. This is the
+        # standard way to create trial organizations for a free Apigee trial.
+        # @param [String] project
+        #   Required. Name of the GCP project with which to associate the Apigee
+        #   organization.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProvisionOrganizationRequest] google_cloud_apigee_v1_provision_organization_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def provision_project_organization(project, google_cloud_apigee_v1_provision_organization_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+project}:provisionOrganization', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ProvisionOrganizationRequest::Representation
+          command.request_object = google_cloud_apigee_v1_provision_organization_request_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleLongrunningOperation
+          command.params['project'] = project unless project.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -64,6 +64,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ApiCategory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ApiCategoryData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ApiProduct
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +95,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1ApiProxyRevision
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ApiResponseWrapper
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -394,6 +412,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ListApiCategoriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ListApiProductsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -593,6 +617,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1Property
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ProvisionOrganizationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -975,6 +1005,28 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1ApiCategory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, as: 'data', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategoryData, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategoryData::Representation
+      
+          property :error_code, as: 'errorCode'
+          property :message, as: 'message'
+          property :request_id, as: 'requestId'
+          property :status, as: 'status'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ApiCategoryData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :name, as: 'name'
+          property :site_id, as: 'siteId'
+          property :update_time, :numeric_string => true, as: 'updateTime'
+        end
+      end
+      
       class GoogleCloudApigeeV1ApiProduct
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1044,6 +1096,16 @@ module Google
           collection :targets, as: 'targets'
           collection :teams, as: 'teams'
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ApiResponseWrapper
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_code, as: 'errorCode'
+          property :message, as: 'message'
+          property :request_id, as: 'requestId'
+          property :status, as: 'status'
         end
       end
       
@@ -1596,6 +1658,7 @@ module Google
           property :location, as: 'location'
           property :name, as: 'name'
           property :port, as: 'port'
+          property :state, as: 'state'
         end
       end
       
@@ -1667,6 +1730,18 @@ module Google
           collection :aliases, as: 'aliases', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AliasRevisionConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AliasRevisionConfig::Representation
       
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ListApiCategoriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data, as: 'data', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategoryData, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategoryData::Representation
+      
+          property :error_code, as: 'errorCode'
+          property :message, as: 'message'
+          property :request_id, as: 'requestId'
+          property :status, as: 'status'
         end
       end
       
@@ -1980,6 +2055,15 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1ProvisionOrganizationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analytics_region, as: 'analyticsRegion'
+          property :authorized_network, as: 'authorizedNetwork'
+          property :runtime_location, as: 'runtimeLocation'
+        end
+      end
+      
       class GoogleCloudApigeeV1Query
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2141,7 +2225,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :basepath, as: 'basepath'
+          property :env_group_revision, :numeric_string => true, as: 'envGroupRevision'
           property :environment, as: 'environment'
+          property :receiver, as: 'receiver'
+          property :update_time, as: 'updateTime'
         end
       end
       

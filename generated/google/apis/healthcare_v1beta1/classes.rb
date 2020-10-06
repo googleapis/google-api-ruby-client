@@ -1033,43 +1033,6 @@ module Google
         end
       end
       
-      # Deprecated. Contains the status of the Deidentify operation.
-      class DeidentifyErrorDetails
-        include Google::Apis::Core::Hashable
-      
-        # Number of resources that failed to process.
-        # Corresponds to the JSON property `failureResourceCount`
-        # @return [Fixnum]
-        attr_accessor :failure_resource_count
-      
-        # Number of stores that failed to process.
-        # Corresponds to the JSON property `failureStoreCount`
-        # @return [Fixnum]
-        attr_accessor :failure_store_count
-      
-        # Number of resources successfully processed.
-        # Corresponds to the JSON property `successResourceCount`
-        # @return [Fixnum]
-        attr_accessor :success_resource_count
-      
-        # Number of stores successfully processed.
-        # Corresponds to the JSON property `successStoreCount`
-        # @return [Fixnum]
-        attr_accessor :success_store_count
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @failure_resource_count = args[:failure_resource_count] if args.key?(:failure_resource_count)
-          @failure_store_count = args[:failure_store_count] if args.key?(:failure_store_count)
-          @success_resource_count = args[:success_resource_count] if args.key?(:success_resource_count)
-          @success_store_count = args[:success_store_count] if args.key?(:success_store_count)
-        end
-      end
-      
       # Creates a new FHIR store with sensitive information de-identified.
       class DeidentifyFhirStoreRequest
         include Google::Apis::Core::Hashable
@@ -1113,31 +1076,12 @@ module Google
       class DeidentifySummary
         include Google::Apis::Core::Hashable
       
-        # Number of resources that failed to process. The failures might be caused by: *
-        # Invalid user input data * Transient errors that could be skipped
-        # Corresponds to the JSON property `failureResourceCount`
-        # @return [Fixnum]
-        attr_accessor :failure_resource_count
-      
-        # Number of resources successfully processed.
-        # Corresponds to the JSON property `successResourceCount`
-        # @return [Fixnum]
-        attr_accessor :success_resource_count
-      
-        # Number of stores successfully processed.
-        # Corresponds to the JSON property `successStoreCount`
-        # @return [Fixnum]
-        attr_accessor :success_store_count
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @failure_resource_count = args[:failure_resource_count] if args.key?(:failure_resource_count)
-          @success_resource_count = args[:success_resource_count] if args.key?(:success_resource_count)
-          @success_store_count = args[:success_store_count] if args.key?(:success_store_count)
         end
       end
       
@@ -1369,13 +1313,6 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::InfoTypeConfig]
         attr_accessor :info_type_config
       
-        # The Annotation store to compare against `golden_store`, in the format of `
-        # projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        # annotationStores/`annotation_store_id``.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
         def initialize(**args)
            update!(**args)
         end
@@ -1387,7 +1324,6 @@ module Google
           @golden_info_type_mapping = args[:golden_info_type_mapping] if args.key?(:golden_info_type_mapping)
           @golden_store = args[:golden_store] if args.key?(:golden_store)
           @info_type_config = args[:info_type_config] if args.key?(:info_type_config)
-          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -1396,43 +1332,12 @@ module Google
       class EvaluateAnnotationStoreResponse
         include Google::Apis::Core::Hashable
       
-        # The evaluated Annotation store, in the format of `projects/`project_id`/
-        # locations/`location_id`/datasets/`dataset_id`/annotationStores/`
-        # annotation_store_id``.
-        # Corresponds to the JSON property `evalStore`
-        # @return [String]
-        attr_accessor :eval_store
-      
-        # The number of Annotations in the ground truth Annotation store successfully
-        # processed.
-        # Corresponds to the JSON property `goldenCount`
-        # @return [Fixnum]
-        attr_accessor :golden_count
-      
-        # The ground truth Annotation store, in the format of `projects/`project_id`/
-        # locations/`location_id`/datasets/`dataset_id`/annotationStores/`
-        # annotation_store_id``.
-        # Corresponds to the JSON property `goldenStore`
-        # @return [String]
-        attr_accessor :golden_store
-      
-        # The number of Annotations in the eval store that match with corresponding
-        # annotations in the ground truth Annotation store. Two matched annotations both
-        # annotate the same resource defined in AnnotationSource.
-        # Corresponds to the JSON property `matchedCount`
-        # @return [Fixnum]
-        attr_accessor :matched_count
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @eval_store = args[:eval_store] if args.key?(:eval_store)
-          @golden_count = args[:golden_count] if args.key?(:golden_count)
-          @golden_store = args[:golden_store] if args.key?(:golden_store)
-          @matched_count = args[:matched_count] if args.key?(:matched_count)
         end
       end
       
@@ -1519,40 +1424,6 @@ module Google
         end
       end
       
-      # Deprecated. Response for failed annotation export operations. This structure
-      # is included in error details upon operation completion.
-      class ExportAnnotationsErrorDetails
-        include Google::Apis::Core::Hashable
-      
-        # The annotation_store used for the export operation, in the format of `projects/
-        # `project_id`/locations/`location_id`/datasets/`dataset_id`/annotationStores/`
-        # annotation_store_id``.
-        # Corresponds to the JSON property `annotationStore`
-        # @return [String]
-        attr_accessor :annotation_store
-      
-        # The number of annotations that had error.
-        # Corresponds to the JSON property `errorCount`
-        # @return [Fixnum]
-        attr_accessor :error_count
-      
-        # The number of annotations successfully exported.
-        # Corresponds to the JSON property `successCount`
-        # @return [Fixnum]
-        attr_accessor :success_count
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @annotation_store = args[:annotation_store] if args.key?(:annotation_store)
-          @error_count = args[:error_count] if args.key?(:error_count)
-          @success_count = args[:success_count] if args.key?(:success_count)
-        end
-      end
-      
       # Request to export Annotations. The export operation is not atomic. If a
       # failure occurs, any annotations already exported are not removed.
       class ExportAnnotationsRequest
@@ -1568,13 +1439,6 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1AnnotationGcsDestination]
         attr_accessor :gcs_destination
       
-        # The name of the Annotation store to export annotations to, in the format of `
-        # projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        # annotationStores/`annotation_store_id``.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
         def initialize(**args)
            update!(**args)
         end
@@ -1583,7 +1447,6 @@ module Google
         def update!(**args)
           @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
-          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -1592,26 +1455,12 @@ module Google
       class ExportAnnotationsResponse
         include Google::Apis::Core::Hashable
       
-        # The annotation_store used for the export operation, in the format of `projects/
-        # `project_id`/locations/`location_id`/datasets/`dataset_id`/annotationStores/`
-        # annotation_store_id``.
-        # Corresponds to the JSON property `annotationStore`
-        # @return [String]
-        attr_accessor :annotation_store
-      
-        # The total number of annotations successfully exported.
-        # Corresponds to the JSON property `successCount`
-        # @return [Fixnum]
-        attr_accessor :success_count
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @annotation_store = args[:annotation_store] if args.key?(:annotation_store)
-          @success_count = args[:success_count] if args.key?(:success_count)
         end
       end
       
@@ -1668,7 +1517,7 @@ module Google
       
         # The configuration for exporting to Cloud Storage.
         # Corresponds to the JSON property `gcsDestination`
-        # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirRestGcsDestination]
+        # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsDestination]
         attr_accessor :gcs_destination
       
         def initialize(**args)
@@ -2068,9 +1917,9 @@ module Google
       class GoogleCloudHealthcareV1beta1AnnotationBigQueryDestination
         include Google::Apis::Core::Hashable
       
-        # If the destination table already exists and this flag is `TRUE`, the table is
-        # overwritten by the contents of the input store. If the flag is not set and the
-        # destination table already exists, the export call returns an error.
+        # Use `write_disposition` instead. If `write_disposition` is specified, this
+        # parameter is ignored. force=false is equivalent to write_disposition=
+        # WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
         # Corresponds to the JSON property `force`
         # @return [Boolean]
         attr_accessor :force
@@ -2087,6 +1936,13 @@ module Google
         # @return [String]
         attr_accessor :table_uri
       
+        # Determines whether existing tables in the destination dataset are overwritten
+        # or appended to. If a write_disposition is specified, the `force` parameter is
+        # ignored.
+        # Corresponds to the JSON property `writeDisposition`
+        # @return [String]
+        attr_accessor :write_disposition
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2096,6 +1952,7 @@ module Google
           @force = args[:force] if args.key?(:force)
           @schema_type = args[:schema_type] if args.key?(:schema_type)
           @table_uri = args[:table_uri] if args.key?(:table_uri)
+          @write_disposition = args[:write_disposition] if args.key?(:write_disposition)
         end
       end
       
@@ -2219,24 +2076,12 @@ module Google
       class GoogleCloudHealthcareV1beta1DeidentifyDeidentifyDicomStoreSummary
         include Google::Apis::Core::Hashable
       
-        # Number of objects that processing failed for.
-        # Corresponds to the JSON property `failureResourceCount`
-        # @return [Fixnum]
-        attr_accessor :failure_resource_count
-      
-        # Number of objects successfully processed.
-        # Corresponds to the JSON property `successResourceCount`
-        # @return [Fixnum]
-        attr_accessor :success_resource_count
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @failure_resource_count = args[:failure_resource_count] if args.key?(:failure_resource_count)
-          @success_resource_count = args[:success_resource_count] if args.key?(:success_resource_count)
         end
       end
       
@@ -2244,18 +2089,12 @@ module Google
       class GoogleCloudHealthcareV1beta1DeidentifyDeidentifyFhirStoreSummary
         include Google::Apis::Core::Hashable
       
-        # Number of resources successfully processed.
-        # Corresponds to the JSON property `successResourceCount`
-        # @return [Fixnum]
-        attr_accessor :success_resource_count
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @success_resource_count = args[:success_resource_count] if args.key?(:success_resource_count)
         end
       end
       
@@ -2263,9 +2102,9 @@ module Google
       class GoogleCloudHealthcareV1beta1DicomBigQueryDestination
         include Google::Apis::Core::Hashable
       
-        # If the destination table already exists and this flag is `TRUE`, the table is
-        # overwritten by the contents of the DICOM store. If the flag is not set and the
-        # destination table already exists, the export call returns an error.
+        # Use `write_disposition` instead. If `write_disposition` is specified, this
+        # parameter is ignored. force=false is equivalent to write_disposition=
+        # WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
         # Corresponds to the JSON property `force`
         # @return [Boolean]
         attr_accessor :force
@@ -2277,6 +2116,13 @@ module Google
         # @return [String]
         attr_accessor :table_uri
       
+        # Determines whether the existing table in the destination is to be overwritten
+        # or appended to. If a write_disposition is specified, the `force` parameter is
+        # ignored.
+        # Corresponds to the JSON property `writeDisposition`
+        # @return [String]
+        attr_accessor :write_disposition
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2285,6 +2131,7 @@ module Google
         def update!(**args)
           @force = args[:force] if args.key?(:force)
           @table_uri = args[:table_uri] if args.key?(:table_uri)
+          @write_disposition = args[:write_disposition] if args.key?(:write_disposition)
         end
       end
       
@@ -2393,10 +2240,9 @@ module Google
         # @return [String]
         attr_accessor :dataset_uri
       
-        # If this flag is `TRUE`, all tables will be deleted from the dataset before the
-        # new exported tables are written. If the flag is not set and the destination
-        # dataset contains tables, the export call returns an error. This option is not
-        # used for the streaming export.
+        # Use `write_disposition` instead. If `write_disposition` is specified, this
+        # parameter is ignored. force=false is equivalent to write_disposition=
+        # WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
         # Corresponds to the JSON property `force`
         # @return [Boolean]
         attr_accessor :force
@@ -2408,6 +2254,13 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::SchemaConfig]
         attr_accessor :schema_config
       
+        # Determines whether existing tables in the destination dataset are overwritten
+        # or appended to. If a write_disposition is specified, the `force` parameter is
+        # ignored.
+        # Corresponds to the JSON property `writeDisposition`
+        # @return [String]
+        attr_accessor :write_disposition
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2417,6 +2270,88 @@ module Google
           @dataset_uri = args[:dataset_uri] if args.key?(:dataset_uri)
           @force = args[:force] if args.key?(:force)
           @schema_config = args[:schema_config] if args.key?(:schema_config)
+          @write_disposition = args[:write_disposition] if args.key?(:write_disposition)
+        end
+      end
+      
+      # Response when all resources export successfully. This structure is included in
+      # the response to describe the detailed outcome after the operation finishes
+      # successfully.
+      class GoogleCloudHealthcareV1beta1FhirExportResourcesResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The configuration for exporting to Cloud Storage.
+      class GoogleCloudHealthcareV1beta1FhirGcsDestination
+        include Google::Apis::Core::Hashable
+      
+        # URI for a Cloud Storage directory where result files should be written (in the
+        # format `gs://`bucket-id`/`path/to/destination/dir``). If there is no trailing
+        # slash, the service appends one when composing the object path. The Cloud
+        # Storage bucket referenced in `uri_prefix` must exist or an error occurs.
+        # Corresponds to the JSON property `uriPrefix`
+        # @return [String]
+        attr_accessor :uri_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri_prefix = args[:uri_prefix] if args.key?(:uri_prefix)
+        end
+      end
+      
+      # Specifies the configuration for importing data from Cloud Storage.
+      class GoogleCloudHealthcareV1beta1FhirGcsSource
+        include Google::Apis::Core::Hashable
+      
+        # Points to a Cloud Storage URI containing file(s) to import. The URI must be in
+        # the following format: `gs://`bucket_id`/`object_id``. The URI can include
+        # wildcards in `object_id` and thus identify multiple files. Supported wildcards:
+        # * `*` to match 0 or more non-separator characters * `**` to match 0 or more
+        # characters (including separators). Must be used at the end of a path and with
+        # no other wildcards in the path. Can also be used with a file extension (such
+        # as .ndjson), which imports all files with the extension in the specified
+        # directory and its sub-directories. For example, `gs://my-bucket/my-directory/**
+        # .ndjson` imports all files with `.ndjson` extensions in `my-directory/` and
+        # its sub-directories. * `?` to match 1 character Files matching the wildcard
+        # are expected to contain content only, no metadata.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Final response of importing resources. This structure is included in the
+      # response to describe the detailed outcome after the operation finishes
+      # successfully.
+      class GoogleCloudHealthcareV1beta1FhirImportResourcesResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2488,57 +2423,6 @@ module Google
         def update!(**args)
           @fhir_store = args[:fhir_store] if args.key?(:fhir_store)
           @resource_count = args[:resource_count] if args.key?(:resource_count)
-        end
-      end
-      
-      # The configuration for exporting to Cloud Storage.
-      class GoogleCloudHealthcareV1beta1FhirRestGcsDestination
-        include Google::Apis::Core::Hashable
-      
-        # URI for a Cloud Storage directory where result files should be written (in the
-        # format `gs://`bucket-id`/`path/to/destination/dir``). If there is no trailing
-        # slash, the service appends one when composing the object path. The user is
-        # responsible for creating the Cloud Storage bucket referenced in `uri_prefix`.
-        # Corresponds to the JSON property `uriPrefix`
-        # @return [String]
-        attr_accessor :uri_prefix
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @uri_prefix = args[:uri_prefix] if args.key?(:uri_prefix)
-        end
-      end
-      
-      # Specifies the configuration for importing data from Cloud Storage.
-      class GoogleCloudHealthcareV1beta1FhirRestGcsSource
-        include Google::Apis::Core::Hashable
-      
-        # Points to a Cloud Storage URI containing file(s) to import. The URI must be in
-        # the following format: `gs://`bucket_id`/`object_id``. The URI can include
-        # wildcards in `object_id` and thus identify multiple files. Supported wildcards:
-        # * `*` to match 0 or more non-separator characters * `**` to match 0 or more
-        # characters (including separators). Must be used at the end of a path and with
-        # no other wildcards in the path. Can also be used with a file extension (such
-        # as .ndjson), which imports all files with the extension in the specified
-        # directory and its sub-directories. For example, `gs://my-bucket/my-directory/**
-        # .ndjson` imports all files with `.ndjson` extensions in `my-directory/` and
-        # its sub-directories. * `?` to match 1 character Files matching the wildcard
-        # are expected to contain content only, no metadata.
-        # Corresponds to the JSON property `uri`
-        # @return [String]
-        attr_accessor :uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -2941,41 +2825,6 @@ module Google
         end
       end
       
-      # Deprecated. Final response of importing Annotations in partial or total
-      # failure case. This structure is included in the error details. It is only
-      # included when the operation finishes.
-      class ImportAnnotationsErrorDetails
-        include Google::Apis::Core::Hashable
-      
-        # The annotation_store that the annotations were imported to. The name is in the
-        # format `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        # annotationStores/`annotation_store_id``.
-        # Corresponds to the JSON property `annotationStore`
-        # @return [String]
-        attr_accessor :annotation_store
-      
-        # The number of annotations that had errors.
-        # Corresponds to the JSON property `errorCount`
-        # @return [Fixnum]
-        attr_accessor :error_count
-      
-        # The number of annotations that have been imported.
-        # Corresponds to the JSON property `successCount`
-        # @return [Fixnum]
-        attr_accessor :success_count
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @annotation_store = args[:annotation_store] if args.key?(:annotation_store)
-          @error_count = args[:error_count] if args.key?(:error_count)
-          @success_count = args[:success_count] if args.key?(:success_count)
-        end
-      end
-      
       # Request to import Annotations. The Annotations to be imported must have client-
       # supplied resource names which indicate the annotation resource. The import
       # operation is not atomic. If a failure occurs, any annotations already imported
@@ -2988,13 +2837,6 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1AnnotationGcsSource]
         attr_accessor :gcs_source
       
-        # The name of the Annotation store to which the server imports annotations, in
-        # the format `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`
-        # /annotationStores/`annotation_store_id``.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
         def initialize(**args)
            update!(**args)
         end
@@ -3002,7 +2844,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
-          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -3011,26 +2852,12 @@ module Google
       class ImportAnnotationsResponse
         include Google::Apis::Core::Hashable
       
-        # The annotation_store that the annotations were imported to, in the format `
-        # projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        # annotationStores/`annotation_store_id``.
-        # Corresponds to the JSON property `annotationStore`
-        # @return [String]
-        attr_accessor :annotation_store
-      
-        # The number of the input annotations. All input have been imported successfully.
-        # Corresponds to the JSON property `successCount`
-        # @return [Fixnum]
-        attr_accessor :success_count
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @annotation_store = args[:annotation_store] if args.key?(:annotation_store)
-          @success_count = args[:success_count] if args.key?(:success_count)
         end
       end
       
@@ -3136,7 +2963,7 @@ module Google
       
         # Specifies the configuration for importing data from Cloud Storage.
         # Corresponds to the JSON property `gcsSource`
-        # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirRestGcsSource]
+        # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsSource]
         attr_accessor :gcs_source
       
         def initialize(**args)

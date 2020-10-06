@@ -20,12 +20,13 @@ module Google
   module Apis
     # AdMob API
     #
-    # The Google AdMob API lets you programmatically get reports on earnings.
+    # The AdMob API allows publishers to programmatically get information about
+    # their AdMob account.
     #
     # @see https://developers.google.com/admob/api/
     module AdmobV1
       VERSION = 'V1'
-      REVISION = '20200916'
+      REVISION = '20201002'
 
       # See your AdMob data
       AUTH_ADMOB_REPORT = 'https://www.googleapis.com/auth/admob.report'

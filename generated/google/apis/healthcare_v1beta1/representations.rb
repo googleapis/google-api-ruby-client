@@ -202,12 +202,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DeidentifyErrorDetails
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class DeidentifyFhirStoreRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -275,12 +269,6 @@ module Google
       end
       
       class EvaluateUserConsentsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ExportAnnotationsErrorDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -442,6 +430,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudHealthcareV1beta1FhirExportResourcesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudHealthcareV1beta1FhirGcsDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudHealthcareV1beta1FhirGcsSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudHealthcareV1beta1FhirImportResourcesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudHealthcareV1beta1FhirRestExportResourcesErrorDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -449,18 +461,6 @@ module Google
       end
       
       class GoogleCloudHealthcareV1beta1FhirRestExportResourcesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudHealthcareV1beta1FhirRestGcsDestination
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudHealthcareV1beta1FhirRestGcsSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -527,12 +527,6 @@ module Google
       end
       
       class ImageConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ImportAnnotationsErrorDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1209,16 +1203,6 @@ module Google
         end
       end
       
-      class DeidentifyErrorDetails
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :failure_resource_count, :numeric_string => true, as: 'failureResourceCount'
-          property :failure_store_count, :numeric_string => true, as: 'failureStoreCount'
-          property :success_resource_count, :numeric_string => true, as: 'successResourceCount'
-          property :success_store_count, :numeric_string => true, as: 'successStoreCount'
-        end
-      end
-      
       class DeidentifyFhirStoreRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1233,9 +1217,6 @@ module Google
       class DeidentifySummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :failure_resource_count, :numeric_string => true, as: 'failureResourceCount'
-          property :success_resource_count, :numeric_string => true, as: 'successResourceCount'
-          property :success_store_count, :numeric_string => true, as: 'successStoreCount'
         end
       end
       
@@ -1303,17 +1284,12 @@ module Google
           property :golden_store, as: 'goldenStore'
           property :info_type_config, as: 'infoTypeConfig', class: Google::Apis::HealthcareV1beta1::InfoTypeConfig, decorator: Google::Apis::HealthcareV1beta1::InfoTypeConfig::Representation
       
-          property :name, as: 'name'
         end
       end
       
       class EvaluateAnnotationStoreResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :eval_store, as: 'evalStore'
-          property :golden_count, :numeric_string => true, as: 'goldenCount'
-          property :golden_store, as: 'goldenStore'
-          property :matched_count, :numeric_string => true, as: 'matchedCount'
         end
       end
       
@@ -1340,15 +1316,6 @@ module Google
         end
       end
       
-      class ExportAnnotationsErrorDetails
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :annotation_store, as: 'annotationStore'
-          property :error_count, :numeric_string => true, as: 'errorCount'
-          property :success_count, :numeric_string => true, as: 'successCount'
-        end
-      end
-      
       class ExportAnnotationsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1356,15 +1323,12 @@ module Google
       
           property :gcs_destination, as: 'gcsDestination', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1AnnotationGcsDestination, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1AnnotationGcsDestination::Representation
       
-          property :name, as: 'name'
         end
       end
       
       class ExportAnnotationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :annotation_store, as: 'annotationStore'
-          property :success_count, :numeric_string => true, as: 'successCount'
         end
       end
       
@@ -1389,7 +1353,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bigquery_destination, as: 'bigqueryDestination', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirBigQueryDestination, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirBigQueryDestination::Representation
       
-          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirRestGcsDestination, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirRestGcsDestination::Representation
+          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsDestination, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsDestination::Representation
       
         end
       end
@@ -1486,6 +1450,7 @@ module Google
           property :force, as: 'force'
           property :schema_type, as: 'schemaType'
           property :table_uri, as: 'tableUri'
+          property :write_disposition, as: 'writeDisposition'
         end
       end
       
@@ -1523,15 +1488,12 @@ module Google
       class GoogleCloudHealthcareV1beta1DeidentifyDeidentifyDicomStoreSummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :failure_resource_count, :numeric_string => true, as: 'failureResourceCount'
-          property :success_resource_count, :numeric_string => true, as: 'successResourceCount'
         end
       end
       
       class GoogleCloudHealthcareV1beta1DeidentifyDeidentifyFhirStoreSummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :success_resource_count, :numeric_string => true, as: 'successResourceCount'
         end
       end
       
@@ -1540,6 +1502,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :force, as: 'force'
           property :table_uri, as: 'tableUri'
+          property :write_disposition, as: 'writeDisposition'
         end
       end
       
@@ -1573,6 +1536,33 @@ module Google
           property :force, as: 'force'
           property :schema_config, as: 'schemaConfig', class: Google::Apis::HealthcareV1beta1::SchemaConfig, decorator: Google::Apis::HealthcareV1beta1::SchemaConfig::Representation
       
+          property :write_disposition, as: 'writeDisposition'
+        end
+      end
+      
+      class GoogleCloudHealthcareV1beta1FhirExportResourcesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudHealthcareV1beta1FhirGcsDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri_prefix, as: 'uriPrefix'
+        end
+      end
+      
+      class GoogleCloudHealthcareV1beta1FhirGcsSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudHealthcareV1beta1FhirImportResourcesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1591,20 +1581,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fhir_store, as: 'fhirStore'
           property :resource_count, :numeric_string => true, as: 'resourceCount'
-        end
-      end
-      
-      class GoogleCloudHealthcareV1beta1FhirRestGcsDestination
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :uri_prefix, as: 'uriPrefix'
-        end
-      end
-      
-      class GoogleCloudHealthcareV1beta1FhirRestGcsSource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :uri, as: 'uri'
         end
       end
       
@@ -1712,29 +1688,17 @@ module Google
         end
       end
       
-      class ImportAnnotationsErrorDetails
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :annotation_store, as: 'annotationStore'
-          property :error_count, :numeric_string => true, as: 'errorCount'
-          property :success_count, :numeric_string => true, as: 'successCount'
-        end
-      end
-      
       class ImportAnnotationsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_source, as: 'gcsSource', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1AnnotationGcsSource, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1AnnotationGcsSource::Representation
       
-          property :name, as: 'name'
         end
       end
       
       class ImportAnnotationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :annotation_store, as: 'annotationStore'
-          property :success_count, :numeric_string => true, as: 'successCount'
         end
       end
       
@@ -1778,7 +1742,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content_structure, as: 'contentStructure'
-          property :gcs_source, as: 'gcsSource', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirRestGcsSource, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirRestGcsSource::Representation
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsSource, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsSource::Representation
       
         end
       end

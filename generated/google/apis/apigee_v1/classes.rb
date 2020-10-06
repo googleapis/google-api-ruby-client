@@ -255,6 +255,86 @@ module Google
         end
       end
       
+      # the Api category resource wrapped with response status, error_code etc.
+      class GoogleCloudApigeeV1ApiCategory
+        include Google::Apis::Core::Hashable
+      
+        # the Api category resource.
+        # Corresponds to the JSON property `data`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategoryData]
+        attr_accessor :data
+      
+        # ID that can be used to find errors in the log files.
+        # Corresponds to the JSON property `errorCode`
+        # @return [String]
+        attr_accessor :error_code
+      
+        # Description of the operation.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # ID that can be used to find request details in the log files.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Status of the operation.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @error_code = args[:error_code] if args.key?(:error_code)
+          @message = args[:message] if args.key?(:message)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # the Api category resource.
+      class GoogleCloudApigeeV1ApiCategoryData
+        include Google::Apis::Core::Hashable
+      
+        # ID of the category (a UUID).
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Name of the category.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Name of the portal.
+        # Corresponds to the JSON property `siteId`
+        # @return [String]
+        attr_accessor :site_id
+      
+        # Time the category was last modified in milliseconds since epoch.
+        # Corresponds to the JSON property `updateTime`
+        # @return [Fixnum]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @site_id = args[:site_id] if args.key?(:site_id)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # 
       class GoogleCloudApigeeV1ApiProduct
         include Google::Apis::Core::Hashable
@@ -628,6 +708,43 @@ module Google
           @targets = args[:targets] if args.key?(:targets)
           @teams = args[:teams] if args.key?(:teams)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class GoogleCloudApigeeV1ApiResponseWrapper
+        include Google::Apis::Core::Hashable
+      
+        # ID that can be used to find errors in the log files.
+        # Corresponds to the JSON property `errorCode`
+        # @return [String]
+        attr_accessor :error_code
+      
+        # Description of the operation.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # ID that can be used to find request details in the log files.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Status of the operation.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_code = args[:error_code] if args.key?(:error_code)
+          @message = args[:message] if args.key?(:message)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -2818,6 +2935,12 @@ module Google
         # @return [String]
         attr_accessor :port
       
+        # Output only. State of the instance. Values other than ACTIVE means the
+        # resource is not ready to use.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2833,6 +2956,7 @@ module Google
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @port = args[:port] if args.key?(:port)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -3064,6 +3188,49 @@ module Google
         def update!(**args)
           @aliases = args[:aliases] if args.key?(:aliases)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # the response for ListApiCategoriesRequest.
+      class GoogleCloudApigeeV1ListApiCategoriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Details of categories.
+        # Corresponds to the JSON property `data`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiCategoryData>]
+        attr_accessor :data
+      
+        # ID that can be used to find errors in the log files.
+        # Corresponds to the JSON property `errorCode`
+        # @return [String]
+        attr_accessor :error_code
+      
+        # Description of the operation.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # ID that can be used to find request details in the log files.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Status of the operation.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @error_code = args[:error_code] if args.key?(:error_code)
+          @message = args[:message] if args.key?(:message)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -4042,6 +4209,41 @@ module Google
         end
       end
       
+      # Request for ProvisionOrganization.
+      class GoogleCloudApigeeV1ProvisionOrganizationRequest
+        include Google::Apis::Core::Hashable
+      
+        # Primary Cloud Platform region for analytics data storage. For valid values,
+        # see [Create an organization](https://docs.apigee.com/hybrid/latest/precog-
+        # provision). Defaults to us-west1.
+        # Corresponds to the JSON property `analyticsRegion`
+        # @return [String]
+        attr_accessor :analytics_region
+      
+        # Name of the customer project's VPC network. If provided, the network needs to
+        # be peered through Service Networking. If none is provided, the organization
+        # will have access only to the public internet.
+        # Corresponds to the JSON property `authorizedNetwork`
+        # @return [String]
+        attr_accessor :authorized_network
+      
+        # Cloud Platform location for the runtime instance. Defaults to us-west1-a.
+        # Corresponds to the JSON property `runtimeLocation`
+        # @return [String]
+        attr_accessor :runtime_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analytics_region = args[:analytics_region] if args.key?(:analytics_region)
+          @authorized_network = args[:authorized_network] if args.key?(:authorized_network)
+          @runtime_location = args[:runtime_location] if args.key?(:runtime_location)
+        end
+      end
+      
       # 
       class GoogleCloudApigeeV1Query
         include Google::Apis::Core::Hashable
@@ -4661,11 +4863,35 @@ module Google
         # @return [String]
         attr_accessor :basepath
       
+        # The env group config revision_id when this rule was added or last updated.
+        # This value is set when the rule is created and will only update if the the
+        # environment_id changes. It is used to determine if the runtime is up to date
+        # with respect to this rule. This field is omitted from the IngressConfig unless
+        # the GetDeployedIngressConfig API is called with debug=true.
+        # Corresponds to the JSON property `envGroupRevision`
+        # @return [Fixnum]
+        attr_accessor :env_group_revision
+      
         # Name of an environment bound to the environment group in the following format:
         # `organizations/`org`/environments/`env``.
         # Corresponds to the JSON property `environment`
         # @return [String]
         attr_accessor :environment
+      
+        # The resource name of the proxy revision that is receiving this basepath in the
+        # following format: `organizations/`org`/apis/`api`/revisions/`rev``. This field
+        # is omitted from the IngressConfig unless the GetDeployedIngressConfig API is
+        # called with debug=true.
+        # Corresponds to the JSON property `receiver`
+        # @return [String]
+        attr_accessor :receiver
+      
+        # The unix timestamp when this rule was updated. This is updated whenever
+        # env_group_revision is updated. This field is omitted from the IngressConfig
+        # unless the GetDeployedIngressConfig API is called with debug=true.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
       
         def initialize(**args)
            update!(**args)
@@ -4674,7 +4900,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @basepath = args[:basepath] if args.key?(:basepath)
+          @env_group_revision = args[:env_group_revision] if args.key?(:env_group_revision)
           @environment = args[:environment] if args.key?(:environment)
+          @receiver = args[:receiver] if args.key?(:receiver)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -5422,7 +5651,8 @@ module Google
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1TlsInfoCommonName]
         attr_accessor :common_name
       
-        # Required. Enables one-way TLS.
+        # Required. Enables TLS. If false, neither one-way nor two-way TLS will be
+        # enabled.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled

@@ -3544,6 +3544,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :long_value
       
+        # 
+        # Corresponds to the JSON property `requestPlatformTargetingValue`
+        # @return [Google::Apis::AdexchangebuyerV1_4::TargetingValueRequestPlatformTargeting]
+        attr_accessor :request_platform_targeting_value
+      
         # The string value to exclude/include.
         # Corresponds to the JSON property `stringValue`
         # @return [String]
@@ -3560,6 +3565,7 @@ module Google
           @demog_age_criteria_value = args[:demog_age_criteria_value] if args.key?(:demog_age_criteria_value)
           @demog_gender_criteria_value = args[:demog_gender_criteria_value] if args.key?(:demog_gender_criteria_value)
           @long_value = args[:long_value] if args.key?(:long_value)
+          @request_platform_targeting_value = args[:request_platform_targeting_value] if args.key?(:request_platform_targeting_value)
           @string_value = args[:string_value] if args.key?(:string_value)
         end
       end
@@ -3716,6 +3722,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @demog_gender_criteria_ids = args[:demog_gender_criteria_ids] if args.key?(:demog_gender_criteria_ids)
+        end
+      end
+      
+      # 
+      class TargetingValueRequestPlatformTargeting
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `requestPlatforms`
+        # @return [Array<String>]
+        attr_accessor :request_platforms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_platforms = args[:request_platforms] if args.key?(:request_platforms)
         end
       end
       
