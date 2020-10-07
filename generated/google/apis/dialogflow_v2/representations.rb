@@ -310,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2ImportDocumentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2InputAudioConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -742,6 +748,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1ImportDocumentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1Intent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1097,12 +1109,6 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1WebhookResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowV3alpha1CreateVersionOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1638,6 +1644,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_content, :base64 => true, as: 'agentContent'
           property :agent_uri, as: 'agentUri'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2ImportDocumentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :warnings, as: 'warnings', class: Google::Apis::DialogflowV2::GoogleRpcStatus, decorator: Google::Apis::DialogflowV2::GoogleRpcStatus::Representation
+      
         end
       end
       
@@ -2396,6 +2410,14 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2beta1ImportDocumentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :warnings, as: 'warnings', class: Google::Apis::DialogflowV2::GoogleRpcStatus, decorator: Google::Apis::DialogflowV2::GoogleRpcStatus::Representation
+      
+        end
+      end
+      
       class GoogleCloudDialogflowV2beta1Intent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3036,13 +3058,6 @@ module Google
           collection :session_entity_types, as: 'sessionEntityTypes', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1SessionEntityType, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1SessionEntityType::Representation
       
           property :source, as: 'source'
-        end
-      end
-      
-      class GoogleCloudDialogflowV3alpha1CreateVersionOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :version, as: 'version'
         end
       end
       

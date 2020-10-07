@@ -112,7 +112,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Exports the specified agent to a ZIP file.
+        # Exports the specified agent to a binary file.
         # @param [String] name
         #   Required. The name of the agent to export. Format: `projects//locations//
         #   agents/`.
@@ -252,8 +252,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Restores the specified agent from a ZIP file. Note that all existing intents,
-        # intent routes, entity types, pages and webhooks in the agent will be deleted.
+        # Restores the specified agent from a bianry file. Replaces the current agent
+        # with a new one. Note that all existing resources in agent (e.g. intents,
+        # entity types, flows) will be removed.
         # @param [String] name
         #   Required. The name of the agent to restore into. Format: `projects//locations//
         #   agents/`.
@@ -714,7 +715,9 @@ module Google
         #   sessions/`. If `Environment ID` is not specified, we assume default 'draft'
         #   environment. It's up to the API caller to choose an appropriate `Session ID`.
         #   It can be a random number or some type of session identifiers (preferably
-        #   hashed). The length of the `Session ID` must not exceed 36 characters.
+        #   hashed). The length of the `Session ID` must not exceed 36 characters. For
+        #   more information, see the [sessions guide](https://cloud.google.com/dialogflow/
+        #   cx/docs/concept/session).
         # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1DetectIntentRequest] google_cloud_dialogflow_cx_v3beta1_detect_intent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -754,7 +757,9 @@ module Google
         #   sessions/`. If `Environment ID` is not specified, we assume default 'draft'
         #   environment. It's up to the API caller to choose an appropriate `Session ID`.
         #   It can be a random number or some type of session identifiers (preferably
-        #   hashed). The length of the `Session ID` must not exceed 36 characters.
+        #   hashed). The length of the `Session ID` must not exceed 36 characters. For
+        #   more information, see the [sessions guide](https://cloud.google.com/dialogflow/
+        #   cx/docs/concept/session).
         # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FulfillIntentRequest] google_cloud_dialogflow_cx_v3beta1_fulfill_intent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -792,7 +797,9 @@ module Google
         #   sessions/`. If `Environment ID` is not specified, we assume default 'draft'
         #   environment. It's up to the API caller to choose an appropriate `Session ID`.
         #   It can be a random number or some type of session identifiers (preferably
-        #   hashed). The length of the `Session ID` must not exceed 36 characters.
+        #   hashed). The length of the `Session ID` must not exceed 36 characters. For
+        #   more information, see the [sessions guide](https://cloud.google.com/dialogflow/
+        #   cx/docs/concept/session).
         # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1MatchIntentRequest] google_cloud_dialogflow_cx_v3beta1_match_intent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2100,7 +2107,9 @@ module Google
         #   sessions/`. If `Environment ID` is not specified, we assume default 'draft'
         #   environment. It's up to the API caller to choose an appropriate `Session ID`.
         #   It can be a random number or some type of session identifiers (preferably
-        #   hashed). The length of the `Session ID` must not exceed 36 characters.
+        #   hashed). The length of the `Session ID` must not exceed 36 characters. For
+        #   more information, see the [sessions guide](https://cloud.google.com/dialogflow/
+        #   cx/docs/concept/session).
         # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1DetectIntentRequest] google_cloud_dialogflow_cx_v3beta1_detect_intent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2140,7 +2149,9 @@ module Google
         #   sessions/`. If `Environment ID` is not specified, we assume default 'draft'
         #   environment. It's up to the API caller to choose an appropriate `Session ID`.
         #   It can be a random number or some type of session identifiers (preferably
-        #   hashed). The length of the `Session ID` must not exceed 36 characters.
+        #   hashed). The length of the `Session ID` must not exceed 36 characters. For
+        #   more information, see the [sessions guide](https://cloud.google.com/dialogflow/
+        #   cx/docs/concept/session).
         # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FulfillIntentRequest] google_cloud_dialogflow_cx_v3beta1_fulfill_intent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2178,7 +2189,9 @@ module Google
         #   sessions/`. If `Environment ID` is not specified, we assume default 'draft'
         #   environment. It's up to the API caller to choose an appropriate `Session ID`.
         #   It can be a random number or some type of session identifiers (preferably
-        #   hashed). The length of the `Session ID` must not exceed 36 characters.
+        #   hashed). The length of the `Session ID` must not exceed 36 characters. For
+        #   more information, see the [sessions guide](https://cloud.google.com/dialogflow/
+        #   cx/docs/concept/session).
         # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1MatchIntentRequest] google_cloud_dialogflow_cx_v3beta1_match_intent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

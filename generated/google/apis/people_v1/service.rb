@@ -866,10 +866,10 @@ module Google
         #   Each path should start with `person.`: for example, `person.names` or `person.
         #   photos`.
         # @param [Boolean] request_sync_token
-        #   Optional. Whether the response should include `next_sync_token`, which can be
-        #   used to get all changes since the last request. For subsequent sync requests
-        #   use the `sync_token` param instead. Initial sync requests that specify `
-        #   request_sync_token` have an additional rate limit.
+        #   Optional. Whether the response should include `next_sync_token` on the last
+        #   page, which can be used to get all changes since the last request. For
+        #   subsequent sync requests use the `sync_token` param instead. Initial sync
+        #   requests that specify `request_sync_token` have an additional rate limit.
         # @param [String] sort_order
         #   Optional. The order in which the connections should be sorted. Defaults to `
         #   LAST_MODIFIED_ASCENDING`.

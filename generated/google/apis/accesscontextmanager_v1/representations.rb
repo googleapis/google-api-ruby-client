@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GcpUserAccessBinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListAccessLevelsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +101,12 @@ module Google
       end
       
       class ListAccessPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListGcpUserAccessBindingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -275,6 +287,15 @@ module Google
         end
       end
       
+      class GcpUserAccessBinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :access_levels, as: 'accessLevels'
+          property :group_key, as: 'groupKey'
+          property :name, as: 'name'
+        end
+      end
+      
       class ListAccessLevelsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -288,6 +309,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :access_policies, as: 'accessPolicies', class: Google::Apis::AccesscontextmanagerV1::AccessPolicy, decorator: Google::Apis::AccesscontextmanagerV1::AccessPolicy::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListGcpUserAccessBindingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :gcp_user_access_bindings, as: 'gcpUserAccessBindings', class: Google::Apis::AccesscontextmanagerV1::GcpUserAccessBinding, decorator: Google::Apis::AccesscontextmanagerV1::GcpUserAccessBinding::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end

@@ -1769,6 +1769,25 @@ module Google
         end
       end
       
+      # Response message for Documents.ImportDocuments.
+      class GoogleCloudDialogflowV2ImportDocumentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Includes details about skipped documents or any other warnings.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleRpcStatus>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
       # Instructs the speech recognizer how to process the audio content.
       class GoogleCloudDialogflowV2InputAudioConfig
         include Google::Apis::Core::Hashable
@@ -3616,9 +3635,9 @@ module Google
       
         # The result of sentiment analysis. Sentiment analysis inspects user input and
         # identifies the prevailing subjective opinion, especially to determine a user's
-        # attitude as positive, negative, or neutral. For Participants.AnalyzeContent,
-        # it needs to be configured in DetectIntentRequest.query_params. For
-        # Participants.StreamingAnalyzeContent, it needs to be configured in
+        # attitude as positive, negative, or neutral. For Participants.DetectIntent, it
+        # needs to be configured in DetectIntentRequest.query_params. For Participants.
+        # StreamingDetectIntent, it needs to be configured in
         # StreamingDetectIntentRequest.query_params. And for Participants.AnalyzeContent
         # and Participants.StreamingAnalyzeContent, it needs to be configured in
         # ConversationProfile.human_agent_assistant_config
@@ -3777,9 +3796,9 @@ module Google
       
       # The result of sentiment analysis. Sentiment analysis inspects user input and
       # identifies the prevailing subjective opinion, especially to determine a user's
-      # attitude as positive, negative, or neutral. For Participants.AnalyzeContent,
-      # it needs to be configured in DetectIntentRequest.query_params. For
-      # Participants.StreamingAnalyzeContent, it needs to be configured in
+      # attitude as positive, negative, or neutral. For Participants.DetectIntent, it
+      # needs to be configured in DetectIntentRequest.query_params. For Participants.
+      # StreamingDetectIntent, it needs to be configured in
       # StreamingDetectIntentRequest.query_params. And for Participants.AnalyzeContent
       # and Participants.StreamingAnalyzeContent, it needs to be configured in
       # ConversationProfile.human_agent_assistant_config
@@ -4567,6 +4586,25 @@ module Google
         def update!(**args)
           @agent_content = args[:agent_content] if args.key?(:agent_content)
           @agent_uri = args[:agent_uri] if args.key?(:agent_uri)
+        end
+      end
+      
+      # Response message for Documents.ImportDocuments.
+      class GoogleCloudDialogflowV2beta1ImportDocumentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Includes details about skipped documents or any other warnings.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleRpcStatus>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @warnings = args[:warnings] if args.key?(:warnings)
         end
       end
       
@@ -6542,9 +6580,9 @@ module Google
       
         # The result of sentiment analysis. Sentiment analysis inspects user input and
         # identifies the prevailing subjective opinion, especially to determine a user's
-        # attitude as positive, negative, or neutral. For Participants.AnalyzeContent,
-        # it needs to be configured in DetectIntentRequest.query_params. For
-        # Participants.StreamingAnalyzeContent, it needs to be configured in
+        # attitude as positive, negative, or neutral. For Participants.DetectIntent, it
+        # needs to be configured in DetectIntentRequest.query_params. For Participants.
+        # StreamingDetectIntent, it needs to be configured in
         # StreamingDetectIntentRequest.query_params. And for Participants.AnalyzeContent
         # and Participants.StreamingAnalyzeContent, it needs to be configured in
         # ConversationProfile.human_agent_assistant_config
@@ -6629,9 +6667,9 @@ module Google
       
       # The result of sentiment analysis. Sentiment analysis inspects user input and
       # identifies the prevailing subjective opinion, especially to determine a user's
-      # attitude as positive, negative, or neutral. For Participants.AnalyzeContent,
-      # it needs to be configured in DetectIntentRequest.query_params. For
-      # Participants.StreamingAnalyzeContent, it needs to be configured in
+      # attitude as positive, negative, or neutral. For Participants.DetectIntent, it
+      # needs to be configured in DetectIntentRequest.query_params. For Participants.
+      # StreamingDetectIntent, it needs to be configured in
       # StreamingDetectIntentRequest.query_params. And for Participants.AnalyzeContent
       # and Participants.StreamingAnalyzeContent, it needs to be configured in
       # ConversationProfile.human_agent_assistant_config
@@ -6908,26 +6946,6 @@ module Google
           @payload = args[:payload] if args.key?(:payload)
           @session_entity_types = args[:session_entity_types] if args.key?(:session_entity_types)
           @source = args[:source] if args.key?(:source)
-        end
-      end
-      
-      # Metadata associated with the long running operation for Versions.CreateVersion.
-      class GoogleCloudDialogflowV3alpha1CreateVersionOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Name of the created version. Format: `projects//locations//agents//flows//
-        # versions/`.
-        # Corresponds to the JSON property `version`
-        # @return [String]
-        attr_accessor :version
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @version = args[:version] if args.key?(:version)
         end
       end
       

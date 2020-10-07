@@ -446,6 +446,49 @@ module Google
         end
       end
       
+      # Restricts access to Cloud Console and Google Cloud APIs for a set of users
+      # using Context-Aware Access.
+      class GcpUserAccessBinding
+        include Google::Apis::Core::Hashable
+      
+        # Required. Access level that a user must have to be granted access. Only one
+        # access level is supported, not multiple. This repeated field must have exactly
+        # one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        # Corresponds to the JSON property `accessLevels`
+        # @return [Array<String>]
+        attr_accessor :access_levels
+      
+        # Required. Immutable. Google Group id whose members are subject to this binding'
+        # s restrictions. See "id" in the [G Suite Directory API's Groups resource] (
+        # https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource)
+        # . If a group's email address/alias is changed, this resource will continue to
+        # point at the changed group. This field does not accept group email addresses
+        # or aliases. Example: "01d520gv4vjcrht"
+        # Corresponds to the JSON property `groupKey`
+        # @return [String]
+        attr_accessor :group_key
+      
+        # Immutable. Assigned by the server during creation. The last segment has an
+        # arbitrary length and has only URI unreserved characters (as defined by [RFC
+        # 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should
+        # not be specified by the client during creation. Example: "organizations/256/
+        # gcpUserAccessBindings/b3-BhcX_Ud5N"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_levels = args[:access_levels] if args.key?(:access_levels)
+          @group_key = args[:group_key] if args.key?(:group_key)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # A response to `ListAccessLevelsRequest`.
       class ListAccessLevelsResponse
         include Google::Apis::Core::Hashable
@@ -494,6 +537,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_policies = args[:access_policies] if args.key?(:access_policies)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response of ListGcpUserAccessBindings.
+      class ListGcpUserAccessBindingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # GcpUserAccessBinding
+        # Corresponds to the JSON property `gcpUserAccessBindings`
+        # @return [Array<Google::Apis::AccesscontextmanagerV1::GcpUserAccessBinding>]
+        attr_accessor :gcp_user_access_bindings
+      
+        # Token to get the next page of items. If blank, there are no more items.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcp_user_access_bindings = args[:gcp_user_access_bindings] if args.key?(:gcp_user_access_bindings)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end

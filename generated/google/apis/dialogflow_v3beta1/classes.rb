@@ -172,8 +172,10 @@ module Google
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1OutputAudioConfig]
         attr_accessor :output_audio_config
       
-        # Represents the query input. It can contain either: 1. A conversational query
+        # Represents the query input. It can contain one of: 1. A conversational query
         # in the form of text. 2. An intent query that specifies which intent to trigger.
+        # 3. Natural language speech audio to be processed. 4. An event to be triggered.
+        # 
         # Corresponds to the JSON property `queryInput`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1QueryInput]
         attr_accessor :query_input
@@ -1698,8 +1700,10 @@ module Google
       class GoogleCloudDialogflowCxV3beta1MatchIntentRequest
         include Google::Apis::Core::Hashable
       
-        # Represents the query input. It can contain either: 1. A conversational query
+        # Represents the query input. It can contain one of: 1. A conversational query
         # in the form of text. 2. An intent query that specifies which intent to trigger.
+        # 3. Natural language speech audio to be processed. 4. An event to be triggered.
+        # 
         # Corresponds to the JSON property `queryInput`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1QueryInput]
         attr_accessor :query_input
@@ -1758,6 +1762,12 @@ module Google
         # @return [String]
         attr_accessor :transcript
       
+        # If an event was provided as input, this field will contain a copy of the event
+        # name.
+        # Corresponds to the JSON property `triggerEvent`
+        # @return [String]
+        attr_accessor :trigger_event
+      
         # If an intent was provided as input, this field will contain a copy of the
         # intent identifier.
         # Corresponds to the JSON property `triggerIntent`
@@ -1774,6 +1784,7 @@ module Google
           @matches = args[:matches] if args.key?(:matches)
           @text = args[:text] if args.key?(:text)
           @transcript = args[:transcript] if args.key?(:transcript)
+          @trigger_event = args[:trigger_event] if args.key?(:trigger_event)
           @trigger_intent = args[:trigger_intent] if args.key?(:trigger_intent)
         end
       end
@@ -2041,8 +2052,10 @@ module Google
         end
       end
       
-      # Represents the query input. It can contain either: 1. A conversational query
+      # Represents the query input. It can contain one of: 1. A conversational query
       # in the form of text. 2. An intent query that specifies which intent to trigger.
+      # 3. Natural language speech audio to be processed. 4. An event to be triggered.
+      # 
       class GoogleCloudDialogflowCxV3beta1QueryInput
         include Google::Apis::Core::Hashable
       
@@ -3673,6 +3686,25 @@ module Google
         end
       end
       
+      # Response message for Documents.ImportDocuments.
+      class GoogleCloudDialogflowV2ImportDocumentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Includes details about skipped documents or any other warnings.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleRpcStatus>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
       # An intent categorizes an end-user's intention for one conversation turn. For
       # each agent, you define many intents, where your combined intents can handle a
       # complete conversation. When an end-user writes or says something, referred to
@@ -5126,9 +5158,9 @@ module Google
       
         # The result of sentiment analysis. Sentiment analysis inspects user input and
         # identifies the prevailing subjective opinion, especially to determine a user's
-        # attitude as positive, negative, or neutral. For Participants.AnalyzeContent,
-        # it needs to be configured in DetectIntentRequest.query_params. For
-        # Participants.StreamingAnalyzeContent, it needs to be configured in
+        # attitude as positive, negative, or neutral. For Participants.DetectIntent, it
+        # needs to be configured in DetectIntentRequest.query_params. For Participants.
+        # StreamingDetectIntent, it needs to be configured in
         # StreamingDetectIntentRequest.query_params. And for Participants.AnalyzeContent
         # and Participants.StreamingAnalyzeContent, it needs to be configured in
         # ConversationProfile.human_agent_assistant_config
@@ -5212,9 +5244,9 @@ module Google
       
       # The result of sentiment analysis. Sentiment analysis inspects user input and
       # identifies the prevailing subjective opinion, especially to determine a user's
-      # attitude as positive, negative, or neutral. For Participants.AnalyzeContent,
-      # it needs to be configured in DetectIntentRequest.query_params. For
-      # Participants.StreamingAnalyzeContent, it needs to be configured in
+      # attitude as positive, negative, or neutral. For Participants.DetectIntent, it
+      # needs to be configured in DetectIntentRequest.query_params. For Participants.
+      # StreamingDetectIntent, it needs to be configured in
       # StreamingDetectIntentRequest.query_params. And for Participants.AnalyzeContent
       # and Participants.StreamingAnalyzeContent, it needs to be configured in
       # ConversationProfile.human_agent_assistant_config
@@ -5781,6 +5813,25 @@ module Google
         def update!(**args)
           @agent_content = args[:agent_content] if args.key?(:agent_content)
           @agent_uri = args[:agent_uri] if args.key?(:agent_uri)
+        end
+      end
+      
+      # Response message for Documents.ImportDocuments.
+      class GoogleCloudDialogflowV2beta1ImportDocumentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Includes details about skipped documents or any other warnings.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleRpcStatus>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @warnings = args[:warnings] if args.key?(:warnings)
         end
       end
       
@@ -7756,9 +7807,9 @@ module Google
       
         # The result of sentiment analysis. Sentiment analysis inspects user input and
         # identifies the prevailing subjective opinion, especially to determine a user's
-        # attitude as positive, negative, or neutral. For Participants.AnalyzeContent,
-        # it needs to be configured in DetectIntentRequest.query_params. For
-        # Participants.StreamingAnalyzeContent, it needs to be configured in
+        # attitude as positive, negative, or neutral. For Participants.DetectIntent, it
+        # needs to be configured in DetectIntentRequest.query_params. For Participants.
+        # StreamingDetectIntent, it needs to be configured in
         # StreamingDetectIntentRequest.query_params. And for Participants.AnalyzeContent
         # and Participants.StreamingAnalyzeContent, it needs to be configured in
         # ConversationProfile.human_agent_assistant_config
@@ -7843,9 +7894,9 @@ module Google
       
       # The result of sentiment analysis. Sentiment analysis inspects user input and
       # identifies the prevailing subjective opinion, especially to determine a user's
-      # attitude as positive, negative, or neutral. For Participants.AnalyzeContent,
-      # it needs to be configured in DetectIntentRequest.query_params. For
-      # Participants.StreamingAnalyzeContent, it needs to be configured in
+      # attitude as positive, negative, or neutral. For Participants.DetectIntent, it
+      # needs to be configured in DetectIntentRequest.query_params. For Participants.
+      # StreamingDetectIntent, it needs to be configured in
       # StreamingDetectIntentRequest.query_params. And for Participants.AnalyzeContent
       # and Participants.StreamingAnalyzeContent, it needs to be configured in
       # ConversationProfile.human_agent_assistant_config
@@ -8122,26 +8173,6 @@ module Google
           @payload = args[:payload] if args.key?(:payload)
           @session_entity_types = args[:session_entity_types] if args.key?(:session_entity_types)
           @source = args[:source] if args.key?(:source)
-        end
-      end
-      
-      # Metadata associated with the long running operation for Versions.CreateVersion.
-      class GoogleCloudDialogflowV3alpha1CreateVersionOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Name of the created version. Format: `projects//locations//agents//flows//
-        # versions/`.
-        # Corresponds to the JSON property `version`
-        # @return [String]
-        attr_accessor :version
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @version = args[:version] if args.key?(:version)
         end
       end
       

@@ -870,6 +870,186 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Creates a GcpUserAccessBinding. If the client specifies a name, the server
+        # will ignore it. Fails if a resource already exists with the same group_key.
+        # Completion of this long-running operation does not necessarily signify that
+        # the new binding is deployed onto all affected users, which may take more time.
+        # @param [String] parent
+        #   Required. Example: "organizations/256"
+        # @param [Google::Apis::AccesscontextmanagerV1::GcpUserAccessBinding] gcp_user_access_binding_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AccesscontextmanagerV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AccesscontextmanagerV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_gcp_user_access_binding(parent, gcp_user_access_binding_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/gcpUserAccessBindings', options)
+          command.request_representation = Google::Apis::AccesscontextmanagerV1::GcpUserAccessBinding::Representation
+          command.request_object = gcp_user_access_binding_object
+          command.response_representation = Google::Apis::AccesscontextmanagerV1::Operation::Representation
+          command.response_class = Google::Apis::AccesscontextmanagerV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a GcpUserAccessBinding. Completion of this long-running operation does
+        # not necessarily signify that the binding deletion is deployed onto all
+        # affected users, which may take more time.
+        # @param [String] name
+        #   Required. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AccesscontextmanagerV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AccesscontextmanagerV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_gcp_user_access_binding(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AccesscontextmanagerV1::Operation::Representation
+          command.response_class = Google::Apis::AccesscontextmanagerV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the GcpUserAccessBinding with the given name.
+        # @param [String] name
+        #   Required. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AccesscontextmanagerV1::GcpUserAccessBinding] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AccesscontextmanagerV1::GcpUserAccessBinding]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_gcp_user_access_binding(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AccesscontextmanagerV1::GcpUserAccessBinding::Representation
+          command.response_class = Google::Apis::AccesscontextmanagerV1::GcpUserAccessBinding
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all GcpUserAccessBindings for a Google Cloud organization.
+        # @param [String] parent
+        #   Required. Example: "organizations/256"
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of items to return. The server may return fewer items.
+        #   If left blank, the server may return any number of items.
+        # @param [String] page_token
+        #   Optional. If left blank, returns the first page. To enumerate all items, use
+        #   the next_page_token from your previous list operation.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AccesscontextmanagerV1::ListGcpUserAccessBindingsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AccesscontextmanagerV1::ListGcpUserAccessBindingsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_gcp_user_access_bindings(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/gcpUserAccessBindings', options)
+          command.response_representation = Google::Apis::AccesscontextmanagerV1::ListGcpUserAccessBindingsResponse::Representation
+          command.response_class = Google::Apis::AccesscontextmanagerV1::ListGcpUserAccessBindingsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a GcpUserAccessBinding. Completion of this long-running operation does
+        # not necessarily signify that the changed binding is deployed onto all affected
+        # users, which may take more time.
+        # @param [String] name
+        #   Immutable. Assigned by the server during creation. The last segment has an
+        #   arbitrary length and has only URI unreserved characters (as defined by [RFC
+        #   3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should
+        #   not be specified by the client during creation. Example: "organizations/256/
+        #   gcpUserAccessBindings/b3-BhcX_Ud5N"
+        # @param [Google::Apis::AccesscontextmanagerV1::GcpUserAccessBinding] gcp_user_access_binding_object
+        # @param [String] update_mask
+        #   Required. Only the fields specified in this mask are updated. Because name and
+        #   group_key cannot be changed, update_mask is required and must always be:
+        #   update_mask ` paths: "access_levels" `
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AccesscontextmanagerV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AccesscontextmanagerV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_gcp_user_access_binding(name, gcp_user_access_binding_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::AccesscontextmanagerV1::GcpUserAccessBinding::Representation
+          command.request_object = gcp_user_access_binding_object
+          command.response_representation = Google::Apis::AccesscontextmanagerV1::Operation::Representation
+          command.response_class = Google::Apis::AccesscontextmanagerV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 

@@ -1026,7 +1026,8 @@ module Google
         attr_accessor :next_page_token
       
         # A token, which can be sent as `sync_token` to retrieve changes since the last
-        # request. Request must set `request_sync_token` to return the sync token.
+        # request. Request must set `request_sync_token` to return the sync token. When
+        # the response is paginated, only the last page will contain `nextSyncToken`.
         # Corresponds to the JSON property `nextSyncToken`
         # @return [String]
         attr_accessor :next_sync_token
