@@ -22,8 +22,150 @@ module Google
   module Apis
     module CloudshellV1
       
+      # Message included in the metadata field of operations returned from
+      # AddPublicKey.
+      class AddPublicKeyMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for AddPublicKey.
+      class AddPublicKeyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Key that should be added to the environment. Supported formats are `ssh-dss` (
+        # see RFC4253), `ssh-rsa` (see RFC4253), `ecdsa-sha2-nistp256` (see RFC5656), `
+        # ecdsa-sha2-nistp384` (see RFC5656) and `ecdsa-sha2-nistp521` (see RFC5656). It
+        # should be structured as , where part is encoded with Base64.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+        end
+      end
+      
+      # Response message for AddPublicKey.
+      class AddPublicKeyResponse
+        include Google::Apis::Core::Hashable
+      
+        # Key that was added to the environment.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+        end
+      end
+      
+      # Message included in the metadata field of operations returned from
+      # AuthorizeEnvironment.
+      class AuthorizeEnvironmentMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for AuthorizeEnvironment.
+      class AuthorizeEnvironmentRequest
+        include Google::Apis::Core::Hashable
+      
+        # The OAuth access token that should be sent to the environment.
+        # Corresponds to the JSON property `accessToken`
+        # @return [String]
+        attr_accessor :access_token
+      
+        # The time when the credentials expire. If not set, defaults to one hour from
+        # when the server received the request.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # The OAuth ID token that should be sent to the environment.
+        # Corresponds to the JSON property `idToken`
+        # @return [String]
+        attr_accessor :id_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_token = args[:access_token] if args.key?(:access_token)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @id_token = args[:id_token] if args.key?(:id_token)
+        end
+      end
+      
+      # Response message for AuthorizeEnvironment.
+      class AuthorizeEnvironmentResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Message included in the metadata field of operations returned from
+      # CreateEnvironment.
+      class CreateEnvironmentMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Message included in the metadata field of operations returned from
+      # DeleteEnvironment.
+      class DeleteEnvironmentMetadata
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -49,6 +191,89 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A Cloud Shell environment, which is defined as the combination of a Docker
+      # image specifying what is installed on the environment and a home directory
+      # containing the user's data that will remain across sessions. Each user has at
+      # least an environment with the ID "default".
+      class Environment
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. Full path to the Docker image used to run this
+        # environment, e.g. "gcr.io/dev-con/cloud-devshell:latest".
+        # Corresponds to the JSON property `dockerImage`
+        # @return [String]
+        attr_accessor :docker_image
+      
+        # Output only. The environment's identifier, unique among the user's
+        # environments.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Immutable. Full name of this resource, in the format `users/`owner_email`/
+        # environments/`environment_id``. ``owner_email`` is the email address of the
+        # user to whom this environment belongs, and ``environment_id`` is the
+        # identifier of this environment. For example, `users/someone@example.com/
+        # environments/default`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Public keys associated with the environment. Clients can connect
+        # to this environment via SSH only if they possess a private key corresponding
+        # to at least one of these public keys. Keys can be added to or removed from the
+        # environment using the AddPublicKey and RemovePublicKey methods.
+        # Corresponds to the JSON property `publicKeys`
+        # @return [Array<String>]
+        attr_accessor :public_keys
+      
+        # Output only. Host to which clients can connect to initiate SSH sessions with
+        # the environment.
+        # Corresponds to the JSON property `sshHost`
+        # @return [String]
+        attr_accessor :ssh_host
+      
+        # Output only. Port to which clients can connect to initiate SSH sessions with
+        # the environment.
+        # Corresponds to the JSON property `sshPort`
+        # @return [Fixnum]
+        attr_accessor :ssh_port
+      
+        # Output only. Username that clients should use when initiating SSH sessions
+        # with the environment.
+        # Corresponds to the JSON property `sshUsername`
+        # @return [String]
+        attr_accessor :ssh_username
+      
+        # Output only. Current execution state of this environment.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Host to which clients can connect to initiate HTTPS or WSS
+        # connections with the environment.
+        # Corresponds to the JSON property `webHost`
+        # @return [String]
+        attr_accessor :web_host
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @docker_image = args[:docker_image] if args.key?(:docker_image)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @public_keys = args[:public_keys] if args.key?(:public_keys)
+          @ssh_host = args[:ssh_host] if args.key?(:ssh_host)
+          @ssh_port = args[:ssh_port] if args.key?(:ssh_port)
+          @ssh_username = args[:ssh_username] if args.key?(:ssh_username)
+          @state = args[:state] if args.key?(:state)
+          @web_host = args[:web_host] if args.key?(:web_host)
         end
       end
       
@@ -136,6 +361,123 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # Message included in the metadata field of operations returned from
+      # RemovePublicKey.
+      class RemovePublicKeyMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for RemovePublicKey.
+      class RemovePublicKeyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Key that should be removed from the environment.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+        end
+      end
+      
+      # Response message for RemovePublicKey.
+      class RemovePublicKeyResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Message included in the metadata field of operations returned from
+      # StartEnvironment.
+      class StartEnvironmentMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Current state of the environment being started.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Request message for StartEnvironment.
+      class StartEnvironmentRequest
+        include Google::Apis::Core::Hashable
+      
+        # The initial access token passed to the environment. If this is present and
+        # valid, the environment will be pre-authenticated with gcloud so that the user
+        # can run gcloud commands in Cloud Shell without having to log in. This code can
+        # be updated later by calling AuthorizeEnvironment.
+        # Corresponds to the JSON property `accessToken`
+        # @return [String]
+        attr_accessor :access_token
+      
+        # Public keys that should be added to the environment before it is started.
+        # Corresponds to the JSON property `publicKeys`
+        # @return [Array<String>]
+        attr_accessor :public_keys
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_token = args[:access_token] if args.key?(:access_token)
+          @public_keys = args[:public_keys] if args.key?(:public_keys)
+        end
+      end
+      
+      # Message included in the response field of operations returned from
+      # StartEnvironment once the operation is complete.
+      class StartEnvironmentResponse
+        include Google::Apis::Core::Hashable
+      
+        # A Cloud Shell environment, which is defined as the combination of a Docker
+        # image specifying what is installed on the environment and a home directory
+        # containing the user's data that will remain across sessions. Each user has at
+        # least an environment with the ID "default".
+        # Corresponds to the JSON property `environment`
+        # @return [Google::Apis::CloudshellV1::Environment]
+        attr_accessor :environment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environment = args[:environment] if args.key?(:environment)
         end
       end
       

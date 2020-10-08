@@ -4003,7 +4003,8 @@ module Google
         attr_accessor :facet_options
       
         # Maximum number of search results to return in one page. Valid values are
-        # between 1 and 100, inclusive. Default value is 10.
+        # between 1 and 100, inclusive. Default value is 10. Minimum value is 50 when
+        # results beyond 2000 are requested.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size

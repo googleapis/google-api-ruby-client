@@ -1464,6 +1464,11 @@ module Google
         attr_accessor :docker_cache_hit
         alias_method :docker_cache_hit?, :docker_cache_hit
       
+        # Docker Image name.
+        # Corresponds to the JSON property `dockerImageName`
+        # @return [String]
+        attr_accessor :docker_image_name
+      
         # The input cache miss ratio.
         # Corresponds to the JSON property `inputCacheMiss`
         # @return [Float]
@@ -1486,6 +1491,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @docker_cache_hit = args[:docker_cache_hit] if args.key?(:docker_cache_hit)
+          @docker_image_name = args[:docker_image_name] if args.key?(:docker_image_name)
           @input_cache_miss = args[:input_cache_miss] if args.key?(:input_cache_miss)
           @num_errors = args[:num_errors] if args.key?(:num_errors)
           @num_warnings = args[:num_warnings] if args.key?(:num_warnings)

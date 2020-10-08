@@ -232,7 +232,7 @@ module Google
       class EventFilter
         include Google::Apis::Core::Hashable
       
-        # Dimension Filter for a Path Filter.
+        # Dimension Filter on path events.
         # Corresponds to the JSON property `dimensionFilter`
         # @return [Google::Apis::DoubleclickbidmanagerV1_1::PathQueryOptionsFilter]
         attr_accessor :dimension_filter
@@ -470,7 +470,7 @@ module Google
         end
       end
       
-      # Dimension Filter for a Path Filter.
+      # Dimension Filter on path events.
       class PathQueryOptionsFilter
         include Google::Apis::Core::Hashable
       

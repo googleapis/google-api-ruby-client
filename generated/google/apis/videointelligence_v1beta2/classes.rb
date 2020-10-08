@@ -215,6 +215,38 @@ module Google
         end
       end
       
+      # Deprecated. No effect.
+      class GoogleCloudVideointelligenceV1FaceAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # All video frames where a face was detected.
+        # Corresponds to the JSON property `frames`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1FaceFrame>]
+        attr_accessor :frames
+      
+        # All video segments where a face was detected.
+        # Corresponds to the JSON property `segments`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1FaceSegment>]
+        attr_accessor :segments
+      
+        # Thumbnail of a representative face view (in JPEG format).
+        # Corresponds to the JSON property `thumbnail`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :thumbnail
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @frames = args[:frames] if args.key?(:frames)
+          @segments = args[:segments] if args.key?(:segments)
+          @thumbnail = args[:thumbnail] if args.key?(:thumbnail)
+        end
+      end
+      
       # Face detection annotation.
       class GoogleCloudVideointelligenceV1FaceDetectionAnnotation
         include Google::Apis::Core::Hashable
@@ -231,6 +263,52 @@ module Google
         # Update properties of this object
         def update!(**args)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Deprecated. No effect.
+      class GoogleCloudVideointelligenceV1FaceFrame
+        include Google::Apis::Core::Hashable
+      
+        # Normalized Bounding boxes in a frame. There can be more than one boxes if the
+        # same face is detected in multiple locations within the current frame.
+        # Corresponds to the JSON property `normalizedBoundingBoxes`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1NormalizedBoundingBox>]
+        attr_accessor :normalized_bounding_boxes
+      
+        # Time-offset, relative to the beginning of the video, corresponding to the
+        # video frame for this location.
+        # Corresponds to the JSON property `timeOffset`
+        # @return [String]
+        attr_accessor :time_offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @normalized_bounding_boxes = args[:normalized_bounding_boxes] if args.key?(:normalized_bounding_boxes)
+          @time_offset = args[:time_offset] if args.key?(:time_offset)
+        end
+      end
+      
+      # Video segment level annotation results for face detection.
+      class GoogleCloudVideointelligenceV1FaceSegment
+        include Google::Apis::Core::Hashable
+      
+        # Video segment.
+        # Corresponds to the JSON property `segment`
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1VideoSegment]
+        attr_accessor :segment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @segment = args[:segment] if args.key?(:segment)
         end
       end
       
@@ -875,6 +953,11 @@ module Google
         # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1ExplicitContentAnnotation]
         attr_accessor :explicit_annotation
       
+        # Deprecated. Please use `face_detection_annotations` instead.
+        # Corresponds to the JSON property `faceAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1FaceAnnotation>]
+        attr_accessor :face_annotations
+      
         # Face detection annotations.
         # Corresponds to the JSON property `faceDetectionAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1FaceDetectionAnnotation>]
@@ -966,6 +1049,7 @@ module Google
         def update!(**args)
           @error = args[:error] if args.key?(:error)
           @explicit_annotation = args[:explicit_annotation] if args.key?(:explicit_annotation)
+          @face_annotations = args[:face_annotations] if args.key?(:face_annotations)
           @face_detection_annotations = args[:face_detection_annotations] if args.key?(:face_detection_annotations)
           @frame_label_annotations = args[:frame_label_annotations] if args.key?(:frame_label_annotations)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
@@ -1349,6 +1433,38 @@ module Google
         end
       end
       
+      # Deprecated. No effect.
+      class GoogleCloudVideointelligenceV1beta2FaceAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # All video frames where a face was detected.
+        # Corresponds to the JSON property `frames`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2FaceFrame>]
+        attr_accessor :frames
+      
+        # All video segments where a face was detected.
+        # Corresponds to the JSON property `segments`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2FaceSegment>]
+        attr_accessor :segments
+      
+        # Thumbnail of a representative face view (in JPEG format).
+        # Corresponds to the JSON property `thumbnail`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :thumbnail
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @frames = args[:frames] if args.key?(:frames)
+          @segments = args[:segments] if args.key?(:segments)
+          @thumbnail = args[:thumbnail] if args.key?(:thumbnail)
+        end
+      end
+      
       # Face detection annotation.
       class GoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation
         include Google::Apis::Core::Hashable
@@ -1400,6 +1516,52 @@ module Google
           @include_attributes = args[:include_attributes] if args.key?(:include_attributes)
           @include_bounding_boxes = args[:include_bounding_boxes] if args.key?(:include_bounding_boxes)
           @model = args[:model] if args.key?(:model)
+        end
+      end
+      
+      # Deprecated. No effect.
+      class GoogleCloudVideointelligenceV1beta2FaceFrame
+        include Google::Apis::Core::Hashable
+      
+        # Normalized Bounding boxes in a frame. There can be more than one boxes if the
+        # same face is detected in multiple locations within the current frame.
+        # Corresponds to the JSON property `normalizedBoundingBoxes`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox>]
+        attr_accessor :normalized_bounding_boxes
+      
+        # Time-offset, relative to the beginning of the video, corresponding to the
+        # video frame for this location.
+        # Corresponds to the JSON property `timeOffset`
+        # @return [String]
+        attr_accessor :time_offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @normalized_bounding_boxes = args[:normalized_bounding_boxes] if args.key?(:normalized_bounding_boxes)
+          @time_offset = args[:time_offset] if args.key?(:time_offset)
+        end
+      end
+      
+      # Video segment level annotation results for face detection.
+      class GoogleCloudVideointelligenceV1beta2FaceSegment
+        include Google::Apis::Core::Hashable
+      
+        # Video segment.
+        # Corresponds to the JSON property `segment`
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2VideoSegment]
+        attr_accessor :segment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @segment = args[:segment] if args.key?(:segment)
         end
       end
       
@@ -2326,6 +2488,11 @@ module Google
         # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation]
         attr_accessor :explicit_annotation
       
+        # Deprecated. Please use `face_detection_annotations` instead.
+        # Corresponds to the JSON property `faceAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2FaceAnnotation>]
+        attr_accessor :face_annotations
+      
         # Face detection annotations.
         # Corresponds to the JSON property `faceDetectionAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation>]
@@ -2417,6 +2584,7 @@ module Google
         def update!(**args)
           @error = args[:error] if args.key?(:error)
           @explicit_annotation = args[:explicit_annotation] if args.key?(:explicit_annotation)
+          @face_annotations = args[:face_annotations] if args.key?(:face_annotations)
           @face_detection_annotations = args[:face_detection_annotations] if args.key?(:face_detection_annotations)
           @frame_label_annotations = args[:frame_label_annotations] if args.key?(:frame_label_annotations)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
@@ -2782,6 +2950,38 @@ module Google
         end
       end
       
+      # Deprecated. No effect.
+      class GoogleCloudVideointelligenceV1p1beta1FaceAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # All video frames where a face was detected.
+        # Corresponds to the JSON property `frames`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1FaceFrame>]
+        attr_accessor :frames
+      
+        # All video segments where a face was detected.
+        # Corresponds to the JSON property `segments`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1FaceSegment>]
+        attr_accessor :segments
+      
+        # Thumbnail of a representative face view (in JPEG format).
+        # Corresponds to the JSON property `thumbnail`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :thumbnail
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @frames = args[:frames] if args.key?(:frames)
+          @segments = args[:segments] if args.key?(:segments)
+          @thumbnail = args[:thumbnail] if args.key?(:thumbnail)
+        end
+      end
+      
       # Face detection annotation.
       class GoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation
         include Google::Apis::Core::Hashable
@@ -2798,6 +2998,52 @@ module Google
         # Update properties of this object
         def update!(**args)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Deprecated. No effect.
+      class GoogleCloudVideointelligenceV1p1beta1FaceFrame
+        include Google::Apis::Core::Hashable
+      
+        # Normalized Bounding boxes in a frame. There can be more than one boxes if the
+        # same face is detected in multiple locations within the current frame.
+        # Corresponds to the JSON property `normalizedBoundingBoxes`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox>]
+        attr_accessor :normalized_bounding_boxes
+      
+        # Time-offset, relative to the beginning of the video, corresponding to the
+        # video frame for this location.
+        # Corresponds to the JSON property `timeOffset`
+        # @return [String]
+        attr_accessor :time_offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @normalized_bounding_boxes = args[:normalized_bounding_boxes] if args.key?(:normalized_bounding_boxes)
+          @time_offset = args[:time_offset] if args.key?(:time_offset)
+        end
+      end
+      
+      # Video segment level annotation results for face detection.
+      class GoogleCloudVideointelligenceV1p1beta1FaceSegment
+        include Google::Apis::Core::Hashable
+      
+        # Video segment.
+        # Corresponds to the JSON property `segment`
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1VideoSegment]
+        attr_accessor :segment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @segment = args[:segment] if args.key?(:segment)
         end
       end
       
@@ -3442,6 +3688,11 @@ module Google
         # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1ExplicitContentAnnotation]
         attr_accessor :explicit_annotation
       
+        # Deprecated. Please use `face_detection_annotations` instead.
+        # Corresponds to the JSON property `faceAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1FaceAnnotation>]
+        attr_accessor :face_annotations
+      
         # Face detection annotations.
         # Corresponds to the JSON property `faceDetectionAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation>]
@@ -3533,6 +3784,7 @@ module Google
         def update!(**args)
           @error = args[:error] if args.key?(:error)
           @explicit_annotation = args[:explicit_annotation] if args.key?(:explicit_annotation)
+          @face_annotations = args[:face_annotations] if args.key?(:face_annotations)
           @face_detection_annotations = args[:face_detection_annotations] if args.key?(:face_detection_annotations)
           @frame_label_annotations = args[:frame_label_annotations] if args.key?(:frame_label_annotations)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
@@ -3829,6 +4081,38 @@ module Google
         end
       end
       
+      # Deprecated. No effect.
+      class GoogleCloudVideointelligenceV1p2beta1FaceAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # All video frames where a face was detected.
+        # Corresponds to the JSON property `frames`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1FaceFrame>]
+        attr_accessor :frames
+      
+        # All video segments where a face was detected.
+        # Corresponds to the JSON property `segments`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1FaceSegment>]
+        attr_accessor :segments
+      
+        # Thumbnail of a representative face view (in JPEG format).
+        # Corresponds to the JSON property `thumbnail`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :thumbnail
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @frames = args[:frames] if args.key?(:frames)
+          @segments = args[:segments] if args.key?(:segments)
+          @thumbnail = args[:thumbnail] if args.key?(:thumbnail)
+        end
+      end
+      
       # Face detection annotation.
       class GoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation
         include Google::Apis::Core::Hashable
@@ -3845,6 +4129,52 @@ module Google
         # Update properties of this object
         def update!(**args)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Deprecated. No effect.
+      class GoogleCloudVideointelligenceV1p2beta1FaceFrame
+        include Google::Apis::Core::Hashable
+      
+        # Normalized Bounding boxes in a frame. There can be more than one boxes if the
+        # same face is detected in multiple locations within the current frame.
+        # Corresponds to the JSON property `normalizedBoundingBoxes`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox>]
+        attr_accessor :normalized_bounding_boxes
+      
+        # Time-offset, relative to the beginning of the video, corresponding to the
+        # video frame for this location.
+        # Corresponds to the JSON property `timeOffset`
+        # @return [String]
+        attr_accessor :time_offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @normalized_bounding_boxes = args[:normalized_bounding_boxes] if args.key?(:normalized_bounding_boxes)
+          @time_offset = args[:time_offset] if args.key?(:time_offset)
+        end
+      end
+      
+      # Video segment level annotation results for face detection.
+      class GoogleCloudVideointelligenceV1p2beta1FaceSegment
+        include Google::Apis::Core::Hashable
+      
+        # Video segment.
+        # Corresponds to the JSON property `segment`
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1VideoSegment]
+        attr_accessor :segment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @segment = args[:segment] if args.key?(:segment)
         end
       end
       
@@ -4489,6 +4819,11 @@ module Google
         # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation]
         attr_accessor :explicit_annotation
       
+        # Deprecated. Please use `face_detection_annotations` instead.
+        # Corresponds to the JSON property `faceAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1FaceAnnotation>]
+        attr_accessor :face_annotations
+      
         # Face detection annotations.
         # Corresponds to the JSON property `faceDetectionAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation>]
@@ -4580,6 +4915,7 @@ module Google
         def update!(**args)
           @error = args[:error] if args.key?(:error)
           @explicit_annotation = args[:explicit_annotation] if args.key?(:explicit_annotation)
+          @face_annotations = args[:face_annotations] if args.key?(:face_annotations)
           @face_detection_annotations = args[:face_detection_annotations] if args.key?(:face_detection_annotations)
           @frame_label_annotations = args[:frame_label_annotations] if args.key?(:frame_label_annotations)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
@@ -4962,6 +5298,38 @@ module Google
         end
       end
       
+      # Deprecated. No effect.
+      class GoogleCloudVideointelligenceV1p3beta1FaceAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # All video frames where a face was detected.
+        # Corresponds to the JSON property `frames`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1FaceFrame>]
+        attr_accessor :frames
+      
+        # All video segments where a face was detected.
+        # Corresponds to the JSON property `segments`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1FaceSegment>]
+        attr_accessor :segments
+      
+        # Thumbnail of a representative face view (in JPEG format).
+        # Corresponds to the JSON property `thumbnail`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :thumbnail
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @frames = args[:frames] if args.key?(:frames)
+          @segments = args[:segments] if args.key?(:segments)
+          @thumbnail = args[:thumbnail] if args.key?(:thumbnail)
+        end
+      end
+      
       # Face detection annotation.
       class GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation
         include Google::Apis::Core::Hashable
@@ -4978,6 +5346,52 @@ module Google
         # Update properties of this object
         def update!(**args)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Deprecated. No effect.
+      class GoogleCloudVideointelligenceV1p3beta1FaceFrame
+        include Google::Apis::Core::Hashable
+      
+        # Normalized Bounding boxes in a frame. There can be more than one boxes if the
+        # same face is detected in multiple locations within the current frame.
+        # Corresponds to the JSON property `normalizedBoundingBoxes`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox>]
+        attr_accessor :normalized_bounding_boxes
+      
+        # Time-offset, relative to the beginning of the video, corresponding to the
+        # video frame for this location.
+        # Corresponds to the JSON property `timeOffset`
+        # @return [String]
+        attr_accessor :time_offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @normalized_bounding_boxes = args[:normalized_bounding_boxes] if args.key?(:normalized_bounding_boxes)
+          @time_offset = args[:time_offset] if args.key?(:time_offset)
+        end
+      end
+      
+      # Video segment level annotation results for face detection.
+      class GoogleCloudVideointelligenceV1p3beta1FaceSegment
+        include Google::Apis::Core::Hashable
+      
+        # Video segment.
+        # Corresponds to the JSON property `segment`
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1VideoSegment]
+        attr_accessor :segment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @segment = args[:segment] if args.key?(:segment)
         end
       end
       
@@ -5407,7 +5821,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Streaming annotation results corresponding to a portion of the video that is
-        # currently being processed.
+        # currently being processed. Only ONE type of annotation will be specified in
+        # the response.
         # Corresponds to the JSON property `annotationResults`
         # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults]
         attr_accessor :annotation_results
@@ -5442,7 +5857,8 @@ module Google
       end
       
       # Streaming annotation results corresponding to a portion of the video that is
-      # currently being processed.
+      # currently being processed. Only ONE type of annotation will be specified in
+      # the response.
       class GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults
         include Google::Apis::Core::Hashable
       
@@ -5452,6 +5868,11 @@ module Google
         # Corresponds to the JSON property `explicitAnnotation`
         # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation]
         attr_accessor :explicit_annotation
+      
+        # Timestamp of the processed frame in microseconds.
+        # Corresponds to the JSON property `frameTimestamp`
+        # @return [String]
+        attr_accessor :frame_timestamp
       
         # Label annotation results.
         # Corresponds to the JSON property `labelAnnotations`
@@ -5475,6 +5896,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @explicit_annotation = args[:explicit_annotation] if args.key?(:explicit_annotation)
+          @frame_timestamp = args[:frame_timestamp] if args.key?(:frame_timestamp)
           @label_annotations = args[:label_annotations] if args.key?(:label_annotations)
           @object_annotations = args[:object_annotations] if args.key?(:object_annotations)
           @shot_annotations = args[:shot_annotations] if args.key?(:shot_annotations)
@@ -5733,6 +6155,11 @@ module Google
         # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation]
         attr_accessor :explicit_annotation
       
+        # Deprecated. Please use `face_detection_annotations` instead.
+        # Corresponds to the JSON property `faceAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1FaceAnnotation>]
+        attr_accessor :face_annotations
+      
         # Face detection annotations.
         # Corresponds to the JSON property `faceDetectionAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation>]
@@ -5825,6 +6252,7 @@ module Google
           @celebrity_recognition_annotations = args[:celebrity_recognition_annotations] if args.key?(:celebrity_recognition_annotations)
           @error = args[:error] if args.key?(:error)
           @explicit_annotation = args[:explicit_annotation] if args.key?(:explicit_annotation)
+          @face_annotations = args[:face_annotations] if args.key?(:face_annotations)
           @face_detection_annotations = args[:face_detection_annotations] if args.key?(:face_detection_annotations)
           @frame_label_annotations = args[:frame_label_annotations] if args.key?(:frame_label_annotations)
           @input_uri = args[:input_uri] if args.key?(:input_uri)

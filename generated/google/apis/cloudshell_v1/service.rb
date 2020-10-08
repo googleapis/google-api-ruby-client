@@ -197,6 +197,183 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Adds a public SSH key to an environment, allowing clients with the
+        # corresponding private key to connect to that environment via SSH. If a key
+        # with the same content already exists, this will error with ALREADY_EXISTS.
+        # @param [String] environment
+        #   Environment this key should be added to, e.g. `users/me/environments/default`.
+        # @param [Google::Apis::CloudshellV1::AddPublicKeyRequest] add_public_key_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudshellV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudshellV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_environment_public_key(environment, add_public_key_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+environment}:addPublicKey', options)
+          command.request_representation = Google::Apis::CloudshellV1::AddPublicKeyRequest::Representation
+          command.request_object = add_public_key_request_object
+          command.response_representation = Google::Apis::CloudshellV1::Operation::Representation
+          command.response_class = Google::Apis::CloudshellV1::Operation
+          command.params['environment'] = environment unless environment.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sends OAuth credentials to a running environment on behalf of a user. When
+        # this completes, the environment will be authorized to run various Google Cloud
+        # command line tools without requiring the user to manually authenticate.
+        # @param [String] name
+        #   Name of the resource that should receive the credentials, for example `users/
+        #   me/environments/default` or `users/someone@example.com/environments/default`.
+        # @param [Google::Apis::CloudshellV1::AuthorizeEnvironmentRequest] authorize_environment_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudshellV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudshellV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def authorize_environment(name, authorize_environment_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:authorize', options)
+          command.request_representation = Google::Apis::CloudshellV1::AuthorizeEnvironmentRequest::Representation
+          command.request_object = authorize_environment_request_object
+          command.response_representation = Google::Apis::CloudshellV1::Operation::Representation
+          command.response_class = Google::Apis::CloudshellV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an environment. Returns NOT_FOUND if the environment does not exist.
+        # @param [String] name
+        #   Required. Name of the requested resource, for example `users/me/environments/
+        #   default` or `users/someone@example.com/environments/default`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudshellV1::Environment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudshellV1::Environment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_user_environment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudshellV1::Environment::Representation
+          command.response_class = Google::Apis::CloudshellV1::Environment
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes a public SSH key from an environment. Clients will no longer be able
+        # to connect to the environment using the corresponding private key. If a key
+        # with the same content is not present, this will error with NOT_FOUND.
+        # @param [String] environment
+        #   Environment this key should be removed from, e.g. `users/me/environments/
+        #   default`.
+        # @param [Google::Apis::CloudshellV1::RemovePublicKeyRequest] remove_public_key_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudshellV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudshellV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_environment_public_key(environment, remove_public_key_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+environment}:removePublicKey', options)
+          command.request_representation = Google::Apis::CloudshellV1::RemovePublicKeyRequest::Representation
+          command.request_object = remove_public_key_request_object
+          command.response_representation = Google::Apis::CloudshellV1::Operation::Representation
+          command.response_class = Google::Apis::CloudshellV1::Operation
+          command.params['environment'] = environment unless environment.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Starts an existing environment, allowing clients to connect to it. The
+        # returned operation will contain an instance of StartEnvironmentMetadata in its
+        # metadata field. Users can wait for the environment to start by polling this
+        # operation via GetOperation. Once the environment has finished starting and is
+        # ready to accept connections, the operation will contain a
+        # StartEnvironmentResponse in its response field.
+        # @param [String] name
+        #   Name of the resource that should be started, for example `users/me/
+        #   environments/default` or `users/someone@example.com/environments/default`.
+        # @param [Google::Apis::CloudshellV1::StartEnvironmentRequest] start_environment_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudshellV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudshellV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def start_environment(name, start_environment_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:start', options)
+          command.request_representation = Google::Apis::CloudshellV1::StartEnvironmentRequest::Representation
+          command.request_object = start_environment_request_object
+          command.response_representation = Google::Apis::CloudshellV1::Operation::Representation
+          command.response_class = Google::Apis::CloudshellV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 

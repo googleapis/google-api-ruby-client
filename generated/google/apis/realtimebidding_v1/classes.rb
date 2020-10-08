@@ -22,45 +22,6 @@ module Google
   module Apis
     module RealtimebiddingV1
       
-      # Detected ad technology provider information.
-      class AdTechnologyProviders
-        include Google::Apis::Core::Hashable
-      
-        # The detected ad technology provider IDs for this creative. See https://storage.
-        # googleapis.com/adx-rtb-dictionaries/providers.csv for mapping of provider ID
-        # to provided name, a privacy policy URL, and a list of domains which can be
-        # attributed to the provider. If the creative contains provider IDs that are
-        # outside of those listed in the `BidRequest.adslot.consented_providers_settings.
-        # consented_providers` field on the [Google bid protocol](https://developers.
-        # google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto) and the `
-        # BidRequest.user.ext.consented_providers_settings.consented_providers` field on
-        # the [OpenRTB protocol](https://developers.google.com/authorized-buyers/rtb/
-        # downloads/openrtb-adx-proto), and a bid is submitted with that creative for an
-        # impression that will serve to an EEA user, the bid will be filtered before the
-        # auction.
-        # Corresponds to the JSON property `detectedProviderIds`
-        # @return [Array<Fixnum>]
-        attr_accessor :detected_provider_ids
-      
-        # Whether the creative contains an unidentified ad technology provider. If true
-        # for a given creative, any bid submitted with that creative for an impression
-        # that will serve to an EEA user will be filtered before the auction.
-        # Corresponds to the JSON property `hasUnidentifiedProvider`
-        # @return [Boolean]
-        attr_accessor :has_unidentified_provider
-        alias_method :has_unidentified_provider?, :has_unidentified_provider
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @detected_provider_ids = args[:detected_provider_ids] if args.key?(:detected_provider_ids)
-          @has_unidentified_provider = args[:has_unidentified_provider] if args.key?(:has_unidentified_provider)
-        end
-      end
-      
       # Detected advertiser and brand information.
       class AdvertiserAndBrand
         include Google::Apis::Core::Hashable
@@ -275,11 +236,6 @@ module Google
       class CreativeServingDecision
         include Google::Apis::Core::Hashable
       
-        # Detected ad technology provider information.
-        # Corresponds to the JSON property `adTechnologyProviders`
-        # @return [Google::Apis::RealtimebiddingV1::AdTechnologyProviders]
-        attr_accessor :ad_technology_providers
-      
         # Serving status of the creative for a transaction type or a region.
         # Corresponds to the JSON property `chinaServingStatus`
         # @return [Google::Apis::RealtimebiddingV1::ServingStatus]
@@ -373,7 +329,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @ad_technology_providers = args[:ad_technology_providers] if args.key?(:ad_technology_providers)
           @china_serving_status = args[:china_serving_status] if args.key?(:china_serving_status)
           @deals_serving_status = args[:deals_serving_status] if args.key?(:deals_serving_status)
           @detected_advertisers = args[:detected_advertisers] if args.key?(:detected_advertisers)

@@ -1725,6 +1725,19 @@ module Google
         # knowledgeBases`.
         # @param [String] parent
         #   Required. The project to list of knowledge bases for. Format: `projects/`.
+        # @param [String] filter
+        #   The filter expression used to filter knowledge bases returned by the list
+        #   method. The expression has the following syntax: [AND ] ... The following
+        #   fields and operators are supported: * display_name with has(:) operator *
+        #   language_code with equals(=) operator Examples: * 'language_code=en-us'
+        #   matches knowledge bases with en-us language code. * 'display_name:articles'
+        #   matches knowledge bases whose display name contains "articles". * '
+        #   display_name:"Best Articles"' matches knowledge bases whose display name
+        #   contains "Best Articles". * 'language_code=en-gb AND display_name=articles'
+        #   matches all knowledge bases whose display name contains "articles" and whose
+        #   language code is "en-gb". Note: An empty filter string (i.e. "") is a no-op
+        #   and will result in no filtering. For more information about filtering, see [
+        #   API Filtering](https://aip.dev/160).
         # @param [Fixnum] page_size
         #   The maximum number of items to return in a single page. By default 10 and at
         #   most 100.
@@ -1747,11 +1760,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_agent_knowledge_bases(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_agent_knowledge_bases(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2beta1/{+parent}/knowledgeBases', options)
           command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse::Representation
           command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1906,6 +1920,16 @@ module Google
         # @param [String] parent
         #   Required. The knowledge base to list all documents for. Format: `projects//
         #   knowledgeBases/`.
+        # @param [String] filter
+        #   The filter expression used to filter documents returned by the list method.
+        #   The expression has the following syntax: [AND ] ... The following fields and
+        #   operators are supported: * knowledge_types with has(:) operator * display_name
+        #   with has(:) operator * state with equals(=) operator Examples: * "
+        #   knowledge_types:FAQ" matches documents with FAQ knowledge type. * "
+        #   display_name:customer" matches documents whose display name contains "customer"
+        #   . * "state=ACTIVE" matches documents with ACTIVE state. * "knowledge_types:FAQ
+        #   AND state=ACTIVE" matches all active FAQ documents. For more information about
+        #   filtering, see [API Filtering](https://aip.dev/160).
         # @param [Fixnum] page_size
         #   The maximum number of items to return in a single page. By default 10 and at
         #   most 100.
@@ -1928,11 +1952,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_agent_knowledge_basis_documents(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_agent_knowledge_basis_documents(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2beta1/{+parent}/documents', options)
           command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListDocumentsResponse::Representation
           command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListDocumentsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2614,6 +2639,19 @@ module Google
         # knowledgeBases`.
         # @param [String] parent
         #   Required. The project to list of knowledge bases for. Format: `projects/`.
+        # @param [String] filter
+        #   The filter expression used to filter knowledge bases returned by the list
+        #   method. The expression has the following syntax: [AND ] ... The following
+        #   fields and operators are supported: * display_name with has(:) operator *
+        #   language_code with equals(=) operator Examples: * 'language_code=en-us'
+        #   matches knowledge bases with en-us language code. * 'display_name:articles'
+        #   matches knowledge bases whose display name contains "articles". * '
+        #   display_name:"Best Articles"' matches knowledge bases whose display name
+        #   contains "Best Articles". * 'language_code=en-gb AND display_name=articles'
+        #   matches all knowledge bases whose display name contains "articles" and whose
+        #   language code is "en-gb". Note: An empty filter string (i.e. "") is a no-op
+        #   and will result in no filtering. For more information about filtering, see [
+        #   API Filtering](https://aip.dev/160).
         # @param [Fixnum] page_size
         #   The maximum number of items to return in a single page. By default 10 and at
         #   most 100.
@@ -2636,11 +2674,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_knowledge_bases(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_knowledge_bases(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2beta1/{+parent}/knowledgeBases', options)
           command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse::Representation
           command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2795,6 +2834,16 @@ module Google
         # @param [String] parent
         #   Required. The knowledge base to list all documents for. Format: `projects//
         #   knowledgeBases/`.
+        # @param [String] filter
+        #   The filter expression used to filter documents returned by the list method.
+        #   The expression has the following syntax: [AND ] ... The following fields and
+        #   operators are supported: * knowledge_types with has(:) operator * display_name
+        #   with has(:) operator * state with equals(=) operator Examples: * "
+        #   knowledge_types:FAQ" matches documents with FAQ knowledge type. * "
+        #   display_name:customer" matches documents whose display name contains "customer"
+        #   . * "state=ACTIVE" matches documents with ACTIVE state. * "knowledge_types:FAQ
+        #   AND state=ACTIVE" matches all active FAQ documents. For more information about
+        #   filtering, see [API Filtering](https://aip.dev/160).
         # @param [Fixnum] page_size
         #   The maximum number of items to return in a single page. By default 10 and at
         #   most 100.
@@ -2817,11 +2866,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_knowledge_basis_documents(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_knowledge_basis_documents(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2beta1/{+parent}/documents', options)
           command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListDocumentsResponse::Representation
           command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListDocumentsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?

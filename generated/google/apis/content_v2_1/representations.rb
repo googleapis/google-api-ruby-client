@@ -892,6 +892,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrderreturnsCreateOrderReturnRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderreturnsCreateOrderReturnResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderreturnsLineItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OrderreturnsListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3394,6 +3412,35 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :execution_status, as: 'executionStatus'
           property :kind, as: 'kind'
+        end
+      end
+      
+      class OrderreturnsCreateOrderReturnRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :line_items, as: 'lineItems', class: Google::Apis::ContentV2_1::OrderreturnsLineItem, decorator: Google::Apis::ContentV2_1::OrderreturnsLineItem::Representation
+      
+          property :operation_id, as: 'operationId'
+          property :order_id, as: 'orderId'
+          property :return_method_type, as: 'returnMethodType'
+        end
+      end
+      
+      class OrderreturnsCreateOrderReturnResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_status, as: 'executionStatus'
+          property :kind, as: 'kind'
+          property :order_return, as: 'orderReturn', class: Google::Apis::ContentV2_1::MerchantOrderReturn, decorator: Google::Apis::ContentV2_1::MerchantOrderReturn::Representation
+      
+        end
+      end
+      
+      class OrderreturnsLineItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :line_item_id, as: 'lineItemId'
+          property :quantity, as: 'quantity'
         end
       end
       

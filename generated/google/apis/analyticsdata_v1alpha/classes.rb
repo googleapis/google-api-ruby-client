@@ -677,6 +677,37 @@ module Google
         end
       end
       
+      # The dimensions and metrics currently accepted in reporting methods.
+      class Metadata
+        include Google::Apis::Core::Hashable
+      
+        # The dimensions descriptions.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Array<Google::Apis::AnalyticsdataV1alpha::DimensionMetadata>]
+        attr_accessor :dimensions
+      
+        # The metric descriptions.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::AnalyticsdataV1alpha::MetricMetadata>]
+        attr_accessor :metrics
+      
+        # Resource name of this metadata.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # The quantitative measurements of a report. For example, the metric eventCount
       # is the total number of events. Requests are allowed up to 10 metrics.
       class Metric

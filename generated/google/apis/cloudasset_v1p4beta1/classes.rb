@@ -254,9 +254,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The uri of the Cloud Storage object. It's the same uri that is used
-        # by gsutil. For example: "gs://bucket_name/object_name". See [Viewing and
-        # Editing Object Metadata](https://cloud.google.com/storage/docs/viewing-editing-
-        # metadata) for more information.
+        # by gsutil. For example: "gs://bucket_name/object_name". See [Quickstart: Using
+        # the gsutil tool] (https://cloud.google.com/storage/docs/quickstart-gsutil) for
+        # examples.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri

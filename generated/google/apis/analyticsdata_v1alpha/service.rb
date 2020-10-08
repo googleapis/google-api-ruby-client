@@ -47,6 +47,45 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Returns metadata for dimensions and metrics available in reporting methods.
+        # Used to explore the dimensions and metrics. In this method, a Google Analytics
+        # App + Web Property Identifier is specified in the request, and the metadata
+        # response includes Custom dimensions and metrics as well as Universal metadata.
+        # For example if a custom metric with parameter name `levels_unlocked` is
+        # registered to a property, the Metadata response will contain `customEvent:
+        # levels_unlocked`. Universal metadata are dimensions and metrics applicable to
+        # any property such as `country` and `totalUsers`.
+        # @param [String] name
+        #   Required. The resource name of the metadata to retrieve. This name field is
+        #   specified in the URL path and not URL parameters. Property is a numeric Google
+        #   Analytics App + Web Property identifier. Example: properties/1234/metadata
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsdataV1alpha::Metadata] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsdataV1alpha::Metadata]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_property_metadata(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::AnalyticsdataV1alpha::Metadata::Representation
+          command.response_class = Google::Apis::AnalyticsdataV1alpha::Metadata
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns multiple pivot reports in a batch. All reports must be for the same
         # Entity.
         # @param [Google::Apis::AnalyticsdataV1alpha::BatchRunPivotReportsRequest] batch_run_pivot_reports_request_object

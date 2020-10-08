@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Metadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Metric
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -509,6 +515,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :case_sensitive, as: 'caseSensitive'
           collection :values, as: 'values'
+        end
+      end
+      
+      class Metadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dimensions, as: 'dimensions', class: Google::Apis::AnalyticsdataV1alpha::DimensionMetadata, decorator: Google::Apis::AnalyticsdataV1alpha::DimensionMetadata::Representation
+      
+          collection :metrics, as: 'metrics', class: Google::Apis::AnalyticsdataV1alpha::MetricMetadata, decorator: Google::Apis::AnalyticsdataV1alpha::MetricMetadata::Representation
+      
+          property :name, as: 'name'
         end
       end
       

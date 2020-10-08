@@ -220,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IosDeviceFile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IosDeviceList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -780,6 +786,16 @@ module Google
         end
       end
       
+      class IosDeviceFile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bundle_id, as: 'bundleId'
+          property :content, as: 'content', class: Google::Apis::TestingV1::FileReference, decorator: Google::Apis::TestingV1::FileReference::Representation
+      
+          property :device_path, as: 'devicePath'
+        end
+      end
+      
       class IosDeviceList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -829,6 +845,10 @@ module Google
           collection :additional_ipas, as: 'additionalIpas', class: Google::Apis::TestingV1::FileReference, decorator: Google::Apis::TestingV1::FileReference::Representation
       
           property :network_profile, as: 'networkProfile'
+          collection :pull_directories, as: 'pullDirectories', class: Google::Apis::TestingV1::IosDeviceFile, decorator: Google::Apis::TestingV1::IosDeviceFile::Representation
+      
+          collection :push_files, as: 'pushFiles', class: Google::Apis::TestingV1::IosDeviceFile, decorator: Google::Apis::TestingV1::IosDeviceFile::Representation
+      
         end
       end
       

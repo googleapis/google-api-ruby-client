@@ -22,12 +22,6 @@ module Google
   module Apis
     module RealtimebiddingV1
       
-      class AdTechnologyProviders
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AdvertiserAndBrand
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -214,14 +208,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AdTechnologyProviders
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :detected_provider_ids, as: 'detectedProviderIds'
-          property :has_unidentified_provider, as: 'hasUnidentifiedProvider'
-        end
-      end
-      
       class AdvertiserAndBrand
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -271,8 +257,6 @@ module Google
       class CreativeServingDecision
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :ad_technology_providers, as: 'adTechnologyProviders', class: Google::Apis::RealtimebiddingV1::AdTechnologyProviders, decorator: Google::Apis::RealtimebiddingV1::AdTechnologyProviders::Representation
-      
           property :china_serving_status, as: 'chinaServingStatus', class: Google::Apis::RealtimebiddingV1::ServingStatus, decorator: Google::Apis::RealtimebiddingV1::ServingStatus::Representation
       
           property :deals_serving_status, as: 'dealsServingStatus', class: Google::Apis::RealtimebiddingV1::ServingStatus, decorator: Google::Apis::RealtimebiddingV1::ServingStatus::Representation

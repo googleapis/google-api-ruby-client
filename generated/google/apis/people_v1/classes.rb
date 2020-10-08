@@ -2568,7 +2568,7 @@ module Google
       
         # The type of the URL. The type can be custom or one of these predefined values:
         # * `home` * `work` * `blog` * `profile` * `homePage` * `ftp` * `reservations` *
-        # `appInstallPage`: website for a Google+ application. * `other`
+        # `appInstallPage`: website for a Currents application. * `other`
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type

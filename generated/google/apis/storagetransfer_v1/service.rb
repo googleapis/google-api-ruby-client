@@ -117,7 +117,7 @@ module Google
         
         # Gets a transfer job.
         # @param [String] job_name
-        #   " Required. The job to get.
+        #   Required. " The job to get.
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform Console project that owns the
         #   job.
@@ -246,6 +246,7 @@ module Google
         # discovered tomorrow.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
+        # @param [Google::Apis::StoragetransferV1::CancelOperationRequest] cancel_operation_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -263,8 +264,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def cancel_transfer_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+        def cancel_transfer_operation(name, cancel_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command.request_representation = Google::Apis::StoragetransferV1::CancelOperationRequest::Representation
+          command.request_object = cancel_operation_request_object
           command.response_representation = Google::Apis::StoragetransferV1::Empty::Representation
           command.response_class = Google::Apis::StoragetransferV1::Empty
           command.params['name'] = name unless name.nil?

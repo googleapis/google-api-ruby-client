@@ -662,9 +662,8 @@ module Google
         # Apache Airflow configuration property names must be written in [snake_case](
         # https://en.wikipedia.org/wiki/Snake_case). Property values can contain any
         # character, and can be written in any lower/upper case format. Certain Apache
-        # Airflow configuration property values are [blacklisted](/composer/docs/how-to/
-        # managing/setting-airflow-configurations#airflow_configuration_blacklists), and
-        # cannot be overridden.
+        # Airflow configuration property values are [blocked](/composer/docs/concepts/
+        # airflow-configurations), and cannot be overridden.
         # Corresponds to the JSON property `airflowConfigOverrides`
         # @return [Hash<String,String>]
         attr_accessor :airflow_config_overrides

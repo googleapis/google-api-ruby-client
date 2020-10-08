@@ -134,6 +134,19 @@ module Google
         end
       end
       
+      # The request message for Operations.CancelOperation.
+      class CancelOperationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Represents a whole or partial calendar date, e.g. a birthday. The time of day
       # and time zone are either specified elsewhere or are not significant. The date
       # is relative to the Proleptic Gregorian Calendar. This can represent: * A full

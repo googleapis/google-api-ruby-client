@@ -1604,16 +1604,19 @@ module Google
         #   combined by `AND` or `OR` logical operators. A sequence of restrictions
         #   implicitly uses `AND`. * A restriction has the form of ``field` `operator` `
         #   value``. * The operator used on `flight.dateRange.endDate` must be LESS THAN (<
-        #   ). * The operators used on all other fields must be `EQUALS (=)`. * Supported
-        #   fields: - `campaignId` - `displayName` - `insertionOrderId` - `entityStatus` -
-        #   `lineItemId` - `lineItemType` - `flight.dateRange.endDate` (input formatted as
-        #   YYYY-MM-DD) Examples: * All line items under an insertion order: `
-        #   insertionOrderId="1234"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED`
-        #   and `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser: `(
-        #   entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED")
-        #   AND lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"` * All line items whose
-        #   flight dates end before March 28, 2019: `flight.dateRange.endDate<"2019-03-28"`
-        #   The length of this field should be no more than 500 characters.
+        #   ). * The operator used on `warningMessages` must be `HAS (:)`. * The operators
+        #   used on all other fields must be `EQUALS (=)`. * Supported fields: - `
+        #   campaignId` - `displayName` - `insertionOrderId` - `entityStatus` - `
+        #   lineItemId` - `lineItemType` - `flight.dateRange.endDate` (input formatted as
+        #   YYYY-MM-DD) - `warningMessages` Examples: * All line items under an insertion
+        #   order: `insertionOrderId="1234"` * All `ENTITY_STATUS_ACTIVE` or `
+        #   ENTITY_STATUS_PAUSED` and `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an
+        #   advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="
+        #   ENTITY_STATUS_PAUSED") AND lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"` *
+        #   All line items whose flight dates end before March 28, 2019: `flight.dateRange.
+        #   endDate<"2019-03-28"` * All line items that have `NO_VALID_CREATIVE` in `
+        #   warningMessages`: `warningMessages:"NO_VALID_CREATIVE"` The length of this
+        #   field should be no more than 500 characters.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * "displayName" (
         #   default) * "entityStatus" * “flight.dateRange.endDate” The default sorting

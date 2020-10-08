@@ -6081,6 +6081,105 @@ module Google
       end
       
       # 
+      class OrderreturnsCreateOrderReturnRequest
+        include Google::Apis::Core::Hashable
+      
+        # The list of line items to return.
+        # Corresponds to the JSON property `lineItems`
+        # @return [Array<Google::Apis::ContentV2_1::OrderreturnsLineItem>]
+        attr_accessor :line_items
+      
+        # The ID of the operation. Unique across all operations for a given order.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        # The ID of the order.
+        # Corresponds to the JSON property `orderId`
+        # @return [String]
+        attr_accessor :order_id
+      
+        # The way of the package being returned.
+        # Corresponds to the JSON property `returnMethodType`
+        # @return [String]
+        attr_accessor :return_method_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @line_items = args[:line_items] if args.key?(:line_items)
+          @operation_id = args[:operation_id] if args.key?(:operation_id)
+          @order_id = args[:order_id] if args.key?(:order_id)
+          @return_method_type = args[:return_method_type] if args.key?(:return_method_type)
+        end
+      end
+      
+      # 
+      class OrderreturnsCreateOrderReturnResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status of the execution.
+        # Acceptable values are:
+        # - "`duplicate`"
+        # - "`executed`"
+        # Corresponds to the JSON property `executionStatus`
+        # @return [String]
+        attr_accessor :execution_status
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # orderreturnsCreateOrderReturnResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Order return. Production access (all methods) requires the order manager role.
+        # Sandbox access does not.
+        # Corresponds to the JSON property `orderReturn`
+        # @return [Google::Apis::ContentV2_1::MerchantOrderReturn]
+        attr_accessor :order_return
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_status = args[:execution_status] if args.key?(:execution_status)
+          @kind = args[:kind] if args.key?(:kind)
+          @order_return = args[:order_return] if args.key?(:order_return)
+        end
+      end
+      
+      # 
+      class OrderreturnsLineItem
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the line item. This value is assigned by Google when an order is
+        # created.
+        # Corresponds to the JSON property `lineItemId`
+        # @return [String]
+        attr_accessor :line_item_id
+      
+        # The quantity of this line item.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
+          @quantity = args[:quantity] if args.key?(:quantity)
+        end
+      end
+      
+      # 
       class OrderreturnsListResponse
         include Google::Apis::Core::Hashable
       

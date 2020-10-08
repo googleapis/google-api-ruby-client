@@ -1215,6 +1215,38 @@ module Google
         end
       end
       
+      # A file or directory to install on the device before the test starts.
+      class IosDeviceFile
+        include Google::Apis::Core::Hashable
+      
+        # The bundle id of the app where this file lives. iOS apps sandbox their own
+        # filesystem, so app files must specify which app installed on the device.
+        # Corresponds to the JSON property `bundleId`
+        # @return [String]
+        attr_accessor :bundle_id
+      
+        # A reference to a file, used for user inputs.
+        # Corresponds to the JSON property `content`
+        # @return [Google::Apis::TestingV1::FileReference]
+        attr_accessor :content
+      
+        # Location of the file on the device, inside the app's sandboxed filesystem
+        # Corresponds to the JSON property `devicePath`
+        # @return [String]
+        attr_accessor :device_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bundle_id = args[:bundle_id] if args.key?(:bundle_id)
+          @content = args[:content] if args.key?(:content)
+          @device_path = args[:device_path] if args.key?(:device_path)
+        end
+      end
+      
       # A list of iOS device configurations in which the test is to be executed.
       class IosDeviceList
         include Google::Apis::Core::Hashable
@@ -1380,6 +1412,19 @@ module Google
         # @return [String]
         attr_accessor :network_profile
       
+        # List of directories on the device to upload to Cloud Storage at the end of the
+        # test. Directories should either be in a shared directory (e.g. /private/var/
+        # mobile/Media) or within an accessible directory inside the app's filesystem (e.
+        # g. /Documents) by specifying the bundle id.
+        # Corresponds to the JSON property `pullDirectories`
+        # @return [Array<Google::Apis::TestingV1::IosDeviceFile>]
+        attr_accessor :pull_directories
+      
+        # List of files to push to the device before starting the test.
+        # Corresponds to the JSON property `pushFiles`
+        # @return [Array<Google::Apis::TestingV1::IosDeviceFile>]
+        attr_accessor :push_files
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1388,6 +1433,8 @@ module Google
         def update!(**args)
           @additional_ipas = args[:additional_ipas] if args.key?(:additional_ipas)
           @network_profile = args[:network_profile] if args.key?(:network_profile)
+          @pull_directories = args[:pull_directories] if args.key?(:pull_directories)
+          @push_files = args[:push_files] if args.key?(:push_files)
         end
       end
       
