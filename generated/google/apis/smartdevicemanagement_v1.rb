@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/nest/device-access
     module SmartdevicemanagementV1
       VERSION = 'V1'
-      REVISION = '20200910'
+      REVISION = '20201003'
 
       # See and/or control the devices that you selected
       AUTH_SDM_SERVICE = 'https://www.googleapis.com/auth/sdm.service'

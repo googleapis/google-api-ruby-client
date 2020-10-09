@@ -394,6 +394,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MonitoringQueryLanguageCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MutationRecord
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -743,6 +749,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :condition_absent, as: 'conditionAbsent', class: Google::Apis::MonitoringV3::MetricAbsence, decorator: Google::Apis::MonitoringV3::MetricAbsence::Representation
+      
+          property :condition_monitoring_query_language, as: 'conditionMonitoringQueryLanguage', class: Google::Apis::MonitoringV3::MonitoringQueryLanguageCondition, decorator: Google::Apis::MonitoringV3::MonitoringQueryLanguageCondition::Representation
       
           property :condition_threshold, as: 'conditionThreshold', class: Google::Apis::MonitoringV3::MetricThreshold, decorator: Google::Apis::MonitoringV3::MetricThreshold::Representation
       
@@ -1222,6 +1230,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :system_labels, as: 'systemLabels'
           hash :user_labels, as: 'userLabels'
+        end
+      end
+      
+      class MonitoringQueryLanguageCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration, as: 'duration'
+          property :query, as: 'query'
+          property :trigger, as: 'trigger', class: Google::Apis::MonitoringV3::Trigger, decorator: Google::Apis::MonitoringV3::Trigger::Representation
+      
         end
       end
       

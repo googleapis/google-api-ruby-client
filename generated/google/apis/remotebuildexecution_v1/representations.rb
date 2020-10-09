@@ -701,6 +701,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :docker_cache_hit, as: 'dockerCacheHit'
+          property :docker_image_name, as: 'dockerImageName'
           property :input_cache_miss, as: 'inputCacheMiss'
           property :num_errors, :numeric_string => true, as: 'numErrors'
           property :num_warnings, :numeric_string => true, as: 'numWarnings'

@@ -645,6 +645,12 @@ module Google
         # @return [Google::Apis::MonitoringV3::MetricAbsence]
         attr_accessor :condition_absent
       
+        # A condition type that allows alert policies to be defined using Monitoring
+        # Query Language.
+        # Corresponds to the JSON property `conditionMonitoringQueryLanguage`
+        # @return [Google::Apis::MonitoringV3::MonitoringQueryLanguageCondition]
+        attr_accessor :condition_monitoring_query_language
+      
         # A condition type that compares a collection of time series against a threshold.
         # Corresponds to the JSON property `conditionThreshold`
         # @return [Google::Apis::MonitoringV3::MetricThreshold]
@@ -682,6 +688,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @condition_absent = args[:condition_absent] if args.key?(:condition_absent)
+          @condition_monitoring_query_language = args[:condition_monitoring_query_language] if args.key?(:condition_monitoring_query_language)
           @condition_threshold = args[:condition_threshold] if args.key?(:condition_threshold)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
@@ -2637,6 +2644,47 @@ module Google
         def update!(**args)
           @system_labels = args[:system_labels] if args.key?(:system_labels)
           @user_labels = args[:user_labels] if args.key?(:user_labels)
+        end
+      end
+      
+      # A condition type that allows alert policies to be defined using Monitoring
+      # Query Language.
+      class MonitoringQueryLanguageCondition
+        include Google::Apis::Core::Hashable
+      
+        # The amount of time that a time series must violate the threshold to be
+        # considered failing. Currently, only values that are a multiple of a minute--e.
+        # g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given,
+        # an error will be returned. When choosing a duration, it is useful to keep in
+        # mind the frequency of the underlying time series data (which may also be
+        # affected by any alignments specified in the aggregations field); a good
+        # duration is long enough so that a single outlier does not generate spurious
+        # alerts, but short enough that unhealthy states are detected and alerted on
+        # quickly.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Monitoring Query Language query that outputs a boolean stream.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        # Specifies how many time series must fail a predicate to trigger a condition.
+        # If not specified, then a `count: 1` trigger is used.
+        # Corresponds to the JSON property `trigger`
+        # @return [Google::Apis::MonitoringV3::Trigger]
+        attr_accessor :trigger
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duration = args[:duration] if args.key?(:duration)
+          @query = args[:query] if args.key?(:query)
+          @trigger = args[:trigger] if args.key?(:trigger)
         end
       end
       

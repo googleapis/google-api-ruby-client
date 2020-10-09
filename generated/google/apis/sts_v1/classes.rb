@@ -27,7 +27,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The grant type. Must be `urn:ietf:params:oauth:grant-type:token-
-        # exchange`, which indicates a token exchange is requested.
+        # exchange`, which indicates a token exchange.
         # Corresponds to the JSON property `grantType`
         # @return [String]
         attr_accessor :grant_type
@@ -45,10 +45,10 @@ module Google
         # @return [String]
         attr_accessor :requested_token_type
       
-        # Required. Input subject token. You can use a Google-issued OAuth 2.0 access
-        # token with this field to obtain an access token with new security attributes
-        # applied, such as an AccessBoundary. Applying additional security attributes on
-        # access tokens that already contain security attributes is not allowed.
+        # Required. The input token. You can use a Google-issued OAuth 2.0 access token
+        # with this field to obtain an access token with new security attributes applied,
+        # such as a Credential Access Boundary. If an access token already contains
+        # security attributes, you cannot apply additional security attributes.
         # Corresponds to the JSON property `subjectToken`
         # @return [String]
         attr_accessor :subject_token
@@ -84,10 +84,11 @@ module Google
         # @return [String]
         attr_accessor :access_token
       
-        # The expiration time of `access_token` in seconds, measured from the time of
-        # issuance. This field is absent when the `subject_token` in the request is a
-        # Google-issued, short-lived access token. In this case, the expiration time of
-        # the `access_token` is the same as the `subject_token`.
+        # The amount of time, in seconds, between the time when the `access_token` was
+        # issued and the time when the `access_token` will expire. This field is absent
+        # when the `subject_token` in the request is a Google-issued, short-lived access
+        # token. In this case, the `access_token` has the same expiration time as the `
+        # subject_token`.
         # Corresponds to the JSON property `expires_in`
         # @return [Fixnum]
         attr_accessor :expires_in

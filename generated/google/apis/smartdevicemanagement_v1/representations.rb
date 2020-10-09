@@ -85,7 +85,6 @@ module Google
       class GoogleHomeEnterpriseSdmV1Device
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :assignee, as: 'assignee'
           property :name, as: 'name'
           collection :parent_relations, as: 'parentRelations', class: Google::Apis::SmartdevicemanagementV1::GoogleHomeEnterpriseSdmV1ParentRelation, decorator: Google::Apis::SmartdevicemanagementV1::GoogleHomeEnterpriseSdmV1ParentRelation::Representation
       

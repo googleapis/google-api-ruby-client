@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/fit/rest/v1/get-started
     module FitnessV1
       VERSION = 'V1'
-      REVISION = '20200907'
+      REVISION = '20201006'
 
       # Use Google Fit to see and store your physical activity data
       AUTH_FITNESS_ACTIVITY_READ = 'https://www.googleapis.com/auth/fitness.activity.read'
@@ -57,6 +57,12 @@ module Google
       # See and add to info about your body temperature in Google Fit. I consent to Google sharing my body temperature information with this app.
       AUTH_FITNESS_BODY_TEMPERATURE_WRITE = 'https://www.googleapis.com/auth/fitness.body_temperature.write'
 
+      # See your heart rate data in Google Fit. I consent to Google sharing my heart rate information with this app.
+      AUTH_FITNESS_HEART_RATE_READ = 'https://www.googleapis.com/auth/fitness.heart_rate.read'
+
+      # See and add to your heart rate data in Google Fit. I consent to Google sharing my heart rate information with this app.
+      AUTH_FITNESS_HEART_RATE_WRITE = 'https://www.googleapis.com/auth/fitness.heart_rate.write'
+
       # See your Google Fit speed and distance data
       AUTH_FITNESS_LOCATION_READ = 'https://www.googleapis.com/auth/fitness.location.read'
 
@@ -80,6 +86,12 @@ module Google
 
       # See and add info about your reproductive health in Google Fit. I consent to Google sharing my reproductive health information with this app.
       AUTH_FITNESS_REPRODUCTIVE_HEALTH_WRITE = 'https://www.googleapis.com/auth/fitness.reproductive_health.write'
+
+      # See your sleep data in Google Fit. I consent to Google sharing my sleep information with this app.
+      AUTH_FITNESS_SLEEP_READ = 'https://www.googleapis.com/auth/fitness.sleep.read'
+
+      # See and add to your sleep data in Google Fit. I consent to Google sharing my sleep information with this app.
+      AUTH_FITNESS_SLEEP_WRITE = 'https://www.googleapis.com/auth/fitness.sleep.write'
     end
   end
 end

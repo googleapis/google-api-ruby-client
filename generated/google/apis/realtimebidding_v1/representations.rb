@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PolicyCompliance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PolicyTopicEntry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,12 +161,6 @@ module Google
       end
       
       class PolicyTopicEvidence
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ServingStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -257,9 +257,9 @@ module Google
       class CreativeServingDecision
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :china_serving_status, as: 'chinaServingStatus', class: Google::Apis::RealtimebiddingV1::ServingStatus, decorator: Google::Apis::RealtimebiddingV1::ServingStatus::Representation
+          property :china_policy_compliance, as: 'chinaPolicyCompliance', class: Google::Apis::RealtimebiddingV1::PolicyCompliance, decorator: Google::Apis::RealtimebiddingV1::PolicyCompliance::Representation
       
-          property :deals_serving_status, as: 'dealsServingStatus', class: Google::Apis::RealtimebiddingV1::ServingStatus, decorator: Google::Apis::RealtimebiddingV1::ServingStatus::Representation
+          property :deals_policy_compliance, as: 'dealsPolicyCompliance', class: Google::Apis::RealtimebiddingV1::PolicyCompliance, decorator: Google::Apis::RealtimebiddingV1::PolicyCompliance::Representation
       
           collection :detected_advertisers, as: 'detectedAdvertisers', class: Google::Apis::RealtimebiddingV1::AdvertiserAndBrand, decorator: Google::Apis::RealtimebiddingV1::AdvertiserAndBrand::Representation
       
@@ -271,9 +271,11 @@ module Google
           collection :detected_sensitive_categories, as: 'detectedSensitiveCategories'
           collection :detected_vendor_ids, as: 'detectedVendorIds'
           property :last_status_update, as: 'lastStatusUpdate'
-          property :open_auction_serving_status, as: 'openAuctionServingStatus', class: Google::Apis::RealtimebiddingV1::ServingStatus, decorator: Google::Apis::RealtimebiddingV1::ServingStatus::Representation
+          property :network_policy_compliance, as: 'networkPolicyCompliance', class: Google::Apis::RealtimebiddingV1::PolicyCompliance, decorator: Google::Apis::RealtimebiddingV1::PolicyCompliance::Representation
       
-          property :russia_serving_status, as: 'russiaServingStatus', class: Google::Apis::RealtimebiddingV1::ServingStatus, decorator: Google::Apis::RealtimebiddingV1::ServingStatus::Representation
+          property :platform_policy_compliance, as: 'platformPolicyCompliance', class: Google::Apis::RealtimebiddingV1::PolicyCompliance, decorator: Google::Apis::RealtimebiddingV1::PolicyCompliance::Representation
+      
+          property :russia_policy_compliance, as: 'russiaPolicyCompliance', class: Google::Apis::RealtimebiddingV1::PolicyCompliance, decorator: Google::Apis::RealtimebiddingV1::PolicyCompliance::Representation
       
         end
       end
@@ -436,6 +438,15 @@ module Google
         end
       end
       
+      class PolicyCompliance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :status, as: 'status'
+          collection :topics, as: 'topics', class: Google::Apis::RealtimebiddingV1::PolicyTopicEntry, decorator: Google::Apis::RealtimebiddingV1::PolicyTopicEntry::Representation
+      
+        end
+      end
+      
       class PolicyTopicEntry
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -462,15 +473,6 @@ module Google
           property :http_call, as: 'httpCall', class: Google::Apis::RealtimebiddingV1::HttpCallEvidence, decorator: Google::Apis::RealtimebiddingV1::HttpCallEvidence::Representation
       
           property :http_cookie, as: 'httpCookie', class: Google::Apis::RealtimebiddingV1::HttpCookieEvidence, decorator: Google::Apis::RealtimebiddingV1::HttpCookieEvidence::Representation
-      
-        end
-      end
-      
-      class ServingStatus
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :status, as: 'status'
-          collection :topics, as: 'topics', class: Google::Apis::RealtimebiddingV1::PolicyTopicEntry, decorator: Google::Apis::RealtimebiddingV1::PolicyTopicEntry::Representation
       
         end
       end

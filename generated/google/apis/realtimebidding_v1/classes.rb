@@ -236,15 +236,15 @@ module Google
       class CreativeServingDecision
         include Google::Apis::Core::Hashable
       
-        # Serving status of the creative for a transaction type or a region.
-        # Corresponds to the JSON property `chinaServingStatus`
-        # @return [Google::Apis::RealtimebiddingV1::ServingStatus]
-        attr_accessor :china_serving_status
+        # Policy compliance of the creative for a transaction type or a region.
+        # Corresponds to the JSON property `chinaPolicyCompliance`
+        # @return [Google::Apis::RealtimebiddingV1::PolicyCompliance]
+        attr_accessor :china_policy_compliance
       
-        # Serving status of the creative for a transaction type or a region.
-        # Corresponds to the JSON property `dealsServingStatus`
-        # @return [Google::Apis::RealtimebiddingV1::ServingStatus]
-        attr_accessor :deals_serving_status
+        # Policy compliance of the creative for a transaction type or a region.
+        # Corresponds to the JSON property `dealsPolicyCompliance`
+        # @return [Google::Apis::RealtimebiddingV1::PolicyCompliance]
+        attr_accessor :deals_policy_compliance
       
         # Detected advertisers and brands.
         # Corresponds to the JSON property `detectedAdvertisers`
@@ -313,15 +313,20 @@ module Google
         # @return [String]
         attr_accessor :last_status_update
       
-        # Serving status of the creative for a transaction type or a region.
-        # Corresponds to the JSON property `openAuctionServingStatus`
-        # @return [Google::Apis::RealtimebiddingV1::ServingStatus]
-        attr_accessor :open_auction_serving_status
+        # Policy compliance of the creative for a transaction type or a region.
+        # Corresponds to the JSON property `networkPolicyCompliance`
+        # @return [Google::Apis::RealtimebiddingV1::PolicyCompliance]
+        attr_accessor :network_policy_compliance
       
-        # Serving status of the creative for a transaction type or a region.
-        # Corresponds to the JSON property `russiaServingStatus`
-        # @return [Google::Apis::RealtimebiddingV1::ServingStatus]
-        attr_accessor :russia_serving_status
+        # Policy compliance of the creative for a transaction type or a region.
+        # Corresponds to the JSON property `platformPolicyCompliance`
+        # @return [Google::Apis::RealtimebiddingV1::PolicyCompliance]
+        attr_accessor :platform_policy_compliance
+      
+        # Policy compliance of the creative for a transaction type or a region.
+        # Corresponds to the JSON property `russiaPolicyCompliance`
+        # @return [Google::Apis::RealtimebiddingV1::PolicyCompliance]
+        attr_accessor :russia_policy_compliance
       
         def initialize(**args)
            update!(**args)
@@ -329,8 +334,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @china_serving_status = args[:china_serving_status] if args.key?(:china_serving_status)
-          @deals_serving_status = args[:deals_serving_status] if args.key?(:deals_serving_status)
+          @china_policy_compliance = args[:china_policy_compliance] if args.key?(:china_policy_compliance)
+          @deals_policy_compliance = args[:deals_policy_compliance] if args.key?(:deals_policy_compliance)
           @detected_advertisers = args[:detected_advertisers] if args.key?(:detected_advertisers)
           @detected_attributes = args[:detected_attributes] if args.key?(:detected_attributes)
           @detected_click_through_urls = args[:detected_click_through_urls] if args.key?(:detected_click_through_urls)
@@ -340,8 +345,9 @@ module Google
           @detected_sensitive_categories = args[:detected_sensitive_categories] if args.key?(:detected_sensitive_categories)
           @detected_vendor_ids = args[:detected_vendor_ids] if args.key?(:detected_vendor_ids)
           @last_status_update = args[:last_status_update] if args.key?(:last_status_update)
-          @open_auction_serving_status = args[:open_auction_serving_status] if args.key?(:open_auction_serving_status)
-          @russia_serving_status = args[:russia_serving_status] if args.key?(:russia_serving_status)
+          @network_policy_compliance = args[:network_policy_compliance] if args.key?(:network_policy_compliance)
+          @platform_policy_compliance = args[:platform_policy_compliance] if args.key?(:platform_policy_compliance)
+          @russia_policy_compliance = args[:russia_policy_compliance] if args.key?(:russia_policy_compliance)
         end
       end
       
@@ -896,6 +902,35 @@ module Google
         end
       end
       
+      # Policy compliance of the creative for a transaction type or a region.
+      class PolicyCompliance
+        include Google::Apis::Core::Hashable
+      
+        # Serving status for the given transaction type (e.g., open auction, deals) or
+        # region (e.g., China, Russia). Can be used to filter the response of the
+        # creatives.list method.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Topics related to the policy compliance for this transaction type (e.g., open
+        # auction, deals) or region (e.g., China, Russia). Topics may be present only if
+        # status is DISAPPROVED.
+        # Corresponds to the JSON property `topics`
+        # @return [Array<Google::Apis::RealtimebiddingV1::PolicyTopicEntry>]
+        attr_accessor :topics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @status = args[:status] if args.key?(:status)
+          @topics = args[:topics] if args.key?(:topics)
+        end
+      end
+      
       # Each policy topic entry will represent a violation of a policy topic for a
       # creative, with the policy topic information and optional evidence for the
       # policy violation.
@@ -986,35 +1021,6 @@ module Google
           @download_size = args[:download_size] if args.key?(:download_size)
           @http_call = args[:http_call] if args.key?(:http_call)
           @http_cookie = args[:http_cookie] if args.key?(:http_cookie)
-        end
-      end
-      
-      # Serving status of the creative for a transaction type or a region.
-      class ServingStatus
-        include Google::Apis::Core::Hashable
-      
-        # Serving status for the given transaction type (e.g., open auction, deals) or
-        # region (e.g., China, Russia). Can be used to filter the response of the
-        # creatives.list method.
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
-        # Policy topics related to the serving decision for this transaction type (e.g.,
-        # open auction, deals) or region (e.g., China, Russia). Topics may be present
-        # only if status is DISAPPROVED.
-        # Corresponds to the JSON property `topics`
-        # @return [Array<Google::Apis::RealtimebiddingV1::PolicyTopicEntry>]
-        attr_accessor :topics
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @status = args[:status] if args.key?(:status)
-          @topics = args[:topics] if args.key?(:topics)
         end
       end
       

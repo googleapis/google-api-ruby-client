@@ -27,13 +27,6 @@ module Google
       class GoogleHomeEnterpriseSdmV1Device
         include Google::Apis::Core::Hashable
       
-        # Output only. The name of the structure/room where the device is assigned to.
-        # For example: "enterprises/XYZ/structures/ABC" or "enterprises/XYZ/structures/
-        # ABC/rooms/123"
-        # Corresponds to the JSON property `assignee`
-        # @return [String]
-        attr_accessor :assignee
-      
         # Required. The resource name of the device. For example: "enterprises/XYZ/
         # devices/123".
         # Corresponds to the JSON property `name`
@@ -64,7 +57,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @assignee = args[:assignee] if args.key?(:assignee)
           @name = args[:name] if args.key?(:name)
           @parent_relations = args[:parent_relations] if args.key?(:parent_relations)
           @traits = args[:traits] if args.key?(:traits)
@@ -146,7 +138,8 @@ module Google
       class GoogleHomeEnterpriseSdmV1ListRoomsResponse
         include Google::Apis::Core::Hashable
       
-        # The pagination token to retrieve the next page of results.
+        # The pagination token to retrieve the next page of results. If this field is
+        # omitted, there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -171,7 +164,8 @@ module Google
       class GoogleHomeEnterpriseSdmV1ListStructuresResponse
         include Google::Apis::Core::Hashable
       
-        # The pagination token to retrieve the next page of results.
+        # The pagination token to retrieve the next page of results. If this field is
+        # omitted, there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token

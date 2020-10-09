@@ -52,7 +52,7 @@ module Google
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
         #   Identifies the managed zone addressed by this request. Can be the managed zone
-        #   name or id.
+        #   name or ID.
         # @param [Google::Apis::DnsV1beta2::Change] change_object
         # @param [String] client_operation_id
         #   For mutating operation requests only. An optional identifier specified by the
@@ -93,7 +93,7 @@ module Google
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
         #   Identifies the managed zone addressed by this request. Can be the managed zone
-        #   name or id.
+        #   name or ID.
         # @param [String] change_id
         #   The identifier of the requested change, from a previous
         #   ResourceRecordSetsChangeResponse.
@@ -135,7 +135,7 @@ module Google
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
         #   Identifies the managed zone addressed by this request. Can be the managed zone
-        #   name or id.
+        #   name or ID.
         # @param [Fixnum] max_results
         #   Optional. Maximum number of results to be returned. If unspecified, the server
         #   will decide how many results to return.
@@ -183,7 +183,7 @@ module Google
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
         #   Identifies the managed zone addressed by this request. Can be the managed zone
-        #   name or id.
+        #   name or ID.
         # @param [String] dns_key_id
         #   The identifier of the requested DnsKey.
         # @param [String] client_operation_id
@@ -229,7 +229,7 @@ module Google
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
         #   Identifies the managed zone addressed by this request. Can be the managed zone
-        #   name or id.
+        #   name or ID.
         # @param [String] digest_type
         #   An optional comma-separated list of digest types to compute and display for
         #   key signing keys. If omitted, the recommended digest type will be computed and
@@ -397,7 +397,7 @@ module Google
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
         #   Identifies the managed zone addressed by this request. Can be the managed zone
-        #   name or id.
+        #   name or ID.
         # @param [String] client_operation_id
         #   For mutating operation requests only. An optional identifier specified by the
         #   client. Must be unique for operation resources in the Operations collection.
@@ -433,7 +433,7 @@ module Google
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
         #   Identifies the managed zone addressed by this request. Can be the managed zone
-        #   name or id.
+        #   name or ID.
         # @param [String] client_operation_id
         #   For mutating operation requests only. An optional identifier specified by the
         #   client. Must be unique for operation resources in the Operations collection.
@@ -512,7 +512,7 @@ module Google
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
         #   Identifies the managed zone addressed by this request. Can be the managed zone
-        #   name or id.
+        #   name or ID.
         # @param [Google::Apis::DnsV1beta2::ManagedZone] managed_zone_object
         # @param [String] client_operation_id
         #   For mutating operation requests only. An optional identifier specified by the
@@ -553,7 +553,7 @@ module Google
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
         #   Identifies the managed zone addressed by this request. Can be the managed zone
-        #   name or id.
+        #   name or ID.
         # @param [Google::Apis::DnsV1beta2::ManagedZone] managed_zone_object
         # @param [String] client_operation_id
         #   For mutating operation requests only. An optional identifier specified by the
@@ -856,7 +856,7 @@ module Google
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
         #   Identifies the managed zone addressed by this request. Can be the managed zone
-        #   name or id.
+        #   name or ID.
         # @param [Fixnum] max_results
         #   Optional. Maximum number of results to be returned. If unspecified, the server
         #   will decide how many results to return.
