@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/cloud-sql/
     module SqladminV1beta4
       VERSION = 'V1beta4'
-      REVISION = '20200919'
+      REVISION = '20201007'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

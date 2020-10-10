@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExistingDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FailedEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -125,6 +131,12 @@ module Google
       end
       
       class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PersistentDisk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -191,6 +203,12 @@ module Google
       end
       
       class VirtualMachine
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Volume
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -325,6 +343,13 @@ module Google
         end
       end
       
+      class ExistingDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk, as: 'disk'
+        end
+      end
+      
       class FailedEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -403,6 +428,15 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+        end
+      end
+      
+      class PersistentDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :size_gb, as: 'sizeGb'
+          property :source_image, as: 'sourceImage'
+          property :type, as: 'type'
         end
       end
       
@@ -510,6 +544,19 @@ module Google
           property :preemptible, as: 'preemptible'
           property :service_account, as: 'serviceAccount', class: Google::Apis::LifesciencesV2beta::ServiceAccount, decorator: Google::Apis::LifesciencesV2beta::ServiceAccount::Representation
       
+          collection :volumes, as: 'volumes', class: Google::Apis::LifesciencesV2beta::Volume, decorator: Google::Apis::LifesciencesV2beta::Volume::Representation
+      
+        end
+      end
+      
+      class Volume
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :existing_disk, as: 'existingDisk', class: Google::Apis::LifesciencesV2beta::ExistingDisk, decorator: Google::Apis::LifesciencesV2beta::ExistingDisk::Representation
+      
+          property :persistent_disk, as: 'persistentDisk', class: Google::Apis::LifesciencesV2beta::PersistentDisk, decorator: Google::Apis::LifesciencesV2beta::PersistentDisk::Representation
+      
+          property :volume, as: 'volume'
         end
       end
       

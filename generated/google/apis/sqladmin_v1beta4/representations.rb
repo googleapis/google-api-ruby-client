@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackupRetentionSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackupRun
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -475,6 +481,8 @@ module Google
       class BackupConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_retention_settings, as: 'backupRetentionSettings', class: Google::Apis::SqladminV1beta4::BackupRetentionSettings, decorator: Google::Apis::SqladminV1beta4::BackupRetentionSettings::Representation
+      
           property :binary_log_enabled, as: 'binaryLogEnabled'
           property :enabled, as: 'enabled'
           property :kind, as: 'kind'
@@ -482,6 +490,15 @@ module Google
           property :point_in_time_recovery_enabled, as: 'pointInTimeRecoveryEnabled'
           property :replication_log_archiving_enabled, as: 'replicationLogArchivingEnabled'
           property :start_time, as: 'startTime'
+          property :transaction_log_retention_days, as: 'transactionLogRetentionDays'
+        end
+      end
+      
+      class BackupRetentionSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retained_backups, as: 'retainedBackups'
+          property :retention_unit, as: 'retentionUnit'
         end
       end
       

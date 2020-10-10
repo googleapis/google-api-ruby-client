@@ -89,6 +89,12 @@ module Google
       class BackupConfiguration
         include Google::Apis::Core::Hashable
       
+        # We currently only support backup retention by specifying the number of backups
+        # we will retain.
+        # Corresponds to the JSON property `backupRetentionSettings`
+        # @return [Google::Apis::SqladminV1beta4::BackupRetentionSettings]
+        attr_accessor :backup_retention_settings
+      
         # (MySQL only) Whether binary log is enabled. If backup configuration is
         # disabled, binarylog must be disabled as well.
         # Corresponds to the JSON property `binaryLogEnabled`
@@ -130,12 +136,19 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
+        # The number of days of transaction logs we retain for point in time restore,
+        # from 1-7.
+        # Corresponds to the JSON property `transactionLogRetentionDays`
+        # @return [Fixnum]
+        attr_accessor :transaction_log_retention_days
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @backup_retention_settings = args[:backup_retention_settings] if args.key?(:backup_retention_settings)
           @binary_log_enabled = args[:binary_log_enabled] if args.key?(:binary_log_enabled)
           @enabled = args[:enabled] if args.key?(:enabled)
           @kind = args[:kind] if args.key?(:kind)
@@ -143,6 +156,35 @@ module Google
           @point_in_time_recovery_enabled = args[:point_in_time_recovery_enabled] if args.key?(:point_in_time_recovery_enabled)
           @replication_log_archiving_enabled = args[:replication_log_archiving_enabled] if args.key?(:replication_log_archiving_enabled)
           @start_time = args[:start_time] if args.key?(:start_time)
+          @transaction_log_retention_days = args[:transaction_log_retention_days] if args.key?(:transaction_log_retention_days)
+        end
+      end
+      
+      # We currently only support backup retention by specifying the number of backups
+      # we will retain.
+      class BackupRetentionSettings
+        include Google::Apis::Core::Hashable
+      
+        # Depending on the value of retention_unit, this is used to determine if a
+        # backup needs to be deleted. If retention_unit is 'COUNT', we will retain this
+        # many backups.
+        # Corresponds to the JSON property `retainedBackups`
+        # @return [Fixnum]
+        attr_accessor :retained_backups
+      
+        # The unit that 'retained_backups' represents.
+        # Corresponds to the JSON property `retentionUnit`
+        # @return [String]
+        attr_accessor :retention_unit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @retained_backups = args[:retained_backups] if args.key?(:retained_backups)
+          @retention_unit = args[:retention_unit] if args.key?(:retention_unit)
         end
       end
       
@@ -626,11 +668,13 @@ module Google
         attr_accessor :settings
       
         # The current serving state of the Cloud SQL instance. This can be one of the
-        # following. *RUNNABLE*: The instance is running, or is ready to run when
-        # accessed. *SUSPENDED*: The instance is not available, for example due to
-        # problems with billing. *PENDING_CREATE*: The instance is being created. *
-        # MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance
-        # creation failed. *UNKNOWN_STATE*: The state of the instance is unknown.
+        # following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is
+        # unknown. *RUNNABLE*: The instance has been stopped by owner. It is not
+        # currently running, but it's ready to be restarted. *SUSPENDED*: The instance
+        # is not available, for example due to problems with billing. for example due to
+        # problems with billing. *PENDING_DELETE*: The instance is being deleted. *
+        # PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is
+        # down for maintenance. *FAILED*: The instance creation failed.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state

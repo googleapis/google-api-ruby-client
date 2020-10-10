@@ -20,12 +20,13 @@ module Google
   module Apis
     # Workflows API
     #
-    # 
+    # Orchestrate Workflows consisting of Google Cloud APIs, SaaS APIs or private
+    # API endpoints.
     #
     # @see https://cloud.google.com/workflows
     module WorkflowsV1beta
       VERSION = 'V1beta'
-      REVISION = '20200828'
+      REVISION = '20201008'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
