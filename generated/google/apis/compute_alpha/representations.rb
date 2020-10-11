@@ -5907,6 +5907,7 @@ module Google
       
           property :source, as: 'source'
           property :type, as: 'type'
+          collection :user_licenses, as: 'userLicenses'
         end
       end
       
@@ -6924,6 +6925,7 @@ module Google
           property :status, as: 'status'
           property :storage_type, as: 'storageType'
           property :type, as: 'type'
+          collection :user_licenses, as: 'userLicenses'
           collection :users, as: 'users'
           property :zone, as: 'zone'
         end
@@ -13108,6 +13110,7 @@ module Google
           property :name, as: 'name'
           property :peer_asn, as: 'peerAsn'
           property :peer_ip_address, as: 'peerIpAddress'
+          property :router_appliance_instance, as: 'routerApplianceInstance'
         end
       end
       
@@ -13132,6 +13135,9 @@ module Google
           property :linked_vpn_tunnel, as: 'linkedVpnTunnel'
           property :management_type, as: 'managementType'
           property :name, as: 'name'
+          property :private_ip_address, as: 'privateIpAddress'
+          property :redundant_interface, as: 'redundantInterface'
+          property :subnetwork, as: 'subnetwork'
         end
       end
       
@@ -14558,6 +14564,7 @@ module Google
           property :certificate_map, as: 'certificateMap'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          collection :http_filters, as: 'httpFilters'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'

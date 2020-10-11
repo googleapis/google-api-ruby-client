@@ -9647,9 +9647,9 @@ module Google
         end
         
         # Retrieves a list of resources that refer to the VM instance specified in the
-        # request. For example, if the VM instance is part of a managed instance group,
-        # the referrers list includes the managed instance group. For more information,
-        # read Viewing Referrers to VM Instances.
+        # request. For example, if the VM instance is part of a managed or unmanaged
+        # instance group, the referrers list includes the instance group. For more
+        # information, read Viewing referrers to VM instances.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone

@@ -7610,6 +7610,9 @@ module Google
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
+          property :last_start_timestamp, as: 'lastStartTimestamp'
+          property :last_stop_timestamp, as: 'lastStopTimestamp'
+          property :last_suspended_timestamp, as: 'lastSuspendedTimestamp'
           property :machine_type, as: 'machineType'
           property :metadata, as: 'metadata', class: Google::Apis::ComputeBeta::Metadata, decorator: Google::Apis::ComputeBeta::Metadata::Representation
       
@@ -12924,6 +12927,7 @@ module Google
           property :authorization_policy, as: 'authorizationPolicy'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          collection :http_filters, as: 'httpFilters'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'

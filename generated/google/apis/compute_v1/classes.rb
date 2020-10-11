@@ -2171,9 +2171,9 @@ module Google
         # The target value of the metric that autoscaler should maintain. This must be a
         # positive value. A utilization metric scales number of virtual machines
         # handling requests to increase or decrease proportionally to the metric.
-        # For example, a good metric to use as a utilization_target is compute.
-        # googleapis.com/instance/network/received_bytes_count. The autoscaler will work
-        # to keep this value constant for each of the instances.
+        # For example, a good metric to use as a utilization_target is https://www.
+        # googleapis.com/compute/v1/instance/network/received_bytes_count. The
+        # autoscaler will work to keep this value constant for each of the instances.
         # Corresponds to the JSON property `utilizationTarget`
         # @return [Float]
         attr_accessor :utilization_target
@@ -7057,11 +7057,11 @@ module Google
         attr_accessor :subnetwork
       
         # The URL of the target resource to receive the matched traffic. For regional
-        # forwarding rules, this target must live in the same region as the forwarding
+        # forwarding rules, this target must be in the same region as the forwarding
         # rule. For global forwarding rules, this target must be a global load balancing
         # resource. The forwarded traffic must be of a type appropriate to the target
-        # object. For INTERNAL_SELF_MANAGED load balancing, only targetHttpProxy and
-        # targetGrpcProxy are valid, not targetHttpsProxy.
+        # object. For more information, see the "Target" column in [Port specifications](
+        # /load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -10579,6 +10579,21 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # [Output Only] Last start timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `lastStartTimestamp`
+        # @return [String]
+        attr_accessor :last_start_timestamp
+      
+        # [Output Only] Last stop timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `lastStopTimestamp`
+        # @return [String]
+        attr_accessor :last_stop_timestamp
+      
+        # [Output Only] Last suspended timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `lastSuspendedTimestamp`
+        # @return [String]
+        attr_accessor :last_suspended_timestamp
+      
         # Full or partial URL of the machine type resource to use for this instance, in
         # the format: zones/zone/machineTypes/machine-type. This is provided by the
         # client when the instance is created. For example, the following is a valid
@@ -10681,7 +10696,8 @@ module Google
       
         # [Output Only] The status of the instance. One of the following values:
         # PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING,
-        # and TERMINATED.
+        # and TERMINATED. For more information about the status of the instance, see
+        # Instance life cycle.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -10724,6 +10740,9 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
+          @last_start_timestamp = args[:last_start_timestamp] if args.key?(:last_start_timestamp)
+          @last_stop_timestamp = args[:last_stop_timestamp] if args.key?(:last_stop_timestamp)
+          @last_suspended_timestamp = args[:last_suspended_timestamp] if args.key?(:last_suspended_timestamp)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
@@ -18408,7 +18427,8 @@ module Google
       class NodeGroupAutoscalingPolicy
         include Google::Apis::Core::Hashable
       
-        # The maximum number of nodes that the group should have.
+        # The maximum number of nodes that the group should have. Must be set if
+        # autoscaling is enabled. Maximum value allowed is 100.
         # Corresponds to the JSON property `maxNodes`
         # @return [Fixnum]
         attr_accessor :max_nodes

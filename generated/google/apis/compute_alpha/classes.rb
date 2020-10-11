@@ -1379,6 +1379,13 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # [Output Only] A list of user provided licenses. It represents a list of URLs
+        # to the license resource. Unlike regular licenses, user provided licenses can
+        # be modified after the disk is created.
+        # Corresponds to the JSON property `userLicenses`
+        # @return [Array<String>]
+        attr_accessor :user_licenses
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1401,6 +1408,7 @@ module Google
           @shielded_instance_initial_state = args[:shielded_instance_initial_state] if args.key?(:shielded_instance_initial_state)
           @source = args[:source] if args.key?(:source)
           @type = args[:type] if args.key?(:type)
+          @user_licenses = args[:user_licenses] if args.key?(:user_licenses)
         end
       end
       
@@ -2369,14 +2377,13 @@ module Google
       class AutoscalingPolicyCpuUtilization
         include Google::Apis::Core::Hashable
       
-        # Indicates which method of prediction is used for CPU utilization metric, if
-        # any. Current set of possible values: * NONE: No predictions are made based on
-        # the scaling metric when calculating the number of VM instances. *
-        # OPTIMIZE_AVAILABILITY: Standard predictive autoscaling predicts the future
-        # values of the scaling metric and then scales a MIG to ensure that new VM
-        # instances are ready in time to cover the predicted peak. New values might be
-        # added in the future. Some of the values might not be available in all API
-        # versions.
+        # Indicates whether predictive autoscaling based on CPU metric is enabled. Valid
+        # values are:
+        # * NONE (default). No predictive method is used. The autoscaler scales the
+        # group to meet current demand based on real-time metrics. *
+        # OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by
+        # monitoring daily and weekly load patterns and scaling out ahead of anticipated
+        # demand.
         # Corresponds to the JSON property `predictiveMethod`
         # @return [String]
         attr_accessor :predictive_method
@@ -2464,9 +2471,9 @@ module Google
         # The target value of the metric that autoscaler should maintain. This must be a
         # positive value. A utilization metric scales number of virtual machines
         # handling requests to increase or decrease proportionally to the metric.
-        # For example, a good metric to use as a utilization_target is compute.
-        # googleapis.com/instance/network/received_bytes_count. The autoscaler will work
-        # to keep this value constant for each of the instances.
+        # For example, a good metric to use as a utilization_target is https://www.
+        # googleapis.com/compute/v1/instance/network/received_bytes_count. The
+        # autoscaler will work to keep this value constant for each of the instances.
         # Corresponds to the JSON property `utilizationTarget`
         # @return [Float]
         attr_accessor :utilization_target
@@ -2920,7 +2927,19 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::BackendBucketCdnPolicyBypassCacheOnRequestHeader>]
         attr_accessor :bypass_cache_on_request_headers
       
-        # 
+        # Specifies the cache setting for all responses from this backend. The possible
+        # values are:
+        # USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache
+        # content. Responses without these headers will not be cached at Google's edge,
+        # and will require a full trip to the origin on every request, potentially
+        # impacting performance and increasing load on the origin server.
+        # FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-
+        # cache" directives in Cache-Control response headers. Warning: this may result
+        # in Cloud CDN caching private, per-user (user identifiable) content.
+        # CACHE_ALL_STATIC Automatically cache static content, including common image
+        # formats, media (video and audio), and web assets (JavaScript and CSS).
+        # Requests and responses that are marked as uncacheable, as well as dynamic
+        # content (including HTML), will not be cached.
         # Corresponds to the JSON property `cacheMode`
         # @return [String]
         attr_accessor :cache_mode
@@ -3674,7 +3693,19 @@ module Google
         # @return [Google::Apis::ComputeAlpha::CacheKeyPolicy]
         attr_accessor :cache_key_policy
       
-        # 
+        # Specifies the cache setting for all responses from this backend. The possible
+        # values are:
+        # USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache
+        # content. Responses without these headers will not be cached at Google's edge,
+        # and will require a full trip to the origin on every request, potentially
+        # impacting performance and increasing load on the origin server.
+        # FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-
+        # cache" directives in Cache-Control response headers. Warning: this may result
+        # in Cloud CDN caching private, per-user (user identifiable) content.
+        # CACHE_ALL_STATIC Automatically cache static content, including common image
+        # formats, media (video and audio), and web assets (JavaScript and CSS).
+        # Requests and responses that are marked as uncacheable, as well as dynamic
+        # content (including HTML), will not be cached.
         # Corresponds to the JSON property `cacheMode`
         # @return [String]
         attr_accessor :cache_mode
@@ -6117,6 +6148,15 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # A list of publicly visible user-licenses. Unlike regular licenses, user
+        # provided licenses can be modified after the disk is created. This includes a
+        # list of URLs to the license resource. For example, to provide a debian license:
+        # https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/
+        # debian-9-stretch
+        # Corresponds to the JSON property `userLicenses`
+        # @return [Array<String>]
+        attr_accessor :user_licenses
+      
         # [Output Only] Links to the users of the disk (attached instances) in form:
         # projects/project/zones/zone/instances/instance
         # Corresponds to the JSON property `users`
@@ -6178,6 +6218,7 @@ module Google
           @status = args[:status] if args.key?(:status)
           @storage_type = args[:storage_type] if args.key?(:storage_type)
           @type = args[:type] if args.key?(:type)
+          @user_licenses = args[:user_licenses] if args.key?(:user_licenses)
           @users = args[:users] if args.key?(:users)
           @zone = args[:zone] if args.key?(:zone)
         end
@@ -8885,11 +8926,11 @@ module Google
         attr_accessor :subnetwork
       
         # The URL of the target resource to receive the matched traffic. For regional
-        # forwarding rules, this target must live in the same region as the forwarding
+        # forwarding rules, this target must be in the same region as the forwarding
         # rule. For global forwarding rules, this target must be a global load balancing
         # resource. The forwarded traffic must be of a type appropriate to the target
-        # object. For INTERNAL_SELF_MANAGED load balancing, only targetHttpProxy and
-        # targetGrpcProxy are valid, not targetHttpsProxy.
+        # object. For more information, see the "Target" column in [Port specifications](
+        # /load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -13088,7 +13129,8 @@ module Google
       
         # [Output Only] The status of the instance. One of the following values:
         # PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING,
-        # and TERMINATED.
+        # and TERMINATED. For more information about the status of the instance, see
+        # Instance life cycle.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -22483,7 +22525,8 @@ module Google
       class NodeGroupAutoscalingPolicy
         include Google::Apis::Core::Hashable
       
-        # The maximum number of nodes that the group should have.
+        # The maximum number of nodes that the group should have. Must be set if
+        # autoscaling is enabled. Maximum value allowed is 100.
         # Corresponds to the JSON property `maxNodes`
         # @return [Fixnum]
         attr_accessor :max_nodes
@@ -30126,8 +30169,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_retention_days
       
-        # Specifies the behavior to apply to existing, scheduled snapshots snapshots if
-        # the policy is changed.
+        # TODO(b/165626794): Remove this field Specifies the behavior to apply to
+        # existing, scheduled snapshots snapshots if the policy is changed.
         # Corresponds to the JSON property `onPolicySwitch`
         # @return [String]
         attr_accessor :on_policy_switch
@@ -31102,6 +31145,14 @@ module Google
         # @return [String]
         attr_accessor :peer_ip_address
       
+        # URI of the VM instance that is used as third party router appliances such as
+        # Next Gen Firewalls, Virtual Routers, SD-WAN. The VM instance must live in
+        # zones contained in the same region as this Cloud Router. The VM instance is
+        # the peer side of the BGP session.
+        # Corresponds to the JSON property `routerApplianceInstance`
+        # @return [String]
+        attr_accessor :router_appliance_instance
+      
         def initialize(**args)
            update!(**args)
         end
@@ -31120,6 +31171,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @peer_asn = args[:peer_asn] if args.key?(:peer_asn)
           @peer_ip_address = args[:peer_ip_address] if args.key?(:peer_ip_address)
+          @router_appliance_instance = args[:router_appliance_instance] if args.key?(:router_appliance_instance)
         end
       end
       
@@ -31261,6 +31313,35 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The regional private internal IP address that will be used to establish BGP
+        # session to a VM instance, which is used as third party router appliances such
+        # as Next Gen Firewalls, Virtual Routers, SD-WAN.
+        # Corresponds to the JSON property `privateIpAddress`
+        # @return [String]
+        attr_accessor :private_ip_address
+      
+        # Name of the interface that will be redundant with the current interface you
+        # are creating. The redundantInterface must belong to the same Cloud Router as
+        # the interface here. To establish the BGP session to SD-WAN VM, you must create
+        # two BGP peers, and the two BGP peers need to be attached to two separate
+        # interfaces that are redundant with each other. The redundant_interface must be
+        # 1-63 characters long, and comply with RFC1035. Specifically, the
+        # redundant_interface must be 1-63 characters long and match the regular
+        # expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must
+        # be a lowercase letter, and all following characters must be a dash, lowercase
+        # letter, or digit, except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `redundantInterface`
+        # @return [String]
+        attr_accessor :redundant_interface
+      
+        # The URL of the subnetwork resource this interface belongs to, it must be in
+        # the same region as the router. When you establish a BGP session to a VM
+        # instance using this interface, the VM instance must belong to the same
+        # subnetwork as the subnetwork specified here.
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
         def initialize(**args)
            update!(**args)
         end
@@ -31272,6 +31353,9 @@ module Google
           @linked_vpn_tunnel = args[:linked_vpn_tunnel] if args.key?(:linked_vpn_tunnel)
           @management_type = args[:management_type] if args.key?(:management_type)
           @name = args[:name] if args.key?(:name)
+          @private_ip_address = args[:private_ip_address] if args.key?(:private_ip_address)
+          @redundant_interface = args[:redundant_interface] if args.key?(:redundant_interface)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
         end
       end
       
@@ -33949,7 +34033,12 @@ module Google
         attr_accessor :auto_created
         alias_method :auto_created?, :auto_created
       
-        # Chain name should conform to RFC1035.
+        # Creates the new snapshot in the snapshot chain labeled with the specified name.
+        # The chain name must be 1-63 characters long and comply with RFC1035. This is
+        # an uncommon option only for advanced service owners who needs to create
+        # separate snapshot chains, for example, for chargeback tracking. When you
+        # describe your snapshot resource, this field is visible only if it has a non-
+        # empty value.
         # Corresponds to the JSON property `chainName`
         # @return [String]
         attr_accessor :chain_name
@@ -37085,6 +37174,21 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # URLs to networkservices.HttpFilter resources enabled for xDS clients using
+        # this configuration. For example, https://networkservices.googleapis.com/beta/
+        # projects/project/locations/locationhttpFilters/httpFilter Only filters that
+        # handle outbound connection and stream events may be specified. These filters
+        # work in conjunction with a default set of HTTP filters that may already be
+        # configured by Traffic Director. Traffic Director will determine the final
+        # location of these filters within xDS configuration based on the name of the
+        # HTTP filter. If Traffic Director positions multiple filters at the same
+        # location, those filters will be in the same order as specified in this list.
+        # httpFilters only applies for loadbalancers with loadBalancingScheme set to
+        # INTERNAL_SELF_MANAGED. See ForwardingRule for more details.
+        # Corresponds to the JSON property `httpFilters`
+        # @return [Array<String>]
+        attr_accessor :http_filters
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -37191,6 +37295,7 @@ module Google
           @certificate_map = args[:certificate_map] if args.key?(:certificate_map)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @http_filters = args[:http_filters] if args.key?(:http_filters)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
