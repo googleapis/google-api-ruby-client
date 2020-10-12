@@ -1,1 +1,9 @@
+include:
+  - name: appsmarket
+    version: v2
+    discovery_rest_url: https://content.googleapis.com/discovery/v1/apis/appsmarket/v2/rest
+  - name: youtubePartner
+    version: v1
+    discovery_rest_url: https://content.googleapis.com/discovery/v1/apis/youtubePartner/v1/rest
 exclude: []
+pause: []

@@ -4,10 +4,4 @@
 
 DIR=$(dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ))
 
-URLS=(https://content.googleapis.com/discovery/v1/apis/appsmarket/v2/rest \
-      https://content.googleapis.com/discovery/v1/apis/youtubePartner/v1/rest \
-      https://content.googleapis.com/discovery/v1/apis/compute/beta/rest \
-      https://monitoring.googleapis.com/\$discovery/rest?version=v3
-)
-
-echo 'a' | bundle exec bin/generate-api gen generated --from-discovery --no-preferred-only --names-out=$DIR/api_names_out.yaml --url=${URLS[*]}
+echo 'a' | bundle exec bin/generate-api gen generated --from-discovery --no-preferred-only --names-out=$DIR/api_names_out.yaml

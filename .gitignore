@@ -19,3 +19,5 @@ tmp/
 *.iml
 atlassian*
 
+__pycache__/
+/vendor/
