@@ -3571,7 +3571,8 @@ module Google
       class LocalInventory
         include Google::Apis::Core::Hashable
       
-        # Availability of the product.
+        # Availability of the product. For accepted attribute values, see the local
+        # product inventory feed specification.
         # Corresponds to the JSON property `availability`
         # @return [String]
         attr_accessor :availability
@@ -3588,13 +3589,15 @@ module Google
         attr_accessor :kind
       
         # Supported pickup method for this offer. Unless the value is "not supported",
-        # this field must be submitted together with `pickupSla`.
+        # this field must be submitted together with `pickupSla`. For accepted attribute
+        # values, see the local product inventory feed specification.
         # Corresponds to the JSON property `pickupMethod`
         # @return [String]
         attr_accessor :pickup_method
       
         # Expected date that an order will be ready for pickup relative to the order
-        # date. Must be submitted together with `pickupMethod`.
+        # date. Must be submitted together with `pickupMethod`. For accepted attribute
+        # values, see the local product inventory feed specification.
         # Corresponds to the JSON property `pickupSla`
         # @return [String]
         attr_accessor :pickup_sla

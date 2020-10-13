@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/solutions/gaming/
     module GameservicesV1
       VERSION = 'V1'
-      REVISION = '20200827'
+      REVISION = '20201008'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

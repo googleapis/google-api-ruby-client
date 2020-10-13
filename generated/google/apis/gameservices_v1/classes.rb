@@ -699,8 +699,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. The resource name of the game server cluster. Uses the form: `
-        # projects/`project`/locations/`location`/realms/`realm`/gameServerClusters/`
+        # Required. The resource name of the game server cluster, in the following form:
+        # `projects/`project`/locations/`location`/realms/`realm`/gameServerClusters/`
         # cluster``. For example, `projects/my-project/locations/`location`/realms/
         # zanzibar/gameServerClusters/my-onprem-cluster`.
         # Corresponds to the JSON property `name`
@@ -781,10 +781,10 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The resource name of the game server config. Uses the form: `projects/`project`
-        # /locations/`location`/gameServerDeployments/`deployment`/configs/`config``.
-        # For example, `projects/my-project/locations/global/gameServerDeployments/my-
-        # game/configs/my-config`.
+        # The resource name of the game server config, in the following form: `projects/`
+        # project`/locations/`location`/gameServerDeployments/`deployment`/configs/`
+        # config``. For example, `projects/my-project/locations/global/
+        # gameServerDeployments/my-game/configs/my-config`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -865,9 +865,10 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The resource name of the game server deployment. Uses the form: `projects/`
-        # project`/locations/`location`/gameServerDeployments/`deployment``. For example,
-        # `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
+        # The resource name of the game server deployment, in the following form: `
+        # projects/`project`/locations/`location`/gameServerDeployments/`deployment``.
+        # For example, `projects/my-project/locations/global/gameServerDeployments/my-
+        # deployment`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -920,8 +921,8 @@ module Google
         # @return [Array<Google::Apis::GameservicesV1::GameServerConfigOverride>]
         attr_accessor :game_server_config_overrides
       
-        # The resource name of the game server deployment rollout. Uses the form: `
-        # projects/`project`/locations/`location`/gameServerDeployments/`deployment`/
+        # The resource name of the game server deployment rollout, in the following form:
+        # `projects/`project`/locations/`location`/gameServerDeployments/`deployment`/
         # rollout`. For example, `projects/my-project/locations/global/
         # gameServerDeployments/my-deployment/rollout`.
         # Corresponds to the JSON property `name`
@@ -1690,9 +1691,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The resource name of the realm. Uses the form: `projects/`project`/locations/`
-        # location`/realms/`realm``. For example, `projects/my-project/locations/`
-        # location`/realms/my-realm`.
+        # The resource name of the realm, in the following form: `projects/`project`/
+        # locations/`location`/realms/`realm``. For example, `projects/my-project/
+        # locations/`location`/realms/my-realm`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

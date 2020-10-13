@@ -161,13 +161,6 @@ module Google
       class Domain
         include Google::Apis::Core::Hashable
       
-        # Optional. Configuration for audit logs. True if audit logs are enabled, else
-        # false. Default is audit logs disabled.
-        # Corresponds to the JSON property `auditLogsEnabled`
-        # @return [Boolean]
-        attr_accessor :audit_logs_enabled
-        alias_method :audit_logs_enabled?, :audit_logs_enabled
-      
         # Optional. The full names of the Google Compute Engine [networks](/compute/docs/
         # networks-and-firewalls#networks) to which the instance is connected. Network
         # can be added using UpdateDomain later. Domain is only available on network
@@ -250,7 +243,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @audit_logs_enabled = args[:audit_logs_enabled] if args.key?(:audit_logs_enabled)
           @authorized_networks = args[:authorized_networks] if args.key?(:authorized_networks)
           @create_time = args[:create_time] if args.key?(:create_time)
           @fqdn = args[:fqdn] if args.key?(:fqdn)
@@ -529,7 +521,7 @@ module Google
         attr_accessor :maintenance_policy_names
       
         # The MaintenanceSchedule contains the scheduling information of published
-        # maintenance schedule.
+        # maintenance schedule with same key as software_versions.
         # Corresponds to the JSON property `maintenanceSchedules`
         # @return [Hash<String,Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule>]
         attr_accessor :maintenance_schedules
@@ -964,6 +956,39 @@ module Google
         end
       end
       
+      # ListSQLIntegrationsResponse is the response message for ListSQLIntegrations
+      # method.
+      class ListSqlIntegrationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of SQLIntegrations of a domain.
+        # Corresponds to the JSON property `sqlIntegrations`
+        # @return [Array<Google::Apis::ManagedidentitiesV1alpha1::SqlIntegration>]
+        attr_accessor :sql_integrations
+      
+        # A list of locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @sql_integrations = args[:sql_integrations] if args.key?(:sql_integrations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # A resource that represents Google Cloud Platform location.
       class Location
         include Google::Apis::Core::Hashable
@@ -1267,6 +1292,52 @@ module Google
         # Update properties of this object
         def update!(**args)
           @password = args[:password] if args.key?(:password)
+        end
+      end
+      
+      # Represents the SQL instance integrated with AD.
+      class SqlIntegration
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the instance was created. Synthetic field is populated
+        # automatically by CCFE. go/ccfe-synthetic-field-user-guide
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The unique name of the sql integration in the form of `projects/`project_id`/
+        # locations/global/domains/`domain_name`/sqlIntegrations/`sql_integration``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The full resource name of an integrated sql instance
+        # Corresponds to the JSON property `sqlInstance`
+        # @return [String]
+        attr_accessor :sql_instance
+      
+        # Output only. The current state of the managed OU.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Last update time. Synthetic field is populated automatically by
+        # CCFE.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @sql_instance = args[:sql_instance] if args.key?(:sql_instance)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       

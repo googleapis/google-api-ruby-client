@@ -32,13 +32,6 @@ module Google
         # @return [Google::Apis::CivicinfoV2::AdministrativeBody]
         attr_accessor :election_administration_body
       
-        # An ID for this object. IDs may change in future requests and should not be
-        # cached. Access to this field requires special access that can be requested
-        # from the Request more link on the Quotas page.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
         # Describes information about a regional election administrative area.
         # Corresponds to the JSON property `local_jurisdiction`
         # @return [Google::Apis::CivicinfoV2::AdministrationRegion]
@@ -62,7 +55,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @election_administration_body = args[:election_administration_body] if args.key?(:election_administration_body)
-          @id = args[:id] if args.key?(:id)
           @local_jurisdiction = args[:local_jurisdiction] if args.key?(:local_jurisdiction)
           @name = args[:name] if args.key?(:name)
           @sources = args[:sources] if args.key?(:sources)
@@ -300,13 +292,6 @@ module Google
         # @return [String]
         attr_accessor :electorate_specifications
       
-        # An ID for this object. IDs may change in future requests and should not be
-        # cached. Access to this field requires special access that can be requested
-        # from the Request more link on the Quotas page.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
         # The levels of government of the office for this contest. There may be more
         # than one in cases where a jurisdiction effectively acts at two different
         # levels of government; for example, the mayor of the District of Columbia acts
@@ -441,7 +426,6 @@ module Google
           @candidates = args[:candidates] if args.key?(:candidates)
           @district = args[:district] if args.key?(:district)
           @electorate_specifications = args[:electorate_specifications] if args.key?(:electorate_specifications)
-          @id = args[:id] if args.key?(:id)
           @level = args[:level] if args.key?(:level)
           @number_elected = args[:number_elected] if args.key?(:number_elected)
           @number_voting_for = args[:number_voting_for] if args.key?(:number_voting_for)
@@ -845,13 +829,6 @@ module Google
         # @return [String]
         attr_accessor :end_date
       
-        # An ID for this object. IDs may change in future requests and should not be
-        # cached. Access to this field requires special access that can be requested
-        # from the Request more link on the Quotas page.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
         # Latitude of the location, in degrees north of the equator. Note this field may
         # not be available for some locations.
         # Corresponds to the JSON property `latitude`
@@ -906,7 +883,6 @@ module Google
         def update!(**args)
           @address = args[:address] if args.key?(:address)
           @end_date = args[:end_date] if args.key?(:end_date)
-          @id = args[:id] if args.key?(:id)
           @latitude = args[:latitude] if args.key?(:latitude)
           @longitude = args[:longitude] if args.key?(:longitude)
           @name = args[:name] if args.key?(:name)

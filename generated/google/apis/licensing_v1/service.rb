@@ -44,8 +44,8 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://licensing.googleapis.com/', '')
-          @batch_path = 'batch'
+          super('https://www.googleapis.com/', '')
+          @batch_path = 'batch/licensing/v1'
         end
         
         # Revoke a license.

@@ -1863,6 +1863,8 @@ module Google
         # @param [String] package_name
         #   The package name of the application for which this subscription was purchased (
         #   for example, 'com.some.thing').
+        # @param [String] subscription_id
+        #   The purchased subscription ID (for example, 'monthly001').
         # @param [String] token
         #   The token provided to the user's device when the subscription was purchased.
         # @param [String] fields
@@ -1882,9 +1884,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def cancel_purchase_subscription(package_name, token, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/purchases/subscriptions/tokens/{token}:cancel', options)
+        def cancel_purchase_subscription(package_name, subscription_id, token, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:cancel', options)
           command.params['packageName'] = package_name unless package_name.nil?
+          command.params['subscriptionId'] = subscription_id unless subscription_id.nil?
           command.params['token'] = token unless token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

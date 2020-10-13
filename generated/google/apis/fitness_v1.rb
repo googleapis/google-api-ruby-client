@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/fit/rest/v1/get-started
     module FitnessV1
       VERSION = 'V1'
-      REVISION = '20201006'
+      REVISION = '20201012'
 
       # Use Google Fit to see and store your physical activity data
       AUTH_FITNESS_ACTIVITY_READ = 'https://www.googleapis.com/auth/fitness.activity.read'

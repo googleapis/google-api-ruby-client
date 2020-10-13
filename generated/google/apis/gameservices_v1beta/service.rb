@@ -121,7 +121,7 @@ module Google
         
         # Creates a new game server deployment in a given project and location.
         # @param [String] parent
-        #   Required. The parent resource name. Uses the form: `projects/`project`/
+        #   Required. The parent resource name, in the following form: `projects/`project`/
         #   locations/`location``.
         # @param [Google::Apis::GameservicesV1beta::GameServerDeployment] game_server_deployment_object
         # @param [String] deployment_id
@@ -158,8 +158,9 @@ module Google
         
         # Deletes a single game server deployment.
         # @param [String] name
-        #   Required. The name of the game server delpoyment to delete. Uses the form: `
-        #   projects/`project`/locations/`location`/gameServerDeployments/`deployment``.
+        #   Required. The name of the game server delpoyment to delete, in the following
+        #   form: `projects/`project`/locations/`location`/gameServerDeployments/`
+        #   deployment``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -191,8 +192,8 @@ module Google
         # Gathers all the Agones fleets and Agones autoscalers, including fleets running
         # an older version of the game server deployment.
         # @param [String] name
-        #   Required. The name of the game server delpoyment. Uses the form: `projects/`
-        #   project`/locations/`location`/gameServerDeployments/`deployment``.
+        #   Required. The name of the game server delpoyment, in the following form: `
+        #   projects/`project`/locations/`location`/gameServerDeployments/`deployment``.
         # @param [Google::Apis::GameservicesV1beta::FetchDeploymentStateRequest] fetch_deployment_state_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -225,8 +226,9 @@ module Google
         
         # Gets details of a single game server deployment.
         # @param [String] name
-        #   Required. The name of the game server delpoyment to retrieve. Uses the form: `
-        #   projects/`project`/locations/`location`/gameServerDeployments/`deployment``.
+        #   Required. The name of the game server delpoyment to retrieve, in the following
+        #   form: `projects/`project`/locations/`location`/gameServerDeployments/`
+        #   deployment``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -297,9 +299,9 @@ module Google
         
         # Gets details a single game server deployment rollout.
         # @param [String] name
-        #   Required. The name of the game server delpoyment to retrieve. Uses the form: `
-        #   projects/`project`/locations/`location`/gameServerDeployments/`deployment`/
-        #   rollout`.
+        #   Required. The name of the game server delpoyment to retrieve, in the following
+        #   form: `projects/`project`/locations/`location`/gameServerDeployments/`
+        #   deployment`/rollout`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -329,7 +331,7 @@ module Google
         
         # Lists game server deployments in a given project and location.
         # @param [String] parent
-        #   Required. The parent resource name. Uses the form: `projects/`project`/
+        #   Required. The parent resource name, in the following form: `projects/`project`/
         #   locations/`location``.
         # @param [String] filter
         #   Optional. The filter to apply to list results.
@@ -377,9 +379,10 @@ module Google
         
         # Patches a game server deployment.
         # @param [String] name
-        #   The resource name of the game server deployment. Uses the form: `projects/`
-        #   project`/locations/`location`/gameServerDeployments/`deployment``. For example,
-        #   `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
+        #   The resource name of the game server deployment, in the following form: `
+        #   projects/`project`/locations/`location`/gameServerDeployments/`deployment``.
+        #   For example, `projects/my-project/locations/global/gameServerDeployments/my-
+        #   deployment`.
         # @param [Google::Apis::GameservicesV1beta::GameServerDeployment] game_server_deployment_object
         # @param [String] update_mask
         #   Required. Mask of fields to update. At least one path must be supplied in this
@@ -418,8 +421,8 @@ module Google
         # Previews the game server deployment rollout. This API does not mutate the
         # rollout resource.
         # @param [String] name
-        #   The resource name of the game server deployment rollout. Uses the form: `
-        #   projects/`project`/locations/`location`/gameServerDeployments/`deployment`/
+        #   The resource name of the game server deployment rollout, in the following form:
+        #   `projects/`project`/locations/`location`/gameServerDeployments/`deployment`/
         #   rollout`. For example, `projects/my-project/locations/global/
         #   gameServerDeployments/my-deployment/rollout`.
         # @param [Google::Apis::GameservicesV1beta::GameServerDeploymentRollout] game_server_deployment_rollout_object
@@ -541,8 +544,8 @@ module Google
         # that is valid. Similarly, if a non existing realm is explicitly called out in
         # game_server_config_overrides field, that will also not result in an error.
         # @param [String] name
-        #   The resource name of the game server deployment rollout. Uses the form: `
-        #   projects/`project`/locations/`location`/gameServerDeployments/`deployment`/
+        #   The resource name of the game server deployment rollout, in the following form:
+        #   `projects/`project`/locations/`location`/gameServerDeployments/`deployment`/
         #   rollout`. For example, `projects/my-project/locations/global/
         #   gameServerDeployments/my-deployment/rollout`.
         # @param [Google::Apis::GameservicesV1beta::GameServerDeploymentRollout] game_server_deployment_rollout_object
@@ -584,7 +587,7 @@ module Google
         # deployment. Game server configs are immutable, and are not applied until
         # referenced in the game server deployment rollout resource.
         # @param [String] parent
-        #   Required. The parent resource name. Uses the form: `projects/`project`/
+        #   Required. The parent resource name, in the following form: `projects/`project`/
         #   locations/`location`/gameServerDeployments/`deployment`/`.
         # @param [Google::Apis::GameservicesV1beta::GameServerConfig] game_server_config_object
         # @param [String] config_id
@@ -622,8 +625,8 @@ module Google
         # Deletes a single game server config. The deletion will fail if the game server
         # config is referenced in a game server deployment rollout.
         # @param [String] name
-        #   Required. The name of the game server config to delete. Uses the form: `
-        #   projects/`project`/locations/`location`/gameServerDeployments/`deployment`/
+        #   Required. The name of the game server config to delete, in the following form:
+        #   `projects/`project`/locations/`location`/gameServerDeployments/`deployment`/
         #   configs/`config``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -654,9 +657,9 @@ module Google
         
         # Gets details of a single game server config.
         # @param [String] name
-        #   Required. The name of the game server config to retrieve. Uses the form: `
-        #   projects/`project`/locations/`location`/gameServerDeployments/`deployment`/
-        #   configs/`config``.
+        #   Required. The name of the game server config to retrieve, in the following
+        #   form: `projects/`project`/locations/`location`/gameServerDeployments/`
+        #   deployment`/configs/`config``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -687,7 +690,7 @@ module Google
         # Lists game server configs in a given project, location, and game server
         # deployment.
         # @param [String] parent
-        #   Required. The parent resource name. Uses the form: `projects/`project`/
+        #   Required. The parent resource name, in the following form: `projects/`project`/
         #   locations/`location`/gameServerDeployments/`deployment`/configs/*`.
         # @param [String] filter
         #   Optional. The filter to apply to list results.
@@ -885,7 +888,7 @@ module Google
         
         # Creates a new realm in a given project and location.
         # @param [String] parent
-        #   Required. The parent resource name. Uses the form: `projects/`project`/
+        #   Required. The parent resource name, in the following form: `projects/`project`/
         #   locations/`location``.
         # @param [Google::Apis::GameservicesV1beta::Realm] realm_object
         # @param [String] realm_id
@@ -922,8 +925,8 @@ module Google
         
         # Deletes a single realm.
         # @param [String] name
-        #   Required. The name of the realm to delete. Uses the form: `projects/`project`/
-        #   locations/`location`/realms/`realm``.
+        #   Required. The name of the realm to delete, in the following form: `projects/`
+        #   project`/locations/`location`/realms/`realm``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -953,8 +956,8 @@ module Google
         
         # Gets details of a single realm.
         # @param [String] name
-        #   Required. The name of the realm to retrieve. Uses the form: `projects/`project`
-        #   /locations/`location`/realms/`realm``.
+        #   Required. The name of the realm to retrieve, in the following form: `projects/`
+        #   project`/locations/`location`/realms/`realm``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -984,7 +987,7 @@ module Google
         
         # Lists realms in a given project and location.
         # @param [String] parent
-        #   Required. The parent resource name. Uses the form: `projects/`project`/
+        #   Required. The parent resource name, in the following form: `projects/`project`/
         #   locations/`location``.
         # @param [String] filter
         #   Optional. The filter to apply to list results.
@@ -1032,9 +1035,9 @@ module Google
         
         # Patches a single realm.
         # @param [String] name
-        #   The resource name of the realm. Uses the form: `projects/`project`/locations/`
-        #   location`/realms/`realm``. For example, `projects/my-project/locations/`
-        #   location`/realms/my-realm`.
+        #   The resource name of the realm, in the following form: `projects/`project`/
+        #   locations/`location`/realms/`realm``. For example, `projects/my-project/
+        #   locations/`location`/realms/my-realm`.
         # @param [Google::Apis::GameservicesV1beta::Realm] realm_object
         # @param [String] update_mask
         #   Required. The update mask applies to the resource. For the `FieldMask`
@@ -1072,9 +1075,9 @@ module Google
         
         # Previews patches to a single realm.
         # @param [String] name
-        #   The resource name of the realm. Uses the form: `projects/`project`/locations/`
-        #   location`/realms/`realm``. For example, `projects/my-project/locations/`
-        #   location`/realms/my-realm`.
+        #   The resource name of the realm, in the following form: `projects/`project`/
+        #   locations/`location`/realms/`realm``. For example, `projects/my-project/
+        #   locations/`location`/realms/my-realm`.
         # @param [Google::Apis::GameservicesV1beta::Realm] realm_object
         # @param [String] preview_time
         #   Optional. The target timestamp to compute the preview.
@@ -1115,7 +1118,7 @@ module Google
         
         # Creates a new game server cluster in a given project and location.
         # @param [String] parent
-        #   Required. The parent resource name. Uses the form: `projects/`project`/
+        #   Required. The parent resource name, in the following form: `projects/`project`/
         #   locations/`location`/realms/`realm-id``.
         # @param [Google::Apis::GameservicesV1beta::GameServerCluster] game_server_cluster_object
         # @param [String] game_server_cluster_id
@@ -1152,8 +1155,8 @@ module Google
         
         # Deletes a single game server cluster.
         # @param [String] name
-        #   Required. The name of the game server cluster to delete. Uses the form: `
-        #   projects/`project`/locations/`location`/gameServerClusters/`cluster``.
+        #   Required. The name of the game server cluster to delete, in the following form:
+        #   `projects/`project`/locations/`location`/gameServerClusters/`cluster``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1183,9 +1186,9 @@ module Google
         
         # Gets details of a single game server cluster.
         # @param [String] name
-        #   Required. The name of the game server cluster to retrieve. Uses the form: `
-        #   projects/`project`/locations/`location`/realms/`realm-id`/gameServerClusters/`
-        #   cluster``.
+        #   Required. The name of the game server cluster to retrieve, in the following
+        #   form: `projects/`project`/locations/`location`/realms/`realm-id`/
+        #   gameServerClusters/`cluster``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1215,7 +1218,7 @@ module Google
         
         # Lists game server clusters in a given project and location.
         # @param [String] parent
-        #   Required. The parent resource name. Uses the form: "projects/`project`/
+        #   Required. The parent resource name, in the following form: "projects/`project`/
         #   locations/`location`/realms/`realm`".
         # @param [String] filter
         #   Optional. The filter to apply to list results.
@@ -1263,8 +1266,8 @@ module Google
         
         # Patches a single game server cluster.
         # @param [String] name
-        #   Required. The resource name of the game server cluster. Uses the form: `
-        #   projects/`project`/locations/`location`/realms/`realm`/gameServerClusters/`
+        #   Required. The resource name of the game server cluster, in the following form:
+        #   `projects/`project`/locations/`location`/realms/`realm`/gameServerClusters/`
         #   cluster``. For example, `projects/my-project/locations/`location`/realms/
         #   zanzibar/gameServerClusters/my-onprem-cluster`.
         # @param [Google::Apis::GameservicesV1beta::GameServerCluster] game_server_cluster_object
@@ -1304,7 +1307,7 @@ module Google
         
         # Previews creation of a new game server cluster in a given project and location.
         # @param [String] parent
-        #   Required. The parent resource name. Uses the form: `projects/`project`/
+        #   Required. The parent resource name, in the following form: `projects/`project`/
         #   locations/`location`/realms/`realm``.
         # @param [Google::Apis::GameservicesV1beta::GameServerCluster] game_server_cluster_object
         # @param [String] game_server_cluster_id
@@ -1344,8 +1347,8 @@ module Google
         
         # Previews deletion of a single game server cluster.
         # @param [String] name
-        #   Required. The name of the game server cluster to delete. Uses the form: `
-        #   projects/`project`/locations/`location`/gameServerClusters/`cluster``.
+        #   Required. The name of the game server cluster to delete, in the following form:
+        #   `projects/`project`/locations/`location`/gameServerClusters/`cluster``.
         # @param [String] preview_time
         #   Optional. The target timestamp to compute the preview.
         # @param [String] fields
@@ -1378,8 +1381,8 @@ module Google
         
         # Previews updating a GameServerCluster.
         # @param [String] name
-        #   Required. The resource name of the game server cluster. Uses the form: `
-        #   projects/`project`/locations/`location`/realms/`realm`/gameServerClusters/`
+        #   Required. The resource name of the game server cluster, in the following form:
+        #   `projects/`project`/locations/`location`/realms/`realm`/gameServerClusters/`
         #   cluster``. For example, `projects/my-project/locations/`location`/realms/
         #   zanzibar/gameServerClusters/my-onprem-cluster`.
         # @param [Google::Apis::GameservicesV1beta::GameServerCluster] game_server_cluster_object

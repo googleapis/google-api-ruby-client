@@ -147,7 +147,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :election_administration_body, as: 'electionAdministrationBody', class: Google::Apis::CivicinfoV2::AdministrativeBody, decorator: Google::Apis::CivicinfoV2::AdministrativeBody::Representation
       
-          property :id, as: 'id'
           property :local_jurisdiction, as: 'local_jurisdiction', class: Google::Apis::CivicinfoV2::AdministrationRegion, decorator: Google::Apis::CivicinfoV2::AdministrationRegion::Representation
       
           property :name, as: 'name'
@@ -213,7 +212,6 @@ module Google
           property :district, as: 'district', class: Google::Apis::CivicinfoV2::ElectoralDistrict, decorator: Google::Apis::CivicinfoV2::ElectoralDistrict::Representation
       
           property :electorate_specifications, as: 'electorateSpecifications'
-          property :id, as: 'id'
           collection :level, as: 'level'
           property :number_elected, :numeric_string => true, as: 'numberElected'
           property :number_voting_for, :numeric_string => true, as: 'numberVotingFor'
@@ -339,7 +337,6 @@ module Google
           property :address, as: 'address', class: Google::Apis::CivicinfoV2::SimpleAddressType, decorator: Google::Apis::CivicinfoV2::SimpleAddressType::Representation
       
           property :end_date, as: 'endDate'
-          property :id, as: 'id'
           property :latitude, as: 'latitude'
           property :longitude, as: 'longitude'
           property :name, as: 'name'

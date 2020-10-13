@@ -359,7 +359,9 @@ module Google
         # @param [Fixnum] limit
         #   If specified, no more than this many data points will be included in the
         #   dataset. If there are more data points in the dataset, nextPageToken will be
-        #   set in the dataset response.
+        #   set in the dataset response. The limit is applied from the end of the time
+        #   range. That is, if pageToken is absent, the limit most recent data points will
+        #   be returned.
         # @param [String] page_token
         #   The continuation token, which is used to page through large datasets. To get
         #   the next page of a dataset, set this parameter to the value of nextPageToken
