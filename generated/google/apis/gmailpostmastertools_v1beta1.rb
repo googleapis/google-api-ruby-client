@@ -27,7 +27,7 @@ module Google
     # @see https://developers.google.com/gmail/postmaster
     module GmailpostmastertoolsV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20200817'
+      REVISION = '20201012'
 
       # See email traffic metrics for the domains you have registered in Gmail Postmaster Tools
       AUTH_POSTMASTER_READONLY = 'https://www.googleapis.com/auth/postmaster.readonly'

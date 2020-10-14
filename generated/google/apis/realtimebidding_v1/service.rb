@@ -327,10 +327,10 @@ module Google
         
         # Updates a creative.
         # @param [String] name
-        #   Name of the creative. Follows the pattern `buyers/`buyer`/creatives/`creative``
-        #   , where ``buyer`` represents the account ID of the buyer who owns the creative,
-        #   and ``creative`` is the buyer-specific creative ID that references this
-        #   creative in the bid response.
+        #   Output only. Name of the creative. Follows the pattern `buyers/`buyer`/
+        #   creatives/`creative``, where ``buyer`` represents the account ID of the buyer
+        #   who owns the creative, and ``creative`` is the buyer-specific creative ID that
+        #   references this creative in the bid response.
         # @param [Google::Apis::RealtimebiddingV1::Creative] creative_object
         # @param [String] update_mask
         #   Field mask to use for partial in-place updates.

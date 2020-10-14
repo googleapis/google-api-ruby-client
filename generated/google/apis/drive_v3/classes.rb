@@ -2501,7 +2501,8 @@ module Google
         attr_accessor :published
         alias_method :published?, :published
       
-        # A link to the published revision.
+        # A link to the published revision. This is only populated for Google Sites
+        # files.
         # Corresponds to the JSON property `publishedLink`
         # @return [String]
         attr_accessor :published_link

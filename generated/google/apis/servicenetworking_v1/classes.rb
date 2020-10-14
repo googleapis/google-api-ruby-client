@@ -801,6 +801,108 @@ module Google
         end
       end
       
+      # Configuration information for a private service access connection.
+      class ConsumerConfig
+        include Google::Apis::Core::Hashable
+      
+        # Export custom routes flag value for peering from consumer to producer.
+        # Corresponds to the JSON property `consumerExportCustomRoutes`
+        # @return [Boolean]
+        attr_accessor :consumer_export_custom_routes
+        alias_method :consumer_export_custom_routes?, :consumer_export_custom_routes
+      
+        # Export subnet routes with public ip flag value for peering from consumer to
+        # producer.
+        # Corresponds to the JSON property `consumerExportSubnetRoutesWithPublicIp`
+        # @return [Boolean]
+        attr_accessor :consumer_export_subnet_routes_with_public_ip
+        alias_method :consumer_export_subnet_routes_with_public_ip?, :consumer_export_subnet_routes_with_public_ip
+      
+        # Import custom routes flag value for peering from consumer to producer.
+        # Corresponds to the JSON property `consumerImportCustomRoutes`
+        # @return [Boolean]
+        attr_accessor :consumer_import_custom_routes
+        alias_method :consumer_import_custom_routes?, :consumer_import_custom_routes
+      
+        # Import subnet routes with public ip flag value for peering from consumer to
+        # producer.
+        # Corresponds to the JSON property `consumerImportSubnetRoutesWithPublicIp`
+        # @return [Boolean]
+        attr_accessor :consumer_import_subnet_routes_with_public_ip
+        alias_method :consumer_import_subnet_routes_with_public_ip?, :consumer_import_subnet_routes_with_public_ip
+      
+        # Export custom routes flag value for peering from producer to consumer.
+        # Corresponds to the JSON property `producerExportCustomRoutes`
+        # @return [Boolean]
+        attr_accessor :producer_export_custom_routes
+        alias_method :producer_export_custom_routes?, :producer_export_custom_routes
+      
+        # Export subnet routes with public ip flag value for peering from producer to
+        # consumer.
+        # Corresponds to the JSON property `producerExportSubnetRoutesWithPublicIp`
+        # @return [Boolean]
+        attr_accessor :producer_export_subnet_routes_with_public_ip
+        alias_method :producer_export_subnet_routes_with_public_ip?, :producer_export_subnet_routes_with_public_ip
+      
+        # Import custom routes flag value for peering from producer to consumer.
+        # Corresponds to the JSON property `producerImportCustomRoutes`
+        # @return [Boolean]
+        attr_accessor :producer_import_custom_routes
+        alias_method :producer_import_custom_routes?, :producer_import_custom_routes
+      
+        # Import subnet routes with public ip flag value for peering from producer to
+        # consumer.
+        # Corresponds to the JSON property `producerImportSubnetRoutesWithPublicIp`
+        # @return [Boolean]
+        attr_accessor :producer_import_subnet_routes_with_public_ip
+        alias_method :producer_import_subnet_routes_with_public_ip?, :producer_import_subnet_routes_with_public_ip
+      
+        # Output only. The VPC host network that is used to host managed service
+        # instances. In the format, projects/`project`/global/networks/`network` where `
+        # project` is the project number e.g. '12345' and `network` is the network name.
+        # Corresponds to the JSON property `producerNetwork`
+        # @return [String]
+        attr_accessor :producer_network
+      
+        # Output only. The name of the allocated IP address ranges for this private
+        # service access connection.
+        # Corresponds to the JSON property `reservedRanges`
+        # @return [Array<String>]
+        attr_accessor :reserved_ranges
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumer_export_custom_routes = args[:consumer_export_custom_routes] if args.key?(:consumer_export_custom_routes)
+          @consumer_export_subnet_routes_with_public_ip = args[:consumer_export_subnet_routes_with_public_ip] if args.key?(:consumer_export_subnet_routes_with_public_ip)
+          @consumer_import_custom_routes = args[:consumer_import_custom_routes] if args.key?(:consumer_import_custom_routes)
+          @consumer_import_subnet_routes_with_public_ip = args[:consumer_import_subnet_routes_with_public_ip] if args.key?(:consumer_import_subnet_routes_with_public_ip)
+          @producer_export_custom_routes = args[:producer_export_custom_routes] if args.key?(:producer_export_custom_routes)
+          @producer_export_subnet_routes_with_public_ip = args[:producer_export_subnet_routes_with_public_ip] if args.key?(:producer_export_subnet_routes_with_public_ip)
+          @producer_import_custom_routes = args[:producer_import_custom_routes] if args.key?(:producer_import_custom_routes)
+          @producer_import_subnet_routes_with_public_ip = args[:producer_import_subnet_routes_with_public_ip] if args.key?(:producer_import_subnet_routes_with_public_ip)
+          @producer_network = args[:producer_network] if args.key?(:producer_network)
+          @reserved_ranges = args[:reserved_ranges] if args.key?(:reserved_ranges)
+        end
+      end
+      
+      # Metadata provided through GetOperation request for the LRO generated by
+      # UpdateConsumerConfig API.
+      class ConsumerConfigMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Represents a consumer project.
       class ConsumerProject
         include Google::Apis::Core::Hashable

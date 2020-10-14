@@ -22,6 +22,56 @@ module Google
   module Apis
     module VaultV1
       
+      # Count number for each account.
+      class AccountCount
+        include Google::Apis::Core::Hashable
+      
+        # User's information.
+        # Corresponds to the JSON property `account`
+        # @return [Google::Apis::VaultV1::UserInfo]
+        attr_accessor :account
+      
+        # The number of artifacts found for this account.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account = args[:account] if args.key?(:account)
+          @count = args[:count] if args.key?(:count)
+        end
+      end
+      
+      # An error that occurred when querying a specific account
+      class AccountCountError
+        include Google::Apis::Core::Hashable
+      
+        # User's information.
+        # Corresponds to the JSON property `account`
+        # @return [Google::Apis::VaultV1::UserInfo]
+        attr_accessor :account
+      
+        # Account query error.
+        # Corresponds to the JSON property `errorType`
+        # @return [String]
+        attr_accessor :error_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account = args[:account] if args.key?(:account)
+          @error_type = args[:error_type] if args.key?(:error_type)
+        end
+      end
+      
       # Accounts to search
       class AccountInfo
         include Google::Apis::Core::Hashable
@@ -157,6 +207,19 @@ module Google
         end
       end
       
+      # The request message for Operations.CancelOperation.
+      class CancelOperationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Close a matter by ID.
       class CloseMatterRequest
         include Google::Apis::Core::Hashable
@@ -282,6 +345,99 @@ module Google
           @groups_query = args[:groups_query] if args.key?(:groups_query)
           @hangouts_chat_query = args[:hangouts_chat_query] if args.key?(:hangouts_chat_query)
           @mail_query = args[:mail_query] if args.key?(:mail_query)
+        end
+      end
+      
+      # Long running operation metadata for CountArtifacts.
+      class CountArtifactsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # End time of count operation. Available when operation is done.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The matter ID of the associated matter.
+        # Corresponds to the JSON property `matterId`
+        # @return [String]
+        attr_accessor :matter_id
+      
+        # A query definition relevant for search & export.
+        # Corresponds to the JSON property `query`
+        # @return [Google::Apis::VaultV1::Query]
+        attr_accessor :query
+      
+        # Creation time of count operation.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @matter_id = args[:matter_id] if args.key?(:matter_id)
+          @query = args[:query] if args.key?(:query)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Count artifacts request.
+      class CountArtifactsRequest
+        include Google::Apis::Core::Hashable
+      
+        # A query definition relevant for search & export.
+        # Corresponds to the JSON property `query`
+        # @return [Google::Apis::VaultV1::Query]
+        attr_accessor :query
+      
+        # Specifies the granularity of the count result returned in response.
+        # Corresponds to the JSON property `view`
+        # @return [String]
+        attr_accessor :view
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @query = args[:query] if args.key?(:query)
+          @view = args[:view] if args.key?(:view)
+        end
+      end
+      
+      # Definition of the response for method CountArtifacts.
+      class CountArtifactsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Groups specific count metrics.
+        # Corresponds to the JSON property `groupsCountResult`
+        # @return [Google::Apis::VaultV1::GroupsCountResult]
+        attr_accessor :groups_count_result
+      
+        # Mail specific count metrics.
+        # Corresponds to the JSON property `mailCountResult`
+        # @return [Google::Apis::VaultV1::MailCountResult]
+        attr_accessor :mail_count_result
+      
+        # Total count of artifacts. For mail and groups, artifacts refers to messages.
+        # Corresponds to the JSON property `totalCount`
+        # @return [Fixnum]
+        attr_accessor :total_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @groups_count_result = args[:groups_count_result] if args.key?(:groups_count_result)
+          @mail_count_result = args[:mail_count_result] if args.key?(:mail_count_result)
+          @total_count = args[:total_count] if args.key?(:total_count)
         end
       end
       
@@ -501,6 +657,51 @@ module Google
           @exported_artifact_count = args[:exported_artifact_count] if args.key?(:exported_artifact_count)
           @size_in_bytes = args[:size_in_bytes] if args.key?(:size_in_bytes)
           @total_artifact_count = args[:total_artifact_count] if args.key?(:total_artifact_count)
+        end
+      end
+      
+      # Groups specific count metrics.
+      class GroupsCountResult
+        include Google::Apis::Core::Hashable
+      
+        # Error occurred when querying these accounts.
+        # Corresponds to the JSON property `accountCountErrors`
+        # @return [Array<Google::Apis::VaultV1::AccountCountError>]
+        attr_accessor :account_count_errors
+      
+        # Subtotal count per matching account that have more than zero messages.
+        # Corresponds to the JSON property `accountCounts`
+        # @return [Array<Google::Apis::VaultV1::AccountCount>]
+        attr_accessor :account_counts
+      
+        # Total number of accounts that can be queried and have more than zero messages.
+        # Corresponds to the JSON property `matchingAccountsCount`
+        # @return [Fixnum]
+        attr_accessor :matching_accounts_count
+      
+        # When data scope is HELD_DATA in the request Query, these accounts in the
+        # request are not queried because they are not on hold. For other data scope,
+        # this field is not set.
+        # Corresponds to the JSON property `nonQueryableAccounts`
+        # @return [Array<String>]
+        attr_accessor :non_queryable_accounts
+      
+        # Total number of accounts involved in this count operation.
+        # Corresponds to the JSON property `queriedAccountsCount`
+        # @return [Fixnum]
+        attr_accessor :queried_accounts_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_count_errors = args[:account_count_errors] if args.key?(:account_count_errors)
+          @account_counts = args[:account_counts] if args.key?(:account_counts)
+          @matching_accounts_count = args[:matching_accounts_count] if args.key?(:matching_accounts_count)
+          @non_queryable_accounts = args[:non_queryable_accounts] if args.key?(:non_queryable_accounts)
+          @queried_accounts_count = args[:queried_accounts_count] if args.key?(:queried_accounts_count)
         end
       end
       
@@ -919,6 +1120,31 @@ module Google
         end
       end
       
+      # The response message for Operations.ListOperations.
+      class ListOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of operations that matches the specified filter in the request.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::VaultV1::Operation>]
+        attr_accessor :operations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
       # Definition of the response for method ListSaveQuery.
       class ListSavedQueriesResponse
         include Google::Apis::Core::Hashable
@@ -942,6 +1168,51 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @saved_queries = args[:saved_queries] if args.key?(:saved_queries)
+        end
+      end
+      
+      # Mail specific count metrics.
+      class MailCountResult
+        include Google::Apis::Core::Hashable
+      
+        # Error occurred when querying these accounts.
+        # Corresponds to the JSON property `accountCountErrors`
+        # @return [Array<Google::Apis::VaultV1::AccountCountError>]
+        attr_accessor :account_count_errors
+      
+        # Subtotal count per matching account that have more than zero messages.
+        # Corresponds to the JSON property `accountCounts`
+        # @return [Array<Google::Apis::VaultV1::AccountCount>]
+        attr_accessor :account_counts
+      
+        # Total number of accounts that can be queried and have more than zero messages.
+        # Corresponds to the JSON property `matchingAccountsCount`
+        # @return [Fixnum]
+        attr_accessor :matching_accounts_count
+      
+        # When data scope is HELD_DATA in the request Query, these accounts in the
+        # request are not queried because they are not on hold. For other data scope,
+        # this field is not set.
+        # Corresponds to the JSON property `nonQueryableAccounts`
+        # @return [Array<String>]
+        attr_accessor :non_queryable_accounts
+      
+        # Total number of accounts involved in this count operation.
+        # Corresponds to the JSON property `queriedAccountsCount`
+        # @return [Fixnum]
+        attr_accessor :queried_accounts_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_count_errors = args[:account_count_errors] if args.key?(:account_count_errors)
+          @account_counts = args[:account_counts] if args.key?(:account_counts)
+          @matching_accounts_count = args[:matching_accounts_count] if args.key?(:matching_accounts_count)
+          @non_queryable_accounts = args[:non_queryable_accounts] if args.key?(:non_queryable_accounts)
+          @queried_accounts_count = args[:queried_accounts_count] if args.key?(:queried_accounts_count)
         end
       end
       
@@ -1060,6 +1331,68 @@ module Google
         def update!(**args)
           @account_id = args[:account_id] if args.key?(:account_id)
           @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # This resource represents a long-running operation that is the result of a
+      # network API call.
+      class Operation
+        include Google::Apis::Core::Hashable
+      
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::VaultV1::Status]
+        attr_accessor :error
+      
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # The server-assigned name, which is only unique within the same service that
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The normal response of the operation in case of success. If the original
+        # method returns no data on success, such as `Delete`, the response is `google.
+        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
+        # the response should be the resource. For other methods, the response should
+        # have the type `XxxResponse`, where `Xxx` is the original method name. For
+        # example, if the original method name is `TakeSnapshot()`, the inferred
+        # response type is `TakeSnapshotResponse`.
+        # Corresponds to the JSON property `response`
+        # @return [Hash<String,Object>]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @done = args[:done] if args.key?(:done)
+          @error = args[:error] if args.key?(:error)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+          @response = args[:response] if args.key?(:response)
         end
       end
       

@@ -142,6 +142,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConsumerConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConsumerConfigMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConsumerProject
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -770,6 +782,28 @@ module Google
           property :peering, as: 'peering'
           collection :reserved_peering_ranges, as: 'reservedPeeringRanges'
           property :service, as: 'service'
+        end
+      end
+      
+      class ConsumerConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumer_export_custom_routes, as: 'consumerExportCustomRoutes'
+          property :consumer_export_subnet_routes_with_public_ip, as: 'consumerExportSubnetRoutesWithPublicIp'
+          property :consumer_import_custom_routes, as: 'consumerImportCustomRoutes'
+          property :consumer_import_subnet_routes_with_public_ip, as: 'consumerImportSubnetRoutesWithPublicIp'
+          property :producer_export_custom_routes, as: 'producerExportCustomRoutes'
+          property :producer_export_subnet_routes_with_public_ip, as: 'producerExportSubnetRoutesWithPublicIp'
+          property :producer_import_custom_routes, as: 'producerImportCustomRoutes'
+          property :producer_import_subnet_routes_with_public_ip, as: 'producerImportSubnetRoutesWithPublicIp'
+          property :producer_network, as: 'producerNetwork'
+          collection :reserved_ranges, as: 'reservedRanges'
+        end
+      end
+      
+      class ConsumerConfigMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

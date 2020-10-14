@@ -5995,13 +5995,14 @@ module Google
         attr_accessor :enable_auto_population_of_timespan_config
         alias_method :enable_auto_population_of_timespan_config?, :enable_auto_population_of_timespan_config
       
-        # Exclude files or rows newer than this value. If set to zero, no upper time
-        # limit is applied.
+        # Exclude files, tables, or rows newer than this value. If not set, no upper
+        # time limit is applied.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # Exclude files or rows older than this value.
+        # Exclude files, tables, or rows older than this value. If not set, no lower
+        # time limit is applied.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time

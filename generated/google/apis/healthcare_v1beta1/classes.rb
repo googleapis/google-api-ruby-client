@@ -257,8 +257,9 @@ module Google
       class AttributeDefinition
         include Google::Apis::Core::Hashable
       
-        # Required. Possible values for the attribute. An empty list is invalid. The
-        # list can only be expanded after creation.
+        # Required. Possible values for the attribute. The number of allowed values must
+        # not exceed 100. An empty list is invalid. The list can only be expanded after
+        # creation.
         # Corresponds to the JSON property `allowedValues`
         # @return [Array<String>]
         attr_accessor :allowed_values
@@ -1669,10 +1670,10 @@ module Google
         # updateCreate). This determines if the client can use an Update operation to
         # create a new resource with a client-specified ID. If false, all IDs are server-
         # assigned through the Create operation and attempts to update a non-existent
-        # resource return errors. Please treat the audit logs with appropriate levels of
-        # care if client-specified resource IDs contain sensitive data such as patient
-        # identifiers, those IDs are part of the FHIR resource path recorded in Cloud
-        # audit logs and Cloud Pub/Sub notifications.
+        # resource return errors. Be careful with the audit logs if client-specified
+        # resource IDs contain sensitive data such as patient identifiers, those IDs are
+        # part of the FHIR resource path recorded in Cloud audit logs and Cloud Pub/Sub
+        # notifications.
         # Corresponds to the JSON property `enableUpdateCreate`
         # @return [Boolean]
         attr_accessor :enable_update_create

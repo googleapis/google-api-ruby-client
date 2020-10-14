@@ -25,7 +25,7 @@ module Google
     # @see https://ads.google.com/local-services-ads/
     module LocalservicesV1
       VERSION = 'V1'
-      REVISION = '20200821'
+      REVISION = '20201012'
     end
   end
 end

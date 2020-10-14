@@ -22,6 +22,18 @@ module Google
   module Apis
     module VaultV1
       
+      class AccountCount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccountCountError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccountInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -52,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CancelOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloseMatterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -77,6 +95,24 @@ module Google
       end
       
       class CorpusQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CountArtifactsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CountArtifactsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CountArtifactsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -113,6 +149,12 @@ module Google
       end
       
       class ExportStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GroupsCountResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -208,7 +250,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSavedQueriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MailCountResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -233,6 +287,12 @@ module Google
       end
       
       class MatterPermission
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -316,6 +376,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccountCount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account, as: 'account', class: Google::Apis::VaultV1::UserInfo, decorator: Google::Apis::VaultV1::UserInfo::Representation
+      
+          property :count, :numeric_string => true, as: 'count'
+        end
+      end
+      
+      class AccountCountError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account, as: 'account', class: Google::Apis::VaultV1::UserInfo, decorator: Google::Apis::VaultV1::UserInfo::Representation
+      
+          property :error_type, as: 'errorType'
+        end
+      end
+      
       class AccountInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -356,6 +434,12 @@ module Google
           property :matter_permission, as: 'matterPermission', class: Google::Apis::VaultV1::MatterPermission, decorator: Google::Apis::VaultV1::MatterPermission::Representation
       
           property :send_emails, as: 'sendEmails'
+        end
+      end
+      
+      class CancelOperationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -402,6 +486,37 @@ module Google
       
           property :mail_query, as: 'mailQuery', class: Google::Apis::VaultV1::HeldMailQuery, decorator: Google::Apis::VaultV1::HeldMailQuery::Representation
       
+        end
+      end
+      
+      class CountArtifactsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :matter_id, as: 'matterId'
+          property :query, as: 'query', class: Google::Apis::VaultV1::Query, decorator: Google::Apis::VaultV1::Query::Representation
+      
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class CountArtifactsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :query, as: 'query', class: Google::Apis::VaultV1::Query, decorator: Google::Apis::VaultV1::Query::Representation
+      
+          property :view, as: 'view'
+        end
+      end
+      
+      class CountArtifactsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :groups_count_result, as: 'groupsCountResult', class: Google::Apis::VaultV1::GroupsCountResult, decorator: Google::Apis::VaultV1::GroupsCountResult::Representation
+      
+          property :mail_count_result, as: 'mailCountResult', class: Google::Apis::VaultV1::MailCountResult, decorator: Google::Apis::VaultV1::MailCountResult::Representation
+      
+          property :total_count, :numeric_string => true, as: 'totalCount'
         end
       end
       
@@ -469,6 +584,19 @@ module Google
           property :exported_artifact_count, :numeric_string => true, as: 'exportedArtifactCount'
           property :size_in_bytes, :numeric_string => true, as: 'sizeInBytes'
           property :total_artifact_count, :numeric_string => true, as: 'totalArtifactCount'
+        end
+      end
+      
+      class GroupsCountResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :account_count_errors, as: 'accountCountErrors', class: Google::Apis::VaultV1::AccountCountError, decorator: Google::Apis::VaultV1::AccountCountError::Representation
+      
+          collection :account_counts, as: 'accountCounts', class: Google::Apis::VaultV1::AccountCount, decorator: Google::Apis::VaultV1::AccountCount::Representation
+      
+          property :matching_accounts_count, :numeric_string => true, as: 'matchingAccountsCount'
+          collection :non_queryable_accounts, as: 'nonQueryableAccounts'
+          property :queried_accounts_count, :numeric_string => true, as: 'queriedAccountsCount'
         end
       end
       
@@ -603,12 +731,34 @@ module Google
         end
       end
       
+      class ListOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :operations, as: 'operations', class: Google::Apis::VaultV1::Operation, decorator: Google::Apis::VaultV1::Operation::Representation
+      
+        end
+      end
+      
       class ListSavedQueriesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :saved_queries, as: 'savedQueries', class: Google::Apis::VaultV1::SavedQuery, decorator: Google::Apis::VaultV1::SavedQuery::Representation
       
+        end
+      end
+      
+      class MailCountResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :account_count_errors, as: 'accountCountErrors', class: Google::Apis::VaultV1::AccountCountError, decorator: Google::Apis::VaultV1::AccountCountError::Representation
+      
+          collection :account_counts, as: 'accountCounts', class: Google::Apis::VaultV1::AccountCount, decorator: Google::Apis::VaultV1::AccountCount::Representation
+      
+          property :matching_accounts_count, :numeric_string => true, as: 'matchingAccountsCount'
+          collection :non_queryable_accounts, as: 'nonQueryableAccounts'
+          property :queried_accounts_count, :numeric_string => true, as: 'queriedAccountsCount'
         end
       end
       
@@ -644,6 +794,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :role, as: 'role'
+        end
+      end
+      
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::VaultV1::Status, decorator: Google::Apis::VaultV1::Status::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
         end
       end
       

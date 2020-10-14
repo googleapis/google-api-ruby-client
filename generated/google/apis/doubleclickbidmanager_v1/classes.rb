@@ -106,7 +106,7 @@ module Google
         attr_accessor :filter_type
       
         # SDF Version (column names, types, order) in which the entities will be
-        # returned. Default to 5.
+        # returned. Default to 5.2.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version

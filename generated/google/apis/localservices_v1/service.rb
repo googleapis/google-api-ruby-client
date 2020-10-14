@@ -51,14 +51,14 @@ module Google
         # accounts. Caller needs to provide their manager customer id and the associated
         # auth credential that allows them read permissions on their linked accounts.
         # @param [Fixnum] end_date_day
-        #   Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if
-        #   specifying a year by itself or a year and month where the day is not
-        #   significant.
+        #   Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        #   specify a year by itself or a year and month where the day isn't significant.
         # @param [Fixnum] end_date_month
-        #   Month of year. Must be from 1 to 12, or 0 if specifying a year without a month
+        #   Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
         #   and day.
         # @param [Fixnum] end_date_year
-        #   Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
+        #   Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        #   year.
         # @param [Fixnum] page_size
         #   The maximum number of accounts to return. If the page size is unset, page size
         #   will default to 1000. Maximum page_size is 10000. Optional.
@@ -73,14 +73,14 @@ module Google
         #   ----------------------------------| | manager_customer_id:123 | Get Account
         #   Report for Manager with id 123. | Required.
         # @param [Fixnum] start_date_day
-        #   Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if
-        #   specifying a year by itself or a year and month where the day is not
-        #   significant.
+        #   Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        #   specify a year by itself or a year and month where the day isn't significant.
         # @param [Fixnum] start_date_month
-        #   Month of year. Must be from 1 to 12, or 0 if specifying a year without a month
+        #   Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
         #   and day.
         # @param [Fixnum] start_date_year
-        #   Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
+        #   Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        #   year.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -121,14 +121,14 @@ module Google
         # associated auth credential that allows them read permissions on their linked
         # accounts.
         # @param [Fixnum] end_date_day
-        #   Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if
-        #   specifying a year by itself or a year and month where the day is not
-        #   significant.
+        #   Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        #   specify a year by itself or a year and month where the day isn't significant.
         # @param [Fixnum] end_date_month
-        #   Month of year. Must be from 1 to 12, or 0 if specifying a year without a month
+        #   Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
         #   and day.
         # @param [Fixnum] end_date_year
-        #   Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
+        #   Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        #   year.
         # @param [Fixnum] page_size
         #   The maximum number of accounts to return. If the page size is unset, page size
         #   will default to 1000. Maximum page_size is 10000. Optional.
@@ -144,14 +144,14 @@ module Google
         #   ----------------------------------| | manager_customer_id:123 | Get Detailed
         #   Lead Report for Manager with id | | | 123. | Required.
         # @param [Fixnum] start_date_day
-        #   Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if
-        #   specifying a year by itself or a year and month where the day is not
-        #   significant.
+        #   Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        #   specify a year by itself or a year and month where the day isn't significant.
         # @param [Fixnum] start_date_month
-        #   Month of year. Must be from 1 to 12, or 0 if specifying a year without a month
+        #   Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
         #   and day.
         # @param [Fixnum] start_date_year
-        #   Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
+        #   Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        #   year.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

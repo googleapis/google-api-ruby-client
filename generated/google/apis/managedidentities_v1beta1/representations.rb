@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListSqlIntegrationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -185,6 +191,12 @@ module Google
       end
       
       class ResetAdminPasswordResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlIntegration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -263,7 +275,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :admin, as: 'admin'
-          property :audit_logs_enabled, as: 'auditLogsEnabled'
           collection :authorized_networks, as: 'authorizedNetworks'
           property :create_time, as: 'createTime'
           property :fqdn, as: 'fqdn'
@@ -450,6 +461,16 @@ module Google
         end
       end
       
+      class ListSqlIntegrationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :sql_integrations, as: 'sqlIntegrations', class: Google::Apis::ManagedidentitiesV1beta1::SqlIntegration, decorator: Google::Apis::ManagedidentitiesV1beta1::SqlIntegration::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -514,6 +535,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :password, as: 'password'
+        end
+      end
+      
+      class SqlIntegration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+          property :sql_instance, as: 'sqlInstance'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
         end
       end
       
