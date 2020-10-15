@@ -1367,6 +1367,141 @@ module Google
         end
       end
       
+      # Information regarding a command that was issued to a device.
+      class DirectoryChromeosdevicesCommand
+        include Google::Apis::Core::Hashable
+      
+        # The time at which the command will expire. If the device doesn't execute the
+        # command within this time the command will become expired.
+        # Corresponds to the JSON property `commandExpireTime`
+        # @return [String]
+        attr_accessor :command_expire_time
+      
+        # Unique ID of a device command.
+        # Corresponds to the JSON property `commandId`
+        # @return [Fixnum]
+        attr_accessor :command_id
+      
+        # The result of executing a command.
+        # Corresponds to the JSON property `commandResult`
+        # @return [Google::Apis::AdminDirectoryV1::DirectoryChromeosdevicesCommandResult]
+        attr_accessor :command_result
+      
+        # The timestamp when the command was issued by the admin.
+        # Corresponds to the JSON property `issueTime`
+        # @return [String]
+        attr_accessor :issue_time
+      
+        # The payload that the command specified, if any.
+        # Corresponds to the JSON property `payload`
+        # @return [String]
+        attr_accessor :payload
+      
+        # Indicates the command state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The type of the command.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @command_expire_time = args[:command_expire_time] if args.key?(:command_expire_time)
+          @command_id = args[:command_id] if args.key?(:command_id)
+          @command_result = args[:command_result] if args.key?(:command_result)
+          @issue_time = args[:issue_time] if args.key?(:issue_time)
+          @payload = args[:payload] if args.key?(:payload)
+          @state = args[:state] if args.key?(:state)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The result of executing a command.
+      class DirectoryChromeosdevicesCommandResult
+        include Google::Apis::Core::Hashable
+      
+        # The error message with a short explanation as to why the command failed. Only
+        # present if the command failed.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # The time at which the command was executed or failed to execute.
+        # Corresponds to the JSON property `executeTime`
+        # @return [String]
+        attr_accessor :execute_time
+      
+        # The result of the command.
+        # Corresponds to the JSON property `result`
+        # @return [String]
+        attr_accessor :result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @execute_time = args[:execute_time] if args.key?(:execute_time)
+          @result = args[:result] if args.key?(:result)
+        end
+      end
+      
+      # A request for issuing a command.
+      class DirectoryChromeosdevicesIssueCommandRequest
+        include Google::Apis::Core::Hashable
+      
+        # The type of command.
+        # Corresponds to the JSON property `commandType`
+        # @return [String]
+        attr_accessor :command_type
+      
+        # The payload for the command, provide it only if command supports it. The
+        # following commands support adding payload: - SET_VOLUME: Payload is a JSON
+        # object in the form: ` "volume": 50 `. The volume has to be an integer in the
+        # range [0,100].
+        # Corresponds to the JSON property `payload`
+        # @return [String]
+        attr_accessor :payload
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @command_type = args[:command_type] if args.key?(:command_type)
+          @payload = args[:payload] if args.key?(:payload)
+        end
+      end
+      
+      # A response for issuing a command.
+      class DirectoryChromeosdevicesIssueCommandResponse
+        include Google::Apis::Core::Hashable
+      
+        # The unique ID of the issued command, used to retrieve the command status.
+        # Corresponds to the JSON property `commandId`
+        # @return [Fixnum]
+        attr_accessor :command_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @command_id = args[:command_id] if args.key?(:command_id)
+        end
+      end
+      
       # 
       class DomainAlias
         include Google::Apis::Core::Hashable

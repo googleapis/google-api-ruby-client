@@ -184,6 +184,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DirectoryChromeosdevicesCommand
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DirectoryChromeosdevicesCommandResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DirectoryChromeosdevicesIssueCommandRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DirectoryChromeosdevicesIssueCommandResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DomainAlias
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -854,6 +878,44 @@ module Google
           property :organization_name, as: 'organizationName'
           property :postal_code, as: 'postalCode'
           property :region, as: 'region'
+        end
+      end
+      
+      class DirectoryChromeosdevicesCommand
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :command_expire_time, as: 'commandExpireTime'
+          property :command_id, :numeric_string => true, as: 'commandId'
+          property :command_result, as: 'commandResult', class: Google::Apis::AdminDirectoryV1::DirectoryChromeosdevicesCommandResult, decorator: Google::Apis::AdminDirectoryV1::DirectoryChromeosdevicesCommandResult::Representation
+      
+          property :issue_time, as: 'issueTime'
+          property :payload, as: 'payload'
+          property :state, as: 'state'
+          property :type, as: 'type'
+        end
+      end
+      
+      class DirectoryChromeosdevicesCommandResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_message, as: 'errorMessage'
+          property :execute_time, as: 'executeTime'
+          property :result, as: 'result'
+        end
+      end
+      
+      class DirectoryChromeosdevicesIssueCommandRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :command_type, as: 'commandType'
+          property :payload, as: 'payload'
+        end
+      end
+      
+      class DirectoryChromeosdevicesIssueCommandResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :command_id, :numeric_string => true, as: 'commandId'
         end
       end
       

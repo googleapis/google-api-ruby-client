@@ -527,7 +527,7 @@ module Google
       class Entity
         include Google::Apis::Core::Hashable
       
-        # A Google Analytics App + Web property id.
+        # A Google Analytics GA4 property id.
         # Corresponds to the JSON property `propertyId`
         # @return [String]
         attr_accessor :property_id

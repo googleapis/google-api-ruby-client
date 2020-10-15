@@ -49,16 +49,16 @@ module Google
         
         # Returns metadata for dimensions and metrics available in reporting methods.
         # Used to explore the dimensions and metrics. In this method, a Google Analytics
-        # App + Web Property Identifier is specified in the request, and the metadata
-        # response includes Custom dimensions and metrics as well as Universal metadata.
-        # For example if a custom metric with parameter name `levels_unlocked` is
-        # registered to a property, the Metadata response will contain `customEvent:
-        # levels_unlocked`. Universal metadata are dimensions and metrics applicable to
-        # any property such as `country` and `totalUsers`.
+        # GA4 Property Identifier is specified in the request, and the metadata response
+        # includes Custom dimensions and metrics as well as Universal metadata. For
+        # example if a custom metric with parameter name `levels_unlocked` is registered
+        # to a property, the Metadata response will contain `customEvent:levels_unlocked`
+        # . Universal metadata are dimensions and metrics applicable to any property
+        # such as `country` and `totalUsers`.
         # @param [String] name
         #   Required. The resource name of the metadata to retrieve. This name field is
         #   specified in the URL path and not URL parameters. Property is a numeric Google
-        #   Analytics App + Web Property identifier. Example: properties/1234/metadata
+        #   Analytics GA4 Property identifier. Example: properties/1234/metadata
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
