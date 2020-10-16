@@ -454,6 +454,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListRowAccessPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LocationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -599,6 +605,12 @@ module Google
       end
       
       class Row
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RowAccessPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1763,6 +1775,15 @@ module Google
         end
       end
       
+      class ListRowAccessPoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :row_access_policies, as: 'rowAccessPolicies', class: Google::Apis::BigqueryV2::RowAccessPolicy, decorator: Google::Apis::BigqueryV2::RowAccessPolicy::Representation
+      
+        end
+      end
+      
       class LocationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2060,6 +2081,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :actual_label, as: 'actualLabel'
           collection :entries, as: 'entries', class: Google::Apis::BigqueryV2::Entry, decorator: Google::Apis::BigqueryV2::Entry::Representation
+      
+        end
+      end
+      
+      class RowAccessPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_time, as: 'creationTime'
+          property :etag, as: 'etag'
+          property :filter_predicate, as: 'filterPredicate'
+          property :last_modified_time, as: 'lastModifiedTime'
+          property :row_access_policy_reference, as: 'rowAccessPolicyReference', class: Google::Apis::BigqueryV2::RowAccessPolicyReference, decorator: Google::Apis::BigqueryV2::RowAccessPolicyReference::Representation
       
         end
       end

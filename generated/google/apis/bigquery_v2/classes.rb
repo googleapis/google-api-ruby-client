@@ -4069,6 +4069,31 @@ module Google
         end
       end
       
+      # Response message for the ListRowAccessPolicies method.
+      class ListRowAccessPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to request the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Row access policies on the requested table.
+        # Corresponds to the JSON property `rowAccessPolicies`
+        # @return [Array<Google::Apis::BigqueryV2::RowAccessPolicy>]
+        attr_accessor :row_access_policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @row_access_policies = args[:row_access_policies] if args.key?(:row_access_policies)
+        end
+      end
+      
       # BigQuery-specific metadata about a location. This will be set on google.cloud.
       # location.Location.metadata in Cloud Location API responses.
       class LocationMetadata
@@ -5294,6 +5319,56 @@ module Google
         end
       end
       
+      # Represents access on a subset of rows on the specified table, defined by its
+      # filter predicate. Access to the subset of rows is controlled by its IAM policy.
+      class RowAccessPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when this row access policy was created, in milliseconds
+        # since the epoch.
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
+      
+        # Output only. A hash of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Required. A SQL boolean expression that represents the rows defined by this
+        # row access policy, similar to the boolean expression in a WHERE clause of a
+        # SELECT query on a table. References to other tables, routines, and temporary
+        # functions are not supported. Examples: region="EU" date_field = CAST('2019-9-
+        # 27' as DATE) nullable_field is not NULL numeric_field BETWEEN 1.0 AND 5.0
+        # Corresponds to the JSON property `filterPredicate`
+        # @return [String]
+        attr_accessor :filter_predicate
+      
+        # Output only. The time when this row access policy was last modified, in
+        # milliseconds since the epoch.
+        # Corresponds to the JSON property `lastModifiedTime`
+        # @return [String]
+        attr_accessor :last_modified_time
+      
+        # Required. Reference describing the ID of this row access policy.
+        # Corresponds to the JSON property `rowAccessPolicyReference`
+        # @return [Google::Apis::BigqueryV2::RowAccessPolicyReference]
+        attr_accessor :row_access_policy_reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @etag = args[:etag] if args.key?(:etag)
+          @filter_predicate = args[:filter_predicate] if args.key?(:filter_predicate)
+          @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
+          @row_access_policy_reference = args[:row_access_policy_reference] if args.key?(:row_access_policy_reference)
+        end
+      end
+      
       # 
       class RowAccessPolicyReference
         include Google::Apis::Core::Hashable
@@ -5798,11 +5873,11 @@ module Google
         attr_accessor :time_partitioning
       
         # [Output-only] Describes the table type. The following values are supported:
-        # TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. [
-        # TrustedTester] SNAPSHOT: An immutable, read-only table that is a copy of
-        # another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is
-        # persisted. EXTERNAL: A table that references data stored in an external
-        # storage system, such as Google Cloud Storage. The default value is TABLE.
+        # TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query.
+        # SNAPSHOT: An immutable, read-only table that is a copy of another table. [
+        # TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted.
+        # EXTERNAL: A table that references data stored in an external storage system,
+        # such as Google Cloud Storage. The default value is TABLE.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type

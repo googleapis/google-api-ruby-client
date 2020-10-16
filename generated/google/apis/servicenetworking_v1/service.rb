@@ -816,8 +816,8 @@ module Google
         
         # Service producers can use this method to add roles in the shared VPC host
         # project. Each role is bound to the provided member. Each role must be selected
-        # from within a whitelisted set of roles. Each role is applied at only the
-        # granularity specified in the whitelist.
+        # from within an allowlisted set of roles. Each role is applied at only the
+        # granularity specified in the allowlist.
         # @param [String] parent
         #   Required. This is in a form services/`service` where `service` is the name of
         #   the private access management service. For example 'service-peering.example.

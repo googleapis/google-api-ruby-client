@@ -138,7 +138,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_transfer_job(job_name, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_transfer_job(job_name, project_id, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+jobName}', options)
           command.response_representation = Google::Apis::StoragetransferV1::TransferJob::Representation
           command.response_class = Google::Apis::StoragetransferV1::TransferJob
@@ -151,13 +151,12 @@ module Google
         
         # Lists transfer jobs.
         # @param [String] filter
-        #   Required. A list of query parameters specified as JSON text in the form of: `"
-        #   project_id":"my_project_id", "job_names":["jobid1","jobid2",...], "
-        #   job_statuses":["status1","status2",...]`. Since `job_names` and `job_statuses`
-        #   support multiple values, their values must be specified with array notation. `
-        #   project``_``id` is required. `job_names` and `job_statuses` are optional. The
-        #   valid values for `job_statuses` are case-insensitive: ENABLED, DISABLED, and
-        #   DELETED.
+        #   Required. A list of query parameters specified as JSON text in the form of: ``"
+        #   projectId":"my_project_id", "jobNames":["jobid1","jobid2",...], "jobStatuses":[
+        #   "status1","status2",...]`` Since `jobNames` and `jobStatuses` support multiple
+        #   values, their values must be specified with array notation. `projectId` is
+        #   required. `jobNames` and `jobStatuses` are optional. The valid values for `
+        #   jobStatuses` are case-insensitive: ENABLED, DISABLED, and DELETED.
         # @param [Fixnum] page_size
         #   The list page size. The max allowed value is 256.
         # @param [String] page_token
@@ -179,7 +178,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_transfer_jobs(filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_transfer_jobs(filter, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/transferJobs', options)
           command.response_representation = Google::Apis::StoragetransferV1::ListTransferJobsResponse::Representation
           command.response_class = Google::Apis::StoragetransferV1::ListTransferJobsResponse
@@ -311,14 +310,14 @@ module Google
         # @param [String] name
         #   Required. The value `transferOperations`.
         # @param [String] filter
-        #   Required. A list of query parameters specified as JSON text in the form of: `"
-        #   project_id":"my_project_id", "job_names":["jobid1","jobid2",...], "
-        #   operation_names":["opid1","opid2",...], "transfer_statuses":["status1","
-        #   status2",...]`. Since `job_names`, `operation_names`, and `transfer_statuses`
-        #   support multiple values, they must be specified with array notation. `project``
-        #   _``id` is required. `job_names`, `operation_names`, and `transfer_statuses`
-        #   are optional. The valid values for `transfer_statuses` are case-insensitive:
-        #   IN_PROGRESS, PAUSED, SUCCESS, FAILED, and ABORTED.
+        #   Required. A list of query parameters specified as JSON text in the form of: ``"
+        #   projectId":"my_project_id", "jobNames":["jobid1","jobid2",...], "
+        #   operationNames":["opid1","opid2",...], "transferStatuses":["status1","status2",
+        #   ...]`` Since `jobNames`, `operationNames`, and `transferStatuses` support
+        #   multiple values, they must be specified with array notation. `projectId` is
+        #   required. `jobNames`, `operationNames`, and `transferStatuses` are optional.
+        #   The valid values for `transferStatuses` are case-insensitive: IN_PROGRESS,
+        #   PAUSED, SUCCESS, FAILED, and ABORTED.
         # @param [Fixnum] page_size
         #   The list page size. The max allowed value is 256.
         # @param [String] page_token
@@ -340,7 +339,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_transfer_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_transfer_operations(name, filter, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::StoragetransferV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::StoragetransferV1::ListOperationsResponse

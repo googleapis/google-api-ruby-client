@@ -882,6 +882,13 @@ module Google
         # @return [String]
         attr_accessor :last_modification_time
       
+        # The name of the most recently started TransferOperation of this JobConfig.
+        # Present if and only if at least one TransferOperation has been created for
+        # this JobConfig.
+        # Corresponds to the JSON property `latestOperationName`
+        # @return [String]
+        attr_accessor :latest_operation_name
+      
         # A unique name (within the transfer project) assigned when the job is created.
         # If this field is empty in a CreateTransferJobRequest, Storage Transfer Service
         # will assign a unique name. Otherwise, the specified name is used as the unique
@@ -941,6 +948,7 @@ module Google
           @deletion_time = args[:deletion_time] if args.key?(:deletion_time)
           @description = args[:description] if args.key?(:description)
           @last_modification_time = args[:last_modification_time] if args.key?(:last_modification_time)
+          @latest_operation_name = args[:latest_operation_name] if args.key?(:latest_operation_name)
           @name = args[:name] if args.key?(:name)
           @notification_config = args[:notification_config] if args.key?(:notification_config)
           @project_id = args[:project_id] if args.key?(:project_id)

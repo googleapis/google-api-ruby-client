@@ -1028,6 +1028,52 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists all row access policies on the specified table.
+        # @param [String] project_id
+        #   Required. Project ID of the row access policies to list.
+        # @param [String] dataset_id
+        #   Required. Dataset ID of row access policies to list.
+        # @param [String] table_id
+        #   Required. Table ID of the table to list row access policies.
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return in a single response page. Leverage
+        #   the page tokens to iterate through the entire collection.
+        # @param [String] page_token
+        #   Page token, returned by a previous call, to request the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigqueryV2::ListRowAccessPoliciesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigqueryV2::ListRowAccessPoliciesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_row_access_policies(project_id, dataset_id, table_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies', options)
+          command.response_representation = Google::Apis::BigqueryV2::ListRowAccessPoliciesResponse::Representation
+          command.response_class = Google::Apis::BigqueryV2::ListRowAccessPoliciesResponse
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['datasetId'] = dataset_id unless dataset_id.nil?
+          command.params['tableId'] = table_id unless table_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Streams data into BigQuery one record at a time without needing to run a load
         # job. Requires the WRITER dataset role.
         # @param [String] project_id

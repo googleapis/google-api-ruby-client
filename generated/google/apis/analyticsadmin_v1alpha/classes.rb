@@ -77,7 +77,7 @@ module Google
       end
       
       # A virtual resource representing an overview of an account and all its child
-      # App+Web properties.
+      # GA4 properties.
       class GoogleAnalyticsAdminV1alphaAccountSummary
         include Google::Apis::Core::Hashable
       
@@ -662,7 +662,7 @@ module Google
         end
       end
       
-      # A link between an App+Web property and a Firebase project.
+      # A link between an GA4 property and a Firebase project.
       class GoogleAnalyticsAdminV1alphaFirebaseLink
         include Google::Apis::Core::Hashable
       
@@ -671,7 +671,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Maximum user access to the App + Web property allowed to admins of the linked
+        # Maximum user access to the GA4 property allowed to admins of the linked
         # Firebase project.
         # Corresponds to the JSON property `maximumUserAccess`
         # @return [String]
@@ -725,7 +725,7 @@ module Google
         end
       end
       
-      # A link between an App+Web property and a Google Ads account.
+      # A link between an GA4 property and a Google Ads account.
       class GoogleAnalyticsAdminV1alphaGoogleAdsLink
         include Google::Apis::Core::Hashable
       
@@ -1074,7 +1074,7 @@ module Google
         end
       end
       
-      # A resource message representing a Google Analytics App+Web property.
+      # A resource message representing a Google Analytics GA4 property.
       class GoogleAnalyticsAdminV1alphaProperty
         include Google::Apis::Core::Hashable
       
@@ -1152,7 +1152,7 @@ module Google
         end
       end
       
-      # A virtual resource representing metadata for an App+Web property.
+      # A virtual resource representing metadata for an GA4 property.
       class GoogleAnalyticsAdminV1alphaPropertySummary
         include Google::Apis::Core::Hashable
       

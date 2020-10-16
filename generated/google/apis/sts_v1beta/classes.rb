@@ -69,17 +69,18 @@ module Google
         # be `RS256`. The following payload fields are required. For more information,
         # see [RFC 7523, Section 3](https://tools.ietf.org/html/rfc7523#section-3): - `
         # iss`: The issuer of the token. The issuer must provide a discovery document at
-        # `/.well-known/openid-configuration`, formatted according to section 4.2 of the
-        # [OIDC 1.0 Discovery specification](https://openid.net/specs/openid-connect-
-        # discovery-1_0.html#ProviderConfigurationResponse). - `iat`: The issue time, in
-        # seconds, since the Unix epoch. Must be in the past. - `exp`: The expiration
-        # time, in seconds, since the Unix epoch. Must be less than 48 hours after `iat`.
-        # Shorter expiration times are more secure. If possible, we recommend setting
-        # an expiration time less than 6 hours. - `sub`: The identity asserted in the
-        # JWT. - `aud`: Configured by the mapper policy. The default value is the
-        # service account's unique ID. Example header: ``` ` "alg": "RS256", "kid": "us-
-        # east-11" ` ``` Example payload: ``` ` "iss": "https://accounts.google.com", "
-        # iat": 1517963104, "exp": 1517966704, "aud": "113475438248934895348", "sub": "
+        # the URL `/.well-known/openid-configuration`, where `` is the value of this
+        # field. The document must be formatted according to section 4.2 of the [OIDC 1.
+        # 0 Discovery specification](https://openid.net/specs/openid-connect-discovery-
+        # 1_0.html#ProviderConfigurationResponse). - `iat`: The issue time, in seconds,
+        # since the Unix epoch. Must be in the past. - `exp`: The expiration time, in
+        # seconds, since the Unix epoch. Must be less than 48 hours after `iat`. Shorter
+        # expiration times are more secure. If possible, we recommend setting an
+        # expiration time less than 6 hours. - `sub`: The identity asserted in the JWT. -
+        # `aud`: Configured by the mapper policy. The default value is the service
+        # account's unique ID. Example header: ``` ` "alg": "RS256", "kid": "us-east-11"
+        # ` ``` Example payload: ``` ` "iss": "https://accounts.google.com", "iat":
+        # 1517963104, "exp": 1517966704, "aud": "113475438248934895348", "sub": "
         # 113475438248934895348", "my_claims": ` "additional_claim": "value" ` ` ``` If `
         # subject_token` is an AWS token, it must be a serialized, [signed](https://docs.
         # aws.amazon.com/general/latest/gr/signing_aws_api_requests.html) request to the

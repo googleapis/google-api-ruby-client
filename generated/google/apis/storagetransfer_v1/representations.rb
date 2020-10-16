@@ -407,6 +407,7 @@ module Google
           property :deletion_time, as: 'deletionTime'
           property :description, as: 'description'
           property :last_modification_time, as: 'lastModificationTime'
+          property :latest_operation_name, as: 'latestOperationName'
           property :name, as: 'name'
           property :notification_config, as: 'notificationConfig', class: Google::Apis::StoragetransferV1::NotificationConfig, decorator: Google::Apis::StoragetransferV1::NotificationConfig::Representation
       

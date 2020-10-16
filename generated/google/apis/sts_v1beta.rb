@@ -26,7 +26,7 @@ module Google
     # @see http://cloud.google.com/iam/docs/workload-identity-federation
     module StsV1beta
       VERSION = 'V1beta'
-      REVISION = '20201004'
+      REVISION = '20201009'
     end
   end
 end

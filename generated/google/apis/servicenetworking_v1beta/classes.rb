@@ -414,7 +414,8 @@ module Google
       class AuthenticationRule
         include Google::Apis::Core::Hashable
       
-        # If true, the service accepts API keys without any other credential.
+        # If true, the service accepts API keys without any other credential. This flag
+        # only applies to HTTP and gRPC requests.
         # Corresponds to the JSON property `allowWithoutCredential`
         # @return [Boolean]
         attr_accessor :allow_without_credential
@@ -2555,7 +2556,7 @@ module Google
         # @return [String]
         attr_accessor :member
       
-        # Required. Role to apply. Only whitelisted roles can be used at the specified
+        # Required. Role to apply. Only allowlisted roles can be used at the specified
         # granularity. The role must be one of the following: - 'roles/container.
         # hostServiceAgentUser' applied on the shared VPC host project - 'roles/compute.
         # securityAdmin' applied on the shared VPC host project
