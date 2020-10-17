@@ -23,9 +23,9 @@ module Google
     module PolyV1
       
       # Represents and describes an asset in the Poly library. An asset is a 3D model
-      # or scene created using [Tilt Brush](//www.tiltbrush.com),
-      # [Blocks](//vr.google.com/blocks/), or any 3D program that produces a file
-      # that can be upload to Poly.
+      # or scene created using [Tilt Brush](//www.tiltbrush.com), [Blocks](//vr.google.
+      # com/blocks/), or any 3D program that produces a file that can be upload to
+      # Poly.
       class Asset
         include Google::Apis::Core::Hashable
       
@@ -35,8 +35,8 @@ module Google
         # @return [String]
         attr_accessor :author_name
       
-        # For published assets, the time when the asset was published.
-        # For unpublished assets, the time when the asset was created.
+        # For published assets, the time when the asset was published. For unpublished
+        # assets, the time when the asset was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -51,8 +51,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # A list of Formats where each
-        # format describes one representation of the asset.
+        # A list of Formats where each format describes one representation of the asset.
         # Corresponds to the JSON property `formats`
         # @return [Array<Google::Apis::PolyV1::Format>]
         attr_accessor :formats
@@ -63,22 +62,21 @@ module Google
         attr_accessor :is_curated
         alias_method :is_curated?, :is_curated
       
-        # The license under which the author has made the asset available
-        # for use, if any.
+        # The license under which the author has made the asset available for use, if
+        # any.
         # Corresponds to the JSON property `license`
         # @return [String]
         attr_accessor :license
       
         # Application-defined opaque metadata for this asset. This field is only
         # returned when querying for the signed-in user's own assets, not for public
-        # assets. This string is limited to 1K chars. It is up to the creator of
-        # the asset to define the format for this string (for example, JSON).
+        # assets. This string is limited to 1K chars. It is up to the creator of the
+        # asset to define the format for this string (for example, JSON).
         # Corresponds to the JSON property `metadata`
         # @return [String]
         attr_accessor :metadata
       
-        # The unique identifier for the asset in the form:
-        # `assets/`ASSET_ID``.
+        # The unique identifier for the asset in the form: `assets/`ASSET_ID``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -89,21 +87,20 @@ module Google
         # @return [Google::Apis::PolyV1::PresentationParams]
         attr_accessor :presentation_params
       
-        # Info about the sources of this asset (i.e. assets that were remixed to
-        # create this asset).
+        # Info about the sources of this asset (i.e. assets that were remixed to create
+        # this asset).
         # Corresponds to the JSON property `remixInfo`
         # @return [Google::Apis::PolyV1::RemixInfo]
         attr_accessor :remix_info
       
-        # Represents a file in Poly, which can be a root,
-        # resource, or thumbnail file.
+        # Represents a file in Poly, which can be a root, resource, or thumbnail file.
         # Corresponds to the JSON property `thumbnail`
         # @return [Google::Apis::PolyV1::File]
         attr_accessor :thumbnail
       
         # The time when the asset was last modified. For published assets, whose
-        # contents are immutable, the update time changes only when metadata
-        # properties, such as visibility, are updated.
+        # contents are immutable, the update time changes only when metadata properties,
+        # such as visibility, are updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -173,22 +170,18 @@ module Google
         end
       end
       
-      # Represents a file in Poly, which can be a root,
-      # resource, or thumbnail file.
+      # Represents a file in Poly, which can be a root, resource, or thumbnail file.
       class File
         include Google::Apis::Core::Hashable
       
-        # The MIME content-type, such as `image/png`.
-        # For more information, see
-        # [MIME
+        # The MIME content-type, such as `image/png`. For more information, see [MIME
         # types](//developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types).
         # Corresponds to the JSON property `contentType`
         # @return [String]
         attr_accessor :content_type
       
-        # The path of the resource file relative to the
-        # root file. For root or thumbnail files,
-        # this is just the filename.
+        # The path of the resource file relative to the root file. For root or thumbnail
+        # files, this is just the filename.
         # Corresponds to the JSON property `relativePath`
         # @return [String]
         attr_accessor :relative_path
@@ -210,12 +203,12 @@ module Google
         end
       end
       
-      # The same asset can be represented in different formats, for example,
-      # a [WaveFront .obj](//en.wikipedia.org/wiki/Wavefront_.obj_file) file with its
-      # corresponding .mtl file or a [Khronos glTF](//www.khronos.org/gltf) file
-      # with its corresponding .glb binary data. A format refers to a specific
-      # representation of an asset and contains all information needed to
-      # retrieve and describe this representation.
+      # The same asset can be represented in different formats, for example, a [
+      # WaveFront .obj](//en.wikipedia.org/wiki/Wavefront_.obj_file) file with its
+      # corresponding .mtl file or a [Khronos glTF](//www.khronos.org/gltf) file with
+      # its corresponding .glb binary data. A format refers to a specific
+      # representation of an asset and contains all information needed to retrieve and
+      # describe this representation.
       class Format
         include Google::Apis::Core::Hashable
       
@@ -230,14 +223,13 @@ module Google
         # @return [String]
         attr_accessor :format_type
       
-        # A list of dependencies of the root element. May include, but is not
-        # limited to, materials, textures, and shader programs.
+        # A list of dependencies of the root element. May include, but is not limited to,
+        # materials, textures, and shader programs.
         # Corresponds to the JSON property `resources`
         # @return [Array<Google::Apis::PolyV1::File>]
         attr_accessor :resources
       
-        # Represents a file in Poly, which can be a root,
-        # resource, or thumbnail file.
+        # Represents a file in Poly, which can be a root, resource, or thumbnail file.
         # Corresponds to the JSON property `root`
         # @return [Google::Apis::PolyV1::File]
         attr_accessor :root
@@ -260,10 +252,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A non-negative integer that represents the level of detail (LOD) of this
-        # format relative to other formats of the same asset with the same
-        # format_type.
-        # This hint allows you to sort formats from the most-detailed (0) to
-        # least-detailed (integers greater than 0).
+        # format relative to other formats of the same asset with the same format_type.
+        # This hint allows you to sort formats from the most-detailed (0) to least-
+        # detailed (integers greater than 0).
         # Corresponds to the JSON property `lodHint`
         # @return [Fixnum]
         attr_accessor :lod_hint
@@ -318,10 +309,9 @@ module Google
         # @return [Array<Google::Apis::PolyV1::Asset>]
         attr_accessor :assets
       
-        # The continuation token for retrieving the next page. If empty,
-        # indicates that there are no more pages. To get the next page, submit the
-        # same request specifying this value as the
-        # page_token.
+        # The continuation token for retrieving the next page. If empty, indicates that
+        # there are no more pages. To get the next page, submit the same request
+        # specifying this value as the page_token.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -352,10 +342,9 @@ module Google
         # @return [Array<Google::Apis::PolyV1::Asset>]
         attr_accessor :assets
       
-        # The continuation token for retrieving the next page. If empty,
-        # indicates that there are no more pages. To get the next page, submit the
-        # same request specifying this value as the
-        # page_token.
+        # The continuation token for retrieving the next page. If empty, indicates that
+        # there are no more pages. To get the next page, submit the same request
+        # specifying this value as the page_token.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -381,10 +370,9 @@ module Google
       class ListUserAssetsResponse
         include Google::Apis::Core::Hashable
       
-        # The continuation token for retrieving the next page. If empty,
-        # indicates that there are no more pages. To get the next page, submit the
-        # same request specifying this value as the
-        # page_token.
+        # The continuation token for retrieving the next page. If empty, indicates that
+        # there are no more pages. To get the next page, submit the same request
+        # specifying this value as the page_token.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -466,24 +454,24 @@ module Google
       class PresentationParams
         include Google::Apis::Core::Hashable
       
-        # A background color which could be used for displaying the 3D asset in a
-        # 'thumbnail' or 'palette' style view. Authors have the option to set this
-        # background color when publishing or editing their asset.
-        # This is represented as a six-digit hexademical triplet specifying the
-        # RGB components of the background color, e.g. #FF0000 for Red.
+        # A background color which could be used for displaying the 3D asset in a '
+        # thumbnail' or 'palette' style view. Authors have the option to set this
+        # background color when publishing or editing their asset. This is represented
+        # as a six-digit hexademical triplet specifying the RGB components of the
+        # background color, e.g. #FF0000 for Red.
         # Corresponds to the JSON property `backgroundColor`
         # @return [String]
         attr_accessor :background_color
       
-        # The materials' diffuse/albedo color. This does not apply to vertex colors
-        # or texture maps.
+        # The materials' diffuse/albedo color. This does not apply to vertex colors or
+        # texture maps.
         # Corresponds to the JSON property `colorSpace`
         # @return [String]
         attr_accessor :color_space
       
         # A [Quaternion](//en.wikipedia.org/wiki/Quaternion). Please note: if in the
-        # response you see "w: 1" and nothing else this is the default value of
-        # [0, 0, 0, 1] where x,y, and z are 0.
+        # response you see "w: 1" and nothing else this is the default value of [0, 0, 0,
+        # 1] where x,y, and z are 0.
         # Corresponds to the JSON property `orientingRotation`
         # @return [Google::Apis::PolyV1::Quaternion]
         attr_accessor :orienting_rotation
@@ -501,8 +489,8 @@ module Google
       end
       
       # A [Quaternion](//en.wikipedia.org/wiki/Quaternion). Please note: if in the
-      # response you see "w: 1" and nothing else this is the default value of
-      # [0, 0, 0, 1] where x,y, and z are 0.
+      # response you see "w: 1" and nothing else this is the default value of [0, 0, 0,
+      # 1] where x,y, and z are 0.
       class Quaternion
         include Google::Apis::Core::Hashable
       
@@ -539,13 +527,12 @@ module Google
         end
       end
       
-      # Info about the sources of this asset (i.e. assets that were remixed to
-      # create this asset).
+      # Info about the sources of this asset (i.e. assets that were remixed to create
+      # this asset).
       class RemixInfo
         include Google::Apis::Core::Hashable
       
-        # Resource ids for the sources of this remix, of the form:
-        # `assets/`ASSET_ID``
+        # Resource ids for the sources of this remix, of the form: `assets/`ASSET_ID``
         # Corresponds to the JSON property `sourceAsset`
         # @return [Array<String>]
         attr_accessor :source_asset
@@ -560,15 +547,14 @@ module Google
         end
       end
       
-      # A response message from a request to
-      # startImport. This is returned in the response
-      # field of the Operation.
+      # A response message from a request to startImport. This is returned in the
+      # response field of the Operation.
       class StartAssetImportResponse
         include Google::Apis::Core::Hashable
       
-        # The id of newly created asset. If this is empty when the operation is
-        # complete it means the import failed. Please refer to the
-        # assetImportMessages field to understand what went wrong.
+        # The id of newly created asset. If this is empty when the operation is complete
+        # it means the import failed. Please refer to the assetImportMessages field to
+        # understand what went wrong.
         # Corresponds to the JSON property `assetId`
         # @return [String]
         attr_accessor :asset_id
@@ -578,8 +564,8 @@ module Google
         # @return [String]
         attr_accessor :asset_import_id
       
-        # The message from the asset import. This will contain any warnings
-        # (or - in the case of failure - errors) that occurred during import.
+        # The message from the asset import. This will contain any warnings (or - in the
+        # case of failure - errors) that occurred during import.
         # Corresponds to the JSON property `assetImportMessages`
         # @return [Array<Google::Apis::PolyV1::AssetImportMessage>]
         attr_accessor :asset_import_messages
@@ -607,9 +593,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Represents and describes an asset in the Poly library. An asset is a 3D model
-        # or scene created using [Tilt Brush](//www.tiltbrush.com),
-        # [Blocks](//vr.google.com/blocks/), or any 3D program that produces a file
-        # that can be upload to Poly.
+        # or scene created using [Tilt Brush](//www.tiltbrush.com), [Blocks](//vr.google.
+        # com/blocks/), or any 3D program that produces a file that can be upload to
+        # Poly.
         # Corresponds to the JSON property `asset`
         # @return [Google::Apis::PolyV1::Asset]
         attr_accessor :asset

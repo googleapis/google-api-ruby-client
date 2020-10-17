@@ -1974,11 +1974,12 @@ module Google
         include Google::Apis::Core::Hashable
       
         # (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note:
-        # The only supported values for CPU are '1' and '2'. Cloud Run for Anthos:
-        # supported Limits describes the maximum amount of compute resources allowed.
-        # The values of the map is string form of the 'quantity' k8s type: https://
-        # github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/
-        # pkg/api/resource/quantity.go
+        # The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU
+        # requires at least 2Gi of memory. Cloud Run for Anthos: supported Limits
+        # describes the maximum amount of compute resources allowed. The values of the
+        # map is string form of the 'quantity' k8s type: https://github.com/kubernetes/
+        # kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/
+        # quantity.go
         # Corresponds to the JSON property `limits`
         # @return [Hash<String,String>]
         attr_accessor :limits
@@ -2966,7 +2967,7 @@ module Google
         attr_accessor :revision_name
       
         # Tag is optionally used to expose a dedicated url for referencing this target
-        # exclusively. Not currently supported in Cloud Run. +optional
+        # exclusively. +optional
         # Corresponds to the JSON property `tag`
         # @return [String]
         attr_accessor :tag
