@@ -260,6 +260,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :uris
       
+        # Supports URI wildcards for matching multiple objects from a single URI.
+        # Corresponds to the JSON property `useWildcards`
+        # @return [Boolean]
+        attr_accessor :use_wildcards
+        alias_method :use_wildcards?, :use_wildcards
+      
         def initialize(**args)
            update!(**args)
         end
@@ -267,6 +273,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @uris = args[:uris] if args.key?(:uris)
+          @use_wildcards = args[:use_wildcards] if args.key?(:use_wildcards)
         end
       end
       

@@ -238,6 +238,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :uris, as: 'uris'
+          property :use_wildcards, as: 'useWildcards'
         end
       end
       
