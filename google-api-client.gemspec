@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
 
   spec.files         = `git ls-files -z`
                        .split("\x0")
-                       .reject { |f| f.match(%r{^(spec|script)/|^api_names_out}) }
+                       .reject { |f| f.match(%r{^(spec|script)/|^api_names_out|synth\.metadata}) }
 
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.require_paths = %w[lib generated]
