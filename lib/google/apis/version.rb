@@ -17,7 +17,7 @@ require 'open3'
 module Google
   module Apis
     # Client library version
-    VERSION = '0.46.1'.freeze
+    VERSION = '0.46.2'.freeze
 
     # Current operating system
     # @private
