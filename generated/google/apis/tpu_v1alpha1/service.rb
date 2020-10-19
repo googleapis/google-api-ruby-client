@@ -118,7 +118,7 @@ module Google
         
         # Gets AcceleratorType.
         # @param [String] name
-        #   The resource name.
+        #   Required. The resource name.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -148,7 +148,7 @@ module Google
         
         # Lists accelerator types supported by this API.
         # @param [String] parent
-        #   The parent resource name.
+        #   Required. The parent resource name.
         # @param [String] filter
         #   List filter.
         # @param [String] order_by
@@ -190,7 +190,7 @@ module Google
         
         # Creates a node.
         # @param [String] parent
-        #   The parent resource name.
+        #   Required. The parent resource name.
         # @param [Google::Apis::TpuV1alpha1::Node] node_object
         # @param [String] node_id
         #   The unqualified resource name.
@@ -226,7 +226,7 @@ module Google
         
         # Deletes a node.
         # @param [String] name
-        #   The resource name.
+        #   Required. The resource name.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -256,7 +256,7 @@ module Google
         
         # Gets the details of a node.
         # @param [String] name
-        #   The resource name.
+        #   Required. The resource name.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -286,7 +286,7 @@ module Google
         
         # Lists nodes.
         # @param [String] parent
-        #   The parent resource name.
+        #   Required. The parent resource name.
         # @param [Fixnum] page_size
         #   The maximum number of items to return.
         # @param [String] page_token
@@ -568,7 +568,7 @@ module Google
         
         # Gets TensorFlow Version.
         # @param [String] name
-        #   The resource name.
+        #   Required. The resource name.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -598,7 +598,7 @@ module Google
         
         # Lists TensorFlow versions supported by this API.
         # @param [String] parent
-        #   The parent resource name.
+        #   Required. The parent resource name.
         # @param [String] filter
         #   List filter.
         # @param [String] order_by
