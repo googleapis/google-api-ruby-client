@@ -13,7 +13,7 @@ execute "bundle install"
 
 if ARGV.empty?
   execute "echo a | bundle exec bin/generate-api gen generated --from-discovery --no-preferred-only --names-out=#{DIR}/api_names_out.yaml"
-elsif ARGV == ["--clean"]
+elsif ARGV == ["--clean"] || ARGV == ["clean"]
   execute "bundle exec bin/generate-api gen generated --clean"
 elsif ARGV.size == 2
   api, version = ARGV
