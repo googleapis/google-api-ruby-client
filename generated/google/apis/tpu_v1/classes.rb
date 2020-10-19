@@ -283,7 +283,7 @@ module Google
       class Node
         include Google::Apis::Core::Hashable
       
-        # The type of hardware accelerators associated with this node. Required.
+        # Required. The type of hardware accelerators associated with this node.
         # Corresponds to the JSON property `acceleratorType`
         # @return [String]
         attr_accessor :accelerator_type
@@ -331,7 +331,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. The immutable name of the TPU
+        # Output only. Immutable. The name of the TPU
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -379,7 +379,7 @@ module Google
         # @return [Array<Google::Apis::TpuV1::Symptom>]
         attr_accessor :symptoms
       
-        # The version of Tensorflow running in the Node. Required.
+        # Required. The version of Tensorflow running in the Node.
         # Corresponds to the JSON property `tensorflowVersion`
         # @return [String]
         attr_accessor :tensorflow_version
