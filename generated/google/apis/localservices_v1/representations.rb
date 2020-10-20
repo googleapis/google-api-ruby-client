@@ -74,6 +74,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, :numeric_string => true, as: 'accountId'
+          property :aggregator_info, as: 'aggregatorInfo', class: Google::Apis::LocalservicesV1::GoogleAdsHomeservicesLocalservicesV1AggregatorInfo, decorator: Google::Apis::LocalservicesV1::GoogleAdsHomeservicesLocalservicesV1AggregatorInfo::Representation
+      
           property :average_five_star_rating, as: 'averageFiveStarRating'
           property :average_weekly_budget, as: 'averageWeeklyBudget'
           property :business_name, as: 'businessName'
