@@ -32,6 +32,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :account_id
       
+        # Conatiner for aggregator specific information if lead is for an aggregator GLS
+        # account.
+        # Corresponds to the JSON property `aggregatorInfo`
+        # @return [Google::Apis::LocalservicesV1::GoogleAdsHomeservicesLocalservicesV1AggregatorInfo]
+        attr_accessor :aggregator_info
+      
         # Average review rating score from 1-5 stars.
         # Corresponds to the JSON property `averageFiveStarRating`
         # @return [Float]
@@ -117,6 +123,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @account_id = args[:account_id] if args.key?(:account_id)
+          @aggregator_info = args[:aggregator_info] if args.key?(:aggregator_info)
           @average_five_star_rating = args[:average_five_star_rating] if args.key?(:average_five_star_rating)
           @average_weekly_budget = args[:average_weekly_budget] if args.key?(:average_weekly_budget)
           @business_name = args[:business_name] if args.key?(:business_name)
