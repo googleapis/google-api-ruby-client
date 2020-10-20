@@ -929,7 +929,8 @@ module Google
         # @return [Array<Google::Apis::CloudbuildV1::Build>]
         attr_accessor :builds
       
-        # Token to receive the next page of results.
+        # Token to receive the next page of results. This will be absent if the end of
+        # the response list has been reached.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
