@@ -681,7 +681,7 @@ module Google
       class Metadata
         include Google::Apis::Core::Hashable
       
-        # The dimensions descriptions.
+        # The dimension descriptions.
         # Corresponds to the JSON property `dimensions`
         # @return [Array<Google::Apis::AnalyticsdataV1alpha::DimensionMetadata>]
         attr_accessor :dimensions
