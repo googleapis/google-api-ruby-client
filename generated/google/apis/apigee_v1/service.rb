@@ -4259,11 +4259,13 @@ module Google
         # controlled by the `format` query parameter: * `keycertfile` - Separate PEM-
         # encoded key and certificate files are uploaded. The request must have `Content-
         # Type: multipart/form-data` and include fields `keyFile` and `certFile`. If
-        # uploading to a truststore, omit `keyFile`. * `pkcs12` - A PKCS12 file is
-        # uploaded. The request must have `Content-Type: multipart/form-data` with the
-        # file provided in the only field. * `selfsignedcert` - A new private key and
-        # certificate are generated. The request must have `Content-Type: application/
-        # json` and a body of CertificateGenerationSpec.
+        # uploading to a truststore, omit `keyFile`. A `password` field should be
+        # provided for encrypted keys. * `pkcs12` - A PKCS12 file is uploaded. The
+        # request must have `Content-Type: multipart/form-data` with the file provided
+        # in the `file` field and a `password` field if the file is encrypted. * `
+        # selfsignedcert` - A new private key and certificate are generated. The request
+        # must have `Content-Type: application/json` and a body of
+        # CertificateGenerationSpec.
         # @param [String] parent
         #   Required. The name of the keystore. Must be of the form `organizations/`
         #   organization`/environments/`environment`/keystores/`keystore``.
@@ -4936,7 +4938,8 @@ module Google
         
         # Creates a resource file. Specify the `Content-Type` as `application/octet-
         # stream` or `multipart/form-data`. For more information about resource files,
-        # see [Resource files](/api-platform/develop/resource-files).
+        # see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/
+        # resource-files).
         # @param [String] parent
         #   Required. Name of the environment in which to create the resource file in the
         #   following format: `organizations/`org`/environments/`env``.
@@ -4978,7 +4981,8 @@ module Google
         end
         
         # Deletes a resource file. For more information about resource files, see [
-        # Resource files](/api-platform/develop/resource-files).
+        # Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/
+        # resource-files).
         # @param [String] parent
         #   Required. Name of the environment in the following format: `organizations/`org`
         #   /environments/`env``.
@@ -5017,7 +5021,8 @@ module Google
         end
         
         # Gets the contents of a resource file. For more information about resource
-        # files, see [Resource files](/api-platform/develop/resource-files).
+        # files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/
+        # develop/resource-files).
         # @param [String] parent
         #   Required. Name of the environment in the following format: `organizations/`org`
         #   /environments/`env``.
@@ -5055,8 +5060,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all resource files. For more information about resource files, see [
-        # Resource files](/api-platform/develop/resource-files).
+        # Lists all resource files, optionally filtering by type. For more information
+        # about resource files, see [Resource files](https://cloud.google.com/apigee/
+        # docs/api-platform/develop/resource-files).
         # @param [String] parent
         #   Required. Name of the environment in which to list resource files in the
         #   following format: `organizations/`org`/environments/`env``.
@@ -5090,8 +5096,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all resource files. For more information about resource files, see [
-        # Resource files](/api-platform/develop/resource-files).
+        # Lists all resource files, optionally filtering by type. For more information
+        # about resource files, see [Resource files](https://cloud.google.com/apigee/
+        # docs/api-platform/develop/resource-files).
         # @param [String] parent
         #   Required. Name of the environment in which to list resource files in the
         #   following format: `organizations/`org`/environments/`env``.
@@ -5127,7 +5134,8 @@ module Google
         
         # Updates a resource file. Specify the `Content-Type` as `application/octet-
         # stream` or `multipart/form-data`. For more information about resource files,
-        # see [Resource files](/api-platform/develop/resource-files).
+        # see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/
+        # resource-files).
         # @param [String] parent
         #   Required. Name of the environment in the following format: `organizations/`org`
         #   /environments/`env``.

@@ -742,12 +742,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudApigeeV1Schema
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2263,20 +2257,8 @@ module Google
       class GoogleCloudApigeeV1RuntimeTraceSamplingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :error_sources, as: 'errorSources'
-          collection :response_code_ranges, as: 'responseCodeRanges', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange::Representation
-      
-          collection :response_codes, as: 'responseCodes'
           property :sampler, as: 'sampler'
           property :sampling_rate, as: 'samplingRate'
-        end
-      end
-      
-      class GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :first_response_code, as: 'firstResponseCode'
-          property :last_response_code, as: 'lastResponseCode'
         end
       end
       
