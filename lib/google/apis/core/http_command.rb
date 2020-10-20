@@ -145,7 +145,7 @@ module Google
           options.authorization.respond_to?(:apply!)
         end
 
-        # Prepare the request (e.g. calculate headers, serialize data, etc) before sending
+        # Prepare the request (e.g. calculate headers, add query params, serialize data, etc) before sending
         #
         # @private
         # @return [void]
@@ -153,6 +153,7 @@ module Google
           normalize_unicode = true
           if options
             header.update(options.header) if options.header
+            query.update(options.query) if options.query
             normalize_unicode = options.normalize_unicode
           end
           self.url = url.expand(params, nil, normalize_unicode) if url.is_a?(Addressable::Template)
