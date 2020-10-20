@@ -4946,7 +4946,7 @@ module Google
         # @return [String]
         attr_accessor :revision_id
       
-        # NEXT ID: 6 RuntimeTraceSamplingConfig represents the detail settings of
+        # NEXT ID: 3 RuntimeTraceSamplingConfig represents the detail settings of
         # distributed tracing. Only the fields that are defined in the distributed trace
         # configuration can be overridden using the distribute trace configuration
         # override APIs.
@@ -4998,7 +4998,7 @@ module Google
         # @return [String]
         attr_accessor :revision_id
       
-        # NEXT ID: 6 RuntimeTraceSamplingConfig represents the detail settings of
+        # NEXT ID: 3 RuntimeTraceSamplingConfig represents the detail settings of
         # distributed tracing. Only the fields that are defined in the distributed trace
         # configuration can be overridden using the distribute trace configuration
         # override APIs.
@@ -5007,7 +5007,7 @@ module Google
         attr_accessor :sampling_config
       
         # Unique ID for the configuration override. The ID will only change if the
-        # override is deleted and recreated.
+        # override is deleted and recreated. Corresponds to name's "override" field.
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid
@@ -5027,37 +5027,20 @@ module Google
         end
       end
       
-      # NEXT ID: 6 RuntimeTraceSamplingConfig represents the detail settings of
+      # NEXT ID: 3 RuntimeTraceSamplingConfig represents the detail settings of
       # distributed tracing. Only the fields that are defined in the distributed trace
       # configuration can be overridden using the distribute trace configuration
       # override APIs.
       class GoogleCloudApigeeV1RuntimeTraceSamplingConfig
         include Google::Apis::Core::Hashable
       
-        # Error sources from which to capture errors. If none are specified, error codes
-        # are captured from all sources.
-        # Corresponds to the JSON property `errorSources`
-        # @return [Array<String>]
-        attr_accessor :error_sources
-      
-        # List of response code ranges.
-        # Corresponds to the JSON property `responseCodeRanges`
-        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange>]
-        attr_accessor :response_code_ranges
-      
-        # List of single response codes.
-        # Corresponds to the JSON property `responseCodes`
-        # @return [Array<Fixnum>]
-        attr_accessor :response_codes
-      
         # Sampler of distributed tracing. OFF is the default value.
         # Corresponds to the JSON property `sampler`
         # @return [String]
         attr_accessor :sampler
       
-        # Field sampling rate. This value is only valid when is only applicable when
-        # sampling value is probabilistic(PROBABILITY). The supported values are > 0 and
-        # <= 0.5.
+        # Field sampling rate. This value is only applicable when using the PROBABILITY
+        # sampler. The supported values are > 0 and <= 0.5.
         # Corresponds to the JSON property `samplingRate`
         # @return [Float]
         attr_accessor :sampling_rate
@@ -5068,39 +5051,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @error_sources = args[:error_sources] if args.key?(:error_sources)
-          @response_code_ranges = args[:response_code_ranges] if args.key?(:response_code_ranges)
-          @response_codes = args[:response_codes] if args.key?(:response_codes)
           @sampler = args[:sampler] if args.key?(:sampler)
           @sampling_rate = args[:sampling_rate] if args.key?(:sampling_rate)
-        end
-      end
-      
-      # ResponseCodeRange represents a group of response codes to capture, from the
-      # first response code to the last response code. Each range is a close interval.
-      # For example, if an interval is [400, 403], then that means 400, 401, 402, 403
-      # will be all captured.
-      class GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange
-        include Google::Apis::Core::Hashable
-      
-        # The first response code to capture.
-        # Corresponds to the JSON property `firstResponseCode`
-        # @return [Fixnum]
-        attr_accessor :first_response_code
-      
-        # The last response code to capture.
-        # Corresponds to the JSON property `lastResponseCode`
-        # @return [Fixnum]
-        attr_accessor :last_response_code
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @first_response_code = args[:first_response_code] if args.key?(:first_response_code)
-          @last_response_code = args[:last_response_code] if args.key?(:last_response_code)
         end
       end
       
