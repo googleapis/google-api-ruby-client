@@ -442,6 +442,17 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     command.execute(client)
   end
 
+  it 'should prepend user query parameters from options and not remove initial query parameters', :focus do
+    stub_request(:get, 'https://www.googleapis.com/zoo/animals?a=1&a=2&a=3&b=false&foo=bar')
+      .to_return(status: [200, ''])
+    command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals?foo=bar')
+    command.options.query = {
+      'a' => [1,2,3],
+      'b' => false
+    }
+    command.execute(client)
+  end
+
   it 'should raise transmission error instead of socket error' do
     stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_raise(SocketError)
     command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')

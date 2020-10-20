@@ -34,7 +34,8 @@ module Google
       :skip_deserialization,
       :api_format_version,
       :use_opencensus,
-      :quota_project)
+      :quota_project,
+      :query)
 
     # General client options
     class ClientOptions
@@ -62,13 +63,13 @@ module Google
     # Request options
     class RequestOptions
       # @!attribute [rw] authorization
-      #   @return [Signet::OAuth2::Client, #apply(Hash)] OAuth2 credentials
+      #   @return [Signet::OAuth2::Client, #apply(Hash)] OAuth2 credentials.
       # @!attribute [rw] retries
-      #   @return [Fixnum] Number of times to retry requests on server error
+      #   @return [Fixnum] Number of times to retry requests on server error.
       # @!attribute [rw] header
-      #   @return [Hash<String,String] Additional HTTP headers to include in requests
+      #   @return [Hash<String,String>] Additional HTTP headers to include in requests.
       # @!attribute [rw] normalize_unicode
-      #   @return [Boolean] True if unicode strings should be normalized in path parameters
+      #   @return [Boolean] True if unicode strings should be normalized in path parameters.
       # @!attribute [rw] skip_serialization
       #   @return [Boolean] True if body object should be treated as raw text instead of an object.
       # @!attribute [rw] skip_deserialization
@@ -79,6 +80,8 @@ module Google
       #   @return [Boolean] Whether OpenCensus spans should be generated for requests. Default is true.
       # @!attribute [rw] quota_project
       #   @return [String] Project ID to charge quota, or `nil` to default to the credentials-specified project.
+      # @!attribute [rw] query
+      #   @return [Hash<String,String>] Additional HTTP URL query parameters to include in requests.
 
       # Get the default options
       # @return [Google::Apis::RequestOptions]
