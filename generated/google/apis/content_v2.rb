@@ -20,10 +20,9 @@ module Google
   module Apis
     # Content API for Shopping
     #
-    # Manages product items, inventory, and Merchant Center accounts for Google
-    # Shopping.
+    # Manage your product listings and accounts for Google Shopping
     #
-    # @see https://developers.google.com/shopping-content
+    # @see https://developers.google.com/shopping-content/v2/
     module ContentV2
       VERSION = 'V2'
       REVISION = '20201014'
