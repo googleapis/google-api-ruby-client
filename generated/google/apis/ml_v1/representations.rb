@@ -304,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudMlV1MetricSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudMlV1Model
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -666,6 +672,9 @@ module Google
       class GoogleCloudMlV1AutoScaling
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_nodes, as: 'maxNodes'
+          collection :metrics, as: 'metrics', class: Google::Apis::MlV1::GoogleCloudMlV1MetricSpec, decorator: Google::Apis::MlV1::GoogleCloudMlV1MetricSpec::Representation
+      
           property :min_nodes, as: 'minNodes'
         end
       end
@@ -948,6 +957,14 @@ module Google
           collection :metrics, as: 'metrics', class: Google::Apis::MlV1::GoogleCloudMlV1MeasurementMetric, decorator: Google::Apis::MlV1::GoogleCloudMlV1MeasurementMetric::Representation
       
           property :step_count, :numeric_string => true, as: 'stepCount'
+        end
+      end
+      
+      class GoogleCloudMlV1MetricSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :target, as: 'target'
         end
       end
       
