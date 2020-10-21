@@ -160,7 +160,7 @@ module Google
         attr_accessor :filter_type
       
         # SDF Version (column names, types, order) in which the entities will be
-        # returned. Default to 5.2.
+        # returned. Default to 5.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -668,7 +668,8 @@ module Google
         # @return [String]
         attr_accessor :frequency
       
-        # Deprecated. This field has no effect.
+        # Time of day at which a new report will be generated, represented as minutes
+        # past midnight. Range is 0 to 1439. Only applies to scheduled reports.
         # Corresponds to the JSON property `nextRunMinuteOfDay`
         # @return [Fixnum]
         attr_accessor :next_run_minute_of_day
