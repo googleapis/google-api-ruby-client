@@ -1430,10 +1430,7 @@ module Google
         # @return [Google::Apis::ServiceusageV1beta1::Billing]
         attr_accessor :billing
       
-        # The semantic version of the service configuration. The config version affects
-        # the interpretation of the service configuration. For example, certain features
-        # are enabled by default for certain config versions. The latest config version
-        # is `3`.
+        # This field is obsolete. Its value must be set to `3`.
         # Corresponds to the JSON property `configVersion`
         # @return [Fixnum]
         attr_accessor :config_version
