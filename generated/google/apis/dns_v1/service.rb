@@ -30,7 +30,7 @@ module Google
       #    Dns = Google::Apis::DnsV1 # Alias the module
       #    service = Dns::DnsService.new
       #
-      # @see http://developers.google.com/cloud-dns
+      # @see https://cloud.google.com/dns/docs
       class DnsService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
