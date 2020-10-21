@@ -1088,6 +1088,13 @@ module Google
         # @return [String]
         attr_accessor :domain_id
       
+        # Set to true if none of the depending services (Gaia, PeopleApi) returns any
+        # info for this user.
+        # Corresponds to the JSON property `isAnonymous`
+        # @return [Boolean]
+        attr_accessor :is_anonymous
+        alias_method :is_anonymous?, :is_anonymous
+      
         # Resource name, in the format "users/*".
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1106,6 +1113,7 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @domain_id = args[:domain_id] if args.key?(:domain_id)
+          @is_anonymous = args[:is_anonymous] if args.key?(:is_anonymous)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
         end
