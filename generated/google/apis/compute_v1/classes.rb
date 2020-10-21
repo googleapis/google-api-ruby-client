@@ -629,6 +629,9 @@ module Google
         # - `VPC_PEERING` for addresses that are reserved for VPC peer networks.
         # - `NAT_AUTO` for addresses that are external IP addresses automatically
         # reserved for Cloud NAT.
+        # - `IPSEC_INTERCONNECT` for addresses created from a private IP range reserved
+        # for a VLAN attachment in an IPsec over Interconnect configuration. These
+        # addresses are regional resources.
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose
@@ -7978,12 +7981,16 @@ module Google
       # Google Compute Engine has two Health Check resources:
       # * [Global](/compute/docs/reference/rest/`$api_version`/healthChecks) * [
       # Regional](/compute/docs/reference/rest/`$api_version`/regionHealthChecks)
-      # Internal HTTP(S) load balancers must use regional health checks. Internal TCP/
-      # UDP load balancers can use either regional or global health checks. All other
-      # types of GCP load balancers and managed instance group auto-healing must use
-      # global health checks. For more information, read Health Check Concepts.
-      # To perform health checks on network load balancers, you must use either
-      # httpHealthChecks or httpsHealthChecks.
+      # Internal HTTP(S) load balancers must use regional health checks (`compute.v1.
+      # regionHealthChecks`).
+      # Traffic Director must use global health checks (`compute.v1.HealthChecks`).
+      # Internal TCP/UDP load balancers can use either regional or global health
+      # checks (`compute.v1.regionHealthChecks` or `compute.v1.HealthChecks`).
+      # External HTTP(S), TCP proxy, and SSL proxy load balancers as well as managed
+      # instance group auto-healing must use global health checks (`compute.v1.
+      # HealthChecks`).
+      # Network load balancers must use legacy HTTP health checks (httpHealthChecks).
+      # For more information, see Health checks overview.
       class HealthCheck
         include Google::Apis::Core::Hashable
       
@@ -17231,7 +17238,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional serving service.
-        # The service name must be 1-63 characters long, and comply with RFC1035.
+        # The service name is case-sensitive and must be 1-63 characters long.
         # Example value: "default", "my-service".
         # Corresponds to the JSON property `service`
         # @return [String]
@@ -17249,7 +17256,7 @@ module Google
         attr_accessor :url_mask
       
         # Optional serving version.
-        # The version must be 1-63 characters long, and comply with RFC1035.
+        # The version name is case-sensitive and must be 1-100 characters long.
         # Example value: "v1", "v2".
         # Corresponds to the JSON property `version`
         # @return [String]
