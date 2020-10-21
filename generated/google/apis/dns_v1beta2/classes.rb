@@ -1610,7 +1610,7 @@ module Google
         # @return [Google::Apis::DnsV1beta2::ResponseHeader]
         attr_accessor :header
       
-        # Type of resource.
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
