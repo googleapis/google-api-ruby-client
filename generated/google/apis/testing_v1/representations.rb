@@ -1074,6 +1074,7 @@ module Google
       
           property :environment_matrix, as: 'environmentMatrix', class: Google::Apis::TestingV1::EnvironmentMatrix, decorator: Google::Apis::TestingV1::EnvironmentMatrix::Representation
       
+          property :fail_fast, as: 'failFast'
           property :flaky_test_attempts, as: 'flakyTestAttempts'
           property :invalid_matrix_details, as: 'invalidMatrixDetails'
           property :outcome_summary, as: 'outcomeSummary'
