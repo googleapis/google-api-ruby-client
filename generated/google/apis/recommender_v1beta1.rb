@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/recommender/docs/
     module RecommenderV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20200927'
+      REVISION = '20201016'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
