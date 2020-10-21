@@ -252,7 +252,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Restores the specified agent from a bianry file. Replaces the current agent
+        # Restores the specified agent from a binary file. Replaces the current agent
         # with a new one. Note that all existing resources in agent (e.g. intents,
         # entity types, flows) will be removed.
         # @param [String] name
