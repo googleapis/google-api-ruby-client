@@ -298,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExportMessagesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExportResourcesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -347,6 +353,12 @@ module Google
       end
       
       class Finding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GcsDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1348,6 +1360,16 @@ module Google
         end
       end
       
+      class ExportMessagesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::HealthcareV1beta1::GcsDestination, decorator: Google::Apis::HealthcareV1beta1::GcsDestination::Representation
+      
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class ExportResourcesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1434,6 +1456,15 @@ module Google
           property :info_type, as: 'infoType'
           property :quote, as: 'quote'
           property :start, :numeric_string => true, as: 'start'
+        end
+      end
+      
+      class GcsDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_structure, as: 'contentStructure'
+          property :message_view, as: 'messageView'
+          property :uri_prefix, as: 'uriPrefix'
         end
       end
       

@@ -1507,6 +1507,49 @@ module Google
         end
       end
       
+      # Request to schedule an export.
+      class ExportMessagesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The end of the range in `send_time` (MSH.7, https://www.hl7.org/documentcenter/
+        # public_temp_2E58C1F9-1C23-BA17-0C6126475344DA9D/wg/conf/HL7MSH.htm) to process.
+        # If not specified, the time when the export is scheduled is used. This value
+        # has to come after the `start_time` defined below. Only messages whose `
+        # send_time` lies in the range `start_time` (inclusive) to `end_time` (exclusive)
+        # are exported.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The Cloud Storage output destination. The Cloud Healthcare Service Agent
+        # requires the `roles/storage.objectAdmin` Cloud IAM roles on the Cloud Storage
+        # location.
+        # Corresponds to the JSON property `gcsDestination`
+        # @return [Google::Apis::HealthcareV1beta1::GcsDestination]
+        attr_accessor :gcs_destination
+      
+        # The start of the range in `send_time` (MSH.7, https://www.hl7.org/
+        # documentcenter/public_temp_2E58C1F9-1C23-BA17-0C6126475344DA9D/wg/conf/HL7MSH.
+        # htm) to process. If not specified, the UNIX epoch (1970-01-01T00:00:00Z) is
+        # used. This value has to come before the `end_time` defined below. Only
+        # messages whose `send_time` lies in the range `start_time` (inclusive) to `
+        # end_time` (exclusive) are exported.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # Request to export resources.
       class ExportResourcesRequest
         include Google::Apis::Core::Hashable
@@ -1882,6 +1925,42 @@ module Google
           @info_type = args[:info_type] if args.key?(:info_type)
           @quote = args[:quote] if args.key?(:quote)
           @start = args[:start] if args.key?(:start)
+        end
+      end
+      
+      # The Cloud Storage output destination. The Cloud Healthcare Service Agent
+      # requires the `roles/storage.objectAdmin` Cloud IAM roles on the Cloud Storage
+      # location.
+      class GcsDestination
+        include Google::Apis::Core::Hashable
+      
+        # The format of the exported HL7v2 message files.
+        # Corresponds to the JSON property `contentStructure`
+        # @return [String]
+        attr_accessor :content_structure
+      
+        # Specifies the parts of the Message resource to include in the export. If not
+        # specified, FULL is used.
+        # Corresponds to the JSON property `messageView`
+        # @return [String]
+        attr_accessor :message_view
+      
+        # URI of an existing Cloud Storage directory where the server writes result
+        # files, in the format `gs://`bucket-id`/`path/to/destination/dir``. If there is
+        # no trailing slash, the service appends one when composing the object path.
+        # Corresponds to the JSON property `uriPrefix`
+        # @return [String]
+        attr_accessor :uri_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_structure = args[:content_structure] if args.key?(:content_structure)
+          @message_view = args[:message_view] if args.key?(:message_view)
+          @uri_prefix = args[:uri_prefix] if args.key?(:uri_prefix)
         end
       end
       
