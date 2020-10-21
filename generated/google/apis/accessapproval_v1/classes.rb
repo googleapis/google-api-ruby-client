@@ -317,21 +317,19 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The product for which Access Approval will be enrolled. Allowed values are
-        # listed below (case-sensitive): * all * GA * App Engine * BigQuery * Cloud
-        # Bigtable * Cloud Key Management Service * Compute Engine * Cloud Dataflow *
-        # Cloud Identity and Access Management * Cloud Pub/Sub * Cloud Storage *
-        # Persistent Disk Note: These values are supported as input for legacy purposes,
-        # but will not be returned from the API. * all * ga-only * appengine.googleapis.
-        # com * bigquery.googleapis.com * bigtable.googleapis.com * cloudkms.googleapis.
-        # com * compute.googleapis.com * dataflow.googleapis.com * iam.googleapis.com *
-        # pubsub.googleapis.com * storage.googleapis.com Calls to
-        # UpdateAccessApprovalSettings using 'all', 'ga-only', or any of the XXX.
-        # googleapis.com will be translated to the associated product name ('all', 'GA',
-        # 'App Engine', etc.). Note: 'all' will enroll the resource in all products
-        # supported at both 'GA' and 'Preview' levels. 'ga-only'/'GA' will only enroll
-        # the resource in products supported at 'GA' level. More information about
-        # levels of support is available at https://cloud.google.com/access-approval/
-        # docs/supported-services
+        # listed below (case-sensitive): * all * App Engine * BigQuery * Cloud Bigtable *
+        # Cloud Key Management Service * Compute Engine * Cloud Dataflow * Cloud
+        # Identity and Access Management * Cloud Pub/Sub * Cloud Storage * Persistent
+        # Disk Note: These values are supported as input for legacy purposes, but will
+        # not be returned from the API. * all * appengine.googleapis.com * bigquery.
+        # googleapis.com * bigtable.googleapis.com * cloudkms.googleapis.com * compute.
+        # googleapis.com * dataflow.googleapis.com * iam.googleapis.com * pubsub.
+        # googleapis.com * storage.googleapis.com Calls to UpdateAccessApprovalSettings
+        # using 'all' or any of the XXX.googleapis.com will be translated to the
+        # associated product name ('all', 'App Engine', etc.). Note: 'all' will enroll
+        # the resource in all products supported at both 'GA' and 'Preview' levels. More
+        # information about levels of support is available at https://cloud.google.com/
+        # access-approval/docs/supported-services
         # Corresponds to the JSON property `cloudProduct`
         # @return [String]
         attr_accessor :cloud_product
