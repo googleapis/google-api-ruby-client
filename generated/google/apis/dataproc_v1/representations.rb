@@ -891,6 +891,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_failures_per_hour, as: 'maxFailuresPerHour'
+          property :max_failures_total, as: 'maxFailuresTotal'
         end
       end
       
