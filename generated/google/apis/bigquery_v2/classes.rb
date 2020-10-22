@@ -1512,6 +1512,15 @@ module Google
           # @return [String]
           attr_accessor :role
         
+          # [Pick one] A routine from a different dataset to grant access to. Queries
+          # executed against that routine will have read access to views/tables/routines
+          # in this dataset. Only UDF is supported for now. The role field is not required
+          # when this field is set. If that routine is updated by any user, access to the
+          # routine needs to be granted again via an update operation.
+          # Corresponds to the JSON property `routine`
+          # @return [Google::Apis::BigqueryV2::RoutineReference]
+          attr_accessor :routine
+        
           # [Pick one] A special group to grant access to. Possible values include:
           # projectOwners: Owners of the enclosing project. projectReaders: Readers of the
           # enclosing project. projectWriters: Writers of the enclosing project.
@@ -1546,6 +1555,7 @@ module Google
             @group_by_email = args[:group_by_email] if args.key?(:group_by_email)
             @iam_member = args[:iam_member] if args.key?(:iam_member)
             @role = args[:role] if args.key?(:role)
+            @routine = args[:routine] if args.key?(:routine)
             @special_group = args[:special_group] if args.key?(:special_group)
             @user_by_email = args[:user_by_email] if args.key?(:user_by_email)
             @view = args[:view] if args.key?(:view)
@@ -2068,6 +2078,32 @@ module Google
         end
       end
       
+      # Explanation for a single feature.
+      class Explanation
+        include Google::Apis::Core::Hashable
+      
+        # Attribution of feature.
+        # Corresponds to the JSON property `attribution`
+        # @return [Float]
+        attr_accessor :attribution
+      
+        # Full name of the feature. For non-numerical features, will be formatted like ..
+        # Overall size of feature name will always be truncated to first 120 characters.
+        # Corresponds to the JSON property `featureName`
+        # @return [String]
+        attr_accessor :feature_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribution = args[:attribution] if args.key?(:attribution)
+          @feature_name = args[:feature_name] if args.key?(:feature_name)
+        end
+      end
+      
       # Represents a textual expression in the Common Expression Language (CEL) syntax.
       # CEL is a C-like expression language. The syntax and semantics of CEL are
       # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -2435,6 +2471,34 @@ module Google
         def update!(**args)
           @email = args[:email] if args.key?(:email)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # Global explanations containing the top most important features after training.
+      class GlobalExplanation
+        include Google::Apis::Core::Hashable
+      
+        # Class label for this set of global explanations. Will be empty/null for binary
+        # logistic and linear regression models. Sorted alphabetically in descending
+        # order.
+        # Corresponds to the JSON property `classLabel`
+        # @return [String]
+        attr_accessor :class_label
+      
+        # A list of the top global explanations. Sorted by absolute value of attribution
+        # in descending order.
+        # Corresponds to the JSON property `explanations`
+        # @return [Array<Google::Apis::BigqueryV2::Explanation>]
+        attr_accessor :explanations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @class_label = args[:class_label] if args.key?(:class_label)
+          @explanations = args[:explanations] if args.key?(:explanations)
         end
       end
       
@@ -6844,6 +6908,13 @@ module Google
         # @return [Google::Apis::BigqueryV2::EvaluationMetrics]
         attr_accessor :evaluation_metrics
       
+        # Global explanations for important features of the model. For multi-class
+        # models, there is one entry for each label class. For other models, there is
+        # only one entry in the list.
+        # Corresponds to the JSON property `globalExplanations`
+        # @return [Array<Google::Apis::BigqueryV2::GlobalExplanation>]
+        attr_accessor :global_explanations
+      
         # Output of each iteration run, results.size() <= max_iterations.
         # Corresponds to the JSON property `results`
         # @return [Array<Google::Apis::BigqueryV2::IterationResult>]
@@ -6868,6 +6939,7 @@ module Google
         def update!(**args)
           @data_split_result = args[:data_split_result] if args.key?(:data_split_result)
           @evaluation_metrics = args[:evaluation_metrics] if args.key?(:evaluation_metrics)
+          @global_explanations = args[:global_explanations] if args.key?(:global_explanations)
           @results = args[:results] if args.key?(:results)
           @start_time = args[:start_time] if args.key?(:start_time)
           @training_options = args[:training_options] if args.key?(:training_options)
