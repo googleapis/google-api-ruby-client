@@ -418,6 +418,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecondaryIpRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Service
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1136,6 +1142,14 @@ module Google
         end
       end
       
+      class SecondaryIpRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_cidr_range, as: 'ipCidrRange'
+          property :range_name, as: 'rangeName'
+        end
+      end
+      
       class Service
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1221,6 +1235,8 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :outside_allocation, as: 'outsideAllocation'
+          collection :secondary_ip_ranges, as: 'secondaryIpRanges', class: Google::Apis::ServicenetworkingV1beta::SecondaryIpRange, decorator: Google::Apis::ServicenetworkingV1beta::SecondaryIpRange::Representation
+      
         end
       end
       
