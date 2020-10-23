@@ -646,7 +646,7 @@ module Google
         attr_accessor :condition_absent
       
         # A condition type that allows alert policies to be defined using Monitoring
-        # Query Language.
+        # Query Language (https://cloud.google.com/monitoring/mql).
         # Corresponds to the JSON property `conditionMonitoringQueryLanguage`
         # @return [Google::Apis::MonitoringV3::MonitoringQueryLanguageCondition]
         attr_accessor :condition_monitoring_query_language
@@ -1439,7 +1439,7 @@ module Google
         # URL_ENCODED, the body passed in must be URL-encoded. Users can provide a
         # Content-Length header via the headers field or the API will do so. If the
         # request_method is GET and body is not empty, the API will return an error. The
-        # maximum byte size is 1 megabyte. Note: As with all bytes fields JSON
+        # maximum byte size is 1 megabyte. Note: As with all bytes fields, JSON
         # representations are base64 encoded. e.g.: "foo=bar" in URL-encoded form is "
         # foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
         # Corresponds to the JSON property `body`
@@ -1447,7 +1447,12 @@ module Google
         # @return [String]
         attr_accessor :body
       
-        # The content type to use for the check.
+        # The content type header to use for the check. The following configurations
+        # result in errors: 1. Content type is specified in both the headers field and
+        # the content_type field. 2. Request method is GET and content_type is not
+        # TYPE_UNSPECIFIED 3. Request method is POST and content_type is
+        # TYPE_UNSPECIFIED. 4. Request method is POST and a "Content-Type" header is
+        # provided via headers field. The content_type field should be used instead.
         # Corresponds to the JSON property `contentType`
         # @return [String]
         attr_accessor :content_type
@@ -2648,7 +2653,7 @@ module Google
       end
       
       # A condition type that allows alert policies to be defined using Monitoring
-      # Query Language.
+      # Query Language (https://cloud.google.com/monitoring/mql).
       class MonitoringQueryLanguageCondition
         include Google::Apis::Core::Hashable
       
@@ -2665,7 +2670,8 @@ module Google
         # @return [String]
         attr_accessor :duration
       
-        # Monitoring Query Language query that outputs a boolean stream.
+        # Monitoring Query Language (https://cloud.google.com/monitoring/mql) query that
+        # outputs a boolean stream.
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
