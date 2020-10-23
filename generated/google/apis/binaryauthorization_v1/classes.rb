@@ -66,7 +66,7 @@ module Google
       class AdmissionWhitelistPattern
         include Google::Apis::Core::Hashable
       
-        # An image name pattern to whitelist, in the form `registry/path/to/image`. This
+        # An image name pattern to allowlist, in the form `registry/path/to/image`. This
         # supports a trailing `*` as a wildcard, but this is allowed only in text after
         # the `registry/` part.
         # Corresponds to the JSON property `namePattern`
@@ -536,7 +536,7 @@ module Google
       class Policy
         include Google::Apis::Core::Hashable
       
-        # Optional. Admission policy whitelisting. A matching admission request will
+        # Optional. Admission policy allowlisting. A matching admission request will
         # always be permitted. This feature is typically used to exclude Google or third-
         # party infrastructure images from Binary Authorization policies.
         # Corresponds to the JSON property `admissionWhitelistPatterns`
