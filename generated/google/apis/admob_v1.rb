@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/admob/api/
     module AdmobV1
       VERSION = 'V1'
-      REVISION = '20201013'
+      REVISION = '20201022'
 
       # See your AdMob data
       AUTH_ADMOB_REPORT = 'https://www.googleapis.com/auth/admob.report'
