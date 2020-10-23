@@ -546,6 +546,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Number of clients in the container version.
+        # Corresponds to the JSON property `numClients`
+        # @return [String]
+        attr_accessor :num_clients
+      
         # Number of custom templates in the container version.
         # Corresponds to the JSON property `numCustomTemplates`
         # @return [String]
@@ -597,6 +602,7 @@ module Google
           @container_version_id = args[:container_version_id] if args.key?(:container_version_id)
           @deleted = args[:deleted] if args.key?(:deleted)
           @name = args[:name] if args.key?(:name)
+          @num_clients = args[:num_clients] if args.key?(:num_clients)
           @num_custom_templates = args[:num_custom_templates] if args.key?(:num_custom_templates)
           @num_macros = args[:num_macros] if args.key?(:num_macros)
           @num_rules = args[:num_rules] if args.key?(:num_rules)
@@ -776,6 +782,11 @@ module Google
         # @return [String]
         attr_accessor :change_status
       
+        # The client being represented by the entity.
+        # Corresponds to the JSON property `client`
+        # @return [Google::Apis::TagmanagerV2::Client]
+        attr_accessor :client
+      
         # Represents a Google Tag Manager Folder.
         # Corresponds to the JSON property `folder`
         # @return [Google::Apis::TagmanagerV2::Folder]
@@ -803,6 +814,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @change_status = args[:change_status] if args.key?(:change_status)
+          @client = args[:client] if args.key?(:client)
           @folder = args[:folder] if args.key?(:folder)
           @tag = args[:tag] if args.key?(:tag)
           @trigger = args[:trigger] if args.key?(:trigger)

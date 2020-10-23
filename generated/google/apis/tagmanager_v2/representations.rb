@@ -488,6 +488,7 @@ module Google
           property :container_version_id, as: 'containerVersionId'
           property :deleted, as: 'deleted'
           property :name, as: 'name'
+          property :num_clients, as: 'numClients'
           property :num_custom_templates, as: 'numCustomTemplates'
           property :num_macros, as: 'numMacros'
           property :num_rules, as: 'numRules'
@@ -548,6 +549,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :change_status, as: 'changeStatus'
+          property :client, as: 'client', class: Google::Apis::TagmanagerV2::Client, decorator: Google::Apis::TagmanagerV2::Client::Representation
+      
           property :folder, as: 'folder', class: Google::Apis::TagmanagerV2::Folder, decorator: Google::Apis::TagmanagerV2::Folder::Representation
       
           property :tag, as: 'tag', class: Google::Apis::TagmanagerV2::Tag, decorator: Google::Apis::TagmanagerV2::Tag::Representation
