@@ -673,6 +673,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           property :description, as: 'description'
+          property :status, as: 'status', class: Google::Apis::ServicecontrolV1::Status, decorator: Google::Apis::ServicecontrolV1::Status::Representation
+      
           property :subject, as: 'subject'
         end
       end
@@ -785,6 +787,7 @@ module Google
           property :name, as: 'name'
           property :service, as: 'service'
           property :type, as: 'type'
+          property :uid, as: 'uid'
         end
       end
       
@@ -810,6 +813,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :first_party_principal, as: 'firstPartyPrincipal', class: Google::Apis::ServicecontrolV1::FirstPartyPrincipal, decorator: Google::Apis::ServicecontrolV1::FirstPartyPrincipal::Representation
       
+          property :principal_subject, as: 'principalSubject'
           property :third_party_principal, as: 'thirdPartyPrincipal', class: Google::Apis::ServicecontrolV1::ThirdPartyPrincipal, decorator: Google::Apis::ServicecontrolV1::ThirdPartyPrincipal::Representation
       
         end
