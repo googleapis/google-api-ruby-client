@@ -286,12 +286,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ServiceIdentity
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class SourceContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -746,7 +740,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additional_bindings, as: 'additionalBindings', class: Google::Apis::ServiceconsumermanagementV1beta1::HttpRule, decorator: Google::Apis::ServiceconsumermanagementV1beta1::HttpRule::Representation
       
-          property :allow_half_duplex, as: 'allowHalfDuplex'
           property :body, as: 'body'
           property :custom, as: 'custom', class: Google::Apis::ServiceconsumermanagementV1beta1::CustomHttpPattern, decorator: Google::Apis::ServiceconsumermanagementV1beta1::CustomHttpPattern::Representation
       
@@ -1014,15 +1007,6 @@ module Google
         end
       end
       
-      class ServiceIdentity
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :display_name, as: 'displayName'
-          property :service_account_parent, as: 'serviceAccountParent'
-        end
-      end
-      
       class SourceContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1093,8 +1077,6 @@ module Google
           property :producer_notification_channel, as: 'producerNotificationChannel'
           collection :requirements, as: 'requirements'
           collection :rules, as: 'rules', class: Google::Apis::ServiceconsumermanagementV1beta1::UsageRule, decorator: Google::Apis::ServiceconsumermanagementV1beta1::UsageRule::Representation
-      
-          property :service_identity, as: 'serviceIdentity', class: Google::Apis::ServiceconsumermanagementV1beta1::ServiceIdentity, decorator: Google::Apis::ServiceconsumermanagementV1beta1::ServiceIdentity::Representation
       
         end
       end
