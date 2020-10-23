@@ -238,12 +238,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleApiServiceIdentity
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleApiServiceusageV1OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -950,15 +944,6 @@ module Google
         end
       end
       
-      class GoogleApiServiceIdentity
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :display_name, as: 'displayName'
-          property :service_account_parent, as: 'serviceAccountParent'
-        end
-      end
-      
       class GoogleApiServiceusageV1OperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1032,7 +1017,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additional_bindings, as: 'additionalBindings', class: Google::Apis::ServiceusageV1beta1::HttpRule, decorator: Google::Apis::ServiceusageV1beta1::HttpRule::Representation
       
-          property :allow_half_duplex, as: 'allowHalfDuplex'
           property :body, as: 'body'
           property :custom, as: 'custom', class: Google::Apis::ServiceusageV1beta1::CustomHttpPattern, decorator: Google::Apis::ServiceusageV1beta1::CustomHttpPattern::Representation
       
@@ -1478,8 +1462,6 @@ module Google
           property :producer_notification_channel, as: 'producerNotificationChannel'
           collection :requirements, as: 'requirements'
           collection :rules, as: 'rules', class: Google::Apis::ServiceusageV1beta1::UsageRule, decorator: Google::Apis::ServiceusageV1beta1::UsageRule::Representation
-      
-          property :service_identity, as: 'serviceIdentity', class: Google::Apis::ServiceusageV1beta1::GoogleApiServiceIdentity, decorator: Google::Apis::ServiceusageV1beta1::GoogleApiServiceIdentity::Representation
       
         end
       end
