@@ -220,7 +220,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_book(volume_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_book(volume_id, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'books/v1/cloudloading/deleteBook', options)
           command.response_representation = Google::Apis::BooksV1::Empty::Representation
           command.response_class = Google::Apis::BooksV1::Empty
@@ -280,7 +280,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_offline_metadata_dictionary(cpksver: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_offline_metadata_dictionary(cpksver, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'books/v1/dictionary/listOfflineMetadata', options)
           command.response_representation = Google::Apis::BooksV1::Metadata::Representation
           command.response_class = Google::Apis::BooksV1::Metadata
@@ -482,10 +482,10 @@ module Google
         #   The ID for the layer to get the annotations.
         # @param [String] annotation_data_id
         #   The ID of the annotation data to retrieve.
-        # @param [Boolean] allow_web_definitions
-        #   For the dictionary layer. Whether or not to allow web definitions.
         # @param [String] content_version
         #   The content version for the volume you are trying to retrieve.
+        # @param [Boolean] allow_web_definitions
+        #   For the dictionary layer. Whether or not to allow web definitions.
         # @param [Fixnum] h
         #   The requested pixel height for any images. If height is provided width must
         #   also be provided.
@@ -516,7 +516,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_layer_annotation_data(volume_id, layer_id, annotation_data_id, allow_web_definitions: nil, content_version: nil, h: nil, locale: nil, scale: nil, source: nil, w: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_layer_annotation_data(volume_id, layer_id, annotation_data_id, content_version, allow_web_definitions: nil, h: nil, locale: nil, scale: nil, source: nil, w: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'books/v1/volumes/{volumeId}/layers/{layerId}/data/{annotationDataId}', options)
           command.response_representation = Google::Apis::BooksV1::DictionaryAnnotationdata::Representation
           command.response_class = Google::Apis::BooksV1::DictionaryAnnotationdata
@@ -540,11 +540,11 @@ module Google
         #   The volume to retrieve annotation data for.
         # @param [String] layer_id
         #   The ID for the layer to get the annotation data.
+        # @param [String] content_version
+        #   The content version for the requested volume.
         # @param [Array<String>, String] annotation_data_id
         #   The list of Annotation Data Ids to retrieve. Pagination is ignored if this is
         #   set.
-        # @param [String] content_version
-        #   The content version for the requested volume.
         # @param [Fixnum] h
         #   The requested pixel height for any images. If height is provided width must
         #   also be provided.
@@ -585,7 +585,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_layer_annotation_data(volume_id, layer_id, annotation_data_id: nil, content_version: nil, h: nil, locale: nil, max_results: nil, page_token: nil, scale: nil, source: nil, updated_max: nil, updated_min: nil, w: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_layer_annotation_data(volume_id, layer_id, content_version, annotation_data_id: nil, h: nil, locale: nil, max_results: nil, page_token: nil, scale: nil, source: nil, updated_max: nil, updated_min: nil, w: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'books/v1/volumes/{volumeId}/layers/{layerId}/data', options)
           command.response_representation = Google::Apis::BooksV1::AnnotationsData::Representation
           command.response_class = Google::Apis::BooksV1::AnnotationsData
@@ -702,7 +702,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_layer_volume_annotations(volume_id, layer_id, content_version: nil, end_offset: nil, end_position: nil, locale: nil, max_results: nil, page_token: nil, show_deleted: nil, source: nil, start_offset: nil, start_position: nil, updated_max: nil, updated_min: nil, volume_annotations_version: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_layer_volume_annotations(volume_id, layer_id, content_version, end_offset: nil, end_position: nil, locale: nil, max_results: nil, page_token: nil, show_deleted: nil, source: nil, start_offset: nil, start_position: nil, updated_max: nil, updated_min: nil, volume_annotations_version: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'books/v1/volumes/{volumeId}/layers/{layerId}', options)
           command.response_representation = Google::Apis::BooksV1::Volumeannotations::Representation
           command.response_class = Google::Apis::BooksV1::Volumeannotations
@@ -759,12 +759,12 @@ module Google
         # Release downloaded content access restriction.
         # @param [String] cpksver
         #   The device/version ID from which to release the restriction.
+        # @param [Array<String>, String] volume_ids
+        #   The volume(s) to release restrictions for.
         # @param [String] locale
         #   ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US.
         # @param [String] source
         #   String to identify the originator of this request.
-        # @param [Array<String>, String] volume_ids
-        #   The volume(s) to release restrictions for.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -782,7 +782,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def release_download_access(cpksver: nil, locale: nil, source: nil, volume_ids: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def release_download_access(cpksver, volume_ids, locale: nil, source: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'books/v1/myconfig/releaseDownloadAccess', options)
           command.response_representation = Google::Apis::BooksV1::DownloadAccesses::Representation
           command.response_class = Google::Apis::BooksV1::DownloadAccesses
@@ -798,16 +798,16 @@ module Google
         # Request concurrent and download access restrictions.
         # @param [String] cpksver
         #   The device/version ID from which to request the restrictions.
-        # @param [String] license_types
-        #   The type of access license to request. If not specified, the default is BOTH.
-        # @param [String] locale
-        #   ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US.
         # @param [String] nonce
         #   The client nonce value.
         # @param [String] source
         #   String to identify the originator of this request.
         # @param [String] volume_id
         #   The volume to request concurrent/download restrictions for.
+        # @param [String] license_types
+        #   The type of access license to request. If not specified, the default is BOTH.
+        # @param [String] locale
+        #   ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -825,7 +825,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def request_access(cpksver: nil, license_types: nil, locale: nil, nonce: nil, source: nil, volume_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def request_access(cpksver, nonce, source, volume_id, license_types: nil, locale: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'books/v1/myconfig/requestAccess', options)
           command.response_representation = Google::Apis::BooksV1::RequestAccessData::Representation
           command.response_class = Google::Apis::BooksV1::RequestAccessData
@@ -843,18 +843,18 @@ module Google
         # Request downloaded content access for specified volumes on the My eBooks shelf.
         # @param [String] cpksver
         #   The device/version ID from which to release the restriction.
+        # @param [String] nonce
+        #   The client nonce value.
+        # @param [String] source
+        #   String to identify the originator of this request.
         # @param [Array<String>, String] features
         #   List of features supported by the client, i.e., 'RENTALS'
         # @param [Boolean] include_non_comics_series
         #   Set to true to include non-comics series. Defaults to false.
         # @param [String] locale
         #   ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US.
-        # @param [String] nonce
-        #   The client nonce value.
         # @param [Boolean] show_preorders
         #   Set to true to show pre-ordered books. Defaults to false.
-        # @param [String] source
-        #   String to identify the originator of this request.
         # @param [Array<String>, String] volume_ids
         #   The volume(s) to request download restrictions for.
         # @param [String] fields
@@ -874,7 +874,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def sync_volume_licenses(cpksver: nil, features: nil, include_non_comics_series: nil, locale: nil, nonce: nil, show_preorders: nil, source: nil, volume_ids: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def sync_volume_licenses(cpksver, nonce, source, features: nil, include_non_comics_series: nil, locale: nil, show_preorders: nil, volume_ids: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'books/v1/myconfig/syncVolumeLicenses', options)
           command.response_representation = Google::Apis::BooksV1::Volumes::Representation
           command.response_class = Google::Apis::BooksV1::Volumes
@@ -1081,7 +1081,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def summarize_my_library_annotation(layer_ids: nil, volume_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def summarize_my_library_annotation(layer_ids, volume_id, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'books/v1/mylibrary/annotations/summary', options)
           command.response_representation = Google::Apis::BooksV1::AnnotationsSummary::Representation
           command.response_class = Google::Apis::BooksV1::AnnotationsSummary
@@ -1131,12 +1131,12 @@ module Google
         # Adds a volume to a bookshelf.
         # @param [String] shelf
         #   ID of bookshelf to which to add a volume.
+        # @param [String] volume_id
+        #   ID of volume to add.
         # @param [String] reason
         #   The reason for which the book is added to the library.
         # @param [String] source
         #   String to identify the originator of this request.
-        # @param [String] volume_id
-        #   ID of volume to add.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1154,7 +1154,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_my_library_volume(shelf, reason: nil, source: nil, volume_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def add_my_library_volume(shelf, volume_id, reason: nil, source: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'books/v1/mylibrary/bookshelves/{shelf}/addVolume', options)
           command.response_representation = Google::Apis::BooksV1::Empty::Representation
           command.response_class = Google::Apis::BooksV1::Empty
@@ -1267,13 +1267,13 @@ module Google
         # Moves a volume within a bookshelf.
         # @param [String] shelf
         #   ID of bookshelf with the volume.
-        # @param [String] source
-        #   String to identify the originator of this request.
         # @param [String] volume_id
         #   ID of volume to move.
         # @param [Fixnum] volume_position
         #   Position on shelf to move the item (0 puts the item before the current first
         #   item, 1 puts it between the first and the second and so on.)
+        # @param [String] source
+        #   String to identify the originator of this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1291,7 +1291,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def move_my_library_volume(shelf, source: nil, volume_id: nil, volume_position: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def move_my_library_volume(shelf, volume_id, volume_position, source: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'books/v1/mylibrary/bookshelves/{shelf}/moveVolume', options)
           command.response_representation = Google::Apis::BooksV1::Empty::Representation
           command.response_class = Google::Apis::BooksV1::Empty
@@ -1307,12 +1307,12 @@ module Google
         # Removes a volume from a bookshelf.
         # @param [String] shelf
         #   ID of bookshelf from which to remove a volume.
+        # @param [String] volume_id
+        #   ID of volume to remove.
         # @param [String] reason
         #   The reason for which the book is removed from the library.
         # @param [String] source
         #   String to identify the originator of this request.
-        # @param [String] volume_id
-        #   ID of volume to remove.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1330,7 +1330,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def remove_my_library_volume(shelf, reason: nil, source: nil, volume_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def remove_my_library_volume(shelf, volume_id, reason: nil, source: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'books/v1/mylibrary/bookshelves/{shelf}/removeVolume', options)
           command.response_representation = Google::Apis::BooksV1::Empty::Representation
           command.response_class = Google::Apis::BooksV1::Empty
@@ -1433,18 +1433,18 @@ module Google
         # Sets my reading position information for a volume.
         # @param [String] volume_id
         #   ID of volume for which to update the reading position.
+        # @param [String] position
+        #   Position string for the new volume reading position.
+        # @param [String] timestamp
+        #   RFC 3339 UTC format timestamp associated with this reading position.
         # @param [String] action
         #   Action that caused this reading position to be set.
         # @param [String] content_version
         #   Volume content version for which this reading position applies.
         # @param [String] device_cookie
         #   Random persistent device cookie optional on set position.
-        # @param [String] position
-        #   Position string for the new volume reading position.
         # @param [String] source
         #   String to identify the originator of this request.
-        # @param [String] timestamp
-        #   RFC 3339 UTC format timestamp associated with this reading position.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1462,7 +1462,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_my_library_reading_position(volume_id, action: nil, content_version: nil, device_cookie: nil, position: nil, source: nil, timestamp: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def set_my_library_reading_position(volume_id, position, timestamp, action: nil, content_version: nil, device_cookie: nil, source: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'books/v1/mylibrary/readingpositions/{volumeId}/setPosition', options)
           command.response_representation = Google::Apis::BooksV1::Empty::Representation
           command.response_class = Google::Apis::BooksV1::Empty
@@ -1479,11 +1479,11 @@ module Google
         end
         
         # Returns notification details for a given notification id.
+        # @param [String] notification_id
+        #   String to identify the notification.
         # @param [String] locale
         #   ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for
         #   generating notification title and body.
-        # @param [String] notification_id
-        #   String to identify the notification.
         # @param [String] source
         #   String to identify the originator of this request.
         # @param [String] fields
@@ -1503,7 +1503,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_notification(locale: nil, notification_id: nil, source: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_notification(notification_id, locale: nil, source: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'books/v1/notification/get', options)
           command.response_representation = Google::Apis::BooksV1::Notification::Representation
           command.response_class = Google::Apis::BooksV1::Notification
@@ -1789,7 +1789,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_series(series_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_series(series_id, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'books/v1/series/get', options)
           command.response_representation = Google::Apis::BooksV1::Series::Representation
           command.response_class = Google::Apis::BooksV1::Series
@@ -1800,12 +1800,12 @@ module Google
         end
         
         # Returns Series membership data given the series id.
+        # @param [String] series_id
+        #   String that identifies the series
         # @param [Fixnum] page_size
         #   Number of maximum results per page to be included in the response.
         # @param [String] page_token
         #   The value of the nextToken from the previous page.
-        # @param [String] series_id
-        #   String that identifies the series
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1823,7 +1823,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_series_membership(page_size: nil, page_token: nil, series_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_series_membership(series_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'books/v1/series/membership/get', options)
           command.response_representation = Google::Apis::BooksV1::SeriesMembership::Representation
           command.response_class = Google::Apis::BooksV1::SeriesMembership
@@ -1883,6 +1883,8 @@ module Google
         end
         
         # Performs a book search.
+        # @param [String] q
+        #   Full-text search query string.
         # @param [String] download
         #   Restrict to volumes by download availability.
         # @param [String] filter
@@ -1904,8 +1906,6 @@ module Google
         #   Restrict to books or magazines.
         # @param [String] projection
         #   Restrict information returned to a set of selected fields.
-        # @param [String] q
-        #   Full-text search query string.
         # @param [Boolean] show_preorders
         #   Set to true to show books available for preorder. Defaults to false.
         # @param [String] source
@@ -1929,7 +1929,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_volumes(download: nil, filter: nil, lang_restrict: nil, library_restrict: nil, max_allowed_maturity_rating: nil, max_results: nil, order_by: nil, partner: nil, print_type: nil, projection: nil, q: nil, show_preorders: nil, source: nil, start_index: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_volumes(q, download: nil, filter: nil, lang_restrict: nil, library_restrict: nil, max_allowed_maturity_rating: nil, max_results: nil, order_by: nil, partner: nil, print_type: nil, projection: nil, show_preorders: nil, source: nil, start_index: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'books/v1/volumes', options)
           command.response_representation = Google::Apis::BooksV1::Volumes::Representation
           command.response_class = Google::Apis::BooksV1::Volumes
@@ -2085,15 +2085,15 @@ module Google
         end
         
         # Rate a recommended book for the current user.
+        # @param [String] rating
+        #   Rating to be given to the volume.
+        # @param [String] volume_id
+        #   ID of the source volume.
         # @param [String] locale
         #   ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for
         #   generating recommendations.
-        # @param [String] rating
-        #   Rating to be given to the volume.
         # @param [String] source
         #   String to identify the originator of this request.
-        # @param [String] volume_id
-        #   ID of the source volume.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2111,7 +2111,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def rate_recommended_volume(locale: nil, rating: nil, source: nil, volume_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def rate_recommended_volume(rating, volume_id, locale: nil, source: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'books/v1/volumes/recommended/rate', options)
           command.response_representation = Google::Apis::BooksV1::RateRecommendedVolumeResponse::Representation
           command.response_class = Google::Apis::BooksV1::RateRecommendedVolumeResponse
