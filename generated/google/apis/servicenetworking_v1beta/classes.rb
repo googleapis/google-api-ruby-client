@@ -2872,6 +2872,31 @@ module Google
         end
       end
       
+      # 
+      class SecondaryIpRange
+        include Google::Apis::Core::Hashable
+      
+        # Secondary IP CIDR range in `x.x.x.x/y` format.
+        # Corresponds to the JSON property `ipCidrRange`
+        # @return [String]
+        attr_accessor :ip_cidr_range
+      
+        # Name of the secondary IP range.
+        # Corresponds to the JSON property `rangeName`
+        # @return [String]
+        attr_accessor :range_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @range_name = args[:range_name] if args.key?(:range_name)
+        end
+      end
+      
       # `Service` is the root object of Google service configuration schema. It
       # describes basic information about a service, such as the name and the title,
       # and delegates other aspects to sub-sections. Each sub-section is either a
@@ -3299,6 +3324,11 @@ module Google
         attr_accessor :outside_allocation
         alias_method :outside_allocation?, :outside_allocation
       
+        # List of secondary IP ranges in this subnetwork.
+        # Corresponds to the JSON property `secondaryIpRanges`
+        # @return [Array<Google::Apis::ServicenetworkingV1beta::SecondaryIpRange>]
+        attr_accessor :secondary_ip_ranges
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3309,6 +3339,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @outside_allocation = args[:outside_allocation] if args.key?(:outside_allocation)
+          @secondary_ip_ranges = args[:secondary_ip_ranges] if args.key?(:secondary_ip_ranges)
         end
       end
       
