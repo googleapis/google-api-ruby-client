@@ -261,6 +261,12 @@ module Google
         # @return [String]
         attr_accessor :requested_address
       
+        # Optional. A list of secondary IP ranges to be created within the new
+        # subnetwork.
+        # Corresponds to the JSON property `secondaryIpRangeSpecs`
+        # @return [Array<Google::Apis::ServicenetworkingV1::SecondaryIpRangeSpec>]
+        attr_accessor :secondary_ip_range_specs
+      
         # Required. A name for the new subnet. For information about the naming
         # requirements, see [subnetwork](/compute/docs/reference/rest/v1/subnetworks) in
         # the Compute API documentation.
@@ -286,6 +292,7 @@ module Google
           @ip_prefix_length = args[:ip_prefix_length] if args.key?(:ip_prefix_length)
           @region = args[:region] if args.key?(:region)
           @requested_address = args[:requested_address] if args.key?(:requested_address)
+          @secondary_ip_range_specs = args[:secondary_ip_range_specs] if args.key?(:secondary_ip_range_specs)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @subnetwork_users = args[:subnetwork_users] if args.key?(:subnetwork_users)
         end
@@ -3209,6 +3216,70 @@ module Google
         end
       end
       
+      # 
+      class SecondaryIpRange
+        include Google::Apis::Core::Hashable
+      
+        # Secondary IP CIDR range in `x.x.x.x/y` format.
+        # Corresponds to the JSON property `ipCidrRange`
+        # @return [String]
+        attr_accessor :ip_cidr_range
+      
+        # Name of the secondary IP range.
+        # Corresponds to the JSON property `rangeName`
+        # @return [String]
+        attr_accessor :range_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @range_name = args[:range_name] if args.key?(:range_name)
+        end
+      end
+      
+      # 
+      class SecondaryIpRangeSpec
+        include Google::Apis::Core::Hashable
+      
+        # Required. The prefix length of the secondary IP range. Use CIDR range notation,
+        # such as `30` to provision a secondary IP range with an `x.x.x.x/30` CIDR
+        # range. The IP address range is drawn from a pool of available ranges in the
+        # service consumer's allocated range.
+        # Corresponds to the JSON property `ipPrefixLength`
+        # @return [Fixnum]
+        attr_accessor :ip_prefix_length
+      
+        # Required. A name for the secondary IP range. The name must be 1-63 characters
+        # long, and comply with RFC1035. The name must be unique within the subnetwork.
+        # Corresponds to the JSON property `rangeName`
+        # @return [String]
+        attr_accessor :range_name
+      
+        # Optional. The starting address of a range. The address must be a valid IPv4
+        # address in the x.x.x.x format. This value combined with the IP prefix range is
+        # the CIDR range for the secondary IP range. The range must be within the
+        # allocated range that is assigned to the private connection. If the CIDR range
+        # isn't available, the call fails.
+        # Corresponds to the JSON property `requestedAddress`
+        # @return [String]
+        attr_accessor :requested_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_prefix_length = args[:ip_prefix_length] if args.key?(:ip_prefix_length)
+          @range_name = args[:range_name] if args.key?(:range_name)
+          @requested_address = args[:requested_address] if args.key?(:requested_address)
+        end
+      end
+      
       # `Service` is the root object of Google service configuration schema. It
       # describes basic information about a service, such as the name and the title,
       # and delegates other aspects to sub-sections. Each sub-section is either a
@@ -3636,6 +3707,11 @@ module Google
         attr_accessor :outside_allocation
         alias_method :outside_allocation?, :outside_allocation
       
+        # List of secondary IP ranges in this subnetwork.
+        # Corresponds to the JSON property `secondaryIpRanges`
+        # @return [Array<Google::Apis::ServicenetworkingV1::SecondaryIpRange>]
+        attr_accessor :secondary_ip_ranges
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3646,6 +3722,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @outside_allocation = args[:outside_allocation] if args.key?(:outside_allocation)
+          @secondary_ip_ranges = args[:secondary_ip_ranges] if args.key?(:secondary_ip_ranges)
         end
       end
       
