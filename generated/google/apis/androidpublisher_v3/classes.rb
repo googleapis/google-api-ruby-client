@@ -1632,7 +1632,8 @@ module Google
         attr_accessor :order_id
       
         # The payment state of the subscription. Possible values are: 0. Payment pending
-        # 1. Payment received 2. Free trial 3. Pending deferred upgrade/downgrade
+        # 1. Payment received 2. Free trial 3. Pending deferred upgrade/downgrade Not
+        # present for canceled, expired subscriptions.
         # Corresponds to the JSON property `paymentState`
         # @return [Fixnum]
         attr_accessor :payment_state
