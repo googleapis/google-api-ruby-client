@@ -79,10 +79,28 @@ namespace :kokoro do
   end
 
   task :release do
-    # Until code generation process is updated and release-please is set up, just publish docs
-    require_relative "rakelib/devsite/devsite_builder.rb"
+    Rake::Task["kokoro:publish_gem"].invoke
+    Rake::Task["kokoro:publish_docs"].invoke
+  end
 
-    DevsiteBuilder.new.publish_if_missing ENV["DOCS_BUILD_TAG"]
+  task :publish_gem do
+    require "gems"
+
+    load_env_vars if ENV["KOKORO_GFILE_DIR"]
+    api_token = ENV["RUBYGEMS_API_TOKEN"]
+    if api_token
+      ::Gems.configure do |config|
+        config.key = api_token
+      end
+    end
+
+    rm_rf "pkg"
+    Rake::Task["build"].invoke
+    built_gem_path = Dir.glob("pkg/google-api-client-*.gem").last
+
+    response = ::Gems.push File.new path_to_be_pushed
+    puts response
+    raise "Failed to release gem" unless response.include? "Successfully registered gem:"
   end
 
   desc "Publish docs for the latest git tag"
@@ -91,6 +109,16 @@ namespace :kokoro do
 
     DevsiteBuilder.new.publish ENV["DOCS_BUILD_TAG"]
   end
+end
+
+def load_env_vars
+  service_account = "#{ENV['KOKORO_GFILE_DIR']}/service-account.json"
+  raise "#{service_account} is not a file" unless File.file? service_account
+  ENV["GOOGLE_APPLICATION_CREDENTIALS"] = service_account
+  filename = "#{ENV['KOKORO_GFILE_DIR']}/ruby_env_vars.json"
+  raise "#{filename} is not a file" unless File.file? filename
+  env_vars = JSON.parse File.read(filename)
+  env_vars.each { |k, v| ENV[k] ||= v }
 end
 
 def header str, token = "#"
