@@ -23,6 +23,7 @@ group :development do
   gem 'logging', '~> 2.2'
   gem 'opencensus', '~> 0.4'
   gem 'httparty'
+  gem 'gems', '~> 1.2'
 end
 
 platforms :jruby do
