@@ -1,4 +1,12 @@
-# 0.46.2
+# Release History
+
+### 0.47.0 / 2020-10-27
+
+* Support adding query params to request options
+* Regenerated clients
+
+### 0.46.2
+
 * Backwards compatible changes:
   * Added `domains_v1alpha2`
   * Added `domains_v1beta1`
@@ -56,7 +64,8 @@
   * Updated `youtube_partner_v1`
   * Updated `youtube_v3`
 
-# 0.46.1
+### 0.46.1
+
 * Backwards compatible changes:
   * Added `billingbudgets_v1`
   * Added `documentai_v1beta3`
@@ -115,7 +124,8 @@
   * Updated `youtube_partner_v1`
   * Updated `youtube_v3`
 
-# 0.46.0
+### 0.46.0
+
 * Breaking changes:
   * Deleted `apigateway_v1alpha1`
   * Deleted `apigateway_v1alpha2`
@@ -176,7 +186,8 @@
   * Updated `youtube_partner_v1`
   * Updated `youtube_v3`
 
-# 0.45.1
+### 0.45.1
+
 * Backwards compatible changes:
   * Added `analyticsadmin_v1alpha`
   * Added `apigateway_v1alpha2`
@@ -232,7 +243,8 @@
   * Updated `youtube_partner_v1`
   * Updated `youtube_v3`
 
-# 0.45.0
+### 0.45.0
+
 * Breaking changes:
   * Deleted `plus_v1`
 * Backwards compatible changes:
@@ -293,7 +305,8 @@
   * Updated `youtube_partner_v1`
   * Updated `youtube_v3`
 
-# 0.44.2
+### 0.44.2
+
 * Backwards compatible changes:
   * Added `analyticsdata_v1alpha`
   * Added `apigateway_v1alpha1`
@@ -412,7 +425,8 @@
   * Updated `youtube_partner_v1`
   * Updated `youtube_v3`
 
-# 0.44.1
+### 0.44.1
+
 * Backwards compatible changes:
   * Added `workflows_v1beta`
   * Updated `androidmanagement_v1`
@@ -420,7 +434,8 @@
   * Updated `websecurityscanner_v1alpha`
   * Updated `websecurityscanner_v1beta`
 
-# 0.44.0
+### 0.44.0
+
 * Breaking changes:
   * Deleted `dns_v2beta1`
   * Deleted `oauth2_v2`
@@ -638,7 +653,8 @@
   * Updated `youtube_partner_v1`
   * Updated `youtube_v3`
 
-# 0.43.0
+### 0.43.0
+
 * Breaking changes:
   * Deleted `fitness_v1`
 * Backwards compatible changes:
@@ -767,7 +783,8 @@
   * Updated `youtube_v3`
   * Updated `youtubereporting_v1`
 
-# 0.42.2
+### 0.42.2
+
 * Backwards compatible changes:
   * Updated `admob_v1`
   * Updated `apigee_v1`
@@ -843,7 +860,8 @@
   * Updated `youtube_partner_v1`
   * Updated `youtube_v3`
 
-# 0.42.1
+### 0.42.1
+
 * Backwards compatible changes:
   * Added `recommendationengine_v1beta1`
   * Updated `admob_v1`
@@ -913,7 +931,8 @@
   * Updated `vision_v1p2beta1`
   * Updated `youtube_v3`
 
-# 0.42.0
+### 0.42.0
+
 * Breaking changes:
   * Deleted `androidpublisher_v1_1`
   * Deleted `androidpublisher_v2`
@@ -949,7 +968,8 @@
   * Updated `youtube_partner_v1`
   * Updated `youtube_v3`
 
-# 0.41.2
+### 0.41.2
+
 * Backwards compatible changes:
   * Added `gameservices_v1`
   * Added `gmailpostmastertools_v1beta1`
@@ -990,7 +1010,8 @@
   * Updated `sasportal_v1alpha1`
   * Updated `spanner_v1`
 
-# 0.41.1
+### 0.41.1
+
 * Backwards compatible changes:
   * Added `playablelocations_v3`
   * Added `realtimebidding_v1`
@@ -1062,7 +1083,8 @@
   * Updated `texttospeech_v1beta1`
   * Updated `webfonts_v1`
 
-# 0.41.0
+### 0.41.0
+
 * Breaking changes:
   * Deleted `customsearch_v1`
 * Backwards compatible changes:
@@ -1128,7 +1150,8 @@
   * Updated `vision_v1p2beta1`
   * Updated `youtube_v3`
 
-# 0.40.2
+### 0.40.2
+
 * Backwards compatible changes:
   * Updated `androidenterprise_v1`
   * Updated `androidpublisher_v3`
@@ -1193,7 +1216,8 @@
   * Updated `texttospeech_v1`
   * Updated `texttospeech_v1beta1`
 
-# 0.40.1
+### 0.40.1
+
 * Backwards compatible changes:
   * Updated `admob_v1`
   * Updated `androidenterprise_v1`
@@ -1246,7 +1270,8 @@
   * Updated `videointelligence_v1p3beta1`
   * Updated `youtube_partner_v1`
 
-# 0.40.0
+### 0.40.0
+
 * Breaking changes:
   * Deleted `pagespeedonline_v4`
 * Backwards compatible changes:
@@ -1280,7 +1305,8 @@
   * Updated `tpu_v1alpha1`
   * Updated `youtube_v3`
 
-# 0.39.5
+### 0.39.5
+
 * Backwards compatible changes:
   * Added `artifactregistry_v1beta1`
   * Added `dialogflow_v3alpha1`
@@ -1345,7 +1371,8 @@
   * Updated `youtube_partner_v1`
   * Updated `youtube_v3`
 
-# 0.39.4
+### 0.39.4
+
 * Backwards compatible changes:
   * Updated `bigtableadmin_v1`
   * Updated `bigtableadmin_v2`
@@ -1370,7 +1397,8 @@
   * Updated `secretmanager_v1beta1`
   * Updated `servicecontrol_v1`
 
-# 0.39.3
+### 0.39.3
+
 * Backwards compatible changes:
   * Updated `appengine_v1`
   * Updated `appengine_v1beta`
@@ -1406,11 +1434,13 @@
   * Updated `toolresults_v1beta3`
   * Updated `youtube_partner_v1`
 
-# 0.39.2
+### 0.39.2
+
 * Backwards compatible changes:
   * Updated `apigee_v1`
 
-# 0.39.1
+### 0.39.1
+
 * Backwards compatible changes:
   * Added `osconfig_v1beta`
   * Updated `bigquery_v2`
@@ -1432,7 +1462,8 @@
   * Updated `toolresults_v1beta3`
   * Updated `vault_v1`
 
-# 0.39.0
+### 0.39.0
+
 * Breaking changes:
   * Deleted `commentanalyzer_v1alpha1`
 * Backwards compatible changes:
@@ -1556,7 +1587,8 @@
   * Updated `youtube_partner_v1`
   * Updated `youtube_v3`
 
-# 0.38.0
+### 0.38.0
+
 * Breaking changes:
   * Deleted `oauth2_v1`
 * Backwards compatible changes:
@@ -1702,7 +1734,8 @@
   * Updated `youtube_partner_v1`
   * Updated `youtube_v3`
 
-# 0.37.3
+### 0.37.3
+
 * Backwards compatible changes:
   * Updated `accesscontextmanager_v1`
   * Updated `accesscontextmanager_v1beta`
@@ -1776,7 +1809,8 @@
   * Updated `vision_v1p1beta1`
   * Updated `vision_v1p2beta1`
 
-# 0.37.2
+### 0.37.2
+
 * Backwards compatible changes:
   * Added `displayvideo_v1`
   * Added `managedidentities_v1`
@@ -1881,7 +1915,8 @@
   * Updated `youtube_partner_v1`
   * Updated `youtube_v3`
 
-# 0.37.1
+### 0.37.1
+
 * Backwards compatible changes:
   * Added `cloudtrace_v2beta1`
   * Added `secretmanager_v1`
@@ -1957,7 +1992,8 @@
   * Updated `toolresults_v1`
   * Updated `youtube_partner_v1`
 
-# 0.37.0
+### 0.37.0
+
 * Breaking changes:
   * Deleted `analytics_v2_4`
   * Deleted `plus_domains_v1`
@@ -2141,7 +2177,8 @@
   * Updated `youtube_v3`
   * Updated `youtubereporting_v1`
 
-# 0.36.4
+### 0.36.4
+
 * Backwards compatible changes:
   * Updated `people_v1`
   * Updated `remotebuildexecution_v1`
@@ -2154,12 +2191,14 @@
   * Updated `serviceusage_v1`
   * Updated `serviceusage_v1beta1`
 
-# 0.36.3
+### 0.36.3
+
 * Backwards compatible changes:
   * Updated `healthcare_v1beta1`
   * Updated `sql_v1beta4`
 
-# 0.36.2
+### 0.36.2
+
 * Backwards compatible changes:
   * Added `cloudbuild_v1alpha1`
   * Added `sasportal_v1alpha1`
@@ -2204,7 +2243,8 @@
   * Updated `sql_v1beta4`
   * Updated `vision_v1`
 
-# 0.36.1
+### 0.36.1
+
 * Backwards compatible changes:
   * Updated `androidenterprise_v1`
   * Updated `androidmanagement_v1`
@@ -2273,7 +2313,8 @@
   * Updated `toolresults_v1beta3`
   * Updated `youtube_partner_v1`
 
-# 0.36.0
+### 0.36.0
+
 * Breaking changes:
   * Deleted `cloudbuild_v1alpha1`
 * Backwards compatible changes:
@@ -2309,7 +2350,8 @@
   * Updated `serviceusage_v1beta1`
   * Updated `streetviewpublish_v1`
 
-# 0.35.0
+### 0.35.0
+
 * Breaking changes:
   * Deleted `storage_v1beta1`
 * Backwards compatible changes:
@@ -2421,7 +2463,8 @@
   * Updated `videointelligence_v1p3beta1`
   * Updated `youtube_partner_v1`
 
-# 0.34.1
+### 0.34.1
+
 * Backwards compatible changes:
   * Updated `bigquery_v2`
   * Updated `cloudshell_v1`
@@ -2439,7 +2482,8 @@
   * Updated `vision_v1p1beta1`
   * Updated `vision_v1p2beta1`
 
-# 0.34.0
+### 0.34.0
+
 * Breaking changes:
   * Deleted `dfareporting_v3_2`
 * Backwards compatible changes:
@@ -2481,7 +2525,8 @@
   * Updated `videointelligence_v1p3beta1`
   * Updated `youtube_partner_v1`
 
-# 0.33.2
+### 0.33.2
+
 * Backwards compatible changes:
   * Added `speech_v2beta1`
   * Updated `accessapproval_v1beta1`
@@ -2523,7 +2568,8 @@
   * Updated `videointelligence_v1p3beta1`
   * Updated `youtube_partner_v1`
 
-# 0.33.1
+### 0.33.1
+
 * Backwards compatible changes:
   * Added `monitoring_v1`
   * Added `sql_v1beta4`
@@ -2558,7 +2604,8 @@
   * Updated `vision_v1p1beta1`
   * Updated `vision_v1p2beta1`
 
-# 0.33.0
+### 0.33.0
+
 * Breaking changes:
   * Deleted `urlshortener_v1`
 * Backwards compatible changes:
@@ -2600,7 +2647,8 @@
 * Other changes:
   * Dropped support for Ruby versions older than 2.4
 
-# 0.32.1
+### 0.32.1
+
 * Backwards compatible changes:
   * Updated `appengine_v1`
   * Updated `appengine_v1beta`
@@ -2634,7 +2682,8 @@
   * Updated `servicemanagement_v1`
   * Updated `vault_v1`
 
-# 0.32.0
+### 0.32.0
+
 * Breaking changes:
   * Deleted `dfareporting_v3_1`
 * Backwards compatible changes:
@@ -2741,7 +2790,8 @@
   * Updated `websecurityscanner_v1beta`
   * Updated `youtube_partner_v1`
 
-# 0.31.0
+### 0.31.0
+
 * Breaking changes:
   * Deleted `healthcare_v1alpha2`
 * Backwards compatible changes:
@@ -2783,7 +2833,8 @@
   * Updated `videointelligence_v1p2beta1`
   * Updated `videointelligence_v1p3beta1`
 
-# 0.30.10
+### 0.30.10
+
 * Backwards compatible changes:
   * Added `bigqueryconnection_v1beta1`
   * Added `binaryauthorization_v1`
@@ -2872,7 +2923,8 @@
   * Updated `youtube_partner_v1`
   * Updated `youtube_v3`
 
-# 0.30.9
+### 0.30.9
+
 * Backwards compatible changes:
   * Added `bigqueryreservation_v1`
   * Added `bigqueryreservation_v1alpha2`
@@ -2980,7 +3032,8 @@
   * Updated `youtube_partner_v1`
   * Updated `youtube_v3`
 
-# 0.30.8
+### 0.30.8
+
 * Backwards compatible changes:
   * Updated `alertcenter_v1beta1`
   * Updated `analyticsreporting_v4`
@@ -3003,7 +3056,8 @@
   * Updated `vision_v1p1beta1`
   * Updated `vision_v1p2beta1`
 
-# 0.30.7
+### 0.30.7
+
 * Backwards compatible changes:
   * Added `translate_v3beta1`
   * Updated `bigquery_v2`
@@ -3022,7 +3076,8 @@
   * Updated `videointelligence_v1p2beta1`
   * Updated `videointelligence_v1p3beta1`
 
-# 0.30.6
+### 0.30.6
+
 * Backwards compatible changes:
   * Added `run_v1beta1`
   * Updated `accesscontextmanager_v1`
@@ -3085,7 +3140,8 @@
   * Updated `vision_v1p1beta1`
   * Updated `vision_v1p2beta1`
 
-# 0.30.5
+### 0.30.5
+
 * Backwards compatible changes:
   * Updated `androidpublisher_v3`
   * Updated `bigquery_v2`
@@ -3129,7 +3185,8 @@
   * Updated `websecurityscanner_v1beta`
   * Updated `youtube_partner_v1`
 
-# 0.30.4
+### 0.30.4
+
 * Backwards compatible changes:
   * Added `websecurityscanner_v1`
   * Updated `bigquery_v2`
@@ -3172,7 +3229,8 @@
   * Updated `vault_v1`
   * Updated `videointelligence_v1beta2`
 
-# 0.30.3
+### 0.30.3
+
 * Backwards compatible changes:
   * Added `firebase_v1beta1`
   * Updated `accesscontextmanager_v1beta`
@@ -3262,7 +3320,8 @@
   * Updated `videointelligence_v1p3beta1`
   * Updated `youtube_partner_v1`
 
-# 0.30.2
+### 0.30.2
+
 * Backwards compatible changes:
   * Added `securitycenter_v1p1alpha1`
   * Updated `androiddeviceprovisioning_v1`
@@ -3326,7 +3385,8 @@
   * Updated `youtube_analytics_v2`
   * Updated `youtube_partner_v1`
 
-# 0.30.1
+### 0.30.1
+
 * Backwards compatible changes:
   * Updated `accesscontextmanager_v1`
   * Updated `accesscontextmanager_v1beta`
@@ -3370,7 +3430,8 @@
   * Updated `vision_v1p1beta1`
   * Updated `vision_v1p2beta1`
 
-# 0.30.0
+### 0.30.0
+
 * Breaking changes:
   * Deleted `youtube_analytics_v1beta1`
 * Backwards compatible changes:
@@ -3403,7 +3464,8 @@
   * Updated `websecurityscanner_v1beta`
   * Updated `youtube_analytics_v1`
 
-# 0.29.2
+### 0.29.2
+
 * Backwards compatible changes:
   * Added `fcm_v1`
   * Added `healthcare_v1alpha2`
@@ -3505,7 +3567,8 @@
   * Updated `websecurityscanner_v1beta`
   * Updated `youtube_v3`
 
-# 0.29.1
+### 0.29.1
+
 * Backwards compatible changes:
   * Updated `bigquery_v2`
   * Updated `calendar_v3`
@@ -3525,7 +3588,8 @@
   * Updated `storage_v1`
   * Updated `youtube_partner_v1`
 
-# 0.29.0
+### 0.29.0
+
 * Breaking changes:
   * Deleted `logging_v2beta1`
 * Backwards compatible changes:
@@ -3663,14 +3727,16 @@
   * Updated `youtube_v3`
   * Updated `youtubereporting_v1`
 
-# 0.28.7
+### 0.28.7
+
 * Backwards compatible changes:
   * Added `run_v1`
   * Added `run_v1alpha1`
   * Updated `androidpublisher_v3`
   * Updated `texttospeech_v1`
 
-# 0.28.6
+### 0.28.6
+
 * Backwards compatible changes:
   * Updated `adexchangebuyer2_v2beta1`
   * Updated `androidenterprise_v1`
@@ -3716,7 +3782,8 @@
   * Updated `sqladmin_v1beta4`
   * Updated `testing_v1`
 
-# 0.28.5
+### 0.28.5
+
 * Backwards compatible changes:
   * Added `accesscontextmanager_v1`
   * Added `cloudasset_v1`
@@ -3863,7 +3930,8 @@
   * Updated `youtube_partner_v1`
   * Updated `youtubereporting_v1`
 
-# 0.28.4
+### 0.28.4
+
 * Backwards compatible changes:
   * Added `bigtableadmin_v1`
   * Updated `accesscontextmanager_v1beta`
@@ -3881,7 +3949,8 @@
   * Updated `storagetransfer_v1`
   * Updated `testing_v1`
 
-# 0.28.3
+### 0.28.3
+
 * Backwards compatible changes:
   * Added `dfareporting_v3_3`
   * Updated `bigquery_v2`
@@ -3896,7 +3965,8 @@
   * Updated `servicecontrol_v1`
   * Updated `youtube_partner_v1`
 
-# 0.28.2
+### 0.28.2
+
 * Backwards compatible changes:
   * Added `docs_v1`
   * Added `videointelligence_v1p2beta1`
@@ -3924,7 +3994,8 @@
   * Updated `vision_v1p2beta1`
   * Updated `youtube_v3`
 
-# 0.28.1
+### 0.28.1
+
 * Backwards compatible changes:
   * Added `file_v1`
   * Updated `accesscontextmanager_v1beta`
@@ -3962,7 +4033,8 @@
   * Updated `vision_v1p2beta1`
   * Updated `youtube_partner_v1`
 
-# 0.28.0
+### 0.28.0
+
 * Breaking changes:
   * Deleted `monitoring_v1`
 * Backwards compatible changes:
@@ -4006,7 +4078,8 @@
   * Updated `vision_v1p1beta1`
   * Updated `vision_v1p2beta1`
 
-# 0.27.3
+### 0.27.3
+
 * Backwards compatible changes:
   * Added `containeranalysis_v1alpha1`
   * Added `containeranalysis_v1beta1`
@@ -4051,7 +4124,8 @@
   * Updated `websecurityscanner_v1alpha`
   * Updated `youtube_partner_v1`
 
-# 0.27.2
+### 0.27.2
+
 * Backwards compatible changes:
   * Updated `bigquery_v2`
   * Updated `cloudscheduler_v1beta1`
@@ -4064,7 +4138,8 @@
   * Updated `serviceusage_v1beta1`
   * Updated `testing_v1`
 
-# 0.27.1
+### 0.27.1
+
 * Backwards compatible changes:
   * Added `cloudidentity_v1`
   * Added `cloudidentity_v1beta1`
@@ -4096,7 +4171,8 @@
   * Updated `serviceusage_v1beta1`
   * Updated `youtube_partner_v1`
 
-# 0.27.0
+### 0.27.0
+
 * Breaking changes:
   * Deleted `replicapoolupdater_v1beta1`
 * Backwards compatible changes:
@@ -4130,7 +4206,8 @@
   * Updated `texttospeech_v1beta1`
   * Updated `youtube_partner_v1`
 
-# 0.26.0
+### 0.26.0
+
 * Breaking changes:
   * Deleted `dfareporting_v3_0`
 * Backwards compatible changes:
@@ -4213,7 +4290,8 @@
   * Updated `vision_v1p2beta1`
   * Updated `youtube_partner_v1`
 
-# 0.25.0
+### 0.25.0
+
 * Breaking changes:
   * Deleted `dfareporting_v2_8`
   * Deleted `serviceuser_v1`
@@ -4312,7 +4390,8 @@
   * Updated `youtube_partner_v1`
   * Updated `youtube_v3`
 
-# 0.24.3
+### 0.24.3
+
 * Backwards compatible changes:
   * Added `alertcenter_v1beta1`
   * Added `cloudasset_v1beta1`
@@ -4380,9 +4459,10 @@
   * Updated `vision_v1p2beta1`
   * Updated `youtube_partner_v1`
 
-# 0.24.2
+### 0.24.2
 
-# 0.24.1
+### 0.24.1
+
 * Backwards compatible changes:
   * Added `jobs_v3p1beta1`
   * Updated `adexchangebuyer2_v2beta1`
@@ -4429,7 +4509,8 @@
   * Updated `testing_v1`
   * Updated `toolresults_v1beta3`
 
-# 0.24.0
+### 0.24.0
+
 * Breaking changes:
   * Deleted `adexchangeseller_v1`
   * Deleted `adexchangeseller_v1_1`
@@ -4471,7 +4552,8 @@
   * Updated `vision_v1p2beta1`
   * Updated `youtube_partner_v1`
 
-# 0.23.9
+### 0.23.9
+
 * Backwards compatible changes:
   * Updated `adexchangebuyer2_v2beta1`
   * Updated `androidmanagement_v1`
@@ -4506,7 +4588,8 @@
   * Updated `websecurityscanner_v1alpha`
   * Updated `youtube_partner_v1`
 
-# 0.23.8
+### 0.23.8
+
 * Backwards compatible changes:
   * Updated `adexchangebuyer2_v2beta1`
   * Updated `androidpublisher_v2`
@@ -4538,7 +4621,8 @@
   * Updated `toolresults_v1beta3`
   * Updated `youtube_partner_v1`
 
-# 0.23.7
+### 0.23.7
+
 * Backwards compatible changes:
   * Updated `adexchangebuyer_v1_4`
   * Updated `androidmanagement_v1`
@@ -4549,11 +4633,13 @@
   * Updated `compute_beta`
   * Updated `compute_v1`
 
-# 0.23.7
+### 0.23.7
+
 * Backwards compatible changes:
   * Make dependency on signet explicit and with correct version
 
-# 0.23.6
+### 0.23.6
+
 * Backwards compatible changes:
   * Added `jobs_v3`
   * Updated `adexperiencereport_v1`
@@ -4574,7 +4660,8 @@
   * Updated `testing_v1`
   * Updated `youtube_partner_v1`
 
-# 0.23.5
+### 0.23.5
+
 * Backwards compatible changes:
   * Added `binaryauthorization_v1beta1`
   * Added `dfareporting_v3_2`
@@ -4745,7 +4832,8 @@
   * Updated `youtube_partner_v1`
   * Updated `youtube_v3`
 
-# 0.23.4
+### 0.23.4
+
 * Backwards compatible changes:
   * Added `cloudprofiler_v2`
   * Updated `adexchangebuyer2_v2beta1`
@@ -4852,20 +4940,23 @@
   * Updated `youtube_analytics_v1beta1`
   * Updated `youtube_v3`
 
-# 0.23.3
+### 0.23.3
+
 * Backwards compatible changes:
   * Updated `clouderrorreporting_v1beta1`
   * Updated `serviceusage_v1`
   * Updated `serviceusage_v1beta1`
 
-# 0.23.2
+### 0.23.2
+
 * Backwards compatible changes:
   * Updated `cloudfunctions_v1beta2`
   * Updated `content_v2`
   * Updated `dataproc_v1`
   * Updated `dataproc_v1beta2`
 
-# 0.23.1
+### 0.23.1
+
 * Backwards compatible changes:
   * Added `indexing_v3`
   * Updated `acceleratedmobilepageurl_v1`
@@ -4979,7 +5070,8 @@
   * Updated `youtube_partner_v1`
   * Updated `youtubereporting_v1`
 
-# 0.23.0
+### 0.23.0
+
 * Breaking changes:
   * Deleted `photoslibrary_v1`
 * Backwards compatible changes:
@@ -5009,7 +5101,8 @@
   * Updated `videointelligence_v1`
   * Updated `videointelligence_v1beta2`
 
-# 0.22.0
+### 0.22.0
+
 * Breaking changes:
   * Deleted `resourceviews_v1beta1`
   * Deleted `resourceviews_v1beta2`
@@ -5044,7 +5137,8 @@
   * Updated `testing_v1`
   * Updated `youtube_partner_v1`
 
-# 0.21.2
+### 0.21.2
+
 * Backwards compatible changes:
   * Added `dfareporting_v3_1`
   * Updated `admin_reports_v1`
@@ -5086,7 +5180,8 @@
   * Updated `youtube_analytics_v2`
   * Updated `youtube_partner_v1`
 
-# 0.21.1
+### 0.21.1
+
 * Backwards compatible changes:
   * Updated `analytics_v3`
   * Updated `compute_alpha`
@@ -5094,7 +5189,8 @@
   * Updated `compute_v1`
   * Updated `sourcerepo_v1`
 
-# 0.21.0
+### 0.21.0
+
 * Breaking changes:
   * Deleted `prediction_v1_2`
   * Deleted `prediction_v1_3`
@@ -5234,7 +5330,8 @@
   * Updated `youtube_partner_v1`
   * Updated `youtube_v3`
 
-# 0.20.1
+### 0.20.1
+
 * Backwards compatible changes:
   * Updated `adexchangebuyer2_v2beta1`
   * Updated `bigquery_v2`
@@ -5269,7 +5366,8 @@
   * Updated `testing_v1`
   * Updated `youtube_partner_v1`
 
-# 0.20.0
+### 0.20.0
+
 * Breaking changes:
   * Deleted `clouduseraccounts_alpha`
   * Deleted `clouduseraccounts_vm_alpha`
@@ -5375,7 +5473,8 @@
   * Updated `youtube_v3`
   * Updated `youtubereporting_v1`
 
-# 0.19.8
+### 0.19.8
+
 * Backwards compatible changes:
   * Added `serviceusage_v1`
   * Updated `adexchangebuyer2_v2beta1`
@@ -5412,7 +5511,8 @@
   * Updated `spanner_v1`
   * Updated `youtube_partner_v1`
 
-# 0.19.7
+### 0.19.7
+
 * Backwards compatible changes:
   * Updated `androiddeviceprovisioning_v1`
   * Updated `androidenterprise_v1`
@@ -5438,7 +5538,8 @@
   * Updated `youtube_partner_v1`
   * Updated `youtube_v3`
 
-# 0.19.6
+### 0.19.6
+
 * Backwards compatible changes:
   * Updated `adexchangebuyer2_v2beta1`
   * Updated `appengine_v1`
@@ -5468,7 +5569,8 @@
   * Updated `tpu_v1alpha1`
   * Updated `youtube_partner_v1`
 
-# 0.19.5
+### 0.19.5
+
 * Backwards compatible changes:
   * Updated `androiddeviceprovisioning_v1`
   * Updated `appengine_v1beta`
@@ -5503,7 +5605,8 @@
   * Updated `youtube_partner_v1`
   * Updated `youtube_v3`
 
-# 0.19.4
+### 0.19.4
+
 * Backwards compatible changes:
   * Updated `analytics_v3`
   * Updated `androiddeviceprovisioning_v1`
@@ -5542,7 +5645,8 @@
   * Updated `speech_v1beta1`
   * Updated `youtube_partner_v1`
 
-# 0.19.3
+### 0.19.3
+
 * Backwards compatible changes:
   * Updated `admin_reports_v1`
   * Updated `androidenterprise_v1`
@@ -5579,7 +5683,8 @@
   * Updated `youtube_partner_v1`
   * Updated `youtubereporting_v1`
 
-# 0.19.2
+### 0.19.2
+
 * Backwards compatible changes:
   * Updated `adexchangebuyer2_v2beta1`
   * Updated `androidmanagement_v1`
@@ -5615,11 +5720,13 @@
   * Updated `vision_v1`
   * Updated `vision_v1p1beta1`
 
-# 0.19.1
+### 0.19.1
+
 * Backwards compatible changes:
   * Updated `bigquery_v2`
 
-# 0.19.0
+### 0.19.0
+
 * Breaking changes:
   * Deleted `consumersurveys_v2`
 * Backwards compatible changes:
@@ -5651,7 +5758,8 @@
   * Updated `tpu_v1alpha1`
   * Updated `youtube_partner_v1`
 
-# 0.18.1
+### 0.18.1
+
 * Backwards compatible changes:
   * Added `cloudshell_v1`
   * Added `cloudshell_v1alpha1`
@@ -5692,7 +5800,8 @@
   * Updated `youtube_v3`
   * Updated `youtubereporting_v1`
 
-# 0.18.0
+### 0.18.0
+
 * Breaking changes:
   * Deleted `dfareporting_v2_7`
 * Backwards compatible changes:
@@ -5720,7 +5829,8 @@
   * Updated `toolresults_v1beta3`
   * Updated `youtube_partner_v1`
 
-# 0.17.4
+### 0.17.4
+
 * Backwards compatible changes:
   * Added `poly_v1`
   * Updated `androidenterprise_v1`
@@ -5746,7 +5856,8 @@
   * Updated `youtube_partner_v1`
   * Updated `youtube_v3`
 
-# 0.17.3
+### 0.17.3
+
 * Backwards compatible changes:
   * Added `oslogin_v1`
   * Updated `androiddeviceprovisioning_v1`
@@ -5754,7 +5865,8 @@
   * Updated `tpu_v1alpha1`
   * Updated `vault_v1`
 
-# 0.17.2
+### 0.17.2
+
 * Backwards compatible changes:
   * Added `dialogflow_v2beta1`
   * Added `serviceconsumermanagement_v1`
@@ -5787,7 +5899,8 @@
   * Updated `toolresults_v1beta3`
   * Updated `youtube_partner_v1`
 
-# 0.17.1
+### 0.17.1
+
 * Backwards compatible changes:
   * Added `dfareporting_v3_0`
   * Added `vision_v1p1beta1`
@@ -5820,7 +5933,8 @@
   * Updated `vision_v1`
   * Updated `youtube_partner_v1`
 
-# 0.17.0
+### 0.17.0
+
 * Breaking changes:
   * Deleted `cloudmonitoring_v2beta2`
 * Backwards compatible changes:
@@ -5838,7 +5952,8 @@
   * Updated `youtube_partner_v1`
   * Updated `youtube_v3`
 
-# 0.16.0
+### 0.16.0
+
 * Breaking changes:
   * Deleted `playmoviespartner_v1`
   * Deleted `qpx_express_v1`
@@ -5913,7 +6028,8 @@
   * Updated `videointelligence_v1beta1`
   * Updated `youtube_partner_v1`
 
-# 0.15.0
+### 0.15.0
+
 * Breaking changes:
   * Deleted `ml_v1beta1`
 * Backwards compatible changes:
@@ -5947,7 +6063,8 @@
   * Updated `vision_v1`
   * Updated `youtube_partner_v1`
 
-# 0.14.5
+### 0.14.5
+
 * Backwards compatible changes:
   * Added `cloudiot_v1`
   * Added `cloudiot_v1beta1`
@@ -5988,7 +6105,8 @@
   * Updated `toolresults_v1beta3`
   * Updated `youtube_partner_v1`
 
-# 0.14.4
+### 0.14.4
+
 * Backwards compatible changes:
   * Updated `acceleratedmobilepageurl_v1`
   * Updated `compute_alpha`
@@ -5998,9 +6116,10 @@
   * Updated `content_v2sandbox`
   * Updated `servicecontrol_v1`
 
-# 0.14.3
+### 0.14.3
 
-# 0.14.2
+### 0.14.2
+
 * Backwards compatible changes:
   * Added `oslogin_v1beta`
   * Added `testing_v1`
@@ -6033,10 +6152,12 @@
   * Updated `youtube_partner_v1`
   * Updated `youtube_v3`
 
-# 0.14.1
+### 0.14.1
+
 * Retry on `Signet::AuthorizationError`. 
 
-# 0.14.0
+### 0.14.0
+
 * Breaking changes:
   * Deleted `toolresults_v1beta3firstparty`
 * Backwards compatible changes:
@@ -6092,7 +6213,8 @@
   * Updated `youtube_partner_v1`
   * Updated `youtube_v3`
 
-# 0.13.6
+### 0.13.6
+
 * Backwards compatible changes:
   * Updated `adexchangebuyer_v1_2`
   * Updated `adexchangebuyer_v1_3`
@@ -6150,7 +6272,8 @@
   * Updated `youtube_analytics_v1beta1`
   * Updated `youtube_partner_v1`
 
-# 0.13.5
+### 0.13.5
+
 * Backwards compatible changes:
   * Added `datastore_v1beta1`
   * Added `firebaseremoteconfig_v1`
@@ -6193,7 +6316,8 @@
   * Updated `vault_v1`
   * Updated `youtube_partner_v1`
 
-# 0.13.4
+### 0.13.4
+
 * Backwards compatible changes:
   * Updated `compute_alpha`
   * Updated `content_v2`
@@ -6202,7 +6326,8 @@
   * Updated `identitytoolkit_v3`
   * Updated `youtube_partner_v1`
 
-# 0.13.3
+### 0.13.3
+
 * Backwards compatible changes:
   * Added `adexchangebuyer_v1_2`
   * Added `adexchangebuyer_v1_3`
@@ -6351,21 +6476,25 @@
   * Updated `youtube_partner_v1`
   * Updated `youtubereporting_v1`
 
-# 0.13.2
+### 0.13.2
+
 * Light generator refactoring
 * Recover from non-Ranged responses without rewinding (#593)
 
-# 0.13.1
+### 0.13.1
+
 * Regenerate APIs
 
-# 0.13.0
+### 0.13.0
+
 * Regenerate APIs
 * Revert api\_names.yaml to an earlier revision to restore some manual name
   overrides that were lost in 0.12.0
   * For example, in `compute:v1`, `aggregated_address_list` has been reverted
     to `list_aggregated_instances`.
 
-# 0.12.0
+### 0.12.0
+
 * *Breaking change* - Change behavior of `fetch_all` to collect Hash responses
   into a single collection.
   For responses that return a Hash, `fetch_all` used to return an array of
@@ -6416,19 +6545,23 @@
   * pubsub:v1beta2
   * tracing:v1
 
-# 0.11.3
+### 0.11.3
+
 * Add `RequestOptions.api_format_version` to opt-in to receive v2 error messages
 * Fix `to_json` signature to allow args
 * Regenerate APIs
 
-# 0.11.2
+### 0.11.2
+
 * Regenerate all APIs except `dataflow:v1b3`
 * Add `dfareporting:v2.8`
 
-# 0.11.1
+### 0.11.1
+
 * Remove stray debug output
 
-# 0.11.0
+### 0.11.0
+
 * *Breaking change* - Fix handling of large numbers during code generation. Previously the
   uint64/int64 formats were passed through as strings. They are now coerced to/from Fixnum/Bignum types.
   Affected APIs:
@@ -6448,7 +6581,8 @@
 * Updated dependencies
 * Regen APIs, add appsmarketplace:v2
 
-# 0.10.3
+### 0.10.3
+
 * Regenerate APIs
 * Enable additional API:
   * `acceleratedmobilepageurl:v1`
@@ -6474,14 +6608,17 @@
   * `webfonts:v1`
 * Fix `teamdrives` inflection
 
-# 0.10.2
+### 0.10.2
+
 * Regenerate APIs
 
-# 0.10.1
+### 0.10.1
+
 * Regenerate APIs
 * Add `cloudkms:v1`
 
-# 0.10.0
+### 0.10.0
+
 * Regenerate APIs
 * Some exceptions are more descriptive for specific errors
 * `representable` dependency bumped to `~> 3.0`
@@ -6491,94 +6628,117 @@
     instead of `foo.to_json(skip_undefined: true)`
 * `retriable` dependency bumped to `>= 2.0, < 4.0`
 
-# 0.9.28
+### 0.9.28
+
 * Fix file permissions issue
 
-# 0.9.27
+### 0.9.27
+
 * Allow abnormal page token cases for paging methods
 * Regenerate APIs
 
-# 0.9.26
+### 0.9.26
+
 * Update gem to reflect changes in 0.9.25
 
-# 0.9.25
+### 0.9.25
+
 * Regenerate APIs
 * Add `cloudkms:v1beta1`
 * Add `manufacturers:v1`
 
-# 0.9.24
+### 0.9.24
+
 * Regenerate APIs
 * Add `dfareporting:v2.7`
 * Fix file permissions issue present in released gems for versions `0.9.21` through `0.9.23`
 
-# 0.9.23
+### 0.9.23
+
 * Regenerate APIs
 * Add `dns:v2beta1`
 
-# 0.9.22
+### 0.9.22
+
 * Regenerate APIs
 
-# 0.9.21
+### 0.9.21
+
 * Regenerate APIs
 
-# 0.9.20
+### 0.9.20
+
 * Regenerate APIs
 * Add Slides API
 
-# 0.9.19
+### 0.9.19
+
 * Regenerate APIs
 * Add Adexchangebuyer2 API
 
-# 0.9.15
+### 0.9.15
+
 * Add datastore v1
 * Regenerate APIs
 
-# 0.9.14
+### 0.9.14
+
 * Fix error handling with downloads, no longer fails silently
 * Prevent form-encoding query parameters for APIs that don't expect it
 * Regenerate APIs
 
-# 0.9.13
+### 0.9.13
+
 * Fix fetch_all to work correctly with the genomics API
 * Add speech & language APIs, regenerate APIs
 
-# 0.9.12
+### 0.9.12
+
 * Regenerated APIs
 
-# 0.9.11
+### 0.9.11
+
 * Add DFA Reporting 2.5, regenerate APIs
 
-# 0.9.10
+### 0.9.10
+
 * Add datastore v1beta3, regenerate APIs
 * Reduce memory footprint used by mimetypes library
 * Fix bug with pagination when items collection is nil
 
-# 0.9.9
+### 0.9.9
+
 * Add monitoring v3, regenerate APIs
 * Add samples for sheets, bigquery
 
-# 0.9.8
+### 0.9.8
+
 * Add mybusiness v3, regenerate APIs
 
-# 0.9.7
+### 0.9.7
+
 * Add sheets v4 & analytics reporting v4, regenerate APIs
 
-# 0.9.6
+### 0.9.6
+
 * Rewind output stream if server unable to honor range request when resuming a download
 * Fix web sample
 * Allow nil dates to be passed in request bodies
 
-# 0.9.5
+### 0.9.5
+
 * Add youtube partner API
 * Allow bypassing the use of rails logger via `GOOGLE_API_USE_RAILS_LOGGER` ENV variable
 * Update generated APIs
 
-# 0.9.4
+### 0.9.4
+
 * Add `service.fetch_all` helper for automatically retrieving paged results
 * Add IAM v1 & Cloud Resource Manager v1 APIs
 * Update generated APIs
 
-# 0.9.3
+### 0.9.3
+
 * Drop ActiveSupport an MultiJson as dependencies. Active support is still included in the Gemfile
   and is needed to run the code generator.
 * Allow falsey values in hash representations of objects
@@ -6587,19 +6747,23 @@
 * Add the Cloud Vision API
 * Update generated APIs
 
-# 0.9.2
+### 0.9.2
+
 * Allow nil values to be used in `new` and `update!` for generated classes
 * Update generated APIs
 
-# 0.9.1
+### 0.9.1
+
 * Add missing require for 'tempfile'
 * Update generated APIs
 
-# 0.9
+### 0.9
+
 * Force the use of alt=json for the groups settings API
 * Small tweaks to some calendar API and licensing API method names
 
-# 0.9.0.pre5
+### 0.9.0.pre5
+
 * Change the default HTTP adapter to HTTPClient due to broken connections with long running uploads with Net::HTTP
 * No longer breaks Object#hash behavior, restores compatibility with Padrino
 * No longer omit falsey values (0, false, etc) in query parameters
@@ -6607,7 +6771,8 @@
 * Allow Tempfile as an upload source
 * Updated samples for various APIs
 
-# 0.9.0.pre4
+### 0.9.0.pre4
+
 * (Breaking change) Updated name method name generation for improved
   consistency, some services may have changed.
 * Updated generated APIs
@@ -6619,43 +6784,53 @@
   functionality is now available in google-auth-library-ruby. These will
   be removed in the 0.9 release.
 
-# 0.9.0.pre3
+### 0.9.0.pre3
+
 * (Breaking change) Update method signatures to include required query
   parameters in the list of non-keyword args
 
-# 0.9.0.pre2
+### 0.9.0.pre2
+
 * Add raw HTTP status code & body to errors
 * Allow signet options to be passed in InstalledAppFlow.authorize
 * Update DateTime serialization to include milliseconds
 
-# 0.9.0.pre1
+### 0.9.0.pre1
+
 * WARNING: Please see [MIGRATING](MIGRATING.md) for important information.
 * API classes are now generated ahead of time instead of at runtime.
 * Drop support for Ruby versions < 2.0
 * Switch from Faraday to Hurley for HTTP client
 
-# 0.8.6
+### 0.8.6
+
 * Use discovered 'rootUrl' as base URI for services
 * Respect discovered methods with colons in path
 
-# 0.8.5
+### 0.8.5
+
 * Corrects the regression Rails 4 support in the 0.8.4 release.
 
-# 0.8.4
+### 0.8.4
+
 * Fixes a file permission issues with the 0.8.3 release
 * Fixes warnings when the library is used
 
-# 0.8.3
+### 0.8.3
+
 * Adds support for authorization via Application Default Credentials.
 # Adds support for tracking coverage on coveralls.io
 
-# 0.8.2
+### 0.8.2
+
 * Fixes for file storage and missing cacerts file
 
-# 0.8.1
+### 0.8.1
+
 * Fix logger in rails
 
-# 0.8.0
+### 0.8.0
+
 * Refactored credential storage, added support for redis
 * Update gem dependencies
 * Fixed retry logic to allow for auth retries independent of the overall number of retries
@@ -6667,10 +6842,12 @@
 * Drop 1.8.x support
 * This will be the last release with 1.9.x support
 
-# 0.7.1
+### 0.7.1
+
 * Minor fix to update gem dependencies
 
-# 0.7.0
+### 0.7.0
+
 * Remove CLI
 * Support for automatic retires & backoff. Off by default, enable by setting `retries` on `APIClient`
 * Experimental new interface (see `Google::APIClient::Service`)
@@ -6681,26 +6858,27 @@
 * Use bundled root certificates for verifying SSL certificates
 * Rewind media when retrying uploads
 
-# 0.6.4
+### 0.6.4
+
 * Pin signet version to 0.4.x
 
-# 0.6.3
+### 0.6.3
 
 * Update autoparse to 0.3.3 to fix cases where results aren't correctly parsed.
 * Fix railtie loading for compatibility with rails < 3.0
 * Fix refresh of access token when passing credentials as parameter to execute
 * Fix URI processing in batch requests to allow query parameters
 
-# 0.6.2
+### 0.6.2
 
 * Update signet to 0.4.6 to support server side continuation of postmessage
   auth flows.
 
-# 0.6.1
+### 0.6.1
 
 * Fix impersonation with service accounts
 
-# 0.6
+### 0.6
 
 * Apps strongly encouraged to set :application_name & :application_version when
   initializing a client
@@ -6714,7 +6892,7 @@
 * Remove OAuth 1.0 logins from CLI
 
 
-# 0.5.0
+### 0.5.0
 
 * Beta candidate, potential incompatible changes with how requests are processed.
     * All requests should be made using execute() or execute!()
@@ -6725,15 +6903,15 @@
   are returned
 * Simplify internal request processing.
 
-# 0.4.7
+### 0.4.7
 
 * Added the ability to convert client secrets to an authorization object
 
-# 0.4.6
+### 0.4.6
 
 * Backwards compatibility for MultiJson
 
-# 0.4.5
+### 0.4.5
 
 * Updated Launchy dependency
 * Updated Faraday dependency
@@ -6741,36 +6919,36 @@
 * Updated Autoparse dependency
 * Removed Sinatra development dependency
 
-# 0.4.4
+### 0.4.4
 
 * Added batch execution
 * Added service accounts
 * Can now supply authorization on a per-request basis.
 
-# 0.4.3
+### 0.4.3
 
 * Added media upload capabilities
 * Support serializing OAuth credentials to client_secrets.json
 * Fixed OS name/version string on JRuby
 
-# 0.4.2
+### 0.4.2
 
 * Fixed incompatibility with Ruby 1.8.7
 
-# 0.4.1
+### 0.4.1
 
 * Fixed ancestor checking issue when assigning Autoparse identifiers
 * Renamed discovery methods to avoid collisions with some APIs
 * Updated autoparse dependency to avoid JSON bug
 
-# 0.4.0
+### 0.4.0
 
 * Replaced httpadapter gem dependency with faraday
 * Replaced json gem dependency with multi_json
 * Fixed /dev/null issues on Windows
 * Repeated parameters now work
 
-# 0.3.0
+### 0.3.0
 
 * Updated to use v1 of the discovery API
 * Updated to use httpadapter 1.0.0
@@ -6780,7 +6958,7 @@
 * Fixed a few deprecation warnings from dependencies
 * Added gemspec to source control
 
-# 0.2.0
+### 0.2.0
 
 * Updated to use v1 of the discovery API
 * Updated to use httpadapter 1.0.0
@@ -6788,21 +6966,21 @@
 * Renamed some switches in the command line tool
 * Added additional configuration capabilities
 
-# 0.1.3
+### 0.1.3
 
 * Added support for manual overrides of the discovery URI
 * Added support for manual overrides of the API base
 * Added support for xoauth_requestor_id
 
-# 0.1.2
+### 0.1.2
 
 * Added support for two-legged OAuth
 * Moved some development dependencies into runtime
 
-# 0.1.1
+### 0.1.1
 
 * Substantial improvements to the command line interface
 
-# 0.1.0
+### 0.1.0
 
 * Initial release
