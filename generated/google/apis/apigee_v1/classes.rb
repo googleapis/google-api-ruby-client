@@ -3992,6 +3992,15 @@ module Google
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Properties]
         attr_accessor :properties
       
+        # Cloud KMS key name used for encrypting the data that is stored and replicated
+        # across runtime instances. Update is not allowed after the organization is
+        # created. If not specified, a Google-Managed encryption key will be used. Valid
+        # only when [RuntimeType] is CLOUD. For example: "projects/foo/locations/us/
+        # keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
+        # Corresponds to the JSON property `runtimeDatabaseEncryptionKeyName`
+        # @return [String]
+        attr_accessor :runtime_database_encryption_key_name
+      
         # Required. Runtime type of the Apigee organization based on the Apigee
         # subscription purchased.
         # Corresponds to the JSON property `runtimeType`
@@ -4030,6 +4039,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @project_id = args[:project_id] if args.key?(:project_id)
           @properties = args[:properties] if args.key?(:properties)
+          @runtime_database_encryption_key_name = args[:runtime_database_encryption_key_name] if args.key?(:runtime_database_encryption_key_name)
           @runtime_type = args[:runtime_type] if args.key?(:runtime_type)
           @subscription_type = args[:subscription_type] if args.key?(:subscription_type)
           @type = args[:type] if args.key?(:type)
