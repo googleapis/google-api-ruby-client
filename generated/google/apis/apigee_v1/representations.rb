@@ -1995,6 +1995,7 @@ module Google
           property :project_id, as: 'projectId'
           property :properties, as: 'properties', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Properties, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Properties::Representation
       
+          property :runtime_database_encryption_key_name, as: 'runtimeDatabaseEncryptionKeyName'
           property :runtime_type, as: 'runtimeType'
           property :subscription_type, as: 'subscriptionType'
           property :type, as: 'type'
