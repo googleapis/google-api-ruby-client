@@ -98,7 +98,7 @@ namespace :kokoro do
     Rake::Task["build"].invoke
     built_gem_path = Dir.glob("pkg/google-api-client-*.gem").last
 
-    response = ::Gems.push File.new path_to_be_pushed
+    response = ::Gems.push File.new built_gem_path
     puts response
     raise "Failed to release gem" unless response.include? "Successfully registered gem:"
   end
