@@ -353,9 +353,10 @@ module Google
         end
       end
       
-      # Dimensions are attributes of your data. For example, the dimension City
-      # indicates the city, for example, "Paris" or "New York", from which an event
-      # originates. Requests are allowed up to 8 dimensions.
+      # Dimensions are attributes of your data. For example, the dimension city
+      # indicates the city from which an event originates. Dimension values in report
+      # responses are strings; for example, city could be "Paris" or "New York".
+      # Requests are allowed up to 8 dimensions.
       class Dimension
         include Google::Apis::Core::Hashable
       
@@ -366,7 +367,13 @@ module Google
         # @return [Google::Apis::AnalyticsdataV1alpha::DimensionExpression]
         attr_accessor :dimension_expression
       
-        # The name of the dimension.
+        # The name of the dimension. See the [API Dimensions](https://developers.google.
+        # com/analytics/trusted-testing/analytics-data/api-schema#dimensions) for the
+        # list of dimension names. If `dimensionExpression` is specified, `name` can be
+        # any string that you would like. For example if a `dimensionExpression`
+        # concatenates `country` and `city`, you could call that dimension `
+        # countryAndCity`. Dimensions are referenced by `name` in `dimensionFilter`, `
+        # orderBys`, `dimensionExpression`, and `pivots`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -527,7 +534,9 @@ module Google
       class Entity
         include Google::Apis::Core::Hashable
       
-        # A Google Analytics GA4 property id.
+        # A Google Analytics GA4 property id. To learn more, see [where to find your
+        # Property ID](https://developers.google.com/analytics/trusted-testing/analytics-
+        # data/property-id).
         # Corresponds to the JSON property `propertyId`
         # @return [String]
         attr_accessor :property_id
@@ -708,26 +717,31 @@ module Google
         end
       end
       
-      # The quantitative measurements of a report. For example, the metric eventCount
+      # The quantitative measurements of a report. For example, the metric `eventCount`
       # is the total number of events. Requests are allowed up to 10 metrics.
       class Metric
         include Google::Apis::Core::Hashable
       
         # A mathematical expression for derived metrics. For example, the metric Event
-        # count per user is eventCount/totalUsers.
+        # count per user is `eventCount/totalUsers`.
         # Corresponds to the JSON property `expression`
         # @return [String]
         attr_accessor :expression
       
-        # Indicates if a metric is invisible. If a metric is invisible, the metric is
-        # not in the response, but can be used in filters, order_bys or being referred
-        # to in a metric expression.
+        # Indicates if a metric is invisible in the report response. If a metric is
+        # invisible, the metric will not produce a column in the response, but can be
+        # used in `metricFilter`, `orderBys`, or a metric `expression`.
         # Corresponds to the JSON property `invisible`
         # @return [Boolean]
         attr_accessor :invisible
         alias_method :invisible?, :invisible
       
-        # The name of the metric.
+        # The name of the metric. See the [API Metrics](https://developers.google.com/
+        # analytics/trusted-testing/analytics-data/api-schema#metrics) for the list of
+        # metric names. If `expression` is specified, `name` can be any string that you
+        # would like. For example if `expression` is `screenPageViews/sessions`, you
+        # could call that metric's name = `viewsPerSession`. Metrics are referenced by `
+        # name` in `metricFilter`, `orderBys`, and metric `expression`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
