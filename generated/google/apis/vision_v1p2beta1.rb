@@ -27,7 +27,7 @@ module Google
     # @see https://cloud.google.com/vision/
     module VisionV1p2beta1
       VERSION = 'V1p2beta1'
-      REVISION = '20200828'
+      REVISION = '20201023'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
