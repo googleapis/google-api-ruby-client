@@ -188,9 +188,7 @@ module Google
         # @return [String]
         attr_accessor :path
       
-        # Optional. The region the Cloud Run service is deployed in. If not set, the
-        # location of the trigger is used. For triggers in the "global" location,
-        # setting this field is mandatory.
+        # Required. The region the Cloud Run service is deployed in.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
