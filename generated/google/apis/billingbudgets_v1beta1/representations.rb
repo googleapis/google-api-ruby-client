@@ -136,6 +136,7 @@ module Google
       class GoogleCloudBillingBudgetsV1beta1Filter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :credit_types, as: 'creditTypes'
           property :credit_types_treatment, as: 'creditTypesTreatment'
           hash :labels, as: 'labels', :class => Array do
         include Representable::JSON::Collection
