@@ -748,7 +748,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The content of the input in string format. We recommend the total
-        # content be less than 30k codepoints. Use BatchTranslateText for larger text.
+        # content be less than 30k codepoints. The max length of this field is 1024. Use
+        # BatchTranslateText for larger text.
         # Corresponds to the JSON property `contents`
         # @return [Array<String>]
         attr_accessor :contents
