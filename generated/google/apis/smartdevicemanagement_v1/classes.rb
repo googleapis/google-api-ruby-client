@@ -253,11 +253,6 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Assignee details of the structure.
-        # Corresponds to the JSON property `parentRelations`
-        # @return [Array<Google::Apis::SmartdevicemanagementV1::GoogleHomeEnterpriseSdmV1StructureParentRelation>]
-        attr_accessor :parent_relations
-      
         # Structure traits.
         # Corresponds to the JSON property `traits`
         # @return [Hash<String,Object>]
@@ -270,36 +265,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
-          @parent_relations = args[:parent_relations] if args.key?(:parent_relations)
           @traits = args[:traits] if args.key?(:traits)
-        end
-      end
-      
-      # Represents structure assignee relationships, for instance, group to which the
-      # structure is assigned to.
-      class GoogleHomeEnterpriseSdmV1StructureParentRelation
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The custom name of the relation -- e.g., group, to which the
-        # structure is assigned to.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Output only. The name of the relation -- e.g., group to which the structure is
-        # assigned to. For example: "enterprises/XYZ/groups/ABC"
-        # Corresponds to the JSON property `parent`
-        # @return [String]
-        attr_accessor :parent
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @parent = args[:parent] if args.key?(:parent)
         end
       end
     end

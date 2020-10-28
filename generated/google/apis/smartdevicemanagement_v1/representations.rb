@@ -76,12 +76,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleHomeEnterpriseSdmV1StructureParentRelation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleHomeEnterpriseSdmV1Device
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -155,17 +149,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
-          collection :parent_relations, as: 'parentRelations', class: Google::Apis::SmartdevicemanagementV1::GoogleHomeEnterpriseSdmV1StructureParentRelation, decorator: Google::Apis::SmartdevicemanagementV1::GoogleHomeEnterpriseSdmV1StructureParentRelation::Representation
-      
           hash :traits, as: 'traits'
-        end
-      end
-      
-      class GoogleHomeEnterpriseSdmV1StructureParentRelation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :display_name, as: 'displayName'
-          property :parent, as: 'parent'
         end
       end
     end
