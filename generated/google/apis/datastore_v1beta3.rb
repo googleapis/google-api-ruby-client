@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/datastore/
     module DatastoreV1beta3
       VERSION = 'V1beta3'
-      REVISION = '20200802'
+      REVISION = '20201017'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
