@@ -115,10 +115,8 @@ module Google
         # @param [String] parent
         #   The parent enterprise to list devices under. E.g. "enterprises/XYZ".
         # @param [String] filter
-        #   Optional filter to list devices. Filters can match the exact assignee (could
-        #   be a structure or a room). E.g. 'assignee=enterprises/XYZ/structures/abc' Also
-        #   could filter by parent (group): 'parent=enterprises/XYZ/groups/jkl' or filter
-        #   by device custom name (substring match): 'customName=wing'
+        #   Optional filter to list devices. Filters can be done on: Device custom name (
+        #   substring match): 'customName=wing'
         # @param [Fixnum] page_size
         #   Optional requested page size. Server may return fewer devices than requested.
         #   If unspecified, server will pick an appropriate default.
@@ -189,10 +187,7 @@ module Google
         # @param [String] parent
         #   The parent enterprise to list structures under. E.g. "enterprises/XYZ".
         # @param [String] filter
-        #   Optional filter to list structures. Filters can match the exact album assigned
-        #   to the structure. E.g. 'album=enterprises/XYZ/albums/abc' It also support
-        #   filtering by parent (only groups for now): E.g. 'parent=enterprises/XYZ/groups/
-        #   124'
+        #   Optional filter to list structures.
         # @param [Fixnum] page_size
         #   Requested page size. Server may return fewer structures than requested. If
         #   unspecified, server will pick an appropriate default.
