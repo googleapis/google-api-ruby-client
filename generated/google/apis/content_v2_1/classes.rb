@@ -185,15 +185,13 @@ module Google
         # Status of the link between this Merchant Center account and the Ads account.
         # Upon retrieval, it represents the actual status of the link and can be either `
         # active` if it was approved in Google Ads or `pending` if it's pending approval.
-        # Upon insertion, it represents the intended status of the link. Re-uploading a
-        # link with status `active` when it's still pending or with status `pending`
+        # Upon insertion, it represents the *intended* status of the link. Re-uploading
+        # a link with status `active` when it's still pending or with status `pending`
         # when it's already active will have no effect: the status will remain unchanged.
         # Re-uploading a link with deprecated status `inactive` is equivalent to not
         # submitting the link at all and will delete the link if it was active or cancel
-        # the link request if it was pending.
-        # Acceptable values are:
-        # - "`active`"
-        # - "`pending`"
+        # the link request if it was pending. Acceptable values are: - "`active`" - "`
+        # pending`"
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -289,9 +287,7 @@ module Google
         attr_accessor :gmb_email
       
         # Status of the link between this Merchant Center account and the GMB account.
-        # Acceptable values are:
-        # - "`active`"
-        # - "`pending`"
+        # Acceptable values are: - "`active`" - "`pending`"
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -331,6 +327,43 @@ module Google
         def update!(**args)
           @aggregator_id = args[:aggregator_id] if args.key?(:aggregator_id)
           @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
+        end
+      end
+      
+      # Label assigned by CSS domain or CSS group to one of its sub-accounts.
+      class AccountLabel
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Immutable. The ID of account this label belongs to.
+        # Corresponds to the JSON property `accountId`
+        # @return [Fixnum]
+        attr_accessor :account_id
+      
+        # Description for this label.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. Immutable. The ID of the label.
+        # Corresponds to the JSON property `labelId`
+        # @return [Fixnum]
+        attr_accessor :label_id
+      
+        # The display name of this label.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @description = args[:description] if args.key?(:description)
+          @label_id = args[:label_id] if args.key?(:label_id)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -411,11 +444,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Severity of the issue.
-        # Acceptable values are:
-        # - "`critical`"
-        # - "`error`"
-        # - "`suggestion`"
+        # Severity of the issue. Acceptable values are: - "`critical`" - "`error`" - "`
+        # suggestion`"
         # Corresponds to the JSON property `severity`
         # @return [String]
         attr_accessor :severity
@@ -506,10 +536,8 @@ module Google
       class AccountStatusProducts
         include Google::Apis::Core::Hashable
       
-        # The channel the data applies to.
-        # Acceptable values are:
-        # - "`local`"
-        # - "`online`"
+        # The channel the data applies to. Acceptable values are: - "`local`" - "`online`
+        # "
         # Corresponds to the JSON property `channel`
         # @return [String]
         attr_accessor :channel
@@ -724,7 +752,7 @@ module Google
         # Status of the link between this Merchant Center account and the YouTube
         # channel. Upon retrieval, it represents the actual status of the link and can
         # be either `active` if it was approved in YT Creator Studio or `pending` if it'
-        # s pending approval. Upon insertion, it represents the intended status of the
+        # s pending approval. Upon insertion, it represents the *intended* status of the
         # link. Re-uploading a link with status `active` when it's still pending or with
         # status `pending` when it's already active will have no effect: the status will
         # remain unchanged. Re-uploading a link with deprecated status `inactive` is
@@ -749,11 +777,10 @@ module Google
       class AccountsAuthInfoResponse
         include Google::Apis::Core::Hashable
       
-        # The account identifiers corresponding to the authenticated user.
-        # - For an individual account: only the merchant ID is defined
-        # - For an aggregator: only the aggregator ID is defined
-        # - For a subaccount of an MCA: both the merchant ID and the aggregator ID are
-        # defined.
+        # The account identifiers corresponding to the authenticated user. - For an
+        # individual account: only the merchant ID is defined - For an aggregator: only
+        # the aggregator ID is defined - For a subaccount of an MCA: both the merchant
+        # ID and the aggregator ID are defined.
         # Corresponds to the JSON property `accountIdentifiers`
         # @return [Array<Google::Apis::ContentV2_1::AccountIdentifier>]
         attr_accessor :account_identifiers
@@ -857,14 +884,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :merchant_id
       
-        # The method of the batch entry.
-        # Acceptable values are:
-        # - "`claimWebsite`"
-        # - "`delete`"
-        # - "`get`"
-        # - "`insert`"
-        # - "`link`"
-        # - "`update`"
+        # The method of the batch entry. Acceptable values are: - "`claimWebsite`" - "`
+        # delete`" - "`get`" - "`insert`" - "`link`" - "`update`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -905,19 +926,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Action to perform for this link. The `"request"` action is only available to
-        # select merchants.
-        # Acceptable values are:
-        # - "`approve`"
-        # - "`remove`"
-        # - "`request`"
+        # select merchants. Acceptable values are: - "`approve`" - "`remove`" - "`
+        # request`"
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
       
-        # Type of the link between the two accounts.
-        # Acceptable values are:
-        # - "`channelPartner`"
-        # - "`eCommercePlatform`"
+        # Type of the link between the two accounts. Acceptable values are: - "`
+        # channelPartner`" - "`eCommercePlatform`"
         # Corresponds to the JSON property `linkType`
         # @return [String]
         attr_accessor :link_type
@@ -1016,19 +1032,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Action to perform for this link. The `"request"` action is only available to
-        # select merchants.
-        # Acceptable values are:
-        # - "`approve`"
-        # - "`remove`"
-        # - "`request`"
+        # select merchants. Acceptable values are: - "`approve`" - "`remove`" - "`
+        # request`"
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
       
-        # Type of the link between the two accounts.
-        # Acceptable values are:
-        # - "`channelPartner`"
-        # - "`eCommercePlatform`"
+        # Type of the link between the two accounts. Acceptable values are: - "`
+        # channelPartner`" - "`eCommercePlatform`"
         # Corresponds to the JSON property `linkType`
         # @return [String]
         attr_accessor :link_type
@@ -1223,9 +1234,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :merchant_id
       
-        # The method of the batch entry.
-        # Acceptable values are:
-        # - "`get`"
+        # The method of the batch entry. Acceptable values are: - "`get`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -1377,10 +1386,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :merchant_id
       
-        # The method of the batch entry.
-        # Acceptable values are:
-        # - "`get`"
-        # - "`update`"
+        # The method of the batch entry. Acceptable values are: - "`get`" - "`update`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -1628,6 +1634,58 @@ module Google
         end
       end
       
+      # Information about CSS domain.
+      class Css
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Immutable. The CSS domain ID.
+        # Corresponds to the JSON property `cssDomainId`
+        # @return [Fixnum]
+        attr_accessor :css_domain_id
+      
+        # Output only. Immutable. The ID of the CSS group this CSS domain is affiliated
+        # with. Only populated for CSS group users.
+        # Corresponds to the JSON property `cssGroupId`
+        # @return [Fixnum]
+        attr_accessor :css_group_id
+      
+        # Output only. Immutable. The CSS domain's display name, used when space is
+        # constrained.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Immutable. The CSS domain's full name.
+        # Corresponds to the JSON property `fullName`
+        # @return [String]
+        attr_accessor :full_name
+      
+        # Output only. Immutable. The CSS domain's homepage.
+        # Corresponds to the JSON property `homepageUri`
+        # @return [String]
+        attr_accessor :homepage_uri
+      
+        # A list of label IDs that are assigned to this CSS domain by its CSS group.
+        # Only populated for CSS group users.
+        # Corresponds to the JSON property `labelIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :label_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @css_domain_id = args[:css_domain_id] if args.key?(:css_domain_id)
+          @css_group_id = args[:css_group_id] if args.key?(:css_group_id)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @full_name = args[:full_name] if args.key?(:full_name)
+          @homepage_uri = args[:homepage_uri] if args.key?(:homepage_uri)
+          @label_ids = args[:label_ids] if args.key?(:label_ids)
+        end
+      end
+      
       # 
       class CustomAttribute
         include Google::Apis::Core::Hashable
@@ -1670,22 +1728,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Code of the return reason.
-        # Acceptable values are:
-        # - "`betterPriceFound`"
-        # - "`changedMind`"
-        # - "`damagedOrDefectiveItem`"
-        # - "`didNotMatchDescription`"
-        # - "`doesNotFit`"
-        # - "`expiredItem`"
-        # - "`incorrectItemReceived`"
-        # - "`noLongerNeeded`"
-        # - "`notSpecified`"
-        # - "`orderedWrongItem`"
-        # - "`other`"
-        # - "`qualityNotExpected`"
-        # - "`receivedTooLate`"
-        # - "`undeliverable`"
+        # Code of the return reason. Acceptable values are: - "`betterPriceFound`" - "`
+        # changedMind`" - "`damagedOrDefectiveItem`" - "`didNotMatchDescription`" - "`
+        # doesNotFit`" - "`expiredItem`" - "`incorrectItemReceived`" - "`noLongerNeeded`"
+        # - "`notSpecified`" - "`orderedWrongItem`" - "`other`" - "`qualityNotExpected`"
+        # - "`receivedTooLate`" - "`undeliverable`"
         # Corresponds to the JSON property `reasonCode`
         # @return [String]
         attr_accessor :reason_code
@@ -1746,11 +1793,8 @@ module Google
         attr_accessor :attribute_language
       
         # Required. The type of data feed. For product inventory feeds, only feeds for
-        # local stores, not online stores, are supported.
-        # Acceptable values are:
-        # - "`local products`"
-        # - "`product inventory`"
-        # - "`products`"
+        # local stores, not online stores, are supported. Acceptable values are: - "`
+        # local products`" - "`product inventory`" - "`products`"
         # Corresponds to the JSON property `contentType`
         # @return [String]
         attr_accessor :content_type
@@ -1863,15 +1907,9 @@ module Google
         # @return [String]
         attr_accessor :username
       
-        # The day of the week the feed file should be fetched.
-        # Acceptable values are:
-        # - "`monday`"
-        # - "`tuesday`"
-        # - "`wednesday`"
-        # - "`thursday`"
-        # - "`friday`"
-        # - "`saturday`"
-        # - "`sunday`"
+        # The day of the week the feed file should be fetched. Acceptable values are: - "
+        # `monday`" - "`tuesday`" - "`wednesday`" - "`thursday`" - "`friday`" - "`
+        # saturday`" - "`sunday`"
         # Corresponds to the JSON property `weekday`
         # @return [String]
         attr_accessor :weekday
@@ -1900,32 +1938,21 @@ module Google
       
         # Delimiter for the separation of values in a delimiter-separated values feed.
         # If not specified, the delimiter will be auto-detected. Ignored for non-DSV
-        # data feeds.
-        # Acceptable values are:
-        # - "`pipe`"
-        # - "`tab`"
-        # - "`tilde`"
+        # data feeds. Acceptable values are: - "`pipe`" - "`tab`" - "`tilde`"
         # Corresponds to the JSON property `columnDelimiter`
         # @return [String]
         attr_accessor :column_delimiter
       
         # Character encoding scheme of the data feed. If not specified, the encoding
-        # will be auto-detected.
-        # Acceptable values are:
-        # - "`latin-1`"
-        # - "`utf-16be`"
-        # - "`utf-16le`"
-        # - "`utf-8`"
-        # - "`windows-1252`"
+        # will be auto-detected. Acceptable values are: - "`latin-1`" - "`utf-16be`" - "`
+        # utf-16le`" - "`utf-8`" - "`windows-1252`"
         # Corresponds to the JSON property `fileEncoding`
         # @return [String]
         attr_accessor :file_encoding
       
         # Specifies how double quotes are interpreted. If not specified, the mode will
-        # be auto-detected. Ignored for non-DSV data feeds.
-        # Acceptable values are:
-        # - "`normal character`"
-        # - "`value quoting`"
+        # be auto-detected. Ignored for non-DSV data feeds. Acceptable values are: - "`
+        # normal character`" - "`value quoting`"
         # Corresponds to the JSON property `quotingMode`
         # @return [String]
         attr_accessor :quoting_mode
@@ -1947,7 +1974,7 @@ module Google
       class DatafeedStatus
         include Google::Apis::Core::Hashable
       
-        # The country for which the status is reported, represented as a  CLDR territory
+        # The country for which the status is reported, represented as a CLDR territory
         # code.
         # Corresponds to the JSON property `country`
         # @return [String]
@@ -1989,12 +2016,10 @@ module Google
         # @return [String]
         attr_accessor :last_upload_date
       
-        # The processing status of the feed.
-        # Acceptable values are:
-        # - "`"`failure`": The feed could not be processed or all items had errors.`"
-        # - "`in progress`": The feed is being processed.
-        # - "`none`": The feed has not yet been processed. For example, a feed that has
-        # never been uploaded will have this processing status.
+        # The processing status of the feed. Acceptable values are: - "`"`failure`": The
+        # feed could not be processed or all items had errors.`" - "`in progress`": The
+        # feed is being processed. - "`none`": The feed has not yet been processed. For
+        # example, a feed that has never been uploaded will have this processing status.
         # - "`success`": The feed was processed successfully, though some items might
         # have had errors.
         # Corresponds to the JSON property `processingStatus`
@@ -2098,7 +2123,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The country where the items in the feed will be included in the search index,
-        # represented as a  CLDR territory code.
+        # represented as a CLDR territory code.
         # Corresponds to the JSON property `country`
         # @return [String]
         attr_accessor :country
@@ -2111,12 +2136,9 @@ module Google
       
         # The list of destinations to include for this target (corresponds to checked
         # check boxes in Merchant Center). Default destinations are always included
-        # unless provided in `excludedDestinations`.
-        # List of supported destinations (if available to the account):
-        # - DisplayAds
-        # - Shopping
-        # - ShoppingActions
-        # - SurfacesAcrossGoogle
+        # unless provided in `excludedDestinations`. List of supported destinations (if
+        # available to the account): - DisplayAds - Shopping - ShoppingActions -
+        # SurfacesAcrossGoogle
         # Corresponds to the JSON property `includedDestinations`
         # @return [Array<String>]
         attr_accessor :included_destinations
@@ -2183,13 +2205,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :merchant_id
       
-        # The method of the batch entry.
-        # Acceptable values are:
-        # - "`delete`"
-        # - "`fetchNow`"
-        # - "`get`"
-        # - "`insert`"
-        # - "`update`"
+        # The method of the batch entry. Acceptable values are: - "`delete`" - "`
+        # fetchNow`" - "`get`" - "`insert`" - "`update`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -2369,9 +2386,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :merchant_id
       
-        # The method of the batch entry.
-        # Acceptable values are:
-        # - "`get`"
+        # The method of the batch entry. Acceptable values are: - "`get`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -2698,8 +2713,8 @@ module Google
       
         # A list of inclusive number of items upper bounds. The last value can be `"
         # infinity"`. For example `["10", "50", "infinity"]` represents the headers "<=
-        # 10 items", " 50 items". Must be non-empty. Can only be set if all other fields
-        # are not set.
+        # 10 items", "<= 50 items", and "> 50 items". Must be non-empty. Can only be set
+        # if all other fields are not set.
         # Corresponds to the JSON property `numberOfItems`
         # @return [Array<String>]
         attr_accessor :number_of_items
@@ -2715,8 +2730,9 @@ module Google
         # A list of inclusive order price upper bounds. The last price's value can be `"
         # infinity"`. For example `[`"value": "10", "currency": "USD"`, `"value": "500",
         # "currency": "USD"`, `"value": "infinity", "currency": "USD"`]` represents the
-        # headers "<= $10", " $500". All prices within a service must have the same
-        # currency. Must be non-empty. Can only be set if all other fields are not set.
+        # headers "<= $10", "<= $500", and "> $500". All prices within a service must
+        # have the same currency. Must be non-empty. Can only be set if all other fields
+        # are not set.
         # Corresponds to the JSON property `prices`
         # @return [Array<Google::Apis::ContentV2_1::Price>]
         attr_accessor :prices
@@ -2724,8 +2740,8 @@ module Google
         # A list of inclusive order weight upper bounds. The last weight's value can be `
         # "infinity"`. For example `[`"value": "10", "unit": "kg"`, `"value": "50", "
         # unit": "kg"`, `"value": "infinity", "unit": "kg"`]` represents the headers "<=
-        # 10kg", " 50kg". All weights within a service must have the same unit. Must be
-        # non-empty. Can only be set if all other fields are not set.
+        # 10kg", "<= 50kg", and "> 50kg". All weights within a service must have the
+        # same unit. Must be non-empty. Can only be set if all other fields are not set.
         # Corresponds to the JSON property `weights`
         # @return [Array<Google::Apis::ContentV2_1::Weight>]
         attr_accessor :weights
@@ -2762,7 +2778,7 @@ module Google
         attr_accessor :deadline_hour
       
         # Timezone identifier for the deadline hour. A list of identifiers can be found
-        # in  the AdWords API documentation. E.g. "Europe/Zurich". Required.
+        # in the AdWords API documentation. E.g. "Europe/Zurich". Required.
         # Corresponds to the JSON property `deadlineTimezone`
         # @return [String]
         attr_accessor :deadline_timezone
@@ -2828,16 +2844,9 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The holiday type. Always present.
-        # Acceptable values are:
-        # - "`Christmas`"
-        # - "`Easter`"
-        # - "`Father's Day`"
-        # - "`Halloween`"
-        # - "`Independence Day (USA)`"
-        # - "`Mother's Day`"
-        # - "`Thanksgiving`"
-        # - "`Valentine's Day`"
+        # The holiday type. Always present. Acceptable values are: - "`Christmas`" - "`
+        # Easter`" - "`Father's Day`" - "`Halloween`" - "`Independence Day (USA)`" - "`
+        # Mother's Day`" - "`Thanksgiving`" - "`Valentine's Day`"
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2916,9 +2925,8 @@ module Google
         # @return [Google::Apis::ContentV2_1::Amount]
         attr_accessor :total_amount
       
-        # [required] Type of the additional charge.
-        # Acceptable values are:
-        # - "`shipping`"
+        # [required] Type of the additional charge. Acceptable values are: - "`shipping`"
+        # 
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2934,15 +2942,31 @@ module Google
         end
       end
       
+      # The IDs of labels that should be assigned to the CSS domain.
+      class LabelIds
+        include Google::Apis::Core::Hashable
+      
+        # The list of label IDs.
+        # Corresponds to the JSON property `labelIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :label_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_ids = args[:label_ids] if args.key?(:label_ids)
+        end
+      end
+      
       # 
       class LiaAboutPageSettings
         include Google::Apis::Core::Hashable
       
-        # The status of the verification process for the About page.
-        # Acceptable values are:
-        # - "`active`"
-        # - "`inactive`"
-        # - "`pending`"
+        # The status of the verification process for the About page. Acceptable values
+        # are: - "`active`" - "`inactive`" - "`pending`"
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -3034,20 +3058,14 @@ module Google
         # @return [String]
         attr_accessor :inventory_verification_contact_name
       
-        # The status of the verification contact.
-        # Acceptable values are:
-        # - "`active`"
-        # - "`inactive`"
-        # - "`pending`"
+        # The status of the verification contact. Acceptable values are: - "`active`" - "
+        # `inactive`" - "`pending`"
         # Corresponds to the JSON property `inventoryVerificationContactStatus`
         # @return [String]
         attr_accessor :inventory_verification_contact_status
       
-        # The status of the inventory verification process.
-        # Acceptable values are:
-        # - "`active`"
-        # - "`inactive`"
-        # - "`pending`"
+        # The status of the inventory verification process. Acceptable values are: - "`
+        # active`" - "`inactive`" - "`pending`"
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -3074,11 +3092,8 @@ module Google
         # @return [String]
         attr_accessor :shipping_cost_policy_url
       
-        # The status of the ?On display to order? feature.
-        # Acceptable values are:
-        # - "`active`"
-        # - "`inactive`"
-        # - "`pending`"
+        # The status of the ?On display to order? feature. Acceptable values are: - "`
+        # active`" - "`inactive`" - "`pending`"
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -3219,14 +3234,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :merchant_id
       
-        # The method of the batch entry.
-        # Acceptable values are:
-        # - "`get`"
-        # - "`getAccessibleGmbAccounts`"
-        # - "`requestGmbAccess`"
-        # - "`requestInventoryVerification`"
-        # - "`setInventoryVerificationContact`"
-        # - "`update`"
+        # The method of the batch entry. Acceptable values are: - "`get`" - "`
+        # getAccessibleGmbAccounts`" - "`requestGmbAccess`" - "`
+        # requestInventoryVerification`" - "`setInventoryVerificationContact`" - "`
+        # update`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -3512,20 +3523,15 @@ module Google
       class LinkService
         include Google::Apis::Core::Hashable
       
-        # Service provided to or by the linked account.
-        # Acceptable values are:
-        # - "`shoppingActionsOrderManagement`"
-        # - "`shoppingActionsProductManagement`"
-        # - "`shoppingAdsProductManagement`"
+        # Service provided to or by the linked account. Acceptable values are: - "`
+        # shoppingActionsOrderManagement`" - "`shoppingActionsProductManagement`" - "`
+        # shoppingAdsProductManagement`"
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
       
-        # Status of the link
-        # Acceptable values are:
-        # - "`active`"
-        # - "`inactive`"
-        # - "`pending`"
+        # Status of the link Acceptable values are: - "`active`" - "`inactive`" - "`
+        # pending`"
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -3566,6 +3572,84 @@ module Google
         end
       end
       
+      # Response message for the `ListAccountLabels` method.
+      class ListAccountLabelsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The labels from the specified account.
+        # Corresponds to the JSON property `accountLabels`
+        # @return [Array<Google::Apis::ContentV2_1::AccountLabel>]
+        attr_accessor :account_labels
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_labels = args[:account_labels] if args.key?(:account_labels)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response message for the `ListCsses` method
+      class ListCssesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The CSS domains affiliated with the specified CSS group.
+        # Corresponds to the JSON property `csses`
+        # @return [Array<Google::Apis::ContentV2_1::Css>]
+        attr_accessor :csses
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @csses = args[:csses] if args.key?(:csses)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for the `ListRepricingRules` method.
+      class ListRepricingRulesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The rules from the specified merchant.
+        # Corresponds to the JSON property `repricingRules`
+        # @return [Array<Google::Apis::ContentV2_1::RepricingRule>]
+        attr_accessor :repricing_rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @repricing_rules = args[:repricing_rules] if args.key?(:repricing_rules)
+        end
+      end
+      
       # Local inventory resource. For accepted attribute values, see the local product
       # inventory feed specification.
       class LocalInventory
@@ -3590,7 +3674,7 @@ module Google
       
         # Supported pickup method for this offer. Unless the value is "not supported",
         # this field must be submitted together with `pickupSla`. For accepted attribute
-        # values, see the local product inventory feed specification.
+        # values, see the local product inventory feed // specification.
         # Corresponds to the JSON property `pickupMethod`
         # @return [String]
         attr_accessor :pickup_method
@@ -3686,9 +3770,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :merchant_id
       
-        # Method of the batch request entry.
-        # Acceptable values are:
-        # - "`insert`"
+        # Method of the batch request entry. Acceptable values are: - "`insert`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -3936,13 +4018,8 @@ module Google
         # @return [String]
         attr_accessor :shipment_unit_id
       
-        # State of the item.
-        # Acceptable values are:
-        # - "`canceled`"
-        # - "`new`"
-        # - "`received`"
-        # - "`refunded`"
-        # - "`rejected`"
+        # State of the item. Acceptable values are: - "`canceled`" - "`new`" - "`
+        # received`" - "`refunded`" - "`rejected`"
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -4069,8 +4146,7 @@ module Google
       end
       
       # Order. Production access (all methods) requires the order manager role.
-      # Sandbox access does not. (== resource_for v2.orders ==) (== resource_for v2.1.
-      # orders ==)
+      # Sandbox access does not.
       class Order
         include Google::Apis::Core::Hashable
       
@@ -4140,12 +4216,8 @@ module Google
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :net_tax_amount
       
-        # The status of the payment.
-        # Acceptable values are:
-        # - "`paymentCaptured`"
-        # - "`paymentRejected`"
-        # - "`paymentSecured`"
-        # - "`pendingAuthorization`"
+        # The status of the payment. Acceptable values are: - "`paymentCaptured`" - "`
+        # paymentRejected`" - "`paymentSecured`" - "`pendingAuthorization`"
         # Corresponds to the JSON property `paymentStatus`
         # @return [String]
         attr_accessor :payment_status
@@ -4160,25 +4232,22 @@ module Google
         # @return [String]
         attr_accessor :placed_date
       
-        # Promotions associated with the order.
-        # To determine which promotions apply to which products, check the `Promotions[].
-        # appliedItems[].lineItemId` field against the `LineItems[].id` field for each
-        # promotion. If a promotion is applied to more than 1 offerId, divide the
-        # discount value by the number of affected offers to determine how much discount
-        # to apply to each offerId.
-        # Examples:
-        # - To calculate price paid by the customer for a single line item including the
-        # discount: For each promotion, subtract the `LineItems[].adjustments[].
-        # priceAdjustment.value` amount from the `LineItems[].Price.value`.
-        # - To calculate price paid by the customer for a single line item including the
-        # discount in case of multiple quantity: For each promotion, divide the `
+        # Promotions associated with the order. To determine which promotions apply to
+        # which products, check the `Promotions[].appliedItems[].lineItemId` field
+        # against the `LineItems[].id` field for each promotion. If a promotion is
+        # applied to more than 1 offerId, divide the discount value by the number of
+        # affected offers to determine how much discount to apply to each offerId.
+        # Examples: 1. To calculate price paid by the customer for a single line item
+        # including the discount: For each promotion, subtract the `LineItems[].
+        # adjustments[].priceAdjustment.value` amount from the `LineItems[].Price.value`.
+        # 2. To calculate price paid by the customer for a single line item including
+        # the discount in case of multiple quantity: For each promotion, divide the `
         # LineItems[].adjustments[].priceAdjustment.value` by the quantity of products
         # then subtract the resulting value from the `LineItems[].Product.Price.value`
-        # for each quantity item.
-        # Only 1 promotion can be applied to an offerId in a given order. To refund an
-        # item which had a promotion applied to it, make sure to refund the amount after
-        # first subtracting the promotion discount from the item price.
-        # More details about the program are here.
+        # for each quantity item. Only 1 promotion can be applied to an offerId in a
+        # given order. To refund an item which had a promotion applied to it, make sure
+        # to refund the amount after first subtracting the promotion discount from the
+        # item price. More details about the program are here.
         # Corresponds to the JSON property `promotions`
         # @return [Array<Google::Apis::ContentV2_1::OrderPromotion>]
         attr_accessor :promotions
@@ -4203,25 +4272,15 @@ module Google
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :shipping_cost_tax
       
-        # The status of the order.
-        # Acceptable values are:
-        # - "`canceled`"
-        # - "`delivered`"
-        # - "`inProgress`"
-        # - "`partiallyDelivered`"
-        # - "`partiallyReturned`"
-        # - "`partiallyShipped`"
-        # - "`pendingShipment`"
-        # - "`returned`"
-        # - "`shipped`"
+        # The status of the order. Acceptable values are: - "`canceled`" - "`delivered`"
+        # - "`inProgress`" - "`partiallyDelivered`" - "`partiallyReturned`" - "`
+        # partiallyShipped`" - "`pendingShipment`" - "`returned`" - "`shipped`"
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
       
-        # The party responsible for collecting and remitting taxes.
-        # Acceptable values are:
-        # - "`marketplaceFacilitator`"
-        # - "`merchant`"
+        # The party responsible for collecting and remitting taxes. Acceptable values
+        # are: - "`marketplaceFacilitator`" - "`merchant`"
         # Corresponds to the JSON property `taxCollector`
         # @return [String]
         attr_accessor :tax_collector
@@ -4267,11 +4326,8 @@ module Google
         attr_accessor :country
       
         # Strings representing the lines of the printed label for mailing the order, for
-        # example:
-        # John Smith
-        # 1600 Amphitheatre Parkway
-        # Mountain View, CA, 94043
-        # United States
+        # example: John Smith 1600 Amphitheatre Parkway Mountain View, CA, 94043 United
+        # States
         # Corresponds to the JSON property `fullAddress`
         # @return [Array<String>]
         attr_accessor :full_address
@@ -4330,14 +4386,9 @@ module Google
       class OrderCancellation
         include Google::Apis::Core::Hashable
       
-        # The actor that created the cancellation.
-        # Acceptable values are:
-        # - "`customer`"
-        # - "`googleBot`"
-        # - "`googleCustomerService`"
-        # - "`googlePayments`"
-        # - "`googleSabre`"
-        # - "`merchant`"
+        # The actor that created the cancellation. Acceptable values are: - "`customer`"
+        # - "`googleBot`" - "`googleCustomerService`" - "`googlePayments`" - "`
+        # googleSabre`" - "`merchant`"
         # Corresponds to the JSON property `actor`
         # @return [String]
         attr_accessor :actor
@@ -4355,35 +4406,18 @@ module Google
         # The reason for the cancellation. Orders that are canceled with a noInventory
         # reason will lead to the removal of the product from Shopping Actions until you
         # make an update to that product. This will not affect your Shopping ads.
-        # Acceptable values are:
-        # - "`autoPostInternal`"
-        # - "`autoPostInvalidBillingAddress`"
-        # - "`autoPostNoInventory`"
-        # - "`autoPostPriceError`"
-        # - "`autoPostUndeliverableShippingAddress`"
-        # - "`couponAbuse`"
-        # - "`customerCanceled`"
-        # - "`customerInitiatedCancel`"
-        # - "`customerSupportRequested`"
-        # - "`failToPushOrderGoogleError`"
-        # - "`failToPushOrderMerchantError`"
-        # - "`failToPushOrderMerchantFulfillmentError`"
-        # - "`failToPushOrderToMerchant`"
-        # - "`failToPushOrderToMerchantOutOfStock`"
-        # - "`invalidCoupon`"
-        # - "`malformedShippingAddress`"
-        # - "`merchantDidNotShipOnTime`"
-        # - "`noInventory`"
-        # - "`orderTimeout`"
-        # - "`other`"
-        # - "`paymentAbuse`"
-        # - "`paymentDeclined`"
-        # - "`priceError`"
-        # - "`returnRefundAbuse`"
-        # - "`shippingPriceError`"
-        # - "`taxError`"
-        # - "`undeliverableShippingAddress`"
-        # - "`unsupportedPoBoxAddress`"
+        # Acceptable values are: - "`autoPostInternal`" - "`
+        # autoPostInvalidBillingAddress`" - "`autoPostNoInventory`" - "`
+        # autoPostPriceError`" - "`autoPostUndeliverableShippingAddress`" - "`
+        # couponAbuse`" - "`customerCanceled`" - "`customerInitiatedCancel`" - "`
+        # customerSupportRequested`" - "`failToPushOrderGoogleError`" - "`
+        # failToPushOrderMerchantError`" - "`failToPushOrderMerchantFulfillmentError`" -
+        # "`failToPushOrderToMerchant`" - "`failToPushOrderToMerchantOutOfStock`" - "`
+        # invalidCoupon`" - "`malformedShippingAddress`" - "`merchantDidNotShipOnTime`" -
+        # "`noInventory`" - "`orderTimeout`" - "`other`" - "`paymentAbuse`" - "`
+        # paymentDeclined`" - "`priceError`" - "`returnRefundAbuse`" - "`
+        # shippingPriceError`" - "`taxError`" - "`undeliverableShippingAddress`" - "`
+        # unsupportedPoBoxAddress`"
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -4418,7 +4452,7 @@ module Google
       
         # Email address for the merchant to send value-added tax or invoice
         # documentation of the order. Only the last document sent is made available to
-        # the customer. For more information, see  About automated VAT invoicing for
+        # the customer. For more information, see About automated VAT invoicing for
         # Shopping Actions.
         # Corresponds to the JSON property `invoiceReceivingEmail`
         # @return [String]
@@ -4483,10 +4517,8 @@ module Google
         # cases this selection might not be known, so this field would be empty. If a
         # customer selected `granted` in their most recent order, they can be subscribed
         # to marketing emails. Customers who have chosen `denied` must not be subscribed,
-        # or must be unsubscribed if already opted-in.
-        # Acceptable values are:
-        # - "`denied`"
-        # - "`granted`"
+        # or must be unsubscribed if already opted-in. Acceptable values are: - "`
+        # denied`" - "`granted`"
         # Corresponds to the JSON property `explicitMarketingPreference`
         # @return [String]
         attr_accessor :explicit_marketing_preference
@@ -4680,9 +4712,7 @@ module Google
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :tax_adjustment
       
-        # Type of this adjustment.
-        # Acceptable values are:
-        # - "`promotion`"
+        # Type of this adjustment. Acceptable values are: - "`promotion`"
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -4708,11 +4738,8 @@ module Google
         # @return [String]
         attr_accessor :brand
       
-        # Condition or state of the item.
-        # Acceptable values are:
-        # - "`new`"
-        # - "`refurbished`"
-        # - "`used`"
+        # Condition or state of the item. Acceptable values are: - "`new`" - "`
+        # refurbished`" - "`used`"
         # Corresponds to the JSON property `condition`
         # @return [String]
         attr_accessor :condition
@@ -4767,7 +4794,7 @@ module Google
         # @return [String]
         attr_accessor :shown_image
       
-        # The CLDR territory code of the target country of the product.
+        # The CLDR territory // code of the target country of the product.
         # Corresponds to the JSON property `targetCountry`
         # @return [String]
         attr_accessor :target_country
@@ -4916,10 +4943,8 @@ module Google
         attr_accessor :ship_by_date
       
         # Type of shipment. Indicates whether `deliveryDetails` or `pickupDetails` is
-        # applicable for this shipment.
-        # Acceptable values are:
-        # - "`delivery`"
-        # - "`pickup`"
+        # applicable for this shipment. Acceptable values are: - "`delivery`" - "`pickup`
+        # "
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -5049,13 +5074,9 @@ module Google
         # @return [String]
         attr_accessor :location_id
       
-        # The pickup type of this order.
-        # Acceptable values are:
-        # - "`merchantStore`"
-        # - "`merchantStoreCurbside`"
-        # - "`merchantStoreLocker`"
-        # - "`thirdPartyPickupPoint`"
-        # - "`thirdPartyLocker`"
+        # The pickup type of this order. Acceptable values are: - "`merchantStore`" - "`
+        # merchantStoreCurbside`" - "`merchantStoreLocker`" - "`thirdPartyPickupPoint`" -
+        # "`thirdPartyLocker`"
         # Corresponds to the JSON property `pickupType`
         # @return [String]
         attr_accessor :pickup_type
@@ -5123,10 +5144,7 @@ module Google
         attr_accessor :end_time
       
         # Required. The party funding the promotion. Only `merchant` is supported for `
-        # orders.createtestorder`.
-        # Acceptable values are:
-        # - "`google`"
-        # - "`merchant`"
+        # orders.createtestorder`. Acceptable values are: - "`google`" - "`merchant`"
         # Corresponds to the JSON property `funder`
         # @return [String]
         attr_accessor :funder
@@ -5156,22 +5174,11 @@ module Google
         attr_accessor :start_time
       
         # Required. The category of the promotion. Only `moneyOff` is supported for `
-        # orders.createtestorder`.
-        # Acceptable values are:
-        # - "`buyMGetMoneyOff`"
-        # - "`buyMGetNMoneyOff`"
-        # - "`buyMGetNPercentOff`"
-        # - "`buyMGetPercentOff`"
-        # - "`freeGift`"
-        # - "`freeGiftWithItemId`"
-        # - "`freeGiftWithValue`"
-        # - "`freeShippingOvernight`"
-        # - "`freeShippingStandard`"
-        # - "`freeShippingTwoDay`"
-        # - "`moneyOff`"
-        # - "`percentOff`"
-        # - "`rewardPoints`"
-        # - "`salePrice`"
+        # orders.createtestorder`. Acceptable values are: - "`buyMGetMoneyOff`" - "`
+        # buyMGetNMoneyOff`" - "`buyMGetNPercentOff`" - "`buyMGetPercentOff`" - "`
+        # freeGift`" - "`freeGiftWithItemId`" - "`freeGiftWithValue`" - "`
+        # freeShippingOvernight`" - "`freeShippingStandard`" - "`freeShippingTwoDay`" - "
+        # `moneyOff`" - "`percentOff`" - "`rewardPoints`" - "`salePrice`"
         # Corresponds to the JSON property `subtype`
         # @return [String]
         attr_accessor :subtype
@@ -5188,10 +5195,7 @@ module Google
         attr_accessor :title
       
         # Required. The scope of the promotion. Only `product` is supported for `orders.
-        # createtestorder`.
-        # Acceptable values are:
-        # - "`product`"
-        # - "`shipping`"
+        # createtestorder`. Acceptable values are: - "`product`" - "`shipping`"
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -5259,13 +5263,8 @@ module Google
       class OrderRefund
         include Google::Apis::Core::Hashable
       
-        # The actor that created the refund.
-        # Acceptable values are:
-        # - "`customer`"
-        # - "`googleBot`"
-        # - "`googleCustomerService`"
-        # - "`googlePayments`"
-        # - "`googleSabre`"
+        # The actor that created the refund. Acceptable values are: - "`customer`" - "`
+        # googleBot`" - "`googleCustomerService`" - "`googlePayments`" - "`googleSabre`"
         # - "`merchant`"
         # Corresponds to the JSON property `actor`
         # @return [String]
@@ -5281,52 +5280,23 @@ module Google
         # @return [String]
         attr_accessor :creation_date
       
-        # The reason for the refund.
-        # Acceptable values are:
-        # - "`adjustment`"
-        # - "`autoPostInternal`"
-        # - "`autoPostInvalidBillingAddress`"
-        # - "`autoPostNoInventory`"
-        # - "`autoPostPriceError`"
-        # - "`autoPostUndeliverableShippingAddress`"
-        # - "`couponAbuse`"
-        # - "`courtesyAdjustment`"
-        # - "`customerCanceled`"
-        # - "`customerDiscretionaryReturn`"
-        # - "`customerInitiatedMerchantCancel`"
-        # - "`customerSupportRequested`"
-        # - "`deliveredLateByCarrier`"
-        # - "`deliveredTooLate`"
-        # - "`expiredItem`"
-        # - "`failToPushOrderGoogleError`"
-        # - "`failToPushOrderMerchantError`"
-        # - "`failToPushOrderMerchantFulfillmentError`"
-        # - "`failToPushOrderToMerchant`"
-        # - "`failToPushOrderToMerchantOutOfStock`"
-        # - "`feeAdjustment`"
-        # - "`invalidCoupon`"
-        # - "`lateShipmentCredit`"
-        # - "`malformedShippingAddress`"
-        # - "`merchantDidNotShipOnTime`"
-        # - "`noInventory`"
-        # - "`orderTimeout`"
-        # - "`other`"
-        # - "`paymentAbuse`"
-        # - "`paymentDeclined`"
-        # - "`priceAdjustment`"
-        # - "`priceError`"
-        # - "`productArrivedDamaged`"
-        # - "`productNotAsDescribed`"
-        # - "`promoReallocation`"
-        # - "`qualityNotAsExpected`"
-        # - "`returnRefundAbuse`"
-        # - "`shippingCostAdjustment`"
-        # - "`shippingPriceError`"
-        # - "`taxAdjustment`"
-        # - "`taxError`"
-        # - "`undeliverableShippingAddress`"
-        # - "`unsupportedPoBoxAddress`"
-        # - "`wrongProductShipped`"
+        # The reason for the refund. Acceptable values are: - "`adjustment`" - "`
+        # autoPostInternal`" - "`autoPostInvalidBillingAddress`" - "`autoPostNoInventory`
+        # " - "`autoPostPriceError`" - "`autoPostUndeliverableShippingAddress`" - "`
+        # couponAbuse`" - "`courtesyAdjustment`" - "`customerCanceled`" - "`
+        # customerDiscretionaryReturn`" - "`customerInitiatedMerchantCancel`" - "`
+        # customerSupportRequested`" - "`deliveredLateByCarrier`" - "`deliveredTooLate`"
+        # - "`expiredItem`" - "`failToPushOrderGoogleError`" - "`
+        # failToPushOrderMerchantError`" - "`failToPushOrderMerchantFulfillmentError`" -
+        # "`failToPushOrderToMerchant`" - "`failToPushOrderToMerchantOutOfStock`" - "`
+        # feeAdjustment`" - "`invalidCoupon`" - "`lateShipmentCredit`" - "`
+        # malformedShippingAddress`" - "`merchantDidNotShipOnTime`" - "`noInventory`" - "
+        # `orderTimeout`" - "`other`" - "`paymentAbuse`" - "`paymentDeclined`" - "`
+        # priceAdjustment`" - "`priceError`" - "`productArrivedDamaged`" - "`
+        # productNotAsDescribed`" - "`promoReallocation`" - "`qualityNotAsExpected`" - "`
+        # returnRefundAbuse`" - "`shippingCostAdjustment`" - "`shippingPriceError`" - "`
+        # taxAdjustment`" - "`taxError`" - "`undeliverableShippingAddress`" - "`
+        # unsupportedPoBoxAddress`" - "`wrongProductShipped`"
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -5350,8 +5320,7 @@ module Google
         end
       end
       
-      # Order disbursement. All methods require the payment analyst role. (==
-      # resource_for v2.orderreports ==) (== resource_for v2.1.orderreports ==)
+      # Order disbursement. All methods require the payment analyst role.
       class OrderReportDisbursement
         include Google::Apis::Core::Hashable
       
@@ -5465,13 +5434,8 @@ module Google
       class OrderReturn
         include Google::Apis::Core::Hashable
       
-        # The actor that created the refund.
-        # Acceptable values are:
-        # - "`customer`"
-        # - "`googleBot`"
-        # - "`googleCustomerService`"
-        # - "`googlePayments`"
-        # - "`googleSabre`"
+        # The actor that created the refund. Acceptable values are: - "`customer`" - "`
+        # googleBot`" - "`googleCustomerService`" - "`googlePayments`" - "`googleSabre`"
         # - "`merchant`"
         # Corresponds to the JSON property `actor`
         # @return [String]
@@ -5487,21 +5451,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :quantity
       
-        # The reason for the return.
-        # Acceptable values are:
-        # - "`customerDiscretionaryReturn`"
-        # - "`customerInitiatedMerchantCancel`"
-        # - "`deliveredTooLate`"
-        # - "`expiredItem`"
-        # - "`invalidCoupon`"
-        # - "`malformedShippingAddress`"
-        # - "`other`"
-        # - "`productArrivedDamaged`"
-        # - "`productNotAsDescribed`"
-        # - "`qualityNotAsExpected`"
-        # - "`undeliverableShippingAddress`"
-        # - "`unsupportedPoBoxAddress`"
-        # - "`wrongProductShipped`"
+        # The reason for the return. Acceptable values are: - "`
+        # customerDiscretionaryReturn`" - "`customerInitiatedMerchantCancel`" - "`
+        # deliveredTooLate`" - "`expiredItem`" - "`invalidCoupon`" - "`
+        # malformedShippingAddress`" - "`other`" - "`productArrivedDamaged`" - "`
+        # productNotAsDescribed`" - "`qualityNotAsExpected`" - "`
+        # undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" - "`
+        # wrongProductShipped`"
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -5529,59 +5485,33 @@ module Google
       class OrderShipment
         include Google::Apis::Core::Hashable
       
-        # The carrier handling the shipment.
-        # For supported carriers, Google includes the carrier name and tracking URL in
-        # emails to customers. For select supported carriers, Google also automatically
-        # updates the shipment status based on the provided shipment ID. Note: You can
-        # also use unsupported carriers, but emails to customers will not include the
-        # carrier name or tracking URL, and there will be no automatic order status
-        # updates.
-        # Supported carriers for US are:
-        # - "`ups`" (United Parcel Service) automatic status updates
-        # - "`usps`" (United States Postal Service) automatic status updates
-        # - "`fedex`" (FedEx) automatic status updates
-        # - "`dhl`" (DHL eCommerce) automatic status updates (US only)
-        # - "`ontrac`" (OnTrac) automatic status updates
-        # - "`dhl express`" (DHL Express)
-        # - "`deliv`" (Deliv)
-        # - "`dynamex`" (TForce)
-        # - "`lasership`" (LaserShip)
-        # - "`mpx`" (Military Parcel Xpress)
-        # - "`uds`" (United Delivery Service)
-        # - "`efw`" (Estes Forwarding Worldwide)
-        # - "`jd logistics`" (JD Logistics)
-        # - "`yunexpress`" (YunExpress)
-        # - "`china post`" (China Post)
-        # - "`china ems`" (China Post Express Mail Service)
-        # - "`singapore post`" (Singapore Post)
-        # - "`pos malaysia`" (Pos Malaysia)
-        # - "`postnl`" (PostNL)
-        # - "`ptt`" (PTT Turkish Post)
-        # - "`eub`" (ePacket)
-        # - "`chukou1`" (Chukou1 Logistics)
-        # - "`bestex`" (Best Express)
-        # - "`canada post`" (Canada Post)
-        # - "`purolator`" (Purolator)
-        # - "`canpar`" (Canpar)
-        # - "`india post`" (India Post)
-        # - "`blue dart`" (Blue Dart)
-        # - "`delhivery`" (Delhivery)
-        # - "`dtdc`" (DTDC)
-        # - "`tpc india`" (TPC India)
-        # Supported carriers for FR are:
-        # - "`la poste`" (La Poste) automatic status updates
-        # - "`colissimo`" (Colissimo by La Poste) automatic status updates
-        # - "`ups`" (United Parcel Service) automatic status updates
-        # - "`chronopost`" (Chronopost by La Poste)
-        # - "`gls`" (General Logistics Systems France)
-        # - "`dpd`" (DPD Group by GeoPost)
-        # - "`bpost`" (Belgian Post Group)
-        # - "`colis prive`" (Colis Privé)
-        # - "`boxtal`" (Boxtal)
-        # - "`geodis`" (GEODIS)
-        # - "`tnt`" (TNT)
-        # - "`db schenker`" (DB Schenker)
-        # - "`aramex`" (Aramex)
+        # The carrier handling the shipment. For supported carriers, Google includes the
+        # carrier name and tracking URL in emails to customers. For select supported
+        # carriers, Google also automatically updates the shipment status based on the
+        # provided shipment ID. *Note:* You can also use unsupported carriers, but
+        # emails to customers will not include the carrier name or tracking URL, and
+        # there will be no automatic order status updates. Supported carriers for US are:
+        # - "`ups`" (United Parcel Service) *automatic status updates* - "`usps`" (
+        # United States Postal Service) *automatic status updates* - "`fedex`" (FedEx) *
+        # automatic status updates * - "`dhl`" (DHL eCommerce) *automatic status updates*
+        # (US only) - "`ontrac`" (OnTrac) *automatic status updates * - "`dhl express`"
+        # (DHL Express) - "`deliv`" (Deliv) - "`dynamex`" (TForce) - "`lasership`" (
+        # LaserShip) - "`mpx`" (Military Parcel Xpress) - "`uds`" (United Delivery
+        # Service) - "`efw`" (Estes Forwarding Worldwide) - "`jd logistics`" (JD
+        # Logistics) - "`yunexpress`" (YunExpress) - "`china post`" (China Post) - "`
+        # china ems`" (China Post Express Mail Service) - "`singapore post`" (Singapore
+        # Post) - "`pos malaysia`" (Pos Malaysia) - "`postnl`" (PostNL) - "`ptt`" (PTT
+        # Turkish Post) - "`eub`" (ePacket) - "`chukou1`" (Chukou1 Logistics) - "`bestex`
+        # " (Best Express) - "`canada post`" (Canada Post) - "`purolator`" (Purolator) -
+        # "`canpar`" (Canpar) - "`india post`" (India Post) - "`blue dart`" (Blue Dart) -
+        # "`delhivery`" (Delhivery) - "`dtdc`" (DTDC) - "`tpc india`" (TPC India)
+        # Supported carriers for FR are: - "`la poste`" (La Poste) *automatic status
+        # updates * - "`colissimo`" (Colissimo by La Poste) *automatic status updates* -
+        # "`ups`" (United Parcel Service) *automatic status updates * - "`chronopost`" (
+        # Chronopost by La Poste) - "`gls`" (General Logistics Systems France) - "`dpd`"
+        # (DPD Group by GeoPost) - "`bpost`" (Belgian Post Group) - "`colis prive`" (
+        # Colis Privé) - "`boxtal`" (Boxtal) - "`geodis`" (GEODIS) - "`tnt`" (TNT) - "`
+        # db schenker`" (DB Schenker) - "`aramex`" (Aramex)
         # Corresponds to the JSON property `carrier`
         # @return [String]
         attr_accessor :carrier
@@ -5617,12 +5547,8 @@ module Google
         # @return [String]
         attr_accessor :shipment_group_id
       
-        # The status of the shipment.
-        # Acceptable values are:
-        # - "`delivered`"
-        # - "`readyForPickup`"
-        # - "`shipped`"
-        # - "`undeliverable`"
+        # The status of the shipment. Acceptable values are: - "`delivered`" - "`
+        # readyForPickup`" - "`shipped`" - "`undeliverable`"
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -5760,10 +5686,8 @@ module Google
       class OrderinvoicesCreateChargeInvoiceResponse
         include Google::Apis::Core::Hashable
       
-        # The status of the execution.
-        # Acceptable values are:
-        # - "`duplicate`"
-        # - "`executed`"
+        # The status of the execution. Acceptable values are: - "`duplicate`" - "`
+        # executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -5836,10 +5760,8 @@ module Google
       class OrderinvoicesCreateRefundInvoiceResponse
         include Google::Apis::Core::Hashable
       
-        # The status of the execution.
-        # Acceptable values are:
-        # - "`duplicate`"
-        # - "`executed`"
+        # The status of the execution. Acceptable values are: - "`duplicate`" - "`
+        # executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -5870,52 +5792,23 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # [required] Reason for the refund.
-        # Acceptable values are:
-        # - "`adjustment`"
-        # - "`autoPostInternal`"
-        # - "`autoPostInvalidBillingAddress`"
-        # - "`autoPostNoInventory`"
-        # - "`autoPostPriceError`"
-        # - "`autoPostUndeliverableShippingAddress`"
-        # - "`couponAbuse`"
-        # - "`courtesyAdjustment`"
-        # - "`customerCanceled`"
-        # - "`customerDiscretionaryReturn`"
-        # - "`customerInitiatedMerchantCancel`"
-        # - "`customerSupportRequested`"
-        # - "`deliveredLateByCarrier`"
-        # - "`deliveredTooLate`"
-        # - "`expiredItem`"
-        # - "`failToPushOrderGoogleError`"
-        # - "`failToPushOrderMerchantError`"
-        # - "`failToPushOrderMerchantFulfillmentError`"
-        # - "`failToPushOrderToMerchant`"
-        # - "`failToPushOrderToMerchantOutOfStock`"
-        # - "`feeAdjustment`"
-        # - "`invalidCoupon`"
-        # - "`lateShipmentCredit`"
-        # - "`malformedShippingAddress`"
-        # - "`merchantDidNotShipOnTime`"
-        # - "`noInventory`"
-        # - "`orderTimeout`"
-        # - "`other`"
-        # - "`paymentAbuse`"
-        # - "`paymentDeclined`"
-        # - "`priceAdjustment`"
-        # - "`priceError`"
-        # - "`productArrivedDamaged`"
-        # - "`productNotAsDescribed`"
-        # - "`promoReallocation`"
-        # - "`qualityNotAsExpected`"
-        # - "`returnRefundAbuse`"
-        # - "`shippingCostAdjustment`"
-        # - "`shippingPriceError`"
-        # - "`taxAdjustment`"
-        # - "`taxError`"
-        # - "`undeliverableShippingAddress`"
-        # - "`unsupportedPoBoxAddress`"
-        # - "`wrongProductShipped`"
+        # [required] Reason for the refund. Acceptable values are: - "`adjustment`" - "`
+        # autoPostInternal`" - "`autoPostInvalidBillingAddress`" - "`autoPostNoInventory`
+        # " - "`autoPostPriceError`" - "`autoPostUndeliverableShippingAddress`" - "`
+        # couponAbuse`" - "`courtesyAdjustment`" - "`customerCanceled`" - "`
+        # customerDiscretionaryReturn`" - "`customerInitiatedMerchantCancel`" - "`
+        # customerSupportRequested`" - "`deliveredLateByCarrier`" - "`deliveredTooLate`"
+        # - "`expiredItem`" - "`failToPushOrderGoogleError`" - "`
+        # failToPushOrderMerchantError`" - "`failToPushOrderMerchantFulfillmentError`" -
+        # "`failToPushOrderToMerchant`" - "`failToPushOrderToMerchantOutOfStock`" - "`
+        # feeAdjustment`" - "`invalidCoupon`" - "`lateShipmentCredit`" - "`
+        # malformedShippingAddress`" - "`merchantDidNotShipOnTime`" - "`noInventory`" - "
+        # `orderTimeout`" - "`other`" - "`paymentAbuse`" - "`paymentDeclined`" - "`
+        # priceAdjustment`" - "`priceError`" - "`productArrivedDamaged`" - "`
+        # productNotAsDescribed`" - "`promoReallocation`" - "`qualityNotAsExpected`" - "`
+        # returnRefundAbuse`" - "`shippingCostAdjustment`" - "`shippingPriceError`" - "`
+        # taxAdjustment`" - "`taxError`" - "`undeliverableShippingAddress`" - "`
+        # unsupportedPoBoxAddress`" - "`wrongProductShipped`"
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -5940,21 +5833,13 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # [required] Reason for the return.
-        # Acceptable values are:
-        # - "`customerDiscretionaryReturn`"
-        # - "`customerInitiatedMerchantCancel`"
-        # - "`deliveredTooLate`"
-        # - "`expiredItem`"
-        # - "`invalidCoupon`"
-        # - "`malformedShippingAddress`"
-        # - "`other`"
-        # - "`productArrivedDamaged`"
-        # - "`productNotAsDescribed`"
-        # - "`qualityNotAsExpected`"
-        # - "`undeliverableShippingAddress`"
-        # - "`unsupportedPoBoxAddress`"
-        # - "`wrongProductShipped`"
+        # [required] Reason for the return. Acceptable values are: - "`
+        # customerDiscretionaryReturn`" - "`customerInitiatedMerchantCancel`" - "`
+        # deliveredTooLate`" - "`expiredItem`" - "`invalidCoupon`" - "`
+        # malformedShippingAddress`" - "`other`" - "`productArrivedDamaged`" - "`
+        # productNotAsDescribed`" - "`qualityNotAsExpected`" - "`
+        # undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" - "`
+        # wrongProductShipped`"
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -6058,10 +5943,8 @@ module Google
       class OrderreturnsAcknowledgeResponse
         include Google::Apis::Core::Hashable
       
-        # The status of the execution.
-        # Acceptable values are:
-        # - "`duplicate`"
-        # - "`executed`"
+        # The status of the execution. Acceptable values are: - "`duplicate`" - "`
+        # executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -6124,10 +6007,8 @@ module Google
       class OrderreturnsCreateOrderReturnResponse
         include Google::Apis::Core::Hashable
       
-        # The status of the execution.
-        # Acceptable values are:
-        # - "`duplicate`"
-        # - "`executed`"
+        # The status of the execution. Acceptable values are: - "`duplicate`" - "`
+        # executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -6284,10 +6165,8 @@ module Google
       class OrderreturnsProcessResponse
         include Google::Apis::Core::Hashable
       
-        # The status of the execution.
-        # Acceptable values are:
-        # - "`duplicate`"
-        # - "`executed`"
+        # The status of the execution. Acceptable values are: - "`duplicate`" - "`
+        # executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -6437,10 +6316,8 @@ module Google
       class OrdersAcknowledgeResponse
         include Google::Apis::Core::Hashable
       
-        # The status of the execution.
-        # Acceptable values are:
-        # - "`duplicate`"
-        # - "`executed`"
+        # The status of the execution. Acceptable values are: - "`duplicate`" - "`
+        # executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -6507,18 +6384,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :quantity
       
-        # The reason for the cancellation.
-        # Acceptable values are:
-        # - "`customerInitiatedCancel`"
-        # - "`invalidCoupon`"
-        # - "`malformedShippingAddress`"
-        # - "`noInventory`"
-        # - "`other`"
-        # - "`priceError`"
-        # - "`shippingPriceError`"
-        # - "`taxError`"
-        # - "`undeliverableShippingAddress`"
-        # - "`unsupportedPoBoxAddress`"
+        # The reason for the cancellation. Acceptable values are: - "`
+        # customerInitiatedCancel`" - "`invalidCoupon`" - "`malformedShippingAddress`" -
+        # "`noInventory`" - "`other`" - "`priceError`" - "`shippingPriceError`" - "`
+        # taxError`" - "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`"
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -6547,10 +6416,8 @@ module Google
       class OrdersCancelLineItemResponse
         include Google::Apis::Core::Hashable
       
-        # The status of the execution.
-        # Acceptable values are:
-        # - "`duplicate`"
-        # - "`executed`"
+        # The status of the execution. Acceptable values are: - "`duplicate`" - "`
+        # executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -6581,18 +6448,10 @@ module Google
         # @return [String]
         attr_accessor :operation_id
       
-        # The reason for the cancellation.
-        # Acceptable values are:
-        # - "`customerInitiatedCancel`"
-        # - "`invalidCoupon`"
-        # - "`malformedShippingAddress`"
-        # - "`noInventory`"
-        # - "`other`"
-        # - "`priceError`"
-        # - "`shippingPriceError`"
-        # - "`taxError`"
-        # - "`undeliverableShippingAddress`"
-        # - "`unsupportedPoBoxAddress`"
+        # The reason for the cancellation. Acceptable values are: - "`
+        # customerInitiatedCancel`" - "`invalidCoupon`" - "`malformedShippingAddress`" -
+        # "`noInventory`" - "`other`" - "`priceError`" - "`shippingPriceError`" - "`
+        # taxError`" - "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`"
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -6618,10 +6477,8 @@ module Google
       class OrdersCancelResponse
         include Google::Apis::Core::Hashable
       
-        # The status of the execution.
-        # Acceptable values are:
-        # - "`duplicate`"
-        # - "`executed`"
+        # The status of the execution. Acceptable values are: - "`duplicate`" - "`
+        # executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -6647,11 +6504,8 @@ module Google
       class OrdersCancelTestOrderByCustomerRequest
         include Google::Apis::Core::Hashable
       
-        # The reason for the cancellation.
-        # Acceptable values are:
-        # - "`changedMind`"
-        # - "`orderedWrongItem`"
-        # - "`other`"
+        # The reason for the cancellation. Acceptable values are: - "`changedMind`" - "`
+        # orderedWrongItem`" - "`other`"
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -6690,25 +6544,18 @@ module Google
       class OrdersCreateTestOrderRequest
         include Google::Apis::Core::Hashable
       
-        # The  CLDR territory code of the country of the test order to create. Affects
+        # The CLDR territory code of the country of the test order to create. Affects
         # the currency and addresses of orders created via `template_name`, or the
-        # addresses of orders created via `test_order`.
-        # Acceptable values are:
-        # - "`US`"
-        # - "`FR`"  Defaults to `US`.
+        # addresses of orders created via `test_order`. Acceptable values are: - "`US`" -
+        # "`FR`" Defaults to `US`.
         # Corresponds to the JSON property `country`
         # @return [String]
         attr_accessor :country
       
         # The test order template to use. Specify as an alternative to `testOrder` as a
         # shortcut for retrieving a template and then creating an order using that
-        # template.
-        # Acceptable values are:
-        # - "`template1`"
-        # - "`template1a`"
-        # - "`template1b`"
-        # - "`template2`"
-        # - "`template3`"
+        # template. Acceptable values are: - "`template1`" - "`template1a`" - "`
+        # template1b`" - "`template2`" - "`template3`"
         # Corresponds to the JSON property `templateName`
         # @return [String]
         attr_accessor :template_name
@@ -6907,7 +6754,7 @@ module Google
       class OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo
         include Google::Apis::Core::Hashable
       
-        # The carrier handling the shipment. See `shipments[].carrier` in the  Orders
+        # The carrier handling the shipment. See `shipments[].carrier` in the Orders
         # resource representation for a list of acceptable values.
         # Corresponds to the JSON property `carrier`
         # @return [String]
@@ -6947,8 +6794,7 @@ module Google
         attr_accessor :kind
       
         # Order. Production access (all methods) requires the order manager role.
-        # Sandbox access does not. (== resource_for v2.orders ==) (== resource_for v2.1.
-        # orders ==)
+        # Sandbox access does not.
         # Corresponds to the JSON property `order`
         # @return [Google::Apis::ContentV2_1::Order]
         attr_accessor :order
@@ -7021,21 +6867,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :quantity
       
-        # The reason for the return.
-        # Acceptable values are:
-        # - "`customerDiscretionaryReturn`"
-        # - "`customerInitiatedMerchantCancel`"
-        # - "`deliveredTooLate`"
-        # - "`expiredItem`"
-        # - "`invalidCoupon`"
-        # - "`malformedShippingAddress`"
-        # - "`other`"
-        # - "`productArrivedDamaged`"
-        # - "`productNotAsDescribed`"
-        # - "`qualityNotAsExpected`"
-        # - "`undeliverableShippingAddress`"
-        # - "`unsupportedPoBoxAddress`"
-        # - "`wrongProductShipped`"
+        # The reason for the return. Acceptable values are: - "`
+        # customerDiscretionaryReturn`" - "`customerInitiatedMerchantCancel`" - "`
+        # deliveredTooLate`" - "`expiredItem`" - "`invalidCoupon`" - "`
+        # malformedShippingAddress`" - "`other`" - "`productArrivedDamaged`" - "`
+        # productNotAsDescribed`" - "`qualityNotAsExpected`" - "`
+        # undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" - "`
+        # wrongProductShipped`"
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -7071,10 +6909,8 @@ module Google
       class OrdersInStoreRefundLineItemResponse
         include Google::Apis::Core::Hashable
       
-        # The status of the execution.
-        # Acceptable values are:
-        # - "`duplicate`"
-        # - "`executed`"
+        # The status of the execution. Acceptable values are: - "`duplicate`" - "`
+        # executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -7143,22 +6979,12 @@ module Google
         # @return [String]
         attr_accessor :operation_id
       
-        # The reason for the refund.
-        # Acceptable values are:
-        # - "`shippingCostAdjustment`"
-        # - "`priceAdjustment`"
-        # - "`taxAdjustment`"
-        # - "`feeAdjustment`"
-        # - "`courtesyAdjustment`"
-        # - "`adjustment`"
-        # - "`customerCancelled`"
-        # - "`noInventory`"
-        # - "`productNotAsDescribed`"
-        # - "`undeliverableShippingAddress`"
-        # - "`wrongProductShipped`"
-        # - "`lateShipmentCredit`"
-        # - "`deliveredLateByCarrier`"
-        # - "`productArrivedDamaged`"
+        # The reason for the refund. Acceptable values are: - "`shippingCostAdjustment`"
+        # - "`priceAdjustment`" - "`taxAdjustment`" - "`feeAdjustment`" - "`
+        # courtesyAdjustment`" - "`adjustment`" - "`customerCancelled`" - "`noInventory`"
+        # - "`productNotAsDescribed`" - "`undeliverableShippingAddress`" - "`
+        # wrongProductShipped`" - "`lateShipmentCredit`" - "`deliveredLateByCarrier`" - "
+        # `productArrivedDamaged`"
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -7192,10 +7018,8 @@ module Google
       class OrdersRefundItemResponse
         include Google::Apis::Core::Hashable
       
-        # The status of the execution.
-        # Acceptable values are:
-        # - "`duplicate`"
-        # - "`executed`"
+        # The status of the execution. Acceptable values are: - "`duplicate`" - "`
+        # executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -7239,10 +7063,8 @@ module Google
         # @return [String]
         attr_accessor :operation_id
       
-        # The reason for the refund.
-        # Acceptable values are:
-        # - "`courtesyAdjustment`"
-        # - "`other`"
+        # The reason for the refund. Acceptable values are: - "`courtesyAdjustment`" - "`
+        # other`"
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -7270,10 +7092,8 @@ module Google
       class OrdersRefundOrderResponse
         include Google::Apis::Core::Hashable
       
-        # The status of the execution.
-        # Acceptable values are:
-        # - "`duplicate`"
-        # - "`executed`"
+        # The status of the execution. Acceptable values are: - "`duplicate`" - "`
+        # executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -7320,13 +7140,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :quantity
       
-        # The reason for the return.
-        # Acceptable values are:
-        # - "`damagedOrUsed`"
-        # - "`missingComponent`"
-        # - "`notEligible`"
-        # - "`other`"
-        # - "`outOfReturnWindow`"
+        # The reason for the return. Acceptable values are: - "`damagedOrUsed`" - "`
+        # missingComponent`" - "`notEligible`" - "`other`" - "`outOfReturnWindow`"
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -7355,10 +7170,8 @@ module Google
       class OrdersRejectReturnLineItemResponse
         include Google::Apis::Core::Hashable
       
-        # The status of the execution.
-        # Acceptable values are:
-        # - "`duplicate`"
-        # - "`executed`"
+        # The status of the execution. Acceptable values are: - "`duplicate`" - "`
+        # executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -7411,21 +7224,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :quantity
       
-        # The reason for the return.
-        # Acceptable values are:
-        # - "`customerDiscretionaryReturn`"
-        # - "`customerInitiatedMerchantCancel`"
-        # - "`deliveredTooLate`"
-        # - "`expiredItem`"
-        # - "`invalidCoupon`"
-        # - "`malformedShippingAddress`"
-        # - "`other`"
-        # - "`productArrivedDamaged`"
-        # - "`productNotAsDescribed`"
-        # - "`qualityNotAsExpected`"
-        # - "`undeliverableShippingAddress`"
-        # - "`unsupportedPoBoxAddress`"
-        # - "`wrongProductShipped`"
+        # The reason for the return. Acceptable values are: - "`
+        # customerDiscretionaryReturn`" - "`customerInitiatedMerchantCancel`" - "`
+        # deliveredTooLate`" - "`expiredItem`" - "`invalidCoupon`" - "`
+        # malformedShippingAddress`" - "`other`" - "`productArrivedDamaged`" - "`
+        # productNotAsDescribed`" - "`qualityNotAsExpected`" - "`
+        # undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" - "`
+        # wrongProductShipped`"
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -7462,10 +7267,8 @@ module Google
       class OrdersReturnRefundLineItemResponse
         include Google::Apis::Core::Hashable
       
-        # The status of the execution.
-        # Acceptable values are:
-        # - "`duplicate`"
-        # - "`executed`"
+        # The status of the execution. Acceptable values are: - "`duplicate`" - "`
+        # executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -7530,10 +7333,8 @@ module Google
       class OrdersSetLineItemMetadataResponse
         include Google::Apis::Core::Hashable
       
-        # The status of the execution.
-        # Acceptable values are:
-        # - "`duplicate`"
-        # - "`executed`"
+        # The status of the execution. Acceptable values are: - "`duplicate`" - "`
+        # executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -7598,10 +7399,8 @@ module Google
       class OrdersShipLineItemsResponse
         include Google::Apis::Core::Hashable
       
-        # The status of the execution.
-        # Acceptable values are:
-        # - "`duplicate`"
-        # - "`executed`"
+        # The status of the execution. Acceptable values are: - "`duplicate`" - "`
+        # executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -7628,9 +7427,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Updated delivery by date, in ISO 8601 format. If not specified only ship by
-        # date is updated.
-        # Provided date should be within 1 year timeframe and can not be a date in the
-        # past.
+        # date is updated. Provided date should be within 1 year timeframe and can not
+        # be a date in the past.
         # Corresponds to the JSON property `deliverByDate`
         # @return [String]
         attr_accessor :deliver_by_date
@@ -7653,9 +7451,8 @@ module Google
         attr_accessor :product_id
       
         # Updated ship by date, in ISO 8601 format. If not specified only deliver by
-        # date is updated.
-        # Provided date should be within 1 year timeframe and can not be a date in the
-        # past.
+        # date is updated. Provided date should be within 1 year timeframe and can not
+        # be a date in the past.
         # Corresponds to the JSON property `shipByDate`
         # @return [String]
         attr_accessor :ship_by_date
@@ -7678,10 +7475,8 @@ module Google
       class OrdersUpdateLineItemShippingDetailsResponse
         include Google::Apis::Core::Hashable
       
-        # The status of the execution.
-        # Acceptable values are:
-        # - "`duplicate`"
-        # - "`executed`"
+        # The status of the execution. Acceptable values are: - "`duplicate`" - "`
+        # executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -7732,10 +7527,8 @@ module Google
       class OrdersUpdateMerchantOrderIdResponse
         include Google::Apis::Core::Hashable
       
-        # The status of the execution.
-        # Acceptable values are:
-        # - "`duplicate`"
-        # - "`executed`"
+        # The status of the execution. Acceptable values are: - "`duplicate`" - "`
+        # executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -7762,8 +7555,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The carrier handling the shipment. Not updated if missing. See `shipments[].
-        # carrier` in the  Orders resource representation for a list of acceptable
-        # values.
+        # carrier` in the Orders resource representation for a list of acceptable values.
         # Corresponds to the JSON property `carrier`
         # @return [String]
         attr_accessor :carrier
@@ -7797,11 +7589,8 @@ module Google
         # @return [String]
         attr_accessor :shipment_id
       
-        # New status for the shipment. Not updated if missing.
-        # Acceptable values are:
-        # - "`delivered`"
-        # - "`undeliverable`"
-        # - "`readyForPickup`"
+        # New status for the shipment. Not updated if missing. Acceptable values are: - "
+        # `delivered`" - "`undeliverable`" - "`readyForPickup`"
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -7839,10 +7628,8 @@ module Google
       class OrdersUpdateShipmentResponse
         include Google::Apis::Core::Hashable
       
-        # The status of the execution.
-        # Acceptable values are:
-        # - "`duplicate`"
-        # - "`executed`"
+        # The status of the execution. Acceptable values are: - "`duplicate`" - "`
+        # executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -7958,13 +7745,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :merchant_id
       
-        # The method of the batch entry.
-        # Acceptable values are:
-        # - "`delete`"
-        # - "`get`"
-        # - "`insert`"
-        # - "`inventory`"
-        # - "`sale`"
+        # The method of the batch entry. Acceptable values are: - "`delete`" - "`get`" -
+        # "`insert`" - "`inventory`" - "`sale`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -8708,12 +8490,11 @@ module Google
       end
       
       # Required product attributes are primarily defined by the products data
-      # specification. See the  Products Data Specification Help Center article for
-      # information.
-      # Some attributes are country-specific, so make sure you select the appropriate
-      # country in the drop-down selector at the top of the page.
-      # Product data. After inserting, updating, or deleting a product, it may take
-      # several minutes before changes take effect.
+      # specification. See the Products Data Specification Help Center article for
+      # information. Some attributes are country-specific, so make sure you select the
+      # appropriate country in the drop-down selector at the top of the page. Product
+      # data. After inserting, updating, or deleting a product, it may take several
+      # minutes before changes take effect.
       class Product
         include Google::Apis::Core::Hashable
       
@@ -8770,10 +8551,8 @@ module Google
         # @return [String]
         attr_accessor :canonical_link
       
-        # Required. The item's channel (online or local).
-        # Acceptable values are:
-        # - "`local`"
-        # - "`online`"
+        # Required. The item's channel (online or local). Acceptable values are: - "`
+        # local`" - "`online`"
         # Corresponds to the JSON property `channel`
         # @return [String]
         attr_accessor :channel
@@ -8897,9 +8676,8 @@ module Google
         attr_accessor :gtin
       
         # The REST ID of the product. Content API methods that operate on products take
-        # this as their `productId` parameter.
-        # The REST ID for a product is of the form channel:contentLanguage:targetCountry:
-        # offerId.
+        # this as their `productId` parameter. The REST ID for a product is of the form
+        # channel:contentLanguage: targetCountry: offerId.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -9000,9 +8778,8 @@ module Google
         # Required. A unique identifier for the item. Leading and trailing whitespaces
         # are stripped and multiple whitespaces are replaced by a single whitespace upon
         # submission. Only valid unicode characters are accepted. See the products feed
-        # specification for details.
-        # Note: Content API methods that operate on products take the REST ID of the
-        # product, not this identifier.
+        # specification for details. *Note:* Content API methods that operate on
+        # products take the REST ID of the product, *not* this identifier.
         # Corresponds to the JSON property `offerId`
         # @return [String]
         attr_accessor :offer_id
@@ -9042,7 +8819,7 @@ module Google
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :sale_price
       
-        # Date range during which the item is on sale (see products data specification).
+        # Date range during which the item is on sale (see products data specification ).
         # Corresponds to the JSON property `salePriceEffectiveDate`
         # @return [String]
         attr_accessor :sale_price_effective_date
@@ -9108,11 +8885,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :sizes
       
-        # The source of the offer, i.e., how the offer was created.
-        # Acceptable values are:
-        # - "`api`"
-        # - "`crawl`"
-        # - "`feed`"
+        # The source of the offer, i.e., how the offer was created. Acceptable values
+        # are: - "`api`" - "`crawl`" - "`feed`"
         # Corresponds to the JSON property `source`
         # @return [String]
         attr_accessor :source
@@ -9771,22 +9545,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :merchant_id
       
-        # The method of the batch entry.
-        # Acceptable values are:
-        # - "`delete`"
-        # - "`get`"
-        # - "`insert`"
+        # The method of the batch entry. Acceptable values are: - "`delete`" - "`get`" -
+        # "`insert`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
       
         # Required product attributes are primarily defined by the products data
-        # specification. See the  Products Data Specification Help Center article for
-        # information.
-        # Some attributes are country-specific, so make sure you select the appropriate
-        # country in the drop-down selector at the top of the page.
-        # Product data. After inserting, updating, or deleting a product, it may take
-        # several minutes before changes take effect.
+        # specification. See the Products Data Specification Help Center article for
+        # information. Some attributes are country-specific, so make sure you select the
+        # appropriate country in the drop-down selector at the top of the page. Product
+        # data. After inserting, updating, or deleting a product, it may take several
+        # minutes before changes take effect.
         # Corresponds to the JSON property `product`
         # @return [Google::Apis::ContentV2_1::Product]
         attr_accessor :product
@@ -9859,12 +9629,11 @@ module Google
         attr_accessor :kind
       
         # Required product attributes are primarily defined by the products data
-        # specification. See the  Products Data Specification Help Center article for
-        # information.
-        # Some attributes are country-specific, so make sure you select the appropriate
-        # country in the drop-down selector at the top of the page.
-        # Product data. After inserting, updating, or deleting a product, it may take
-        # several minutes before changes take effect.
+        # specification. See the Products Data Specification Help Center article for
+        # information. Some attributes are country-specific, so make sure you select the
+        # appropriate country in the drop-down selector at the top of the page. Product
+        # data. After inserting, updating, or deleting a product, it may take several
+        # minutes before changes take effect.
         # Corresponds to the JSON property `product`
         # @return [Google::Apis::ContentV2_1::Product]
         attr_accessor :product
@@ -9959,9 +9728,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :merchant_id
       
-        # The method of the batch entry.
-        # Acceptable values are:
-        # - "`get`"
+        # The method of the batch entry. Acceptable values are: - "`get`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -10084,8 +9851,7 @@ module Google
       end
       
       # Settings for Pub/Sub notifications, all methods require that the caller is a
-      # direct user of the merchant center account. (== resource_for v2.1.
-      # pubsubnotificationsettings ==)
+      # direct user of the merchant center account.
       class PubsubNotificationSettings
         include Google::Apis::Core::Hashable
       
@@ -10100,9 +9866,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # List of event types.
-        # Acceptable values are:
-        # - "`orderPendingShipment`"
+        # List of event types. Acceptable values are: - "`orderPendingShipment`"
         # Corresponds to the JSON property `registeredEvents`
         # @return [Array<String>]
         attr_accessor :registered_events
@@ -10186,52 +9950,23 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Code of the refund reason.
-        # Acceptable values are:
-        # - "`adjustment`"
-        # - "`autoPostInternal`"
-        # - "`autoPostInvalidBillingAddress`"
-        # - "`autoPostNoInventory`"
-        # - "`autoPostPriceError`"
-        # - "`autoPostUndeliverableShippingAddress`"
-        # - "`couponAbuse`"
-        # - "`courtesyAdjustment`"
-        # - "`customerCanceled`"
-        # - "`customerDiscretionaryReturn`"
-        # - "`customerInitiatedMerchantCancel`"
-        # - "`customerSupportRequested`"
-        # - "`deliveredLateByCarrier`"
-        # - "`deliveredTooLate`"
-        # - "`expiredItem`"
-        # - "`failToPushOrderGoogleError`"
-        # - "`failToPushOrderMerchantError`"
-        # - "`failToPushOrderMerchantFulfillmentError`"
-        # - "`failToPushOrderToMerchant`"
-        # - "`failToPushOrderToMerchantOutOfStock`"
-        # - "`feeAdjustment`"
-        # - "`invalidCoupon`"
-        # - "`lateShipmentCredit`"
-        # - "`malformedShippingAddress`"
-        # - "`merchantDidNotShipOnTime`"
-        # - "`noInventory`"
-        # - "`orderTimeout`"
-        # - "`other`"
-        # - "`paymentAbuse`"
-        # - "`paymentDeclined`"
-        # - "`priceAdjustment`"
-        # - "`priceError`"
-        # - "`productArrivedDamaged`"
-        # - "`productNotAsDescribed`"
-        # - "`promoReallocation`"
-        # - "`qualityNotAsExpected`"
-        # - "`returnRefundAbuse`"
-        # - "`shippingCostAdjustment`"
-        # - "`shippingPriceError`"
-        # - "`taxAdjustment`"
-        # - "`taxError`"
-        # - "`undeliverableShippingAddress`"
-        # - "`unsupportedPoBoxAddress`"
-        # - "`wrongProductShipped`"
+        # Code of the refund reason. Acceptable values are: - "`adjustment`" - "`
+        # autoPostInternal`" - "`autoPostInvalidBillingAddress`" - "`autoPostNoInventory`
+        # " - "`autoPostPriceError`" - "`autoPostUndeliverableShippingAddress`" - "`
+        # couponAbuse`" - "`courtesyAdjustment`" - "`customerCanceled`" - "`
+        # customerDiscretionaryReturn`" - "`customerInitiatedMerchantCancel`" - "`
+        # customerSupportRequested`" - "`deliveredLateByCarrier`" - "`deliveredTooLate`"
+        # - "`expiredItem`" - "`failToPushOrderGoogleError`" - "`
+        # failToPushOrderMerchantError`" - "`failToPushOrderMerchantFulfillmentError`" -
+        # "`failToPushOrderToMerchant`" - "`failToPushOrderToMerchantOutOfStock`" - "`
+        # feeAdjustment`" - "`invalidCoupon`" - "`lateShipmentCredit`" - "`
+        # malformedShippingAddress`" - "`merchantDidNotShipOnTime`" - "`noInventory`" - "
+        # `orderTimeout`" - "`other`" - "`paymentAbuse`" - "`paymentDeclined`" - "`
+        # priceAdjustment`" - "`priceError`" - "`productArrivedDamaged`" - "`
+        # productNotAsDescribed`" - "`promoReallocation`" - "`qualityNotAsExpected`" - "`
+        # returnRefundAbuse`" - "`shippingCostAdjustment`" - "`shippingPriceError`" - "`
+        # taxAdjustment`" - "`taxError`" - "`undeliverableShippingAddress`" - "`
+        # unsupportedPoBoxAddress`" - "`wrongProductShipped`"
         # Corresponds to the JSON property `reasonCode`
         # @return [String]
         attr_accessor :reason_code
@@ -10340,9 +10075,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :merchant_id
       
-        # Method of the batch request entry.
-        # Acceptable values are:
-        # - "`insert`"
+        # Method of the batch request entry. Acceptable values are: - "`insert`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -10434,6 +10167,275 @@ module Google
           @errors = args[:errors] if args.key?(:errors)
           @kind = args[:kind] if args.key?(:kind)
           @regional_inventory = args[:regional_inventory] if args.key?(:regional_inventory)
+        end
+      end
+      
+      # Represents a repricing rule. A repricing rule is used by shopping serving to
+      # adjust transactable offer prices if conditions are met. Next ID: 24
+      class RepricingRule
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. CLDR country code (e.g. "US").
+        # Corresponds to the JSON property `countryCode`
+        # @return [String]
+        attr_accessor :country_code
+      
+        # Required. Time period when the rule should take effect.
+        # Corresponds to the JSON property `effectiveTimePeriod`
+        # @return [Google::Apis::ContentV2_1::RepricingRuleEffectiveTime]
+        attr_accessor :effective_time_period
+      
+        # Matcher that specifies eligible offers. When the USE_FEED_ATTRIBUTE option is
+        # selected, only the repricing_rule_id attribute on the product feed is used to
+        # specify offer-rule mapping. When the CUSTOM_FILTER option is selected, only
+        # the *_matcher fields are used to filter the offers for offer-rule mapping. If
+        # the CUSTOM_FILTER option is selected, an offer needs to satisfy each custom
+        # filter matcher to be eligible for a rule. Size limit: the sum of the number of
+        # entries in all the matchers should not exceed 20. For example, there can be 15
+        # product ids and 5 brands, but not 10 product ids and 11 brands.
+        # Corresponds to the JSON property `eligibleOfferMatcher`
+        # @return [Google::Apis::ContentV2_1::RepricingRuleEligibleOfferMatcher]
+        attr_accessor :eligible_offer_matcher
+      
+        # Required. Immutable. The two-letter ISO 639-1 language code associated with
+        # the repricing rule.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Output only. Immutable. Merchant that owns the repricing rule.
+        # Corresponds to the JSON property `merchantId`
+        # @return [Fixnum]
+        attr_accessor :merchant_id
+      
+        # Represents whether a rule is paused. A paused rule will behave like a non-
+        # paused rule within CRUD operations, with the major difference that a paused
+        # rule will not be evaluated and will have no effect on offers.
+        # Corresponds to the JSON property `paused`
+        # @return [Boolean]
+        attr_accessor :paused
+        alias_method :paused?, :paused
+      
+        # Definition of a rule restriction. At least one of the following needs to be
+        # true: (1) use_auto_pricing_min_price is true (2) floor.price_delta exists (3)
+        # floor.percentage_delta exists If floor.price_delta and floor.percentage_delta
+        # are both set on a rule, the highest value will be chosen by the Repricer. In
+        # other words, for a product with a price of $50, if the `floor.percentage_delta`
+        # is "-10" and the floor.price_delta is "-12", the offer price will only be
+        # lowered $5 (10% lower than the original offer price).
+        # Corresponds to the JSON property `restriction`
+        # @return [Google::Apis::ContentV2_1::RepricingRuleRestriction]
+        attr_accessor :restriction
+      
+        # Output only. Immutable. The ID to uniquely identify each repricing rule.
+        # Corresponds to the JSON property `ruleId`
+        # @return [String]
+        attr_accessor :rule_id
+      
+        # The title for the rule.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # Required. Immutable. The type of the rule.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @country_code = args[:country_code] if args.key?(:country_code)
+          @effective_time_period = args[:effective_time_period] if args.key?(:effective_time_period)
+          @eligible_offer_matcher = args[:eligible_offer_matcher] if args.key?(:eligible_offer_matcher)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
+          @paused = args[:paused] if args.key?(:paused)
+          @restriction = args[:restriction] if args.key?(:restriction)
+          @rule_id = args[:rule_id] if args.key?(:rule_id)
+          @title = args[:title] if args.key?(:title)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class RepricingRuleEffectiveTime
+        include Google::Apis::Core::Hashable
+      
+        # A list of fixed time periods combined with OR. The maximum number of entries
+        # is limited to 5.
+        # Corresponds to the JSON property `fixedTimePeriods`
+        # @return [Array<Google::Apis::ContentV2_1::RepricingRuleEffectiveTimeFixedTimePeriod>]
+        attr_accessor :fixed_time_periods
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fixed_time_periods = args[:fixed_time_periods] if args.key?(:fixed_time_periods)
+        end
+      end
+      
+      # Definition of a fixed time period.
+      class RepricingRuleEffectiveTimeFixedTimePeriod
+        include Google::Apis::Core::Hashable
+      
+        # The end time (exclusive) of the period. It can only be hour granularity.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The start time (inclusive) of the period. It can only be hour granularity.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Matcher that specifies eligible offers. When the USE_FEED_ATTRIBUTE option is
+      # selected, only the repricing_rule_id attribute on the product feed is used to
+      # specify offer-rule mapping. When the CUSTOM_FILTER option is selected, only
+      # the *_matcher fields are used to filter the offers for offer-rule mapping. If
+      # the CUSTOM_FILTER option is selected, an offer needs to satisfy each custom
+      # filter matcher to be eligible for a rule. Size limit: the sum of the number of
+      # entries in all the matchers should not exceed 20. For example, there can be 15
+      # product ids and 5 brands, but not 10 product ids and 11 brands.
+      class RepricingRuleEligibleOfferMatcher
+        include Google::Apis::Core::Hashable
+      
+        # Matcher by string attributes.
+        # Corresponds to the JSON property `brandMatcher`
+        # @return [Google::Apis::ContentV2_1::RepricingRuleEligibleOfferMatcherStringMatcher]
+        attr_accessor :brand_matcher
+      
+        # Matcher by string attributes.
+        # Corresponds to the JSON property `itemGroupIdMatcher`
+        # @return [Google::Apis::ContentV2_1::RepricingRuleEligibleOfferMatcherStringMatcher]
+        attr_accessor :item_group_id_matcher
+      
+        # Determines whether to use the custom matchers or the product feed attribute "
+        # repricing_rule_id" to specify offer-rule mapping.
+        # Corresponds to the JSON property `matcherOption`
+        # @return [String]
+        attr_accessor :matcher_option
+      
+        # Matcher by string attributes.
+        # Corresponds to the JSON property `offerIdMatcher`
+        # @return [Google::Apis::ContentV2_1::RepricingRuleEligibleOfferMatcherStringMatcher]
+        attr_accessor :offer_id_matcher
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @brand_matcher = args[:brand_matcher] if args.key?(:brand_matcher)
+          @item_group_id_matcher = args[:item_group_id_matcher] if args.key?(:item_group_id_matcher)
+          @matcher_option = args[:matcher_option] if args.key?(:matcher_option)
+          @offer_id_matcher = args[:offer_id_matcher] if args.key?(:offer_id_matcher)
+        end
+      end
+      
+      # Matcher by string attributes.
+      class RepricingRuleEligibleOfferMatcherStringMatcher
+        include Google::Apis::Core::Hashable
+      
+        # String attributes, as long as such attribute of an offer is one of the string
+        # attribute values, the offer is considered as passing the matcher. The string
+        # matcher checks an offer for inclusivity in the string attributes, not equality.
+        # Only literal string matching is supported, no regex.
+        # Corresponds to the JSON property `strAttributes`
+        # @return [Array<String>]
+        attr_accessor :str_attributes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @str_attributes = args[:str_attributes] if args.key?(:str_attributes)
+        end
+      end
+      
+      # Definition of a rule restriction. At least one of the following needs to be
+      # true: (1) use_auto_pricing_min_price is true (2) floor.price_delta exists (3)
+      # floor.percentage_delta exists If floor.price_delta and floor.percentage_delta
+      # are both set on a rule, the highest value will be chosen by the Repricer. In
+      # other words, for a product with a price of $50, if the `floor.percentage_delta`
+      # is "-10" and the floor.price_delta is "-12", the offer price will only be
+      # lowered $5 (10% lower than the original offer price).
+      class RepricingRuleRestriction
+        include Google::Apis::Core::Hashable
+      
+        # Definition of a boundary.
+        # Corresponds to the JSON property `floor`
+        # @return [Google::Apis::ContentV2_1::RepricingRuleRestrictionBoundary]
+        attr_accessor :floor
+      
+        # If true, use the AUTO_PRICING_MIN_PRICE offer attribute as the lower bound of
+        # the rule. If use_auto_pricing_min_price is true, then only offers with `
+        # AUTO_PRICING_MIN_PRICE` existing on the offer will get Repricer treatment,
+        # even if a floor value is set on the rule. Also, if use_auto_pricing_min_price
+        # is true, the floor restriction will be ignored.
+        # Corresponds to the JSON property `useAutoPricingMinPrice`
+        # @return [Boolean]
+        attr_accessor :use_auto_pricing_min_price
+        alias_method :use_auto_pricing_min_price?, :use_auto_pricing_min_price
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @floor = args[:floor] if args.key?(:floor)
+          @use_auto_pricing_min_price = args[:use_auto_pricing_min_price] if args.key?(:use_auto_pricing_min_price)
+        end
+      end
+      
+      # Definition of a boundary.
+      class RepricingRuleRestrictionBoundary
+        include Google::Apis::Core::Hashable
+      
+        # The percentage delta relative to the offer selling price. This field is signed.
+        # It must be negative in floor. When it is used in floor, it should be > -100.
+        # If an offer is selling at $10 and this field is -30 in floor, the repricing
+        # rule only applies if the calculated new price is >= $7.
+        # Corresponds to the JSON property `percentageDelta`
+        # @return [Fixnum]
+        attr_accessor :percentage_delta
+      
+        # The price micros relative to the offer selling price. This field is signed. It
+        # must be negative in floor. If an offer is selling at $10 and this field is -$2
+        # in floor, the repricing rule only applies if the calculated new price is >= $8.
+        # Corresponds to the JSON property `priceDelta`
+        # @return [String]
+        attr_accessor :price_delta
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @percentage_delta = args[:percentage_delta] if args.key?(:percentage_delta)
+          @price_delta = args[:price_delta] if args.key?(:price_delta)
         end
       end
       
@@ -10630,12 +10632,8 @@ module Google
         # most items a minimum of 30 days is required for returns. Exceptions may be
         # made for electronics or non-returnable items such as food, perishables, and
         # living things. A policy of less than 30 days can only be applied to those
-        # items.
-        # Acceptable values are:
-        # - "`lastReturnDate`"
-        # - "`lifetimeReturns`"
-        # - "`noReturns`"
-        # - "`numberOfDaysAfterDelivery`"
+        # items. Acceptable values are: - "`lastReturnDate`" - "`lifetimeReturns`" - "`
+        # noReturns`" - "`numberOfDaysAfterDelivery`"
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -10754,11 +10752,8 @@ module Google
         # @return [String]
         attr_accessor :delivery_date
       
-        # Type of the return method.
-        # Acceptable values are:
-        # - "`byMail`"
-        # - "`contactCustomerSupport`"
-        # - "`returnless`"
+        # Type of the return method. Acceptable values are: - "`byMail`" - "`
+        # contactCustomerSupport`" - "`returnless`"
         # Corresponds to the JSON property `returnMethodType`
         # @return [String]
         attr_accessor :return_method_type
@@ -10779,13 +10774,8 @@ module Google
         # @return [String]
         attr_accessor :shipping_date
       
-        # State of the shipment.
-        # Acceptable values are:
-        # - "`completed`"
-        # - "`new`"
-        # - "`shipped`"
-        # - "`undeliverable`"
-        # - "`pending`"
+        # State of the shipment. Acceptable values are: - "`completed`" - "`new`" - "`
+        # shipped`" - "`undeliverable`" - "`pending`"
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -10839,11 +10829,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :merchant_id
       
-        # Method of the batch request entry.
-        # Acceptable values are:
-        # - "`delete`"
-        # - "`get`"
-        # - "`insert`"
+        # Method of the batch request entry. Acceptable values are: - "`delete`" - "`get`
+        # " - "`insert`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -11001,11 +10988,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :merchant_id
       
-        # Method of the batch request entry.
-        # Acceptable values are:
-        # - "`delete`"
-        # - "`get`"
-        # - "`insert`"
+        # Method of the batch request entry. Acceptable values are: - "`delete`" - "`get`
+        # " - "`insert`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -11172,11 +11156,8 @@ module Google
         # @return [Google::Apis::ContentV2_1::DeliveryTime]
         attr_accessor :delivery_time
       
-        # Eligibility for this service.
-        # Acceptable values are:
-        # - "`All scenarios`"
-        # - "`All scenarios except Shopping Actions`"
-        # - "`Shopping Actions`"
+        # Eligibility for this service. Acceptable values are: - "`All scenarios`" - "`
+        # All scenarios except Shopping Actions`" - "`Shopping Actions`"
         # Corresponds to the JSON property `eligibility`
         # @return [String]
         attr_accessor :eligibility
@@ -11213,10 +11194,8 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::RateGroup>]
         attr_accessor :rate_groups
       
-        # Type of locations this service ships orders to.
-        # Acceptable values are:
-        # - "`delivery`"
-        # - "`pickup`"
+        # Type of locations this service ships orders to. Acceptable values are: - "`
+        # delivery`" - "`pickup`"
         # Corresponds to the JSON property `shipmentType`
         # @return [String]
         attr_accessor :shipment_type
@@ -11309,8 +11288,7 @@ module Google
         end
       end
       
-      # Settlement transactions give a detailed breakdown of the  settlement report. (=
-      # = resource_for v2.1.settlementtransactions ==)
+      # Settlement transactions give a detailed breakdown of the settlement report.
       class SettlementTransaction
         include Google::Apis::Core::Hashable
       
@@ -11357,49 +11335,21 @@ module Google
         # @return [Google::Apis::ContentV2_1::SettlementTransactionAmountCommission]
         attr_accessor :commission
       
-        # The description of the event.
-        # Acceptable values are:
-        # - "`taxWithhold`"
-        # - "`principal`"
-        # - "`principalAdjustment`"
-        # - "`shippingFee`"
-        # - "`merchantRemittedSalesTax`"
-        # - "`googleRemittedSalesTax`"
-        # - "`merchantCoupon`"
-        # - "`merchantCouponTax`"
-        # - "`merchantRemittedDisposalTax`"
-        # - "`googleRemittedDisposalTax`"
-        # - "`merchantRemittedRedemptionFee`"
-        # - "`googleRemittedRedemptionFee`"
-        # - "`eeeEcoFee`"
-        # - "`furnitureEcoFee`"
-        # - "`copyPrivateFee`"
-        # - "`eeeEcoFeeCommission`"
-        # - "`furnitureEcoFeeCommission`"
-        # - "`copyPrivateFeeCommission`"
-        # - "`principalRefund`"
-        # - "`principalRefundTax`"
-        # - "`itemCommission`"
-        # - "`adjustmentCommission`"
-        # - "`shippingFeeCommission`"
-        # - "`commissionRefund`"
-        # - "`damaged`"
-        # - "`damagedOrDefectiveItem`"
-        # - "`expiredItem`"
-        # - "`faultyItem`"
-        # - "`incorrectItemReceived`"
-        # - "`itemMissing`"
-        # - "`qualityNotExpected`"
-        # - "`receivedTooLate`"
-        # - "`storePackageMissing`"
-        # - "`transitPackageMissing`"
-        # - "`unsuccessfulDeliveryUndeliverable`"
-        # - "`wrongChargeInStore`"
-        # - "`wrongItem`"
-        # - "`returns`"
-        # - "`undeliverable`"
-        # - "`refundFromMerchant`"
-        # - "`returnLabelShippingFee`"
+        # The description of the event. Acceptable values are: - "`taxWithhold`" - "`
+        # principal`" - "`principalAdjustment`" - "`shippingFee`" - "`
+        # merchantRemittedSalesTax`" - "`googleRemittedSalesTax`" - "`merchantCoupon`" -
+        # "`merchantCouponTax`" - "`merchantRemittedDisposalTax`" - "`
+        # googleRemittedDisposalTax`" - "`merchantRemittedRedemptionFee`" - "`
+        # googleRemittedRedemptionFee`" - "`eeeEcoFee`" - "`furnitureEcoFee`" - "`
+        # copyPrivateFee`" - "`eeeEcoFeeCommission`" - "`furnitureEcoFeeCommission`" - "`
+        # copyPrivateFeeCommission`" - "`principalRefund`" - "`principalRefundTax`" - "`
+        # itemCommission`" - "`adjustmentCommission`" - "`shippingFeeCommission`" - "`
+        # commissionRefund`" - "`damaged`" - "`damagedOrDefectiveItem`" - "`expiredItem`"
+        # - "`faultyItem`" - "`incorrectItemReceived`" - "`itemMissing`" - "`
+        # qualityNotExpected`" - "`receivedTooLate`" - "`storePackageMissing`" - "`
+        # transitPackageMissing`" - "`unsuccessfulDeliveryUndeliverable`" - "`
+        # wrongChargeInStore`" - "`wrongItem`" - "`returns`" - "`undeliverable`" - "`
+        # refundFromMerchant`" - "`returnLabelShippingFee`"
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -11409,15 +11359,9 @@ module Google
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :transaction_amount
       
-        # The type of the amount.
-        # Acceptable values are:
-        # - "`itemPrice`"
-        # - "`orderPrice`"
-        # - "`refund`"
-        # - "`earlyRefund`"
-        # - "`courtesyRefund`"
-        # - "`returnRefund`"
-        # - "`returnLabelShippingFeeAmount`"
+        # The type of the amount. Acceptable values are: - "`itemPrice`" - "`orderPrice`"
+        # - "`refund`" - "`earlyRefund`" - "`courtesyRefund`" - "`returnRefund`" - "`
+        # returnLabelShippingFeeAmount`"
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -11439,52 +11383,21 @@ module Google
       class SettlementTransactionAmountCommission
         include Google::Apis::Core::Hashable
       
-        # The category of the commission.
-        # Acceptable values are:
-        # - "`animalsAndPetSupplies`"
-        # - "`dogCatFoodAndCatLitter`"
-        # - "`apparelAndAccessories`"
-        # - "`shoesHandbagsAndSunglasses`"
-        # - "`costumesAndAccessories`"
-        # - "`jewelry`"
-        # - "`watches`"
-        # - "`hobbiesArtsAndCrafts`"
-        # - "`homeAndGarden`"
-        # - "`entertainmentCollectibles`"
-        # - "`collectibleCoins`"
-        # - "`sportsCollectibles`"
-        # - "`sportingGoods`"
-        # - "`toysAndGames`"
-        # - "`musicalInstruments`"
-        # - "`giftCards`"
-        # - "`babyAndToddler`"
-        # - "`babyFoodWipesAndDiapers`"
-        # - "`businessAndIndustrial`"
-        # - "`camerasOpticsAndPhotography`"
-        # - "`consumerElectronics`"
-        # - "`electronicsAccessories`"
-        # - "`personalComputers`"
-        # - "`videoGameConsoles`"
-        # - "`foodAndGrocery`"
-        # - "`beverages`"
-        # - "`tobaccoProducts`"
-        # - "`furniture`"
-        # - "`hardware`"
-        # - "`buildingMaterials`"
-        # - "`tools`"
-        # - "`healthAndPersonalCare`"
-        # - "`beauty`"
-        # - "`householdSupplies`"
-        # - "`kitchenAndDining`"
-        # - "`majorAppliances`"
-        # - "`luggageAndBags`"
-        # - "`media`"
-        # - "`officeSupplies`"
-        # - "`softwareAndVideoGames`"
-        # - "`vehiclePartsAndAccessories`"
-        # - "`vehicleTiresAndWheels`"
-        # - "`vehicles`"
-        # - "`everythingElse`"
+        # The category of the commission. Acceptable values are: - "`
+        # animalsAndPetSupplies`" - "`dogCatFoodAndCatLitter`" - "`apparelAndAccessories`
+        # " - "`shoesHandbagsAndSunglasses`" - "`costumesAndAccessories`" - "`jewelry`" -
+        # "`watches`" - "`hobbiesArtsAndCrafts`" - "`homeAndGarden`" - "`
+        # entertainmentCollectibles`" - "`collectibleCoins`" - "`sportsCollectibles`" - "
+        # `sportingGoods`" - "`toysAndGames`" - "`musicalInstruments`" - "`giftCards`" -
+        # "`babyAndToddler`" - "`babyFoodWipesAndDiapers`" - "`businessAndIndustrial`" -
+        # "`camerasOpticsAndPhotography`" - "`consumerElectronics`" - "`
+        # electronicsAccessories`" - "`personalComputers`" - "`videoGameConsoles`" - "`
+        # foodAndGrocery`" - "`beverages`" - "`tobaccoProducts`" - "`furniture`" - "`
+        # hardware`" - "`buildingMaterials`" - "`tools`" - "`healthAndPersonalCare`" - "`
+        # beauty`" - "`householdSupplies`" - "`kitchenAndDining`" - "`majorAppliances`" -
+        # "`luggageAndBags`" - "`media`" - "`officeSupplies`" - "`softwareAndVideoGames`
+        # " - "`vehiclePartsAndAccessories`" - "`vehicleTiresAndWheels`" - "`vehicles`" -
+        # "`everythingElse`"
         # Corresponds to the JSON property `category`
         # @return [String]
         attr_accessor :category
@@ -11563,16 +11476,11 @@ module Google
         # @return [String]
         attr_accessor :post_date
       
-        # The type of the transaction that occurred.
-        # Acceptable values are:
-        # - "`order`"
-        # - "`reversal`"
-        # - "`orderRefund`"
-        # - "`reversalRefund`"
-        # - "`issueRelatedRefundAndReplacement`"
-        # - "`returnLabelShippingFeeTransaction`"
-        # - "`reversalIssueRelatedRefundAndReplacement`"
-        # - "`reversalReturnLabelShippingFeeTransaction`"
+        # The type of the transaction that occurred. Acceptable values are: - "`order`" -
+        # "`reversal`" - "`orderRefund`" - "`reversalRefund`" - "`
+        # issueRelatedRefundAndReplacement`" - "`returnLabelShippingFeeTransaction`" - "`
+        # reversalIssueRelatedRefundAndReplacement`" - "`
+        # reversalReturnLabelShippingFeeTransaction`"
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -11730,38 +11638,13 @@ module Google
       class ShipmentTrackingInfo
         include Google::Apis::Core::Hashable
       
-        # The shipping carrier that handles the package.
-        # Acceptable values are:
-        # - "`boxtal`"
-        # - "`bpost`"
-        # - "`chronopost`"
-        # - "`colisPrive`"
-        # - "`colissimo`"
-        # - "`cxt`"
-        # - "`deliv`"
-        # - "`dhl`"
-        # - "`dpd`"
-        # - "`dynamex`"
-        # - "`eCourier`"
-        # - "`easypost`"
-        # - "`efw`"
-        # - "`fedex`"
-        # - "`fedexSmartpost`"
-        # - "`geodis`"
-        # - "`gls`"
-        # - "`googleCourier`"
-        # - "`gsx`"
-        # - "`jdLogistics`"
-        # - "`laPoste`"
-        # - "`lasership`"
-        # - "`manual`"
-        # - "`mpx`"
-        # - "`onTrac`"
-        # - "`other`"
-        # - "`tnt`"
-        # - "`uds`"
-        # - "`ups`"
-        # - "`usps`"
+        # The shipping carrier that handles the package. Acceptable values are: - "`
+        # boxtal`" - "`bpost`" - "`chronopost`" - "`colisPrive`" - "`colissimo`" - "`cxt`
+        # " - "`deliv`" - "`dhl`" - "`dpd`" - "`dynamex`" - "`eCourier`" - "`easypost`" -
+        # "`efw`" - "`fedex`" - "`fedexSmartpost`" - "`geodis`" - "`gls`" - "`
+        # googleCourier`" - "`gsx`" - "`jdLogistics`" - "`laPoste`" - "`lasership`" - "`
+        # manual`" - "`mpx`" - "`onTrac`" - "`other`" - "`tnt`" - "`uds`" - "`ups`" - "`
+        # usps`"
         # Corresponds to the JSON property `carrier`
         # @return [String]
         attr_accessor :carrier
@@ -11853,10 +11736,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :merchant_id
       
-        # The method of the batch entry.
-        # Acceptable values are:
-        # - "`get`"
-        # - "`update`"
+        # The method of the batch entry. Acceptable values are: - "`get`" - "`update`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -12132,40 +12012,28 @@ module Google
         # @return [Google::Apis::ContentV2_1::TestOrderPickupDetails]
         attr_accessor :pickup_details
       
-        # Required. The billing address.
-        # Acceptable values are:
-        # - "`dwight`"
-        # - "`jim`"
-        # - "`pam`"
+        # Required. The billing address. Acceptable values are: - "`dwight`" - "`jim`" -
+        # "`pam`"
         # Corresponds to the JSON property `predefinedBillingAddress`
         # @return [String]
         attr_accessor :predefined_billing_address
       
         # Required. Identifier of one of the predefined delivery addresses for the
-        # delivery.
-        # Acceptable values are:
-        # - "`dwight`"
-        # - "`jim`"
-        # - "`pam`"
+        # delivery. Acceptable values are: - "`dwight`" - "`jim`" - "`pam`"
         # Corresponds to the JSON property `predefinedDeliveryAddress`
         # @return [String]
         attr_accessor :predefined_delivery_address
       
-        # Required. Email address of the customer.
-        # Acceptable values are:
-        # - "`pog.dwight.schrute@gmail.com`"
-        # - "`pog.jim.halpert@gmail.com`"
-        # - "`penpog.pam.beesly@gmail.comding`"
+        # Required. Email address of the customer. Acceptable values are: - "`pog.dwight.
+        # schrute@gmail.com`" - "`pog.jim.halpert@gmail.com`" - "`penpog.pam.beesly@
+        # gmail.comding`"
         # Corresponds to the JSON property `predefinedEmail`
         # @return [String]
         attr_accessor :predefined_email
       
         # Identifier of one of the predefined pickup details. Required for orders
-        # containing line items with shipping type `pickup`.
-        # Acceptable values are:
-        # - "`dwight`"
-        # - "`jim`"
-        # - "`pam`"
+        # containing line items with shipping type `pickup`. Acceptable values are: - "`
+        # dwight`" - "`jim`" - "`pam`"
         # Corresponds to the JSON property `predefinedPickupDetails`
         # @return [String]
         attr_accessor :predefined_pickup_details
@@ -12183,14 +12051,8 @@ module Google
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :shipping_cost
       
-        # Required. The requested shipping option.
-        # Acceptable values are:
-        # - "`economy`"
-        # - "`expedited`"
-        # - "`oneDay`"
-        # - "`sameDay`"
-        # - "`standard`"
-        # - "`twoDay`"
+        # Required. The requested shipping option. Acceptable values are: - "`economy`" -
+        # "`expedited`" - "`oneDay`" - "`sameDay`" - "`standard`" - "`twoDay`"
         # Corresponds to the JSON property `shippingOption`
         # @return [String]
         attr_accessor :shipping_option
@@ -12227,11 +12089,8 @@ module Google
         attr_accessor :country
       
         # Strings representing the lines of the printed label for mailing the order, for
-        # example:
-        # John Smith
-        # 1600 Amphitheatre Parkway
-        # Mountain View, CA, 94043
-        # United States
+        # example: John Smith 1600 Amphitheatre Parkway Mountain View, CA, 94043 United
+        # States
         # Corresponds to the JSON property `fullAddress`
         # @return [Array<String>]
         attr_accessor :full_address
@@ -12357,17 +12216,13 @@ module Google
         # @return [String]
         attr_accessor :brand
       
-        # Required. Condition or state of the item.
-        # Acceptable values are:
-        # - "`new`"
+        # Required. Condition or state of the item. Acceptable values are: - "`new`"
         # Corresponds to the JSON property `condition`
         # @return [String]
         attr_accessor :condition
       
-        # Required. The two-letter ISO 639-1 language code for the item.
-        # Acceptable values are:
-        # - "`en`"
-        # - "`fr`"
+        # Required. The two-letter ISO 639-1 language code for the item. Acceptable
+        # values are: - "`en`" - "`fr`"
         # Corresponds to the JSON property `contentLanguage`
         # @return [String]
         attr_accessor :content_language
@@ -12409,7 +12264,7 @@ module Google
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :price
       
-        # Required. The CLDR territory code of the target country of the product.
+        # Required. The CLDR territory // code of the target country of the product.
         # Corresponds to the JSON property `targetCountry`
         # @return [String]
         attr_accessor :target_country
@@ -12460,11 +12315,8 @@ module Google
         # @return [Google::Apis::ContentV2_1::TestOrderAddress]
         attr_accessor :pickup_location_address
       
-        # Pickup location type.
-        # Acceptable values are:
-        # - "`locker`"
-        # - "`store`"
-        # - "`curbside`"
+        # Pickup location type. Acceptable values are: - "`locker`" - "`store`" - "`
+        # curbside`"
         # Corresponds to the JSON property `pickupLocationType`
         # @return [String]
         attr_accessor :pickup_location_type
@@ -12632,9 +12484,8 @@ module Google
         # @return [Google::Apis::ContentV2_1::Amount]
         attr_accessor :additional_charge_amount
       
-        # [required] Type of the additional charge.
-        # Acceptable values are:
-        # - "`shipping`"
+        # [required] Type of the additional charge. Acceptable values are: - "`shipping`"
+        # 
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -12665,11 +12516,8 @@ module Google
         # @return [String]
         attr_accessor :tax_name
       
-        # [required] Type of the tax.
-        # Acceptable values are:
-        # - "`otherFee`"
-        # - "`otherFeeTax`"
-        # - "`sales`"
+        # [required] Type of the tax. Acceptable values are: - "`otherFee`" - "`
+        # otherFeeTax`" - "`sales`"
         # Corresponds to the JSON property `taxType`
         # @return [String]
         attr_accessor :tax_type
@@ -12740,10 +12588,7 @@ module Google
       class Weight
         include Google::Apis::Core::Hashable
       
-        # Required. The weight unit.
-        # Acceptable values are:
-        # - "`kg`"
-        # - "`lb`"
+        # Required. The weight unit. Acceptable values are: - "`kg`" - "`lb`"
         # Corresponds to the JSON property `unit`
         # @return [String]
         attr_accessor :unit
