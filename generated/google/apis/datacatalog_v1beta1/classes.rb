@@ -1196,6 +1196,11 @@ module Google
       class GoogleCloudDatacatalogV1beta1SerializedTaxonomy
         include Google::Apis::Core::Hashable
       
+        # A list of policy types that are activated for a taxonomy.
+        # Corresponds to the JSON property `activatedPolicyTypes`
+        # @return [Array<String>]
+        attr_accessor :activated_policy_types
+      
         # Description of the serialized taxonomy. The length of the description is
         # limited to 2000 bytes when encoded in UTF-8. If not set, defaults to an empty
         # description.
@@ -1219,6 +1224,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @activated_policy_types = args[:activated_policy_types] if args.key?(:activated_policy_types)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @policy_tags = args[:policy_tags] if args.key?(:policy_tags)
@@ -1464,6 +1470,11 @@ module Google
       class GoogleCloudDatacatalogV1beta1TagTemplateField
         include Google::Apis::Core::Hashable
       
+        # The description for this field. Defaults to an empty string.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # The display name for this field. Defaults to an empty string.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -1502,6 +1513,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @is_required = args[:is_required] if args.key?(:is_required)
           @name = args[:name] if args.key?(:name)
@@ -1545,6 +1557,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Number of policy tags contained in this taxonomy.
+        # Corresponds to the JSON property `policyTagCount`
+        # @return [Fixnum]
+        attr_accessor :policy_tag_count
+      
+        # Timestamps about this resource according to a particular system.
+        # Corresponds to the JSON property `taxonomyTimestamps`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SystemTimestamps]
+        attr_accessor :taxonomy_timestamps
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1555,6 +1577,8 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @policy_tag_count = args[:policy_tag_count] if args.key?(:policy_tag_count)
+          @taxonomy_timestamps = args[:taxonomy_timestamps] if args.key?(:taxonomy_timestamps)
         end
       end
       

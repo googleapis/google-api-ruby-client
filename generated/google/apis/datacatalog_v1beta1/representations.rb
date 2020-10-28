@@ -622,6 +622,7 @@ module Google
       class GoogleCloudDatacatalogV1beta1SerializedTaxonomy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :activated_policy_types, as: 'activatedPolicyTypes'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           collection :policy_tags, as: 'policyTags', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SerializedPolicyTag, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SerializedPolicyTag::Representation
@@ -691,6 +692,7 @@ module Google
       class GoogleCloudDatacatalogV1beta1TagTemplateField
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :is_required, as: 'isRequired'
           property :name, as: 'name'
@@ -707,6 +709,9 @@ module Google
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :policy_tag_count, as: 'policyTagCount'
+          property :taxonomy_timestamps, as: 'taxonomyTimestamps', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SystemTimestamps, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SystemTimestamps::Representation
+      
         end
       end
       
