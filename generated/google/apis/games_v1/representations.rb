@@ -346,6 +346,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResolveSnapshotHeadRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResolveSnapshotHeadResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CheckRevisionResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -364,6 +376,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SnapshotCoverImageResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotDataResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotExtended
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SnapshotImage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -371,6 +401,18 @@ module Google
       end
       
       class ListSnapshotResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotRevision
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -991,6 +1033,21 @@ module Google
         end
       end
       
+      class ResolveSnapshotHeadRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resolution_policy, as: 'resolutionPolicy'
+        end
+      end
+      
+      class ResolveSnapshotHeadResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :snapshot, as: 'snapshot', class: Google::Apis::GamesV1::SnapshotExtended, decorator: Google::Apis::GamesV1::SnapshotExtended::Representation
+      
+        end
+      end
+      
       class CheckRevisionResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1029,6 +1086,40 @@ module Google
         end
       end
       
+      class SnapshotCoverImageResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_hash, as: 'contentHash'
+          property :download_url, as: 'downloadUrl'
+          property :height, as: 'height'
+          property :mime_type, as: 'mimeType'
+          property :resource_id, as: 'resourceId'
+          property :width, as: 'width'
+        end
+      end
+      
+      class SnapshotDataResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_hash, as: 'contentHash'
+          property :download_url, as: 'downloadUrl'
+          property :resource_id, as: 'resourceId'
+          property :size, :numeric_string => true, as: 'size'
+        end
+      end
+      
+      class SnapshotExtended
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conflicting_revisions, as: 'conflictingRevisions', class: Google::Apis::GamesV1::SnapshotRevision, decorator: Google::Apis::GamesV1::SnapshotRevision::Representation
+      
+          property :has_conflicting_revisions, as: 'hasConflictingRevisions'
+          property :head_revision, as: 'headRevision', class: Google::Apis::GamesV1::SnapshotRevision, decorator: Google::Apis::GamesV1::SnapshotRevision::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
       class SnapshotImage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1047,6 +1138,31 @@ module Google
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class SnapshotMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :device_name, as: 'deviceName'
+          property :duration, as: 'duration'
+          property :last_modify_time, as: 'lastModifyTime'
+          property :progress_value, :numeric_string => true, as: 'progressValue'
+          property :title, as: 'title'
+        end
+      end
+      
+      class SnapshotRevision
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :blob, as: 'blob', class: Google::Apis::GamesV1::SnapshotDataResource, decorator: Google::Apis::GamesV1::SnapshotDataResource::Representation
+      
+          property :cover_image, as: 'coverImage', class: Google::Apis::GamesV1::SnapshotCoverImageResource, decorator: Google::Apis::GamesV1::SnapshotCoverImageResource::Representation
+      
+          property :id, as: 'id'
+          property :metadata, as: 'metadata', class: Google::Apis::GamesV1::SnapshotMetadata, decorator: Google::Apis::GamesV1::SnapshotMetadata::Representation
+      
         end
       end
       
