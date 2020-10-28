@@ -1024,6 +1024,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HealthCheckLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HealthCheckReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3604,6 +3610,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecuritySettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SerialPortOutput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5272,7 +5284,9 @@ module Google
       class AutoscalingPolicyCustomMetricUtilization
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
           property :metric, as: 'metric'
+          property :single_instance_assignment, as: 'singleInstanceAssignment'
           property :utilization_target, as: 'utilizationTarget'
           property :utilization_target_type, as: 'utilizationTargetType'
         end
@@ -5407,6 +5421,8 @@ module Google
           property :protocol, as: 'protocol'
           property :region, as: 'region'
           property :security_policy, as: 'securityPolicy'
+          property :security_settings, as: 'securitySettings', class: Google::Apis::ComputeV1::SecuritySettings, decorator: Google::Apis::ComputeV1::SecuritySettings::Representation
+      
           property :self_link, as: 'selfLink'
           property :session_affinity, as: 'sessionAffinity'
           property :timeout_sec, as: 'timeoutSec'
@@ -6605,6 +6621,8 @@ module Google
       
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :log_config, as: 'logConfig', class: Google::Apis::ComputeV1::HealthCheckLogConfig, decorator: Google::Apis::ComputeV1::HealthCheckLogConfig::Representation
+      
           property :name, as: 'name'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
@@ -6647,6 +6665,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class HealthCheckLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable, as: 'enable'
         end
       end
       
@@ -7524,6 +7549,7 @@ module Google
       class InstanceGroupManagersApplyUpdatesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_instances, as: 'allInstances'
           collection :instances, as: 'instances'
           property :minimal_action, as: 'minimalAction'
           property :most_disruptive_allowed_action, as: 'mostDisruptiveAllowedAction'
@@ -10308,6 +10334,7 @@ module Google
       class RegionInstanceGroupManagersApplyUpdatesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_instances, as: 'allInstances'
           collection :instances, as: 'instances'
           property :minimal_action, as: 'minimalAction'
           property :most_disruptive_allowed_action, as: 'mostDisruptiveAllowedAction'
@@ -10838,6 +10865,7 @@ module Google
       class ResourcePolicySnapshotSchedulePolicySnapshotProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :chain_name, as: 'chainName'
           property :guest_flush, as: 'guestFlush'
           hash :labels, as: 'labels'
           collection :storage_locations, as: 'storageLocations'
@@ -11354,6 +11382,14 @@ module Google
         end
       end
       
+      class SecuritySettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_tls_policy, as: 'clientTlsPolicy'
+          collection :subject_alt_names, as: 'subjectAltNames'
+        end
+      end
+      
       class SerialPortOutput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -11427,6 +11463,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_created, as: 'autoCreated'
+          property :chain_name, as: 'chainName'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
@@ -11990,6 +12027,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :proxy_bind, as: 'proxyBind'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :url_map, as: 'urlMap'
@@ -12086,14 +12124,17 @@ module Google
       class TargetHttpsProxy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorization_policy, as: 'authorizationPolicy'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :proxy_bind, as: 'proxyBind'
           property :quic_override, as: 'quicOverride'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :server_tls_policy, as: 'serverTlsPolicy'
           collection :ssl_certificates, as: 'sslCertificates'
           property :ssl_policy, as: 'sslPolicy'
           property :url_map, as: 'urlMap'

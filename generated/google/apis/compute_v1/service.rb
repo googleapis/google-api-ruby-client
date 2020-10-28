@@ -28791,6 +28791,8 @@ module Google
         
         # Initiates a cache invalidation operation, invalidating the specified path,
         # scoped to the specified UrlMap.
+        # For more information, see [Invalidating cached content](/cdn/docs/invalidating-
+        # cached-content).
         # @param [String] project
         #   Project ID for this request.
         # @param [String] url_map
