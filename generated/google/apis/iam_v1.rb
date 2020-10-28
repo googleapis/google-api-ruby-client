@@ -22,15 +22,12 @@ module Google
     #
     # Manages identity and access control for Google Cloud Platform resources,
     # including the creation of service accounts, which you can use to authenticate
-    # to Google and make API calls. *Note:* This API is tied to the IAM service
-    # account credentials API ( iamcredentials.googleapis.com). Enabling or
-    # disabling this API will also enable or disable the IAM service account
-    # credentials API.
+    # to Google and make API calls.
     #
     # @see https://cloud.google.com/iam/
     module IamV1
       VERSION = 'V1'
-      REVISION = '20200910'
+      REVISION = '20201022'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
