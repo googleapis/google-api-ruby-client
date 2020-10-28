@@ -2052,8 +2052,8 @@ module Google
       class GoogleCloudVisionV1p1beta1LocationInfo
         include Google::Apis::Core::Hashable
       
-        # An object representing a latitude/longitude pair. This is expressed as a pair
-        # of doubles representing degrees latitude and degrees longitude. Unless
+        # An object that represents a latitude/longitude pair. This is expressed as a
+        # pair of doubles to represent degrees latitude and degrees longitude. Unless
         # specified otherwise, this must conform to the WGS84 standard. Values must be
         # within normalized ranges.
         # Corresponds to the JSON property `latLng`
@@ -3772,8 +3772,8 @@ module Google
       class GoogleCloudVisionV1p2beta1LocationInfo
         include Google::Apis::Core::Hashable
       
-        # An object representing a latitude/longitude pair. This is expressed as a pair
-        # of doubles representing degrees latitude and degrees longitude. Unless
+        # An object that represents a latitude/longitude pair. This is expressed as a
+        # pair of doubles to represent degrees latitude and degrees longitude. Unless
         # specified otherwise, this must conform to the WGS84 standard. Values must be
         # within normalized ranges.
         # Corresponds to the JSON property `latLng`
@@ -5556,8 +5556,8 @@ module Google
       class GoogleCloudVisionV1p3beta1LocationInfo
         include Google::Apis::Core::Hashable
       
-        # An object representing a latitude/longitude pair. This is expressed as a pair
-        # of doubles representing degrees latitude and degrees longitude. Unless
+        # An object that represents a latitude/longitude pair. This is expressed as a
+        # pair of doubles to represent degrees latitude and degrees longitude. Unless
         # specified otherwise, this must conform to the WGS84 standard. Values must be
         # within normalized ranges.
         # Corresponds to the JSON property `latLng`
@@ -7484,8 +7484,8 @@ module Google
       class GoogleCloudVisionV1p4beta1LocationInfo
         include Google::Apis::Core::Hashable
       
-        # An object representing a latitude/longitude pair. This is expressed as a pair
-        # of doubles representing degrees latitude and degrees longitude. Unless
+        # An object that represents a latitude/longitude pair. This is expressed as a
+        # pair of doubles to represent degrees latitude and degrees longitude. Unless
         # specified otherwise, this must conform to the WGS84 standard. Values must be
         # within normalized ranges.
         # Corresponds to the JSON property `latLng`
@@ -8842,8 +8842,8 @@ module Google
         end
       end
       
-      # An object representing a latitude/longitude pair. This is expressed as a pair
-      # of doubles representing degrees latitude and degrees longitude. Unless
+      # An object that represents a latitude/longitude pair. This is expressed as a
+      # pair of doubles to represent degrees latitude and degrees longitude. Unless
       # specified otherwise, this must conform to the WGS84 standard. Values must be
       # within normalized ranges.
       class LatLng
@@ -8874,16 +8874,16 @@ module Google
       class LatLongRect
         include Google::Apis::Core::Hashable
       
-        # An object representing a latitude/longitude pair. This is expressed as a pair
-        # of doubles representing degrees latitude and degrees longitude. Unless
+        # An object that represents a latitude/longitude pair. This is expressed as a
+        # pair of doubles to represent degrees latitude and degrees longitude. Unless
         # specified otherwise, this must conform to the WGS84 standard. Values must be
         # within normalized ranges.
         # Corresponds to the JSON property `maxLatLng`
         # @return [Google::Apis::VisionV1::LatLng]
         attr_accessor :max_lat_lng
       
-        # An object representing a latitude/longitude pair. This is expressed as a pair
-        # of doubles representing degrees latitude and degrees longitude. Unless
+        # An object that represents a latitude/longitude pair. This is expressed as a
+        # pair of doubles to represent degrees latitude and degrees longitude. Unless
         # specified otherwise, this must conform to the WGS84 standard. Values must be
         # within normalized ranges.
         # Corresponds to the JSON property `minLatLng`
@@ -9083,8 +9083,8 @@ module Google
       class LocationInfo
         include Google::Apis::Core::Hashable
       
-        # An object representing a latitude/longitude pair. This is expressed as a pair
-        # of doubles representing degrees latitude and degrees longitude. Unless
+        # An object that represents a latitude/longitude pair. This is expressed as a
+        # pair of doubles to represent degrees latitude and degrees longitude. Unless
         # specified otherwise, this must conform to the WGS84 standard. Values must be
         # within normalized ranges.
         # Corresponds to the JSON property `latLng`
