@@ -248,6 +248,177 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Analyzes IAM policies to answer which identities have what accesses on which
+        # resources.
+        # @param [String] scope
+        #   Required. The relative name of the root asset. Only resources and IAM policies
+        #   within the scope will be analyzed. This can only be an organization number (
+        #   such as "organizations/123"), a folder number (such as "folders/123"), a
+        #   project ID (such as "projects/my-project-id"), or a project number (such as "
+        #   projects/12345"). To know how to get organization id, visit [here ](https://
+        #   cloud.google.com/resource-manager/docs/creating-managing-organization#
+        #   retrieving_your_organization_id). To know how to get folder or project id,
+        #   visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-
+        #   folders#viewing_or_listing_folders_and_projects).
+        # @param [Array<String>, String] analysis_query_access_selector_permissions
+        #   Optional. The permissions to appear in result.
+        # @param [Array<String>, String] analysis_query_access_selector_roles
+        #   Optional. The roles to appear in result.
+        # @param [String] analysis_query_identity_selector_identity
+        #   Required. The identity appear in the form of members in [IAM policy binding](
+        #   https://cloud.google.com/iam/reference/rest/v1/Binding). The examples of
+        #   supported forms are: "user:mike@example.com", "group:admins@example.com", "
+        #   domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com".
+        #   Notice that wildcard characters (such as * and ?) are not supported. You must
+        #   give a specific identity.
+        # @param [Boolean] analysis_query_options_analyze_service_account_impersonation
+        #   Optional. If true, the response will include access analysis from identities
+        #   to resources via service account impersonation. This is a very expensive
+        #   operation, because many derived queries will be executed. We highly recommend
+        #   you use AssetService.AnalyzeIamPolicyLongrunning rpc instead. For example, if
+        #   the request analyzes for which resources user A has permission P, and there's
+        #   an IAM policy states user A has iam.serviceAccounts.getAccessToken permission
+        #   to a service account SA, and there's another IAM policy states service account
+        #   SA has permission P to a GCP folder F, then user A potentially has access to
+        #   the GCP folder F. And those advanced analysis results will be included in
+        #   AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Another
+        #   example, if the request analyzes for who has permission P to a GCP folder F,
+        #   and there's an IAM policy states user A has iam.serviceAccounts.actAs
+        #   permission to a service account SA, and there's another IAM policy states
+        #   service account SA has permission P to the GCP folder F, then user A
+        #   potentially has access to the GCP folder F. And those advanced analysis
+        #   results will be included in AnalyzeIamPolicyResponse.
+        #   service_account_impersonation_analysis. Default is false.
+        # @param [Boolean] analysis_query_options_expand_groups
+        #   Optional. If true, the identities section of the result will expand any Google
+        #   groups appearing in an IAM policy binding. If IamPolicyAnalysisQuery.
+        #   identity_selector is specified, the identity in the result will be determined
+        #   by the selector, and this flag is not allowed to set. Default is false.
+        # @param [Boolean] analysis_query_options_expand_resources
+        #   Optional. If true and IamPolicyAnalysisQuery.resource_selector is not
+        #   specified, the resource section of the result will expand any resource
+        #   attached to an IAM policy to include resources lower in the resource hierarchy.
+        #   For example, if the request analyzes for which resources user A has
+        #   permission P, and the results include an IAM policy with P on a GCP folder,
+        #   the results will also include resources in that folder with permission P. If
+        #   true and IamPolicyAnalysisQuery.resource_selector is specified, the resource
+        #   section of the result will expand the specified resource to include resources
+        #   lower in the resource hierarchy. Only project or lower resources are supported.
+        #   Folder and organization resource cannot be used together with this option.
+        #   For example, if the request analyzes for which users have permission P on a
+        #   GCP project with this option enabled, the results will include all users who
+        #   have permission P on that project or any lower resource. Default is false.
+        # @param [Boolean] analysis_query_options_expand_roles
+        #   Optional. If true, the access section of result will expand any roles
+        #   appearing in IAM policy bindings to include their permissions. If
+        #   IamPolicyAnalysisQuery.access_selector is specified, the access section of the
+        #   result will be determined by the selector, and this flag is not allowed to set.
+        #   Default is false.
+        # @param [Boolean] analysis_query_options_output_group_edges
+        #   Optional. If true, the result will output group identity edges, starting from
+        #   the binding's group members, to any expanded identities. Default is false.
+        # @param [Boolean] analysis_query_options_output_resource_edges
+        #   Optional. If true, the result will output resource edges, starting from the
+        #   policy attached resource, to any expanded resources. Default is false.
+        # @param [String] analysis_query_resource_selector_full_resource_name
+        #   Required. The [full resource name] (https://cloud.google.com/asset-inventory/
+        #   docs/resource-name-format) of a resource of [supported resource types](https://
+        #   cloud.google.com/asset-inventory/docs/supported-asset-types#
+        #   analyzable_asset_types).
+        # @param [String] execution_timeout
+        #   Optional. Amount of time executable has to complete. See JSON representation
+        #   of [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json).
+        #   If this field is set with a value less than the RPC deadline, and the
+        #   execution of your query hasn't finished in the specified execution timeout,
+        #   you will get a response with partial result. Otherwise, your query's execution
+        #   will continue until the RPC deadline. If it's not finished until then, you
+        #   will get a DEADLINE_EXCEEDED error. Default is empty.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudassetV1::AnalyzeIamPolicyResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudassetV1::AnalyzeIamPolicyResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def analyze_iam_policy(scope, analysis_query_access_selector_permissions: nil, analysis_query_access_selector_roles: nil, analysis_query_identity_selector_identity: nil, analysis_query_options_analyze_service_account_impersonation: nil, analysis_query_options_expand_groups: nil, analysis_query_options_expand_resources: nil, analysis_query_options_expand_roles: nil, analysis_query_options_output_group_edges: nil, analysis_query_options_output_resource_edges: nil, analysis_query_resource_selector_full_resource_name: nil, execution_timeout: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+scope}:analyzeIamPolicy', options)
+          command.response_representation = Google::Apis::CloudassetV1::AnalyzeIamPolicyResponse::Representation
+          command.response_class = Google::Apis::CloudassetV1::AnalyzeIamPolicyResponse
+          command.params['scope'] = scope unless scope.nil?
+          command.query['analysisQuery.accessSelector.permissions'] = analysis_query_access_selector_permissions unless analysis_query_access_selector_permissions.nil?
+          command.query['analysisQuery.accessSelector.roles'] = analysis_query_access_selector_roles unless analysis_query_access_selector_roles.nil?
+          command.query['analysisQuery.identitySelector.identity'] = analysis_query_identity_selector_identity unless analysis_query_identity_selector_identity.nil?
+          command.query['analysisQuery.options.analyzeServiceAccountImpersonation'] = analysis_query_options_analyze_service_account_impersonation unless analysis_query_options_analyze_service_account_impersonation.nil?
+          command.query['analysisQuery.options.expandGroups'] = analysis_query_options_expand_groups unless analysis_query_options_expand_groups.nil?
+          command.query['analysisQuery.options.expandResources'] = analysis_query_options_expand_resources unless analysis_query_options_expand_resources.nil?
+          command.query['analysisQuery.options.expandRoles'] = analysis_query_options_expand_roles unless analysis_query_options_expand_roles.nil?
+          command.query['analysisQuery.options.outputGroupEdges'] = analysis_query_options_output_group_edges unless analysis_query_options_output_group_edges.nil?
+          command.query['analysisQuery.options.outputResourceEdges'] = analysis_query_options_output_resource_edges unless analysis_query_options_output_resource_edges.nil?
+          command.query['analysisQuery.resourceSelector.fullResourceName'] = analysis_query_resource_selector_full_resource_name unless analysis_query_resource_selector_full_resource_name.nil?
+          command.query['executionTimeout'] = execution_timeout unless execution_timeout.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Analyzes IAM policies asynchronously to answer which identities have what
+        # accesses on which resources, and writes the analysis results to a Google Cloud
+        # Storage or a BigQuery destination. For Cloud Storage destination, the output
+        # format is the JSON format that represents a AnalyzeIamPolicyResponse. This
+        # method implements the google.longrunning.Operation, which allows you to track
+        # the operation status. We recommend intervals of at least 2 seconds with
+        # exponential backoff retry to poll the operation result. The metadata contains
+        # the request to help callers to map responses to requests.
+        # @param [String] scope
+        #   Required. The relative name of the root asset. Only resources and IAM policies
+        #   within the scope will be analyzed. This can only be an organization number (
+        #   such as "organizations/123"), a folder number (such as "folders/123"), a
+        #   project ID (such as "projects/my-project-id"), or a project number (such as "
+        #   projects/12345"). To know how to get organization id, visit [here ](https://
+        #   cloud.google.com/resource-manager/docs/creating-managing-organization#
+        #   retrieving_your_organization_id). To know how to get folder or project id,
+        #   visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-
+        #   folders#viewing_or_listing_folders_and_projects).
+        # @param [Google::Apis::CloudassetV1::AnalyzeIamPolicyLongrunningRequest] analyze_iam_policy_longrunning_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudassetV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudassetV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def analyze_iam_policy_longrunning(scope, analyze_iam_policy_longrunning_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+scope}:analyzeIamPolicyLongrunning', options)
+          command.request_representation = Google::Apis::CloudassetV1::AnalyzeIamPolicyLongrunningRequest::Representation
+          command.request_object = analyze_iam_policy_longrunning_request_object
+          command.response_representation = Google::Apis::CloudassetV1::Operation::Representation
+          command.response_class = Google::Apis::CloudassetV1::Operation
+          command.params['scope'] = scope unless scope.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Batch gets the update history of assets that overlap a time window. For
         # IAM_POLICY content, this API outputs history when the asset and its attached
         # IAM POLICY both exist. This can create gaps in the output history. Otherwise,
