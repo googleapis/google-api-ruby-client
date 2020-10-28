@@ -629,9 +629,9 @@ module Google
         # - `VPC_PEERING` for addresses that are reserved for VPC peer networks.
         # - `NAT_AUTO` for addresses that are external IP addresses automatically
         # reserved for Cloud NAT.
-        # - `IPSEC_INTERCONNECT` for addresses created from a private IP range reserved
-        # for a VLAN attachment in an IPsec over Interconnect configuration. These
-        # addresses are regional resources.
+        # - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are
+        # reserved for a VLAN attachment in an IPsec encrypted Interconnect
+        # configuration. These addresses are regional resources.
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose
@@ -2164,12 +2164,57 @@ module Google
       class AutoscalingPolicyCustomMetricUtilization
         include Google::Apis::Core::Hashable
       
+        # A filter string, compatible with a Stackdriver Monitoring filter string for
+        # TimeSeries.list API call. This filter is used to select a specific TimeSeries
+        # for the purpose of autoscaling and to determine whether the metric is
+        # exporting per-instance or per-group data.
+        # For the filter to be valid for autoscaling purposes, the following rules apply:
+        # 
+        # - You can only use the AND operator for joining selectors.
+        # - You can only use direct equality comparison operator (=) without any
+        # functions for each selector.
+        # - You can specify the metric in both the filter string and in the metric field.
+        # However, if specified in both places, the metric must be identical.
+        # - The monitored resource type determines what kind of values are expected for
+        # the metric. If it is a gce_instance, the autoscaler expects the metric to
+        # include a separate TimeSeries for each instance in a group. In such a case,
+        # you cannot filter on resource labels.
+        # If the resource type is any other value, the autoscaler expects this metric to
+        # contain values that apply to the entire autoscaled instance group and resource
+        # label filtering can be performed to point autoscaler at the correct TimeSeries
+        # to scale upon. This is called a per-group metric for the purpose of
+        # autoscaling.
+        # If not specified, the type defaults to gce_instance.
+        # You should provide a filter that is selective enough to pick just one
+        # TimeSeries for the autoscaled group or for each of the instances (if you are
+        # using gce_instance resource type). If multiple TimeSeries are returned upon
+        # the query execution, the autoscaler will sum their respective values to obtain
+        # its scaling value.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
         # The identifier (type) of the Stackdriver Monitoring metric. The metric cannot
         # have negative values.
         # The metric must have a value type of INT64 or DOUBLE.
         # Corresponds to the JSON property `metric`
         # @return [String]
         attr_accessor :metric
+      
+        # If scaling is based on a per-group metric value that represents the total
+        # amount of work to be done or resource usage, set this value to an amount
+        # assigned for a single instance of the scaled group. Autoscaler will keep the
+        # number of instances proportional to the value of this metric, the metric
+        # itself should not change value due to group resizing.
+        # A good metric to use with the target is for example pubsub.googleapis.com/
+        # subscription/num_undelivered_messages or a custom metric exporting the total
+        # number of requests coming to your instances.
+        # A bad example would be a metric exporting an average or median latency, since
+        # this value can't include a chunk assignable to a single instance, it could be
+        # better used with utilization_target instead.
+        # Corresponds to the JSON property `singleInstanceAssignment`
+        # @return [Float]
+        attr_accessor :single_instance_assignment
       
         # The target value of the metric that autoscaler should maintain. This must be a
         # positive value. A utilization metric scales number of virtual machines
@@ -2193,7 +2238,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
           @metric = args[:metric] if args.key?(:metric)
+          @single_instance_assignment = args[:single_instance_assignment] if args.key?(:single_instance_assignment)
           @utilization_target = args[:utilization_target] if args.key?(:utilization_target)
           @utilization_target_type = args[:utilization_target_type] if args.key?(:utilization_target_type)
         end
@@ -2900,6 +2947,11 @@ module Google
         # @return [String]
         attr_accessor :security_policy
       
+        # The authentication and authorization settings for a BackendService.
+        # Corresponds to the JSON property `securitySettings`
+        # @return [Google::Apis::ComputeV1::SecuritySettings]
+        attr_accessor :security_settings
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -2961,6 +3013,7 @@ module Google
           @protocol = args[:protocol] if args.key?(:protocol)
           @region = args[:region] if args.key?(:region)
           @security_policy = args[:security_policy] if args.key?(:security_policy)
+          @security_settings = args[:security_settings] if args.key?(:security_settings)
           @self_link = args[:self_link] if args.key?(:self_link)
           @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
           @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
@@ -6817,6 +6870,8 @@ module Google
         # ip_address_specifications).
         # Must be set to `0.0.0.0` when the target is targetGrpcProxy that has
         # validateForProxyless field set to true.
+        # For Private Service Connect forwarding rules that forward traffic to Google
+        # APIs, IP address must be provided.
         # Corresponds to the JSON property `IPAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -6967,6 +7022,8 @@ module Google
         # For internal load balancing, this field identifies the network that the load
         # balanced IP should belong to for this Forwarding Rule. If this field is not
         # specified, the default network will be used.
+        # For Private Service Connect forwarding rules that forward traffic to Google
+        # APIs, a network must be provided.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -7065,6 +7122,15 @@ module Google
         # resource. The forwarded traffic must be of a type appropriate to the target
         # object. For more information, see the "Target" column in [Port specifications](
         # /load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+        # For Private Service Connect forwarding rules that forward traffic to Google
+        # APIs, provide the name of a supported Google API bundle. Currently, the
+        # supported Google API bundles include:
+        # 
+        # - vpc-sc - GCP APIs that support VPC Service Controls. For more information
+        # about which APIs support VPC Service Controls, refer to VPC-SC supported
+        # products and limitations.
+        # - all-apis - All GCP APIs. For more information about which APIs are supported
+        # with this bundle, refer to Private Google Access-specific domains and VIPs.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -8047,6 +8113,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Configuration of logging on a health check. If logging is enabled, logs will
+        # be exported to Stackdriver.
+        # Corresponds to the JSON property `logConfig`
+        # @return [Google::Apis::ComputeV1::HealthCheckLogConfig]
+        attr_accessor :log_config
+      
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
@@ -8114,6 +8186,7 @@ module Google
           @https_health_check = args[:https_health_check] if args.key?(:https_health_check)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @log_config = args[:log_config] if args.key?(:log_config)
           @name = args[:name] if args.key?(:name)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -8239,6 +8312,28 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Configuration of logging on a health check. If logging is enabled, logs will
+      # be exported to Stackdriver.
+      class HealthCheckLogConfig
+        include Google::Apis::Core::Hashable
+      
+        # Indicates whether or not to export logs. This is false by default, which means
+        # no health check logging will be done.
+        # Corresponds to the JSON property `enable`
+        # @return [Boolean]
+        attr_accessor :enable
+        alias_method :enable?, :enable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable = args[:enable] if args.key?(:enable)
         end
       end
       
@@ -12043,6 +12138,13 @@ module Google
       class InstanceGroupManagersApplyUpdatesRequest
         include Google::Apis::Core::Hashable
       
+        # Flag to update all instances instead of specified list of ?instances?. If the
+        # flag is set to true then the instances may not be specified in the request.
+        # Corresponds to the JSON property `allInstances`
+        # @return [Boolean]
+        attr_accessor :all_instances
+        alias_method :all_instances?, :all_instances
+      
         # The list of URLs of one or more instances for which you want to apply updates.
         # Each URL can be a full URL or a partial URL, such as zones/[ZONE]/instances/[
         # INSTANCE_NAME].
@@ -12080,6 +12182,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @all_instances = args[:all_instances] if args.key?(:all_instances)
           @instances = args[:instances] if args.key?(:instances)
           @minimal_action = args[:minimal_action] if args.key?(:minimal_action)
           @most_disruptive_allowed_action = args[:most_disruptive_allowed_action] if args.key?(:most_disruptive_allowed_action)
@@ -22810,6 +22913,13 @@ module Google
       class RegionInstanceGroupManagersApplyUpdatesRequest
         include Google::Apis::Core::Hashable
       
+        # Flag to update all instances instead of specified list of ?instances?. If the
+        # flag is set to true then the instances may not be specified in the request.
+        # Corresponds to the JSON property `allInstances`
+        # @return [Boolean]
+        attr_accessor :all_instances
+        alias_method :all_instances?, :all_instances
+      
         # The list of URLs of one or more instances for which you want to apply updates.
         # Each URL can be a full URL or a partial URL, such as zones/[ZONE]/instances/[
         # INSTANCE_NAME].
@@ -22847,6 +22957,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @all_instances = args[:all_instances] if args.key?(:all_instances)
           @instances = args[:instances] if args.key?(:instances)
           @minimal_action = args[:minimal_action] if args.key?(:minimal_action)
           @most_disruptive_allowed_action = args[:most_disruptive_allowed_action] if args.key?(:most_disruptive_allowed_action)
@@ -24753,6 +24864,11 @@ module Google
       class ResourcePolicySnapshotSchedulePolicySnapshotProperties
         include Google::Apis::Core::Hashable
       
+        # Chain name that the snapshot is created in.
+        # Corresponds to the JSON property `chainName`
+        # @return [String]
+        attr_accessor :chain_name
+      
         # Indication to perform a 'guest aware' snapshot.
         # Corresponds to the JSON property `guestFlush`
         # @return [Boolean]
@@ -24777,6 +24893,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @chain_name = args[:chain_name] if args.key?(:chain_name)
           @guest_flush = args[:guest_flush] if args.key?(:guest_flush)
           @labels = args[:labels] if args.key?(:labels)
           @storage_locations = args[:storage_locations] if args.key?(:storage_locations)
@@ -24896,8 +25013,9 @@ module Google
         attr_accessor :next_hop_gateway
       
         # The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should
-        # handle matching packets. You can only specify the forwarding rule as a partial
-        # or full URL. For example, the following are all valid URLs:
+        # handle matching packets or the IP address of the forwarding Rule. For example,
+        # the following are all valid URLs:
+        # - 10.128.0.56
         # - https://www.googleapis.com/compute/v1/projects/project/regions/region/
         # forwardingRules/forwardingRule
         # - regions/region/forwardingRules/forwardingRule
@@ -26519,10 +26637,10 @@ module Google
         end
       end
       
-      # Represents a Cloud Armor Security Policy resource.
+      # Represents a Google Cloud Armor security policy resource.
       # Only external backend services that use load balancers can reference a
-      # Security Policy. For more information, read  Cloud Armor Security Policy
-      # Concepts. (== resource_for `$api_version`.securityPolicies ==)
+      # security policy. For more information, see  Google Cloud Armor security policy
+      # overview. (== resource_for `$api_version`.securityPolicies ==)
       class SecurityPolicy
         include Google::Apis::Core::Hashable
       
@@ -26866,6 +26984,48 @@ module Google
         end
       end
       
+      # The authentication and authorization settings for a BackendService.
+      class SecuritySettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that
+        # describes how clients should authenticate with this service's backends.
+        # clientTlsPolicy only applies to a global BackendService with the
+        # loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        # If left blank, communications are not encrypted.
+        # Note: This field currently has no impact.
+        # Corresponds to the JSON property `clientTlsPolicy`
+        # @return [String]
+        attr_accessor :client_tls_policy
+      
+        # Optional. A list of Subject Alternative Names (SANs) that the client verifies
+        # during a mutual TLS handshake with an server/endpoint for this BackendService.
+        # When the server presents its X.509 certificate to the client, the client
+        # inspects the certificate's subjectAltName field. If the field contains one of
+        # the specified values, the communication continues. Otherwise, it fails. This
+        # additional check enables the client to verify that the server is authorized to
+        # run the requested service.
+        # Note that the contents of the server certificate's subjectAltName field are
+        # configured by the Public Key Infrastructure which provisions server identities.
+        # Only applies to a global BackendService with loadBalancingScheme set to
+        # INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached
+        # clientTlsPolicy with clientCertificate (mTLS mode).
+        # Note: This field currently has no impact.
+        # Corresponds to the JSON property `subjectAltNames`
+        # @return [Array<String>]
+        attr_accessor :subject_alt_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_tls_policy = args[:client_tls_policy] if args.key?(:client_tls_policy)
+          @subject_alt_names = args[:subject_alt_names] if args.key?(:subject_alt_names)
+        end
+      end
+      
       # An instance's serial console output.
       class SerialPortOutput
         include Google::Apis::Core::Hashable
@@ -27120,6 +27280,16 @@ module Google
         attr_accessor :auto_created
         alias_method :auto_created?, :auto_created
       
+        # Creates the new snapshot in the snapshot chain labeled with the specified name.
+        # The chain name must be 1-63 characters long and comply with RFC1035. This is
+        # an uncommon option only for advanced service owners who needs to create
+        # separate snapshot chains, for example, for chargeback tracking. When you
+        # describe your snapshot resource, this field is visible only if it has a non-
+        # empty value.
+        # Corresponds to the JSON property `chainName`
+        # @return [String]
+        attr_accessor :chain_name
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -27264,6 +27434,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_created = args[:auto_created] if args.key?(:auto_created)
+          @chain_name = args[:chain_name] if args.key?(:chain_name)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
@@ -28084,10 +28255,10 @@ module Google
         end
       end
       
-      # Represents a Cloud Armor Security Policy resource.
+      # Represents a Google Cloud Armor security policy resource.
       # Only external backend services used by HTTP or HTTPS load balancers can
-      # reference a Security Policy. For more information, read read  Cloud Armor
-      # Security Policy Concepts. (== resource_for `$api_version`.sslPolicies ==)
+      # reference a security policy. For more information, see  Google Cloud Armor
+      # security policy overview. (== resource_for `$api_version`.sslPolicies ==)
       class SslPolicy
         include Google::Apis::Core::Hashable
       
@@ -29460,6 +29631,19 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # This field only applies when the forwarding rule that references this target
+        # proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        # When this field is set to true, Envoy proxies set up inbound traffic
+        # interception and bind to the IP address and port specified in the forwarding
+        # rule. This is generally useful when using Traffic Director to configure Envoy
+        # as a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy
+        # proxy listens for inbound requests and handles requests when it receives them.
+        # The default is false.
+        # Corresponds to the JSON property `proxyBind`
+        # @return [Boolean]
+        attr_accessor :proxy_bind
+        alias_method :proxy_bind?, :proxy_bind
+      
         # [Output Only] URL of the region where the regional Target HTTP Proxy resides.
         # This field is not applicable to global Target HTTP Proxies.
         # Corresponds to the JSON property `region`
@@ -29489,6 +29673,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @proxy_bind = args[:proxy_bind] if args.key?(:proxy_bind)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @url_map = args[:url_map] if args.key?(:url_map)
@@ -29811,6 +29996,18 @@ module Google
       class TargetHttpsProxy
         include Google::Apis::Core::Hashable
       
+        # Optional. A URL referring to a networksecurity.AuthorizationPolicy resource
+        # that describes how the proxy should authorize inbound traffic. If left blank,
+        # access will not be restricted by an authorization policy.
+        # Refer to the AuthorizationPolicy resource for additional details.
+        # authorizationPolicy only applies to a global TargetHttpsProxy attached to
+        # globalForwardingRules with the loadBalancingScheme set to
+        # INTERNAL_SELF_MANAGED.
+        # Note: This field currently has no impact.
+        # Corresponds to the JSON property `authorizationPolicy`
+        # @return [String]
+        attr_accessor :authorization_policy
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -29844,6 +30041,19 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # This field only applies when the forwarding rule that references this target
+        # proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        # When this field is set to true, Envoy proxies set up inbound traffic
+        # interception and bind to the IP address and port specified in the forwarding
+        # rule. This is generally useful when using Traffic Director to configure Envoy
+        # as a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy
+        # proxy listens for inbound requests and handles requests when it receives them.
+        # The default is false.
+        # Corresponds to the JSON property `proxyBind`
+        # @return [Boolean]
+        attr_accessor :proxy_bind
+        alias_method :proxy_bind?, :proxy_bind
+      
         # Specifies the QUIC override policy for this TargetHttpsProxy resource. This
         # setting determines whether the load balancer attempts to negotiate QUIC with
         # clients. You can specify NONE, ENABLE, or DISABLE.
@@ -29867,6 +30077,17 @@ module Google
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
+      
+        # Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that
+        # describes how the proxy should authenticate inbound traffic.
+        # serverTlsPolicy only applies to a global TargetHttpsProxy attached to
+        # globalForwardingRules with the loadBalancingScheme set to
+        # INTERNAL_SELF_MANAGED.
+        # If left blank, communications are not encrypted.
+        # Note: This field currently has no impact.
+        # Corresponds to the JSON property `serverTlsPolicy`
+        # @return [String]
+        attr_accessor :server_tls_policy
       
         # URLs to SslCertificate resources that are used to authenticate connections
         # between users and the load balancer. At least one SSL certificate must be
@@ -29898,14 +30119,17 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @authorization_policy = args[:authorization_policy] if args.key?(:authorization_policy)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @proxy_bind = args[:proxy_bind] if args.key?(:proxy_bind)
           @quic_override = args[:quic_override] if args.key?(:quic_override)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @server_tls_policy = args[:server_tls_policy] if args.key?(:server_tls_policy)
           @ssl_certificates = args[:ssl_certificates] if args.key?(:ssl_certificates)
           @ssl_policy = args[:ssl_policy] if args.key?(:ssl_policy)
           @url_map = args[:url_map] if args.key?(:url_map)
@@ -30582,9 +30806,9 @@ module Google
       class TargetPool
         include Google::Apis::Core::Hashable
       
-        # This field is applicable only when the containing target pool is serving a
-        # forwarding rule as the primary pool, and its failoverRatio field is properly
-        # set to a value between [0, 1].
+        # The server-defined URL for the resource. This field is applicable only when
+        # the containing target pool is serving a forwarding rule as the primary pool,
+        # and its failoverRatio field is properly set to a value between [0, 1].
         # backupPool and failoverRatio together define the fallback behavior of the
         # primary target pool: if the ratio of the healthy instances in the primary pool
         # is at or below failoverRatio, traffic arriving at the load-balanced IP will be
