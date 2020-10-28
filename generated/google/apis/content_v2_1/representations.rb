@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccountLabel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccountStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -280,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Css
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomAttribute
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -472,6 +484,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LabelIds
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LiaAboutPageSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -581,6 +599,24 @@ module Google
       end
       
       class LinkedAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAccountLabelsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListCssesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListRepricingRulesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1492,6 +1528,48 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RepricingRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RepricingRuleEffectiveTime
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RepricingRuleEffectiveTimeFixedTimePeriod
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RepricingRuleEligibleOfferMatcher
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RepricingRuleEligibleOfferMatcherStringMatcher
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RepricingRuleRestriction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RepricingRuleRestrictionBoundary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReturnAddress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1902,6 +1980,16 @@ module Google
         end
       end
       
+      class AccountLabel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, :numeric_string => true, as: 'accountId'
+          property :description, as: 'description'
+          property :label_id, :numeric_string => true, as: 'labelId'
+          property :name, as: 'name'
+        end
+      end
+      
       class AccountStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2268,6 +2356,18 @@ module Google
         end
       end
       
+      class Css
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :css_domain_id, :numeric_string => true, as: 'cssDomainId'
+          property :css_group_id, :numeric_string => true, as: 'cssGroupId'
+          property :display_name, as: 'displayName'
+          property :full_name, as: 'fullName'
+          property :homepage_uri, as: 'homepageUri'
+          collection :label_ids, as: 'labelIds'
+        end
+      end
+      
       class CustomAttribute
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2615,6 +2715,13 @@ module Google
         end
       end
       
+      class LabelIds
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :label_ids, as: 'labelIds'
+        end
+      end
+      
       class LiaAboutPageSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2797,6 +2904,33 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :linked_account_id, as: 'linkedAccountId'
           collection :services, as: 'services', class: Google::Apis::ContentV2_1::LinkService, decorator: Google::Apis::ContentV2_1::LinkService::Representation
+      
+        end
+      end
+      
+      class ListAccountLabelsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :account_labels, as: 'accountLabels', class: Google::Apis::ContentV2_1::AccountLabel, decorator: Google::Apis::ContentV2_1::AccountLabel::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListCssesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :csses, as: 'csses', class: Google::Apis::ContentV2_1::Css, decorator: Google::Apis::ContentV2_1::Css::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListRepricingRulesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :repricing_rules, as: 'repricingRules', class: Google::Apis::ContentV2_1::RepricingRule, decorator: Google::Apis::ContentV2_1::RepricingRule::Representation
       
         end
       end
@@ -4544,6 +4678,78 @@ module Google
           property :kind, as: 'kind'
           property :regional_inventory, as: 'regionalInventory', class: Google::Apis::ContentV2_1::RegionalInventory, decorator: Google::Apis::ContentV2_1::RegionalInventory::Representation
       
+        end
+      end
+      
+      class RepricingRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :country_code, as: 'countryCode'
+          property :effective_time_period, as: 'effectiveTimePeriod', class: Google::Apis::ContentV2_1::RepricingRuleEffectiveTime, decorator: Google::Apis::ContentV2_1::RepricingRuleEffectiveTime::Representation
+      
+          property :eligible_offer_matcher, as: 'eligibleOfferMatcher', class: Google::Apis::ContentV2_1::RepricingRuleEligibleOfferMatcher, decorator: Google::Apis::ContentV2_1::RepricingRuleEligibleOfferMatcher::Representation
+      
+          property :language_code, as: 'languageCode'
+          property :merchant_id, :numeric_string => true, as: 'merchantId'
+          property :paused, as: 'paused'
+          property :restriction, as: 'restriction', class: Google::Apis::ContentV2_1::RepricingRuleRestriction, decorator: Google::Apis::ContentV2_1::RepricingRuleRestriction::Representation
+      
+          property :rule_id, as: 'ruleId'
+          property :title, as: 'title'
+          property :type, as: 'type'
+        end
+      end
+      
+      class RepricingRuleEffectiveTime
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :fixed_time_periods, as: 'fixedTimePeriods', class: Google::Apis::ContentV2_1::RepricingRuleEffectiveTimeFixedTimePeriod, decorator: Google::Apis::ContentV2_1::RepricingRuleEffectiveTimeFixedTimePeriod::Representation
+      
+        end
+      end
+      
+      class RepricingRuleEffectiveTimeFixedTimePeriod
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class RepricingRuleEligibleOfferMatcher
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :brand_matcher, as: 'brandMatcher', class: Google::Apis::ContentV2_1::RepricingRuleEligibleOfferMatcherStringMatcher, decorator: Google::Apis::ContentV2_1::RepricingRuleEligibleOfferMatcherStringMatcher::Representation
+      
+          property :item_group_id_matcher, as: 'itemGroupIdMatcher', class: Google::Apis::ContentV2_1::RepricingRuleEligibleOfferMatcherStringMatcher, decorator: Google::Apis::ContentV2_1::RepricingRuleEligibleOfferMatcherStringMatcher::Representation
+      
+          property :matcher_option, as: 'matcherOption'
+          property :offer_id_matcher, as: 'offerIdMatcher', class: Google::Apis::ContentV2_1::RepricingRuleEligibleOfferMatcherStringMatcher, decorator: Google::Apis::ContentV2_1::RepricingRuleEligibleOfferMatcherStringMatcher::Representation
+      
+        end
+      end
+      
+      class RepricingRuleEligibleOfferMatcherStringMatcher
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :str_attributes, as: 'strAttributes'
+        end
+      end
+      
+      class RepricingRuleRestriction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :floor, as: 'floor', class: Google::Apis::ContentV2_1::RepricingRuleRestrictionBoundary, decorator: Google::Apis::ContentV2_1::RepricingRuleRestrictionBoundary::Representation
+      
+          property :use_auto_pricing_min_price, as: 'useAutoPricingMinPrice'
+        end
+      end
+      
+      class RepricingRuleRestrictionBoundary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :percentage_delta, as: 'percentageDelta'
+          property :price_delta, as: 'priceDelta'
         end
       end
       
