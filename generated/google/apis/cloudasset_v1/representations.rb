@@ -22,6 +22,24 @@ module Google
   module Apis
     module CloudassetV1
       
+      class AccessSelector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnalyzeIamPolicyLongrunningRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnalyzeIamPolicyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Asset
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -101,6 +119,54 @@ module Google
       end
       
       class GcsDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssetV1Access
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssetV1AccessControlList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssetV1BigQueryDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssetV1Edge
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssetV1GcsDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssetV1Identity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssetV1IdentityList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssetV1Resource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -190,7 +256,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IamPolicyAnalysis
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IamPolicyAnalysisOutputConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IamPolicyAnalysisQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IamPolicyAnalysisResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IamPolicyAnalysisState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IamPolicySearchResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IdentitySelector
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -203,6 +305,12 @@ module Google
       end
       
       class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Options
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -250,6 +358,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceSelector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SearchAllIamPoliciesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -284,6 +398,35 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessSelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
+          collection :roles, as: 'roles'
+        end
+      end
+      
+      class AnalyzeIamPolicyLongrunningRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analysis_query, as: 'analysisQuery', class: Google::Apis::CloudassetV1::IamPolicyAnalysisQuery, decorator: Google::Apis::CloudassetV1::IamPolicyAnalysisQuery::Representation
+      
+          property :output_config, as: 'outputConfig', class: Google::Apis::CloudassetV1::IamPolicyAnalysisOutputConfig, decorator: Google::Apis::CloudassetV1::IamPolicyAnalysisOutputConfig::Representation
+      
+        end
+      end
+      
+      class AnalyzeIamPolicyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fully_explored, as: 'fullyExplored'
+          property :main_analysis, as: 'mainAnalysis', class: Google::Apis::CloudassetV1::IamPolicyAnalysis, decorator: Google::Apis::CloudassetV1::IamPolicyAnalysis::Representation
+      
+          collection :service_account_impersonation_analysis, as: 'serviceAccountImpersonationAnalysis', class: Google::Apis::CloudassetV1::IamPolicyAnalysis, decorator: Google::Apis::CloudassetV1::IamPolicyAnalysis::Representation
+      
+        end
       end
       
       class Asset
@@ -426,6 +569,81 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :uri, as: 'uri'
           property :uri_prefix, as: 'uriPrefix'
+        end
+      end
+      
+      class GoogleCloudAssetV1Access
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analysis_state, as: 'analysisState', class: Google::Apis::CloudassetV1::IamPolicyAnalysisState, decorator: Google::Apis::CloudassetV1::IamPolicyAnalysisState::Representation
+      
+          property :permission, as: 'permission'
+          property :role, as: 'role'
+        end
+      end
+      
+      class GoogleCloudAssetV1AccessControlList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accesses, as: 'accesses', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1Access, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1Access::Representation
+      
+          collection :resource_edges, as: 'resourceEdges', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1Edge, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1Edge::Representation
+      
+          collection :resources, as: 'resources', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1Resource, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1Resource::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAssetV1BigQueryDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset, as: 'dataset'
+          property :partition_key, as: 'partitionKey'
+          property :table_prefix, as: 'tablePrefix'
+          property :write_disposition, as: 'writeDisposition'
+        end
+      end
+      
+      class GoogleCloudAssetV1Edge
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_node, as: 'sourceNode'
+          property :target_node, as: 'targetNode'
+        end
+      end
+      
+      class GoogleCloudAssetV1GcsDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudAssetV1Identity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analysis_state, as: 'analysisState', class: Google::Apis::CloudassetV1::IamPolicyAnalysisState, decorator: Google::Apis::CloudassetV1::IamPolicyAnalysisState::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudAssetV1IdentityList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :group_edges, as: 'groupEdges', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1Edge, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1Edge::Representation
+      
+          collection :identities, as: 'identities', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1Identity, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1Identity::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAssetV1Resource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analysis_state, as: 'analysisState', class: Google::Apis::CloudassetV1::IamPolicyAnalysisState, decorator: Google::Apis::CloudassetV1::IamPolicyAnalysisState::Representation
+      
+          property :full_resource_name, as: 'fullResourceName'
         end
       end
       
@@ -578,6 +796,66 @@ module Google
         end
       end
       
+      class IamPolicyAnalysis
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analysis_query, as: 'analysisQuery', class: Google::Apis::CloudassetV1::IamPolicyAnalysisQuery, decorator: Google::Apis::CloudassetV1::IamPolicyAnalysisQuery::Representation
+      
+          collection :analysis_results, as: 'analysisResults', class: Google::Apis::CloudassetV1::IamPolicyAnalysisResult, decorator: Google::Apis::CloudassetV1::IamPolicyAnalysisResult::Representation
+      
+          property :fully_explored, as: 'fullyExplored'
+          collection :non_critical_errors, as: 'nonCriticalErrors', class: Google::Apis::CloudassetV1::IamPolicyAnalysisState, decorator: Google::Apis::CloudassetV1::IamPolicyAnalysisState::Representation
+      
+        end
+      end
+      
+      class IamPolicyAnalysisOutputConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_destination, as: 'bigqueryDestination', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1BigQueryDestination, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1BigQueryDestination::Representation
+      
+          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1GcsDestination, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1GcsDestination::Representation
+      
+        end
+      end
+      
+      class IamPolicyAnalysisQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_selector, as: 'accessSelector', class: Google::Apis::CloudassetV1::AccessSelector, decorator: Google::Apis::CloudassetV1::AccessSelector::Representation
+      
+          property :identity_selector, as: 'identitySelector', class: Google::Apis::CloudassetV1::IdentitySelector, decorator: Google::Apis::CloudassetV1::IdentitySelector::Representation
+      
+          property :options, as: 'options', class: Google::Apis::CloudassetV1::Options, decorator: Google::Apis::CloudassetV1::Options::Representation
+      
+          property :resource_selector, as: 'resourceSelector', class: Google::Apis::CloudassetV1::ResourceSelector, decorator: Google::Apis::CloudassetV1::ResourceSelector::Representation
+      
+          property :scope, as: 'scope'
+        end
+      end
+      
+      class IamPolicyAnalysisResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :access_control_lists, as: 'accessControlLists', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1AccessControlList, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1AccessControlList::Representation
+      
+          property :attached_resource_full_name, as: 'attachedResourceFullName'
+          property :fully_explored, as: 'fullyExplored'
+          property :iam_binding, as: 'iamBinding', class: Google::Apis::CloudassetV1::Binding, decorator: Google::Apis::CloudassetV1::Binding::Representation
+      
+          property :identity_list, as: 'identityList', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1IdentityList, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1IdentityList::Representation
+      
+        end
+      end
+      
+      class IamPolicyAnalysisState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cause, as: 'cause'
+          property :code, as: 'code'
+        end
+      end
+      
       class IamPolicySearchResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -587,6 +865,13 @@ module Google
       
           property :project, as: 'project'
           property :resource, as: 'resource'
+        end
+      end
+      
+      class IdentitySelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :identity, as: 'identity'
         end
       end
       
@@ -607,6 +892,18 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+        end
+      end
+      
+      class Options
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analyze_service_account_impersonation, as: 'analyzeServiceAccountImpersonation'
+          property :expand_groups, as: 'expandGroups'
+          property :expand_resources, as: 'expandResources'
+          property :expand_roles, as: 'expandRoles'
+          property :output_group_edges, as: 'outputGroupEdges'
+          property :output_resource_edges, as: 'outputResourceEdges'
         end
       end
       
@@ -678,6 +975,13 @@ module Google
           property :name, as: 'name'
           collection :network_tags, as: 'networkTags'
           property :project, as: 'project'
+        end
+      end
+      
+      class ResourceSelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :full_resource_name, as: 'fullResourceName'
         end
       end
       
