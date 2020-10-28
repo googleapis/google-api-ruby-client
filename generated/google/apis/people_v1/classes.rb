@@ -509,8 +509,8 @@ module Google
         # @return [String]
         attr_accessor :read_mask
       
-        # Optional. A mask of what source types to return. Defaults to ReadSourceType.
-        # CONTACT and ReadSourceType.PROFILE if not set.
+        # Optional. A mask of what source types to return. Defaults to
+        # READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set.
         # Corresponds to the JSON property `sources`
         # @return [Array<String>]
         attr_accessor :sources
@@ -2511,8 +2511,8 @@ module Google
         # @return [String]
         attr_accessor :photo_bytes
       
-        # Optional. A mask of what source types to return. Defaults to ReadSourceType.
-        # CONTACT and ReadSourceType.PROFILE if not set.
+        # Optional. A mask of what source types to return. Defaults to
+        # READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set.
         # Corresponds to the JSON property `sources`
         # @return [Array<String>]
         attr_accessor :sources

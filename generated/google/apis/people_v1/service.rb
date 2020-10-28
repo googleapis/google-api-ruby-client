@@ -397,8 +397,8 @@ module Google
         #   organizations * phoneNumbers * photos * relations * sipAddresses * skills *
         #   urls * userDefined
         # @param [Array<String>, String] sources
-        #   Optional. A mask of what source types to return. Defaults to ReadSourceType.
-        #   CONTACT and ReadSourceType.PROFILE if not set.
+        #   Optional. A mask of what source types to return. Defaults to
+        #   READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -472,8 +472,8 @@ module Google
         #   names * nicknames * occupations * organizations * phoneNumbers * photos *
         #   relations * sipAddresses * skills * urls * userDefined
         # @param [Array<String>, String] sources
-        #   Optional. A mask of what source types to return. Defaults to ReadSourceType.
-        #   CONTACT and ReadSourceType.PROFILE if not set.
+        #   Optional. A mask of what source types to return. Defaults to
+        #   READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -526,8 +526,8 @@ module Google
         #   Each path should start with `person.`: for example, `person.names` or `person.
         #   photos`.
         # @param [Array<String>, String] sources
-        #   Optional. A mask of what source types to return. Defaults to ReadSourceType.
-        #   PROFILE and ReadSourceType.CONTACT if not set.
+        #   Optional. A mask of what source types to return. Defaults to
+        #   READ_SOURCE_TYPE_PROFILE and READ_SOURCE_TYPE_CONTACT if not set.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -583,8 +583,8 @@ module Google
         #   list`](/people/api/rest/v1/people.connections/list). You can include up to 50
         #   resource names in one request.
         # @param [Array<String>, String] sources
-        #   Optional. A mask of what source types to return. Defaults to ReadSourceType.
-        #   CONTACT and ReadSourceType.PROFILE if not set.
+        #   Optional. A mask of what source types to return. Defaults to
+        #   READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -765,8 +765,8 @@ module Google
         #   organizations * phoneNumbers * photos * relations * sipAddresses * skills *
         #   urls * userDefined
         # @param [Array<String>, String] sources
-        #   Optional. A mask of what source types to return. Defaults to ReadSourceType.
-        #   CONTACT and ReadSourceType.PROFILE if not set.
+        #   Optional. A mask of what source types to return. Defaults to
+        #   READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set.
         # @param [String] update_person_fields
         #   Required. A field mask to restrict which fields on the person are updated.
         #   Multiple fields can be specified by separating them with commas. All updated
@@ -874,8 +874,8 @@ module Google
         #   Optional. The order in which the connections should be sorted. Defaults to `
         #   LAST_MODIFIED_ASCENDING`.
         # @param [Array<String>, String] sources
-        #   Optional. A mask of what source types to return. Defaults to ReadSourceType.
-        #   CONTACT and ReadSourceType.PROFILE if not set.
+        #   Optional. A mask of what source types to return. Defaults to
+        #   READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set.
         # @param [String] sync_token
         #   Optional. A sync token, received from a previous `ListConnections` call.
         #   Provide this to retrieve only the resources changed since the last request.
