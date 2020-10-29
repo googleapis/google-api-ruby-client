@@ -815,6 +815,38 @@ module Google
       class Resource
         include Google::Apis::Core::Hashable
       
+        # Annotations is an unstructured key-value map stored with a resource that may
+        # be set by external tools to store and retrieve arbitrary metadata. They are
+        # not queryable and should be preserved when modifying objects. More info: http:/
+        # /kubernetes.io/docs/user-guide/annotations
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Output only. The timestamp when the resource was created. This may be either
+        # the time creation was initiated or when it was completed.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The timestamp when the resource was deleted. If the resource is
+        # not deleted, this must be empty.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Mutable. The display name set by clients. Must be <= 63 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. An opaque value that uniquely identifies a version or generation
+        # of a resource. It can be used to confirm that the client and server agree on
+        # the ordering of a resource being written.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # The labels or tags on the resource, such as AWS resource tags and Kubernetes
         # resource labels.
         # Corresponds to the JSON property `labels`
@@ -857,17 +889,30 @@ module Google
         # @return [String]
         attr_accessor :uid
       
+        # Output only. The timestamp when the resource was last updated. Any change to
+        # the resource made by users must refresh this value. Changes to a resource made
+        # by the service should refresh this value.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @service = args[:service] if args.key?(:service)
           @type = args[:type] if args.key?(:type)
           @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
