@@ -1189,6 +1189,8 @@ module Google
       class ContainerSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_environment, as: 'defaultEnvironment', class: Google::Apis::DataflowV1b3::FlexTemplateRuntimeEnvironment, decorator: Google::Apis::DataflowV1b3::FlexTemplateRuntimeEnvironment::Representation
+      
           property :image, as: 'image'
           property :metadata, as: 'metadata', class: Google::Apis::DataflowV1b3::TemplateMetadata, decorator: Google::Apis::DataflowV1b3::TemplateMetadata::Representation
       
@@ -1426,6 +1428,7 @@ module Google
           property :name, as: 'name'
           collection :output_source, as: 'outputSource', class: Google::Apis::DataflowV1b3::StageSource, decorator: Google::Apis::DataflowV1b3::StageSource::Representation
       
+          collection :prerequisite_stage, as: 'prerequisiteStage'
         end
       end
       
