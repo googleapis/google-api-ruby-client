@@ -8,8 +8,9 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     steps:
-      - uses: GoogleCloudPlatform/release-please-action@v2.5.6
+      - uses: GoogleCloudPlatform/release-please-action@v2.5.7
         with:
+          command: release-pr
           token: ${{ secrets.YOSHI_CODE_BOT_TOKEN }}
           release-type: ruby
           package-name: google-api-ruby-client
