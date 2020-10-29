@@ -783,11 +783,17 @@ module Google
       class Resource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :service, as: 'service'
           property :type, as: 'type'
           property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
         end
       end
       
