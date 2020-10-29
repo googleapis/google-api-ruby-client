@@ -26,8 +26,7 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # A client-specified ID for this binding. Expected to be globally unique to
-        # support the internal bindings-by-ID API.
+        # 
         # Corresponds to the JSON property `bindingId`
         # @return [String]
         attr_accessor :binding_id
