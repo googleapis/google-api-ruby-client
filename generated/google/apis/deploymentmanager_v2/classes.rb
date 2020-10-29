@@ -24,21 +24,19 @@ module Google
       
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
-      # from logging. An AuditConfig must have one or more AuditLogConfigs.
-      # If there are AuditConfigs for both `allServices` and a specific service, the
-      # union of the two AuditConfigs is used for that service: the log_types
-      # specified in each AuditConfig are enabled, and the exempted_members in each
-      # AuditLogConfig are exempted.
-      # Example Policy with multiple AuditConfigs:
-      # ` "audit_configs": [ ` "service": "allServices" "audit_log_configs": [ ` "
-      # log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] `, ` "
-      # log_type": "DATA_WRITE", `, ` "log_type": "ADMIN_READ", ` ] `, ` "service": "
-      # sampleservice.googleapis.com" "audit_log_configs": [ ` "log_type": "DATA_READ",
-      # `, ` "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com"
-      # ] ` ] ` ] `
-      # For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-      # logging. It also exempts jose@example.com from DATA_READ logging, and aliya@
-      # example.com from DATA_WRITE logging.
+      # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
+      # are AuditConfigs for both `allServices` and a specific service, the union of
+      # the two AuditConfigs is used for that service: the log_types specified in each
+      # AuditConfig are enabled, and the exempted_members in each AuditLogConfig are
+      # exempted. Example Policy with multiple AuditConfigs: ` "audit_configs": [ ` "
+      # service": "allServices", "audit_log_configs": [ ` "log_type": "DATA_READ", "
+      # exempted_members": [ "user:jose@example.com" ] `, ` "log_type": "DATA_WRITE" `,
+      # ` "log_type": "ADMIN_READ" ` ] `, ` "service": "sampleservice.googleapis.com",
+      # "audit_log_configs": [ ` "log_type": "DATA_READ" `, ` "log_type": "DATA_WRITE"
+      # , "exempted_members": [ "user:aliya@example.com" ] ` ] ` ] ` For sampleservice,
+      # this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also
+      # exempts jose@example.com from DATA_READ logging, and aliya@example.com from
+      # DATA_WRITE logging.
       class AuditConfig
         include Google::Apis::Core::Hashable
       
@@ -46,11 +44,6 @@ module Google
         # Corresponds to the JSON property `auditLogConfigs`
         # @return [Array<Google::Apis::DeploymentmanagerV2::AuditLogConfig>]
         attr_accessor :audit_log_configs
-      
-        # 
-        # Corresponds to the JSON property `exemptedMembers`
-        # @return [Array<String>]
-        attr_accessor :exempted_members
       
         # Specifies a service that will be enabled for audit logging. For example, `
         # storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special
@@ -66,30 +59,23 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audit_log_configs = args[:audit_log_configs] if args.key?(:audit_log_configs)
-          @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
           @service = args[:service] if args.key?(:service)
         end
       end
       
-      # Provides the configuration for logging a type of permissions. Example:
-      # ` "audit_log_configs": [ ` "log_type": "DATA_READ", "exempted_members": [ "
-      # user:jose@example.com" ] `, ` "log_type": "DATA_WRITE", ` ] `
-      # This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@
-      # example.com from DATA_READ logging.
+      # Provides the configuration for logging a type of permissions. Example: ` "
+      # audit_log_configs": [ ` "log_type": "DATA_READ", "exempted_members": [ "user:
+      # jose@example.com" ] `, ` "log_type": "DATA_WRITE" ` ] ` This enables '
+      # DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from
+      # DATA_READ logging.
       class AuditLogConfig
         include Google::Apis::Core::Hashable
       
         # Specifies the identities that do not cause logging for this type of permission.
-        # Follows the same format of [Binding.members][].
+        # Follows the same format of Binding.members.
         # Corresponds to the JSON property `exemptedMembers`
         # @return [Array<String>]
         attr_accessor :exempted_members
-      
-        # 
-        # Corresponds to the JSON property `ignoreChildExemptions`
-        # @return [Boolean]
-        attr_accessor :ignore_child_exemptions
-        alias_method :ignore_child_exemptions?, :ignore_child_exemptions
       
         # The log type that this config enables.
         # Corresponds to the JSON property `logType`
@@ -103,27 +89,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
-          @ignore_child_exemptions = args[:ignore_child_exemptions] if args.key?(:ignore_child_exemptions)
           @log_type = args[:log_type] if args.key?(:log_type)
-        end
-      end
-      
-      # Authorization-related information used by Cloud Audit Logging.
-      class AuthorizationLoggingOptions
-        include Google::Apis::Core::Hashable
-      
-        # The type of the permission that was checked.
-        # Corresponds to the JSON property `permissionType`
-        # @return [String]
-        attr_accessor :permission_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @permission_type = args[:permission_type] if args.key?(:permission_type)
         end
       end
       
@@ -133,58 +99,49 @@ module Google
       
         # Represents a textual expression in the Common Expression Language (CEL) syntax.
         # CEL is a C-like expression language. The syntax and semantics of CEL are
-        # documented at https://github.com/google/cel-spec.
-        # Example (Comparison):
-        # title: "Summary size limit" description: "Determines if a summary is less than
-        # 100 chars" expression: "document.summary.size() < 100"
-        # Example (Equality):
-        # title: "Requestor is owner" description: "Determines if requestor is the
-        # document owner" expression: "document.owner == request.auth.claims.email"
-        # Example (Logic):
-        # title: "Public documents" description: "Determine whether the document should
-        # be publicly visible" expression: "document.type != 'private' && document.type !
-        # = 'internal'"
-        # Example (Data Manipulation):
-        # title: "Notification string" description: "Create a notification string with a
-        # timestamp." expression: "'New message received at ' + string(document.
-        # create_time)"
-        # The exact variables and functions that may be referenced within an expression
-        # are determined by the service that evaluates it. See the service documentation
-        # for additional information.
+        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+        # "Summary size limit" description: "Determines if a summary is less than 100
+        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+        # Requestor is owner" description: "Determines if requestor is the document
+        # owner" expression: "document.owner == request.auth.claims.email" Example (
+        # Logic): title: "Public documents" description: "Determine whether the document
+        # should be publicly visible" expression: "document.type != 'private' &&
+        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+        # string" description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)" The
+        # exact variables and functions that may be referenced within an expression are
+        # determined by the service that evaluates it. See the service documentation for
+        # additional information.
         # Corresponds to the JSON property `condition`
         # @return [Google::Apis::DeploymentmanagerV2::Expr]
         attr_accessor :condition
       
         # Specifies the identities requesting access for a Cloud Platform resource. `
-        # members` can have the following values:
-        # * `allUsers`: A special identifier that represents anyone who is on the
-        # internet; with or without a Google account.
-        # * `allAuthenticatedUsers`: A special identifier that represents anyone who is
-        # authenticated with a Google account or a service account.
-        # * `user:`emailid``: An email address that represents a specific Google account.
-        # For example, `alice@example.com` .
-        # * `serviceAccount:`emailid``: An email address that represents a service
-        # account. For example, `my-other-app@appspot.gserviceaccount.com`.
-        # * `group:`emailid``: An email address that represents a Google group. For
-        # example, `admins@example.com`.
-        # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a user that has been recently deleted. For example, `
-        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
-        # value reverts to `user:`emailid`` and the recovered user retains the role in
-        # the binding.
-        # * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus
-        # unique identifier) representing a service account that has been recently
-        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
-        # 123456789012345678901`. If the service account is undeleted, this value
-        # reverts to `serviceAccount:`emailid`` and the undeleted service account
-        # retains the role in the binding.
-        # * `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # members` can have the following values: * `allUsers`: A special identifier
+        # that represents anyone who is on the internet; with or without a Google
+        # account. * `allAuthenticatedUsers`: A special identifier that represents
+        # anyone who is authenticated with a Google account or a service account. * `
+        # user:`emailid``: An email address that represents a specific Google account.
+        # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
+        # address that represents a service account. For example, `my-other-app@appspot.
+        # gserviceaccount.com`. * `group:`emailid``: An email address that represents a
+        # Google group. For example, `admins@example.com`. * `deleted:user:`emailid`?uid=
+        # `uniqueid``: An email address (plus unique identifier) representing a user
+        # that has been recently deleted. For example, `alice@example.com?uid=
+        # 123456789012345678901`. If the user is recovered, this value reverts to `user:`
+        # emailid`` and the recovered user retains the role in the binding. * `deleted:
+        # serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a service account that has been recently deleted. For
+        # example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
+        # If the service account is undeleted, this value reverts to `serviceAccount:`
+        # emailid`` and the undeleted service account retains the role in the binding. *
+        # `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
         # identifier) representing a Google group that has been recently deleted. For
         # example, `admins@example.com?uid=123456789012345678901`. If the group is
         # recovered, this value reverts to `group:`emailid`` and the recovered group
-        # retains the role in the binding.
-        # * `domain:`domain``: The G Suite domain (primary) that represents all the
-        # users of that domain. For example, `google.com` or `example.com`.
+        # retains the role in the binding. * `domain:`domain``: The G Suite domain (
+        # primary) that represents all the users of that domain. For example, `google.
+        # com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -204,50 +161,6 @@ module Google
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
-        end
-      end
-      
-      # A condition to be met.
-      class Condition
-        include Google::Apis::Core::Hashable
-      
-        # Trusted attributes supplied by the IAM system.
-        # Corresponds to the JSON property `iam`
-        # @return [String]
-        attr_accessor :iam
-      
-        # An operator to apply the subject with.
-        # Corresponds to the JSON property `op`
-        # @return [String]
-        attr_accessor :op
-      
-        # Trusted attributes discharged by the service.
-        # Corresponds to the JSON property `svc`
-        # @return [String]
-        attr_accessor :svc
-      
-        # Trusted attributes supplied by any service that owns resources and uses the
-        # IAM system for access control.
-        # Corresponds to the JSON property `sys`
-        # @return [String]
-        attr_accessor :sys
-      
-        # The objects of the condition.
-        # Corresponds to the JSON property `values`
-        # @return [Array<String>]
-        attr_accessor :values
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @iam = args[:iam] if args.key?(:iam)
-          @op = args[:op] if args.key?(:op)
-          @svc = args[:svc] if args.key?(:svc)
-          @sys = args[:sys] if args.key?(:sys)
-          @values = args[:values] if args.key?(:values)
         end
       end
       
@@ -283,8 +196,8 @@ module Google
         # update()`, `stop()`, and `cancelPreview()` requests. A fingerprint is a
         # randomly generated value that must be provided with `update()`, `stop()`, and `
         # cancelPreview()` requests to perform optimistic locking. This ensures
-        # optimistic concurrency so that only one request happens at a time.
-        # The fingerprint is initially generated by Deployment Manager and changes after
+        # optimistic concurrency so that only one request happens at a time. The
+        # fingerprint is initially generated by Deployment Manager and changes after
         # every request to modify data. To get the latest fingerprint value, perform a `
         # get()` request to a deployment.
         # Corresponds to the JSON property `fingerprint`
@@ -302,11 +215,11 @@ module Google
         # @return [String]
         attr_accessor :insert_time
       
-        # Map of labels; provided by the client when the resource is created or updated.
-        # Specifically: Label keys must be between 1 and 63 characters long and must
-        # conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`
-        # Label values must be between 0 and 63 characters long and must conform to the
-        # regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
+        # Map of One Platform labels; provided by the client when the resource is
+        # created or updated. Specifically: Label keys must be between 1 and 63
+        # characters long and must conform to the following regular expression: `[a-z]([-
+        # a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and
+        # must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
         # Corresponds to the JSON property `labels`
         # @return [Array<Google::Apis::DeploymentmanagerV2::DeploymentLabelEntry>]
         attr_accessor :labels
@@ -328,21 +241,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Represents an Operation resource.
-        # Google Compute Engine has three Operation resources:
-        # * [Global](/compute/docs/reference/rest/`$api_version`/globalOperations) * [
-        # Regional](/compute/docs/reference/rest/`$api_version`/regionOperations) * [
-        # Zonal](/compute/docs/reference/rest/`$api_version`/zoneOperations)
-        # You can use an operation resource to manage asynchronous API requests. For
-        # more information, read Handling API responses.
-        # Operations can be global, regional or zonal.
-        # - For global operations, use the `globalOperations` resource.
-        # - For regional operations, use the `regionOperations` resource.
-        # - For zonal operations, use the `zonalOperations` resource.
-        # For more information, read  Global, Regional, and Zonal Resources. (==
-        # resource_for `$api_version`.globalOperations ==) (== resource_for `$
-        # api_version`.regionOperations ==) (== resource_for `$api_version`.
-        # zoneOperations ==)
+        # Represents an Operation resource. Google Compute Engine has three Operation
+        # resources: * [Global](/compute/docs/reference/rest/`$api_version`/
+        # globalOperations) * [Regional](/compute/docs/reference/rest/`$api_version`/
+        # regionOperations) * [Zonal](/compute/docs/reference/rest/`$api_version`/
+        # zoneOperations) You can use an operation resource to manage asynchronous API
+        # requests. For more information, read Handling API responses. Operations can be
+        # global, regional or zonal. - For global operations, use the `globalOperations`
+        # resource. - For regional operations, use the `regionOperations` resource. -
+        # For zonal operations, use the `zonalOperations` resource. For more information,
+        # read Global, Regional, and Zonal Resources.
         # Corresponds to the JSON property `operation`
         # @return [Google::Apis::DeploymentmanagerV2::Operation]
         attr_accessor :operation
@@ -352,12 +260,14 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # 
+        # [Input Only] The parameters that define your deployment, including the
+        # deployment configuration and relevant templates.
         # Corresponds to the JSON property `target`
         # @return [Google::Apis::DeploymentmanagerV2::TargetConfiguration]
         attr_accessor :target
       
-        # 
+        # Output only. If Deployment Manager is currently updating or previewing an
+        # update to this deployment, the updated configuration appears here.
         # Corresponds to the JSON property `update`
         # @return [Google::Apis::DeploymentmanagerV2::DeploymentUpdate]
         attr_accessor :update
@@ -388,16 +298,16 @@ module Google
         end
       end
       
-      # 
+      # Label object for Deployments
       class DeploymentLabelEntry
         include Google::Apis::Core::Hashable
       
-        # 
+        # Key of the label
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
       
-        # 
+        # Value of the label
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -423,7 +333,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Output only. Map of labels; provided by the client when the resource is
+        # Map of One Platform labels; provided by the client when the resource is
         # created or updated. Specifically: Label keys must be between 1 and 63
         # characters long and must conform to the following regular expression: `[a-z]([-
         # a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and
@@ -450,16 +360,16 @@ module Google
         end
       end
       
-      # 
+      # Label object for DeploymentUpdate
       class DeploymentUpdateLabelEntry
         include Google::Apis::Core::Hashable
       
-        # 
+        # Key of the label
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
       
-        # 
+        # Value of the label
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -484,10 +394,10 @@ module Google
         # to perform optimistic locking. This ensures optimistic concurrency so that the
         # deployment does not have conflicting requests (e.g. if someone attempts to
         # make a new update request while another user attempts to cancel a preview,
-        # this would prevent one of the requests).
-        # The fingerprint is initially generated by Deployment Manager and changes after
-        # every request to modify a deployment. To get the latest fingerprint value,
-        # perform a `get()` request on the deployment.
+        # this would prevent one of the requests). The fingerprint is initially
+        # generated by Deployment Manager and changes after every request to modify a
+        # deployment. To get the latest fingerprint value, perform a `get()` request on
+        # the deployment.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -538,10 +448,9 @@ module Google
         # optimistic locking. This ensures optimistic concurrency so that the deployment
         # does not have conflicting requests (e.g. if someone attempts to make a new
         # update request while another user attempts to stop an ongoing update request,
-        # this would prevent a collision).
-        # The fingerprint is initially generated by Deployment Manager and changes after
-        # every request to modify a deployment. To get the latest fingerprint value,
-        # perform a `get()` request on the deployment.
+        # this would prevent a collision). The fingerprint is initially generated by
+        # Deployment Manager and changes after every request to modify a deployment. To
+        # get the latest fingerprint value, perform a `get()` request on the deployment.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -559,24 +468,19 @@ module Google
       
       # Represents a textual expression in the Common Expression Language (CEL) syntax.
       # CEL is a C-like expression language. The syntax and semantics of CEL are
-      # documented at https://github.com/google/cel-spec.
-      # Example (Comparison):
-      # title: "Summary size limit" description: "Determines if a summary is less than
-      # 100 chars" expression: "document.summary.size() < 100"
-      # Example (Equality):
-      # title: "Requestor is owner" description: "Determines if requestor is the
-      # document owner" expression: "document.owner == request.auth.claims.email"
-      # Example (Logic):
-      # title: "Public documents" description: "Determine whether the document should
-      # be publicly visible" expression: "document.type != 'private' && document.type !
-      # = 'internal'"
-      # Example (Data Manipulation):
-      # title: "Notification string" description: "Create a notification string with a
-      # timestamp." expression: "'New message received at ' + string(document.
-      # create_time)"
-      # The exact variables and functions that may be referenced within an expression
-      # are determined by the service that evaluates it. See the service documentation
-      # for additional information.
+      # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+      # "Summary size limit" description: "Determines if a summary is less than 100
+      # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+      # Requestor is owner" description: "Determines if requestor is the document
+      # owner" expression: "document.owner == request.auth.claims.email" Example (
+      # Logic): title: "Public documents" description: "Determine whether the document
+      # should be publicly visible" expression: "document.type != 'private' &&
+      # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+      # string" description: "Create a notification string with a timestamp."
+      # expression: "'New message received at ' + string(document.create_time)" The
+      # exact variables and functions that may be referenced within an expression are
+      # determined by the service that evaluates it. See the service documentation for
+      # additional information.
       class Expr
         include Google::Apis::Core::Hashable
       
@@ -634,35 +538,32 @@ module Google
         attr_accessor :etag
       
         # An Identity and Access Management (IAM) policy, which specifies access
-        # controls for Google Cloud resources.
-        # A `Policy` is a collection of `bindings`. A `binding` binds one or more `
-        # members` to a single `role`. Members can be user accounts, service accounts,
-        # Google groups, and domains (such as G Suite). A `role` is a named list of
-        # permissions; each `role` can be an IAM predefined role or a user-created
-        # custom role.
-        # For some types of Google Cloud resources, a `binding` can also specify a `
-        # condition`, which is a logical expression that allows access to a resource
-        # only if the expression evaluates to `true`. A condition can add constraints
-        # based on attributes of the request, the resource, or both. To learn which
-        # resources support conditions in their IAM policies, see the [IAM documentation]
-        # (https://cloud.google.com/iam/help/conditions/resource-policies).
-        # **JSON example:**
-        # ` "bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members":
-        # [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
-        # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
-        # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
-        # ], "condition": ` "title": "expirable access", "description": "Does not grant
-        # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 `
-        # **YAML example:**
-        # bindings: - members: - user:mike@example.com - group:admins@example.com -
-        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-        # access description: Does not grant access after Sep 2020 expression: request.
-        # time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3
-        # For a description of IAM and its features, see the [IAM documentation](https://
-        # cloud.google.com/iam/docs/).
+        # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
+        # A `binding` binds one or more `members` to a single `role`. Members can be
+        # user accounts, service accounts, Google groups, and domains (such as G Suite).
+        # A `role` is a named list of permissions; each `role` can be an IAM predefined
+        # role or a user-created custom role. For some types of Google Cloud resources,
+        # a `binding` can also specify a `condition`, which is a logical expression that
+        # allows access to a resource only if the expression evaluates to `true`. A
+        # condition can add constraints based on attributes of the request, the resource,
+        # or both. To learn which resources support conditions in their IAM policies,
+        # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
+        # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
+        # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
+        # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
+        # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
+        # title": "expirable access", "description": "Does not grant access after Sep
+        # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
+        # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
+        # members: - user:mike@example.com - group:admins@example.com - domain:google.
+        # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
+        # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+        # roles/resourcemanager.organizationViewer condition: title: expirable access
+        # description: Does not grant access after Sep 2020 expression: request.time <
+        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+        # description of IAM and its features, see the [IAM documentation](https://cloud.
+        # google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::DeploymentmanagerV2::Policy]
         attr_accessor :policy
@@ -704,171 +605,11 @@ module Google
         end
       end
       
-      # Specifies what kind of log the caller must write
-      class LogConfig
-        include Google::Apis::Core::Hashable
-      
-        # Write a Cloud Audit log
-        # Corresponds to the JSON property `cloudAudit`
-        # @return [Google::Apis::DeploymentmanagerV2::LogConfigCloudAuditOptions]
-        attr_accessor :cloud_audit
-      
-        # Increment a streamz counter with the specified metric and field names.
-        # Metric names should start with a '/', generally be lowercase-only, and end in "
-        # _count". Field names should not contain an initial slash. The actual exported
-        # metric names will have "/iam/policy" prepended.
-        # Field names correspond to IAM request parameters and field values are their
-        # respective values.
-        # Supported field names: - "authority", which is "[token]" if IAMContext.token
-        # is present, otherwise the value of IAMContext.authority_selector if present,
-        # and otherwise a representation of IAMContext.principal; or - "iam_principal",
-        # a representation of IAMContext.principal even if a token or authority selector
-        # is present; or - "" (empty string), resulting in a counter with no fields.
-        # Examples: counter ` metric: "/debug_access_count" field: "iam_principal" ` ==>
-        # increment counter /iam/policy/debug_access_count `iam_principal=[value of
-        # IAMContext.principal]`
-        # Corresponds to the JSON property `counter`
-        # @return [Google::Apis::DeploymentmanagerV2::LogConfigCounterOptions]
-        attr_accessor :counter
-      
-        # Write a Data Access (Gin) log
-        # Corresponds to the JSON property `dataAccess`
-        # @return [Google::Apis::DeploymentmanagerV2::LogConfigDataAccessOptions]
-        attr_accessor :data_access
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cloud_audit = args[:cloud_audit] if args.key?(:cloud_audit)
-          @counter = args[:counter] if args.key?(:counter)
-          @data_access = args[:data_access] if args.key?(:data_access)
-        end
-      end
-      
-      # Write a Cloud Audit log
-      class LogConfigCloudAuditOptions
-        include Google::Apis::Core::Hashable
-      
-        # Authorization-related information used by Cloud Audit Logging.
-        # Corresponds to the JSON property `authorizationLoggingOptions`
-        # @return [Google::Apis::DeploymentmanagerV2::AuthorizationLoggingOptions]
-        attr_accessor :authorization_logging_options
-      
-        # The log_name to populate in the Cloud Audit Record.
-        # Corresponds to the JSON property `logName`
-        # @return [String]
-        attr_accessor :log_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @authorization_logging_options = args[:authorization_logging_options] if args.key?(:authorization_logging_options)
-          @log_name = args[:log_name] if args.key?(:log_name)
-        end
-      end
-      
-      # Increment a streamz counter with the specified metric and field names.
-      # Metric names should start with a '/', generally be lowercase-only, and end in "
-      # _count". Field names should not contain an initial slash. The actual exported
-      # metric names will have "/iam/policy" prepended.
-      # Field names correspond to IAM request parameters and field values are their
-      # respective values.
-      # Supported field names: - "authority", which is "[token]" if IAMContext.token
-      # is present, otherwise the value of IAMContext.authority_selector if present,
-      # and otherwise a representation of IAMContext.principal; or - "iam_principal",
-      # a representation of IAMContext.principal even if a token or authority selector
-      # is present; or - "" (empty string), resulting in a counter with no fields.
-      # Examples: counter ` metric: "/debug_access_count" field: "iam_principal" ` ==>
-      # increment counter /iam/policy/debug_access_count `iam_principal=[value of
-      # IAMContext.principal]`
-      class LogConfigCounterOptions
-        include Google::Apis::Core::Hashable
-      
-        # Custom fields.
-        # Corresponds to the JSON property `customFields`
-        # @return [Array<Google::Apis::DeploymentmanagerV2::LogConfigCounterOptionsCustomField>]
-        attr_accessor :custom_fields
-      
-        # The field value to attribute.
-        # Corresponds to the JSON property `field`
-        # @return [String]
-        attr_accessor :field
-      
-        # The metric to update.
-        # Corresponds to the JSON property `metric`
-        # @return [String]
-        attr_accessor :metric
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @custom_fields = args[:custom_fields] if args.key?(:custom_fields)
-          @field = args[:field] if args.key?(:field)
-          @metric = args[:metric] if args.key?(:metric)
-        end
-      end
-      
-      # Custom fields. These can be used to create a counter with arbitrary field/
-      # value pairs. See: go/rpcsp-custom-fields.
-      class LogConfigCounterOptionsCustomField
-        include Google::Apis::Core::Hashable
-      
-        # Name is the field name.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Value is the field value. It is important that in contrast to the
-        # CounterOptions.field, the value here is a constant that is not derived from
-        # the IAMContext.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
-          @value = args[:value] if args.key?(:value)
-        end
-      end
-      
-      # Write a Data Access (Gin) log
-      class LogConfigDataAccessOptions
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `logMode`
-        # @return [String]
-        attr_accessor :log_mode
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @log_mode = args[:log_mode] if args.key?(:log_mode)
-        end
-      end
-      
       # 
       class Manifest
         include Google::Apis::Core::Hashable
       
-        # 
+        # Output only. The YAML configuration for this manifest.
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::DeploymentmanagerV2::ConfigFile]
         attr_accessor :config
@@ -899,8 +640,7 @@ module Google
         # @return [String]
         attr_accessor :layout
       
-        # Output only.
-        # The name of the manifest.
+        # Output only. The name of the manifest.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -953,21 +693,16 @@ module Google
         end
       end
       
-      # Represents an Operation resource.
-      # Google Compute Engine has three Operation resources:
-      # * [Global](/compute/docs/reference/rest/`$api_version`/globalOperations) * [
-      # Regional](/compute/docs/reference/rest/`$api_version`/regionOperations) * [
-      # Zonal](/compute/docs/reference/rest/`$api_version`/zoneOperations)
-      # You can use an operation resource to manage asynchronous API requests. For
-      # more information, read Handling API responses.
-      # Operations can be global, regional or zonal.
-      # - For global operations, use the `globalOperations` resource.
-      # - For regional operations, use the `regionOperations` resource.
-      # - For zonal operations, use the `zonalOperations` resource.
-      # For more information, read  Global, Regional, and Zonal Resources. (==
-      # resource_for `$api_version`.globalOperations ==) (== resource_for `$
-      # api_version`.regionOperations ==) (== resource_for `$api_version`.
-      # zoneOperations ==)
+      # Represents an Operation resource. Google Compute Engine has three Operation
+      # resources: * [Global](/compute/docs/reference/rest/`$api_version`/
+      # globalOperations) * [Regional](/compute/docs/reference/rest/`$api_version`/
+      # regionOperations) * [Zonal](/compute/docs/reference/rest/`$api_version`/
+      # zoneOperations) You can use an operation resource to manage asynchronous API
+      # requests. For more information, read Handling API responses. Operations can be
+      # global, regional or zonal. - For global operations, use the `globalOperations`
+      # resource. - For regional operations, use the `regionOperations` resource. -
+      # For zonal operations, use the `zonalOperations` resource. For more information,
+      # read Global, Regional, and Zonal Resources.
       class Operation
         include Google::Apis::Core::Hashable
       
@@ -1203,8 +938,8 @@ module Google
           # @return [String]
           attr_accessor :code
         
-          # [Output Only] Metadata about this warning in key: value format. For example:
-          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::DeploymentmanagerV2::Operation::Warning::Datum>]
           attr_accessor :data
@@ -1285,35 +1020,32 @@ module Google
       end
       
       # An Identity and Access Management (IAM) policy, which specifies access
-      # controls for Google Cloud resources.
-      # A `Policy` is a collection of `bindings`. A `binding` binds one or more `
-      # members` to a single `role`. Members can be user accounts, service accounts,
-      # Google groups, and domains (such as G Suite). A `role` is a named list of
-      # permissions; each `role` can be an IAM predefined role or a user-created
-      # custom role.
-      # For some types of Google Cloud resources, a `binding` can also specify a `
-      # condition`, which is a logical expression that allows access to a resource
-      # only if the expression evaluates to `true`. A condition can add constraints
-      # based on attributes of the request, the resource, or both. To learn which
-      # resources support conditions in their IAM policies, see the [IAM documentation]
-      # (https://cloud.google.com/iam/help/conditions/resource-policies).
-      # **JSON example:**
-      # ` "bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members":
-      # [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
-      # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
-      # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
-      # ], "condition": ` "title": "expirable access", "description": "Does not grant
-      # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 `
-      # **YAML example:**
-      # bindings: - members: - user:mike@example.com - group:admins@example.com -
-      # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-      # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
-      # com role: roles/resourcemanager.organizationViewer condition: title: expirable
-      # access description: Does not grant access after Sep 2020 expression: request.
-      # time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3
-      # For a description of IAM and its features, see the [IAM documentation](https://
-      # cloud.google.com/iam/docs/).
+      # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
+      # A `binding` binds one or more `members` to a single `role`. Members can be
+      # user accounts, service accounts, Google groups, and domains (such as G Suite).
+      # A `role` is a named list of permissions; each `role` can be an IAM predefined
+      # role or a user-created custom role. For some types of Google Cloud resources,
+      # a `binding` can also specify a `condition`, which is a logical expression that
+      # allows access to a resource only if the expression evaluates to `true`. A
+      # condition can add constraints based on attributes of the request, the resource,
+      # or both. To learn which resources support conditions in their IAM policies,
+      # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+      # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
+      # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
+      # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
+      # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
+      # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
+      # title": "expirable access", "description": "Does not grant access after Sep
+      # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
+      # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
+      # members: - user:mike@example.com - group:admins@example.com - domain:google.
+      # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
+      # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+      # roles/resourcemanager.organizationViewer condition: title: expirable access
+      # description: Does not grant access after Sep 2020 expression: request.time <
+      # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+      # description of IAM and its features, see the [IAM documentation](https://cloud.
+      # google.com/iam/docs/).
       class Policy
         include Google::Apis::Core::Hashable
       
@@ -1335,51 +1067,31 @@ module Google
         # to perform policy updates in order to avoid race conditions: An `etag` is
         # returned in the response to `getIamPolicy`, and systems are expected to put
         # that etag in the request to `setIamPolicy` to ensure that their change will be
-        # applied to the same version of the policy.
-        # **Important:** If you use IAM Conditions, you must include the `etag` field
-        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows you
-        # to overwrite a version `3` policy with a version `1` policy, and all of the
-        # conditions in the version `3` policy are lost.
+        # applied to the same version of the policy. **Important:** If you use IAM
+        # Conditions, you must include the `etag` field whenever you call `setIamPolicy`.
+        # If you omit this field, then IAM allows you to overwrite a version `3` policy
+        # with a version `1` policy, and all of the conditions in the version `3` policy
+        # are lost.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :etag
       
-        # 
-        # Corresponds to the JSON property `iamOwned`
-        # @return [Boolean]
-        attr_accessor :iam_owned
-        alias_method :iam_owned?, :iam_owned
-      
-        # If more than one rule is specified, the rules are applied in the following
-        # manner: - All matching LOG rules are always applied. - If any DENY/
-        # DENY_WITH_LOG rule matches, permission is denied. Logging will be applied if
-        # one or more matching rule requires logging. - Otherwise, if any ALLOW/
-        # ALLOW_WITH_LOG rule matches, permission is granted. Logging will be applied if
-        # one or more matching rule requires logging. - Otherwise, if no rule applies,
-        # permission is denied.
-        # Corresponds to the JSON property `rules`
-        # @return [Array<Google::Apis::DeploymentmanagerV2::Rule>]
-        attr_accessor :rules
-      
-        # Specifies the format of the policy.
-        # Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are
-        # rejected.
-        # Any operation that affects conditional role bindings must specify version `3`.
-        # This requirement applies to the following operations:
-        # * Getting a policy that includes a conditional role binding * Adding a
-        # conditional role binding to a policy * Changing a conditional role binding in
-        # a policy * Removing any role binding, with or without a condition, from a
-        # policy that includes conditions
-        # **Important:** If you use IAM Conditions, you must include the `etag` field
+        # Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
+        # Requests that specify an invalid value are rejected. Any operation that
+        # affects conditional role bindings must specify version `3`. This requirement
+        # applies to the following operations: * Getting a policy that includes a
+        # conditional role binding * Adding a conditional role binding to a policy *
+        # Changing a conditional role binding in a policy * Removing any role binding,
+        # with or without a condition, from a policy that includes conditions **
+        # Important:** If you use IAM Conditions, you must include the `etag` field
         # whenever you call `setIamPolicy`. If you omit this field, then IAM allows you
         # to overwrite a version `3` policy with a version `1` policy, and all of the
-        # conditions in the version `3` policy are lost.
-        # If a policy does not include any conditions, operations on that policy may
-        # specify any valid version or leave the field unset.
-        # To learn which resources support conditions in their IAM policies, see the [
-        # IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
-        # policies).
+        # conditions in the version `3` policy are lost. If a policy does not include
+        # any conditions, operations on that policy may specify any valid version or
+        # leave the field unset. To learn which resources support conditions in their
+        # IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/
+        # conditions/resource-policies).
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -1393,8 +1105,6 @@ module Google
           @audit_configs = args[:audit_configs] if args.key?(:audit_configs)
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
-          @iam_owned = args[:iam_owned] if args.key?(:iam_owned)
-          @rules = args[:rules] if args.key?(:rules)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -1447,7 +1157,8 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # 
+        # Output only. If Deployment Manager is currently updating or previewing an
+        # update to this resource, the updated configuration appears here.
         # Corresponds to the JSON property `update`
         # @return [Google::Apis::DeploymentmanagerV2::ResourceUpdate]
         attr_accessor :update
@@ -1498,8 +1209,8 @@ module Google
           # @return [String]
           attr_accessor :code
         
-          # [Output Only] Metadata about this warning in key: value format. For example:
-          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::DeploymentmanagerV2::Resource::Warning::Datum>]
           attr_accessor :data
@@ -1699,8 +1410,8 @@ module Google
           # @return [String]
           attr_accessor :code
         
-          # [Output Only] Metadata about this warning in key: value format. For example:
-          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::DeploymentmanagerV2::ResourceUpdate::Warning::Datum>]
           attr_accessor :data
@@ -1780,72 +1491,11 @@ module Google
         end
       end
       
-      # A rule to be applied in a Policy.
-      class Rule
-        include Google::Apis::Core::Hashable
-      
-        # Required
-        # Corresponds to the JSON property `action`
-        # @return [String]
-        attr_accessor :action
-      
-        # Additional restrictions that must be met. All conditions must pass for the
-        # rule to match.
-        # Corresponds to the JSON property `conditions`
-        # @return [Array<Google::Apis::DeploymentmanagerV2::Condition>]
-        attr_accessor :conditions
-      
-        # Human-readable description of the rule.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/
-        # AUTHORITY_SELECTOR is in at least one of these entries.
-        # Corresponds to the JSON property `ins`
-        # @return [Array<String>]
-        attr_accessor :ins
-      
-        # The config returned to callers of tech.iam.IAM.CheckPolicy for any entries
-        # that match the LOG action.
-        # Corresponds to the JSON property `logConfigs`
-        # @return [Array<Google::Apis::DeploymentmanagerV2::LogConfig>]
-        attr_accessor :log_configs
-      
-        # If one or more 'not_in' clauses are specified, the rule matches if the
-        # PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.
-        # Corresponds to the JSON property `notIns`
-        # @return [Array<String>]
-        attr_accessor :not_ins
-      
-        # A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value
-        # of '*' matches all permissions, and a verb part of '*' (e.g., 'storage.buckets.
-        # *') matches all verbs.
-        # Corresponds to the JSON property `permissions`
-        # @return [Array<String>]
-        attr_accessor :permissions
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @action = args[:action] if args.key?(:action)
-          @conditions = args[:conditions] if args.key?(:conditions)
-          @description = args[:description] if args.key?(:description)
-          @ins = args[:ins] if args.key?(:ins)
-          @log_configs = args[:log_configs] if args.key?(:log_configs)
-          @not_ins = args[:not_ins] if args.key?(:not_ins)
-          @permissions = args[:permissions] if args.key?(:permissions)
-        end
-      end
-      
       # 
       class TargetConfiguration
         include Google::Apis::Core::Hashable
       
-        # 
+        # The configuration to use for this deployment.
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::DeploymentmanagerV2::ConfigFile]
         attr_accessor :config
@@ -1926,21 +1576,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Represents an Operation resource.
-        # Google Compute Engine has three Operation resources:
-        # * [Global](/compute/docs/reference/rest/`$api_version`/globalOperations) * [
-        # Regional](/compute/docs/reference/rest/`$api_version`/regionOperations) * [
-        # Zonal](/compute/docs/reference/rest/`$api_version`/zoneOperations)
-        # You can use an operation resource to manage asynchronous API requests. For
-        # more information, read Handling API responses.
-        # Operations can be global, regional or zonal.
-        # - For global operations, use the `globalOperations` resource.
-        # - For regional operations, use the `regionOperations` resource.
-        # - For zonal operations, use the `zonalOperations` resource.
-        # For more information, read  Global, Regional, and Zonal Resources. (==
-        # resource_for `$api_version`.globalOperations ==) (== resource_for `$
-        # api_version`.regionOperations ==) (== resource_for `$api_version`.
-        # zoneOperations ==)
+        # Represents an Operation resource. Google Compute Engine has three Operation
+        # resources: * [Global](/compute/docs/reference/rest/`$api_version`/
+        # globalOperations) * [Regional](/compute/docs/reference/rest/`$api_version`/
+        # regionOperations) * [Zonal](/compute/docs/reference/rest/`$api_version`/
+        # zoneOperations) You can use an operation resource to manage asynchronous API
+        # requests. For more information, read Handling API responses. Operations can be
+        # global, regional or zonal. - For global operations, use the `globalOperations`
+        # resource. - For regional operations, use the `regionOperations` resource. -
+        # For zonal operations, use the `zonalOperations` resource. For more information,
+        # read Global, Regional, and Zonal Resources.
         # Corresponds to the JSON property `operation`
         # @return [Google::Apis::DeploymentmanagerV2::Operation]
         attr_accessor :operation
