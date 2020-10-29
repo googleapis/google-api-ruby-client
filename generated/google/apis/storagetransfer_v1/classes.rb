@@ -23,7 +23,9 @@ module Google
     module StoragetransferV1
       
       # AWS access key (see [AWS Security Credentials](https://docs.aws.amazon.com/
-      # general/latest/gr/aws-security-credentials.html)).
+      # general/latest/gr/aws-security-credentials.html)). For information on our data
+      # retention policy for user credentials, see [User credentials](data-retention#
+      # user-credentials).
       class AwsAccessKey
         include Google::Apis::Core::Hashable
       
@@ -54,7 +56,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # AWS access key (see [AWS Security Credentials](https://docs.aws.amazon.com/
-        # general/latest/gr/aws-security-credentials.html)).
+        # general/latest/gr/aws-security-credentials.html)). For information on our data
+        # retention policy for user credentials, see [User credentials](data-retention#
+        # user-credentials).
         # Corresponds to the JSON property `awsAccessKey`
         # @return [Google::Apis::StoragetransferV1::AwsAccessKey]
         attr_accessor :aws_access_key
@@ -86,7 +90,8 @@ module Google
       class AzureBlobStorageData
         include Google::Apis::Core::Hashable
       
-        # Azure credentials
+        # Azure credentials For information on our data retention policy for user
+        # credentials, see [User credentials](data-retention#user-credentials).
         # Corresponds to the JSON property `azureCredentials`
         # @return [Google::Apis::StoragetransferV1::AzureCredentials]
         attr_accessor :azure_credentials
@@ -113,7 +118,8 @@ module Google
         end
       end
       
-      # Azure credentials
+      # Azure credentials For information on our data retention policy for user
+      # credentials, see [User credentials](data-retention#user-credentials).
       class AzureCredentials
         include Google::Apis::Core::Hashable
       
@@ -1058,7 +1064,10 @@ module Google
         attr_accessor :delete_objects_unique_in_sink
         alias_method :delete_objects_unique_in_sink?, :delete_objects_unique_in_sink
       
-        # Whether overwriting objects that already exist in the sink is allowed.
+        # When to overwrite objects that already exist in the sink. The default is that
+        # only objects that are different from the source are ovewritten. If true, all
+        # objects in the sink whose name matches an object in the source will be
+        # overwritten with the source object.
         # Corresponds to the JSON property `overwriteObjectsAlreadyExistingInSink`
         # @return [Boolean]
         attr_accessor :overwrite_objects_already_existing_in_sink
