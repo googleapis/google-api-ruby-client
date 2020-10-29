@@ -514,6 +514,11 @@ module Google
       class ContainerSpec
         include Google::Apis::Core::Hashable
       
+        # The environment values to be set at runtime for flex template.
+        # Corresponds to the JSON property `defaultEnvironment`
+        # @return [Google::Apis::DataflowV1b3::FlexTemplateRuntimeEnvironment]
+        attr_accessor :default_environment
+      
         # Name of the docker container image. E.g., gcr.io/project/some-image
         # Corresponds to the JSON property `image`
         # @return [String]
@@ -535,6 +540,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @default_environment = args[:default_environment] if args.key?(:default_environment)
           @image = args[:image] if args.key?(:image)
           @metadata = args[:metadata] if args.key?(:metadata)
           @sdk_info = args[:sdk_info] if args.key?(:sdk_info)
@@ -1415,6 +1421,11 @@ module Google
         # @return [Array<Google::Apis::DataflowV1b3::StageSource>]
         attr_accessor :output_source
       
+        # Other stages that must complete before this stage can run.
+        # Corresponds to the JSON property `prerequisiteStage`
+        # @return [Array<String>]
+        attr_accessor :prerequisite_stage
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1428,6 +1439,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @output_source = args[:output_source] if args.key?(:output_source)
+          @prerequisite_stage = args[:prerequisite_stage] if args.key?(:prerequisite_stage)
         end
       end
       
