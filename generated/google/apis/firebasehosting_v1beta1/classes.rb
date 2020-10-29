@@ -721,6 +721,7 @@ module Google
       
       # Version preview configuration. If active and unexpired, this version will be
       # accessible via a custom URL even if it is not the currently released version.
+      # Deprecated in favor of site channels.
       class PreviewConfig
         include Google::Apis::Core::Hashable
       
@@ -1109,6 +1110,7 @@ module Google
       
         # Version preview configuration. If active and unexpired, this version will be
         # accessible via a custom URL even if it is not the currently released version.
+        # Deprecated in favor of site channels.
         # Corresponds to the JSON property `preview`
         # @return [Google::Apis::FirebasehostingV1beta1::PreviewConfig]
         attr_accessor :preview
