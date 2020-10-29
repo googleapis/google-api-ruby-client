@@ -40,12 +40,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AuthorizationLoggingOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class BaseType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,12 +77,6 @@ module Google
       end
       
       class CompositeTypesListResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Condition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -173,36 +161,6 @@ module Google
       end
       
       class InputMapping
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LogConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LogConfigCloudAuditOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LogConfigCounterOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LogConfigCounterOptionsCustomField
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LogConfigDataAccessOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -334,12 +292,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Rule
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ServiceAccount
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -444,7 +396,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::DeploymentmanagerV2beta::AuditLogConfig, decorator: Google::Apis::DeploymentmanagerV2beta::AuditLogConfig::Representation
       
-          collection :exempted_members, as: 'exemptedMembers'
           property :service, as: 'service'
         end
       end
@@ -453,15 +404,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exempted_members, as: 'exemptedMembers'
-          property :ignore_child_exemptions, as: 'ignoreChildExemptions'
           property :log_type, as: 'logType'
-        end
-      end
-      
-      class AuthorizationLoggingOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :permission_type, as: 'permissionType'
         end
       end
       
@@ -537,17 +480,6 @@ module Google
           collection :composite_types, as: 'compositeTypes', class: Google::Apis::DeploymentmanagerV2beta::CompositeType, decorator: Google::Apis::DeploymentmanagerV2beta::CompositeType::Representation
       
           property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class Condition
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :iam, as: 'iam'
-          property :op, as: 'op'
-          property :svc, as: 'svc'
-          property :sys, as: 'sys'
-          collection :values, as: 'values'
         end
       end
       
@@ -687,52 +619,6 @@ module Google
         end
       end
       
-      class LogConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cloud_audit, as: 'cloudAudit', class: Google::Apis::DeploymentmanagerV2beta::LogConfigCloudAuditOptions, decorator: Google::Apis::DeploymentmanagerV2beta::LogConfigCloudAuditOptions::Representation
-      
-          property :counter, as: 'counter', class: Google::Apis::DeploymentmanagerV2beta::LogConfigCounterOptions, decorator: Google::Apis::DeploymentmanagerV2beta::LogConfigCounterOptions::Representation
-      
-          property :data_access, as: 'dataAccess', class: Google::Apis::DeploymentmanagerV2beta::LogConfigDataAccessOptions, decorator: Google::Apis::DeploymentmanagerV2beta::LogConfigDataAccessOptions::Representation
-      
-        end
-      end
-      
-      class LogConfigCloudAuditOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :authorization_logging_options, as: 'authorizationLoggingOptions', class: Google::Apis::DeploymentmanagerV2beta::AuthorizationLoggingOptions, decorator: Google::Apis::DeploymentmanagerV2beta::AuthorizationLoggingOptions::Representation
-      
-          property :log_name, as: 'logName'
-        end
-      end
-      
-      class LogConfigCounterOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :custom_fields, as: 'customFields', class: Google::Apis::DeploymentmanagerV2beta::LogConfigCounterOptionsCustomField, decorator: Google::Apis::DeploymentmanagerV2beta::LogConfigCounterOptionsCustomField::Representation
-      
-          property :field, as: 'field'
-          property :metric, as: 'metric'
-        end
-      end
-      
-      class LogConfigCounterOptionsCustomField
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :value, as: 'value'
-        end
-      end
-      
-      class LogConfigDataAccessOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :log_mode, as: 'logMode'
-        end
-      end
-      
       class Manifest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -854,9 +740,6 @@ module Google
           collection :bindings, as: 'bindings', class: Google::Apis::DeploymentmanagerV2beta::Binding, decorator: Google::Apis::DeploymentmanagerV2beta::Binding::Representation
       
           property :etag, :base64 => true, as: 'etag'
-          property :iam_owned, as: 'iamOwned'
-          collection :rules, as: 'rules', class: Google::Apis::DeploymentmanagerV2beta::Rule, decorator: Google::Apis::DeploymentmanagerV2beta::Rule::Representation
-      
           property :version, as: 'version'
         end
       end
@@ -977,21 +860,6 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :resources, as: 'resources', class: Google::Apis::DeploymentmanagerV2beta::Resource, decorator: Google::Apis::DeploymentmanagerV2beta::Resource::Representation
       
-        end
-      end
-      
-      class Rule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :action, as: 'action'
-          collection :conditions, as: 'conditions', class: Google::Apis::DeploymentmanagerV2beta::Condition, decorator: Google::Apis::DeploymentmanagerV2beta::Condition::Representation
-      
-          property :description, as: 'description'
-          collection :ins, as: 'ins'
-          collection :log_configs, as: 'logConfigs', class: Google::Apis::DeploymentmanagerV2beta::LogConfig, decorator: Google::Apis::DeploymentmanagerV2beta::LogConfig::Representation
-      
-          collection :not_ins, as: 'notIns'
-          collection :permissions, as: 'permissions'
         end
       end
       
