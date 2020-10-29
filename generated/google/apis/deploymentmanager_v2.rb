@@ -18,14 +18,16 @@ require 'google/apis/deploymentmanager_v2/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud Deployment Manager API
+    # Cloud Deployment Manager V2 API
     #
-    # Declares, configures, and deploys complex solutions on Google Cloud Platform.
+    # The Google Cloud Deployment Manager v2 API provides services for configuring,
+    # deploying, and viewing Google Cloud services and APIs via templates which
+    # specify deployments of Cloud resources.
     #
-    # @see https://cloud.google.com/deployment-manager/
+    # @see http://cloud.google.com/deployment-manager
     module DeploymentmanagerV2
       VERSION = 'V2'
-      REVISION = '20200519'
+      REVISION = '20201022'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
