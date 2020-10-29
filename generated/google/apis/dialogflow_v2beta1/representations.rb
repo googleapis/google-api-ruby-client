@@ -1222,7 +1222,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDialogflowV3alpha1RunTestCaseMetadata
+      class GoogleCloudKnowledgeV1alpha1OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3325,9 +3325,12 @@ module Google
         end
       end
       
-      class GoogleCloudDialogflowV3alpha1RunTestCaseMetadata
+      class GoogleCloudKnowledgeV1alpha1OperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :error_code, as: 'errorCode'
+          collection :message, as: 'message'
+          property :state, as: 'state'
         end
       end
       
