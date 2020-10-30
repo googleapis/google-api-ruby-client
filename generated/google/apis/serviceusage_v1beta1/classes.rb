@@ -2193,6 +2193,36 @@ module Google
         end
       end
       
+      # Request message for ImportAdminOverrides
+      class ImportAdminOverridesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Whether to force the creation of the quota overrides. If creating an override
+        # would cause the effective quota for the consumer to decrease by more than 10
+        # percent, the call is rejected, as a safety measure to avoid accidentally
+        # decreasing quota too quickly. Setting the force parameter to true ignores this
+        # restriction.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        # Import data embedded in the request message
+        # Corresponds to the JSON property `inlineSource`
+        # @return [Google::Apis::ServiceusageV1beta1::OverrideInlineSource]
+        attr_accessor :inline_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @force = args[:force] if args.key?(:force)
+          @inline_source = args[:inline_source] if args.key?(:inline_source)
+        end
+      end
+      
       # Response message for ImportAdminOverrides
       class ImportAdminOverridesResponse
         include Google::Apis::Core::Hashable

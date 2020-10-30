@@ -280,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImportAdminOverridesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImportAdminOverridesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1027,6 +1033,15 @@ module Google
           property :put, as: 'put'
           property :response_body, as: 'responseBody'
           property :selector, as: 'selector'
+        end
+      end
+      
+      class ImportAdminOverridesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :force, as: 'force'
+          property :inline_source, as: 'inlineSource', class: Google::Apis::ServiceusageV1beta1::OverrideInlineSource, decorator: Google::Apis::ServiceusageV1beta1::OverrideInlineSource::Representation
+      
         end
       end
       
