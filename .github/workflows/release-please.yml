@@ -43,14 +43,14 @@ jobs:
               core.info("AutoApprove: Found release PR " + pr.number);
               if (process.env.ENABLE_AUTO_APPROVE) {
                 core.info("ENABLE_AUTO_APPROVE is set; labeling and approving");
-                await github.pulls.createReview({
+                github.pulls.createReview({
                   owner: 'googleapis',
                   repo: 'google-api-ruby-client',
                   body: "AutoApprove: Rubber stamped release!",
                   pull_number: pr.number,
                   event: "APPROVE"
                 });
-                await github.issues.addLabels({
+                github.issues.addLabels({
                   owner: 'googleapis',
                   repo: 'google-api-ruby-client',
                   issue_number: pr.number,
@@ -58,7 +58,7 @@ jobs:
                 });
               } else {
                 core.info("ENABLE_AUTO_APPROVE is not set; labeling release only");
-                await github.issues.addLabels({
+                github.issues.addLabels({
                   owner: 'googleapis',
                   repo: 'google-api-ruby-client',
                   issue_number: pr.number,
