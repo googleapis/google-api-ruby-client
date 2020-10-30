@@ -11,7 +11,8 @@ jobs:
       - uses: GoogleCloudPlatform/release-please-action@v2.5.7
         with:
           command: release-pr
-          token: ${{ secrets.YOSHI_CODE_BOT_TOKEN }}
+          token: ${{ secrets.RELEASE_PR_TOKEN }}
+          fork: true
           release-type: ruby
           package-name: google-api-ruby-client
           version-file: lib/google/apis/version.rb
