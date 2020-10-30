@@ -1774,6 +1774,12 @@ module Google
       class GoogleCloudDialogflowCxV3beta1Intent
         include Google::Apis::Core::Hashable
       
+        # Optional. Human readable description for better understanding an intent like
+        # its scope, content, result etc. Maximum character limit: 140 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # Required. The human-readable name of the intent, unique within the agent.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -1788,6 +1794,18 @@ module Google
         # @return [Boolean]
         attr_accessor :is_fallback
         alias_method :is_fallback?, :is_fallback
+      
+        # Optional. The key/value metadata to label an intent. Labels can contain
+        # lowercase letters, digits and the symbols '-' and '_'. International
+        # characters are allowed, including letters from unicase alphabets. Keys must
+        # start with a letter. Keys and values can be no longer than 63 characters and
+        # no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined
+        # labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-
+        # contextual The above labels do not require value. "sys-head" means the intent
+        # is a head intent. "sys-contextual" means the intent is a contextual intent.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
       
         # The unique identifier of the intent. Required for the Intents.UpdateIntent
         # method. Intents.CreateIntent populates the name automatically. Format: `
@@ -1822,8 +1840,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @is_fallback = args[:is_fallback] if args.key?(:is_fallback)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @parameters = args[:parameters] if args.key?(:parameters)
           @priority = args[:priority] if args.key?(:priority)
@@ -8590,9 +8610,24 @@ module Google
         end
       end
       
-      # Metadata returned for the TestCases.RunTestCase long running operation.
-      class GoogleCloudDialogflowV3alpha1RunTestCaseMetadata
+      # Metadata in google::longrunning::Operation.
+      class GoogleCloudKnowledgeV1alpha1OperationMetadata
         include Google::Apis::Core::Hashable
+      
+        # The error codes from Manifold endpoints' last failures.
+        # Corresponds to the JSON property `errorCode`
+        # @return [Array<Fixnum>]
+        attr_accessor :error_code
+      
+        # The failure messages from Manifold endpoints' last failures.
+        # Corresponds to the JSON property `message`
+        # @return [Array<String>]
+        attr_accessor :message
+      
+        # Required. The current state of this operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
       
         def initialize(**args)
            update!(**args)
@@ -8600,6 +8635,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @error_code = args[:error_code] if args.key?(:error_code)
+          @message = args[:message] if args.key?(:message)
+          @state = args[:state] if args.key?(:state)
         end
       end
       

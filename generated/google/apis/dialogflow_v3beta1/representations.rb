@@ -1336,7 +1336,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDialogflowV3alpha1RunTestCaseMetadata
+      class GoogleCloudKnowledgeV1alpha1OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1841,8 +1841,10 @@ module Google
       class GoogleCloudDialogflowCxV3beta1Intent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :is_fallback, as: 'isFallback'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           collection :parameters, as: 'parameters', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1IntentParameter, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1IntentParameter::Representation
       
@@ -3666,9 +3668,12 @@ module Google
         end
       end
       
-      class GoogleCloudDialogflowV3alpha1RunTestCaseMetadata
+      class GoogleCloudKnowledgeV1alpha1OperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :error_code, as: 'errorCode'
+          collection :message, as: 'message'
+          property :state, as: 'state'
         end
       end
       
