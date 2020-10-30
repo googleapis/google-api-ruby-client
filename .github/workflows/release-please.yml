@@ -6,15 +6,68 @@ on:
 name: release-please
 jobs:
   release-please:
+    env:
+      ENABLE_AUTO_APPROVE: ${{ secrets.ENABLE_AUTO_APPROVE }}
     runs-on: ubuntu-latest
     steps:
-      - uses: GoogleCloudPlatform/release-please-action@v2.5.7
+      - name: ReleasePlease
+        uses: GoogleCloudPlatform/release-please-action@v2.5.7
         with:
           command: release-pr
-          token: ${{ secrets.RELEASE_PR_TOKEN }}
+          token: ${{ secrets.YOSHI_CODE_BOT_TOKEN }}
           fork: true
           release-type: ruby
           package-name: google-api-ruby-client
           version-file: lib/google/apis/version.rb
           monorepo-tags: true
           bump-minor-pre-major: true
+      - name: AutoApprove
+        if: ${{ always() }}
+        uses: actions/github-script@v2
+        with:
+          github-token: ${{secrets.YOSHI_APPROVER_TOKEN}}
+          script: |
+            const prs = await github.pulls.list({
+              owner: 'googleapis',
+              repo: 'google-api-ruby-client',
+              state: 'open',
+              sort: 'created',
+              direction: 'desc',
+              per_page: 10
+            });
+            var found = false;
+            prs.forEach(function(pr) {
+              if (found || pr.user.login != "yoshi-code-bot" || !pr.title.startsWith("Release ")) {
+                return;
+              }
+              core.info("AutoApprove: Found release PR " + pr.number);
+              if (process.env.ENABLE_AUTO_APPROVE) {
+                core.info("ENABLE_AUTO_APPROVE is set; labeling and approving");
+                await github.pulls.createReview({
+                  owner: 'googleapis',
+                  repo: 'google-api-ruby-client',
+                  body: "AutoApprove: Rubber stamped release!",
+                  pull_number: pr.number,
+                  event: "APPROVE"
+                });
+                await github.issues.addLabels({
+                  owner: 'googleapis',
+                  repo: 'google-api-ruby-client',
+                  issue_number: pr.number,
+                  labels: ["autorelease: pending", "automerge"]
+                });
+              } else {
+                core.info("ENABLE_AUTO_APPROVE is not set; labeling release only");
+                await github.issues.addLabels({
+                  owner: 'googleapis',
+                  repo: 'google-api-ruby-client',
+                  issue_number: pr.number,
+                  labels: ["autorelease: pending"]
+                });
+              }
+              core.info("AutoApprove: complete!");
+              found = true;
+            });
+            if (!found) {
+              core.setFailed("Unable to find release PR.");
+            }
