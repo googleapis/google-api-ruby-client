@@ -641,10 +641,25 @@ module Google
         # @return [String]
         attr_accessor :root_password
       
+        # The status indicating if instance satisfies physical zone separation. Reserved
+        # for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Any scheduled maintenancce for this instance.
         # Corresponds to the JSON property `scheduledMaintenance`
         # @return [Google::Apis::SqladminV1beta4::SqlScheduledMaintenance]
         attr_accessor :scheduled_maintenance
+      
+        # The Compute Engine zone that the failover instance is currently serving from
+        # for a regional instance. This value could be different from the zone that was
+        # specified when the instance was created if the instance has failed over to its
+        # secondary/failover zone. Reserved for future use.
+        # Corresponds to the JSON property `secondaryGceZone`
+        # @return [String]
+        attr_accessor :secondary_gce_zone
       
         # The URI of this resource.
         # Corresponds to the JSON property `selfLink`
@@ -712,7 +727,9 @@ module Google
           @replica_configuration = args[:replica_configuration] if args.key?(:replica_configuration)
           @replica_names = args[:replica_names] if args.key?(:replica_names)
           @root_password = args[:root_password] if args.key?(:root_password)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @scheduled_maintenance = args[:scheduled_maintenance] if args.key?(:scheduled_maintenance)
+          @secondary_gce_zone = args[:secondary_gce_zone] if args.key?(:secondary_gce_zone)
           @self_link = args[:self_link] if args.key?(:self_link)
           @server_ca_cert = args[:server_ca_cert] if args.key?(:server_ca_cert)
           @service_account_email_address = args[:service_account_email_address] if args.key?(:service_account_email_address)
@@ -1724,6 +1741,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The preferred Compute Engine zone for the secondary/failover (for example: us-
+        # central1-a, us-central1-b, etc.). Reserved for future use.
+        # Corresponds to the JSON property `secondaryZone`
+        # @return [String]
+        attr_accessor :secondary_zone
+      
         # The preferred Compute Engine zone (for example: us-central1-a, us-central1-b,
         # etc.).
         # Corresponds to the JSON property `zone`
@@ -1738,6 +1761,7 @@ module Google
         def update!(**args)
           @follow_gae_application = args[:follow_gae_application] if args.key?(:follow_gae_application)
           @kind = args[:kind] if args.key?(:kind)
+          @secondary_zone = args[:secondary_zone] if args.key?(:secondary_zone)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
@@ -2269,7 +2293,7 @@ module Google
         # @return [String]
         attr_accessor :activation_policy
       
-        # Active Directory configuration, for now relevant only for SQL Server
+        # Active Directory configuration, relevant only for Cloud SQL for SQL Server.
         # Corresponds to the JSON property `activeDirectoryConfig`
         # @return [Google::Apis::SqladminV1beta4::SqlActiveDirectoryConfig]
         attr_accessor :active_directory_config
@@ -2438,16 +2462,16 @@ module Google
         end
       end
       
-      # Active Directory configuration, for now relevant only for SQL Server
+      # Active Directory configuration, relevant only for Cloud SQL for SQL Server.
       class SqlActiveDirectoryConfig
         include Google::Apis::Core::Hashable
       
-        # Domain name
+        # The name of the domain (e.g., mydomain.com).
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
       
-        # This will be always sql#activeDirectoryConfig.
+        # This is always sql#activeDirectoryConfig.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
