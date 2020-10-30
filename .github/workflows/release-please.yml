@@ -36,7 +36,7 @@ jobs:
               per_page: 10
             });
             var found = false;
-            prs.forEach(function(pr) {
+            prs.data.forEach(function(pr) {
               if (found || pr.user.login != "yoshi-code-bot" || !pr.title.startsWith("Release ")) {
                 return;
               }
