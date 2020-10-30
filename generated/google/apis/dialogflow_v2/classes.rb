@@ -7332,9 +7332,24 @@ module Google
         end
       end
       
-      # Metadata returned for the TestCases.RunTestCase long running operation.
-      class GoogleCloudDialogflowV3alpha1RunTestCaseMetadata
+      # Metadata in google::longrunning::Operation.
+      class GoogleCloudKnowledgeV1alpha1OperationMetadata
         include Google::Apis::Core::Hashable
+      
+        # The error codes from Manifold endpoints' last failures.
+        # Corresponds to the JSON property `errorCode`
+        # @return [Array<Fixnum>]
+        attr_accessor :error_code
+      
+        # The failure messages from Manifold endpoints' last failures.
+        # Corresponds to the JSON property `message`
+        # @return [Array<String>]
+        attr_accessor :message
+      
+        # Required. The current state of this operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
       
         def initialize(**args)
            update!(**args)
@@ -7342,6 +7357,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @error_code = args[:error_code] if args.key?(:error_code)
+          @message = args[:message] if args.key?(:message)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
