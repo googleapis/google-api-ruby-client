@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/domains/
     module DomainsV1alpha2
       VERSION = 'V1alpha2'
-      REVISION = '20201013'
+      REVISION = '20201029'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
