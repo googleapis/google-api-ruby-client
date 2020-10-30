@@ -54,7 +54,7 @@ jobs:
                   owner: 'googleapis',
                   repo: 'google-api-ruby-client',
                   issue_number: pr.number,
-                  labels: ["autorelease: pending", "automerge"]
+                  labels: ["autorelease: pending", "automerge", "kokoro:run"]
                 });
               } else {
                 core.info("ENABLE_AUTO_APPROVE is not set; labeling release only");
@@ -62,7 +62,7 @@ jobs:
                   owner: 'googleapis',
                   repo: 'google-api-ruby-client',
                   issue_number: pr.number,
-                  labels: ["autorelease: pending"]
+                  labels: ["autorelease: pending", "kokoro:run"]
                 });
               }
               core.info("AutoApprove: complete!");
