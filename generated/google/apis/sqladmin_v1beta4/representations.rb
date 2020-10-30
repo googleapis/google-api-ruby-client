@@ -613,8 +613,10 @@ module Google
       
           collection :replica_names, as: 'replicaNames'
           property :root_password, as: 'rootPassword'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :scheduled_maintenance, as: 'scheduledMaintenance', class: Google::Apis::SqladminV1beta4::SqlScheduledMaintenance, decorator: Google::Apis::SqladminV1beta4::SqlScheduledMaintenance::Representation
       
+          property :secondary_gce_zone, as: 'secondaryGceZone'
           property :self_link, as: 'selfLink'
           property :server_ca_cert, as: 'serverCaCert', class: Google::Apis::SqladminV1beta4::SslCert, decorator: Google::Apis::SqladminV1beta4::SslCert::Representation
       
@@ -923,6 +925,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :follow_gae_application, as: 'followGaeApplication'
           property :kind, as: 'kind'
+          property :secondary_zone, as: 'secondaryZone'
           property :zone, as: 'zone'
         end
       end
