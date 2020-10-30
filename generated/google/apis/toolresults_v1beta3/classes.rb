@@ -487,6 +487,19 @@ module Google
         end
       end
       
+      # A warning that device ran out of memory
+      class DeviceOutOfMemory
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A Duration represents a signed, fixed-length span of time represented as a
       # count of seconds and fractions of seconds at nanosecond resolution. It is
       # independent of any calendar and concepts like "day" or "month". It is related
