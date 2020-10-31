@@ -1608,15 +1608,16 @@ module Google
         #   used on all other fields must be `EQUALS (=)`. * Supported fields: - `
         #   campaignId` - `displayName` - `insertionOrderId` - `entityStatus` - `
         #   lineItemId` - `lineItemType` - `flight.dateRange.endDate` (input formatted as
-        #   YYYY-MM-DD) - `warningMessages` Examples: * All line items under an insertion
-        #   order: `insertionOrderId="1234"` * All `ENTITY_STATUS_ACTIVE` or `
-        #   ENTITY_STATUS_PAUSED` and `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an
-        #   advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="
-        #   ENTITY_STATUS_PAUSED") AND lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"` *
-        #   All line items whose flight dates end before March 28, 2019: `flight.dateRange.
-        #   endDate<"2019-03-28"` * All line items that have `NO_VALID_CREATIVE` in `
-        #   warningMessages`: `warningMessages:"NO_VALID_CREATIVE"` The length of this
-        #   field should be no more than 500 characters.
+        #   YYYY-MM-DD) - `warningMessages` - `flight.triggerId` Examples: * All line
+        #   items under an insertion order: `insertionOrderId="1234"` * All `
+        #   ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` and `
+        #   LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser: `(entityStatus=
+        #   "ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED") AND
+        #   lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"` * All line items whose flight
+        #   dates end before March 28, 2019: `flight.dateRange.endDate<"2019-03-28"` * All
+        #   line items that have `NO_VALID_CREATIVE` in `warningMessages`: `
+        #   warningMessages:"NO_VALID_CREATIVE"` The length of this field should be no
+        #   more than 500 characters.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * "displayName" (
         #   default) * "entityStatus" * “flight.dateRange.endDate” The default sorting
@@ -2214,6 +2215,245 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Activates a manual trigger. Each activation of the manual trigger must be at
+        # least 5 minutes apart, otherwise an error will be returned.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser that the manual trigger belongs.
+        # @param [Fixnum] trigger_id
+        #   Required. The ID of the manual trigger to activate.
+        # @param [Google::Apis::DisplayvideoV1::ActivateManualTriggerRequest] activate_manual_trigger_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::ManualTrigger] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::ManualTrigger]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def activate_manual_trigger(advertiser_id, trigger_id, activate_manual_trigger_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/advertisers/{+advertiserId}/manualTriggers/{+triggerId}:activate', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::ActivateManualTriggerRequest::Representation
+          command.request_object = activate_manual_trigger_request_object
+          command.response_representation = Google::Apis::DisplayvideoV1::ManualTrigger::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::ManualTrigger
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['triggerId'] = trigger_id unless trigger_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new manual trigger. Returns the newly created manual trigger if
+        # successful.
+        # @param [Fixnum] advertiser_id
+        #   Required. Immutable. The unique ID of the advertiser that the manual trigger
+        #   belongs to.
+        # @param [Google::Apis::DisplayvideoV1::ManualTrigger] manual_trigger_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::ManualTrigger] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::ManualTrigger]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_advertiser_manual_trigger(advertiser_id, manual_trigger_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/advertisers/{+advertiserId}/manualTriggers', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::ManualTrigger::Representation
+          command.request_object = manual_trigger_object
+          command.response_representation = Google::Apis::DisplayvideoV1::ManualTrigger::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::ManualTrigger
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deactivates a manual trigger.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser that the manual trigger belongs.
+        # @param [Fixnum] trigger_id
+        #   Required. The ID of the manual trigger to deactivate.
+        # @param [Google::Apis::DisplayvideoV1::DeactivateManualTriggerRequest] deactivate_manual_trigger_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::ManualTrigger] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::ManualTrigger]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def deactivate_manual_trigger(advertiser_id, trigger_id, deactivate_manual_trigger_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/advertisers/{+advertiserId}/manualTriggers/{+triggerId}:deactivate', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::DeactivateManualTriggerRequest::Representation
+          command.request_object = deactivate_manual_trigger_request_object
+          command.response_representation = Google::Apis::DisplayvideoV1::ManualTrigger::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::ManualTrigger
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['triggerId'] = trigger_id unless trigger_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a manual trigger.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser this manual trigger belongs to.
+        # @param [Fixnum] trigger_id
+        #   Required. The ID of the manual trigger to fetch.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::ManualTrigger] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::ManualTrigger]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_advertiser_manual_trigger(advertiser_id, trigger_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/advertisers/{+advertiserId}/manualTriggers/{+triggerId}', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::ManualTrigger::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::ManualTrigger
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['triggerId'] = trigger_id unless trigger_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists manual triggers that are accessible to the current user for a given
+        # advertiser id. The order is defined by the order_by parameter. A single
+        # advertiser_id is required.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser that the fetched manual triggers belong to.
+        # @param [String] filter
+        #   Allows filtering by manual trigger properties. Supported syntax: * Filter
+        #   expressions are made up of one or more restrictions. * Restrictions can be
+        #   combined by `AND` or `OR` logical operators. A sequence of restrictions
+        #   implicitly uses `AND`. * A restriction has the form of ``field` `operator` `
+        #   value``. * The operator must be `EQUALS (=)`. * Supported fields: - `
+        #   displayName` - `state` Examples: * All active manual triggers under an
+        #   advertiser: `state="ACTIVE"` The length of this field should be no more than
+        #   500 characters.
+        # @param [String] order_by
+        #   Field by which to sort the list. Acceptable values are: * `displayName` (
+        #   default) * `state` The default sorting order is ascending. To specify
+        #   descending order for a field, a suffix "desc" should be added to the field
+        #   name. For example, `displayName desc`.
+        # @param [Fixnum] page_size
+        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   default to `100`.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListManualTriggers` method. If not specified, the first page of results will
+        #   be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::ListManualTriggersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::ListManualTriggersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_advertiser_manual_triggers(advertiser_id, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/advertisers/{+advertiserId}/manualTriggers', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::ListManualTriggersResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::ListManualTriggersResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a manual trigger. Returns the updated manual trigger if successful.
+        # @param [Fixnum] advertiser_id
+        #   Required. Immutable. The unique ID of the advertiser that the manual trigger
+        #   belongs to.
+        # @param [Fixnum] trigger_id
+        #   Output only. The unique ID of the manual trigger.
+        # @param [Google::Apis::DisplayvideoV1::ManualTrigger] manual_trigger_object
+        # @param [String] update_mask
+        #   Required. The mask to control which fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::ManualTrigger] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::ManualTrigger]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_advertiser_manual_trigger(advertiser_id, trigger_id, manual_trigger_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/advertisers/{+advertiserId}/manualTriggers/{+triggerId}', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::ManualTrigger::Representation
+          command.request_object = manual_trigger_object
+          command.response_representation = Google::Apis::DisplayvideoV1::ManualTrigger::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::ManualTrigger
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['triggerId'] = trigger_id unless trigger_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
