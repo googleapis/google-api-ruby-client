@@ -22,6 +22,19 @@ module Google
   module Apis
     module DisplayvideoV1
       
+      # Request message for ManualTriggerService.ActivateManualTrigger.
+      class ActivateManualTriggerRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Configuration for custom Active View video viewability metrics.
       class ActiveViewVideoViewabilityMetricConfig
         include Google::Apis::Core::Hashable
@@ -3235,6 +3248,19 @@ module Google
         end
       end
       
+      # Request message for ManualTriggerService.DeactivateManualTrigger.
+      class DeactivateManualTriggerRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A request listing which assigned targeting options of a given targeting type
       # should be deleted.
       class DeleteAssignedTargetingOptionsRequest
@@ -3457,6 +3483,14 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::DoubleVerifyBrandSafetyCategories]
         attr_accessor :brand_safety_categories
       
+        # The custom segment ID provided by DoubleVerify. The ID must start with "51"
+        # and consist of eight digits. Custom segment id cannot be specified along with
+        # any of the following fields: * brand_safety_categories * avoided_age_ratings *
+        # app_star_rating * fraud_invalid_traffic
+        # Corresponds to the JSON property `customSegmentId`
+        # @return [Fixnum]
+        attr_accessor :custom_segment_id
+      
         # Details of DoubleVerify display viewability settings.
         # Corresponds to the JSON property `displayViewability`
         # @return [Google::Apis::DisplayvideoV1::DoubleVerifyDisplayViewability]
@@ -3481,6 +3515,7 @@ module Google
           @app_star_rating = args[:app_star_rating] if args.key?(:app_star_rating)
           @avoided_age_ratings = args[:avoided_age_ratings] if args.key?(:avoided_age_ratings)
           @brand_safety_categories = args[:brand_safety_categories] if args.key?(:brand_safety_categories)
+          @custom_segment_id = args[:custom_segment_id] if args.key?(:custom_segment_id)
           @display_viewability = args[:display_viewability] if args.key?(:display_viewability)
           @fraud_invalid_traffic = args[:fraud_invalid_traffic] if args.key?(:fraud_invalid_traffic)
           @video_viewability = args[:video_viewability] if args.key?(:video_viewability)
@@ -4690,6 +4725,12 @@ module Google
       class IntegralAdScience
         include Google::Apis::Core::Hashable
       
+        # The custom segment ID provided by Integral Ad Science. The ID must be between `
+        # 1000001` and `1999999`, inclusive.
+        # Corresponds to the JSON property `customSegmentId`
+        # @return [Array<Fixnum>]
+        attr_accessor :custom_segment_id
+      
         # Display Viewability section (applicable to display line items only).
         # Corresponds to the JSON property `displayViewability`
         # @return [String]
@@ -4762,6 +4803,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_segment_id = args[:custom_segment_id] if args.key?(:custom_segment_id)
           @display_viewability = args[:display_viewability] if args.key?(:display_viewability)
           @exclude_unrateable = args[:exclude_unrateable] if args.key?(:exclude_unrateable)
           @excluded_ad_fraud_risk = args[:excluded_ad_fraud_risk] if args.key?(:excluded_ad_fraud_risk)
@@ -5304,6 +5346,13 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::PartnerRevenueModel]
         attr_accessor :partner_revenue_model
       
+        # Settings that control the targeting expansion of the line item. Targeting
+        # expansion allows the line item to reach a larger audience based on the
+        # original audience list and the targeting expansion level.
+        # Corresponds to the JSON property `targetingExpansion`
+        # @return [Google::Apis::DisplayvideoV1::TargetingExpansionConfig]
+        attr_accessor :targeting_expansion
+      
         # Output only. The timestamp when the line item was last updated. Assigned by
         # the system.
         # Corresponds to the JSON property `updateTime`
@@ -5342,6 +5391,7 @@ module Google
           @pacing = args[:pacing] if args.key?(:pacing)
           @partner_costs = args[:partner_costs] if args.key?(:partner_costs)
           @partner_revenue_model = args[:partner_revenue_model] if args.key?(:partner_revenue_model)
+          @targeting_expansion = args[:targeting_expansion] if args.key?(:targeting_expansion)
           @update_time = args[:update_time] if args.key?(:update_time)
           @warning_messages = args[:warning_messages] if args.key?(:warning_messages)
         end
@@ -5404,6 +5454,15 @@ module Google
         # @return [String]
         attr_accessor :flight_date_type
       
+        # The ID of the manual trigger associated with the line item. * Required when
+        # flight_date_type is `LINE_ITEM_FLIGHT_DATE_TYPE_TRIGGER`. Must not be set
+        # otherwise. * A line item's flight dates are inherited from its parent
+        # insertion order. * Active line items will spend when the selected trigger is
+        # activated within the parent insertion order's flight dates.
+        # Corresponds to the JSON property `triggerId`
+        # @return [Fixnum]
+        attr_accessor :trigger_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5412,6 +5471,7 @@ module Google
         def update!(**args)
           @date_range = args[:date_range] if args.key?(:date_range)
           @flight_date_type = args[:flight_date_type] if args.key?(:flight_date_type)
+          @trigger_id = args[:trigger_id] if args.key?(:trigger_id)
         end
       end
       
@@ -5907,6 +5967,33 @@ module Google
         end
       end
       
+      # 
+      class ListManualTriggersResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of manual triggers. This list will be absent if empty.
+        # Corresponds to the JSON property `manualTriggers`
+        # @return [Array<Google::Apis::DisplayvideoV1::ManualTrigger>]
+        attr_accessor :manual_triggers
+      
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListManualTriggers` method to
+        # retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @manual_triggers = args[:manual_triggers] if args.key?(:manual_triggers)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for NegativeKeywordListService.ListNegativeKeywordLists.
       class ListNegativeKeywordListsResponse
         include Google::Apis::Core::Hashable
@@ -6169,6 +6256,66 @@ module Google
         def update!(**args)
           @click_days = args[:click_days] if args.key?(:click_days)
           @impression_days = args[:impression_days] if args.key?(:impression_days)
+        end
+      end
+      
+      # A single manual trigger in Display & Video 360 (DV360).
+      class ManualTrigger
+        include Google::Apis::Core::Hashable
+      
+        # Required. The maximum duration of each activation in minutes. Must be between
+        # 1 and 360 inclusive. After this duration, the trigger will be automatically
+        # deactivated.
+        # Corresponds to the JSON property `activationDurationMinutes`
+        # @return [Fixnum]
+        attr_accessor :activation_duration_minutes
+      
+        # Required. Immutable. The unique ID of the advertiser that the manual trigger
+        # belongs to.
+        # Corresponds to the JSON property `advertiserId`
+        # @return [Fixnum]
+        attr_accessor :advertiser_id
+      
+        # Required. The display name of the manual trigger. Must be UTF-8 encoded with a
+        # maximum size of 240 bytes.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The timestamp of the trigger's latest activation.
+        # Corresponds to the JSON property `latestActivationTime`
+        # @return [String]
+        attr_accessor :latest_activation_time
+      
+        # Output only. The resource name of the manual trigger.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The state of the manual trigger. Will be set to the `INACTIVE`
+        # state upon creation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The unique ID of the manual trigger.
+        # Corresponds to the JSON property `triggerId`
+        # @return [Fixnum]
+        attr_accessor :trigger_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @activation_duration_minutes = args[:activation_duration_minutes] if args.key?(:activation_duration_minutes)
+          @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @latest_activation_time = args[:latest_activation_time] if args.key?(:latest_activation_time)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @trigger_id = args[:trigger_id] if args.key?(:trigger_id)
         end
       end
       
@@ -7471,6 +7618,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
+        end
+      end
+      
+      # Settings that control the targeting expansion of the line item. Targeting
+      # expansion allows the line item to reach a larger audience based on the
+      # original audience list and the targeting expansion level.
+      class TargetingExpansionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Whether to exclude first party audiences from targeting. Similar
+        # audiences of the excluded first party lists will not be excluded. Only
+        # applicable when a first-party audience is positively targeted (directly or
+        # included in a combined audience), otherwise this selection will be ignored.
+        # Corresponds to the JSON property `excludeFirstPartyAudience`
+        # @return [Boolean]
+        attr_accessor :exclude_first_party_audience
+        alias_method :exclude_first_party_audience?, :exclude_first_party_audience
+      
+        # Required. Magnitude of expansion for applicable targeting under this line item.
+        # Corresponds to the JSON property `targetingExpansionLevel`
+        # @return [String]
+        attr_accessor :targeting_expansion_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclude_first_party_audience = args[:exclude_first_party_audience] if args.key?(:exclude_first_party_audience)
+          @targeting_expansion_level = args[:targeting_expansion_level] if args.key?(:targeting_expansion_level)
         end
       end
       

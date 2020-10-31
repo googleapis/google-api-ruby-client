@@ -22,6 +22,12 @@ module Google
   module Apis
     module DisplayvideoV1
       
+      class ActivateManualTriggerRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ActiveViewVideoViewabilityMetricConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -496,6 +502,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeactivateManualTriggerRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeleteAssignedTargetingOptionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -958,6 +970,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListManualTriggersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListNegativeKeywordListsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1007,6 +1025,12 @@ module Google
       end
       
       class LookbackWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManualTrigger
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1240,6 +1264,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TargetingExpansionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TargetingOption
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1340,6 +1370,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ActivateManualTriggerRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
       end
       
       class ActiveViewVideoViewabilityMetricConfig
@@ -2211,6 +2247,12 @@ module Google
         end
       end
       
+      class DeactivateManualTriggerRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class DeleteAssignedTargetingOptionsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2281,6 +2323,7 @@ module Google
           collection :avoided_age_ratings, as: 'avoidedAgeRatings'
           property :brand_safety_categories, as: 'brandSafetyCategories', class: Google::Apis::DisplayvideoV1::DoubleVerifyBrandSafetyCategories, decorator: Google::Apis::DisplayvideoV1::DoubleVerifyBrandSafetyCategories::Representation
       
+          property :custom_segment_id, :numeric_string => true, as: 'customSegmentId'
           property :display_viewability, as: 'displayViewability', class: Google::Apis::DisplayvideoV1::DoubleVerifyDisplayViewability, decorator: Google::Apis::DisplayvideoV1::DoubleVerifyDisplayViewability::Representation
       
           property :fraud_invalid_traffic, as: 'fraudInvalidTraffic', class: Google::Apis::DisplayvideoV1::DoubleVerifyFraudInvalidTraffic, decorator: Google::Apis::DisplayvideoV1::DoubleVerifyFraudInvalidTraffic::Representation
@@ -2615,6 +2658,7 @@ module Google
       class IntegralAdScience
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :custom_segment_id, as: 'customSegmentId'
           property :display_viewability, as: 'displayViewability'
           property :exclude_unrateable, as: 'excludeUnrateable'
           property :excluded_ad_fraud_risk, as: 'excludedAdFraudRisk'
@@ -2774,6 +2818,8 @@ module Google
       
           property :partner_revenue_model, as: 'partnerRevenueModel', class: Google::Apis::DisplayvideoV1::PartnerRevenueModel, decorator: Google::Apis::DisplayvideoV1::PartnerRevenueModel::Representation
       
+          property :targeting_expansion, as: 'targetingExpansion', class: Google::Apis::DisplayvideoV1::TargetingExpansionConfig, decorator: Google::Apis::DisplayvideoV1::TargetingExpansionConfig::Representation
+      
           property :update_time, as: 'updateTime'
           collection :warning_messages, as: 'warningMessages'
         end
@@ -2794,6 +2840,7 @@ module Google
           property :date_range, as: 'dateRange', class: Google::Apis::DisplayvideoV1::DateRange, decorator: Google::Apis::DisplayvideoV1::DateRange::Representation
       
           property :flight_date_type, as: 'flightDateType'
+          property :trigger_id, :numeric_string => true, as: 'triggerId'
         end
       end
       
@@ -2959,6 +3006,15 @@ module Google
         end
       end
       
+      class ListManualTriggersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :manual_triggers, as: 'manualTriggers', class: Google::Apis::DisplayvideoV1::ManualTrigger, decorator: Google::Apis::DisplayvideoV1::ManualTrigger::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListNegativeKeywordListsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3038,6 +3094,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :click_days, as: 'clickDays'
           property :impression_days, as: 'impressionDays'
+        end
+      end
+      
+      class ManualTrigger
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :activation_duration_minutes, :numeric_string => true, as: 'activationDurationMinutes'
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
+          property :display_name, as: 'displayName'
+          property :latest_activation_time, as: 'latestActivationTime'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :trigger_id, :numeric_string => true, as: 'triggerId'
         end
       end
       
@@ -3382,6 +3451,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
+        end
+      end
+      
+      class TargetingExpansionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exclude_first_party_audience, as: 'excludeFirstPartyAudience'
+          property :targeting_expansion_level, as: 'targetingExpansionLevel'
         end
       end
       
