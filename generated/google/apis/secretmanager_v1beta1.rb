@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/secret-manager/
     module SecretmanagerV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20200831'
+      REVISION = '20201026'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
