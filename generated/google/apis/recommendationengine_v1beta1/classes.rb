@@ -1562,6 +1562,19 @@ module Google
         end
       end
       
+      # Metadata for RejoinUserEvents method.
+      class GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for CatalogRejoin method.
       class GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest
         include Google::Apis::Core::Hashable
@@ -1579,6 +1592,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @user_event_rejoin_scope = args[:user_event_rejoin_scope] if args.key?(:user_event_rejoin_scope)
+        end
+      end
+      
+      # Response message for RejoinUserEvents method.
+      class GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Number of user events that were joined with latest catalog items.
+        # Corresponds to the JSON property `rejoinedUserEventsCount`
+        # @return [Fixnum]
+        attr_accessor :rejoined_user_events_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rejoined_user_events_count = args[:rejoined_user_events_count] if args.key?(:rejoined_user_events_count)
         end
       end
       

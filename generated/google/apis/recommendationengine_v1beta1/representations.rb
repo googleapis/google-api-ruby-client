@@ -274,7 +274,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -743,10 +755,23 @@ module Google
         end
       end
       
+      class GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :user_event_rejoin_scope, as: 'userEventRejoinScope'
+        end
+      end
+      
+      class GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rejoined_user_events_count, :numeric_string => true, as: 'rejoinedUserEventsCount'
         end
       end
       
