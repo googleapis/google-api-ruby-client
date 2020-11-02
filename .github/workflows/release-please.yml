@@ -1,6 +1,6 @@
 on:
-  # schedule:
-  #   - cron: '49 8 * * 1'
+  schedule:
+    - cron: '49 8 * * 1'
   workflow_dispatch:
 
 name: release-please
@@ -54,7 +54,7 @@ jobs:
                   owner: 'googleapis',
                   repo: 'google-api-ruby-client',
                   issue_number: pr.number,
-                  labels: ["autorelease: pending", "automerge", "kokoro:run"]
+                  labels: ["autorelease: pending", "automerge", "kokoro:force-run"]
                 });
               } else {
                 core.info("ENABLE_AUTO_APPROVE is not set; labeling release only");
@@ -62,7 +62,7 @@ jobs:
                   owner: 'googleapis',
                   repo: 'google-api-ruby-client',
                   issue_number: pr.number,
-                  labels: ["autorelease: pending", "kokoro:run"]
+                  labels: ["autorelease: pending", "kokoro:force-run"]
                 });
               }
               core.info("AutoApprove: complete!");
