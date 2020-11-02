@@ -1,5 +1,69 @@
 # Release History
 
+## [0.48.0](https://www.github.com/googleapis/google-api-ruby-client/compare/v0.47.0...v0.48.0) (2020-11-02)
+
+
+### Features
+
+* Automated regeneration of bigquery v2 client ([#1329](https://www.github.com/googleapis/google-api-ruby-client/issues/1329)) ([768d393](https://www.github.com/googleapis/google-api-ruby-client/commit/768d3937e6c487b755846b65267c20674e52a10c))
+* Automated regeneration of billingbudgets v1 client ([#1288](https://www.github.com/googleapis/google-api-ruby-client/issues/1288)) ([43f8c49](https://www.github.com/googleapis/google-api-ruby-client/commit/43f8c49906a20d835a392b53ed58950473dfe285))
+* Automated regeneration of billingbudgets v1beta1 client ([#1289](https://www.github.com/googleapis/google-api-ruby-client/issues/1289)) ([f091ed0](https://www.github.com/googleapis/google-api-ruby-client/commit/f091ed02ddb82dac41cc1762939611270586fdb3))
+* Automated regeneration of cloudasset v1 client ([#1290](https://www.github.com/googleapis/google-api-ruby-client/issues/1290)) ([9a89003](https://www.github.com/googleapis/google-api-ruby-client/commit/9a89003a7c09c1981bf1d46ddd74c9997efaf69d))
+* Automated regeneration of compute v1 client ([#1291](https://www.github.com/googleapis/google-api-ruby-client/issues/1291)) ([297ae6a](https://www.github.com/googleapis/google-api-ruby-client/commit/297ae6a7ec94d8fd6b1b7efcb0ae2f5fe1185a20))
+* Automated regeneration of content v2 client ([#1316](https://www.github.com/googleapis/google-api-ruby-client/issues/1316)) ([678ac02](https://www.github.com/googleapis/google-api-ruby-client/commit/678ac02bab8db2cc5c59760e3a486dc4a192c845))
+* Automated regeneration of content v2.1 client ([#1292](https://www.github.com/googleapis/google-api-ruby-client/issues/1292)) ([c69bbb4](https://www.github.com/googleapis/google-api-ruby-client/commit/c69bbb4048752c91a4e4db997a4cf2486f6054dc))
+* Automated regeneration of content v2.1 client ([#1315](https://www.github.com/googleapis/google-api-ruby-client/issues/1315)) ([e707531](https://www.github.com/googleapis/google-api-ruby-client/commit/e707531a8836a261435c57c2cae1f424c2a6293a))
+* Automated regeneration of datacatalog v1beta1 client ([#1293](https://www.github.com/googleapis/google-api-ruby-client/issues/1293)) ([c0d3e53](https://www.github.com/googleapis/google-api-ruby-client/commit/c0d3e5354e0b94feefd7fd6578233a8a2d76f022))
+* Automated regeneration of dataflow v1b3 client ([#1317](https://www.github.com/googleapis/google-api-ruby-client/issues/1317)) ([76adefd](https://www.github.com/googleapis/google-api-ruby-client/commit/76adefdc4519394d4ea678814244ee0093ace26b))
+* Automated regeneration of datalabeling v1beta1 client ([#1318](https://www.github.com/googleapis/google-api-ruby-client/issues/1318)) ([387d0ce](https://www.github.com/googleapis/google-api-ruby-client/commit/387d0cebfe9dbddda004a6cc579cbc8399ed82de))
+* Automated regeneration of datastore v1 client ([#1294](https://www.github.com/googleapis/google-api-ruby-client/issues/1294)) ([d425140](https://www.github.com/googleapis/google-api-ruby-client/commit/d42514033d982d153d8f78727f23f0b4d49ea629))
+* Automated regeneration of datastore v1beta3 client ([#1295](https://www.github.com/googleapis/google-api-ruby-client/issues/1295)) ([9840c48](https://www.github.com/googleapis/google-api-ruby-client/commit/9840c481849200572321532ecc3b128bebbc1583))
+* Automated regeneration of deploymentmanager v2 client ([#1319](https://www.github.com/googleapis/google-api-ruby-client/issues/1319)) ([047de22](https://www.github.com/googleapis/google-api-ruby-client/commit/047de22f9c1084a4ccaef33cf7efe54f0055971b))
+* Automated regeneration of deploymentmanager v2beta client ([#1320](https://www.github.com/googleapis/google-api-ruby-client/issues/1320)) ([af15d56](https://www.github.com/googleapis/google-api-ruby-client/commit/af15d561f1922e936be21bb35cbccac8415f2e2e))
+* Automated regeneration of dialogflow v2 client ([#1330](https://www.github.com/googleapis/google-api-ruby-client/issues/1330)) ([27e25ea](https://www.github.com/googleapis/google-api-ruby-client/commit/27e25ea099e5c987b7435748b867e0795ac52666))
+* Automated regeneration of dialogflow v2beta1 client ([#1321](https://www.github.com/googleapis/google-api-ruby-client/issues/1321)) ([5bae04c](https://www.github.com/googleapis/google-api-ruby-client/commit/5bae04cbb55e0f0fe15fc3a96842f378b2d8d4ac))
+* Automated regeneration of dialogflow v3beta1 client ([#1331](https://www.github.com/googleapis/google-api-ruby-client/issues/1331)) ([4d5b98f](https://www.github.com/googleapis/google-api-ruby-client/commit/4d5b98ffca7eaf905a28939051f53ff2881aaf64))
+* Automated regeneration of displayvideo v1 client ([#1342](https://www.github.com/googleapis/google-api-ruby-client/issues/1342)) ([1a0c4a7](https://www.github.com/googleapis/google-api-ruby-client/commit/1a0c4a7b0f26aaefb051e7117cc464830308304b))
+* Automated regeneration of domains v1alpha2 client ([#1332](https://www.github.com/googleapis/google-api-ruby-client/issues/1332)) ([dda2e6c](https://www.github.com/googleapis/google-api-ruby-client/commit/dda2e6c739363210e2b27d728f9262b2caa32bab))
+* Automated regeneration of domains v1beta1 client ([#1343](https://www.github.com/googleapis/google-api-ruby-client/issues/1343)) ([2dca59f](https://www.github.com/googleapis/google-api-ruby-client/commit/2dca59f8925f1e235b8b5803ab984b0a2e2a7b98))
+* Automated regeneration of eventarc v1beta1 client ([#1296](https://www.github.com/googleapis/google-api-ruby-client/issues/1296)) ([6f144f7](https://www.github.com/googleapis/google-api-ruby-client/commit/6f144f7ea06cdd427ddcdeace5263e68f378a979))
+* Automated regeneration of firebase v1beta1 client ([#1322](https://www.github.com/googleapis/google-api-ruby-client/issues/1322)) ([1a4c898](https://www.github.com/googleapis/google-api-ruby-client/commit/1a4c898fc88855eadc75fe7042e14ce6e4377120))
+* Automated regeneration of firebasehosting v1beta1 client ([#1323](https://www.github.com/googleapis/google-api-ruby-client/issues/1323)) ([4d6973e](https://www.github.com/googleapis/google-api-ruby-client/commit/4d6973e487635b017e7f9ad0589b616bf4b00bee))
+* Automated regeneration of firestore v1 client ([#1297](https://www.github.com/googleapis/google-api-ruby-client/issues/1297)) ([4cc5ac9](https://www.github.com/googleapis/google-api-ruby-client/commit/4cc5ac9a04f3465310c8acd191ab3efe7afa3069))
+* Automated regeneration of firestore v1beta1 client ([#1298](https://www.github.com/googleapis/google-api-ruby-client/issues/1298)) ([1f36075](https://www.github.com/googleapis/google-api-ruby-client/commit/1f36075071530d3d0c4125641bd5fcddbb470db6))
+* Automated regeneration of games v1 client ([#1299](https://www.github.com/googleapis/google-api-ruby-client/issues/1299)) ([8c087d1](https://www.github.com/googleapis/google-api-ruby-client/commit/8c087d1968c21d8a147ebf3a28d641701f304d7a))
+* Automated regeneration of gameservices v1 client ([#1300](https://www.github.com/googleapis/google-api-ruby-client/issues/1300)) ([0c57d8e](https://www.github.com/googleapis/google-api-ruby-client/commit/0c57d8eecde12869e62dd8c9a1708c9abb9b3ef1))
+* Automated regeneration of gameservices v1beta client ([#1301](https://www.github.com/googleapis/google-api-ruby-client/issues/1301)) ([80a722f](https://www.github.com/googleapis/google-api-ruby-client/commit/80a722fbaf04229624afeab663043537e3981bb9))
+* Automated regeneration of iam v1 client ([855ba09](https://www.github.com/googleapis/google-api-ruby-client/commit/855ba09d7b9ac63ff240437edf413cc9d8b0a3b4))
+* Automated regeneration of iamcredentials v1 client ([#1333](https://www.github.com/googleapis/google-api-ruby-client/issues/1333)) ([df6b1b1](https://www.github.com/googleapis/google-api-ruby-client/commit/df6b1b134dc28a641db3cc4abf1f99bfa2db2ae3))
+* Automated regeneration of logging v2 client ([#1344](https://www.github.com/googleapis/google-api-ruby-client/issues/1344)) ([6c995ec](https://www.github.com/googleapis/google-api-ruby-client/commit/6c995ec7c638370205b0d30c849233dec1c5ff5e))
+* Automated regeneration of people v1 client ([#1303](https://www.github.com/googleapis/google-api-ruby-client/issues/1303)) ([79a43ec](https://www.github.com/googleapis/google-api-ruby-client/commit/79a43ec56f0591043ce631e889c3354471f07c7b))
+* Automated regeneration of privateca v1beta1 client ([#1304](https://www.github.com/googleapis/google-api-ruby-client/issues/1304)) ([ad7cdc7](https://www.github.com/googleapis/google-api-ruby-client/commit/ad7cdc79f8d83906fb282cc9643973f2c469cbc5))
+* Automated regeneration of recommendationengine v1beta1 client ([#1345](https://www.github.com/googleapis/google-api-ruby-client/issues/1345)) ([c25cd83](https://www.github.com/googleapis/google-api-ruby-client/commit/c25cd8320b4de2875191aadea85e159b15b3c250))
+* Automated regeneration of runtimeconfig v1beta1 client ([#1324](https://www.github.com/googleapis/google-api-ruby-client/issues/1324)) ([d18ef56](https://www.github.com/googleapis/google-api-ruby-client/commit/d18ef56eead6936295b0789924e90d0c7b016689))
+* Automated regeneration of safebrowsing v4 client ([#1305](https://www.github.com/googleapis/google-api-ruby-client/issues/1305)) ([599f53b](https://www.github.com/googleapis/google-api-ruby-client/commit/599f53bfa0e9276349445de8267f338370e4974a))
+* Automated regeneration of secretmanager v1 client ([#1346](https://www.github.com/googleapis/google-api-ruby-client/issues/1346)) ([cc4bc75](https://www.github.com/googleapis/google-api-ruby-client/commit/cc4bc758031ea9a9236244df0e530a8ead89dd1a))
+* Automated regeneration of secretmanager v1beta1 client ([#1347](https://www.github.com/googleapis/google-api-ruby-client/issues/1347)) ([ba2823f](https://www.github.com/googleapis/google-api-ruby-client/commit/ba2823f94308d71bb19733235f50ec6962e3347d))
+* Automated regeneration of servicecontrol v1 client ([#1325](https://www.github.com/googleapis/google-api-ruby-client/issues/1325)) ([0a00165](https://www.github.com/googleapis/google-api-ruby-client/commit/0a00165a12c24b7d9497c58015ccc067a1623331))
+* Automated regeneration of servicecontrol v2 client ([#1326](https://www.github.com/googleapis/google-api-ruby-client/issues/1326)) ([6e63895](https://www.github.com/googleapis/google-api-ruby-client/commit/6e6389574238c38dde4446161925a2fc2e7877b8))
+* Automated regeneration of servicemanagement v1 client ([#1306](https://www.github.com/googleapis/google-api-ruby-client/issues/1306)) ([c2c1be2](https://www.github.com/googleapis/google-api-ruby-client/commit/c2c1be2be34335d6cfc0093dec0768a83d2f087d))
+* Automated regeneration of serviceusage v1beta1 client ([#1334](https://www.github.com/googleapis/google-api-ruby-client/issues/1334)) ([2378835](https://www.github.com/googleapis/google-api-ruby-client/commit/237883527a4366623d777cbc863904a8b5225883))
+* Automated regeneration of smartdevicemanagement v1 client ([#1307](https://www.github.com/googleapis/google-api-ruby-client/issues/1307)) ([56d73b5](https://www.github.com/googleapis/google-api-ruby-client/commit/56d73b589325345a024edf088e6d3d647375f6b2))
+* Automated regeneration of sqladmin v1beta4 client ([#1335](https://www.github.com/googleapis/google-api-ruby-client/issues/1335)) ([4ef0d44](https://www.github.com/googleapis/google-api-ruby-client/commit/4ef0d445ab819d9d706bb1217e0ddd87babb6471))
+* Automated regeneration of storagetransfer v1 client ([#1327](https://www.github.com/googleapis/google-api-ruby-client/issues/1327)) ([2b4a559](https://www.github.com/googleapis/google-api-ruby-client/commit/2b4a559f06b8068ef28a2ca37c1d48bef6dc58db))
+* Automated regeneration of toolresults v1beta3 client ([#1336](https://www.github.com/googleapis/google-api-ruby-client/issues/1336)) ([7ab948e](https://www.github.com/googleapis/google-api-ruby-client/commit/7ab948e13218d4426dd16e2d4ba861d1f1b7a123))
+* Automated regeneration of translate v3 client ([#1308](https://www.github.com/googleapis/google-api-ruby-client/issues/1308)) ([10416aa](https://www.github.com/googleapis/google-api-ruby-client/commit/10416aa795a5582905349143d0080458328c242f))
+* Automated regeneration of translate v3beta1 client ([#1309](https://www.github.com/googleapis/google-api-ruby-client/issues/1309)) ([6f71109](https://www.github.com/googleapis/google-api-ruby-client/commit/6f71109e3823ae0ea988240a76bbf887ffe0696b))
+* Automated regeneration of vision v1 client ([#1310](https://www.github.com/googleapis/google-api-ruby-client/issues/1310)) ([e15dc63](https://www.github.com/googleapis/google-api-ruby-client/commit/e15dc632cfd4474103ef157e2ec915ee49aa46dc))
+* Automated regeneration of vision v1p1beta1 client ([#1311](https://www.github.com/googleapis/google-api-ruby-client/issues/1311)) ([73b17a4](https://www.github.com/googleapis/google-api-ruby-client/commit/73b17a488f1d86317f6492d682b5f552af45e5cf))
+* Automated regeneration of vision v1p2beta1 client ([#1312](https://www.github.com/googleapis/google-api-ruby-client/issues/1312)) ([4ea7309](https://www.github.com/googleapis/google-api-ruby-client/commit/4ea7309e56e8a6e3c450d7aeba0df3ebaa84d281))
+* Automated regeneration of youtube v3 client ([#1313](https://www.github.com/googleapis/google-api-ruby-client/issues/1313)) ([50ce2aa](https://www.github.com/googleapis/google-api-ruby-client/commit/50ce2aaa152cc7a9abe128e4db09b7c795825077))
+
+
+### Bug Fixes
+
+* Fix incorrect variable name in gem publish script ([8d2ef13](https://www.github.com/googleapis/google-api-ruby-client/commit/8d2ef13ecc4fd0426870bf3ab35770b4782063cf))
+
 ### 0.47.0 / 2020-10-27
 
 * Support adding query params to request options
