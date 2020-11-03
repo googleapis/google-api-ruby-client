@@ -129,8 +129,7 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # A client-specified ID for this binding. Expected to be globally unique to
-        # support the internal bindings-by-ID API.
+        # 
         # Corresponds to the JSON property `bindingId`
         # @return [String]
         attr_accessor :binding_id
@@ -547,16 +546,6 @@ module Google
       class OAuthSettings
         include Google::Apis::Core::Hashable
       
-        # OAuth 2.0 client ID used in the OAuth flow to generate an access token. If
-        # this field is set, you can skip obtaining the OAuth credentials in this step:
-        # https://developers.google.com/identity/protocols/OAuth2?hl=en_US#1.-obtain-
-        # oauth-2.0-credentials-from-the-google-api-console. However, this could allow
-        # for client sharing. The risks of client sharing are outlined here: https://
-        # cloud.google.com/iap/docs/sharing-oauth-clients#risks.
-        # Corresponds to the JSON property `clientId`
-        # @return [String]
-        attr_accessor :client_id
-      
         # Domain hint to send as hd=? parameter in OAuth request flow. Enables redirect
         # to primary IDP by skipping Google's login screen. https://developers.google.
         # com/identity/protocols/OpenIDConnect#hd-param Note: IAP does not verify that
@@ -572,7 +561,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @client_id = args[:client_id] if args.key?(:client_id)
           @login_hint = args[:login_hint] if args.key?(:login_hint)
         end
       end
