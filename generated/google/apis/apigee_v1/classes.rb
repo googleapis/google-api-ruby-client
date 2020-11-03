@@ -339,32 +339,18 @@ module Google
       class GoogleCloudApigeeV1ApiProduct
         include Google::Apis::Core::Hashable
       
-        # Comma-separated list of API resources to be bundled in the API Product. By
-        # default, the resource paths are mapped from the `proxy.pathsuffix` variable.
-        # The proxy path suffix is defined as the URI fragment following the
-        # ProxyEndpoint base path. For example, if the `apiResources` element is defined
-        # to be `/forecastrss` and the base path defined for the API proxy is `/weather`,
-        # then only requests to `/weather/forecastrss` are permitted by the API product.
-        # You can select a specific path, or you can select all subpaths with the
-        # following wildcard: - /**: Indicates that all sub-URIs are included. - /* :
-        # Indicates that only URIs one level down are included. By default, / supports
-        # the same resources as /** as well as the base path defined by the API proxy.
-        # For example, if the base path of the API proxy is `/v1/weatherapikey`, then
-        # the API product supports requests to `/v1/weatherapikey` and to any sub-URIs,
-        # such as `/v1/weatherapikey/forecastrss`, `/v1/weatherapikey/region/CA`, and so
-        # on. For more information, see: - Manage API products - Managing a transaction
-        # recording policy using the API
+        # 
         # Corresponds to the JSON property `apiResources`
         # @return [Array<String>]
         attr_accessor :api_resources
       
-        # Specifies how API keys are approved to access the APIs defined by the API
-        # product. If set to `manual`, the consumer key is generated and returned in "
-        # pending" state. In this case, the API keys won't work until they have been
-        # explicitly approved. If set to `auto`, the consumer key is generated and
-        # returned in "approved" state and can be used immediately. *NOTE:* Typically, `
-        # auto` is used to provide access to free or trial API products that provide
-        # limited quota or capabilities.
+        # Flag that specifies how API keys are approved to access the APIs defined by
+        # the API product. If set to `manual`, the consumer key is generated and
+        # returned in "pending" state. In this case, the API keys won't work until they
+        # have been explicitly approved. If set to `auto`, the consumer key is generated
+        # and returned in "approved" state and can be used immediately. **Note:**
+        # Typically, `auto` is used to provide access to free or trial API products that
+        # provide limited quota or capabilities.
         # Corresponds to the JSON property `approvalType`
         # @return [String]
         attr_accessor :approval_type
@@ -376,10 +362,8 @@ module Google
         # to developers in the Apigee developer portal. For example, you can set a
         # product to `internal` while it is in development and then change access to `
         # public` when it is ready to release on the portal. API products marked as `
-        # private` do not appear on the portal but can be accessed by external
-        # developers. For monetization, you can use the attributes field to: - Specify
-        # transaction success criteria - Specify custom attributes on which you base
-        # rate plan charges.
+        # private` do not appear on the portal, but can be accessed by external
+        # developers.
         # Corresponds to the JSON property `attributes`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute>]
         attr_accessor :attributes
@@ -389,25 +373,39 @@ module Google
         # @return [Fixnum]
         attr_accessor :created_at
       
-        # An overview of the API product. Include key information about the API product
-        # that is not captured by other fields.
+        # Description of the API product. Include key information about the API product
+        # that is not captured by other fields. Comma-separated list of API resources to
+        # be bundled in the API product. By default, the resource paths are mapped from
+        # the `proxy.pathsuffix` variable. The proxy path suffix is defined as the URI
+        # fragment following the ProxyEndpoint base path. For example, if the `
+        # apiResources` element is defined to be `/forecastrss` and the base path
+        # defined for the API proxy is `/weather`, then only requests to `/weather/
+        # forecastrss` are permitted by the API product. You can select a specific path,
+        # or you can select all subpaths with the following wildcard: - `/**`: Indicates
+        # that all sub-URIs are included. - `/*` : Indicates that only URIs one level
+        # down are included. By default, / supports the same resources as /** as well as
+        # the base path defined by the API proxy. For example, if the base path of the
+        # API proxy is `/v1/weatherapikey`, then the API product supports requests to `/
+        # v1/weatherapikey` and to any sub-URIs, such as `/v1/weatherapikey/forecastrss`,
+        # `/v1/weatherapikey/region/CA`, and so on. For more information, see Managing
+        # API products.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # The name to be displayed in the UI or developer portal to developers
-        # registering for API access.
+        # Name displayed in the UI or developer portal to developers registering for API
+        # access.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # A comma-separated list of environment names to which the API product is bound.
+        # Comma-separated list of environment names to which the API product is bound.
         # Requests to environments that are not listed are rejected. By specifying one
         # or more environments, you can bind the resources listed in the API product to
         # a specific environment, preventing developers from accessing those resources
         # through API proxies deployed in another environment. This setting is used, for
-        # example, to prevent resources associated with API proxies in 'prod' from being
-        # accessed by API proxies deployed in 'test'.
+        # example, to prevent resources associated with API proxies in `prod` from being
+        # accessed by API proxies deployed in `test`.
         # Corresponds to the JSON property `environments`
         # @return [Array<String>]
         attr_accessor :environments
@@ -417,31 +415,30 @@ module Google
         # @return [Fixnum]
         attr_accessor :last_modified_at
       
-        # The internal name of the API Product. Characters you can use in the name are
-        # restricted to: A-Z0-9._\-$ %. *NOTE:* The internal name cannot be edited when
-        # updating the API product.
+        # Internal name of the API product. Characters you can use in the name are
+        # restricted to: `A-Z0-9._\-$ %`. **Note:** The internal name cannot be edited
+        # when updating the API product.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The OperationGroup contains a list of configuration details associated with
-        # Apigee proxies or Remote services. Remote services are non-Apigee Edge proxies.
-        # eg, Istio-Envoy.
+        # List of operation configuration details associated with Apigee API proxies or
+        # remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
         # Corresponds to the JSON property `operationGroup`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1OperationGroup]
         attr_accessor :operation_group
       
-        # A comma-separated list of API proxy names to which this API product is bound.
-        # By specifying API proxies, you can associate resources in the API product with
+        # Comma-separated list of API proxy names to which this API product is bound. By
+        # specifying API proxies, you can associate resources in the API product with
         # specific API proxies, preventing developers from accessing those resources
-        # through other API proxies. Edge rejects requests to API proxies that are not
-        # listed. *NOTE:* The API proxy names must already exist in the specified
+        # through other API proxies. Apigee rejects requests to API proxies that are not
+        # listed. **Note:** The API proxy names must already exist in the specified
         # environment as they will be validated upon creation.
         # Corresponds to the JSON property `proxies`
         # @return [Array<String>]
         attr_accessor :proxies
       
-        # The number of request messages permitted per app by this API product for the
+        # Number of request messages permitted per app by this API product for the
         # specified `quotaInterval` and `quotaTimeUnit`. For example, a `quota` of 50,
         # for a `quotaInterval` of 12 and a `quotaTimeUnit` of hours means 50 requests
         # are allowed every 12 hours.
@@ -449,20 +446,20 @@ module Google
         # @return [String]
         attr_accessor :quota
       
-        # The time interval over which the number of request messages is calculated.
+        # Time interval over which the number of request messages is calculated.
         # Corresponds to the JSON property `quotaInterval`
         # @return [String]
         attr_accessor :quota_interval
       
-        # The time unit defined for the `quotaInterval`. Valid values include minute,
-        # hour, day, or month.
+        # Time unit defined for the `quotaInterval`. Valid values include `minute`, `
+        # hour`, `day`, or `month`.
         # Corresponds to the JSON property `quotaTimeUnit`
         # @return [String]
         attr_accessor :quota_time_unit
       
-        # A comma-separated list of OAuth scopes that are validated at runtime. Edge
+        # Comma-separated list of OAuth scopes that are validated at runtime. Apigee
         # validates that the scopes in any access token presented match the scopes
-        # defined in the OAuth policy assoicated with the API product.
+        # defined in the OAuth policy associated with the API product.
         # Corresponds to the JSON property `scopes`
         # @return [Array<String>]
         attr_accessor :scopes
@@ -1000,6 +997,107 @@ module Google
         end
       end
       
+      # CanaryEvaluation represents the canary analysis between two versions of the
+      # runtime that is serving requests.
+      class GoogleCloudApigeeV1CanaryEvaluation
+        include Google::Apis::Core::Hashable
+      
+        # Required. The stable version that is serving requests.
+        # Corresponds to the JSON property `control`
+        # @return [String]
+        attr_accessor :control
+      
+        # Output only. Create time of the canary evaluation.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. End time for the evaluation's analysis.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Labels that can be used to filter Apigee metrics.
+        # Corresponds to the JSON property `metricLabels`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1CanaryEvaluationMetricLabels]
+        attr_accessor :metric_labels
+      
+        # Output only. Name of the canary evalution.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Start time for the canary evaluation's analysis.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. The current state of the canary evaluation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Required. The newer version that is serving requests.
+        # Corresponds to the JSON property `treatment`
+        # @return [String]
+        attr_accessor :treatment
+      
+        # Output only. The resulting verdict of the canary evaluations: NONE, PASS, or
+        # FAIL.
+        # Corresponds to the JSON property `verdict`
+        # @return [String]
+        attr_accessor :verdict
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @control = args[:control] if args.key?(:control)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @metric_labels = args[:metric_labels] if args.key?(:metric_labels)
+          @name = args[:name] if args.key?(:name)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+          @treatment = args[:treatment] if args.key?(:treatment)
+          @verdict = args[:verdict] if args.key?(:verdict)
+        end
+      end
+      
+      # Labels that can be used to filter Apigee metrics.
+      class GoogleCloudApigeeV1CanaryEvaluationMetricLabels
+        include Google::Apis::Core::Hashable
+      
+        # The environment ID associated with the metrics.
+        # Corresponds to the JSON property `env`
+        # @return [String]
+        attr_accessor :env
+      
+        # Required. The instance ID associated with the metrics. In Apigee Hybrid, the
+        # value is configured during installation.
+        # Corresponds to the JSON property `instance_id`
+        # @return [String]
+        attr_accessor :instance_id
+      
+        # Required. The location associated with the metrics.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @env = args[:env] if args.key?(:env)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @location = args[:location] if args.key?(:location)
+        end
+      end
+      
       # An X.509 certificate as defined in RFC 5280.
       class GoogleCloudApigeeV1CertInfo
         include Google::Apis::Core::Hashable
@@ -1385,6 +1483,51 @@ module Google
         def update!(**args)
           @function = args[:function] if args.key?(:function)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Data Collector configuration.
+      class GoogleCloudApigeeV1DataCollector
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which the Data Collector was created in milliseconds
+        # since the epoch.
+        # Corresponds to the JSON property `createdAt`
+        # @return [Fixnum]
+        attr_accessor :created_at
+      
+        # A description of the Data Collector.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The time at which the Data Collector was last updated in
+        # milliseconds since the epoch.
+        # Corresponds to the JSON property `lastModifiedAt`
+        # @return [Fixnum]
+        attr_accessor :last_modified_at
+      
+        # ID of the Data Collector.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Immutable. The type of data this DataCollector will collect.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @created_at = args[:created_at] if args.key?(:created_at)
+          @description = args[:description] if args.key?(:description)
+          @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -3329,6 +3472,32 @@ module Google
         end
       end
       
+      # Response for ListDataCollectors.
+      class GoogleCloudApigeeV1ListDataCollectorsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Data Collectors in the specified organization.
+        # Corresponds to the JSON property `dataCollectors`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollector>]
+        attr_accessor :data_collectors
+      
+        # Page token that you can include in a ListDataCollectors request to retrieve
+        # the next page. If omitted, no subsequent pages exist.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_collectors = args[:data_collectors] if args.key?(:data_collectors)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response for ListDatastores
       class GoogleCloudApigeeV1ListDatastoresResponse
         include Google::Apis::Core::Hashable
@@ -3721,20 +3890,21 @@ module Google
       class GoogleCloudApigeeV1OperationConfig
         include Google::Apis::Core::Hashable
       
-        # Required. api_source represents either a proxy or remote service name for
-        # which the resources, methods and quota are associated with.
+        # Required. API proxy or remote service name with which the resources, methods,
+        # and quota are associated.
         # Corresponds to the JSON property `apiSource`
         # @return [String]
         attr_accessor :api_source
       
-        # custom attribute associated with the operation.
+        # Custom attributes associated with the operation.
         # Corresponds to the JSON property `attributes`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute>]
         attr_accessor :attributes
       
-        # operations is the list of resource/methods pair, belonging to proxy/remote
-        # service, upon which quota will applied on. Note that currently we allow only a
-        # single operation. The call will fail if more than one is provided.
+        # List of resource/method pairs for the proxy/remote service, upon which quota
+        # will applied. **Note**: Currently, you can specify only a single resource/
+        # method pair. The call will fail if more than one resource/method pair is
+        # provided.
         # Corresponds to the JSON property `operations`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Operation>]
         attr_accessor :operations
@@ -3760,23 +3930,22 @@ module Google
         end
       end
       
-      # The OperationGroup contains a list of configuration details associated with
-      # Apigee proxies or Remote services. Remote services are non-Apigee Edge proxies.
-      # eg, Istio-Envoy.
+      # List of operation configuration details associated with Apigee API proxies or
+      # remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
       class GoogleCloudApigeeV1OperationGroup
         include Google::Apis::Core::Hashable
       
-        # Identfies whether the configuration is for Apigee proxy or a remote service.
-        # Possible values are "proxy" and "remoteservice". If none specified, the
-        # default is "proxy". "proxy" is used when Apigee proxies are associated with
-        # the API product. "remoteservice" is used when non-Apigee proxy like Envoy is
-        # used, and is associated with the API product.
+        # Flag that specifes whether the configuration is for Apigee API proxy or a
+        # remote service. Valid values are `proxy` or `remoteservice`. Defaults to `
+        # proxy`. Set to `proxy` when Apigee API proxies are associated with the API
+        # product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are
+        # associated with the API product.
         # Corresponds to the JSON property `operationConfigType`
         # @return [String]
         attr_accessor :operation_config_type
       
-        # Required. A list of OperationConfig for either Apigee proxies or other other
-        # remote services, that are associated with this API product.
+        # Required. List of operation configurations for either Apigee API proxies or
+        # other remote services that are associated with this API product.
         # Corresponds to the JSON property `operationConfigs`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1OperationConfig>]
         attr_accessor :operation_configs
@@ -4448,21 +4617,21 @@ module Google
       class GoogleCloudApigeeV1Quota
         include Google::Apis::Core::Hashable
       
-        # Required. The time interval over which the number of request messages is
+        # Required. Time interval over which the number of request messages is
         # calculated.
         # Corresponds to the JSON property `interval`
         # @return [String]
         attr_accessor :interval
       
-        # Required. Limit represents the upper bound count allowed for the time interval
-        # and time unit specified. Requests exceeding this limit will get rejected.
+        # Required. Upper limit allowed for the time interval and time unit specified.
+        # Requests exceeding this limit will be rejected.
         # Corresponds to the JSON property `limit`
         # @return [String]
         attr_accessor :limit
       
-        # The time unit defined for the `interval`. Valid values include minute, hour,
-        # day, or month. The default value is empty. If limit and interval are valid,
-        # the default value is "hour".
+        # Time unit defined for the `interval`. Valid values include `minute`, `hour`, `
+        # day`, or `month`. If `limit` and `interval` are valid, the default value is `
+        # hour`; otherwise, the default is null.
         # Corresponds to the JSON property `timeUnit`
         # @return [String]
         attr_accessor :time_unit
@@ -5436,13 +5605,13 @@ module Google
       
         # Entity tag (ETag) used for optimistic concurrency control as a way to help
         # prevent simultaneous updates from overwriting each other. For example, when
-        # you call [getSyncAuthorization](getSyncAuthorization) an ETag is returned in
-        # the response. Pass that ETag when calling the [setSyncAuthorization](
-        # setSyncAuthorization) to ensure that you are updating the correct version. If
-        # you don't pass the ETag in the call to `setSyncAuthorization`, then the
-        # existing authorization is overwritten indiscriminately. **Note**: We strongly
-        # recommend that you use the ETag in the read-modify-write cycle to avoid race
-        # conditions.
+        # you call [getSyncAuthorization](organizations/getSyncAuthorization) an ETag is
+        # returned in the response. Pass that ETag when calling the [
+        # setSyncAuthorization](organizations/setSyncAuthorization) to ensure that you
+        # are updating the correct version. If you don't pass the ETag in the call to `
+        # setSyncAuthorization`, then the existing authorization is overwritten
+        # indiscriminately. **Note**: We strongly recommend that you use the ETag in the
+        # read-modify-write cycle to avoid race conditions.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -5888,6 +6057,11 @@ module Google
       class GoogleIamV1Binding
         include Google::Apis::Core::Hashable
       
+        # 
+        # Corresponds to the JSON property `bindingId`
+        # @return [String]
+        attr_accessor :binding_id
+      
         # Represents a textual expression in the Common Expression Language (CEL) syntax.
         # CEL is a C-like expression language. The syntax and semantics of CEL are
         # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -5949,6 +6123,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @binding_id = args[:binding_id] if args.key?(:binding_id)
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)

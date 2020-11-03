@@ -136,6 +136,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1CanaryEvaluation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1CanaryEvaluationMetricLabels
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1CertInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,6 +185,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1CustomReportMetric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1DataCollector
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -443,6 +461,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1ListCustomReportsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ListDataCollectorsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1169,6 +1193,31 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1CanaryEvaluation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :control, as: 'control'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :metric_labels, as: 'metricLabels', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1CanaryEvaluationMetricLabels, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1CanaryEvaluationMetricLabels::Representation
+      
+          property :name, as: 'name'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+          property :treatment, as: 'treatment'
+          property :verdict, as: 'verdict'
+        end
+      end
+      
+      class GoogleCloudApigeeV1CanaryEvaluationMetricLabels
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :env, as: 'env'
+          property :instance_id, as: 'instance_id'
+          property :location, as: 'location'
+        end
+      end
+      
       class GoogleCloudApigeeV1CertInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1261,6 +1310,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :function, as: 'function'
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudApigeeV1DataCollector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :created_at, :numeric_string => true, as: 'createdAt'
+          property :description, as: 'description'
+          property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
+          property :name, as: 'name'
+          property :type, as: 'type'
         end
       end
       
@@ -1776,6 +1836,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :qualifier, as: 'qualifier', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1CustomReport, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1CustomReport::Representation
       
+        end
+      end
+      
+      class GoogleCloudApigeeV1ListDataCollectorsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_collectors, as: 'dataCollectors', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollector, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollector::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -2480,6 +2549,7 @@ module Google
       class GoogleIamV1Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :binding_id, as: 'bindingId'
           property :condition, as: 'condition', class: Google::Apis::ApigeeV1::GoogleTypeExpr, decorator: Google::Apis::ApigeeV1::GoogleTypeExpr::Representation
       
           collection :members, as: 'members'
