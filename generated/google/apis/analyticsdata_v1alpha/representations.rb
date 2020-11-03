@@ -280,6 +280,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RunRealtimeReportRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RunRealtimeReportResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RunReportRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -728,6 +740,46 @@ module Google
           property :property_quota, as: 'propertyQuota', class: Google::Apis::AnalyticsdataV1alpha::PropertyQuota, decorator: Google::Apis::AnalyticsdataV1alpha::PropertyQuota::Representation
       
           collection :rows, as: 'rows', class: Google::Apis::AnalyticsdataV1alpha::Row, decorator: Google::Apis::AnalyticsdataV1alpha::Row::Representation
+      
+        end
+      end
+      
+      class RunRealtimeReportRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dimension_filter, as: 'dimensionFilter', class: Google::Apis::AnalyticsdataV1alpha::FilterExpression, decorator: Google::Apis::AnalyticsdataV1alpha::FilterExpression::Representation
+      
+          collection :dimensions, as: 'dimensions', class: Google::Apis::AnalyticsdataV1alpha::Dimension, decorator: Google::Apis::AnalyticsdataV1alpha::Dimension::Representation
+      
+          property :limit, :numeric_string => true, as: 'limit'
+          collection :metric_aggregations, as: 'metricAggregations'
+          property :metric_filter, as: 'metricFilter', class: Google::Apis::AnalyticsdataV1alpha::FilterExpression, decorator: Google::Apis::AnalyticsdataV1alpha::FilterExpression::Representation
+      
+          collection :metrics, as: 'metrics', class: Google::Apis::AnalyticsdataV1alpha::Metric, decorator: Google::Apis::AnalyticsdataV1alpha::Metric::Representation
+      
+          collection :order_bys, as: 'orderBys', class: Google::Apis::AnalyticsdataV1alpha::OrderBy, decorator: Google::Apis::AnalyticsdataV1alpha::OrderBy::Representation
+      
+          property :return_property_quota, as: 'returnPropertyQuota'
+        end
+      end
+      
+      class RunRealtimeReportResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dimension_headers, as: 'dimensionHeaders', class: Google::Apis::AnalyticsdataV1alpha::DimensionHeader, decorator: Google::Apis::AnalyticsdataV1alpha::DimensionHeader::Representation
+      
+          collection :maximums, as: 'maximums', class: Google::Apis::AnalyticsdataV1alpha::Row, decorator: Google::Apis::AnalyticsdataV1alpha::Row::Representation
+      
+          collection :metric_headers, as: 'metricHeaders', class: Google::Apis::AnalyticsdataV1alpha::MetricHeader, decorator: Google::Apis::AnalyticsdataV1alpha::MetricHeader::Representation
+      
+          collection :minimums, as: 'minimums', class: Google::Apis::AnalyticsdataV1alpha::Row, decorator: Google::Apis::AnalyticsdataV1alpha::Row::Representation
+      
+          property :property_quota, as: 'propertyQuota', class: Google::Apis::AnalyticsdataV1alpha::PropertyQuota, decorator: Google::Apis::AnalyticsdataV1alpha::PropertyQuota::Representation
+      
+          property :row_count, as: 'rowCount'
+          collection :rows, as: 'rows', class: Google::Apis::AnalyticsdataV1alpha::Row, decorator: Google::Apis::AnalyticsdataV1alpha::Row::Representation
+      
+          collection :totals, as: 'totals', class: Google::Apis::AnalyticsdataV1alpha::Row, decorator: Google::Apis::AnalyticsdataV1alpha::Row::Representation
       
         end
       end

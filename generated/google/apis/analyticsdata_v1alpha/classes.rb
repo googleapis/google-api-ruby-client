@@ -571,7 +571,10 @@ module Google
         # @return [Google::Apis::AnalyticsdataV1alpha::InListFilter]
         attr_accessor :in_list_filter
       
-        # A filter for null values.
+        # A filter for null values. If True, a null dimension value is matched by this
+        # filter. Null filter is commonly used inside a NOT filter expression. For
+        # example, a NOT expression of a null filter removes rows when a dimension is
+        # null.
         # Corresponds to the JSON property `nullFilter`
         # @return [Boolean]
         attr_accessor :null_filter
@@ -1213,11 +1216,12 @@ module Google
         end
       end
       
-      # Report data for each row. For example if RunReportRequest contains: ```none
-      # dimensions ` name: "eventName" ` dimensions ` name: "countryId" ` metrics `
-      # name: "eventCount" ` ``` One row with 'in_app_purchase' as the eventName, 'us'
-      # as the countryId, and 15 as the eventCount, would be: ```none dimension_values
-      # ` name: 'in_app_purchase' name: 'us' ` metric_values ` int64_value: 15 ` ```
+      # Report data for each row. For example if RunReportRequest contains: ```none "
+      # dimensions": [ ` "name": "eventName" `, ` "name": "countryId" ` ], "metrics": [
+      # ` "name": "eventCount" ` ] ``` One row with 'in_app_purchase' as the
+      # eventName, 'JP' as the countryId, and 15 as the eventCount, would be: ```none "
+      # dimensionValues": [ ` "value": "in_app_purchase" `, ` "value": "JP" ` ], "
+      # metricValues": [ ` "value": "15" ` ] ```
       class Row
         include Google::Apis::Core::Hashable
       
@@ -1406,6 +1410,141 @@ module Google
           @pivot_headers = args[:pivot_headers] if args.key?(:pivot_headers)
           @property_quota = args[:property_quota] if args.key?(:property_quota)
           @rows = args[:rows] if args.key?(:rows)
+        end
+      end
+      
+      # The request to generate a realtime report.
+      class RunRealtimeReportRequest
+        include Google::Apis::Core::Hashable
+      
+        # To express dimension or metric filters. The fields in the same
+        # FilterExpression need to be either all dimensions or all metrics.
+        # Corresponds to the JSON property `dimensionFilter`
+        # @return [Google::Apis::AnalyticsdataV1alpha::FilterExpression]
+        attr_accessor :dimension_filter
+      
+        # The dimensions requested and displayed.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Array<Google::Apis::AnalyticsdataV1alpha::Dimension>]
+        attr_accessor :dimensions
+      
+        # The number of rows to return. If unspecified, 10 rows are returned. If -1, all
+        # rows are returned.
+        # Corresponds to the JSON property `limit`
+        # @return [Fixnum]
+        attr_accessor :limit
+      
+        # Aggregation of metrics. Aggregated metric values will be shown in rows where
+        # the dimension_values are set to "RESERVED_(MetricAggregation)".
+        # Corresponds to the JSON property `metricAggregations`
+        # @return [Array<String>]
+        attr_accessor :metric_aggregations
+      
+        # To express dimension or metric filters. The fields in the same
+        # FilterExpression need to be either all dimensions or all metrics.
+        # Corresponds to the JSON property `metricFilter`
+        # @return [Google::Apis::AnalyticsdataV1alpha::FilterExpression]
+        attr_accessor :metric_filter
+      
+        # The metrics requested and displayed.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::AnalyticsdataV1alpha::Metric>]
+        attr_accessor :metrics
+      
+        # Specifies how rows are ordered in the response.
+        # Corresponds to the JSON property `orderBys`
+        # @return [Array<Google::Apis::AnalyticsdataV1alpha::OrderBy>]
+        attr_accessor :order_bys
+      
+        # Toggles whether to return the current state of this Analytics Property's
+        # Realtime quota. Quota is returned in [PropertyQuota](#PropertyQuota).
+        # Corresponds to the JSON property `returnPropertyQuota`
+        # @return [Boolean]
+        attr_accessor :return_property_quota
+        alias_method :return_property_quota?, :return_property_quota
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimension_filter = args[:dimension_filter] if args.key?(:dimension_filter)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @limit = args[:limit] if args.key?(:limit)
+          @metric_aggregations = args[:metric_aggregations] if args.key?(:metric_aggregations)
+          @metric_filter = args[:metric_filter] if args.key?(:metric_filter)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @order_bys = args[:order_bys] if args.key?(:order_bys)
+          @return_property_quota = args[:return_property_quota] if args.key?(:return_property_quota)
+        end
+      end
+      
+      # The response realtime report table corresponding to a request.
+      class RunRealtimeReportResponse
+        include Google::Apis::Core::Hashable
+      
+        # Describes dimension columns. The number of DimensionHeaders and ordering of
+        # DimensionHeaders matches the dimensions present in rows.
+        # Corresponds to the JSON property `dimensionHeaders`
+        # @return [Array<Google::Apis::AnalyticsdataV1alpha::DimensionHeader>]
+        attr_accessor :dimension_headers
+      
+        # If requested, the maximum values of metrics.
+        # Corresponds to the JSON property `maximums`
+        # @return [Array<Google::Apis::AnalyticsdataV1alpha::Row>]
+        attr_accessor :maximums
+      
+        # Describes metric columns. The number of MetricHeaders and ordering of
+        # MetricHeaders matches the metrics present in rows.
+        # Corresponds to the JSON property `metricHeaders`
+        # @return [Array<Google::Apis::AnalyticsdataV1alpha::MetricHeader>]
+        attr_accessor :metric_headers
+      
+        # If requested, the minimum values of metrics.
+        # Corresponds to the JSON property `minimums`
+        # @return [Array<Google::Apis::AnalyticsdataV1alpha::Row>]
+        attr_accessor :minimums
+      
+        # Current state of all quotas for this Analytics Property. If any quota for a
+        # property is exhausted, all requests to that property will return Resource
+        # Exhausted errors.
+        # Corresponds to the JSON property `propertyQuota`
+        # @return [Google::Apis::AnalyticsdataV1alpha::PropertyQuota]
+        attr_accessor :property_quota
+      
+        # The total number of rows in the query result, regardless of the number of rows
+        # returned in the response. For example if a query returns 175 rows and includes
+        # limit = 50 in the API request, the response will contain row_count = 175 but
+        # only 50 rows.
+        # Corresponds to the JSON property `rowCount`
+        # @return [Fixnum]
+        attr_accessor :row_count
+      
+        # Rows of dimension value combinations and metric values in the report.
+        # Corresponds to the JSON property `rows`
+        # @return [Array<Google::Apis::AnalyticsdataV1alpha::Row>]
+        attr_accessor :rows
+      
+        # If requested, the totaled values of metrics.
+        # Corresponds to the JSON property `totals`
+        # @return [Array<Google::Apis::AnalyticsdataV1alpha::Row>]
+        attr_accessor :totals
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimension_headers = args[:dimension_headers] if args.key?(:dimension_headers)
+          @maximums = args[:maximums] if args.key?(:maximums)
+          @metric_headers = args[:metric_headers] if args.key?(:metric_headers)
+          @minimums = args[:minimums] if args.key?(:minimums)
+          @property_quota = args[:property_quota] if args.key?(:property_quota)
+          @row_count = args[:row_count] if args.key?(:row_count)
+          @rows = args[:rows] if args.key?(:rows)
+          @totals = args[:totals] if args.key?(:totals)
         end
       end
       

@@ -88,6 +88,44 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # The Google Analytics Realtime API returns a customized report of realtime
+        # event data for your property. These reports show events and usage from the
+        # last 30 minutes.
+        # @param [String] property
+        #   A Google Analytics GA4 property identifier whose events are tracked. Specified
+        #   in the URL path and not the body. To learn more, see [where to find your
+        #   Property ID](https://developers.google.com/analytics/trusted-testing/analytics-
+        #   data/property-id). Example: properties/1234
+        # @param [Google::Apis::AnalyticsdataV1alpha::RunRealtimeReportRequest] run_realtime_report_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsdataV1alpha::RunRealtimeReportResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsdataV1alpha::RunRealtimeReportResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def run_property_realtime_report(property, run_realtime_report_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+property}:runRealtimeReport', options)
+          command.request_representation = Google::Apis::AnalyticsdataV1alpha::RunRealtimeReportRequest::Representation
+          command.request_object = run_realtime_report_request_object
+          command.response_representation = Google::Apis::AnalyticsdataV1alpha::RunRealtimeReportResponse::Representation
+          command.response_class = Google::Apis::AnalyticsdataV1alpha::RunRealtimeReportResponse
+          command.params['property'] = property unless property.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns multiple pivot reports in a batch. All reports must be for the same
         # Entity.
         # @param [Google::Apis::AnalyticsdataV1alpha::BatchRunPivotReportsRequest] batch_run_pivot_reports_request_object
