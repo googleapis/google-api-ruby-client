@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module DfareportingV3_4
-      # DCM/DFA Reporting And Trafficking API
+      # Campaign Manager 360 API
       #
       # Manage your DoubleClick Campaign Manager ad campaigns and reports.
       #
@@ -3277,7 +3277,7 @@ module Google
         
         # Retrieves list of report dimension values for a list of filters.
         # @param [Fixnum] profile_id
-        #   The DFA user profile ID.
+        #   The Campaign Manager 360 user profile ID.
         # @param [Google::Apis::DfareportingV3_4::DimensionValueRequest] dimension_value_request_object
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
@@ -3858,7 +3858,7 @@ module Google
         
         # Lists files for a user profile.
         # @param [Fixnum] profile_id
-        #   The DFA profile ID.
+        #   The Campaign Manager 360 user profile ID.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] page_token
@@ -6448,7 +6448,7 @@ module Google
         
         # Deletes a report by its ID.
         # @param [Fixnum] profile_id
-        #   The DFA user profile ID.
+        #   The Campaign Manager 360 user profile ID.
         # @param [Fixnum] report_id
         #   The ID of the report.
         # @param [String] fields
@@ -6479,7 +6479,7 @@ module Google
         
         # Retrieves a report by its ID.
         # @param [Fixnum] profile_id
-        #   The DFA user profile ID.
+        #   The Campaign Manager 360 user profile ID.
         # @param [Fixnum] report_id
         #   The ID of the report.
         # @param [String] fields
@@ -6512,7 +6512,7 @@ module Google
         
         # Creates a report.
         # @param [Fixnum] profile_id
-        #   The DFA user profile ID.
+        #   The Campaign Manager 360 user profile ID.
         # @param [Google::Apis::DfareportingV3_4::Report] report_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6545,7 +6545,7 @@ module Google
         
         # Retrieves list of reports.
         # @param [Fixnum] profile_id
-        #   The DFA user profile ID.
+        #   The Campaign Manager 360 user profile ID.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] page_token
@@ -6626,7 +6626,7 @@ module Google
         
         # Runs a report.
         # @param [Fixnum] profile_id
-        #   The DFA profile ID.
+        #   The Campaign Manager 360 user profile ID.
         # @param [Fixnum] report_id
         #   The ID of the report.
         # @param [Boolean] synchronous
@@ -6662,7 +6662,7 @@ module Google
         
         # Updates a report.
         # @param [Fixnum] profile_id
-        #   The DFA user profile ID.
+        #   The Campaign Manager 360 user profile ID.
         # @param [Fixnum] report_id
         #   The ID of the report.
         # @param [Google::Apis::DfareportingV3_4::Report] report_object
@@ -6700,7 +6700,7 @@ module Google
         # sections of a report criteria, given the fields already selected in the input
         # report and user permissions.
         # @param [Fixnum] profile_id
-        #   The DFA user profile ID.
+        #   The Campaign Manager 360 user profile ID.
         # @param [Google::Apis::DfareportingV3_4::Report] report_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6734,7 +6734,7 @@ module Google
         # Retrieves a report file by its report ID and file ID. This method supports
         # media download.
         # @param [Fixnum] profile_id
-        #   The DFA user profile ID.
+        #   The Campaign Manager 360 user profile ID.
         # @param [Fixnum] report_id
         #   The ID of the report.
         # @param [Fixnum] file_id
@@ -6777,7 +6777,7 @@ module Google
         
         # Lists files for a report.
         # @param [Fixnum] profile_id
-        #   The DFA profile ID.
+        #   The Campaign Manager 360 user profile ID.
         # @param [Fixnum] report_id
         #   The ID of the parent report.
         # @param [Fixnum] max_results
