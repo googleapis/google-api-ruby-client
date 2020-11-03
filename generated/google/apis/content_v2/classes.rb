@@ -8057,7 +8057,7 @@ module Google
         # @return [Google::Apis::ContentV2::PosStore]
         attr_accessor :store
       
-        # The store code. Set this only if the method is `delete` or `get`.
+        # The store code. This should be set only if the method is `delete` or `get`.
         # Corresponds to the JSON property `storeCode`
         # @return [String]
         attr_accessor :store_code
@@ -8805,7 +8805,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :additional_product_types
       
-        # Set to true if the item is targeted towards adults.
+        # Should be set to true if the item is targeted towards adults.
         # Corresponds to the JSON property `adult`
         # @return [Boolean]
         attr_accessor :adult
@@ -9806,7 +9806,7 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # Set to true if tax is charged on shipping.
+        # Should be set to true if tax is charged on shipping.
         # Corresponds to the JSON property `taxShip`
         # @return [Boolean]
         attr_accessor :tax_ship
