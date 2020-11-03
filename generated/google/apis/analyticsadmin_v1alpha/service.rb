@@ -487,8 +487,8 @@ module Google
         #   Required. Example format: accounts/1234
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink] google_analytics_admin_v1alpha_user_link_object
         # @param [Boolean] notify_new_user
-        #   Optional. If notify_new_user is set, then email new user that they've been
-        #   given permissions on the resource.
+        #   Optional. If set, then email the new user notifying them that they've been
+        #   granted permissions to the resource.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1668,8 +1668,8 @@ module Google
         #   Required. Example format: accounts/1234
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink] google_analytics_admin_v1alpha_user_link_object
         # @param [Boolean] notify_new_user
-        #   Optional. If notify_new_user is set, then email new user that they've been
-        #   given permissions on the resource.
+        #   Optional. If set, then email the new user notifying them that they've been
+        #   granted permissions to the resource.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
