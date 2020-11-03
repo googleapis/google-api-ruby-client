@@ -541,16 +541,16 @@ module Google
         # Updates or creates API product attributes. This API **replaces** the current
         # list of attributes with the attributes specified in the request body. In this
         # way, you can update existing attributes, add new attributes, or delete
-        # existing attributes by omitting them from the request body. OAuth access
-        # tokens and Key Management Service (KMS) entities (apps, developers, and API
-        # products) are cached for 180 seconds (current default). Any custom attributes
-        # associated with entities also get cached for at least 180 seconds after entity
-        # is accessed during runtime. In this case, the `ExpiresIn` element on the
-        # OAuthV2 policy won't be able to expire an access token in less than 180
+        # existing attributes by omitting them from the request body. **Note**: OAuth
+        # access tokens and Key Management Service (KMS) entities (apps, developers, and
+        # API products) are cached for 180 seconds (current default). Any custom
+        # attributes associated with entities also get cached for at least 180 seconds
+        # after entity is accessed during runtime. In this case, the `ExpiresIn` element
+        # on the OAuthV2 policy won't be able to expire an access token in less than 180
         # seconds.
         # @param [String] name
-        #   **Required.** API product name in the following form: organizations/
-        #   organization_ID/apiproducts/api_product_name
+        #   Required. Name of the API product. Use the following structure in your request:
+        #   `organizations/`org`/apiproducts/`apiproduct``
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attributes] google_cloud_apigee_v1_attributes_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -592,14 +592,14 @@ module Google
         # provision credentials to apps to enable them to start testing your APIs. After
         # you have authentication and authorization working against a simple API product,
         # you can iterate to create finer grained API products, defining different sets
-        # of API resources for each API product. *WARNING:* - If you don't specify an
+        # of API resources for each API product. **WARNING:** - If you don't specify an
         # API proxy in the request body, *any* app associated with the product can make
         # calls to *any* API in your entire organization. - If you don't specify an
         # environment in the request body, the product allows access to all environments.
-        # For more information, see ``what_api_product``
+        # For more information, see What is an API product?
         # @param [String] parent
-        #   Required. The parent organization name under which the API product will be
-        #   created. Must be in the following form: organizations/organization_ID
+        #   Required. Name of the organization in which the API product will be created.
+        #   Use the following structure in your request: `organizations/`org``
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiProduct] google_cloud_apigee_v1_api_product_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -639,8 +639,8 @@ module Google
         # whether the API product was created via the UI or the API. View the list of
         # API products to verify the internal name.
         # @param [String] name
-        #   Required. API product name in the following form: organizations/
-        #   organization_ID/apiproducts/api_product_name
+        #   Required. Name of the API product. Use the following structure in your request:
+        #   `organizations/`org`/apiproducts/`apiproduct``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -674,8 +674,8 @@ module Google
         # via the UI or the API. View the list of API products to verify the internal
         # name.
         # @param [String] name
-        #   **Required.** API product name in the following form: organizations/
-        #   organization_ID/apiproducts/api_product_name
+        #   Required. Name of the API product. Use the following structure in your request:
+        #   `organizations/`org`/apiproducts/`apiproduct``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -708,17 +708,18 @@ module Google
         # returned by the API is 1000. You can paginate the list of API products
         # returned using the `startKey` and `count` query parameters.
         # @param [String] parent
-        #   **Required.** The parent organization name in the following form:
-        #   organizations/organization_ID
+        #   Required. Name of the organization. Use the following structure in your
+        #   request: `organizations/`org``
         # @param [String] attributename
-        #   The name of the attribute to search.
+        #   Name of the attribute used to filter the search.
         # @param [String] attributevalue
-        #   The value of the attribute.
+        #   Value of the attribute used to filter the search.
         # @param [Fixnum] count
         #   Enter the number of API products you want returned in the API call. The limit
         #   is 1000.
         # @param [Boolean] expand
-        #   Set to `true` to get expanded details about each API.
+        #   Flag that specifies whether to expand the results. Set to `true` to get
+        #   expanded details about each API.
         # @param [String] start_key
         #   Gets a list of API products starting with a specific API product in the list.
         #   For example, if you're returning 50 API products at a time (using the `count`
@@ -764,8 +765,8 @@ module Google
         # depends on whether the API product was created via UI or API. View the list of
         # API products to identify their internal names.
         # @param [String] name
-        #   **Required.** API product name in the following form: organizations/
-        #   organization_ID/apiproducts/api_product_name
+        #   Required. Name of the API product. Use the following structure in your request:
+        #   `organizations/`org`/apiproducts/`apiproduct``
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiProduct] google_cloud_apigee_v1_api_product_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -798,8 +799,9 @@ module Google
         
         # Deletes an API product attribute.
         # @param [String] name
-        #   **Required.** API product name in the following form: organizations/
-        #   organization_ID/apiproducts/api_product_name/attributes/attribute_name
+        #   Required. Name of the API product attribute. Use the following structure in
+        #   your request: `organizations/`org`/apiproducts/`apiproduct`/attributes/`
+        #   attribute``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -827,10 +829,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the value of an API product attribute.
+        # Gets the value of an API product attribute.
         # @param [String] name
-        #   **Required.** API product name in the following form: organizations/
-        #   organization_ID/apiproducts/api_product_name/attributes/attribute_name
+        #   Required. Name of the API product attribute. Use the following structure in
+        #   your request: `organizations/`org`/apiproducts/`apiproduct`/attributes/`
+        #   attribute``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -858,10 +861,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a list of all API product attributes.
+        # Lists all API product attributes.
         # @param [String] parent
-        #   Required. The parent organization name. Must be in the following form:
-        #   organizations/organization_ID/apiproducts/api_product_name
+        #   Required. Name of the API product. Use the following structure in your request:
+        #   `organizations/`org`/apiproducts/`apiproduct``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -889,16 +892,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the value of an API product attribute. Limitations are: OAuth access
-        # tokens and Key Management Service (KMS) entities (apps, developers, and API
-        # products) are cached for 180 seconds (current default). Any custom attributes
-        # associated with entities also get cached for at least 180 seconds after entity
-        # is accessed during runtime. In this case, the `ExpiresIn` element on the
-        # OAuthV2 policy won't be able to expire an access token in less than 180
-        # seconds.
+        # Updates the value of an API product attribute. **Note**: OAuth access tokens
+        # and Key Management Service (KMS) entities (apps, developers, and API products)
+        # are cached for 180 seconds (current default). Any custom attributes associated
+        # with entities also get cached for at least 180 seconds after entity is
+        # accessed during runtime. In this case, the `ExpiresIn` element on the OAuthV2
+        # policy won't be able to expire an access token in less than 180 seconds.
         # @param [String] name
-        #   **Required.** API product name in the following form: organizations/
-        #   organization_ID/apiproducts/api_product_name
+        #   Required. Name of the API product. Use the following structure in your request:
+        #   `organizations/`org`/apiproducts/`apiproduct``
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute] google_cloud_apigee_v1_attribute_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1423,6 +1425,180 @@ module Google
           command.query['rows'] = rows unless rows.nil?
           command.query['startKey'] = start_key unless start_key.nil?
           command.query['status'] = status unless status.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new data collector.
+        # @param [String] parent
+        #   Required. Name of the organization in which to create the Data Collector in
+        #   the following format: `organizations/`org``.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollector] google_cloud_apigee_v1_data_collector_object
+        # @param [String] data_collector_id
+        #   ID of the Data Collector. Overrides any ID in the Data Collector resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollector] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollector]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_datacollector(parent, google_cloud_apigee_v1_data_collector_object = nil, data_collector_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/datacollectors', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollector::Representation
+          command.request_object = google_cloud_apigee_v1_data_collector_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollector::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollector
+          command.params['parent'] = parent unless parent.nil?
+          command.query['dataCollectorId'] = data_collector_id unless data_collector_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a data collector.
+        # @param [String] name
+        #   Required. Name of the Data Collector in the following format: `organizations/`
+        #   org`/datacollectors/`data_collector_id``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_datacollector(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a data collector.
+        # @param [String] name
+        #   Required. Name of the Data Collector in the following format: `organizations/`
+        #   org`/datacollectors/`data_collector_id``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollector] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollector]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_datacollector(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollector::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollector
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all data collectors.
+        # @param [String] parent
+        #   Required. Name of the organization for which to list Data Collectors in the
+        #   following format: `organizations/`org``.
+        # @param [Fixnum] page_size
+        #   Maximum number of Data Collectors to return. The page size defaults to 25.
+        # @param [String] page_token
+        #   Page token, returned from a previous ListDataCollectors call, that you can use
+        #   to retrieve the next page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListDataCollectorsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListDataCollectorsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_datacollectors(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/datacollectors', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListDataCollectorsResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListDataCollectorsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a data collector.
+        # @param [String] name
+        #   Required. Name of the Data Collector in the following format: `organizations/`
+        #   org`/datacollectors/`data_collector_id``.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollector] google_cloud_apigee_v1_data_collector_object
+        # @param [String] update_mask
+        #   List of fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollector] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollector]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_datacollector(name, google_cloud_apigee_v1_data_collector_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollector::Representation
+          command.request_object = google_cloud_apigee_v1_data_collector_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollector::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollector
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -5598,7 +5774,7 @@ module Google
         # the runtime data is deleted. **Note:** Not supported for Apigee hybrid.
         # @param [String] name
         #   Required. Name of the instance. Use the following structure in your request: `
-        #   organizations/`org`/instance/`instance``.
+        #   organizations/`org`/instances/`instance``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5863,6 +6039,71 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new canary evaluation for an organization.
+        # @param [String] parent
+        #   Required. Name of the organization. Use the following structure in your
+        #   request: `organizations/`org`/instances/`instance``.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1CanaryEvaluation] google_cloud_apigee_v1_canary_evaluation_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_instance_canaryevaluation(parent, google_cloud_apigee_v1_canary_evaluation_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/canaryevaluations', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1CanaryEvaluation::Representation
+          command.request_object = google_cloud_apigee_v1_canary_evaluation_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a CanaryEvaluation for an organization.
+        # @param [String] name
+        #   Required. Name of the CanaryEvaluation. Use the following structure in your
+        #   request: `organizations/`org`/instances/*/canaryevaluations/`evaluation``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1CanaryEvaluation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1CanaryEvaluation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_instance_canaryevaluation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1CanaryEvaluation::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1CanaryEvaluation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
