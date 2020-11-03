@@ -27,8 +27,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Country of business. Must be a non-deprecated code for a UN M.49 region. https:
-        # //unicode.org/cldr/charts/latest/supplemental/territory_containment_un_m_49.
-        # html
+        # //unicode.org/cldr/charts/latest/supplem // ental/
+        # territory_containment_un_m_49.html
         # Corresponds to the JSON property `countryCode`
         # @return [String]
         attr_accessor :country_code
@@ -271,15 +271,16 @@ module Google
       class GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. If notify_new_users is set, then email new users that they've been
-        # given permissions on the resource.
+        # Optional. If set, then email the new users notifying them that they've been
+        # granted permissions to the resource. Regardless of whether this is set or not,
+        # notify_new_user field inside each individual request is ignored.
         # Corresponds to the JSON property `notifyNewUsers`
         # @return [Boolean]
         attr_accessor :notify_new_users
         alias_method :notify_new_users?, :notify_new_users
       
-        # The requests specifying the user links to create. A maximum of 1000 user links
-        # can be created in a batch.
+        # Required. The requests specifying the user links to create. A maximum of 1000
+        # user links can be created in a batch.
         # Corresponds to the JSON property `requests`
         # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateUserLinkRequest>]
         attr_accessor :requests
@@ -318,8 +319,8 @@ module Google
       class GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest
         include Google::Apis::Core::Hashable
       
-        # The requests specifying the user links to update. A maximum of 1000 user links
-        # can be updated in a batch.
+        # Required. The requests specifying the user links to update. A maximum of 1000
+        # user links can be updated in a batch.
         # Corresponds to the JSON property `requests`
         # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest>]
         attr_accessor :requests
@@ -357,8 +358,8 @@ module Google
       class GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest
         include Google::Apis::Core::Hashable
       
-        # The requests specifying the user links to update. A maximum of 1000 user links
-        # can be updated in a batch.
+        # Required. The requests specifying the user links to update. A maximum of 1000
+        # user links can be updated in a batch.
         # Corresponds to the JSON property `requests`
         # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest>]
         attr_accessor :requests
@@ -401,8 +402,8 @@ module Google
       class GoogleAnalyticsAdminV1alphaCreateUserLinkRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. If notify_new_user is set, then email new user that they've been
-        # given permissions on the resource.
+        # Optional. If set, then email the new user notifying them that they've been
+        # granted permissions to the resource.
         # Corresponds to the JSON property `notifyNewUser`
         # @return [Boolean]
         attr_accessor :notify_new_user

@@ -25,7 +25,7 @@ module Google
     # @see http://code.google.com/apis/analytics/docs/mgmt/home.html
     module AnalyticsadminV1alpha
       VERSION = 'V1alpha'
-      REVISION = '20201015'
+      REVISION = '20201031'
 
       # Edit Google Analytics management entities
       AUTH_ANALYTICS_EDIT = 'https://www.googleapis.com/auth/analytics.edit'
