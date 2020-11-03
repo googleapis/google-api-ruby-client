@@ -2062,7 +2062,7 @@ module Google
         attr_accessor :companions_disabled
         alias_method :companions_disabled?, :companions_disabled
       
-        # Whitelist of companion sizes to be served to this placement. Set this list to
+        # Allowlist of companion sizes to be served to this placement. Set this list to
         # null or empty to serve all companion sizes.
         # Corresponds to the JSON property `enabledSizes`
         # @return [Array<Google::Apis::DfareportingV3_3::Size>]
@@ -8086,8 +8086,8 @@ module Google
         # @return [Google::Apis::DfareportingV3_3::LookbackConfiguration]
         attr_accessor :lookback_configuration
       
-        # Name of this placement.This is a required field and must be less than 256
-        # characters long.
+        # Name of this placement.This is a required field and must be less than or equal
+        # to 256 characters long.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -10539,7 +10539,7 @@ module Google
         attr_accessor :companions_disabled
         alias_method :companions_disabled?, :companions_disabled
       
-        # Whitelist of companion sizes to be served via this site template. Set this
+        # Allowlist of companion sizes to be served via this site template. Set this
         # list to null or empty to serve all companion sizes.
         # Corresponds to the JSON property `enabledSizes`
         # @return [Array<Google::Apis::DfareportingV3_3::Size>]
@@ -10741,7 +10741,7 @@ module Google
       class SiteTranscodeSetting
         include Google::Apis::Core::Hashable
       
-        # Whitelist of video formats to be served to this site template. Set this list
+        # Allowlist of video formats to be served to this site template. Set this list
         # to null or empty to serve all video formats.
         # Corresponds to the JSON property `enabledVideoFormats`
         # @return [Array<Fixnum>]
@@ -11585,7 +11585,7 @@ module Google
       class TranscodeSetting
         include Google::Apis::Core::Hashable
       
-        # Whitelist of video formats to be served to this placement. Set this list to
+        # Allowlist of video formats to be served to this placement. Set this list to
         # null or empty to serve all video formats.
         # Corresponds to the JSON property `enabledVideoFormats`
         # @return [Array<Fixnum>]

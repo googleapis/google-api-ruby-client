@@ -18,14 +18,14 @@ require 'google/apis/dfareporting_v3_3/representations.rb'
 
 module Google
   module Apis
-    # DCM/DFA Reporting And Trafficking API
+    # Campaign Manager 360 API
     #
     # Manage your DoubleClick Campaign Manager ad campaigns and reports.
     #
     # @see https://developers.google.com/doubleclick-advertisers/
     module DfareportingV3_3
       VERSION = 'V3_3'
-      REVISION = '20200921'
+      REVISION = '20201102'
 
       # Manage DoubleClick Digital Marketing conversions
       AUTH_DDMCONVERSIONS = 'https://www.googleapis.com/auth/ddmconversions'
