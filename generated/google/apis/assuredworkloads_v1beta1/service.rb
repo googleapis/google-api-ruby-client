@@ -282,7 +282,11 @@ module Google
         # Workload. Only one update operation per workload can be in progress.
         # @param [String] name
         #   Optional. The resource name of the workload. Format: organizations/`
-        #   organization`/locations/`location`/workloads/`workload` Read-only.
+        #   organization`/locations/`location`/workloads/`workload` Read-only. The UI
+        #   extracts the location and workload name from this string, since they aren't
+        #   set directly on the workload object. If the format of this field changes, the
+        #   UI should likely be updated. LINT.IfChange LINT.ThenChange(//depot/google3/
+        #   cloud/console/web/compliance/assurant/common/workload_helper.ts)
         # @param [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1Workload] google_cloud_assuredworkloads_v1beta1_workload_object
         # @param [String] update_mask
         #   Required. The list of fields to be updated.
