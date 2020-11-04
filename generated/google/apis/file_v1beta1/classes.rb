@@ -26,8 +26,7 @@ module Google
       class Backup
         include Google::Apis::Core::Hashable
       
-        # Output only. Capacity of the backup. This would be the size of the file share
-        # when the backup is restored.
+        # Output only. Capacity of the source file share when the backup was created.
         # Corresponds to the JSON property `capacityGb`
         # @return [Fixnum]
         attr_accessor :capacity_gb
@@ -122,6 +121,122 @@ module Google
         end
       end
       
+      # Time window specified for daily operations.
+      class DailyCycle
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Duration of the time window, set by service producer.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `startTime`
+        # @return [Google::Apis::FileV1beta1::TimeOfDay]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duration = args[:duration] if args.key?(:duration)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Represents a whole or partial calendar date, such as a birthday. The time of
+      # day and time zone are either specified elsewhere or are insignificant. The
+      # date is relative to the Gregorian Calendar. This can represent one of the
+      # following: * A full date, with non-zero year, month, and day values * A month
+      # and day value, with a zero year, such as an anniversary * A year on its own,
+      # with zero month and day values * A year and month value, with a zero day, such
+      # as a credit card expiration date Related types are google.type.TimeOfDay and `
+      # google.protobuf.Timestamp`.
+      class Date
+        include Google::Apis::Core::Hashable
+      
+        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        # specify a year by itself or a year and month where the day isn't significant.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        # and day.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        # year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
+        end
+      end
+      
+      # DenyMaintenancePeriod definition. Maintenance is forbidden within the deny
+      # period. The start_date must be less than the end_date.
+      class DenyMaintenancePeriod
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values * A month
+        # and day value, with a zero year, such as an anniversary * A year on its own,
+        # with zero month and day values * A year and month value, with a zero day, such
+        # as a credit card expiration date Related types are google.type.TimeOfDay and `
+        # google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `endDate`
+        # @return [Google::Apis::FileV1beta1::Date]
+        attr_accessor :end_date
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values * A month
+        # and day value, with a zero year, such as an anniversary * A year on its own,
+        # with zero month and day values * A year and month value, with a zero day, such
+        # as a credit card expiration date Related types are google.type.TimeOfDay and `
+        # google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `startDate`
+        # @return [Google::Apis::FileV1beta1::Date]
+        attr_accessor :start_date
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `time`
+        # @return [Google::Apis::FileV1beta1::TimeOfDay]
+        attr_accessor :time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @start_date = args[:start_date] if args.key?(:start_date)
+          @time = args[:time] if args.key?(:time)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -202,10 +317,10 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The MaintenancePolicies that have been attached to the instance. The key must
-        # be of the type name of the oneof policy name defined in MaintenancePolicy, and
-        # the referenced policy must define the same policy type. For complete details
-        # of MaintenancePolicy, please refer to go/cloud-saas-mw-ug.
+        # Deprecated. The MaintenancePolicies that have been attached to the instance.
+        # The key must be of the type name of the oneof policy name defined in
+        # MaintenancePolicy, and the referenced policy must define the same policy type.
+        # For complete details of MaintenancePolicy, please refer to go/cloud-saas-mw-ug.
         # Corresponds to the JSON property `maintenancePolicyNames`
         # @return [Hash<String,String>]
         attr_accessor :maintenance_policy_names
@@ -357,6 +472,16 @@ module Google
         attr_accessor :exclude
         alias_method :exclude?, :exclude
       
+        # Optional. The MaintenancePolicies that have been attached to the instance. The
+        # key must be of the type name of the oneof policy name defined in
+        # MaintenancePolicy, and the embedded policy must define the same policy type.
+        # For complete details of MaintenancePolicy, please refer to go/cloud-saas-mw-ug.
+        # If only the name is needed (like in the deprecated Instance.
+        # maintenance_policy_names field) then only populate MaintenancePolicy.name.
+        # Corresponds to the JSON property `maintenancePolicies`
+        # @return [Hash<String,Google::Apis::FileV1beta1::MaintenancePolicy>]
+        attr_accessor :maintenance_policies
+      
         def initialize(**args)
            update!(**args)
         end
@@ -364,6 +489,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @exclude = args[:exclude] if args.key?(:exclude)
+          @maintenance_policies = args[:maintenance_policies] if args.key?(:maintenance_policies)
         end
       end
       
@@ -810,6 +936,93 @@ module Google
         end
       end
       
+      # Defines policies to service maintenance events.
+      class MaintenancePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Description of what this policy is for. Create/Update methods return
+        # INVALID_ARGUMENT if the length is greater than 512.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Resource labels to represent user provided metadata. Each label is a
+        # key-value pair, where both the key and the value are arbitrary strings
+        # provided by the user.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. MaintenancePolicy name using the form: `projects/`project_id`/
+        # locations/`location_id`/maintenancePolicies/`maintenance_policy_id`` where `
+        # project_id` refers to a GCP consumer project ID, `location_id` refers to a GCP
+        # region/zone, `maintenance_policy_id` must be 1-63 characters long and match
+        # the regular expression `[a-z0-9]([-a-z0-9]*[a-z0-9])?`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The state of the policy.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Maintenance policy applicable to instance updates.
+        # Corresponds to the JSON property `updatePolicy`
+        # @return [Google::Apis::FileV1beta1::UpdatePolicy]
+        attr_accessor :update_policy
+      
+        # Output only. The time when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @update_policy = args[:update_policy] if args.key?(:update_policy)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # MaintenanceWindow definition.
+      class MaintenanceWindow
+        include Google::Apis::Core::Hashable
+      
+        # Time window specified for daily operations.
+        # Corresponds to the JSON property `dailyCycle`
+        # @return [Google::Apis::FileV1beta1::DailyCycle]
+        attr_accessor :daily_cycle
+      
+        # Time window specified for weekly operations.
+        # Corresponds to the JSON property `weeklyCycle`
+        # @return [Google::Apis::FileV1beta1::WeeklyCycle]
+        attr_accessor :weekly_cycle
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @daily_cycle = args[:daily_cycle] if args.key?(:daily_cycle)
+          @weekly_cycle = args[:weekly_cycle] if args.key?(:weekly_cycle)
+        end
+      end
+      
       # Network configuration for the instance.
       class NetworkConfig
         include Google::Apis::Core::Hashable
@@ -1067,6 +1280,39 @@ module Google
         end
       end
       
+      # Configure the schedule.
+      class Schedule
+        include Google::Apis::Core::Hashable
+      
+        # Allows to define schedule that runs specified day of the week.
+        # Corresponds to the JSON property `day`
+        # @return [String]
+        attr_accessor :day
+      
+        # Output only. Duration of the time window, set by service producer.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `startTime`
+        # @return [Google::Apis::FileV1beta1::TimeOfDay]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @duration = args[:duration] if args.key?(:duration)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -1103,6 +1349,100 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Represents a time of day. The date and time zone are either not significant or
+      # are specified elsewhere. An API may choose to allow leap seconds. Related
+      # types are google.type.Date and `google.protobuf.Timestamp`.
+      class TimeOfDay
+        include Google::Apis::Core::Hashable
+      
+        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
+        # allow the value "24:00:00" for scenarios like business closing time.
+        # Corresponds to the JSON property `hours`
+        # @return [Fixnum]
+        attr_accessor :hours
+      
+        # Minutes of hour of day. Must be from 0 to 59.
+        # Corresponds to the JSON property `minutes`
+        # @return [Fixnum]
+        attr_accessor :minutes
+      
+        # Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+        # allow the value 60 if it allows leap-seconds.
+        # Corresponds to the JSON property `seconds`
+        # @return [Fixnum]
+        attr_accessor :seconds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hours = args[:hours] if args.key?(:hours)
+          @minutes = args[:minutes] if args.key?(:minutes)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @seconds = args[:seconds] if args.key?(:seconds)
+        end
+      end
+      
+      # Maintenance policy applicable to instance updates.
+      class UpdatePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Relative scheduling channel applied to resource.
+        # Corresponds to the JSON property `channel`
+        # @return [String]
+        attr_accessor :channel
+      
+        # Deny Maintenance Period that is applied to resource to indicate when
+        # maintenance is forbidden. User can specify zero or more non-overlapping deny
+        # periods. For V1, Maximum number of deny_maintenance_periods is expected to be
+        # one.
+        # Corresponds to the JSON property `denyMaintenancePeriods`
+        # @return [Array<Google::Apis::FileV1beta1::DenyMaintenancePeriod>]
+        attr_accessor :deny_maintenance_periods
+      
+        # MaintenanceWindow definition.
+        # Corresponds to the JSON property `window`
+        # @return [Google::Apis::FileV1beta1::MaintenanceWindow]
+        attr_accessor :window
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel = args[:channel] if args.key?(:channel)
+          @deny_maintenance_periods = args[:deny_maintenance_periods] if args.key?(:deny_maintenance_periods)
+          @window = args[:window] if args.key?(:window)
+        end
+      end
+      
+      # Time window specified for weekly operations.
+      class WeeklyCycle
+        include Google::Apis::Core::Hashable
+      
+        # User can specify multiple windows in a week. Minimum of 1 window.
+        # Corresponds to the JSON property `schedule`
+        # @return [Array<Google::Apis::FileV1beta1::Schedule>]
+        attr_accessor :schedule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @schedule = args[:schedule] if args.key?(:schedule)
         end
       end
     end
