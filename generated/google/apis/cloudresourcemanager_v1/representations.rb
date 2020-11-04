@@ -64,6 +64,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Constraint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -340,6 +352,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :constraint, as: 'constraint'
           property :etag, :base64 => true, as: 'etag'
+        end
+      end
+      
+      class CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_parent, as: 'destinationParent'
+          property :display_name, as: 'displayName'
+          property :operation_type, as: 'operationType'
+          property :source_parent, as: 'sourceParent'
+        end
+      end
+      
+      class CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_parent, as: 'destinationParent'
+          property :display_name, as: 'displayName'
+          property :operation_type, as: 'operationType'
+          property :source_parent, as: 'sourceParent'
         end
       end
       
