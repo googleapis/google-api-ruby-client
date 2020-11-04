@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,6 +185,26 @@ module Google
       
           collection :members, as: 'members'
           property :role, as: 'role'
+        end
+      end
+      
+      class CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_parent, as: 'destinationParent'
+          property :display_name, as: 'displayName'
+          property :operation_type, as: 'operationType'
+          property :source_parent, as: 'sourceParent'
+        end
+      end
+      
+      class CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_parent, as: 'destinationParent'
+          property :display_name, as: 'displayName'
+          property :operation_type, as: 'operationType'
+          property :source_parent, as: 'sourceParent'
         end
       end
       
