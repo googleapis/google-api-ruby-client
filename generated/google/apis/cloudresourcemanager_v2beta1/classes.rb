@@ -97,8 +97,7 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # A client-specified ID for this binding. Expected to be globally unique to
-        # support the internal bindings-by-ID API.
+        # 
         # Corresponds to the JSON property `bindingId`
         # @return [String]
         attr_accessor :binding_id
@@ -171,6 +170,84 @@ module Google
         end
       end
       
+      # Metadata describing a long running folder operation
+      class CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the folder or organization we are either creating the
+        # folder under or moving the folder to.
+        # Corresponds to the JSON property `destinationParent`
+        # @return [String]
+        attr_accessor :destination_parent
+      
+        # The display name of the folder.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The type of this operation.
+        # Corresponds to the JSON property `operationType`
+        # @return [String]
+        attr_accessor :operation_type
+      
+        # The resource name of the folder's parent. Only applicable when the
+        # operation_type is MOVE.
+        # Corresponds to the JSON property `sourceParent`
+        # @return [String]
+        attr_accessor :source_parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_parent = args[:destination_parent] if args.key?(:destination_parent)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @operation_type = args[:operation_type] if args.key?(:operation_type)
+          @source_parent = args[:source_parent] if args.key?(:source_parent)
+        end
+      end
+      
+      # Metadata describing a long running folder operation
+      class CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the folder or organization we are either creating the
+        # folder under or moving the folder to.
+        # Corresponds to the JSON property `destinationParent`
+        # @return [String]
+        attr_accessor :destination_parent
+      
+        # The display name of the folder.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The type of this operation.
+        # Corresponds to the JSON property `operationType`
+        # @return [String]
+        attr_accessor :operation_type
+      
+        # The resource name of the folder's parent. Only applicable when the
+        # operation_type is MOVE.
+        # Corresponds to the JSON property `sourceParent`
+        # @return [String]
+        attr_accessor :source_parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_parent = args[:destination_parent] if args.key?(:destination_parent)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @operation_type = args[:operation_type] if args.key?(:operation_type)
+          @source_parent = args[:source_parent] if args.key?(:source_parent)
+        end
+      end
+      
       # Represents a textual expression in the Common Expression Language (CEL) syntax.
       # CEL is a C-like expression language. The syntax and semantics of CEL are
       # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -235,12 +312,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The folder’s display name. A folder’s display name must be unique amongst its
+        # The folder's display name. A folder's display name must be unique amongst its
         # siblings, e.g. no two folders with the same parent can share the same display
         # name. The display name must start and end with a letter or digit, may contain
         # letters, digits, spaces, hyphens and underscores and can be no longer than 30
-        # characters. This is captured by the regular expression: [\p`L`\p`N`]([\p`L`\p`
-        # N`_- ]`0,28`[\p`L`\p`N`])?.
+        # characters. This is captured by the regular expression: `[\p`L`\p`N`]([\p`L`\p`
+        # N`_- ]`0,28`[\p`L`\p`N`])?`.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -257,7 +334,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. The Folder’s parent's resource name. Updates to the folder's parent
+        # Required. The Folder's parent's resource name. Updates to the folder's parent
         # must be performed via MoveFolder.
         # Corresponds to the JSON property `parent`
         # @return [String]

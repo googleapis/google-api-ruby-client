@@ -53,7 +53,7 @@ module Google
         # Operation.response field will be populated with the created Folder. In order
         # to succeed, the addition of this new Folder must not violate the Folder naming,
         # height or fanout constraints. + The Folder's display_name must be distinct
-        # from all other Folder's that share its parent. + The addition of the Folder
+        # from all other Folders that share its parent. + The addition of the Folder
         # must not cause the active Folder hierarchy to exceed a height of 10. Note, the
         # full active + deleted Folder hierarchy is allowed to reach a height of 20;
         # this provides additional headroom when moving folders that contain deleted
@@ -302,8 +302,8 @@ module Google
         # formatting rules or naming constraints described in the CreateFolder
         # documentation. The Folder's display name must start and end with a letter or
         # digit, may contain letters, digits, spaces, hyphens and underscores and can be
-        # no longer than 30 characters. This is captured by the regular expression: [\p`
-        # L`\p`N`]([\p`L`\p`N`_- ]`0,28`[\p`L`\p`N`])?. The caller must have `
+        # no longer than 30 characters. This is captured by the regular expression: `[\p`
+        # L`\p`N`]([\p`L`\p`N`_- ]`0,28`[\p`L`\p`N`])?`. The caller must have `
         # resourcemanager.folders.update` permission on the identified folder. If the
         # update fails due to the unique name constraint then a PreconditionFailure
         # explaining this violation will be returned in the Status.details field.
