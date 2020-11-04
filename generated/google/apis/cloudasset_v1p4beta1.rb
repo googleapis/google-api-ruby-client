@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/asset-inventory/docs/quickstart
     module CloudassetV1p4beta1
       VERSION = 'V1p4beta1'
-      REVISION = '20201003'
+      REVISION = '20201030'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
