@@ -170,6 +170,7 @@ module Google
       class GoogleIamV1Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :binding_id, as: 'bindingId'
           property :condition, as: 'condition', class: Google::Apis::PolicytroubleshooterV1beta::GoogleTypeExpr, decorator: Google::Apis::PolicytroubleshooterV1beta::GoogleTypeExpr::Representation
       
           collection :members, as: 'members'
