@@ -82,11 +82,8 @@ module Google
         end
       end
       
-      # An API Configuration is an association of an API Controller Config and a
-      # Gateway Config. For APIs with a Managed Service API Controller, this resource
-      # is associated with one or more Service Configs and a Service Rollout.
-      # Initially, this resource will extract the Gateway Config from the API
-      # Controller Config.
+      # An API Configuration is a combination of settings for both the Managed Service
+      # and Gateways serving this API Config.
       class ApigatewayApiConfig
         include Google::Apis::Core::Hashable
       
@@ -355,6 +352,11 @@ module Google
       class ApigatewayBinding
         include Google::Apis::Core::Hashable
       
+        # 
+        # Corresponds to the JSON property `bindingId`
+        # @return [String]
+        attr_accessor :binding_id
+      
         # Represents a textual expression in the Common Expression Language (CEL) syntax.
         # CEL is a C-like expression language. The syntax and semantics of CEL are
         # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -416,6 +418,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @binding_id = args[:binding_id] if args.key?(:binding_id)
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
