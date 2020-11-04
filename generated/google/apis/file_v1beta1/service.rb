@@ -307,7 +307,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an instance.
+        # Creates an instance. When creating from a backup, the capacity of the new
+        # instance needs to be equal to or larger than the capacity of the backup (and
+        # also equal to or larger than the minimum capacity of the tier).
         # @param [String] parent
         #   Required. The instance's project and location, in the format projects/`
         #   project_id`/locations/`location`. In Cloud Filestore, locations map to GCP
@@ -496,7 +498,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Restores an existing instance's file share from a snapshot or backup.
+        # Restores an existing instance's file share from a backup. The instance's file
+        # share capacity will be set to the backup's capacity or the minimum capacity of
+        # the tier, whichever is larger.
         # @param [String] name
         #   Required. The resource name of the instance, in the format projects/`
         #   project_id`/locations/`location_id`/instances/`instance_id`.
