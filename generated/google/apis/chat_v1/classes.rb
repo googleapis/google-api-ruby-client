@@ -1088,8 +1088,7 @@ module Google
         # @return [String]
         attr_accessor :domain_id
       
-        # Set to true if none of the depending services (Gaia, PeopleApi) returns any
-        # info for this user.
+        # True when the user is deleted or the user's proifle is not visible.
         # Corresponds to the JSON property `isAnonymous`
         # @return [Boolean]
         attr_accessor :is_anonymous
