@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/hangouts/chat
     module ChatV1
       VERSION = 'V1'
-      REVISION = '20201019'
+      REVISION = '20201028'
     end
   end
 end
