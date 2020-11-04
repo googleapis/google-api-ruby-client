@@ -20,12 +20,14 @@ module Google
   module Apis
     # Certificate Authority API
     #
-    # 
+    # The Certificate Authority Service API is a highly-available, scalable service
+    # that enables you to simplify and automate the management of private
+    # certificate authorities (CAs) while staying in control of your private keys."
     #
     # @see https://cloud.google.com/
     module PrivatecaV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20201022'
+      REVISION = '20201029'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
