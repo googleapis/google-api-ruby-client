@@ -159,12 +159,6 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # A client-specified ID for this binding. Expected to be globally unique to
-        # support the internal bindings-by-ID API.
-        # Corresponds to the JSON property `bindingId`
-        # @return [String]
-        attr_accessor :binding_id
-      
         # Represents a textual expression in the Common Expression Language (CEL) syntax.
         # CEL is a C-like expression language. The syntax and semantics of CEL are
         # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -226,7 +220,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @binding_id = args[:binding_id] if args.key?(:binding_id)
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
@@ -1230,10 +1223,14 @@ module Google
       # these key-pairs, and Google retains ONLY the public key. System-managed keys
       # are automatically rotated by Google, and are used for signing for a maximum of
       # two weeks. The rotation process is probabilistic, and usage of the new key
-      # will gradually ramp up and down over the key's lifetime. We recommend caching
-      # the public key set for a service account for no more than 24 hours to ensure
-      # you have access to the latest keys. Public keys for all service accounts are
-      # also published at the OAuth2 Service Account API.
+      # will gradually ramp up and down over the key's lifetime. If you cache the
+      # public key set for a service account, we recommend that you update the cache
+      # every 15 minutes. User-managed keys can be added and removed at any time, so
+      # it is important to update the cache frequently. For Google-managed keys,
+      # Google will publish a key at least 6 hours before it is first used for signing
+      # and will keep publishing it for at least 6 hours after it was last used for
+      # signing. Public keys for all service accounts are also published at the OAuth2
+      # Service Account API.
       class ServiceAccountKey
         include Google::Apis::Core::Hashable
       
