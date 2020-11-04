@@ -119,8 +119,7 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # A client-specified ID for this binding. Expected to be globally unique to
-        # support the internal bindings-by-ID API.
+        # 
         # Corresponds to the JSON property `bindingId`
         # @return [String]
         attr_accessor :binding_id
@@ -190,6 +189,84 @@ module Google
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # Metadata describing a long running folder operation
+      class CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the folder or organization we are either creating the
+        # folder under or moving the folder to.
+        # Corresponds to the JSON property `destinationParent`
+        # @return [String]
+        attr_accessor :destination_parent
+      
+        # The display name of the folder.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The type of this operation.
+        # Corresponds to the JSON property `operationType`
+        # @return [String]
+        attr_accessor :operation_type
+      
+        # The resource name of the folder's parent. Only applicable when the
+        # operation_type is MOVE.
+        # Corresponds to the JSON property `sourceParent`
+        # @return [String]
+        attr_accessor :source_parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_parent = args[:destination_parent] if args.key?(:destination_parent)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @operation_type = args[:operation_type] if args.key?(:operation_type)
+          @source_parent = args[:source_parent] if args.key?(:source_parent)
+        end
+      end
+      
+      # Metadata describing a long running folder operation
+      class CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the folder or organization we are either creating the
+        # folder under or moving the folder to.
+        # Corresponds to the JSON property `destinationParent`
+        # @return [String]
+        attr_accessor :destination_parent
+      
+        # The display name of the folder.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The type of this operation.
+        # Corresponds to the JSON property `operationType`
+        # @return [String]
+        attr_accessor :operation_type
+      
+        # The resource name of the folder's parent. Only applicable when the
+        # operation_type is MOVE.
+        # Corresponds to the JSON property `sourceParent`
+        # @return [String]
+        attr_accessor :source_parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_parent = args[:destination_parent] if args.key?(:destination_parent)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @operation_type = args[:operation_type] if args.key?(:operation_type)
+          @source_parent = args[:source_parent] if args.key?(:source_parent)
         end
       end
       
