@@ -725,6 +725,25 @@ module Google
         end
       end
       
+      # Configuration for an `NFSMount` to be attached to the VM.
+      class NfsMount
+        include Google::Apis::Core::Hashable
+      
+        # A target NFS mount. The target must be specified as `address:/mount".
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target = args[:target] if args.key?(:target)
+        end
+      end
+      
       # VM networking options.
       class Network
         include Google::Apis::Core::Hashable
@@ -1442,6 +1461,11 @@ module Google
         # @return [Google::Apis::GenomicsV2alpha1::ExistingDisk]
         attr_accessor :existing_disk
       
+        # Configuration for an `NFSMount` to be attached to the VM.
+        # Corresponds to the JSON property `nfsMount`
+        # @return [Google::Apis::GenomicsV2alpha1::NfsMount]
+        attr_accessor :nfs_mount
+      
         # Configuration for a persistent disk to be attached to the VM. See https://
         # cloud.google.com/compute/docs/disks/performance for more information about
         # disk type, size, and performance considerations.
@@ -1463,6 +1487,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @existing_disk = args[:existing_disk] if args.key?(:existing_disk)
+          @nfs_mount = args[:nfs_mount] if args.key?(:nfs_mount)
           @persistent_disk = args[:persistent_disk] if args.key?(:persistent_disk)
           @volume = args[:volume] if args.key?(:volume)
         end
