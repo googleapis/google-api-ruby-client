@@ -277,6 +277,7 @@ module Google
       class ApigatewayBinding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :binding_id, as: 'bindingId'
           property :condition, as: 'condition', class: Google::Apis::ApigatewayV1beta::ApigatewayExpr, decorator: Google::Apis::ApigatewayV1beta::ApigatewayExpr::Representation
       
           collection :members, as: 'members'
