@@ -260,6 +260,14 @@ module Google
         # @return [String]
         attr_accessor :alternative_location_id
       
+        # Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set
+        # to "true" AUTH is enabled on the instance. Default value is "false" meaning
+        # AUTH is disabled.
+        # Corresponds to the JSON property `authEnabled`
+        # @return [Boolean]
+        attr_accessor :auth_enabled
+        alias_method :auth_enabled?, :auth_enabled
+      
         # Optional. The full name of the Google Compute Engine [network](https://cloud.
         # google.com/vpc/docs/vpc) to which the instance is connected. If left
         # unspecified, the `default` network will be used.
@@ -388,6 +396,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @alternative_location_id = args[:alternative_location_id] if args.key?(:alternative_location_id)
+          @auth_enabled = args[:auth_enabled] if args.key?(:auth_enabled)
           @authorized_network = args[:authorized_network] if args.key?(:authorized_network)
           @connect_mode = args[:connect_mode] if args.key?(:connect_mode)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -406,6 +415,25 @@ module Google
           @state = args[:state] if args.key?(:state)
           @status_message = args[:status_message] if args.key?(:status_message)
           @tier = args[:tier] if args.key?(:tier)
+        end
+      end
+      
+      # Instance AUTH string details.
+      class InstanceAuthString
+        include Google::Apis::Core::Hashable
+      
+        # AUTH string set on the instance.
+        # Corresponds to the JSON property `authString`
+        # @return [String]
+        attr_accessor :auth_string
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_string = args[:auth_string] if args.key?(:auth_string)
         end
       end
       
