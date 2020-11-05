@@ -119,7 +119,199 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an instance.
+        # Creates a backup.
+        # @param [String] parent
+        #   Required. The backup's project and location, in the format projects/`
+        #   project_number`/locations/`location`. In Cloud Filestore, backup locations map
+        #   to GCP regions, for example **us-west1**.
+        # @param [Google::Apis::FileV1::Backup] backup_object
+        # @param [String] backup_id
+        #   Required. The ID to use for the backup. The ID must be unique within the
+        #   specified project and location. This value must start with a lowercase letter
+        #   followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end
+        #   with a hyphen. Values that do not match this pattern will trigger an
+        #   INVALID_ARGUMENT error.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FileV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FileV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_backup(parent, backup_object = nil, backup_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/backups', options)
+          command.request_representation = Google::Apis::FileV1::Backup::Representation
+          command.request_object = backup_object
+          command.response_representation = Google::Apis::FileV1::Operation::Representation
+          command.response_class = Google::Apis::FileV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['backupId'] = backup_id unless backup_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a backup.
+        # @param [String] name
+        #   Required. The backup resource name, in the format projects/`project_number`/
+        #   locations/`location`/backups/`backup_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FileV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FileV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_backup(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::FileV1::Operation::Representation
+          command.response_class = Google::Apis::FileV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the details of a specific backup.
+        # @param [String] name
+        #   Required. The backup resource name, in the format projects/`project_number`/
+        #   locations/`location`/backups/`backup_id`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FileV1::Backup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FileV1::Backup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_backup(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::FileV1::Backup::Representation
+          command.response_class = Google::Apis::FileV1::Backup
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all backups in a project for either a specified location or for all
+        # locations.
+        # @param [String] parent
+        #   Required. The project and location for which to retrieve backup information,
+        #   in the format projects/`project_number`/locations/`location`. In Cloud
+        #   Filestore, backup locations map to GCP regions, for example **us-west1**. To
+        #   retrieve backup information for all locations, use "-" for the `location`
+        #   value.
+        # @param [String] filter
+        #   List filter.
+        # @param [String] order_by
+        #   Sort results. Supported values are "name", "name desc" or "" (unsorted).
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return.
+        # @param [String] page_token
+        #   The next_page_token value to use if there are additional results to retrieve
+        #   for this list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FileV1::ListBackupsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FileV1::ListBackupsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_backups(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/backups', options)
+          command.response_representation = Google::Apis::FileV1::ListBackupsResponse::Representation
+          command.response_class = Google::Apis::FileV1::ListBackupsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the settings of a specific backup.
+        # @param [String] name
+        #   Output only. The resource name of the backup, in the format projects/`
+        #   project_number`/locations/`location_id`/backups/`backup_id`.
+        # @param [Google::Apis::FileV1::Backup] backup_object
+        # @param [String] update_mask
+        #   Required. Mask of fields to update. At least one path must be supplied in this
+        #   field.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FileV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FileV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_backup(name, backup_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::FileV1::Backup::Representation
+          command.request_object = backup_object
+          command.response_representation = Google::Apis::FileV1::Operation::Representation
+          command.response_class = Google::Apis::FileV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an instance. When creating from a backup, the capacity of the new
+        # instance needs to be equal to or larger than the capacity of the backup (and
+        # also equal to or larger than the minimum capacity of the tier).
         # @param [String] parent
         #   Required. The instance's project and location, in the format projects/`
         #   project_id`/locations/`location`. In Cloud Filestore, locations map to GCP
@@ -301,6 +493,42 @@ module Google
           command.response_class = Google::Apis::FileV1::Operation
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Restores an existing instance's file share from a backup. The instance's file
+        # share capacity will be set to the backup's capacity or the minimum capacity of
+        # the tier, whichever is larger.
+        # @param [String] name
+        #   Required. The resource name of the instance, in the format projects/`
+        #   project_number`/locations/`location_id`/instances/`instance_id`.
+        # @param [Google::Apis::FileV1::RestoreInstanceRequest] restore_instance_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FileV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FileV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def restore_instance(name, restore_instance_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:restore', options)
+          command.request_representation = Google::Apis::FileV1::RestoreInstanceRequest::Representation
+          command.request_object = restore_instance_request_object
+          command.response_representation = Google::Apis::FileV1::Operation::Representation
+          command.response_class = Google::Apis::FileV1::Operation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

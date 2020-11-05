@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/filestore/
     module FileV1
       VERSION = 'V1'
-      REVISION = '20201001'
+      REVISION = '20201029'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

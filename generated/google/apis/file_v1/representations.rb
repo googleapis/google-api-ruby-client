@@ -22,7 +22,31 @@ module Google
   module Apis
     module FileV1
       
+      class Backup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DailyCycle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Date
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DenyMaintenancePeriod
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -94,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListBackupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListInstancesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -118,6 +148,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MaintenancePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MaintenanceWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -136,15 +178,92 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RestoreInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Schedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TimeOfDay
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdatePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WeeklyCycle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Backup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :capacity_gb, :numeric_string => true, as: 'capacityGb'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :download_bytes, :numeric_string => true, as: 'downloadBytes'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :source_file_share, as: 'sourceFileShare'
+          property :source_instance, as: 'sourceInstance'
+          property :source_instance_tier, as: 'sourceInstanceTier'
+          property :state, as: 'state'
+          property :storage_bytes, :numeric_string => true, as: 'storageBytes'
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DailyCycle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration, as: 'duration'
+          property :start_time, as: 'startTime', class: Google::Apis::FileV1::TimeOfDay, decorator: Google::Apis::FileV1::TimeOfDay::Representation
+      
+        end
+      end
+      
+      class Date
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
+        end
+      end
+      
+      class DenyMaintenancePeriod
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_date, as: 'endDate', class: Google::Apis::FileV1::Date, decorator: Google::Apis::FileV1::Date::Representation
+      
+          property :start_date, as: 'startDate', class: Google::Apis::FileV1::Date, decorator: Google::Apis::FileV1::Date::Representation
+      
+          property :time, as: 'time', class: Google::Apis::FileV1::TimeOfDay, decorator: Google::Apis::FileV1::TimeOfDay::Representation
+      
         end
       end
       
@@ -159,6 +278,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :capacity_gb, :numeric_string => true, as: 'capacityGb'
           property :name, as: 'name'
+          property :source_backup, as: 'sourceBackup'
         end
       end
       
@@ -201,6 +321,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :exclude, as: 'exclude'
+          hash :maintenance_policies, as: 'maintenancePolicies', class: Google::Apis::FileV1::MaintenancePolicy, decorator: Google::Apis::FileV1::MaintenancePolicy::Representation
+      
         end
       end
       
@@ -271,6 +393,16 @@ module Google
         end
       end
       
+      class ListBackupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backups, as: 'backups', class: Google::Apis::FileV1::Backup, decorator: Google::Apis::FileV1::Backup::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListInstancesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -310,6 +442,30 @@ module Google
         end
       end
       
+      class MaintenancePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :update_policy, as: 'updatePolicy', class: Google::Apis::FileV1::UpdatePolicy, decorator: Google::Apis::FileV1::UpdatePolicy::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class MaintenanceWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :daily_cycle, as: 'dailyCycle', class: Google::Apis::FileV1::DailyCycle, decorator: Google::Apis::FileV1::DailyCycle::Representation
+      
+          property :weekly_cycle, as: 'weeklyCycle', class: Google::Apis::FileV1::WeeklyCycle, decorator: Google::Apis::FileV1::WeeklyCycle::Representation
+      
+        end
+      end
+      
       class NetworkConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -345,12 +501,59 @@ module Google
         end
       end
       
+      class RestoreInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_share, as: 'fileShare'
+          property :source_backup, as: 'sourceBackup'
+        end
+      end
+      
+      class Schedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :duration, as: 'duration'
+          property :start_time, as: 'startTime', class: Google::Apis::FileV1::TimeOfDay, decorator: Google::Apis::FileV1::TimeOfDay::Representation
+      
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class TimeOfDay
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hours, as: 'hours'
+          property :minutes, as: 'minutes'
+          property :nanos, as: 'nanos'
+          property :seconds, as: 'seconds'
+        end
+      end
+      
+      class UpdatePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel, as: 'channel'
+          collection :deny_maintenance_periods, as: 'denyMaintenancePeriods', class: Google::Apis::FileV1::DenyMaintenancePeriod, decorator: Google::Apis::FileV1::DenyMaintenancePeriod::Representation
+      
+          property :window, as: 'window', class: Google::Apis::FileV1::MaintenanceWindow, decorator: Google::Apis::FileV1::MaintenanceWindow::Representation
+      
+        end
+      end
+      
+      class WeeklyCycle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :schedule, as: 'schedule', class: Google::Apis::FileV1::Schedule, decorator: Google::Apis::FileV1::Schedule::Representation
+      
         end
       end
     end
