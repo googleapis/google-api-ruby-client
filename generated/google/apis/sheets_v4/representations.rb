@@ -3216,6 +3216,9 @@ module Google
       class PivotFilterCriteria
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition', class: Google::Apis::SheetsV4::BooleanCondition, decorator: Google::Apis::SheetsV4::BooleanCondition::Representation
+      
+          property :visible_by_default, as: 'visibleByDefault'
           collection :visible_values, as: 'visibleValues'
         end
       end
