@@ -2385,8 +2385,9 @@ module Google
         # @return [String]
         attr_accessor :formatted_value
       
-        # A hyperlink this cell points to, if any. This field is read-only. (To set it,
-        # use a `=HYPERLINK` formula in the userEnteredValue.formulaValue field.)
+        # A hyperlink this cell points to, if any. If the cell contains multiple
+        # hyperlinks, this field will be empty. This field is read-only. To set it, use
+        # a `=HYPERLINK` formula in the userEnteredValue.formulaValue field.
         # Corresponds to the JSON property `hyperlink`
         # @return [String]
         attr_accessor :hyperlink
@@ -2402,11 +2403,10 @@ module Google
         attr_accessor :pivot_table
       
         # Runs of rich text applied to subsections of the cell. Runs are only valid on
-        # user entered strings, not formulas, bools, or numbers. Runs start at specific
-        # indexes in the text and continue until the next run. Properties of a run will
-        # continue unless explicitly changed in a subsequent run (and properties of the
-        # first run will continue the properties of the cell unless explicitly changed).
-        # When writing, the new runs will overwrite any prior runs. When writing a new
+        # user entered strings, not formulas, bools, or numbers. Properties of a run
+        # start at a specific index in the text and continue until the next run. Runs
+        # will inherit the properties of the cell unless explicitly changed. When
+        # writing, the new runs will overwrite any prior runs. When writing a new
         # user_entered_value, previous runs are erased.
         # Corresponds to the JSON property `textFormatRuns`
         # @return [Array<Google::Apis::SheetsV4::TextFormatRun>]
@@ -6853,6 +6853,20 @@ module Google
       class PivotFilterCriteria
         include Google::Apis::Core::Hashable
       
+        # A condition that can evaluate to true or false. BooleanConditions are used by
+        # conditional formatting, data validation, and the criteria in filters.
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::SheetsV4::BooleanCondition]
+        attr_accessor :condition
+      
+        # Whether values are visible by default. If true, the visible_values are ignored,
+        # all values that meet condition (if specified) are shown. If false, values
+        # that are both in visible_values and meet condition are shown.
+        # Corresponds to the JSON property `visibleByDefault`
+        # @return [Boolean]
+        attr_accessor :visible_by_default
+        alias_method :visible_by_default?, :visible_by_default
+      
         # Values that should be included. Values not listed here are excluded.
         # Corresponds to the JSON property `visibleValues`
         # @return [Array<String>]
@@ -6864,6 +6878,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
+          @visible_by_default = args[:visible_by_default] if args.key?(:visible_by_default)
           @visible_values = args[:visible_values] if args.key?(:visible_values)
         end
       end
