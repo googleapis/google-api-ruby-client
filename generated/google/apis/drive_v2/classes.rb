@@ -570,7 +570,7 @@ module Google
         attr_accessor :supports_create
         alias_method :supports_create?, :supports_create
       
-        # Whether this app supports importing Google Docs.
+        # Whether this app supports importing from Docs Editors.
         # Corresponds to the JSON property `supportsImport`
         # @return [Boolean]
         attr_accessor :supports_import
@@ -1828,7 +1828,7 @@ module Google
         attr_accessor :description
       
         # Short lived download URL for the file. This field is only populated for files
-        # with content stored in Google Drive; it is not populated for Google Docs or
+        # with content stored in Google Drive; it is not populated for Docs Editors or
         # shortcut files.
         # Corresponds to the JSON property `downloadUrl`
         # @return [String]
@@ -1863,21 +1863,21 @@ module Google
         attr_accessor :explicitly_trashed
         alias_method :explicitly_trashed?, :explicitly_trashed
       
-        # Links for exporting Google Docs to specific formats.
+        # Links for exporting Docs Editors files to specific formats.
         # Corresponds to the JSON property `exportLinks`
         # @return [Hash<String,String>]
         attr_accessor :export_links
       
         # The final component of fullFileExtension with trailing text that does not
         # appear to be part of the extension removed. This field is only populated for
-        # files with content stored in Google Drive; it is not populated for Google Docs
-        # or shortcut files.
+        # files with content stored in Google Drive; it is not populated for Docs
+        # Editors or shortcut files.
         # Corresponds to the JSON property `fileExtension`
         # @return [String]
         attr_accessor :file_extension
       
         # The size of the file in bytes. This field is only populated for files with
-        # content stored in Google Drive; it is not populated for Google Docs or
+        # content stored in Google Drive; it is not populated for Docs Editors or
         # shortcut files.
         # Corresponds to the JSON property `fileSize`
         # @return [Fixnum]
@@ -1895,7 +1895,7 @@ module Google
         # concatenated extensions, such as "tar.gz". Removing an extension from the
         # title does not clear this field; however, changing the extension on the title
         # does update this field. This field is only populated for files with content
-        # stored in Google Drive; it is not populated for Google Docs or shortcut files.
+        # stored in Google Drive; it is not populated for Docs Editors or shortcut files.
         # Corresponds to the JSON property `fullFileExtension`
         # @return [String]
         attr_accessor :full_file_extension
@@ -1916,7 +1916,7 @@ module Google
         alias_method :has_thumbnail?, :has_thumbnail
       
         # The ID of the file's head revision. This field is only populated for files
-        # with content stored in Google Drive; it is not populated for Google Docs or
+        # with content stored in Google Drive; it is not populated for Docs Editors or
         # shortcut files.
         # Corresponds to the JSON property `headRevisionId`
         # @return [String]
@@ -1980,8 +1980,8 @@ module Google
         attr_accessor :marked_viewed_by_me_date
       
         # An MD5 checksum for the content of this file. This field is only populated for
-        # files with content stored in Google Drive; it is not populated for Google Docs
-        # or shortcut files.
+        # files with content stored in Google Drive; it is not populated for Docs
+        # Editors or shortcut files.
         # Corresponds to the JSON property `md5Checksum`
         # @return [String]
         attr_accessor :md5_checksum
@@ -3497,7 +3497,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Links for exporting Google Docs to specific formats.
+        # Links for exporting Docs Editors files to specific formats.
         # Corresponds to the JSON property `exportLinks`
         # @return [Hash<String,String>]
         attr_accessor :export_links
@@ -3551,25 +3551,25 @@ module Google
         attr_accessor :original_filename
       
         # Whether this revision is pinned to prevent automatic purging. This will only
-        # be populated and can only be modified on files with content stored in Drive
-        # which are not Google Docs. Revisions can also be pinned when they are created
-        # through the drive.files.insert/update/copy by using the pinned query parameter.
-        # Pinned revisions are stored indefinitely using additional storage quota, up
-        # to a maximum of 200 revisions.
+        # be populated and can only be modified on files with content stored in Drive,
+        # excluding Docs Editors files. Revisions can also be pinned when they are
+        # created through the drive.files.insert/update/copy by using the pinned query
+        # parameter. Pinned revisions are stored indefinitely using additional storage
+        # quota, up to a maximum of 200 revisions.
         # Corresponds to the JSON property `pinned`
         # @return [Boolean]
         attr_accessor :pinned
         alias_method :pinned?, :pinned
       
         # Whether subsequent revisions will be automatically republished. This is only
-        # populated and can only be modified for Google Docs.
+        # populated and can only be modified for Docs Editors files.
         # Corresponds to the JSON property `publishAuto`
         # @return [Boolean]
         attr_accessor :publish_auto
         alias_method :publish_auto?, :publish_auto
       
         # Whether this revision is published. This is only populated and can only be
-        # modified for Google Docs.
+        # modified for Docs Editors files.
         # Corresponds to the JSON property `published`
         # @return [Boolean]
         attr_accessor :published
@@ -3582,7 +3582,7 @@ module Google
         attr_accessor :published_link
       
         # Whether this revision is published outside the domain. This is only populated
-        # and can only be modified for Google Docs.
+        # and can only be modified for Docs Editors files.
         # Corresponds to the JSON property `publishedOutsideDomain`
         # @return [Boolean]
         attr_accessor :published_outside_domain
