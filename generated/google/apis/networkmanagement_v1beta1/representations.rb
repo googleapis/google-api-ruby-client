@@ -130,6 +130,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LatencyDistribution
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LatencyPercentile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListConnectivityTestsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -290,6 +302,7 @@ module Google
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :binding_id, as: 'bindingId'
           property :condition, as: 'condition', class: Google::Apis::NetworkmanagementV1beta1::Expr, decorator: Google::Apis::NetworkmanagementV1beta1::Expr::Representation
       
           collection :members, as: 'members'
@@ -455,6 +468,22 @@ module Google
         end
       end
       
+      class LatencyDistribution
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :latency_percentiles, as: 'latencyPercentiles', class: Google::Apis::NetworkmanagementV1beta1::LatencyPercentile, decorator: Google::Apis::NetworkmanagementV1beta1::LatencyPercentile::Representation
+      
+        end
+      end
+      
+      class LatencyPercentile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :latency_micros, :numeric_string => true, as: 'latencyMicros'
+          property :percent, as: 'percent'
+        end
+      end
+      
       class ListConnectivityTestsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -570,6 +599,8 @@ module Google
           property :endpoint_info, as: 'endpointInfo', class: Google::Apis::NetworkmanagementV1beta1::EndpointInfo, decorator: Google::Apis::NetworkmanagementV1beta1::EndpointInfo::Representation
       
           property :error, as: 'error', class: Google::Apis::NetworkmanagementV1beta1::Status, decorator: Google::Apis::NetworkmanagementV1beta1::Status::Representation
+      
+          property :probing_latency, as: 'probingLatency', class: Google::Apis::NetworkmanagementV1beta1::LatencyDistribution, decorator: Google::Apis::NetworkmanagementV1beta1::LatencyDistribution::Representation
       
           property :result, as: 'result'
           property :sent_probe_count, as: 'sentProbeCount'
