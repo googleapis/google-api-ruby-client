@@ -1999,6 +1999,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
+          property :event, as: 'event'
           property :intent, as: 'intent', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Intent, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Intent::Representation
       
           property :match_type, as: 'matchType'
