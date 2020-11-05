@@ -199,7 +199,10 @@ module Google
         #   locations/LOCATION_ID/queues/QUEUE_ID`
         # @param [String] read_mask
         #   Optional. Read mask is used for a more granular control over what the API
-        #   returns. By it includes all fields in Queue except for stats.
+        #   returns. If the mask is not present all fields will be returned except [Queue.
+        #   stats], if the mask is set to "*" all fields including [Queue.stats] will be
+        #   returned, otherwise only the fields explicitly specified in the mask will be
+        #   returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -287,6 +290,12 @@ module Google
         #   page_token must be the value of next_page_token returned from the previous
         #   call to ListQueues method. It is an error to switch the value of the filter
         #   while iterating through pages.
+        # @param [String] read_mask
+        #   Optional. Read mask is used for a more granular control over what the API
+        #   returns. If the mask is not present all fields will be returned except [Queue.
+        #   stats], if the mask is set to "*" all fields including [Queue.stats] will be
+        #   returned, otherwise only the fields explicitly specified in the mask will be
+        #   returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -304,7 +313,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_queues(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_queues(parent, filter: nil, page_size: nil, page_token: nil, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2beta2/{+parent}/queues', options)
           command.response_representation = Google::Apis::CloudtasksV2beta2::ListQueuesResponse::Representation
           command.response_class = Google::Apis::CloudtasksV2beta2::ListQueuesResponse
@@ -312,6 +321,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['readMask'] = read_mask unless read_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
