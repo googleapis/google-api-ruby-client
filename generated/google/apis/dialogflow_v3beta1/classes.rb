@@ -2321,6 +2321,11 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
+        # The event that matched the query. Only filled for `EVENT` match type.
+        # Corresponds to the JSON property `event`
+        # @return [String]
+        attr_accessor :event
+      
         # An intent represents a user's intent to interact with a conversational agent.
         # You can provide information for the Dialogflow API to use to match user input
         # to an intent by adding training phrases (i.e., examples of user input) to your
@@ -2360,6 +2365,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @confidence = args[:confidence] if args.key?(:confidence)
+          @event = args[:event] if args.key?(:event)
           @intent = args[:intent] if args.key?(:intent)
           @match_type = args[:match_type] if args.key?(:match_type)
           @parameters = args[:parameters] if args.key?(:parameters)
