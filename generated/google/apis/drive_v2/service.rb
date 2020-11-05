@@ -1144,7 +1144,7 @@ module Google
         #   The ID of the file to copy.
         # @param [Google::Apis::DriveV2::File] file_object
         # @param [Boolean] convert
-        #   Whether to convert this file to the corresponding Google Docs format.
+        #   Whether to convert this file to the corresponding Docs Editors format.
         # @param [Boolean] enforce_single_parent
         #   Set to true to opt in to API behavior that aims for all items to have exactly
         #   one parent. This parameter only takes effect if the item is not in a shared
@@ -1438,7 +1438,7 @@ module Google
         # Insert a new file.
         # @param [Google::Apis::DriveV2::File] file_object
         # @param [Boolean] convert
-        #   Whether to convert this file to the corresponding Google Docs format.
+        #   Whether to convert this file to the corresponding Docs Editors format.
         # @param [Boolean] enforce_single_parent
         #   Set to true to opt in to API behavior that aims for all items to have exactly
         #   one parent. This parameter only takes effect if the item is not in a shared
