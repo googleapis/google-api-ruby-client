@@ -1057,7 +1057,7 @@ module Google
         attr_accessor :explicitly_trashed
         alias_method :explicitly_trashed?, :explicitly_trashed
       
-        # Links for exporting Google Docs to specific formats.
+        # Links for exporting Docs Editors files to specific formats.
         # Corresponds to the JSON property `exportLinks`
         # @return [Hash<String,String>]
         attr_accessor :export_links
@@ -2436,7 +2436,7 @@ module Google
       class Revision
         include Google::Apis::Core::Hashable
       
-        # Links for exporting Google Docs to specific formats.
+        # Links for exporting Docs Editors files to specific formats.
         # Corresponds to the JSON property `exportLinks`
         # @return [Hash<String,String>]
         attr_accessor :export_links
@@ -2490,13 +2490,14 @@ module Google
         attr_accessor :original_filename
       
         # Whether subsequent revisions will be automatically republished. This is only
-        # applicable to Google Docs.
+        # applicable to Docs Editors files.
         # Corresponds to the JSON property `publishAuto`
         # @return [Boolean]
         attr_accessor :publish_auto
         alias_method :publish_auto?, :publish_auto
       
-        # Whether this revision is published. This is only applicable to Google Docs.
+        # Whether this revision is published. This is only applicable to Docs Editors
+        # files.
         # Corresponds to the JSON property `published`
         # @return [Boolean]
         attr_accessor :published
@@ -2509,7 +2510,7 @@ module Google
         attr_accessor :published_link
       
         # Whether this revision is published outside the domain. This is only applicable
-        # to Google Docs.
+        # to Docs Editors files.
         # Corresponds to the JSON property `publishedOutsideDomain`
         # @return [Boolean]
         attr_accessor :published_outside_domain
