@@ -122,6 +122,11 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
+        # 
+        # Corresponds to the JSON property `bindingId`
+        # @return [String]
+        attr_accessor :binding_id
+      
         # Represents a textual expression in the Common Expression Language (CEL) syntax.
         # CEL is a C-like expression language. The syntax and semantics of CEL are
         # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -183,6 +188,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @binding_id = args[:binding_id] if args.key?(:binding_id)
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
@@ -831,6 +837,51 @@ module Google
         end
       end
       
+      # Describes measured latency distribution.
+      class LatencyDistribution
+        include Google::Apis::Core::Hashable
+      
+        # Representative latency percentiles.
+        # Corresponds to the JSON property `latencyPercentiles`
+        # @return [Array<Google::Apis::NetworkmanagementV1beta1::LatencyPercentile>]
+        attr_accessor :latency_percentiles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latency_percentiles = args[:latency_percentiles] if args.key?(:latency_percentiles)
+        end
+      end
+      
+      # Latency percentile rank and value.
+      class LatencyPercentile
+        include Google::Apis::Core::Hashable
+      
+        # percent-th percentile of latency observed, in microseconds. Fraction of
+        # percent/100 of samples have latency lower or equal to the value of this field.
+        # Corresponds to the JSON property `latencyMicros`
+        # @return [Fixnum]
+        attr_accessor :latency_micros
+      
+        # Percentage of samples this data point applies to.
+        # Corresponds to the JSON property `percent`
+        # @return [Fixnum]
+        attr_accessor :percent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latency_micros = args[:latency_micros] if args.key?(:latency_micros)
+          @percent = args[:percent] if args.key?(:percent)
+        end
+      end
+      
       # Response for the `ListConnectivityTests` method.
       class ListConnectivityTestsResponse
         include Google::Apis::Core::Hashable
@@ -1311,6 +1362,11 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1beta1::Status]
         attr_accessor :error
       
+        # Describes measured latency distribution.
+        # Corresponds to the JSON property `probingLatency`
+        # @return [Google::Apis::NetworkmanagementV1beta1::LatencyDistribution]
+        attr_accessor :probing_latency
+      
         # The overall reachability result of the test.
         # Corresponds to the JSON property `result`
         # @return [String]
@@ -1340,6 +1396,7 @@ module Google
           @abort_cause = args[:abort_cause] if args.key?(:abort_cause)
           @endpoint_info = args[:endpoint_info] if args.key?(:endpoint_info)
           @error = args[:error] if args.key?(:error)
+          @probing_latency = args[:probing_latency] if args.key?(:probing_latency)
           @result = args[:result] if args.key?(:result)
           @sent_probe_count = args[:sent_probe_count] if args.key?(:sent_probe_count)
           @successful_probe_count = args[:successful_probe_count] if args.key?(:successful_probe_count)
