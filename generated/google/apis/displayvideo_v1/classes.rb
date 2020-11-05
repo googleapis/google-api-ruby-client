@@ -201,8 +201,8 @@ module Google
       class AdvertiserAdServerConfig
         include Google::Apis::Core::Hashable
       
-        # Settings for advertisers that use both Campaign Manager (CM) and third-party
-        # ad servers.
+        # Settings for advertisers that use both Campaign Manager 360 (CM360) and third-
+        # party ad servers.
         # Corresponds to the JSON property `cmHybridConfig`
         # @return [Google::Apis::DisplayvideoV1::CmHybridConfig]
         attr_accessor :cm_hybrid_config
@@ -252,8 +252,8 @@ module Google
         # By setting this field to `true`, you, on behalf of your company, authorize
         # Google to use video creatives associated with this Display & Video 360
         # advertiser to provide reporting and features related to the advertiser's
-        # television campaigns. Applicable only when the advertiser has a CM hybrid ad
-        # server configuration.
+        # television campaigns. Applicable only when the advertiser has a CM360 hybrid
+        # ad server configuration.
         # Corresponds to the JSON property `videoCreativeDataSharingAuthorized`
         # @return [Boolean]
         attr_accessor :video_creative_data_sharing_authorized
@@ -322,9 +322,9 @@ module Google
       
         # Output only. The standard TZ database name of the advertiser's time zone. For
         # example, `America/New_York`. See more at: https://en.wikipedia.org/wiki/
-        # List_of_tz_database_time_zones For CM hybrid advertisers, the time zone is the
-        # same as that of the associated CM account; for third-party only advertisers,
-        # the time zone is the same as that of the parent partner.
+        # List_of_tz_database_time_zones For CM360 hybrid advertisers, the time zone is
+        # the same as that of the associated CM360 account; for third-party only
+        # advertisers, the time zone is the same as that of the parent partner.
         # Corresponds to the JSON property `timeZone`
         # @return [String]
         attr_accessor :time_zone
@@ -2128,18 +2128,18 @@ module Google
         end
       end
       
-      # Settings for advertisers that use both Campaign Manager (CM) and third-party
-      # ad servers.
+      # Settings for advertisers that use both Campaign Manager 360 (CM360) and third-
+      # party ad servers.
       class CmHybridConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Immutable. Account ID of the CM Floodlight configuration linked with
-        # the DV360 advertiser.
+        # Required. Immutable. Account ID of the CM360 Floodlight configuration linked
+        # with the DV360 advertiser.
         # Corresponds to the JSON property `cmAccountId`
         # @return [Fixnum]
         attr_accessor :cm_account_id
       
-        # Required. Immutable. ID of the CM Floodlight configuration linked with the
+        # Required. Immutable. ID of the CM360 Floodlight configuration linked with the
         # DV360 advertiser.
         # Corresponds to the JSON property `cmFloodlightConfigId`
         # @return [Fixnum]
@@ -2153,21 +2153,21 @@ module Google
         attr_accessor :cm_floodlight_linking_authorized
         alias_method :cm_floodlight_linking_authorized?, :cm_floodlight_linking_authorized
       
-        # A list of CM sites whose placements will be synced to DV360 as creatives. If
-        # absent or empty in CreateAdvertiser method, the system will automatically
-        # create a CM site. Removing sites from this list may cause DV360 creatives
-        # synced from CM to be deleted. At least one site must be specified.
+        # A list of CM360 sites whose placements will be synced to DV360 as creatives.
+        # If absent or empty in CreateAdvertiser method, the system will automatically
+        # create a CM360 site. Removing sites from this list may cause DV360 creatives
+        # synced from CM360 to be deleted. At least one site must be specified.
         # Corresponds to the JSON property `cmSyncableSiteIds`
         # @return [Array<Fixnum>]
         attr_accessor :cm_syncable_site_ids
       
-        # Whether or not to report DV360 cost to CM.
+        # Whether or not to report DV360 cost to CM360.
         # Corresponds to the JSON property `dv360ToCmCostReportingEnabled`
         # @return [Boolean]
         attr_accessor :dv360_to_cm_cost_reporting_enabled
         alias_method :dv360_to_cm_cost_reporting_enabled?, :dv360_to_cm_cost_reporting_enabled
       
-        # Whether or not to include DV360 data in CM data transfer reports.
+        # Whether or not to include DV360 data in CM360 data transfer reports.
         # Corresponds to the JSON property `dv360ToCmDataSharingEnabled`
         # @return [Boolean]
         attr_accessor :dv360_to_cm_data_sharing_enabled
@@ -2188,21 +2188,21 @@ module Google
         end
       end
       
-      # A Campaign Manager tracking ad.
+      # A Campaign Manager 360 tracking ad.
       class CmTrackingAd
         include Google::Apis::Core::Hashable
       
-        # The ad ID of the campaign manager tracking Ad.
+        # The ad ID of the campaign manager 360 tracking Ad.
         # Corresponds to the JSON property `cmAdId`
         # @return [Fixnum]
         attr_accessor :cm_ad_id
       
-        # The creative ID of the campaign manager tracking Ad.
+        # The creative ID of the campaign manager 360 tracking Ad.
         # Corresponds to the JSON property `cmCreativeId`
         # @return [Fixnum]
         attr_accessor :cm_creative_id
       
-        # The placement ID of the campaign manager tracking Ad.
+        # The placement ID of the campaign manager 360 tracking Ad.
         # Corresponds to the JSON property `cmPlacementId`
         # @return [Fixnum]
         attr_accessor :cm_placement_id
@@ -2598,14 +2598,14 @@ module Google
         # @return [Array<Google::Apis::DisplayvideoV1::AssetAssociation>]
         attr_accessor :assets
       
-        # Output only. The unique ID of the Campaign Manager placement associated with
-        # the creative. This field is only applicable for creatives that are synced from
-        # Campaign Manager.
+        # Output only. The unique ID of the Campaign Manager 360 placement associated
+        # with the creative. This field is only applicable for creatives that are synced
+        # from Campaign Manager.
         # Corresponds to the JSON property `cmPlacementId`
         # @return [Fixnum]
         attr_accessor :cm_placement_id
       
-        # A Campaign Manager tracking ad.
+        # A Campaign Manager 360 tracking ad.
         # Corresponds to the JSON property `cmTrackingAd`
         # @return [Google::Apis::DisplayvideoV1::CmTrackingAd]
         attr_accessor :cm_tracking_ad
@@ -2798,10 +2798,10 @@ module Google
         alias_method :require_mraid?, :require_mraid
       
         # Optional. Indicates that the creative will wait for a return ping for
-        # attribution. Only valid when using a Campaign Manager tracking ad with a third-
-        # party ad server parameter and the $`DC_DBM_TOKEN` macro. Optional and only
-        # valid for third-party tag creatives or third-party VAST tag creatives. Third-
-        # party tag creatives are creatives with following hosting_source: * `
+        # attribution. Only valid when using a Campaign Manager 360 tracking ad with a
+        # third-party ad server parameter and the $`DC_DBM_TOKEN` macro. Optional and
+        # only valid for third-party tag creatives or third-party VAST tag creatives.
+        # Third-party tag creatives are creatives with following hosting_source: * `
         # HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `
         # CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_EXPANDABLE` Third-party VAST tag
         # creatives are creatives with following hosting_source: * `
@@ -6362,13 +6362,13 @@ module Google
       class MeasurementConfig
         include Google::Apis::Core::Hashable
       
-        # Whether or not to report DV360 cost to CM.
+        # Whether or not to report DV360 cost to CM360.
         # Corresponds to the JSON property `dv360ToCmCostReportingEnabled`
         # @return [Boolean]
         attr_accessor :dv360_to_cm_cost_reporting_enabled
         alias_method :dv360_to_cm_cost_reporting_enabled?, :dv360_to_cm_cost_reporting_enabled
       
-        # Whether or not to include DV360 data in CM data transfer reports.
+        # Whether or not to include DV360 data in CM360 data transfer reports.
         # Corresponds to the JSON property `dv360ToCmDataSharingEnabled`
         # @return [Boolean]
         attr_accessor :dv360_to_cm_data_sharing_enabled
