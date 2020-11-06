@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EphemeralStorageConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GcePersistentDiskCsiDriverConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1048,6 +1054,13 @@ module Google
         end
       end
       
+      class EphemeralStorageConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :local_ssd_count, as: 'localSsdCount'
+        end
+      end
+      
       class GcePersistentDiskCsiDriverConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1335,6 +1348,8 @@ module Google
           property :boot_disk_kms_key, as: 'bootDiskKmsKey'
           property :disk_size_gb, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
+          property :ephemeral_storage_config, as: 'ephemeralStorageConfig', class: Google::Apis::ContainerV1beta1::EphemeralStorageConfig, decorator: Google::Apis::ContainerV1beta1::EphemeralStorageConfig::Representation
+      
           property :image_type, as: 'imageType'
           property :kubelet_config, as: 'kubeletConfig', class: Google::Apis::ContainerV1beta1::NodeKubeletConfig, decorator: Google::Apis::ContainerV1beta1::NodeKubeletConfig::Representation
       
