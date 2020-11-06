@@ -1536,6 +1536,28 @@ module Google
         end
       end
       
+      # EphemeralStorageConfig contains configuration for the ephemeral storage
+      # filesystem.
+      class EphemeralStorageConfig
+        include Google::Apis::Core::Hashable
+      
+        # Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces.
+        # Each local SSD is 375 GB in size. If zero, it means to disable using local
+        # SSDs as ephemeral storage.
+        # Corresponds to the JSON property `localSsdCount`
+        # @return [Fixnum]
+        attr_accessor :local_ssd_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @local_ssd_count = args[:local_ssd_count] if args.key?(:local_ssd_count)
+        end
+      end
+      
       # Configuration for the Compute Engine PD CSI driver. This option can only be
       # enabled at cluster creation time.
       class GcePersistentDiskCsiDriverConfig
@@ -2587,6 +2609,12 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
+        # EphemeralStorageConfig contains configuration for the ephemeral storage
+        # filesystem.
+        # Corresponds to the JSON property `ephemeralStorageConfig`
+        # @return [Google::Apis::ContainerV1beta1::EphemeralStorageConfig]
+        attr_accessor :ephemeral_storage_config
+      
         # The image type to use for this node. Note that for a given image type, the
         # latest version of it will be used.
         # Corresponds to the JSON property `imageType`
@@ -2741,6 +2769,7 @@ module Google
           @boot_disk_kms_key = args[:boot_disk_kms_key] if args.key?(:boot_disk_kms_key)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @ephemeral_storage_config = args[:ephemeral_storage_config] if args.key?(:ephemeral_storage_config)
           @image_type = args[:image_type] if args.key?(:image_type)
           @kubelet_config = args[:kubelet_config] if args.key?(:kubelet_config)
           @labels = args[:labels] if args.key?(:labels)
