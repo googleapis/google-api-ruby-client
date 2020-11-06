@@ -1488,6 +1488,40 @@ module Google
         end
       end
       
+      # The request message for the ListTrials service method.
+      class GoogleCloudMlV1ListOptimalTrialsRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response message for the ListOptimalTrials method.
+      class GoogleCloudMlV1ListOptimalTrialsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The pareto-optimal trials for multiple objective study or the optimal trial
+        # for single objective study. The definition of pareto-optimal can be checked in
+        # wiki page. https://en.wikipedia.org/wiki/Pareto_efficiency
+        # Corresponds to the JSON property `trials`
+        # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1Trial>]
+        attr_accessor :trials
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @trials = args[:trials] if args.key?(:trials)
+        end
+      end
+      
       # 
       class GoogleCloudMlV1ListStudiesResponse
         include Google::Apis::Core::Hashable
@@ -3281,8 +3315,7 @@ module Google
       class GoogleIamV1Binding
         include Google::Apis::Core::Hashable
       
-        # A client-specified ID for this binding. Expected to be globally unique to
-        # support the internal bindings-by-ID API.
+        # 
         # Corresponds to the JSON property `bindingId`
         # @return [String]
         attr_accessor :binding_id

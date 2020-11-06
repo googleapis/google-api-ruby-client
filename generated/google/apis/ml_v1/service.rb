@@ -949,6 +949,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists the pareto-optimal trials for multi-objective study or the optimal
+        # trials for single-objective study. The definition of pareto-optimal can be
+        # checked in wiki page. https://en.wikipedia.org/wiki/Pareto_efficiency
+        # @param [String] parent
+        #   Required. The name of the study that the pareto-optimal trial belongs to.
+        # @param [Google::Apis::MlV1::GoogleCloudMlV1ListOptimalTrialsRequest] google_cloud_ml_v1__list_optimal_trials_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MlV1::GoogleCloudMlV1ListOptimalTrialsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1ListOptimalTrialsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_study_trial_optimal_trials(parent, google_cloud_ml_v1__list_optimal_trials_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/trials:listOptimalTrials', options)
+          command.request_representation = Google::Apis::MlV1::GoogleCloudMlV1ListOptimalTrialsRequest::Representation
+          command.request_object = google_cloud_ml_v1__list_optimal_trials_request_object
+          command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1ListOptimalTrialsResponse::Representation
+          command.response_class = Google::Apis::MlV1::GoogleCloudMlV1ListOptimalTrialsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Stops a trial.
         # @param [String] name
         #   Required. The trial name.
