@@ -415,7 +415,7 @@ module Google
         # URL of the provider's public key set to validate signature of the JWT. See [
         # OpenID Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#
         # ProviderMetadata). Optional if the key set document: - can be retrieved from [
-        # OpenID Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html
+        # OpenID Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html)
         # of the issuer. - can be inferred from the email domain of the issuer (e.g. a
         # Google service account). Example: https://www.googleapis.com/oauth2/v1/certs
         # Corresponds to the JSON property `jwksUri`
@@ -3867,6 +3867,27 @@ module Google
           @options = args[:options] if args.key?(:options)
           @source_context = args[:source_context] if args.key?(:source_context)
           @syntax = args[:syntax] if args.key?(:syntax)
+        end
+      end
+      
+      # Request to update the configuration of a service networking connection
+      # including the import/export of custom routes and subnetwork routes with public
+      # IP.
+      class UpdateConsumerConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # Configuration information for a private service access connection.
+        # Corresponds to the JSON property `consumerConfig`
+        # @return [Google::Apis::ServicenetworkingV1::ConsumerConfig]
+        attr_accessor :consumer_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumer_config = args[:consumer_config] if args.key?(:consumer_config)
         end
       end
       

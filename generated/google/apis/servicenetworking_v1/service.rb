@@ -698,6 +698,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Service producers use this method to update the configuration of their
+        # connection including the import/export of custom routes and subnetwork routes
+        # with public IP.
+        # @param [String] parent
+        #   Required. Parent resource identifying the connection for which the consumer
+        #   config is being updated in the format: `services/`service`/projects/`project`/
+        #   global/networks/`network`` `service` is the peering service that is managing
+        #   connectivity for the service producer's organization. For Google services that
+        #   support this functionality, this value is `servicenetworking.googleapis.com`. `
+        #   project` is the number of the project that contains the service consumer's VPC
+        #   network e.g. `12345`. `network` is the name of the service consumer's VPC
+        #   network.
+        # @param [Google::Apis::ServicenetworkingV1::UpdateConsumerConfigRequest] update_consumer_config_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServicenetworkingV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServicenetworkingV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_network_consumer_config(parent, update_consumer_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+parent}:updateConsumerConfig', options)
+          command.request_representation = Google::Apis::ServicenetworkingV1::UpdateConsumerConfigRequest::Representation
+          command.request_object = update_consumer_config_request_object
+          command.response_representation = Google::Apis::ServicenetworkingV1::Operation::Representation
+          command.response_class = Google::Apis::ServicenetworkingV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a peered DNS domain which sends requests for records in given
         # namespace originating in the service producer VPC network to the consumer VPC
         # network to be resolved.
