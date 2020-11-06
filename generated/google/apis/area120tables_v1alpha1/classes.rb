@@ -283,6 +283,32 @@ module Google
         end
       end
       
+      # Response message for TablesService.ListWorkspaces.
+      class ListWorkspacesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is empty, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of workspaces.
+        # Corresponds to the JSON property `workspaces`
+        # @return [Array<Google::Apis::Area120tablesV1alpha1::Workspace>]
+        attr_accessor :workspaces
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @workspaces = args[:workspaces] if args.key?(:workspaces)
+        end
+      end
+      
       # Details about a lookup column whose value comes from the associated
       # relationship.
       class LookupDetails
@@ -416,6 +442,38 @@ module Google
           @row = args[:row] if args.key?(:row)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
           @view = args[:view] if args.key?(:view)
+        end
+      end
+      
+      # A single workspace.
+      class Workspace
+        include Google::Apis::Core::Hashable
+      
+        # The human readable title of the workspace.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The resource name of the workspace. Workspace names have the form `workspaces/`
+        # workspace``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The list of tables in the workspace.
+        # Corresponds to the JSON property `tables`
+        # @return [Array<Google::Apis::Area120tablesV1alpha1::Table>]
+        attr_accessor :tables
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @tables = args[:tables] if args.key?(:tables)
         end
       end
     end
