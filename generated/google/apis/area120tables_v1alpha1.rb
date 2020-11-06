@@ -25,7 +25,7 @@ module Google
     # @see https://tables.area120.google.com
     module Area120tablesV1alpha1
       VERSION = 'V1alpha1'
-      REVISION = '20201021'
+      REVISION = '20201104'
 
       # See, edit, create, and delete all of your Google Drive files
       AUTH_DRIVE = 'https://www.googleapis.com/auth/drive'

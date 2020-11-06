@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListWorkspacesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LookupDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,6 +113,12 @@ module Google
       end
       
       class UpdateRowRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Workspace
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -201,6 +213,15 @@ module Google
         end
       end
       
+      class ListWorkspacesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :workspaces, as: 'workspaces', class: Google::Apis::Area120tablesV1alpha1::Workspace, decorator: Google::Apis::Area120tablesV1alpha1::Workspace::Representation
+      
+        end
+      end
+      
       class LookupDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -241,6 +262,16 @@ module Google
       
           property :update_mask, as: 'updateMask'
           property :view, as: 'view'
+        end
+      end
+      
+      class Workspace
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          collection :tables, as: 'tables', class: Google::Apis::Area120tablesV1alpha1::Table, decorator: Google::Apis::Area120tablesV1alpha1::Table::Representation
+      
         end
       end
     end
