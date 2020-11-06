@@ -268,6 +268,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudMlV1ListOptimalTrialsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1ListOptimalTrialsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudMlV1ListStudiesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -906,6 +918,20 @@ module Google
           collection :models, as: 'models', class: Google::Apis::MlV1::GoogleCloudMlV1Model, decorator: Google::Apis::MlV1::GoogleCloudMlV1Model::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudMlV1ListOptimalTrialsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudMlV1ListOptimalTrialsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :trials, as: 'trials', class: Google::Apis::MlV1::GoogleCloudMlV1Trial, decorator: Google::Apis::MlV1::GoogleCloudMlV1Trial::Representation
+      
         end
       end
       
