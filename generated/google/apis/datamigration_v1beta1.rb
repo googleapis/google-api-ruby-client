@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/datamigration/
     module DatamigrationV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20201027'
+      REVISION = '20201028'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
