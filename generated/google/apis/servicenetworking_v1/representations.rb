@@ -562,6 +562,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateConsumerConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateDnsRecordSetMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1495,6 +1501,14 @@ module Google
           property :source_context, as: 'sourceContext', class: Google::Apis::ServicenetworkingV1::SourceContext, decorator: Google::Apis::ServicenetworkingV1::SourceContext::Representation
       
           property :syntax, as: 'syntax'
+        end
+      end
+      
+      class UpdateConsumerConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumer_config, as: 'consumerConfig', class: Google::Apis::ServicenetworkingV1::ConsumerConfig, decorator: Google::Apis::ServicenetworkingV1::ConsumerConfig::Representation
+      
         end
       end
       
