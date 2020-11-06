@@ -180,6 +180,7 @@ module Google
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :binding_id, as: 'bindingId'
           property :condition, as: 'condition', class: Google::Apis::EventarcV1beta1::Expr, decorator: Google::Apis::EventarcV1beta1::Expr::Representation
       
           collection :members, as: 'members'
