@@ -5234,7 +5234,7 @@ module Google
         end
       end
       
-      # A single line item.
+      # A single line item. Next id: 24
       class LineItem
         include Google::Apis::Core::Hashable
       
