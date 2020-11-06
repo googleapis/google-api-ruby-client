@@ -432,6 +432,7 @@ module Google
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :binding_id, as: 'bindingId'
           property :condition, as: 'condition', class: Google::Apis::DeploymentmanagerV2beta::Expr, decorator: Google::Apis::DeploymentmanagerV2beta::Expr::Representation
       
           collection :members, as: 'members'
