@@ -244,6 +244,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SuppressionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TailLogEntriesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TailLogEntriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UndeleteBucketRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -699,6 +717,33 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :repository, as: 'repository'
           property :revision_id, as: 'revisionId'
+        end
+      end
+      
+      class SuppressionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reason, as: 'reason'
+          property :suppressed_count, as: 'suppressedCount'
+        end
+      end
+      
+      class TailLogEntriesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :buffer_window, as: 'bufferWindow'
+          property :filter, as: 'filter'
+          collection :resource_names, as: 'resourceNames'
+        end
+      end
+      
+      class TailLogEntriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entries, as: 'entries', class: Google::Apis::LoggingV2::LogEntry, decorator: Google::Apis::LoggingV2::LogEntry::Representation
+      
+          collection :suppression_info, as: 'suppressionInfo', class: Google::Apis::LoggingV2::SuppressionInfo, decorator: Google::Apis::LoggingV2::SuppressionInfo::Representation
+      
         end
       end
       
