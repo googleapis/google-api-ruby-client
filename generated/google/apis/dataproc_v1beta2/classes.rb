@@ -230,8 +230,7 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # A client-specified ID for this binding. Expected to be globally unique to
-        # support the internal bindings-by-ID API.
+        # 
         # Corresponds to the JSON property `bindingId`
         # @return [String]
         attr_accessor :binding_id
@@ -1851,7 +1850,7 @@ module Google
         # @return [String]
         attr_accessor :keystore_uri
       
-        # Required. The uri of the KMS key used to encrypt various sensitive files.
+        # Optional. The uri of the KMS key used to encrypt various sensitive files.
         # Corresponds to the JSON property `kmsKeyUri`
         # @return [String]
         attr_accessor :kms_key_uri
@@ -1862,7 +1861,7 @@ module Google
         # @return [String]
         attr_accessor :realm
       
-        # Required. The Cloud Storage URI of a KMS encrypted file containing the root
+        # Optional. The Cloud Storage URI of a KMS encrypted file containing the root
         # principal password.
         # Corresponds to the JSON property `rootPrincipalPasswordUri`
         # @return [String]
