@@ -356,8 +356,7 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # A client-specified ID for this binding. Expected to be globally unique to
-        # support the internal bindings-by-ID API.
+        # 
         # Corresponds to the JSON property `bindingId`
         # @return [String]
         attr_accessor :binding_id
@@ -1190,7 +1189,7 @@ module Google
         # The name of the field. For reads, this is the column name. For SQL queries, it
         # is the column alias (e.g., `"Word"` in the query `"SELECT 'hello' AS Word"`),
         # or the column name (e.g., `"ColName"` in the query `"SELECT ColName FROM Table"
-        # `). Some columns might have an empty name (e.g., !"SELECT UPPER(ColName)"`).
+        # `). Some columns might have an empty name (e.g., `"SELECT UPPER(ColName)"`).
         # Note that a query result can contain multiple fields with the same name.
         # Corresponds to the JSON property `name`
         # @return [String]
