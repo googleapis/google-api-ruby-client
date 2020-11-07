@@ -295,8 +295,9 @@ module Google
         # @return [String]
         attr_accessor :referer
       
-        # The IP address (IPv4 or IPv6) of the client that issued the HTTP request.
-        # Examples: "192.168.1.1", "FE80::0202:B3FF:FE1E:8329".
+        # The IP address (IPv4 or IPv6) of the client that issued the HTTP request. This
+        # field can include port information. Examples: "192.168.1.1", "10.0.0.1:80", "
+        # FE80::0202:B3FF:FE1E:8329".
         # Corresponds to the JSON property `remoteIp`
         # @return [String]
         attr_accessor :remote_ip
@@ -325,7 +326,8 @@ module Google
         attr_accessor :response_size
       
         # The IP address (IPv4 or IPv6) of the origin server that the request was sent
-        # to.
+        # to. This field can include port information. Examples: "192.168.1.1", "10.0.0.
+        # 1:80", "FE80::0202:B3FF:FE1E:8329".
         # Corresponds to the JSON property `serverIp`
         # @return [String]
         attr_accessor :server_ip
@@ -2136,6 +2138,107 @@ module Google
         def update!(**args)
           @repository = args[:repository] if args.key?(:repository)
           @revision_id = args[:revision_id] if args.key?(:revision_id)
+        end
+      end
+      
+      # Information about entries that were omitted from the session.
+      class SuppressionInfo
+        include Google::Apis::Core::Hashable
+      
+        # The reason that entries were omitted from the session.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # A lower bound on the count of entries omitted due to reason.
+        # Corresponds to the JSON property `suppressedCount`
+        # @return [Fixnum]
+        attr_accessor :suppressed_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reason = args[:reason] if args.key?(:reason)
+          @suppressed_count = args[:suppressed_count] if args.key?(:suppressed_count)
+        end
+      end
+      
+      # The parameters to TailLogEntries.
+      class TailLogEntriesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The amount of time to buffer log entries at the server before being
+        # returned to prevent out of order results due to late arriving log entries.
+        # Valid values are between 0-60000 milliseconds. Defaults to 2000 milliseconds.
+        # Corresponds to the JSON property `bufferWindow`
+        # @return [String]
+        attr_accessor :buffer_window
+      
+        # Optional. A filter that chooses which log entries to return. See Advanced Logs
+        # Filters (https://cloud.google.com/logging/docs/view/advanced_filters). Only
+        # log entries that match the filter are returned. An empty filter matches all
+        # log entries in the resources listed in resource_names. Referencing a parent
+        # resource that is not in resource_names will cause the filter to return no
+        # results. The maximum length of the filter is 20000 characters.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Required. Name of a parent resource from which to retrieve log entries: "
+        # projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[
+        # BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" May alternatively be one or more
+        # views: "projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/
+        # VIEW_ID" "organization/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+        # views/VIEW_ID" "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/
+        # buckets/BUCKET_ID/views/VIEW_ID" "folders/FOLDER_ID/locations/LOCATION_ID/
+        # buckets/BUCKET_ID/views/VIEW_ID"
+        # Corresponds to the JSON property `resourceNames`
+        # @return [Array<String>]
+        attr_accessor :resource_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @buffer_window = args[:buffer_window] if args.key?(:buffer_window)
+          @filter = args[:filter] if args.key?(:filter)
+          @resource_names = args[:resource_names] if args.key?(:resource_names)
+        end
+      end
+      
+      # Result returned from TailLogEntries.
+      class TailLogEntriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of log entries. Each response in the stream will order entries with
+        # increasing values of LogEntry.timestamp. Ordering is not guaranteed between
+        # separate responses.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::LoggingV2::LogEntry>]
+        attr_accessor :entries
+      
+        # If entries that otherwise would have been included in the session were not
+        # sent back to the client, counts of relevant entries omitted from the session
+        # with the reason that they were not included. There will be at most one of each
+        # reason per response. The counts represent the number of suppressed entries
+        # since the last streamed response.
+        # Corresponds to the JSON property `suppressionInfo`
+        # @return [Array<Google::Apis::LoggingV2::SuppressionInfo>]
+        attr_accessor :suppression_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
+          @suppression_info = args[:suppression_info] if args.key?(:suppression_info)
         end
       end
       
