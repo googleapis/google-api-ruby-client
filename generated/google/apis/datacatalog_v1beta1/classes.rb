@@ -26,8 +26,7 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # A client-specified ID for this binding. Expected to be globally unique to
-        # support the internal bindings-by-ID API.
+        # 
         # Corresponds to the JSON property `bindingId`
         # @return [String]
         attr_accessor :binding_id
@@ -541,16 +540,7 @@ module Google
       class GoogleCloudDatacatalogV1beta1FieldTypeEnumType
         include Google::Apis::Core::Hashable
       
-        # The set of allowed values for this enum. This set must not be empty, the
-        # display names of the values in this set must not be empty and the display
-        # names of the values must be case-insensitively unique within this set. The
-        # order of items in this list is preserved. This field can be used to Required
-        # on create; optional on update. The set of allowed values for this enum. This
-        # set must not be empty, the display names of the values in this set must not be
-        # empty and the display names of the values must be case-insensitively unique
-        # within this set. Currently, enum values can only be added to the list of
-        # allowed values. Deletion and renaming of enum values are not supported. Can
-        # have up to 500 allowed values.
+        # 
         # Corresponds to the JSON property `allowedValues`
         # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>]
         attr_accessor :allowed_values
