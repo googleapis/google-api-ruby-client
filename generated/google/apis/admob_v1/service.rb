@@ -116,6 +116,8 @@ module Google
         end
         
         # Generates an AdMob Mediation report based on the provided report specification.
+        # Returns result of a server-side streaming RPC. The result is returned in a
+        # sequence of responses.
         # @param [String] parent
         #   Resource name of the account to generate the report for. Example: accounts/pub-
         #   9876543210987654
@@ -150,6 +152,8 @@ module Google
         end
         
         # Generates an AdMob Network report based on the provided report specification.
+        # Returns result of a server-side streaming RPC. The result is returned in a
+        # sequence of responses.
         # @param [String] parent
         #   Resource name of the account to generate the report for. Example: accounts/pub-
         #   9876543210987654
