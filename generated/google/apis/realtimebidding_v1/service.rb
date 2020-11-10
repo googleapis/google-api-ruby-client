@@ -152,6 +152,456 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Activates a pretargeting configuration.
+        # @param [String] name
+        #   Required. The name of the pretargeting configuration. Format: bidders/`
+        #   bidderAccountId`/pretargetingConfig/`configId`
+        # @param [Google::Apis::RealtimebiddingV1::ActivatePretargetingConfigRequest] activate_pretargeting_config_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RealtimebiddingV1::PretargetingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RealtimebiddingV1::PretargetingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def activate_pretargeting_config(name, activate_pretargeting_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:activate', options)
+          command.request_representation = Google::Apis::RealtimebiddingV1::ActivatePretargetingConfigRequest::Representation
+          command.request_object = activate_pretargeting_config_request_object
+          command.response_representation = Google::Apis::RealtimebiddingV1::PretargetingConfig::Representation
+          command.response_class = Google::Apis::RealtimebiddingV1::PretargetingConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Adds targeted apps to the pretargeting configuration.
+        # @param [String] pretargeting_config
+        #   Required. The name of the pretargeting configuration. Format: bidders/`
+        #   bidderAccountId`/pretargetingConfig/`configId`
+        # @param [Google::Apis::RealtimebiddingV1::AddTargetedAppsRequest] add_targeted_apps_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RealtimebiddingV1::PretargetingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RealtimebiddingV1::PretargetingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_pretargeting_config_targeted_apps(pretargeting_config, add_targeted_apps_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+pretargetingConfig}:addTargetedApps', options)
+          command.request_representation = Google::Apis::RealtimebiddingV1::AddTargetedAppsRequest::Representation
+          command.request_object = add_targeted_apps_request_object
+          command.response_representation = Google::Apis::RealtimebiddingV1::PretargetingConfig::Representation
+          command.response_class = Google::Apis::RealtimebiddingV1::PretargetingConfig
+          command.params['pretargetingConfig'] = pretargeting_config unless pretargeting_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Adds targeted publishers to the pretargeting config.
+        # @param [String] pretargeting_config
+        #   Required. The name of the pretargeting configuration. Format: bidders/`
+        #   bidderAccountId`/pretargetingConfig/`configId`
+        # @param [Google::Apis::RealtimebiddingV1::AddTargetedPublishersRequest] add_targeted_publishers_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RealtimebiddingV1::PretargetingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RealtimebiddingV1::PretargetingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_pretargeting_config_targeted_publishers(pretargeting_config, add_targeted_publishers_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+pretargetingConfig}:addTargetedPublishers', options)
+          command.request_representation = Google::Apis::RealtimebiddingV1::AddTargetedPublishersRequest::Representation
+          command.request_object = add_targeted_publishers_request_object
+          command.response_representation = Google::Apis::RealtimebiddingV1::PretargetingConfig::Representation
+          command.response_class = Google::Apis::RealtimebiddingV1::PretargetingConfig
+          command.params['pretargetingConfig'] = pretargeting_config unless pretargeting_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Adds targeted sites to the pretargeting configuration.
+        # @param [String] pretargeting_config
+        #   Required. The name of the pretargeting configuration. Format: bidders/`
+        #   bidderAccountId`/pretargetingConfig/`configId`
+        # @param [Google::Apis::RealtimebiddingV1::AddTargetedSitesRequest] add_targeted_sites_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RealtimebiddingV1::PretargetingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RealtimebiddingV1::PretargetingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_pretargeting_config_targeted_sites(pretargeting_config, add_targeted_sites_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+pretargetingConfig}:addTargetedSites', options)
+          command.request_representation = Google::Apis::RealtimebiddingV1::AddTargetedSitesRequest::Representation
+          command.request_object = add_targeted_sites_request_object
+          command.response_representation = Google::Apis::RealtimebiddingV1::PretargetingConfig::Representation
+          command.response_class = Google::Apis::RealtimebiddingV1::PretargetingConfig
+          command.params['pretargetingConfig'] = pretargeting_config unless pretargeting_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a pretargeting configuration. A pretargeting configuration's state (
+        # PretargetingConfig.state) is active upon creation, and it will start to affect
+        # traffic shortly after. A bidder may create a maximum of 10 pretargeting
+        # configurations. Attempts to exceed this maximum results in a 400 bad request
+        # error.
+        # @param [String] parent
+        #   Required. Name of the bidder to create the pretargeting configuration for.
+        #   Format: bidders/`bidderAccountId`
+        # @param [Google::Apis::RealtimebiddingV1::PretargetingConfig] pretargeting_config_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RealtimebiddingV1::PretargetingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RealtimebiddingV1::PretargetingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_bidder_pretargeting_config(parent, pretargeting_config_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/pretargetingConfigs', options)
+          command.request_representation = Google::Apis::RealtimebiddingV1::PretargetingConfig::Representation
+          command.request_object = pretargeting_config_object
+          command.response_representation = Google::Apis::RealtimebiddingV1::PretargetingConfig::Representation
+          command.response_class = Google::Apis::RealtimebiddingV1::PretargetingConfig
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a pretargeting configuration.
+        # @param [String] name
+        #   Required. The name of the pretargeting configuration to delete. Format:
+        #   bidders/`bidderAccountId`/pretargetingConfig/`configId`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RealtimebiddingV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RealtimebiddingV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_bidder_pretargeting_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::RealtimebiddingV1::Empty::Representation
+          command.response_class = Google::Apis::RealtimebiddingV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a pretargeting configuration.
+        # @param [String] name
+        #   Required. Name of the pretargeting configuration to get. Format: bidders/`
+        #   bidderAccountId`/pretargetingConfig/`configId`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RealtimebiddingV1::PretargetingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RealtimebiddingV1::PretargetingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_bidder_pretargeting_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::RealtimebiddingV1::PretargetingConfig::Representation
+          command.response_class = Google::Apis::RealtimebiddingV1::PretargetingConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all pretargeting configurations for a single bidder.
+        # @param [String] parent
+        #   Required. Name of the bidder whose pretargeting configurations will be listed.
+        #   Format: bidders/`bidderAccountId`
+        # @param [Fixnum] page_size
+        #   The maximum number of pretargeting configurations to return. If unspecified,
+        #   at most 10 pretargeting configurations will be returned. The maximum value is
+        #   100; values above 100 will be coerced to 100.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return. This value is
+        #   received from a previous `ListPretargetingConfigs` call in
+        #   ListPretargetingConfigsResponse.nextPageToken.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RealtimebiddingV1::ListPretargetingConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RealtimebiddingV1::ListPretargetingConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_bidder_pretargeting_configs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/pretargetingConfigs', options)
+          command.response_representation = Google::Apis::RealtimebiddingV1::ListPretargetingConfigsResponse::Representation
+          command.response_class = Google::Apis::RealtimebiddingV1::ListPretargetingConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a pretargeting configuration.
+        # @param [String] name
+        #   Output only. Name of the pretargeting configuration that must follow the
+        #   pattern `bidders/`bidder_account_id`/pretargetingConfigs/`config_id``
+        # @param [Google::Apis::RealtimebiddingV1::PretargetingConfig] pretargeting_config_object
+        # @param [String] update_mask
+        #   Field mask to use for partial in-place updates.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RealtimebiddingV1::PretargetingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RealtimebiddingV1::PretargetingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_bidder_pretargeting_config(name, pretargeting_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::RealtimebiddingV1::PretargetingConfig::Representation
+          command.request_object = pretargeting_config_object
+          command.response_representation = Google::Apis::RealtimebiddingV1::PretargetingConfig::Representation
+          command.response_class = Google::Apis::RealtimebiddingV1::PretargetingConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes targeted apps from the pretargeting configuration.
+        # @param [String] pretargeting_config
+        #   Required. The name of the pretargeting configuration. Format: bidders/`
+        #   bidderAccountId`/pretargetingConfig/`configId`
+        # @param [Google::Apis::RealtimebiddingV1::RemoveTargetedAppsRequest] remove_targeted_apps_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RealtimebiddingV1::PretargetingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RealtimebiddingV1::PretargetingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_pretargeting_config_targeted_apps(pretargeting_config, remove_targeted_apps_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+pretargetingConfig}:removeTargetedApps', options)
+          command.request_representation = Google::Apis::RealtimebiddingV1::RemoveTargetedAppsRequest::Representation
+          command.request_object = remove_targeted_apps_request_object
+          command.response_representation = Google::Apis::RealtimebiddingV1::PretargetingConfig::Representation
+          command.response_class = Google::Apis::RealtimebiddingV1::PretargetingConfig
+          command.params['pretargetingConfig'] = pretargeting_config unless pretargeting_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes targeted publishers from the pretargeting config.
+        # @param [String] pretargeting_config
+        #   Required. The name of the pretargeting configuration. Format: bidders/`
+        #   bidderAccountId`/pretargetingConfig/`configId`
+        # @param [Google::Apis::RealtimebiddingV1::RemoveTargetedPublishersRequest] remove_targeted_publishers_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RealtimebiddingV1::PretargetingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RealtimebiddingV1::PretargetingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_pretargeting_config_targeted_publishers(pretargeting_config, remove_targeted_publishers_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+pretargetingConfig}:removeTargetedPublishers', options)
+          command.request_representation = Google::Apis::RealtimebiddingV1::RemoveTargetedPublishersRequest::Representation
+          command.request_object = remove_targeted_publishers_request_object
+          command.response_representation = Google::Apis::RealtimebiddingV1::PretargetingConfig::Representation
+          command.response_class = Google::Apis::RealtimebiddingV1::PretargetingConfig
+          command.params['pretargetingConfig'] = pretargeting_config unless pretargeting_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes targeted sites from the pretargeting configuration.
+        # @param [String] pretargeting_config
+        #   Required. The name of the pretargeting configuration. Format: bidders/`
+        #   bidderAccountId`/pretargetingConfig/`configId`
+        # @param [Google::Apis::RealtimebiddingV1::RemoveTargetedSitesRequest] remove_targeted_sites_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RealtimebiddingV1::PretargetingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RealtimebiddingV1::PretargetingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_pretargeting_config_targeted_sites(pretargeting_config, remove_targeted_sites_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+pretargetingConfig}:removeTargetedSites', options)
+          command.request_representation = Google::Apis::RealtimebiddingV1::RemoveTargetedSitesRequest::Representation
+          command.request_object = remove_targeted_sites_request_object
+          command.response_representation = Google::Apis::RealtimebiddingV1::PretargetingConfig::Representation
+          command.response_class = Google::Apis::RealtimebiddingV1::PretargetingConfig
+          command.params['pretargetingConfig'] = pretargeting_config unless pretargeting_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Suspends a pretargeting configuration.
+        # @param [String] name
+        #   Required. The name of the pretargeting configuration. Format: bidders/`
+        #   bidderAccountId`/pretargetingConfig/`configId`
+        # @param [Google::Apis::RealtimebiddingV1::SuspendPretargetingConfigRequest] suspend_pretargeting_config_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RealtimebiddingV1::PretargetingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RealtimebiddingV1::PretargetingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def suspend_pretargeting_config(name, suspend_pretargeting_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:suspend', options)
+          command.request_representation = Google::Apis::RealtimebiddingV1::SuspendPretargetingConfigRequest::Representation
+          command.request_object = suspend_pretargeting_config_request_object
+          command.response_representation = Google::Apis::RealtimebiddingV1::PretargetingConfig::Representation
+          command.response_class = Google::Apis::RealtimebiddingV1::PretargetingConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets remarketing tag for a buyer. A remarketing tag is a piece of JavaScript
         # code that can be placed on a web page. When a user visits a page containing a
         # remarketing tag, Google adds the user to a user list.
