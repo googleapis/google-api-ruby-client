@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/access-approval/docs
     module AccessapprovalV1
       VERSION = 'V1'
-      REVISION = '20201014'
+      REVISION = '20201030'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
