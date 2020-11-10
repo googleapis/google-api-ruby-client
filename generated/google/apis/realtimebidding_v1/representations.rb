@@ -22,7 +22,37 @@ module Google
   module Apis
     module RealtimebiddingV1
       
+      class ActivatePretargetingConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddTargetedAppsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddTargetedPublishersRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddTargetedSitesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdvertiserAndBrand
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppTargeting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -35,6 +65,12 @@ module Google
       end
       
       class Creative
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreativeDimensions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -88,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetRemarketingTagResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -124,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListPretargetingConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListUserListsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,6 +185,12 @@ module Google
       end
       
       class NativeContent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NumericTargetingDimension
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -161,6 +215,42 @@ module Google
       end
       
       class PolicyTopicEvidence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PretargetingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveTargetedAppsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveTargetedPublishersRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveTargetedSitesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StringTargetingDimension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SuspendPretargetingConfigRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -208,6 +298,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ActivatePretargetingConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AddTargetedAppsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :app_ids, as: 'appIds'
+          property :targeting_mode, as: 'targetingMode'
+        end
+      end
+      
+      class AddTargetedPublishersRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :publisher_ids, as: 'publisherIds'
+          property :targeting_mode, as: 'targetingMode'
+        end
+      end
+      
+      class AddTargetedSitesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :sites, as: 'sites'
+          property :targeting_mode, as: 'targetingMode'
+        end
+      end
+      
       class AdvertiserAndBrand
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -215,6 +335,16 @@ module Google
           property :advertiser_name, as: 'advertiserName'
           property :brand_id, :numeric_string => true, as: 'brandId'
           property :brand_name, as: 'brandName'
+        end
+      end
+      
+      class AppTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mobile_app_category_targeting, as: 'mobileAppCategoryTargeting', class: Google::Apis::RealtimebiddingV1::NumericTargetingDimension, decorator: Google::Apis::RealtimebiddingV1::NumericTargetingDimension::Representation
+      
+          property :mobile_app_targeting, as: 'mobileAppTargeting', class: Google::Apis::RealtimebiddingV1::StringTargetingDimension, decorator: Google::Apis::RealtimebiddingV1::StringTargetingDimension::Representation
+      
         end
       end
       
@@ -251,6 +381,14 @@ module Google
           property :version, as: 'version'
           property :video, as: 'video', class: Google::Apis::RealtimebiddingV1::VideoContent, decorator: Google::Apis::RealtimebiddingV1::VideoContent::Representation
       
+        end
+      end
+      
+      class CreativeDimensions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :height, :numeric_string => true, as: 'height'
+          property :width, :numeric_string => true, as: 'width'
         end
       end
       
@@ -345,6 +483,12 @@ module Google
         end
       end
       
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GetRemarketingTagResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -394,6 +538,15 @@ module Google
         end
       end
       
+      class ListPretargetingConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :pretargeting_configs, as: 'pretargetingConfigs', class: Google::Apis::RealtimebiddingV1::PretargetingConfig, decorator: Google::Apis::RealtimebiddingV1::PretargetingConfig::Representation
+      
+        end
+      end
+      
       class ListUserListsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -429,6 +582,14 @@ module Google
           property :price_display_text, as: 'priceDisplayText'
           property :star_rating, as: 'starRating'
           property :video_url, as: 'videoUrl'
+        end
+      end
+      
+      class NumericTargetingDimension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :excluded_ids, as: 'excludedIds'
+          collection :included_ids, as: 'includedIds'
         end
       end
       
@@ -474,6 +635,77 @@ module Google
       
           property :http_cookie, as: 'httpCookie', class: Google::Apis::RealtimebiddingV1::HttpCookieEvidence, decorator: Google::Apis::RealtimebiddingV1::HttpCookieEvidence::Representation
       
+        end
+      end
+      
+      class PretargetingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_user_targeting_modes, as: 'allowedUserTargetingModes'
+          property :app_targeting, as: 'appTargeting', class: Google::Apis::RealtimebiddingV1::AppTargeting, decorator: Google::Apis::RealtimebiddingV1::AppTargeting::Representation
+      
+          property :billing_id, :numeric_string => true, as: 'billingId'
+          property :display_name, as: 'displayName'
+          collection :excluded_content_label_ids, as: 'excludedContentLabelIds'
+          property :geo_targeting, as: 'geoTargeting', class: Google::Apis::RealtimebiddingV1::NumericTargetingDimension, decorator: Google::Apis::RealtimebiddingV1::NumericTargetingDimension::Representation
+      
+          collection :included_creative_dimensions, as: 'includedCreativeDimensions', class: Google::Apis::RealtimebiddingV1::CreativeDimensions, decorator: Google::Apis::RealtimebiddingV1::CreativeDimensions::Representation
+      
+          collection :included_environments, as: 'includedEnvironments'
+          collection :included_formats, as: 'includedFormats'
+          collection :included_languages, as: 'includedLanguages'
+          collection :included_mobile_operating_system_ids, as: 'includedMobileOperatingSystemIds'
+          collection :included_platforms, as: 'includedPlatforms'
+          collection :included_user_id_types, as: 'includedUserIdTypes'
+          property :interstitial_targeting, as: 'interstitialTargeting'
+          collection :invalid_geo_ids, as: 'invalidGeoIds'
+          property :maximum_qps, :numeric_string => true, as: 'maximumQps'
+          property :minimum_viewability_decile, as: 'minimumViewabilityDecile'
+          property :name, as: 'name'
+          property :publisher_targeting, as: 'publisherTargeting', class: Google::Apis::RealtimebiddingV1::StringTargetingDimension, decorator: Google::Apis::RealtimebiddingV1::StringTargetingDimension::Representation
+      
+          property :state, as: 'state'
+          property :user_list_targeting, as: 'userListTargeting', class: Google::Apis::RealtimebiddingV1::NumericTargetingDimension, decorator: Google::Apis::RealtimebiddingV1::NumericTargetingDimension::Representation
+      
+          property :vertical_targeting, as: 'verticalTargeting', class: Google::Apis::RealtimebiddingV1::NumericTargetingDimension, decorator: Google::Apis::RealtimebiddingV1::NumericTargetingDimension::Representation
+      
+          property :web_targeting, as: 'webTargeting', class: Google::Apis::RealtimebiddingV1::StringTargetingDimension, decorator: Google::Apis::RealtimebiddingV1::StringTargetingDimension::Representation
+      
+        end
+      end
+      
+      class RemoveTargetedAppsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :app_ids, as: 'appIds'
+        end
+      end
+      
+      class RemoveTargetedPublishersRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :publisher_ids, as: 'publisherIds'
+        end
+      end
+      
+      class RemoveTargetedSitesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :sites, as: 'sites'
+        end
+      end
+      
+      class StringTargetingDimension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :targeting_mode, as: 'targetingMode'
+          collection :values, as: 'values'
+        end
+      end
+      
+      class SuspendPretargetingConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

@@ -22,6 +22,118 @@ module Google
   module Apis
     module RealtimebiddingV1
       
+      # A request to activate a pretargeting configuration. Sets the configuration's
+      # state to ACTIVE.
+      class ActivatePretargetingConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A request to start targeting the provided app IDs in a specific pretargeting
+      # configuration. The pretargeting configuration itself specifies how these apps
+      # are targeted. in PretargetingConfig.appTargeting.mobileAppTargeting.
+      class AddTargetedAppsRequest
+        include Google::Apis::Core::Hashable
+      
+        # A list of app IDs to target in the pretargeting configuration. These values
+        # will be added to the list of targeted app IDs in PretargetingConfig.
+        # appTargeting.mobileAppTargeting.values.
+        # Corresponds to the JSON property `appIds`
+        # @return [Array<String>]
+        attr_accessor :app_ids
+      
+        # Required. The targeting mode that should be applied to the list of app IDs. If
+        # there are existing targeted app IDs, must be equal to the existing
+        # PretargetingConfig.appTargeting.mobileAppTargeting.targetingMode or a 400 bad
+        # request error will be returned.
+        # Corresponds to the JSON property `targetingMode`
+        # @return [String]
+        attr_accessor :targeting_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_ids = args[:app_ids] if args.key?(:app_ids)
+          @targeting_mode = args[:targeting_mode] if args.key?(:targeting_mode)
+        end
+      end
+      
+      # A request to start targeting the provided publishers in a specific
+      # pretargeting configuration. The pretargeting configuration itself specifies
+      # how these publishers are targeted in PretargetingConfig.publisherTargeting.
+      class AddTargetedPublishersRequest
+        include Google::Apis::Core::Hashable
+      
+        # A list of publisher IDs to target in the pretargeting configuration. These
+        # values will be added to the list of targeted publisher IDs in
+        # PretargetingConfig.publisherTargeting.values. Publishers are identified by
+        # their publisher ID from ads.txt / app-ads.txt. See https://iabtechlab.com/ads-
+        # txt/ and https://iabtechlab.com/app-ads-txt/ for more details.
+        # Corresponds to the JSON property `publisherIds`
+        # @return [Array<String>]
+        attr_accessor :publisher_ids
+      
+        # Required. The targeting mode that should be applied to the list of publisher
+        # IDs. If are existing publisher IDs, must be equal to the existing
+        # PretargetingConfig.publisherTargeting.targetingMode or a 400 bad request error
+        # will be returned.
+        # Corresponds to the JSON property `targetingMode`
+        # @return [String]
+        attr_accessor :targeting_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @publisher_ids = args[:publisher_ids] if args.key?(:publisher_ids)
+          @targeting_mode = args[:targeting_mode] if args.key?(:targeting_mode)
+        end
+      end
+      
+      # A request to start targeting the provided sites in a specific pretargeting
+      # configuration. The pretargeting configuration itself specifies how these sites
+      # are targeted in PretargetingConfig.webTargeting.
+      class AddTargetedSitesRequest
+        include Google::Apis::Core::Hashable
+      
+        # A list of site URLs to target in the pretargeting configuration. These values
+        # will be added to the list of targeted URLs in PretargetingConfig.webTargeting.
+        # values.
+        # Corresponds to the JSON property `sites`
+        # @return [Array<String>]
+        attr_accessor :sites
+      
+        # Required. The targeting mode that should be applied to the list of site URLs.
+        # If there are existing targeted sites, must be equal to the existing
+        # PretargetingConfig.webTargeting.targetingMode or a 400 bad request error will
+        # be returned.
+        # Corresponds to the JSON property `targetingMode`
+        # @return [String]
+        attr_accessor :targeting_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sites = args[:sites] if args.key?(:sites)
+          @targeting_mode = args[:targeting_mode] if args.key?(:targeting_mode)
+        end
+      end
+      
       # Detected advertiser and brand information.
       class AdvertiserAndBrand
         include Google::Apis::Core::Hashable
@@ -61,6 +173,35 @@ module Google
           @advertiser_name = args[:advertiser_name] if args.key?(:advertiser_name)
           @brand_id = args[:brand_id] if args.key?(:brand_id)
           @brand_name = args[:brand_name] if args.key?(:brand_name)
+        end
+      end
+      
+      # A subset of app inventory to target. Bid requests that match criteria in at
+      # least one of the specified dimensions will be sent.
+      class AppTargeting
+        include Google::Apis::Core::Hashable
+      
+        # Generic targeting used for targeting dimensions that contain a list of
+        # included and excluded numeric IDs used in app, user list, geo, and vertical id
+        # targeting.
+        # Corresponds to the JSON property `mobileAppCategoryTargeting`
+        # @return [Google::Apis::RealtimebiddingV1::NumericTargetingDimension]
+        attr_accessor :mobile_app_category_targeting
+      
+        # Generic targeting with string values used in app, website and publisher
+        # targeting.
+        # Corresponds to the JSON property `mobileAppTargeting`
+        # @return [Google::Apis::RealtimebiddingV1::StringTargetingDimension]
+        attr_accessor :mobile_app_targeting
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mobile_app_category_targeting = args[:mobile_app_category_targeting] if args.key?(:mobile_app_category_targeting)
+          @mobile_app_targeting = args[:mobile_app_targeting] if args.key?(:mobile_app_targeting)
         end
       end
       
@@ -229,6 +370,31 @@ module Google
           @restricted_categories = args[:restricted_categories] if args.key?(:restricted_categories)
           @version = args[:version] if args.key?(:version)
           @video = args[:video] if args.key?(:video)
+        end
+      end
+      
+      # The dimensions of a creative. This applies to only HTML and Native creatives.
+      class CreativeDimensions
+        include Google::Apis::Core::Hashable
+      
+        # The height of the creative in pixels.
+        # Corresponds to the JSON property `height`
+        # @return [Fixnum]
+        attr_accessor :height
+      
+        # The width of the creative in pixels.
+        # Corresponds to the JSON property `width`
+        # @return [Fixnum]
+        attr_accessor :width
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @height = args[:height] if args.key?(:height)
+          @width = args[:width] if args.key?(:width)
         end
       end
       
@@ -582,6 +748,23 @@ module Google
         end
       end
       
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Response for a request to get remarketing tag.
       class GetRemarketingTagResponse
         include Google::Apis::Core::Hashable
@@ -746,6 +929,33 @@ module Google
         end
       end
       
+      # A response containing pretargeting configurations.
+      class ListPretargetingConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token which can be passed to a subsequent call to the `
+        # ListPretargetingConfigs` method to retrieve the next page of results in
+        # ListPretargetingConfigsRequest.pageToken.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of pretargeting configurations.
+        # Corresponds to the JSON property `pretargetingConfigs`
+        # @return [Array<Google::Apis::RealtimebiddingV1::PretargetingConfig>]
+        attr_accessor :pretargeting_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @pretargeting_configs = args[:pretargeting_configs] if args.key?(:pretargeting_configs)
+        end
+      end
+      
       # The list user list response.
       class ListUserListsResponse
         include Google::Apis::Core::Hashable
@@ -889,6 +1099,33 @@ module Google
         end
       end
       
+      # Generic targeting used for targeting dimensions that contain a list of
+      # included and excluded numeric IDs used in app, user list, geo, and vertical id
+      # targeting.
+      class NumericTargetingDimension
+        include Google::Apis::Core::Hashable
+      
+        # The IDs excluded in a configuration.
+        # Corresponds to the JSON property `excludedIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :excluded_ids
+      
+        # The IDs included in a configuration.
+        # Corresponds to the JSON property `includedIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :included_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @excluded_ids = args[:excluded_ids] if args.key?(:excluded_ids)
+          @included_ids = args[:included_ids] if args.key?(:included_ids)
+        end
+      end
+      
       # A request to open a specified user list.
       class OpenUserListRequest
         include Google::Apis::Core::Hashable
@@ -1021,6 +1258,314 @@ module Google
           @download_size = args[:download_size] if args.key?(:download_size)
           @http_call = args[:http_call] if args.key?(:http_call)
           @http_cookie = args[:http_cookie] if args.key?(:http_cookie)
+        end
+      end
+      
+      # Pretargeting configuration: a set of targeting dimensions applied at the
+      # pretargeting stage of the RTB funnel. These control which inventory a bidder
+      # will receive bid requests for.
+      class PretargetingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Targeting modes included by this configuration. A bid request must allow all
+        # the specified targeting modes. An unset value allows all bid requests to be
+        # sent, regardless of which targeting modes they allow.
+        # Corresponds to the JSON property `allowedUserTargetingModes`
+        # @return [Array<String>]
+        attr_accessor :allowed_user_targeting_modes
+      
+        # A subset of app inventory to target. Bid requests that match criteria in at
+        # least one of the specified dimensions will be sent.
+        # Corresponds to the JSON property `appTargeting`
+        # @return [Google::Apis::RealtimebiddingV1::AppTargeting]
+        attr_accessor :app_targeting
+      
+        # Output only. The identifier that corresponds to this pretargeting
+        # configuration that helps buyers track and attribute their spend across their
+        # own arbitrary divisions. If a bid request matches more than one configuration,
+        # the buyer chooses which billing_id to attribute each of their bids.
+        # Corresponds to the JSON property `billingId`
+        # @return [Fixnum]
+        attr_accessor :billing_id
+      
+        # The diplay name associated with this configuration. This name must be unique
+        # among all the pretargeting configurations a bidder has.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The sensitive content category label IDs excluded in this configuration. Bid
+        # requests for inventory with any of the specified content label IDs will not be
+        # sent. Refer to this file https://storage.googleapis.com/adx-rtb-dictionaries/
+        # content-labels.txt for category IDs.
+        # Corresponds to the JSON property `excludedContentLabelIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :excluded_content_label_ids
+      
+        # Generic targeting used for targeting dimensions that contain a list of
+        # included and excluded numeric IDs used in app, user list, geo, and vertical id
+        # targeting.
+        # Corresponds to the JSON property `geoTargeting`
+        # @return [Google::Apis::RealtimebiddingV1::NumericTargetingDimension]
+        attr_accessor :geo_targeting
+      
+        # Creative dimensions included by this configuration. Only bid requests eligible
+        # for at least one of the specified creative dimensions will be sent. An unset
+        # value allows all bid requests to be sent, regardless of creative dimension.
+        # Corresponds to the JSON property `includedCreativeDimensions`
+        # @return [Array<Google::Apis::RealtimebiddingV1::CreativeDimensions>]
+        attr_accessor :included_creative_dimensions
+      
+        # Environments that are being included. Bid requests will not be sent for a
+        # given environment if it is not included. Further restrictions can be applied
+        # to included environments to target only a subset of its inventory. An unset
+        # value includes all environments.
+        # Corresponds to the JSON property `includedEnvironments`
+        # @return [Array<String>]
+        attr_accessor :included_environments
+      
+        # Creative formats included by this configuration. Only bid requests eligible
+        # for at least one of the specified creative formats will be sent. An unset
+        # value will allow all bid requests to be sent, regardless of format.
+        # Corresponds to the JSON property `includedFormats`
+        # @return [Array<String>]
+        attr_accessor :included_formats
+      
+        # The languages included in this configuration, represented by their language
+        # code. See https://developers.google.com/adwords/api/docs/appendix/
+        # languagecodes.
+        # Corresponds to the JSON property `includedLanguages`
+        # @return [Array<String>]
+        attr_accessor :included_languages
+      
+        # The mobile operating systems included in this configuration as defined in
+        # https://storage.googleapis.com/adx-rtb-dictionaries/mobile-os.csv
+        # Corresponds to the JSON property `includedMobileOperatingSystemIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :included_mobile_operating_system_ids
+      
+        # The platforms included by this configration. Bid requests for devices with the
+        # specified platform types will be sent. An unset value allows all bid requests
+        # to be sent, regardless of platform.
+        # Corresponds to the JSON property `includedPlatforms`
+        # @return [Array<String>]
+        attr_accessor :included_platforms
+      
+        # User identifier types included in this configuration. At least one of the user
+        # identifier types specified in this list must be available for the bid request
+        # to be sent.
+        # Corresponds to the JSON property `includedUserIdTypes`
+        # @return [Array<String>]
+        attr_accessor :included_user_id_types
+      
+        # The interstitial targeting specified for this configuration. The unset value
+        # will allow bid requests to be sent regardless of whether they are for
+        # interstitials or not.
+        # Corresponds to the JSON property `interstitialTargeting`
+        # @return [String]
+        attr_accessor :interstitial_targeting
+      
+        # Output only. Existing included or excluded geos that are invalid. Previously
+        # targeted geos may become invalid due to privacy restrictions.
+        # Corresponds to the JSON property `invalidGeoIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :invalid_geo_ids
+      
+        # The maximum QPS threshold for this configuration. The bidder should receive no
+        # more than this number of bid requests matching this configuration per second
+        # across all their bidding endpoints among all trading locations. Further
+        # information available at https://developers.google.com/authorized-buyers/rtb/
+        # peer-guide
+        # Corresponds to the JSON property `maximumQps`
+        # @return [Fixnum]
+        attr_accessor :maximum_qps
+      
+        # The targeted minimum viewability decile, ranging in values [0, 10]. A value of
+        # 5 means that the configuration will only match adslots for which we predict at
+        # least 50% viewability. Values > 10 will be rounded down to 10. An unset value
+        # or a value of 0 indicates that bid requests will be sent regardless of
+        # viewability.
+        # Corresponds to the JSON property `minimumViewabilityDecile`
+        # @return [Fixnum]
+        attr_accessor :minimum_viewability_decile
+      
+        # Output only. Name of the pretargeting configuration that must follow the
+        # pattern `bidders/`bidder_account_id`/pretargetingConfigs/`config_id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Generic targeting with string values used in app, website and publisher
+        # targeting.
+        # Corresponds to the JSON property `publisherTargeting`
+        # @return [Google::Apis::RealtimebiddingV1::StringTargetingDimension]
+        attr_accessor :publisher_targeting
+      
+        # Output only. The state of this pretargeting configuration.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Generic targeting used for targeting dimensions that contain a list of
+        # included and excluded numeric IDs used in app, user list, geo, and vertical id
+        # targeting.
+        # Corresponds to the JSON property `userListTargeting`
+        # @return [Google::Apis::RealtimebiddingV1::NumericTargetingDimension]
+        attr_accessor :user_list_targeting
+      
+        # Generic targeting used for targeting dimensions that contain a list of
+        # included and excluded numeric IDs used in app, user list, geo, and vertical id
+        # targeting.
+        # Corresponds to the JSON property `verticalTargeting`
+        # @return [Google::Apis::RealtimebiddingV1::NumericTargetingDimension]
+        attr_accessor :vertical_targeting
+      
+        # Generic targeting with string values used in app, website and publisher
+        # targeting.
+        # Corresponds to the JSON property `webTargeting`
+        # @return [Google::Apis::RealtimebiddingV1::StringTargetingDimension]
+        attr_accessor :web_targeting
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_user_targeting_modes = args[:allowed_user_targeting_modes] if args.key?(:allowed_user_targeting_modes)
+          @app_targeting = args[:app_targeting] if args.key?(:app_targeting)
+          @billing_id = args[:billing_id] if args.key?(:billing_id)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @excluded_content_label_ids = args[:excluded_content_label_ids] if args.key?(:excluded_content_label_ids)
+          @geo_targeting = args[:geo_targeting] if args.key?(:geo_targeting)
+          @included_creative_dimensions = args[:included_creative_dimensions] if args.key?(:included_creative_dimensions)
+          @included_environments = args[:included_environments] if args.key?(:included_environments)
+          @included_formats = args[:included_formats] if args.key?(:included_formats)
+          @included_languages = args[:included_languages] if args.key?(:included_languages)
+          @included_mobile_operating_system_ids = args[:included_mobile_operating_system_ids] if args.key?(:included_mobile_operating_system_ids)
+          @included_platforms = args[:included_platforms] if args.key?(:included_platforms)
+          @included_user_id_types = args[:included_user_id_types] if args.key?(:included_user_id_types)
+          @interstitial_targeting = args[:interstitial_targeting] if args.key?(:interstitial_targeting)
+          @invalid_geo_ids = args[:invalid_geo_ids] if args.key?(:invalid_geo_ids)
+          @maximum_qps = args[:maximum_qps] if args.key?(:maximum_qps)
+          @minimum_viewability_decile = args[:minimum_viewability_decile] if args.key?(:minimum_viewability_decile)
+          @name = args[:name] if args.key?(:name)
+          @publisher_targeting = args[:publisher_targeting] if args.key?(:publisher_targeting)
+          @state = args[:state] if args.key?(:state)
+          @user_list_targeting = args[:user_list_targeting] if args.key?(:user_list_targeting)
+          @vertical_targeting = args[:vertical_targeting] if args.key?(:vertical_targeting)
+          @web_targeting = args[:web_targeting] if args.key?(:web_targeting)
+        end
+      end
+      
+      # A request to stop targeting the provided apps in a specific pretargeting
+      # configuration. The pretargeting configuration itself specifies how these apps
+      # are targeted. in PretargetingConfig.appTargeting.mobileAppTargeting.
+      class RemoveTargetedAppsRequest
+        include Google::Apis::Core::Hashable
+      
+        # A list of app IDs to stop targeting in the pretargeting configuration. These
+        # values will be removed from the list of targeted app IDs in PretargetingConfig.
+        # appTargeting.mobileAppTargeting.values.
+        # Corresponds to the JSON property `appIds`
+        # @return [Array<String>]
+        attr_accessor :app_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_ids = args[:app_ids] if args.key?(:app_ids)
+        end
+      end
+      
+      # A request to stop targeting publishers in a specific configuration. The
+      # pretargeting configuration itself specifies how these publishers are targeted
+      # in PretargetingConfig.publisherTargeting.
+      class RemoveTargetedPublishersRequest
+        include Google::Apis::Core::Hashable
+      
+        # A list of publisher IDs to stop targeting in the pretargeting configuration.
+        # These values will be removed from the list of targeted publisher IDs in
+        # PretargetingConfig.publisherTargeting.values. Publishers are identified by
+        # their publisher ID from ads.txt / app-ads.txt. See https://iabtechlab.com/ads-
+        # txt/ and https://iabtechlab.com/app-ads-txt/ for more details.
+        # Corresponds to the JSON property `publisherIds`
+        # @return [Array<String>]
+        attr_accessor :publisher_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @publisher_ids = args[:publisher_ids] if args.key?(:publisher_ids)
+        end
+      end
+      
+      # A request to stop targeting sites in a specific pretargeting configuration.
+      # The pretargeting configuration itself specifies how these sites are targeted
+      # in PretargetingConfig.webTargeting.
+      class RemoveTargetedSitesRequest
+        include Google::Apis::Core::Hashable
+      
+        # A list of site URLs to stop targeting in the pretargeting configuration. These
+        # values will be removed from the list of targeted URLs in PretargetingConfig.
+        # webTargeting.values.
+        # Corresponds to the JSON property `sites`
+        # @return [Array<String>]
+        attr_accessor :sites
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sites = args[:sites] if args.key?(:sites)
+        end
+      end
+      
+      # Generic targeting with string values used in app, website and publisher
+      # targeting.
+      class StringTargetingDimension
+        include Google::Apis::Core::Hashable
+      
+        # How the items in this list should be targeted.
+        # Corresponds to the JSON property `targetingMode`
+        # @return [String]
+        attr_accessor :targeting_mode
+      
+        # The values specified.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @targeting_mode = args[:targeting_mode] if args.key?(:targeting_mode)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # A request to suspend a pretargeting configuration. Sets the configuration's
+      # state to SUSPENDED.
+      class SuspendPretargetingConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
