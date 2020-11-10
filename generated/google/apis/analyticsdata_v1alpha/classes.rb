@@ -164,8 +164,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A contiguous set of days: startDate, startDate + 1, ..., endDate. Requests are
-        # allowed up to 4 date ranges, and the union of the ranges can cover up to 1
-        # year.
+        # allowed up to 4 date ranges.
         # Corresponds to the JSON property `dateRange`
         # @return [Google::Apis::AnalyticsdataV1alpha::DateRange]
         attr_accessor :date_range
@@ -312,8 +311,7 @@ module Google
       end
       
       # A contiguous set of days: startDate, startDate + 1, ..., endDate. Requests are
-      # allowed up to 4 date ranges, and the union of the ranges can cover up to 1
-      # year.
+      # allowed up to 4 date ranges.
       class DateRange
         include Google::Apis::Core::Hashable
       
@@ -1762,31 +1760,6 @@ module Google
           @case_sensitive = args[:case_sensitive] if args.key?(:case_sensitive)
           @match_type = args[:match_type] if args.key?(:match_type)
           @value = args[:value] if args.key?(:value)
-        end
-      end
-      
-      # The dimensions and metrics currently accepted in reporting methods.
-      class UniversalMetadata
-        include Google::Apis::Core::Hashable
-      
-        # The dimensions descriptions.
-        # Corresponds to the JSON property `dimensions`
-        # @return [Array<Google::Apis::AnalyticsdataV1alpha::DimensionMetadata>]
-        attr_accessor :dimensions
-      
-        # The metric descriptions.
-        # Corresponds to the JSON property `metrics`
-        # @return [Array<Google::Apis::AnalyticsdataV1alpha::MetricMetadata>]
-        attr_accessor :metrics
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @dimensions = args[:dimensions] if args.key?(:dimensions)
-          @metrics = args[:metrics] if args.key?(:metrics)
         end
       end
     end

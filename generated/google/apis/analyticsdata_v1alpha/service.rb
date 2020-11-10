@@ -60,7 +60,9 @@ module Google
         #   specified in the URL path and not URL parameters. Property is a numeric Google
         #   Analytics GA4 Property identifier. To learn more, see [where to find your
         #   Property ID](https://developers.google.com/analytics/trusted-testing/analytics-
-        #   data/property-id). Example: properties/1234/metadata
+        #   data/property-id). Example: properties/1234/metadata Set the Property ID to 0
+        #   for dimensions and metrics common to all properties. In this special mode,
+        #   this method will not return custom dimensions and metrics.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -182,37 +184,6 @@ module Google
           command.request_object = batch_run_reports_request_object
           command.response_representation = Google::Apis::AnalyticsdataV1alpha::BatchRunReportsResponse::Representation
           command.response_class = Google::Apis::AnalyticsdataV1alpha::BatchRunReportsResponse
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Returns metadata for dimensions and metrics available in reporting methods.
-        # Used to explore the dimensions and metrics. Dimensions and metrics will be
-        # mostly added over time, but renames and deletions may occur. This method
-        # returns Universal Metadata. Universal Metadata are dimensions and metrics
-        # applicable to any property such as `country` and `totalUsers`.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AnalyticsdataV1alpha::UniversalMetadata] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AnalyticsdataV1alpha::UniversalMetadata]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_universal_metadata(fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1alpha/universalMetadata', options)
-          command.response_representation = Google::Apis::AnalyticsdataV1alpha::UniversalMetadata::Representation
-          command.response_class = Google::Apis::AnalyticsdataV1alpha::UniversalMetadata
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
