@@ -310,12 +310,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UniversalMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class BatchRunPivotReportsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -841,16 +835,6 @@ module Google
           property :case_sensitive, as: 'caseSensitive'
           property :match_type, as: 'matchType'
           property :value, as: 'value'
-        end
-      end
-      
-      class UniversalMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :dimensions, as: 'dimensions', class: Google::Apis::AnalyticsdataV1alpha::DimensionMetadata, decorator: Google::Apis::AnalyticsdataV1alpha::DimensionMetadata::Representation
-      
-          collection :metrics, as: 'metrics', class: Google::Apis::AnalyticsdataV1alpha::MetricMetadata, decorator: Google::Apis::AnalyticsdataV1alpha::MetricMetadata::Representation
-      
         end
       end
     end
