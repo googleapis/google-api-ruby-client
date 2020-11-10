@@ -176,6 +176,7 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :provisioned_resources_parent, as: 'provisionedResourcesParent'
           collection :resources, as: 'resources', class: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadResourceInfo, decorator: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadResourceInfo::Representation
       
         end
@@ -266,6 +267,7 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :provisioned_resources_parent, as: 'provisionedResourcesParent'
           collection :resources, as: 'resources', class: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo, decorator: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo::Representation
       
         end
