@@ -123,14 +123,19 @@ module Google
         attr_accessor :labels
       
         # Optional. The resource name of the workload. Format: organizations/`
-        # organization`/locations/`location`/workloads/`workload` Read-only. The UI
-        # extracts the location and workload name from this string, since they aren't
-        # set directly on the workload object. If the format of this field changes, the
-        # UI should likely be updated. LINT.IfChange LINT.ThenChange(//depot/google3/
-        # cloud/console/web/compliance/assurant/common/workload_helper.ts)
+        # organization`/locations/`location`/workloads/`workload` Read-only.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Input only. The parent resource for the resources managed by this Assured
+        # Workload. May be either an organization or a folder. Must be the same or a
+        # child of the Workload parent. If not specified all resources are created under
+        # the Workload parent. Formats: folders/`folder_id` organizations/`
+        # organization_id`
+        # Corresponds to the JSON property `provisionedResourcesParent`
+        # @return [String]
+        attr_accessor :provisioned_resources_parent
       
         # Output only. The resources associated with this workload. These resources will
         # be created when creating the workload. If any of the projects already exist,
@@ -156,6 +161,7 @@ module Google
           @il4_settings = args[:il4_settings] if args.key?(:il4_settings)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @provisioned_resources_parent = args[:provisioned_resources_parent] if args.key?(:provisioned_resources_parent)
           @resources = args[:resources] if args.key?(:resources)
         end
       end
@@ -416,14 +422,19 @@ module Google
         attr_accessor :labels
       
         # Optional. The resource name of the workload. Format: organizations/`
-        # organization`/locations/`location`/workloads/`workload` Read-only. The UI
-        # extracts the location and workload name from this string, since they aren't
-        # set directly on the workload object. If the format of this field changes, the
-        # UI should likely be updated. LINT.IfChange LINT.ThenChange(//depot/google3/
-        # cloud/console/web/compliance/assurant/common/workload_helper.ts)
+        # organization`/locations/`location`/workloads/`workload` Read-only.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Input only. The parent resource for the resources managed by this Assured
+        # Workload. May be either an organization or a folder. Must be the same or a
+        # child of the Workload parent. If not specified all resources are created under
+        # the Workload parent. Formats: folders/`folder_id` organizations/`
+        # organization_id`
+        # Corresponds to the JSON property `provisionedResourcesParent`
+        # @return [String]
+        attr_accessor :provisioned_resources_parent
       
         # Output only. The resources associated with this workload. These resources will
         # be created when creating the workload. If any of the projects already exist,
@@ -449,6 +460,7 @@ module Google
           @il4_settings = args[:il4_settings] if args.key?(:il4_settings)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @provisioned_resources_parent = args[:provisioned_resources_parent] if args.key?(:provisioned_resources_parent)
           @resources = args[:resources] if args.key?(:resources)
         end
       end
