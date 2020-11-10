@@ -274,12 +274,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ErrorDetail
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class EvaluateAnnotationStoreRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -587,12 +581,6 @@ module Google
       end
       
       class ImportAnnotationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ImportDicomDataErrorDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1102,6 +1090,7 @@ module Google
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :binding_id, as: 'bindingId'
           property :condition, as: 'condition', class: Google::Apis::HealthcareV1beta1::Expr, decorator: Google::Apis::HealthcareV1beta1::Expr::Representation
       
           collection :members, as: 'members'
@@ -1381,15 +1370,6 @@ module Google
         end
       end
       
-      class ErrorDetail
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :error, as: 'error', class: Google::Apis::HealthcareV1beta1::Status, decorator: Google::Apis::HealthcareV1beta1::Status::Representation
-      
-          property :resource, as: 'resource'
-        end
-      end
-      
       class EvaluateAnnotationStoreRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1452,6 +1432,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bigquery_destination, as: 'bigqueryDestination', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DicomBigQueryDestination, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DicomBigQueryDestination::Representation
+      
+          property :filter_config, as: 'filterConfig', class: Google::Apis::HealthcareV1beta1::DicomFilterConfig, decorator: Google::Apis::HealthcareV1beta1::DicomFilterConfig::Representation
       
           property :gcs_destination, as: 'gcsDestination', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DicomGcsDestination, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DicomGcsDestination::Representation
       
@@ -1842,14 +1824,6 @@ module Google
       class ImportAnnotationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class ImportDicomDataErrorDetails
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :sample_errors, as: 'sampleErrors', class: Google::Apis::HealthcareV1beta1::ErrorDetail, decorator: Google::Apis::HealthcareV1beta1::ErrorDetail::Representation
-      
         end
       end
       
