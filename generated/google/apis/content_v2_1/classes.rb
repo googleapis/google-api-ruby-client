@@ -2496,6 +2496,91 @@ module Google
         end
       end
       
+      # Represents civil time (or occasionally physical time). This type can represent
+      # a civil time in one of a few possible ways: * When utc_offset is set and
+      # time_zone is unset: a civil time on a calendar day with a particular offset
+      # from UTC. * When time_zone is set and utc_offset is unset: a civil time on a
+      # calendar day in a particular time zone. * When neither time_zone nor
+      # utc_offset is set: a civil time on a calendar day in local time. The date is
+      # relative to the Proleptic Gregorian Calendar. If year is 0, the DateTime is
+      # considered not to have a specific year. month and day must have valid, non-
+      # zero values. This type may also be used to represent a physical time if all
+      # the date and time fields are set and either case of the `time_offset` oneof is
+      # set. Consider using `Timestamp` message for physical time instead. If your use
+      # case also would like to store the user's timezone, that can be done in another
+      # field. This type is more flexible than some applications may want. Make sure
+      # to document and validate your application's limitations.
+      class DateTime
+        include Google::Apis::Core::Hashable
+      
+        # Required. Day of month. Must be from 1 to 31 and valid for the year and month.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Required. Hours of day in 24 hour format. Should be from 0 to 23. An API may
+        # choose to allow the value "24:00:00" for scenarios like business closing time.
+        # Corresponds to the JSON property `hours`
+        # @return [Fixnum]
+        attr_accessor :hours
+      
+        # Required. Minutes of hour of day. Must be from 0 to 59.
+        # Corresponds to the JSON property `minutes`
+        # @return [Fixnum]
+        attr_accessor :minutes
+      
+        # Required. Month of year. Must be from 1 to 12.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Required. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # Required. Seconds of minutes of the time. Must normally be from 0 to 59. An
+        # API may allow the value 60 if it allows leap-seconds.
+        # Corresponds to the JSON property `seconds`
+        # @return [Fixnum]
+        attr_accessor :seconds
+      
+        # Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/
+        # time-zones).
+        # Corresponds to the JSON property `timeZone`
+        # @return [Google::Apis::ContentV2_1::TimeZone]
+        attr_accessor :time_zone
+      
+        # UTC offset. Must be whole seconds, between -18 hours and +18 hours. For
+        # example, a UTC offset of -4:00 would be represented as ` seconds: -14400 `.
+        # Corresponds to the JSON property `utcOffset`
+        # @return [String]
+        attr_accessor :utc_offset
+      
+        # Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime
+        # without a year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @hours = args[:hours] if args.key?(:hours)
+          @minutes = args[:minutes] if args.key?(:minutes)
+          @month = args[:month] if args.key?(:month)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @seconds = args[:seconds] if args.key?(:seconds)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
+          @utc_offset = args[:utc_offset] if args.key?(:utc_offset)
+          @year = args[:year] if args.key?(:year)
+        end
+      end
+      
       # 
       class DeliveryTime
         include Google::Apis::Core::Hashable
@@ -5636,6 +5721,311 @@ module Google
         end
       end
       
+      # Represents a merchant trade from which signals are extracted, e.g. shipping.
+      class OrderTrackingSignal
+        include Google::Apis::Core::Hashable
+      
+        # The price represented as a number and currency.
+        # Corresponds to the JSON property `customerShippingFee`
+        # @return [Google::Apis::ContentV2_1::PriceAmount]
+        attr_accessor :customer_shipping_fee
+      
+        # Required. The delivery postal code, as a continuous string without spaces or
+        # dashes, e.g. "95016".
+        # Corresponds to the JSON property `deliveryPostalCode`
+        # @return [String]
+        attr_accessor :delivery_postal_code
+      
+        # Required. The [CLDR territory code] (http://www.unicode.org/repos/cldr/tags/
+        # latest/common/main/en.xml) for the shipping destination.
+        # Corresponds to the JSON property `deliveryRegionCode`
+        # @return [String]
+        attr_accessor :delivery_region_code
+      
+        # Information about line items in the order.
+        # Corresponds to the JSON property `lineItems`
+        # @return [Array<Google::Apis::ContentV2_1::OrderTrackingSignalLineItemDetails>]
+        attr_accessor :line_items
+      
+        # The Google merchant ID of this order tracking signal. This value is optional.
+        # If left unset, the caller's merchant ID is used. You must request access in
+        # order to provide data on behalf of another merchant. For more information, see
+        # [Submitting Order Tracking Signals](/shopping-content/guides/order-tracking-
+        # signals).
+        # Corresponds to the JSON property `merchantId`
+        # @return [Fixnum]
+        attr_accessor :merchant_id
+      
+        # Represents civil time (or occasionally physical time). This type can represent
+        # a civil time in one of a few possible ways: * When utc_offset is set and
+        # time_zone is unset: a civil time on a calendar day with a particular offset
+        # from UTC. * When time_zone is set and utc_offset is unset: a civil time on a
+        # calendar day in a particular time zone. * When neither time_zone nor
+        # utc_offset is set: a civil time on a calendar day in local time. The date is
+        # relative to the Proleptic Gregorian Calendar. If year is 0, the DateTime is
+        # considered not to have a specific year. month and day must have valid, non-
+        # zero values. This type may also be used to represent a physical time if all
+        # the date and time fields are set and either case of the `time_offset` oneof is
+        # set. Consider using `Timestamp` message for physical time instead. If your use
+        # case also would like to store the user's timezone, that can be done in another
+        # field. This type is more flexible than some applications may want. Make sure
+        # to document and validate your application's limitations.
+        # Corresponds to the JSON property `orderCreatedTime`
+        # @return [Google::Apis::ContentV2_1::DateTime]
+        attr_accessor :order_created_time
+      
+        # Required. The ID of the order on the merchant side.
+        # Corresponds to the JSON property `orderId`
+        # @return [String]
+        attr_accessor :order_id
+      
+        # Output only. The ID that uniquely identifies this order tracking signal.
+        # Corresponds to the JSON property `orderTrackingSignalId`
+        # @return [Fixnum]
+        attr_accessor :order_tracking_signal_id
+      
+        # The mapping of the line items to the shipment information.
+        # Corresponds to the JSON property `shipmentLineItemMapping`
+        # @return [Array<Google::Apis::ContentV2_1::OrderTrackingSignalShipmentLineItemMapping>]
+        attr_accessor :shipment_line_item_mapping
+      
+        # The shipping information for the order.
+        # Corresponds to the JSON property `shippingInfo`
+        # @return [Array<Google::Apis::ContentV2_1::OrderTrackingSignalShippingInfo>]
+        attr_accessor :shipping_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer_shipping_fee = args[:customer_shipping_fee] if args.key?(:customer_shipping_fee)
+          @delivery_postal_code = args[:delivery_postal_code] if args.key?(:delivery_postal_code)
+          @delivery_region_code = args[:delivery_region_code] if args.key?(:delivery_region_code)
+          @line_items = args[:line_items] if args.key?(:line_items)
+          @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
+          @order_created_time = args[:order_created_time] if args.key?(:order_created_time)
+          @order_id = args[:order_id] if args.key?(:order_id)
+          @order_tracking_signal_id = args[:order_tracking_signal_id] if args.key?(:order_tracking_signal_id)
+          @shipment_line_item_mapping = args[:shipment_line_item_mapping] if args.key?(:shipment_line_item_mapping)
+          @shipping_info = args[:shipping_info] if args.key?(:shipping_info)
+        end
+      end
+      
+      # The line items of the order.
+      class OrderTrackingSignalLineItemDetails
+        include Google::Apis::Core::Hashable
+      
+        # The Global Trade Item Number.
+        # Corresponds to the JSON property `gtin`
+        # @return [String]
+        attr_accessor :gtin
+      
+        # Required. The ID for this line item.
+        # Corresponds to the JSON property `lineItemId`
+        # @return [String]
+        attr_accessor :line_item_id
+      
+        # The manufacturer part number.
+        # Corresponds to the JSON property `mpn`
+        # @return [String]
+        attr_accessor :mpn
+      
+        # Required. The Content API REST ID of the product, in the form channel:
+        # contentLanguage:targetCountry:offerId.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # Required. The quantity of the line item in the order.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gtin = args[:gtin] if args.key?(:gtin)
+          @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
+          @mpn = args[:mpn] if args.key?(:mpn)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @quantity = args[:quantity] if args.key?(:quantity)
+        end
+      end
+      
+      # Represents how many items are in the shipment for the given shipment_id and
+      # line_item_id.
+      class OrderTrackingSignalShipmentLineItemMapping
+        include Google::Apis::Core::Hashable
+      
+        # Required. The line item ID.
+        # Corresponds to the JSON property `lineItemId`
+        # @return [String]
+        attr_accessor :line_item_id
+      
+        # Required. The line item quantity in the shipment.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        # Required. The shipment ID.
+        # Corresponds to the JSON property `shipmentId`
+        # @return [String]
+        attr_accessor :shipment_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
+          @quantity = args[:quantity] if args.key?(:quantity)
+          @shipment_id = args[:shipment_id] if args.key?(:shipment_id)
+        end
+      end
+      
+      # The shipping information for the order.
+      class OrderTrackingSignalShippingInfo
+        include Google::Apis::Core::Hashable
+      
+        # Represents civil time (or occasionally physical time). This type can represent
+        # a civil time in one of a few possible ways: * When utc_offset is set and
+        # time_zone is unset: a civil time on a calendar day with a particular offset
+        # from UTC. * When time_zone is set and utc_offset is unset: a civil time on a
+        # calendar day in a particular time zone. * When neither time_zone nor
+        # utc_offset is set: a civil time on a calendar day in local time. The date is
+        # relative to the Proleptic Gregorian Calendar. If year is 0, the DateTime is
+        # considered not to have a specific year. month and day must have valid, non-
+        # zero values. This type may also be used to represent a physical time if all
+        # the date and time fields are set and either case of the `time_offset` oneof is
+        # set. Consider using `Timestamp` message for physical time instead. If your use
+        # case also would like to store the user's timezone, that can be done in another
+        # field. This type is more flexible than some applications may want. Make sure
+        # to document and validate your application's limitations.
+        # Corresponds to the JSON property `actualDeliveryTime`
+        # @return [Google::Apis::ContentV2_1::DateTime]
+        attr_accessor :actual_delivery_time
+      
+        # The name of the shipping carrier for the delivery. This field is required if
+        # one of the following fields is absent: earliest_delivery_promise_time,
+        # latest_delivery_promise_time, and actual_delivery_time.
+        # Corresponds to the JSON property `carrierName`
+        # @return [String]
+        attr_accessor :carrier_name
+      
+        # The service type for fulfillment, e.g., GROUND, FIRST_CLASS, etc.
+        # Corresponds to the JSON property `carrierServiceName`
+        # @return [String]
+        attr_accessor :carrier_service_name
+      
+        # Represents civil time (or occasionally physical time). This type can represent
+        # a civil time in one of a few possible ways: * When utc_offset is set and
+        # time_zone is unset: a civil time on a calendar day with a particular offset
+        # from UTC. * When time_zone is set and utc_offset is unset: a civil time on a
+        # calendar day in a particular time zone. * When neither time_zone nor
+        # utc_offset is set: a civil time on a calendar day in local time. The date is
+        # relative to the Proleptic Gregorian Calendar. If year is 0, the DateTime is
+        # considered not to have a specific year. month and day must have valid, non-
+        # zero values. This type may also be used to represent a physical time if all
+        # the date and time fields are set and either case of the `time_offset` oneof is
+        # set. Consider using `Timestamp` message for physical time instead. If your use
+        # case also would like to store the user's timezone, that can be done in another
+        # field. This type is more flexible than some applications may want. Make sure
+        # to document and validate your application's limitations.
+        # Corresponds to the JSON property `earliestDeliveryPromiseTime`
+        # @return [Google::Apis::ContentV2_1::DateTime]
+        attr_accessor :earliest_delivery_promise_time
+      
+        # Represents civil time (or occasionally physical time). This type can represent
+        # a civil time in one of a few possible ways: * When utc_offset is set and
+        # time_zone is unset: a civil time on a calendar day with a particular offset
+        # from UTC. * When time_zone is set and utc_offset is unset: a civil time on a
+        # calendar day in a particular time zone. * When neither time_zone nor
+        # utc_offset is set: a civil time on a calendar day in local time. The date is
+        # relative to the Proleptic Gregorian Calendar. If year is 0, the DateTime is
+        # considered not to have a specific year. month and day must have valid, non-
+        # zero values. This type may also be used to represent a physical time if all
+        # the date and time fields are set and either case of the `time_offset` oneof is
+        # set. Consider using `Timestamp` message for physical time instead. If your use
+        # case also would like to store the user's timezone, that can be done in another
+        # field. This type is more flexible than some applications may want. Make sure
+        # to document and validate your application's limitations.
+        # Corresponds to the JSON property `latestDeliveryPromiseTime`
+        # @return [Google::Apis::ContentV2_1::DateTime]
+        attr_accessor :latest_delivery_promise_time
+      
+        # The origin postal code, as a continuous string without spaces or dashes, e.g. "
+        # 95016".
+        # Corresponds to the JSON property `originPostalCode`
+        # @return [String]
+        attr_accessor :origin_postal_code
+      
+        # The [CLDR territory code] (http://www.unicode.org/repos/cldr/tags/latest/
+        # common/main/en.xml) for the shipping origin.
+        # Corresponds to the JSON property `originRegionCode`
+        # @return [String]
+        attr_accessor :origin_region_code
+      
+        # Required. The shipment ID.
+        # Corresponds to the JSON property `shipmentId`
+        # @return [String]
+        attr_accessor :shipment_id
+      
+        # Represents civil time (or occasionally physical time). This type can represent
+        # a civil time in one of a few possible ways: * When utc_offset is set and
+        # time_zone is unset: a civil time on a calendar day with a particular offset
+        # from UTC. * When time_zone is set and utc_offset is unset: a civil time on a
+        # calendar day in a particular time zone. * When neither time_zone nor
+        # utc_offset is set: a civil time on a calendar day in local time. The date is
+        # relative to the Proleptic Gregorian Calendar. If year is 0, the DateTime is
+        # considered not to have a specific year. month and day must have valid, non-
+        # zero values. This type may also be used to represent a physical time if all
+        # the date and time fields are set and either case of the `time_offset` oneof is
+        # set. Consider using `Timestamp` message for physical time instead. If your use
+        # case also would like to store the user's timezone, that can be done in another
+        # field. This type is more flexible than some applications may want. Make sure
+        # to document and validate your application's limitations.
+        # Corresponds to the JSON property `shippedTime`
+        # @return [Google::Apis::ContentV2_1::DateTime]
+        attr_accessor :shipped_time
+      
+        # The status of the shipment.
+        # Corresponds to the JSON property `shippingStatus`
+        # @return [String]
+        attr_accessor :shipping_status
+      
+        # The tracking ID of the shipment. This field is required if one of the
+        # following fields is absent: earliest_delivery_promise_time,
+        # latest_delivery_promise_time, and actual_delivery_time.
+        # Corresponds to the JSON property `trackingId`
+        # @return [String]
+        attr_accessor :tracking_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actual_delivery_time = args[:actual_delivery_time] if args.key?(:actual_delivery_time)
+          @carrier_name = args[:carrier_name] if args.key?(:carrier_name)
+          @carrier_service_name = args[:carrier_service_name] if args.key?(:carrier_service_name)
+          @earliest_delivery_promise_time = args[:earliest_delivery_promise_time] if args.key?(:earliest_delivery_promise_time)
+          @latest_delivery_promise_time = args[:latest_delivery_promise_time] if args.key?(:latest_delivery_promise_time)
+          @origin_postal_code = args[:origin_postal_code] if args.key?(:origin_postal_code)
+          @origin_region_code = args[:origin_region_code] if args.key?(:origin_region_code)
+          @shipment_id = args[:shipment_id] if args.key?(:shipment_id)
+          @shipped_time = args[:shipped_time] if args.key?(:shipped_time)
+          @shipping_status = args[:shipping_status] if args.key?(:shipping_status)
+          @tracking_id = args[:tracking_id] if args.key?(:tracking_id)
+        end
+      end
+      
       # 
       class OrderinvoicesCreateChargeInvoiceRequest
         include Google::Apis::Core::Hashable
@@ -8489,6 +8879,31 @@ module Google
         end
       end
       
+      # The price represented as a number and currency.
+      class PriceAmount
+        include Google::Apis::Core::Hashable
+      
+        # The currency of the price.
+        # Corresponds to the JSON property `currency`
+        # @return [String]
+        attr_accessor :currency
+      
+        # The price represented as a number.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @currency = args[:currency] if args.key?(:currency)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Required product attributes are primarily defined by the products data
       # specification. See the Products Data Specification Help Center article for
       # information. Some attributes are country-specific, so make sure you select the
@@ -10415,15 +10830,16 @@ module Google
       
         # The percentage delta relative to the offer selling price. This field is signed.
         # It must be negative in floor. When it is used in floor, it should be > -100.
-        # If an offer is selling at $10 and this field is -30 in floor, the repricing
-        # rule only applies if the calculated new price is >= $7.
+        # For example, if an offer is selling at $10 and this field is -30 in floor, the
+        # repricing rule only applies if the calculated new price is >= $7.
         # Corresponds to the JSON property `percentageDelta`
         # @return [Fixnum]
         attr_accessor :percentage_delta
       
         # The price micros relative to the offer selling price. This field is signed. It
-        # must be negative in floor. If an offer is selling at $10 and this field is -$2
-        # in floor, the repricing rule only applies if the calculated new price is >= $8.
+        # must be negative in floor. For example, if an offer is selling at $10 and this
+        # field is -$2 in floor, the repricing rule only applies if the calculated new
+        # price is >= $8.
         # Corresponds to the JSON property `priceDelta`
         # @return [String]
         attr_accessor :price_delta
@@ -12363,6 +12779,32 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @phone_number = args[:phone_number] if args.key?(:phone_number)
+        end
+      end
+      
+      # Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/
+      # time-zones).
+      class TimeZone
+        include Google::Apis::Core::Hashable
+      
+        # IANA Time Zone Database time zone, e.g. "America/New_York".
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Optional. IANA Time Zone Database version number, e.g. "2019a".
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @version = args[:version] if args.key?(:version)
         end
       end
       

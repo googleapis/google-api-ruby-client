@@ -418,6 +418,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DateTime
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeliveryTime
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -863,6 +869,30 @@ module Google
       end
       
       class OrderShipmentScheduledDeliveryDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderTrackingSignal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderTrackingSignalLineItemDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderTrackingSignalShipmentLineItemMapping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderTrackingSignalShippingInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1337,6 +1367,12 @@ module Google
       end
       
       class Price
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PriceAmount
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1847,6 +1883,12 @@ module Google
       end
       
       class TestOrderPickupDetailsPickupPerson
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TimeZone
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2589,6 +2631,22 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :resources, as: 'resources', class: Google::Apis::ContentV2_1::DatafeedStatus, decorator: Google::Apis::ContentV2_1::DatafeedStatus::Representation
       
+        end
+      end
+      
+      class DateTime
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :hours, as: 'hours'
+          property :minutes, as: 'minutes'
+          property :month, as: 'month'
+          property :nanos, as: 'nanos'
+          property :seconds, as: 'seconds'
+          property :time_zone, as: 'timeZone', class: Google::Apis::ContentV2_1::TimeZone, decorator: Google::Apis::ContentV2_1::TimeZone::Representation
+      
+          property :utc_offset, as: 'utcOffset'
+          property :year, as: 'year'
         end
       end
       
@@ -3455,6 +3513,68 @@ module Google
         end
       end
       
+      class OrderTrackingSignal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_shipping_fee, as: 'customerShippingFee', class: Google::Apis::ContentV2_1::PriceAmount, decorator: Google::Apis::ContentV2_1::PriceAmount::Representation
+      
+          property :delivery_postal_code, as: 'deliveryPostalCode'
+          property :delivery_region_code, as: 'deliveryRegionCode'
+          collection :line_items, as: 'lineItems', class: Google::Apis::ContentV2_1::OrderTrackingSignalLineItemDetails, decorator: Google::Apis::ContentV2_1::OrderTrackingSignalLineItemDetails::Representation
+      
+          property :merchant_id, :numeric_string => true, as: 'merchantId'
+          property :order_created_time, as: 'orderCreatedTime', class: Google::Apis::ContentV2_1::DateTime, decorator: Google::Apis::ContentV2_1::DateTime::Representation
+      
+          property :order_id, as: 'orderId'
+          property :order_tracking_signal_id, :numeric_string => true, as: 'orderTrackingSignalId'
+          collection :shipment_line_item_mapping, as: 'shipmentLineItemMapping', class: Google::Apis::ContentV2_1::OrderTrackingSignalShipmentLineItemMapping, decorator: Google::Apis::ContentV2_1::OrderTrackingSignalShipmentLineItemMapping::Representation
+      
+          collection :shipping_info, as: 'shippingInfo', class: Google::Apis::ContentV2_1::OrderTrackingSignalShippingInfo, decorator: Google::Apis::ContentV2_1::OrderTrackingSignalShippingInfo::Representation
+      
+        end
+      end
+      
+      class OrderTrackingSignalLineItemDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gtin, as: 'gtin'
+          property :line_item_id, as: 'lineItemId'
+          property :mpn, as: 'mpn'
+          property :product_id, as: 'productId'
+          property :quantity, :numeric_string => true, as: 'quantity'
+        end
+      end
+      
+      class OrderTrackingSignalShipmentLineItemMapping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :line_item_id, as: 'lineItemId'
+          property :quantity, :numeric_string => true, as: 'quantity'
+          property :shipment_id, as: 'shipmentId'
+        end
+      end
+      
+      class OrderTrackingSignalShippingInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :actual_delivery_time, as: 'actualDeliveryTime', class: Google::Apis::ContentV2_1::DateTime, decorator: Google::Apis::ContentV2_1::DateTime::Representation
+      
+          property :carrier_name, as: 'carrierName'
+          property :carrier_service_name, as: 'carrierServiceName'
+          property :earliest_delivery_promise_time, as: 'earliestDeliveryPromiseTime', class: Google::Apis::ContentV2_1::DateTime, decorator: Google::Apis::ContentV2_1::DateTime::Representation
+      
+          property :latest_delivery_promise_time, as: 'latestDeliveryPromiseTime', class: Google::Apis::ContentV2_1::DateTime, decorator: Google::Apis::ContentV2_1::DateTime::Representation
+      
+          property :origin_postal_code, as: 'originPostalCode'
+          property :origin_region_code, as: 'originRegionCode'
+          property :shipment_id, as: 'shipmentId'
+          property :shipped_time, as: 'shippedTime', class: Google::Apis::ContentV2_1::DateTime, decorator: Google::Apis::ContentV2_1::DateTime::Representation
+      
+          property :shipping_status, as: 'shippingStatus'
+          property :tracking_id, as: 'trackingId'
+        end
+      end
+      
       class OrderinvoicesCreateChargeInvoiceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4247,6 +4367,14 @@ module Google
       end
       
       class Price
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :currency, as: 'currency'
+          property :value, as: 'value'
+        end
+      end
+      
+      class PriceAmount
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :currency, as: 'currency'
@@ -5294,6 +5422,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :phone_number, as: 'phoneNumber'
+        end
+      end
+      
+      class TimeZone
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :version, as: 'version'
         end
       end
       
