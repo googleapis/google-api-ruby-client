@@ -438,6 +438,11 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
+        # 
+        # Corresponds to the JSON property `bindingId`
+        # @return [String]
+        attr_accessor :binding_id
+      
         # Represents a textual expression in the Common Expression Language (CEL) syntax.
         # CEL is a C-like expression language. The syntax and semantics of CEL are
         # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -499,6 +504,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @binding_id = args[:binding_id] if args.key?(:binding_id)
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
@@ -1433,38 +1439,6 @@ module Google
         end
       end
       
-      # Structure to describe the error encountered during batch operation on one
-      # resource. This is used both for sample errors in operation response, and for
-      # format of errors in error reports.
-      class ErrorDetail
-        include Google::Apis::Core::Hashable
-      
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by [
-        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
-        # data: error code, error message, and error details. You can find out more
-        # about this error model and how to work with it in the [API Design Guide](https:
-        # //cloud.google.com/apis/design/errors).
-        # Corresponds to the JSON property `error`
-        # @return [Google::Apis::HealthcareV1beta1::Status]
-        attr_accessor :error
-      
-        # The identifier of the resource.
-        # Corresponds to the JSON property `resource`
-        # @return [String]
-        attr_accessor :resource
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @error = args[:error] if args.key?(:error)
-          @resource = args[:resource] if args.key?(:resource)
-        end
-      end
-      
       # Request to evaluate an Annotation store against a ground truth [Annotation
       # store].
       class EvaluateAnnotationStoreRequest
@@ -1669,6 +1643,11 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DicomBigQueryDestination]
         attr_accessor :bigquery_destination
       
+        # Specifies the filter configuration for DICOM resources.
+        # Corresponds to the JSON property `filterConfig`
+        # @return [Google::Apis::HealthcareV1beta1::DicomFilterConfig]
+        attr_accessor :filter_config
+      
         # The Cloud Storage location where the server writes the output and the export
         # configuration.
         # Corresponds to the JSON property `gcsDestination`
@@ -1682,6 +1661,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
+          @filter_config = args[:filter_config] if args.key?(:filter_config)
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
         end
       end
@@ -3156,28 +3136,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # Deprecated. Error details are in [Cloud Logging](/healthcare/docs/how-tos/
-      # logging). Returns the errors encountered during DICOM store import.
-      class ImportDicomDataErrorDetails
-        include Google::Apis::Core::Hashable
-      
-        # Deprecated. Use only for debugging purposes. Contains sample errors
-        # encountered in imports of individual resources. For example, a Cloud Storage
-        # object.
-        # Corresponds to the JSON property `sampleErrors`
-        # @return [Array<Google::Apis::HealthcareV1beta1::ErrorDetail>]
-        attr_accessor :sample_errors
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @sample_errors = args[:sample_errors] if args.key?(:sample_errors)
         end
       end
       
