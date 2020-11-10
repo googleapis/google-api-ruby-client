@@ -2121,6 +2121,11 @@ module Google
         # @return [Google::Apis::AndroidenterpriseV1::AutoInstallPolicy]
         attr_accessor :auto_install_policy
       
+        # The auto-update mode for the product.
+        # Corresponds to the JSON property `autoUpdateMode`
+        # @return [String]
+        attr_accessor :auto_update_mode
+      
         # A managed configuration resource contains the set of managed properties
         # defined by the app developer in the app's managed configurations schema, as
         # well as any configuration variables defined for the user.
@@ -2152,6 +2157,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_install_policy = args[:auto_install_policy] if args.key?(:auto_install_policy)
+          @auto_update_mode = args[:auto_update_mode] if args.key?(:auto_update_mode)
           @managed_configuration = args[:managed_configuration] if args.key?(:managed_configuration)
           @product_id = args[:product_id] if args.key?(:product_id)
           @track_ids = args[:track_ids] if args.key?(:track_ids)
