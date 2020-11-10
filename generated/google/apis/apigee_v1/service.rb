@@ -1800,6 +1800,9 @@ module Google
         # @param [String] parent
         #   Required. Name of the Apigee organization. Use the following structure in your
         #   request: `organizations/`org``.
+        # @param [String] app
+        #   Optional. List only Developers that are associated with the app. Note that
+        #   start_key, count are not applicable for this filter criteria.
         # @param [Fixnum] count
         #   Optional. Number of developers to return in the API call. Use with the `
         #   startKey` parameter to provide more targeted filtering. The limit is 1000.
@@ -1835,11 +1838,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_developers(parent, count: nil, expand: nil, ids: nil, include_company: nil, start_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_developers(parent, app: nil, count: nil, expand: nil, ids: nil, include_company: nil, start_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/developers', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListOfDevelopersResponse::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListOfDevelopersResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['app'] = app unless app.nil?
           command.query['count'] = count unless count.nil?
           command.query['expand'] = expand unless expand.nil?
           command.query['ids'] = ids unless ids.nil?
@@ -4447,7 +4451,9 @@ module Google
         #   organization`/environments/`environment`/keystores/`keystore``.
         # @param [Google::Apis::ApigeeV1::GoogleApiHttpBody] google_api_http_body_object
         # @param [String] _password
-        #   The password for the private key file, if it exists.
+        #   DEPRECATED: For improved security, send the password in the body instead of
+        #   using this query param. To send it in the body, use a multipart/form-data part
+        #   with name "password". The password for the private key file, if it exists.
         # @param [String] alias_
         #   The alias for the key, certificate pair. Values must match regular expression `
         #   [\w\s-.]`1,255``. This must be provided for all formats except 'selfsignedcert'
@@ -5734,6 +5740,284 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Submit a query at host level to be processed in the background. If the
+        # submission of the query succeeds, the API returns a 201 status and an ID that
+        # refer to the query. In addition to the HTTP status 201, the `state` of "
+        # enqueued" means that the request succeeded.
+        # @param [String] parent
+        #   Required. The parent resource name. Must be of the form `organizations/`org``.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Query] google_cloud_apigee_v1_query_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AsyncQuery] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AsyncQuery]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_host_query(parent, google_cloud_apigee_v1_query_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/hostQueries', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Query::Representation
+          command.request_object = google_cloud_apigee_v1_query_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AsyncQuery::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AsyncQuery
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get status of a query submitted at host level. If the query is still in
+        # progress, the `state` is set to "running" After the query has completed
+        # successfully, `state` is set to "completed"
+        # @param [String] name
+        #   Required. Name of the asynchronous query to get. Must be of the form `
+        #   organizations/`org`/queries/`queryId``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AsyncQuery] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AsyncQuery]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_host_query(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AsyncQuery::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AsyncQuery
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # After the query is completed, use this API to retrieve the results. If the
+        # request succeeds, and there is a non-zero result set, the result is downloaded
+        # to the client as a zipped JSON file. The name of the downloaded file will be:
+        # OfflineQueryResult-.zip Example: `OfflineQueryResult-9cfc0d85-0f30-46d6-ae6f-
+        # 318d0cb961bd.zip`
+        # @param [String] name
+        #   Required. Name of the asynchronous query result to get. Must be of the form `
+        #   organizations/`org`/queries/`queryId`/result`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleApiHttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleApiHttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_host_query_result(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleApiHttpBody::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleApiHttpBody
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # 
+        # @param [String] name
+        #   Required. Name of the asynchronous query result view to get. Must be of the
+        #   form `organizations/`org`/queries/`queryId`/resultView`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AsyncQueryResultView] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AsyncQueryResultView]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_host_query_result_view(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AsyncQueryResultView::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AsyncQueryResultView
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Return a list of Asynchronous Queries at host level.
+        # @param [String] parent
+        #   Required. The parent resource name. Must be of the form `organizations/`org``.
+        # @param [String] dataset
+        #   Filter response list by dataset. Example: `api`, `mint`
+        # @param [String] envgroup_hostname
+        #   Required. Filter response list by hostname.
+        # @param [String] from
+        #   Filter response list by returning asynchronous queries that created after this
+        #   date time. Time must be in ISO date-time format like '2011-12-03T10:15:30Z'.
+        # @param [String] incl_queries_without_report
+        #   Flag to include asynchronous queries that don't have a report denifition.
+        # @param [String] status
+        #   Filter response list by asynchronous query status.
+        # @param [String] submitted_by
+        #   Filter response list by user who submitted queries.
+        # @param [String] to
+        #   Filter response list by returning asynchronous queries that created before
+        #   this date time. Time must be in ISO date-time format like '2011-12-03T10:16:
+        #   30Z'.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListAsyncQueriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListAsyncQueriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_host_queries(parent, dataset: nil, envgroup_hostname: nil, from: nil, incl_queries_without_report: nil, status: nil, submitted_by: nil, to: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/hostQueries', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListAsyncQueriesResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListAsyncQueriesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['dataset'] = dataset unless dataset.nil?
+          command.query['envgroupHostname'] = envgroup_hostname unless envgroup_hostname.nil?
+          command.query['from'] = from unless from.nil?
+          command.query['inclQueriesWithoutReport'] = incl_queries_without_report unless incl_queries_without_report.nil?
+          command.query['status'] = status unless status.nil?
+          command.query['submittedBy'] = submitted_by unless submitted_by.nil?
+          command.query['to'] = to unless to.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieve metrics grouped by dimensions in host level. The types of metrics you
+        # can retrieve include traffic, message counts, API call latency, response size,
+        # and cache hits and counts. Dimensions let you view metrics in meaningful
+        # groups. The stats api does accept dimensions as path params. The dimensions
+        # are optional in which case the metrics are computed on the entire data for the
+        # given timerange.
+        # @param [String] name
+        #   Required. The resource name for which the interactive query will be executed.
+        #   Must be of the form `organizations/`organization_id`/stats/`dimensions``.
+        #   Dimensions let you view metrics in meaningful groupings. E.g. apiproxy,
+        #   target_host. The value of dimensions should be comma separated list as shown
+        #   below `organizations/`org`/stats/apiproxy,request_verb`
+        # @param [String] accuracy
+        #   Legacy field: not used anymore.
+        # @param [String] envgroup_hostname
+        #   Required. The hostname for which the interactive query will be executed.
+        # @param [String] filter
+        #   Enables drill-down on specific dimension values.
+        # @param [String] limit
+        #   This parameter is used to limit the number of result items. Default and the
+        #   max value is 14400.
+        # @param [String] offset
+        #   Use offset with limit to enable pagination of results. For example, to display
+        #   results 11-20, set limit to '10' and offset to '10'.
+        # @param [Boolean] realtime
+        #   Legacy field: not used anymore.
+        # @param [String] select
+        #   The select parameter contains a comma separated list of metrics. E.g. sum(
+        #   message_count),sum(error_count)
+        # @param [String] sort
+        #   This parameter specifies if the sort order should be ascending or descending
+        #   Supported values are DESC and ASC.
+        # @param [String] sortby
+        #   Comma separated list of columns to sort the final result.
+        # @param [String] time_range
+        #   Time interval for the interactive query. Time range is specified as start~end
+        #   E.g. 04/15/2017 00:00~05/15/2017 23:59
+        # @param [String] time_unit
+        #   A value of second, minute, hour, day, week, month. Time Unit specifies the
+        #   granularity of metrics returned.
+        # @param [String] topk
+        #   Take 'top k' results from results, for example, to return the top 5 results '
+        #   topk=5'.
+        # @param [Boolean] ts_ascending
+        #   Lists timestamps in ascending order if set to true. Recommend setting this
+        #   value to true if you are using sortby with sort=DESC.
+        # @param [String] tzo
+        #   This parameters contains the timezone offset value.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Stats] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Stats]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_host_stat(name, accuracy: nil, envgroup_hostname: nil, filter: nil, limit: nil, offset: nil, realtime: nil, select: nil, sort: nil, sortby: nil, time_range: nil, time_unit: nil, topk: nil, ts_ascending: nil, tzo: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Stats::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Stats
+          command.params['name'] = name unless name.nil?
+          command.query['accuracy'] = accuracy unless accuracy.nil?
+          command.query['envgroupHostname'] = envgroup_hostname unless envgroup_hostname.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['limit'] = limit unless limit.nil?
+          command.query['offset'] = offset unless offset.nil?
+          command.query['realtime'] = realtime unless realtime.nil?
+          command.query['select'] = select unless select.nil?
+          command.query['sort'] = sort unless sort.nil?
+          command.query['sortby'] = sortby unless sortby.nil?
+          command.query['timeRange'] = time_range unless time_range.nil?
+          command.query['timeUnit'] = time_unit unless time_unit.nil?
+          command.query['topk'] = topk unless topk.nil?
+          command.query['tsAscending'] = ts_ascending unless ts_ascending.nil?
+          command.query['tzo'] = tzo unless tzo.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates an Apigee runtime instance. The instance is accessible from the
         # authorized network configured on the organization. **Note:** Not supported for
         # Apigee hybrid.
@@ -6246,6 +6530,90 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # This api is similar to GetHostStats except that the response is less verbose.
+        # @param [String] name
+        #   Required. The resource name for which the interactive query will be executed.
+        #   Must be of the form `organizations/`organization_id`/stats/`dimensions``.
+        #   Dimensions let you view metrics in meaningful groupings. E.g. apiproxy,
+        #   target_host. The value of dimensions should be comma separated list as shown
+        #   below `organizations/`org`/stats/apiproxy,request_verb`
+        # @param [String] accuracy
+        #   Legacy field: not used anymore.
+        # @param [String] envgroup_hostname
+        #   Required. The hostname for which the interactive query will be executed.
+        # @param [String] filter
+        #   Enables drill-down on specific dimension values.
+        # @param [String] limit
+        #   This parameter is used to limit the number of result items. Default and the
+        #   max value is 14400.
+        # @param [String] offset
+        #   Use offset with limit to enable pagination of results. For example, to display
+        #   results 11-20, set limit to '10' and offset to '10'.
+        # @param [Boolean] realtime
+        #   Legacy field: not used anymore.
+        # @param [String] select
+        #   Required. The select parameter contains a comma separated list of metrics. E.g.
+        #   sum(message_count),sum(error_count)
+        # @param [String] sort
+        #   This parameter specifies if the sort order should be ascending or descending
+        #   Supported values are DESC and ASC.
+        # @param [String] sortby
+        #   Comma separated list of columns to sort the final result.
+        # @param [String] time_range
+        #   Required. Time interval for the interactive query. Time range is specified as
+        #   start~end. E.g 04/15/2017 00:00~05/15/2017 23:59.
+        # @param [String] time_unit
+        #   A value of second, minute, hour, day, week, month. Time Unit specifies the
+        #   granularity of metrics returned.
+        # @param [String] topk
+        #   Take 'top k' results from results, for example, to return the top 5 results '
+        #   topk=5'.
+        # @param [Boolean] ts_ascending
+        #   Lists timestamps in ascending order if set to true. Recommend setting this
+        #   value to true if you are using sortby with sort=DESC.
+        # @param [String] tzo
+        #   This parameters contains the timezone offset value.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1OptimizedStats] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1OptimizedStats]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_optimized_host_stat(name, accuracy: nil, envgroup_hostname: nil, filter: nil, limit: nil, offset: nil, realtime: nil, select: nil, sort: nil, sortby: nil, time_range: nil, time_unit: nil, topk: nil, ts_ascending: nil, tzo: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1OptimizedStats::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1OptimizedStats
+          command.params['name'] = name unless name.nil?
+          command.query['accuracy'] = accuracy unless accuracy.nil?
+          command.query['envgroupHostname'] = envgroup_hostname unless envgroup_hostname.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['limit'] = limit unless limit.nil?
+          command.query['offset'] = offset unless offset.nil?
+          command.query['realtime'] = realtime unless realtime.nil?
+          command.query['select'] = select unless select.nil?
+          command.query['sort'] = sort unless sort.nil?
+          command.query['sortby'] = sortby unless sortby.nil?
+          command.query['timeRange'] = time_range unless time_range.nil?
+          command.query['timeUnit'] = time_unit unless time_unit.nil?
+          command.query['topk'] = topk unless topk.nil?
+          command.query['tsAscending'] = ts_ascending unless ts_ascending.nil?
+          command.query['tzo'] = tzo unless tzo.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

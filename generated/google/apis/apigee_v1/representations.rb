@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1AsyncQueryResultView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1Attribute
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -820,6 +826,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1StatsHostStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1Subscription
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1153,6 +1165,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :created, as: 'created'
+          property :envgroup_hostname, as: 'envgroupHostname'
           property :error, as: 'error'
           property :execution_time, as: 'executionTime'
           property :name, as: 'name'
@@ -1174,6 +1187,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :expires, as: 'expires'
           property :self, as: 'self'
+        end
+      end
+      
+      class GoogleCloudApigeeV1AsyncQueryResultView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :error, as: 'error'
+          property :metadata, as: 'metadata', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1QueryMetadata, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1QueryMetadata::Representation
+      
+          collection :rows, as: 'rows'
+          property :state, as: 'state'
         end
       end
       
@@ -2133,6 +2158,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :csv_delimiter, as: 'csvDelimiter'
           collection :dimensions, as: 'dimensions'
+          property :envgroup_hostname, as: 'envgroupHostname'
           property :filter, as: 'filter'
           property :group_by_time_unit, as: 'groupByTimeUnit'
           property :limit, as: 'limit'
@@ -2415,12 +2441,25 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :environments, as: 'environments', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1StatsEnvironmentStats, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1StatsEnvironmentStats::Representation
       
+          collection :hosts, as: 'hosts', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1StatsHostStats, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1StatsHostStats::Representation
+      
           property :meta_data, as: 'metaData', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Metadata, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Metadata::Representation
       
         end
       end
       
       class GoogleCloudApigeeV1StatsEnvironmentStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dimensions, as: 'dimensions', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DimensionMetric, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DimensionMetric::Representation
+      
+          collection :metrics, as: 'metrics', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Metric, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Metric::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudApigeeV1StatsHostStats
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :dimensions, as: 'dimensions', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DimensionMetric, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DimensionMetric::Representation
@@ -2549,7 +2588,6 @@ module Google
       class GoogleIamV1Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :binding_id, as: 'bindingId'
           property :condition, as: 'condition', class: Google::Apis::ApigeeV1::GoogleTypeExpr, decorator: Google::Apis::ApigeeV1::GoogleTypeExpr::Representation
       
           collection :members, as: 'members'

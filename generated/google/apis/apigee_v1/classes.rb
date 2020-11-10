@@ -850,6 +850,11 @@ module Google
         # @return [String]
         attr_accessor :created
       
+        # Hostname is available only when query is executed at host level.
+        # Corresponds to the JSON property `envgroupHostname`
+        # @return [String]
+        attr_accessor :envgroup_hostname
+      
         # Error is set when query fails.
         # Corresponds to the JSON property `error`
         # @return [String]
@@ -891,7 +896,9 @@ module Google
         attr_accessor :result_rows
       
         # Self link of the query. Example: `/organizations/myorg/environments/myenv/
-        # queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
+        # queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd` or following format if query is
+        # running at host level: `/organizations/myorg/hostQueries/9cfc0d85-0f30-46d6-
+        # ae6f-318d0cb961bd`
         # Corresponds to the JSON property `self`
         # @return [String]
         attr_accessor :self
@@ -913,6 +920,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @created = args[:created] if args.key?(:created)
+          @envgroup_hostname = args[:envgroup_hostname] if args.key?(:envgroup_hostname)
           @error = args[:error] if args.key?(:error)
           @execution_time = args[:execution_time] if args.key?(:execution_time)
           @name = args[:name] if args.key?(:name)
@@ -937,7 +945,9 @@ module Google
         attr_accessor :expires
       
         # Self link of the query results. Example: `/organizations/myorg/environments/
-        # myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result`
+        # myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result` or following format
+        # if query is running at host level: `/organizations/myorg/hostQueries/9cfc0d85-
+        # 0f30-46d6-ae6f-318d0cb961bd/result`
         # Corresponds to the JSON property `self`
         # @return [String]
         attr_accessor :self
@@ -950,6 +960,50 @@ module Google
         def update!(**args)
           @expires = args[:expires] if args.key?(:expires)
           @self = args[:self] if args.key?(:self)
+        end
+      end
+      
+      # 
+      class GoogleCloudApigeeV1AsyncQueryResultView
+        include Google::Apis::Core::Hashable
+      
+        # Error code when there is a failure.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # Error message when there is a failure.
+        # Corresponds to the JSON property `error`
+        # @return [String]
+        attr_accessor :error
+      
+        # Metadata contains information like metrics, dimenstions etc of the AsyncQuery.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1QueryMetadata]
+        attr_accessor :metadata
+      
+        # Rows of query result. Each row is a JSON object. Example: `sum(message_count):
+        # 1, developer_app: "(not set)",…`
+        # Corresponds to the JSON property `rows`
+        # @return [Array<Object>]
+        attr_accessor :rows
+      
+        # State of retrieving ResultView.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @error = args[:error] if args.key?(:error)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @rows = args[:rows] if args.key?(:rows)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -4440,6 +4494,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :dimensions
       
+        # Hostname needs to be specified if query intends to run at host level. This
+        # field is only allowed when query is submitted by CreateHostAsyncQuery where
+        # analytics data will be grouped by organization and hostname.
+        # Corresponds to the JSON property `envgroupHostname`
+        # @return [String]
+        attr_accessor :envgroup_hostname
+      
         # Boolean expression that can be used to filter data. Filter expressions can be
         # combined using AND/OR terms and should be fully parenthesized to avoid
         # ambiguity. See Analytics metrics, dimensions, and filters reference https://
@@ -4504,6 +4565,7 @@ module Google
         def update!(**args)
           @csv_delimiter = args[:csv_delimiter] if args.key?(:csv_delimiter)
           @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @envgroup_hostname = args[:envgroup_hostname] if args.key?(:envgroup_hostname)
           @filter = args[:filter] if args.key?(:filter)
           @group_by_time_unit = args[:group_by_time_unit] if args.key?(:group_by_time_unit)
           @limit = args[:limit] if args.key?(:limit)
@@ -5046,7 +5108,7 @@ module Google
         # This value is set when the rule is created and will only update if the the
         # environment_id changes. It is used to determine if the runtime is up to date
         # with respect to this rule. This field is omitted from the IngressConfig unless
-        # the GetDeployedIngressConfig API is called with debug=true.
+        # the GetDeployedIngressConfig API is called with view=FULL.
         # Corresponds to the JSON property `envGroupRevision`
         # @return [Fixnum]
         attr_accessor :env_group_revision
@@ -5060,14 +5122,14 @@ module Google
         # The resource name of the proxy revision that is receiving this basepath in the
         # following format: `organizations/`org`/apis/`api`/revisions/`rev``. This field
         # is omitted from the IngressConfig unless the GetDeployedIngressConfig API is
-        # called with debug=true.
+        # called with view=FULL.
         # Corresponds to the JSON property `receiver`
         # @return [String]
         attr_accessor :receiver
       
         # The unix timestamp when this rule was updated. This is updated whenever
         # env_group_revision is updated. This field is omitted from the IngressConfig
-        # unless the GetDeployedIngressConfig API is called with debug=true.
+        # unless the GetDeployedIngressConfig API is called with view=FULL.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -5522,6 +5584,11 @@ module Google
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1StatsEnvironmentStats>]
         attr_accessor :environments
       
+        # This field contains a list of query results grouped by host.
+        # Corresponds to the JSON property `hosts`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1StatsHostStats>]
+        attr_accessor :hosts
+      
         # This message type encapsulates additional information about query execution.
         # Corresponds to the JSON property `metaData`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Metadata]
@@ -5534,6 +5601,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @environments = args[:environments] if args.key?(:environments)
+          @hosts = args[:hosts] if args.key?(:hosts)
           @meta_data = args[:meta_data] if args.key?(:meta_data)
         end
       end
@@ -5563,6 +5631,47 @@ module Google
         attr_accessor :metrics
       
         # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # This message type encapsulates the hostname wrapper: "hosts": [ ` "metrics": [
+      # ` "name": "sum(message_count)", "values": [ "2.52056245E8" ] ` ], "name": "
+      # example.com" ` ]
+      class GoogleCloudApigeeV1StatsHostStats
+        include Google::Apis::Core::Hashable
+      
+        # This field contains the list of metrics grouped under dimensions.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1DimensionMetric>]
+        attr_accessor :dimensions
+      
+        # In the final response, only one of the following fields will be present based
+        # on the dimensions provided. If no dimensions are provided, then only a top
+        # level metrics is provided. If dimensions are included, then there will be a
+        # top level dimensions field under hostnames which will contain metrics values
+        # and the dimension name. Example: "hosts": [ ` "dimensions": [ ` "metrics": [ `
+        # "name": "sum(message_count)", "values": [ "2.14049521E8" ] ` ], "name": "
+        # nit_proxy" ` ], "name": "example.com" ` ] OR "hosts": [ ` "metrics": [ ` "name"
+        # : "sum(message_count)", "values": [ "2.19026331E8" ] ` ], "name": "example.com"
+        # ` ] This field contains the list of metric values.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Metric>]
+        attr_accessor :metrics
+      
+        # This field contains the hostname used in query.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -6057,11 +6166,6 @@ module Google
       class GoogleIamV1Binding
         include Google::Apis::Core::Hashable
       
-        # 
-        # Corresponds to the JSON property `bindingId`
-        # @return [String]
-        attr_accessor :binding_id
-      
         # Represents a textual expression in the Common Expression Language (CEL) syntax.
         # CEL is a C-like expression language. The syntax and semantics of CEL are
         # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -6123,7 +6227,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @binding_id = args[:binding_id] if args.key?(:binding_id)
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
