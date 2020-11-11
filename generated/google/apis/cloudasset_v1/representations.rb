@@ -298,6 +298,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Inventory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Item
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListFeedsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -311,6 +323,12 @@ module Google
       end
       
       class Options
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OsInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -376,6 +394,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SoftwarePackage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -395,6 +419,36 @@ module Google
       end
       
       class UpdateFeedRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VersionedPackage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WindowsQuickFixEngineeringPackage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WindowsUpdateCategory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WindowsUpdatePackage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ZypperPatch
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -442,6 +496,8 @@ module Google
       
           property :name, as: 'name'
           collection :org_policy, as: 'orgPolicy', class: Google::Apis::CloudassetV1::GoogleCloudOrgpolicyV1Policy, decorator: Google::Apis::CloudassetV1::GoogleCloudOrgpolicyV1Policy::Representation
+      
+          property :os_inventory, as: 'osInventory', class: Google::Apis::CloudassetV1::Inventory, decorator: Google::Apis::CloudassetV1::Inventory::Representation
       
           property :resource, as: 'resource', class: Google::Apis::CloudassetV1::Resource, decorator: Google::Apis::CloudassetV1::Resource::Representation
       
@@ -491,7 +547,6 @@ module Google
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :binding_id, as: 'bindingId'
           property :condition, as: 'condition', class: Google::Apis::CloudassetV1::Expr, decorator: Google::Apis::CloudassetV1::Expr::Representation
       
           collection :members, as: 'members'
@@ -876,6 +931,31 @@ module Google
         end
       end
       
+      class Inventory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :items, as: 'items', class: Google::Apis::CloudassetV1::Item, decorator: Google::Apis::CloudassetV1::Item::Representation
+      
+          property :os_info, as: 'osInfo', class: Google::Apis::CloudassetV1::OsInfo, decorator: Google::Apis::CloudassetV1::OsInfo::Representation
+      
+        end
+      end
+      
+      class Item
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :available_package, as: 'availablePackage', class: Google::Apis::CloudassetV1::SoftwarePackage, decorator: Google::Apis::CloudassetV1::SoftwarePackage::Representation
+      
+          property :create_time, as: 'createTime'
+          property :id, as: 'id'
+          property :installed_package, as: 'installedPackage', class: Google::Apis::CloudassetV1::SoftwarePackage, decorator: Google::Apis::CloudassetV1::SoftwarePackage::Representation
+      
+          property :origin_type, as: 'originType'
+          property :type, as: 'type'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class ListFeedsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -905,6 +985,20 @@ module Google
           property :expand_roles, as: 'expandRoles'
           property :output_group_edges, as: 'outputGroupEdges'
           property :output_resource_edges, as: 'outputResourceEdges'
+        end
+      end
+      
+      class OsInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
+          property :hostname, as: 'hostname'
+          property :kernel_release, as: 'kernelRelease'
+          property :kernel_version, as: 'kernelVersion'
+          property :long_name, as: 'longName'
+          property :osconfig_agent_version, as: 'osconfigAgentVersion'
+          property :short_name, as: 'shortName'
+          property :version, as: 'version'
         end
       end
       
@@ -1004,6 +1098,28 @@ module Google
         end
       end
       
+      class SoftwarePackage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :apt_package, as: 'aptPackage', class: Google::Apis::CloudassetV1::VersionedPackage, decorator: Google::Apis::CloudassetV1::VersionedPackage::Representation
+      
+          property :cos_package, as: 'cosPackage', class: Google::Apis::CloudassetV1::VersionedPackage, decorator: Google::Apis::CloudassetV1::VersionedPackage::Representation
+      
+          property :googet_package, as: 'googetPackage', class: Google::Apis::CloudassetV1::VersionedPackage, decorator: Google::Apis::CloudassetV1::VersionedPackage::Representation
+      
+          property :qfe_package, as: 'qfePackage', class: Google::Apis::CloudassetV1::WindowsQuickFixEngineeringPackage, decorator: Google::Apis::CloudassetV1::WindowsQuickFixEngineeringPackage::Representation
+      
+          property :wua_package, as: 'wuaPackage', class: Google::Apis::CloudassetV1::WindowsUpdatePackage, decorator: Google::Apis::CloudassetV1::WindowsUpdatePackage::Representation
+      
+          property :yum_package, as: 'yumPackage', class: Google::Apis::CloudassetV1::VersionedPackage, decorator: Google::Apis::CloudassetV1::VersionedPackage::Representation
+      
+          property :zypper_package, as: 'zypperPackage', class: Google::Apis::CloudassetV1::VersionedPackage, decorator: Google::Apis::CloudassetV1::VersionedPackage::Representation
+      
+          property :zypper_patch, as: 'zypperPatch', class: Google::Apis::CloudassetV1::ZypperPatch, decorator: Google::Apis::CloudassetV1::ZypperPatch::Representation
+      
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1041,6 +1157,59 @@ module Google
           property :feed, as: 'feed', class: Google::Apis::CloudassetV1::Feed, decorator: Google::Apis::CloudassetV1::Feed::Representation
       
           property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class VersionedPackage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
+          property :package_name, as: 'packageName'
+          property :version, as: 'version'
+        end
+      end
+      
+      class WindowsQuickFixEngineeringPackage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :caption, as: 'caption'
+          property :description, as: 'description'
+          property :hot_fix_id, as: 'hotFixId'
+          property :install_time, as: 'installTime'
+        end
+      end
+      
+      class WindowsUpdateCategory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :name, as: 'name'
+        end
+      end
+      
+      class WindowsUpdatePackage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :categories, as: 'categories', class: Google::Apis::CloudassetV1::WindowsUpdateCategory, decorator: Google::Apis::CloudassetV1::WindowsUpdateCategory::Representation
+      
+          property :description, as: 'description'
+          collection :kb_article_ids, as: 'kbArticleIds'
+          property :last_deployment_change_time, as: 'lastDeploymentChangeTime'
+          collection :more_info_urls, as: 'moreInfoUrls'
+          property :revision_number, as: 'revisionNumber'
+          property :support_url, as: 'supportUrl'
+          property :title, as: 'title'
+          property :update_id, as: 'updateId'
+        end
+      end
+      
+      class ZypperPatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          property :patch_name, as: 'patchName'
+          property :severity, as: 'severity'
+          property :summary, as: 'summary'
         end
       end
     end
