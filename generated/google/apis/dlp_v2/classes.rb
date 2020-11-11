@@ -2432,6 +2432,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # The unique finding id.
+        # Corresponds to the JSON property `findingId`
+        # @return [String]
+        attr_accessor :finding_id
+      
         # Type of information detected by the API.
         # Corresponds to the JSON property `infoType`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType]
@@ -2503,6 +2508,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @finding_id = args[:finding_id] if args.key?(:finding_id)
           @info_type = args[:info_type] if args.key?(:info_type)
           @job_create_time = args[:job_create_time] if args.key?(:job_create_time)
           @job_name = args[:job_name] if args.key?(:job_name)
