@@ -1222,12 +1222,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudKnowledgeV1alpha1OperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleLongrunningListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3322,15 +3316,6 @@ module Google
           collection :session_entity_types, as: 'sessionEntityTypes', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType::Representation
       
           property :source, as: 'source'
-        end
-      end
-      
-      class GoogleCloudKnowledgeV1alpha1OperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :error_code, as: 'errorCode'
-          collection :message, as: 'message'
-          property :state, as: 'state'
         end
       end
       
