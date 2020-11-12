@@ -373,6 +373,11 @@ module Google
         # @return [String]
         attr_accessor :reserved_ip_range
       
+        # Output only. List of server CA certificates for the instance.
+        # Corresponds to the JSON property `serverCaCerts`
+        # @return [Array<Google::Apis::RedisV1::TlsCertificate>]
+        attr_accessor :server_ca_certs
+      
         # Output only. The current state of this instance.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -388,6 +393,12 @@ module Google
         # Corresponds to the JSON property `tier`
         # @return [String]
         attr_accessor :tier
+      
+        # Optional. The In-transit encryption mode of Redis instance. If not provided,
+        # in-transit encryption is disabled for instance.
+        # Corresponds to the JSON property `transitEncryptionMode`
+        # @return [String]
+        attr_accessor :transit_encryption_mode
       
         def initialize(**args)
            update!(**args)
@@ -412,9 +423,11 @@ module Google
           @redis_configs = args[:redis_configs] if args.key?(:redis_configs)
           @redis_version = args[:redis_version] if args.key?(:redis_version)
           @reserved_ip_range = args[:reserved_ip_range] if args.key?(:reserved_ip_range)
+          @server_ca_certs = args[:server_ca_certs] if args.key?(:server_ca_certs)
           @state = args[:state] if args.key?(:state)
           @status_message = args[:status_message] if args.key?(:status_message)
           @tier = args[:tier] if args.key?(:tier)
+          @transit_encryption_mode = args[:transit_encryption_mode] if args.key?(:transit_encryption_mode)
         end
       end
       
@@ -696,6 +709,51 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # TlsCertificate Resource
+      class TlsCertificate
+        include Google::Apis::Core::Hashable
+      
+        # PEM representation.
+        # Corresponds to the JSON property `cert`
+        # @return [String]
+        attr_accessor :cert
+      
+        # Output only. The time when the certificate was created in [RFC 3339](https://
+        # tools.ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time when the certificate expires in [RFC 3339](https://tools.
+        # ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Serial number, as extracted from the certificate.
+        # Corresponds to the JSON property `serialNumber`
+        # @return [String]
+        attr_accessor :serial_number
+      
+        # Sha1 Fingerprint of the certificate.
+        # Corresponds to the JSON property `sha1Fingerprint`
+        # @return [String]
+        attr_accessor :sha1_fingerprint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cert = args[:cert] if args.key?(:cert)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @serial_number = args[:serial_number] if args.key?(:serial_number)
+          @sha1_fingerprint = args[:sha1_fingerprint] if args.key?(:sha1_fingerprint)
         end
       end
       
