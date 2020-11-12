@@ -350,6 +350,9 @@ module Google
       class Schedule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time_of_day, as: 'endTimeOfDay', class: Google::Apis::StoragetransferV1::TimeOfDay, decorator: Google::Apis::StoragetransferV1::TimeOfDay::Representation
+      
+          property :repeat_interval, as: 'repeatInterval'
           property :schedule_end_date, as: 'scheduleEndDate', class: Google::Apis::StoragetransferV1::Date, decorator: Google::Apis::StoragetransferV1::Date::Representation
       
           property :schedule_start_date, as: 'scheduleStartDate', class: Google::Apis::StoragetransferV1::Date, decorator: Google::Apis::StoragetransferV1::Date::Representation

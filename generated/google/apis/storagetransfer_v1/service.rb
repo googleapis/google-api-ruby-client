@@ -191,9 +191,9 @@ module Google
         end
         
         # Updates a transfer job. Updating a job's transfer spec does not affect
-        # transfer operations that are running already. Updating a job's schedule is not
-        # allowed. **Note:** The job's status field can be modified using this RPC (for
-        # example, to set a job's status to DELETED, DISABLED, or ENABLED).
+        # transfer operations that are running already. **Note:** The job's status field
+        # can be modified using this RPC (for example, to set a job's status to DELETED,
+        # DISABLED, or ENABLED).
         # @param [String] job_name
         #   Required. The name of job to update.
         # @param [Google::Apis::StoragetransferV1::UpdateTransferJobRequest] update_transfer_job_request_object

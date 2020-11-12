@@ -326,14 +326,14 @@ module Google
       # If the specified size of an object does not match the actual size of the
       # object fetched, the object will not be transferred. * If the specified MD5
       # does not match the MD5 computed from the transferred bytes, the object
-      # transfer will fail. For more information, see [Generating MD5 hashes](https://
-      # cloud.google.com/storage-transfer/docs/create-url-list#md5) * Ensure that each
-      # URL you specify is publicly accessible. For example, in Cloud Storage you can [
-      # share an object publicly] (https://cloud.google.com/storage/docs/cloud-console#
-      # _sharingdata) and get a link to it. * Storage Transfer Service obeys `robots.
-      # txt` rules and requires the source HTTP server to support `Range` requests and
-      # to return a `Content-Length` header in each response. * ObjectConditions have
-      # no effect when filtering objects to transfer.
+      # transfer will fail. For more information, see [Generating MD5 hashes] (https://
+      # cloud.google.com/storage-transfer/docs/create-url-list#md5-checksum) * Ensure
+      # that each URL you specify is publicly accessible. For example, in Cloud
+      # Storage you can [share an object publicly] (https://cloud.google.com/storage/
+      # docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer
+      # Service obeys `robots.txt` rules and requires the source HTTP server to
+      # support `Range` requests and to return a `Content-Length` header in each
+      # response. * ObjectConditions have no effect when filtering objects to transfer.
       class HttpData
         include Google::Apis::Core::Hashable
       
@@ -623,6 +623,19 @@ module Google
       class Schedule
         include Google::Apis::Core::Hashable
       
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `endTimeOfDay`
+        # @return [Google::Apis::StoragetransferV1::TimeOfDay]
+        attr_accessor :end_time_of_day
+      
+        # Interval between the start of each scheduled TransferOperation. If unspecified,
+        # the default value is 24 hours. This value may not be less than 1 hour.
+        # Corresponds to the JSON property `repeatInterval`
+        # @return [String]
+        attr_accessor :repeat_interval
+      
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
@@ -660,6 +673,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @end_time_of_day = args[:end_time_of_day] if args.key?(:end_time_of_day)
+          @repeat_interval = args[:repeat_interval] if args.key?(:repeat_interval)
           @schedule_end_date = args[:schedule_end_date] if args.key?(:schedule_end_date)
           @schedule_start_date = args[:schedule_start_date] if args.key?(:schedule_start_date)
           @start_time_of_day = args[:start_time_of_day] if args.key?(:start_time_of_day)
@@ -1137,14 +1152,14 @@ module Google
         # If the specified size of an object does not match the actual size of the
         # object fetched, the object will not be transferred. * If the specified MD5
         # does not match the MD5 computed from the transferred bytes, the object
-        # transfer will fail. For more information, see [Generating MD5 hashes](https://
-        # cloud.google.com/storage-transfer/docs/create-url-list#md5) * Ensure that each
-        # URL you specify is publicly accessible. For example, in Cloud Storage you can [
-        # share an object publicly] (https://cloud.google.com/storage/docs/cloud-console#
-        # _sharingdata) and get a link to it. * Storage Transfer Service obeys `robots.
-        # txt` rules and requires the source HTTP server to support `Range` requests and
-        # to return a `Content-Length` header in each response. * ObjectConditions have
-        # no effect when filtering objects to transfer.
+        # transfer will fail. For more information, see [Generating MD5 hashes] (https://
+        # cloud.google.com/storage-transfer/docs/create-url-list#md5-checksum) * Ensure
+        # that each URL you specify is publicly accessible. For example, in Cloud
+        # Storage you can [share an object publicly] (https://cloud.google.com/storage/
+        # docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer
+        # Service obeys `robots.txt` rules and requires the source HTTP server to
+        # support `Range` requests and to return a `Content-Length` header in each
+        # response. * ObjectConditions have no effect when filtering objects to transfer.
         # Corresponds to the JSON property `httpDataSource`
         # @return [Google::Apis::StoragetransferV1::HttpData]
         attr_accessor :http_data_source
