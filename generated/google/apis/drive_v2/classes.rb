@@ -1876,8 +1876,8 @@ module Google
         # @return [String]
         attr_accessor :file_extension
       
-        # The size of the file in bytes. This field is only populated for files with
-        # content stored in Google Drive; it is not populated for Docs Editors or
+        # The size of the file in bytes. This field is populated for files with content
+        # stored in Google Drive and for files in Docs Editors; it is not populated for
         # shortcut files.
         # Corresponds to the JSON property `fileSize`
         # @return [Fixnum]
