@@ -299,12 +299,12 @@ module Google
         end
         
         # Retrieves a list of resources, possibly filtered.
-        # @param [String] video_id
-        #   Returns the captions for the specified video.
         # @param [Array<String>, String] part
         #   The *part* parameter specifies a comma-separated list of one or more caption
         #   resource parts that the API response will include. The part names that you can
         #   include in the parameter value are id and snippet.
+        # @param [String] video_id
+        #   Returns the captions for the specified video.
         # @param [Array<String>, String] id
         #   Returns the captions with the given IDs for Stubby or Apiary.
         # @param [String] on_behalf_of
@@ -336,7 +336,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_captions(video_id, part, id: nil, on_behalf_of: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_captions(part, video_id, id: nil, on_behalf_of: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'youtube/v3/captions', options)
           command.response_representation = Google::Apis::YoutubeV3::ListCaptionsResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::ListCaptionsResponse
@@ -1587,10 +1587,10 @@ module Google
         end
         
         # Transition a broadcast to a given status.
-        # @param [String] id
-        #   Broadcast to transition.
         # @param [String] broadcast_status
         #   The status to which the broadcast is going to transition.
+        # @param [String] id
+        #   Broadcast to transition.
         # @param [Array<String>, String] part
         #   The *part* parameter specifies a comma-separated list of one or more
         #   liveBroadcast resource properties that the API response will include. The part
@@ -1638,7 +1638,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def transition_live_broadcast(id, broadcast_status, part, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def transition_live_broadcast(broadcast_status, id, part, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'youtube/v3/liveBroadcasts/transition', options)
           command.response_representation = Google::Apis::YoutubeV3::LiveBroadcast::Representation
           command.response_class = Google::Apis::YoutubeV3::LiveBroadcast
