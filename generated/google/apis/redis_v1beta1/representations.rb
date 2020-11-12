@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TlsCertificate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpgradeInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -240,9 +246,12 @@ module Google
           hash :redis_configs, as: 'redisConfigs'
           property :redis_version, as: 'redisVersion'
           property :reserved_ip_range, as: 'reservedIpRange'
+          collection :server_ca_certs, as: 'serverCaCerts', class: Google::Apis::RedisV1beta1::TlsCertificate, decorator: Google::Apis::RedisV1beta1::TlsCertificate::Representation
+      
           property :state, as: 'state'
           property :status_message, as: 'statusMessage'
           property :tier, as: 'tier'
+          property :transit_encryption_mode, as: 'transitEncryptionMode'
         end
       end
       
@@ -318,6 +327,17 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class TlsCertificate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cert, as: 'cert'
+          property :create_time, as: 'createTime'
+          property :expire_time, as: 'expireTime'
+          property :serial_number, as: 'serialNumber'
+          property :sha1_fingerprint, as: 'sha1Fingerprint'
         end
       end
       
