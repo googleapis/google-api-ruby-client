@@ -1595,7 +1595,8 @@ module Google
         alias_method :keep_empty_rows?, :keep_empty_rows
       
         # The number of rows to return. If unspecified, 10 rows are returned. If -1, all
-        # rows are returned.
+        # rows are returned. To learn more about this pagination parameter, see [
+        # Pagination](basics#pagination).
         # Corresponds to the JSON property `limit`
         # @return [Fixnum]
         attr_accessor :limit
@@ -1617,7 +1618,8 @@ module Google
         # @return [Array<Google::Apis::AnalyticsdataV1alpha::Metric>]
         attr_accessor :metrics
       
-        # The row count of the start row. The first row is counted as row 0.
+        # The row count of the start row. The first row is counted as row 0. To learn
+        # more about this pagination parameter, see [Pagination](basics#pagination).
         # Corresponds to the JSON property `offset`
         # @return [Fixnum]
         attr_accessor :offset
@@ -1698,7 +1700,8 @@ module Google
         # The total number of rows in the query result, regardless of the number of rows
         # returned in the response. For example if a query returns 175 rows and includes
         # limit = 50 in the API request, the response will contain row_count = 175 but
-        # only 50 rows.
+        # only 50 rows. To learn more about this pagination parameter, see [Pagination](
+        # basics#pagination).
         # Corresponds to the JSON property `rowCount`
         # @return [Fixnum]
         attr_accessor :row_count
