@@ -1253,8 +1253,8 @@ module Google
         # @return [Google::Apis::DriveV3::File::ShortcutDetails]
         attr_accessor :shortcut_details
       
-        # The size of the file's content in bytes. This is only applicable to files with
-        # binary content in Google Drive.
+        # The size of the file's content in bytes. This is applicable to binary files in
+        # Google Drive and Google Docs files.
         # Corresponds to the JSON property `size`
         # @return [Fixnum]
         attr_accessor :size
