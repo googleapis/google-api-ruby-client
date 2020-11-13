@@ -32,7 +32,7 @@ module Google
       #    Deploymentmanager = Google::Apis::DeploymentmanagerV2beta # Alias the module
       #    service = Deploymentmanager::DeploymentManagerService.new
       #
-      # @see http://cloud.google.com/deployment-manager
+      # @see https://cloud.google.com/deployment-manager
       class DeploymentManagerService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,

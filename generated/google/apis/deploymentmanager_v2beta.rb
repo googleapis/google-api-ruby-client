@@ -24,10 +24,10 @@ module Google
     # deploying, and viewing Google Cloud services and APIs via templates which
     # specify deployments of Cloud resources.
     #
-    # @see http://cloud.google.com/deployment-manager
+    # @see https://cloud.google.com/deployment-manager
     module DeploymentmanagerV2beta
       VERSION = 'V2beta'
-      REVISION = '20201102'
+      REVISION = '20201109'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
