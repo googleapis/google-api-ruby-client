@@ -53,8 +53,7 @@ module Google
         # @param [String] name
         #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
         #   of the Device in format: `devices/`device_id``, where device_id is the unique
-        #   ID assigned to the Device, and device_user_id is the unique ID assigned to the
-        #   User.
+        #   ID assigned to the Device.
         # @param [Google::Apis::CloudidentityV1beta1::CancelWipeDeviceRequest] cancel_wipe_device_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
