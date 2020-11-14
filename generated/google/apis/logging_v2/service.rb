@@ -50,7 +50,7 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Gets a bucket (Beta).
+        # Gets a bucket.
         # @param [String] name
         #   Required. The resource name of the bucket: "projects/[PROJECT_ID]/locations/[
         #   LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[
@@ -458,7 +458,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists buckets (Beta).
+        # Lists buckets.
         # @param [String] parent
         #   Required. The parent resource whose buckets are to be listed: "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/
@@ -509,7 +509,7 @@ module Google
         # period is decreased and the bucket is locked, FAILED_PRECONDITION will be
         # returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
         # FAILED_PRECONDITION will be returned.A buckets region may not be modified
-        # after it is created. This method is in Beta.
+        # after it is created.
         # @param [String] name
         #   Required. The full resource name of the bucket to update. "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
@@ -666,7 +666,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists views on a bucket..
+        # Lists views on a bucket.
         # @param [String] parent
         #   Required. The bucket whose views are to be listed: "projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
@@ -1754,7 +1754,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a bucket (Beta).
+        # Gets a bucket.
         # @param [String] name
         #   Required. The resource name of the bucket: "projects/[PROJECT_ID]/locations/[
         #   LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[
@@ -1789,7 +1789,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists buckets (Beta).
+        # Lists buckets.
         # @param [String] parent
         #   Required. The parent resource whose buckets are to be listed: "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/
@@ -1840,7 +1840,7 @@ module Google
         # period is decreased and the bucket is locked, FAILED_PRECONDITION will be
         # returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
         # FAILED_PRECONDITION will be returned.A buckets region may not be modified
-        # after it is created. This method is in Beta.
+        # after it is created.
         # @param [String] name
         #   Required. The full resource name of the bucket to update. "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
@@ -2029,7 +2029,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists views on a bucket..
+        # Lists views on a bucket.
         # @param [String] parent
         #   Required. The bucket whose views are to be listed: "projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
@@ -2632,7 +2632,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a bucket (Beta).
+        # Gets a bucket.
         # @param [String] name
         #   Required. The resource name of the bucket: "projects/[PROJECT_ID]/locations/[
         #   LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[
@@ -2667,7 +2667,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists buckets (Beta).
+        # Lists buckets.
         # @param [String] parent
         #   Required. The parent resource whose buckets are to be listed: "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/
@@ -2718,7 +2718,7 @@ module Google
         # period is decreased and the bucket is locked, FAILED_PRECONDITION will be
         # returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
         # FAILED_PRECONDITION will be returned.A buckets region may not be modified
-        # after it is created. This method is in Beta.
+        # after it is created.
         # @param [String] name
         #   Required. The full resource name of the bucket to update. "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
@@ -2907,7 +2907,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists views on a bucket..
+        # Lists views on a bucket.
         # @param [String] parent
         #   Required. The bucket whose views are to be listed: "projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
@@ -3553,7 +3553,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a bucket (Beta).
+        # Gets a bucket.
         # @param [String] name
         #   Required. The resource name of the bucket: "projects/[PROJECT_ID]/locations/[
         #   LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[
@@ -3588,7 +3588,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists buckets (Beta).
+        # Lists buckets.
         # @param [String] parent
         #   Required. The parent resource whose buckets are to be listed: "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/
@@ -3639,7 +3639,7 @@ module Google
         # period is decreased and the bucket is locked, FAILED_PRECONDITION will be
         # returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
         # FAILED_PRECONDITION will be returned.A buckets region may not be modified
-        # after it is created. This method is in Beta.
+        # after it is created.
         # @param [String] name
         #   Required. The full resource name of the bucket to update. "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
@@ -3828,7 +3828,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists views on a bucket..
+        # Lists views on a bucket.
         # @param [String] parent
         #   Required. The bucket whose views are to be listed: "projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
@@ -4625,7 +4625,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a bucket (Beta).
+        # Gets a bucket.
         # @param [String] name
         #   Required. The resource name of the bucket: "projects/[PROJECT_ID]/locations/[
         #   LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[
@@ -4660,7 +4660,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists buckets (Beta).
+        # Lists buckets.
         # @param [String] parent
         #   Required. The parent resource whose buckets are to be listed: "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/
@@ -4711,7 +4711,7 @@ module Google
         # period is decreased and the bucket is locked, FAILED_PRECONDITION will be
         # returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
         # FAILED_PRECONDITION will be returned.A buckets region may not be modified
-        # after it is created. This method is in Beta.
+        # after it is created.
         # @param [String] name
         #   Required. The full resource name of the bucket to update. "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
@@ -4900,7 +4900,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists views on a bucket..
+        # Lists views on a bucket.
         # @param [String] parent
         #   Required. The bucket whose views are to be listed: "projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
