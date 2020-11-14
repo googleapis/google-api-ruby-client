@@ -9863,6 +9863,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :ip_protocols, as: 'IPProtocols'
           collection :cidr_ranges, as: 'cidrRanges'
+          property :direction, as: 'direction'
         end
       end
       
@@ -11102,6 +11103,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :drain_nat_ips, as: 'drainNatIps'
+          property :enable_endpoint_independent_mapping, as: 'enableEndpointIndependentMapping'
           property :icmp_idle_timeout_sec, as: 'icmpIdleTimeoutSec'
           property :log_config, as: 'logConfig', class: Google::Apis::ComputeV1::RouterNatLogConfig, decorator: Google::Apis::ComputeV1::RouterNatLogConfig::Representation
       

@@ -1542,8 +1542,8 @@ module Google
       
       # Represents an Autoscaler resource.
       # Google Compute Engine has two Autoscaler resources:
-      # * [Global](/compute/docs/reference/rest/`$api_version`/autoscalers) * [
-      # Regional](/compute/docs/reference/rest/`$api_version`/regionAutoscalers)
+      # * [Zonal](/compute/docs/reference/rest/`$api_version`/autoscalers) * [Regional]
+      # (/compute/docs/reference/rest/`$api_version`/regionAutoscalers)
       # Use autoscalers to automatically add or delete instances from a managed
       # instance group according to your defined autoscaling policy. For more
       # information, read Autoscaling Groups of Instances.
@@ -5823,7 +5823,7 @@ module Google
       class DistributionPolicy
         include Google::Apis::Core::Hashable
       
-        # Zones where the regional managed instance group will create and manage
+        # Zones where the regional managed instance group will create and manage its
         # instances.
         # Corresponds to the JSON property `zones`
         # @return [Array<Google::Apis::ComputeV1::DistributionPolicyZoneConfiguration>]
@@ -11395,8 +11395,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Policy specifying intended distribution of instances in regional managed
-        # instance group.
+        # Policy specifying the intended distribution of managed instances across zones
+        # in a regional managed instance group.
         # Corresponds to the JSON property `distributionPolicy`
         # @return [Google::Apis::ComputeV1::DistributionPolicy]
         attr_accessor :distribution_policy
@@ -11425,7 +11425,9 @@ module Google
       
         # The URL of the instance template that is specified for this managed instance
         # group. The group uses this template to create all new instances in the managed
-        # instance group.
+        # instance group. The templates for existing instances in the group do not
+        # change unless you run recreateInstances, run applyUpdatesToInstances, or set
+        # the group's updatePolicy.type to PROACTIVE.
         # Corresponds to the JSON property `instanceTemplate`
         # @return [String]
         attr_accessor :instance_template
@@ -11501,7 +11503,7 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::InstanceGroupManagerVersion>]
         attr_accessor :versions
       
-        # [Output Only] The URL of the zone where the managed instance group is located (
+        # [Output Only] The URL of a zone where the managed instance group is located (
         # for zonal resources).
         # Corresponds to the JSON property `zone`
         # @return [String]
@@ -12086,7 +12088,11 @@ module Google
       
         # The URL of the instance template that is specified for this managed instance
         # group. The group uses this template to create new instances in the managed
-        # instance group until the `targetSize` for this version is reached.
+        # instance group until the `targetSize` for this version is reached. The
+        # templates for existing instances in the group do not change unless you run
+        # recreateInstances, run applyUpdatesToInstances, or set the group's
+        # updatePolicy.type to PROACTIVE; in those cases, existing instances are updated
+        # until the `targetSize` for this version is reached.
         # Corresponds to the JSON property `instanceTemplate`
         # @return [String]
         attr_accessor :instance_template
@@ -12543,7 +12549,9 @@ module Google
       
         # The URL of the instance template that is specified for this managed instance
         # group. The group uses this template to create all new instances in the managed
-        # instance group.
+        # instance group. The templates for existing instances in the group do not
+        # change unless you run recreateInstances, run applyUpdatesToInstances, or set
+        # the group's updatePolicy.type to PROACTIVE.
         # Corresponds to the JSON property `instanceTemplate`
         # @return [String]
         attr_accessor :instance_template
@@ -21171,6 +21179,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :cidr_ranges
       
+        # Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default
+        # is BOTH.
+        # Corresponds to the JSON property `direction`
+        # @return [String]
+        attr_accessor :direction
+      
         def initialize(**args)
            update!(**args)
         end
@@ -21179,6 +21193,7 @@ module Google
         def update!(**args)
           @ip_protocols = args[:ip_protocols] if args.key?(:ip_protocols)
           @cidr_ranges = args[:cidr_ranges] if args.key?(:cidr_ranges)
+          @direction = args[:direction] if args.key?(:direction)
         end
       end
       
@@ -25871,6 +25886,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :drain_nat_ips
       
+        # 
+        # Corresponds to the JSON property `enableEndpointIndependentMapping`
+        # @return [Boolean]
+        attr_accessor :enable_endpoint_independent_mapping
+        alias_method :enable_endpoint_independent_mapping?, :enable_endpoint_independent_mapping
+      
         # Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         # Corresponds to the JSON property `icmpIdleTimeoutSec`
         # @return [Fixnum]
@@ -25956,6 +25977,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @drain_nat_ips = args[:drain_nat_ips] if args.key?(:drain_nat_ips)
+          @enable_endpoint_independent_mapping = args[:enable_endpoint_independent_mapping] if args.key?(:enable_endpoint_independent_mapping)
           @icmp_idle_timeout_sec = args[:icmp_idle_timeout_sec] if args.key?(:icmp_idle_timeout_sec)
           @log_config = args[:log_config] if args.key?(:log_config)
           @min_ports_per_vm = args[:min_ports_per_vm] if args.key?(:min_ports_per_vm)
@@ -28255,10 +28277,10 @@ module Google
         end
       end
       
-      # Represents a Google Cloud Armor security policy resource.
-      # Only external backend services used by HTTP or HTTPS load balancers can
-      # reference a security policy. For more information, see  Google Cloud Armor
-      # security policy overview. (== resource_for `$api_version`.sslPolicies ==)
+      # Represents an SSL Policy resource.
+      # Use SSL policies to control the SSL features, such as versions and cipher
+      # suites, offered by an HTTPS or SSL Proxy load balancer. For more information,
+      # read  SSL Policy Concepts. (== resource_for `$api_version`.sslPolicies ==)
       class SslPolicy
         include Google::Apis::Core::Hashable
       
