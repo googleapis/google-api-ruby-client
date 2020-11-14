@@ -433,7 +433,7 @@ module Google
         end
       end
       
-      # The response from ListBuckets (Beta).
+      # The response from ListBuckets.
       class ListBucketsResponse
         include Google::Apis::Core::Hashable
       
@@ -805,7 +805,7 @@ module Google
         end
       end
       
-      # Describes a repository of logs (Beta).
+      # Describes a repository of logs.
       class LogBucket
         include Google::Apis::Core::Hashable
       
@@ -1504,6 +1504,8 @@ module Google
         # Filter that restricts which log entries in a bucket are visible in this view.
         # Filters are restricted to be a logical AND of ==/!= of any of the following:
         # originating project/folder/organization/billing account. resource type log id
+        # Example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND
+        # LOG_ID("stdout")
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
