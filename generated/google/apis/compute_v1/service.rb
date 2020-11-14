@@ -7754,7 +7754,8 @@ module Google
         
         # Specifies the instance template to use when creating new instances in this
         # group. The templates for existing instances in the group do not change unless
-        # you recreate them.
+        # you run recreateInstances, run applyUpdatesToInstances, or set the group's
+        # updatePolicy.type to PROACTIVE.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
