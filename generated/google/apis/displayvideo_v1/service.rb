@@ -2362,7 +2362,7 @@ module Google
         end
         
         # Lists manual triggers that are accessible to the current user for a given
-        # advertiser id. The order is defined by the order_by parameter. A single
+        # advertiser ID. The order is defined by the order_by parameter. A single
         # advertiser_id is required.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser that the fetched manual triggers belong to.
