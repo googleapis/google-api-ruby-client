@@ -3484,7 +3484,7 @@ module Google
         attr_accessor :brand_safety_categories
       
         # The custom segment ID provided by DoubleVerify. The ID must start with "51"
-        # and consist of eight digits. Custom segment id cannot be specified along with
+        # and consist of eight digits. Custom segment ID cannot be specified along with
         # any of the following fields: * brand_safety_categories * avoided_age_ratings *
         # app_star_rating * fraud_invalid_traffic
         # Corresponds to the JSON property `customSegmentId`
@@ -5456,9 +5456,9 @@ module Google
       
         # The ID of the manual trigger associated with the line item. * Required when
         # flight_date_type is `LINE_ITEM_FLIGHT_DATE_TYPE_TRIGGER`. Must not be set
-        # otherwise. * A line item's flight dates are inherited from its parent
-        # insertion order. * Active line items will spend when the selected trigger is
-        # activated within the parent insertion order's flight dates.
+        # otherwise. * When set, the line item's flight dates are inherited from its
+        # parent insertion order. * Active line items will spend when the selected
+        # trigger is activated within the parent insertion order's flight dates.
         # Corresponds to the JSON property `triggerId`
         # @return [Fixnum]
         attr_accessor :trigger_id
@@ -6259,7 +6259,7 @@ module Google
         end
       end
       
-      # A single manual trigger in Display & Video 360 (DV360).
+      # A single manual trigger in Display & Video 360.
       class ManualTrigger
         include Google::Apis::Core::Hashable
       
