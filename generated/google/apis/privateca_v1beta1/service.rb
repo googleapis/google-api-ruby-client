@@ -618,58 +618,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a new CertificateRevocationList in a given Project, Location for a
-        # particular CertificateAuthority.
-        # @param [String] parent
-        #   Required. The resource name of the location and CertificateAuthority
-        #   associated with the CertificateRevocationList, in the format `projects/*/
-        #   locations/*/certificateAuthorities/*`.
-        # @param [Google::Apis::PrivatecaV1beta1::CertificateRevocationList] certificate_revocation_list_object
-        # @param [String] certificate_revocation_list_id
-        #   Required. It must be unique within a location and match the regular expression
-        #   `[a-zA-Z0-9_-]`1,63``
-        # @param [String] request_id
-        #   Optional. An ID to identify requests. Specify a unique request ID so that if
-        #   you must retry your request, the server will know to ignore the request if it
-        #   has already been completed. The server will guarantee that for at least 60
-        #   minutes since the first request. For example, consider a situation where you
-        #   make an initial request and t he request times out. If you make the request
-        #   again with the same request ID, the server can check if original operation
-        #   with the same request ID was received, and if so, will ignore the second
-        #   request. This prevents clients from accidentally creating duplicate
-        #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PrivatecaV1beta1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::PrivatecaV1beta1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_certificate_authority_certificate_revocation_list(parent, certificate_revocation_list_object = nil, certificate_revocation_list_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta1/{+parent}/certificateRevocationLists', options)
-          command.request_representation = Google::Apis::PrivatecaV1beta1::CertificateRevocationList::Representation
-          command.request_object = certificate_revocation_list_object
-          command.response_representation = Google::Apis::PrivatecaV1beta1::Operation::Representation
-          command.response_class = Google::Apis::PrivatecaV1beta1::Operation
-          command.params['parent'] = parent unless parent.nil?
-          command.query['certificateRevocationListId'] = certificate_revocation_list_id unless certificate_revocation_list_id.nil?
-          command.query['requestId'] = request_id unless request_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Returns a CertificateRevocationList.
         # @param [String] name
         #   Required. The name of the CertificateRevocationList to get.
