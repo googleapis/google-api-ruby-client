@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NfsMount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Network
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -410,6 +416,13 @@ module Google
         end
       end
       
+      class NfsMount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :target, as: 'target'
+        end
+      end
+      
       class Network
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -553,6 +566,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :existing_disk, as: 'existingDisk', class: Google::Apis::LifesciencesV2beta::ExistingDisk, decorator: Google::Apis::LifesciencesV2beta::ExistingDisk::Representation
+      
+          property :nfs_mount, as: 'nfsMount', class: Google::Apis::LifesciencesV2beta::NfsMount, decorator: Google::Apis::LifesciencesV2beta::NfsMount::Representation
       
           property :persistent_disk, as: 'persistentDisk', class: Google::Apis::LifesciencesV2beta::PersistentDisk, decorator: Google::Apis::LifesciencesV2beta::PersistentDisk::Representation
       
