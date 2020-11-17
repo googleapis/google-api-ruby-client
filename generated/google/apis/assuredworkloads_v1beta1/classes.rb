@@ -74,11 +74,6 @@ module Google
         # @return [String]
         attr_accessor :billing_account
       
-        # Settings specific to resources needed for CJIS.
-        # Corresponds to the JSON property `cjisSettings`
-        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadCjisSettings]
-        attr_accessor :cjis_settings
-      
         # Required. Immutable. Compliance Regime associated with this workload.
         # Corresponds to the JSON property `complianceRegime`
         # @return [String]
@@ -102,20 +97,10 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Settings specific to resources needed for FedRAMP High.
-        # Corresponds to the JSON property `fedrampHighSettings`
-        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadFedrampHighSettings]
-        attr_accessor :fedramp_high_settings
-      
-        # Settings specific to resources needed for FedRAMP Moderate.
-        # Corresponds to the JSON property `fedrampModerateSettings`
-        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadFedrampModerateSettings]
-        attr_accessor :fedramp_moderate_settings
-      
-        # Settings specific to resources needed for IL4.
-        # Corresponds to the JSON property `il4Settings`
-        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadIl4Settings]
-        attr_accessor :il4_settings
+        # Settings specific to the Key Management Service.
+        # Corresponds to the JSON property `kmsSettings`
+        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadKmsSettings]
+        attr_accessor :kms_settings
       
         # Optional. Labels applied to the workload.
         # Corresponds to the JSON property `labels`
@@ -151,94 +136,15 @@ module Google
         # Update properties of this object
         def update!(**args)
           @billing_account = args[:billing_account] if args.key?(:billing_account)
-          @cjis_settings = args[:cjis_settings] if args.key?(:cjis_settings)
           @compliance_regime = args[:compliance_regime] if args.key?(:compliance_regime)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
-          @fedramp_high_settings = args[:fedramp_high_settings] if args.key?(:fedramp_high_settings)
-          @fedramp_moderate_settings = args[:fedramp_moderate_settings] if args.key?(:fedramp_moderate_settings)
-          @il4_settings = args[:il4_settings] if args.key?(:il4_settings)
+          @kms_settings = args[:kms_settings] if args.key?(:kms_settings)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @provisioned_resources_parent = args[:provisioned_resources_parent] if args.key?(:provisioned_resources_parent)
           @resources = args[:resources] if args.key?(:resources)
-        end
-      end
-      
-      # Settings specific to resources needed for CJIS.
-      class GoogleCloudAssuredworkloadsV1WorkloadCjisSettings
-        include Google::Apis::Core::Hashable
-      
-        # Settings specific to the Key Management Service.
-        # Corresponds to the JSON property `kmsSettings`
-        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadKmsSettings]
-        attr_accessor :kms_settings
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @kms_settings = args[:kms_settings] if args.key?(:kms_settings)
-        end
-      end
-      
-      # Settings specific to resources needed for FedRAMP High.
-      class GoogleCloudAssuredworkloadsV1WorkloadFedrampHighSettings
-        include Google::Apis::Core::Hashable
-      
-        # Settings specific to the Key Management Service.
-        # Corresponds to the JSON property `kmsSettings`
-        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadKmsSettings]
-        attr_accessor :kms_settings
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @kms_settings = args[:kms_settings] if args.key?(:kms_settings)
-        end
-      end
-      
-      # Settings specific to resources needed for FedRAMP Moderate.
-      class GoogleCloudAssuredworkloadsV1WorkloadFedrampModerateSettings
-        include Google::Apis::Core::Hashable
-      
-        # Settings specific to the Key Management Service.
-        # Corresponds to the JSON property `kmsSettings`
-        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadKmsSettings]
-        attr_accessor :kms_settings
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @kms_settings = args[:kms_settings] if args.key?(:kms_settings)
-        end
-      end
-      
-      # Settings specific to resources needed for IL4.
-      class GoogleCloudAssuredworkloadsV1WorkloadIl4Settings
-        include Google::Apis::Core::Hashable
-      
-        # Settings specific to the Key Management Service.
-        # Corresponds to the JSON property `kmsSettings`
-        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1WorkloadKmsSettings]
-        attr_accessor :kms_settings
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @kms_settings = args[:kms_settings] if args.key?(:kms_settings)
         end
       end
       
@@ -416,6 +322,11 @@ module Google
         # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadIl4Settings]
         attr_accessor :il4_settings
       
+        # Settings specific to the Key Management Service.
+        # Corresponds to the JSON property `kmsSettings`
+        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1WorkloadKmsSettings]
+        attr_accessor :kms_settings
+      
         # Optional. Labels applied to the workload.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -458,6 +369,7 @@ module Google
           @fedramp_high_settings = args[:fedramp_high_settings] if args.key?(:fedramp_high_settings)
           @fedramp_moderate_settings = args[:fedramp_moderate_settings] if args.key?(:fedramp_moderate_settings)
           @il4_settings = args[:il4_settings] if args.key?(:il4_settings)
+          @kms_settings = args[:kms_settings] if args.key?(:kms_settings)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @provisioned_resources_parent = args[:provisioned_resources_parent] if args.key?(:provisioned_resources_parent)
