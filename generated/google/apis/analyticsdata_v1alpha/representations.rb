@@ -450,6 +450,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_name, as: 'apiName'
+          property :custom_definition, as: 'customDefinition'
           collection :deprecated_api_names, as: 'deprecatedApiNames'
           property :description, as: 'description'
           property :ui_name, as: 'uiName'
@@ -556,6 +557,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_name, as: 'apiName'
+          property :custom_definition, as: 'customDefinition'
           collection :deprecated_api_names, as: 'deprecatedApiNames'
           property :description, as: 'description'
           property :expression, as: 'expression'
