@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Folder
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -125,6 +131,12 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV1p1beta1Finding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1p1beta1Folder
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -374,6 +386,14 @@ module Google
         end
       end
       
+      class Folder
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_folder, as: 'resourceFolder'
+          property :resource_folder_display_name, as: 'resourceFolderDisplayName'
+        end
+      end
+      
       class GetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -403,6 +423,8 @@ module Google
       class GoogleCloudSecuritycenterV1Resource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :folders, as: 'folders', class: Google::Apis::SecuritycenterV1beta1::Folder, decorator: Google::Apis::SecuritycenterV1beta1::Folder::Representation
+      
           property :name, as: 'name'
           property :parent, as: 'parent'
           property :parent_display_name, as: 'parentDisplayName'
@@ -470,6 +492,14 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV1p1beta1Folder
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_folder, as: 'resourceFolder'
+          property :resource_folder_display_name, as: 'resourceFolderDisplayName'
+        end
+      end
+      
       class GoogleCloudSecuritycenterV1p1beta1NotificationMessage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -484,6 +514,8 @@ module Google
       class GoogleCloudSecuritycenterV1p1beta1Resource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :folders, as: 'folders', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1p1beta1Folder, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1p1beta1Folder::Representation
+      
           property :name, as: 'name'
           property :parent, as: 'parent'
           property :parent_display_name, as: 'parentDisplayName'
