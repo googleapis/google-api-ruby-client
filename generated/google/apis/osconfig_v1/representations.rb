@@ -76,6 +76,60 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Inventory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InventoryItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InventoryOsInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InventorySoftwarePackage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InventoryVersionedPackage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InventoryWindowsQuickFixEngineeringPackage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InventoryWindowsUpdatePackage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InventoryWindowsUpdatePackageWindowsUpdateCategory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InventoryZypperPatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListPatchDeploymentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -280,6 +334,120 @@ module Google
       class GooSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Inventory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :items, as: 'items', class: Google::Apis::OsconfigV1::InventoryItem, decorator: Google::Apis::OsconfigV1::InventoryItem::Representation
+      
+          property :os_info, as: 'osInfo', class: Google::Apis::OsconfigV1::InventoryOsInfo, decorator: Google::Apis::OsconfigV1::InventoryOsInfo::Representation
+      
+        end
+      end
+      
+      class InventoryItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :available_package, as: 'availablePackage', class: Google::Apis::OsconfigV1::InventorySoftwarePackage, decorator: Google::Apis::OsconfigV1::InventorySoftwarePackage::Representation
+      
+          property :create_time, as: 'createTime'
+          property :id, as: 'id'
+          property :installed_package, as: 'installedPackage', class: Google::Apis::OsconfigV1::InventorySoftwarePackage, decorator: Google::Apis::OsconfigV1::InventorySoftwarePackage::Representation
+      
+          property :origin_type, as: 'originType'
+          property :type, as: 'type'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class InventoryOsInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
+          property :hostname, as: 'hostname'
+          property :kernel_release, as: 'kernelRelease'
+          property :kernel_version, as: 'kernelVersion'
+          property :long_name, as: 'longName'
+          property :osconfig_agent_version, as: 'osconfigAgentVersion'
+          property :short_name, as: 'shortName'
+          property :version, as: 'version'
+        end
+      end
+      
+      class InventorySoftwarePackage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :apt_package, as: 'aptPackage', class: Google::Apis::OsconfigV1::InventoryVersionedPackage, decorator: Google::Apis::OsconfigV1::InventoryVersionedPackage::Representation
+      
+          property :cos_package, as: 'cosPackage', class: Google::Apis::OsconfigV1::InventoryVersionedPackage, decorator: Google::Apis::OsconfigV1::InventoryVersionedPackage::Representation
+      
+          property :googet_package, as: 'googetPackage', class: Google::Apis::OsconfigV1::InventoryVersionedPackage, decorator: Google::Apis::OsconfigV1::InventoryVersionedPackage::Representation
+      
+          property :qfe_package, as: 'qfePackage', class: Google::Apis::OsconfigV1::InventoryWindowsQuickFixEngineeringPackage, decorator: Google::Apis::OsconfigV1::InventoryWindowsQuickFixEngineeringPackage::Representation
+      
+          property :wua_package, as: 'wuaPackage', class: Google::Apis::OsconfigV1::InventoryWindowsUpdatePackage, decorator: Google::Apis::OsconfigV1::InventoryWindowsUpdatePackage::Representation
+      
+          property :yum_package, as: 'yumPackage', class: Google::Apis::OsconfigV1::InventoryVersionedPackage, decorator: Google::Apis::OsconfigV1::InventoryVersionedPackage::Representation
+      
+          property :zypper_package, as: 'zypperPackage', class: Google::Apis::OsconfigV1::InventoryVersionedPackage, decorator: Google::Apis::OsconfigV1::InventoryVersionedPackage::Representation
+      
+          property :zypper_patch, as: 'zypperPatch', class: Google::Apis::OsconfigV1::InventoryZypperPatch, decorator: Google::Apis::OsconfigV1::InventoryZypperPatch::Representation
+      
+        end
+      end
+      
+      class InventoryVersionedPackage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
+          property :package_name, as: 'packageName'
+          property :version, as: 'version'
+        end
+      end
+      
+      class InventoryWindowsQuickFixEngineeringPackage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :caption, as: 'caption'
+          property :description, as: 'description'
+          property :hot_fix_id, as: 'hotFixId'
+          property :install_time, as: 'installTime'
+        end
+      end
+      
+      class InventoryWindowsUpdatePackage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :categories, as: 'categories', class: Google::Apis::OsconfigV1::InventoryWindowsUpdatePackageWindowsUpdateCategory, decorator: Google::Apis::OsconfigV1::InventoryWindowsUpdatePackageWindowsUpdateCategory::Representation
+      
+          property :description, as: 'description'
+          collection :kb_article_ids, as: 'kbArticleIds'
+          property :last_deployment_change_time, as: 'lastDeploymentChangeTime'
+          collection :more_info_urls, as: 'moreInfoUrls'
+          property :revision_number, as: 'revisionNumber'
+          property :support_url, as: 'supportUrl'
+          property :title, as: 'title'
+          property :update_id, as: 'updateId'
+        end
+      end
+      
+      class InventoryWindowsUpdatePackageWindowsUpdateCategory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :name, as: 'name'
+        end
+      end
+      
+      class InventoryZypperPatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          property :patch_name, as: 'patchName'
+          property :severity, as: 'severity'
+          property :summary, as: 'summary'
         end
       end
       
