@@ -452,6 +452,12 @@ module Google
         # @return [String]
         attr_accessor :api_name
       
+        # True if the dimension is a custom dimension for this property.
+        # Corresponds to the JSON property `customDefinition`
+        # @return [Boolean]
+        attr_accessor :custom_definition
+        alias_method :custom_definition?, :custom_definition
+      
         # Still usable but deprecated names for this dimension. If populated, this
         # dimension is available by either `apiName` or one of `deprecatedApiNames` for
         # a period of time. After the deprecation period, the dimension will be
@@ -478,6 +484,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @api_name = args[:api_name] if args.key?(:api_name)
+          @custom_definition = args[:custom_definition] if args.key?(:custom_definition)
           @deprecated_api_names = args[:deprecated_api_names] if args.key?(:deprecated_api_names)
           @description = args[:description] if args.key?(:description)
           @ui_name = args[:ui_name] if args.key?(:ui_name)
@@ -797,6 +804,12 @@ module Google
         # @return [String]
         attr_accessor :api_name
       
+        # True if the metric is a custom metric for this property.
+        # Corresponds to the JSON property `customDefinition`
+        # @return [Boolean]
+        attr_accessor :custom_definition
+        alias_method :custom_definition?, :custom_definition
+      
         # Still usable but deprecated names for this metric. If populated, this metric
         # is available by either `apiName` or one of `deprecatedApiNames` for a period
         # of time. After the deprecation period, the metric will be available only by `
@@ -835,6 +848,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @api_name = args[:api_name] if args.key?(:api_name)
+          @custom_definition = args[:custom_definition] if args.key?(:custom_definition)
           @deprecated_api_names = args[:deprecated_api_names] if args.key?(:deprecated_api_names)
           @description = args[:description] if args.key?(:description)
           @expression = args[:expression] if args.key?(:expression)
