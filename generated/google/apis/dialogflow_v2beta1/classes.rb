@@ -6882,7 +6882,7 @@ module Google
         attr_accessor :time_zone
       
         # This field can be used to pass HTTP headers for a webhook call. These headers
-        # will be sent to webhook alone with the headers that have been configured
+        # will be sent to webhook along with the headers that have been configured
         # through Dialogflow web console. The headers defined within this field will
         # overwrite the headers configured through Dialogflow console if there is a
         # conflict. Header names are case-insensitive. Google's specified headers are
@@ -7081,6 +7081,13 @@ module Google
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GcsSource]
         attr_accessor :gcs_source
       
+        # Whether to import custom metadata from Google Cloud Storage. Only valid when
+        # the document source is Google Cloud Storage URI.
+        # Corresponds to the JSON property `importGcsCustomMetadata`
+        # @return [Boolean]
+        attr_accessor :import_gcs_custom_metadata
+        alias_method :import_gcs_custom_metadata?, :import_gcs_custom_metadata
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7088,6 +7095,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+          @import_gcs_custom_metadata = args[:import_gcs_custom_metadata] if args.key?(:import_gcs_custom_metadata)
         end
       end
       

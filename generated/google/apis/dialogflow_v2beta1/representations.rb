@@ -3167,6 +3167,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_source, as: 'gcsSource', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GcsSource, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GcsSource::Representation
       
+          property :import_gcs_custom_metadata, as: 'importGcsCustomMetadata'
         end
       end
       

@@ -1819,6 +1819,9 @@ module Google
         #   Required. The knowledge base to create a document for. Format: `projects//
         #   knowledgeBases/`.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Document] google_cloud_dialogflow_v2beta1_document_object
+        # @param [Boolean] import_gcs_custom_metadata
+        #   Whether to import custom metadata from Google Cloud Storage. Only valid when
+        #   the document source is Google Cloud Storage URI.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1836,13 +1839,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_agent_knowledge_basis_document(parent, google_cloud_dialogflow_v2beta1_document_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_agent_knowledge_basis_document(parent, google_cloud_dialogflow_v2beta1_document_object = nil, import_gcs_custom_metadata: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v2beta1/{+parent}/documents', options)
           command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Document::Representation
           command.request_object = google_cloud_dialogflow_v2beta1_document_object
           command.response_representation = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
+          command.query['importGcsCustomMetadata'] = import_gcs_custom_metadata unless import_gcs_custom_metadata.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2736,6 +2740,9 @@ module Google
         #   Required. The knowledge base to create a document for. Format: `projects//
         #   knowledgeBases/`.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Document] google_cloud_dialogflow_v2beta1_document_object
+        # @param [Boolean] import_gcs_custom_metadata
+        #   Whether to import custom metadata from Google Cloud Storage. Only valid when
+        #   the document source is Google Cloud Storage URI.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2753,13 +2760,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_knowledge_basis_document(parent, google_cloud_dialogflow_v2beta1_document_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_knowledge_basis_document(parent, google_cloud_dialogflow_v2beta1_document_object = nil, import_gcs_custom_metadata: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v2beta1/{+parent}/documents', options)
           command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Document::Representation
           command.request_object = google_cloud_dialogflow_v2beta1_document_object
           command.response_representation = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
+          command.query['importGcsCustomMetadata'] = import_gcs_custom_metadata unless import_gcs_custom_metadata.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
