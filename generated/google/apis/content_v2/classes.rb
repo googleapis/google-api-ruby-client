@@ -4396,7 +4396,7 @@ module Google
         attr_accessor :quantity
       
         # The reason for the cancellation. Orders that are canceled with a noInventory
-        # reason will lead to the removal of the product from Shopping Actions until you
+        # reason will lead to the removal of the product from Buy on Google until you
         # make an update to that product. This will not affect your Shopping ads.
         # Acceptable values are: - "`autoPostInternal`" - "`
         # autoPostInvalidBillingAddress`" - "`autoPostNoInventory`" - "`
@@ -4455,8 +4455,8 @@ module Google
       
         # Email address for the merchant to send value-added tax or invoice
         # documentation of the order. Only the last document sent is made available to
-        # the customer. For more information, see About automated VAT invoicing for
-        # Shopping Actions.
+        # the customer. For more information, see About automated VAT invoicing for Buy
+        # on Google.
         # Corresponds to the JSON property `invoiceReceivingEmail`
         # @return [String]
         attr_accessor :invoice_receiving_email
@@ -8891,7 +8891,7 @@ module Google
         # submitting any attribute of the feed specification in its generic form (e.g., `
         # ` "name": "size type", "value": "regular" ``). This is useful for submitting
         # attributes not explicitly exposed by the API, such as additional attributes
-        # used for Shopping Actions.
+        # used for Buy on Google (formerly known as Shopping Actions).
         # Corresponds to the JSON property `customAttributes`
         # @return [Array<Google::Apis::ContentV2::CustomAttribute>]
         attr_accessor :custom_attributes
