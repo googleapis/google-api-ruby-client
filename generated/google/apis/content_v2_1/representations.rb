@@ -622,6 +622,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListRegionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListRepricingRulesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1529,6 +1535,30 @@ module Google
       end
       
       class RefundReason
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Region
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionGeoTargetArea
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionPostalCodeArea
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionPostalCodeAreaPostalCodeRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2981,6 +3011,15 @@ module Google
           collection :csses, as: 'csses', class: Google::Apis::ContentV2_1::Css, decorator: Google::Apis::ContentV2_1::Css::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListRegionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :regions, as: 'regions', class: Google::Apis::ContentV2_1::Region, decorator: Google::Apis::ContentV2_1::Region::Representation
+      
         end
       end
       
@@ -4749,6 +4788,45 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :reason_code, as: 'reasonCode'
+        end
+      end
+      
+      class Region
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :geotarget_area, as: 'geotargetArea', class: Google::Apis::ContentV2_1::RegionGeoTargetArea, decorator: Google::Apis::ContentV2_1::RegionGeoTargetArea::Representation
+      
+          property :merchant_id, :numeric_string => true, as: 'merchantId'
+          property :postal_code_area, as: 'postalCodeArea', class: Google::Apis::ContentV2_1::RegionPostalCodeArea, decorator: Google::Apis::ContentV2_1::RegionPostalCodeArea::Representation
+      
+          property :region_id, as: 'regionId'
+          property :regional_inventory_eligible, as: 'regionalInventoryEligible'
+          property :shipping_eligible, as: 'shippingEligible'
+        end
+      end
+      
+      class RegionGeoTargetArea
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :geotarget_criteria_ids, as: 'geotargetCriteriaIds'
+        end
+      end
+      
+      class RegionPostalCodeArea
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :postal_codes, as: 'postalCodes', class: Google::Apis::ContentV2_1::RegionPostalCodeAreaPostalCodeRange, decorator: Google::Apis::ContentV2_1::RegionPostalCodeAreaPostalCodeRange::Representation
+      
+          property :region_code, as: 'regionCode'
+        end
+      end
+      
+      class RegionPostalCodeAreaPostalCodeRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :begin, as: 'begin'
+          property :end, as: 'end'
         end
       end
       
