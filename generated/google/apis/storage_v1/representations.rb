@@ -349,6 +349,7 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :bucket_policy_only, as: 'bucketPolicyOnly', class: Google::Apis::StorageV1::Bucket::IamConfiguration::BucketPolicyOnly, decorator: Google::Apis::StorageV1::Bucket::IamConfiguration::BucketPolicyOnly::Representation
         
+            property :public_access_prevention, as: 'publicAccessPrevention'
             property :uniform_bucket_level_access, as: 'uniformBucketLevelAccess', class: Google::Apis::StorageV1::Bucket::IamConfiguration::UniformBucketLevelAccess, decorator: Google::Apis::StorageV1::Bucket::IamConfiguration::UniformBucketLevelAccess::Representation
         
           end

@@ -327,6 +327,12 @@ module Google
           # @return [Google::Apis::StorageV1::Bucket::IamConfiguration::BucketPolicyOnly]
           attr_accessor :bucket_policy_only
         
+          # The bucket's Public Access Prevention configuration. Currently, 'unspecified'
+          # and 'enforced' are supported.
+          # Corresponds to the JSON property `publicAccessPrevention`
+          # @return [String]
+          attr_accessor :public_access_prevention
+        
           # The bucket's uniform bucket-level access configuration.
           # Corresponds to the JSON property `uniformBucketLevelAccess`
           # @return [Google::Apis::StorageV1::Bucket::IamConfiguration::UniformBucketLevelAccess]
@@ -339,6 +345,7 @@ module Google
           # Update properties of this object
           def update!(**args)
             @bucket_policy_only = args[:bucket_policy_only] if args.key?(:bucket_policy_only)
+            @public_access_prevention = args[:public_access_prevention] if args.key?(:public_access_prevention)
             @uniform_bucket_level_access = args[:uniform_bucket_level_access] if args.key?(:uniform_bucket_level_access)
           end
           
