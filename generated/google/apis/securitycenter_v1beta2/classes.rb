@@ -272,6 +272,32 @@ module Google
         end
       end
       
+      # Message that contains the resource name and display name of a folder resource.
+      class Folder
+        include Google::Apis::Core::Hashable
+      
+        # Full resource name of this folder. See: https://cloud.google.com/apis/design/
+        # resource_names#full_resource_name
+        # Corresponds to the JSON property `resourceFolder`
+        # @return [String]
+        attr_accessor :resource_folder
+      
+        # The user defined display name for this folder.
+        # Corresponds to the JSON property `resourceFolderDisplayName`
+        # @return [String]
+        attr_accessor :resource_folder_display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_folder = args[:resource_folder] if args.key?(:resource_folder)
+          @resource_folder_display_name = args[:resource_folder_display_name] if args.key?(:resource_folder_display_name)
+        end
+      end
+      
       # Cloud SCC's Notification
       class GoogleCloudSecuritycenterV1NotificationMessage
         include Google::Apis::Core::Hashable
@@ -311,6 +337,13 @@ module Google
       class GoogleCloudSecuritycenterV1Resource
         include Google::Apis::Core::Hashable
       
+        # Output only. Contains a Folder message for each folder in the assets ancestry.
+        # The first folder is the deepest nested folder, and the last folder is the
+        # folder directly under the Organization.
+        # Corresponds to the JSON property `folders`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::Folder>]
+        attr_accessor :folders
+      
         # The full resource name of the resource. See: https://cloud.google.com/apis/
         # design/resource_names#full_resource_name
         # Corresponds to the JSON property `name`
@@ -343,6 +376,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @folders = args[:folders] if args.key?(:folders)
           @name = args[:name] if args.key?(:name)
           @parent = args[:parent] if args.key?(:parent)
           @parent_display_name = args[:parent_display_name] if args.key?(:parent_display_name)
@@ -506,6 +540,32 @@ module Google
         end
       end
       
+      # Message that contains the resource name and display name of a folder resource.
+      class GoogleCloudSecuritycenterV1p1beta1Folder
+        include Google::Apis::Core::Hashable
+      
+        # Full resource name of this folder. See: https://cloud.google.com/apis/design/
+        # resource_names#full_resource_name
+        # Corresponds to the JSON property `resourceFolder`
+        # @return [String]
+        attr_accessor :resource_folder
+      
+        # The user defined display name for this folder.
+        # Corresponds to the JSON property `resourceFolderDisplayName`
+        # @return [String]
+        attr_accessor :resource_folder_display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_folder = args[:resource_folder] if args.key?(:resource_folder)
+          @resource_folder_display_name = args[:resource_folder_display_name] if args.key?(:resource_folder_display_name)
+        end
+      end
+      
       # Security Command Center's Notification
       class GoogleCloudSecuritycenterV1p1beta1NotificationMessage
         include Google::Apis::Core::Hashable
@@ -544,6 +604,13 @@ module Google
       class GoogleCloudSecuritycenterV1p1beta1Resource
         include Google::Apis::Core::Hashable
       
+        # Output only. Contains a Folder message for each folder in the assets ancestry.
+        # The first folder is the deepest nested folder, and the last folder is the
+        # folder directly under the Organization.
+        # Corresponds to the JSON property `folders`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1p1beta1Folder>]
+        attr_accessor :folders
+      
         # The full resource name of the resource. See: https://cloud.google.com/apis/
         # design/resource_names#full_resource_name
         # Corresponds to the JSON property `name`
@@ -576,6 +643,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @folders = args[:folders] if args.key?(:folders)
           @name = args[:name] if args.key?(:name)
           @parent = args[:parent] if args.key?(:parent)
           @parent_display_name = args[:parent_display_name] if args.key?(:parent_display_name)
