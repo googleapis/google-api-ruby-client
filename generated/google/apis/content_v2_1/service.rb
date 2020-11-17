@@ -3655,6 +3655,185 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a region definition in your Merchant Center account.
+        # @param [Fixnum] merchant_id
+        #   Required. The id of the merchant for which to create region definition.
+        # @param [Google::Apis::ContentV2_1::Region] region_object
+        # @param [String] region_id
+        #   Required. The id of the region to create.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::Region] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::Region]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_region(merchant_id, region_object = nil, region_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'content/v2.1/{merchantId}/regions', options)
+          command.request_representation = Google::Apis::ContentV2_1::Region::Representation
+          command.request_object = region_object
+          command.response_representation = Google::Apis::ContentV2_1::Region::Representation
+          command.response_class = Google::Apis::ContentV2_1::Region
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.query['regionId'] = region_id unless region_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a region definition from your Merchant Center account.
+        # @param [Fixnum] merchant_id
+        #   Required. The id of the merchant for which to delete region definition.
+        # @param [String] region_id
+        #   Required. The id of the region to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_region(merchant_id, region_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'content/v2.1/{merchantId}/regions/{regionId}', options)
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['regionId'] = region_id unless region_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a region defined in your Merchant Center account.
+        # @param [Fixnum] merchant_id
+        #   Required. The id of the merchant for which to retrieve region definition.
+        # @param [String] region_id
+        #   Required. The id of the region to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::Region] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::Region]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_region(merchant_id, region_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'content/v2.1/{merchantId}/regions/{regionId}', options)
+          command.response_representation = Google::Apis::ContentV2_1::Region::Representation
+          command.response_class = Google::Apis::ContentV2_1::Region
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['regionId'] = region_id unless region_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the regions in your Merchant Center account.
+        # @param [Fixnum] merchant_id
+        #   Required. The id of the merchant for which to list region definitions.
+        # @param [Fixnum] page_size
+        #   The maximum number of regions to return. The service may return fewer than
+        #   this value. If unspecified, at most 50 rules will be returned. The maximum
+        #   value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListRegions` call. Provide this to
+        #   retrieve the subsequent page. When paginating, all other parameters provided
+        #   to `ListRegions` must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::ListRegionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::ListRegionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_regions(merchant_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'content/v2.1/{merchantId}/regions', options)
+          command.response_representation = Google::Apis::ContentV2_1::ListRegionsResponse::Representation
+          command.response_class = Google::Apis::ContentV2_1::ListRegionsResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a region definition in your Merchant Center account.
+        # @param [Fixnum] merchant_id
+        #   Required. The id of the merchant for which to update region definition.
+        # @param [String] region_id
+        #   Required. The id of the region to update.
+        # @param [Google::Apis::ContentV2_1::Region] region_object
+        # @param [String] update_mask
+        #   Optional. The field mask indicating the fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::Region] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::Region]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_region(merchant_id, region_id, region_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'content/v2.1/{merchantId}/regions/{regionId}', options)
+          command.request_representation = Google::Apis::ContentV2_1::Region::Representation
+          command.request_object = region_object
+          command.response_representation = Google::Apis::ContentV2_1::Region::Representation
+          command.response_class = Google::Apis::ContentV2_1::Region
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['regionId'] = region_id unless region_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a repricing rule for your Merchant Center account.
         # @param [Fixnum] merchant_id
         #   Required. The id of the merchant who owns the repricing rule.

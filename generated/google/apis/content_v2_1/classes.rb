@@ -3709,6 +3709,32 @@ module Google
         end
       end
       
+      # Response message for the `ListRegions` method.
+      class ListRegionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The regions from the specified merchant.
+        # Corresponds to the JSON property `regions`
+        # @return [Array<Google::Apis::ContentV2_1::Region>]
+        attr_accessor :regions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @regions = args[:regions] if args.key?(:regions)
+        end
+      end
+      
       # Response message for the `ListRepricingRules` method.
       class ListRepricingRulesResponse
         include Google::Apis::Core::Hashable
@@ -4489,7 +4515,7 @@ module Google
         attr_accessor :quantity
       
         # The reason for the cancellation. Orders that are canceled with a noInventory
-        # reason will lead to the removal of the product from Shopping Actions until you
+        # reason will lead to the removal of the product from Buy on Google until you
         # make an update to that product. This will not affect your Shopping ads.
         # Acceptable values are: - "`autoPostInternal`" - "`
         # autoPostInvalidBillingAddress`" - "`autoPostNoInventory`" - "`
@@ -4537,8 +4563,8 @@ module Google
       
         # Email address for the merchant to send value-added tax or invoice
         # documentation of the order. Only the last document sent is made available to
-        # the customer. For more information, see About automated VAT invoicing for
-        # Shopping Actions.
+        # the customer. For more information, see About automated VAT invoicing for Buy
+        # on Google.
         # Corresponds to the JSON property `invoiceReceivingEmail`
         # @return [String]
         attr_accessor :invoice_receiving_email
@@ -8996,7 +9022,7 @@ module Google
         # submitting any attribute of the feed specification in its generic form (e.g., `
         # ` "name": "size type", "value": "regular" ``). This is useful for submitting
         # attributes not explicitly exposed by the API, such as additional attributes
-        # used for Shopping Actions.
+        # used for Buy on Google (formerly known as Shopping Actions).
         # Corresponds to the JSON property `customAttributes`
         # @return [Array<Google::Apis::ContentV2_1::CustomAttribute>]
         attr_accessor :custom_attributes
@@ -10394,6 +10420,151 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @reason_code = args[:reason_code] if args.key?(:reason_code)
+        end
+      end
+      
+      # Represents a geographic region that you can use as a target with both the `
+      # RegionalInventory` and `ShippingSettings` services. You can define regions as
+      # collections of either postal codes or, in some countries, using predefined
+      # geotargets.
+      class Region
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the region.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # A list of geotargets that defines the region area.
+        # Corresponds to the JSON property `geotargetArea`
+        # @return [Google::Apis::ContentV2_1::RegionGeoTargetArea]
+        attr_accessor :geotarget_area
+      
+        # Output only. Immutable. Merchant that owns the region.
+        # Corresponds to the JSON property `merchantId`
+        # @return [Fixnum]
+        attr_accessor :merchant_id
+      
+        # A list of postal codes that defines the region area. Note: All regions defined
+        # using postal codes are accessible via the account's `ShippingSettings.
+        # postalCodeGroups` resource.
+        # Corresponds to the JSON property `postalCodeArea`
+        # @return [Google::Apis::ContentV2_1::RegionPostalCodeArea]
+        attr_accessor :postal_code_area
+      
+        # Output only. Immutable. The ID uniquely identifying each region.
+        # Corresponds to the JSON property `regionId`
+        # @return [String]
+        attr_accessor :region_id
+      
+        # Output only. Indicates if the region is eligible to use in the Regional
+        # Inventory configuration.
+        # Corresponds to the JSON property `regionalInventoryEligible`
+        # @return [Boolean]
+        attr_accessor :regional_inventory_eligible
+        alias_method :regional_inventory_eligible?, :regional_inventory_eligible
+      
+        # Output only. Indicates if the region is eligible to use in the Shipping
+        # Services configuration.
+        # Corresponds to the JSON property `shippingEligible`
+        # @return [Boolean]
+        attr_accessor :shipping_eligible
+        alias_method :shipping_eligible?, :shipping_eligible
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @geotarget_area = args[:geotarget_area] if args.key?(:geotarget_area)
+          @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
+          @postal_code_area = args[:postal_code_area] if args.key?(:postal_code_area)
+          @region_id = args[:region_id] if args.key?(:region_id)
+          @regional_inventory_eligible = args[:regional_inventory_eligible] if args.key?(:regional_inventory_eligible)
+          @shipping_eligible = args[:shipping_eligible] if args.key?(:shipping_eligible)
+        end
+      end
+      
+      # A list of geotargets that defines the region area.
+      class RegionGeoTargetArea
+        include Google::Apis::Core::Hashable
+      
+        # Required. A non-empty list of [location IDs](https://developers.google.com/
+        # adwords/api/docs/appendix/geotargeting). They must all be of the same location
+        # type (e.g., state).
+        # Corresponds to the JSON property `geotargetCriteriaIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :geotarget_criteria_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @geotarget_criteria_ids = args[:geotarget_criteria_ids] if args.key?(:geotarget_criteria_ids)
+        end
+      end
+      
+      # A list of postal codes that defines the region area. Note: All regions defined
+      # using postal codes are accessible via the account's `ShippingSettings.
+      # postalCodeGroups` resource.
+      class RegionPostalCodeArea
+        include Google::Apis::Core::Hashable
+      
+        # Required. A range of postal codes.
+        # Corresponds to the JSON property `postalCodes`
+        # @return [Array<Google::Apis::ContentV2_1::RegionPostalCodeAreaPostalCodeRange>]
+        attr_accessor :postal_codes
+      
+        # Required. CLDR territory code or the country the postal code group applies to.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @postal_codes = args[:postal_codes] if args.key?(:postal_codes)
+          @region_code = args[:region_code] if args.key?(:region_code)
+        end
+      end
+      
+      # A range of postal codes that defines the region area.
+      class RegionPostalCodeAreaPostalCodeRange
+        include Google::Apis::Core::Hashable
+      
+        # Required. A postal code or a pattern of the form prefix* denoting the
+        # inclusive lower bound of the range defining the area. Examples values: "94108",
+        # "9410*", "9*".
+        # Corresponds to the JSON property `begin`
+        # @return [String]
+        attr_accessor :begin
+      
+        # Optional. A postal code or a pattern of the form prefix* denoting the
+        # inclusive upper bound of the range defining the area. It must have the same
+        # length as postalCodeRangeBegin: if postalCodeRangeBegin is a postal code then
+        # postalCodeRangeEnd must be a postal code too; if postalCodeRangeBegin is a
+        # pattern then postalCodeRangeEnd must be a pattern with the same prefix length.
+        # Optional: if not set, then the area is defined as being all the postal codes
+        # matching postalCodeRangeBegin.
+        # Corresponds to the JSON property `end`
+        # @return [String]
+        attr_accessor :end
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @begin = args[:begin] if args.key?(:begin)
+          @end = args[:end] if args.key?(:end)
         end
       end
       
