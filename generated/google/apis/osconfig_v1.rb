@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/compute/docs/manage-os
     module OsconfigV1
       VERSION = 'V1'
-      REVISION = '20200930'
+      REVISION = '20201112'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
