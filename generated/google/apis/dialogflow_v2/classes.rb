@@ -4129,6 +4129,18 @@ module Google
         # @return [String]
         attr_accessor :time_zone
       
+        # This field can be used to pass HTTP headers for a webhook call. These headers
+        # will be sent to webhook along with the headers that have been configured
+        # through Dialogflow web console. The headers defined within this field will
+        # overwrite the headers configured through Dialogflow console if there is a
+        # conflict. Header names are case-insensitive. Google's specified headers are
+        # not allowed. Including: "Host", "Content-Length", "Connection", "From", "User-
+        # Agent", "Accept-Encoding", "If-Modified-Since", "If-None-Match", "X-Forwarded-
+        # For", etc.
+        # Corresponds to the JSON property `webhookHeaders`
+        # @return [Hash<String,String>]
+        attr_accessor :webhook_headers
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4142,6 +4154,7 @@ module Google
           @sentiment_analysis_request_config = args[:sentiment_analysis_request_config] if args.key?(:sentiment_analysis_request_config)
           @session_entity_types = args[:session_entity_types] if args.key?(:session_entity_types)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
+          @webhook_headers = args[:webhook_headers] if args.key?(:webhook_headers)
         end
       end
       

@@ -2345,6 +2345,7 @@ module Google
           collection :session_entity_types, as: 'sessionEntityTypes', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SessionEntityType, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SessionEntityType::Representation
       
           property :time_zone, as: 'timeZone'
+          hash :webhook_headers, as: 'webhookHeaders'
         end
       end
       
