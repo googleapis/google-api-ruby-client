@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/analytics/trusted-testing/analytics-data/
     module AnalyticsdataV1alpha
       VERSION = 'V1alpha'
-      REVISION = '20201112'
+      REVISION = '20201116'
 
       # View and manage your Google Analytics data
       AUTH_ANALYTICS = 'https://www.googleapis.com/auth/analytics'
