@@ -1328,13 +1328,17 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The resource names of the contact people to add in the form of `
-        # people/`person_id``.
+        # people/`person_id``. The total number of resource names in `
+        # resource_names_to_add` and `resource_names_to_remove` must be less than or
+        # equal to 1000.
         # Corresponds to the JSON property `resourceNamesToAdd`
         # @return [Array<String>]
         attr_accessor :resource_names_to_add
       
         # Optional. The resource names of the contact people to remove in the form of `
-        # people/`person_id``.
+        # people/`person_id``. The total number of resource names in `
+        # resource_names_to_add` and `resource_names_to_remove` must be less than or
+        # equal to 1000.
         # Corresponds to the JSON property `resourceNamesToRemove`
         # @return [Array<String>]
         attr_accessor :resource_names_to_remove
