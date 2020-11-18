@@ -1610,7 +1610,8 @@ module Google
       
         # The number of rows to return. If unspecified, 10 rows are returned. If -1, all
         # rows are returned. To learn more about this pagination parameter, see [
-        # Pagination](basics#pagination).
+        # Pagination](https://developers.google.com/analytics/devguides/reporting/data/
+        # v1/basics#pagination).
         # Corresponds to the JSON property `limit`
         # @return [Fixnum]
         attr_accessor :limit
@@ -1633,7 +1634,8 @@ module Google
         attr_accessor :metrics
       
         # The row count of the start row. The first row is counted as row 0. To learn
-        # more about this pagination parameter, see [Pagination](basics#pagination).
+        # more about this pagination parameter, see [Pagination](https://developers.
+        # google.com/analytics/devguides/reporting/data/v1/basics#pagination).
         # Corresponds to the JSON property `offset`
         # @return [Fixnum]
         attr_accessor :offset
@@ -1715,7 +1717,8 @@ module Google
         # returned in the response. For example if a query returns 175 rows and includes
         # limit = 50 in the API request, the response will contain row_count = 175 but
         # only 50 rows. To learn more about this pagination parameter, see [Pagination](
-        # basics#pagination).
+        # https://developers.google.com/analytics/devguides/reporting/data/v1/basics#
+        # pagination).
         # Corresponds to the JSON property `rowCount`
         # @return [Fixnum]
         attr_accessor :row_count
