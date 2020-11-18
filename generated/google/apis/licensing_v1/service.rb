@@ -57,10 +57,10 @@ module Google
         #   in this version of the API, see Products and SKUs.
         # @param [String] user_id
         #   The user's current primary email address. If the user's email address changes,
-        #   use the new email address in your API requests. Since a userId is subject to
-        #   change, do not use a userId value as a key for persistent data. This key could
-        #   break if the current user's email address changes. If the userId is suspended,
-        #   the license status changes.
+        #   use the new email address in your API requests. Since a `userId` is subject to
+        #   change, do not use a `userId` value as a key for persistent data. This key
+        #   could break if the current user's email address changes. If the `userId` is
+        #   suspended, the license status changes.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -70,16 +70,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam result [Google::Apis::LicensingV1::Empty] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [void]
+        # @return [Google::Apis::LicensingV1::Empty]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_license_assignment(product_id, sku_id, user_id, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}', options)
+          command.response_representation = Google::Apis::LicensingV1::Empty::Representation
+          command.response_class = Google::Apis::LicensingV1::Empty
           command.params['productId'] = product_id unless product_id.nil?
           command.params['skuId'] = sku_id unless sku_id.nil?
           command.params['userId'] = user_id unless user_id.nil?
@@ -97,10 +99,10 @@ module Google
         #   in this version of the API, see Products and SKUs.
         # @param [String] user_id
         #   The user's current primary email address. If the user's email address changes,
-        #   use the new email address in your API requests. Since a userId is subject to
-        #   change, do not use a userId value as a key for persistent data. This key could
-        #   break if the current user's email address changes. If the userId is suspended,
-        #   the license status changes.
+        #   use the new email address in your API requests. Since a `userId` is subject to
+        #   change, do not use a `userId` value as a key for persistent data. This key
+        #   could break if the current user's email address changes. If the `userId` is
+        #   suspended, the license status changes.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -173,17 +175,17 @@ module Google
         #   A product's unique identifier. For more information about products in this
         #   version of the API, see Products and SKUs.
         # @param [String] customer_id
-        #   Customer's customerId. A previous version of this API accepted the primary
+        #   Customer's `customerId`. A previous version of this API accepted the primary
         #   domain name as a value for this field. If the customer is suspended, the
         #   server returns an error.
         # @param [Fixnum] max_results
-        #   The maxResults query string determines how many entries are returned on each
+        #   The `maxResults` query string determines how many entries are returned on each
         #   page of a large response. This is an optional parameter. The value must be a
         #   positive number.
         # @param [String] page_token
-        #   Token to fetch the next page of data. The maxResults query string is related
-        #   to the pageToken since maxResults determines how many entries are returned on
-        #   each page. This is an optional query string. If not specified, the server
+        #   Token to fetch the next page of data. The `maxResults` query string is related
+        #   to the `pageToken` since `maxResults` determines how many entries are returned
+        #   on each page. This is an optional query string. If not specified, the server
         #   returns the first page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -223,17 +225,17 @@ module Google
         #   A product SKU's unique identifier. For more information about available SKUs
         #   in this version of the API, see Products and SKUs.
         # @param [String] customer_id
-        #   Customer's customerId. A previous version of this API accepted the primary
+        #   Customer's `customerId`. A previous version of this API accepted the primary
         #   domain name as a value for this field. If the customer is suspended, the
         #   server returns an error.
         # @param [Fixnum] max_results
-        #   The maxResults query string determines how many entries are returned on each
+        #   The `maxResults` query string determines how many entries are returned on each
         #   page of a large response. This is an optional parameter. The value must be a
         #   positive number.
         # @param [String] page_token
-        #   Token to fetch the next page of data. The maxResults query string is related
-        #   to the pageToken since maxResults determines how many entries are returned on
-        #   each page. This is an optional query string. If not specified, the server
+        #   Token to fetch the next page of data. The `maxResults` query string is related
+        #   to the `pageToken` since `maxResults` determines how many entries are returned
+        #   on each page. This is an optional query string. If not specified, the server
         #   returns the first page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -266,7 +268,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patch a Licensing info via Apiary Patch Orchestration
+        # Reassign a user's product SKU with a different SKU in the same product. This
+        # method supports patch semantics.
         # @param [String] product_id
         #   A product's unique identifier. For more information about products in this
         #   version of the API, see Products and SKUs.
@@ -275,10 +278,10 @@ module Google
         #   in this version of the API, see Products and SKUs.
         # @param [String] user_id
         #   The user's current primary email address. If the user's email address changes,
-        #   use the new email address in your API requests. Since a userId is subject to
-        #   change, do not use a userId value as a key for persistent data. This key could
-        #   break if the current user's email address changes. If the userId is suspended,
-        #   the license status changes.
+        #   use the new email address in your API requests. Since a `userId` is subject to
+        #   change, do not use a `userId` value as a key for persistent data. This key
+        #   could break if the current user's email address changes. If the `userId` is
+        #   suspended, the license status changes.
         # @param [Google::Apis::LicensingV1::LicenseAssignment] license_assignment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -320,10 +323,10 @@ module Google
         #   in this version of the API, see Products and SKUs.
         # @param [String] user_id
         #   The user's current primary email address. If the user's email address changes,
-        #   use the new email address in your API requests. Since a userId is subject to
-        #   change, do not use a userId value as a key for persistent data. This key could
-        #   break if the current user's email address changes. If the userId is suspended,
-        #   the license status changes.
+        #   use the new email address in your API requests. Since a `userId` is subject to
+        #   change, do not use a `userId` value as a key for persistent data. This key
+        #   could break if the current user's email address changes. If the `userId` is
+        #   suspended, the license status changes.
         # @param [Google::Apis::LicensingV1::LicenseAssignment] license_assignment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

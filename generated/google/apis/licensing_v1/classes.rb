@@ -22,6 +22,23 @@ module Google
   module Apis
     module LicensingV1
       
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Representation of a license assignment.
       class LicenseAssignment
         include Google::Apis::Core::Hashable
@@ -31,7 +48,8 @@ module Google
         # @return [String]
         attr_accessor :etags
       
-        # Identifies the resource as a LicenseAssignment.
+        # Identifies the resource as a LicenseAssignment, which is `licensing#
+        # licenseAssignment`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -64,10 +82,10 @@ module Google
         attr_accessor :sku_name
       
         # The user's current primary email address. If the user's email address changes,
-        # use the new email address in your API requests. Since a userId is subject to
-        # change, do not use a userId value as a key for persistent data. This key could
-        # break if the current user's email address changes. If the userId is suspended,
-        # the license status changes.
+        # use the new email address in your API requests. Since a `userId` is subject to
+        # change, do not use a `userId` value as a key for persistent data. This key
+        # could break if the current user's email address changes. If the `userId` is
+        # suspended, the license status changes.
         # Corresponds to the JSON property `userId`
         # @return [String]
         attr_accessor :user_id
@@ -128,9 +146,9 @@ module Google
         attr_accessor :kind
       
         # The token that you must submit in a subsequent request to retrieve additional
-        # license results matching your query parameters. The maxResults query string is
-        # related to the nextPageToken since maxResults determines how many entries are
-        # returned on each next page.
+        # license results matching your query parameters. The `maxResults` query string
+        # is related to the `nextPageToken` since `maxResults` determines how many
+        # entries are returned on each next page.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token

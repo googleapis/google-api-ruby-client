@@ -22,6 +22,12 @@ module Google
   module Apis
     module LicensingV1
       
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LicenseAssignment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -38,6 +44,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
       end
       
       class LicenseAssignment
