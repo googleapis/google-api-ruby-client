@@ -1540,17 +1540,17 @@ module Google
         end
       end
       
-      # Data Collector configuration.
+      # Data collector configuration.
       class GoogleCloudApigeeV1DataCollector
         include Google::Apis::Core::Hashable
       
-        # Output only. The time at which the Data Collector was created in milliseconds
+        # Output only. The time at which the data collector was created in milliseconds
         # since the epoch.
         # Corresponds to the JSON property `createdAt`
         # @return [Fixnum]
         attr_accessor :created_at
       
-        # A description of the Data Collector.
+        # A description of the data collector.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -1561,12 +1561,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :last_modified_at
       
-        # ID of the Data Collector.
+        # ID of the data collector. Must begin with `dc_`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Immutable. The type of data this DataCollector will collect.
+        # Immutable. The type of data this data collector will collect.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -3199,7 +3199,7 @@ module Google
         attr_accessor :deployed_revisions
       
         # The current routes deployed in the ingress routing table. A route which is
-        # missing will be shown with no destination environment.
+        # missing will appear in missing_routes.
         # Corresponds to the JSON property `deployedRoutes`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute>]
         attr_accessor :deployed_routes
@@ -3530,7 +3530,7 @@ module Google
       class GoogleCloudApigeeV1ListDataCollectorsResponse
         include Google::Apis::Core::Hashable
       
-        # Data Collectors in the specified organization.
+        # Data collectors in the specified organization.
         # Corresponds to the JSON property `dataCollectors`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollector>]
         attr_accessor :data_collectors

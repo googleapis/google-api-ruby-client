@@ -1432,11 +1432,12 @@ module Google
         
         # Creates a new data collector.
         # @param [String] parent
-        #   Required. Name of the organization in which to create the Data Collector in
+        #   Required. Name of the organization in which to create the data collector in
         #   the following format: `organizations/`org``.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollector] google_cloud_apigee_v1_data_collector_object
         # @param [String] data_collector_id
-        #   ID of the Data Collector. Overrides any ID in the Data Collector resource.
+        #   ID of the data collector. Overrides any ID in the data collector resource.
+        #   Must begin with `dc_`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1469,7 +1470,7 @@ module Google
         
         # Deletes a data collector.
         # @param [String] name
-        #   Required. Name of the Data Collector in the following format: `organizations/`
+        #   Required. Name of the data collector in the following format: `organizations/`
         #   org`/datacollectors/`data_collector_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1500,7 +1501,7 @@ module Google
         
         # Gets a data collector.
         # @param [String] name
-        #   Required. Name of the Data Collector in the following format: `organizations/`
+        #   Required. Name of the data collector in the following format: `organizations/`
         #   org`/datacollectors/`data_collector_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1531,10 +1532,10 @@ module Google
         
         # Lists all data collectors.
         # @param [String] parent
-        #   Required. Name of the organization for which to list Data Collectors in the
+        #   Required. Name of the organization for which to list data collectors in the
         #   following format: `organizations/`org``.
         # @param [Fixnum] page_size
-        #   Maximum number of Data Collectors to return. The page size defaults to 25.
+        #   Maximum number of data collectors to return. The page size defaults to 25.
         # @param [String] page_token
         #   Page token, returned from a previous ListDataCollectors call, that you can use
         #   to retrieve the next page.
@@ -1569,7 +1570,7 @@ module Google
         
         # Updates a data collector.
         # @param [String] name
-        #   Required. Name of the Data Collector in the following format: `organizations/`
+        #   Required. Name of the data collector in the following format: `organizations/`
         #   org`/datacollectors/`data_collector_id``.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollector] google_cloud_apigee_v1_data_collector_object
         # @param [String] update_mask
