@@ -54,7 +54,8 @@ module Google
       class AnalyzeIamPolicyLongrunningRequest
         include Google::Apis::Core::Hashable
       
-        # IAM policy analysis query message.
+        # ## LINT.IfChange Keep in sync with ## logs/proto/cloud_asset_inventory/
+        # iam_policy_analyzer_log.proto IAM policy analysis query message.
         # Corresponds to the JSON property `analysisQuery`
         # @return [Google::Apis::CloudassetV1::IamPolicyAnalysisQuery]
         attr_accessor :analysis_query
@@ -1829,7 +1830,8 @@ module Google
       class IamPolicyAnalysis
         include Google::Apis::Core::Hashable
       
-        # IAM policy analysis query message.
+        # ## LINT.IfChange Keep in sync with ## logs/proto/cloud_asset_inventory/
+        # iam_policy_analyzer_log.proto IAM policy analysis query message.
         # Corresponds to the JSON property `analysisQuery`
         # @return [Google::Apis::CloudassetV1::IamPolicyAnalysisQuery]
         attr_accessor :analysis_query
@@ -1890,7 +1892,8 @@ module Google
         end
       end
       
-      # IAM policy analysis query message.
+      # ## LINT.IfChange Keep in sync with ## logs/proto/cloud_asset_inventory/
+      # iam_policy_analyzer_log.proto IAM policy analysis query message.
       class IamPolicyAnalysisQuery
         include Google::Apis::Core::Hashable
       
