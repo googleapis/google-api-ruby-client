@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PatchServiceAccountRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -251,6 +257,12 @@ module Google
       end
       
       class SignJwtResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -462,6 +474,18 @@ module Google
         end
       end
       
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::IamV1::Status, decorator: Google::Apis::IamV1::Status::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
+        end
+      end
+      
       class PatchServiceAccountRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -644,6 +668,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key_id, as: 'keyId'
           property :signed_jwt, as: 'signedJwt'
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
       
