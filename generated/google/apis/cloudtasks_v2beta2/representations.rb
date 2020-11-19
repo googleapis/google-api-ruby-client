@@ -283,7 +283,6 @@ module Google
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :binding_id, as: 'bindingId'
           property :condition, as: 'condition', class: Google::Apis::CloudtasksV2beta2::Expr, decorator: Google::Apis::CloudtasksV2beta2::Expr::Representation
       
           collection :members, as: 'members'
