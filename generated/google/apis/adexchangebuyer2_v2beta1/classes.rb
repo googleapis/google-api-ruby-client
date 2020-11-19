@@ -3426,6 +3426,12 @@ module Google
         # @return [String]
         attr_accessor :media_kit_url
       
+        # The list of apps represented in this publisher profile. Empty if this is a
+        # parent profile.
+        # Corresponds to the JSON property `mobileApps`
+        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::PublisherProfileMobileApplication>]
+        attr_accessor :mobile_apps
+      
         # Overview of the publisher.
         # Corresponds to the JSON property `overview`
         # @return [String]
@@ -3480,6 +3486,7 @@ module Google
           @is_parent = args[:is_parent] if args.key?(:is_parent)
           @logo_url = args[:logo_url] if args.key?(:logo_url)
           @media_kit_url = args[:media_kit_url] if args.key?(:media_kit_url)
+          @mobile_apps = args[:mobile_apps] if args.key?(:mobile_apps)
           @overview = args[:overview] if args.key?(:overview)
           @programmatic_deals_contact = args[:programmatic_deals_contact] if args.key?(:programmatic_deals_contact)
           @publisher_profile_id = args[:publisher_profile_id] if args.key?(:publisher_profile_id)
@@ -3487,6 +3494,37 @@ module Google
           @sample_page_url = args[:sample_page_url] if args.key?(:sample_page_url)
           @seller = args[:seller] if args.key?(:seller)
           @top_headlines = args[:top_headlines] if args.key?(:top_headlines)
+        end
+      end
+      
+      # A mobile application that contains a external app ID, name, and app store.
+      class PublisherProfileMobileApplication
+        include Google::Apis::Core::Hashable
+      
+        # The app store the app belongs to.
+        # Corresponds to the JSON property `appStore`
+        # @return [String]
+        attr_accessor :app_store
+      
+        # The external ID for the app from its app store.
+        # Corresponds to the JSON property `externalAppId`
+        # @return [String]
+        attr_accessor :external_app_id
+      
+        # The name of the app.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_store = args[:app_store] if args.key?(:app_store)
+          @external_app_id = args[:external_app_id] if args.key?(:external_app_id)
+          @name = args[:name] if args.key?(:name)
         end
       end
       

@@ -532,6 +532,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PublisherProfileMobileApplication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RealtimeTimeRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1591,6 +1597,8 @@ module Google
           property :is_parent, as: 'isParent'
           property :logo_url, as: 'logoUrl'
           property :media_kit_url, as: 'mediaKitUrl'
+          collection :mobile_apps, as: 'mobileApps', class: Google::Apis::Adexchangebuyer2V2beta1::PublisherProfileMobileApplication, decorator: Google::Apis::Adexchangebuyer2V2beta1::PublisherProfileMobileApplication::Representation
+      
           property :overview, as: 'overview'
           property :programmatic_deals_contact, as: 'programmaticDealsContact'
           property :publisher_profile_id, as: 'publisherProfileId'
@@ -1599,6 +1607,15 @@ module Google
           property :seller, as: 'seller', class: Google::Apis::Adexchangebuyer2V2beta1::Seller, decorator: Google::Apis::Adexchangebuyer2V2beta1::Seller::Representation
       
           collection :top_headlines, as: 'topHeadlines'
+        end
+      end
+      
+      class PublisherProfileMobileApplication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_store, as: 'appStore'
+          property :external_app_id, as: 'externalAppId'
+          property :name, as: 'name'
         end
       end
       
