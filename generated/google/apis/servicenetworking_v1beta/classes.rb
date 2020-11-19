@@ -748,10 +748,10 @@ module Google
         # @return [String]
         attr_accessor :producer_network
       
-        # Output only. The name of the allocated IP address ranges for this private
-        # service access connection.
+        # Output only. The reserved ranges associated with this private service access
+        # connection.
         # Corresponds to the JSON property `reservedRanges`
-        # @return [Array<String>]
+        # @return [Array<Google::Apis::ServicenetworkingV1beta::GoogleCloudServicenetworkingV1ConsumerConfigReservedRange>]
         attr_accessor :reserved_ranges
       
         def initialize(**args)
@@ -1371,6 +1371,39 @@ module Google
           @options = args[:options] if args.key?(:options)
           @packed = args[:packed] if args.key?(:packed)
           @type_url = args[:type_url] if args.key?(:type_url)
+        end
+      end
+      
+      # Allocated IP address ranges for this private service access connection.
+      class GoogleCloudServicenetworkingV1ConsumerConfigReservedRange
+        include Google::Apis::Core::Hashable
+      
+        # The starting address of the reserved range. The address must be a valid IPv4
+        # address in the x.x.x.x format. This value combined with the IP prefix length
+        # is the CIDR range for the reserved range.
+        # Corresponds to the JSON property `address`
+        # @return [String]
+        attr_accessor :address
+      
+        # The prefix length of the reserved range.
+        # Corresponds to the JSON property `ipPrefixLength`
+        # @return [Fixnum]
+        attr_accessor :ip_prefix_length
+      
+        # The name of the reserved range.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address = args[:address] if args.key?(:address)
+          @ip_prefix_length = args[:ip_prefix_length] if args.key?(:ip_prefix_length)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
