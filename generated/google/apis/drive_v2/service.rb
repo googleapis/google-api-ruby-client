@@ -471,10 +471,8 @@ module Google
         # @param [String] child_id
         #   The ID of the child.
         # @param [Boolean] enforce_single_parent
-        #   Set to true to opt in to API behavior that aims for all items to have exactly
-        #   one parent. This parameter only takes effect if the item is not in a shared
-        #   drive. If the item's last parent is removed, the item is placed under its
-        #   owner's root.
+        #   Deprecated. If an item is not in a shared drive and its last parent is deleted
+        #   but the item itself is not, the item will be placed under its owner's root.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -546,12 +544,8 @@ module Google
         #   The ID of the folder.
         # @param [Google::Apis::DriveV2::ChildReference] child_reference_object
         # @param [Boolean] enforce_single_parent
-        #   Set to true to opt in to API behavior that aims for all items to have exactly
-        #   one parent. This parameter only takes effect if the item is not in a shared
-        #   drive. If the child's owner makes the request, the child is removed from all
-        #   current folders and placed in the requested folder. Any other requests that
-        #   increase the number of the child's parents fail, except when the
-        #   canAddMyDriveParent file capability is true and a single parent is being added.
+        #   Deprecated. Adding files to multiple folders is no longer supported. Use
+        #   shortcuts instead.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
@@ -1146,9 +1140,8 @@ module Google
         # @param [Boolean] convert
         #   Whether to convert this file to the corresponding Docs Editors format.
         # @param [Boolean] enforce_single_parent
-        #   Set to true to opt in to API behavior that aims for all items to have exactly
-        #   one parent. This parameter only takes effect if the item is not in a shared
-        #   drive. Requests that specify more than one parent fail.
+        #   Deprecated. Copying files into multiple folders is no longer supported. Use
+        #   shortcuts instead.
         # @param [String] include_permissions_for_view
         #   Specifies which additional view's permissions to include in the response. Only
         #   'published' is supported.
@@ -1218,10 +1211,8 @@ module Google
         # @param [String] file_id
         #   The ID of the file to delete.
         # @param [Boolean] enforce_single_parent
-        #   Set to true to opt in to API behavior that aims for all items to have exactly
-        #   one parent. This parameter will only take effect if the item is not in a
-        #   shared drive. If an item's last parent is deleted but the item itself is not,
-        #   the item will be placed under its owner's root.
+        #   Deprecated. If an item is not in a shared drive and its last parent is deleted
+        #   but the item itself is not, the item will be placed under its owner's root.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
@@ -1259,10 +1250,8 @@ module Google
         
         # Permanently deletes all of the user's trashed files.
         # @param [Boolean] enforce_single_parent
-        #   Set to true to opt in to API behavior that aims for all items to have exactly
-        #   one parent. This parameter will only take effect if the item is not in a
-        #   shared drive. If an item's last parent is deleted but the item itself is not,
-        #   the item will be placed under its owner's root.
+        #   Deprecated. If an item is not in a shared drive and its last parent is deleted
+        #   but the item itself is not, the item will be placed under its owner's root.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1440,9 +1429,7 @@ module Google
         # @param [Boolean] convert
         #   Whether to convert this file to the corresponding Docs Editors format.
         # @param [Boolean] enforce_single_parent
-        #   Set to true to opt in to API behavior that aims for all items to have exactly
-        #   one parent. This parameter only takes effect if the item is not in a shared
-        #   drive. Requests that specify more than one parent fail.
+        #   Deprecated. Creating files in multiple folders is no longer supported.
         # @param [String] include_permissions_for_view
         #   Specifies which additional view's permissions to include in the response. Only
         #   'published' is supported.
@@ -1618,12 +1605,8 @@ module Google
         # @param [Boolean] convert
         #   This parameter is deprecated and has no function.
         # @param [Boolean] enforce_single_parent
-        #   Set to true to opt in to API behavior that aims for all items to have exactly
-        #   one parent. This parameter only takes effect if the item is not in a shared
-        #   drive. If the item's owner makes a request to add a single parent, the item is
-        #   removed from all current folders and placed in the requested folder. Other
-        #   requests that increase the number of parents fail, except when the
-        #   canAddMyDriveParent file capability is true and a single parent is being added.
+        #   Deprecated. Adding files to multiple folders is no longer supported. Use
+        #   shortcuts instead.
         # @param [String] include_permissions_for_view
         #   Specifies which additional view's permissions to include in the response. Only
         #   'published' is supported.
@@ -1859,12 +1842,8 @@ module Google
         # @param [Boolean] convert
         #   This parameter is deprecated and has no function.
         # @param [Boolean] enforce_single_parent
-        #   Set to true to opt in to API behavior that aims for all items to have exactly
-        #   one parent. This parameter only takes effect if the item is not in a shared
-        #   drive. If the item's owner makes a request to add a single parent, the item is
-        #   removed from all current folders and placed in the requested folder. Other
-        #   requests that increase the number of parents fail, except when the
-        #   canAddMyDriveParent file capability is true and a single parent is being added.
+        #   Deprecated. Adding files to multiple folders is no longer supported. Use
+        #   shortcuts instead.
         # @param [String] include_permissions_for_view
         #   Specifies which additional view's permissions to include in the response. Only
         #   'published' is supported.
@@ -2039,10 +2018,8 @@ module Google
         # @param [String] parent_id
         #   The ID of the parent.
         # @param [Boolean] enforce_single_parent
-        #   Set to true to opt in to API behavior that aims for all items to have exactly
-        #   one parent. This parameter only takes effect if the item is not in a shared
-        #   drive. If the item's last parent is removed, the item is placed under its
-        #   owner's root.
+        #   Deprecated. If an item is not in a shared drive and its last parent is deleted
+        #   but the item itself is not, the item will be placed under its owner's root.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2114,12 +2091,8 @@ module Google
         #   The ID of the file.
         # @param [Google::Apis::DriveV2::ParentReference] parent_reference_object
         # @param [Boolean] enforce_single_parent
-        #   Set to true to opt in to API behavior that aims for all items to have exactly
-        #   one parent. This parameter only takes effect if the item is not in a shared
-        #   drive. If the child's owner makes the request, the child is removed from all
-        #   current folders and placed in the requested folder. Any other requests that
-        #   increase the number of the child's parents fail, except when the
-        #   canAddMyDriveParent file capability is true and a single parent is being added.
+        #   Deprecated. Adding files to multiple folders is no longer supported. Use
+        #   shortcuts instead.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
@@ -2326,17 +2299,12 @@ module Google
         # @param [String] email_message
         #   A plain text custom message to include in notification emails.
         # @param [Boolean] enforce_single_parent
-        #   Set to true to opt in to API behavior that aims for all items to have exactly
-        #   one parent. This parameter only takes effect if the item is not in a shared
-        #   drive. See moveToNewOwnersRoot for details.
+        #   Deprecated. See moveToNewOwnersRoot for details.
         # @param [Boolean] move_to_new_owners_root
-        #   This parameter only takes effect if the item is not in a shared drive and the
-        #   request is attempting to transfer the ownership of the item. When set to true,
-        #   the item will be moved to the new owner's My Drive root folder and all prior
-        #   parents removed. If set to false, when enforceSingleParent=true, parents are
-        #   not changed. If set to false, when enforceSingleParent=false, existing parents
-        #   are not changed; however, the file will be added to the new owner's My Drive
-        #   root folder, unless it is already in the new owner's My Drive.
+        #   This parameter will only take effect if the item is not in a shared drive and
+        #   the request is attempting to transfer the ownership of the item. If set to
+        #   true, the item will be moved to the new owner's My Drive root folder and all
+        #   prior parents removed. If set to false, parents are not changed.
         # @param [Boolean] send_notification_emails
         #   Whether to send notification emails when sharing to users or groups. This
         #   parameter is ignored and an email is sent if the role is owner.
