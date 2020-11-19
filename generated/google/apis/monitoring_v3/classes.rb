@@ -3955,10 +3955,11 @@ module Google
         attr_accessor :monitored_resource
       
         # A unique resource name for this Uptime check configuration. The format is:
-        # projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] This
-        # field should be omitted when creating the Uptime check configuration; on
-        # create, the resource name is assigned by the server and included in the
-        # response.
+        # projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [
+        # PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime
+        # check.This field should be omitted when creating the Uptime check
+        # configuration; on create, the resource name is assigned by the server and
+        # included in the response.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
