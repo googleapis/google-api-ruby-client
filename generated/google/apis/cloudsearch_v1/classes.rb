@@ -250,9 +250,10 @@ module Google
       class DataSource
         include Google::Apis::Core::Hashable
       
-        # If true, Indexing API rejects any modification calls to this datasource such
-        # as create, update, and delete. Disabling this does not imply halting process
-        # of previously accepted data.
+        # If true, sets the datasource to read-only mode. In read-only mode, the
+        # Indexing API rejects any requests to index or delete items in this source.
+        # Enabling read-only mode does not stop the processing of previously accepted
+        # data.
         # Corresponds to the JSON property `disableModifications`
         # @return [Boolean]
         attr_accessor :disable_modifications
@@ -1662,7 +1663,9 @@ module Google
         # @return [Google::Apis::CloudsearchV1::ItemAcl]
         attr_accessor :acl
       
-        # Content of an item to be indexed and surfaced by Cloud Search.
+        # Content of an item to be indexed and surfaced by Cloud Search. Only UTF-8
+        # encoded strings are allowed as inlineContent. If the content is uploaded and
+        # not binary, it must be UTF-8 encoded.
         # Corresponds to the JSON property `content`
         # @return [Google::Apis::CloudsearchV1::ItemContent]
         attr_accessor :content
@@ -1796,7 +1799,9 @@ module Google
         end
       end
       
-      # Content of an item to be indexed and surfaced by Cloud Search.
+      # Content of an item to be indexed and surfaced by Cloud Search. Only UTF-8
+      # encoded strings are allowed as inlineContent. If the content is uploaded and
+      # not binary, it must be UTF-8 encoded.
       class ItemContent
         include Google::Apis::Core::Hashable
       
