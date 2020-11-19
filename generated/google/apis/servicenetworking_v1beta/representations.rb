@@ -220,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudServicenetworkingV1ConsumerConfigReservedRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudServicenetworkingV1betaSubnetwork
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -667,7 +673,8 @@ module Google
           property :producer_import_custom_routes, as: 'producerImportCustomRoutes'
           property :producer_import_subnet_routes_with_public_ip, as: 'producerImportSubnetRoutesWithPublicIp'
           property :producer_network, as: 'producerNetwork'
-          collection :reserved_ranges, as: 'reservedRanges'
+          collection :reserved_ranges, as: 'reservedRanges', class: Google::Apis::ServicenetworkingV1beta::GoogleCloudServicenetworkingV1ConsumerConfigReservedRange, decorator: Google::Apis::ServicenetworkingV1beta::GoogleCloudServicenetworkingV1ConsumerConfigReservedRange::Representation
+      
         end
       end
       
@@ -823,6 +830,15 @@ module Google
       
           property :packed, as: 'packed'
           property :type_url, as: 'typeUrl'
+        end
+      end
+      
+      class GoogleCloudServicenetworkingV1ConsumerConfigReservedRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address'
+          property :ip_prefix_length, as: 'ipPrefixLength'
+          property :name, as: 'name'
         end
       end
       
