@@ -30,7 +30,7 @@ module Google
       #    Analyticsdata = Google::Apis::AnalyticsdataV1alpha # Alias the module
       #    service = Analyticsdata::AnalyticsDataService.new
       #
-      # @see https://developers.google.com/analytics/trusted-testing/analytics-data/
+      # @see https://developers.google.com/analytics/devguides/reporting/data/v1/
       class AnalyticsDataService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
@@ -59,8 +59,8 @@ module Google
         #   Required. The resource name of the metadata to retrieve. This name field is
         #   specified in the URL path and not URL parameters. Property is a numeric Google
         #   Analytics GA4 Property identifier. To learn more, see [where to find your
-        #   Property ID](https://developers.google.com/analytics/trusted-testing/analytics-
-        #   data/property-id). Example: properties/1234/metadata Set the Property ID to 0
+        #   Property ID](https://developers.google.com/analytics/devguides/reporting/data/
+        #   v1/property-id). Example: properties/1234/metadata Set the Property ID to 0
         #   for dimensions and metrics common to all properties. In this special mode,
         #   this method will not return custom dimensions and metrics.
         # @param [String] fields
@@ -96,8 +96,8 @@ module Google
         # @param [String] property
         #   A Google Analytics GA4 property identifier whose events are tracked. Specified
         #   in the URL path and not the body. To learn more, see [where to find your
-        #   Property ID](https://developers.google.com/analytics/trusted-testing/analytics-
-        #   data/property-id). Example: properties/1234
+        #   Property ID](https://developers.google.com/analytics/devguides/reporting/data/
+        #   v1/property-id). Example: properties/1234
         # @param [Google::Apis::AnalyticsdataV1alpha::RunRealtimeReportRequest] run_realtime_report_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

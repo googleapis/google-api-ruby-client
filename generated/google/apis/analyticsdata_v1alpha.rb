@@ -22,10 +22,10 @@ module Google
     #
     # Accesses report data in Google Analytics.
     #
-    # @see https://developers.google.com/analytics/trusted-testing/analytics-data/
+    # @see https://developers.google.com/analytics/devguides/reporting/data/v1/
     module AnalyticsdataV1alpha
       VERSION = 'V1alpha'
-      REVISION = '20201116'
+      REVISION = '20201118'
 
       # View and manage your Google Analytics data
       AUTH_ANALYTICS = 'https://www.googleapis.com/auth/analytics'
