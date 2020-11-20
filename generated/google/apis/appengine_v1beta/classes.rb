@@ -2728,6 +2728,13 @@ module Google
         # @return [Google::Apis::AppengineV1beta::ApiConfigHandler]
         attr_accessor :api_config
       
+        # app_engine_apis allows Second Generation runtimes to access the App Engine
+        # APIs.
+        # Corresponds to the JSON property `appEngineApis`
+        # @return [Boolean]
+        attr_accessor :app_engine_apis
+        alias_method :app_engine_apis?, :app_engine_apis
+      
         # Automatic scaling is based on request rate, response latencies, and other
         # application metrics.
         # Corresponds to the JSON property `automaticScaling`
@@ -2963,6 +2970,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @api_config = args[:api_config] if args.key?(:api_config)
+          @app_engine_apis = args[:app_engine_apis] if args.key?(:app_engine_apis)
           @automatic_scaling = args[:automatic_scaling] if args.key?(:automatic_scaling)
           @basic_scaling = args[:basic_scaling] if args.key?(:basic_scaling)
           @beta_settings = args[:beta_settings] if args.key?(:beta_settings)
