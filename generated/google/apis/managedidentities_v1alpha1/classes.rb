@@ -29,7 +29,9 @@ module Google
         # Represents a relationship between two domains which makes it possible for
         # users in one domain to be authenticated by a dc in another domain. Refer https:
         # //docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-
-        # 2008-R2-and-2008/cc731335(v%3dws.10)
+        # 2008-R2-and-2008/cc731335(v%3dws.10) If the trust is being changed, it will be
+        # placed into the UPDATING state, which indicates that the resource is being
+        # reconciled. At this point, Get will reflect an intermediate state.
         # Corresponds to the JSON property `trust`
         # @return [Google::Apis::ManagedidentitiesV1alpha1::TrustProp]
         attr_accessor :trust_prop
@@ -47,11 +49,6 @@ module Google
       # Associates `members` with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `bindingId`
-        # @return [String]
-        attr_accessor :binding_id
       
         # Represents a textual expression in the Common Expression Language (CEL) syntax.
         # CEL is a C-like expression language. The syntax and semantics of CEL are
@@ -114,7 +111,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @binding_id = args[:binding_id] if args.key?(:binding_id)
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
@@ -257,7 +253,9 @@ module Google
         # Represents a relationship between two domains which makes it possible for
         # users in one domain to be authenticated by a dc in another domain. Refer https:
         # //docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-
-        # 2008-R2-and-2008/cc731335(v%3dws.10)
+        # 2008-R2-and-2008/cc731335(v%3dws.10) If the trust is being changed, it will be
+        # placed into the UPDATING state, which indicates that the resource is being
+        # reconciled. At this point, Get will reflect an intermediate state.
         # Corresponds to the JSON property `trust`
         # @return [Google::Apis::ManagedidentitiesV1alpha1::TrustProp]
         attr_accessor :trust_prop
@@ -272,7 +270,9 @@ module Google
         end
       end
       
-      # 
+      # If the domain is being changed, it will be placed into the UPDATING state,
+      # which indicates that the resource is being reconciled. At this point, Get will
+      # reflect an intermediate state.
       class Domain
         include Google::Apis::Core::Hashable
       
@@ -1461,7 +1461,9 @@ module Google
         # Represents a relationship between two domains which makes it possible for
         # users in one domain to be authenticated by a dc in another domain. Refer https:
         # //docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-
-        # 2008-R2-and-2008/cc731335(v%3dws.10)
+        # 2008-R2-and-2008/cc731335(v%3dws.10) If the trust is being changed, it will be
+        # placed into the UPDATING state, which indicates that the resource is being
+        # reconciled. At this point, Get will reflect an intermediate state.
         # Corresponds to the JSON property `trust`
         # @return [Google::Apis::ManagedidentitiesV1alpha1::TrustProp]
         attr_accessor :trust_prop
@@ -1755,7 +1757,9 @@ module Google
       # Represents a relationship between two domains which makes it possible for
       # users in one domain to be authenticated by a dc in another domain. Refer https:
       # //docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-
-      # 2008-R2-and-2008/cc731335(v%3dws.10)
+      # 2008-R2-and-2008/cc731335(v%3dws.10) If the trust is being changed, it will be
+      # placed into the UPDATING state, which indicates that the resource is being
+      # reconciled. At this point, Get will reflect an intermediate state.
       class TrustProp
         include Google::Apis::Core::Hashable
       
@@ -1881,7 +1885,9 @@ module Google
         # Represents a relationship between two domains which makes it possible for
         # users in one domain to be authenticated by a dc in another domain. Refer https:
         # //docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-
-        # 2008-R2-and-2008/cc731335(v%3dws.10)
+        # 2008-R2-and-2008/cc731335(v%3dws.10) If the trust is being changed, it will be
+        # placed into the UPDATING state, which indicates that the resource is being
+        # reconciled. At this point, Get will reflect an intermediate state.
         # Corresponds to the JSON property `trust`
         # @return [Google::Apis::ManagedidentitiesV1alpha1::TrustProp]
         attr_accessor :trust_prop
