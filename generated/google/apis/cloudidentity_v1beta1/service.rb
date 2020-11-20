@@ -195,8 +195,10 @@ module Google
         #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
         #   of the customer.
         # @param [String] filter
-        #   Optional. Additional restrictions when fetching list of devices. [HC article
-        #   link](https://support.google.com/a/answer/7549103)
+        #   Optional. Additional restrictions when fetching list of devices. For a list of
+        #   search fields, refer to [Mobile device search fields](https://developers.
+        #   google.com/admin-sdk/directory/v1/search-operators). Multiple search fields
+        #   are separated by the space character.
         # @param [String] order_by
         #   Optional. Order specification for devices in the response. Only one of the
         #   following field names may be used to specify the order: `create_time`, `
@@ -484,8 +486,10 @@ module Google
         #   use `customers/`customer_id``, where customer_id is the customer to whom the
         #   device belongs.
         # @param [String] filter
-        #   Optional. Additional restrictions when fetching list of devices. [HC article](
-        #   https://support.google.com/a/answer/7549103)
+        #   Optional. Additional restrictions when fetching list of devices. For a list of
+        #   search fields, refer to [Mobile device search fields](https://developers.
+        #   google.com/admin-sdk/directory/v1/search-operators). Multiple search fields
+        #   are separated by the space character.
         # @param [String] order_by
         #   Optional. Order specification for devices in the response.
         # @param [Fixnum] page_size
