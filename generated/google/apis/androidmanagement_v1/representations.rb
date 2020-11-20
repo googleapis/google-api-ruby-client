@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CommonCriteriaModeInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ComplianceRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -433,6 +439,7 @@ module Google
       class AdvancedSecurityOverrides
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :common_criteria_mode, as: 'commonCriteriaMode'
           property :untrusted_apps_policy, as: 'untrustedAppsPolicy'
         end
       end
@@ -567,6 +574,13 @@ module Google
         end
       end
       
+      class CommonCriteriaModeInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common_criteria_mode_status, as: 'commonCriteriaModeStatus'
+        end
+      end
+      
       class ComplianceRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -597,6 +611,8 @@ module Google
           property :applied_policy_name, as: 'appliedPolicyName'
           property :applied_policy_version, :numeric_string => true, as: 'appliedPolicyVersion'
           property :applied_state, as: 'appliedState'
+          property :common_criteria_mode_info, as: 'commonCriteriaModeInfo', class: Google::Apis::AndroidmanagementV1::CommonCriteriaModeInfo, decorator: Google::Apis::AndroidmanagementV1::CommonCriteriaModeInfo::Representation
+      
           property :device_settings, as: 'deviceSettings', class: Google::Apis::AndroidmanagementV1::DeviceSettings, decorator: Google::Apis::AndroidmanagementV1::DeviceSettings::Representation
       
           property :disabled_reason, as: 'disabledReason', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
@@ -1199,6 +1215,7 @@ module Google
           property :application_reporting_settings, as: 'applicationReportingSettings', class: Google::Apis::AndroidmanagementV1::ApplicationReportingSettings, decorator: Google::Apis::AndroidmanagementV1::ApplicationReportingSettings::Representation
       
           property :application_reports_enabled, as: 'applicationReportsEnabled'
+          property :common_criteria_mode_enabled, as: 'commonCriteriaModeEnabled'
           property :device_settings_enabled, as: 'deviceSettingsEnabled'
           property :display_info_enabled, as: 'displayInfoEnabled'
           property :hardware_status_enabled, as: 'hardwareStatusEnabled'
