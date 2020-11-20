@@ -68,7 +68,8 @@ module Google
       
         # An image name pattern to allowlist, in the form `registry/path/to/image`. This
         # supports a trailing `*` as a wildcard, but this is allowed only in text after
-        # the `registry/` part.
+        # the `registry/` part. Also wildcards do not match `/`, i.e., gcr.io/nginx*
+        # matches gcr.io/nginx@latest, but it does not match gcr.io/nginx/image.
         # Corresponds to the JSON property `namePattern`
         # @return [String]
         attr_accessor :name_pattern
@@ -224,11 +225,6 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # 
-        # Corresponds to the JSON property `bindingId`
-        # @return [String]
-        attr_accessor :binding_id
-      
         # Represents a textual expression in the Common Expression Language (CEL) syntax.
         # CEL is a C-like expression language. The syntax and semantics of CEL are
         # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -290,7 +286,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @binding_id = args[:binding_id] if args.key?(:binding_id)
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
