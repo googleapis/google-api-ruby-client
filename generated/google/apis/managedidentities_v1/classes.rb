@@ -27,7 +27,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Represents a relationship between two domains. This allows a controller in one
-        # domain to authenticate a user in another domain.
+        # domain to authenticate a user in another domain. If the trust is being changed,
+        # it will be placed into the UPDATING state, which indicates that the resource
+        # is being reconciled. At this point, Get will reflect an intermediate state.
         # Corresponds to the JSON property `trust`
         # @return [Google::Apis::ManagedidentitiesV1::TrustProp]
         attr_accessor :trust_prop
@@ -45,11 +47,6 @@ module Google
       # Associates `members` with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `bindingId`
-        # @return [String]
-        attr_accessor :binding_id
       
         # Represents a textual expression in the Common Expression Language (CEL) syntax.
         # CEL is a C-like expression language. The syntax and semantics of CEL are
@@ -112,7 +109,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @binding_id = args[:binding_id] if args.key?(:binding_id)
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
@@ -253,7 +249,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Represents a relationship between two domains. This allows a controller in one
-        # domain to authenticate a user in another domain.
+        # domain to authenticate a user in another domain. If the trust is being changed,
+        # it will be placed into the UPDATING state, which indicates that the resource
+        # is being reconciled. At this point, Get will reflect an intermediate state.
         # Corresponds to the JSON property `trust`
         # @return [Google::Apis::ManagedidentitiesV1::TrustProp]
         attr_accessor :trust_prop
@@ -268,7 +266,10 @@ module Google
         end
       end
       
-      # Represents a managed Microsoft Active Directory domain.
+      # Represents a managed Microsoft Active Directory domain. If the domain is being
+      # changed, it will be placed into the UPDATING state, which indicates that the
+      # resource is being reconciled. At this point, Get will reflect an intermediate
+      # state.
       class Domain
         include Google::Apis::Core::Hashable
       
@@ -1672,7 +1673,9 @@ module Google
       end
       
       # Represents a relationship between two domains. This allows a controller in one
-      # domain to authenticate a user in another domain.
+      # domain to authenticate a user in another domain. If the trust is being changed,
+      # it will be placed into the UPDATING state, which indicates that the resource
+      # is being reconciled. At this point, Get will reflect an intermediate state.
       class TrustProp
         include Google::Apis::Core::Hashable
       
@@ -1798,7 +1801,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Represents a relationship between two domains. This allows a controller in one
-        # domain to authenticate a user in another domain.
+        # domain to authenticate a user in another domain. If the trust is being changed,
+        # it will be placed into the UPDATING state, which indicates that the resource
+        # is being reconciled. At this point, Get will reflect an intermediate state.
         # Corresponds to the JSON property `trust`
         # @return [Google::Apis::ManagedidentitiesV1::TrustProp]
         attr_accessor :trust_prop
