@@ -6,6 +6,7 @@ on:
 name: release-please
 jobs:
   release-please:
+    if: secrets.ENABLE_RELEASE_PLEASE
     env:
       ENABLE_AUTO_APPROVE: ${{ secrets.ENABLE_AUTO_APPROVE }}
     runs-on: ubuntu-latest
