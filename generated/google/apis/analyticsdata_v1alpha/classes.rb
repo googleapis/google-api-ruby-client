@@ -366,9 +366,9 @@ module Google
         attr_accessor :dimension_expression
       
         # The name of the dimension. See the [API Dimensions](https://developers.google.
-        # com/analytics/trusted-testing/analytics-data/api-schema#dimensions) for the
-        # list of dimension names. If `dimensionExpression` is specified, `name` can be
-        # any string that you would like. For example if a `dimensionExpression`
+        # com/analytics/devguides/reporting/data/v1/api-schema#dimensions) for the list
+        # of dimension names. If `dimensionExpression` is specified, `name` can be any
+        # string that you would like. For example if a `dimensionExpression`
         # concatenates `country` and `city`, you could call that dimension `
         # countryAndCity`. Dimensions are referenced by `name` in `dimensionFilter`, `
         # orderBys`, `dimensionExpression`, and `pivots`.
@@ -540,8 +540,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A Google Analytics GA4 property id. To learn more, see [where to find your
-        # Property ID](https://developers.google.com/analytics/trusted-testing/analytics-
-        # data/property-id).
+        # Property ID](https://developers.google.com/analytics/devguides/reporting/data/
+        # v1/property-id).
         # Corresponds to the JSON property `propertyId`
         # @return [String]
         attr_accessor :property_id
@@ -745,7 +745,7 @@ module Google
         alias_method :invisible?, :invisible
       
         # The name of the metric. See the [API Metrics](https://developers.google.com/
-        # analytics/trusted-testing/analytics-data/api-schema#metrics) for the list of
+        # analytics/devguides/reporting/data/v1/api-schema#metrics) for the list of
         # metric names. If `expression` is specified, `name` can be any string that you
         # would like. For example if `expression` is `screenPageViews/sessions`, you
         # could call that metric's name = `viewsPerSession`. Metrics are referenced by `
