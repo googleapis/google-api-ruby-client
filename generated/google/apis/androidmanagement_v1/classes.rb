@@ -28,6 +28,18 @@ module Google
       class AdvancedSecurityOverrides
         include Google::Apis::Core::Hashable
       
+        # Controls Common Criteria Mode—security standards defined in the Common
+        # Criteria for Information Technology Security Evaluation (https://www.
+        # commoncriteriaportal.org/) (CC). Enabling Common Criteria Mode increases
+        # certain security components on a device, including AES-GCM encryption of
+        # Bluetooth Long Term Keys, and Wi-Fi configuration stores.Warning: Common
+        # Criteria Mode enforces a strict security model typically only required for IT
+        # products used in national security systems and other highly sensitive
+        # organizations. Standard device use may be affected. Only enabled if required.
+        # Corresponds to the JSON property `commonCriteriaMode`
+        # @return [String]
+        attr_accessor :common_criteria_mode
+      
         # The policy for untrusted apps (apps from unknown sources) enforced on the
         # device. Replaces install_unknown_sources_allowed (deprecated).
         # Corresponds to the JSON property `untrustedAppsPolicy`
@@ -40,6 +52,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @common_criteria_mode = args[:common_criteria_mode] if args.key?(:common_criteria_mode)
           @untrusted_apps_policy = args[:untrusted_apps_policy] if args.key?(:untrusted_apps_policy)
         end
       end
@@ -565,6 +578,29 @@ module Google
         end
       end
       
+      # Information about Common Criteria Mode—security standards defined in the
+      # Common Criteria for Information Technology Security Evaluation (https://www.
+      # commoncriteriaportal.org/) (CC).This information is only available if
+      # statusReportingSettings.commonCriteriaModeEnabled is true in the device's
+      # policy.
+      class CommonCriteriaModeInfo
+        include Google::Apis::Core::Hashable
+      
+        # Whether Common Criteria Mode is enabled.
+        # Corresponds to the JSON property `commonCriteriaModeStatus`
+        # @return [String]
+        attr_accessor :common_criteria_mode_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_criteria_mode_status = args[:common_criteria_mode_status] if args.key?(:common_criteria_mode_status)
+        end
+      end
+      
       # A rule declaring which mitigating actions to take when a device is not
       # compliant with its policy. For every rule, there is always an implicit
       # mitigating action to set policy_compliant to false for the Device resource,
@@ -689,6 +725,15 @@ module Google
         # Corresponds to the JSON property `appliedState`
         # @return [String]
         attr_accessor :applied_state
+      
+        # Information about Common Criteria Mode—security standards defined in the
+        # Common Criteria for Information Technology Security Evaluation (https://www.
+        # commoncriteriaportal.org/) (CC).This information is only available if
+        # statusReportingSettings.commonCriteriaModeEnabled is true in the device's
+        # policy.
+        # Corresponds to the JSON property `commonCriteriaModeInfo`
+        # @return [Google::Apis::AndroidmanagementV1::CommonCriteriaModeInfo]
+        attr_accessor :common_criteria_mode_info
       
         # Information about security related device settings on device.
         # Corresponds to the JSON property `deviceSettings`
@@ -870,6 +915,7 @@ module Google
           @applied_policy_name = args[:applied_policy_name] if args.key?(:applied_policy_name)
           @applied_policy_version = args[:applied_policy_version] if args.key?(:applied_policy_version)
           @applied_state = args[:applied_state] if args.key?(:applied_state)
+          @common_criteria_mode_info = args[:common_criteria_mode_info] if args.key?(:common_criteria_mode_info)
           @device_settings = args[:device_settings] if args.key?(:device_settings)
           @disabled_reason = args[:disabled_reason] if args.key?(:disabled_reason)
           @displays = args[:displays] if args.key?(:displays)
@@ -2281,7 +2327,7 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::PersonalApplicationPolicy>]
         attr_accessor :personal_applications
       
-        # Used together with personal_applications to control how apps in the personal
+        # Used together with personalApplications to control how apps in the personal
         # profile are allowed or blocked.
         # Corresponds to the JSON property `personalPlayStoreMode`
         # @return [String]
@@ -3316,6 +3362,12 @@ module Google
         attr_accessor :application_reports_enabled
         alias_method :application_reports_enabled?, :application_reports_enabled
       
+        # Whether Common Criteria Mode reporting is enabled.
+        # Corresponds to the JSON property `commonCriteriaModeEnabled`
+        # @return [Boolean]
+        attr_accessor :common_criteria_mode_enabled
+        alias_method :common_criteria_mode_enabled?, :common_criteria_mode_enabled
+      
         # Whether device settings reporting is enabled.
         # Corresponds to the JSON property `deviceSettingsEnabled`
         # @return [Boolean]
@@ -3375,6 +3427,7 @@ module Google
         def update!(**args)
           @application_reporting_settings = args[:application_reporting_settings] if args.key?(:application_reporting_settings)
           @application_reports_enabled = args[:application_reports_enabled] if args.key?(:application_reports_enabled)
+          @common_criteria_mode_enabled = args[:common_criteria_mode_enabled] if args.key?(:common_criteria_mode_enabled)
           @device_settings_enabled = args[:device_settings_enabled] if args.key?(:device_settings_enabled)
           @display_info_enabled = args[:display_info_enabled] if args.key?(:display_info_enabled)
           @hardware_status_enabled = args[:hardware_status_enabled] if args.key?(:hardware_status_enabled)
