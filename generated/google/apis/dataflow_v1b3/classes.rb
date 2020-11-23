@@ -2481,7 +2481,8 @@ module Google
         # @return [Google::Apis::DataflowV1b3::FlexTemplateRuntimeEnvironment]
         attr_accessor :environment
       
-        # Required. The job name to use for the created job.
+        # Required. The job name to use for the created job. For update job request, job
+        # name should be same as the existing running job.
         # Corresponds to the JSON property `jobName`
         # @return [String]
         attr_accessor :job_name
@@ -2497,6 +2498,19 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :parameters
       
+        # Users need to set transform_name_mappings Ex:`"oldTransformName":"
+        # newTransformName",...`'
+        # Corresponds to the JSON property `transformNameMappings`
+        # @return [Hash<String,String>]
+        attr_accessor :transform_name_mappings
+      
+        # Set this to true if you are sending a request to update a running streaming
+        # job. When set, the job name should be the same as the running job.
+        # Corresponds to the JSON property `update`
+        # @return [Boolean]
+        attr_accessor :update
+        alias_method :update?, :update
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2509,6 +2523,8 @@ module Google
           @job_name = args[:job_name] if args.key?(:job_name)
           @launch_options = args[:launch_options] if args.key?(:launch_options)
           @parameters = args[:parameters] if args.key?(:parameters)
+          @transform_name_mappings = args[:transform_name_mappings] if args.key?(:transform_name_mappings)
+          @update = args[:update] if args.key?(:update)
         end
       end
       
