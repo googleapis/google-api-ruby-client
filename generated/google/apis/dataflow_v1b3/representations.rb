@@ -1714,6 +1714,8 @@ module Google
           property :job_name, as: 'jobName'
           hash :launch_options, as: 'launchOptions'
           hash :parameters, as: 'parameters'
+          hash :transform_name_mappings, as: 'transformNameMappings'
+          property :update, as: 'update'
         end
       end
       
