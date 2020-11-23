@@ -1518,7 +1518,8 @@ module Google
         end
       end
       
-      # Resource to hold the state and status of a user's domain mapping.
+      # Resource to hold the state and status of a user's domain mapping. NOTE: This
+      # resource is currently in Beta.
       class DomainMapping
         include Google::Apis::Core::Hashable
       
