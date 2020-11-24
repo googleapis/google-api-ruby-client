@@ -8118,6 +8118,7 @@ module Google
           property :cloud_router_ip_address, as: 'cloudRouterIpAddress'
           property :creation_timestamp, as: 'creationTimestamp'
           property :customer_router_ip_address, as: 'customerRouterIpAddress'
+          property :dataplane_version, as: 'dataplaneVersion'
           property :description, as: 'description'
           property :edge_availability_domain, as: 'edgeAvailabilityDomain'
           property :google_reference_id, as: 'googleReferenceId'

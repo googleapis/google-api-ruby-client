@@ -3569,8 +3569,7 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # A client-specified ID for this binding. Expected to be globally unique to
-        # support the internal bindings-by-ID API.
+        # 
         # Corresponds to the JSON property `bindingId`
         # @return [String]
         attr_accessor :binding_id
@@ -14220,6 +14219,11 @@ module Google
         # @return [String]
         attr_accessor :customer_router_ip_address
       
+        # [Output Only] Dataplane version for this InterconnectAttachment.
+        # Corresponds to the JSON property `dataplaneVersion`
+        # @return [Fixnum]
+        attr_accessor :dataplane_version
+      
         # An optional description of this resource.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -14381,6 +14385,7 @@ module Google
           @cloud_router_ip_address = args[:cloud_router_ip_address] if args.key?(:cloud_router_ip_address)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @customer_router_ip_address = args[:customer_router_ip_address] if args.key?(:customer_router_ip_address)
+          @dataplane_version = args[:dataplane_version] if args.key?(:dataplane_version)
           @description = args[:description] if args.key?(:description)
           @edge_availability_domain = args[:edge_availability_domain] if args.key?(:edge_availability_domain)
           @google_reference_id = args[:google_reference_id] if args.key?(:google_reference_id)
