@@ -93,6 +93,7 @@ module Google
       class IpReputation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_count, :numeric_string => true, as: 'ipCount'
           property :num_ips, :numeric_string => true, as: 'numIps'
           property :reputation, as: 'reputation'
           collection :sample_ips, as: 'sampleIps'
