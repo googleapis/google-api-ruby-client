@@ -120,6 +120,14 @@ module Google
         # Total number of unique IPs in this reputation category. This metric only
         # pertains to traffic that passed [SPF](http://www.openspf.org/) or [DKIM](http:/
         # /www.dkim.org/).
+        # Corresponds to the JSON property `ipCount`
+        # @return [Fixnum]
+        attr_accessor :ip_count
+      
+        # Total number of unique IPs in this reputation category. This metric only
+        # pertains to traffic that passed [SPF](http://www.openspf.org/) or [DKIM](http:/
+        # /www.dkim.org/). Deprecated to be complied with ApiLinter for Quantities. Use
+        # ip_count instead.
         # Corresponds to the JSON property `numIps`
         # @return [Fixnum]
         attr_accessor :num_ips
@@ -140,6 +148,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ip_count = args[:ip_count] if args.key?(:ip_count)
           @num_ips = args[:num_ips] if args.key?(:num_ips)
           @reputation = args[:reputation] if args.key?(:reputation)
           @sample_ips = args[:sample_ips] if args.key?(:sample_ips)
