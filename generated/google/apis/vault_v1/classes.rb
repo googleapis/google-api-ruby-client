@@ -335,6 +335,11 @@ module Google
         # @return [Google::Apis::VaultV1::HeldMailQuery]
         attr_accessor :mail_query
       
+        # Query options for Voice holds.
+        # Corresponds to the JSON property `voiceQuery`
+        # @return [Google::Apis::VaultV1::HeldVoiceQuery]
+        attr_accessor :voice_query
+      
         def initialize(**args)
            update!(**args)
         end
@@ -345,6 +350,7 @@ module Google
           @groups_query = args[:groups_query] if args.key?(:groups_query)
           @hangouts_chat_query = args[:hangouts_chat_query] if args.key?(:hangouts_chat_query)
           @mail_query = args[:mail_query] if args.key?(:mail_query)
+          @voice_query = args[:voice_query] if args.key?(:voice_query)
         end
       end
       
@@ -615,6 +621,11 @@ module Google
         # @return [String]
         attr_accessor :region
       
+        # The options for voice export.
+        # Corresponds to the JSON property `voiceOptions`
+        # @return [Google::Apis::VaultV1::VoiceExportOptions]
+        attr_accessor :voice_options
+      
         def initialize(**args)
            update!(**args)
         end
@@ -626,6 +637,7 @@ module Google
           @hangouts_chat_options = args[:hangouts_chat_options] if args.key?(:hangouts_chat_options)
           @mail_options = args[:mail_options] if args.key?(:mail_options)
           @region = args[:region] if args.key?(:region)
+          @voice_options = args[:voice_options] if args.key?(:voice_options)
         end
       end
       
@@ -963,6 +975,26 @@ module Google
         def update!(**args)
           @hold_time = args[:hold_time] if args.key?(:hold_time)
           @org_unit_id = args[:org_unit_id] if args.key?(:org_unit_id)
+        end
+      end
+      
+      # Query options for Voice holds.
+      class HeldVoiceQuery
+        include Google::Apis::Core::Hashable
+      
+        # Data covered by this rule. Should be non-empty. Order does not matter and
+        # duplicates will be ignored.
+        # Corresponds to the JSON property `coveredData`
+        # @return [Array<String>]
+        attr_accessor :covered_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @covered_data = args[:covered_data] if args.key?(:covered_data)
         end
       end
       
@@ -1505,6 +1537,11 @@ module Google
         # @return [String]
         attr_accessor :time_zone
       
+        # Voice search options
+        # Corresponds to the JSON property `voiceOptions`
+        # @return [Google::Apis::VaultV1::VoiceOptions]
+        attr_accessor :voice_options
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1527,6 +1564,7 @@ module Google
           @team_drive_info = args[:team_drive_info] if args.key?(:team_drive_info)
           @terms = args[:terms] if args.key?(:terms)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
+          @voice_options = args[:voice_options] if args.key?(:voice_options)
         end
       end
       
@@ -1776,6 +1814,44 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @email = args[:email] if args.key?(:email)
+        end
+      end
+      
+      # The options for voice export.
+      class VoiceExportOptions
+        include Google::Apis::Core::Hashable
+      
+        # The export format for voice export.
+        # Corresponds to the JSON property `exportFormat`
+        # @return [String]
+        attr_accessor :export_format
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @export_format = args[:export_format] if args.key?(:export_format)
+        end
+      end
+      
+      # Voice search options
+      class VoiceOptions
+        include Google::Apis::Core::Hashable
+      
+        # Datatypes to search
+        # Corresponds to the JSON property `coveredData`
+        # @return [Array<String>]
+        attr_accessor :covered_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @covered_data = args[:covered_data] if args.key?(:covered_data)
         end
       end
     end
