@@ -220,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HeldVoiceQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Hold
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -376,6 +382,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VoiceExportOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VoiceOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccountCount
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -486,6 +504,8 @@ module Google
       
           property :mail_query, as: 'mailQuery', class: Google::Apis::VaultV1::HeldMailQuery, decorator: Google::Apis::VaultV1::HeldMailQuery::Representation
       
+          property :voice_query, as: 'voiceQuery', class: Google::Apis::VaultV1::HeldVoiceQuery, decorator: Google::Apis::VaultV1::HeldVoiceQuery::Representation
+      
         end
       end
       
@@ -575,6 +595,8 @@ module Google
           property :mail_options, as: 'mailOptions', class: Google::Apis::VaultV1::MailExportOptions, decorator: Google::Apis::VaultV1::MailExportOptions::Representation
       
           property :region, as: 'region'
+          property :voice_options, as: 'voiceOptions', class: Google::Apis::VaultV1::VoiceExportOptions, decorator: Google::Apis::VaultV1::VoiceExportOptions::Representation
+      
         end
       end
       
@@ -677,6 +699,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :hold_time, as: 'holdTime'
           property :org_unit_id, as: 'orgUnitId'
+        end
+      end
+      
+      class HeldVoiceQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :covered_data, as: 'coveredData'
         end
       end
       
@@ -843,6 +872,8 @@ module Google
       
           property :terms, as: 'terms'
           property :time_zone, as: 'timeZone'
+          property :voice_options, as: 'voiceOptions', class: Google::Apis::VaultV1::VoiceOptions, decorator: Google::Apis::VaultV1::VoiceOptions::Representation
+      
         end
       end
       
@@ -928,6 +959,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :email, as: 'email'
+        end
+      end
+      
+      class VoiceExportOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :export_format, as: 'exportFormat'
+        end
+      end
+      
+      class VoiceOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :covered_data, as: 'coveredData'
         end
       end
     end

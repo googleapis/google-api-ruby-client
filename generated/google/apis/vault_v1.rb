@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/vault
     module VaultV1
       VERSION = 'V1'
-      REVISION = '20201001'
+      REVISION = '20201117'
 
       # Manage your eDiscovery data
       AUTH_EDISCOVERY = 'https://www.googleapis.com/auth/ediscovery'
