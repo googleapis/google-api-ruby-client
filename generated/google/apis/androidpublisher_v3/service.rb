@@ -2231,7 +2231,7 @@ module Google
         # Creates an APK which is suitable for inclusion in a system image from an
         # already uploaded Android App Bundle.
         # @param [String] package_name
-        #   Unique identifier of the Android app.
+        #   Package name of the app.
         # @param [Fixnum] version_code
         #   The version code of the App Bundle.
         # @param [Google::Apis::AndroidpublisherV3::Variant] variant_object
@@ -2268,7 +2268,7 @@ module Google
         # Downloads a previously created system APK which is suitable for inclusion in a
         # system image.
         # @param [String] package_name
-        #   Unique identifier of the Android app.
+        #   Package name of the app.
         # @param [Fixnum] version_code
         #   The version code of the App Bundle.
         # @param [Fixnum] variant_id
@@ -2309,7 +2309,7 @@ module Google
         
         # Returns a previously created system APK variant.
         # @param [String] package_name
-        #   Unique identifier of the Android app.
+        #   Package name of the app.
         # @param [Fixnum] version_code
         #   The version code of the App Bundle.
         # @param [Fixnum] variant_id
@@ -2345,7 +2345,7 @@ module Google
         
         # Returns the list of previously created system APK variants.
         # @param [String] package_name
-        #   Unique identifier of the Android app.
+        #   Package name of the app.
         # @param [Fixnum] version_code
         #   The version code of the App Bundle.
         # @param [String] fields
