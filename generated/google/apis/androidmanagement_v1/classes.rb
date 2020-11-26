@@ -247,6 +247,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :accessible_track_ids
       
+        # This feature is not generally available.
+        # Corresponds to the JSON property `autoUpdateMode`
+        # @return [String]
+        attr_accessor :auto_update_mode
+      
         # Controls whether the app can communicate with itself across a device’s work
         # and personal profiles, subject to user consent.
         # Corresponds to the JSON property `connectedWorkAndPersonalApp`
@@ -329,6 +334,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accessible_track_ids = args[:accessible_track_ids] if args.key?(:accessible_track_ids)
+          @auto_update_mode = args[:auto_update_mode] if args.key?(:auto_update_mode)
           @connected_work_and_personal_app = args[:connected_work_and_personal_app] if args.key?(:connected_work_and_personal_app)
           @default_permission_policy = args[:default_permission_policy] if args.key?(:default_permission_policy)
           @delegated_scopes = args[:delegated_scopes] if args.key?(:delegated_scopes)
@@ -2406,8 +2412,14 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::ApplicationPolicy>]
         attr_accessor :applications
       
+        # Whether auto date, time, and time zone are enabled on a company-owned device.
+        # If this is set, then autoTimeRequired is ignored.
+        # Corresponds to the JSON property `autoDateAndTimeZone`
+        # @return [String]
+        attr_accessor :auto_date_and_time_zone
+      
         # Whether auto time is required, which prevents the user from manually setting
-        # the date and time.
+        # the date and time. If autoDateAndTimeZone is set, this field is ignored.
         # Corresponds to the JSON property `autoTimeRequired`
         # @return [Boolean]
         attr_accessor :auto_time_required
@@ -2577,8 +2589,7 @@ module Google
         # @return [Google::Apis::AndroidmanagementV1::KioskCustomization]
         attr_accessor :kiosk_customization
       
-        # The degree of location detection enabled. The user may change the value unless
-        # the user is otherwise blocked from accessing device settings.
+        # The degree of location detection enabled.
         # Corresponds to the JSON property `locationMode`
         # @return [String]
         attr_accessor :location_mode
@@ -2879,6 +2890,7 @@ module Google
           @android_device_policy_tracks = args[:android_device_policy_tracks] if args.key?(:android_device_policy_tracks)
           @app_auto_update_policy = args[:app_auto_update_policy] if args.key?(:app_auto_update_policy)
           @applications = args[:applications] if args.key?(:applications)
+          @auto_date_and_time_zone = args[:auto_date_and_time_zone] if args.key?(:auto_date_and_time_zone)
           @auto_time_required = args[:auto_time_required] if args.key?(:auto_time_required)
           @block_applications_enabled = args[:block_applications_enabled] if args.key?(:block_applications_enabled)
           @bluetooth_config_disabled = args[:bluetooth_config_disabled] if args.key?(:bluetooth_config_disabled)

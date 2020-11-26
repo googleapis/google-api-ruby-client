@@ -502,6 +502,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :accessible_track_ids, as: 'accessibleTrackIds'
+          property :auto_update_mode, as: 'autoUpdateMode'
           property :connected_work_and_personal_app, as: 'connectedWorkAndPersonalApp'
           property :default_permission_policy, as: 'defaultPermissionPolicy'
           collection :delegated_scopes, as: 'delegatedScopes'
@@ -1010,6 +1011,7 @@ module Google
           property :app_auto_update_policy, as: 'appAutoUpdatePolicy'
           collection :applications, as: 'applications', class: Google::Apis::AndroidmanagementV1::ApplicationPolicy, decorator: Google::Apis::AndroidmanagementV1::ApplicationPolicy::Representation
       
+          property :auto_date_and_time_zone, as: 'autoDateAndTimeZone'
           property :auto_time_required, as: 'autoTimeRequired'
           property :block_applications_enabled, as: 'blockApplicationsEnabled'
           property :bluetooth_config_disabled, as: 'bluetoothConfigDisabled'
