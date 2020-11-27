@@ -236,7 +236,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the device policy
+        # Updates the device policy. To ensure the policy is properly enforced, you need
+        # to prevent unmanaged accounts from accessing Google Play by setting the
+        # allowed_accounts in the managed configuration for the Google Play package. See
+        # restrict accounts in Google Play.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
