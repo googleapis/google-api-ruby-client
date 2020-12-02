@@ -20,10 +20,10 @@ require 'google/apis/errors'
 module Google
   module Apis
     module ResellerV1
-      # Enterprise Apps Reseller API
+      # Google Workspace Reseller API
       #
-      # Perform common functions that are available on the Google Apps Reseller
-      #  Console at scale like placing orders and viewing customer information
+      # Perform common functions that are available on the Channel Services console at
+      #  scale, like placing orders and viewing customer information
       #
       # @example
       #    require 'google/apis/reseller_v1'
@@ -44,8 +44,8 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://www.googleapis.com/', '')
-          @batch_path = 'batch/reseller/v1'
+          super('https://reseller.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
         # Get a customer account.
