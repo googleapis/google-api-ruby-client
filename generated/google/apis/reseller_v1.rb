@@ -18,15 +18,15 @@ require 'google/apis/reseller_v1/representations.rb'
 
 module Google
   module Apis
-    # Enterprise Apps Reseller API
+    # Google Workspace Reseller API
     #
-    # Perform common functions that are available on the Google Apps Reseller
-    # Console at scale like placing orders and viewing customer information
+    # Perform common functions that are available on the Channel Services console at
+    # scale, like placing orders and viewing customer information
     #
     # @see https://developers.google.com/google-apps/reseller/
     module ResellerV1
       VERSION = 'V1'
-      REVISION = '20200911'
+      REVISION = '20201129'
 
       # Manage users on your domain
       AUTH_APPS_ORDER = 'https://www.googleapis.com/auth/apps.order'
