@@ -326,14 +326,13 @@ module Google
       # If the specified size of an object does not match the actual size of the
       # object fetched, the object will not be transferred. * If the specified MD5
       # does not match the MD5 computed from the transferred bytes, the object
-      # transfer will fail. For more information, see [Generating MD5 hashes] (https://
-      # cloud.google.com/storage-transfer/docs/create-url-list#md5-checksum) * Ensure
-      # that each URL you specify is publicly accessible. For example, in Cloud
-      # Storage you can [share an object publicly] (https://cloud.google.com/storage/
-      # docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer
-      # Service obeys `robots.txt` rules and requires the source HTTP server to
-      # support `Range` requests and to return a `Content-Length` header in each
-      # response. * ObjectConditions have no effect when filtering objects to transfer.
+      # transfer will fail. * Ensure that each URL you specify is publicly accessible.
+      # For example, in Cloud Storage you can [share an object publicly] (https://
+      # cloud.google.com/storage/docs/cloud-console#_sharingdata) and get a link to it.
+      # * Storage Transfer Service obeys `robots.txt` rules and requires the source
+      # HTTP server to support `Range` requests and to return a `Content-Length`
+      # header in each response. * ObjectConditions have no effect when filtering
+      # objects to transfer.
       class HttpData
         include Google::Apis::Core::Hashable
       
@@ -1152,14 +1151,13 @@ module Google
         # If the specified size of an object does not match the actual size of the
         # object fetched, the object will not be transferred. * If the specified MD5
         # does not match the MD5 computed from the transferred bytes, the object
-        # transfer will fail. For more information, see [Generating MD5 hashes] (https://
-        # cloud.google.com/storage-transfer/docs/create-url-list#md5-checksum) * Ensure
-        # that each URL you specify is publicly accessible. For example, in Cloud
-        # Storage you can [share an object publicly] (https://cloud.google.com/storage/
-        # docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer
-        # Service obeys `robots.txt` rules and requires the source HTTP server to
-        # support `Range` requests and to return a `Content-Length` header in each
-        # response. * ObjectConditions have no effect when filtering objects to transfer.
+        # transfer will fail. * Ensure that each URL you specify is publicly accessible.
+        # For example, in Cloud Storage you can [share an object publicly] (https://
+        # cloud.google.com/storage/docs/cloud-console#_sharingdata) and get a link to it.
+        # * Storage Transfer Service obeys `robots.txt` rules and requires the source
+        # HTTP server to support `Range` requests and to return a `Content-Length`
+        # header in each response. * ObjectConditions have no effect when filtering
+        # objects to transfer.
         # Corresponds to the JSON property `httpDataSource`
         # @return [Google::Apis::StoragetransferV1::HttpData]
         attr_accessor :http_data_source
