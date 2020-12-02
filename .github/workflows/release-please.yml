@@ -6,12 +6,13 @@ on:
 name: release-please
 jobs:
   release-please:
-    if: secrets.ENABLE_RELEASE_PLEASE
     env:
       ENABLE_AUTO_APPROVE: ${{ secrets.ENABLE_AUTO_APPROVE }}
+      ENABLE_RELEASE_PLEASE: ${{ secrets.ENABLE_RELEASE_PLEASE }}
     runs-on: ubuntu-latest
     steps:
       - name: ReleasePlease
+        if: ${{ env.ENABLE_RELEASE_PLEASE }}
         uses: GoogleCloudPlatform/release-please-action@v2.5.7
         with:
           command: release-pr
@@ -23,7 +24,7 @@ jobs:
           monorepo-tags: true
           bump-minor-pre-major: true
       - name: AutoApprove
-        if: ${{ always() }}
+        if: ${{ always() && env.ENABLE_RELEASE_PLEASE }}
         uses: actions/github-script@v2
         with:
           github-token: ${{secrets.YOSHI_APPROVER_TOKEN}}
