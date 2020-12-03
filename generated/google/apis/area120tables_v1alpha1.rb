@@ -25,7 +25,7 @@ module Google
     # @see https://tables.area120.google.com
     module Area120tablesV1alpha1
       VERSION = 'V1alpha1'
-      REVISION = '20201112'
+      REVISION = '20201201'
 
       # See, edit, create, and delete all of your Google Drive files
       AUTH_DRIVE = 'https://www.googleapis.com/auth/drive'
@@ -41,6 +41,9 @@ module Google
 
       # View your Google Spreadsheets
       AUTH_SPREADSHEETS_READONLY = 'https://www.googleapis.com/auth/spreadsheets.readonly'
+
+      # See, edit, create, and delete your tables in Tables by Area 120
+      AUTH_TABLES = 'https://www.googleapis.com/auth/tables'
     end
   end
 end
