@@ -1351,13 +1351,17 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The assigned targeting options to create in batch, specified as a list of `
-        # CreateAssignedTargetingOptionsRequest`.
+        # CreateAssignedTargetingOptionsRequest`. Supported targeting types: * `
+        # TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `
+        # TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
         # Corresponds to the JSON property `createRequests`
         # @return [Array<Google::Apis::DisplayvideoV1::CreateAssignedTargetingOptionsRequest>]
         attr_accessor :create_requests
       
         # The assigned targeting options to delete in batch, specified as a list of `
-        # DeleteAssignedTargetingOptionsRequest`.
+        # DeleteAssignedTargetingOptionsRequest`. Supported targeting types: * `
+        # TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `
+        # TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
         # Corresponds to the JSON property `deleteRequests`
         # @return [Array<Google::Apis::DisplayvideoV1::DeleteAssignedTargetingOptionsRequest>]
         attr_accessor :delete_requests
@@ -4308,6 +4312,26 @@ module Google
         end
       end
       
+      # Search terms for geo region targeting options.
+      class GeoRegionSearchTerms
+        include Google::Apis::Core::Hashable
+      
+        # The search query for the desired geo region. The query can be a prefix, e.g. "
+        # New Yor", "Seattle", "USA", etc.
+        # Corresponds to the JSON property `geoRegionQuery`
+        # @return [String]
+        attr_accessor :geo_region_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @geo_region_query = args[:geo_region_query] if args.key?(:geo_region_query)
+        end
+      end
+      
       # Represents a targetable geographic region. This will be populated in the
       # geo_region_details field when targeting_type is `TARGETING_TYPE_GEO_REGION`.
       class GeoRegionTargetingOptionDetails
@@ -4589,6 +4613,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :insertion_order_id
       
+        # The type of insertion order. If this field is unspecified in creation, the
+        # value defaults to `RTB`.
+        # Corresponds to the JSON property `insertionOrderType`
+        # @return [String]
+        attr_accessor :insertion_order_type
+      
         # Integration details of an entry.
         # Corresponds to the JSON property `integrationDetails`
         # @return [Google::Apis::DisplayvideoV1::IntegrationDetails]
@@ -4636,6 +4666,7 @@ module Google
           @entity_status = args[:entity_status] if args.key?(:entity_status)
           @frequency_cap = args[:frequency_cap] if args.key?(:frequency_cap)
           @insertion_order_id = args[:insertion_order_id] if args.key?(:insertion_order_id)
+          @insertion_order_type = args[:insertion_order_type] if args.key?(:insertion_order_type)
           @integration_details = args[:integration_details] if args.key?(:integration_details)
           @name = args[:name] if args.key?(:name)
           @pacing = args[:pacing] if args.key?(:pacing)
@@ -5234,7 +5265,7 @@ module Google
         end
       end
       
-      # A single line item. Next id: 24
+      # A single line item.
       class LineItem
         include Google::Apis::Core::Hashable
       
@@ -7462,6 +7493,76 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Request message for SearchTargetingOptions.
+      class SearchTargetingOptionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Advertiser this request is being made in the context of.
+        # Corresponds to the JSON property `advertiserId`
+        # @return [Fixnum]
+        attr_accessor :advertiser_id
+      
+        # Search terms for geo region targeting options.
+        # Corresponds to the JSON property `geoRegionSearchTerms`
+        # @return [Google::Apis::DisplayvideoV1::GeoRegionSearchTerms]
+        attr_accessor :geo_region_search_terms
+      
+        # Requested page size. Must be between `1` and `100`. If unspecified will
+        # default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
+        # specified.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # A token identifying a page of results the server should return. Typically,
+        # this is the value of next_page_token returned from the previous call to `
+        # SearchTargetingOptions` method. If not specified, the first page of results
+        # will be returned.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
+          @geo_region_search_terms = args[:geo_region_search_terms] if args.key?(:geo_region_search_terms)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @page_token = args[:page_token] if args.key?(:page_token)
+        end
+      end
+      
+      # Response message for SearchTargetingOptionsResponse.
+      class SearchTargetingOptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `SearchTargetingOptions` method to
+        # retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of targeting options that match the search criteria. This list will
+        # be absent if empty.
+        # Corresponds to the JSON property `targetingOptions`
+        # @return [Array<Google::Apis::DisplayvideoV1::TargetingOption>]
+        attr_accessor :targeting_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @targeting_options = args[:targeting_options] if args.key?(:targeting_options)
         end
       end
       
