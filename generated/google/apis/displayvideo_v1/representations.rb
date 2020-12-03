@@ -700,6 +700,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GeoRegionSearchTerms
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GeoRegionTargetingOptionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1223,6 +1229,18 @@ module Google
       end
       
       class SdfDownloadTaskMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchTargetingOptionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchTargetingOptionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2540,6 +2558,13 @@ module Google
         end
       end
       
+      class GeoRegionSearchTerms
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :geo_region_query, as: 'geoRegionQuery'
+        end
+      end
+      
       class GeoRegionTargetingOptionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2621,6 +2646,7 @@ module Google
           property :frequency_cap, as: 'frequencyCap', class: Google::Apis::DisplayvideoV1::FrequencyCap, decorator: Google::Apis::DisplayvideoV1::FrequencyCap::Representation
       
           property :insertion_order_id, :numeric_string => true, as: 'insertionOrderId'
+          property :insertion_order_type, as: 'insertionOrderType'
           property :integration_details, as: 'integrationDetails', class: Google::Apis::DisplayvideoV1::IntegrationDetails, decorator: Google::Apis::DisplayvideoV1::IntegrationDetails::Representation
       
           property :name, as: 'name'
@@ -3405,6 +3431,26 @@ module Google
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
           property :version, as: 'version'
+        end
+      end
+      
+      class SearchTargetingOptionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
+          property :geo_region_search_terms, as: 'geoRegionSearchTerms', class: Google::Apis::DisplayvideoV1::GeoRegionSearchTerms, decorator: Google::Apis::DisplayvideoV1::GeoRegionSearchTerms::Representation
+      
+          property :page_size, as: 'pageSize'
+          property :page_token, as: 'pageToken'
+        end
+      end
+      
+      class SearchTargetingOptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :targeting_options, as: 'targetingOptions', class: Google::Apis::DisplayvideoV1::TargetingOption, decorator: Google::Apis::DisplayvideoV1::TargetingOption::Representation
+      
         end
       end
       

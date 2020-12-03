@@ -524,16 +524,22 @@ module Google
         #   expressions are made up of one or more restrictions. * Restrictions can be
         #   combined by `AND` or `OR` logical operators. A sequence of restrictions
         #   implicitly uses `AND`. * A restriction has the form of ``field` `operator` `
-        #   value``. * The operator must be `EQUALS (=)`. * Supported fields: - `
-        #   campaignId` - `displayName` - `entityStatus` Examples: * All `
-        #   ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` campaigns under an advertiser:
-        #   `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED")`
-        #   The length of this field should be no more than 500 characters.
+        #   value``. * The operator used on `updateTime` must be `GREATER THAN OR EQUAL TO
+        #   (>=)` or `LESS THAN OR EQUAL TO (<=)`. * The operator must be `EQUALS (=)`. *
+        #   Supported fields: - `campaignId` - `displayName` - `entityStatus` - `
+        #   updateTime` (input in ISO 8601 format, or YYYY-MM-DDTHH:MM:SSZ) Examples: *
+        #   All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` campaigns under an
+        #   advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="
+        #   ENTITY_STATUS_PAUSED")` * All campaigns with an update time less than or equal
+        #   to `2020-11-04T18:54:47Z (format of ISO 8601)`: `updateTime<="2020-11-04T18:54:
+        #   47Z"` * All campaigns with an update time greater than or equal to `2020-11-
+        #   04T18:54:47Z (format of ISO 8601)`: `updateTime>="2020-11-04T18:54:47Z"` The
+        #   length of this field should be no more than 500 characters.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `displayName` (
-        #   default) * `entityStatus` The default sorting order is ascending. To specify
-        #   descending order for a field, a suffix "desc" should be added to the field
-        #   name. Example: `displayName desc`.
+        #   default) * `entityStatus` * `updateTime` The default sorting order is
+        #   ascending. To specify descending order for a field, a suffix "desc" should be
+        #   added to the field name. Example: `displayName desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `100`. If unspecified will
         #   default to `100`.
@@ -1294,20 +1300,26 @@ module Google
         #   combined by `AND` or `OR` logical operators. A sequence of restrictions
         #   implicitly uses `AND`. * A restriction has the form of ``field` `operator` `
         #   value``. * The operator used on `budget.budget_segments.date_range.end_date`
-        #   must be LESS THAN (<). * The operators used on all other fields must be `
-        #   EQUALS (=)`. * Supported fields: - `campaignId` - `displayName` - `
-        #   entityStatus` - `budget.budget_segments.date_range.end_date` (input as YYYY-MM-
-        #   DD) Examples: * All insertion orders under a campaign: `campaignId="1234"` *
-        #   All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` insertion orders under an
-        #   advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="
+        #   must be LESS THAN (<). * The operator used on `updateTime` must be `GREATER
+        #   THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)`. * The operators used
+        #   on all other fields must be `EQUALS (=)`. * Supported fields: - `campaignId` -
+        #   `displayName` - `entityStatus` - `budget.budget_segments.date_range.end_date` (
+        #   input as YYYY-MM-DD) - `updateTime` (input in ISO 8601 format, or YYYY-MM-
+        #   DDTHH:MM:SSZ) Examples: * All insertion orders under a campaign: `campaignId="
+        #   1234"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` insertion orders
+        #   under an advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="
         #   ENTITY_STATUS_PAUSED")` * All insertion orders whose budget segments' dates
         #   end before March 28, 2019: `budget.budget_segments.date_range.end_date<"2019-
-        #   03-28"` The length of this field should be no more than 500 characters.
+        #   03-28"` * All insertion orders with an update time less than or equal to `2020-
+        #   11-04T18:54:47Z (format of ISO 8601)`: `updateTime<="2020-11-04T18:54:47Z"` *
+        #   All insertion orders with an update time greater than or equal to `2020-11-
+        #   04T18:54:47Z (format of ISO 8601)`: `updateTime>="2020-11-04T18:54:47Z"` The
+        #   length of this field should be no more than 500 characters.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * "displayName" (
-        #   default) * "entityStatus" The default sorting order is ascending. To specify
-        #   descending order for a field, a suffix "desc" should be added to the field
-        #   name. Example: `displayName desc`.
+        #   default) * "entityStatus" * "updateTime" The default sorting order is
+        #   ascending. To specify descending order for a field, a suffix "desc" should be
+        #   added to the field name. Example: `displayName desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `100`. If unspecified will
         #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
@@ -1604,25 +1616,31 @@ module Google
         #   combined by `AND` or `OR` logical operators. A sequence of restrictions
         #   implicitly uses `AND`. * A restriction has the form of ``field` `operator` `
         #   value``. * The operator used on `flight.dateRange.endDate` must be LESS THAN (<
-        #   ). * The operator used on `warningMessages` must be `HAS (:)`. * The operators
-        #   used on all other fields must be `EQUALS (=)`. * Supported fields: - `
-        #   campaignId` - `displayName` - `insertionOrderId` - `entityStatus` - `
-        #   lineItemId` - `lineItemType` - `flight.dateRange.endDate` (input formatted as
-        #   YYYY-MM-DD) - `warningMessages` - `flight.triggerId` Examples: * All line
-        #   items under an insertion order: `insertionOrderId="1234"` * All `
-        #   ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` and `
-        #   LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser: `(entityStatus=
-        #   "ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED") AND
-        #   lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"` * All line items whose flight
-        #   dates end before March 28, 2019: `flight.dateRange.endDate<"2019-03-28"` * All
-        #   line items that have `NO_VALID_CREATIVE` in `warningMessages`: `
-        #   warningMessages:"NO_VALID_CREATIVE"` The length of this field should be no
-        #   more than 500 characters.
+        #   ). * The operator used on `updateTime` must be `GREATER THAN OR EQUAL TO (>=)`
+        #   or `LESS THAN OR EQUAL TO (<=)`. * The operator used on `warningMessages` must
+        #   be `HAS (:)`. * The operators used on all other fields must be `EQUALS (=)`. *
+        #   Supported fields: - `campaignId` - `displayName` - `insertionOrderId` - `
+        #   entityStatus` - `lineItemId` - `lineItemType` - `flight.dateRange.endDate` (
+        #   input formatted as YYYY-MM-DD) - `warningMessages` - `flight.triggerId` - `
+        #   updateTime` (input in ISO 8601 format, or YYYY-MM-DDTHH:MM:SSZ) * The operator
+        #   can be `NO LESS THAN (>=)` or `NO GREATER THAN (<=)`. - `updateTime` (format
+        #   of ISO 8601) Examples: * All line items under an insertion order: `
+        #   insertionOrderId="1234"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED`
+        #   and `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser: `(
+        #   entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED")
+        #   AND lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"` * All line items whose
+        #   flight dates end before March 28, 2019: `flight.dateRange.endDate<"2019-03-28"`
+        #   * All line items that have `NO_VALID_CREATIVE` in `warningMessages`: `
+        #   warningMessages:"NO_VALID_CREATIVE"` * All line items with an update time less
+        #   than or equal to `2020-11-04T18:54:47Z (format of ISO 8601)`: `updateTime<="
+        #   2020-11-04T18:54:47Z"` * All line items with an update time greater than or
+        #   equal to `2020-11-04T18:54:47Z (format of ISO 8601)`: `updateTime>="2020-11-
+        #   04T18:54:47Z"` The length of this field should be no more than 500 characters.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * "displayName" (
-        #   default) * "entityStatus" * “flight.dateRange.endDate” The default sorting
-        #   order is ascending. To specify descending order for a field, a suffix "desc"
-        #   should be added to the field name. Example: `displayName desc`.
+        #   default) * "entityStatus" * “flight.dateRange.endDate” * "updateTime" The
+        #   default sorting order is ascending. To specify descending order for a field, a
+        #   suffix "desc" should be added to the field name. Example: `displayName desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `100`. If unspecified will
         #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
@@ -2831,7 +2849,10 @@ module Google
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser.
         # @param [String] targeting_type
-        #   Required. Identifies the type of this assigned targeting option.
+        #   Required. Identifies the type of this assigned targeting option. Supported
+        #   targeting types: * `TARGETING_TYPE_CHANNEL` * `
+        #   TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `
+        #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
         # @param [Google::Apis::DisplayvideoV1::AssignedTargetingOption] assigned_targeting_option_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2867,7 +2888,10 @@ module Google
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser.
         # @param [String] targeting_type
-        #   Required. Identifies the type of this assigned targeting option.
+        #   Required. Identifies the type of this assigned targeting option. Supported
+        #   targeting types: * `TARGETING_TYPE_CHANNEL` * `
+        #   TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `
+        #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
         # @param [String] assigned_targeting_option_id
         #   Required. The ID of the assigned targeting option to delete.
         # @param [String] fields
@@ -2903,7 +2927,10 @@ module Google
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser.
         # @param [String] targeting_type
-        #   Required. Identifies the type of this assigned targeting option.
+        #   Required. Identifies the type of this assigned targeting option. Supported
+        #   targeting types: * `TARGETING_TYPE_CHANNEL` * `
+        #   TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `
+        #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
         # @param [String] assigned_targeting_option_id
         #   Required. An identifier unique to the targeting type in this advertiser that
         #   identifies the assigned targeting option being requested.
@@ -2940,7 +2967,10 @@ module Google
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser.
         # @param [String] targeting_type
-        #   Required. Identifies the type of assigned targeting options to list.
+        #   Required. Identifies the type of assigned targeting options to list. Supported
+        #   targeting types: * `TARGETING_TYPE_CHANNEL` * `
+        #   TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `
+        #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
         # @param [String] filter
         #   Allows filtering by assigned targeting option properties. Supported syntax: *
         #   Filter expressions are made up of one or more restrictions. * Restrictions can
@@ -4906,6 +4936,40 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Searches for targeting options of a given type based on the given search terms.
+        # @param [String] targeting_type
+        #   Required. The type of targeting options to retrieve. Accepted values are: * `
+        #   TARGETING_TYPE_GEO_REGION`
+        # @param [Google::Apis::DisplayvideoV1::SearchTargetingOptionsRequest] search_targeting_options_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::SearchTargetingOptionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::SearchTargetingOptionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_targeting_options(targeting_type, search_targeting_options_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/targetingTypes/{+targetingType}/targetingOptions:search', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::SearchTargetingOptionsRequest::Representation
+          command.request_object = search_targeting_options_request_object
+          command.response_representation = Google::Apis::DisplayvideoV1::SearchTargetingOptionsResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::SearchTargetingOptionsResponse
+          command.params['targetingType'] = targeting_type unless targeting_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
