@@ -1581,6 +1581,7 @@ module Google
       
           collection :seller_contacts, as: 'sellerContacts', class: Google::Apis::Adexchangebuyer2V2beta1::ContactInformation, decorator: Google::Apis::Adexchangebuyer2V2beta1::ContactInformation::Representation
       
+          property :terms_and_conditions, as: 'termsAndConditions'
           property :update_time, as: 'updateTime'
         end
       end
