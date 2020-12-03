@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BasemapZOrder
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExtrudedArea
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -139,6 +145,8 @@ module Google
       class Area
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :basemap_z_order, as: 'basemapZOrder', class: Google::Apis::VectortileV1::BasemapZOrder, decorator: Google::Apis::VectortileV1::BasemapZOrder::Representation
+      
           property :has_external_edges, as: 'hasExternalEdges'
           collection :internal_edges, as: 'internalEdges'
           collection :loop_breaks, as: 'loopBreaks'
@@ -147,6 +155,15 @@ module Google
           property :vertex_offsets, as: 'vertexOffsets', class: Google::Apis::VectortileV1::Vertex2DList, decorator: Google::Apis::VectortileV1::Vertex2DList::Representation
       
           property :z_order, as: 'zOrder'
+        end
+      end
+      
+      class BasemapZOrder
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :z_grade, as: 'zGrade'
+          property :z_plane, as: 'zPlane'
+          property :z_within_grade, as: 'zWithinGrade'
         end
       end
       
@@ -216,6 +233,8 @@ module Google
       class Line
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :basemap_z_order, as: 'basemapZOrder', class: Google::Apis::VectortileV1::BasemapZOrder, decorator: Google::Apis::VectortileV1::BasemapZOrder::Representation
+      
           property :vertex_offsets, as: 'vertexOffsets', class: Google::Apis::VectortileV1::Vertex2DList, decorator: Google::Apis::VectortileV1::Vertex2DList::Representation
       
           property :z_order, as: 'zOrder'
