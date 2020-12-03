@@ -894,7 +894,9 @@ module Google
         # Processes a natural language query and returns structured, actionable data as
         # a result. This method is not idempotent, because it may cause contexts and
         # session entity types to be updated, which in turn might affect results of
-        # future queries.
+        # future queries. Note: Always use agent versions for production traffic. See [
+        # Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-
+        # versions).
         # @param [String] session
         #   Required. The name of the session this query is sent to. Supported formats: - `
         #   projects//agent/sessions/, - `projects//locations//agent/sessions/`, - `
@@ -906,7 +908,9 @@ module Google
         #   can be a random number or some type of user and session identifiers (
         #   preferably hashed). The length of the `Session ID` and `User ID` must not
         #   exceed 36 characters. For more information, see the [API interactions guide](
-        #   https://cloud.google.com/dialogflow/docs/api-overview).
+        #   https://cloud.google.com/dialogflow/docs/api-overview). Note: Always use agent
+        #   versions for production traffic. See [Versions and environments](https://cloud.
+        #   google.com/dialogflow/es/docs/agents-versions).
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentRequest] google_cloud_dialogflow_v2beta1_detect_intent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1621,7 +1625,8 @@ module Google
         # Creates a knowledge base. Note: The `projects.agent.knowledgeBases` resource
         # is deprecated; only use `projects.knowledgeBases`.
         # @param [String] parent
-        #   Required. The project to create a knowledge base for. Format: `projects/`.
+        #   Required. The project to create a knowledge base for. Format: `projects//
+        #   locations/`.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase] google_cloud_dialogflow_v2beta1_knowledge_base_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1656,7 +1661,7 @@ module Google
         # resource is deprecated; only use `projects.knowledgeBases`.
         # @param [String] name
         #   Required. The name of the knowledge base to delete. Format: `projects//
-        #   knowledgeBases/`.
+        #   locations//knowledgeBases/`.
         # @param [Boolean] force
         #   Optional. Force deletes the knowledge base. When set to true, any documents in
         #   the knowledge base are also deleted.
@@ -1692,7 +1697,7 @@ module Google
         # knowledgeBases` resource is deprecated; only use `projects.knowledgeBases`.
         # @param [String] name
         #   Required. The name of the knowledge base to retrieve. Format `projects//
-        #   knowledgeBases/`.
+        #   locations//knowledgeBases/`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1724,7 +1729,8 @@ module Google
         # projects.agent.knowledgeBases` resource is deprecated; only use `projects.
         # knowledgeBases`.
         # @param [String] parent
-        #   Required. The project to list of knowledge bases for. Format: `projects/`.
+        #   Required. The project to list of knowledge bases for. Format: `projects//
+        #   locations/`.
         # @param [String] filter
         #   The filter expression used to filter knowledge bases returned by the list
         #   method. The expression has the following syntax: [AND ] ... The following
@@ -1777,7 +1783,7 @@ module Google
         # resource is deprecated; only use `projects.knowledgeBases`.
         # @param [String] name
         #   The knowledge base resource name. The name must be empty when creating a
-        #   knowledge base. Format: `projects//knowledgeBases/`.
+        #   knowledge base. Format: `projects//locations//knowledgeBases/`.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase] google_cloud_dialogflow_v2beta1_knowledge_base_object
         # @param [String] update_mask
         #   Optional. Not specified means `update all`. Currently, only `display_name` can
@@ -1817,7 +1823,7 @@ module Google
         # resource is deprecated; only use `projects.knowledgeBases.documents`.
         # @param [String] parent
         #   Required. The knowledge base to create a document for. Format: `projects//
-        #   knowledgeBases/`.
+        #   locations//knowledgeBases/`.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Document] google_cloud_dialogflow_v2beta1_document_object
         # @param [Boolean] import_gcs_custom_metadata
         #   Whether to import custom metadata from Google Cloud Storage. Only valid when
@@ -1856,7 +1862,7 @@ module Google
         # documents` resource is deprecated; only use `projects.knowledgeBases.documents`
         # .
         # @param [String] name
-        #   Required. The name of the document to delete. Format: `projects//
+        #   Required. The name of the document to delete. Format: `projects//locations//
         #   knowledgeBases//documents/`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1889,7 +1895,7 @@ module Google
         # documents` resource is deprecated; only use `projects.knowledgeBases.documents`
         # .
         # @param [String] name
-        #   Required. The name of the document to retrieve. Format `projects//
+        #   Required. The name of the document to retrieve. Format `projects//locations//
         #   knowledgeBases//documents/`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1923,7 +1929,7 @@ module Google
         # knowledgeBases.documents`.
         # @param [String] parent
         #   Required. The knowledge base to list all documents for. Format: `projects//
-        #   knowledgeBases/`.
+        #   locations//knowledgeBases/`.
         # @param [String] filter
         #   The filter expression used to filter documents returned by the list method.
         #   The expression has the following syntax: [AND ] ... The following fields and
@@ -1974,7 +1980,7 @@ module Google
         # .
         # @param [String] name
         #   Optional. The document resource name. The name must be empty when creating a
-        #   document. Format: `projects//knowledgeBases//documents/`.
+        #   document. Format: `projects//locations//knowledgeBases//documents/`.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Document] google_cloud_dialogflow_v2beta1_document_object
         # @param [String] update_mask
         #   Optional. Not specified means `update all`. Currently, only `display_name` can
@@ -2020,7 +2026,7 @@ module Google
         # documents` resource is deprecated; only use `projects.knowledgeBases.documents`
         # .
         # @param [String] name
-        #   Required. The name of the document to reload. Format: `projects//
+        #   Required. The name of the document to reload. Format: `projects//locations//
         #   knowledgeBases//documents/`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ReloadDocumentRequest] google_cloud_dialogflow_v2beta1_reload_document_request_object
         # @param [String] fields
@@ -2091,7 +2097,9 @@ module Google
         # Processes a natural language query and returns structured, actionable data as
         # a result. This method is not idempotent, because it may cause contexts and
         # session entity types to be updated, which in turn might affect results of
-        # future queries.
+        # future queries. Note: Always use agent versions for production traffic. See [
+        # Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-
+        # versions).
         # @param [String] session
         #   Required. The name of the session this query is sent to. Supported formats: - `
         #   projects//agent/sessions/, - `projects//locations//agent/sessions/`, - `
@@ -2103,7 +2111,9 @@ module Google
         #   can be a random number or some type of user and session identifiers (
         #   preferably hashed). The length of the `Session ID` and `User ID` must not
         #   exceed 36 characters. For more information, see the [API interactions guide](
-        #   https://cloud.google.com/dialogflow/docs/api-overview).
+        #   https://cloud.google.com/dialogflow/docs/api-overview). Note: Always use agent
+        #   versions for production traffic. See [Versions and environments](https://cloud.
+        #   google.com/dialogflow/es/docs/agents-versions).
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentRequest] google_cloud_dialogflow_v2beta1_detect_intent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2542,7 +2552,8 @@ module Google
         # Creates a knowledge base. Note: The `projects.agent.knowledgeBases` resource
         # is deprecated; only use `projects.knowledgeBases`.
         # @param [String] parent
-        #   Required. The project to create a knowledge base for. Format: `projects/`.
+        #   Required. The project to create a knowledge base for. Format: `projects//
+        #   locations/`.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase] google_cloud_dialogflow_v2beta1_knowledge_base_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2577,7 +2588,7 @@ module Google
         # resource is deprecated; only use `projects.knowledgeBases`.
         # @param [String] name
         #   Required. The name of the knowledge base to delete. Format: `projects//
-        #   knowledgeBases/`.
+        #   locations//knowledgeBases/`.
         # @param [Boolean] force
         #   Optional. Force deletes the knowledge base. When set to true, any documents in
         #   the knowledge base are also deleted.
@@ -2613,7 +2624,7 @@ module Google
         # knowledgeBases` resource is deprecated; only use `projects.knowledgeBases`.
         # @param [String] name
         #   Required. The name of the knowledge base to retrieve. Format `projects//
-        #   knowledgeBases/`.
+        #   locations//knowledgeBases/`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2645,7 +2656,8 @@ module Google
         # projects.agent.knowledgeBases` resource is deprecated; only use `projects.
         # knowledgeBases`.
         # @param [String] parent
-        #   Required. The project to list of knowledge bases for. Format: `projects/`.
+        #   Required. The project to list of knowledge bases for. Format: `projects//
+        #   locations/`.
         # @param [String] filter
         #   The filter expression used to filter knowledge bases returned by the list
         #   method. The expression has the following syntax: [AND ] ... The following
@@ -2698,7 +2710,7 @@ module Google
         # resource is deprecated; only use `projects.knowledgeBases`.
         # @param [String] name
         #   The knowledge base resource name. The name must be empty when creating a
-        #   knowledge base. Format: `projects//knowledgeBases/`.
+        #   knowledge base. Format: `projects//locations//knowledgeBases/`.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase] google_cloud_dialogflow_v2beta1_knowledge_base_object
         # @param [String] update_mask
         #   Optional. Not specified means `update all`. Currently, only `display_name` can
@@ -2738,7 +2750,7 @@ module Google
         # resource is deprecated; only use `projects.knowledgeBases.documents`.
         # @param [String] parent
         #   Required. The knowledge base to create a document for. Format: `projects//
-        #   knowledgeBases/`.
+        #   locations//knowledgeBases/`.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Document] google_cloud_dialogflow_v2beta1_document_object
         # @param [Boolean] import_gcs_custom_metadata
         #   Whether to import custom metadata from Google Cloud Storage. Only valid when
@@ -2777,7 +2789,7 @@ module Google
         # documents` resource is deprecated; only use `projects.knowledgeBases.documents`
         # .
         # @param [String] name
-        #   Required. The name of the document to delete. Format: `projects//
+        #   Required. The name of the document to delete. Format: `projects//locations//
         #   knowledgeBases//documents/`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2810,7 +2822,7 @@ module Google
         # documents` resource is deprecated; only use `projects.knowledgeBases.documents`
         # .
         # @param [String] name
-        #   Required. The name of the document to retrieve. Format `projects//
+        #   Required. The name of the document to retrieve. Format `projects//locations//
         #   knowledgeBases//documents/`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2844,7 +2856,7 @@ module Google
         # knowledgeBases.documents`.
         # @param [String] parent
         #   Required. The knowledge base to list all documents for. Format: `projects//
-        #   knowledgeBases/`.
+        #   locations//knowledgeBases/`.
         # @param [String] filter
         #   The filter expression used to filter documents returned by the list method.
         #   The expression has the following syntax: [AND ] ... The following fields and
@@ -2895,7 +2907,7 @@ module Google
         # .
         # @param [String] name
         #   Optional. The document resource name. The name must be empty when creating a
-        #   document. Format: `projects//knowledgeBases//documents/`.
+        #   document. Format: `projects//locations//knowledgeBases//documents/`.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Document] google_cloud_dialogflow_v2beta1_document_object
         # @param [String] update_mask
         #   Optional. Not specified means `update all`. Currently, only `display_name` can
@@ -2941,7 +2953,7 @@ module Google
         # documents` resource is deprecated; only use `projects.knowledgeBases.documents`
         # .
         # @param [String] name
-        #   Required. The name of the document to reload. Format: `projects//
+        #   Required. The name of the document to reload. Format: `projects//locations//
         #   knowledgeBases//documents/`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ReloadDocumentRequest] google_cloud_dialogflow_v2beta1_reload_document_request_object
         # @param [String] fields
@@ -3819,7 +3831,9 @@ module Google
         # Processes a natural language query and returns structured, actionable data as
         # a result. This method is not idempotent, because it may cause contexts and
         # session entity types to be updated, which in turn might affect results of
-        # future queries.
+        # future queries. Note: Always use agent versions for production traffic. See [
+        # Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-
+        # versions).
         # @param [String] session
         #   Required. The name of the session this query is sent to. Supported formats: - `
         #   projects//agent/sessions/, - `projects//locations//agent/sessions/`, - `
@@ -3831,7 +3845,9 @@ module Google
         #   can be a random number or some type of user and session identifiers (
         #   preferably hashed). The length of the `Session ID` and `User ID` must not
         #   exceed 36 characters. For more information, see the [API interactions guide](
-        #   https://cloud.google.com/dialogflow/docs/api-overview).
+        #   https://cloud.google.com/dialogflow/docs/api-overview). Note: Always use agent
+        #   versions for production traffic. See [Versions and environments](https://cloud.
+        #   google.com/dialogflow/es/docs/agents-versions).
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentRequest] google_cloud_dialogflow_v2beta1_detect_intent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4582,7 +4598,9 @@ module Google
         # Processes a natural language query and returns structured, actionable data as
         # a result. This method is not idempotent, because it may cause contexts and
         # session entity types to be updated, which in turn might affect results of
-        # future queries.
+        # future queries. Note: Always use agent versions for production traffic. See [
+        # Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-
+        # versions).
         # @param [String] session
         #   Required. The name of the session this query is sent to. Supported formats: - `
         #   projects//agent/sessions/, - `projects//locations//agent/sessions/`, - `
@@ -4594,7 +4612,9 @@ module Google
         #   can be a random number or some type of user and session identifiers (
         #   preferably hashed). The length of the `Session ID` and `User ID` must not
         #   exceed 36 characters. For more information, see the [API interactions guide](
-        #   https://cloud.google.com/dialogflow/docs/api-overview).
+        #   https://cloud.google.com/dialogflow/docs/api-overview). Note: Always use agent
+        #   versions for production traffic. See [Versions and environments](https://cloud.
+        #   google.com/dialogflow/es/docs/agents-versions).
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentRequest] google_cloud_dialogflow_v2beta1_detect_intent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5025,6 +5045,442 @@ module Google
           command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a knowledge base. Note: The `projects.agent.knowledgeBases` resource
+        # is deprecated; only use `projects.knowledgeBases`.
+        # @param [String] parent
+        #   Required. The project to create a knowledge base for. Format: `projects//
+        #   locations/`.
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase] google_cloud_dialogflow_v2beta1_knowledge_base_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_knowledge_basis(parent, google_cloud_dialogflow_v2beta1_knowledge_base_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta1/{+parent}/knowledgeBases', options)
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_knowledge_base_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified knowledge base. Note: The `projects.agent.knowledgeBases`
+        # resource is deprecated; only use `projects.knowledgeBases`.
+        # @param [String] name
+        #   Required. The name of the knowledge base to delete. Format: `projects//
+        #   locations//knowledgeBases/`.
+        # @param [Boolean] force
+        #   Optional. Force deletes the knowledge base. When set to true, any documents in
+        #   the knowledge base are also deleted.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_knowledge_basis(name, force: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2beta1/{+name}', options)
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the specified knowledge base. Note: The `projects.agent.
+        # knowledgeBases` resource is deprecated; only use `projects.knowledgeBases`.
+        # @param [String] name
+        #   Required. The name of the knowledge base to retrieve. Format `projects//
+        #   locations//knowledgeBases/`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_knowledge_basis(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2beta1/{+name}', options)
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the list of all knowledge bases of the specified agent. Note: The `
+        # projects.agent.knowledgeBases` resource is deprecated; only use `projects.
+        # knowledgeBases`.
+        # @param [String] parent
+        #   Required. The project to list of knowledge bases for. Format: `projects//
+        #   locations/`.
+        # @param [String] filter
+        #   The filter expression used to filter knowledge bases returned by the list
+        #   method. The expression has the following syntax: [AND ] ... The following
+        #   fields and operators are supported: * display_name with has(:) operator *
+        #   language_code with equals(=) operator Examples: * 'language_code=en-us'
+        #   matches knowledge bases with en-us language code. * 'display_name:articles'
+        #   matches knowledge bases whose display name contains "articles". * '
+        #   display_name:"Best Articles"' matches knowledge bases whose display name
+        #   contains "Best Articles". * 'language_code=en-gb AND display_name=articles'
+        #   matches all knowledge bases whose display name contains "articles" and whose
+        #   language code is "en-gb". Note: An empty filter string (i.e. "") is a no-op
+        #   and will result in no filtering. For more information about filtering, see [
+        #   API Filtering](https://aip.dev/160).
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return in a single page. By default 10 and at
+        #   most 100.
+        # @param [String] page_token
+        #   The next_page_token value returned from a previous list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_knowledge_bases(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2beta1/{+parent}/knowledgeBases', options)
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified knowledge base. Note: The `projects.agent.knowledgeBases`
+        # resource is deprecated; only use `projects.knowledgeBases`.
+        # @param [String] name
+        #   The knowledge base resource name. The name must be empty when creating a
+        #   knowledge base. Format: `projects//locations//knowledgeBases/`.
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase] google_cloud_dialogflow_v2beta1_knowledge_base_object
+        # @param [String] update_mask
+        #   Optional. Not specified means `update all`. Currently, only `display_name` can
+        #   be updated, an InvalidArgument will be returned for attempting to update other
+        #   fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_knowledge_basis(name, google_cloud_dialogflow_v2beta1_knowledge_base_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2beta1/{+name}', options)
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_knowledge_base_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1KnowledgeBase
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new document. Note: The `projects.agent.knowledgeBases.documents`
+        # resource is deprecated; only use `projects.knowledgeBases.documents`.
+        # @param [String] parent
+        #   Required. The knowledge base to create a document for. Format: `projects//
+        #   locations//knowledgeBases/`.
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Document] google_cloud_dialogflow_v2beta1_document_object
+        # @param [Boolean] import_gcs_custom_metadata
+        #   Whether to import custom metadata from Google Cloud Storage. Only valid when
+        #   the document source is Google Cloud Storage URI.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_knowledge_basis_document(parent, google_cloud_dialogflow_v2beta1_document_object = nil, import_gcs_custom_metadata: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta1/{+parent}/documents', options)
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Document::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_document_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['importGcsCustomMetadata'] = import_gcs_custom_metadata unless import_gcs_custom_metadata.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified document. Note: The `projects.agent.knowledgeBases.
+        # documents` resource is deprecated; only use `projects.knowledgeBases.documents`
+        # .
+        # @param [String] name
+        #   Required. The name of the document to delete. Format: `projects//locations//
+        #   knowledgeBases//documents/`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_knowledge_basis_document(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2beta1/{+name}', options)
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the specified document. Note: The `projects.agent.knowledgeBases.
+        # documents` resource is deprecated; only use `projects.knowledgeBases.documents`
+        # .
+        # @param [String] name
+        #   Required. The name of the document to retrieve. Format `projects//locations//
+        #   knowledgeBases//documents/`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Document] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Document]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_knowledge_basis_document(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2beta1/{+name}', options)
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Document::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Document
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the list of all documents of the knowledge base. Note: The `projects.
+        # agent.knowledgeBases.documents` resource is deprecated; only use `projects.
+        # knowledgeBases.documents`.
+        # @param [String] parent
+        #   Required. The knowledge base to list all documents for. Format: `projects//
+        #   locations//knowledgeBases/`.
+        # @param [String] filter
+        #   The filter expression used to filter documents returned by the list method.
+        #   The expression has the following syntax: [AND ] ... The following fields and
+        #   operators are supported: * knowledge_types with has(:) operator * display_name
+        #   with has(:) operator * state with equals(=) operator Examples: * "
+        #   knowledge_types:FAQ" matches documents with FAQ knowledge type. * "
+        #   display_name:customer" matches documents whose display name contains "customer"
+        #   . * "state=ACTIVE" matches documents with ACTIVE state. * "knowledge_types:FAQ
+        #   AND state=ACTIVE" matches all active FAQ documents. For more information about
+        #   filtering, see [API Filtering](https://aip.dev/160).
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return in a single page. By default 10 and at
+        #   most 100.
+        # @param [String] page_token
+        #   The next_page_token value returned from a previous list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListDocumentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListDocumentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_knowledge_basis_documents(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2beta1/{+parent}/documents', options)
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListDocumentsResponse::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListDocumentsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified document. Note: The `projects.agent.knowledgeBases.
+        # documents` resource is deprecated; only use `projects.knowledgeBases.documents`
+        # .
+        # @param [String] name
+        #   Optional. The document resource name. The name must be empty when creating a
+        #   document. Format: `projects//locations//knowledgeBases//documents/`.
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Document] google_cloud_dialogflow_v2beta1_document_object
+        # @param [String] update_mask
+        #   Optional. Not specified means `update all`. Currently, only `display_name` can
+        #   be updated, an InvalidArgument will be returned for attempting to update other
+        #   fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_knowledge_basis_document(name, google_cloud_dialogflow_v2beta1_document_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2beta1/{+name}', options)
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Document::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_document_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Reloads the specified document from its specified source, content_uri or
+        # content. The previously loaded content of the document will be deleted. Note:
+        # Even when the content of the document has not changed, there still may be side
+        # effects because of internal implementation changes. Note: If the document
+        # source is Google Cloud Storage URI, its metadata will be replaced with the
+        # custom metadata from Google Cloud Storage if the `import_gcs_custom_metadata`
+        # field is set to true in the request. Note: The `projects.agent.knowledgeBases.
+        # documents` resource is deprecated; only use `projects.knowledgeBases.documents`
+        # .
+        # @param [String] name
+        #   Required. The name of the document to reload. Format: `projects//locations//
+        #   knowledgeBases//documents/`
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ReloadDocumentRequest] google_cloud_dialogflow_v2beta1_reload_document_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def reload_project_location_knowledge_basis_document(name, google_cloud_dialogflow_v2beta1_reload_document_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta1/{+name}:reload', options)
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ReloadDocumentRequest::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_reload_document_request_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
