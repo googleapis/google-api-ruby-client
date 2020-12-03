@@ -3154,8 +3154,8 @@ module Google
         # @return [Google::Apis::YoutubeV3::LocalizedProperty]
         attr_accessor :background_image_url
       
-        # This is used only in update requests; if it's set, we use this URL to generate
-        # all of the above banner URLs.
+        # This is generated when a ChannelBanner.Insert request has succeeded for the
+        # given channel.
         # Corresponds to the JSON property `bannerExternalUrl`
         # @return [String]
         attr_accessor :banner_external_url
