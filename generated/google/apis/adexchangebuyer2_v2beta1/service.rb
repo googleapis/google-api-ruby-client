@@ -930,7 +930,9 @@ module Google
         # Mark the proposal as accepted at the given revision number. If the number does
         # not match the server's revision number an `ABORTED` error message will be
         # returned. This call updates the proposal_state from `PROPOSED` to `
-        # BUYER_ACCEPTED`, or from `SELLER_ACCEPTED` to `FINALIZED`.
+        # BUYER_ACCEPTED`, or from `SELLER_ACCEPTED` to `FINALIZED`. Upon calling this
+        # endpoint, the buyer implicitly agrees to the terms and conditions optionally
+        # set within the proposal by the publisher.
         # @param [String] account_id
         #   Account ID of the buyer.
         # @param [String] proposal_id

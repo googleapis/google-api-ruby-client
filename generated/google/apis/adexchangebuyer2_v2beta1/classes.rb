@@ -1162,10 +1162,10 @@ module Google
         # @return [String]
         attr_accessor :available_end_time
       
-        # Optional proposed flight start time of the deal. This will generally be stored
-        # in the granularity of one second since deal serving starts at seconds boundary.
-        # Any time specified with more granularity (e.g., in milliseconds) will be
-        # truncated towards the start of time in seconds.
+        # Optional. Proposed flight start time of the deal. This will generally be
+        # stored in the granularity of one second since deal serving starts at seconds
+        # boundary. Any time specified with more granularity (e.g., in milliseconds)
+        # will be truncated towards the start of time in seconds.
         # Corresponds to the JSON property `availableStartTime`
         # @return [String]
         attr_accessor :available_start_time
@@ -1182,8 +1182,8 @@ module Google
         # @return [String]
         attr_accessor :create_product_id
       
-        # Optional revision number of the product that the deal was created from. If
-        # present on create, and the server `product_revision` has advanced sinced the
+        # Optional. Revision number of the product that the deal was created from. If
+        # present on create, and the server `product_revision` has advanced since the
         # passed-in `create_product_revision`, an `ABORTED` error will be returned. Note:
         # This field may be set only when creating the resource. Modifying this field
         # while updating the resource will result in an error.
@@ -3327,6 +3327,11 @@ module Google
         # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::ContactInformation>]
         attr_accessor :seller_contacts
       
+        # Output only. The terms and conditions set by the publisher for this proposal.
+        # Corresponds to the JSON property `termsAndConditions`
+        # @return [String]
+        attr_accessor :terms_and_conditions
+      
         # Output only. The time when the proposal was last revised.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -3355,6 +3360,7 @@ module Google
           @proposal_state = args[:proposal_state] if args.key?(:proposal_state)
           @seller = args[:seller] if args.key?(:seller)
           @seller_contacts = args[:seller_contacts] if args.key?(:seller_contacts)
+          @terms_and_conditions = args[:terms_and_conditions] if args.key?(:terms_and_conditions)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
