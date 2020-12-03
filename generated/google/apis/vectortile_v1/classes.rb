@@ -22,9 +22,17 @@ module Google
   module Apis
     module VectortileV1
       
-      # Represents an area. Used to represent regions such as water, parks, etc.
+      # Represents an area. Used to represent regions such as water, parks, etc. Next
+      # ID: 10
       class Area
         include Google::Apis::Core::Hashable
+      
+        # Metadata necessary to determine the ordering of a particular basemap element
+        # relative to others. To render the basemap correctly, sort by z-plane, then z-
+        # grade, then z-within-grade.
+        # Corresponds to the JSON property `basemapZOrder`
+        # @return [Google::Apis::VectortileV1::BasemapZOrder]
+        attr_accessor :basemap_z_order
       
         # True if the polygon is not entirely internal to the feature that it belongs to:
         # that is, some of the edges are bordering another feature.
@@ -85,7 +93,7 @@ module Google
         # about the altitude of the line relative to the ground, but it can be used to
         # prevent z-fighting during rendering on the client. This z-ordering can only be
         # used to compare areas, and cannot be compared with the z_order field in the
-        # Line message. The z-order may be negative or zero.
+        # Line message. The z-order may be negative or zero. Prefer Area.basemap_z_order.
         # Corresponds to the JSON property `zOrder`
         # @return [Fixnum]
         attr_accessor :z_order
@@ -96,6 +104,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @basemap_z_order = args[:basemap_z_order] if args.key?(:basemap_z_order)
           @has_external_edges = args[:has_external_edges] if args.key?(:has_external_edges)
           @internal_edges = args[:internal_edges] if args.key?(:internal_edges)
           @loop_breaks = args[:loop_breaks] if args.key?(:loop_breaks)
@@ -103,6 +112,42 @@ module Google
           @type = args[:type] if args.key?(:type)
           @vertex_offsets = args[:vertex_offsets] if args.key?(:vertex_offsets)
           @z_order = args[:z_order] if args.key?(:z_order)
+        end
+      end
+      
+      # Metadata necessary to determine the ordering of a particular basemap element
+      # relative to others. To render the basemap correctly, sort by z-plane, then z-
+      # grade, then z-within-grade.
+      class BasemapZOrder
+        include Google::Apis::Core::Hashable
+      
+        # The second most significant component of the ordering of a component to be
+        # rendered onto the basemap.
+        # Corresponds to the JSON property `zGrade`
+        # @return [Fixnum]
+        attr_accessor :z_grade
+      
+        # The most significant component of the ordering of a component to be rendered
+        # onto the basemap.
+        # Corresponds to the JSON property `zPlane`
+        # @return [Fixnum]
+        attr_accessor :z_plane
+      
+        # The least significant component of the ordering of a component to be rendered
+        # onto the basemap.
+        # Corresponds to the JSON property `zWithinGrade`
+        # @return [Fixnum]
+        attr_accessor :z_within_grade
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @z_grade = args[:z_grade] if args.key?(:z_grade)
+          @z_plane = args[:z_plane] if args.key?(:z_plane)
+          @z_within_grade = args[:z_within_grade] if args.key?(:z_within_grade)
         end
       end
       
@@ -114,7 +159,8 @@ module Google
       class ExtrudedArea
         include Google::Apis::Core::Hashable
       
-        # Represents an area. Used to represent regions such as water, parks, etc.
+        # Represents an area. Used to represent regions such as water, parks, etc. Next
+        # ID: 10
         # Corresponds to the JSON property `area`
         # @return [Google::Apis::VectortileV1::Area]
         attr_accessor :area
@@ -355,6 +401,13 @@ module Google
       class Line
         include Google::Apis::Core::Hashable
       
+        # Metadata necessary to determine the ordering of a particular basemap element
+        # relative to others. To render the basemap correctly, sort by z-plane, then z-
+        # grade, then z-within-grade.
+        # Corresponds to the JSON property `basemapZOrder`
+        # @return [Google::Apis::VectortileV1::BasemapZOrder]
+        attr_accessor :basemap_z_order
+      
         # 2D vertex list used for lines and areas. Each entry represents an offset from
         # the previous one in local tile coordinates. The first entry is offset from (0,
         # 0). For example, the list of vertices [(1,1), (2, 2), (1, 2)] would be encoded
@@ -369,7 +422,8 @@ module Google
         # fighting during rendering on the client. In general, larger and more important
         # road features will have a higher z-order line associated with them. This z-
         # ordering can only be used to compare lines, and cannot be compared with the
-        # z_order field in the Area message. The z-order may be negative or zero.
+        # z_order field in the Area message. The z-order may be negative or zero. Prefer
+        # Line.basemap_z_order.
         # Corresponds to the JSON property `zOrder`
         # @return [Fixnum]
         attr_accessor :z_order
@@ -380,6 +434,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @basemap_z_order = args[:basemap_z_order] if args.key?(:basemap_z_order)
           @vertex_offsets = args[:vertex_offsets] if args.key?(:vertex_offsets)
           @z_order = args[:z_order] if args.key?(:z_order)
         end
