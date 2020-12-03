@@ -3425,7 +3425,10 @@ module Google
         attr_accessor :value
       
         # The visibility of this property. Allowed values are PRIVATE and PUBLIC. (
-        # Default: PRIVATE)
+        # Default: PRIVATE). Private properties can only be retrieved using an
+        # authenticated request. An authenticated request uses an access token obtained
+        # with a OAuth 2 client ID. You cannot use an API key to retrieve private
+        # properties.
         # Corresponds to the JSON property `visibility`
         # @return [String]
         attr_accessor :visibility
