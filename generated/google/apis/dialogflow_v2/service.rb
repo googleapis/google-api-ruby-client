@@ -881,7 +881,9 @@ module Google
         # Processes a natural language query and returns structured, actionable data as
         # a result. This method is not idempotent, because it may cause contexts and
         # session entity types to be updated, which in turn might affect results of
-        # future queries.
+        # future queries. Note: Always use agent versions for production traffic. See [
+        # Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-
+        # versions).
         # @param [String] session
         #   Required. The name of the session this query is sent to. Format: `projects//
         #   agent/sessions/`, or `projects//agent/environments//users//sessions/`. If `
@@ -891,7 +893,9 @@ module Google
         #   or some type of user and session identifiers (preferably hashed). The length
         #   of the `Session ID` and `User ID` must not exceed 36 characters. For more
         #   information, see the [API interactions guide](https://cloud.google.com/
-        #   dialogflow/docs/api-overview).
+        #   dialogflow/docs/api-overview). Note: Always use agent versions for production
+        #   traffic. See [Versions and environments](https://cloud.google.com/dialogflow/
+        #   es/docs/agents-versions).
         # @param [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2DetectIntentRequest] google_cloud_dialogflow_v2_detect_intent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1613,7 +1617,9 @@ module Google
         # Processes a natural language query and returns structured, actionable data as
         # a result. This method is not idempotent, because it may cause contexts and
         # session entity types to be updated, which in turn might affect results of
-        # future queries.
+        # future queries. Note: Always use agent versions for production traffic. See [
+        # Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-
+        # versions).
         # @param [String] session
         #   Required. The name of the session this query is sent to. Format: `projects//
         #   agent/sessions/`, or `projects//agent/environments//users//sessions/`. If `
@@ -1623,7 +1629,9 @@ module Google
         #   or some type of user and session identifiers (preferably hashed). The length
         #   of the `Session ID` and `User ID` must not exceed 36 characters. For more
         #   information, see the [API interactions guide](https://cloud.google.com/
-        #   dialogflow/docs/api-overview).
+        #   dialogflow/docs/api-overview). Note: Always use agent versions for production
+        #   traffic. See [Versions and environments](https://cloud.google.com/dialogflow/
+        #   es/docs/agents-versions).
         # @param [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2DetectIntentRequest] google_cloud_dialogflow_v2_detect_intent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
