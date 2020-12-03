@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BasicSeriesDataPointStyleOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchClearValuesByDataFilterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -514,6 +520,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataLabel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DataSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -796,6 +808,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EmbeddedObjectBorder
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EmbeddedObjectPosition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1067,6 +1085,12 @@ module Google
       end
       
       class PivotValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PointStyle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1355,6 +1379,12 @@ module Google
       end
       
       class UpdateDimensionPropertiesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateEmbeddedObjectBorderRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1746,9 +1776,15 @@ module Google
       
           property :color_style, as: 'colorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
       
+          property :data_label, as: 'dataLabel', class: Google::Apis::SheetsV4::DataLabel, decorator: Google::Apis::SheetsV4::DataLabel::Representation
+      
           property :line_style, as: 'lineStyle', class: Google::Apis::SheetsV4::LineStyle, decorator: Google::Apis::SheetsV4::LineStyle::Representation
       
+          property :point_style, as: 'pointStyle', class: Google::Apis::SheetsV4::PointStyle, decorator: Google::Apis::SheetsV4::PointStyle::Representation
+      
           property :series, as: 'series', class: Google::Apis::SheetsV4::ChartData, decorator: Google::Apis::SheetsV4::ChartData::Representation
+      
+          collection :style_overrides, as: 'styleOverrides', class: Google::Apis::SheetsV4::BasicSeriesDataPointStyleOverride, decorator: Google::Apis::SheetsV4::BasicSeriesDataPointStyleOverride::Representation
       
           property :target_axis, as: 'targetAxis'
           property :type, as: 'type'
@@ -1772,6 +1808,8 @@ module Google
       
           property :stacked_type, as: 'stackedType'
           property :three_dimensional, as: 'threeDimensional'
+          property :total_data_label, as: 'totalDataLabel', class: Google::Apis::SheetsV4::DataLabel, decorator: Google::Apis::SheetsV4::DataLabel::Representation
+      
         end
       end
       
@@ -1785,6 +1823,19 @@ module Google
           property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
       
           collection :sort_specs, as: 'sortSpecs', class: Google::Apis::SheetsV4::SortSpec, decorator: Google::Apis::SheetsV4::SortSpec::Representation
+      
+        end
+      end
+      
+      class BasicSeriesDataPointStyleOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :color, as: 'color', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :color_style, as: 'colorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
+      
+          property :index, as: 'index'
+          property :point_style, as: 'pointStyle', class: Google::Apis::SheetsV4::PointStyle, decorator: Google::Apis::SheetsV4::PointStyle::Representation
       
         end
       end
@@ -2365,6 +2416,18 @@ module Google
         end
       end
       
+      class DataLabel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_label_data, as: 'customLabelData', class: Google::Apis::SheetsV4::ChartData, decorator: Google::Apis::SheetsV4::ChartData::Representation
+      
+          property :placement, as: 'placement'
+          property :text_format, as: 'textFormat', class: Google::Apis::SheetsV4::TextFormat, decorator: Google::Apis::SheetsV4::TextFormat::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
       class DataSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2796,10 +2859,22 @@ module Google
       class EmbeddedChart
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :border, as: 'border', class: Google::Apis::SheetsV4::EmbeddedObjectBorder, decorator: Google::Apis::SheetsV4::EmbeddedObjectBorder::Representation
+      
           property :chart_id, as: 'chartId'
           property :position, as: 'position', class: Google::Apis::SheetsV4::EmbeddedObjectPosition, decorator: Google::Apis::SheetsV4::EmbeddedObjectPosition::Representation
       
           property :spec, as: 'spec', class: Google::Apis::SheetsV4::ChartSpec, decorator: Google::Apis::SheetsV4::ChartSpec::Representation
+      
+        end
+      end
+      
+      class EmbeddedObjectBorder
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :color, as: 'color', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :color_style, as: 'colorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
       
         end
       end
@@ -3328,6 +3403,14 @@ module Google
         end
       end
       
+      class PointStyle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :shape, as: 'shape'
+          property :size, as: 'size'
+        end
+      end
+      
       class ProtectedRange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3509,6 +3592,8 @@ module Google
           property :update_dimension_group, as: 'updateDimensionGroup', class: Google::Apis::SheetsV4::UpdateDimensionGroupRequest, decorator: Google::Apis::SheetsV4::UpdateDimensionGroupRequest::Representation
       
           property :update_dimension_properties, as: 'updateDimensionProperties', class: Google::Apis::SheetsV4::UpdateDimensionPropertiesRequest, decorator: Google::Apis::SheetsV4::UpdateDimensionPropertiesRequest::Representation
+      
+          property :update_embedded_object_border, as: 'updateEmbeddedObjectBorder', class: Google::Apis::SheetsV4::UpdateEmbeddedObjectBorderRequest, decorator: Google::Apis::SheetsV4::UpdateEmbeddedObjectBorderRequest::Representation
       
           property :update_embedded_object_position, as: 'updateEmbeddedObjectPosition', class: Google::Apis::SheetsV4::UpdateEmbeddedObjectPositionRequest, decorator: Google::Apis::SheetsV4::UpdateEmbeddedObjectPositionRequest::Representation
       
@@ -4081,6 +4166,16 @@ module Google
         end
       end
       
+      class UpdateEmbeddedObjectBorderRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :border, as: 'border', class: Google::Apis::SheetsV4::EmbeddedObjectBorder, decorator: Google::Apis::SheetsV4::EmbeddedObjectBorder::Representation
+      
+          property :fields, as: 'fields'
+          property :object_id_prop, as: 'objectId'
+        end
+      end
+      
       class UpdateEmbeddedObjectPositionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4230,6 +4325,8 @@ module Google
       
           property :data, as: 'data', class: Google::Apis::SheetsV4::ChartData, decorator: Google::Apis::SheetsV4::ChartData::Representation
       
+          property :data_label, as: 'dataLabel', class: Google::Apis::SheetsV4::DataLabel, decorator: Google::Apis::SheetsV4::DataLabel::Representation
+      
           property :hide_trailing_subtotal, as: 'hideTrailingSubtotal'
           property :negative_columns_style, as: 'negativeColumnsStyle', class: Google::Apis::SheetsV4::WaterfallChartColumnStyle, decorator: Google::Apis::SheetsV4::WaterfallChartColumnStyle::Representation
       
@@ -4252,6 +4349,8 @@ module Google
           collection :series, as: 'series', class: Google::Apis::SheetsV4::WaterfallChartSeries, decorator: Google::Apis::SheetsV4::WaterfallChartSeries::Representation
       
           property :stacked_type, as: 'stackedType'
+          property :total_data_label, as: 'totalDataLabel', class: Google::Apis::SheetsV4::DataLabel, decorator: Google::Apis::SheetsV4::DataLabel::Representation
+      
         end
       end
     end

@@ -1191,15 +1191,33 @@ module Google
         # @return [Google::Apis::SheetsV4::ColorStyle]
         attr_accessor :color_style
       
+        # Settings for one set of data labels. Data labels are annotations that appear
+        # next to a set of data, such as the points on a line chart, and provide
+        # additional information about what the data represents, such as a text
+        # representation of the value behind that point on the graph.
+        # Corresponds to the JSON property `dataLabel`
+        # @return [Google::Apis::SheetsV4::DataLabel]
+        attr_accessor :data_label
+      
         # Properties that describe the style of a line.
         # Corresponds to the JSON property `lineStyle`
         # @return [Google::Apis::SheetsV4::LineStyle]
         attr_accessor :line_style
       
+        # The style of a point on the chart.
+        # Corresponds to the JSON property `pointStyle`
+        # @return [Google::Apis::SheetsV4::PointStyle]
+        attr_accessor :point_style
+      
         # The data included in a domain or series.
         # Corresponds to the JSON property `series`
         # @return [Google::Apis::SheetsV4::ChartData]
         attr_accessor :series
+      
+        # Style override settings for series data points.
+        # Corresponds to the JSON property `styleOverrides`
+        # @return [Array<Google::Apis::SheetsV4::BasicSeriesDataPointStyleOverride>]
+        attr_accessor :style_overrides
       
         # The minor axis that will specify the range of values for this series. For
         # example, if charting stocks over time, the "Volume" series may want to be
@@ -1225,8 +1243,11 @@ module Google
         def update!(**args)
           @color = args[:color] if args.key?(:color)
           @color_style = args[:color_style] if args.key?(:color_style)
+          @data_label = args[:data_label] if args.key?(:data_label)
           @line_style = args[:line_style] if args.key?(:line_style)
+          @point_style = args[:point_style] if args.key?(:point_style)
           @series = args[:series] if args.key?(:series)
+          @style_overrides = args[:style_overrides] if args.key?(:style_overrides)
           @target_axis = args[:target_axis] if args.key?(:target_axis)
           @type = args[:type] if args.key?(:type)
         end
@@ -1303,6 +1324,14 @@ module Google
         attr_accessor :three_dimensional
         alias_method :three_dimensional?, :three_dimensional
       
+        # Settings for one set of data labels. Data labels are annotations that appear
+        # next to a set of data, such as the points on a line chart, and provide
+        # additional information about what the data represents, such as a text
+        # representation of the value behind that point on the graph.
+        # Corresponds to the JSON property `totalDataLabel`
+        # @return [Google::Apis::SheetsV4::DataLabel]
+        attr_accessor :total_data_label
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1320,6 +1349,7 @@ module Google
           @series = args[:series] if args.key?(:series)
           @stacked_type = args[:stacked_type] if args.key?(:stacked_type)
           @three_dimensional = args[:three_dimensional] if args.key?(:three_dimensional)
+          @total_data_label = args[:total_data_label] if args.key?(:total_data_label)
         end
       end
       
@@ -1374,6 +1404,87 @@ module Google
           @filter_specs = args[:filter_specs] if args.key?(:filter_specs)
           @range = args[:range] if args.key?(:range)
           @sort_specs = args[:sort_specs] if args.key?(:sort_specs)
+        end
+      end
+      
+      # Style override settings for a single series data point.
+      class BasicSeriesDataPointStyleOverride
+        include Google::Apis::Core::Hashable
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
+        # Corresponds to the JSON property `color`
+        # @return [Google::Apis::SheetsV4::Color]
+        attr_accessor :color
+      
+        # A color value.
+        # Corresponds to the JSON property `colorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :color_style
+      
+        # Zero based index of the series data point.
+        # Corresponds to the JSON property `index`
+        # @return [Fixnum]
+        attr_accessor :index
+      
+        # The style of a point on the chart.
+        # Corresponds to the JSON property `pointStyle`
+        # @return [Google::Apis::SheetsV4::PointStyle]
+        attr_accessor :point_style
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @color = args[:color] if args.key?(:color)
+          @color_style = args[:color_style] if args.key?(:color_style)
+          @index = args[:index] if args.key?(:index)
+          @point_style = args[:point_style] if args.key?(:point_style)
         end
       end
       
@@ -3603,6 +3714,47 @@ module Google
         end
       end
       
+      # Settings for one set of data labels. Data labels are annotations that appear
+      # next to a set of data, such as the points on a line chart, and provide
+      # additional information about what the data represents, such as a text
+      # representation of the value behind that point on the graph.
+      class DataLabel
+        include Google::Apis::Core::Hashable
+      
+        # The data included in a domain or series.
+        # Corresponds to the JSON property `customLabelData`
+        # @return [Google::Apis::SheetsV4::ChartData]
+        attr_accessor :custom_label_data
+      
+        # The placement of the data label relative to the labeled data.
+        # Corresponds to the JSON property `placement`
+        # @return [String]
+        attr_accessor :placement
+      
+        # The format of a run of text in a cell. Absent values indicate that the field
+        # isn't specified.
+        # Corresponds to the JSON property `textFormat`
+        # @return [Google::Apis::SheetsV4::TextFormat]
+        attr_accessor :text_format
+      
+        # The type of the data label.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_label_data = args[:custom_label_data] if args.key?(:custom_label_data)
+          @placement = args[:placement] if args.key?(:placement)
+          @text_format = args[:text_format] if args.key?(:text_format)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Information about an external data source in the spreadsheet.
       class DataSource
         include Google::Apis::Core::Hashable
@@ -5050,6 +5202,11 @@ module Google
       class EmbeddedChart
         include Google::Apis::Core::Hashable
       
+        # A border along an embedded object.
+        # Corresponds to the JSON property `border`
+        # @return [Google::Apis::SheetsV4::EmbeddedObjectBorder]
+        attr_accessor :border
+      
         # The ID of the chart.
         # Corresponds to the JSON property `chartId`
         # @return [Fixnum]
@@ -5071,9 +5228,79 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @border = args[:border] if args.key?(:border)
           @chart_id = args[:chart_id] if args.key?(:chart_id)
           @position = args[:position] if args.key?(:position)
           @spec = args[:spec] if args.key?(:spec)
+        end
+      end
+      
+      # A border along an embedded object.
+      class EmbeddedObjectBorder
+        include Google::Apis::Core::Hashable
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
+        # Corresponds to the JSON property `color`
+        # @return [Google::Apis::SheetsV4::Color]
+        attr_accessor :color
+      
+        # A color value.
+        # Corresponds to the JSON property `colorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :color_style
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @color = args[:color] if args.key?(:color)
+          @color_style = args[:color_style] if args.key?(:color_style)
         end
       end
       
@@ -7325,6 +7552,31 @@ module Google
         end
       end
       
+      # The style of a point on the chart.
+      class PointStyle
+        include Google::Apis::Core::Hashable
+      
+        # The point shape. If empty or unspecified, a default shape is used.
+        # Corresponds to the JSON property `shape`
+        # @return [String]
+        attr_accessor :shape
+      
+        # The point size. If empty, a default size is used.
+        # Corresponds to the JSON property `size`
+        # @return [Float]
+        attr_accessor :size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @shape = args[:shape] if args.key?(:shape)
+          @size = args[:size] if args.key?(:size)
+        end
+      end
+      
       # A protected range.
       class ProtectedRange
         include Google::Apis::Core::Hashable
@@ -7946,6 +8198,11 @@ module Google
         # @return [Google::Apis::SheetsV4::UpdateDimensionPropertiesRequest]
         attr_accessor :update_dimension_properties
       
+        # Updates an embedded object's border property.
+        # Corresponds to the JSON property `updateEmbeddedObjectBorder`
+        # @return [Google::Apis::SheetsV4::UpdateEmbeddedObjectBorderRequest]
+        attr_accessor :update_embedded_object_border
+      
         # Update an embedded object's position (such as a moving or resizing a chart or
         # image).
         # Corresponds to the JSON property `updateEmbeddedObjectPosition`
@@ -8046,6 +8303,7 @@ module Google
           @update_developer_metadata = args[:update_developer_metadata] if args.key?(:update_developer_metadata)
           @update_dimension_group = args[:update_dimension_group] if args.key?(:update_dimension_group)
           @update_dimension_properties = args[:update_dimension_properties] if args.key?(:update_dimension_properties)
+          @update_embedded_object_border = args[:update_embedded_object_border] if args.key?(:update_embedded_object_border)
           @update_embedded_object_position = args[:update_embedded_object_position] if args.key?(:update_embedded_object_position)
           @update_filter_view = args[:update_filter_view] if args.key?(:update_filter_view)
           @update_named_range = args[:update_named_range] if args.key?(:update_named_range)
@@ -10368,6 +10626,39 @@ module Google
         end
       end
       
+      # Updates an embedded object's border property.
+      class UpdateEmbeddedObjectBorderRequest
+        include Google::Apis::Core::Hashable
+      
+        # A border along an embedded object.
+        # Corresponds to the JSON property `border`
+        # @return [Google::Apis::SheetsV4::EmbeddedObjectBorder]
+        attr_accessor :border
+      
+        # The fields that should be updated. At least one field must be specified. The
+        # root `border` is implied and should not be specified. A single `"*"` can be
+        # used as short-hand for listing every field.
+        # Corresponds to the JSON property `fields`
+        # @return [String]
+        attr_accessor :fields
+      
+        # The ID of the embedded object to update.
+        # Corresponds to the JSON property `objectId`
+        # @return [Fixnum]
+        attr_accessor :object_id_prop
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @border = args[:border] if args.key?(:border)
+          @fields = args[:fields] if args.key?(:fields)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+        end
+      end
+      
       # Update an embedded object's position (such as a moving or resizing a chart or
       # image).
       class UpdateEmbeddedObjectPositionRequest
@@ -10891,6 +11182,14 @@ module Google
         # @return [Google::Apis::SheetsV4::ChartData]
         attr_accessor :data
       
+        # Settings for one set of data labels. Data labels are annotations that appear
+        # next to a set of data, such as the points on a line chart, and provide
+        # additional information about what the data represents, such as a text
+        # representation of the value behind that point on the graph.
+        # Corresponds to the JSON property `dataLabel`
+        # @return [Google::Apis::SheetsV4::DataLabel]
+        attr_accessor :data_label
+      
         # True to hide the subtotal column from the end of the series. By default, a
         # subtotal column will appear at the end of each series. Setting this field to
         # true will hide that subtotal column for this series.
@@ -10922,6 +11221,7 @@ module Google
         def update!(**args)
           @custom_subtotals = args[:custom_subtotals] if args.key?(:custom_subtotals)
           @data = args[:data] if args.key?(:data)
+          @data_label = args[:data_label] if args.key?(:data_label)
           @hide_trailing_subtotal = args[:hide_trailing_subtotal] if args.key?(:hide_trailing_subtotal)
           @negative_columns_style = args[:negative_columns_style] if args.key?(:negative_columns_style)
           @positive_columns_style = args[:positive_columns_style] if args.key?(:positive_columns_style)
@@ -10965,6 +11265,14 @@ module Google
         # @return [String]
         attr_accessor :stacked_type
       
+        # Settings for one set of data labels. Data labels are annotations that appear
+        # next to a set of data, such as the points on a line chart, and provide
+        # additional information about what the data represents, such as a text
+        # representation of the value behind that point on the graph.
+        # Corresponds to the JSON property `totalDataLabel`
+        # @return [Google::Apis::SheetsV4::DataLabel]
+        attr_accessor :total_data_label
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10977,6 +11285,7 @@ module Google
           @hide_connector_lines = args[:hide_connector_lines] if args.key?(:hide_connector_lines)
           @series = args[:series] if args.key?(:series)
           @stacked_type = args[:stacked_type] if args.key?(:stacked_type)
+          @total_data_label = args[:total_data_label] if args.key?(:total_data_label)
         end
       end
     end
