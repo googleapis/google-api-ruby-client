@@ -683,6 +683,7 @@ module Google
           property :ip_prefix_length, as: 'ipPrefixLength'
           property :region, as: 'region'
           property :requested_address, as: 'requestedAddress'
+          collection :requested_ranges, as: 'requestedRanges'
           collection :secondary_ip_range_specs, as: 'secondaryIpRangeSpecs', class: Google::Apis::ServicenetworkingV1::SecondaryIpRangeSpec, decorator: Google::Apis::ServicenetworkingV1::SecondaryIpRangeSpec::Representation
       
           property :subnetwork, as: 'subnetwork'
@@ -1308,6 +1309,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_prefix_length, as: 'ipPrefixLength'
+          collection :requested_ranges, as: 'requestedRanges'
           collection :secondary_range_ip_prefix_lengths, as: 'secondaryRangeIpPrefixLengths'
         end
       end
