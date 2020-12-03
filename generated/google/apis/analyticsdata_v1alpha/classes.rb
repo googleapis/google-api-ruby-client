@@ -157,9 +157,9 @@ module Google
         end
       end
       
-      # Defines a cohort. A cohort is a group of users who share a common
-      # characteristic. For example, all users with the same acquisition date belong
-      # to the same cohort.
+      # Defines a cohort selection criteria. A cohort is a group of users who share a
+      # common characteristic. For example, users with the same `firstTouchDate`
+      # belong to the same cohort.
       class Cohort
         include Google::Apis::Core::Hashable
       
@@ -169,8 +169,7 @@ module Google
         # @return [Google::Apis::AnalyticsdataV1alpha::DateRange]
         attr_accessor :date_range
       
-        # The dimension used by cohort. Only supports `firstTouchDate` for retention
-        # report.
+        # Dimension used by the cohort. Required and only supports `firstTouchDate`.
         # Corresponds to the JSON property `dimension`
         # @return [String]
         attr_accessor :dimension
@@ -195,11 +194,11 @@ module Google
         end
       end
       
-      # Settings of a cohort report.
+      # Optional settings of a cohort report.
       class CohortReportSettings
         include Google::Apis::Core::Hashable
       
-        # If true, accumulates the result from first visit day to the end day. Not
+        # If true, accumulates the result from first touch day to the end day. Not
         # supported in `RunReportRequest`.
         # Corresponds to the JSON property `accumulate`
         # @return [Boolean]
@@ -216,21 +215,34 @@ module Google
         end
       end
       
-      # Specification for a cohort report.
+      # Specification of cohorts for a cohort report. Cohort reports can be used for
+      # example to create a time series of user retention for the cohort. For example,
+      # you could select the cohort of users that were acquired in the first week of
+      # September and follow that cohort for the next six weeks. Selecting the users
+      # acquired in the first week of September cohort is specified in the `cohort`
+      # object. Following that cohort for the next six weeks is specified in the `
+      # cohortsRange` object. The report response could show a weekly time series
+      # where say your app has retained 60% of this cohort after three weeks and 25%
+      # of this cohort after six weeks. These two percentages can be calculated by the
+      # metric `cohortActiveUsers/cohortTotalUsers` and will be separate rows in the
+      # report.
       class CohortSpec
         include Google::Apis::Core::Hashable
       
-        # Settings of a cohort report.
+        # Optional settings of a cohort report.
         # Corresponds to the JSON property `cohortReportSettings`
         # @return [Google::Apis::AnalyticsdataV1alpha::CohortReportSettings]
         attr_accessor :cohort_report_settings
       
-        # The definition for the cohorts.
+        # Defines the selection criteria to group users into cohorts. Most cohort
+        # reports define only a single cohort. If multiple cohorts are specified, each
+        # cohort can be recognized in the report by their name.
         # Corresponds to the JSON property `cohorts`
         # @return [Array<Google::Apis::AnalyticsdataV1alpha::Cohort>]
         attr_accessor :cohorts
       
-        # Describes date range for a cohort report.
+        # Configures the extended reporting date range for a cohort report. Specifies an
+        # offset duration to follow the cohorts over.
         # Corresponds to the JSON property `cohortsRange`
         # @return [Google::Apis::AnalyticsdataV1alpha::CohortsRange]
         attr_accessor :cohorts_range
@@ -247,23 +259,39 @@ module Google
         end
       end
       
-      # Describes date range for a cohort report.
+      # Configures the extended reporting date range for a cohort report. Specifies an
+      # offset duration to follow the cohorts over.
       class CohortsRange
         include Google::Apis::Core::Hashable
       
-        # For daily cohorts, this will be the end day offset. For weekly cohorts, this
-        # will be the week offset.
+        # `endOffset` specifies the end date of the extended reporting date range for a
+        # cohort report. `endOffset` can be any positive integer but is commonly set to
+        # 5 to 10 so that reports contain data on the cohort for the next several
+        # granularity time periods. If `granularity` is `DAILY`, the `endDate` of the
+        # extended reporting date range is `endDate` of the cohort plus `endOffset` days.
+        # If `granularity` is `WEEKLY`, the `endDate` of the extended reporting date
+        # range is `endDate` of the cohort plus `endOffset * 7` days. If `granularity`
+        # is `MONTHLY`, the `endDate` of the extended reporting date range is `endDate`
+        # of the cohort plus `endOffset * 30` days.
         # Corresponds to the JSON property `endOffset`
         # @return [Fixnum]
         attr_accessor :end_offset
       
-        # Reporting date range for each cohort is calculated based on these three fields.
+        # The granularity used to interpret the `startOffset` and `endOffset` for the
+        # extended reporting date range for a cohort report.
         # Corresponds to the JSON property `granularity`
         # @return [String]
         attr_accessor :granularity
       
-        # For daily cohorts, this will be the start day offset. For weekly cohorts, this
-        # will be the week offset.
+        # `startOffset` specifies the start date of the extended reporting date range
+        # for a cohort report. `startOffset` is commonly set to 0 so that reports
+        # contain data from the acquisition of the cohort forward. If `granularity` is `
+        # DAILY`, the `startDate` of the extended reporting date range is `startDate` of
+        # the cohort plus `startOffset` days. If `granularity` is `WEEKLY`, the `
+        # startDate` of the extended reporting date range is `startDate` of the cohort
+        # plus `startOffset * 7` days. If `granularity` is `MONTHLY`, the `startDate` of
+        # the extended reporting date range is `startDate` of the cohort plus `
+        # startOffset * 30` days.
         # Corresponds to the JSON property `startOffset`
         # @return [Fixnum]
         attr_accessor :start_offset
@@ -1263,7 +1291,17 @@ module Google
       class RunPivotReportRequest
         include Google::Apis::Core::Hashable
       
-        # Specification for a cohort report.
+        # Specification of cohorts for a cohort report. Cohort reports can be used for
+        # example to create a time series of user retention for the cohort. For example,
+        # you could select the cohort of users that were acquired in the first week of
+        # September and follow that cohort for the next six weeks. Selecting the users
+        # acquired in the first week of September cohort is specified in the `cohort`
+        # object. Following that cohort for the next six weeks is specified in the `
+        # cohortsRange` object. The report response could show a weekly time series
+        # where say your app has retained 60% of this cohort after three weeks and 25%
+        # of this cohort after six weeks. These two percentages can be calculated by the
+        # metric `cohortActiveUsers/cohortTotalUsers` and will be separate rows in the
+        # report.
         # Corresponds to the JSON property `cohortSpec`
         # @return [Google::Apis::AnalyticsdataV1alpha::CohortSpec]
         attr_accessor :cohort_spec
@@ -1564,7 +1602,17 @@ module Google
       class RunReportRequest
         include Google::Apis::Core::Hashable
       
-        # Specification for a cohort report.
+        # Specification of cohorts for a cohort report. Cohort reports can be used for
+        # example to create a time series of user retention for the cohort. For example,
+        # you could select the cohort of users that were acquired in the first week of
+        # September and follow that cohort for the next six weeks. Selecting the users
+        # acquired in the first week of September cohort is specified in the `cohort`
+        # object. Following that cohort for the next six weeks is specified in the `
+        # cohortsRange` object. The report response could show a weekly time series
+        # where say your app has retained 60% of this cohort after three weeks and 25%
+        # of this cohort after six weeks. These two percentages can be calculated by the
+        # metric `cohortActiveUsers/cohortTotalUsers` and will be separate rows in the
+        # report.
         # Corresponds to the JSON property `cohortSpec`
         # @return [Google::Apis::AnalyticsdataV1alpha::CohortSpec]
         attr_accessor :cohort_spec
