@@ -261,6 +261,15 @@ module Google
         # @return [String]
         attr_accessor :requested_address
       
+        # Optional. The name of one or more allocated IP address ranges associated with
+        # this private service access connection. If no range names are provided all
+        # ranges associated with this connection will be considered. If a CIDR range
+        # with the specified IP prefix length is not available within these ranges, the
+        # call fails.
+        # Corresponds to the JSON property `requestedRanges`
+        # @return [Array<String>]
+        attr_accessor :requested_ranges
+      
         # Optional. A list of secondary IP ranges to be created within the new
         # subnetwork.
         # Corresponds to the JSON property `secondaryIpRangeSpecs`
@@ -292,6 +301,7 @@ module Google
           @ip_prefix_length = args[:ip_prefix_length] if args.key?(:ip_prefix_length)
           @region = args[:region] if args.key?(:region)
           @requested_address = args[:requested_address] if args.key?(:requested_address)
+          @requested_ranges = args[:requested_ranges] if args.key?(:requested_ranges)
           @secondary_ip_range_specs = args[:secondary_ip_range_specs] if args.key?(:secondary_ip_range_specs)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @subnetwork_users = args[:subnetwork_users] if args.key?(:subnetwork_users)
@@ -3038,6 +3048,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :ip_prefix_length
       
+        # Optional. The name of one or more allocated IP address ranges associated with
+        # this private service access connection. If no range names are provided all
+        # ranges associated with this connection will be considered. If a CIDR range
+        # with the specified IP prefix length is not available within these ranges the
+        # validation fails.
+        # Corresponds to the JSON property `requestedRanges`
+        # @return [Array<String>]
+        attr_accessor :requested_ranges
+      
         # Optional. DO NOT USE - Under development. The size of the desired secondary
         # ranges for the subnet. Use usual CIDR range notation. For example, '30' to
         # find unused x.x.x.x/30 CIDR range. The goal is to determine that the allocated
@@ -3053,6 +3072,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ip_prefix_length = args[:ip_prefix_length] if args.key?(:ip_prefix_length)
+          @requested_ranges = args[:requested_ranges] if args.key?(:requested_ranges)
           @secondary_range_ip_prefix_lengths = args[:secondary_range_ip_prefix_lengths] if args.key?(:secondary_range_ip_prefix_lengths)
         end
       end
