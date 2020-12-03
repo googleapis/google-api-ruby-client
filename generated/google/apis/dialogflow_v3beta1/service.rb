@@ -709,6 +709,8 @@ module Google
         # Processes a natural language query and returns structured, actionable data as
         # a result. This method is not idempotent, because it may cause session entity
         # types to be updated, which in turn might affect results of future queries.
+        # Note: Always use agent versions for production traffic. See [Versions and
+        # environments](https://cloud.google.com/dialogflow/cx/docs/concept/version).
         # @param [String] session
         #   Required. The name of the session this query is sent to. Format: `projects//
         #   locations//agents//sessions/` or `projects//locations//agents//environments//
@@ -717,7 +719,9 @@ module Google
         #   It can be a random number or some type of session identifiers (preferably
         #   hashed). The length of the `Session ID` must not exceed 36 characters. For
         #   more information, see the [sessions guide](https://cloud.google.com/dialogflow/
-        #   cx/docs/concept/session).
+        #   cx/docs/concept/session). Note: Always use agent versions for production
+        #   traffic. See [Versions and environments](https://cloud.google.com/dialogflow/
+        #   cx/docs/concept/version).
         # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1DetectIntentRequest] google_cloud_dialogflow_cx_v3beta1_detect_intent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2101,6 +2105,8 @@ module Google
         # Processes a natural language query and returns structured, actionable data as
         # a result. This method is not idempotent, because it may cause session entity
         # types to be updated, which in turn might affect results of future queries.
+        # Note: Always use agent versions for production traffic. See [Versions and
+        # environments](https://cloud.google.com/dialogflow/cx/docs/concept/version).
         # @param [String] session
         #   Required. The name of the session this query is sent to. Format: `projects//
         #   locations//agents//sessions/` or `projects//locations//agents//environments//
@@ -2109,7 +2115,9 @@ module Google
         #   It can be a random number or some type of session identifiers (preferably
         #   hashed). The length of the `Session ID` must not exceed 36 characters. For
         #   more information, see the [sessions guide](https://cloud.google.com/dialogflow/
-        #   cx/docs/concept/session).
+        #   cx/docs/concept/session). Note: Always use agent versions for production
+        #   traffic. See [Versions and environments](https://cloud.google.com/dialogflow/
+        #   cx/docs/concept/version).
         # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1DetectIntentRequest] google_cloud_dialogflow_cx_v3beta1_detect_intent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
