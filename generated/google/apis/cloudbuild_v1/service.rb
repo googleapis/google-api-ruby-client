@@ -333,7 +333,7 @@ module Google
         
         # Cancels a build in progress.
         # @param [String] name
-        #   The name of the `Build` to retrieve. Format: `projects/`project`/locations/`
+        #   The name of the `Build` to cancel. Format: `projects/`project`/locations/`
         #   location`/builds/`build``
         # @param [Google::Apis::CloudbuildV1::CancelBuildRequest] cancel_build_request_object
         # @param [String] fields
