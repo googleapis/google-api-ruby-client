@@ -731,7 +731,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The name of the `Build` to retrieve. Format: `projects/`project`/locations/`
+        # The name of the `Build` to cancel. Format: `projects/`project`/locations/`
         # location`/builds/`build``
         # Corresponds to the JSON property `name`
         # @return [String]
