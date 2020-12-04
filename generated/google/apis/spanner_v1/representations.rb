@@ -1262,6 +1262,7 @@ module Google
           collection :commit_timestamps, as: 'commitTimestamps'
           property :database, as: 'database'
           collection :statements, as: 'statements'
+          property :throttled, as: 'throttled'
         end
       end
       
