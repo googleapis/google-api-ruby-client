@@ -1208,6 +1208,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :dns_keys_per_managed_zone
       
+        # Maximum allowed number of GKE clusters per policy.
+        # Corresponds to the JSON property `gkeClustersPerPolicy`
+        # @return [Fixnum]
+        attr_accessor :gke_clusters_per_policy
+      
         # 
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -1287,6 +1292,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dns_keys_per_managed_zone = args[:dns_keys_per_managed_zone] if args.key?(:dns_keys_per_managed_zone)
+          @gke_clusters_per_policy = args[:gke_clusters_per_policy] if args.key?(:gke_clusters_per_policy)
           @kind = args[:kind] if args.key?(:kind)
           @managed_zones = args[:managed_zones] if args.key?(:managed_zones)
           @managed_zones_per_network = args[:managed_zones_per_network] if args.key?(:managed_zones_per_network)
