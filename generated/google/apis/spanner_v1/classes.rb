@@ -3696,6 +3696,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :statements
       
+        # Output only. When true, indicates that the operation is throttled e.g due to
+        # resource constraints. When resources become available the operation will
+        # resume and this field will be false again.
+        # Corresponds to the JSON property `throttled`
+        # @return [Boolean]
+        attr_accessor :throttled
+        alias_method :throttled?, :throttled
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3705,6 +3713,7 @@ module Google
           @commit_timestamps = args[:commit_timestamps] if args.key?(:commit_timestamps)
           @database = args[:database] if args.key?(:database)
           @statements = args[:statements] if args.key?(:statements)
+          @throttled = args[:throttled] if args.key?(:throttled)
         end
       end
       
