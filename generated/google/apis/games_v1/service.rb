@@ -337,6 +337,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns a URL for the requested end point type.
+        # @param [String] application_id
+        #   The application ID from the Google Play developer console.
+        # @param [String] end_point_type
+        #   Type of endpoint being requested.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GamesV1::EndPoint] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GamesV1::EndPoint]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_application_end_point(application_id: nil, end_point_type: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'games/v1/applications/getEndPoint', options)
+          command.response_representation = Google::Apis::GamesV1::EndPoint::Representation
+          command.response_class = Google::Apis::GamesV1::EndPoint
+          command.query['applicationId'] = application_id unless application_id.nil?
+          command.query['endPointType'] = end_point_type unless end_point_type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Indicate that the currently authenticated user is playing your application.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

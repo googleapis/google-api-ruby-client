@@ -112,6 +112,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContentHash
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EndPoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EventBatchRecordFailure
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -586,6 +598,21 @@ module Google
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ContentHash
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :digest, as: 'digest'
+          property :version, as: 'version'
+        end
+      end
+      
+      class EndPoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :url, as: 'url'
         end
       end
       
@@ -1089,7 +1116,8 @@ module Google
       class SnapshotCoverImageResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :content_hash, as: 'contentHash'
+          collection :content_hash, as: 'contentHash', class: Google::Apis::GamesV1::ContentHash, decorator: Google::Apis::GamesV1::ContentHash::Representation
+      
           property :download_url, as: 'downloadUrl'
           property :height, as: 'height'
           property :mime_type, as: 'mimeType'
@@ -1101,7 +1129,8 @@ module Google
       class SnapshotDataResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :content_hash, as: 'contentHash'
+          collection :content_hash, as: 'contentHash', class: Google::Apis::GamesV1::ContentHash, decorator: Google::Apis::GamesV1::ContentHash::Representation
+      
           property :download_url, as: 'downloadUrl'
           property :resource_id, as: 'resourceId'
           property :size, :numeric_string => true, as: 'size'

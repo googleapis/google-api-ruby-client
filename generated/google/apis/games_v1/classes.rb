@@ -644,6 +644,55 @@ module Google
         end
       end
       
+      # Hash-like weak identifier of uploaded content bytes (saved game data blob, or
+      # cover image). Consistent per player per application per hash version. Within
+      # the context of a single player/application, it's guaranteed that two identical
+      # blobs coming from two different uploads will have the same content hash. It's
+      # extremely likely, though not guaranteed, that if two content hashes are equal,
+      # the blobs are identical.
+      class ContentHash
+        include Google::Apis::Core::Hashable
+      
+        # Hash-like digest of the content.
+        # Corresponds to the JSON property `digest`
+        # @return [String]
+        attr_accessor :digest
+      
+        # Version of the Hash encoding algorithm to hash the content.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @digest = args[:digest] if args.key?(:digest)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Container for a URL end point of the requested type.
+      class EndPoint
+        include Google::Apis::Core::Hashable
+      
+        # A URL suitable for loading in a web browser for the requested endpoint.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
       # A batch update failure resource.
       class EventBatchRecordFailure
         include Google::Apis::Core::Hashable
@@ -2501,12 +2550,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. Hash-like weak identifier of the uploaded image bytes, consistent
-        # per player per application. Within the context of a single player/application,
-        # it's guaranteed that two identical blobs coming from two different uploads
-        # will have the same content hash. It's extremely likely, though not guaranteed,
-        # that if two content hashes are equal, the images are identical.
+        # per player per application per hash version. Within the context of a single
+        # player/application, it's guaranteed that two identical images coming from two
+        # different uploads will have the same content hash for the same hash algorithm
+        # version. It's extremely likely, though not guaranteed, that if two content
+        # hashes are equal, the images are identical. More than one content hash can be
+        # returned if more than one hash versions are supported.
         # Corresponds to the JSON property `contentHash`
-        # @return [String]
+        # @return [Array<Google::Apis::GamesV1::ContentHash>]
         attr_accessor :content_hash
       
         # Output only. A URL the client can use to download the image. May vary across
@@ -2516,12 +2567,12 @@ module Google
         # @return [String]
         attr_accessor :download_url
       
-        # Output only. The height of the image in pixels.
+        # The height of the image in pixels.
         # Corresponds to the JSON property `height`
         # @return [Fixnum]
         attr_accessor :height
       
-        # Output only. The MIME type of the image.
+        # The MIME type of the image.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -2537,7 +2588,7 @@ module Google
         # @return [String]
         attr_accessor :resource_id
       
-        # Output only. The width of the image in pixels.
+        # The width of the image in pixels.
         # Corresponds to the JSON property `width`
         # @return [Fixnum]
         attr_accessor :width
@@ -2562,12 +2613,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. Hash-like weak identifier of the uploaded blob, consistent per
-        # player per application. Within the context of a single player/application, it'
-        # s guaranteed that two identical blobs coming from two different uploads will
-        # have the same content hash. It's extremely likely, though not guaranteed, that
-        # if two content hashes are equal, the blobs are identical.
+        # player per application per hash version. Within the context of a single player/
+        # application, it's guaranteed that two identical blobs coming from two
+        # different uploads will have the same content hash for the same hash algorithm
+        # version. It's extremely likely, though not guaranteed, that if two content
+        # hashes are equal, the blobs are identical. More than one content hash can be
+        # returned if more than one hash versions are supported.
         # Corresponds to the JSON property `contentHash`
-        # @return [String]
+        # @return [Array<Google::Apis::GamesV1::ContentHash>]
         attr_accessor :content_hash
       
         # Output only. A URL that the client can use to download the blob. May vary
@@ -2588,7 +2641,7 @@ module Google
         # @return [String]
         attr_accessor :resource_id
       
-        # Size of the saved game blob in bytes.
+        # Output only. Size of the saved game blob in bytes.
         # Corresponds to the JSON property `size`
         # @return [Fixnum]
         attr_accessor :size
