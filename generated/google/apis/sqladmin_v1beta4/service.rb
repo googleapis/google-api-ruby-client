@@ -1324,7 +1324,7 @@ module Google
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
         # @param [String] sync_mode
-        #   External sync mode
+        #   External sync mode.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

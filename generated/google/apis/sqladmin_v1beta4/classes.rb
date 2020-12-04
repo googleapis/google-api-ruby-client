@@ -160,6 +160,31 @@ module Google
         end
       end
       
+      # Backup context.
+      class BackupContext
+        include Google::Apis::Core::Hashable
+      
+        # The identifier of the backup.
+        # Corresponds to the JSON property `backupId`
+        # @return [Fixnum]
+        attr_accessor :backup_id
+      
+        # This is always *sql#backupContext*.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_id = args[:backup_id] if args.key?(:backup_id)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
       # We currently only support backup retention by specifying the number of backups
       # we will retain.
       class BackupRetentionSettings
@@ -1009,7 +1034,7 @@ module Google
       class ExportContext
         include Google::Apis::Core::Hashable
       
-        # Options for exporting data as CSV.
+        # Options for exporting data as CSV. *MySQL* and *PostgreSQL* instances only.
         # Corresponds to the JSON property `csvExportOptions`
         # @return [Google::Apis::SqladminV1beta4::ExportContext::CsvExportOptions]
         attr_accessor :csv_export_options
@@ -1026,7 +1051,8 @@ module Google
         attr_accessor :databases
       
         # The file type for the specified uri. *SQL*: The file contains SQL statements. *
-        # CSV*: The file contains CSV data.
+        # CSV*: The file contains CSV data. *BAK*: The file contains backup data for a
+        # SQL Server instance.
         # Corresponds to the JSON property `fileType`
         # @return [String]
         attr_accessor :file_type
@@ -1070,7 +1096,7 @@ module Google
           @uri = args[:uri] if args.key?(:uri)
         end
         
-        # Options for exporting data as CSV.
+        # Options for exporting data as CSV. *MySQL* and *PostgreSQL* instances only.
         class CsvExportOptions
           include Google::Apis::Core::Hashable
         
@@ -1128,8 +1154,9 @@ module Google
           
             # Option to include SQL statement required to set up replication. If set to *1*,
             # the dump file includes a CHANGE MASTER TO statement with the binary log
-            # coordinates. If set to *2*, the CHANGE MASTER TO statement is written as a SQL
-            # comment, and has no effect. All other values are ignored.
+            # coordinates, and --set-gtid-purged is set to ON. If set to *2*, the CHANGE
+            # MASTER TO statement is written as a SQL comment and has no effect. If set to
+            # any value other than *1*, --set-gtid-purged is set to OFF.
             # Corresponds to the JSON property `masterData`
             # @return [Fixnum]
             attr_accessor :master_data
@@ -1417,6 +1444,49 @@ module Google
             @columns = args[:columns] if args.key?(:columns)
             @table = args[:table] if args.key?(:table)
           end
+        end
+      end
+      
+      # Insights configuration. This specifies when Cloud SQL Insights feature is
+      # enabled and optional configuration.
+      class InsightsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether Query Insights feature is enabled.
+        # Corresponds to the JSON property `queryInsightsEnabled`
+        # @return [Boolean]
+        attr_accessor :query_insights_enabled
+        alias_method :query_insights_enabled?, :query_insights_enabled
+      
+        # Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-
+        # 4500 bytes. Query length more than this field value will be truncated to this
+        # value. When unset, query length will be the default value.
+        # Corresponds to the JSON property `queryStringLength`
+        # @return [Fixnum]
+        attr_accessor :query_string_length
+      
+        # Whether Query Insights will record application tags from query when enabled.
+        # Corresponds to the JSON property `recordApplicationTags`
+        # @return [Boolean]
+        attr_accessor :record_application_tags
+        alias_method :record_application_tags?, :record_application_tags
+      
+        # Whether Query Insights will record client address when enabled.
+        # Corresponds to the JSON property `recordClientAddress`
+        # @return [Boolean]
+        attr_accessor :record_client_address
+        alias_method :record_client_address?, :record_client_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @query_insights_enabled = args[:query_insights_enabled] if args.key?(:query_insights_enabled)
+          @query_string_length = args[:query_string_length] if args.key?(:query_string_length)
+          @record_application_tags = args[:record_application_tags] if args.key?(:record_application_tags)
+          @record_client_address = args[:record_client_address] if args.key?(:record_client_address)
         end
       end
       
@@ -1954,9 +2024,14 @@ module Google
       
       # An Operation resource. For successful operations that return an Operation
       # resource, only the fields relevant to the operation are populated in the
-      # resource.
+      # resource. Next field: 18
       class Operation
         include Google::Apis::Core::Hashable
+      
+        # Backup context.
+        # Corresponds to the JSON property `backupContext`
+        # @return [Google::Apis::SqladminV1beta4::BackupContext]
+        attr_accessor :backup_context
       
         # The time this operation finished in UTC timezone in RFC 3339 format, for
         # example *2012-11-15T16:19:00.094Z*.
@@ -2047,6 +2122,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @backup_context = args[:backup_context] if args.key?(:backup_context)
           @end_time = args[:end_time] if args.key?(:end_time)
           @error = args[:error] if args.key?(:error)
           @export_context = args[:export_context] if args.key?(:export_context)
@@ -2359,6 +2435,12 @@ module Google
         # @return [Array<Google::Apis::SqladminV1beta4::DenyMaintenancePeriod>]
         attr_accessor :deny_maintenance_periods
       
+        # Insights configuration. This specifies when Cloud SQL Insights feature is
+        # enabled and optional configuration.
+        # Corresponds to the JSON property `insightsConfig`
+        # @return [Google::Apis::SqladminV1beta4::InsightsConfig]
+        attr_accessor :insights_config
+      
         # IP Management configuration.
         # Corresponds to the JSON property `ipConfiguration`
         # @return [Google::Apis::SqladminV1beta4::IpConfiguration]
@@ -2448,6 +2530,7 @@ module Google
           @database_flags = args[:database_flags] if args.key?(:database_flags)
           @database_replication_enabled = args[:database_replication_enabled] if args.key?(:database_replication_enabled)
           @deny_maintenance_periods = args[:deny_maintenance_periods] if args.key?(:deny_maintenance_periods)
+          @insights_config = args[:insights_config] if args.key?(:insights_config)
           @ip_configuration = args[:ip_configuration] if args.key?(:ip_configuration)
           @kind = args[:kind] if args.key?(:kind)
           @location_preference = args[:location_preference] if args.key?(:location_preference)
@@ -2796,7 +2879,7 @@ module Google
       
         # An Operation resource. For successful operations that return an Operation
         # resource, only the fields relevant to the operation are populated in the
-        # resource.
+        # resource. Next field: 18
         # Corresponds to the JSON property `operation`
         # @return [Google::Apis::SqladminV1beta4::Operation]
         attr_accessor :operation
