@@ -603,6 +603,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dns_keys_per_managed_zone, as: 'dnsKeysPerManagedZone'
+          property :gke_clusters_per_policy, as: 'gkeClustersPerPolicy'
           property :kind, as: 'kind'
           property :managed_zones, as: 'managedZones'
           property :managed_zones_per_network, as: 'managedZonesPerNetwork'
