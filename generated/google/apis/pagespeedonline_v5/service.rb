@@ -53,6 +53,8 @@ module Google
         # Runs PageSpeed analysis on the page at the specified URL, and returns
         # PageSpeed scores, a list of suggestions to make that page faster, and other
         # information.
+        # @param [String] url
+        #   Required. The URL to fetch and analyze
         # @param [String] captcha_token
         #   The captcha token passed when filling out a captcha.
         # @param [Array<String>, String] category
@@ -62,8 +64,6 @@ module Google
         #   The locale used to localize formatted results
         # @param [String] strategy
         #   The analysis strategy (desktop or mobile) to use, and desktop is the default
-        # @param [String] url
-        #   Required. The URL to fetch and analyze
         # @param [String] utm_campaign
         #   Campaign name for analytics.
         # @param [String] utm_source
@@ -85,7 +85,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def runpagespeed_pagespeedapi(captcha_token: nil, category: nil, locale: nil, strategy: nil, url: nil, utm_campaign: nil, utm_source: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def runpagespeed_pagespeedapi(url, captcha_token: nil, category: nil, locale: nil, strategy: nil, utm_campaign: nil, utm_source: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'pagespeedonline/v5/runPagespeed', options)
           command.response_representation = Google::Apis::PagespeedonlineV5::PagespeedApiPagespeedResponseV5::Representation
           command.response_class = Google::Apis::PagespeedonlineV5::PagespeedApiPagespeedResponseV5
