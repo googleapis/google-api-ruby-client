@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackupContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackupRetentionSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -198,6 +204,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InsightsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -491,6 +503,14 @@ module Google
           property :replication_log_archiving_enabled, as: 'replicationLogArchivingEnabled'
           property :start_time, as: 'startTime'
           property :transaction_log_retention_days, as: 'transactionLogRetentionDays'
+        end
+      end
+      
+      class BackupContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_id, :numeric_string => true, as: 'backupId'
+          property :kind, as: 'kind'
         end
       end
       
@@ -814,6 +834,16 @@ module Google
         end
       end
       
+      class InsightsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :query_insights_enabled, as: 'queryInsightsEnabled'
+          property :query_string_length, as: 'queryStringLength'
+          property :record_application_tags, as: 'recordApplicationTags'
+          property :record_client_address, as: 'recordClientAddress'
+        end
+      end
+      
       class CloneInstancesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -974,6 +1004,8 @@ module Google
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_context, as: 'backupContext', class: Google::Apis::SqladminV1beta4::BackupContext, decorator: Google::Apis::SqladminV1beta4::BackupContext::Representation
+      
           property :end_time, as: 'endTime'
           property :error, as: 'error', class: Google::Apis::SqladminV1beta4::OperationErrors, decorator: Google::Apis::SqladminV1beta4::OperationErrors::Representation
       
@@ -1077,6 +1109,8 @@ module Google
       
           property :database_replication_enabled, as: 'databaseReplicationEnabled'
           collection :deny_maintenance_periods, as: 'denyMaintenancePeriods', class: Google::Apis::SqladminV1beta4::DenyMaintenancePeriod, decorator: Google::Apis::SqladminV1beta4::DenyMaintenancePeriod::Representation
+      
+          property :insights_config, as: 'insightsConfig', class: Google::Apis::SqladminV1beta4::InsightsConfig, decorator: Google::Apis::SqladminV1beta4::InsightsConfig::Representation
       
           property :ip_configuration, as: 'ipConfiguration', class: Google::Apis::SqladminV1beta4::IpConfiguration, decorator: Google::Apis::SqladminV1beta4::IpConfiguration::Representation
       
