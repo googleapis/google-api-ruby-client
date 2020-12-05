@@ -2646,7 +2646,6 @@ module Google
           property :frequency_cap, as: 'frequencyCap', class: Google::Apis::DisplayvideoV1::FrequencyCap, decorator: Google::Apis::DisplayvideoV1::FrequencyCap::Representation
       
           property :insertion_order_id, :numeric_string => true, as: 'insertionOrderId'
-          property :insertion_order_type, as: 'insertionOrderType'
           property :integration_details, as: 'integrationDetails', class: Google::Apis::DisplayvideoV1::IntegrationDetails, decorator: Google::Apis::DisplayvideoV1::IntegrationDetails::Representation
       
           property :name, as: 'name'
