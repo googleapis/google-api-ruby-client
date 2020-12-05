@@ -1171,6 +1171,9 @@ module Google
       class GoogleCloudVideointelligenceV1FaceDetectionAnnotation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :thumbnail, :base64 => true, as: 'thumbnail'
+          collection :tracks, as: 'tracks', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1Track, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1Track::Representation
+      
           property :version, as: 'version'
         end
       end
@@ -1516,6 +1519,9 @@ module Google
       class GoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :thumbnail, :base64 => true, as: 'thumbnail'
+          collection :tracks, as: 'tracks', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1beta2Track, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1beta2Track::Representation
+      
           property :version, as: 'version'
         end
       end
@@ -1861,6 +1867,9 @@ module Google
       class GoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :thumbnail, :base64 => true, as: 'thumbnail'
+          collection :tracks, as: 'tracks', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p1beta1Track, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p1beta1Track::Representation
+      
           property :version, as: 'version'
         end
       end
@@ -2226,6 +2235,9 @@ module Google
       class GoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :thumbnail, :base64 => true, as: 'thumbnail'
+          collection :tracks, as: 'tracks', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p2beta1Track, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p2beta1Track::Representation
+      
           property :version, as: 'version'
         end
       end
@@ -2697,6 +2709,9 @@ module Google
       class GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :thumbnail, :base64 => true, as: 'thumbnail'
+          collection :tracks, as: 'tracks', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1Track, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1Track::Representation
+      
           property :version, as: 'version'
         end
       end
