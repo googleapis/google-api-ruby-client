@@ -406,6 +406,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ShieldedInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SoftwareConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -566,7 +572,6 @@ module Google
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :binding_id, as: 'bindingId'
           property :condition, as: 'condition', class: Google::Apis::DataprocV1beta2::Expr, decorator: Google::Apis::DataprocV1beta2::Expr::Representation
       
           collection :members, as: 'members'
@@ -759,6 +764,8 @@ module Google
       
           property :service_account, as: 'serviceAccount'
           collection :service_account_scopes, as: 'serviceAccountScopes'
+          property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::DataprocV1beta2::ShieldedInstanceConfig, decorator: Google::Apis::DataprocV1beta2::ShieldedInstanceConfig::Representation
+      
           property :subnetwork_uri, as: 'subnetworkUri'
           collection :tags, as: 'tags'
           property :zone_uri, as: 'zoneUri'
@@ -851,6 +858,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :instance_id, as: 'instanceId'
           property :instance_name, as: 'instanceName'
+          property :public_key, as: 'publicKey'
         end
       end
       
@@ -1220,6 +1228,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :policy, as: 'policy', class: Google::Apis::DataprocV1beta2::Policy, decorator: Google::Apis::DataprocV1beta2::Policy::Representation
       
+        end
+      end
+      
+      class ShieldedInstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_integrity_monitoring, as: 'enableIntegrityMonitoring'
+          property :enable_secure_boot, as: 'enableSecureBoot'
+          property :enable_vtpm, as: 'enableVtpm'
         end
       end
       
