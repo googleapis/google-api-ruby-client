@@ -232,11 +232,6 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # 
-        # Corresponds to the JSON property `bindingId`
-        # @return [String]
-        attr_accessor :binding_id
-      
         # Represents a textual expression in the Common Expression Language (CEL) syntax.
         # CEL is a C-like expression language. The syntax and semantics of CEL are
         # documented at https://github.com/google/cel-spec.Example (Comparison): title: "
@@ -297,7 +292,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @binding_id = args[:binding_id] if args.key?(:binding_id)
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
@@ -986,6 +980,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :service_account_scopes
       
+        # Shielded Instance Config for clusters using shielded VMs.
+        # Corresponds to the JSON property `shieldedInstanceConfig`
+        # @return [Google::Apis::DataprocV1::ShieldedInstanceConfig]
+        attr_accessor :shielded_instance_config
+      
         # Optional. The Compute Engine subnetwork to be used for machine communications.
         # Cannot be specified with network_uri.A full URL, partial URI, or short name
         # are valid. Examples: https://www.googleapis.com/compute/v1/projects/[
@@ -1026,6 +1025,7 @@ module Google
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @service_account = args[:service_account] if args.key?(:service_account)
           @service_account_scopes = args[:service_account_scopes] if args.key?(:service_account_scopes)
+          @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @subnetwork_uri = args[:subnetwork_uri] if args.key?(:subnetwork_uri)
           @tags = args[:tags] if args.key?(:tags)
           @zone_uri = args[:zone_uri] if args.key?(:zone_uri)
@@ -1378,6 +1378,11 @@ module Google
         # @return [String]
         attr_accessor :instance_name
       
+        # The public key used for sharing data with this instance.
+        # Corresponds to the JSON property `publicKey`
+        # @return [String]
+        attr_accessor :public_key
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1386,6 +1391,7 @@ module Google
         def update!(**args)
           @instance_id = args[:instance_id] if args.key?(:instance_id)
           @instance_name = args[:instance_name] if args.key?(:instance_name)
+          @public_key = args[:public_key] if args.key?(:public_key)
         end
       end
       
@@ -2799,6 +2805,40 @@ module Google
         end
       end
       
+      # Shielded Instance Config for clusters using shielded VMs.
+      class ShieldedInstanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Defines whether instances have integrity monitoring enabled.
+        # Corresponds to the JSON property `enableIntegrityMonitoring`
+        # @return [Boolean]
+        attr_accessor :enable_integrity_monitoring
+        alias_method :enable_integrity_monitoring?, :enable_integrity_monitoring
+      
+        # Optional. Defines whether instances have Secure Boot enabled.
+        # Corresponds to the JSON property `enableSecureBoot`
+        # @return [Boolean]
+        attr_accessor :enable_secure_boot
+        alias_method :enable_secure_boot?, :enable_secure_boot
+      
+        # Optional. Defines whether instances have the vTPM enabled.
+        # Corresponds to the JSON property `enableVtpm`
+        # @return [Boolean]
+        attr_accessor :enable_vtpm
+        alias_method :enable_vtpm?, :enable_vtpm
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_integrity_monitoring = args[:enable_integrity_monitoring] if args.key?(:enable_integrity_monitoring)
+          @enable_secure_boot = args[:enable_secure_boot] if args.key?(:enable_secure_boot)
+          @enable_vtpm = args[:enable_vtpm] if args.key?(:enable_vtpm)
+        end
+      end
+      
       # Specifies the selection and config of software inside the cluster.
       class SoftwareConfig
         include Google::Apis::Core::Hashable
@@ -3255,6 +3295,23 @@ module Google
         # @return [Google::Apis::DataprocV1::ClusterOperation]
         attr_accessor :create_cluster
       
+        # Output only. DAG end time, only set for workflows with dag_timeout when DAG
+        # ends.
+        # Corresponds to the JSON property `dagEndTime`
+        # @return [String]
+        attr_accessor :dag_end_time
+      
+        # Output only. DAG start time, only set for workflows with dag_timeout when DAG
+        # begins.
+        # Corresponds to the JSON property `dagStartTime`
+        # @return [String]
+        attr_accessor :dag_start_time
+      
+        # Output only. The timeout duration for the DAG of jobs.
+        # Corresponds to the JSON property `dagTimeout`
+        # @return [String]
+        attr_accessor :dag_timeout
+      
         # The cluster operation triggered by a workflow.
         # Corresponds to the JSON property `deleteCluster`
         # @return [Google::Apis::DataprocV1::ClusterOperation]
@@ -3310,6 +3367,9 @@ module Google
           @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
           @cluster_uuid = args[:cluster_uuid] if args.key?(:cluster_uuid)
           @create_cluster = args[:create_cluster] if args.key?(:create_cluster)
+          @dag_end_time = args[:dag_end_time] if args.key?(:dag_end_time)
+          @dag_start_time = args[:dag_start_time] if args.key?(:dag_start_time)
+          @dag_timeout = args[:dag_timeout] if args.key?(:dag_timeout)
           @delete_cluster = args[:delete_cluster] if args.key?(:delete_cluster)
           @end_time = args[:end_time] if args.key?(:end_time)
           @graph = args[:graph] if args.key?(:graph)
@@ -3372,6 +3432,17 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and
+        # "d" suffixes for second, minute, hour, and day duration values, respectively.
+        # The timeout duration must be from 10 minutes ("10m") to 24 hours ("24h" or "1d"
+        # ). The timer begins when the first job is submitted. If the workflow is
+        # running at the end of the timeout period, any remaining jobs are cancelled,
+        # the workflow is ended, and if the workflow was running on a managed cluster,
+        # the cluster is deleted.
+        # Corresponds to the JSON property `dagTimeout`
+        # @return [String]
+        attr_accessor :dag_timeout
       
         # 
         # Corresponds to the JSON property `id`
@@ -3440,6 +3511,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @dag_timeout = args[:dag_timeout] if args.key?(:dag_timeout)
           @id = args[:id] if args.key?(:id)
           @jobs = args[:jobs] if args.key?(:jobs)
           @labels = args[:labels] if args.key?(:labels)
