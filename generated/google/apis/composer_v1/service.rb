@@ -227,20 +227,21 @@ module Google
         #   provide both a mask of this form and the "labels" mask. config.nodeCount
         #   Horizontally scale the number of nodes in the environment. An integer greater
         #   than or equal to 3 must be provided in the `config.nodeCount` field. config.
-        #   softwareConfig.airflowConfigOverrides Replace all Apache Airflow config
-        #   overrides. If a replacement config overrides map is not included in `
-        #   environment`, all config overrides are cleared. It is an error to provide both
-        #   this mask and a mask specifying one or more individual config overrides.
-        #   config.softwareConfig.airflowConfigOverrides.section-name Override the Apache
-        #   Airflow config property name in the section named section, preserving other
-        #   properties. To delete the property override, include it in `updateMask` and
-        #   omit its mapping in `environment.config.softwareConfig.airflowConfigOverrides`.
-        #   It is an error to provide both a mask of this form and the "config.
-        #   softwareConfig.airflowConfigOverrides" mask. config.softwareConfig.
-        #   envVariables Replace all environment variables. If a replacement environment
-        #   variable map is not included in `environment`, all custom environment
-        #   variables are cleared. It is an error to provide both this mask and a mask
-        #   specifying one or more individual environment variables.
+        #   webServerNetworkAccessControl Replace the environment's current
+        #   WebServerNetworkAccessControl. config.softwareConfig.airflowConfigOverrides
+        #   Replace all Apache Airflow config overrides. If a replacement config overrides
+        #   map is not included in `environment`, all config overrides are cleared. It is
+        #   an error to provide both this mask and a mask specifying one or more
+        #   individual config overrides. config.softwareConfig.airflowConfigOverrides.
+        #   section-name Override the Apache Airflow config property name in the section
+        #   named section, preserving other properties. To delete the property override,
+        #   include it in `updateMask` and omit its mapping in `environment.config.
+        #   softwareConfig.airflowConfigOverrides`. It is an error to provide both a mask
+        #   of this form and the "config.softwareConfig.airflowConfigOverrides" mask.
+        #   config.softwareConfig.envVariables Replace all environment variables. If a
+        #   replacement environment variable map is not included in `environment`, all
+        #   custom environment variables are cleared. It is an error to provide both this
+        #   mask and a mask specifying one or more individual environment variables.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -275,6 +276,8 @@ module Google
         # @param [String] parent
         #   List ImageVersions in the given project and location, in the form: "projects/`
         #   projectId`/locations/`locationId`"
+        # @param [Boolean] include_past_releases
+        #   Whether or not image versions from old releases should be included.
         # @param [Fixnum] page_size
         #   The maximum number of image_versions to return.
         # @param [String] page_token
@@ -296,11 +299,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_image_versions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_image_versions(parent, include_past_releases: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/imageVersions', options)
           command.response_representation = Google::Apis::ComposerV1::ListImageVersionsResponse::Representation
           command.response_class = Google::Apis::ComposerV1::ListImageVersionsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['includePastReleases'] = include_past_releases unless include_past_releases.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?

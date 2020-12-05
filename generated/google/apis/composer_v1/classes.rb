@@ -22,6 +22,76 @@ module Google
   module Apis
     module ComposerV1
       
+      # Allowed IP range with user-provided description.
+      class AllowedIpRange
+        include Google::Apis::Core::Hashable
+      
+        # Optional. User-provided description. It must contain at most 300 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # IP address or range, defined using CIDR notation, of requests that this rule
+        # applies to. Examples: `192.168.1.1` or `192.168.0.0/16` or `2001:db8::/32` or `
+        # 2001:0db8:0000:0042:0000:8a2e:0370:7334`. IP range prefixes should be properly
+        # truncated. For example, `1.2.3.4/24` should be truncated to `1.2.3.0/24`.
+        # Similarly, for IPv6, `2001:db8::1/32` should be truncated to `2001:db8::/32`.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Represents a whole or partial calendar date, such as a birthday. The time of
+      # day and time zone are either specified elsewhere or are insignificant. The
+      # date is relative to the Gregorian Calendar. This can represent one of the
+      # following: * A full date, with non-zero year, month, and day values * A month
+      # and day value, with a zero year, such as an anniversary * A year on its own,
+      # with zero month and day values * A year and month value, with a zero day, such
+      # as a credit card expiration date Related types are google.type.TimeOfDay and `
+      # google.protobuf.Timestamp`.
+      class Date
+        include Google::Apis::Core::Hashable
+      
+        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        # specify a year by itself or a year and month where the day isn't significant.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        # and day.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        # year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -149,6 +219,11 @@ module Google
         # @return [Google::Apis::ComposerV1::SoftwareConfig]
         attr_accessor :software_config
       
+        # Network-level access control policy for the Airflow web server.
+        # Corresponds to the JSON property `webServerNetworkAccessControl`
+        # @return [Google::Apis::ComposerV1::WebServerNetworkAccessControl]
+        attr_accessor :web_server_network_access_control
+      
         def initialize(**args)
            update!(**args)
         end
@@ -162,6 +237,7 @@ module Google
           @node_count = args[:node_count] if args.key?(:node_count)
           @private_environment_config = args[:private_environment_config] if args.key?(:private_environment_config)
           @software_config = args[:software_config] if args.key?(:software_config)
+          @web_server_network_access_control = args[:web_server_network_access_control] if args.key?(:web_server_network_access_control)
         end
       end
       
@@ -230,6 +306,12 @@ module Google
       class ImageVersion
         include Google::Apis::Core::Hashable
       
+        # Whether it is impossible to create an environment with the image version.
+        # Corresponds to the JSON property `creationDisabled`
+        # @return [Boolean]
+        attr_accessor :creation_disabled
+        alias_method :creation_disabled?, :creation_disabled
+      
         # The string identifier of the ImageVersion, in the form: "composer-x.y.z-
         # airflow-a.b(.c)"
         # Corresponds to the JSON property `imageVersionId`
@@ -243,10 +325,29 @@ module Google
         attr_accessor :is_default
         alias_method :is_default?, :is_default
       
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values * A month
+        # and day value, with a zero year, such as an anniversary * A year on its own,
+        # with zero month and day values * A year and month value, with a zero day, such
+        # as a credit card expiration date Related types are google.type.TimeOfDay and `
+        # google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `releaseDate`
+        # @return [Google::Apis::ComposerV1::Date]
+        attr_accessor :release_date
+      
         # supported python versions
         # Corresponds to the JSON property `supportedPythonVersions`
         # @return [Array<String>]
         attr_accessor :supported_python_versions
+      
+        # Whether it is impossible to upgrade an environment running with the image
+        # version.
+        # Corresponds to the JSON property `upgradeDisabled`
+        # @return [Boolean]
+        attr_accessor :upgrade_disabled
+        alias_method :upgrade_disabled?, :upgrade_disabled
       
         def initialize(**args)
            update!(**args)
@@ -254,9 +355,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @creation_disabled = args[:creation_disabled] if args.key?(:creation_disabled)
           @image_version_id = args[:image_version_id] if args.key?(:image_version_id)
           @is_default = args[:is_default] if args.key?(:is_default)
+          @release_date = args[:release_date] if args.key?(:release_date)
           @supported_python_versions = args[:supported_python_versions] if args.key?(:supported_python_versions)
+          @upgrade_disabled = args[:upgrade_disabled] if args.key?(:upgrade_disabled)
         end
       end
       
@@ -765,6 +869,25 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Network-level access control policy for the Airflow web server.
+      class WebServerNetworkAccessControl
+        include Google::Apis::Core::Hashable
+      
+        # A collection of allowed IP ranges with descriptions.
+        # Corresponds to the JSON property `allowedIpRanges`
+        # @return [Array<Google::Apis::ComposerV1::AllowedIpRange>]
+        attr_accessor :allowed_ip_ranges
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_ip_ranges = args[:allowed_ip_ranges] if args.key?(:allowed_ip_ranges)
         end
       end
     end

@@ -22,6 +22,18 @@ module Google
   module Apis
     module ComposerV1
       
+      class AllowedIpRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Date
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -112,6 +124,29 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WebServerNetworkAccessControl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AllowedIpRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :value, as: 'value'
+        end
+      end
+      
+      class Date
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -145,6 +180,8 @@ module Google
       
           property :software_config, as: 'softwareConfig', class: Google::Apis::ComposerV1::SoftwareConfig, decorator: Google::Apis::ComposerV1::SoftwareConfig::Representation
       
+          property :web_server_network_access_control, as: 'webServerNetworkAccessControl', class: Google::Apis::ComposerV1::WebServerNetworkAccessControl, decorator: Google::Apis::ComposerV1::WebServerNetworkAccessControl::Representation
+      
         end
       end
       
@@ -162,9 +199,13 @@ module Google
       class ImageVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_disabled, as: 'creationDisabled'
           property :image_version_id, as: 'imageVersionId'
           property :is_default, as: 'isDefault'
+          property :release_date, as: 'releaseDate', class: Google::Apis::ComposerV1::Date, decorator: Google::Apis::ComposerV1::Date::Representation
+      
           collection :supported_python_versions, as: 'supportedPythonVersions'
+          property :upgrade_disabled, as: 'upgradeDisabled'
         end
       end
       
@@ -273,6 +314,14 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class WebServerNetworkAccessControl
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_ip_ranges, as: 'allowedIpRanges', class: Google::Apis::ComposerV1::AllowedIpRange, decorator: Google::Apis::ComposerV1::AllowedIpRange::Representation
+      
         end
       end
     end
