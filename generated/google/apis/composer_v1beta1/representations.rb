@@ -34,7 +34,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Date
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EncryptionConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -112,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RestartWebServerRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SoftwareConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -151,9 +169,25 @@ module Google
         end
       end
       
+      class Date
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EncryptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
         end
       end
       
@@ -177,6 +211,8 @@ module Google
           property :airflow_uri, as: 'airflowUri'
           property :dag_gcs_prefix, as: 'dagGcsPrefix'
           property :database_config, as: 'databaseConfig', class: Google::Apis::ComposerV1beta1::DatabaseConfig, decorator: Google::Apis::ComposerV1beta1::DatabaseConfig::Representation
+      
+          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::ComposerV1beta1::EncryptionConfig, decorator: Google::Apis::ComposerV1beta1::EncryptionConfig::Representation
       
           property :gke_cluster, as: 'gkeCluster'
           property :node_config, as: 'nodeConfig', class: Google::Apis::ComposerV1beta1::NodeConfig, decorator: Google::Apis::ComposerV1beta1::NodeConfig::Representation
@@ -207,9 +243,13 @@ module Google
       class ImageVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_disabled, as: 'creationDisabled'
           property :image_version_id, as: 'imageVersionId'
           property :is_default, as: 'isDefault'
+          property :release_date, as: 'releaseDate', class: Google::Apis::ComposerV1beta1::Date, decorator: Google::Apis::ComposerV1beta1::Date::Representation
+      
           collection :supported_python_versions, as: 'supportedPythonVersions'
+          property :upgrade_disabled, as: 'upgradeDisabled'
         end
       end
       
@@ -298,6 +338,12 @@ module Google
       
           property :web_server_ipv4_cidr_block, as: 'webServerIpv4CidrBlock'
           property :web_server_ipv4_reserved_range, as: 'webServerIpv4ReservedRange'
+        end
+      end
+      
+      class RestartWebServerRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

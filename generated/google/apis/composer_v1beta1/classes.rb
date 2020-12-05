@@ -73,6 +73,47 @@ module Google
         end
       end
       
+      # Represents a whole or partial calendar date, such as a birthday. The time of
+      # day and time zone are either specified elsewhere or are insignificant. The
+      # date is relative to the Gregorian Calendar. This can represent one of the
+      # following: * A full date, with non-zero year, month, and day values * A month
+      # and day value, with a zero year, such as an anniversary * A year on its own,
+      # with zero month and day values * A year and month value, with a zero day, such
+      # as a credit card expiration date Related types are google.type.TimeOfDay and `
+      # google.protobuf.Timestamp`.
+      class Date
+        include Google::Apis::Core::Hashable
+      
+        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        # specify a year by itself or a year and month where the day isn't significant.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        # and day.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        # year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -87,6 +128,27 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The encryption options for the Composer environment and its dependencies.
+      class EncryptionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Customer-managed Encryption Key available through Google's Key
+        # Management Service. Cannot be updated. If not specified, Google-managed key
+        # will be used.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
         end
       end
       
@@ -178,6 +240,11 @@ module Google
         # @return [Google::Apis::ComposerV1beta1::DatabaseConfig]
         attr_accessor :database_config
       
+        # The encryption options for the Composer environment and its dependencies.
+        # Corresponds to the JSON property `encryptionConfig`
+        # @return [Google::Apis::ComposerV1beta1::EncryptionConfig]
+        attr_accessor :encryption_config
+      
         # Output only. The Kubernetes Engine cluster used to run this environment.
         # Corresponds to the JSON property `gkeCluster`
         # @return [String]
@@ -225,6 +292,7 @@ module Google
           @airflow_uri = args[:airflow_uri] if args.key?(:airflow_uri)
           @dag_gcs_prefix = args[:dag_gcs_prefix] if args.key?(:dag_gcs_prefix)
           @database_config = args[:database_config] if args.key?(:database_config)
+          @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @gke_cluster = args[:gke_cluster] if args.key?(:gke_cluster)
           @node_config = args[:node_config] if args.key?(:node_config)
           @node_count = args[:node_count] if args.key?(:node_count)
@@ -304,6 +372,12 @@ module Google
       class ImageVersion
         include Google::Apis::Core::Hashable
       
+        # Whether it is impossible to create an environment with the image version.
+        # Corresponds to the JSON property `creationDisabled`
+        # @return [Boolean]
+        attr_accessor :creation_disabled
+        alias_method :creation_disabled?, :creation_disabled
+      
         # The string identifier of the ImageVersion, in the form: "composer-x.y.z-
         # airflow-a.b(.c)"
         # Corresponds to the JSON property `imageVersionId`
@@ -317,10 +391,29 @@ module Google
         attr_accessor :is_default
         alias_method :is_default?, :is_default
       
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values * A month
+        # and day value, with a zero year, such as an anniversary * A year on its own,
+        # with zero month and day values * A year and month value, with a zero day, such
+        # as a credit card expiration date Related types are google.type.TimeOfDay and `
+        # google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `releaseDate`
+        # @return [Google::Apis::ComposerV1beta1::Date]
+        attr_accessor :release_date
+      
         # supported python versions
         # Corresponds to the JSON property `supportedPythonVersions`
         # @return [Array<String>]
         attr_accessor :supported_python_versions
+      
+        # Whether it is impossible to upgrade an environment running with the image
+        # version.
+        # Corresponds to the JSON property `upgradeDisabled`
+        # @return [Boolean]
+        attr_accessor :upgrade_disabled
+        alias_method :upgrade_disabled?, :upgrade_disabled
       
         def initialize(**args)
            update!(**args)
@@ -328,9 +421,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @creation_disabled = args[:creation_disabled] if args.key?(:creation_disabled)
           @image_version_id = args[:image_version_id] if args.key?(:image_version_id)
           @is_default = args[:is_default] if args.key?(:is_default)
+          @release_date = args[:release_date] if args.key?(:release_date)
           @supported_python_versions = args[:supported_python_versions] if args.key?(:supported_python_versions)
+          @upgrade_disabled = args[:upgrade_disabled] if args.key?(:upgrade_disabled)
         end
       end
       
@@ -718,6 +814,19 @@ module Google
           @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
           @web_server_ipv4_cidr_block = args[:web_server_ipv4_cidr_block] if args.key?(:web_server_ipv4_cidr_block)
           @web_server_ipv4_reserved_range = args[:web_server_ipv4_reserved_range] if args.key?(:web_server_ipv4_reserved_range)
+        end
+      end
+      
+      # Restart Airflow web server.
+      class RestartWebServerRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
