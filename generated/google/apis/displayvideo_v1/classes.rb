@@ -4613,12 +4613,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :insertion_order_id
       
-        # The type of insertion order. If this field is unspecified in creation, the
-        # value defaults to `RTB`.
-        # Corresponds to the JSON property `insertionOrderType`
-        # @return [String]
-        attr_accessor :insertion_order_type
-      
         # Integration details of an entry.
         # Corresponds to the JSON property `integrationDetails`
         # @return [Google::Apis::DisplayvideoV1::IntegrationDetails]
@@ -4666,7 +4660,6 @@ module Google
           @entity_status = args[:entity_status] if args.key?(:entity_status)
           @frequency_cap = args[:frequency_cap] if args.key?(:frequency_cap)
           @insertion_order_id = args[:insertion_order_id] if args.key?(:insertion_order_id)
-          @insertion_order_type = args[:insertion_order_type] if args.key?(:insertion_order_type)
           @integration_details = args[:integration_details] if args.key?(:integration_details)
           @name = args[:name] if args.key?(:name)
           @pacing = args[:pacing] if args.key?(:pacing)
