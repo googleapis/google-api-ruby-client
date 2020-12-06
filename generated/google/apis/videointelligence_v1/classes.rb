@@ -338,6 +338,17 @@ module Google
       class GoogleCloudVideointelligenceV1FaceDetectionAnnotation
         include Google::Apis::Core::Hashable
       
+        # The thumbnail of a person's face.
+        # Corresponds to the JSON property `thumbnail`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :thumbnail
+      
+        # The face tracks with attributes.
+        # Corresponds to the JSON property `tracks`
+        # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1Track>]
+        attr_accessor :tracks
+      
         # Feature version.
         # Corresponds to the JSON property `version`
         # @return [String]
@@ -349,6 +360,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @thumbnail = args[:thumbnail] if args.key?(:thumbnail)
+          @tracks = args[:tracks] if args.key?(:tracks)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -1855,6 +1868,17 @@ module Google
       class GoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation
         include Google::Apis::Core::Hashable
       
+        # The thumbnail of a person's face.
+        # Corresponds to the JSON property `thumbnail`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :thumbnail
+      
+        # The face tracks with attributes.
+        # Corresponds to the JSON property `tracks`
+        # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1beta2Track>]
+        attr_accessor :tracks
+      
         # Feature version.
         # Corresponds to the JSON property `version`
         # @return [String]
@@ -1866,6 +1890,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @thumbnail = args[:thumbnail] if args.key?(:thumbnail)
+          @tracks = args[:tracks] if args.key?(:tracks)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -2986,6 +3012,17 @@ module Google
       class GoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation
         include Google::Apis::Core::Hashable
       
+        # The thumbnail of a person's face.
+        # Corresponds to the JSON property `thumbnail`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :thumbnail
+      
+        # The face tracks with attributes.
+        # Corresponds to the JSON property `tracks`
+        # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p1beta1Track>]
+        attr_accessor :tracks
+      
         # Feature version.
         # Corresponds to the JSON property `version`
         # @return [String]
@@ -2997,6 +3034,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @thumbnail = args[:thumbnail] if args.key?(:thumbnail)
+          @tracks = args[:tracks] if args.key?(:tracks)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -4117,6 +4156,17 @@ module Google
       class GoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation
         include Google::Apis::Core::Hashable
       
+        # The thumbnail of a person's face.
+        # Corresponds to the JSON property `thumbnail`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :thumbnail
+      
+        # The face tracks with attributes.
+        # Corresponds to the JSON property `tracks`
+        # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1Track>]
+        attr_accessor :tracks
+      
         # Feature version.
         # Corresponds to the JSON property `version`
         # @return [String]
@@ -4128,6 +4178,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @thumbnail = args[:thumbnail] if args.key?(:thumbnail)
+          @tracks = args[:tracks] if args.key?(:tracks)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -5334,6 +5386,17 @@ module Google
       class GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation
         include Google::Apis::Core::Hashable
       
+        # The thumbnail of a person's face.
+        # Corresponds to the JSON property `thumbnail`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :thumbnail
+      
+        # The face tracks with attributes.
+        # Corresponds to the JSON property `tracks`
+        # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1Track>]
+        attr_accessor :tracks
+      
         # Feature version.
         # Corresponds to the JSON property `version`
         # @return [String]
@@ -5345,6 +5408,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @thumbnail = args[:thumbnail] if args.key?(:thumbnail)
+          @tracks = args[:tracks] if args.key?(:tracks)
           @version = args[:version] if args.key?(:version)
         end
       end
