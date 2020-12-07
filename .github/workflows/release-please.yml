@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: ReleasePlease
+        id: release-please
         if: ${{ env.ENABLE_RELEASE_PLEASE }}
         uses: GoogleCloudPlatform/release-please-action@v2
         with:
@@ -24,7 +25,8 @@ jobs:
           monorepo-tags: true
           bump-minor-pre-major: true
       - name: AutoApprove
-        if: ${{ steps.ReleasePlease.outputs.pr }}
+        id: auto-approve
+        if: ${{ steps.release-please.outputs.pr }}
         uses: actions/github-script@v2
         with:
           github-token: ${{secrets.YOSHI_APPROVER_TOKEN}}
@@ -35,13 +37,13 @@ jobs:
                 owner: 'googleapis',
                 repo: 'google-api-ruby-client',
                 body: "AutoApprove: Rubber stamped release!",
-                pull_number: ${{ steps.ReleasePlease.outputs.pr }},
+                pull_number: ${{ steps.release-please.outputs.pr }},
                 event: "APPROVE"
               });
               github.issues.addLabels({
                 owner: 'googleapis',
                 repo: 'google-api-ruby-client',
-                issue_number: ${{ steps.ReleasePlease.outputs.pr }},
+                issue_number: ${{ steps.release-please.outputs.pr }},
                 labels: ["autorelease: pending", "automerge", "kokoro:force-run"]
               });
             } else {
@@ -49,7 +51,7 @@ jobs:
               github.issues.addLabels({
                 owner: 'googleapis',
                 repo: 'google-api-ruby-client',
-                issue_number: ${{ steps.ReleasePlease.outputs.pr }},
+                issue_number: ${{ steps.release-please.outputs.pr }},
                 labels: ["autorelease: pending", "kokoro:force-run"]
               });
             }
