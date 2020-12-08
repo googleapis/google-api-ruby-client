@@ -430,6 +430,11 @@ module Google
         # @return [Google::Apis::DnsV1::ManagedZoneReverseLookupConfig]
         attr_accessor :reverse_lookup_config
       
+        # Contains information about Service Directory-backed zones.
+        # Corresponds to the JSON property `serviceDirectoryConfig`
+        # @return [Google::Apis::DnsV1::ManagedZoneServiceDirectoryConfig]
+        attr_accessor :service_directory_config
+      
         # The zone's visibility: public zones are exposed to the Internet, while private
         # zones are visible only to Virtual Private Cloud resources.
         # Corresponds to the JSON property `visibility`
@@ -456,6 +461,7 @@ module Google
           @peering_config = args[:peering_config] if args.key?(:peering_config)
           @private_visibility_config = args[:private_visibility_config] if args.key?(:private_visibility_config)
           @reverse_lookup_config = args[:reverse_lookup_config] if args.key?(:reverse_lookup_config)
+          @service_directory_config = args[:service_directory_config] if args.key?(:service_directory_config)
           @visibility = args[:visibility] if args.key?(:visibility)
         end
       end
@@ -732,6 +738,65 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # Contains information about Service Directory-backed zones.
+      class ManagedZoneServiceDirectoryConfig
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Contains information about the namespace associated with the zone.
+        # Corresponds to the JSON property `namespace`
+        # @return [Google::Apis::DnsV1::ManagedZoneServiceDirectoryConfigNamespace]
+        attr_accessor :namespace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @namespace = args[:namespace] if args.key?(:namespace)
+        end
+      end
+      
+      # 
+      class ManagedZoneServiceDirectoryConfigNamespace
+        include Google::Apis::Core::Hashable
+      
+        # The time that the namespace backing this zone was deleted, empty string if it
+        # still exists. This is in RFC3339 text format. Output only.
+        # Corresponds to the JSON property `deletionTime`
+        # @return [String]
+        attr_accessor :deletion_time
+      
+        # 
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The fully qualified URL of the namespace associated with the zone. This should
+        # be formatted like https://servicedirectory.googleapis.com/v1/projects/`project`
+        # /locations/`location`/namespaces/`namespace`
+        # Corresponds to the JSON property `namespaceUrl`
+        # @return [String]
+        attr_accessor :namespace_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deletion_time = args[:deletion_time] if args.key?(:deletion_time)
+          @kind = args[:kind] if args.key?(:kind)
+          @namespace_url = args[:namespace_url] if args.key?(:namespace_url)
         end
       end
       
