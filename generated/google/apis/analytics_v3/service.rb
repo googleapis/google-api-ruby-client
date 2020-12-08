@@ -47,7 +47,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', 'analytics/v3/')
+          super('https://analytics.googleapis.com/', 'analytics/v3/')
           @batch_path = 'batch/analytics/v3'
         end
         
