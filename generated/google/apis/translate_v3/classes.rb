@@ -33,7 +33,7 @@ module Google
         attr_accessor :glossaries
       
         # Required. Input configurations. The total number of files matched should be <=
-        # 1000. The total content size should be <= 100M Unicode codepoints. The files
+        # 100. The total content size should be <= 100M Unicode codepoints. The files
         # must use UTF-8 encoding.
         # Corresponds to the JSON property `inputConfigs`
         # @return [Array<Google::Apis::TranslateV3::InputConfig>]
