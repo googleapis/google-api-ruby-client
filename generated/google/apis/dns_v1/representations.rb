@@ -118,6 +118,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedZoneServiceDirectoryConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManagedZoneServiceDirectoryConfigNamespace
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListManagedZonesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -341,6 +353,8 @@ module Google
       
           property :reverse_lookup_config, as: 'reverseLookupConfig', class: Google::Apis::DnsV1::ManagedZoneReverseLookupConfig, decorator: Google::Apis::DnsV1::ManagedZoneReverseLookupConfig::Representation
       
+          property :service_directory_config, as: 'serviceDirectoryConfig', class: Google::Apis::DnsV1::ManagedZoneServiceDirectoryConfig, decorator: Google::Apis::DnsV1::ManagedZoneServiceDirectoryConfig::Representation
+      
           property :visibility, as: 'visibility'
         end
       end
@@ -425,6 +439,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
+        end
+      end
+      
+      class ManagedZoneServiceDirectoryConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :namespace, as: 'namespace', class: Google::Apis::DnsV1::ManagedZoneServiceDirectoryConfigNamespace, decorator: Google::Apis::DnsV1::ManagedZoneServiceDirectoryConfigNamespace::Representation
+      
+        end
+      end
+      
+      class ManagedZoneServiceDirectoryConfigNamespace
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deletion_time, as: 'deletionTime'
+          property :kind, as: 'kind'
+          property :namespace_url, as: 'namespaceUrl'
         end
       end
       
