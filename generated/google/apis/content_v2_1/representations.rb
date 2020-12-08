@@ -4932,6 +4932,7 @@ module Google
           property :matcher_option, as: 'matcherOption'
           property :offer_id_matcher, as: 'offerIdMatcher', class: Google::Apis::ContentV2_1::RepricingRuleEligibleOfferMatcherStringMatcher, decorator: Google::Apis::ContentV2_1::RepricingRuleEligibleOfferMatcherStringMatcher::Representation
       
+          property :skip_when_on_promotion, as: 'skipWhenOnPromotion'
         end
       end
       

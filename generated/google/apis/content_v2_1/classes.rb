@@ -334,17 +334,17 @@ module Google
       class AccountLabel
         include Google::Apis::Core::Hashable
       
-        # Output only. Immutable. The ID of account this label belongs to.
+        # Immutable. The ID of account this label belongs to.
         # Corresponds to the JSON property `accountId`
         # @return [Fixnum]
         attr_accessor :account_id
       
-        # Description for this label.
+        # The description of this label.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Output only. Immutable. The ID of the label.
+        # Output only. The ID of the label.
         # Corresponds to the JSON property `labelId`
         # @return [Fixnum]
         attr_accessor :label_id
@@ -943,7 +943,9 @@ module Google
         # @return [String]
         attr_accessor :linked_account_id
       
-        # List of provided services.
+        # Provided services. Acceptable values are: - "`shoppingAdsProductManagement`" -
+        # "`shoppingAdsOther`" - "`shoppingActionsProductManagement`" - "`
+        # shoppingActionsOrderManagement`" - "`shoppingActionsOther`"
         # Corresponds to the JSON property `services`
         # @return [Array<String>]
         attr_accessor :services
@@ -3397,7 +3399,7 @@ module Google
         # @return [Google::Apis::ContentV2_1::Errors]
         attr_accessor :errors
       
-        # The the list of accessible GMB accounts.
+        # The list of accessible GMB accounts.
         # Corresponds to the JSON property `gmbAccounts`
         # @return [Google::Apis::ContentV2_1::GmbAccounts]
         attr_accessor :gmb_accounts
@@ -10924,6 +10926,12 @@ module Google
         # @return [Google::Apis::ContentV2_1::RepricingRuleEligibleOfferMatcherStringMatcher]
         attr_accessor :offer_id_matcher
       
+        # When true, the rule won't be applied to offers with active promotions.
+        # Corresponds to the JSON property `skipWhenOnPromotion`
+        # @return [Boolean]
+        attr_accessor :skip_when_on_promotion
+        alias_method :skip_when_on_promotion?, :skip_when_on_promotion
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10934,6 +10942,7 @@ module Google
           @item_group_id_matcher = args[:item_group_id_matcher] if args.key?(:item_group_id_matcher)
           @matcher_option = args[:matcher_option] if args.key?(:matcher_option)
           @offer_id_matcher = args[:offer_id_matcher] if args.key?(:offer_id_matcher)
+          @skip_when_on_promotion = args[:skip_when_on_promotion] if args.key?(:skip_when_on_promotion)
         end
       end
       
@@ -11340,7 +11349,7 @@ module Google
         attr_accessor :delivery_date
       
         # Type of the return method. Acceptable values are: - "`byMail`" - "`
-        # contactCustomerSupport`" - "`returnless`"
+        # contactCustomerSupport`" - "`returnless`" - "`inStore`"
         # Corresponds to the JSON property `returnMethodType`
         # @return [String]
         attr_accessor :return_method_type
@@ -11938,7 +11947,7 @@ module Google
         # qualityNotExpected`" - "`receivedTooLate`" - "`storePackageMissing`" - "`
         # transitPackageMissing`" - "`unsuccessfulDeliveryUndeliverable`" - "`
         # wrongChargeInStore`" - "`wrongItem`" - "`returns`" - "`undeliverable`" - "`
-        # refundFromMerchant`" - "`returnLabelShippingFee`"
+        # refundFromMerchant`" - "`returnLabelShippingFee`" - "`pspFee`"
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
