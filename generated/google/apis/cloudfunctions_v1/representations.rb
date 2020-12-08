@@ -379,6 +379,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :build_id, as: 'buildId'
           hash :request, as: 'request'
+          property :source_token, as: 'sourceToken'
           property :target, as: 'target'
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
