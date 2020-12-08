@@ -3275,7 +3275,9 @@ module Google
         # The properties of a Shape. If the shape is a placeholder shape as determined
         # by the placeholder field, then these properties may be inherited from a parent
         # placeholder shape. Determining the rendered value of the property depends on
-        # the corresponding property_state field value.
+        # the corresponding property_state field value. Any text autofit settings on the
+        # shape are automatically deactivated by requests that can impact how text fits
+        # in the shape.
         # Corresponds to the JSON property `shapeProperties`
         # @return [Google::Apis::SlidesV1::ShapeProperties]
         attr_accessor :shape_properties
@@ -3338,7 +3340,9 @@ module Google
       # The properties of a Shape. If the shape is a placeholder shape as determined
       # by the placeholder field, then these properties may be inherited from a parent
       # placeholder shape. Determining the rendered value of the property depends on
-      # the corresponding property_state field value.
+      # the corresponding property_state field value. Any text autofit settings on the
+      # shape are automatically deactivated by requests that can impact how text fits
+      # in the shape.
       class ShapeProperties
         include Google::Apis::Core::Hashable
       
@@ -4639,7 +4643,9 @@ module Google
         # The properties of a Shape. If the shape is a placeholder shape as determined
         # by the placeholder field, then these properties may be inherited from a parent
         # placeholder shape. Determining the rendered value of the property depends on
-        # the corresponding property_state field value.
+        # the corresponding property_state field value. Any text autofit settings on the
+        # shape are automatically deactivated by requests that can impact how text fits
+        # in the shape.
         # Corresponds to the JSON property `shapeProperties`
         # @return [Google::Apis::SlidesV1::ShapeProperties]
         attr_accessor :shape_properties

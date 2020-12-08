@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/slides/
     module SlidesV1
       VERSION = 'V1'
-      REVISION = '20201120'
+      REVISION = '20201201'
 
       # See, edit, create, and delete all of your Google Drive files
       AUTH_DRIVE = 'https://www.googleapis.com/auth/drive'
