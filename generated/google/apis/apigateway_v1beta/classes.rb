@@ -134,7 +134,7 @@ module Google
         attr_accessor :name
       
         # Optional. OpenAPI specification documents. If specified, grpc_services and
-        # managed_service_config must not be included.
+        # managed_service_configs must not be included.
         # Corresponds to the JSON property `openapiDocuments`
         # @return [Array<Google::Apis::ApigatewayV1beta::ApigatewayApiConfigOpenApiDocument>]
         attr_accessor :openapi_documents
@@ -319,7 +319,7 @@ module Google
         end
       end
       
-      # Configuration for a backend.
+      # Configuration for all backends.
       class ApigatewayBackendConfig
         include Google::Apis::Core::Hashable
       
@@ -351,11 +351,6 @@ module Google
       # Associates `members` with a `role`.
       class ApigatewayBinding
         include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `bindingId`
-        # @return [String]
-        attr_accessor :binding_id
       
         # Represents a textual expression in the Common Expression Language (CEL) syntax.
         # CEL is a C-like expression language. The syntax and semantics of CEL are
@@ -418,7 +413,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @binding_id = args[:binding_id] if args.key?(:binding_id)
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
@@ -564,7 +558,7 @@ module Google
       class ApigatewayGatewayConfig
         include Google::Apis::Core::Hashable
       
-        # Configuration for a backend.
+        # Configuration for all backends.
         # Corresponds to the JSON property `backendConfig`
         # @return [Google::Apis::ApigatewayV1beta::ApigatewayBackendConfig]
         attr_accessor :backend_config
