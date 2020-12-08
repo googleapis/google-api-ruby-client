@@ -190,6 +190,19 @@ module Google
         end
       end
       
+      # Request for ActivateNatAddressRequest. Activate the nat address request.
+      class GoogleCloudApigeeV1ActivateNatAddressRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A reference to a certificate or key, certificate pair.
       class GoogleCloudApigeeV1Alias
         include Google::Apis::Core::Hashable
@@ -3797,6 +3810,32 @@ module Google
         end
       end
       
+      # Response for ListNatAddresses.
+      class GoogleCloudApigeeV1ListNatAddressesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of NAT Addresses for the instance.
+        # Corresponds to the JSON property `natAddresses`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1NatAddress>]
+        attr_accessor :nat_addresses
+      
+        # Page token that you can include in a ListNatAddresses request to retrieve the
+        # next page of content. If omitted, no subsequent pages exist.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nat_addresses = args[:nat_addresses] if args.key?(:nat_addresses)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # 
       class GoogleCloudApigeeV1ListOfDevelopersResponse
         include Google::Apis::Core::Hashable
@@ -3908,6 +3947,38 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Apigee NAT(network address translation) address. A NAT address is a static
+      # external IP address used for Internet egress traffic.
+      class GoogleCloudApigeeV1NatAddress
+        include Google::Apis::Core::Hashable
+      
+        # Required. The static IPV4 address.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # Required. Resource ID of the NAT address.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. State of the nat address.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
         end
       end
       

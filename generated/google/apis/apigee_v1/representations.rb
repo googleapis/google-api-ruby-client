@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ActivateNatAddressRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1Alias
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -544,6 +550,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ListNatAddressesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ListOfDevelopersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -569,6 +581,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1Metric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1NatAddress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1013,6 +1031,12 @@ module Google
           property :name, as: 'name'
           property :success, as: 'success'
           property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ActivateNatAddressRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1966,6 +1990,15 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1ListNatAddressesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :nat_addresses, as: 'natAddresses', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1NatAddress, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1NatAddress::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleCloudApigeeV1ListOfDevelopersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2003,6 +2036,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           collection :values, as: 'values'
+        end
+      end
+      
+      class GoogleCloudApigeeV1NatAddress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_address, as: 'ipAddress'
+          property :name, as: 'name'
+          property :state, as: 'state'
         end
       end
       
