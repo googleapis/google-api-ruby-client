@@ -846,6 +846,11 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :request
       
+        # A field for Firebase function deployments
+        # Corresponds to the JSON property `sourceToken`
+        # @return [String]
+        attr_accessor :source_token
+      
         # Target of the operation - for example projects/project-1/locations/region-1/
         # functions/function-1
         # Corresponds to the JSON property `target`
@@ -876,6 +881,7 @@ module Google
         def update!(**args)
           @build_id = args[:build_id] if args.key?(:build_id)
           @request = args[:request] if args.key?(:request)
+          @source_token = args[:source_token] if args.key?(:source_token)
           @target = args[:target] if args.key?(:target)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
