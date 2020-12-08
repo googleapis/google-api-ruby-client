@@ -30,7 +30,7 @@ module Google
       #    Trafficdirector = Google::Apis::TrafficdirectorV2 # Alias the module
       #    service = Trafficdirector::TrafficDirectorServiceService.new
       #
-      # @see https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/v2_overview#management-server
+      # @see https://cloud.google.com/traffic-director
       class TrafficDirectorServiceService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,

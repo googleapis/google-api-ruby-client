@@ -22,10 +22,10 @@ module Google
     #
     # 
     #
-    # @see https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/v2_overview#management-server
+    # @see https://cloud.google.com/traffic-director
     module TrafficdirectorV2
       VERSION = 'V2'
-      REVISION = '20200816'
+      REVISION = '20201123'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
