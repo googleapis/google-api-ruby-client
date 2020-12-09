@@ -312,6 +312,15 @@ module Google
         # @return [String]
         attr_accessor :last_attempt_time
       
+        # Immutable. This field is used to manage the legacy App Engine Cron jobs using
+        # the Cloud Scheduler API. If the field is set to true, the job will be
+        # considered a legacy job. Note that App Engine Cron jobs have fewer features
+        # than Cloud Scheduler jobs, e.g., are only limited to App Engine targets.
+        # Corresponds to the JSON property `legacyAppEngineCron`
+        # @return [Boolean]
+        attr_accessor :legacy_app_engine_cron
+        alias_method :legacy_app_engine_cron?, :legacy_app_engine_cron
+      
         # Optionally caller-specified in CreateJob, after which it becomes output only.
         # The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/
         # JOB_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),
@@ -405,6 +414,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @http_target = args[:http_target] if args.key?(:http_target)
           @last_attempt_time = args[:last_attempt_time] if args.key?(:last_attempt_time)
+          @legacy_app_engine_cron = args[:legacy_app_engine_cron] if args.key?(:legacy_app_engine_cron)
           @name = args[:name] if args.key?(:name)
           @pubsub_target = args[:pubsub_target] if args.key?(:pubsub_target)
           @retry_config = args[:retry_config] if args.key?(:retry_config)
@@ -779,12 +789,21 @@ module Google
       class RunJobRequest
         include Google::Apis::Core::Hashable
       
+        # This field is used to manage the legacy App Engine Cron jobs using the Cloud
+        # Scheduler API. If the field is set to true, the job in the __cron queue with
+        # the corresponding name will be forced to run instead.
+        # Corresponds to the JSON property `legacyAppEngineCron`
+        # @return [Boolean]
+        attr_accessor :legacy_app_engine_cron
+        alias_method :legacy_app_engine_cron?, :legacy_app_engine_cron
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @legacy_app_engine_cron = args[:legacy_app_engine_cron] if args.key?(:legacy_app_engine_cron)
         end
       end
       

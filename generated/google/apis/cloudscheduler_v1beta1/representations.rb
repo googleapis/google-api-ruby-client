@@ -176,6 +176,7 @@ module Google
           property :http_target, as: 'httpTarget', class: Google::Apis::CloudschedulerV1beta1::HttpTarget, decorator: Google::Apis::CloudschedulerV1beta1::HttpTarget::Representation
       
           property :last_attempt_time, as: 'lastAttemptTime'
+          property :legacy_app_engine_cron, as: 'legacyAppEngineCron'
           property :name, as: 'name'
           property :pubsub_target, as: 'pubsubTarget', class: Google::Apis::CloudschedulerV1beta1::PubsubTarget, decorator: Google::Apis::CloudschedulerV1beta1::PubsubTarget::Representation
       
@@ -282,6 +283,7 @@ module Google
       class RunJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :legacy_app_engine_cron, as: 'legacyAppEngineCron'
         end
       end
       
