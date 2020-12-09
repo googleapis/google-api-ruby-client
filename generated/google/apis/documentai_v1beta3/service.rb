@@ -152,7 +152,9 @@ module Google
         # LRO endpoint to batch process many documents. The output is written to Cloud
         # Storage as JSON in the [Document] format.
         # @param [String] name
-        #   Required. The processor resource name.
+        #   Required. The resource name of Processor or ProcessorVersion. Format: projects/
+        #   `project`/locations/`location`/processors/`processor`, or projects/`project`/
+        #   locations/`location`/processors/`processor`/processorVerions/`processorVersion`
         # @param [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchProcessRequest] google_cloud_documentai_v1beta3_batch_process_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -185,7 +187,11 @@ module Google
         
         # Processes a single document.
         # @param [String] name
-        #   Required. The processor resource name.
+        #   Required. The resource name of the Processor or ProcessorVersion to use for
+        #   processing. If a Processor is specified, the server will use its default
+        #   version. Format: projects/`project`/locations/`location`/processors/`processor`
+        #   , or projects/`project`/locations/`location`/processors/`processor`/
+        #   processorVerions/`processorVersion`
         # @param [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessRequest] google_cloud_documentai_v1beta3_process_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -246,6 +252,79 @@ module Google
           command.response_representation = Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation
           command.params['humanReviewConfig'] = human_review_config unless human_review_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # LRO endpoint to batch process many documents. The output is written to Cloud
+        # Storage as JSON in the [Document] format.
+        # @param [String] name
+        #   Required. The resource name of Processor or ProcessorVersion. Format: projects/
+        #   `project`/locations/`location`/processors/`processor`, or projects/`project`/
+        #   locations/`location`/processors/`processor`/processorVerions/`processorVersion`
+        # @param [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchProcessRequest] google_cloud_documentai_v1beta3_batch_process_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_project_location_processor_processor_version_process(name, google_cloud_documentai_v1beta3_batch_process_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta3/{+name}:batchProcess', options)
+          command.request_representation = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchProcessRequest::Representation
+          command.request_object = google_cloud_documentai_v1beta3_batch_process_request_object
+          command.response_representation = Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Processes a single document.
+        # @param [String] name
+        #   Required. The resource name of the Processor or ProcessorVersion to use for
+        #   processing. If a Processor is specified, the server will use its default
+        #   version. Format: projects/`project`/locations/`location`/processors/`processor`
+        #   , or projects/`project`/locations/`location`/processors/`processor`/
+        #   processorVerions/`processorVersion`
+        # @param [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessRequest] google_cloud_documentai_v1beta3_process_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def process_project_location_processor_processor_version(name, google_cloud_documentai_v1beta3_process_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta3/{+name}:process', options)
+          command.request_representation = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessRequest::Representation
+          command.request_object = google_cloud_documentai_v1beta3_process_request_object
+          command.response_representation = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessResponse::Representation
+          command.response_class = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
