@@ -394,6 +394,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TelephonyInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TermsAndConditions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -896,6 +902,8 @@ module Google
           property :imei, as: 'imei'
           property :meid, as: 'meid'
           property :network_operator_name, as: 'networkOperatorName'
+          collection :telephony_infos, as: 'telephonyInfos', class: Google::Apis::AndroidmanagementV1::TelephonyInfo, decorator: Google::Apis::AndroidmanagementV1::TelephonyInfo::Representation
+      
           property :wifi_mac_address, as: 'wifiMacAddress'
         end
       end
@@ -1245,6 +1253,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :update_received_time, as: 'updateReceivedTime'
           property :update_status, as: 'updateStatus'
+        end
+      end
+      
+      class TelephonyInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :carrier_name, as: 'carrierName'
+          property :phone_number, as: 'phoneNumber'
         end
       end
       

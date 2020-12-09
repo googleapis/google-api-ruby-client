@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/android/management
     module AndroidmanagementV1
       VERSION = 'V1'
-      REVISION = '20201123'
+      REVISION = '20201207'
 
       # Manage Android devices and apps for your customers
       AUTH_ANDROIDMANAGEMENT = 'https://www.googleapis.com/auth/androidmanagement'
