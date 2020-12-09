@@ -96,10 +96,12 @@ module Google
         end
       end
       
-      # The template that returns individual ASP (Access Code) data. STEPLADDER:
-      # Generated unstable field number for field 'kind'. (See http://go/stepladder-
-      # help#fieldNumber) STEPLADDER: Generated unstable field number for field 'etag'.
-      # (See http://go/stepladder-help#fieldNumber)
+      # An application-specific password (ASP) is used with applications that do not
+      # accept a verification code when logging into the application on certain
+      # devices. The ASP access code is used instead of the login and password you
+      # commonly use when accessing an application through a browser. For more
+      # information about ASPs and how to create one, see the [help center](//http://
+      # support.google.com/a/bin/answer.py?amp;answer=1032419).
       class Asp
         include Google::Apis::Core::Hashable
       
@@ -108,7 +110,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :code_id
       
-        # The time when the ASP was created. Expressed in Unix time format.
+        # The time when the ASP was created. Expressed in [Unix time](http://en.
+        # wikipedia.org/wiki/Epoch_time) format.
         # Corresponds to the JSON property `creationTime`
         # @return [Fixnum]
         attr_accessor :creation_time
@@ -118,17 +121,18 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The type of the API resource. This is always admin#directory#asp.
+        # The type of the API resource. This is always `admin#directory#asp`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The time when the ASP was last used. Expressed in Unix time format.
+        # The time when the ASP was last used. Expressed in [Unix time](http://en.
+        # wikipedia.org/wiki/Epoch_time) format.
         # Corresponds to the JSON property `lastTimeUsed`
         # @return [Fixnum]
         attr_accessor :last_time_used
       
-        # The name of the application that the user, represented by their userId,
+        # The name of the application that the user, represented by their `userId`,
         # entered when the ASP was created.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -155,9 +159,7 @@ module Google
         end
       end
       
-      # STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/
-      # stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for
-      # field 'etag'. (See http://go/stepladder-help#fieldNumber)
+      # 
       class Asps
         include Google::Apis::Core::Hashable
       
@@ -171,7 +173,7 @@ module Google
         # @return [Array<Google::Apis::AdminDirectoryV1::Asp>]
         attr_accessor :items
       
-        # The type of the API resource. This is always admin#directory#aspList.
+        # The type of the API resource. This is always `admin#directory#aspList`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -415,8 +417,8 @@ module Google
         # @return [String]
         attr_accessor :generated_resource_name
       
-        # The type of the resource. For calendar resources, the value is admin#directory#
-        # resources#calendars#CalendarResource.
+        # The type of the resource. For calendar resources, the value is `admin#
+        # directory#resources#calendars#CalendarResource`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -496,8 +498,8 @@ module Google
         # @return [Array<Google::Apis::AdminDirectoryV1::CalendarResource>]
         attr_accessor :items
       
-        # Identifies this as a collection of CalendarResources. This is always admin#
-        # directory#resources#calendars#calendarResourcesList.
+        # Identifies this as a collection of CalendarResources. This is always `admin#
+        # directory#resources#calendars#calendarResourcesList`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -542,7 +544,7 @@ module Google
         attr_accessor :id
       
         # Identifies this as a notification channel used to watch for changes to a
-        # resource, which is "api#channel".
+        # resource, which is `api#channel`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -599,28 +601,31 @@ module Google
         end
       end
       
-      # STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/
-      # stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for
-      # field 'etag'. (See http://go/stepladder-help#fieldNumber)
+      # Google Chrome devices run on the [Chrome OS](http://support.google.com/
+      # chromeos). For more information about common API tasks, see the [Developer's
+      # Guide](/admin-sdk/directory/v1/guides/manage-chrome-devices).
       class ChromeOsDevice
         include Google::Apis::Core::Hashable
       
-        # List of active time ranges (Read-only)
+        # List of active time ranges (Read-only).
         # Corresponds to the JSON property `activeTimeRanges`
         # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::ActiveTimeRange>]
         attr_accessor :active_time_ranges
       
-        # AssetId specified during enrollment or through later annotation
+        # The asset identifier as noted by an administrator or specified during
+        # enrollment.
         # Corresponds to the JSON property `annotatedAssetId`
         # @return [String]
         attr_accessor :annotated_asset_id
       
-        # Address or location of the device as noted by the administrator
+        # The address or location of the device as noted by the administrator. Maximum
+        # length is `200` characters. Empty values are allowed.
         # Corresponds to the JSON property `annotatedLocation`
         # @return [String]
         attr_accessor :annotated_location
       
-        # User of the device
+        # The user of the device as noted by the administrator. Maximum length is 100
+        # characters. Empty values are allowed.
         # Corresponds to the JSON property `annotatedUser`
         # @return [String]
         attr_accessor :annotated_user
@@ -631,7 +636,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :auto_update_expiration
       
-        # Chromebook boot mode (Read-only)
+        # The boot mode for the device. The possible values are: * `Verified`: The
+        # device is running a valid version of the Chrome OS. * `Dev`: The devices's
+        # developer hardware switch is enabled. When booted, the device has a command
+        # line shell. For an example of a developer switch, see the [Chromebook
+        # developer information](http://www.chromium.org/chromium-os/developer-
+        # information-for-chrome-os-devices/samsung-series-5-chromebook#TOC-Developer-
+        # switch).
         # Corresponds to the JSON property `bootMode`
         # @return [String]
         attr_accessor :boot_mode
@@ -646,7 +657,7 @@ module Google
         # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::DeviceFile>]
         attr_accessor :device_files
       
-        # Unique identifier of Chrome OS Device (Read-only)
+        # The unique ID of the Chrome device.
         # Corresponds to the JSON property `deviceId`
         # @return [String]
         attr_accessor :device_id
@@ -670,7 +681,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Chromebook Mac Address on ethernet network interface (Read-only)
+        # The device's MAC address on the ethernet network interface.
         # Corresponds to the JSON property `ethernetMacAddress`
         # @return [String]
         attr_accessor :ethernet_mac_address
@@ -683,12 +694,13 @@ module Google
         # @return [String]
         attr_accessor :ethernet_mac_address0
       
-        # Chromebook firmware version (Read-only)
+        # The Chrome device's firmware version.
         # Corresponds to the JSON property `firmwareVersion`
         # @return [String]
         attr_accessor :firmware_version
       
-        # Kind of resource this is.
+        # The type of resource. For the Chromeosdevices resource, the value is `admin#
+        # directory#chromeosdevice`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -709,7 +721,8 @@ module Google
         # @return [DateTime]
         attr_accessor :last_sync
       
-        # Chromebook Mac Address on wifi network interface (Read-only)
+        # The device's wireless MAC address. If the device does not have this
+        # information, it is not included in the response.
         # Corresponds to the JSON property `macAddress`
         # @return [String]
         attr_accessor :mac_address
@@ -719,54 +732,72 @@ module Google
         # @return [String]
         attr_accessor :manufacture_date
       
-        # Contains either the Mobile Equipment identifier (MEID) or the International
-        # Mobile Equipment Identity (IMEI) for the 3G mobile card in the Chromebook (
-        # Read-only)
+        # The Mobile Equipment Identifier (MEID) or the International Mobile Equipment
+        # Identity (IMEI) for the 3G mobile card in a mobile device. A MEID/IMEI is
+        # typically used when adding a device to a wireless carrier's post-pay service
+        # plan. If the device does not have this information, this property is not
+        # included in the response. For more information on how to export a MEID/IMEI
+        # list, see the [Developer's Guide](/admin-sdk/directory/v1/guides/manage-chrome-
+        # devices.html#export_meid).
         # Corresponds to the JSON property `meid`
         # @return [String]
         attr_accessor :meid
       
-        # Chromebook Model (Read-only)
+        # The device's model information. If the device does not have this information,
+        # this property is not included in the response.
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
       
-        # Notes added by the administrator
+        # Notes about this device added by the administrator. This property can be [
+        # searched](http://support.google.com/chromeos/a/bin/answer.py?answer=1698333)
+        # with the [list](/admin-sdk/directory/v1/reference/chromeosdevices/list) method'
+        # s `query` parameter. Maximum length is 500 characters. Empty values are
+        # allowed.
         # Corresponds to the JSON property `notes`
         # @return [String]
         attr_accessor :notes
       
-        # Chromebook order number (Read-only)
+        # The device's order number. Only devices directly purchased from Google have an
+        # order number.
         # Corresponds to the JSON property `orderNumber`
         # @return [String]
         attr_accessor :order_number
       
-        # OrgUnit of the device
+        # The full parent path with the organizational unit's name associated with the
+        # device. Path names are case insensitive. If the parent organizational unit is
+        # the top-level organization, it is represented as a forward slash, `/`. This
+        # property can be [updated](/admin-sdk/directory/v1/guides/manage-chrome-devices#
+        # update_chrome_device) using the API. For more information about how to create
+        # an organizational structure for your device, see the [administration help
+        # center](http://support.google.com/a/bin/answer.py?answer=182433).
         # Corresponds to the JSON property `orgUnitPath`
         # @return [String]
         attr_accessor :org_unit_path
       
-        # Chromebook Os Version (Read-only)
+        # The Chrome device's operating system version.
         # Corresponds to the JSON property `osVersion`
         # @return [String]
         attr_accessor :os_version
       
-        # Chromebook platform version (Read-only)
+        # The Chrome device's platform version.
         # Corresponds to the JSON property `platformVersion`
         # @return [String]
         attr_accessor :platform_version
       
-        # List of recent device users, in descending order by last login time (Read-only)
+        # List of recent device users, in descending order, by last login time.
         # Corresponds to the JSON property `recentUsers`
-        # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::RecentUser>]
+        # @return [Array<Google::Apis::AdminDirectoryV1::RecentUsers>]
         attr_accessor :recent_users
       
-        # Chromebook serial number (Read-only)
+        # The Chrome device serial number entered when the device was enabled. This
+        # value is the same as the Admin console's *Serial Number* in the *Chrome OS
+        # Devices* tab.
         # Corresponds to the JSON property `serialNumber`
         # @return [String]
         attr_accessor :serial_number
       
-        # status of the device (Read-only)
+        # The status of the device.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -791,7 +822,8 @@ module Google
         # @return [Google::Apis::AdminDirectoryV1::ChromeOsDevice::TpmVersionInfo]
         attr_accessor :tpm_version_info
       
-        # Will Chromebook auto renew after support end date (Read-only)
+        # Determines if the device will auto renew its support after the support end
+        # date. This is a read-only property.
         # Corresponds to the JSON property `willAutoRenew`
         # @return [Boolean]
         attr_accessor :will_auto_renew
@@ -845,7 +877,7 @@ module Google
         class ActiveTimeRange
           include Google::Apis::Core::Hashable
         
-          # Duration in milliseconds
+          # Duration of usage in milliseconds.
           # Corresponds to the JSON property `activeTime`
           # @return [Fixnum]
           attr_accessor :active_time
@@ -1035,31 +1067,6 @@ module Google
         end
         
         # 
-        class RecentUser
-          include Google::Apis::Core::Hashable
-        
-          # Email address of the user. Present only if the user type is managed
-          # Corresponds to the JSON property `email`
-          # @return [String]
-          attr_accessor :email
-        
-          # The type of the user
-          # Corresponds to the JSON property `type`
-          # @return [String]
-          attr_accessor :type
-        
-          def initialize(**args)
-             update!(**args)
-          end
-        
-          # Update properties of this object
-          def update!(**args)
-            @email = args[:email] if args.key?(:email)
-            @type = args[:type] if args.key?(:type)
-          end
-        end
-        
-        # 
         class SystemRamFreeReport
           include Google::Apis::Core::Hashable
         
@@ -1088,7 +1095,8 @@ module Google
         class TpmVersionInfo
           include Google::Apis::Core::Hashable
         
-          # TPM family.
+          # TPM family. We use the TPM 2.0 style encoding, e.g.: TPM 1.2: "1.2" ->
+          # 312e3200 TPM 2.0: "2.0" -> 322e3000
           # Corresponds to the JSON property `family`
           # @return [String]
           attr_accessor :family
@@ -1103,7 +1111,8 @@ module Google
           # @return [String]
           attr_accessor :manufacturer
         
-          # TPM specification level.
+          # TPM specification level. See Library Specification for TPM 2.0 and Main
+          # Specification for TPM 1.2.
           # Corresponds to the JSON property `specLevel`
           # @return [String]
           attr_accessor :spec_level
@@ -1138,12 +1147,14 @@ module Google
       class ChromeOsDeviceAction
         include Google::Apis::Core::Hashable
       
-        # Action to be taken on the ChromeOs Device
+        # Action to be taken on the Chrome OS device.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
       
-        # 
+        # Only used when the action is `deprovision`. With the `deprovision` action,
+        # this field is required. *Note*: The deprovision reason is audited because it
+        # might have implications on licenses for perpetual subscription customers.
         # Corresponds to the JSON property `deprovisionReason`
         # @return [String]
         attr_accessor :deprovision_reason
@@ -1159,9 +1170,7 @@ module Google
         end
       end
       
-      # STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/
-      # stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for
-      # field 'etag'. (See http://go/stepladder-help#fieldNumber)
+      # 
       class ChromeOsDevices
         include Google::Apis::Core::Hashable
       
@@ -1180,7 +1189,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Token used to access next page of this result.
+        # Token used to access the next page of this result. To access the next page,
+        # use this token's value in the `pageToken` query string of this request.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1202,7 +1212,7 @@ module Google
       class ChromeOsMoveDevicesToOu
         include Google::Apis::Core::Hashable
       
-        # ChromeOs Devices to be moved to OU
+        # Chrome OS devices to be moved to OU
         # Corresponds to the JSON property `deviceIds`
         # @return [Array<String>]
         attr_accessor :device_ids
@@ -1217,14 +1227,12 @@ module Google
         end
       end
       
-      # STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/
-      # stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for
-      # field 'etag'. (See http://go/stepladder-help#fieldNumber)
+      # 
       class Customer
         include Google::Apis::Core::Hashable
       
         # The customer's secondary contact email address. This email address cannot be
-        # on the same domain as the customerDomain
+        # on the same domain as the `customerDomain`
         # Corresponds to the JSON property `alternateEmail`
         # @return [String]
         attr_accessor :alternate_email
@@ -1234,8 +1242,8 @@ module Google
         # @return [DateTime]
         attr_accessor :customer_creation_time
       
-        # The customer's primary domain name string. Do not include the www prefix when
-        # creating a new customer.
+        # The customer's primary domain name string. Do not include the `www` prefix
+        # when creating a new customer.
         # Corresponds to the JSON property `customerDomain`
         # @return [String]
         attr_accessor :customer_domain
@@ -1250,25 +1258,26 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies the resource as a customer. Value: admin#directory#customer
+        # Identifies the resource as a customer. Value: `admin#directory#customer`
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The customer's ISO 639-2 language code. The default value is en-US
+        # The customer's ISO 639-2 language code. See the [Language Codes](/admin-sdk/
+        # directory/v1/languages) page for the list of supported codes. Valid language
+        # codes outside the supported set will be accepted by the API but may lead to
+        # unexpected behavior. The default value is `en`.
         # Corresponds to the JSON property `language`
         # @return [String]
         attr_accessor :language
       
-        # The customer's contact phone number in E.164 format.
+        # The customer's contact phone number in [E.164](http://en.wikipedia.org/wiki/E.
+        # 164) format.
         # Corresponds to the JSON property `phoneNumber`
         # @return [String]
         attr_accessor :phone_number
       
-        # STEPLADDER: Generated unstable field number for field 'address_line2' to avoid
-        # collision. (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated
-        # unstable field number for field 'address_line3' to avoid collision. (See http:/
-        # /go/stepladder-help#fieldNumber)
+        # The customer's postal address information.
         # Corresponds to the JSON property `postalAddress`
         # @return [Google::Apis::AdminDirectoryV1::CustomerPostalAddress]
         attr_accessor :postal_address
@@ -1291,10 +1300,7 @@ module Google
         end
       end
       
-      # STEPLADDER: Generated unstable field number for field 'address_line2' to avoid
-      # collision. (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated
-      # unstable field number for field 'address_line3' to avoid collision. (See http:/
-      # /go/stepladder-help#fieldNumber)
+      # 
       class CustomerPostalAddress
         include Google::Apis::Core::Hashable
       
@@ -1319,14 +1325,14 @@ module Google
         # @return [String]
         attr_accessor :contact_name
       
-        # This is a required property. For countryCode information see the ISO 3166
-        # country code elements.
+        # This is a required property. For `countryCode` information see the [ISO 3166
+        # country code elements](http://www.iso.org/iso/country_codes.htm).
         # Corresponds to the JSON property `countryCode`
         # @return [String]
         attr_accessor :country_code
       
-        # Name of the locality. An example of a locality value is the city of San
-        # Francisco.
+        # Name of the locality. An example of a locality value is the city of `San
+        # Francisco`.
         # Corresponds to the JSON property `locality`
         # @return [String]
         attr_accessor :locality
@@ -1336,14 +1342,14 @@ module Google
         # @return [String]
         attr_accessor :organization_name
       
-        # The postal code. A postalCode example is a postal zip code such as 10009. This
-        # is in accordance with - http: //portablecontacts.net/draft-spec.html#
+        # The postal code. A postalCode example is a postal zip code such as `10009`.
+        # This is in accordance with - http: //portablecontacts.net/draft-spec.html#
         # address_element.
         # Corresponds to the JSON property `postalCode`
         # @return [String]
         attr_accessor :postal_code
       
-        # Name of the region. An example of a region value is NY for the state of New
+        # Name of the region. An example of a region value is `NY` for the state of New
         # York.
         # Corresponds to the JSON property `region`
         # @return [String]
@@ -1465,9 +1471,9 @@ module Google
         attr_accessor :command_type
       
         # The payload for the command, provide it only if command supports it. The
-        # following commands support adding payload: - SET_VOLUME: Payload is a JSON
-        # object in the form: ` "volume": 50 `. The volume has to be an integer in the
-        # range [0,100].
+        # following commands support adding payload: - SET_VOLUME: Payload is a
+        # stringified JSON object in the form: ` "volume": 50 `. The volume has to be an
+        # integer in the range [0,100].
         # Corresponds to the JSON property `payload`
         # @return [String]
         attr_accessor :payload
@@ -1588,7 +1594,8 @@ module Google
       class Domains
         include Google::Apis::Core::Hashable
       
-        # Creation time of the domain. (Read-only).
+        # Creation time of the domain. Expressed in [Unix time](http://en.wikipedia.org/
+        # wiki/Epoch_time) format. (Read-only).
         # Corresponds to the JSON property `creationTime`
         # @return [Fixnum]
         attr_accessor :creation_time
@@ -1779,34 +1786,46 @@ module Google
         end
       end
       
-      # STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/
-      # stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for
-      # field 'etag'. (See http://go/stepladder-help#fieldNumber)
+      # Google Groups provide your users the ability to send messages to groups of
+      # people using the group's email address. For more information about common
+      # tasks, see the [Developer's Guide](/admin-sdk/directory/v1/guides/manage-
+      # groups).
       class Group
         include Google::Apis::Core::Hashable
       
-        # Is the group created by admin (Read-only) *
+        # Value is `true` if this group was created by an administrator rather than a
+        # user.
         # Corresponds to the JSON property `adminCreated`
         # @return [Boolean]
         attr_accessor :admin_created
         alias_method :admin_created?, :admin_created
       
-        # List of aliases (Read-only)
+        # List of a group's alias email addresses.
         # Corresponds to the JSON property `aliases`
         # @return [Array<String>]
         attr_accessor :aliases
       
-        # Description of the group
+        # An extended description to help users determine the purpose of a group. For
+        # example, you can include information about who should join the group, the
+        # types of messages to send to the group, links to FAQs about the group, or
+        # related groups. Maximum length is `4,096` characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Group direct members count
+        # The number of users that are direct members of the group. If a group is a
+        # member (child) of this group (the parent), members of the child group are not
+        # counted in the `directMembersCount` property of the parent group.
         # Corresponds to the JSON property `directMembersCount`
         # @return [Fixnum]
         attr_accessor :direct_members_count
       
-        # Email of Group
+        # The group's email address. If your account has multiple domains, select the
+        # appropriate domain for the email address. The `email` must be unique. This
+        # property is required when creating a group. Group email addresses are subject
+        # to the same character usage rules as usernames, see the [administration help
+        # center](http://support.google.com/a/bin/answer.py?answer=33386) for the
+        # details.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
@@ -1816,22 +1835,28 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Unique identifier of Group (Read-only)
+        # The unique ID of a group. A group `id` can be used as a group request URI's `
+        # groupKey`.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Kind of resource this is.
+        # The type of the API resource. For Groups resources, the value is `admin#
+        # directory#group`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Group name
+        # The group's display name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # List of non editable aliases (Read-only)
+        # List of the group's non-editable alias email addresses that are outside of the
+        # account's primary domain or subdomains. These are functioning email addresses
+        # used by the group. This is a read-only property returned in the API's response
+        # for a group. If edited in a group's POST or PUT request, the edit is ignored
+        # by the API service.
         # Corresponds to the JSON property `nonEditableAliases`
         # @return [Array<String>]
         attr_accessor :non_editable_aliases
@@ -1855,9 +1880,7 @@ module Google
         end
       end
       
-      # STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/
-      # stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for
-      # field 'etag'. (See http://go/stepladder-help#fieldNumber)
+      # 
       class Groups
         include Google::Apis::Core::Hashable
       
@@ -1894,16 +1917,23 @@ module Google
         end
       end
       
-      # 
+      # A Google Groups member can be a user or another group. This member can be
+      # inside or outside of your account's domains. For more information about common
+      # group member tasks, see the [Developer's Guide](/admin-sdk/directory/v1/guides/
+      # manage-group-members).
       class Member
         include Google::Apis::Core::Hashable
       
-        # Delivery settings of member
+        # Defines mail delivery preferences of member. This is only supported by create/
+        # update/get.
         # Corresponds to the JSON property `delivery_settings`
         # @return [String]
         attr_accessor :delivery_settings
       
-        # Email of member (Read-only)
+        # The member's email address. A member can be a user or another group. This
+        # property is required when adding a member to a group. The `email` must be
+        # unique and cannot be an alias of another group. If the email address is
+        # changed, the API automatically reflects the email address changes.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
@@ -1913,19 +1943,23 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Unique identifier of group (Read-only) Unique identifier of member (Read-only)
-        # The unique ID of the group member. A member id can be used as a member request
-        # URI's memberKey.
+        # The unique ID of the group member. A member `id` can be used as a member
+        # request URI's `memberKey`.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Kind of resource this is.
+        # The type of the API resource. For Members resources, the value is `admin#
+        # directory#member`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Role of member
+        # The member's role in a group. The API returns an error for cycles in group
+        # memberships. For example, if `group1` is a member of `group2`, `group2` cannot
+        # be a member of `group1`. For more information about a member's role, see the [
+        # administration help center](http://support.google.com/a/bin/answer.py?answer=
+        # 167094).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -1935,7 +1969,7 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # Type of member (Immutable)
+        # The type of group member.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2015,7 +2049,10 @@ module Google
         end
       end
       
-      # 
+      # G Suite Mobile Management includes Android, [Google Sync](http://support.
+      # google.com/a/bin/answer.py?answer=135937), and iOS devices. For more
+      # information about common group mobile device API tasks, see the [Developer's
+      # Guide](/admin-sdk/directory/v1/guides/manage-mobile-devices.html).
       class MobileDevice
         include Google::Apis::Core::Hashable
       
@@ -2025,12 +2062,17 @@ module Google
         attr_accessor :adb_status
         alias_method :adb_status?, :adb_status
       
-        # List of applications installed on Mobile Device
+        # The list of applications installed on an Android mobile device. It is not
+        # applicable to Google Sync and iOS devices. The list includes any Android
+        # applications that access G Suite data. When updating an applications list, it
+        # is important to note that updates replace the existing list. If the Android
+        # device has two existing applications and the API updates the list with five
+        # applications, the is now the updated list of five applications.
         # Corresponds to the JSON property `applications`
         # @return [Array<Google::Apis::AdminDirectoryV1::MobileDevice::Application>]
         attr_accessor :applications
       
-        # Mobile Device Baseband version (Read-only)
+        # The device's baseband version.
         # Corresponds to the JSON property `basebandVersion`
         # @return [String]
         attr_accessor :baseband_version
@@ -2045,12 +2087,12 @@ module Google
         # @return [String]
         attr_accessor :brand
       
-        # Mobile Device Build number (Read-only)
+        # The device's operating system build number.
         # Corresponds to the JSON property `buildNumber`
         # @return [String]
         attr_accessor :build_number
       
-        # The default locale used on the Mobile Device (Read-only)
+        # The default locale used on the device.
         # Corresponds to the JSON property `defaultLanguage`
         # @return [String]
         attr_accessor :default_language
@@ -2061,12 +2103,13 @@ module Google
         attr_accessor :developer_options_status
         alias_method :developer_options_status?, :developer_options_status
       
-        # Mobile Device compromised status (Read-only)
+        # The compromised device status.
         # Corresponds to the JSON property `deviceCompromisedStatus`
         # @return [String]
         attr_accessor :device_compromised_status
       
-        # Mobile Device serial number (Read-only)
+        # The serial number for a Google Sync mobile device. For Android and iOS devices,
+        # this is a software generated unique identifier.
         # Corresponds to the JSON property `deviceId`
         # @return [String]
         attr_accessor :device_id
@@ -2076,7 +2119,10 @@ module Google
         # @return [String]
         attr_accessor :device_password_status
       
-        # List of owner user's email addresses (Read-only)
+        # List of owner's email addresses. If your application needs the current list of
+        # user emails, use the [get](/admin-sdk/directory/v1/reference/mobiledevices/get.
+        # html) method. For additional information, see the [retrieve a user](/admin-sdk/
+        # directory/v1/guides/manage-users#get_user) method.
         # Corresponds to the JSON property `email`
         # @return [Array<String>]
         attr_accessor :email
@@ -2102,22 +2148,25 @@ module Google
         # @return [String]
         attr_accessor :hardware
       
-        # Mobile Device Hardware Id (Read-only)
+        # The IMEI/MEID unique identifier for Android hardware. It is not applicable to
+        # Google Sync devices. When adding an Android mobile device, this is an optional
+        # property. When updating one of these devices, this is a read-only property.
         # Corresponds to the JSON property `hardwareId`
         # @return [String]
         attr_accessor :hardware_id
       
-        # Mobile Device IMEI number (Read-only)
+        # The device's IMEI number.
         # Corresponds to the JSON property `imei`
         # @return [String]
         attr_accessor :imei
       
-        # Mobile Device Kernel version (Read-only)
+        # The device's kernel version.
         # Corresponds to the JSON property `kernelVersion`
         # @return [String]
         attr_accessor :kernel_version
       
-        # Kind of resource this is.
+        # The type of the API resource. For Mobiledevices resources, the value is `admin#
+        # directory#mobiledevice`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2128,8 +2177,7 @@ module Google
         # @return [DateTime]
         attr_accessor :last_sync
       
-        # Boolean indicating if this account is on owner/primary profile or not (Read-
-        # only)
+        # Boolean indicating if this account is on owner/primary profile or not.
         # Corresponds to the JSON property `managedAccountIsOnOwnerProfile`
         # @return [Boolean]
         attr_accessor :managed_account_is_on_owner_profile
@@ -2140,17 +2188,24 @@ module Google
         # @return [String]
         attr_accessor :manufacturer
       
-        # Mobile Device MEID number (Read-only)
+        # The device's MEID number.
         # Corresponds to the JSON property `meid`
         # @return [String]
         attr_accessor :meid
       
-        # Name of the model of the device
+        # The mobile device's model name, for example Nexus S. This property can be [
+        # updated](/admin-sdk/directory/v1/reference/mobiledevices/update.html). For
+        # more information, see the [Developer's Guide](/admin-sdk/directory/v1/guides/
+        # manage-mobile=devices#update_mobile_device).
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
       
-        # List of owner user's names (Read-only)
+        # List of the owner's user names. If your application needs the current list of
+        # device owner names, use the [get](/admin-sdk/directory/v1/reference/
+        # mobiledevices/get.html) method. For more information about retrieving mobile
+        # device user information, see the [Developer's Guide](/admin-sdk/directory/v1/
+        # guides/manage-users#get_user).
         # Corresponds to the JSON property `name`
         # @return [Array<String>]
         attr_accessor :name
@@ -2160,7 +2215,10 @@ module Google
         # @return [String]
         attr_accessor :network_operator
       
-        # Name of the mobile operating system
+        # The mobile device's operating system, for example IOS 4.3 or Android 2.3.5.
+        # This property can be [updated](/admin-sdk/directory/v1/reference/mobiledevices/
+        # update.html). For more information, see the [Developer's Guide](/admin-sdk/
+        # directory/v1/guides/manage-mobile-devices#update_mobile_device).
         # Corresponds to the JSON property `os`
         # @return [String]
         attr_accessor :os
@@ -2180,7 +2238,7 @@ module Google
         # @return [String]
         attr_accessor :release_version
       
-        # Unique identifier of Mobile Device (Read-only)
+        # The unique ID the API service uses to identify the mobile device.
         # Corresponds to the JSON property `resourceId`
         # @return [String]
         attr_accessor :resource_id
@@ -2190,12 +2248,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :security_patch_level
       
-        # Mobile Device SSN or Serial Number (Read-only)
+        # The device's serial number.
         # Corresponds to the JSON property `serialNumber`
         # @return [String]
         attr_accessor :serial_number
       
-        # Status of the device (Read-only)
+        # The device's status.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -2206,7 +2264,7 @@ module Google
         attr_accessor :supports_work_profile
         alias_method :supports_work_profile?, :supports_work_profile
       
-        # The type of device (Read-only)
+        # The type of mobile device.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2217,12 +2275,15 @@ module Google
         attr_accessor :unknown_sources_status
         alias_method :unknown_sources_status?, :unknown_sources_status
       
-        # Mobile Device user agent
+        # Gives information about the device such as `os` version. This property can be [
+        # updated](/admin-sdk/directory/v1/reference/mobiledevices/update.html). For
+        # more information, see the [Developer's Guide](/admin-sdk/directory/v1/guides/
+        # manage-mobile-devices#update_mobile_device).
         # Corresponds to the JSON property `userAgent`
         # @return [String]
         attr_accessor :user_agent
       
-        # Mobile Device WiFi MAC address (Read-only)
+        # The device's MAC address on Wi-Fi networks.
         # Corresponds to the JSON property `wifiMacAddress`
         # @return [String]
         attr_accessor :wifi_mac_address
@@ -2279,27 +2340,31 @@ module Google
         class Application
           include Google::Apis::Core::Hashable
         
-          # Display name of application
+          # The application's display name. An example is `Browser`.
           # Corresponds to the JSON property `displayName`
           # @return [String]
           attr_accessor :display_name
         
-          # Package name of application
+          # The application's package name. An example is `com.android.browser`.
           # Corresponds to the JSON property `packageName`
           # @return [String]
           attr_accessor :package_name
         
-          # List of Permissions for application
+          # The list of permissions of this application. These can be either a standard
+          # Android permission or one defined by the application, and are found in an
+          # application's [Android manifest](http://developer.android.com/guide/topics/
+          # manifest/uses-permission-element.html). Examples of a Calendar application's
+          # permissions are `READ_CALENDAR`, or `MANAGE_ACCOUNTS`.
           # Corresponds to the JSON property `permission`
           # @return [Array<String>]
           attr_accessor :permission
         
-          # Version code of application
+          # The application's version code. An example is `13`.
           # Corresponds to the JSON property `versionCode`
           # @return [Fixnum]
           attr_accessor :version_code
         
-          # Version name of application
+          # The application's version name. An example is `3.2-140714`.
           # Corresponds to the JSON property `versionName`
           # @return [String]
           attr_accessor :version_name
@@ -2323,7 +2388,7 @@ module Google
       class MobileDeviceAction
         include Google::Apis::Core::Hashable
       
-        # Action to be taken on the Mobile Device
+        # The action to be performed on the device.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -2375,20 +2440,25 @@ module Google
         end
       end
       
-      # JSON template for Org Unit resource in Directory API. STEPLADDER: Generated
-      # unstable field number for field 'kind'. (See http://go/stepladder-help#
-      # fieldNumber) STEPLADDER: Generated unstable field number for field 'etag'. (
-      # See http://go/stepladder-help#fieldNumber)
+      # Managing your account's organizational units allows you to configure your
+      # users' access to services and custom settings. For more information about
+      # common organizational unit tasks, see the [Developer's Guide](/admin-sdk/
+      # directory/v1/guides/manage-org-units.html).
       class OrgUnit
         include Google::Apis::Core::Hashable
       
-        # Should block inheritance
+        # Determines if a sub-organizational unit can inherit the settings of the parent
+        # organization. The default value is `false`, meaning a sub-organizational unit
+        # inherits the settings of the nearest parent organizational unit. For more
+        # information on inheritance and users in an organization structure, see the [
+        # administration help center](http://support.google.com/a/bin/answer.py?answer=
+        # 182442&topic=1227584&ctx=topic).
         # Corresponds to the JSON property `blockInheritance`
         # @return [Boolean]
         attr_accessor :block_inheritance
         alias_method :block_inheritance?, :block_inheritance
       
-        # Description of OrgUnit
+        # Description of the organizational unit.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -2398,32 +2468,49 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Kind of resource this is.
+        # The type of the API resource. For Orgunits resources, the value is `admin#
+        # directory#orgUnit`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Name of OrgUnit
+        # The organizational unit's path name. For example, an organizational unit's
+        # name within the /corp/support/sales_support parent path is sales_support.
+        # Required.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Id of OrgUnit
+        # The unique ID of the organizational unit.
         # Corresponds to the JSON property `orgUnitId`
         # @return [String]
         attr_accessor :org_unit_id
       
-        # Path of OrgUnit
+        # The full path to the organizational unit. The `orgUnitPath` is a derived
+        # property. When listed, it is derived from `parentOrgunitPath` and
+        # organizational unit's `name`. For example, for an organizational unit named '
+        # apps' under parent organization '/engineering', the orgUnitPath is '/
+        # engineering/apps'. In order to edit an `orgUnitPath`, either update the name
+        # of the organization or the `parentOrgunitPath`. A user's organizational unit
+        # determines which G Suite services the user has access to. If the user is moved
+        # to a new organization, the user's access changes. For more information about
+        # organization structures, see the [administration help center](http://support.
+        # google.com/a/bin/answer.py?answer=182433&topic=1227584&ctx=topic). For more
+        # information about moving a user to a different organization, see [Update a
+        # user](/admin-sdk/directory/v1/guides/manage-users.html#update_user).
         # Corresponds to the JSON property `orgUnitPath`
         # @return [String]
         attr_accessor :org_unit_path
       
-        # Id of parent OrgUnit
+        # The unique ID of the parent organizational unit. Required, unless `
+        # parentOrgUnitPath` is set.
         # Corresponds to the JSON property `parentOrgUnitId`
         # @return [String]
         attr_accessor :parent_org_unit_id
       
-        # Path of parent OrgUnit
+        # The organizational unit's parent path. For example, /corp/sales is the parent
+        # path for /corp/sales/sales_support organizational unit. Required, unless `
+        # parentOrgUnitId` is set.
         # Corresponds to the JSON property `parentOrgUnitPath`
         # @return [String]
         attr_accessor :parent_org_unit_path
@@ -2446,10 +2533,7 @@ module Google
         end
       end
       
-      # JSON response template for List Organization Units operation in Directory API.
-      # STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/
-      # stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for
-      # field 'etag'. (See http://go/stepladder-help#fieldNumber)
+      # 
       class OrgUnits
         include Google::Apis::Core::Hashable
       
@@ -2458,12 +2542,13 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Kind of resource this is.
+        # The type of the API resource. For Org Unit resources, the type is `admin#
+        # directory#orgUnits`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # List of user objects.
+        # List of organizational unit objects.
         # Corresponds to the JSON property `organizationUnits`
         # @return [Array<Google::Apis::AdminDirectoryV1::OrgUnit>]
         attr_accessor :organization_units
@@ -2502,7 +2587,7 @@ module Google
         attr_accessor :is_ou_scopable
         alias_method :is_ou_scopable?, :is_ou_scopable
       
-        # The type of the API resource. This is always admin#directory#privilege.
+        # The type of the API resource. This is always `admin#directory#privilege`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2513,7 +2598,7 @@ module Google
         attr_accessor :privilege_name
       
         # The obfuscated ID of the service this privilege is for. This value is returned
-        # with Privileges.list().
+        # with [`Privileges.list()`](/admin-sdk/directory/v1/reference/privileges/list).
         # Corresponds to the JSON property `serviceId`
         # @return [String]
         attr_accessor :service_id
@@ -2553,7 +2638,7 @@ module Google
         # @return [Array<Google::Apis::AdminDirectoryV1::Privilege>]
         attr_accessor :items
       
-        # The type of the API resource. This is always admin#directory#privileges.
+        # The type of the API resource. This is always `admin#directory#privileges`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2570,6 +2655,32 @@ module Google
         end
       end
       
+      # List of recent device users, in descending order, by last login time.
+      class RecentUsers
+        include Google::Apis::Core::Hashable
+      
+        # The user's email address. This is only present if the user type is `
+        # USER_TYPE_MANAGED`.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # The type of the user.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # 
       class Role
         include Google::Apis::Core::Hashable
@@ -2579,19 +2690,19 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Returns true if the role is a super admin role.
+        # Returns `true` if the role is a super admin role.
         # Corresponds to the JSON property `isSuperAdminRole`
         # @return [Boolean]
         attr_accessor :is_super_admin_role
         alias_method :is_super_admin_role?, :is_super_admin_role
       
-        # Returns true if this is a pre-defined system role.
+        # Returns `true` if this is a pre-defined system role.
         # Corresponds to the JSON property `isSystemRole`
         # @return [Boolean]
         attr_accessor :is_system_role
         alias_method :is_system_role?, :is_system_role
       
-        # The type of the API resource. This is always admin#directory#role.
+        # The type of the API resource. This is always `admin#directory#role`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2642,7 +2753,7 @@ module Google
           attr_accessor :privilege_name
         
           # The obfuscated ID of the service this privilege is for. This value is returned
-          # with Privileges.list().
+          # with [`Privileges.list()`](/admin-sdk/directory/v1/reference/privileges/list).
           # Corresponds to the JSON property `serviceId`
           # @return [String]
           attr_accessor :service_id
@@ -2673,7 +2784,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The type of the API resource. This is always admin#directory#roleAssignment.
+        # The type of the API resource. This is always `admin#directory#roleAssignment`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2694,8 +2805,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :role_id
       
-        # The scope in which this role is assigned. Possible values are: - CUSTOMER -
-        # ORG_UNIT
+        # The scope in which this role is assigned.
         # Corresponds to the JSON property `scopeType`
         # @return [String]
         attr_accessor :scope_type
@@ -2730,7 +2840,7 @@ module Google
         # @return [Array<Google::Apis::AdminDirectoryV1::RoleAssignment>]
         attr_accessor :items
       
-        # The type of the API resource. This is always admin#directory#roleAssignments .
+        # The type of the API resource. This is always `admin#directory#roleAssignments`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2767,7 +2877,7 @@ module Google
         # @return [Array<Google::Apis::AdminDirectoryV1::Role>]
         attr_accessor :items
       
-        # The type of the API resource. This is always admin#directory#roles.
+        # The type of the API resource. This is always `admin#directory#roles`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2790,10 +2900,8 @@ module Google
         end
       end
       
-      # JSON template for Schema resource in Directory API. STEPLADDER: Generated
-      # unstable field number for field 'kind'. (See http://go/stepladder-help#
-      # fieldNumber) STEPLADDER: Generated unstable field number for field 'etag'. (
-      # See http://go/stepladder-help#fieldNumber)
+      # The type of API resource. For Schema resources, this is always `admin#
+      # directory#schema`.
       class Schema
         include Google::Apis::Core::Hashable
       
@@ -2802,12 +2910,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # ETag of the resource.
+        # The ETag of the resource.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
-        # Fields of Schema
+        # A list of fields in the schema.
         # Corresponds to the JSON property `fields`
         # @return [Array<Google::Apis::AdminDirectoryV1::SchemaFieldSpec>]
         attr_accessor :fields
@@ -2817,12 +2925,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Unique identifier of Schema (Read-only)
+        # The unique identifier of the schema (Read-only)
         # Corresponds to the JSON property `schemaId`
         # @return [String]
         attr_accessor :schema_id
       
-        # Schema name
+        # The schema's name.
         # Corresponds to the JSON property `schemaName`
         # @return [String]
         attr_accessor :schema_name
@@ -2842,10 +2950,11 @@ module Google
         end
       end
       
-      # JSON template for FieldSpec resource for Schemas in Directory API. STEPLADDER:
-      # Generated unstable field number for field 'kind'. (See http://go/stepladder-
-      # help#fieldNumber) STEPLADDER: Generated unstable field number for field 'etag'.
-      # (See http://go/stepladder-help#fieldNumber)
+      # You can use schemas to add custom fields to user profiles. You can use these
+      # fields to store information such as the projects your users work on, their
+      # physical locations, their hire dates, or whatever else fits your business
+      # needs. For more information, see [Custom User Fields](/admin-sdk/directory/v1/
+      # guides/manage-schemas).
       class SchemaFieldSpec
         include Google::Apis::Core::Hashable
       
@@ -2854,52 +2963,56 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # ETag of the resource.
+        # The ETag of the field.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
-        # Unique identifier of Field (Read-only)
+        # The unique identifier of the field (Read-only)
         # Corresponds to the JSON property `fieldId`
         # @return [String]
         attr_accessor :field_id
       
-        # Name of the field.
+        # The name of the field.
         # Corresponds to the JSON property `fieldName`
         # @return [String]
         attr_accessor :field_name
       
-        # Type of the field.
+        # The type of the field.
         # Corresponds to the JSON property `fieldType`
         # @return [String]
         attr_accessor :field_type
       
-        # Boolean specifying whether the field is indexed or not.
+        # Boolean specifying whether the field is indexed or not. Default: `true`.
         # Corresponds to the JSON property `indexed`
         # @return [Boolean]
         attr_accessor :indexed
         alias_method :indexed?, :indexed
       
-        # Kind of resource this is.
+        # The kind of resource this is. For schema fields this is always `admin#
+        # directory#schema#fieldspec`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Boolean specifying whether this is a multi-valued field or not.
+        # A boolean specifying whether this is a multi-valued field or not. Default: `
+        # false`.
         # Corresponds to the JSON property `multiValued`
         # @return [Boolean]
         attr_accessor :multi_valued
         alias_method :multi_valued?, :multi_valued
       
         # Indexing spec for a numeric field. By default, only exact match queries will
-        # be supported for numeric fields. Setting the numericIndexingSpec allows range
-        # queries to be supported.
+        # be supported for numeric fields. Setting the `numericIndexingSpec` allows
+        # range queries to be supported.
         # Corresponds to the JSON property `numericIndexingSpec`
         # @return [Google::Apis::AdminDirectoryV1::SchemaFieldSpec::NumericIndexingSpec]
         attr_accessor :numeric_indexing_spec
       
-        # Read ACLs on the field specifying who can view values of this field. Valid
-        # values are "ALL_DOMAIN_USERS" and "ADMINS_AND_SELF".
+        # Specifies who can view values of this field. See [Retrieve users as a non-
+        # administrator](/admin-sdk/directory/v1/guides/manage-users#
+        # retrieve_users_non_admin) for more information. Note: It may take up to 24
+        # hours for changes to this field to be reflected.
         # Corresponds to the JSON property `readAccessType`
         # @return [String]
         attr_accessor :read_access_type
@@ -2923,8 +3036,8 @@ module Google
         end
         
         # Indexing spec for a numeric field. By default, only exact match queries will
-        # be supported for numeric fields. Setting the numericIndexingSpec allows range
-        # queries to be supported.
+        # be supported for numeric fields. Setting the `numericIndexingSpec` allows
+        # range queries to be supported.
         class NumericIndexingSpec
           include Google::Apis::Core::Hashable
         
@@ -2954,10 +3067,7 @@ module Google
         end
       end
       
-      # JSON response template for List Schema operation in Directory API. STEPLADDER:
-      # Generated unstable field number for field 'kind'. (See http://go/stepladder-
-      # help#fieldNumber) STEPLADDER: Generated unstable field number for field 'etag'.
-      # (See http://go/stepladder-help#fieldNumber)
+      # JSON response template for List Schema operation in Directory API.
       class Schemas
         include Google::Apis::Core::Hashable
       
@@ -2988,14 +3098,11 @@ module Google
         end
       end
       
-      # JSON template for token resource in Directory API. STEPLADDER: Generated
-      # unstable field number for field 'kind'. (See http://go/stepladder-help#
-      # fieldNumber) STEPLADDER: Generated unstable field number for field 'etag'. (
-      # See http://go/stepladder-help#fieldNumber)
+      # JSON template for token resource in Directory API.
       class Token
         include Google::Apis::Core::Hashable
       
-        # Whether the application is registered with Google. The value is true if the
+        # Whether the application is registered with Google. The value is `true` if the
         # application has an anonymous Client ID.
         # Corresponds to the JSON property `anonymous`
         # @return [Boolean]
@@ -3017,13 +3124,13 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The type of the API resource. This is always admin#directory#token.
+        # The type of the API resource. This is always `admin#directory#token`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Whether the token is issued to an installed application. The value is true if
-        # the application is installed to a desktop or mobile device.
+        # Whether the token is issued to an installed application. The value is `true`
+        # if the application is installed to a desktop or mobile device.
         # Corresponds to the JSON property `nativeApp`
         # @return [Boolean]
         attr_accessor :native_app
@@ -3056,10 +3163,7 @@ module Google
         end
       end
       
-      # JSON response template for List tokens operation in Directory API. STEPLADDER:
-      # Generated unstable field number for field 'kind'. (See http://go/stepladder-
-      # help#fieldNumber) STEPLADDER: Generated unstable field number for field 'etag'.
-      # (See http://go/stepladder-help#fieldNumber)
+      # JSON response template for List tokens operation in Directory API.
       class Tokens
         include Google::Apis::Core::Hashable
       
@@ -3073,7 +3177,7 @@ module Google
         # @return [Array<Google::Apis::AdminDirectoryV1::Token>]
         attr_accessor :items
       
-        # The type of the API resource. This is always admin#directory#tokenList.
+        # The type of the API resource. This is always `admin#directory#tokenList`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3090,49 +3194,28 @@ module Google
         end
       end
       
-      # STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/
-      # stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for
-      # field 'etag'. (See http://go/stepladder-help#fieldNumber) STEPLADDER:
-      # Generated unstable field number for field 'external_ids' to avoid collision. (
-      # See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable
-      # field number for field 'relations' to avoid collision. (See http://go/
-      # stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for
-      # field 'addresses' to avoid collision. (See http://go/stepladder-help#
-      # fieldNumber) STEPLADDER: Generated unstable field number for field '
-      # organizations' to avoid collision. (See http://go/stepladder-help#fieldNumber)
-      # STEPLADDER: Generated unstable field number for field 'phones' to avoid
-      # collision. (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated
-      # unstable field number for field 'languages' to avoid collision. (See http://go/
-      # stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for
-      # field 'posix_accounts' to avoid collision. (See http://go/stepladder-help#
-      # fieldNumber) STEPLADDER: Generated unstable field number for field '
-      # ssh_public_keys' to avoid collision. (See http://go/stepladder-help#
-      # fieldNumber) STEPLADDER: Generated unstable field number for field 'notes' to
-      # avoid collision. (See http://go/stepladder-help#fieldNumber) STEPLADDER:
-      # Generated unstable field number for field 'websites' to avoid collision. (See
-      # http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-      # number for field 'locations' to avoid collision. (See http://go/stepladder-
-      # help#fieldNumber) STEPLADDER: Generated unstable field number for field '
-      # keywords' to avoid collision. (See http://go/stepladder-help#fieldNumber)
-      # STEPLADDER: Generated unstable field number for field 'gender' to avoid
-      # collision. (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated
-      # unstable field number for field 'thumbnail_photo_etag' to avoid collision. (
-      # See http://go/stepladder-help#fieldNumber)
+      # The Directory API allows you to create and manage your account's users, user
+      # aliases, and user Gmail chat profile photos. For more information about common
+      # tasks, see the [User Accounts Developer's Guide](/admin-sdk/directory/v1/
+      # guides/manage-users.html) and the [User Aliases Developer's Guide](/admin-sdk/
+      # directory/v1/guides/manage-user-aliases.html).
       class User
         include Google::Apis::Core::Hashable
       
-        # Addresses of User
+        # A list of the user's addresses. The maximum allowed data size for this field
+        # is 10Kb.
         # Corresponds to the JSON property `addresses`
         # @return [Object]
         attr_accessor :addresses
       
-        # Output only. Indicates if user has agreed to terms (Read-only)
+        # Output only. This property is `true` if the user has completed an initial
+        # login and accepted the Terms of Service agreement.
         # Corresponds to the JSON property `agreedToTerms`
         # @return [Boolean]
         attr_accessor :agreed_to_terms
         alias_method :agreed_to_terms?, :agreed_to_terms
       
-        # Output only. List of aliases (Read-only)
+        # Output only. List of the user's alias email addresses.
         # Corresponds to the JSON property `aliases`
         # @return [Array<String>]
         attr_accessor :aliases
@@ -3143,7 +3226,9 @@ module Google
         attr_accessor :archived
         alias_method :archived?, :archived
       
-        # Boolean indicating if the user should change password in next login
+        # Indicates if the user is forced to change their password at next login. This
+        # setting doesn't apply when [the user signs in via a third-party identity
+        # provider](https://support.google.com/a/answer/60224).
         # Corresponds to the JSON property `changePasswordAtNextLogin`
         # @return [Boolean]
         attr_accessor :change_password_at_next_login
@@ -3159,7 +3244,12 @@ module Google
         # @return [Hash<String,Hash<String,Object>>]
         attr_accessor :custom_schemas
       
-        # Output only. CustomerId of User (Read-only)
+        # Output only. The customer ID to [retrieve all account users](/admin-sdk/
+        # directory/v1/guides/manage-users.html#get_all_users). You can use the alias `
+        # my_customer` to represent your account's `customerId`. As a reseller
+        # administrator, you can use the resold customer account's `customerId`. To get
+        # a `customerId`, use the account's primary domain in the `domain` parameter of
+        # a [users.list](/admin-sdk/directory/v1/reference/users/list) request.
         # Corresponds to the JSON property `customerId`
         # @return [String]
         attr_accessor :customer_id
@@ -3169,7 +3259,8 @@ module Google
         # @return [DateTime]
         attr_accessor :deletion_time
       
-        # Emails of User
+        # A list of the user's email addresses. The maximum allowed data size for this
+        # field is 10Kb.
         # Corresponds to the JSON property `emails`
         # @return [Object]
         attr_accessor :emails
@@ -3179,50 +3270,72 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The external Ids of User *
+        # A list of external IDs for the user, such as an employee or network ID. The
+        # maximum allowed data size for this field is 2Kb.
         # Corresponds to the JSON property `externalIds`
         # @return [Object]
         attr_accessor :external_ids
       
-        # Gender of User
+        # The user's gender. The maximum allowed data size for this field is 1Kb.
         # Corresponds to the JSON property `gender`
         # @return [Object]
         attr_accessor :gender
       
-        # Hash function name for password. Supported are MD5, SHA-1 and crypt
+        # Stores the hash format of the password property. We recommend sending the `
+        # password` property value as a base 16 bit hexadecimal-encoded hash value. Set
+        # the `hashFunction` values as either the [SHA-1](http://wikipedia.org/wiki/SHA-
+        # 1), [MD5](http://wikipedia.org/wiki/MD5), or [crypt](https://en.wikipedia.org/
+        # wiki/Crypt_(C)) hash format.
         # Corresponds to the JSON property `hashFunction`
         # @return [String]
         attr_accessor :hash_function
       
-        # Unique identifier of User (Read-only)
+        # The unique ID for the user. A user `id` can be used as a user request URI's `
+        # userKey`.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # User's Instant Messenger
+        # The user's Instant Messenger (IM) accounts. A user account can have multiple
+        # ims properties. But, only one of these ims properties can be the primary IM
+        # contact. The maximum allowed data size for this field is 2Kb.
         # Corresponds to the JSON property `ims`
         # @return [Object]
         attr_accessor :ims
       
-        # Boolean indicating if user is included in Global Address List
+        # Indicates if the user's profile is visible in the G Suite global address list
+        # when the contact sharing feature is enabled for the domain. For more
+        # information about excluding user profiles, see the [administration help center]
+        # (http://support.google.com/a/bin/answer.py?answer=1285988).
         # Corresponds to the JSON property `includeInGlobalAddressList`
         # @return [Boolean]
         attr_accessor :include_in_global_address_list
         alias_method :include_in_global_address_list?, :include_in_global_address_list
       
-        # Boolean indicating if ip is whitelisted
+        # If `true`, the user's IP address is [white listed](http://support.google.com/a/
+        # bin/answer.py?answer=60752).
         # Corresponds to the JSON property `ipWhitelisted`
         # @return [Boolean]
         attr_accessor :ip_whitelisted
         alias_method :ip_whitelisted?, :ip_whitelisted
       
-        # Output only. Boolean indicating if the user is admin (Read-only)
+        # Output only. Indicates a user with super admininistrator privileges. The `
+        # isAdmin` property can only be edited in the [Make a user an administrator](/
+        # admin-sdk/directory/v1/guides/manage-users.html#make_admin) operation ( [
+        # makeAdmin](/admin-sdk/directory/v1/reference/users/makeAdmin.html) method). If
+        # edited in the user [insert](/admin-sdk/directory/v1/reference/users/insert.
+        # html) or [update](/admin-sdk/directory/v1/reference/users/update.html) methods,
+        # the edit is ignored by the API service.
         # Corresponds to the JSON property `isAdmin`
         # @return [Boolean]
         attr_accessor :is_admin
         alias_method :is_admin?, :is_admin
       
-        # Output only. Boolean indicating if the user is delegated admin (Read-only)
+        # Output only. Indicates if the user is a delegated administrator. Delegated
+        # administrators are supported by the API but cannot create or undelete users,
+        # or make users administrators. These requests are ignored by the API service.
+        # Roles and privileges for administrators are assigned using the [Admin console](
+        # http://support.google.com/a/bin/answer.py?answer=33325).
         # Corresponds to the JSON property `isDelegatedAdmin`
         # @return [Boolean]
         attr_accessor :is_delegated_admin
@@ -3240,23 +3353,25 @@ module Google
         attr_accessor :is_enrolled_in2_sv
         alias_method :is_enrolled_in2_sv?, :is_enrolled_in2_sv
       
-        # Output only. Is mailbox setup (Read-only)
+        # Output only. Indicates if the user's Google mailbox is created. This property
+        # is only applicable if the user has been assigned a Gmail license.
         # Corresponds to the JSON property `isMailboxSetup`
         # @return [Boolean]
         attr_accessor :is_mailbox_setup
         alias_method :is_mailbox_setup?, :is_mailbox_setup
       
-        # Keywords of User
+        # The user's keywords. The maximum allowed data size for this field is 1Kb.
         # Corresponds to the JSON property `keywords`
         # @return [Object]
         attr_accessor :keywords
       
-        # Output only. Kind of resource this is.
+        # Output only. The type of the API resource. For Users resources, the value is `
+        # admin#directory#user`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Languages of User
+        # The user's languages. The maximum allowed data size for this field is 1Kb.
         # Corresponds to the JSON property `languages`
         # @return [Object]
         attr_accessor :languages
@@ -3266,32 +3381,42 @@ module Google
         # @return [DateTime]
         attr_accessor :last_login_time
       
-        # Locations of User
+        # The user's locations. The maximum allowed data size for this field is 10Kb.
         # Corresponds to the JSON property `locations`
         # @return [Object]
         attr_accessor :locations
       
-        # User's name
+        # Holds the given and family names of the user, and the read-only `fullName`
+        # value. The maximum number of characters in the `givenName` and in the `
+        # familyName` values is 60. In addition, name values support unicode/UTF-8
+        # characters, and can contain spaces, letters (a-z), numbers (0-9), dashes (-),
+        # forward slashes (/), and periods (.). For more information about character
+        # usage rules, see the [administration help center](http://support.google.com/a/
+        # bin/answer.py?answer=33386). Maximum allowed data size for this field is 1Kb.
         # Corresponds to the JSON property `name`
         # @return [Google::Apis::AdminDirectoryV1::UserName]
         attr_accessor :name
       
-        # Output only. List of non editable aliases (Read-only)
+        # Output only. List of the user's non-editable alias email addresses. These are
+        # typically outside the account's primary domain or sub-domain.
         # Corresponds to the JSON property `nonEditableAliases`
         # @return [Array<String>]
         attr_accessor :non_editable_aliases
       
-        # Notes of User
+        # Notes for the user.
         # Corresponds to the JSON property `notes`
         # @return [Object]
         attr_accessor :notes
       
-        # OrgUnit of User
+        # The full path of the parent organization associated with the user. If the
+        # parent organization is the top-level, it is represented as a forward slash (`/`
+        # ).
         # Corresponds to the JSON property `orgUnitPath`
         # @return [String]
         attr_accessor :org_unit_path
       
-        # Organizations of User
+        # A list of organizations the user belongs to. The maximum allowed data size for
+        # this field is 10Kb.
         # Corresponds to the JSON property `organizations`
         # @return [Object]
         attr_accessor :organizations
@@ -3301,17 +3426,21 @@ module Google
         # @return [String]
         attr_accessor :password
       
-        # Phone numbers of User
+        # A list of the user's phone numbers. The maximum allowed data size for this
+        # field is 1Kb.
         # Corresponds to the JSON property `phones`
         # @return [Object]
         attr_accessor :phones
       
-        # The POSIX accounts of User
+        # A list of [POSIX](http://www.opengroup.org/austin/papers/posix_faq.html)
+        # account information for the user.
         # Corresponds to the JSON property `posixAccounts`
         # @return [Object]
         attr_accessor :posix_accounts
       
-        # username of User
+        # The user's primary email address. This property is required in a request to
+        # create a user account. The `primaryEmail` must be unique and cannot be an
+        # alias of another user.
         # Corresponds to the JSON property `primaryEmail`
         # @return [String]
         attr_accessor :primary_email
@@ -3327,12 +3456,13 @@ module Google
         # @return [String]
         attr_accessor :recovery_phone
       
-        # The Relations of User *
+        # A list of the user's relationships to other users. The maximum allowed data
+        # size for this field is 2Kb.
         # Corresponds to the JSON property `relations`
         # @return [Object]
         attr_accessor :relations
       
-        # The SSH public keys of User
+        # A list of SSH public keys.
         # Corresponds to the JSON property `sshPublicKeys`
         # @return [Object]
         attr_accessor :ssh_public_keys
@@ -3343,7 +3473,9 @@ module Google
         attr_accessor :suspended
         alias_method :suspended?, :suspended
       
-        # Output only. Suspension reason if user is suspended (Read-only)
+        # Output only. Has the reason a user account is suspended either by the
+        # administrator or by Google at the time of suspension. The property is returned
+        # only if the `suspended` property is `true`.
         # Corresponds to the JSON property `suspensionReason`
         # @return [String]
         attr_accessor :suspension_reason
@@ -3358,7 +3490,7 @@ module Google
         # @return [String]
         attr_accessor :thumbnail_photo_url
       
-        # Websites of User
+        # The user's websites. The maximum allowed data size for this field is 2Kb.
         # Corresponds to the JSON property `websites`
         # @return [Object]
         attr_accessor :websites
@@ -3829,7 +3961,7 @@ module Google
       class UserMakeAdmin
         include Google::Apis::Core::Hashable
       
-        # Boolean indicating new admin status of the user
+        # Indicates the administrator status of the user.
         # Corresponds to the JSON property `status`
         # @return [Boolean]
         attr_accessor :status
@@ -3849,17 +3981,17 @@ module Google
       class UserName
         include Google::Apis::Core::Hashable
       
-        # Last Name
+        # The user's last name. Required when creating a user account.
         # Corresponds to the JSON property `familyName`
         # @return [String]
         attr_accessor :family_name
       
-        # Full Name
+        # The user's full name formed by concatenating the first and last name values.
         # Corresponds to the JSON property `fullName`
         # @return [String]
         attr_accessor :full_name
       
-        # First Name
+        # The user's first name. Required when creating a user account.
         # Corresponds to the JSON property `givenName`
         # @return [String]
         attr_accessor :given_name
@@ -4006,9 +4138,7 @@ module Google
         end
       end
       
-      # STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/
-      # stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for
-      # field 'etag'. (See http://go/stepladder-help#fieldNumber)
+      # 
       class UserPhoto
         include Google::Apis::Core::Hashable
       
@@ -4017,38 +4147,47 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Height in pixels of the photo
+        # Height of the photo in pixels.
         # Corresponds to the JSON property `height`
         # @return [Fixnum]
         attr_accessor :height
       
-        # Unique identifier of User (Read-only)
+        # The ID the API uses to uniquely identify the user.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Kind of resource this is.
+        # The type of the API resource. For Photo resources, this is `admin#directory#
+        # user#photo`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Mime Type of the photo
+        # The MIME type of the photo. Allowed values are `JPEG`, `PNG`, `GIF`, `BMP`, `
+        # TIFF`, and web-safe base64 encoding.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
       
-        # Base64 encoded photo data
+        # The user photo's upload data in [web-safe Base64](https://code.google.com/p/
+        # stringencoders/wiki/WebSafeBase64) format in bytes. This means: * The slash (/)
+        # character is replaced with the underscore (_) character. * The plus sign (+)
+        # character is replaced with the hyphen (-) character. * The equals sign (=)
+        # character is replaced with the asterisk (*). * For padding, the period (.)
+        # character is used instead of the RFC-4648 baseURL definition which uses the
+        # equals sign (=) for padding. This is done to simplify URL-parsing. * Whatever
+        # the size of the photo being uploaded, the API downsizes it to 96x96 pixels.
         # Corresponds to the JSON property `photoData`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :photo_data
       
-        # Primary email of User (Read-only)
+        # The user's primary email address.
         # Corresponds to the JSON property `primaryEmail`
         # @return [String]
         attr_accessor :primary_email
       
-        # Width in pixels of the photo
+        # Width of the photo in pixels.
         # Corresponds to the JSON property `width`
         # @return [Fixnum]
         attr_accessor :width
@@ -4070,8 +4209,7 @@ module Google
         end
       end
       
-      # JSON template for a POSIX account entry. Description of the field family: go/
-      # fbs-posix.
+      # JSON template for a POSIX account entry.
       class UserPosixAccount
         include Google::Apis::Core::Hashable
       
@@ -4268,9 +4406,7 @@ module Google
         end
       end
       
-      # STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/
-      # stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for
-      # field 'etag'. (See http://go/stepladder-help#fieldNumber)
+      # 
       class Users
         include Google::Apis::Core::Hashable
       
@@ -4313,10 +4449,8 @@ module Google
         end
       end
       
-      # JSON template for verification codes in Directory API. STEPLADDER: Generated
-      # unstable field number for field 'kind'. (See http://go/stepladder-help#
-      # fieldNumber) STEPLADDER: Generated unstable field number for field 'etag'. (
-      # See http://go/stepladder-help#fieldNumber)
+      # The Directory API allows you to view, generate, and invalidate backup
+      # verification codes for a user.
       class VerificationCode
         include Google::Apis::Core::Hashable
       
@@ -4325,7 +4459,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The type of the resource. This is always admin#directory#verificationCode.
+        # The type of the resource. This is always `admin#directory#verificationCode`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -4355,9 +4489,6 @@ module Google
       end
       
       # JSON response template for List verification codes operation in Directory API.
-      # STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/
-      # stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for
-      # field 'etag'. (See http://go/stepladder-help#fieldNumber)
       class VerificationCodes
         include Google::Apis::Core::Hashable
       
@@ -4371,7 +4502,8 @@ module Google
         # @return [Array<Google::Apis::AdminDirectoryV1::VerificationCode>]
         attr_accessor :items
       
-        # The type of the resource. This is always admin#directory#verificationCodesList.
+        # The type of the resource. This is always `admin#directory#
+        # verificationCodesList`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
