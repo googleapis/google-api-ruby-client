@@ -8610,7 +8610,8 @@ module Google
         
         # Specifies the instance template to use when creating new instances in this
         # group. The templates for existing instances in the group do not change unless
-        # you recreate them.
+        # you run recreateInstances, run applyUpdatesToInstances, or set the group's
+        # updatePolicy.type to PROACTIVE.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -10613,9 +10614,9 @@ module Google
         #   - projects/project/global/instanceTemplates/instanceTemplate
         #   - global/instanceTemplates/instanceTemplate
         # @param [String] source_machine_image
-        #   Specifies instance machine to create the instance.
+        #   Specifies the machine image to use to create the instance.
         #   This field is optional. It can be a full or partial URL. For example, the
-        #   following are all valid URLs to an instance template:
+        #   following are all valid URLs to a machine image:
         #   - https://www.googleapis.com/compute/v1/projects/project/global/global/
         #   machineImages/machineImage
         #   - projects/project/global/global/machineImages/machineImage
@@ -16774,7 +16775,7 @@ module Google
         # @param [Boolean] replace_existing_association
         #   Indicates whether or not to replace it if an association of the attachment
         #   already exists. This is false by default, in which case an error will be
-        #   returned if an assocation already exists.
+        #   returned if an association already exists.
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -24192,6 +24193,8 @@ module Google
         
         # Initiates a cache invalidation operation, invalidating the specified path,
         # scoped to the specified UrlMap.
+        # For more information, see [Invalidating cached content](/cdn/docs/invalidating-
+        # cached-content).
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -28499,7 +28502,7 @@ module Google
         end
         
         # Patches the specified subnetwork with the data included in the request. Only
-        # certain fields can up updated with a patch request as indicated in the field
+        # certain fields can be updated with a patch request as indicated in the field
         # descriptions. You must specify the current fingerprint of the subnetwork
         # resource being patched.
         # @param [String] project
@@ -32344,6 +32347,8 @@ module Google
         
         # Initiates a cache invalidation operation, invalidating the specified path,
         # scoped to the specified UrlMap.
+        # For more information, see [Invalidating cached content](/cdn/docs/invalidating-
+        # cached-content).
         # @param [String] project
         #   Project ID for this request.
         # @param [String] url_map
