@@ -36,14 +36,14 @@ module Google
         # @return [Array<Google::Apis::AdminReportsV1::Activity>]
         attr_accessor :items
       
-        # The type of API resource. For an activity report, the value is reports#
-        # activities.
+        # The type of API resource. For an activity report, the value is `reports#
+        # activities`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Token for retrieving the follow-on next page of the report. The nextPageToken
-        # value is used in the request's pageToken query string.
+        # Token for retrieving the follow-on next page of the report. The `nextPageToken`
+        # value is used in the request's `pageToken` query string.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -94,7 +94,8 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
-        # The type of API resource. For an activity report, the value is audit#activity.
+        # The type of API resource. For an activity report, the value is `audit#activity`
+        # .
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -135,8 +136,8 @@ module Google
           # @return [String]
           attr_accessor :email
         
-          # Only present when callerType is KEY. Can be the consumer_key of the requestor
-          # for OAuth 2LO API requests or an identifier for robot accounts.
+          # Only present when `callerType` is `KEY`. Can be the `consumer_key` of the
+          # requestor for OAuth 2LO API requests or an identifier for robot accounts.
           # Corresponds to the JSON property `key`
           # @return [String]
           attr_accessor :key
@@ -165,29 +166,30 @@ module Google
           include Google::Apis::Core::Hashable
         
           # Name of the event. This is the specific name of the activity reported by the
-          # API. And each eventName is related to a specific G Suite service or feature
-          # which the API organizes into types of events. For eventName request parameters
-          # in general: - If no eventName is given, the report returns all possible
-          # instances of an eventName. - When you request an eventName, the API's response
-          # returns all activities which contain that eventName. It is possible that the
-          # returned activities will have other eventName properties in addition to the
-          # one requested. For more information about eventName properties, see the list
-          # of event names for various applications above in applicationName.
+          # API. And each `eventName` is related to a specific G Suite service or feature
+          # which the API organizes into types of events. For `eventName` request
+          # parameters in general: - If no `eventName` is given, the report returns all
+          # possible instances of an `eventName`. - When you request an `eventName`, the
+          # API's response returns all activities which contain that `eventName`. It is
+          # possible that the returned activities will have other `eventName` properties
+          # in addition to the one requested. For more information about `eventName`
+          # properties, see the list of event names for various applications above in `
+          # applicationName`.
           # Corresponds to the JSON property `name`
           # @return [String]
           attr_accessor :name
         
-          # Parameter value pairs for various applications. For more information about
-          # eventName parameters, see the list of event names for various applications
-          # above in applicationName.
+          # Parameter value pairs for various applications. For more information about `
+          # eventName` parameters, see the list of event names for various applications
+          # above in `applicationName`.
           # Corresponds to the JSON property `parameters`
           # @return [Array<Google::Apis::AdminReportsV1::Activity::Event::Parameter>]
           attr_accessor :parameters
         
           # Type of event. The G Suite service or feature that an administrator changes is
-          # identified in the type property which identifies an event using the eventName
-          # property. For a full list of the API's type categories, see the list of event
-          # names for various applications above in applicationName.
+          # identified in the `type` property which identifies an event using the `
+          # eventName` property. For a full list of the API's `type` categories, see the
+          # list of event names for various applications above in `applicationName`.
           # Corresponds to the JSON property `type`
           # @return [String]
           attr_accessor :type
@@ -220,8 +222,8 @@ module Google
           
             # Nested parameter value pairs associated with this parameter. Complex value
             # type for a parameter are returned as a list of parameter values. For example,
-            # the address parameter may have a value as [`parameter: [`name: city, value:
-            # abc`]`]
+            # the address parameter may have a value as `[`parameter: [`name: city, value:
+            # abc`]`]`
             # Corresponds to the JSON property `messageValue`
             # @return [Google::Apis::AdminReportsV1::Activity::Event::Parameter::MessageValue]
             attr_accessor :message_value
@@ -231,7 +233,7 @@ module Google
             # @return [Array<Fixnum>]
             attr_accessor :multi_int_value
           
-            # List of messageValue objects.
+            # List of `messageValue` objects.
             # Corresponds to the JSON property `multiMessageValue`
             # @return [Array<Google::Apis::AdminReportsV1::Activity::Event::Parameter::MultiMessageValue>]
             attr_accessor :multi_message_value
@@ -269,8 +271,8 @@ module Google
             
             # Nested parameter value pairs associated with this parameter. Complex value
             # type for a parameter are returned as a list of parameter values. For example,
-            # the address parameter may have a value as [`parameter: [`name: city, value:
-            # abc`]`]
+            # the address parameter may have a value as `[`parameter: [`name: city, value:
+            # abc`]`]`
             class MessageValue
               include Google::Apis::Core::Hashable
             
@@ -315,7 +317,7 @@ module Google
           include Google::Apis::Core::Hashable
         
           # Application name to which the event belongs. For possible values see the list
-          # of applications above in applicationName.
+          # of applications above in `applicationName`.
           # Corresponds to the JSON property `applicationName`
           # @return [String]
           attr_accessor :application_name
@@ -370,7 +372,7 @@ module Google
         attr_accessor :id
       
         # Identifies this as a notification channel used to watch for changes to a
-        # resource, which is "api#channel".
+        # resource, which is "`api#channel`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -403,7 +405,8 @@ module Google
         # @return [String]
         attr_accessor :token
       
-        # The type of delivery mechanism used for this channel.
+        # The type of delivery mechanism used for this channel. The value should be set
+        # to `"web_hook"`.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -502,15 +505,15 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The type of API resource. For a usage report, the value is admin#reports#
-        # usageReport.
+        # The type of API resource. For a usage report, the value is `admin#reports#
+        # usageReport`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Output only. Parameter value pairs for various applications. For the Customers
-        # usage report parameters and values, see the customer usage parameters
-        # reference.
+        # Output only. Parameter value pairs for various applications. For the Entity
+        # Usage Report parameters and values, see [the Entity Usage parameters reference]
+        # (/admin-sdk/reports/v1/reference/usage-ref-appendix-a/entities).
         # Corresponds to the JSON property `parameters`
         # @return [Array<Google::Apis::AdminReportsV1::UsageReport::Parameter>]
         attr_accessor :parameters
@@ -548,7 +551,7 @@ module Google
           # @return [String]
           attr_accessor :profile_id
         
-          # Output only. The type of item. The value is customer.
+          # Output only. The type of item. The value is `user`.
           # Corresponds to the JSON property `type`
           # @return [String]
           attr_accessor :type
@@ -598,7 +601,8 @@ module Google
           # @return [Array<Hash<String,Object>>]
           attr_accessor :msg_value
         
-          # Name of the parameter.
+          # The name of the parameter. For the User Usage Report parameter names, see the
+          # User Usage parameters reference.
           # Corresponds to the JSON property `name`
           # @return [String]
           attr_accessor :name
@@ -633,15 +637,16 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The type of API resource. For a usage report, the value is admin#reports#
-        # usageReports.
+        # The type of API resource. For a usage report, the value is `admin#reports#
+        # usageReports`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Token to specify next page. A report with multiple pages has a nextPageToken
+        # Token to specify next page. A report with multiple pages has a `nextPageToken`
         # property in the response. For your follow-on requests getting all of the
-        # report's pages, enter the nextPageToken value in the pageToken query string.
+        # report's pages, enter the `nextPageToken` value in the `pageToken` query
+        # string.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -673,7 +678,7 @@ module Google
         class Warning
           include Google::Apis::Core::Hashable
         
-          # Machine readable code or warning type. The warning code value is 200.
+          # Machine readable code or warning type. The warning code value is `200`.
           # Corresponds to the JSON property `code`
           # @return [String]
           attr_accessor :code
@@ -684,9 +689,9 @@ module Google
           attr_accessor :data
         
           # The human readable messages for a warning are: - Data is not available warning
-          # - Sorry, data for date yyyy-mm-dd for application "application name" is not
+          # - Sorry, data for date yyyy-mm-dd for application "`application name`" is not
           # available. - Partial data is available warning - Data for date yyyy-mm-dd for
-          # application "application name" is not available right now, please try again
+          # application "`application name`" is not available right now, please try again
           # after a few hours.
           # Corresponds to the JSON property `message`
           # @return [String]
