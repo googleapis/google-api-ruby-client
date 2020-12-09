@@ -22,10 +22,8 @@ module Google
   module Apis
     module AdminDatatransferV1
       
-      # The JSON template for an Application resource. STEPLADDER: Generated unstable
-      # field number for field 'kind'. (See http://go/stepladder-help#fieldNumber)
-      # STEPLADDER: Generated unstable field number for field 'etag'. (See http://go/
-      # stepladder-help#fieldNumber)
+      # Applications resources represent applications installed on the domain that
+      # support transferring ownership of user data.
       class Application
         include Google::Apis::Core::Hashable
       
@@ -127,10 +125,7 @@ module Google
         end
       end
       
-      # Template for a collection of Applications. STEPLADDER: Generated unstable
-      # field number for field 'kind'. (See http://go/stepladder-help#fieldNumber)
-      # STEPLADDER: Generated unstable field number for field 'etag'. (See http://go/
-      # stepladder-help#fieldNumber)
+      # Template for a collection of Applications.
       class ApplicationsListResponse
         include Google::Apis::Core::Hashable
       
@@ -168,10 +163,8 @@ module Google
         end
       end
       
-      # The JSON template for a DataTransfer resource. STEPLADDER: Generated unstable
-      # field number for field 'kind'. (See http://go/stepladder-help#fieldNumber)
-      # STEPLADDER: Generated unstable field number for field 'etag'. (See http://go/
-      # stepladder-help#fieldNumber)
+      # A Transfer resource represents the transfer of the ownership of user data
+      # between users.
       class DataTransfer
         include Google::Apis::Core::Hashable
       
@@ -235,10 +228,7 @@ module Google
         end
       end
       
-      # Template for a collection of DataTransfer resources. STEPLADDER: Generated
-      # unstable field number for field 'kind'. (See http://go/stepladder-help#
-      # fieldNumber) STEPLADDER: Generated unstable field number for field 'etag'. (
-      # See http://go/stepladder-help#fieldNumber)
+      # Template for a collection of DataTransfer resources.
       class DataTransfersListResponse
         include Google::Apis::Core::Hashable
       

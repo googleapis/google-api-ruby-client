@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AdminDatatransferV1
-      # Admin SDK
+      # Admin SDK API
       #
       # Admin SDK lets administrators of enterprise domains to view and manage
       #  resources like user, groups etc. It also provides audit and usage reports of
@@ -45,8 +45,8 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://www.googleapis.com/', '')
-          @batch_path = 'batch/admin/datatransfer_v1'
+          super('https://admin.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
         # Retrieves information about an application for the given application ID.
