@@ -1013,6 +1013,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Statistics for a queue.
+        # Corresponds to the JSON property `stats`
+        # @return [Google::Apis::CloudtasksV2beta2::QueueStats]
+        attr_accessor :stats
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1026,6 +1031,60 @@ module Google
           @rate_limits = args[:rate_limits] if args.key?(:rate_limits)
           @retry_config = args[:retry_config] if args.key?(:retry_config)
           @state = args[:state] if args.key?(:state)
+          @stats = args[:stats] if args.key?(:stats)
+        end
+      end
+      
+      # Statistics for a queue.
+      class QueueStats
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The number of requests that the queue has dispatched but has not
+        # received a reply for yet.
+        # Corresponds to the JSON property `concurrentDispatchesCount`
+        # @return [Fixnum]
+        attr_accessor :concurrent_dispatches_count
+      
+        # Output only. The current maximum number of tasks per second executed by the
+        # queue. The maximum value of this variable is controlled by the RateLimits of
+        # the Queue. However, this value could be less to avoid overloading the
+        # endpoints tasks in the queue are targeting.
+        # Corresponds to the JSON property `effectiveExecutionRate`
+        # @return [Float]
+        attr_accessor :effective_execution_rate
+      
+        # Output only. The number of tasks that the queue has dispatched and received a
+        # reply for during the last minute. This variable counts both successful and non-
+        # successful executions.
+        # Corresponds to the JSON property `executedLastMinuteCount`
+        # @return [Fixnum]
+        attr_accessor :executed_last_minute_count
+      
+        # Output only. An estimation of the nearest time in the future where a task in
+        # the queue is scheduled to be executed.
+        # Corresponds to the JSON property `oldestEstimatedArrivalTime`
+        # @return [String]
+        attr_accessor :oldest_estimated_arrival_time
+      
+        # Output only. An estimation of the number of tasks in the queue, that is, the
+        # tasks in the queue that haven't been executed, the tasks in the queue which
+        # the queue has dispatched but has not yet received a reply for, and the failed
+        # tasks that the queue is retrying.
+        # Corresponds to the JSON property `tasksCount`
+        # @return [Fixnum]
+        attr_accessor :tasks_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @concurrent_dispatches_count = args[:concurrent_dispatches_count] if args.key?(:concurrent_dispatches_count)
+          @effective_execution_rate = args[:effective_execution_rate] if args.key?(:effective_execution_rate)
+          @executed_last_minute_count = args[:executed_last_minute_count] if args.key?(:executed_last_minute_count)
+          @oldest_estimated_arrival_time = args[:oldest_estimated_arrival_time] if args.key?(:oldest_estimated_arrival_time)
+          @tasks_count = args[:tasks_count] if args.key?(:tasks_count)
         end
       end
       

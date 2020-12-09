@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QueueStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RateLimits
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -444,6 +450,19 @@ module Google
           property :retry_config, as: 'retryConfig', class: Google::Apis::CloudtasksV2beta2::RetryConfig, decorator: Google::Apis::CloudtasksV2beta2::RetryConfig::Representation
       
           property :state, as: 'state'
+          property :stats, as: 'stats', class: Google::Apis::CloudtasksV2beta2::QueueStats, decorator: Google::Apis::CloudtasksV2beta2::QueueStats::Representation
+      
+        end
+      end
+      
+      class QueueStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :concurrent_dispatches_count, :numeric_string => true, as: 'concurrentDispatchesCount'
+          property :effective_execution_rate, as: 'effectiveExecutionRate'
+          property :executed_last_minute_count, :numeric_string => true, as: 'executedLastMinuteCount'
+          property :oldest_estimated_arrival_time, as: 'oldestEstimatedArrivalTime'
+          property :tasks_count, :numeric_string => true, as: 'tasksCount'
         end
       end
       
