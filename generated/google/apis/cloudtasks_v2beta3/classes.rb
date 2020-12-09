@@ -879,6 +879,40 @@ module Google
         end
       end
       
+      # Pull Message. This proto can only be used for tasks in a queue which has PULL
+      # type. It currently exists for backwards compatibility with the App Engine Task
+      # Queue SDK. This message type maybe returned with methods list and get, when
+      # the response view is FULL.
+      class PullMessage
+        include Google::Apis::Core::Hashable
+      
+        # A data payload consumed by the worker to execute the task.
+        # Corresponds to the JSON property `payload`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :payload
+      
+        # The tasks's tag. The tag is less than 500 characters. SDK compatibility:
+        # Although the SDK allows tags to be either string or [bytes](https://cloud.
+        # google.com/appengine/docs/standard/java/javadoc/com/google/appengine/api/
+        # taskqueue/TaskOptions.html#tag-byte:A-), only UTF-8 encoded tags can be used
+        # in Cloud Tasks. If a tag isn't UTF-8 encoded, the tag will be empty when the
+        # task is returned by Cloud Tasks.
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @payload = args[:payload] if args.key?(:payload)
+          @tag = args[:tag] if args.key?(:tag)
+        end
+      end
+      
       # Request message for PurgeQueue.
       class PurgeQueueRequest
         include Google::Apis::Core::Hashable
@@ -961,6 +995,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Statistics for a queue.
+        # Corresponds to the JSON property `stats`
+        # @return [Google::Apis::CloudtasksV2beta3::QueueStats]
+        attr_accessor :stats
+      
         # Immutable. The type of a queue (push or pull). `Queue.type` is an immutable
         # property of the queue that is set at the queue creation time. When left
         # unspecified, the default value of `PUSH` is selected.
@@ -981,7 +1020,61 @@ module Google
           @retry_config = args[:retry_config] if args.key?(:retry_config)
           @stackdriver_logging_config = args[:stackdriver_logging_config] if args.key?(:stackdriver_logging_config)
           @state = args[:state] if args.key?(:state)
+          @stats = args[:stats] if args.key?(:stats)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Statistics for a queue.
+      class QueueStats
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The number of requests that the queue has dispatched but has not
+        # received a reply for yet.
+        # Corresponds to the JSON property `concurrentDispatchesCount`
+        # @return [Fixnum]
+        attr_accessor :concurrent_dispatches_count
+      
+        # Output only. The current maximum number of tasks per second executed by the
+        # queue. The maximum value of this variable is controlled by the RateLimits of
+        # the Queue. However, this value could be less to avoid overloading the
+        # endpoints tasks in the queue are targeting.
+        # Corresponds to the JSON property `effectiveExecutionRate`
+        # @return [Float]
+        attr_accessor :effective_execution_rate
+      
+        # Output only. The number of tasks that the queue has dispatched and received a
+        # reply for during the last minute. This variable counts both successful and non-
+        # successful executions.
+        # Corresponds to the JSON property `executedLastMinuteCount`
+        # @return [Fixnum]
+        attr_accessor :executed_last_minute_count
+      
+        # Output only. An estimation of the nearest time in the future where a task in
+        # the queue is scheduled to be executed.
+        # Corresponds to the JSON property `oldestEstimatedArrivalTime`
+        # @return [String]
+        attr_accessor :oldest_estimated_arrival_time
+      
+        # Output only. An estimation of the number of tasks in the queue, that is, the
+        # tasks in the queue that haven't been executed, the tasks in the queue which
+        # the queue has dispatched but has not yet received a reply for, and the failed
+        # tasks that the queue is retrying.
+        # Corresponds to the JSON property `tasksCount`
+        # @return [Fixnum]
+        attr_accessor :tasks_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @concurrent_dispatches_count = args[:concurrent_dispatches_count] if args.key?(:concurrent_dispatches_count)
+          @effective_execution_rate = args[:effective_execution_rate] if args.key?(:effective_execution_rate)
+          @executed_last_minute_count = args[:executed_last_minute_count] if args.key?(:executed_last_minute_count)
+          @oldest_estimated_arrival_time = args[:oldest_estimated_arrival_time] if args.key?(:oldest_estimated_arrival_time)
+          @tasks_count = args[:tasks_count] if args.key?(:tasks_count)
         end
       end
       
@@ -1394,6 +1487,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Pull Message. This proto can only be used for tasks in a queue which has PULL
+        # type. It currently exists for backwards compatibility with the App Engine Task
+        # Queue SDK. This message type maybe returned with methods list and get, when
+        # the response view is FULL.
+        # Corresponds to the JSON property `pullMessage`
+        # @return [Google::Apis::CloudtasksV2beta3::PullMessage]
+        attr_accessor :pull_message
+      
         # Output only. The number of attempts which have received a response.
         # Corresponds to the JSON property `responseCount`
         # @return [Fixnum]
@@ -1425,6 +1526,7 @@ module Google
           @http_request = args[:http_request] if args.key?(:http_request)
           @last_attempt = args[:last_attempt] if args.key?(:last_attempt)
           @name = args[:name] if args.key?(:name)
+          @pull_message = args[:pull_message] if args.key?(:pull_message)
           @response_count = args[:response_count] if args.key?(:response_count)
           @schedule_time = args[:schedule_time] if args.key?(:schedule_time)
           @view = args[:view] if args.key?(:view)
