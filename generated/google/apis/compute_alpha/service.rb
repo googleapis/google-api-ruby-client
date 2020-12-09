@@ -1516,6 +1516,58 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Sets the edge security policy for the specified backend bucket.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] backend_bucket
+        #   Name of the BackendService resource to which the security policy should be set.
+        #   The name should conform to RFC1035.
+        # @param [Google::Apis::ComputeAlpha::SecurityPolicyReference] security_policy_reference_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_backend_bucket_edge_security_policy(project, backend_bucket, security_policy_reference_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/backendBuckets/{backendBucket}/setEdgeSecurityPolicy', options)
+          command.request_representation = Google::Apis::ComputeAlpha::SecurityPolicyReference::Representation
+          command.request_object = security_policy_reference_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['backendBucket'] = backend_bucket unless backend_bucket.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
         # @param [String] project
@@ -2129,6 +2181,58 @@ module Google
           command = make_simple_command(:patch, 'projects/{project}/global/backendServices/{backendService}', options)
           command.request_representation = Google::Apis::ComputeAlpha::BackendService::Representation
           command.request_object = backend_service_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['backendService'] = backend_service unless backend_service.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the edge security policy for the specified backend service.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] backend_service
+        #   Name of the BackendService resource to which the edge security policy should
+        #   be set. The name should conform to RFC1035.
+        # @param [Google::Apis::ComputeAlpha::SecurityPolicyReference] security_policy_reference_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_backend_service_edge_security_policy(project, backend_service, security_policy_reference_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/backendServices/{backendService}/setEdgeSecurityPolicy', options)
+          command.request_representation = Google::Apis::ComputeAlpha::SecurityPolicyReference::Representation
+          command.request_object = security_policy_reference_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -9086,7 +9190,8 @@ module Google
         
         # Specifies the instance template to use when creating new instances in this
         # group. The templates for existing instances in the group do not change unless
-        # you recreate them.
+        # you run recreateInstances, run applyUpdatesToInstances, or set the group's
+        # updatePolicy.type to PROACTIVE.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -11140,9 +11245,9 @@ module Google
         #   - projects/project/global/instanceTemplates/instanceTemplate
         #   - global/instanceTemplates/instanceTemplate
         # @param [String] source_machine_image
-        #   Specifies instance machine to create the instance.
+        #   Specifies the machine image to use to create the instance.
         #   This field is optional. It can be a full or partial URL. For example, the
-        #   following are all valid URLs to an instance template:
+        #   following are all valid URLs to a machine image:
         #   - https://www.googleapis.com/compute/v1/projects/project/global/global/
         #   machineImages/machineImage
         #   - projects/project/global/global/machineImages/machineImage
@@ -18583,7 +18688,7 @@ module Google
         # @param [Boolean] replace_existing_association
         #   Indicates whether or not to replace it if an association of the attachment
         #   already exists. This is false by default, in which case an error will be
-        #   returned if an assocation already exists.
+        #   returned if an association already exists.
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -25713,6 +25818,61 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Export the changed blocks between two instant snapshots to a customer?s bucket
+        # in the user specified format.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the zone for this request.
+        # @param [String] instant_snapshot
+        #   Name of the instant snapshot to export.
+        # @param [Google::Apis::ComputeAlpha::InstantSnapshotExportParams] instant_snapshot_export_params_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def export_region_instant_snapshot(project, region, instant_snapshot, instant_snapshot_export_params_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/regions/{region}/instantSnapshots/{instantSnapshot}/export', options)
+          command.request_representation = Google::Apis::ComputeAlpha::InstantSnapshotExportParams::Representation
+          command.request_object = instant_snapshot_export_params_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['instantSnapshot'] = instant_snapshot unless instant_snapshot.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns the specified InstantSnapshot resource in the specified region.
         # @param [String] project
         #   Project ID for this request.
@@ -27839,6 +27999,8 @@ module Google
         
         # Initiates a cache invalidation operation, invalidating the specified path,
         # scoped to the specified UrlMap.
+        # For more information, see [Invalidating cached content](/cdn/docs/invalidating-
+        # cached-content).
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -32536,7 +32698,7 @@ module Google
         end
         
         # Patches the specified subnetwork with the data included in the request. Only
-        # certain fields can up updated with a patch request as indicated in the field
+        # certain fields can be updated with a patch request as indicated in the field
         # descriptions. You must specify the current fingerprint of the subnetwork
         # resource being patched.
         # @param [String] project
@@ -33766,6 +33928,59 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Patches the specified TargetHttpsProxy resource with the data included in the
+        # request. This method supports PATCH semantics and uses JSON merge patch format
+        # and processing rules. (== suppress_warning http-rest-shadowed ==)
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] target_https_proxy
+        #   Name of the TargetHttpsProxy resource to patch.
+        # @param [Google::Apis::ComputeAlpha::TargetHttpsProxy] target_https_proxy_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_target_https_proxy(project, target_https_proxy, target_https_proxy_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'projects/{project}/global/targetHttpsProxies/{targetHttpsProxy}', options)
+          command.request_representation = Google::Apis::ComputeAlpha::TargetHttpsProxy::Representation
+          command.request_object = target_https_proxy_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['targetHttpsProxy'] = target_https_proxy unless target_https_proxy.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -36563,6 +36778,8 @@ module Google
         
         # Initiates a cache invalidation operation, invalidating the specified path,
         # scoped to the specified UrlMap.
+        # For more information, see [Invalidating cached content](/cdn/docs/invalidating-
+        # cached-content).
         # @param [String] project
         #   Project ID for this request.
         # @param [String] url_map
@@ -38165,6 +38382,61 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_zone_instant_snapshot(project, zone, instant_snapshot, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:delete, 'projects/{project}/zones/{zone}/instantSnapshots/{instantSnapshot}', options)
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instantSnapshot'] = instant_snapshot unless instant_snapshot.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Export the changed blocks between two instant snapshots to a customer?s bucket
+        # in the user specified format.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] instant_snapshot
+        #   Name of the instant snapshot to export.
+        # @param [Google::Apis::ComputeAlpha::InstantSnapshotExportParams] instant_snapshot_export_params_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def export_zone_instant_snapshot(project, zone, instant_snapshot, instant_snapshot_export_params_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/zones/{zone}/instantSnapshots/{instantSnapshot}/export', options)
+          command.request_representation = Google::Apis::ComputeAlpha::InstantSnapshotExportParams::Representation
+          command.request_object = instant_snapshot_export_params_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
