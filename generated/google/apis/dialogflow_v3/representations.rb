@@ -22,6 +22,528 @@ module Google
   module Apis
     module DialogflowV3
       
+      class GoogleCloudDialogflowCxV3Agent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3AudioInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3CreateVersionOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3DetectIntentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3DetectIntentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3DtmfInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3EntityType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3EntityTypeEntity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3Environment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3EnvironmentVersionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3EventHandler
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3EventInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ExportAgentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ExportAgentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3Flow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3Form
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3FormParameter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3FormParameterFillBehavior
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3FulfillIntentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3FulfillIntentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3Fulfillment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3FulfillmentConditionalCases
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3FulfillmentSetParameterAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3InputAudioConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3Intent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3IntentInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3IntentParameter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3IntentTrainingPhrase
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3IntentTrainingPhrasePart
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ListAgentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ListEntityTypesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ListEnvironmentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ListFlowsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ListIntentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ListPagesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ListSecuritySettingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ListSessionEntityTypesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ListVersionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ListWebhooksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3LoadVersionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3Match
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3MatchIntentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3MatchIntentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3NluSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3OutputAudioConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3Page
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3PageInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3PageInfoFormInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3QueryInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3QueryParameters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3QueryResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ResponseMessage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ResponseMessageEndInteraction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ResponseMessageMixedAudio
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ResponseMessagePlayAudio
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ResponseMessageText
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3RestoreAgentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3SecuritySettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3SentimentAnalysisResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3SessionEntityType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3SessionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3SpeechToTextSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3SynthesizeSpeechConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3TextInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3TrainFlowRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3TransitionRoute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3TransitionRouteGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3Version
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3VoiceSelectionParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3Webhook
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3WebhookGenericWebService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3WebhookRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3WebhookRequestIntentInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3WebhookResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3WebhookResponseFulfillmentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -860,6 +1382,913 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleTypeLatLng
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3Agent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :avatar_uri, as: 'avatarUri'
+          property :default_language_code, as: 'defaultLanguageCode'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :enable_spell_correction, as: 'enableSpellCorrection'
+          property :enable_stackdriver_logging, as: 'enableStackdriverLogging'
+          property :name, as: 'name'
+          property :speech_to_text_settings, as: 'speechToTextSettings', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SpeechToTextSettings, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SpeechToTextSettings::Representation
+      
+          property :start_flow, as: 'startFlow'
+          property :time_zone, as: 'timeZone'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3AudioInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio, :base64 => true, as: 'audio'
+          property :config, as: 'config', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3InputAudioConfig, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3InputAudioConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3CreateVersionOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :version, as: 'version'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3DetectIntentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_audio_config, as: 'outputAudioConfig', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3OutputAudioConfig, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3OutputAudioConfig::Representation
+      
+          property :query_input, as: 'queryInput', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3QueryInput, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3QueryInput::Representation
+      
+          property :query_params, as: 'queryParams', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3QueryParameters, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3QueryParameters::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3DetectIntentResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_audio, :base64 => true, as: 'outputAudio'
+          property :output_audio_config, as: 'outputAudioConfig', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3OutputAudioConfig, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3OutputAudioConfig::Representation
+      
+          property :query_result, as: 'queryResult', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3QueryResult, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3QueryResult::Representation
+      
+          property :response_id, as: 'responseId'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3DtmfInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :digits, as: 'digits'
+          property :finish_digit, as: 'finishDigit'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3EntityType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_expansion_mode, as: 'autoExpansionMode'
+          property :display_name, as: 'displayName'
+          property :enable_fuzzy_extraction, as: 'enableFuzzyExtraction'
+          collection :entities, as: 'entities', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3EntityTypeEntity, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3EntityTypeEntity::Representation
+      
+          collection :excluded_phrases, as: 'excludedPhrases', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase::Representation
+      
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3EntityTypeEntity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :synonyms, as: 'synonyms'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3Environment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+          collection :version_configs, as: 'versionConfigs', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3EnvironmentVersionConfig, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3EnvironmentVersionConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3EnvironmentVersionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :version, as: 'version'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3EventHandler
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event, as: 'event'
+          property :name, as: 'name'
+          property :target_flow, as: 'targetFlow'
+          property :target_page, as: 'targetPage'
+          property :trigger_fulfillment, as: 'triggerFulfillment', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Fulfillment, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Fulfillment::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3EventInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event, as: 'event'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ExportAgentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_uri, as: 'agentUri'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ExportAgentResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_content, :base64 => true, as: 'agentContent'
+          property :agent_uri, as: 'agentUri'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3Flow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          collection :event_handlers, as: 'eventHandlers', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3EventHandler, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3EventHandler::Representation
+      
+          property :name, as: 'name'
+          property :nlu_settings, as: 'nluSettings', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3NluSettings, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3NluSettings::Representation
+      
+          collection :transition_routes, as: 'transitionRoutes', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRoute, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRoute::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3Form
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :parameters, as: 'parameters', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FormParameter, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FormParameter::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3FormParameter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_value, as: 'defaultValue'
+          property :display_name, as: 'displayName'
+          property :entity_type, as: 'entityType'
+          property :fill_behavior, as: 'fillBehavior', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FormParameterFillBehavior, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FormParameterFillBehavior::Representation
+      
+          property :is_list, as: 'isList'
+          property :redact, as: 'redact'
+          property :required, as: 'required'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3FormParameterFillBehavior
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :initial_prompt_fulfillment, as: 'initialPromptFulfillment', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Fulfillment, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Fulfillment::Representation
+      
+          collection :reprompt_event_handlers, as: 'repromptEventHandlers', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3EventHandler, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3EventHandler::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3FulfillIntentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :match, as: 'match', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Match, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Match::Representation
+      
+          property :match_intent_request, as: 'matchIntentRequest', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3MatchIntentRequest, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3MatchIntentRequest::Representation
+      
+          property :output_audio_config, as: 'outputAudioConfig', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3OutputAudioConfig, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3OutputAudioConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3FulfillIntentResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_audio, :base64 => true, as: 'outputAudio'
+          property :output_audio_config, as: 'outputAudioConfig', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3OutputAudioConfig, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3OutputAudioConfig::Representation
+      
+          property :query_result, as: 'queryResult', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3QueryResult, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3QueryResult::Representation
+      
+          property :response_id, as: 'responseId'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3Fulfillment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conditional_cases, as: 'conditionalCases', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FulfillmentConditionalCases, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FulfillmentConditionalCases::Representation
+      
+          collection :messages, as: 'messages', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessage, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessage::Representation
+      
+          collection :set_parameter_actions, as: 'setParameterActions', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FulfillmentSetParameterAction, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FulfillmentSetParameterAction::Representation
+      
+          property :tag, as: 'tag'
+          property :webhook, as: 'webhook'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3FulfillmentConditionalCases
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cases, as: 'cases', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :case_content, as: 'caseContent', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent::Representation
+      
+          property :condition, as: 'condition'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_cases, as: 'additionalCases', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FulfillmentConditionalCases, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FulfillmentConditionalCases::Representation
+      
+          property :message, as: 'message', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessage, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessage::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3FulfillmentSetParameterAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :parameter, as: 'parameter'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3InputAudioConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_encoding, as: 'audioEncoding'
+          property :enable_word_info, as: 'enableWordInfo'
+          property :model, as: 'model'
+          property :model_variant, as: 'modelVariant'
+          collection :phrase_hints, as: 'phraseHints'
+          property :sample_rate_hertz, as: 'sampleRateHertz'
+          property :single_utterance, as: 'singleUtterance'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3Intent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :is_fallback, as: 'isFallback'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          collection :parameters, as: 'parameters', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3IntentParameter, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3IntentParameter::Representation
+      
+          property :priority, as: 'priority'
+          collection :training_phrases, as: 'trainingPhrases', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3IntentTrainingPhrase, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3IntentTrainingPhrase::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3IntentInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :intent, as: 'intent'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3IntentParameter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entity_type, as: 'entityType'
+          property :id, as: 'id'
+          property :is_list, as: 'isList'
+          property :redact, as: 'redact'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3IntentTrainingPhrase
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :parts, as: 'parts', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3IntentTrainingPhrasePart, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3IntentTrainingPhrasePart::Representation
+      
+          property :repeat_count, as: 'repeatCount'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3IntentTrainingPhrasePart
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :parameter_id, as: 'parameterId'
+          property :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ListAgentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :agents, as: 'agents', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Agent, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Agent::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ListEntityTypesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entity_types, as: 'entityTypes', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3EntityType, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3EntityType::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ListEnvironmentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :environments, as: 'environments', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Environment, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Environment::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ListFlowsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :flows, as: 'flows', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Flow, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Flow::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ListIntentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :intents, as: 'intents', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Intent, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Intent::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ListPagesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :pages, as: 'pages', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Page, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Page::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ListSecuritySettingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :security_settings, as: 'securitySettings', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SecuritySettings, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SecuritySettings::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ListSessionEntityTypesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :session_entity_types, as: 'sessionEntityTypes', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SessionEntityType, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SessionEntityType::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :transition_route_groups, as: 'transitionRouteGroups', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRouteGroup, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRouteGroup::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ListVersionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :versions, as: 'versions', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Version, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Version::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ListWebhooksResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :webhooks, as: 'webhooks', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Webhook, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Webhook::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3LoadVersionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_override_agent_resources, as: 'allowOverrideAgentResources'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :environments, as: 'environments', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Environment, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Environment::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3Match
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :event, as: 'event'
+          property :intent, as: 'intent', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Intent, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Intent::Representation
+      
+          property :match_type, as: 'matchType'
+          hash :parameters, as: 'parameters'
+          property :resolved_input, as: 'resolvedInput'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3MatchIntentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :query_input, as: 'queryInput', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3QueryInput, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3QueryInput::Representation
+      
+          property :query_params, as: 'queryParams', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3QueryParameters, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3QueryParameters::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3MatchIntentResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_page, as: 'currentPage', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Page, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Page::Representation
+      
+          collection :matches, as: 'matches', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Match, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Match::Representation
+      
+          property :text, as: 'text'
+          property :transcript, as: 'transcript'
+          property :trigger_event, as: 'triggerEvent'
+          property :trigger_intent, as: 'triggerIntent'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3NluSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :classification_threshold, as: 'classificationThreshold'
+          property :model_training_mode, as: 'modelTrainingMode'
+          property :model_type, as: 'modelType'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3OutputAudioConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_encoding, as: 'audioEncoding'
+          property :sample_rate_hertz, as: 'sampleRateHertz'
+          property :synthesize_speech_config, as: 'synthesizeSpeechConfig', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SynthesizeSpeechConfig, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SynthesizeSpeechConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3Page
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :entry_fulfillment, as: 'entryFulfillment', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Fulfillment, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Fulfillment::Representation
+      
+          collection :event_handlers, as: 'eventHandlers', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3EventHandler, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3EventHandler::Representation
+      
+          property :form, as: 'form', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Form, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Form::Representation
+      
+          property :name, as: 'name'
+          collection :transition_route_groups, as: 'transitionRouteGroups'
+          collection :transition_routes, as: 'transitionRoutes', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRoute, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRoute::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3PageInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_page, as: 'currentPage'
+          property :form_info, as: 'formInfo', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3PageInfoFormInfo, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3PageInfoFormInfo::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3PageInfoFormInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :parameter_info, as: 'parameterInfo', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :just_collected, as: 'justCollected'
+          property :required, as: 'required'
+          property :state, as: 'state'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3QueryInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio, as: 'audio', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AudioInput, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AudioInput::Representation
+      
+          property :dtmf, as: 'dtmf', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DtmfInput, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3DtmfInput::Representation
+      
+          property :event, as: 'event', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3EventInput, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3EventInput::Representation
+      
+          property :intent, as: 'intent', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3IntentInput, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3IntentInput::Representation
+      
+          property :language_code, as: 'languageCode'
+          property :text, as: 'text', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TextInput, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TextInput::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3QueryParameters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analyze_query_text_sentiment, as: 'analyzeQueryTextSentiment'
+          property :geo_location, as: 'geoLocation', class: Google::Apis::DialogflowV3::GoogleTypeLatLng, decorator: Google::Apis::DialogflowV3::GoogleTypeLatLng::Representation
+      
+          hash :parameters, as: 'parameters'
+          hash :payload, as: 'payload'
+          collection :session_entity_types, as: 'sessionEntityTypes', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SessionEntityType, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SessionEntityType::Representation
+      
+          property :time_zone, as: 'timeZone'
+          hash :webhook_headers, as: 'webhookHeaders'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3QueryResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_page, as: 'currentPage', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Page, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Page::Representation
+      
+          hash :diagnostic_info, as: 'diagnosticInfo'
+          property :intent, as: 'intent', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Intent, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Intent::Representation
+      
+          property :intent_detection_confidence, as: 'intentDetectionConfidence'
+          property :language_code, as: 'languageCode'
+          property :match, as: 'match', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Match, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Match::Representation
+      
+          hash :parameters, as: 'parameters'
+          collection :response_messages, as: 'responseMessages', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessage, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessage::Representation
+      
+          property :sentiment_analysis_result, as: 'sentimentAnalysisResult', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SentimentAnalysisResult, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SentimentAnalysisResult::Representation
+      
+          property :text, as: 'text'
+          property :transcript, as: 'transcript'
+          property :trigger_event, as: 'triggerEvent'
+          property :trigger_intent, as: 'triggerIntent'
+          collection :webhook_payloads, as: 'webhookPayloads'
+          collection :webhook_statuses, as: 'webhookStatuses', class: Google::Apis::DialogflowV3::GoogleRpcStatus, decorator: Google::Apis::DialogflowV3::GoogleRpcStatus::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ResponseMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_success, as: 'conversationSuccess', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess::Representation
+      
+          property :end_interaction, as: 'endInteraction', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessageEndInteraction, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessageEndInteraction::Representation
+      
+          property :live_agent_handoff, as: 'liveAgentHandoff', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff::Representation
+      
+          property :mixed_audio, as: 'mixedAudio', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessageMixedAudio, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessageMixedAudio::Representation
+      
+          property :output_audio_text, as: 'outputAudioText', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText::Representation
+      
+          hash :payload, as: 'payload'
+          property :play_audio, as: 'playAudio', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessagePlayAudio, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessagePlayAudio::Representation
+      
+          property :text, as: 'text', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessageText, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessageText::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :metadata, as: 'metadata'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ResponseMessageEndInteraction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :metadata, as: 'metadata'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ResponseMessageMixedAudio
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :segments, as: 'segments', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_playback_interruption, as: 'allowPlaybackInterruption'
+          property :audio, :base64 => true, as: 'audio'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_playback_interruption, as: 'allowPlaybackInterruption'
+          property :ssml, as: 'ssml'
+          property :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ResponseMessagePlayAudio
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_playback_interruption, as: 'allowPlaybackInterruption'
+          property :audio_uri, as: 'audioUri'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ResponseMessageText
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_playback_interruption, as: 'allowPlaybackInterruption'
+          collection :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3RestoreAgentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_content, :base64 => true, as: 'agentContent'
+          property :agent_uri, as: 'agentUri'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3SecuritySettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :inspect_template, as: 'inspectTemplate'
+          property :name, as: 'name'
+          collection :purge_data_types, as: 'purgeDataTypes'
+          property :redaction_scope, as: 'redactionScope'
+          property :redaction_strategy, as: 'redactionStrategy'
+          property :retention_window_days, as: 'retentionWindowDays'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3SentimentAnalysisResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :magnitude, as: 'magnitude'
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3SessionEntityType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entities, as: 'entities', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3EntityTypeEntity, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3EntityTypeEntity::Representation
+      
+          property :entity_override_mode, as: 'entityOverrideMode'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3SessionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :parameters, as: 'parameters'
+          property :session, as: 'session'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3SpeechToTextSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_speech_adaptation, as: 'enableSpeechAdaptation'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3SynthesizeSpeechConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :effects_profile_id, as: 'effectsProfileId'
+          property :pitch, as: 'pitch'
+          property :speaking_rate, as: 'speakingRate'
+          property :voice, as: 'voice', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3VoiceSelectionParams, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3VoiceSelectionParams::Representation
+      
+          property :volume_gain_db, as: 'volumeGainDb'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3TextInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3TrainFlowRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3TransitionRoute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition'
+          property :intent, as: 'intent'
+          property :name, as: 'name'
+          property :target_flow, as: 'targetFlow'
+          property :target_page, as: 'targetPage'
+          property :trigger_fulfillment, as: 'triggerFulfillment', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Fulfillment, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Fulfillment::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3TransitionRouteGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          collection :transition_routes, as: 'transitionRoutes', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRoute, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRoute::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3Version
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :nlu_settings, as: 'nluSettings', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3NluSettings, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3NluSettings::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3VoiceSelectionParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :ssml_gender, as: 'ssmlGender'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3Webhook
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disabled, as: 'disabled'
+          property :display_name, as: 'displayName'
+          property :generic_web_service, as: 'genericWebService', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3WebhookGenericWebService, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3WebhookGenericWebService::Representation
+      
+          property :name, as: 'name'
+          property :timeout, as: 'timeout'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3WebhookGenericWebService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :password, as: 'password'
+          hash :request_headers, as: 'requestHeaders'
+          property :uri, as: 'uri'
+          property :username, as: 'username'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3WebhookRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detect_intent_response_id, as: 'detectIntentResponseId'
+          property :fulfillment_info, as: 'fulfillmentInfo', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo::Representation
+      
+          property :intent_info, as: 'intentInfo', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3WebhookRequestIntentInfo, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3WebhookRequestIntentInfo::Representation
+      
+          collection :messages, as: 'messages', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessage, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessage::Representation
+      
+          property :page_info, as: 'pageInfo', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3PageInfo, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3PageInfo::Representation
+      
+          hash :payload, as: 'payload'
+          property :session_info, as: 'sessionInfo', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SessionInfo, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SessionInfo::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tag, as: 'tag'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3WebhookRequestIntentInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_matched_intent, as: 'lastMatchedIntent'
+          hash :parameters, as: 'parameters', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :original_value, as: 'originalValue'
+          property :resolved_value, as: 'resolvedValue'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3WebhookResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fulfillment_response, as: 'fulfillmentResponse', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3WebhookResponseFulfillmentResponse, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3WebhookResponseFulfillmentResponse::Representation
+      
+          property :page_info, as: 'pageInfo', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3PageInfo, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3PageInfo::Representation
+      
+          hash :payload, as: 'payload'
+          property :session_info, as: 'sessionInfo', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SessionInfo, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SessionInfo::Representation
+      
+          property :target_flow, as: 'targetFlow'
+          property :target_page, as: 'targetPage'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3WebhookResponseFulfillmentResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :merge_behavior, as: 'mergeBehavior'
+          collection :messages, as: 'messages', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessage, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessage::Representation
+      
+        end
       end
       
       class GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata
@@ -2329,6 +3758,14 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class GoogleTypeLatLng
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :latitude, as: 'latitude'
+          property :longitude, as: 'longitude'
         end
       end
     end
