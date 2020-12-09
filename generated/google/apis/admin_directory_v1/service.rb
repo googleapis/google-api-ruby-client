@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AdminDirectoryV1
-      # Admin SDK
+      # Admin SDK API
       #
       # Admin SDK lets administrators of enterprise domains to view and manage
       #  resources like user, groups etc. It also provides audit and usage reports of
@@ -45,8 +45,8 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://www.googleapis.com/', '')
-          @batch_path = 'batch/admin/directory_v1'
+          super('https://admin.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
         # Delete an ASP issued by a user.
@@ -174,11 +174,24 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Take action on Chrome OS Device
+        # Takes an action that affects a Chrome OS Device. This includes deprovisioning,
+        # disabling, and re-enabling devices. *Warning:* * Deprovisioning a device will
+        # stop device policy syncing and remove device-level printers. After a device is
+        # deprovisioned, it must be wiped before it can be re-enrolled. * Lost or stolen
+        # devices should use the disable action. * Re-enabling a disabled device will
+        # consume a device license. If you do not have sufficient licenses available
+        # when completing the re-enable action, you will receive an error. For more
+        # information about deprovisioning and disabling devices, visit the [help center]
+        # (https://support.google.com/chrome/a/answer/3523633).
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account
+        #   The unique ID for the customer's G Suite account. As an account administrator,
+        #   you can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users resource](
+        #   /admin-sdk/directory/v1/reference/users).
         # @param [String] resource_id
-        #   Immutable ID of Chrome OS Device
+        #   The unique ID of the device. The `resourceId`s are returned in the response
+        #   from the [chromeosdevices.list](/admin-sdk/directory/v1/reference/
+        #   chromeosdevices/list) method.
         # @param [Google::Apis::AdminDirectoryV1::ChromeOsDeviceAction] chrome_os_device_action_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -208,13 +221,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve Chrome OS Device
+        # Retrieves a Chrome OS device's properties.
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account
+        #   The unique ID for the customer's G Suite account. As an account administrator,
+        #   you can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users resource](
+        #   /admin-sdk/directory/v1/reference/users).
         # @param [String] device_id
-        #   Immutable ID of Chrome OS Device
+        #   The unique ID of the device. The `deviceId`s are returned in the response from
+        #   the [chromeosdevices.list](/admin-sdk/directory/v1/reference/chromeosdevices/
+        #   list) method.
         # @param [String] projection
-        #   Restrict information returned to a set of selected fields.
+        #   Determines whether the response contains the full list of properties or only a
+        #   subset.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -244,25 +263,30 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve all Chrome OS Devices of a customer (paginated)
+        # Retrieves a paginated list of Chrome OS devices within an account.
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account
+        #   The unique ID for the customer's G Suite account. As an account administrator,
+        #   you can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users resource](
+        #   /admin-sdk/directory/v1/reference/users).
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] order_by
-        #   Column to use for sorting results
+        #   Device property to use for sorting results.
         # @param [String] org_unit_path
-        #   Full path of the organizational unit or its ID
+        #   The full path of the organizational unit or its unique ID.
         # @param [String] page_token
-        #   Token to specify next page in the list
+        #   The `pageToken` query parameter is used to request the next page of query
+        #   results. The follow-on request's `pageToken` query parameter is the `
+        #   nextPageToken` from your previous response.
         # @param [String] projection
         #   Restrict information returned to a set of selected fields.
         # @param [String] query
         #   Search string in the format given at http://support.google.com/chromeos/a/bin/
         #   answer.py?answer=1698333
         # @param [String] sort_order
-        #   Whether to return results in ascending or descending order. Only of use when
-        #   orderBy is also used
+        #   Whether to return results in ascending or descending order. Must be used with
+        #   the `orderBy` parameter.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -297,7 +321,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Move or insert multiple Chrome OS Devices to organizational unit
+        # Move or insert multiple Chrome OS devices to an organizational unit. You can
+        # move up to 50 devices at once.
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
         # @param [String] org_unit_path
@@ -331,11 +356,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patch Chrome OS Device
+        # Updates a device's updatable properties, such as `annotatedUser`, `
+        # annotatedLocation`, `notes`, `orgUnitPath`, or `annotatedAssetId`. This method
+        # supports [patch semantics](/admin-sdk/directory/v1/guides/performance#patch).
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account
+        #   The unique ID for the customer's G Suite account. As an account administrator,
+        #   you can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users resource](
+        #   /admin-sdk/directory/v1/reference/users).
         # @param [String] device_id
-        #   Immutable ID of Chrome OS Device
+        #   The unique ID of the device. The `deviceId`s are returned in the response from
+        #   the [chromeosdevices.list](/admin-sdk/v1/reference/chromeosdevices/list)
+        #   method.
         # @param [Google::Apis::AdminDirectoryV1::ChromeOsDevice] chrome_os_device_object
         # @param [String] projection
         #   Restrict information returned to a set of selected fields.
@@ -370,11 +402,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update Chrome OS Device
+        # Updates a device's updatable properties, such as `annotatedUser`, `
+        # annotatedLocation`, `notes`, `orgUnitPath`, or `annotatedAssetId`.
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account
+        #   The unique ID for the customer's G Suite account. As an account administrator,
+        #   you can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users resource](
+        #   /admin-sdk/directory/v1/reference/users).
         # @param [String] device_id
-        #   Immutable ID of Chrome OS Device
+        #   The unique ID of the device. The `deviceId`s are returned in the response from
+        #   the [chromeosdevices.list](/admin-sdk/v1/reference/chromeosdevices/list)
+        #   method.
         # @param [Google::Apis::AdminDirectoryV1::ChromeOsDevice] chrome_os_device_object
         # @param [String] projection
         #   Restrict information returned to a set of selected fields.
@@ -834,9 +872,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete Group
+        # Deletes a group.
         # @param [String] group_key
-        #   Email or immutable ID of the group
+        #   Identifies the group in the API request. The value can be the group's email
+        #   address, group alias, or the unique group ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -862,9 +901,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve Group
+        # Retrieves a group's properties.
         # @param [String] group_key
-        #   Email or immutable ID of the group
+        #   Identifies the group in the API request. The value can be the group's email
+        #   address, group alias, or the unique group ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -892,7 +932,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create Group
+        # Creates a group.
         # @param [Google::Apis::AdminDirectoryV1::Group] group_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -924,11 +964,14 @@ module Google
         
         # Retrieve all groups of a domain or of a user given a userKey (paginated)
         # @param [String] customer
-        #   Immutable ID of the G Suite account. In case of multi-domain, to fetch all
-        #   groups for a customer, fill this field instead of domain.
+        #   The unique ID for the customer's G Suite account. In case of a multi-domain
+        #   account, to fetch all groups for a customer, fill this field instead of domain.
+        #   As an account administrator, you can also use the `my_customer` alias to
+        #   represent your account's `customerId`. The `customerId` is also returned as
+        #   part of the [Users](/admin-sdk/directory/v1/reference/users)
         # @param [String] domain
-        #   Name of the domain. Fill this field to get groups from only this domain. To
-        #   return all groups in a multi-domain fill customer field instead.
+        #   The domain name. Use this field to get fields from only one domain. To return
+        #   all domains for a customer account, use the `customer` query parameter instead.
         # @param [Fixnum] max_results
         #   Maximum number of results to return. Max allowed value is 200.
         # @param [String] order_by
@@ -979,10 +1022,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patch Groups via Apiary Patch Orchestration
+        # Updates a group's properties. This method supports [patch semantics](/admin-
+        # sdk/directory/v1/guides/performance#patch).
         # @param [String] group_key
-        #   Email or immutable ID of the group. If ID, it should match with id of group
-        #   object
+        #   Identifies the group in the API request. The value can be the group's email
+        #   address, group alias, or the unique group ID.
         # @param [Google::Apis::AdminDirectoryV1::Group] group_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1013,10 +1057,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update Group
+        # Updates a group's properties.
         # @param [String] group_key
-        #   Email or immutable ID of the group. If ID, it should match with id of group
-        #   object
+        #   Identifies the group in the API request. The value can be the group's email
+        #   address, group alias, or the unique group ID.
         # @param [Google::Apis::AdminDirectoryV1::Group] group_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1047,9 +1091,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Remove a alias for the group
+        # Removes an alias.
         # @param [String] group_key
-        #   Email or immutable ID of the group
+        #   Identifies the group in the API request. The value can be the group's email
+        #   address, group alias, or the unique group ID.
         # @param [String] group_alias
         #   The alias to be removed
         # @param [String] fields
@@ -1078,9 +1123,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Add a alias for the group
+        # Adds an alias for the group.
         # @param [String] group_key
-        #   Email or immutable ID of the group
+        #   Identifies the group in the API request. The value can be the group's email
+        #   address, group alias, or the unique group ID.
         # @param [Google::Apis::AdminDirectoryV1::Alias] alias_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1111,9 +1157,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all aliases for a group
+        # Lists all aliases for a group.
         # @param [String] group_key
-        #   Email or immutable ID of the group
+        #   Identifies the group in the API request. The value can be the group's email
+        #   address, group alias, or the unique group ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1141,11 +1188,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Remove membership.
+        # Removes a member from a group.
         # @param [String] group_key
-        #   Email or immutable ID of the group
+        #   Identifies the group in the API request. The value can be the group's email
+        #   address, group alias, or the unique group ID.
         # @param [String] member_key
-        #   Email or immutable ID of the member
+        #   Identifies the group member in the API request. A group member can be a user
+        #   or another group. The value can be the member's (group or user) primary email
+        #   address, alias, or unique ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1172,11 +1222,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve Group Member
+        # Retrieves a group member's properties.
         # @param [String] group_key
-        #   Email or immutable ID of the group
+        #   Identifies the group in the API request. The value can be the group's email
+        #   address, group alias, or the unique group ID.
         # @param [String] member_key
-        #   Email or immutable ID of the member
+        #   Identifies the group member in the API request. A group member can be a user
+        #   or another group. The value can be the member's (group or user) primary email
+        #   address, alias, or unique ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1241,9 +1294,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Add user to the specified group.
+        # Adds a user to the specified group.
         # @param [String] group_key
-        #   Email or immutable ID of the group
+        #   Identifies the group in the API request. The value can be the group's email
+        #   address, group alias, or the unique group ID.
         # @param [Google::Apis::AdminDirectoryV1::Member] member_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1274,17 +1328,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve all members in a group (paginated)
+        # Retrieves a paginated list of all members in a group.
         # @param [String] group_key
-        #   Email or immutable ID of the group
+        #   Identifies the group in the API request. The value can be the group's email
+        #   address, group alias, or the unique group ID.
         # @param [Boolean] include_derived_membership
         #   Whether to list indirect memberships. Default: false.
         # @param [Fixnum] max_results
         #   Maximum number of results to return. Max allowed value is 200.
         # @param [String] page_token
-        #   Token to specify next page in the list
+        #   Token to specify next page in the list.
         # @param [String] roles
-        #   Comma separated role values to filter list results on.
+        #   The `roles` query parameter allows you to retrieve group members by role.
+        #   Allowed values are `OWNER`, `MANAGER`, and `MEMBER`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1316,13 +1372,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patch Member via Apiary Patch Orchestration
+        # Updates the membership properties of a user in the specified group. This
+        # method supports [patch semantics](/admin-sdk/directory/v1/guides/performance#
+        # patch).
         # @param [String] group_key
-        #   Email or immutable ID of the group. If ID, it should match with id of group
-        #   object
+        #   Identifies the group in the API request. The value can be the group's email
+        #   address, group alias, or the unique group ID.
         # @param [String] member_key
-        #   Email or immutable ID of the user. If ID, it should match with id of member
-        #   object
+        #   Identifies the group member in the API request. A group member can be a user
+        #   or another group. The value can be the member's (group or user) primary email
+        #   address, alias, or unique ID.
         # @param [Google::Apis::AdminDirectoryV1::Member] member_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1354,13 +1413,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update membership of a user in the specified group.
+        # Updates the membership of a user in the specified group.
         # @param [String] group_key
-        #   Email or immutable ID of the group. If ID, it should match with id of group
-        #   object
+        #   Identifies the group in the API request. The value can be the group's email
+        #   address, group alias, or the unique group ID.
         # @param [String] member_key
-        #   Email or immutable ID of the user. If ID, it should match with id of member
-        #   object
+        #   Identifies the group member in the API request. A group member can be a user
+        #   or another group. The value can be the member's (group or user) primary email
+        #   address, alias, or unique ID.
         # @param [Google::Apis::AdminDirectoryV1::Member] member_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1392,11 +1452,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Take action on Mobile Device
+        # Takes an action that affects a mobile device. For example, remotely wiping a
+        # device.
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account
+        #   The unique ID for the customer's G Suite account. As an account administrator,
+        #   you can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users resource](
+        #   /admin-sdk/directory/v1/reference/users).
         # @param [String] resource_id
-        #   Immutable ID of Mobile Device
+        #   The unique ID the API service uses to identify the mobile device.
         # @param [Google::Apis::AdminDirectoryV1::MobileDeviceAction] mobile_device_action_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1426,11 +1490,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete Mobile Device
+        # Removes a mobile device.
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account
+        #   The unique ID for the customer's G Suite account. As an account administrator,
+        #   you can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users resource](
+        #   /admin-sdk/directory/v1/reference/users).
         # @param [String] resource_id
-        #   Immutable ID of Mobile Device
+        #   The unique ID the API service uses to identify the mobile device.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1457,11 +1524,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve Mobile Device
+        # Retrieves a mobile device's properties.
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account
+        #   The unique ID for the customer's G Suite account. As an account administrator,
+        #   you can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users resource](
+        #   /admin-sdk/directory/v1/reference/users).
         # @param [String] resource_id
-        #   Immutable ID of Mobile Device
+        #   The unique ID the API service uses to identify the mobile device.
         # @param [String] projection
         #   Restrict information returned to a set of selected fields.
         # @param [String] fields
@@ -1493,13 +1563,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve all Mobile Devices of a customer (paginated)
+        # Retrieves a paginated list of all mobile devices for an account.
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account
+        #   The unique ID for the customer's G Suite account. As an account administrator,
+        #   you can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users resource](
+        #   /admin-sdk/directory/v1/reference/users).
         # @param [Fixnum] max_results
         #   Maximum number of results to return. Max allowed value is 100.
         # @param [String] order_by
-        #   Column to use for sorting results
+        #   Device property to use for sorting results.
         # @param [String] page_token
         #   Token to specify next page in the list
         # @param [String] projection
@@ -1508,8 +1581,8 @@ module Google
         #   Search string in the format given at http://support.google.com/a/bin/answer.py?
         #   answer=1408863#search
         # @param [String] sort_order
-        #   Whether to return results in ascending or descending order. Only of use when
-        #   orderBy is also used
+        #   Whether to return results in ascending or descending order. Must be used with
+        #   the `orderBy` parameter.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1543,11 +1616,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Remove organizational unit
+        # Removes an organizational unit.
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account
+        #   The unique ID for the customer's G Suite account. As an account administrator,
+        #   you can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users resource](
+        #   /admin-sdk/directory/v1/reference/users).
         # @param [String] org_unit_path
-        #   Full path of the organizational unit or its ID
+        #   The full path of the organizational unit or its unique ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1574,11 +1650,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve organizational unit
+        # Retrieves an organizational unit.
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account
+        #   The unique ID for the customer's G Suite account. As an account administrator,
+        #   you can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users resource](
+        #   /admin-sdk/directory/v1/reference/users).
         # @param [String] org_unit_path
-        #   Full path of the organizational unit or its ID
+        #   The full path of the organizational unit or its unique ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1607,9 +1686,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Add organizational unit
+        # Adds an organizational unit.
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account
+        #   The unique ID for the customer's G Suite account. As an account administrator,
+        #   you can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users resource](
+        #   /admin-sdk/directory/v1/reference/users).
         # @param [Google::Apis::AdminDirectoryV1::OrgUnit] org_unit_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1640,13 +1722,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve all organizational units
+        # Retrieves a list of all organizational units for an account.
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account
+        #   The unique ID for the customer's G Suite account. As an account administrator,
+        #   you can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users resource](
+        #   /admin-sdk/directory/v1/reference/users).
         # @param [String] org_unit_path
-        #   the URL-encoded organizational unit's path or its ID
+        #   The full path to the organizational unit or its unique ID. Returns the
+        #   children of the specified organizational unit.
         # @param [String] type
-        #   Whether to return all sub-organizations or just immediate children
+        #   Whether to return all sub-organizations or just immediate children.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1676,11 +1762,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patch organization unit via Apiary Patch Orchestration
+        # Updates an organizational unit. This method supports [patch semantics](/admin-
+        # sdk/directory/v1/guides/performance#patch)
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account
+        #   The unique ID for the customer's G Suite account. As an account administrator,
+        #   you can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users resource](
+        #   /admin-sdk/directory/v1/reference/users).
         # @param [String] org_unit_path
-        #   Full path of the organizational unit or its ID
+        #   The full path of the organizational unit or its unique ID.
         # @param [Google::Apis::AdminDirectoryV1::OrgUnit] org_unit_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1712,11 +1802,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update organizational unit
+        # Updates an organizational unit.
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account
+        #   The unique ID for the customer's G Suite account. As an account administrator,
+        #   you can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users resource](
+        #   /admin-sdk/directory/v1/reference/users).
         # @param [String] org_unit_path
-        #   Full path of the organizational unit or its ID
+        #   The full path of the organizational unit or its unique ID.
         # @param [Google::Apis::AdminDirectoryV1::OrgUnit] org_unit_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1781,7 +1874,8 @@ module Google
         # Deletes a building.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the my_customer alias to represent your account's customer ID.
+        #   you can also use the `my_customer` alias to represent your account's customer
+        #   ID.
         # @param [String] building_id
         #   The id of the building to delete.
         # @param [String] fields
@@ -1813,7 +1907,8 @@ module Google
         # Retrieves a building.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the my_customer alias to represent your account's customer ID.
+        #   you can also use the `my_customer` alias to represent your account's customer
+        #   ID.
         # @param [String] building_id
         #   The unique ID of the building to retrieve.
         # @param [String] fields
@@ -1847,7 +1942,8 @@ module Google
         # Inserts a building.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the my_customer alias to represent your account's customer ID.
+        #   you can also use the `my_customer` alias to represent your account's customer
+        #   ID.
         # @param [Google::Apis::AdminDirectoryV1::Building] building_object
         # @param [String] coordinates_source
         #   Source from which Building.coordinates are derived.
@@ -1884,7 +1980,8 @@ module Google
         # Retrieves a list of buildings for an account.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the my_customer alias to represent your account's customer ID.
+        #   you can also use the `my_customer` alias to represent your account's customer
+        #   ID.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] page_token
@@ -1921,7 +2018,8 @@ module Google
         # Patches a building via Apiary Patch Orchestration.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the my_customer alias to represent your account's customer ID.
+        #   you can also use the `my_customer` alias to represent your account's customer
+        #   ID.
         # @param [String] building_id
         #   The id of the building to update.
         # @param [Google::Apis::AdminDirectoryV1::Building] building_object
@@ -1961,7 +2059,8 @@ module Google
         # Updates a building.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the my_customer alias to represent your account's customer ID.
+        #   you can also use the `my_customer` alias to represent your account's customer
+        #   ID.
         # @param [String] building_id
         #   The id of the building to update.
         # @param [Google::Apis::AdminDirectoryV1::Building] building_object
@@ -2001,7 +2100,8 @@ module Google
         # Deletes a calendar resource.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the my_customer alias to represent your account's customer ID.
+        #   you can also use the `my_customer` alias to represent your account's customer
+        #   ID.
         # @param [String] calendar_resource_id
         #   The unique ID of the calendar resource to delete.
         # @param [String] fields
@@ -2033,7 +2133,8 @@ module Google
         # Retrieves a calendar resource.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the my_customer alias to represent your account's customer ID.
+        #   you can also use the `my_customer` alias to represent your account's customer
+        #   ID.
         # @param [String] calendar_resource_id
         #   The unique ID of the calendar resource to retrieve.
         # @param [String] fields
@@ -2067,7 +2168,8 @@ module Google
         # Inserts a calendar resource.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the my_customer alias to represent your account's customer ID.
+        #   you can also use the `my_customer` alias to represent your account's customer
+        #   ID.
         # @param [Google::Apis::AdminDirectoryV1::CalendarResource] calendar_resource_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2101,16 +2203,17 @@ module Google
         # Retrieves a list of calendar resources for an account.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the my_customer alias to represent your account's customer ID.
+        #   you can also use the `my_customer` alias to represent your account's customer
+        #   ID.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] order_by
         #   Field(s) to sort results by in either ascending or descending order. Supported
-        #   fields include resourceId, resourceName, capacity, buildingId, and floorName.
-        #   If no order is specified, defaults to ascending. Should be of the form "field [
-        #   asc|desc], field [asc|desc], ...". For example buildingId, capacity desc would
-        #   return results sorted first by buildingId in ascending order then by capacity
-        #   in descending order.
+        #   fields include `resourceId`, `resourceName`, `capacity`, `buildingId`, and `
+        #   floorName`. If no order is specified, defaults to ascending. Should be of the
+        #   form "field [asc|desc], field [asc|desc], ...". For example `buildingId,
+        #   capacity desc` would return results sorted first by `buildingId` in ascending
+        #   order then by `capacity` in descending order.
         # @param [String] page_token
         #   Token to specify the next page in the list.
         # @param [String] query
@@ -2119,10 +2222,10 @@ module Google
         #   supported operations. Operators include '=' for exact match, '!=' for mismatch
         #   and ':' for prefix match or HAS match where applicable. For prefix match, the
         #   value should always be followed by a *. Logical operators NOT and AND are
-        #   supported (in this order of precedence). Supported fields include
-        #   generatedResourceName, name, buildingId, floor_name, capacity,
-        #   featureInstances.feature.name. For example buildingId=US-NYC-9TH AND
-        #   featureInstances.feature.name:Phone.
+        #   supported (in this order of precedence). Supported fields include `
+        #   generatedResourceName`, `name`, `buildingId`, `floor_name`, `capacity`, `
+        #   featureInstances.feature.name`, `resourceEmail`, `resourceCategory`. For
+        #   example `buildingId=US-NYC-9TH AND featureInstances.feature.name:Phone`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2157,7 +2260,8 @@ module Google
         # Patches a calendar resource via Apiary Patch Orchestration.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the my_customer alias to represent your account's customer ID.
+        #   you can also use the `my_customer` alias to represent your account's customer
+        #   ID.
         # @param [String] calendar_resource_id
         #   The unique ID of the calendar resource to update.
         # @param [Google::Apis::AdminDirectoryV1::CalendarResource] calendar_resource_object
@@ -2196,7 +2300,8 @@ module Google
         # present in the request will be preserved.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the my_customer alias to represent your account's customer ID.
+        #   you can also use the `my_customer` alias to represent your account's customer
+        #   ID.
         # @param [String] calendar_resource_id
         #   The unique ID of the calendar resource to update.
         # @param [Google::Apis::AdminDirectoryV1::CalendarResource] calendar_resource_object
@@ -2233,7 +2338,8 @@ module Google
         # Deletes a feature.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the my_customer alias to represent your account's customer ID.
+        #   you can also use the `my_customer` alias to represent your account's customer
+        #   ID.
         # @param [String] feature_key
         #   The unique ID of the feature to delete.
         # @param [String] fields
@@ -2265,7 +2371,8 @@ module Google
         # Retrieves a feature.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the my_customer alias to represent your account's customer ID.
+        #   you can also use the `my_customer` alias to represent your account's customer
+        #   ID.
         # @param [String] feature_key
         #   The unique ID of the feature to retrieve.
         # @param [String] fields
@@ -2299,7 +2406,8 @@ module Google
         # Inserts a feature.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the my_customer alias to represent your account's customer ID.
+        #   you can also use the `my_customer` alias to represent your account's customer
+        #   ID.
         # @param [Google::Apis::AdminDirectoryV1::Feature] feature_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2333,7 +2441,8 @@ module Google
         # Retrieves a list of features for an account.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the my_customer alias to represent your account's customer ID.
+        #   you can also use the `my_customer` alias to represent your account's customer
+        #   ID.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] page_token
@@ -2370,7 +2479,8 @@ module Google
         # Patches a feature via Apiary Patch Orchestration.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the my_customer alias to represent your account's customer ID.
+        #   you can also use the `my_customer` alias to represent your account's customer
+        #   ID.
         # @param [String] feature_key
         #   The unique ID of the feature to update.
         # @param [Google::Apis::AdminDirectoryV1::Feature] feature_object
@@ -2407,7 +2517,8 @@ module Google
         # Renames a feature.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the my_customer alias to represent your account's customer ID.
+        #   you can also use the `my_customer` alias to represent your account's customer
+        #   ID.
         # @param [String] old_name
         #   The unique ID of the feature to rename.
         # @param [Google::Apis::AdminDirectoryV1::FeatureRename] feature_rename_object
@@ -2442,7 +2553,8 @@ module Google
         # Updates a feature.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the my_customer alias to represent your account's customer ID.
+        #   you can also use the `my_customer` alias to represent your account's customer
+        #   ID.
         # @param [String] feature_key
         #   The unique ID of the feature to update.
         # @param [Google::Apis::AdminDirectoryV1::Feature] feature_object
@@ -2824,9 +2936,9 @@ module Google
         
         # Delete schema
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account
+        #   Immutable ID of the G Suite account.
         # @param [String] schema_key
-        #   Name or immutable ID of the schema
+        #   Name or immutable ID of the schema.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2855,9 +2967,9 @@ module Google
         
         # Retrieve schema
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account
+        #   Immutable ID of the G Suite account.
         # @param [String] schema_key
-        #   Name or immutable ID of the schema
+        #   Name or immutable ID of the schema.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2888,7 +3000,7 @@ module Google
         
         # Create schema.
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account
+        #   Immutable ID of the G Suite account.
         # @param [Google::Apis::AdminDirectoryV1::Schema] schema_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2921,7 +3033,7 @@ module Google
         
         # Retrieve all schemas for a customer
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account
+        #   Immutable ID of the G Suite account.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2951,7 +3063,7 @@ module Google
         
         # Patch Schema via Apiary Patch Orchestration
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account
+        #   Immutable ID of the G Suite account.
         # @param [String] schema_key
         #   Name or immutable ID of the schema.
         # @param [Google::Apis::AdminDirectoryV1::Schema] schema_object
@@ -2987,7 +3099,7 @@ module Google
         
         # Update schema
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account
+        #   Immutable ID of the G Suite account.
         # @param [String] schema_key
         #   Name or immutable ID of the schema.
         # @param [Google::Apis::AdminDirectoryV1::Schema] schema_object
@@ -3147,9 +3259,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete user
+        # Deletes a user.
         # @param [String] user_key
-        #   Email or immutable ID of the user
+        #   Identifies the user in the API request. The value can be the user's primary
+        #   email address, alias email address, or unique user ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3175,16 +3288,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # retrieve user
+        # Retrieves a user.
         # @param [String] user_key
-        #   Email or immutable ID of the user
+        #   Identifies the user in the API request. The value can be the user's primary
+        #   email address, alias email address, or unique user ID.
         # @param [String] custom_field_mask
-        #   Comma-separated list of schema names. All fields from these schemas are
-        #   fetched. This should only be set when projection=custom.
+        #   A comma-separated list of schema names. All fields from these schemas are
+        #   fetched. This should only be set when `projection=custom`.
         # @param [String] projection
         #   What subset of fields to fetch for this user.
         # @param [String] view_type
-        #   Whether to fetch the ADMIN_VIEW or DOMAIN_PUBLIC view of the user.
+        #   Whether to fetch the administrator-only or domain-wide public view of the user.
+        #   For more information, see [Retrieve a user as a non-administrator](/admin-sdk/
+        #   directory/v1/guides/manage-users#retrieve_users_non_admin).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3215,7 +3331,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # create user.
+        # Creates a user.
         # @param [Google::Apis::AdminDirectoryV1::User] user_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3245,33 +3361,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve either deleted users or all users in a domain (paginated)
+        # Retrieves a paginated list of either deleted users or all users in a domain.
         # @param [String] custom_field_mask
-        #   Comma-separated list of schema names. All fields from these schemas are
-        #   fetched. This should only be set when projection=custom.
+        #   A comma-separated list of schema names. All fields from these schemas are
+        #   fetched. This should only be set when `projection=custom`.
         # @param [String] customer
-        #   Immutable ID of the G Suite account. In case of multi-domain, to fetch all
-        #   users for a customer, fill this field instead of domain.
+        #   The unique ID for the customer's G Suite account. In case of a multi-domain
+        #   account, to fetch all groups for a customer, fill this field instead of domain.
+        #   You can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users resource](
+        #   /admin-sdk/directory/v1/reference/users). Either the `customer` or the `domain`
+        #   parameter must be provided.
         # @param [String] domain
-        #   Name of the domain. Fill this field to get users from only this domain. To
-        #   return all users in a multi-domain fill customer field instead.
+        #   The domain name. Use this field to get fields from only one domain. To return
+        #   all domains for a customer account, use the `customer` query parameter instead.
+        #   Either the `customer` or the `domain` parameter must be provided.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] order_by
-        #   Column to use for sorting results
+        #   Property to use for sorting results.
         # @param [String] page_token
         #   Token to specify next page in the list
         # @param [String] projection
         #   What subset of fields to fetch for this user.
         # @param [String] query
-        #   Query string search. Should be of the form "". Complete documentation is at
-        #   https: //developers.google.com/admin-sdk/directory/v1/guides/search-users
+        #   Query string for searching user fields. For more information on constructing
+        #   user queries, see [Search for Users](/admin-sdk/directory/v1/guides/search-
+        #   users).
         # @param [String] show_deleted
-        #   If set to true, retrieves the list of deleted users. (Default: false)
+        #   If set to `true`, retrieves the list of deleted users. (Default: `false`)
         # @param [String] sort_order
         #   Whether to return results in ascending or descending order.
         # @param [String] view_type
-        #   Whether to fetch the ADMIN_VIEW or DOMAIN_PUBLIC view of the user.
+        #   Whether to fetch the administrator-only or domain-wide public view of the user.
+        #   For more information, see [Retrieve a user as a non-administrator](/admin-sdk/
+        #   directory/v1/guides/manage-users#retrieve_users_non_admin).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3309,9 +3433,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # change admin status of a user
+        # Makes a user a super administrator.
         # @param [String] user_key
-        #   Email or immutable ID of the user as admin
+        #   Identifies the user in the API request. The value can be the user's primary
+        #   email address, alias email address, or unique user ID.
         # @param [Google::Apis::AdminDirectoryV1::UserMakeAdmin] user_make_admin_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3340,10 +3465,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patch Users via Apiary Patch Orchestration
+        # Updates a user using patch semantics. The update method should be used instead,
+        # since it also supports patch semantics and has better performance. This
+        # method is unable to clear fields that contain repeated objects (`addresses`, `
+        # phones`, etc). Use the update method instead.
         # @param [String] user_key
-        #   Email or immutable ID of the user. If ID, it should match with id of user
-        #   object
+        #   Identifies the user in the API request. The value can be the user's primary
+        #   email address, alias email address, or unique user ID.
         # @param [Google::Apis::AdminDirectoryV1::User] user_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3404,7 +3532,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Undelete a deleted user
+        # Undeletes a deleted user.
         # @param [String] user_key
         #   The immutable id of the user
         # @param [Google::Apis::AdminDirectoryV1::UserUndelete] user_undelete_object
@@ -3435,10 +3563,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # update user
+        # Updates a user. This method supports patch semantics, meaning you only need to
+        # include the fields you wish to update. Fields that are not present in the
+        # request will be preserved, and fields set to `null` will be cleared.
         # @param [String] user_key
-        #   Email or immutable ID of the user. If ID, it should match with id of user
-        #   object
+        #   Identifies the user in the API request. The value can be the user's primary
+        #   email address, alias email address, or unique user ID.
         # @param [Google::Apis::AdminDirectoryV1::User] user_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3481,7 +3611,7 @@ module Google
         #   Name of the domain. Fill this field to get users from only this domain. To
         #   return all users in a multi-domain fill customer field instead."
         # @param [String] event
-        #   Event on which subscription is intended
+        #   Events to watch for.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] order_by
@@ -3498,7 +3628,9 @@ module Google
         # @param [String] sort_order
         #   Whether to return results in ascending or descending order.
         # @param [String] view_type
-        #   Whether to fetch the ADMIN_VIEW or DOMAIN_PUBLIC view of the user.
+        #   Whether to fetch the administrator-only or domain-wide public view of the user.
+        #   For more information, see [Retrieve a user as a non-administrator](/admin-sdk/
+        #   directory/v1/guides/manage-users#retrieve_users_non_admin).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3539,11 +3671,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Remove a alias for the user
+        # Removes an alias.
         # @param [String] user_key
-        #   Email or immutable ID of the user
+        #   Identifies the user in the API request. The value can be the user's primary
+        #   email address, alias email address, or unique user ID.
         # @param [String] user_alias
-        #   The alias to be removed
+        #   The alias to be removed.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3570,9 +3703,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Add a alias for the user
+        # Adds an alias.
         # @param [String] user_key
-        #   Email or immutable ID of the user
+        #   Identifies the user in the API request. The value can be the user's primary
+        #   email address, alias email address, or unique user ID.
         # @param [Google::Apis::AdminDirectoryV1::Alias] alias_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3603,9 +3737,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all aliases for a user
+        # Lists all aliases for a user.
         # @param [String] user_key
-        #   Email or immutable ID of the user
+        #   Identifies the user in the API request. The value can be the user's primary
+        #   email address, alias email address, or unique user ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3633,12 +3768,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Watch for changes in users list
+        # Watch for changes in users list.
         # @param [String] user_key
         #   Email or immutable ID of the user
         # @param [Google::Apis::AdminDirectoryV1::Channel] channel_object
         # @param [String] event
-        #   Event on which subscription is intended (if subscribing)
+        #   Events to watch for.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3669,9 +3804,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Remove photos for the user
+        # Removes the user's photo.
         # @param [String] user_key
-        #   Email or immutable ID of the user
+        #   Identifies the user in the API request. The value can be the user's primary
+        #   email address, alias email address, or unique user ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3697,9 +3833,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve photo of a user
+        # Retrieves the user's photo.
         # @param [String] user_key
-        #   Email or immutable ID of the user
+        #   Identifies the user in the API request. The value can be the user's primary
+        #   email address, alias email address, or unique user ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3727,9 +3864,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patch Photo via Apiary Patch Orchestration
+        # Adds a photo for the user. This method supports [patch semantics](/admin-sdk/
+        # directory/v1/guides/performance#patch).
         # @param [String] user_key
-        #   Email or immutable ID of the user
+        #   Identifies the user in the API request. The value can be the user's primary
+        #   email address, alias email address, or unique user ID.
         # @param [Google::Apis::AdminDirectoryV1::UserPhoto] user_photo_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3760,9 +3899,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Add a photo for the user
+        # Adds a photo for the user.
         # @param [String] user_key
-        #   Email or immutable ID of the user
+        #   Identifies the user in the API request. The value can be the user's primary
+        #   email address, alias email address, or unique user ID.
         # @param [Google::Apis::AdminDirectoryV1::UserPhoto] user_photo_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

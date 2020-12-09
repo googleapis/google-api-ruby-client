@@ -133,12 +133,6 @@ module Google
           include Google::Apis::Core::JsonObjectSupport
         end
         
-        class RecentUser
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
-        
         class SystemRamFreeReport
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -329,6 +323,12 @@ module Google
       end
       
       class Privileges
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RecentUsers
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -715,7 +715,7 @@ module Google
           property :org_unit_path, as: 'orgUnitPath'
           property :os_version, as: 'osVersion'
           property :platform_version, as: 'platformVersion'
-          collection :recent_users, as: 'recentUsers', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::RecentUser, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::RecentUser::Representation
+          collection :recent_users, as: 'recentUsers', class: Google::Apis::AdminDirectoryV1::RecentUsers, decorator: Google::Apis::AdminDirectoryV1::RecentUsers::Representation
       
           property :serial_number, as: 'serialNumber'
           property :status, as: 'status'
@@ -790,14 +790,6 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :ip_address, as: 'ipAddress'
             property :wan_ip_address, as: 'wanIpAddress'
-          end
-        end
-        
-        class RecentUser
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :email, as: 'email'
-            property :type, as: 'type'
           end
         end
         
@@ -1183,6 +1175,14 @@ module Google
           collection :items, as: 'items', class: Google::Apis::AdminDirectoryV1::Privilege, decorator: Google::Apis::AdminDirectoryV1::Privilege::Representation
       
           property :kind, as: 'kind'
+        end
+      end
+      
+      class RecentUsers
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          property :type, as: 'type'
         end
       end
       
