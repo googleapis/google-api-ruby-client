@@ -22,8 +22,8 @@ module Google
   module Apis
     module DocumentaiV1beta2
       
-      # The long running operation metadata for CreateLabelerPool.
-      class GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata
+      # The common metadata for long running operations.
+      class GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata
         include Google::Apis::Core::Hashable
       
         # The creation time of the operation.
@@ -31,13 +31,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Used only when Operation.done is false.
+        # The state of the operation.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # A message providing more details about the current state of processing. For
-        # example, the error message if the operation is failed.
+        # A message providing more details about the current state of processing.
         # Corresponds to the JSON property `stateMessage`
         # @return [String]
         attr_accessor :state_message
@@ -57,6 +56,25 @@ module Google
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The long running operation metadata for CreateLabelerPool.
+      class GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
         end
       end
       
@@ -95,26 +113,10 @@ module Google
       class GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata
         include Google::Apis::Core::Hashable
       
-        # The creation time of the operation.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Used only when Operation.done is false.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # A message providing more details about the current state of processing. For
-        # example, the error message if the operation is failed.
-        # Corresponds to the JSON property `stateMessage`
-        # @return [String]
-        attr_accessor :state_message
-      
-        # The last update time of the operation.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
       
         def initialize(**args)
            update!(**args)
@@ -122,16 +124,18 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @state = args[:state] if args.key?(:state)
-          @state_message = args[:state_message] if args.key?(:state_message)
-          @update_time = args[:update_time] if args.key?(:update_time)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
         end
       end
       
       # The long running operation metadata for delete processor method.
       class GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata
         include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
       
         # The creation time of the operation.
         # Corresponds to the JSON property `createTime`
@@ -160,6 +164,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
           @create_time = args[:create_time] if args.key?(:create_time)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
@@ -167,9 +172,65 @@ module Google
         end
       end
       
+      # The long running operation metadata for delete processor version method.
+      class GoogleCloudDocumentaiUiv1beta3DeleteProcessorVersionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # The long running operation metadata for deploy processor version method.
+      class GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # Response message for the deploy processor version method.
+      class GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The long running operation metadata for disable processor method.
       class GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata
         include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
       
         # The creation time of the operation.
         # Corresponds to the JSON property `createTime`
@@ -198,6 +259,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
           @create_time = args[:create_time] if args.key?(:create_time)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
@@ -222,6 +284,11 @@ module Google
       # The long running operation metadata for enable processor method.
       class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata
         include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
       
         # The creation time of the operation.
         # Corresponds to the JSON property `createTime`
@@ -250,6 +317,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
           @create_time = args[:create_time] if args.key?(:create_time)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
@@ -271,30 +339,14 @@ module Google
         end
       end
       
-      # The long running operation metadata for UpdateLabelerPool.
-      class GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata
+      # The long running operation metadata for the undeploy processor version method.
+      class GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
-        # The creation time of the operation.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Used only when Operation.done is false.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # A message providing more details about the current state of processing. For
-        # example, the error message if the operation is failed.
-        # Corresponds to the JSON property `stateMessage`
-        # @return [String]
-        attr_accessor :state_message
-      
-        # The last update time of the operation.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
       
         def initialize(**args)
            update!(**args)
@@ -302,10 +354,59 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @state = args[:state] if args.key?(:state)
-          @state_message = args[:state_message] if args.key?(:state_message)
-          @update_time = args[:update_time] if args.key?(:update_time)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # Response message for the undeploy processor version method.
+      class GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The long running operation metadata for updating the human review
+      # configuration.
+      class GoogleCloudDocumentaiUiv1beta3UpdateHumanReviewConfigMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # The long running operation metadata for UpdateLabelerPool.
+      class GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
         end
       end
       
@@ -570,27 +671,32 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleTypePostalAddress]
         attr_accessor :address_value
       
-        # Represents a whole or partial calendar date, e.g. a birthday. The time of day
-        # and time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. This can represent: * A full
-        # date, with non-zero year, month and day values * A month and day value, with a
-        # zero year, e.g. an anniversary * A year on its own, with zero month and day
-        # values * A year and month value, with a zero day, e.g. a credit card
-        # expiration date Related types are google.type.TimeOfDay and `google.protobuf.
-        # Timestamp`.
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values * A month
+        # and day value, with a zero year, such as an anniversary * A year on its own,
+        # with zero month and day values * A year and month value, with a zero day, such
+        # as a credit card expiration date Related types are google.type.TimeOfDay and `
+        # google.protobuf.Timestamp`.
         # Corresponds to the JSON property `dateValue`
         # @return [Google::Apis::DocumentaiV1beta2::GoogleTypeDate]
         attr_accessor :date_value
       
-        # Represents civil time in one of a few possible ways: * When utc_offset is set
-        # and time_zone is unset: a civil time on a calendar day with a particular
-        # offset from UTC. * When time_zone is set and utc_offset is unset: a civil time
-        # on a calendar day in a particular time zone. * When neither time_zone nor
+        # Represents civil time (or occasionally physical time). This type can represent
+        # a civil time in one of a few possible ways: * When utc_offset is set and
+        # time_zone is unset: a civil time on a calendar day with a particular offset
+        # from UTC. * When time_zone is set and utc_offset is unset: a civil time on a
+        # calendar day in a particular time zone. * When neither time_zone nor
         # utc_offset is set: a civil time on a calendar day in local time. The date is
         # relative to the Proleptic Gregorian Calendar. If year is 0, the DateTime is
         # considered not to have a specific year. month and day must have valid, non-
-        # zero values. This type is more flexible than some applications may want. Make
-        # sure to document and validate your application's limitations.
+        # zero values. This type may also be used to represent a physical time if all
+        # the date and time fields are set and either case of the `time_offset` oneof is
+        # set. Consider using `Timestamp` message for physical time instead. If your use
+        # case also would like to store the user's timezone, that can be done in another
+        # field. This type is more flexible than some applications may want. Make sure
+        # to document and validate your application's limitations.
         # Corresponds to the JSON property `datetimeValue`
         # @return [Google::Apis::DocumentaiV1beta2::GoogleTypeDateTime]
         attr_accessor :datetime_value
@@ -793,7 +899,8 @@ module Google
         # @return [String]
         attr_accessor :layout_type
       
-        # Required. Index into the Document.pages element
+        # Required. Index into the Document.pages element, for example using Document.
+        # pages to locate the related page element.
         # Corresponds to the JSON property `page`
         # @return [Fixnum]
         attr_accessor :page
@@ -2300,27 +2407,32 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleTypePostalAddress]
         attr_accessor :address_value
       
-        # Represents a whole or partial calendar date, e.g. a birthday. The time of day
-        # and time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. This can represent: * A full
-        # date, with non-zero year, month and day values * A month and day value, with a
-        # zero year, e.g. an anniversary * A year on its own, with zero month and day
-        # values * A year and month value, with a zero day, e.g. a credit card
-        # expiration date Related types are google.type.TimeOfDay and `google.protobuf.
-        # Timestamp`.
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values * A month
+        # and day value, with a zero year, such as an anniversary * A year on its own,
+        # with zero month and day values * A year and month value, with a zero day, such
+        # as a credit card expiration date Related types are google.type.TimeOfDay and `
+        # google.protobuf.Timestamp`.
         # Corresponds to the JSON property `dateValue`
         # @return [Google::Apis::DocumentaiV1beta2::GoogleTypeDate]
         attr_accessor :date_value
       
-        # Represents civil time in one of a few possible ways: * When utc_offset is set
-        # and time_zone is unset: a civil time on a calendar day with a particular
-        # offset from UTC. * When time_zone is set and utc_offset is unset: a civil time
-        # on a calendar day in a particular time zone. * When neither time_zone nor
+        # Represents civil time (or occasionally physical time). This type can represent
+        # a civil time in one of a few possible ways: * When utc_offset is set and
+        # time_zone is unset: a civil time on a calendar day with a particular offset
+        # from UTC. * When time_zone is set and utc_offset is unset: a civil time on a
+        # calendar day in a particular time zone. * When neither time_zone nor
         # utc_offset is set: a civil time on a calendar day in local time. The date is
         # relative to the Proleptic Gregorian Calendar. If year is 0, the DateTime is
         # considered not to have a specific year. month and day must have valid, non-
-        # zero values. This type is more flexible than some applications may want. Make
-        # sure to document and validate your application's limitations.
+        # zero values. This type may also be used to represent a physical time if all
+        # the date and time fields are set and either case of the `time_offset` oneof is
+        # set. Consider using `Timestamp` message for physical time instead. If your use
+        # case also would like to store the user's timezone, that can be done in another
+        # field. This type is more flexible than some applications may want. Make sure
+        # to document and validate your application's limitations.
         # Corresponds to the JSON property `datetimeValue`
         # @return [Google::Apis::DocumentaiV1beta2::GoogleTypeDateTime]
         attr_accessor :datetime_value
@@ -2560,7 +2672,8 @@ module Google
         # @return [String]
         attr_accessor :layout_type
       
-        # Required. Index into the Document.pages element
+        # Required. Index into the Document.pages element, for example using Document.
+        # pages to locate the related page element.
         # Corresponds to the JSON property `page`
         # @return [Fixnum]
         attr_accessor :page
@@ -4393,31 +4506,31 @@ module Google
         end
       end
       
-      # Represents a whole or partial calendar date, e.g. a birthday. The time of day
-      # and time zone are either specified elsewhere or are not significant. The date
-      # is relative to the Proleptic Gregorian Calendar. This can represent: * A full
-      # date, with non-zero year, month and day values * A month and day value, with a
-      # zero year, e.g. an anniversary * A year on its own, with zero month and day
-      # values * A year and month value, with a zero day, e.g. a credit card
-      # expiration date Related types are google.type.TimeOfDay and `google.protobuf.
-      # Timestamp`.
+      # Represents a whole or partial calendar date, such as a birthday. The time of
+      # day and time zone are either specified elsewhere or are insignificant. The
+      # date is relative to the Gregorian Calendar. This can represent one of the
+      # following: * A full date, with non-zero year, month, and day values * A month
+      # and day value, with a zero year, such as an anniversary * A year on its own,
+      # with zero month and day values * A year and month value, with a zero day, such
+      # as a credit card expiration date Related types are google.type.TimeOfDay and `
+      # google.protobuf.Timestamp`.
       class GoogleTypeDate
         include Google::Apis::Core::Hashable
       
-        # Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if
-        # specifying a year by itself or a year and month where the day is not
-        # significant.
+        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        # specify a year by itself or a year and month where the day isn't significant.
         # Corresponds to the JSON property `day`
         # @return [Fixnum]
         attr_accessor :day
       
-        # Month of year. Must be from 1 to 12, or 0 if specifying a year without a month
+        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
         # and day.
         # Corresponds to the JSON property `month`
         # @return [Fixnum]
         attr_accessor :month
       
-        # Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
+        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        # year.
         # Corresponds to the JSON property `year`
         # @return [Fixnum]
         attr_accessor :year
@@ -4434,15 +4547,20 @@ module Google
         end
       end
       
-      # Represents civil time in one of a few possible ways: * When utc_offset is set
-      # and time_zone is unset: a civil time on a calendar day with a particular
-      # offset from UTC. * When time_zone is set and utc_offset is unset: a civil time
-      # on a calendar day in a particular time zone. * When neither time_zone nor
+      # Represents civil time (or occasionally physical time). This type can represent
+      # a civil time in one of a few possible ways: * When utc_offset is set and
+      # time_zone is unset: a civil time on a calendar day with a particular offset
+      # from UTC. * When time_zone is set and utc_offset is unset: a civil time on a
+      # calendar day in a particular time zone. * When neither time_zone nor
       # utc_offset is set: a civil time on a calendar day in local time. The date is
       # relative to the Proleptic Gregorian Calendar. If year is 0, the DateTime is
       # considered not to have a specific year. month and day must have valid, non-
-      # zero values. This type is more flexible than some applications may want. Make
-      # sure to document and validate your application's limitations.
+      # zero values. This type may also be used to represent a physical time if all
+      # the date and time fields are set and either case of the `time_offset` oneof is
+      # set. Consider using `Timestamp` message for physical time instead. If your use
+      # case also would like to store the user's timezone, that can be done in another
+      # field. This type is more flexible than some applications may want. Make sure
+      # to document and validate your application's limitations.
       class GoogleTypeDateTime
         include Google::Apis::Core::Hashable
       
@@ -4518,7 +4636,7 @@ module Google
       class GoogleTypeMoney
         include Google::Apis::Core::Hashable
       
-        # The 3-letter currency code defined in ISO 4217.
+        # The three-letter currency code defined in ISO 4217.
         # Corresponds to the JSON property `currencyCode`
         # @return [String]
         attr_accessor :currency_code
