@@ -154,6 +154,10 @@ module Google
         # @param [String] name
         #   Required. The job name. For example: `projects/PROJECT_ID/locations/
         #   LOCATION_ID/jobs/JOB_ID`.
+        # @param [Boolean] legacy_app_engine_cron
+        #   This field is used to manage the legacy App Engine Cron jobs using the Cloud
+        #   Scheduler API. If the field is set to true, the job in the __cron queue with
+        #   the corresponding name will be deleted instead.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -171,11 +175,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_job(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_job(name, legacy_app_engine_cron: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::CloudschedulerV1beta1::Empty::Representation
           command.response_class = Google::Apis::CloudschedulerV1beta1::Empty
           command.params['name'] = name unless name.nil?
+          command.query['legacyAppEngineCron'] = legacy_app_engine_cron unless legacy_app_engine_cron.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -216,6 +221,10 @@ module Google
         # @param [String] parent
         #   Required. The location name. For example: `projects/PROJECT_ID/locations/
         #   LOCATION_ID`.
+        # @param [Boolean] legacy_app_engine_cron
+        #   This field is used to manage the legacy App Engine Cron jobs using the Cloud
+        #   Scheduler API. If the field is set to true, the jobs in the __cron queue will
+        #   be listed instead.
         # @param [Fixnum] page_size
         #   Requested page size. The maximum page size is 500. If unspecified, the page
         #   size will be the maximum. Fewer jobs than requested might be returned, even if
@@ -243,11 +252,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_jobs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_jobs(parent, legacy_app_engine_cron: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/jobs', options)
           command.response_representation = Google::Apis::CloudschedulerV1beta1::ListJobsResponse::Representation
           command.response_class = Google::Apis::CloudschedulerV1beta1::ListJobsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['legacyAppEngineCron'] = legacy_app_engine_cron unless legacy_app_engine_cron.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
