@@ -3388,7 +3388,7 @@ module Google
         # @return [Google::Apis::ServicenetworkingV1::Billing]
         attr_accessor :billing
       
-        # This field is obsolete. Its value must be set to `3`.
+        # Deprecated. The service config compiler always sets this field to `3`.
         # Corresponds to the JSON property `configVersion`
         # @return [Fixnum]
         attr_accessor :config_version
