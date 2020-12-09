@@ -648,6 +648,9 @@ module Google
         # - `VPC_PEERING` for addresses that are reserved for VPC peer networks.
         # - `NAT_AUTO` for addresses that are external IP addresses automatically
         # reserved for Cloud NAT.
+        # - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are
+        # reserved for a VLAN attachment in an IPsec encrypted Interconnect
+        # configuration. These addresses are regional resources.
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose
@@ -1578,8 +1581,8 @@ module Google
       
       # Represents an Autoscaler resource.
       # Google Compute Engine has two Autoscaler resources:
-      # * [Global](/compute/docs/reference/rest/`$api_version`/autoscalers) * [
-      # Regional](/compute/docs/reference/rest/`$api_version`/regionAutoscalers)
+      # * [Zonal](/compute/docs/reference/rest/`$api_version`/autoscalers) * [Regional]
+      # (/compute/docs/reference/rest/`$api_version`/regionAutoscalers)
       # Use autoscalers to automatically add or delete instances from a managed
       # instance group according to your defined autoscaling policy. For more
       # information, read Autoscaling Groups of Instances.
@@ -1642,6 +1645,11 @@ module Google
         # @return [String]
         attr_accessor :region
       
+        # [Output Only] Status information of existing scaling schedules.
+        # Corresponds to the JSON property `scalingScheduleStatus`
+        # @return [Hash<String,Google::Apis::ComputeBeta::ScalingScheduleStatus>]
+        attr_accessor :scaling_schedule_status
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -1691,6 +1699,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @recommended_size = args[:recommended_size] if args.key?(:recommended_size)
           @region = args[:region] if args.key?(:region)
+          @scaling_schedule_status = args[:scaling_schedule_status] if args.key?(:scaling_schedule_status)
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
           @status_details = args[:status_details] if args.key?(:status_details)
@@ -2159,6 +2168,14 @@ module Google
         # @return [Google::Apis::ComputeBeta::AutoscalingPolicyScaleInControl]
         attr_accessor :scale_in_control
       
+        # Scaling schedules defined for an autoscaler. Multiple schedules can be set on
+        # an autoscaler and they can overlap. During overlapping periods the greatest
+        # min_required_replicas of all scaling schedules will be applied. Up to 128
+        # scaling schedules are allowed.
+        # Corresponds to the JSON property `scalingSchedules`
+        # @return [Hash<String,Google::Apis::ComputeBeta::AutoscalingPolicyScalingSchedule>]
+        attr_accessor :scaling_schedules
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2174,6 +2191,7 @@ module Google
           @mode = args[:mode] if args.key?(:mode)
           @scale_down_control = args[:scale_down_control] if args.key?(:scale_down_control)
           @scale_in_control = args[:scale_in_control] if args.key?(:scale_in_control)
+          @scaling_schedules = args[:scaling_schedules] if args.key?(:scaling_schedules)
         end
       end
       
@@ -2376,6 +2394,71 @@ module Google
         def update!(**args)
           @max_scaled_in_replicas = args[:max_scaled_in_replicas] if args.key?(:max_scaled_in_replicas)
           @time_window_sec = args[:time_window_sec] if args.key?(:time_window_sec)
+        end
+      end
+      
+      # Scaling based on user-defined schedule. The message describes a single scaling
+      # schedule. A scaling schedule changes the minimum number of VM instances an
+      # autoscaler can recommend, which can trigger scaling out.
+      class AutoscalingPolicyScalingSchedule
+        include Google::Apis::Core::Hashable
+      
+        # A description of a scaling schedule.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # A boolean value that specifies if a scaling schedule can influence autoscaler
+        # recommendations. If set to true, then a scaling schedule has no effect. This
+        # field is optional and its value is false by default.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # The duration of time intervals (in seconds) for which this scaling schedule
+        # will be running. The minimum allowed value is 300. This field is required.
+        # Corresponds to the JSON property `durationSec`
+        # @return [Fixnum]
+        attr_accessor :duration_sec
+      
+        # Minimum number of VM instances that autoscaler will recommend in time
+        # intervals starting according to schedule. This field is required.
+        # Corresponds to the JSON property `minRequiredReplicas`
+        # @return [Fixnum]
+        attr_accessor :min_required_replicas
+      
+        # The start timestamps of time intervals when this scaling schedule should
+        # provide a scaling signal. This field uses the extended cron format (with an
+        # optional year field). The expression may describe a single timestamp if the
+        # optional year is set, in which case a scaling schedule will run once. schedule
+        # is interpreted with respect to time_zone. This field is required. NOTE: these
+        # timestamps only describe when autoscaler will start providing the scaling
+        # signal. The VMs will need additional time to become serving.
+        # Corresponds to the JSON property `schedule`
+        # @return [String]
+        attr_accessor :schedule
+      
+        # The time zone to be used when interpreting the schedule. The value of this
+        # field must be a time zone name from the tz database: http://en.wikipedia.org/
+        # wiki/Tz_database. This field will be assigned a default value of ?UTC? if left
+        # empty.
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @duration_sec = args[:duration_sec] if args.key?(:duration_sec)
+          @min_required_replicas = args[:min_required_replicas] if args.key?(:min_required_replicas)
+          @schedule = args[:schedule] if args.key?(:schedule)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
       end
       
@@ -2711,12 +2794,17 @@ module Google
       
         # Negative caching allows per-status code TTLs to be set, in order to apply fine-
         # grained caching for common errors or redirects. This can reduce the load on
-        # your origin and improve end-user experience by reducing response latency. By
-        # default, Cloud CDN will apply the following default TTLs to these status codes:
-        # HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not
-        # Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method
-        # Not Found), 421 (Misdirected Request), 501 (Not Implemented): 60s These
-        # defaults can be overridden in negative_caching_policy
+        # your origin and improve end-user experience by reducing response latency. When
+        # the cache mode is set to CACHE_ALL_STATIC or USE_ORIGIN_HEADERS, negative
+        # caching applies to responses with the specified response code that lack any
+        # Cache-Control, Expires, or Pragma: no-cache directives. When the cache mode is
+        # set to FORCE_CACHE_ALL, negative caching applies to all responses with the
+        # specified response code, and override any caching headers. By default, Cloud
+        # CDN will apply the following default TTLs to these status codes: HTTP 300 (
+        # Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found),
+        # 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not
+        # Found), 421 (Misdirected Request), 501 (Not Implemented): 60s. These defaults
+        # can be overridden in negative_caching_policy.
         # Corresponds to the JSON property `negativeCaching`
         # @return [Boolean]
         attr_accessor :negative_caching
@@ -2812,9 +2900,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # The TTL (in seconds) to cache responses with the corresponding status code for.
-        # The maximum allowed value is 1800s (30 minutes), noting that infrequently
-        # accessed objects may be evicted from the cache before the defined TTL.
+        # The TTL (in seconds) for which to cache responses with the corresponding
+        # status code. The maximum allowed value is 1800s (30 minutes), noting that
+        # infrequently accessed objects may be evicted from the cache before the defined
+        # TTL.
         # Corresponds to the JSON property `ttl`
         # @return [Fixnum]
         attr_accessor :ttl
@@ -2993,6 +3082,11 @@ module Google
         # Corresponds to the JSON property `connectionDraining`
         # @return [Google::Apis::ComputeBeta::ConnectionDraining]
         attr_accessor :connection_draining
+      
+        # Connection Tracking configuration for this BackendService.
+        # Corresponds to the JSON property `connectionTrackingPolicy`
+        # @return [Google::Apis::ComputeBeta::BackendServiceConnectionTrackingPolicy]
+        attr_accessor :connection_tracking_policy
       
         # This message defines settings for a consistent hash style load balancer.
         # Corresponds to the JSON property `consistentHash`
@@ -3236,6 +3330,7 @@ module Google
           @cdn_policy = args[:cdn_policy] if args.key?(:cdn_policy)
           @circuit_breakers = args[:circuit_breakers] if args.key?(:circuit_breakers)
           @connection_draining = args[:connection_draining] if args.key?(:connection_draining)
+          @connection_tracking_policy = args[:connection_tracking_policy] if args.key?(:connection_tracking_policy)
           @consistent_hash = args[:consistent_hash] if args.key?(:consistent_hash)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @custom_request_headers = args[:custom_request_headers] if args.key?(:custom_request_headers)
@@ -3457,12 +3552,17 @@ module Google
       
         # Negative caching allows per-status code TTLs to be set, in order to apply fine-
         # grained caching for common errors or redirects. This can reduce the load on
-        # your origin and improve end-user experience by reducing response latency. By
-        # default, Cloud CDN will apply the following default TTLs to these status codes:
-        # HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not
-        # Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method
-        # Not Found), 421 (Misdirected Request), 501 (Not Implemented): 60s These
-        # defaults can be overridden in negative_caching_policy
+        # your origin and improve end-user experience by reducing response latency. When
+        # the cache mode is set to CACHE_ALL_STATIC or USE_ORIGIN_HEADERS, negative
+        # caching applies to responses with the specified response code that lack any
+        # Cache-Control, Expires, or Pragma: no-cache directives. When the cache mode is
+        # set to FORCE_CACHE_ALL, negative caching applies to all responses with the
+        # specified response code, and override any caching headers. By default, Cloud
+        # CDN will apply the following default TTLs to these status codes: HTTP 300 (
+        # Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found),
+        # 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not
+        # Found), 421 (Misdirected Request), 501 (Not Implemented): 60s. These defaults
+        # can be overridden in negative_caching_policy.
         # Corresponds to the JSON property `negativeCaching`
         # @return [Boolean]
         attr_accessor :negative_caching
@@ -3559,9 +3659,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # The TTL (in seconds) to cache responses with the corresponding status code for.
-        # The maximum allowed value is 1800s (30 minutes), noting that infrequently
-        # accessed objects may be evicted from the cache before the defined TTL.
+        # The TTL (in seconds) for which to cache responses with the corresponding
+        # status code. The maximum allowed value is 1800s (30 minutes), noting that
+        # infrequently accessed objects may be evicted from the cache before the defined
+        # TTL.
         # Corresponds to the JSON property `ttl`
         # @return [Fixnum]
         attr_accessor :ttl
@@ -3574,6 +3675,37 @@ module Google
         def update!(**args)
           @code = args[:code] if args.key?(:code)
           @ttl = args[:ttl] if args.key?(:ttl)
+        end
+      end
+      
+      # Connection Tracking configuration for this BackendService.
+      class BackendServiceConnectionTrackingPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Specifies connection persistence when backends are unhealthy. The default
+        # value is DEFAULT_FOR_PROTOCOL.
+        # If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy
+        # backends only for connection-oriented protocols (TCP and SCTP) and only if the
+        # Tracking Mode is PER_CONNECTION (default tracking mode) or the Session
+        # Affinity is configured for 5-tuple. They do not persist for UDP.
+        # If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing
+        # connections on the unhealthy backend are never persisted on the unhealthy
+        # backend. They are always diverted to newly selected healthy backends (unless
+        # all backends are unhealthy).
+        # If set to ALWAYS_PERSIST, existing connections always persist on unhealthy
+        # backends regardless of protocol and session affinity. It is generally not
+        # recommended to use this mode overriding the default.
+        # Corresponds to the JSON property `connectionPersistenceOnUnhealthyBackends`
+        # @return [String]
+        attr_accessor :connection_persistence_on_unhealthy_backends
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_persistence_on_unhealthy_backends = args[:connection_persistence_on_unhealthy_backends] if args.key?(:connection_persistence_on_unhealthy_backends)
         end
       end
       
@@ -4214,8 +4346,7 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # A client-specified ID for this binding. Expected to be globally unique to
-        # support the internal bindings-by-ID API.
+        # 
         # Corresponds to the JSON property `bindingId`
         # @return [String]
         attr_accessor :binding_id
@@ -6537,7 +6668,18 @@ module Google
       class DistributionPolicy
         include Google::Apis::Core::Hashable
       
-        # Zones where the regional managed instance group will create and manage
+        # The shape to which the group converges either proactively or on resize events (
+        # depending on the value set in updatePolicy.instanceRedistributionType). The
+        # possible values are EVEN and ANY. For EVEN the group attempts to preserve a
+        # balanced number of instances across zones. For ANY the group creates new
+        # instances where resources are available to fulfill the request; as a result,
+        # instances may be distributed unevenly across zones in this mode. The default
+        # value is EVEN.
+        # Corresponds to the JSON property `targetShape`
+        # @return [String]
+        attr_accessor :target_shape
+      
+        # Zones where the regional managed instance group will create and manage its
         # instances.
         # Corresponds to the JSON property `zones`
         # @return [Array<Google::Apis::ComputeBeta::DistributionPolicyZoneConfiguration>]
@@ -6549,6 +6691,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @target_shape = args[:target_shape] if args.key?(:target_shape)
           @zones = args[:zones] if args.key?(:zones)
         end
       end
@@ -7521,6 +7664,187 @@ module Google
         end
       end
       
+      # Represents a rule that describes one or more match conditions along with the
+      # action to be taken when traffic matches this condition (allow or deny).
+      class FirewallPolicyRule
+        include Google::Apis::Core::Hashable
+      
+        # The Action to perform when the client connection triggers the rule. Can
+        # currently be either "allow" or "deny()" where valid values for status are 403,
+        # 404, and 502.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The direction in which this rule applies.
+        # Corresponds to the JSON property `direction`
+        # @return [String]
+        attr_accessor :direction
+      
+        # Denotes whether the firewall policy rule is disabled. When set to true, the
+        # firewall policy rule is not enforced and traffic behaves as if it did not
+        # exist. If this is unspecified, the firewall policy rule will be enabled.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # Denotes whether to enable logging for a particular rule. If logging is enabled,
+        # logs will be exported to the configured export destination in Stackdriver.
+        # Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging
+        # on "goto_next" rules.
+        # Corresponds to the JSON property `enableLogging`
+        # @return [Boolean]
+        attr_accessor :enable_logging
+        alias_method :enable_logging?, :enable_logging
+      
+        # [Output only] Type of the resource. Always compute#firewallPolicyRule for
+        # firewall policy rules
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Represents a match condition that incoming traffic is evaluated against.
+        # Exactly one field must be specified.
+        # Corresponds to the JSON property `match`
+        # @return [Google::Apis::ComputeBeta::FirewallPolicyRuleMatcher]
+        attr_accessor :match
+      
+        # An integer indicating the priority of a rule in the list. The priority must be
+        # a positive value between 0 and 2147483647. Rules are evaluated from highest to
+        # lowest priority where 0 is the highest priority and 2147483647 is the lowest
+        # prority.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
+        # [Output Only] Calculation of the complexity of a single firewall policy rule.
+        # Corresponds to the JSON property `ruleTupleCount`
+        # @return [Fixnum]
+        attr_accessor :rule_tuple_count
+      
+        # A list of network resource URLs to which this rule applies. This field allows
+        # you to control which network?s VMs get this rule. If this field is left blank,
+        # all VMs within the organization will receive the rule.
+        # Corresponds to the JSON property `targetResources`
+        # @return [Array<String>]
+        attr_accessor :target_resources
+      
+        # A list of secure labels that controls which instances the firewall rule
+        # applies to. If targetSecureLabel are specified, then the firewall rule applies
+        # only to instances in the VPC network that have one of those secure labels.
+        # targetSecureLabel may not be set at the same time as targetServiceAccounts. If
+        # neither targetServiceAccounts nor targetSecureLabel are specified, the
+        # firewall rule applies to all instances on the specified network. Maximum
+        # number of target label values allowed is 256.
+        # Corresponds to the JSON property `targetSecureLabels`
+        # @return [Array<String>]
+        attr_accessor :target_secure_labels
+      
+        # A list of service accounts indicating the sets of instances that are applied
+        # with this rule.
+        # Corresponds to the JSON property `targetServiceAccounts`
+        # @return [Array<String>]
+        attr_accessor :target_service_accounts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @description = args[:description] if args.key?(:description)
+          @direction = args[:direction] if args.key?(:direction)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @enable_logging = args[:enable_logging] if args.key?(:enable_logging)
+          @kind = args[:kind] if args.key?(:kind)
+          @match = args[:match] if args.key?(:match)
+          @priority = args[:priority] if args.key?(:priority)
+          @rule_tuple_count = args[:rule_tuple_count] if args.key?(:rule_tuple_count)
+          @target_resources = args[:target_resources] if args.key?(:target_resources)
+          @target_secure_labels = args[:target_secure_labels] if args.key?(:target_secure_labels)
+          @target_service_accounts = args[:target_service_accounts] if args.key?(:target_service_accounts)
+        end
+      end
+      
+      # Represents a match condition that incoming traffic is evaluated against.
+      # Exactly one field must be specified.
+      class FirewallPolicyRuleMatcher
+        include Google::Apis::Core::Hashable
+      
+        # CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is
+        # 256.
+        # Corresponds to the JSON property `destIpRanges`
+        # @return [Array<String>]
+        attr_accessor :dest_ip_ranges
+      
+        # Pairs of IP protocols and ports that the rule should match.
+        # Corresponds to the JSON property `layer4Configs`
+        # @return [Array<Google::Apis::ComputeBeta::FirewallPolicyRuleMatcherLayer4Config>]
+        attr_accessor :layer4_configs
+      
+        # CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+        # Corresponds to the JSON property `srcIpRanges`
+        # @return [Array<String>]
+        attr_accessor :src_ip_ranges
+      
+        # List of firewall label values, which should be matched at the source of the
+        # traffic. Maximum number of source label values allowed is 256.
+        # Corresponds to the JSON property `srcSecureLabels`
+        # @return [Array<String>]
+        attr_accessor :src_secure_labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dest_ip_ranges = args[:dest_ip_ranges] if args.key?(:dest_ip_ranges)
+          @layer4_configs = args[:layer4_configs] if args.key?(:layer4_configs)
+          @src_ip_ranges = args[:src_ip_ranges] if args.key?(:src_ip_ranges)
+          @src_secure_labels = args[:src_secure_labels] if args.key?(:src_secure_labels)
+        end
+      end
+      
+      # 
+      class FirewallPolicyRuleMatcherLayer4Config
+        include Google::Apis::Core::Hashable
+      
+        # The IP protocol to which this rule applies. The protocol type is required when
+        # creating a firewall rule. This value can either be one of the following well
+        # known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP
+        # protocol number.
+        # Corresponds to the JSON property `ipProtocol`
+        # @return [String]
+        attr_accessor :ip_protocol
+      
+        # An optional list of ports to which this rule applies. This field is only
+        # applicable for UDP or TCP protocol. Each entry must be either an integer or a
+        # range. If not specified, this rule applies to connections through any port.
+        # Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+        # Corresponds to the JSON property `ports`
+        # @return [Array<String>]
+        attr_accessor :ports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_protocol = args[:ip_protocol] if args.key?(:ip_protocol)
+          @ports = args[:ports] if args.key?(:ports)
+        end
+      end
+      
       # Encapsulates numeric value that can be either absolute or relative.
       class FixedOrPercent
         include Google::Apis::Core::Hashable
@@ -7593,6 +7917,8 @@ module Google
         # ip_address_specifications).
         # Must be set to `0.0.0.0` when the target is targetGrpcProxy that has
         # validateForProxyless field set to true.
+        # For Private Service Connect forwarding rules that forward traffic to Google
+        # APIs, IP address must be provided.
         # Corresponds to the JSON property `IPAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -7763,6 +8089,8 @@ module Google
         # For internal load balancing, this field identifies the network that the load
         # balanced IP should belong to for this Forwarding Rule. If this field is not
         # specified, the default network will be used.
+        # For Private Service Connect forwarding rules that forward traffic to Google
+        # APIs, a network must be provided.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -7867,6 +8195,15 @@ module Google
         # resource. The forwarded traffic must be of a type appropriate to the target
         # object. For more information, see the "Target" column in [Port specifications](
         # /load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+        # For Private Service Connect forwarding rules that forward traffic to Google
+        # APIs, provide the name of a supported Google API bundle. Currently, the
+        # supported Google API bundles include:
+        # 
+        # - vpc-sc - GCP APIs that support VPC Service Controls. For more information
+        # about which APIs support VPC Service Controls, refer to VPC-SC supported
+        # products and limitations.
+        # - all-apis - All GCP APIs. For more information about which APIs are supported
+        # with this bundle, refer to Private Google Access-specific domains and VIPs.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -8813,12 +9150,16 @@ module Google
       # Google Compute Engine has two Health Check resources:
       # * [Global](/compute/docs/reference/rest/`$api_version`/healthChecks) * [
       # Regional](/compute/docs/reference/rest/`$api_version`/regionHealthChecks)
-      # Internal HTTP(S) load balancers must use regional health checks. Internal TCP/
-      # UDP load balancers can use either regional or global health checks. All other
-      # types of GCP load balancers and managed instance group auto-healing must use
-      # global health checks. For more information, read Health Check Concepts.
-      # To perform health checks on network load balancers, you must use either
-      # httpHealthChecks or httpsHealthChecks.
+      # Internal HTTP(S) load balancers must use regional health checks (`compute.v1.
+      # regionHealthChecks`).
+      # Traffic Director must use global health checks (`compute.v1.HealthChecks`).
+      # Internal TCP/UDP load balancers can use either regional or global health
+      # checks (`compute.v1.regionHealthChecks` or `compute.v1.HealthChecks`).
+      # External HTTP(S), TCP proxy, and SSL proxy load balancers as well as managed
+      # instance group auto-healing must use global health checks (`compute.v1.
+      # HealthChecks`).
+      # Network load balancers must use legacy HTTP health checks (httpHealthChecks).
+      # For more information, see Health checks overview.
       class HealthCheck
         include Google::Apis::Core::Hashable
       
@@ -12263,8 +12604,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Policy specifying intended distribution of instances in regional managed
-        # instance group.
+        # Policy specifying the intended distribution of managed instances across zones
+        # in a regional managed instance group.
         # Corresponds to the JSON property `distributionPolicy`
         # @return [Google::Apis::ComputeBeta::DistributionPolicy]
         attr_accessor :distribution_policy
@@ -12299,7 +12640,9 @@ module Google
       
         # The URL of the instance template that is specified for this managed instance
         # group. The group uses this template to create all new instances in the managed
-        # instance group.
+        # instance group. The templates for existing instances in the group do not
+        # change unless you run recreateInstances, run applyUpdatesToInstances, or set
+        # the group's updatePolicy.type to PROACTIVE.
         # Corresponds to the JSON property `instanceTemplate`
         # @return [String]
         attr_accessor :instance_template
@@ -12392,7 +12735,7 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::InstanceGroupManagerVersion>]
         attr_accessor :versions
       
-        # [Output Only] The URL of the zone where the managed instance group is located (
+        # [Output Only] The URL of a zone where the managed instance group is located (
         # for zonal resources).
         # Corresponds to the JSON property `zone`
         # @return [String]
@@ -13048,7 +13391,11 @@ module Google
       
         # The URL of the instance template that is specified for this managed instance
         # group. The group uses this template to create new instances in the managed
-        # instance group until the `targetSize` for this version is reached.
+        # instance group until the `targetSize` for this version is reached. The
+        # templates for existing instances in the group do not change unless you run
+        # recreateInstances, run applyUpdatesToInstances, or set the group's
+        # updatePolicy.type to PROACTIVE; in those cases, existing instances are updated
+        # until the `targetSize` for this version is reached.
         # Corresponds to the JSON property `instanceTemplate`
         # @return [String]
         attr_accessor :instance_template
@@ -13567,7 +13914,9 @@ module Google
       
         # The URL of the instance template that is specified for this managed instance
         # group. The group uses this template to create all new instances in the managed
-        # instance group.
+        # instance group. The templates for existing instances in the group do not
+        # change unless you run recreateInstances, run applyUpdatesToInstances, or set
+        # the group's updatePolicy.type to PROACTIVE.
         # Corresponds to the JSON property `instanceTemplate`
         # @return [String]
         attr_accessor :instance_template
@@ -14722,6 +15071,11 @@ module Google
       class InstancesGetEffectiveFirewallsResponse
         include Google::Apis::Core::Hashable
       
+        # Effective firewalls from firewall policies.
+        # Corresponds to the JSON property `firewallPolicys`
+        # @return [Array<Google::Apis::ComputeBeta::InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy>]
+        attr_accessor :firewall_policys
+      
         # Effective firewalls on the instance.
         # Corresponds to the JSON property `firewalls`
         # @return [Array<Google::Apis::ComputeBeta::Firewall>]
@@ -14738,8 +15092,46 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @firewall_policys = args[:firewall_policys] if args.key?(:firewall_policys)
           @firewalls = args[:firewalls] if args.key?(:firewalls)
           @organization_firewalls = args[:organization_firewalls] if args.key?(:organization_firewalls)
+        end
+      end
+      
+      # 
+      class InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The display name of the firewall policy.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # [Output Only] The name of the firewall policy.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The rules that apply to the network.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::ComputeBeta::FirewallPolicyRule>]
+        attr_accessor :rules
+      
+        # [Output Only] The type of the firewall policy.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @rules = args[:rules] if args.key?(:rules)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -15381,6 +15773,11 @@ module Google
         # @return [String]
         attr_accessor :customer_router_ip_address
       
+        # [Output Only] Dataplane version for this InterconnectAttachment.
+        # Corresponds to the JSON property `dataplaneVersion`
+        # @return [Fixnum]
+        attr_accessor :dataplane_version
+      
         # An optional description of this resource.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -15562,6 +15959,7 @@ module Google
           @cloud_router_ip_address = args[:cloud_router_ip_address] if args.key?(:cloud_router_ip_address)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @customer_router_ip_address = args[:customer_router_ip_address] if args.key?(:customer_router_ip_address)
+          @dataplane_version = args[:dataplane_version] if args.key?(:dataplane_version)
           @description = args[:description] if args.key?(:description)
           @edge_availability_domain = args[:edge_availability_domain] if args.key?(:edge_availability_domain)
           @google_reference_id = args[:google_reference_id] if args.key?(:google_reference_id)
@@ -18788,7 +19186,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional serving service.
-        # The service name must be 1-63 characters long, and comply with RFC1035.
+        # The service name is case-sensitive and must be 1-63 characters long.
         # Example value: "default", "my-service".
         # Corresponds to the JSON property `service`
         # @return [String]
@@ -18806,7 +19204,7 @@ module Google
         attr_accessor :url_mask
       
         # Optional serving version.
-        # The version must be 1-63 characters long, and comply with RFC1035.
+        # The version name is case-sensitive and must be 1-100 characters long.
         # Example value: "v1", "v2".
         # Corresponds to the JSON property `version`
         # @return [String]
@@ -19778,6 +20176,11 @@ module Google
       class NetworksGetEffectiveFirewallsResponse
         include Google::Apis::Core::Hashable
       
+        # Effective firewalls from firewall policy.
+        # Corresponds to the JSON property `firewallPolicys`
+        # @return [Array<Google::Apis::ComputeBeta::NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy>]
+        attr_accessor :firewall_policys
+      
         # Effective firewalls on the network.
         # Corresponds to the JSON property `firewalls`
         # @return [Array<Google::Apis::ComputeBeta::Firewall>]
@@ -19794,8 +20197,46 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @firewall_policys = args[:firewall_policys] if args.key?(:firewall_policys)
           @firewalls = args[:firewalls] if args.key?(:firewalls)
           @organization_firewalls = args[:organization_firewalls] if args.key?(:organization_firewalls)
+        end
+      end
+      
+      # 
+      class NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The display name of the firewall policy.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # [Output Only] The name of the firewall policy.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The rules that apply to the network.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::ComputeBeta::FirewallPolicyRule>]
+        attr_accessor :rules
+      
+        # [Output Only] The type of the firewall policy.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @rules = args[:rules] if args.key?(:rules)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -22837,6 +23278,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :cidr_ranges
       
+        # Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default
+        # is BOTH.
+        # Corresponds to the JSON property `direction`
+        # @return [String]
+        attr_accessor :direction
+      
         def initialize(**args)
            update!(**args)
         end
@@ -22845,6 +23292,7 @@ module Google
         def update!(**args)
           @ip_protocols = args[:ip_protocols] if args.key?(:ip_protocols)
           @cidr_ranges = args[:cidr_ranges] if args.key?(:cidr_ranges)
+          @direction = args[:direction] if args.key?(:direction)
         end
       end
       
@@ -26717,8 +27165,9 @@ module Google
         attr_accessor :next_hop_gateway
       
         # The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should
-        # handle matching packets. You can only specify the forwarding rule as a partial
-        # or full URL. For example, the following are all valid URLs:
+        # handle matching packets or the IP address of the forwarding Rule. For example,
+        # the following are all valid URLs:
+        # - 10.128.0.56
         # - https://www.googleapis.com/compute/v1/projects/project/regions/region/
         # forwardingRules/forwardingRule
         # - regions/region/forwardingRules/forwardingRule
@@ -27671,6 +28120,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :drain_nat_ips
       
+        # 
+        # Corresponds to the JSON property `enableEndpointIndependentMapping`
+        # @return [Boolean]
+        attr_accessor :enable_endpoint_independent_mapping
+        alias_method :enable_endpoint_independent_mapping?, :enable_endpoint_independent_mapping
+      
         # Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         # Corresponds to the JSON property `icmpIdleTimeoutSec`
         # @return [Fixnum]
@@ -27756,6 +28211,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @drain_nat_ips = args[:drain_nat_ips] if args.key?(:drain_nat_ips)
+          @enable_endpoint_independent_mapping = args[:enable_endpoint_independent_mapping] if args.key?(:enable_endpoint_independent_mapping)
           @icmp_idle_timeout_sec = args[:icmp_idle_timeout_sec] if args.key?(:icmp_idle_timeout_sec)
           @log_config = args[:log_config] if args.key?(:log_config)
           @min_ports_per_vm = args[:min_ports_per_vm] if args.key?(:min_ports_per_vm)
@@ -28411,6 +28867,42 @@ module Google
         end
       end
       
+      # 
+      class ScalingScheduleStatus
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The last time the scaling schedule became active. Note: this is
+        # a timestamp when a schedule actually became active, not when it was planned to
+        # do so. The timestamp is an RFC3339 string in RFC3339 text format.
+        # Corresponds to the JSON property `lastStartTime`
+        # @return [String]
+        attr_accessor :last_start_time
+      
+        # [Output Only] The next time the scaling schedule will become active. Note:
+        # this is a timestamp when a schedule is planned to run, but the actual time
+        # might be slightly different. The timestamp is an RFC3339 string in RFC3339
+        # text format.
+        # Corresponds to the JSON property `nextStartTime`
+        # @return [String]
+        attr_accessor :next_start_time
+      
+        # [Output Only] The current state of a scaling schedule.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_start_time = args[:last_start_time] if args.key?(:last_start_time)
+          @next_start_time = args[:next_start_time] if args.key?(:next_start_time)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Sets the scheduling options for an Instance. NextID: 13
       class Scheduling
         include Google::Apis::Core::Hashable
@@ -28566,12 +29058,17 @@ module Google
         end
       end
       
-      # Represents a Cloud Armor Security Policy resource.
+      # Represents a Google Cloud Armor security policy resource.
       # Only external backend services that use load balancers can reference a
-      # Security Policy. For more information, read  Cloud Armor Security Policy
-      # Concepts. (== resource_for `$api_version`.securityPolicies ==)
+      # security policy. For more information, see  Google Cloud Armor security policy
+      # overview. (== resource_for `$api_version`.securityPolicies ==)
       class SecurityPolicy
         include Google::Apis::Core::Hashable
+      
+        # Configuration options for Cloud Armor Adaptive Protection (CAAP).
+        # Corresponds to the JSON property `adaptiveProtectionConfig`
+        # @return [Google::Apis::ComputeBeta::SecurityPolicyAdaptiveProtectionConfig]
+        attr_accessor :adaptive_protection_config
       
         # A list of associations that belong to this policy.
         # Corresponds to the JSON property `associations`
@@ -28694,6 +29191,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @adaptive_protection_config = args[:adaptive_protection_config] if args.key?(:adaptive_protection_config)
           @associations = args[:associations] if args.key?(:associations)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
@@ -28710,6 +29208,52 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Configuration options for Cloud Armor Adaptive Protection (CAAP).
+      class SecurityPolicyAdaptiveProtectionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration options for L7 DDoS detection.
+        # Corresponds to the JSON property `layer7DdosDefenseConfig`
+        # @return [Google::Apis::ComputeBeta::SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig]
+        attr_accessor :layer7_ddos_defense_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @layer7_ddos_defense_config = args[:layer7_ddos_defense_config] if args.key?(:layer7_ddos_defense_config)
+        end
+      end
+      
+      # Configuration options for L7 DDoS detection.
+      class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
+        include Google::Apis::Core::Hashable
+      
+        # If set to true, enables CAAP for L7 DDoS detection.
+        # Corresponds to the JSON property `enable`
+        # @return [Boolean]
+        attr_accessor :enable
+        alias_method :enable?, :enable
+      
+        # Rule visibility can be one of the following: STANDARD - opaque rules. (default)
+        # PREMIUM - transparent rules.
+        # Corresponds to the JSON property `ruleVisibility`
+        # @return [String]
+        attr_accessor :rule_visibility
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable = args[:enable] if args.key?(:enable)
+          @rule_visibility = args[:rule_visibility] if args.key?(:rule_visibility)
         end
       end
       
@@ -28941,6 +29485,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :priority
       
+        # Identifier for the rule. This is only unique within the given security policy.
+        # This can only be set during rule creation, if rule number is not specified it
+        # will be generated by the server.
+        # Corresponds to the JSON property `ruleNumber`
+        # @return [Fixnum]
+        attr_accessor :rule_number
+      
         # [Output Only] Calculation of the complexity of a single firewall security
         # policy rule.
         # Corresponds to the JSON property `ruleTupleCount`
@@ -28975,6 +29526,7 @@ module Google
           @match = args[:match] if args.key?(:match)
           @preview = args[:preview] if args.key?(:preview)
           @priority = args[:priority] if args.key?(:priority)
+          @rule_number = args[:rule_number] if args.key?(:rule_number)
           @rule_tuple_count = args[:rule_tuple_count] if args.key?(:rule_tuple_count)
           @target_resources = args[:target_resources] if args.key?(:target_resources)
           @target_service_accounts = args[:target_service_accounts] if args.key?(:target_service_accounts)
@@ -30640,10 +31192,10 @@ module Google
         end
       end
       
-      # Represents a Cloud Armor Security Policy resource.
-      # Only external backend services used by HTTP or HTTPS load balancers can
-      # reference a Security Policy. For more information, read read  Cloud Armor
-      # Security Policy Concepts. (== resource_for `$api_version`.sslPolicies ==)
+      # Represents an SSL Policy resource.
+      # Use SSL policies to control the SSL features, such as versions and cipher
+      # suites, offered by an HTTPS or SSL Proxy load balancer. For more information,
+      # read  SSL Policy Concepts. (== resource_for `$api_version`.sslPolicies ==)
       class SslPolicy
         include Google::Apis::Core::Hashable
       
@@ -32048,9 +32600,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # This field only applies when the loadBalancingScheme is INTERNAL_SELF_MANAGED.
-        # When set to true the Envoy binds on the IP address specified by the forwarding
-        # rule. Default is false.
+        # This field only applies when the forwarding rule that references this target
+        # proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        # When this field is set to true, Envoy proxies set up inbound traffic
+        # interception and bind to the IP address and port specified in the forwarding
+        # rule. This is generally useful when using Traffic Director to configure Envoy
+        # as a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy
+        # proxy listens for inbound requests and handles requests when it receives them.
+        # The default is false.
         # Corresponds to the JSON property `proxyBind`
         # @return [Boolean]
         attr_accessor :proxy_bind
@@ -32549,9 +33106,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # This field only applies when the loadBalancingScheme is INTERNAL_SELF_MANAGED.
-        # When set to true the Envoy binds on the IP address specified by the forwarding
-        # rule. Default is false.
+        # This field only applies when the forwarding rule that references this target
+        # proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        # When this field is set to true, Envoy proxies set up inbound traffic
+        # interception and bind to the IP address and port specified in the forwarding
+        # rule. This is generally useful when using Traffic Director to configure Envoy
+        # as a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy
+        # proxy listens for inbound requests and handles requests when it receives them.
+        # The default is false.
         # Corresponds to the JSON property `proxyBind`
         # @return [Boolean]
         attr_accessor :proxy_bind
@@ -33320,9 +33882,9 @@ module Google
       class TargetPool
         include Google::Apis::Core::Hashable
       
-        # This field is applicable only when the containing target pool is serving a
-        # forwarding rule as the primary pool, and its failoverRatio field is properly
-        # set to a value between [0, 1].
+        # The server-defined URL for the resource. This field is applicable only when
+        # the containing target pool is serving a forwarding rule as the primary pool,
+        # and its failoverRatio field is properly set to a value between [0, 1].
         # backupPool and failoverRatio together define the fallback behavior of the
         # primary target pool: if the ratio of the healthy instances in the primary pool
         # is at or below failoverRatio, traffic arriving at the load-balanced IP will be
@@ -34248,6 +34810,19 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # This field only applies when the forwarding rule that references this target
+        # proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        # When this field is set to true, Envoy proxies set up inbound traffic
+        # interception and bind to the IP address and port specified in the forwarding
+        # rule. This is generally useful when using Traffic Director to configure Envoy
+        # as a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy
+        # proxy listens for inbound requests and handles requests when it receives them.
+        # The default is false.
+        # Corresponds to the JSON property `proxyBind`
+        # @return [Boolean]
+        attr_accessor :proxy_bind
+        alias_method :proxy_bind?, :proxy_bind
+      
         # Specifies the type of proxy header to append before sending data to the
         # backend, either NONE or PROXY_V1. The default is NONE.
         # Corresponds to the JSON property `proxyHeader`
@@ -34275,6 +34850,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @proxy_bind = args[:proxy_bind] if args.key?(:proxy_bind)
           @proxy_header = args[:proxy_header] if args.key?(:proxy_header)
           @self_link = args[:self_link] if args.key?(:self_link)
           @service = args[:service] if args.key?(:service)

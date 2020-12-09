@@ -310,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoscalingPolicyScalingSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Backend
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -395,6 +401,12 @@ module Google
       end
       
       class BackendServiceCdnPolicyNegativeCachingPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceConnectionTrackingPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -899,6 +911,24 @@ module Google
       end
       
       class FirewallLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FirewallPolicyRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FirewallPolicyRuleMatcher
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FirewallPolicyRuleMatcherLayer4Config
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1792,6 +1822,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2477,6 +2513,12 @@ module Google
       end
       
       class NetworksGetEffectiveFirewallsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3718,6 +3760,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ScalingScheduleStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Scheduling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3749,6 +3797,18 @@ module Google
       end
       
       class SecurityPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyAdaptiveProtectionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5397,6 +5457,8 @@ module Google
           property :name, as: 'name'
           property :recommended_size, as: 'recommendedSize'
           property :region, as: 'region'
+          hash :scaling_schedule_status, as: 'scalingScheduleStatus', class: Google::Apis::ComputeBeta::ScalingScheduleStatus, decorator: Google::Apis::ComputeBeta::ScalingScheduleStatus::Representation
+      
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
           collection :status_details, as: 'statusDetails', class: Google::Apis::ComputeBeta::AutoscalerStatusDetails, decorator: Google::Apis::ComputeBeta::AutoscalerStatusDetails::Representation
@@ -5524,6 +5586,8 @@ module Google
       
           property :scale_in_control, as: 'scaleInControl', class: Google::Apis::ComputeBeta::AutoscalingPolicyScaleInControl, decorator: Google::Apis::ComputeBeta::AutoscalingPolicyScaleInControl::Representation
       
+          hash :scaling_schedules, as: 'scalingSchedules', class: Google::Apis::ComputeBeta::AutoscalingPolicyScalingSchedule, decorator: Google::Apis::ComputeBeta::AutoscalingPolicyScalingSchedule::Representation
+      
         end
       end
       
@@ -5568,6 +5632,18 @@ module Google
           property :max_scaled_in_replicas, as: 'maxScaledInReplicas', class: Google::Apis::ComputeBeta::FixedOrPercent, decorator: Google::Apis::ComputeBeta::FixedOrPercent::Representation
       
           property :time_window_sec, as: 'timeWindowSec'
+        end
+      end
+      
+      class AutoscalingPolicyScalingSchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :disabled, as: 'disabled'
+          property :duration_sec, as: 'durationSec'
+          property :min_required_replicas, as: 'minRequiredReplicas'
+          property :schedule, as: 'schedule'
+          property :time_zone, as: 'timeZone'
         end
       end
       
@@ -5683,6 +5759,8 @@ module Google
       
           property :connection_draining, as: 'connectionDraining', class: Google::Apis::ComputeBeta::ConnectionDraining, decorator: Google::Apis::ComputeBeta::ConnectionDraining::Representation
       
+          property :connection_tracking_policy, as: 'connectionTrackingPolicy', class: Google::Apis::ComputeBeta::BackendServiceConnectionTrackingPolicy, decorator: Google::Apis::ComputeBeta::BackendServiceConnectionTrackingPolicy::Representation
+      
           property :consistent_hash, as: 'consistentHash', class: Google::Apis::ComputeBeta::ConsistentHashLoadBalancerSettings, decorator: Google::Apis::ComputeBeta::ConsistentHashLoadBalancerSettings::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
@@ -5784,6 +5862,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           property :ttl, as: 'ttl'
+        end
+      end
+      
+      class BackendServiceConnectionTrackingPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_persistence_on_unhealthy_backends, as: 'connectionPersistenceOnUnhealthyBackends'
         end
       end
       
@@ -6495,6 +6580,7 @@ module Google
       class DistributionPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_shape, as: 'targetShape'
           collection :zones, as: 'zones', class: Google::Apis::ComputeBeta::DistributionPolicyZoneConfiguration, decorator: Google::Apis::ComputeBeta::DistributionPolicyZoneConfiguration::Representation
       
         end
@@ -6716,6 +6802,44 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable, as: 'enable'
           property :metadata, as: 'metadata'
+        end
+      end
+      
+      class FirewallPolicyRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :description, as: 'description'
+          property :direction, as: 'direction'
+          property :disabled, as: 'disabled'
+          property :enable_logging, as: 'enableLogging'
+          property :kind, as: 'kind'
+          property :match, as: 'match', class: Google::Apis::ComputeBeta::FirewallPolicyRuleMatcher, decorator: Google::Apis::ComputeBeta::FirewallPolicyRuleMatcher::Representation
+      
+          property :priority, as: 'priority'
+          property :rule_tuple_count, as: 'ruleTupleCount'
+          collection :target_resources, as: 'targetResources'
+          collection :target_secure_labels, as: 'targetSecureLabels'
+          collection :target_service_accounts, as: 'targetServiceAccounts'
+        end
+      end
+      
+      class FirewallPolicyRuleMatcher
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dest_ip_ranges, as: 'destIpRanges'
+          collection :layer4_configs, as: 'layer4Configs', class: Google::Apis::ComputeBeta::FirewallPolicyRuleMatcherLayer4Config, decorator: Google::Apis::ComputeBeta::FirewallPolicyRuleMatcherLayer4Config::Representation
+      
+          collection :src_ip_ranges, as: 'srcIpRanges'
+          collection :src_secure_labels, as: 'srcSecureLabels'
+        end
+      end
+      
+      class FirewallPolicyRuleMatcherLayer4Config
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_protocol, as: 'ipProtocol'
+          collection :ports, as: 'ports'
         end
       end
       
@@ -8440,10 +8564,23 @@ module Google
       class InstancesGetEffectiveFirewallsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :firewall_policys, as: 'firewallPolicys', class: Google::Apis::ComputeBeta::InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy, decorator: Google::Apis::ComputeBeta::InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy::Representation
+      
           collection :firewalls, as: 'firewalls', class: Google::Apis::ComputeBeta::Firewall, decorator: Google::Apis::ComputeBeta::Firewall::Representation
       
           collection :organization_firewalls, as: 'organizationFirewalls', class: Google::Apis::ComputeBeta::InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicy, decorator: Google::Apis::ComputeBeta::InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicy::Representation
       
+        end
+      end
+      
+      class InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          collection :rules, as: 'rules', class: Google::Apis::ComputeBeta::FirewallPolicyRule, decorator: Google::Apis::ComputeBeta::FirewallPolicyRule::Representation
+      
+          property :type, as: 'type'
         end
       end
       
@@ -8604,6 +8741,7 @@ module Google
           property :cloud_router_ip_address, as: 'cloudRouterIpAddress'
           property :creation_timestamp, as: 'creationTimestamp'
           property :customer_router_ip_address, as: 'customerRouterIpAddress'
+          property :dataplane_version, as: 'dataplaneVersion'
           property :description, as: 'description'
           property :edge_availability_domain, as: 'edgeAvailabilityDomain'
           property :google_reference_id, as: 'googleReferenceId'
@@ -9692,10 +9830,23 @@ module Google
       class NetworksGetEffectiveFirewallsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :firewall_policys, as: 'firewallPolicys', class: Google::Apis::ComputeBeta::NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy, decorator: Google::Apis::ComputeBeta::NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy::Representation
+      
           collection :firewalls, as: 'firewalls', class: Google::Apis::ComputeBeta::Firewall, decorator: Google::Apis::ComputeBeta::Firewall::Representation
       
           collection :organization_firewalls, as: 'organizationFirewalls', class: Google::Apis::ComputeBeta::NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicy, decorator: Google::Apis::ComputeBeta::NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicy::Representation
       
+        end
+      end
+      
+      class NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          collection :rules, as: 'rules', class: Google::Apis::ComputeBeta::FirewallPolicyRule, decorator: Google::Apis::ComputeBeta::FirewallPolicyRule::Representation
+      
+          property :type, as: 'type'
         end
       end
       
@@ -10475,6 +10626,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :ip_protocols, as: 'IPProtocols'
           collection :cidr_ranges, as: 'cidrRanges'
+          property :direction, as: 'direction'
         end
       end
       
@@ -11745,6 +11897,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :drain_nat_ips, as: 'drainNatIps'
+          property :enable_endpoint_independent_mapping, as: 'enableEndpointIndependentMapping'
           property :icmp_idle_timeout_sec, as: 'icmpIdleTimeoutSec'
           property :log_config, as: 'logConfig', class: Google::Apis::ComputeBeta::RouterNatLogConfig, decorator: Google::Apis::ComputeBeta::RouterNatLogConfig::Representation
       
@@ -11922,6 +12075,15 @@ module Google
         end
       end
       
+      class ScalingScheduleStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_start_time, as: 'lastStartTime'
+          property :next_start_time, as: 'nextStartTime'
+          property :state, as: 'state'
+        end
+      end
+      
       class Scheduling
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -11970,6 +12132,8 @@ module Google
       class SecurityPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :adaptive_protection_config, as: 'adaptiveProtectionConfig', class: Google::Apis::ComputeBeta::SecurityPolicyAdaptiveProtectionConfig, decorator: Google::Apis::ComputeBeta::SecurityPolicyAdaptiveProtectionConfig::Representation
+      
           collection :associations, as: 'associations', class: Google::Apis::ComputeBeta::SecurityPolicyAssociation, decorator: Google::Apis::ComputeBeta::SecurityPolicyAssociation::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
@@ -11988,6 +12152,22 @@ module Google
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :type, as: 'type'
+        end
+      end
+      
+      class SecurityPolicyAdaptiveProtectionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :layer7_ddos_defense_config, as: 'layer7DdosDefenseConfig', class: Google::Apis::ComputeBeta::SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig, decorator: Google::Apis::ComputeBeta::SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig::Representation
+      
+        end
+      end
+      
+      class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable, as: 'enable'
+          property :rule_visibility, as: 'ruleVisibility'
         end
       end
       
@@ -12051,6 +12231,7 @@ module Google
       
           property :preview, as: 'preview'
           property :priority, as: 'priority'
+          property :rule_number, :numeric_string => true, as: 'ruleNumber'
           property :rule_tuple_count, as: 'ruleTupleCount'
           collection :target_resources, as: 'targetResources'
           collection :target_service_accounts, as: 'targetServiceAccounts'
@@ -13366,6 +13547,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :proxy_bind, as: 'proxyBind'
           property :proxy_header, as: 'proxyHeader'
           property :self_link, as: 'selfLink'
           property :service, as: 'service'
