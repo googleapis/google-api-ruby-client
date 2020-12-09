@@ -1750,7 +1750,8 @@ module Google
         # @return [String]
         attr_accessor :key
       
-        # Required. The type of public key.
+        # Optional. The type of public key. If specified, it must match the public key
+        # used for the`key` field.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
