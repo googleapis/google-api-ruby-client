@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NfsExportOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -278,6 +284,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :capacity_gb, :numeric_string => true, as: 'capacityGb'
           property :name, as: 'name'
+          collection :nfs_export_options, as: 'nfsExportOptions', class: Google::Apis::FileV1::NfsExportOptions, decorator: Google::Apis::FileV1::NfsExportOptions::Representation
+      
           property :source_backup, as: 'sourceBackup'
         end
       end
@@ -473,6 +481,17 @@ module Google
           collection :modes, as: 'modes'
           property :network, as: 'network'
           property :reserved_ip_range, as: 'reservedIpRange'
+        end
+      end
+      
+      class NfsExportOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_mode, as: 'accessMode'
+          property :anon_gid, :numeric_string => true, as: 'anonGid'
+          property :anon_uid, :numeric_string => true, as: 'anonUid'
+          collection :ip_ranges, as: 'ipRanges'
+          property :squash_mode, as: 'squashMode'
         end
       end
       

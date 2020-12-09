@@ -271,6 +271,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Nfs Export Options. There is a limit of 10 export options per file share.
+        # Corresponds to the JSON property `nfsExportOptions`
+        # @return [Array<Google::Apis::FileV1::NfsExportOptions>]
+        attr_accessor :nfs_export_options
+      
         # The resource name of the backup, in the format projects/`project_number`/
         # locations/`location_id`/backups/`backup_id`, that this file share has been
         # restored from.
@@ -286,6 +291,7 @@ module Google
         def update!(**args)
           @capacity_gb = args[:capacity_gb] if args.key?(:capacity_gb)
           @name = args[:name] if args.key?(:name)
+          @nfs_export_options = args[:nfs_export_options] if args.key?(:nfs_export_options)
           @source_backup = args[:source_backup] if args.key?(:source_backup)
         end
       end
@@ -1062,6 +1068,61 @@ module Google
           @modes = args[:modes] if args.key?(:modes)
           @network = args[:network] if args.key?(:network)
           @reserved_ip_range = args[:reserved_ip_range] if args.key?(:reserved_ip_range)
+        end
+      end
+      
+      # NFS export options specifications.
+      class NfsExportOptions
+        include Google::Apis::Core::Hashable
+      
+        # Either READ_ONLY, for allowing only read requests on the exported directory,
+        # or READ_WRITE, for allowing both read and write requests. The default is
+        # READ_WRITE.
+        # Corresponds to the JSON property `accessMode`
+        # @return [String]
+        attr_accessor :access_mode
+      
+        # An integer representing the anonymous group id with a default value of 65534.
+        # Anon_gid may only be set with squash_mode of ROOT_SQUASH. An error will be
+        # returned if this field is specified for other squash_mode settings.
+        # Corresponds to the JSON property `anonGid`
+        # @return [Fixnum]
+        attr_accessor :anon_gid
+      
+        # An integer representing the anonymous user id with a default value of 65534.
+        # Anon_uid may only be set with squash_mode of ROOT_SQUASH. An error will be
+        # returned if this field is specified for other squash_mode settings.
+        # Corresponds to the JSON property `anonUid`
+        # @return [Fixnum]
+        attr_accessor :anon_uid
+      
+        # List of either an IPv4 addresses in the format `octet 1`.`octet 2`.`octet 3`.`
+        # octet 4` or CIDR ranges in the format `octet 1`.`octet 2`.`octet 3`.`octet 4`/`
+        # mask size` which may mount the file share. Overlapping IP ranges are not
+        # allowed, both within and across NfsExportOptions. An error will be returned.
+        # The limit is 64 IP ranges/addresses for each FileShareConfig among all
+        # NfsExportOptions.
+        # Corresponds to the JSON property `ipRanges`
+        # @return [Array<String>]
+        attr_accessor :ip_ranges
+      
+        # Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or
+        # ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH.
+        # Corresponds to the JSON property `squashMode`
+        # @return [String]
+        attr_accessor :squash_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_mode = args[:access_mode] if args.key?(:access_mode)
+          @anon_gid = args[:anon_gid] if args.key?(:anon_gid)
+          @anon_uid = args[:anon_uid] if args.key?(:anon_uid)
+          @ip_ranges = args[:ip_ranges] if args.key?(:ip_ranges)
+          @squash_mode = args[:squash_mode] if args.key?(:squash_mode)
         end
       end
       
