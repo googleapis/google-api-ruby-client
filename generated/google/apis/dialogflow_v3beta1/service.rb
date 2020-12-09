@@ -2707,6 +2707,179 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create security settings in the specified location.
+        # @param [String] parent
+        #   Required. The location to create an SecuritySettings for. Format: `projects//
+        #   locations/`.
+        # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SecuritySettings] google_cloud_dialogflow_cx_v3beta1_security_settings_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SecuritySettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SecuritySettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_security_setting(parent, google_cloud_dialogflow_cx_v3beta1_security_settings_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3beta1/{+parent}/securitySettings', options)
+          command.request_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SecuritySettings::Representation
+          command.request_object = google_cloud_dialogflow_cx_v3beta1_security_settings_object
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SecuritySettings::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SecuritySettings
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified SecuritySettings.
+        # @param [String] name
+        #   Required. The name of the SecuritySettings to delete. Format: `projects//
+        #   locations//securitySettings/`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_security_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v3beta1/{+name}', options)
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the specified SecuritySettings. The returned settings may be stale
+        # by up to 1 minute.
+        # @param [String] name
+        #   Required. Resource name of the settings. Format: `projects//locations//
+        #   securitySettings/`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SecuritySettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SecuritySettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_security_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3beta1/{+name}', options)
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SecuritySettings::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SecuritySettings
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the list of all security settings in the specified location.
+        # @param [String] parent
+        #   Required. The location to list all security settings for. Format: `projects//
+        #   locations/`.
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return in a single page. By default 20 and at
+        #   most 100.
+        # @param [String] page_token
+        #   The next_page_token value returned from a previous list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ListSecuritySettingsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ListSecuritySettingsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_security_settings(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3beta1/{+parent}/securitySettings', options)
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ListSecuritySettingsResponse::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ListSecuritySettingsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified SecuritySettings.
+        # @param [String] name
+        #   Required. Resource name of the settings. Format: `projects//locations//
+        #   securitySettings/`.
+        # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SecuritySettings] google_cloud_dialogflow_cx_v3beta1_security_settings_object
+        # @param [String] update_mask
+        #   Required. The mask to control which fields get updated. If the mask is not
+        #   present, all fields will be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SecuritySettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SecuritySettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_security_setting(name, google_cloud_dialogflow_cx_v3beta1_security_settings_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v3beta1/{+name}', options)
+          command.request_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SecuritySettings::Representation
+          command.request_object = google_cloud_dialogflow_cx_v3beta1_security_settings_object
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SecuritySettings::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SecuritySettings
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
