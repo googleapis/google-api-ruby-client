@@ -20,36 +20,33 @@ require 'google/apis/errors'
 module Google
   module Apis
     module DeploymentmanagerAlpha
-      # Google Cloud Deployment Manager Alpha API
+      # Cloud Deployment Manager V2 API
       #
-      # The Deployment Manager API allows users to declaratively configure, deploy and
-      #  run complex solutions on the Google Cloud Platform.
+      # The Google Cloud Deployment Manager v2 API provides services for configuring,
+      #  deploying, and viewing Google Cloud services and APIs via templates which
+      #  specify deployments of Cloud resources.
       #
       # @example
       #    require 'google/apis/deploymentmanager_alpha'
       #
       #    Deploymentmanager = Google::Apis::DeploymentmanagerAlpha # Alias the module
-      #    service = Deploymentmanager::DeploymentManagerAlphaService.new
+      #    service = Deploymentmanager::DeploymentManagerService.new
       #
-      # @see https://cloud.google.com/deployment-manager/
-      class DeploymentManagerAlphaService < Google::Apis::Core::BaseService
+      # @see https://cloud.google.com/deployment-manager
+      class DeploymentManagerService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
         attr_accessor :key
 
         # @return [String]
-        #  An opaque string that represents a user for quota purposes. Must not exceed 40
-        #  characters.
+        #  Available to use for quota purposes for server-side applications. Can be any
+        #  arbitrary string assigned to a user, but should not exceed 40 characters.
         attr_accessor :quota_user
 
-        # @return [String]
-        #  Deprecated. Please use quotaUser instead.
-        attr_accessor :user_ip
-
         def initialize
-          super('https://www.googleapis.com/', 'deploymentmanager/alpha/projects/')
-          @batch_path = 'batch/deploymentmanager/alpha'
+          super('https://deploymentmanager.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
         # Deletes a composite type.
@@ -60,10 +57,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -76,15 +71,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_composite_type(project, composite_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:delete, '{project}/global/compositeTypes/{compositeType}', options)
+        def delete_composite_type(project, composite_type, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'deploymentmanager/alpha/projects/{project}/global/compositeTypes/{compositeType}', options)
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::Operation::Representation
           command.response_class = Google::Apis::DeploymentmanagerAlpha::Operation
           command.params['project'] = project unless project.nil?
           command.params['compositeType'] = composite_type unless composite_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -96,10 +90,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -112,15 +104,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_composite_type(project, composite_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{project}/global/compositeTypes/{compositeType}', options)
+        def get_composite_type(project, composite_type, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'deploymentmanager/alpha/projects/{project}/global/compositeTypes/{compositeType}', options)
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::CompositeType::Representation
           command.response_class = Google::Apis::DeploymentmanagerAlpha::CompositeType
           command.params['project'] = project unless project.nil?
           command.params['compositeType'] = composite_type unless composite_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -131,10 +122,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -147,8 +136,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_composite_type(project, composite_type_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, '{project}/global/compositeTypes', options)
+        def insert_composite_type(project, composite_type_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'deploymentmanager/alpha/projects/{project}/global/compositeTypes', options)
           command.request_representation = Google::Apis::DeploymentmanagerAlpha::CompositeType::Representation
           command.request_object = composite_type_object
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::Operation::Representation
@@ -156,7 +145,6 @@ module Google
           command.params['project'] = project unless project.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -167,19 +155,18 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
-        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
+        #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
         #   You can also filter nested fields. For example, you could specify `scheduling.
         #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
-        #   on resource labels.
-        #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -187,12 +174,11 @@ module Google
         #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
-        #   alphanumerical order based on the resource name.
-        #   You can also sort results in descending order based on the creation timestamp
-        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
-        #   creationTimestamp` field in reverse chronological order (newest result first).
-        #   Use this to sort resources like operations so that the newest operation is
-        #   returned first.
+        #   alphanumerical order based on the resource name. You can also sort results in
+        #   descending order based on the creation timestamp using `orderBy="
+        #   creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
+        #   field in reverse chronological order (newest result first). Use this to sort
+        #   resources like operations so that the newest operation is returned first.
         #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
         #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
@@ -203,10 +189,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -219,8 +203,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_composite_types(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{project}/global/compositeTypes', options)
+        def list_composite_types(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'deploymentmanager/alpha/projects/{project}/global/compositeTypes', options)
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::CompositeTypesListResponse::Representation
           command.response_class = Google::Apis::DeploymentmanagerAlpha::CompositeTypesListResponse
           command.params['project'] = project unless project.nil?
@@ -231,7 +215,6 @@ module Google
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -244,10 +227,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -260,8 +241,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_composite_type(project, composite_type, composite_type_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:patch, '{project}/global/compositeTypes/{compositeType}', options)
+        def patch_composite_type(project, composite_type, composite_type_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'deploymentmanager/alpha/projects/{project}/global/compositeTypes/{compositeType}', options)
           command.request_representation = Google::Apis::DeploymentmanagerAlpha::CompositeType::Representation
           command.request_object = composite_type_object
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::Operation::Representation
@@ -270,7 +251,6 @@ module Google
           command.params['compositeType'] = composite_type unless composite_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -283,10 +263,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -299,8 +277,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_composite_type(project, composite_type, composite_type_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:put, '{project}/global/compositeTypes/{compositeType}', options)
+        def update_composite_type(project, composite_type, composite_type_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'deploymentmanager/alpha/projects/{project}/global/compositeTypes/{compositeType}', options)
           command.request_representation = Google::Apis::DeploymentmanagerAlpha::CompositeType::Representation
           command.request_object = composite_type_object
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::Operation::Representation
@@ -309,7 +287,6 @@ module Google
           command.params['compositeType'] = composite_type unless composite_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -322,10 +299,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -338,8 +313,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def cancel_deployment_preview(project, deployment, deployments_cancel_preview_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, '{project}/global/deployments/{deployment}/cancelPreview', options)
+        def cancel_deployment_preview(project, deployment, deployments_cancel_preview_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'deploymentmanager/alpha/projects/{project}/global/deployments/{deployment}/cancelPreview', options)
           command.request_representation = Google::Apis::DeploymentmanagerAlpha::DeploymentsCancelPreviewRequest::Representation
           command.request_object = deployments_cancel_preview_request_object
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::Operation::Representation
@@ -348,7 +323,6 @@ module Google
           command.params['deployment'] = deployment unless deployment.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -362,10 +336,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -378,8 +350,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_deployment(project, deployment, delete_policy: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:delete, '{project}/global/deployments/{deployment}', options)
+        def delete_deployment(project, deployment, delete_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'deploymentmanager/alpha/projects/{project}/global/deployments/{deployment}', options)
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::Operation::Representation
           command.response_class = Google::Apis::DeploymentmanagerAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -387,7 +359,6 @@ module Google
           command.query['deletePolicy'] = delete_policy unless delete_policy.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -399,10 +370,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -415,15 +384,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_deployment(project, deployment, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{project}/global/deployments/{deployment}', options)
+        def get_deployment(project, deployment, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'deploymentmanager/alpha/projects/{project}/global/deployments/{deployment}', options)
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::Deployment::Representation
           command.response_class = Google::Apis::DeploymentmanagerAlpha::Deployment
           command.params['project'] = project unless project.nil?
           command.params['deployment'] = deployment unless deployment.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -438,10 +406,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -454,8 +420,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_deployment_iam_policy(project, resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{project}/global/deployments/{resource}/getIamPolicy', options)
+        def get_deployment_iam_policy(project, resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'deploymentmanager/alpha/projects/{project}/global/deployments/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::Policy::Representation
           command.response_class = Google::Apis::DeploymentmanagerAlpha::Policy
           command.params['project'] = project unless project.nil?
@@ -463,7 +429,6 @@ module Google
           command.query['optionsRequestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -485,10 +450,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -501,8 +464,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_deployment(project, deployment_object = nil, create_policy: nil, preview: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, '{project}/global/deployments', options)
+        def insert_deployment(project, deployment_object = nil, create_policy: nil, preview: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'deploymentmanager/alpha/projects/{project}/global/deployments', options)
           command.request_representation = Google::Apis::DeploymentmanagerAlpha::Deployment::Representation
           command.request_object = deployment_object
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::Operation::Representation
@@ -512,7 +475,6 @@ module Google
           command.query['preview'] = preview unless preview.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -523,19 +485,18 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
-        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
+        #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
         #   You can also filter nested fields. For example, you could specify `scheduling.
         #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
-        #   on resource labels.
-        #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -543,12 +504,11 @@ module Google
         #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
-        #   alphanumerical order based on the resource name.
-        #   You can also sort results in descending order based on the creation timestamp
-        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
-        #   creationTimestamp` field in reverse chronological order (newest result first).
-        #   Use this to sort resources like operations so that the newest operation is
-        #   returned first.
+        #   alphanumerical order based on the resource name. You can also sort results in
+        #   descending order based on the creation timestamp using `orderBy="
+        #   creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
+        #   field in reverse chronological order (newest result first). Use this to sort
+        #   resources like operations so that the newest operation is returned first.
         #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
         #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
@@ -559,10 +519,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -575,8 +533,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_deployments(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{project}/global/deployments', options)
+        def list_deployments(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'deploymentmanager/alpha/projects/{project}/global/deployments', options)
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::DeploymentsListResponse::Representation
           command.response_class = Google::Apis::DeploymentmanagerAlpha::DeploymentsListResponse
           command.params['project'] = project unless project.nil?
@@ -587,7 +545,6 @@ module Google
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -616,10 +573,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -632,8 +587,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_deployment(project, deployment, deployment_object = nil, create_policy: nil, delete_policy: nil, preview: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:patch, '{project}/global/deployments/{deployment}', options)
+        def patch_deployment(project, deployment, deployment_object = nil, create_policy: nil, delete_policy: nil, preview: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'deploymentmanager/alpha/projects/{project}/global/deployments/{deployment}', options)
           command.request_representation = Google::Apis::DeploymentmanagerAlpha::Deployment::Representation
           command.request_object = deployment_object
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::Operation::Representation
@@ -645,7 +600,6 @@ module Google
           command.query['preview'] = preview unless preview.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -659,10 +613,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -675,8 +627,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_deployment_iam_policy(project, resource, global_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, '{project}/global/deployments/{resource}/setIamPolicy', options)
+        def set_deployment_iam_policy(project, resource, global_set_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'deploymentmanager/alpha/projects/{project}/global/deployments/{resource}/setIamPolicy', options)
           command.request_representation = Google::Apis::DeploymentmanagerAlpha::GlobalSetPolicyRequest::Representation
           command.request_object = global_set_policy_request_object
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::Policy::Representation
@@ -685,7 +637,6 @@ module Google
           command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -699,10 +650,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -715,8 +664,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def stop_deployment(project, deployment, deployments_stop_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, '{project}/global/deployments/{deployment}/stop', options)
+        def stop_deployment(project, deployment, deployments_stop_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'deploymentmanager/alpha/projects/{project}/global/deployments/{deployment}/stop', options)
           command.request_representation = Google::Apis::DeploymentmanagerAlpha::DeploymentsStopRequest::Representation
           command.request_object = deployments_stop_request_object
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::Operation::Representation
@@ -725,7 +674,6 @@ module Google
           command.params['deployment'] = deployment unless deployment.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -738,10 +686,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -754,8 +700,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def test_deployment_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, '{project}/global/deployments/{resource}/testIamPermissions', options)
+        def test_deployment_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'deploymentmanager/alpha/projects/{project}/global/deployments/{resource}/testIamPermissions', options)
           command.request_representation = Google::Apis::DeploymentmanagerAlpha::TestPermissionsRequest::Representation
           command.request_object = test_permissions_request_object
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::TestPermissionsResponse::Representation
@@ -764,7 +710,6 @@ module Google
           command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -793,10 +738,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -809,8 +752,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_deployment(project, deployment, deployment_object = nil, create_policy: nil, delete_policy: nil, preview: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:put, '{project}/global/deployments/{deployment}', options)
+        def update_deployment(project, deployment, deployment_object = nil, create_policy: nil, delete_policy: nil, preview: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'deploymentmanager/alpha/projects/{project}/global/deployments/{deployment}', options)
           command.request_representation = Google::Apis::DeploymentmanagerAlpha::Deployment::Representation
           command.request_object = deployment_object
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::Operation::Representation
@@ -822,7 +765,6 @@ module Google
           command.query['preview'] = preview unless preview.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -836,10 +778,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -852,8 +792,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_manifest(project, deployment, manifest, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{project}/global/deployments/{deployment}/manifests/{manifest}', options)
+        def get_manifest(project, deployment, manifest, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'deploymentmanager/alpha/projects/{project}/global/deployments/{deployment}/manifests/{manifest}', options)
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::Manifest::Representation
           command.response_class = Google::Apis::DeploymentmanagerAlpha::Manifest
           command.params['project'] = project unless project.nil?
@@ -861,7 +801,6 @@ module Google
           command.params['manifest'] = manifest unless manifest.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -874,19 +813,18 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
-        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
+        #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
         #   You can also filter nested fields. For example, you could specify `scheduling.
         #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
-        #   on resource labels.
-        #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -894,12 +832,11 @@ module Google
         #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
-        #   alphanumerical order based on the resource name.
-        #   You can also sort results in descending order based on the creation timestamp
-        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
-        #   creationTimestamp` field in reverse chronological order (newest result first).
-        #   Use this to sort resources like operations so that the newest operation is
-        #   returned first.
+        #   alphanumerical order based on the resource name. You can also sort results in
+        #   descending order based on the creation timestamp using `orderBy="
+        #   creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
+        #   field in reverse chronological order (newest result first). Use this to sort
+        #   resources like operations so that the newest operation is returned first.
         #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
         #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
@@ -910,10 +847,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -926,8 +861,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_manifests(project, deployment, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{project}/global/deployments/{deployment}/manifests', options)
+        def list_manifests(project, deployment, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'deploymentmanager/alpha/projects/{project}/global/deployments/{deployment}/manifests', options)
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::ManifestsListResponse::Representation
           command.response_class = Google::Apis::DeploymentmanagerAlpha::ManifestsListResponse
           command.params['project'] = project unless project.nil?
@@ -939,7 +874,6 @@ module Google
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -951,10 +885,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -967,15 +899,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_operation(project, operation, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{project}/global/operations/{operation}', options)
+        def get_operation(project, operation, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'deploymentmanager/alpha/projects/{project}/global/operations/{operation}', options)
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::Operation::Representation
           command.response_class = Google::Apis::DeploymentmanagerAlpha::Operation
           command.params['project'] = project unless project.nil?
           command.params['operation'] = operation unless operation.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -986,19 +917,18 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
-        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
+        #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
         #   You can also filter nested fields. For example, you could specify `scheduling.
         #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
-        #   on resource labels.
-        #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -1006,12 +936,11 @@ module Google
         #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
-        #   alphanumerical order based on the resource name.
-        #   You can also sort results in descending order based on the creation timestamp
-        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
-        #   creationTimestamp` field in reverse chronological order (newest result first).
-        #   Use this to sort resources like operations so that the newest operation is
-        #   returned first.
+        #   alphanumerical order based on the resource name. You can also sort results in
+        #   descending order based on the creation timestamp using `orderBy="
+        #   creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
+        #   field in reverse chronological order (newest result first). Use this to sort
+        #   resources like operations so that the newest operation is returned first.
         #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
         #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
@@ -1022,10 +951,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1038,8 +965,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_operations(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{project}/global/operations', options)
+        def list_operations(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'deploymentmanager/alpha/projects/{project}/global/operations', options)
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::OperationsListResponse::Representation
           command.response_class = Google::Apis::DeploymentmanagerAlpha::OperationsListResponse
           command.params['project'] = project unless project.nil?
@@ -1050,7 +977,6 @@ module Google
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1064,10 +990,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1080,8 +1004,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_resource(project, deployment, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{project}/global/deployments/{deployment}/resources/{resource}', options)
+        def get_resource(project, deployment, resource, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'deploymentmanager/alpha/projects/{project}/global/deployments/{deployment}/resources/{resource}', options)
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::Resource::Representation
           command.response_class = Google::Apis::DeploymentmanagerAlpha::Resource
           command.params['project'] = project unless project.nil?
@@ -1089,7 +1013,6 @@ module Google
           command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1102,19 +1025,18 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
-        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
+        #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
         #   You can also filter nested fields. For example, you could specify `scheduling.
         #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
-        #   on resource labels.
-        #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -1122,12 +1044,11 @@ module Google
         #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
-        #   alphanumerical order based on the resource name.
-        #   You can also sort results in descending order based on the creation timestamp
-        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
-        #   creationTimestamp` field in reverse chronological order (newest result first).
-        #   Use this to sort resources like operations so that the newest operation is
-        #   returned first.
+        #   alphanumerical order based on the resource name. You can also sort results in
+        #   descending order based on the creation timestamp using `orderBy="
+        #   creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
+        #   field in reverse chronological order (newest result first). Use this to sort
+        #   resources like operations so that the newest operation is returned first.
         #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
         #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
@@ -1138,10 +1059,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1154,8 +1073,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_resources(project, deployment, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{project}/global/deployments/{deployment}/resources', options)
+        def list_resources(project, deployment, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'deploymentmanager/alpha/projects/{project}/global/deployments/{deployment}/resources', options)
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::ResourcesListResponse::Representation
           command.response_class = Google::Apis::DeploymentmanagerAlpha::ResourcesListResponse
           command.params['project'] = project unless project.nil?
@@ -1167,7 +1086,6 @@ module Google
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1179,10 +1097,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1195,15 +1111,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_type_provider(project, type_provider, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:delete, '{project}/global/typeProviders/{typeProvider}', options)
+        def delete_type_provider(project, type_provider, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'deploymentmanager/alpha/projects/{project}/global/typeProviders/{typeProvider}', options)
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::Operation::Representation
           command.response_class = Google::Apis::DeploymentmanagerAlpha::Operation
           command.params['project'] = project unless project.nil?
           command.params['typeProvider'] = type_provider unless type_provider.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1215,10 +1130,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1231,15 +1144,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_type_provider(project, type_provider, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{project}/global/typeProviders/{typeProvider}', options)
+        def get_type_provider(project, type_provider, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'deploymentmanager/alpha/projects/{project}/global/typeProviders/{typeProvider}', options)
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::TypeProvider::Representation
           command.response_class = Google::Apis::DeploymentmanagerAlpha::TypeProvider
           command.params['project'] = project unless project.nil?
           command.params['typeProvider'] = type_provider unless type_provider.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1253,10 +1165,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1269,8 +1179,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_type_provider_type(project, type_provider, type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{project}/global/typeProviders/{typeProvider}/types/{type}', options)
+        def get_type_provider_type(project, type_provider, type, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'deploymentmanager/alpha/projects/{project}/global/typeProviders/{typeProvider}/types/{type}', options)
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::TypeInfo::Representation
           command.response_class = Google::Apis::DeploymentmanagerAlpha::TypeInfo
           command.params['project'] = project unless project.nil?
@@ -1278,7 +1188,6 @@ module Google
           command.params['type'] = type unless type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1289,10 +1198,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1305,8 +1212,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_type_provider(project, type_provider_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, '{project}/global/typeProviders', options)
+        def insert_type_provider(project, type_provider_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'deploymentmanager/alpha/projects/{project}/global/typeProviders', options)
           command.request_representation = Google::Apis::DeploymentmanagerAlpha::TypeProvider::Representation
           command.request_object = type_provider_object
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::Operation::Representation
@@ -1314,7 +1221,6 @@ module Google
           command.params['project'] = project unless project.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1325,19 +1231,18 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
-        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
+        #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
         #   You can also filter nested fields. For example, you could specify `scheduling.
         #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
-        #   on resource labels.
-        #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -1345,12 +1250,11 @@ module Google
         #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
-        #   alphanumerical order based on the resource name.
-        #   You can also sort results in descending order based on the creation timestamp
-        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
-        #   creationTimestamp` field in reverse chronological order (newest result first).
-        #   Use this to sort resources like operations so that the newest operation is
-        #   returned first.
+        #   alphanumerical order based on the resource name. You can also sort results in
+        #   descending order based on the creation timestamp using `orderBy="
+        #   creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
+        #   field in reverse chronological order (newest result first). Use this to sort
+        #   resources like operations so that the newest operation is returned first.
         #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
         #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
@@ -1361,10 +1265,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1377,8 +1279,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_type_providers(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{project}/global/typeProviders', options)
+        def list_type_providers(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'deploymentmanager/alpha/projects/{project}/global/typeProviders', options)
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::TypeProvidersListResponse::Representation
           command.response_class = Google::Apis::DeploymentmanagerAlpha::TypeProvidersListResponse
           command.params['project'] = project unless project.nil?
@@ -1389,7 +1291,6 @@ module Google
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1402,19 +1303,18 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
-        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
+        #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
         #   You can also filter nested fields. For example, you could specify `scheduling.
         #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
-        #   on resource labels.
-        #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -1422,12 +1322,11 @@ module Google
         #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
-        #   alphanumerical order based on the resource name.
-        #   You can also sort results in descending order based on the creation timestamp
-        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
-        #   creationTimestamp` field in reverse chronological order (newest result first).
-        #   Use this to sort resources like operations so that the newest operation is
-        #   returned first.
+        #   alphanumerical order based on the resource name. You can also sort results in
+        #   descending order based on the creation timestamp using `orderBy="
+        #   creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
+        #   field in reverse chronological order (newest result first). Use this to sort
+        #   resources like operations so that the newest operation is returned first.
         #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
         #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
@@ -1438,10 +1337,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1454,8 +1351,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_type_provider_types(project, type_provider, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{project}/global/typeProviders/{typeProvider}/types', options)
+        def list_type_provider_types(project, type_provider, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'deploymentmanager/alpha/projects/{project}/global/typeProviders/{typeProvider}/types', options)
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::TypeProvidersListTypesResponse::Representation
           command.response_class = Google::Apis::DeploymentmanagerAlpha::TypeProvidersListTypesResponse
           command.params['project'] = project unless project.nil?
@@ -1467,7 +1364,6 @@ module Google
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1480,10 +1376,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1496,8 +1390,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_type_provider(project, type_provider, type_provider_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:patch, '{project}/global/typeProviders/{typeProvider}', options)
+        def patch_type_provider(project, type_provider, type_provider_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'deploymentmanager/alpha/projects/{project}/global/typeProviders/{typeProvider}', options)
           command.request_representation = Google::Apis::DeploymentmanagerAlpha::TypeProvider::Representation
           command.request_object = type_provider_object
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::Operation::Representation
@@ -1506,7 +1400,6 @@ module Google
           command.params['typeProvider'] = type_provider unless type_provider.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1519,10 +1412,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1535,8 +1426,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_type_provider(project, type_provider, type_provider_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:put, '{project}/global/typeProviders/{typeProvider}', options)
+        def update_type_provider(project, type_provider, type_provider_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'deploymentmanager/alpha/projects/{project}/global/typeProviders/{typeProvider}', options)
           command.request_representation = Google::Apis::DeploymentmanagerAlpha::TypeProvider::Representation
           command.request_object = type_provider_object
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::Operation::Representation
@@ -1545,7 +1436,6 @@ module Google
           command.params['typeProvider'] = type_provider unless type_provider.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1557,10 +1447,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1573,15 +1461,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_type(project, type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{project}/global/types/{type}', options)
+        def get_type(project, type, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'deploymentmanager/alpha/projects/{project}/global/types/{type}', options)
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::Type::Representation
           command.response_class = Google::Apis::DeploymentmanagerAlpha::Type
           command.params['project'] = project unless project.nil?
           command.params['type'] = type unless type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1592,19 +1479,18 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
-        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
+        #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
         #   You can also filter nested fields. For example, you could specify `scheduling.
         #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
-        #   on resource labels.
-        #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -1612,12 +1498,11 @@ module Google
         #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
-        #   alphanumerical order based on the resource name.
-        #   You can also sort results in descending order based on the creation timestamp
-        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
-        #   creationTimestamp` field in reverse chronological order (newest result first).
-        #   Use this to sort resources like operations so that the newest operation is
-        #   returned first.
+        #   alphanumerical order based on the resource name. You can also sort results in
+        #   descending order based on the creation timestamp using `orderBy="
+        #   creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
+        #   field in reverse chronological order (newest result first). Use this to sort
+        #   resources like operations so that the newest operation is returned first.
         #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
         #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
@@ -1628,10 +1513,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1644,8 +1527,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_types(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{project}/global/types', options)
+        def list_types(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'deploymentmanager/alpha/projects/{project}/global/types', options)
           command.response_representation = Google::Apis::DeploymentmanagerAlpha::TypesListResponse::Representation
           command.response_class = Google::Apis::DeploymentmanagerAlpha::TypesListResponse
           command.params['project'] = project unless project.nil?
@@ -1656,7 +1539,6 @@ module Google
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
 
@@ -1665,7 +1547,6 @@ module Google
         def apply_command_defaults(command)
           command.query['key'] = key unless key.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
         end
       end
     end
