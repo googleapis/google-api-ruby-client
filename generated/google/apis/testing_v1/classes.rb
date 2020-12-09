@@ -1266,7 +1266,7 @@ module Google
         end
       end
       
-      # A description of an iOS device tests may be run on. Next tag: 13
+      # A description of an iOS device tests may be run on.
       class IosModel
         include Google::Apis::Core::Hashable
       
