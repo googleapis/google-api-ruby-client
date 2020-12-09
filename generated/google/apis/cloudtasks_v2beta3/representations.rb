@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PullMessage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PurgeQueueRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -143,6 +149,12 @@ module Google
       end
       
       class Queue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueueStats
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -383,6 +395,14 @@ module Google
         end
       end
       
+      class PullMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :payload, :base64 => true, as: 'payload'
+          property :tag, as: 'tag'
+        end
+      end
+      
       class PurgeQueueRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -403,7 +423,20 @@ module Google
           property :stackdriver_logging_config, as: 'stackdriverLoggingConfig', class: Google::Apis::CloudtasksV2beta3::StackdriverLoggingConfig, decorator: Google::Apis::CloudtasksV2beta3::StackdriverLoggingConfig::Representation
       
           property :state, as: 'state'
+          property :stats, as: 'stats', class: Google::Apis::CloudtasksV2beta3::QueueStats, decorator: Google::Apis::CloudtasksV2beta3::QueueStats::Representation
+      
           property :type, as: 'type'
+        end
+      end
+      
+      class QueueStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :concurrent_dispatches_count, :numeric_string => true, as: 'concurrentDispatchesCount'
+          property :effective_execution_rate, as: 'effectiveExecutionRate'
+          property :executed_last_minute_count, :numeric_string => true, as: 'executedLastMinuteCount'
+          property :oldest_estimated_arrival_time, as: 'oldestEstimatedArrivalTime'
+          property :tasks_count, :numeric_string => true, as: 'tasksCount'
         end
       end
       
@@ -479,6 +512,8 @@ module Google
           property :last_attempt, as: 'lastAttempt', class: Google::Apis::CloudtasksV2beta3::Attempt, decorator: Google::Apis::CloudtasksV2beta3::Attempt::Representation
       
           property :name, as: 'name'
+          property :pull_message, as: 'pullMessage', class: Google::Apis::CloudtasksV2beta3::PullMessage, decorator: Google::Apis::CloudtasksV2beta3::PullMessage::Representation
+      
           property :response_count, as: 'responseCount'
           property :schedule_time, as: 'scheduleTime'
           property :view, as: 'view'
