@@ -27,8 +27,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Country of business. Must be a non-deprecated code for a UN M.49 region. https:
-        # //unicode.org/cldr/charts/latest/supplem // ental/
-        # territory_containment_un_m_49.html
+        # //unicode.org/cldr/charts/latest/supplemental/territory_containment_un_m_49.
+        # html
         # Corresponds to the JSON property `countryCode`
         # @return [String]
         attr_accessor :country_code
