@@ -1049,6 +1049,30 @@ module Google
         end
       end
       
+      # Specifies options for controlling advanced machine features. Options that
+      # would traditionally be configured in a BIOS belong here. Features that require
+      # operating system support may have corresponding entries in the GuestOsFeatures
+      # of an Image (e.g., whether or not the OS in the Image supports nested
+      # virtualization being enabled or disabled).
+      class AdvancedMachineFeatures
+        include Google::Apis::Core::Hashable
+      
+        # Whether to enable nested virtualization or not (default is false).
+        # Corresponds to the JSON property `enableNestedVirtualization`
+        # @return [Boolean]
+        attr_accessor :enable_nested_virtualization
+        alias_method :enable_nested_virtualization?, :enable_nested_virtualization
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_nested_virtualization = args[:enable_nested_virtualization] if args.key?(:enable_nested_virtualization)
+        end
+      end
+      
       # An alias IP range attached to an instance's network interface.
       class AliasIpRange
         include Google::Apis::Core::Hashable
@@ -1631,10 +1655,10 @@ module Google
         attr_accessor :name
       
         # [Output Only] Target recommended MIG size (number of instances) computed by
-        # autoscaler. Autoscaler calculates recommended MIG size even when autoscaling
-        # policy mode is different from ON. This field is empty when autoscaler is not
-        # connected to the existing managed instance group or autoscaler did not
-        # generate its prediction.
+        # autoscaler. Autoscaler calculates the recommended MIG size even when the
+        # autoscaling policy mode is different from ON. This field is empty when
+        # autoscaler is not connected to an existing managed instance group or
+        # autoscaler did not generate its prediction.
         # Corresponds to the JSON property `recommendedSize`
         # @return [Fixnum]
         attr_accessor :recommended_size
@@ -1674,7 +1698,8 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::AutoscalerStatusDetails>]
         attr_accessor :status_details
       
-        # URL of the managed instance group that this autoscaler will scale.
+        # URL of the managed instance group that this autoscaler will scale. This field
+        # is required when creating an autoscaler.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -1982,7 +2007,7 @@ module Google
         # - MODE_OFF (WARNING): Autoscaling is turned off. The number of instances in
         # the group won't change automatically. The autoscaling configuration is
         # preserved.
-        # - MODE_ONLY_UP (WARNING): Autoscaling is in the "Autoscale only up" mode. The
+        # - MODE_ONLY_UP (WARNING): Autoscaling is in the "Autoscale only out" mode. The
         # autoscaler can add instances but not remove any.
         # - MORE_THAN_ONE_BACKEND_SERVICE (ERROR): The instance group cannot be
         # autoscaled because it has more than one backend service attached to it.
@@ -2108,11 +2133,10 @@ module Google
       class AutoscalingPolicy
         include Google::Apis::Core::Hashable
       
-        # The number of seconds that the autoscaler should wait before it starts
-        # collecting information from a new instance. This prevents the autoscaler from
-        # collecting information when the instance is initializing, during which the
-        # collected usage would not be reliable. The default time autoscaler waits is 60
-        # seconds.
+        # The number of seconds that the autoscaler waits before it starts collecting
+        # information from a new instance. This prevents the autoscaler from collecting
+        # information when the instance is initializing, during which the collected
+        # usage would not be reliable. The default time autoscaler waits is 60 seconds.
         # Virtual machine initialization times might vary because of numerous factors.
         # We recommend that you test how long an instance may take to initialize. To do
         # this, create an instance and time the startup process.
@@ -2135,15 +2159,15 @@ module Google
         # @return [Google::Apis::ComputeBeta::AutoscalingPolicyLoadBalancingUtilization]
         attr_accessor :load_balancing_utilization
       
-        # The maximum number of instances that the autoscaler can scale up to. This is
+        # The maximum number of instances that the autoscaler can scale out to. This is
         # required when creating or updating an autoscaler. The maximum number of
-        # replicas should not be lower than minimal number of replicas.
+        # replicas must not be lower than minimal number of replicas.
         # Corresponds to the JSON property `maxNumReplicas`
         # @return [Fixnum]
         attr_accessor :max_num_replicas
       
-        # The minimum number of replicas that the autoscaler can scale down to. This
-        # cannot be less than 0. If not provided, autoscaler will choose a default value
+        # The minimum number of replicas that the autoscaler can scale in to. This
+        # cannot be less than 0. If not provided, autoscaler chooses a default value
         # depending on maximum number of instances allowed.
         # Corresponds to the JSON property `minNumReplicas`
         # @return [Fixnum]
@@ -2154,8 +2178,8 @@ module Google
         # @return [String]
         attr_accessor :mode
       
-        # Configuration that allows for slower scale down so that even if Autoscaler
-        # recommends an abrupt scale down of a MIG, it will be throttled as specified by
+        # Configuration that allows for slower scale in so that even if Autoscaler
+        # recommends an abrupt scale in of a MIG, it will be throttled as specified by
         # the parameters below.
         # Corresponds to the JSON property `scaleDownControl`
         # @return [Google::Apis::ComputeBeta::AutoscalingPolicyScaleDownControl]
@@ -2169,9 +2193,9 @@ module Google
         attr_accessor :scale_in_control
       
         # Scaling schedules defined for an autoscaler. Multiple schedules can be set on
-        # an autoscaler and they can overlap. During overlapping periods the greatest
-        # min_required_replicas of all scaling schedules will be applied. Up to 128
-        # scaling schedules are allowed.
+        # an autoscaler, and they can overlap. During overlapping periods the greatest
+        # min_required_replicas of all scaling schedules is applied. Up to 128 scaling
+        # schedules are allowed.
         # Corresponds to the JSON property `scalingSchedules`
         # @return [Hash<String,Google::Apis::ComputeBeta::AutoscalingPolicyScalingSchedule>]
         attr_accessor :scaling_schedules
@@ -2210,13 +2234,13 @@ module Google
         # @return [String]
         attr_accessor :predictive_method
       
-        # The target CPU utilization that the autoscaler should maintain. Must be a
-        # float value in the range (0, 1]. If not specified, the default is 0.6.
-        # If the CPU level is below the target utilization, the autoscaler scales down
-        # the number of instances until it reaches the minimum number of instances you
+        # The target CPU utilization that the autoscaler maintains. Must be a float
+        # value in the range (0, 1]. If not specified, the default is 0.6.
+        # If the CPU level is below the target utilization, the autoscaler scales in the
+        # number of instances until it reaches the minimum number of instances you
         # specified or until the average CPU of your instances reaches the target
         # utilization.
-        # If the average CPU is above the target utilization, the autoscaler scales up
+        # If the average CPU is above the target utilization, the autoscaler scales out
         # until it reaches the maximum number of instances you specified or until the
         # average utilization reaches the target utilization.
         # Corresponds to the JSON property `utilizationTarget`
@@ -2259,11 +2283,11 @@ module Google
         # to scale upon. This is called a per-group metric for the purpose of
         # autoscaling.
         # If not specified, the type defaults to gce_instance.
-        # You should provide a filter that is selective enough to pick just one
-        # TimeSeries for the autoscaled group or for each of the instances (if you are
-        # using gce_instance resource type). If multiple TimeSeries are returned upon
-        # the query execution, the autoscaler will sum their respective values to obtain
-        # its scaling value.
+        # Try to provide a filter that is selective enough to pick just one TimeSeries
+        # for the autoscaled group or for each of the instances (if you are using
+        # gce_instance resource type). If multiple TimeSeries are returned upon the
+        # query execution, the autoscaler will sum their respective values to obtain its
+        # scaling value.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -2277,9 +2301,9 @@ module Google
       
         # If scaling is based on a per-group metric value that represents the total
         # amount of work to be done or resource usage, set this value to an amount
-        # assigned for a single instance of the scaled group. Autoscaler will keep the
-        # number of instances proportional to the value of this metric, the metric
-        # itself should not change value due to group resizing.
+        # assigned for a single instance of the scaled group. Autoscaler keeps the
+        # number of instances proportional to the value of this metric. The metric
+        # itself does not change value due to group resizing.
         # A good metric to use with the target is for example pubsub.googleapis.com/
         # subscription/num_undelivered_messages or a custom metric exporting the total
         # number of requests coming to your instances.
@@ -2290,12 +2314,12 @@ module Google
         # @return [Float]
         attr_accessor :single_instance_assignment
       
-        # The target value of the metric that autoscaler should maintain. This must be a
+        # The target value of the metric that autoscaler maintains. This must be a
         # positive value. A utilization metric scales number of virtual machines
         # handling requests to increase or decrease proportionally to the metric.
         # For example, a good metric to use as a utilization_target is https://www.
         # googleapis.com/compute/v1/instance/network/received_bytes_count. The
-        # autoscaler will work to keep this value constant for each of the instances.
+        # autoscaler works to keep this value constant for each of the instances.
         # Corresponds to the JSON property `utilizationTarget`
         # @return [Float]
         attr_accessor :utilization_target
@@ -2325,7 +2349,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Fraction of backend capacity utilization (set in HTTP(S) load balancing
-        # configuration) that autoscaler should maintain. Must be a positive float value.
+        # configuration) that the autoscaler maintains. Must be a positive float value.
         # If not defined, the default is 0.8.
         # Corresponds to the JSON property `utilizationTarget`
         # @return [Float]
@@ -2341,8 +2365,8 @@ module Google
         end
       end
       
-      # Configuration that allows for slower scale down so that even if Autoscaler
-      # recommends an abrupt scale down of a MIG, it will be throttled as specified by
+      # Configuration that allows for slower scale in so that even if Autoscaler
+      # recommends an abrupt scale in of a MIG, it will be throttled as specified by
       # the parameters below.
       class AutoscalingPolicyScaleDownControl
         include Google::Apis::Core::Hashable
@@ -2352,8 +2376,8 @@ module Google
         # @return [Google::Apis::ComputeBeta::FixedOrPercent]
         attr_accessor :max_scaled_down_replicas
       
-        # How long back autoscaling should look when computing recommendations to
-        # include directives regarding slower scale down, as described above.
+        # How far back autoscaling looks when computing recommendations to include
+        # directives regarding slower scale in, as described above.
         # Corresponds to the JSON property `timeWindowSec`
         # @return [Fixnum]
         attr_accessor :time_window_sec
@@ -2380,8 +2404,8 @@ module Google
         # @return [Google::Apis::ComputeBeta::FixedOrPercent]
         attr_accessor :max_scaled_in_replicas
       
-        # How long back autoscaling should look when computing recommendations to
-        # include directives regarding slower scale in, as described above.
+        # How far back autoscaling looks when computing recommendations to include
+        # directives regarding slower scale in, as described above.
         # Corresponds to the JSON property `timeWindowSec`
         # @return [Fixnum]
         attr_accessor :time_window_sec
@@ -2408,41 +2432,40 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # A boolean value that specifies if a scaling schedule can influence autoscaler
-        # recommendations. If set to true, then a scaling schedule has no effect. This
-        # field is optional and its value is false by default.
+        # A boolean value that specifies whether a scaling schedule can influence
+        # autoscaler recommendations. If set to true, then a scaling schedule has no
+        # effect. This field is optional, and its value is false by default.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
-        # The duration of time intervals (in seconds) for which this scaling schedule
-        # will be running. The minimum allowed value is 300. This field is required.
+        # The duration of time intervals, in seconds, for which this scaling schedule is
+        # to run. The minimum allowed value is 300. This field is required.
         # Corresponds to the JSON property `durationSec`
         # @return [Fixnum]
         attr_accessor :duration_sec
       
-        # Minimum number of VM instances that autoscaler will recommend in time
+        # The minimum number of VM instances that the autoscaler will recommend in time
         # intervals starting according to schedule. This field is required.
         # Corresponds to the JSON property `minRequiredReplicas`
         # @return [Fixnum]
         attr_accessor :min_required_replicas
       
-        # The start timestamps of time intervals when this scaling schedule should
+        # The start timestamps of time intervals when this scaling schedule is to
         # provide a scaling signal. This field uses the extended cron format (with an
-        # optional year field). The expression may describe a single timestamp if the
-        # optional year is set, in which case a scaling schedule will run once. schedule
-        # is interpreted with respect to time_zone. This field is required. NOTE: these
-        # timestamps only describe when autoscaler will start providing the scaling
-        # signal. The VMs will need additional time to become serving.
+        # optional year field). The expression can describe a single timestamp if the
+        # optional year is set, in which case the scaling schedule runs once. The
+        # schedule is interpreted with respect to time_zone. This field is required.
+        # Note: These timestamps only describe when autoscaler starts providing the
+        # scaling signal. The VMs need additional time to become serving.
         # Corresponds to the JSON property `schedule`
         # @return [String]
         attr_accessor :schedule
       
-        # The time zone to be used when interpreting the schedule. The value of this
-        # field must be a time zone name from the tz database: http://en.wikipedia.org/
-        # wiki/Tz_database. This field will be assigned a default value of ?UTC? if left
-        # empty.
+        # The time zone to use when interpreting the schedule. The value of this field
+        # must be a time zone name from the tz database: http://en.wikipedia.org/wiki/
+        # Tz_database. This field is assigned a default value of ?UTC? if left empty.
         # Corresponds to the JSON property `timeZone`
         # @return [String]
         attr_accessor :time_zone
@@ -2480,21 +2503,22 @@ module Google
         # parameters: maxConnections (except for regional managed instance groups),
         # maxConnectionsPerInstance, or maxConnectionsPerEndpoint.
         # If the loadBalancingScheme for the backend service is INTERNAL (internal TCP/
-        # UDP load balancers), you cannot specify any additional parameters.
+        # UDP Load Balancers) or EXTERNAL  (Network Load Balancing), you cannot specify
+        # any additional parameters.
         # 
         # - If the load balancing mode is RATE, the load is spread based on the rate of
         # HTTP requests per second (RPS).
         # You can use the RATE balancing mode if the protocol for the backend service is
-        # HTTP or HTTPS. You must specify exactly one of the following parameters:
-        # maxRate (except for regional managed instance groups), maxRatePerInstance, or
-        # maxRatePerEndpoint.
+        # HTTP, HTTP2, or HTTPS. You must specify exactly one of the following
+        # parameters: maxRate (except for regional managed instance groups),
+        # maxRatePerInstance, or maxRatePerEndpoint.
         # 
         # - If the load balancing mode is UTILIZATION, the load is spread based on the
         # backend utilization of instances in an instance group.
         # You can use the UTILIZATION balancing mode if the loadBalancingScheme of the
-        # backend service is EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED and
-        # the backends are instance groups. There are no restrictions on the backend
-        # service protocol.
+        # backend service is EXTERNAL (except Network Load Balancing),
+        # INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED and the backends are instance
+        # groups. There are no restrictions on the backend service protocol.
         # Corresponds to the JSON property `balancingMode`
         # @return [String]
         attr_accessor :balancing_mode
@@ -2506,7 +2530,8 @@ module Google
         # available capacity. Valid range is 0.0 and [0.1,1.0]. You cannot configure a
         # setting larger than 0 and smaller than 0.1. You cannot configure a setting of
         # 0 when there is only one backend attached to the backend service.
-        # This cannot be used for internal load balancing.
+        # This cannot be used for Internal TCP/UDP Load Balancing and Network Load
+        # Balancing.
         # Corresponds to the JSON property `capacityScaler`
         # @return [Float]
         attr_accessor :capacity_scaler
@@ -2528,14 +2553,16 @@ module Google
         # resource. The type of backend that a backend service supports depends on the
         # backend service's loadBalancingScheme.
         # 
-        # - When the loadBalancingScheme for the backend service is EXTERNAL,
-        # INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, the backend can be either an
-        # instance group or a NEG. The backends on the backend service must be either
-        # all instance groups or all NEGs. You cannot mix instance group and NEG
-        # backends on the same backend service.
-        # - When the loadBalancingScheme for the backend service is INTERNAL, the
-        # backend must be an instance group in the same region as the backend service.
-        # NEGs are not supported.
+        # - When the loadBalancingScheme for the backend service is EXTERNAL (except
+        # Network Load Balancing),  INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED , the
+        # backend can be either an instance group or a NEG. The backends on the backend
+        # service must be either all instance groups or all NEGs. You cannot mix
+        # instance group and NEG backends on the same backend service.
+        # - When the loadBalancingScheme for the backend service is EXTERNAL for Network
+        # Load Balancing or INTERNAL for Internal TCP/UDP Load Balancing, the backend
+        # must be an instance group. NEGs are not supported.
+        # For regional services, the backend must be in the same region as the backend
+        # service.
         # You must use the fully-qualified URL (starting with https://www.googleapis.com/
         # ) to specify the instance group or NEG. Partial URLs are not supported.
         # Corresponds to the JSON property `group`
@@ -2547,11 +2574,12 @@ module Google
         # except for regional managed instance groups). If the backend's balancingMode
         # is UTILIZATION, this is an optional parameter. If the backend's balancingMode
         # is CONNECTION, and backend is attached to a backend service whose
-        # loadBalancingScheme is EXTERNAL, you must specify either this parameter,
-        # maxConnectionsPerInstance, or maxConnectionsPerEndpoint.
-        # Not available if the backend's balancingMode is RATE. If the
-        # loadBalancingScheme is INTERNAL, then maxConnections is not supported, even
-        # though the backend requires a balancing mode of CONNECTION.
+        # loadBalancingScheme is EXTERNAL (except Network Load Balancing), you must
+        # specify either this parameter, maxConnectionsPerInstance, or
+        # maxConnectionsPerEndpoint.
+        # Not available if the backend's balancingMode is RATE. Cannot be specified for
+        # Network Load Balancing or Internal TCP/UDP Load Balancing, even though those
+        # load balancers require a balancing mode of CONNECTION.
         # Corresponds to the JSON property `maxConnections`
         # @return [Fixnum]
         attr_accessor :max_connections
@@ -2559,12 +2587,13 @@ module Google
         # Defines a target maximum number of simultaneous connections for an endpoint of
         # a NEG. This is multiplied by the number of endpoints in the NEG to implicitly
         # calculate a maximum number of target maximum simultaneous connections for the
-        # NEG. If the backend's balancingMode is CONNECTION, and the backend is attached
-        # to a backend service whose loadBalancingScheme is EXTERNAL, you must specify
-        # either this parameter, maxConnections, or maxConnectionsPerInstance.
-        # Not available if the backend's balancingMode is RATE. Internal TCP/UDP load
-        # balancing does not support setting maxConnectionsPerEndpoint even though its
-        # backends require a balancing mode of CONNECTION.
+        # NEG. If the backend's balancingMode is CONNECTION, and backend is attached to
+        # a backend service whose loadBalancingScheme is EXTERNAL (except Network Load
+        # Balancing), you must specify either this parameter, maxConnections, or
+        # maxConnectionsPerInstance.
+        # Not available if the backend's balancingMode is RATE. Cannot be specified for
+        # Network Load Balancing or Internal TCP/UDP Load Balancing, even though those
+        # load balancers require a balancing mode of CONNECTION.
         # Corresponds to the JSON property `maxConnectionsPerEndpoint`
         # @return [Fixnum]
         attr_accessor :max_connections_per_endpoint
@@ -2575,11 +2604,11 @@ module Google
         # connections for the whole instance group. If the backend's balancingMode is
         # UTILIZATION, this is an optional parameter. If the backend's balancingMode is
         # CONNECTION, and backend is attached to a backend service whose
-        # loadBalancingScheme is EXTERNAL, you must specify either this parameter,
-        # maxConnections, or maxConnectionsPerEndpoint.
-        # Not available if the backend's balancingMode is RATE. Internal TCP/UDP load
-        # balancing does not support setting maxConnectionsPerInstance even though its
-        # backends require a balancing mode of CONNECTION.
+        # loadBalancingScheme is EXTERNAL (except Network Load Balancing), you must
+        # specify either this parameter,  maxConnections, or maxConnectionsPerEndpoint.
+        # Not available if the backend's balancingMode is RATE. Cannot be specified for
+        # Network Load Balancing or Internal TCP/UDP Load Balancing, even though those
+        # load balancers require a balancing mode of CONNECTION.
         # Corresponds to the JSON property `maxConnectionsPerInstance`
         # @return [Fixnum]
         attr_accessor :max_connections_per_instance
@@ -3121,13 +3150,14 @@ module Google
         attr_accessor :enable_cdn
         alias_method :enable_cdn?, :enable_cdn
       
-        # Applicable only to Failover for Internal TCP/UDP Load Balancing. On failover
-        # or failback, this field indicates whether connection draining will be honored.
-        # GCP has a fixed connection draining timeout of 10 minutes. A setting of true
-        # terminates existing TCP connections to the active pool during failover and
-        # failback, immediately draining traffic. A setting of false allows existing TCP
-        # connections to persist, even on VMs no longer in the active pool, for up to
-        # the duration of the connection draining timeout (10 minutes).
+        # Applicable only to Failover for Internal TCP/UDP Load Balancing and Network
+        # Load Balancing. On failover or failback, this field indicates whether
+        # connection draining will be honored. GCP has a fixed connection draining
+        # timeout of 10 minutes. A setting of true terminates existing TCP connections
+        # to the active pool during failover and failback, immediately draining traffic.
+        # A setting of false allows existing TCP connections to persist, even on VMs no
+        # longer in the active pool, for up to the duration of the connection draining
+        # timeout (10 minutes).
         # Corresponds to the JSON property `failoverPolicy`
         # @return [Google::Apis::ComputeBeta::BackendServiceFailoverPolicy]
         attr_accessor :failover_policy
@@ -3172,11 +3202,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Specifies the load balancer type. Choose EXTERNAL for load balancers that
-        # receive traffic from external clients. Choose INTERNAL for Internal TCP/UDP
-        # Load Balancing. Choose INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.
-        # Choose INTERNAL_SELF_MANAGED for Traffic Director. A backend service created
-        # for one type of load balancing cannot be used with another. For more
+        # Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL
+        # Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/
+        # UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load
+        # Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service
+        # created for one type of load balancer cannot be used with another. For more
         # information, refer to Choosing a load balancer.
         # Corresponds to the JSON property `loadBalancingScheme`
         # @return [String]
@@ -3231,7 +3261,7 @@ module Google
         attr_accessor :name
       
         # The URL of the network to which this backend service belongs. This field can
-        # only be spcified when the load balancing scheme is set to INTERNAL.
+        # only be specified when the load balancing scheme is set to INTERNAL.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -3252,11 +3282,12 @@ module Google
       
         # A named port on a backend instance group representing the port for
         # communication to the backend VMs in that group. Required when the
-        # loadBalancingScheme is EXTERNAL, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
-        # and the backends are instance groups. The named port must be defined on each
-        # backend instance group. This parameter has no meaning if the backends are NEGs.
-        # Must be omitted when the loadBalancingScheme is INTERNAL (Internal TCP/UDP
-        # Load Balancing).
+        # loadBalancingScheme is EXTERNAL (except Network Load Balancing),
+        # INTERNAL_MANAGED, or  INTERNAL_SELF_MANAGED and the backends are instance
+        # groups. The named port must be defined on each backend instance group. This
+        # parameter has no meaning if the backends are NEGs.
+        # Backend services for Internal TCP/UDP Load Balancing and Network Load
+        # Balancing require you omit port_name.
         # Corresponds to the JSON property `portName`
         # @return [String]
         attr_accessor :port_name
@@ -3296,11 +3327,12 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # Type of session affinity to use. The default is NONE. Session affinity is not
-        # applicable if the --protocol is UDP.
-        # When the loadBalancingScheme is EXTERNAL, possible values are NONE, CLIENT_IP,
-        # or GENERATED_COOKIE. You can use GENERATED_COOKIE if the protocol is HTTP or
-        # HTTPS.
+        # Type of session affinity to use. The default is NONE.
+        # When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing, the
+        # possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.
+        # * For all other load balancers that use loadBalancingScheme=EXTERNAL, the
+        # possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. * You can use
+        # GENERATED_COOKIE if the protocol is HTTP, HTTP2, or HTTPS.
         # When the loadBalancingScheme is INTERNAL, possible values are NONE, CLIENT_IP,
         # CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.
         # When the loadBalancingScheme is INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED,
@@ -3709,13 +3741,14 @@ module Google
         end
       end
       
-      # Applicable only to Failover for Internal TCP/UDP Load Balancing. On failover
-      # or failback, this field indicates whether connection draining will be honored.
-      # GCP has a fixed connection draining timeout of 10 minutes. A setting of true
-      # terminates existing TCP connections to the active pool during failover and
-      # failback, immediately draining traffic. A setting of false allows existing TCP
-      # connections to persist, even on VMs no longer in the active pool, for up to
-      # the duration of the connection draining timeout (10 minutes).
+      # Applicable only to Failover for Internal TCP/UDP Load Balancing and Network
+      # Load Balancing. On failover or failback, this field indicates whether
+      # connection draining will be honored. GCP has a fixed connection draining
+      # timeout of 10 minutes. A setting of true terminates existing TCP connections
+      # to the active pool during failover and failback, immediately draining traffic.
+      # A setting of false allows existing TCP connections to persist, even on VMs no
+      # longer in the active pool, for up to the duration of the connection draining
+      # timeout (10 minutes).
       class BackendServiceFailoverPolicy
         include Google::Apis::Core::Hashable
       
@@ -3726,22 +3759,21 @@ module Google
         attr_accessor :disable_connection_drain_on_failover
         alias_method :disable_connection_drain_on_failover?, :disable_connection_drain_on_failover
       
-        # Applicable only to Failover for Internal TCP/UDP Load Balancing. If set to
-        # true, connections to the load balancer are dropped when all primary and all
-        # backup backend VMs are unhealthy. If set to false, connections are distributed
-        # among all primary VMs when all primary and all backup backend VMs are
-        # unhealthy.
-        # The default is false.
+        # Applicable only to Failover for Internal TCP/UDP Load Balancing and Network
+        # Load Balancing, If set to true, connections to the load balancer are dropped
+        # when all primary and all backup backend VMs are unhealthy.If set to false,
+        # connections are distributed among all primary VMs when all primary and all
+        # backup backend VMs are unhealthy. The default is false.
         # Corresponds to the JSON property `dropTrafficIfUnhealthy`
         # @return [Boolean]
         attr_accessor :drop_traffic_if_unhealthy
         alias_method :drop_traffic_if_unhealthy?, :drop_traffic_if_unhealthy
       
-        # Applicable only to Failover for Internal TCP/UDP Load Balancing. The value of
-        # the field must be in the range [0, 1]. If the value is 0, the load balancer
-        # performs a failover when the number of healthy primary VMs equals zero. For
-        # all other values, the load balancer performs a failover when the total number
-        # of healthy primary VMs is less than this ratio.
+        # Applicable only to Failover for Internal TCP/UDP Load Balancing and Network
+        # Load Balancing. The value of the field must be in the range [0, 1]. If the
+        # value is 0, the load balancer performs a failover when the number of healthy
+        # primary VMs equals zero. For all other values, the load balancer performs a
+        # failover when the total number of healthy primary VMs is less than this ratio.
         # Corresponds to the JSON property `failoverRatio`
         # @return [Float]
         attr_accessor :failover_ratio
@@ -6668,13 +6700,9 @@ module Google
       class DistributionPolicy
         include Google::Apis::Core::Hashable
       
-        # The shape to which the group converges either proactively or on resize events (
-        # depending on the value set in updatePolicy.instanceRedistributionType). The
-        # possible values are EVEN and ANY. For EVEN the group attempts to preserve a
-        # balanced number of instances across zones. For ANY the group creates new
-        # instances where resources are available to fulfill the request; as a result,
-        # instances may be distributed unevenly across zones in this mode. The default
-        # value is EVEN.
+        # The distribution shape to which the group converges either proactively or on
+        # resize events (depending on the value set in updatePolicy.
+        # instanceRedistributionType).
         # Corresponds to the JSON property `targetShape`
         # @return [String]
         attr_accessor :target_shape
@@ -7908,9 +7936,11 @@ module Google
         # assigned. Methods for specifying an IP address:
         # * IPv4 dotted decimal, as in `100.1.2.3` * Full URL, as in https://www.
         # googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-
-        # name * Partial URL or by name, as in: * projects/project_id/regions/region/
-        # addresses/address-name * regions/region/addresses/address-name * global/
-        # addresses/address-name * address-name
+        # name * Partial URL or by name, as in:
+        # - projects/project_id/regions/region/addresses/address-name
+        # - regions/region/addresses/address-name
+        # - global/addresses/address-name
+        # - address-name
         # The loadBalancingScheme and the forwarding rule's target determine the type of
         # IP address that you can use. For detailed information, refer to [IP address
         # specifications](/load-balancing/docs/forwarding-rule-concepts#
@@ -7923,16 +7953,19 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
-        # The IP protocol to which this rule applies. For protocol forwarding, valid
-        # options are TCP, UDP, ESP, AH, SCTP or ICMP.
-        # For Internal TCP/UDP Load Balancing, the load balancing scheme is INTERNAL,
-        # and one of TCP or UDP are valid. For Traffic Director, the load balancing
-        # scheme is INTERNAL_SELF_MANAGED, and only TCPis valid. For Internal HTTP(S)
-        # Load Balancing, the load balancing scheme is INTERNAL_MANAGED, and only TCP is
-        # valid. For HTTP(S), SSL Proxy, and TCP Proxy Load Balancing, the load
-        # balancing scheme is EXTERNAL and only TCP is valid. For Network TCP/UDP Load
-        # Balancing, the load balancing scheme is EXTERNAL, and one of TCP or UDP is
-        # valid.
+        # The IP protocol to which this rule applies.
+        # For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP and ICMP.
+        # The valid IP protocols are different for different load balancing products:
+        # - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and
+        # one of TCP, UDP or ALL is valid.
+        # - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and
+        # only TCP is valid.
+        # - Internal HTTP(S) Load Balancing: The load balancing scheme is
+        # INTERNAL_MANAGED, and only TCP is valid.
+        # - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme
+        # is EXTERNAL and only TCP is valid.
+        # - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of
+        # TCP or UDP is valid.
         # Corresponds to the JSON property `IPProtocol`
         # @return [String]
         attr_accessor :ip_protocol
@@ -7957,9 +7990,9 @@ module Google
         attr_accessor :allow_global_access
         alias_method :allow_global_access?, :allow_global_access
       
-        # This field is only used for INTERNAL load balancing.
-        # For internal load balancing, this field identifies the BackendService resource
-        # to receive the matched traffic.
+        # Identifies the backend service to which the forwarding rule sends traffic.
+        # Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must
+        # be omitted for all other load balancer types.
         # Corresponds to the JSON property `backendService`
         # @return [String]
         attr_accessor :backend_service
@@ -8041,13 +8074,12 @@ module Google
         # - EXTERNAL is used for:
         # - Classic Cloud VPN gateways
         # - Protocol forwarding to VMs from an external IP address
-        # - The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/
-        # UDP
+        # - HTTP(S), SSL Proxy, TCP Proxy, and Network Load Balancing
         # - INTERNAL is used for:
         # - Protocol forwarding to VMs from an internal IP address
-        # - Internal TCP/UDP load balancers
+        # - Internal TCP/UDP Load Balancing
         # - INTERNAL_MANAGED is used for:
-        # - Internal HTTP(S) load balancers
+        # - Internal HTTP(S) Load Balancing
         # - INTERNAL_SELF_MANAGED is used for:
         # - Traffic Director
         # For more information about forwarding rules, refer to Forwarding rule concepts.
@@ -8086,9 +8118,9 @@ module Google
         attr_accessor :name
       
         # This field is not used for external load balancing.
-        # For internal load balancing, this field identifies the network that the load
-        # balanced IP should belong to for this Forwarding Rule. If this field is not
-        # specified, the default network will be used.
+        # For Internal TCP/UDP Load Balancing, this field identifies the network that
+        # the load balanced IP should belong to for this Forwarding Rule. If this field
+        # is not specified, the default network will be used.
         # For Private Service Connect forwarding rules that forward traffic to Google
         # APIs, a network must be provided.
         # Corresponds to the JSON property `network`
@@ -8105,19 +8137,17 @@ module Google
         # @return [String]
         attr_accessor :network_tier
       
-        # When the load balancing scheme is EXTERNAL, INTERNAL_SELF_MANAGED and
-        # INTERNAL_MANAGED, you can specify a port_range. Use with a forwarding rule
-        # that points to a target proxy or a target pool. Do not use with a forwarding
-        # rule that points to a backend service. This field is used along with the
-        # target field for TargetHttpProxy, TargetHttpsProxy, TargetSslProxy,
-        # TargetTcpProxy, TargetGrpcProxy, TargetVpnGateway, TargetPool, TargetInstance.
-        # Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed
-        # to ports in the specified range will be forwarded to target. Forwarding rules
-        # with the same [IPAddress, IPProtocol] pair must have disjoint port ranges.
+        # This field can be used only if: * Load balancing scheme is one of EXTERNAL,
+        # INTERNAL_SELF_MANAGED or INTERNAL_MANAGED, and * IPProtocol is one of TCP, UDP,
+        # or SCTP.
+        # Packets addressed to ports in the specified range will be forwarded to target
+        # or  backend_service. You can only use one of ports, port_range, or allPorts.
+        # The three are mutually exclusive. Forwarding rules with the same [IPAddress,
+        # IPProtocol] pair must have disjoint port ranges.
         # Some types of forwarding target have constraints on the acceptable ports:
         # - TargetHttpProxy: 80, 8080
         # - TargetHttpsProxy: 443
-        # - TargetGrpcProxy: Any ports
+        # - TargetGrpcProxy: no constraints
         # - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688,
         # 1883, 5222
         # - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688,
@@ -8127,16 +8157,17 @@ module Google
         # @return [String]
         attr_accessor :port_range
       
-        # This field is used along with the backend_service field for internal load
-        # balancing.
-        # When the load balancing scheme is INTERNAL, a list of ports can be configured,
-        # for example, ['80'], ['8000','9000']. Only packets addressed to these ports
-        # are forwarded to the backends configured with the forwarding rule.
-        # If the forwarding rule's loadBalancingScheme is INTERNAL, you can specify
-        # ports in one of the following ways:
-        # * A list of up to five ports, which can be non-contiguous * Keyword ALL, which
-        # causes the forwarding rule to forward traffic on any port of the forwarding
-        # rule's protocol.
+        # The ports field is only supported when the forwarding rule references a
+        # backend_service directly. Supported load balancing products are Internal TCP/
+        # UDP Load Balancing and Network Load Balancing. Only packets addressed to the
+        # specified list of ports are forwarded to backends.
+        # You can only use one of ports and port_range, or allPorts. The three are
+        # mutually exclusive.
+        # You can specify a list of up to five ports, which can be non-contiguous.
+        # For Internal TCP/UDP Load Balancing, if you specify allPorts, you should not
+        # specify ports.
+        # For more information, see [Port specifications](/load-balancing/docs/
+        # forwarding-rule-concepts#port_specifications).
         # Corresponds to the JSON property `ports`
         # @return [Array<String>]
         attr_accessor :ports
@@ -8156,6 +8187,8 @@ module Google
       
         # Service Directory resources to register this forwarding rule with. Currently,
         # only supports a single Service Directory resource.
+        # It is only supported for Internal TCP/UDP Load Balancing and Internal HTTP(S)
+        # Load Balancing.
         # Corresponds to the JSON property `serviceDirectoryRegistrations`
         # @return [Array<Google::Apis::ComputeBeta::ForwardingRuleServiceDirectoryRegistration>]
         attr_accessor :service_directory_registrations
@@ -9985,6 +10018,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :port
       
+        # 
+        # Corresponds to the JSON property `weight`
+        # @return [String]
+        attr_accessor :weight
+      
+        # 
+        # Corresponds to the JSON property `weightError`
+        # @return [String]
+        attr_accessor :weight_error
+      
         def initialize(**args)
            update!(**args)
         end
@@ -9996,6 +10039,8 @@ module Google
           @instance = args[:instance] if args.key?(:instance)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @port = args[:port] if args.key?(:port)
+          @weight = args[:weight] if args.key?(:weight)
+          @weight_error = args[:weight_error] if args.key?(:weight_error)
         end
       end
       
@@ -11759,6 +11804,15 @@ module Google
       class Instance
         include Google::Apis::Core::Hashable
       
+        # Specifies options for controlling advanced machine features. Options that
+        # would traditionally be configured in a BIOS belong here. Features that require
+        # operating system support may have corresponding entries in the GuestOsFeatures
+        # of an Image (e.g., whether or not the OS in the Image supports nested
+        # virtualization being enabled or disabled).
+        # Corresponds to the JSON property `advancedMachineFeatures`
+        # @return [Google::Apis::ComputeBeta::AdvancedMachineFeatures]
+        attr_accessor :advanced_machine_features
+      
         # Allows this instance to send and receive packets with non-matching destination
         # or source IPs. This is required if you plan to use this instance to forward
         # routes. For more information, see Enabling IP Forwarding.
@@ -12031,6 +12085,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advanced_machine_features = args[:advanced_machine_features] if args.key?(:advanced_machine_features)
           @can_ip_forward = args[:can_ip_forward] if args.key?(:can_ip_forward)
           @confidential_instance_config = args[:confidential_instance_config] if args.key?(:confidential_instance_config)
           @cpu_platform = args[:cpu_platform] if args.key?(:cpu_platform)
@@ -12665,15 +12720,6 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::NamedPort>]
         attr_accessor :named_ports
       
-        # [Deprecated] This field is deprecated and will be removed. Prefer using the
-        # status field instead. Please contact cloud-updater-feedback@google.com to
-        # leave feedback if your workload relies on this field. [Output Only] The list
-        # of instance actions and the number of instances in this managed instance group
-        # that are pending for each of those actions.
-        # Corresponds to the JSON property `pendingActions`
-        # @return [Google::Apis::ComputeBeta::InstanceGroupManagerPendingActionsSummary]
-        attr_accessor :pending_actions
-      
         # [Output Only] The URL of the region where the managed instance group resides (
         # for regional resources).
         # Corresponds to the JSON property `region`
@@ -12761,7 +12807,6 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @named_ports = args[:named_ports] if args.key?(:named_ports)
-          @pending_actions = args[:pending_actions] if args.key?(:pending_actions)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @service_account = args[:service_account] if args.key?(:service_account)
@@ -13132,55 +13177,6 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
-        end
-      end
-      
-      # 
-      class InstanceGroupManagerPendingActionsSummary
-        include Google::Apis::Core::Hashable
-      
-        # [Deprecated] This field is deprecated and will be removed. Prefer using the
-        # status field instead. Please contact cloud-updater-feedback@google.com to
-        # leave feedback if your workload relies on this field. [Output Only] The number
-        # of instances in the managed instance group that are pending to be created.
-        # Corresponds to the JSON property `creating`
-        # @return [Fixnum]
-        attr_accessor :creating
-      
-        # [Deprecated] This field is deprecated and will be removed. Prefer using the
-        # status field instead. Please contact cloud-updater-feedback@google.com to
-        # leave feedback if your workload relies on this field. [Output Only] The number
-        # of instances in the managed instance group that are pending to be deleted.
-        # Corresponds to the JSON property `deleting`
-        # @return [Fixnum]
-        attr_accessor :deleting
-      
-        # [Deprecated] This field is deprecated and will be removed. Prefer using the
-        # status field instead. Please contact cloud-updater-feedback@google.com to
-        # leave feedback if your workload relies on this field. [Output Only] The number
-        # of instances in the managed instance group that are pending to be recreated.
-        # Corresponds to the JSON property `recreating`
-        # @return [Fixnum]
-        attr_accessor :recreating
-      
-        # [Deprecated] This field is deprecated and will be removed. Prefer using the
-        # status field instead. Please contact cloud-updater-feedback@google.com to
-        # leave feedback if your workload relies on this field. [Output Only] The number
-        # of instances in the managed instance group that are pending to be restarted.
-        # Corresponds to the JSON property `restarting`
-        # @return [Fixnum]
-        attr_accessor :restarting
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @creating = args[:creating] if args.key?(:creating)
-          @deleting = args[:deleting] if args.key?(:deleting)
-          @recreating = args[:recreating] if args.key?(:recreating)
-          @restarting = args[:restarting] if args.key?(:restarting)
         end
       end
       
@@ -14654,6 +14650,15 @@ module Google
       class InstanceProperties
         include Google::Apis::Core::Hashable
       
+        # Specifies options for controlling advanced machine features. Options that
+        # would traditionally be configured in a BIOS belong here. Features that require
+        # operating system support may have corresponding entries in the GuestOsFeatures
+        # of an Image (e.g., whether or not the OS in the Image supports nested
+        # virtualization being enabled or disabled).
+        # Corresponds to the JSON property `advancedMachineFeatures`
+        # @return [Google::Apis::ComputeBeta::AdvancedMachineFeatures]
+        attr_accessor :advanced_machine_features
+      
         # Enables instances created based on these properties to send packets with
         # source IP addresses other than their own and receive packets with destination
         # IP addresses other than their own. If these instances will be used as an IP
@@ -14773,6 +14778,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advanced_machine_features = args[:advanced_machine_features] if args.key?(:advanced_machine_features)
           @can_ip_forward = args[:can_ip_forward] if args.key?(:can_ip_forward)
           @confidential_instance_config = args[:confidential_instance_config] if args.key?(:confidential_instance_config)
           @description = args[:description] if args.key?(:description)
@@ -15841,6 +15847,13 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Maximum Transmission Unit (MTU), in bytes, of packets passing through this
+        # interconnect attachment. Only 1440 and 1500 are allowed. If not specified, the
+        # value will default to 1440.
+        # Corresponds to the JSON property `mtu`
+        # @return [Fixnum]
+        attr_accessor :mtu
+      
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
@@ -15968,6 +15981,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
+          @mtu = args[:mtu] if args.key?(:mtu)
           @name = args[:name] if args.key?(:name)
           @operational_status = args[:operational_status] if args.key?(:operational_status)
           @pairing_key = args[:pairing_key] if args.key?(:pairing_key)
@@ -18900,8 +18914,9 @@ module Google
       # Represents a collection of network endpoints.
       # A network endpoint group (NEG) defines how a set of endpoints should be
       # reached, whether they are reachable, and where they are located. For more
-      # information about using NEGs, see  Setting up internet NEGs,  Setting up zonal
-      # NEGs, or  Setting up serverless NEGs. (== resource_for `$api_version`.
+      # information about using NEGs, see  Setting up external HTTP(S) Load Balancing
+      # with internet NEGs,  Setting up zonal NEGs, or  Setting up external HTTP(S)
+      # Load Balancing with serverless NEGs. (== resource_for `$api_version`.
       # networkEndpointGroups ==) (== resource_for `$api_version`.
       # globalNetworkEndpointGroups ==) (== resource_for `$api_version`.
       # regionNetworkEndpointGroups ==)
@@ -19843,6 +19858,11 @@ module Google
         # @return [String]
         attr_accessor :network_ip
       
+        # The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+        # Corresponds to the JSON property `nicType`
+        # @return [String]
+        attr_accessor :nic_type
+      
         # The URL of the Subnetwork resource for this instance. If the network resource
         # is in legacy mode, do not specify this field. If the network is in auto subnet
         # mode, specifying the subnetwork is optional. If the network is in custom
@@ -19870,6 +19890,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @network_ip = args[:network_ip] if args.key?(:network_ip)
+          @nic_type = args[:nic_type] if args.key?(:nic_type)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
         end
       end
@@ -20357,6 +20378,12 @@ module Google
         # @return [String]
         attr_accessor :maintenance_policy
       
+        # Time window specified for daily maintenance operations. GCE's internal
+        # maintenance will be performed within this window.
+        # Corresponds to the JSON property `maintenanceWindow`
+        # @return [Google::Apis::ComputeBeta::NodeGroupMaintenanceWindow]
+        attr_accessor :maintenance_window
+      
         # The name of the resource, provided by the client when initially creating the
         # resource. The resource name must be 1-63 characters long, and comply with
         # RFC1035. Specifically, the name must be 1-63 characters long and match the
@@ -20407,6 +20434,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
+          @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
           @name = args[:name] if args.key?(:name)
           @node_template = args[:node_template] if args.key?(:node_template)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -20688,6 +20716,37 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Time window specified for daily maintenance operations. GCE's internal
+      # maintenance will be performed within this window.
+      class NodeGroupMaintenanceWindow
+        include Google::Apis::Core::Hashable
+      
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `maintenanceDuration`
+        # @return [Google::Apis::ComputeBeta::Duration]
+        attr_accessor :maintenance_duration
+      
+        # Start time of the window. This must be in UTC format that resolves to one of
+        # 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:
+        # 00 are valid.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maintenance_duration = args[:maintenance_duration] if args.key?(:maintenance_duration)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -27125,8 +27184,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The destination range of outgoing packets that this route applies to. Only
-        # IPv4 is supported.
+        # The destination range of outgoing packets that this route applies to. Both
+        # IPv4 and IPv6 are supported.
         # Corresponds to the JSON property `destRange`
         # @return [String]
         attr_accessor :dest_range
@@ -28873,15 +28932,14 @@ module Google
       
         # [Output Only] The last time the scaling schedule became active. Note: this is
         # a timestamp when a schedule actually became active, not when it was planned to
-        # do so. The timestamp is an RFC3339 string in RFC3339 text format.
+        # do so. The timestamp is in RFC3339 text format.
         # Corresponds to the JSON property `lastStartTime`
         # @return [String]
         attr_accessor :last_start_time
       
-        # [Output Only] The next time the scaling schedule will become active. Note:
+        # [Output Only] The next time the scaling schedule is to become active. Note:
         # this is a timestamp when a schedule is planned to run, but the actual time
-        # might be slightly different. The timestamp is an RFC3339 string in RFC3339
-        # text format.
+        # might be slightly different. The timestamp is in RFC3339 text format.
         # Corresponds to the JSON property `nextStartTime`
         # @return [String]
         attr_accessor :next_start_time
@@ -28917,6 +28975,12 @@ module Google
         # @return [Boolean]
         attr_accessor :automatic_restart
         alias_method :automatic_restart?, :automatic_restart
+      
+        # An opaque location hint used to place the instance close to other resources.
+        # This field is for use by internal tools that use the public API.
+        # Corresponds to the JSON property `locationHint`
+        # @return [String]
+        attr_accessor :location_hint
       
         # The minimum number of virtual CPUs this instance will consume when running on
         # a sole-tenant node.
@@ -28954,6 +29018,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @automatic_restart = args[:automatic_restart] if args.key?(:automatic_restart)
+          @location_hint = args[:location_hint] if args.key?(:location_hint)
           @min_node_cpus = args[:min_node_cpus] if args.key?(:min_node_cpus)
           @node_affinities = args[:node_affinities] if args.key?(:node_affinities)
           @on_host_maintenance = args[:on_host_maintenance] if args.key?(:on_host_maintenance)
@@ -29089,11 +29154,11 @@ module Google
         # User-provided name of the Organization security plicy. The name should be
         # unique in the organization in which the security policy is created. This
         # should only be used when SecurityPolicyType is FIREWALL. The name must be 1-63
-        # characters long, and comply with RFC1035. Specifically, the name must be 1-63
-        # characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`
-        # which means the first character must be a lowercase letter, and all following
-        # characters must be a dash, lowercase letter, or digit, except the last
-        # character, which cannot be a dash.
+        # characters long, and comply with https://www.ietf.org/rfc/rfc1035.txt.
+        # Specifically, the name must be 1-63 characters long and match the regular
+        # expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must
+        # be a lowercase letter, and all following characters must be a dash, lowercase
+        # letter, or digit, except the last character, which cannot be a dash.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -29480,7 +29545,7 @@ module Google
         # An integer indicating the priority of a rule in the list. The priority must be
         # a positive value between 0 and 2147483647. Rules are evaluated from highest to
         # lowest priority where 0 is the highest priority and 2147483647 is the lowest
-        # prority.
+        # priority.
         # Corresponds to the JSON property `priority`
         # @return [Fixnum]
         attr_accessor :priority
@@ -31614,12 +31679,14 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output Only] The state of the subnetwork, which can be one of READY or
-        # DRAINING. A subnetwork that is READY is ready to be used. The state of
-        # DRAINING is only applicable to subnetworks that have the purpose set to
+        # [Output Only] The state of the subnetwork, which can be one of the following
+        # values: READY: Subnetwork is created and ready to use DRAINING: only
+        # applicable to subnetworks that have the purpose set to
         # INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load
         # balancer are being drained. A subnetwork that is draining cannot be used or
-        # modified until it reaches a status of READY.
+        # modified until it reaches a status of READY CREATING: Subnetwork is
+        # provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is
+        # being updated
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
