@@ -300,6 +300,12 @@ module Google
         # @return [String]
         attr_accessor :aggregation_type
       
+        # The data state to be fetched, can be full or all, the latter including full
+        # and partial data.
+        # Corresponds to the JSON property `dataState`
+        # @return [String]
+        attr_accessor :data_state
+      
         # [Optional] Zero or more filters to apply to the dimension grouping values; for
         # example, 'query contains \"buy\"' to see only data where the query string
         # contains the substring \"buy\" (not case-sensitive). You can filter by a
@@ -354,6 +360,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @aggregation_type = args[:aggregation_type] if args.key?(:aggregation_type)
+          @data_state = args[:data_state] if args.key?(:data_state)
           @dimension_filter_groups = args[:dimension_filter_groups] if args.key?(:dimension_filter_groups)
           @dimensions = args[:dimensions] if args.key?(:dimensions)
           @end_date = args[:end_date] if args.key?(:end_date)
