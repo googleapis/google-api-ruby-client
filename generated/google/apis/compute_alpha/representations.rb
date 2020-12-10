@@ -1606,12 +1606,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class InstanceGroupManagerPendingActionsSummary
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class InstanceGroupManagerStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2734,6 +2728,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkPerformanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkRoutingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3695,6 +3695,12 @@ module Google
       end
       
       class RegionInstanceGroupsSetNamedPortsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstantSnapshotsExportRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5272,6 +5278,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UrlMapTestHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UrlMapValidationResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5603,6 +5615,12 @@ module Google
       end
       
       class Zone
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ZoneInstantSnapshotsExportRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8092,6 +8110,8 @@ module Google
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'
           property :port, as: 'port'
+          property :weight, as: 'weight'
+          property :weight_error, as: 'weightError'
         end
       end
       
@@ -8575,6 +8595,8 @@ module Google
           property :name, as: 'name'
           collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeAlpha::NetworkInterface, decorator: Google::Apis::ComputeAlpha::NetworkInterface::Representation
       
+          property :network_performance_config, as: 'networkPerformanceConfig', class: Google::Apis::ComputeAlpha::NetworkPerformanceConfig, decorator: Google::Apis::ComputeAlpha::NetworkPerformanceConfig::Representation
+      
           property :post_key_revocation_action_type, as: 'postKeyRevocationActionType'
           property :preserved_state_size_gb, :numeric_string => true, as: 'preservedStateSizeGb'
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
@@ -8752,8 +8774,6 @@ module Google
           property :name, as: 'name'
           collection :named_ports, as: 'namedPorts', class: Google::Apis::ComputeAlpha::NamedPort, decorator: Google::Apis::ComputeAlpha::NamedPort::Representation
       
-          property :pending_actions, as: 'pendingActions', class: Google::Apis::ComputeAlpha::InstanceGroupManagerPendingActionsSummary, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerPendingActionsSummary::Representation
-      
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
@@ -8859,16 +8879,6 @@ module Google
               property :value, as: 'value'
             end
           end
-        end
-      end
-      
-      class InstanceGroupManagerPendingActionsSummary
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :creating, as: 'creating'
-          property :deleting, as: 'deleting'
-          property :recreating, as: 'recreating'
-          property :restarting, as: 'restarting'
         end
       end
       
@@ -9318,6 +9328,8 @@ module Google
       
           property :min_cpu_platform, as: 'minCpuPlatform'
           collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeAlpha::NetworkInterface, decorator: Google::Apis::ComputeAlpha::NetworkInterface::Representation
+      
+          property :network_performance_config, as: 'networkPerformanceConfig', class: Google::Apis::ComputeAlpha::NetworkPerformanceConfig, decorator: Google::Apis::ComputeAlpha::NetworkPerformanceConfig::Representation
       
           property :post_key_revocation_action_type, as: 'postKeyRevocationActionType'
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
@@ -10822,6 +10834,7 @@ module Google
           property :internal_ipv6_prefix_length, as: 'internalIpv6PrefixLength'
           collection :ipv6_access_configs, as: 'ipv6AccessConfigs', class: Google::Apis::ComputeAlpha::AccessConfig, decorator: Google::Apis::ComputeAlpha::AccessConfig::Representation
       
+          property :ipv6_access_type, as: 'ipv6AccessType'
           property :ipv6_address, as: 'ipv6Address'
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -10881,6 +10894,14 @@ module Google
           property :peer_mtu, as: 'peerMtu'
           property :state, as: 'state'
           property :state_details, as: 'stateDetails'
+        end
+      end
+      
+      class NetworkPerformanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_ip_egress_bandwidth_tier, as: 'externalIpEgressBandwidthTier'
+          property :total_egress_bandwidth_tier, as: 'totalEgressBandwidthTier'
         end
       end
       
@@ -11053,6 +11074,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :duration, as: 'duration'
+          property :maintenance_duration, as: 'maintenanceDuration', class: Google::Apis::ComputeAlpha::Duration, decorator: Google::Apis::ComputeAlpha::Duration::Representation
+      
           property :start_time, as: 'startTime'
         end
       end
@@ -12106,6 +12129,7 @@ module Google
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
           property :ip_cidr_range, as: 'ipCidrRange'
+          property :is_live_migration, as: 'isLiveMigration'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :parent_prefix, as: 'parentPrefix'
@@ -12485,6 +12509,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instances, as: 'instances'
+          property :skip_inapplicable_instances, as: 'skipInapplicableInstances'
         end
       end
       
@@ -12610,6 +12635,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fingerprint, :base64 => true, as: 'fingerprint'
           collection :named_ports, as: 'namedPorts', class: Google::Apis::ComputeAlpha::NamedPort, decorator: Google::Apis::ComputeAlpha::NamedPort::Representation
+      
+        end
+      end
+      
+      class RegionInstantSnapshotsExportRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :export_params, as: 'exportParams', class: Google::Apis::ComputeAlpha::InstantSnapshotExportParams, decorator: Google::Apis::ComputeAlpha::InstantSnapshotExportParams::Representation
       
         end
       end
@@ -15337,8 +15370,14 @@ module Google
       class TestFailure
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :actual_output_url, as: 'actualOutputUrl'
+          property :actual_redirect_response_code, as: 'actualRedirectResponseCode'
           property :actual_service, as: 'actualService'
+          property :expected_output_url, as: 'expectedOutputUrl'
+          property :expected_redirect_response_code, as: 'expectedRedirectResponseCode'
           property :expected_service, as: 'expectedService'
+          collection :headers, as: 'headers', class: Google::Apis::ComputeAlpha::UrlMapTestHeader, decorator: Google::Apis::ComputeAlpha::UrlMapTestHeader::Representation
+      
           property :host, as: 'host'
           property :path, as: 'path'
         end
@@ -15487,10 +15526,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backend_service_weight, as: 'backendServiceWeight'
           property :description, as: 'description'
+          property :expected_output_url, as: 'expectedOutputUrl'
+          property :expected_redirect_response_code, as: 'expectedRedirectResponseCode'
           property :expected_url_redirect, as: 'expectedUrlRedirect'
+          collection :headers, as: 'headers', class: Google::Apis::ComputeAlpha::UrlMapTestHeader, decorator: Google::Apis::ComputeAlpha::UrlMapTestHeader::Representation
+      
           property :host, as: 'host'
           property :path, as: 'path'
           property :service, as: 'service'
+        end
+      end
+      
+      class UrlMapTestHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value'
         end
       end
       
@@ -16085,6 +16136,14 @@ module Google
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
           property :supports_pzs, as: 'supportsPzs'
+        end
+      end
+      
+      class ZoneInstantSnapshotsExportRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :export_params, as: 'exportParams', class: Google::Apis::ComputeAlpha::InstantSnapshotExportParams, decorator: Google::Apis::ComputeAlpha::InstantSnapshotExportParams::Representation
+      
         end
       end
       

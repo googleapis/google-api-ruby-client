@@ -9133,8 +9133,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Modifies the autohealing policies. [Deprecated] This method is deprecated.
-        # Please use Patch instead.
+        # Motifies the autohealing policy for the instances in this managed instance
+        # group. [Deprecated] This method is deprecated. Use instanceGroupManagers.patch
+        # instead.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -24907,9 +24908,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Insert or patch (for the ones that already exist) per-instance configs for the
-        # managed instance group. perInstanceConfig.instance serves as a key used to
-        # distinguish whether to perform insert or patch.
+        # Inserts or patches per-instance configs for the managed instance group.
+        # perInstanceConfig.name serves as a key used to distinguish whether to perform
+        # insert or patch.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -25089,7 +25090,8 @@ module Google
         end
         
         # Modifies the autohealing policy for the instances in this managed instance
-        # group. [Deprecated] This method is deprecated. Please use Patch instead.
+        # group. [Deprecated] This method is deprecated. Use regionInstanceGroupManagers.
+        # patch instead.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -25353,9 +25355,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Insert or update (for the ones that already exist) per-instance configs for
-        # the managed instance group. perInstanceConfig.instance serves as a key used to
-        # distinguish whether to perform insert or patch.
+        # Inserts or updates per-instance configs for the managed instance group.
+        # perInstanceConfig.name serves as a key used to distinguish whether to perform
+        # insert or patch.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -25826,7 +25828,7 @@ module Google
         #   The name of the zone for this request.
         # @param [String] instant_snapshot
         #   Name of the instant snapshot to export.
-        # @param [Google::Apis::ComputeAlpha::InstantSnapshotExportParams] instant_snapshot_export_params_object
+        # @param [Google::Apis::ComputeAlpha::RegionInstantSnapshotsExportRequest] region_instant_snapshots_export_request_object
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -25857,10 +25859,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def export_region_instant_snapshot(project, region, instant_snapshot, instant_snapshot_export_params_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def export_region_instant_snapshot(project, region, instant_snapshot, region_instant_snapshots_export_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'projects/{project}/regions/{region}/instantSnapshots/{instantSnapshot}/export', options)
-          command.request_representation = Google::Apis::ComputeAlpha::InstantSnapshotExportParams::Representation
-          command.request_object = instant_snapshot_export_params_object
+          command.request_representation = Google::Apis::ComputeAlpha::RegionInstantSnapshotsExportRequest::Representation
+          command.request_object = region_instant_snapshots_export_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
@@ -30575,7 +30577,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patches the specified policy with the data included in the request.
+        # Patches the specified policy with the data included in the request. This
+        # cannot be used to be update the rules in the policy. Please use the per rule
+        # methods like addRule, patchRule, and removeRule instead.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] security_policy
@@ -38402,7 +38406,7 @@ module Google
         #   The name of the zone for this request.
         # @param [String] instant_snapshot
         #   Name of the instant snapshot to export.
-        # @param [Google::Apis::ComputeAlpha::InstantSnapshotExportParams] instant_snapshot_export_params_object
+        # @param [Google::Apis::ComputeAlpha::ZoneInstantSnapshotsExportRequest] zone_instant_snapshots_export_request_object
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -38433,10 +38437,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def export_zone_instant_snapshot(project, zone, instant_snapshot, instant_snapshot_export_params_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def export_zone_instant_snapshot(project, zone, instant_snapshot, zone_instant_snapshots_export_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'projects/{project}/zones/{zone}/instantSnapshots/{instantSnapshot}/export', options)
-          command.request_representation = Google::Apis::ComputeAlpha::InstantSnapshotExportParams::Representation
-          command.request_object = instant_snapshot_export_params_object
+          command.request_representation = Google::Apis::ComputeAlpha::ZoneInstantSnapshotsExportRequest::Representation
+          command.request_object = zone_instant_snapshots_export_request_object
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
