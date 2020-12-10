@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/workflows
     module WorkflowsV1beta
       VERSION = 'V1beta'
-      REVISION = '20201008'
+      REVISION = '20201207'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

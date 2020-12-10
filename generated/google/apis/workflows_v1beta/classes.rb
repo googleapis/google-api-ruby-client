@@ -348,10 +348,10 @@ module Google
         attr_accessor :revision_create_time
       
         # Output only. The revision of the workflow. A new revision of a workflow is
-        # created as a result of updating the following fields of a workflow: - `
-        # source_code` - `service_account` The format is "000001-a4d", where the first 6
-        # characters define the zero-padded revision ordinal number. They are followed
-        # by a hyphen and 3 hexadecimal random characters.
+        # created as a result of updating the following properties of a workflow: -
+        # Service account - Workflow code to be executed The format is "000001-a4d",
+        # where the first 6 characters define the zero-padded revision ordinal number.
+        # They are followed by a hyphen and 3 hexadecimal random characters.
         # Corresponds to the JSON property `revisionId`
         # @return [String]
         attr_accessor :revision_id
