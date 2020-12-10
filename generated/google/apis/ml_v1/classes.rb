@@ -961,6 +961,33 @@ module Google
         end
       end
       
+      # Represents the config of disk options.
+      class GoogleCloudMlV1DiskConfig
+        include Google::Apis::Core::Hashable
+      
+        # Size in GB of the boot disk (default is 100GB).
+        # Corresponds to the JSON property `bootDiskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :boot_disk_size_gb
+      
+        # Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (
+        # Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk
+        # Drive).
+        # Corresponds to the JSON property `bootDiskType`
+        # @return [String]
+        attr_accessor :boot_disk_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boot_disk_size_gb = args[:boot_disk_size_gb] if args.key?(:boot_disk_size_gb)
+          @boot_disk_type = args[:boot_disk_type] if args.key?(:boot_disk_type)
+        end
+      end
+      
       # Represents a custom encryption key configuration that can be applied to a
       # resource.
       class GoogleCloudMlV1EncryptionConfig
@@ -2135,6 +2162,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :container_command
       
+        # Represents the config of disk options.
+        # Corresponds to the JSON property `diskConfig`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1DiskConfig]
+        attr_accessor :disk_config
+      
         # The Docker image to run on the replica. This image must be in Container
         # Registry. Learn more about [configuring custom containers](/ai-platform/
         # training/docs/distributed-training-containers).
@@ -2166,6 +2198,7 @@ module Google
           @accelerator_config = args[:accelerator_config] if args.key?(:accelerator_config)
           @container_args = args[:container_args] if args.key?(:container_args)
           @container_command = args[:container_command] if args.key?(:container_command)
+          @disk_config = args[:disk_config] if args.key?(:disk_config)
           @image_uri = args[:image_uri] if args.key?(:image_uri)
           @tpu_tf_version = args[:tpu_tf_version] if args.key?(:tpu_tf_version)
         end
@@ -2226,14 +2259,14 @@ module Google
         # and port to check that the container is healthy. Read more about [health
         # checks](/ai-platform/prediction/docs/custom-container-requirements#checks).
         # For example, if you set this field to `/bar`, then AI Platform Prediction
-        # intermittently sends a GET request to the following URL on the container:
-        # localhost:PORT/bar PORT refers to the first value of Version.container.ports.
-        # If you don't specify this field, it defaults to the following value: /v1/
-        # models/MODEL/versions/VERSION The placeholders in this value are replaced as
-        # follows: * MODEL: The name of the parent Model. This does not include the "
-        # projects/PROJECT_ID/models/" prefix that the API returns in output; it is the
-        # bare model name, as provided to projects.models.create. * VERSION: The name of
-        # the model version. This does not include the "projects/PROJECT_ID/models/MODEL/
+        # intermittently sends a GET request to the `/bar` path on the port of your
+        # container specified by the first value of Version.container.ports. If you don'
+        # t specify this field, it defaults to the following value: /v1/models/ MODEL/
+        # versions/VERSION The placeholders in this value are replaced as follows: *
+        # MODEL: The name of the parent Model. This does not include the "projects/
+        # PROJECT_ID/models/" prefix that the API returns in output; it is the bare
+        # model name, as provided to projects.models.create. * VERSION: The name of the
+        # model version. This does not include the "projects/PROJECT_ID /models/MODEL/
         # versions/" prefix that the API returns in output; it is the bare version name,
         # as provided to projects.models.versions.create.
         # Corresponds to the JSON property `health`
@@ -2245,16 +2278,16 @@ module Google
         # container's IP address and port. AI Platform Prediction then returns the
         # container's response in the API response. For example, if you set this field
         # to `/foo`, then when AI Platform Prediction receives a prediction request, it
-        # forwards the request body in a POST request to the following URL on the
-        # container: localhost:PORT/foo PORT refers to the first value of Version.
-        # container.ports. If you don't specify this field, it defaults to the following
-        # value: /v1/models/MODEL/versions/VERSION:predict The placeholders in this
-        # value are replaced as follows: * MODEL: The name of the parent Model. This
-        # does not include the "projects/PROJECT_ID/models/" prefix that the API returns
-        # in output; it is the bare model name, as provided to projects.models.create. *
-        # VERSION: The name of the model version. This does not include the "projects/
-        # PROJECT_ID/models/MODEL/versions/" prefix that the API returns in output; it
-        # is the bare version name, as provided to projects.models.versions.create.
+        # forwards the request body in a POST request to the `/foo` path on the port of
+        # your container specified by the first value of Version.container.ports. If you
+        # don't specify this field, it defaults to the following value: /v1/models/MODEL/
+        # versions/VERSION:predict The placeholders in this value are replaced as
+        # follows: * MODEL: The name of the parent Model. This does not include the "
+        # projects/PROJECT_ID/models/" prefix that the API returns in output; it is the
+        # bare model name, as provided to projects.models.create. * VERSION: The name of
+        # the model version. This does not include the "projects/PROJECT_ID/models/MODEL/
+        # versions/" prefix that the API returns in output; it is the bare version name,
+        # as provided to projects.models.versions.create.
         # Corresponds to the JSON property `predict`
         # @return [String]
         attr_accessor :predict

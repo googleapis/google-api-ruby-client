@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudMlV1DiskConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudMlV1EncryptionConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -786,6 +792,14 @@ module Google
         end
       end
       
+      class GoogleCloudMlV1DiskConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :boot_disk_size_gb, as: 'bootDiskSizeGb'
+          property :boot_disk_type, as: 'bootDiskType'
+        end
+      end
+      
       class GoogleCloudMlV1EncryptionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1081,6 +1095,8 @@ module Google
       
           collection :container_args, as: 'containerArgs'
           collection :container_command, as: 'containerCommand'
+          property :disk_config, as: 'diskConfig', class: Google::Apis::MlV1::GoogleCloudMlV1DiskConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1DiskConfig::Representation
+      
           property :image_uri, as: 'imageUri'
           property :tpu_tf_version, as: 'tpuTfVersion'
         end
