@@ -435,15 +435,14 @@ module Google
       class MatchingCriteria
         include Google::Apis::Core::Hashable
       
-        # Required. The name of a CloudEvents atrribute. Currently, only a subset of
+        # Required. The name of a CloudEvents attribute. Currently, only a subset of
         # attributes can be specified. All triggers MUST provide a matching criteria for
-        # attribute 'type'. Event types specify what event type has attributes are
-        # allowed based on
+        # the 'type' attribute.
         # Corresponds to the JSON property `attribute`
         # @return [String]
         attr_accessor :attribute
       
-        # Required. The value for the attribute
+        # Required. The value for the attribute.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -676,14 +675,14 @@ module Google
       
         # The name of the Pub/Sub subscription created and managed by Eventarc system as
         # a transport for the event delivery. The value must be in the form of `projects/
-        # `PROJECT_ID`/subscriptions/`SUBSCRIPTION_NAME`
+        # `PROJECT_ID`/subscriptions/`SUBSCRIPTION_NAME``.
         # Corresponds to the JSON property `subscription`
         # @return [String]
         attr_accessor :subscription
       
         # The name of the Pub/Sub topic created and managed by Eventarc system as a
         # transport for the event delivery. The value must be in the form of `projects/`
-        # PROJECT_ID`/topics/`TOPIC_NAME`
+        # PROJECT_ID`/topics/`TOPIC_NAME``.
         # Corresponds to the JSON property `topic`
         # @return [String]
         attr_accessor :topic
@@ -873,14 +872,14 @@ module Google
         attr_accessor :etag
       
         # Required. The criteria by which events are filtered. Only events that match
-        # with this critera will be sent to the destinations.
+        # with this criteria will be sent to the destination.
         # Corresponds to the JSON property `matchingCriteria`
         # @return [Array<Google::Apis::EventarcV1beta1::MatchingCriteria>]
         attr_accessor :matching_criteria
       
         # Required. The resource name of the trigger. Must be unique within the location
-        # on the project. Format: projects/`project`/locations/`location`/triggers/`
-        # trigger`
+        # on the project and must in `projects/`project`/locations/`location`/triggers/`
+        # trigger`` format.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
