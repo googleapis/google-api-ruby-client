@@ -307,7 +307,7 @@ module Google
         #   The name of the project whose datasets should be listed. For example, `
         #   projects/`project_id`/locations/`location_id``.
         # @param [Fixnum] page_size
-        #   The maximum number of items to return. Capped to 100 if not specified. May not
+        #   The maximum number of items to return. If not specified, 100 is used. May not
         #   be larger than 1000.
         # @param [String] page_token
         #   The next_page_token value returned from a previous List request, if any.
@@ -716,8 +716,8 @@ module Google
         #   google.com/appengine/docs/standard/python/search/query_strings Only filtering
         #   on labels is supported. For example, `labels.key=value`.
         # @param [Fixnum] page_size
-        #   Limit on the number of DICOM stores to return in a single response. If zero
-        #   the default page size of 100 is used.
+        #   Limit on the number of DICOM stores to return in a single response. If not
+        #   specified, 100 is used. May not be larger than 1000.
         # @param [String] page_token
         #   The next_page_token value returned from the previous List request, if any.
         # @param [String] fields
@@ -2042,8 +2042,8 @@ module Google
         #   google.com/appengine/docs/standard/python/search/query_strings Only filtering
         #   on labels is supported, for example `labels.key=value`.
         # @param [Fixnum] page_size
-        #   Limit on the number of FHIR stores to return in a single response. If zero the
-        #   default page size of 100 is used.
+        #   Limit on the number of FHIR stores to return in a single response. If not
+        #   specified, 100 is used. May not be larger than 1000.
         # @param [String] page_token
         #   The next_page_token value returned from the previous List request, if any.
         # @param [String] fields
@@ -2214,7 +2214,8 @@ module Google
         # @param [String] name
         #   Name of the `Patient` resource for which the information is required.
         # @param [Fixnum] _count
-        #   Maximum number of resources in a page. Defaults to 100.
+        #   Maximum number of resources in a page. If not specified, 100 is used. May not
+        #   be larger than 1000.
         # @param [String] _page_token
         #   Used to retrieve the next or previous page of results when using pagination.
         #   Set `_page_token` to the value of _page_token set in next or previous page
@@ -2515,8 +2516,8 @@ module Google
         #   entire year: `_at=2019` * An entire month: `_at=2019-01` * A specific day: `
         #   _at=2019-01-20` * A specific second: `_at=2018-12-31T23:59:58Z`
         # @param [Fixnum] _count
-        #   The maximum number of search results on a page. Default value is 100. Maximum
-        #   value is 1,000.
+        #   The maximum number of search results on a page. If not specified, 100 is used.
+        #   May not be larger than 1000.
         # @param [String] _page_token
         #   Used to retrieve the first, previous, next, or last page of resource versions
         #   when using pagination. Value should be set to the value of `_page_token` set
@@ -2956,8 +2957,8 @@ module Google
         #   google.com/appengine/docs/standard/python/search/query_strings Only filtering
         #   on labels is supported. For example, `labels.key=value`.
         # @param [Fixnum] page_size
-        #   Limit on the number of HL7v2 stores to return in a single response. If zero
-        #   the default page size of 100 is used.
+        #   Limit on the number of HL7v2 stores to return in a single response. If not
+        #   specified, 100 is used. May not be larger than 1000.
         # @param [String] page_token
         #   The next_page_token value returned from the previous List request, if any.
         # @param [String] fields
@@ -3273,8 +3274,8 @@ module Google
         #   cloud.google.com/apis/design/design_patterns#sorting_order Fields available
         #   for ordering are: * `send_time`
         # @param [Fixnum] page_size
-        #   Limit on the number of messages to return in a single response. If zero the
-        #   default page size of 100 is used.
+        #   Limit on the number of messages to return in a single response. If not
+        #   specified, 100 is used. May not be larger than 1000.
         # @param [String] page_token
         #   The next_page_token value returned from the previous List request, if any.
         # @param [String] view
