@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdvancedMachineFeatures
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AliasIpRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1486,12 +1492,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class InstanceGroupManagerPendingActionsSummary
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class InstanceGroupManagerStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2586,6 +2586,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeGroupMaintenanceWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -5334,6 +5340,13 @@ module Google
         end
       end
       
+      class AdvancedMachineFeatures
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_nested_virtualization, as: 'enableNestedVirtualization'
+        end
+      end
+      
       class AliasIpRange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7322,6 +7335,8 @@ module Google
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'
           property :port, as: 'port'
+          property :weight, as: 'weight'
+          property :weight_error, as: 'weightError'
         end
       end
       
@@ -7714,6 +7729,8 @@ module Google
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_machine_features, as: 'advancedMachineFeatures', class: Google::Apis::ComputeBeta::AdvancedMachineFeatures, decorator: Google::Apis::ComputeBeta::AdvancedMachineFeatures::Representation
+      
           property :can_ip_forward, as: 'canIpForward'
           property :confidential_instance_config, as: 'confidentialInstanceConfig', class: Google::Apis::ComputeBeta::ConfidentialInstanceConfig, decorator: Google::Apis::ComputeBeta::ConfidentialInstanceConfig::Representation
       
@@ -7912,8 +7929,6 @@ module Google
           property :name, as: 'name'
           collection :named_ports, as: 'namedPorts', class: Google::Apis::ComputeBeta::NamedPort, decorator: Google::Apis::ComputeBeta::NamedPort::Representation
       
-          property :pending_actions, as: 'pendingActions', class: Google::Apis::ComputeBeta::InstanceGroupManagerPendingActionsSummary, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerPendingActionsSummary::Representation
-      
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :service_account, as: 'serviceAccount'
@@ -8016,16 +8031,6 @@ module Google
               property :value, as: 'value'
             end
           end
-        end
-      end
-      
-      class InstanceGroupManagerPendingActionsSummary
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :creating, as: 'creating'
-          property :deleting, as: 'deleting'
-          property :recreating, as: 'recreating'
-          property :restarting, as: 'restarting'
         end
       end
       
@@ -8454,6 +8459,8 @@ module Google
       class InstanceProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_machine_features, as: 'advancedMachineFeatures', class: Google::Apis::ComputeBeta::AdvancedMachineFeatures, decorator: Google::Apis::ComputeBeta::AdvancedMachineFeatures::Representation
+      
           property :can_ip_forward, as: 'canIpForward'
           property :confidential_instance_config, as: 'confidentialInstanceConfig', class: Google::Apis::ComputeBeta::ConfidentialInstanceConfig, decorator: Google::Apis::ComputeBeta::ConfidentialInstanceConfig::Representation
       
@@ -8750,6 +8757,7 @@ module Google
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
+          property :mtu, as: 'mtu'
           property :name, as: 'name'
           property :operational_status, as: 'operationalStatus'
           property :pairing_key, as: 'pairingKey'
@@ -9756,6 +9764,7 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :network_ip, as: 'networkIP'
+          property :nic_type, as: 'nicType'
           property :subnetwork, as: 'subnetwork'
         end
       end
@@ -9885,6 +9894,8 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :maintenance_policy, as: 'maintenancePolicy'
+          property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::ComputeBeta::NodeGroupMaintenanceWindow, decorator: Google::Apis::ComputeBeta::NodeGroupMaintenanceWindow::Representation
+      
           property :name, as: 'name'
           property :node_template, as: 'nodeTemplate'
           property :self_link, as: 'selfLink'
@@ -9965,6 +9976,15 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class NodeGroupMaintenanceWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :maintenance_duration, as: 'maintenanceDuration', class: Google::Apis::ComputeBeta::Duration, decorator: Google::Apis::ComputeBeta::Duration::Representation
+      
+          property :start_time, as: 'startTime'
         end
       end
       
@@ -12088,6 +12108,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :automatic_restart, as: 'automaticRestart'
+          property :location_hint, as: 'locationHint'
           property :min_node_cpus, as: 'minNodeCpus'
           collection :node_affinities, as: 'nodeAffinities', class: Google::Apis::ComputeBeta::SchedulingNodeAffinity, decorator: Google::Apis::ComputeBeta::SchedulingNodeAffinity::Representation
       
