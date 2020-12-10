@@ -272,6 +272,9 @@ module Google
         # @param [Google::Apis::EventarcV1beta1::Trigger] trigger_object
         # @param [String] trigger_id
         #   Required. The user-provided ID to be assigned to the trigger.
+        # @param [Boolean] validate_only
+        #   Required. If set, validate the request and preview the review, but do not
+        #   actually post it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -289,7 +292,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_trigger(parent, trigger_object = nil, trigger_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_trigger(parent, trigger_object = nil, trigger_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1beta1/{+parent}/triggers', options)
           command.request_representation = Google::Apis::EventarcV1beta1::Trigger::Representation
           command.request_object = trigger_object
@@ -297,6 +300,7 @@ module Google
           command.response_class = Google::Apis::EventarcV1beta1::Operation
           command.params['parent'] = parent unless parent.nil?
           command.query['triggerId'] = trigger_id unless trigger_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -305,9 +309,15 @@ module Google
         # Delete a single trigger.
         # @param [String] name
         #   Required. The name of the trigger to be deleted.
+        # @param [Boolean] allow_missing
+        #   If set to true, and the trigger is not found, the request will succeed but no
+        #   action will be taken on the server.
         # @param [String] etag
         #   If provided, the trigger will only be deleted if the etag matches the current
         #   etag on the resource.
+        # @param [Boolean] validate_only
+        #   Required. If set, validate the request and preview the review, but do not
+        #   actually post it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -325,12 +335,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_trigger(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_trigger(name, allow_missing: nil, etag: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::EventarcV1beta1::Operation::Representation
           command.response_class = Google::Apis::EventarcV1beta1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['etag'] = etag unless etag.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -456,13 +468,19 @@ module Google
         # Update a single trigger.
         # @param [String] name
         #   Required. The resource name of the trigger. Must be unique within the location
-        #   on the project. Format: projects/`project`/locations/`location`/triggers/`
-        #   trigger`
+        #   on the project and must in `projects/`project`/locations/`location`/triggers/`
+        #   trigger`` format.
         # @param [Google::Apis::EventarcV1beta1::Trigger] trigger_object
+        # @param [Boolean] allow_missing
+        #   If set to true, and the trigger is not found, a new trigger will be created.
+        #   In this situation, `update_mask` is ignored.
         # @param [String] update_mask
         #   The fields to be updated; only fields explicitly provided will be updated. If
         #   no field mask is provided, all provided fields in the request will be updated.
         #   To update all fields, provide a field mask of "*".
+        # @param [Boolean] validate_only
+        #   Required. If set, validate the request and preview the review, but do not
+        #   actually post it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -480,14 +498,16 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_trigger(name, trigger_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_trigger(name, trigger_object = nil, allow_missing: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::EventarcV1beta1::Trigger::Representation
           command.request_object = trigger_object
           command.response_representation = Google::Apis::EventarcV1beta1::Operation::Representation
           command.response_class = Google::Apis::EventarcV1beta1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
