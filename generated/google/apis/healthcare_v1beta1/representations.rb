@@ -1090,7 +1090,6 @@ module Google
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :binding_id, as: 'bindingId'
           property :condition, as: 'condition', class: Google::Apis::HealthcareV1beta1::Expr, decorator: Google::Apis::HealthcareV1beta1::Expr::Representation
       
           collection :members, as: 'members'
@@ -1152,6 +1151,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :consent_artifact, as: 'consentArtifact'
           property :expire_time, as: 'expireTime'
+          hash :metadata, as: 'metadata'
           property :name, as: 'name'
           collection :policies, as: 'policies', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1ConsentPolicy, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1ConsentPolicy::Representation
       
@@ -1459,6 +1459,8 @@ module Google
       class ExportResourcesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :_since, as: '_since'
+          property :_type, as: '_type'
           property :bigquery_destination, as: 'bigqueryDestination', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirBigQueryDestination, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirBigQueryDestination::Representation
       
           property :gcs_destination, as: 'gcsDestination', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsDestination, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsDestination::Representation
