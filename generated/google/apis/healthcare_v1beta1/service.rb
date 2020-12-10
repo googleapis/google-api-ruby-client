@@ -307,7 +307,7 @@ module Google
         #   The name of the project whose datasets should be listed. For example, `
         #   projects/`project_id`/locations/`location_id``.
         # @param [Fixnum] page_size
-        #   The maximum number of items to return. Capped to 100 if not specified. May not
+        #   The maximum number of items to return. If not specified, 100 is used. May not
         #   be larger than 1000.
         # @param [String] page_token
         #   The next_page_token value returned from a previous List request, if any.
@@ -718,7 +718,7 @@ module Google
         #   on labels is supported, for example `labels.key=value`.
         # @param [Fixnum] page_size
         #   Limit on the number of Annotation stores to return in a single response. If
-        #   zero the default page size of 100 is used.
+        #   not specified, 100 is used. May not be larger than 1000.
         # @param [String] page_token
         #   The next_page_token value returned from the previous List request, if any.
         # @param [String] fields
@@ -974,8 +974,8 @@ module Google
         #   matches("annotation", "some-content")`. - `type("text")`, `type("image")`, `
         #   type("resource")`. Filter on the type of annotation `data`.
         # @param [Fixnum] page_size
-        #   Limit on the number of Annotations to return in a single response. If zero the
-        #   default page size of 100 is used.
+        #   Limit on the number of Annotations to return in a single response. If not
+        #   specified, 100 is used. May not be larger than 1000.
         # @param [String] page_token
         #   The next_page_token value returned from the previous List request, if any.
         # @param [String] view
@@ -1272,8 +1272,8 @@ module Google
         #   cloud.google.com/appengine/docs/standard/python/search/query_strings. Only
         #   filtering on labels is supported. For example, `labels.key=value`.
         # @param [Fixnum] page_size
-        #   Limit on the number of Consent stores to return in a single response. If zero
-        #   the default page size of 100 is used.
+        #   Limit on the number of Consent stores to return in a single response. If not
+        #   specified, 100 is used. May not be larger than 1000.
         # @param [String] page_token
         #   Token to retrieve the next page of results or empty to get the first page.
         # @param [String] fields
@@ -1581,7 +1581,7 @@ module Google
         #   field available for filtering is `category`.
         # @param [Fixnum] page_size
         #   Limit on the number of attribute definitions to return in a single response.
-        #   If zero the default page size of 100 is used.
+        #   If not specified, 100 is used. May not be larger than 1000.
         # @param [String] page_token
         #   Token to retrieve the next page of results or empty to get the first page.
         # @param [String] fields
@@ -1760,7 +1760,7 @@ module Google
         #   fields available for filtering are: - user_id - consent_content_version
         # @param [Fixnum] page_size
         #   Limit on the number of consent artifacts to return in a single response. If
-        #   zero the default page size of 100 is used.
+        #   not specified, 100 is used. May not be larger than 1000.
         # @param [String] page_token
         #   The next_page_token value returned from the previous List request, if any.
         # @param [String] fields
@@ -1980,10 +1980,11 @@ module Google
         #   Restricts the consents returned to those matching a filter. Syntax: https://
         #   cloud.google.com/appengine/docs/standard/python/search/query_strings The
         #   fields available for filtering are: - user_id - consent_artifact - state -
-        #   revision_create_time
+        #   revision_create_time - metadata. For example, `Metadata("key")="value"` or `
+        #   HasMetadata("key")`.
         # @param [Fixnum] page_size
-        #   Limit on the number of consents to return in a single response. If zero the
-        #   default page size of 100 is used.
+        #   Limit on the number of consents to return in a single response. If not
+        #   specified, 100 is used. May not be larger than 1000.
         # @param [String] page_token
         #   The next_page_token value returned from the previous List request, if any.
         # @param [String] fields
@@ -2025,8 +2026,8 @@ module Google
         #   functions available for filtering are: - user_id - consent_artifact - state -
         #   revision_create_time
         # @param [Fixnum] page_size
-        #   Limit on the number of revisions to return in a single response. If zero the
-        #   default page size of 100 is used.
+        #   Limit on the number of revisions to return in a single response. If not
+        #   specified, 100 is used. May not be larger than 1000.
         # @param [String] page_token
         #   Token to retrieve the next page of results or empty if there are no more
         #   results in the list.
@@ -2319,7 +2320,7 @@ module Google
         #   archive_time
         # @param [Fixnum] page_size
         #   Limit on the number of user data mappings to return in a single response. If
-        #   zero the default page size of 100 is used.
+        #   not specified, 100 is used. May not be larger than 1000.
         # @param [String] page_token
         #   Token to retrieve the next page of results or empty to get the first page.
         # @param [String] fields
@@ -2655,8 +2656,8 @@ module Google
         #   google.com/appengine/docs/standard/python/search/query_strings Only filtering
         #   on labels is supported. For example, `labels.key=value`.
         # @param [Fixnum] page_size
-        #   Limit on the number of DICOM stores to return in a single response. If zero
-        #   the default page size of 100 is used.
+        #   Limit on the number of DICOM stores to return in a single response. If not
+        #   specified, 100 is used. May not be larger than 1000.
         # @param [String] page_token
         #   The next_page_token value returned from the previous List request, if any.
         # @param [String] fields
@@ -2978,13 +2979,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # DeleteStudyAsync deletes all instances within the given study using an
-        # operation. Delete requests are equivalent to the GET requests specified in the
-        # Retrieve transaction. The method returns an Operation which will be marked
-        # successful when the deletion is complete. Warning: Inserting instances into a
-        # study while a delete operation is running for that study could result in the
-        # new instances not appearing in search results until the deletion operation
-        # finishes.
+        # DeleteStudyAsync deletes all instances within the given study using a long
+        # running operation. The method returns an Operation which will be marked
+        # successful when the deletion is complete. Warning: If you insert instances
+        # into a study while a delete operation is running for that study, the instances
+        # you insert might not appear in search results until after the deletion
+        # operation finishes.
         # @param [String] parent
         # @param [String] dicom_web_path
         #   The path of the DeleteStudy request. For example, `studies/`study_uid``.
@@ -3237,11 +3237,10 @@ module Google
         end
         
         # DeleteSeriesAsync deletes all instances within the given study and series
-        # using an operation. Delete requests are equivalent to the GET requests
-        # specified in the Retrieve transaction. The method returns an Operation which
-        # will be marked successful when the deletion is complete. Warning: Inserting
-        # instances into a series while a delete operation is running for that series
-        # could result in the new instances not appearing in search results until the
+        # using a long running operation. The method returns an Operation which will be
+        # marked successful when the deletion is complete. Warning: If you insert
+        # instances into a series while a delete operation is running for that series,
+        # the instances you insert might not appear in search results until after the
         # deletion operation finishes.
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example, `projects/`
@@ -3981,8 +3980,8 @@ module Google
         #   google.com/appengine/docs/standard/python/search/query_strings Only filtering
         #   on labels is supported, for example `labels.key=value`.
         # @param [Fixnum] page_size
-        #   Limit on the number of FHIR stores to return in a single response. If zero the
-        #   default page size of 100 is used.
+        #   Limit on the number of FHIR stores to return in a single response. If not
+        #   specified, 100 is used. May not be larger than 1000.
         # @param [String] page_token
         #   The next_page_token value returned from the previous List request, if any.
         # @param [String] fields
@@ -4317,7 +4316,8 @@ module Google
         # @param [String] name
         #   Name of the `Patient` resource for which the information is required.
         # @param [Fixnum] _count
-        #   Maximum number of resources in a page. Defaults to 100.
+        #   Maximum number of resources in a page. If not specified, 100 is used. May not
+        #   be larger than 1000.
         # @param [String] _page_token
         #   Used to retrieve the next or previous page of results when using pagination.
         #   Set `_page_token` to the value of _page_token set in next or previous page
@@ -4806,8 +4806,8 @@ module Google
         #   entire year: `_at=2019` * An entire month: `_at=2019-01` * A specific day: `
         #   _at=2019-01-20` * A specific second: `_at=2018-12-31T23:59:58Z`
         # @param [Fixnum] _count
-        #   The maximum number of search results on a page. Default value is 100. Maximum
-        #   value is 1,000.
+        #   The maximum number of search results on a page. If not specified, 100 is used.
+        #   May not be larger than 1000.
         # @param [String] _page_token
         #   Used to retrieve the first, previous, next, or last page of resource versions
         #   when using pagination. Value should be set to the value of `_page_token` set
@@ -5343,8 +5343,8 @@ module Google
         #   google.com/appengine/docs/standard/python/search/query_strings Only filtering
         #   on labels is supported. For example, `labels.key=value`.
         # @param [Fixnum] page_size
-        #   Limit on the number of HL7v2 stores to return in a single response. If zero
-        #   the default page size of 100 is used.
+        #   Limit on the number of HL7v2 stores to return in a single response. If not
+        #   specified, 100 is used. May not be larger than 1000.
         # @param [String] page_token
         #   The next_page_token value returned from the previous List request, if any.
         # @param [String] fields
@@ -5660,8 +5660,8 @@ module Google
         #   cloud.google.com/apis/design/design_patterns#sorting_order Fields available
         #   for ordering are: * `send_time`
         # @param [Fixnum] page_size
-        #   Limit on the number of messages to return in a single response. If zero the
-        #   default page size of 100 is used.
+        #   Limit on the number of messages to return in a single response. If not
+        #   specified, 100 is used. May not be larger than 1000.
         # @param [String] page_token
         #   The next_page_token value returned from the previous List request, if any.
         # @param [String] view

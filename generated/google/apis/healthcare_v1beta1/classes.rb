@@ -438,11 +438,6 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # 
-        # Corresponds to the JSON property `bindingId`
-        # @return [String]
-        attr_accessor :binding_id
-      
         # Represents a textual expression in the Common Expression Language (CEL) syntax.
         # CEL is a C-like expression language. The syntax and semantics of CEL are
         # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -504,7 +499,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @binding_id = args[:binding_id] if args.key?(:binding_id)
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
@@ -589,7 +583,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :request_attributes
       
-        # The view for CheckDataAccessResponse.
+        # The view for CheckDataAccessResponse. If unspecified, defaults to `BASIC` and
+        # returns `consented` as `TRUE` or `FALSE`.
         # Corresponds to the JSON property `responseView`
         # @return [String]
         attr_accessor :response_view
@@ -670,6 +665,18 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
+        # User-supplied key-value pairs used to organize consent resources. Metadata
+        # keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of
+        # maximum 128 bytes - begin with a letter - consist of up to 63 characters
+        # including lowercase letters, numeric characters, underscores, and dashes
+        # Metadata values must be: - be between 1 and 63 characters long - have a UTF-8
+        # encoding of maximum 128 bytes - consist of up to 63 characters including
+        # lowercase letters, numeric characters, underscores, and dashes No more than 64
+        # metadata entries can be associated with a given consent.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
         # Resource name of the Consent, of the form `projects/`project_id`/locations/`
         # location_id`/datasets/`dataset_id`/consentStores/`consent_store_id`/consents/`
         # consent_id``.
@@ -718,6 +725,7 @@ module Google
         def update!(**args)
           @consent_artifact = args[:consent_artifact] if args.key?(:consent_artifact)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @policies = args[:policies] if args.key?(:policies)
           @revision_create_time = args[:revision_create_time] if args.key?(:revision_create_time)
@@ -1518,7 +1526,7 @@ module Google
         attr_accessor :consent_list
       
         # Limit on the number of user data mappings to return in a single response. If
-        # zero the default page size of 100 is used.
+        # not specified, 100 is used. May not be larger than 1000.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
@@ -1539,7 +1547,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :resource_attributes
       
-        # The view for EvaluateUserConsentsResponse.
+        # The view for EvaluateUserConsentsResponse. If unspecified, defaults to `BASIC`
+        # and returns `consented` as `TRUE` or `FALSE`.
         # Corresponds to the JSON property `responseView`
         # @return [String]
         attr_accessor :response_view
@@ -1726,6 +1735,20 @@ module Google
       class ExportResourcesRequest
         include Google::Apis::Core::Hashable
       
+        # If provided, only resources updated after this time are exported. The time
+        # uses the format YYYY-MM-DDThh:mm:ss.sss+zz:zz. For example, `2015-02-07T13:28:
+        # 17.239+02:00` or `2017-01-01T00:00:00Z`. The time must be specified to the
+        # second and include a time zone.
+        # Corresponds to the JSON property `_since`
+        # @return [String]
+        attr_accessor :_since
+      
+        # String of comma-delimited FHIR resource types. If provided, only resources of
+        # the specified resource type(s) are exported.
+        # Corresponds to the JSON property `_type`
+        # @return [String]
+        attr_accessor :_type
+      
         # The configuration for exporting to BigQuery.
         # Corresponds to the JSON property `bigqueryDestination`
         # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirBigQueryDestination]
@@ -1742,6 +1765,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @_since = args[:_since] if args.key?(:_since)
+          @_type = args[:_type] if args.key?(:_type)
           @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
         end
@@ -3026,22 +3051,23 @@ module Google
         end
       end
       
-      # An image.
+      # Raw bytes representing consent artifact content.
       class Image
         include Google::Apis::Core::Hashable
       
-        # Input only. Points to a Cloud Storage URI containing the image. The URI must
-        # be in the following format: `gs://`bucket_id`/`object_id``. The Cloud
-        # Healthcare API service account must have the `roles/storage.objectViewer`
-        # Cloud IAM role for this Cloud Storage location. The image at this URI is
-        # copied to a Cloud Storage location managed by the Cloud Healthcare API.
-        # Responses to image fetching requests return the image in raw_bytes.
+        # Input only. Points to a Cloud Storage URI containing the consent artifact
+        # content. The URI must be in the following format: `gs://`bucket_id`/`object_id`
+        # `. The Cloud Healthcare API service account must have the `roles/storage.
+        # objectViewer` Cloud IAM role for this Cloud Storage location. The consent
+        # artifact content at this URI is copied to a Cloud Storage location managed by
+        # the Cloud Healthcare API. Responses to fetching requests return the consent
+        # artifact content in raw_bytes.
         # Corresponds to the JSON property `gcsUri`
         # @return [String]
         attr_accessor :gcs_uri
       
-        # Image content represented as a stream of bytes. This field is populated when
-        # returned in GetConsentArtifact response, but not included in
+        # Consent artifact content represented as a stream of bytes. This field is
+        # populated when returned in GetConsentArtifact response, but not included in
         # CreateConsentArtifact and ListConsentArtifact response.
         # Corresponds to the JSON property `rawBytes`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -4802,7 +4828,7 @@ module Google
       class Signature
         include Google::Apis::Core::Hashable
       
-        # An image.
+        # Raw bytes representing consent artifact content.
         # Corresponds to the JSON property `image`
         # @return [Google::Apis::HealthcareV1beta1::Image]
         attr_accessor :image
