@@ -87,7 +87,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a device. Only company-owned device may be created.
+        # Creates a device. Only company-owned device may be created. **Note**: This
+        # method is available only to customers who have one of the following SKUs:
+        # Enterprise Standard, Enterprise Plus, Enterprise for Education, and Cloud
+        # Identity Premium
         # @param [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1Device] google_apps_cloudidentity_devices_v1_device_object
         # @param [String] customer
         #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
@@ -757,7 +760,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the client state for the device user
+        # Updates the client state for the device user **Note**: This method is
+        # available only to customers who have one of the following SKUs: Enterprise
+        # Standard, Enterprise Plus, Enterprise for Education, and Cloud Identity
+        # Premium
         # @param [String] name
         #   Output only. [Resource name](https://cloud.google.com/apis/design/
         #   resource_names) of the ClientState in format: `devices/`device_id`/deviceUsers/
@@ -1084,6 +1090,53 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Check a potential member for membership in a group. **Note:** This feature is
+        # only available to Google Workspace Enterprise Standard, Enterprise Plus, and
+        # Enterprise for Education; and Cloud Identity Premium accounts. If the account
+        # of the member is not one of these, a 403 (PERMISSION_DENIED) HTTP status code
+        # will be returned. A member has membership to a group as long as there is a
+        # single viewable transitive membership between the group and the member. The
+        # actor must have view permissions to at least one transitive membership between
+        # the member and group.
+        # @param [String] parent
+        #   [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+        #   group to check the transitive membership in. Format: `groups/`group_id``,
+        #   where `group_id` is the unique id assigned to the Group to which the
+        #   Membership belongs to.
+        # @param [String] query
+        #   Required. A CEL expression that MUST include member specification. This is a `
+        #   required` field. Certain groups are uniquely identified by both a '
+        #   member_key_id' and a 'member_key_namespace', which requires an additional
+        #   query input: 'member_key_namespace'. Example query: `member_key_id == '
+        #   member_key_id_value'`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::CheckTransitiveMembershipResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::CheckTransitiveMembershipResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def check_group_membership_transitive_membership(parent, query: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/memberships:checkTransitiveMembership', options)
+          command.response_representation = Google::Apis::CloudidentityV1::CheckTransitiveMembershipResponse::Representation
+          command.response_class = Google::Apis::CloudidentityV1::CheckTransitiveMembershipResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['query'] = query unless query.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a `Membership`.
         # @param [String] parent
         #   Required. The parent `Group` resource under which to create the `Membership`.
@@ -1177,6 +1230,57 @@ module Google
           command.response_representation = Google::Apis::CloudidentityV1::Membership::Representation
           command.response_class = Google::Apis::CloudidentityV1::Membership
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a membership graph of just a member or both a member and a group. **Note:**
+        # This feature is only available to Google Workspace Enterprise Standard,
+        # Enterprise Plus, and Enterprise for Education; and Cloud Identity Premium
+        # accounts. If the account of the member is not one of these, a 403 (
+        # PERMISSION_DENIED) HTTP status code will be returned. Given a member, the
+        # response will contain all membership paths from the member. Given both a group
+        # and a member, the response will contain all membership paths between the group
+        # and the member.
+        # @param [String] parent
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the group to search transitive memberships in. Format: `groups/`group_id``,
+        #   where `group_id` is the unique ID assigned to the Group to which the
+        #   Membership belongs to. group_id can be a wildcard collection id "-". When a
+        #   group_id is specified, the membership graph will be constrained to paths
+        #   between the member (defined in the query) and the parent. If a wildcard
+        #   collection is provided, all membership paths connected to the member will be
+        #   returned.
+        # @param [String] query
+        #   Required. A CEL expression that MUST include member specification AND label(s).
+        #   Certain groups are uniquely identified by both a 'member_key_id' and a '
+        #   member_key_namespace', which requires an additional query input: '
+        #   member_key_namespace'. Example query: `member_key_id == 'member_key_id_value' &
+        #   & in labels`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_group_membership_membership_graph(parent, query: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/memberships:getMembershipGraph', options)
+          command.response_representation = Google::Apis::CloudidentityV1::Operation::Representation
+          command.response_class = Google::Apis::CloudidentityV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['query'] = query unless query.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1302,6 +1406,102 @@ module Google
           command.response_representation = Google::Apis::CloudidentityV1::ModifyMembershipRolesResponse::Representation
           command.response_class = Google::Apis::CloudidentityV1::ModifyMembershipRolesResponse
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Search transitive groups of a member. **Note:** This feature is only available
+        # to Google Workspace Enterprise Standard, Enterprise Plus, and Enterprise for
+        # Education; and Cloud Identity Premium accounts. If the account of the member
+        # is not one of these, a 403 (PERMISSION_DENIED) HTTP status code will be
+        # returned. A transitive group is any group that has a direct or indirect
+        # membership to the member. Actor must have view permissions all transitive
+        # groups.
+        # @param [String] parent
+        #   [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+        #   group to search transitive memberships in. Format: `groups/`group_id``, where `
+        #   group_id` is always '-' as this API will search across all groups for a given
+        #   member.
+        # @param [Fixnum] page_size
+        #   The default page size is 200 (max 1000).
+        # @param [String] page_token
+        #   The next_page_token value returned from a previous list request, if any.
+        # @param [String] query
+        #   Required. A CEL expression that MUST include member specification AND label(s).
+        #   This is a `required` field. Users can search on label attributes of groups.
+        #   CONTAINS match ('in') is supported on labels. Certain groups are uniquely
+        #   identified by both a 'member_key_id' and a 'member_key_namespace', which
+        #   requires an additional query input: 'member_key_namespace'. Example query: `
+        #   member_key_id == 'member_key_id_value' && in labels`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::SearchTransitiveGroupsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::SearchTransitiveGroupsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_group_membership_transitive_groups(parent, page_size: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/memberships:searchTransitiveGroups', options)
+          command.response_representation = Google::Apis::CloudidentityV1::SearchTransitiveGroupsResponse::Representation
+          command.response_class = Google::Apis::CloudidentityV1::SearchTransitiveGroupsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['query'] = query unless query.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Search transitive memberships of a group. **Note:** This feature is only
+        # available to Google Workspace Enterprise Standard, Enterprise Plus, and
+        # Enterprise for Education; and Cloud Identity Premium accounts. If the account
+        # of the group is not one of these, a 403 (PERMISSION_DENIED) HTTP status code
+        # will be returned. A transitive membership is any direct or indirect membership
+        # of a group. Actor must have view permissions to all transitive memberships.
+        # @param [String] parent
+        #   [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+        #   group to search transitive memberships in. Format: `groups/`group_id``, where `
+        #   group_id` is the unique ID assigned to the Group.
+        # @param [Fixnum] page_size
+        #   The default page size is 200 (max 1000).
+        # @param [String] page_token
+        #   The next_page_token value returned from a previous list request, if any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::SearchTransitiveMembershipsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::SearchTransitiveMembershipsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_group_membership_transitive_memberships(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/memberships:searchTransitiveMemberships', options)
+          command.response_representation = Google::Apis::CloudidentityV1::SearchTransitiveMembershipsResponse::Representation
+          command.response_class = Google::Apis::CloudidentityV1::SearchTransitiveMembershipsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -22,6 +22,29 @@ module Google
   module Apis
     module CloudidentityV1
       
+      # The response message for MembershipsService.CheckTransitiveMembership.
+      class CheckTransitiveMembershipResponse
+        include Google::Apis::Core::Hashable
+      
+        # Response does not include the possible roles of a member since the behavior of
+        # this rpc is not all-or-nothing unlike the other rpcs. So, it may not be
+        # possible to list all the roles definitively, due to possible lack of
+        # authorization in some of the paths.
+        # Corresponds to the JSON property `hasMembership`
+        # @return [Boolean]
+        attr_accessor :has_membership
+        alias_method :has_membership?, :has_membership
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @has_membership = args[:has_membership] if args.key?(:has_membership)
+        end
+      end
+      
       # A unique identifier for an entity in the Cloud Identity Groups API. An entity
       # can represent either a group with an optional `namespace` or a user without a `
       # namespace`. The combination of `id` and `namespace` must be unique; however,
@@ -54,6 +77,33 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @namespace = args[:namespace] if args.key?(:namespace)
+        end
+      end
+      
+      # The response message for MembershipsService.GetMembershipGraph.
+      class GetMembershipGraphResponse
+        include Google::Apis::Core::Hashable
+      
+        # The membership graph's path information represented as an adjacency list.
+        # Corresponds to the JSON property `adjacencyList`
+        # @return [Array<Google::Apis::CloudidentityV1::MembershipAdjacencyList>]
+        attr_accessor :adjacency_list
+      
+        # The resources representing each group in the adjacency list. Each group in
+        # this list can be correlated to a 'group' of the MembershipAdjacencyList using
+        # the 'name' of the Group resource.
+        # Corresponds to the JSON property `groups`
+        # @return [Array<Google::Apis::CloudidentityV1::Group>]
+        attr_accessor :groups
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adjacency_list = args[:adjacency_list] if args.key?(:adjacency_list)
+          @groups = args[:groups] if args.key?(:groups)
         end
       end
       
@@ -960,6 +1010,58 @@ module Google
         end
       end
       
+      # Message representing a transitive group of a user or a group.
+      class GroupRelation
+        include Google::Apis::Core::Hashable
+      
+        # Display name for this group.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Resource name for this group.
+        # Corresponds to the JSON property `group`
+        # @return [String]
+        attr_accessor :group
+      
+        # A unique identifier for an entity in the Cloud Identity Groups API. An entity
+        # can represent either a group with an optional `namespace` or a user without a `
+        # namespace`. The combination of `id` and `namespace` must be unique; however,
+        # the same `id` can be used with different `namespace`s.
+        # Corresponds to the JSON property `groupKey`
+        # @return [Google::Apis::CloudidentityV1::EntityKey]
+        attr_accessor :group_key
+      
+        # Labels for Group resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The relation between the member and the transitive group.
+        # Corresponds to the JSON property `relationType`
+        # @return [String]
+        attr_accessor :relation_type
+      
+        # Membership roles of the member for the group.
+        # Corresponds to the JSON property `roles`
+        # @return [Array<Google::Apis::CloudidentityV1::TransitiveMembershipRole>]
+        attr_accessor :roles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @group = args[:group] if args.key?(:group)
+          @group_key = args[:group_key] if args.key?(:group_key)
+          @labels = args[:labels] if args.key?(:labels)
+          @relation_type = args[:relation_type] if args.key?(:relation_type)
+          @roles = args[:roles] if args.key?(:roles)
+        end
+      end
+      
       # Response message for ListGroups operation.
       class ListGroupsResponse
         include Google::Apis::Core::Hashable
@@ -1053,6 +1155,44 @@ module Google
         end
       end
       
+      # Message representing a transitive membership of a group.
+      class MemberRelation
+        include Google::Apis::Core::Hashable
+      
+        # Resource name for this member if member is a GROUP, otherwise it is empty.
+        # Corresponds to the JSON property `member`
+        # @return [String]
+        attr_accessor :member
+      
+        # Entity key has an id and a namespace. In case of discussion forums, the id
+        # will be an email address without a namespace.
+        # Corresponds to the JSON property `preferredMemberKey`
+        # @return [Array<Google::Apis::CloudidentityV1::EntityKey>]
+        attr_accessor :preferred_member_key
+      
+        # The relation between the group and the transitive member.
+        # Corresponds to the JSON property `relationType`
+        # @return [String]
+        attr_accessor :relation_type
+      
+        # The membership role details (i.e name of role and expiry time).
+        # Corresponds to the JSON property `roles`
+        # @return [Array<Google::Apis::CloudidentityV1::TransitiveMembershipRole>]
+        attr_accessor :roles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @member = args[:member] if args.key?(:member)
+          @preferred_member_key = args[:preferred_member_key] if args.key?(:preferred_member_key)
+          @relation_type = args[:relation_type] if args.key?(:relation_type)
+          @roles = args[:roles] if args.key?(:roles)
+        end
+      end
+      
       # A membership within the Cloud Identity Groups API. A `Membership` defines a
       # relationship between a `Group` and an entity belonging to that `Group`,
       # referred to as a "member".
@@ -1108,6 +1248,34 @@ module Google
           @roles = args[:roles] if args.key?(:roles)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Membership graph's path information as an adjacency list.
+      class MembershipAdjacencyList
+        include Google::Apis::Core::Hashable
+      
+        # Each edge contains information about the member that belongs to this group.
+        # Note: Fields returned here will help identify the specific Membership resource
+        # (e.g name, preferred_member_key and role), but may not be a comprehensive list
+        # of all fields.
+        # Corresponds to the JSON property `edges`
+        # @return [Array<Google::Apis::CloudidentityV1::Membership>]
+        attr_accessor :edges
+      
+        # Resource name of the group that the members belong to.
+        # Corresponds to the JSON property `group`
+        # @return [String]
+        attr_accessor :group
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @edges = args[:edges] if args.key?(:edges)
+          @group = args[:group] if args.key?(:group)
         end
       end
       
@@ -1271,6 +1439,58 @@ module Google
         end
       end
       
+      # The response message for MembershipsService.SearchTransitiveGroups.
+      class SearchTransitiveGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of transitive groups satisfying the query.
+        # Corresponds to the JSON property `memberships`
+        # @return [Array<Google::Apis::CloudidentityV1::GroupRelation>]
+        attr_accessor :memberships
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results available for listing.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @memberships = args[:memberships] if args.key?(:memberships)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response message for MembershipsService.SearchTransitiveMemberships.
+      class SearchTransitiveMembershipsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of transitive members satisfying the query.
+        # Corresponds to the JSON property `memberships`
+        # @return [Array<Google::Apis::CloudidentityV1::MemberRelation>]
+        attr_accessor :memberships
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @memberships = args[:memberships] if args.key?(:memberships)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -1307,6 +1527,26 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Message representing the role of a TransitiveMembership.
+      class TransitiveMembershipRole
+        include Google::Apis::Core::Hashable
+      
+        # TransitiveMembershipRole in string format. Currently supported
+        # TransitiveMembershipRoles: `"MEMBER"`, `"OWNER"`, and `"MANAGER"`.
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @role = args[:role] if args.key?(:role)
         end
       end
     end
