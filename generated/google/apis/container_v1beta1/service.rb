@@ -1108,7 +1108,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the size for a specific node pool.
+        # SetNodePoolSizeRequest sets the size of a node pool. The new size will be used
+        # for all replicas, including future replicas created by modifying NodePool.
+        # locations.
         # @param [String] name
         #   The name (project, location, cluster, node pool id) of the node pool to set
         #   size. Specified in the format `projects/*/locations/*/clusters/*/nodePools/*`.
@@ -2463,7 +2465,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the size for a specific node pool.
+        # SetNodePoolSizeRequest sets the size of a node pool. The new size will be used
+        # for all replicas, including future replicas created by modifying NodePool.
+        # locations.
         # @param [String] project_id
         #   Required. Deprecated. The Google Developers Console [project ID or project
         #   number](https://support.google.com/cloud/answer/6158840). This field has been

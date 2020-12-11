@@ -68,8 +68,7 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::DnsCacheConfig]
         attr_accessor :dns_cache_config
       
-        # Configuration for the Compute Engine PD CSI driver. This option can only be
-        # enabled at cluster creation time.
+        # Configuration for the Compute Engine PD CSI driver.
         # Corresponds to the JSON property `gcePersistentDiskCsiDriverConfig`
         # @return [Google::Apis::ContainerV1beta1::GcePersistentDiskCsiDriverConfig]
         attr_accessor :gce_persistent_disk_csi_driver_config
@@ -205,8 +204,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :disk_size_gb
       
-        # Type of the disk attached to each node (e.g. 'pd-standard' or 'pd-ssd') If
-        # unspecified, the default disk type is 'pd-standard'
+        # Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-
+        # balanced') If unspecified, the default disk type is 'pd-standard'
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type
@@ -822,8 +821,8 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # [Output only] Additional information about the current status of this cluster,
-        # if available.
+        # [Output only] Deprecated. Use conditions instead. Additional information about
+        # the current status of this cluster, if available.
         # Corresponds to the JSON property `statusMessage`
         # @return [String]
         attr_accessor :status_message
@@ -1153,6 +1152,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::PrivateClusterConfig]
         attr_accessor :desired_private_cluster_config
       
+        # The desired state of IPv6 connectivity to Google Services.
+        # Corresponds to the JSON property `desiredPrivateIpv6GoogleAccess`
+        # @return [String]
+        attr_accessor :desired_private_ipv6_google_access
+      
         # ReleaseChannel indicates which release channel a cluster is subscribed to.
         # Release channels are arranged in order of risk. When a cluster is subscribed
         # to a release channel, Google maintains both the master version and the node
@@ -1215,6 +1219,7 @@ module Google
           @desired_notification_config = args[:desired_notification_config] if args.key?(:desired_notification_config)
           @desired_pod_security_policy_config = args[:desired_pod_security_policy_config] if args.key?(:desired_pod_security_policy_config)
           @desired_private_cluster_config = args[:desired_private_cluster_config] if args.key?(:desired_private_cluster_config)
+          @desired_private_ipv6_google_access = args[:desired_private_ipv6_google_access] if args.key?(:desired_private_ipv6_google_access)
           @desired_release_channel = args[:desired_release_channel] if args.key?(:desired_release_channel)
           @desired_resource_usage_export_config = args[:desired_resource_usage_export_config] if args.key?(:desired_resource_usage_export_config)
           @desired_shielded_nodes = args[:desired_shielded_nodes] if args.key?(:desired_shielded_nodes)
@@ -1558,8 +1563,7 @@ module Google
         end
       end
       
-      # Configuration for the Compute Engine PD CSI driver. This option can only be
-      # enabled at cluster creation time.
+      # Configuration for the Compute Engine PD CSI driver.
       class GcePersistentDiskCsiDriverConfig
         include Google::Apis::Core::Hashable
       
@@ -2508,6 +2512,12 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # The desired state of IPv6 connectivity to Google Services. By default, no
+        # private IPv6 access to or from Google Services (all access will be via IPv4)
+        # Corresponds to the JSON property `privateIpv6GoogleAccess`
+        # @return [String]
+        attr_accessor :private_ipv6_google_access
+      
         # Output only. The relative name of the Google Compute Engine [subnetwork](https:
         # //cloud.google.com/compute/docs/vpc) to which the cluster is connected.
         # Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
@@ -2525,6 +2535,7 @@ module Google
           @default_snat_status = args[:default_snat_status] if args.key?(:default_snat_status)
           @enable_intra_node_visibility = args[:enable_intra_node_visibility] if args.key?(:enable_intra_node_visibility)
           @network = args[:network] if args.key?(:network)
+          @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
         end
       end
@@ -2603,8 +2614,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :disk_size_gb
       
-        # Type of the disk attached to each node (e.g. 'pd-standard' or 'pd-ssd') If
-        # unspecified, the default disk type is 'pd-standard'
+        # Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-
+        # balanced') If unspecified, the default disk type is 'pd-standard'
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type
@@ -2953,8 +2964,8 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # [Output only] Additional information about the current status of this node
-        # pool instance, if available.
+        # [Output only] Deprecated. Use conditions instead. Additional information about
+        # the current status of this node pool instance, if available.
         # Corresponds to the JSON property `statusMessage`
         # @return [String]
         attr_accessor :status_message
@@ -4310,7 +4321,7 @@ module Google
         end
       end
       
-      # SetNodePoolSizeRequest sets the size a node pool.
+      # SetNodePoolSizeRequest sets the size of a node pool.
       class SetNodePoolSizeRequest
         include Google::Apis::Core::Hashable
       

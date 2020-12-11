@@ -949,6 +949,7 @@ module Google
       
           property :desired_private_cluster_config, as: 'desiredPrivateClusterConfig', class: Google::Apis::ContainerV1beta1::PrivateClusterConfig, decorator: Google::Apis::ContainerV1beta1::PrivateClusterConfig::Representation
       
+          property :desired_private_ipv6_google_access, as: 'desiredPrivateIpv6GoogleAccess'
           property :desired_release_channel, as: 'desiredReleaseChannel', class: Google::Apis::ContainerV1beta1::ReleaseChannel, decorator: Google::Apis::ContainerV1beta1::ReleaseChannel::Representation
       
           property :desired_resource_usage_export_config, as: 'desiredResourceUsageExportConfig', class: Google::Apis::ContainerV1beta1::ResourceUsageExportConfig, decorator: Google::Apis::ContainerV1beta1::ResourceUsageExportConfig::Representation
@@ -1321,6 +1322,7 @@ module Google
       
           property :enable_intra_node_visibility, as: 'enableIntraNodeVisibility'
           property :network, as: 'network'
+          property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :subnetwork, as: 'subnetwork'
         end
       end
