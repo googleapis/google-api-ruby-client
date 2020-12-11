@@ -514,6 +514,7 @@ module Google
           property :start_time, as: 'startTime'
           property :state, as: 'state'
           property :template_id, as: 'templateId'
+          property :ttl_after_completion_days, as: 'ttlAfterCompletionDays'
         end
       end
       
