@@ -1211,6 +1211,12 @@ module Google
         # @return [String]
         attr_accessor :vm_ip
       
+        # Output only. The liveness health check of this instance. Only applicable for
+        # instances in App Engine flexible environment.
+        # Corresponds to the JSON property `vmLiveness`
+        # @return [String]
+        attr_accessor :vm_liveness
+      
         # Output only. Name of the virtual machine where this instance lives. Only
         # applicable for instances in App Engine flexible environment.
         # Corresponds to the JSON property `vmName`
@@ -1248,6 +1254,7 @@ module Google
           @vm_debug_enabled = args[:vm_debug_enabled] if args.key?(:vm_debug_enabled)
           @vm_id = args[:vm_id] if args.key?(:vm_id)
           @vm_ip = args[:vm_ip] if args.key?(:vm_ip)
+          @vm_liveness = args[:vm_liveness] if args.key?(:vm_liveness)
           @vm_name = args[:vm_name] if args.key?(:vm_name)
           @vm_status = args[:vm_status] if args.key?(:vm_status)
           @vm_zone_name = args[:vm_zone_name] if args.key?(:vm_zone_name)

@@ -749,6 +749,7 @@ module Google
           property :vm_debug_enabled, as: 'vmDebugEnabled'
           property :vm_id, as: 'vmId'
           property :vm_ip, as: 'vmIp'
+          property :vm_liveness, as: 'vmLiveness'
           property :vm_name, as: 'vmName'
           property :vm_status, as: 'vmStatus'
           property :vm_zone_name, as: 'vmZoneName'
