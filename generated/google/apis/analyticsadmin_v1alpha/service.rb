@@ -123,8 +123,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lookup for a single Account. Throws "Target not found" if no such account
-        # found, or if caller does not have permissions to access it.
+        # Lookup for a single Account.
         # @param [String] name
         #   Required. The name of the account to lookup. Format: accounts/`account`
         #   Example: "accounts/100"
@@ -721,9 +720,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lookup for a single "GA4" Property. Throws "Target not found" if no such
-        # property found, if property is not of the type "GA4", or if caller does not
-        # have permissions to access it.
+        # Lookup for a single "GA4" Property.
         # @param [String] name
         #   Required. The name of the property to lookup. Format: properties/`property_id`
         #   Example: "properties/1000"
@@ -914,9 +911,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lookup for a single AndroidAppDataStream Throws "Target not found" if no such
-        # android app data stream found, or if the caller does not have permissions to
-        # access it.
+        # Lookup for a single AndroidAppDataStream
         # @param [String] name
         #   Required. The name of the android app data stream to lookup. Format:
         #   properties/`property_id`/androidAppDataStreams/`stream_id` Example: "
@@ -1373,8 +1368,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lookup for a single IosAppDataStream Throws "Target not found" if no such iOS
-        # app data stream found, or if the caller does not have permissions to access it.
+        # Lookup for a single IosAppDataStream
         # @param [String] name
         #   Required. The name of the iOS app data stream to lookup. Format: properties/`
         #   property_id`/iosAppDataStreams/`stream_id` Example: "properties/123/
@@ -1911,8 +1905,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lookup for a single WebDataStream Throws "Target not found" if no such web
-        # data stream found, or if the caller does not have permissions to access it.
+        # Lookup for a single WebDataStream
         # @param [String] name
         #   Required. The name of the web data stream to lookup. Format: properties/`
         #   property_id`/webDataStreams/`stream_id` Example: "properties/123/
