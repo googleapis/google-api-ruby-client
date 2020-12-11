@@ -393,7 +393,8 @@ module Google
         end
       end
       
-      # Video cropping configuration.
+      # Video cropping configuration for the input video. The cropped input video is
+      # scaled to match the output resolution.
       class Crop
         include Google::Apis::Core::Hashable
       
@@ -795,6 +796,13 @@ module Google
         # @return [String]
         attr_accessor :template_id
       
+        # Job time to live value in days, which will be effective after job completion.
+        # Job should be deleted automatically after the given TTL. Enter a value between
+        # 1 and 90. The default is 30.
+        # Corresponds to the JSON property `ttlAfterCompletionDays`
+        # @return [Fixnum]
+        attr_accessor :ttl_after_completion_days
+      
         def initialize(**args)
            update!(**args)
         end
@@ -815,6 +823,7 @@ module Google
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
           @template_id = args[:template_id] if args.key?(:template_id)
+          @ttl_after_completion_days = args[:ttl_after_completion_days] if args.key?(:ttl_after_completion_days)
         end
       end
       
@@ -1196,7 +1205,8 @@ module Google
         # @return [Google::Apis::TranscoderV1beta1::Color]
         attr_accessor :color
       
-        # Video cropping configuration.
+        # Video cropping configuration for the input video. The cropped input video is
+        # scaled to match the output resolution.
         # Corresponds to the JSON property `crop`
         # @return [Google::Apis::TranscoderV1beta1::Crop]
         attr_accessor :crop
