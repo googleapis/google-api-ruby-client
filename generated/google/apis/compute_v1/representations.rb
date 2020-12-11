@@ -1996,6 +1996,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LocalDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LogConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2394,6 +2400,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeGroupMaintenanceWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -5333,6 +5345,7 @@ module Google
           property :cdn_policy, as: 'cdnPolicy', class: Google::Apis::ComputeV1::BackendBucketCdnPolicy, decorator: Google::Apis::ComputeV1::BackendBucketCdnPolicy::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
+          collection :custom_response_headers, as: 'customResponseHeaders'
           property :description, as: 'description'
           property :enable_cdn, as: 'enableCdn'
           property :id, :numeric_string => true, as: 'id'
@@ -5345,6 +5358,10 @@ module Google
       class BackendBucketCdnPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cache_mode, as: 'cacheMode'
+          property :client_ttl, as: 'clientTtl'
+          property :default_ttl, as: 'defaultTtl'
+          property :max_ttl, as: 'maxTtl'
           property :signed_url_cache_max_age_sec, :numeric_string => true, as: 'signedUrlCacheMaxAgeSec'
           collection :signed_url_key_names, as: 'signedUrlKeyNames'
         end
@@ -5398,6 +5415,7 @@ module Google
       
           property :creation_timestamp, as: 'creationTimestamp'
           collection :custom_request_headers, as: 'customRequestHeaders'
+          collection :custom_response_headers, as: 'customResponseHeaders'
           property :description, as: 'description'
           property :enable_cdn, as: 'enableCDN'
           property :failover_policy, as: 'failoverPolicy', class: Google::Apis::ComputeV1::BackendServiceFailoverPolicy, decorator: Google::Apis::ComputeV1::BackendServiceFailoverPolicy::Representation
@@ -5467,6 +5485,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cache_key_policy, as: 'cacheKeyPolicy', class: Google::Apis::ComputeV1::CacheKeyPolicy, decorator: Google::Apis::ComputeV1::CacheKeyPolicy::Representation
       
+          property :cache_mode, as: 'cacheMode'
+          property :client_ttl, as: 'clientTtl'
+          property :default_ttl, as: 'defaultTtl'
+          property :max_ttl, as: 'maxTtl'
           property :signed_url_cache_max_age_sec, :numeric_string => true, as: 'signedUrlCacheMaxAgeSec'
           collection :signed_url_key_names, as: 'signedUrlKeyNames'
         end
@@ -6808,6 +6830,8 @@ module Google
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'
           property :port, as: 'port'
+          property :weight, as: 'weight'
+          property :weight_error, as: 'weightError'
         end
       end
       
@@ -8125,6 +8149,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :interconnect, as: 'interconnect'
           property :kind, as: 'kind'
+          property :mtu, as: 'mtu'
           property :name, as: 'name'
           property :operational_status, as: 'operationalStatus'
           property :pairing_key, as: 'pairingKey'
@@ -8515,6 +8540,15 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class LocalDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_count, as: 'diskCount'
+          property :disk_size_gb, as: 'diskSizeGb'
+          property :disk_type, as: 'diskType'
         end
       end
       
@@ -9055,6 +9089,7 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :network_ip, as: 'networkIP'
+          property :nic_type, as: 'nicType'
           property :subnetwork, as: 'subnetwork'
         end
       end
@@ -9152,6 +9187,8 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :maintenance_policy, as: 'maintenancePolicy'
+          property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::ComputeV1::NodeGroupMaintenanceWindow, decorator: Google::Apis::ComputeV1::NodeGroupMaintenanceWindow::Representation
+      
           property :name, as: 'name'
           property :node_template, as: 'nodeTemplate'
           property :self_link, as: 'selfLink'
@@ -9235,10 +9272,23 @@ module Google
         end
       end
       
+      class NodeGroupMaintenanceWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :maintenance_duration, as: 'maintenanceDuration', class: Google::Apis::ComputeV1::Duration, decorator: Google::Apis::ComputeV1::Duration::Representation
+      
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class NodeGroupNode
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accelerators, as: 'accelerators', class: Google::Apis::ComputeV1::AcceleratorConfig, decorator: Google::Apis::ComputeV1::AcceleratorConfig::Representation
+      
           property :cpu_overcommit_type, as: 'cpuOvercommitType'
+          collection :disks, as: 'disks', class: Google::Apis::ComputeV1::LocalDisk, decorator: Google::Apis::ComputeV1::LocalDisk::Representation
+      
           collection :instances, as: 'instances'
           property :name, as: 'name'
           property :node_type, as: 'nodeType'
@@ -9333,9 +9383,13 @@ module Google
       class NodeTemplate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accelerators, as: 'accelerators', class: Google::Apis::ComputeV1::AcceleratorConfig, decorator: Google::Apis::ComputeV1::AcceleratorConfig::Representation
+      
           property :cpu_overcommit_type, as: 'cpuOvercommitType'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          collection :disks, as: 'disks', class: Google::Apis::ComputeV1::LocalDisk, decorator: Google::Apis::ComputeV1::LocalDisk::Representation
+      
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -11260,6 +11314,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :automatic_restart, as: 'automaticRestart'
+          property :location_hint, as: 'locationHint'
           property :min_node_cpus, as: 'minNodeCpus'
           collection :node_affinities, as: 'nodeAffinities', class: Google::Apis::ComputeV1::SchedulingNodeAffinity, decorator: Google::Apis::ComputeV1::SchedulingNodeAffinity::Representation
       
