@@ -272,9 +272,6 @@ module Google
         # @param [String] page_token
         #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
         #   by a previous list request to get the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -292,7 +289,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_deployments(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_deployments(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'deploymentmanager/v2/projects/{project}/global/deployments', options)
           command.response_representation = Google::Apis::DeploymentmanagerV2::ListDeploymentsResponse::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2::ListDeploymentsResponse
@@ -301,7 +298,6 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -600,9 +596,6 @@ module Google
         # @param [String] page_token
         #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
         #   by a previous list request to get the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -620,7 +613,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_manifests(project, deployment, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_manifests(project, deployment, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/manifests', options)
           command.response_representation = Google::Apis::DeploymentmanagerV2::ListManifestsResponse::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2::ListManifestsResponse
@@ -630,7 +623,6 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -704,9 +696,6 @@ module Google
         # @param [String] page_token
         #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
         #   by a previous list request to get the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -724,7 +713,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_operations(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_operations(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'deploymentmanager/v2/projects/{project}/global/operations', options)
           command.response_representation = Google::Apis::DeploymentmanagerV2::ListOperationsResponse::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2::ListOperationsResponse
@@ -733,7 +722,6 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -812,9 +800,6 @@ module Google
         # @param [String] page_token
         #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
         #   by a previous list request to get the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -832,7 +817,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_resources(project, deployment, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_resources(project, deployment, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/resources', options)
           command.response_representation = Google::Apis::DeploymentmanagerV2::ListResourcesResponse::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2::ListResourcesResponse
@@ -842,7 +827,6 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -883,9 +867,6 @@ module Google
         # @param [String] page_token
         #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
         #   by a previous list request to get the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -903,7 +884,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_types(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_types(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'deploymentmanager/v2/projects/{project}/global/types', options)
           command.response_representation = Google::Apis::DeploymentmanagerV2::ListTypesResponse::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2::ListTypesResponse
@@ -912,7 +893,6 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
