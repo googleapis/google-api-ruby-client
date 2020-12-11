@@ -426,7 +426,8 @@ module Google
       end
       
       # Istio service scoped to a single Kubernetes cluster. Learn more at http://
-      # istio.io.
+      # istio.io. Clusters running OSS Istio will have their services ingested as this
+      # type.
       class ClusterIstio
         include Google::Apis::Core::Hashable
       
@@ -2088,7 +2089,8 @@ module Google
         end
       end
       
-      # Istio service scoped to an Istio mesh
+      # Istio service scoped to an Istio mesh. Anthos clusters running ASM < 1.6.8
+      # will have their services ingested as this type.
       class MeshIstio
         include Google::Apis::Core::Hashable
       
@@ -3235,7 +3237,8 @@ module Google
         attr_accessor :cloud_endpoints
       
         # Istio service scoped to a single Kubernetes cluster. Learn more at http://
-        # istio.io.
+        # istio.io. Clusters running OSS Istio will have their services ingested as this
+        # type.
         # Corresponds to the JSON property `clusterIstio`
         # @return [Google::Apis::MonitoringV3::ClusterIstio]
         attr_accessor :cluster_istio
@@ -3251,7 +3254,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Istio service scoped to an Istio mesh
+        # Istio service scoped to an Istio mesh. Anthos clusters running ASM < 1.6.8
+        # will have their services ingested as this type.
         # Corresponds to the JSON property `meshIstio`
         # @return [Google::Apis::MonitoringV3::MeshIstio]
         attr_accessor :mesh_istio
