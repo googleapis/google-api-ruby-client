@@ -22,7 +22,19 @@ module Google
   module Apis
     module CloudidentityV1
       
+      class CheckTransitiveMembershipResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EntityKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetMembershipGraphResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -160,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GroupRelation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -184,7 +202,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MemberRelation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Membership
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MembershipAdjacencyList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -220,10 +250,35 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SearchTransitiveGroupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchTransitiveMembershipsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TransitiveMembershipRole
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CheckTransitiveMembershipResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :has_membership, as: 'hasMembership'
+        end
       end
       
       class EntityKey
@@ -231,6 +286,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :namespace, as: 'namespace'
+        end
+      end
+      
+      class GetMembershipGraphResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :adjacency_list, as: 'adjacencyList', class: Google::Apis::CloudidentityV1::MembershipAdjacencyList, decorator: Google::Apis::CloudidentityV1::MembershipAdjacencyList::Representation
+      
+          collection :groups, as: 'groups', class: Google::Apis::CloudidentityV1::Group, decorator: Google::Apis::CloudidentityV1::Group::Representation
+      
         end
       end
       
@@ -464,6 +529,20 @@ module Google
         end
       end
       
+      class GroupRelation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :group, as: 'group'
+          property :group_key, as: 'groupKey', class: Google::Apis::CloudidentityV1::EntityKey, decorator: Google::Apis::CloudidentityV1::EntityKey::Representation
+      
+          hash :labels, as: 'labels'
+          property :relation_type, as: 'relationType'
+          collection :roles, as: 'roles', class: Google::Apis::CloudidentityV1::TransitiveMembershipRole, decorator: Google::Apis::CloudidentityV1::TransitiveMembershipRole::Representation
+      
+        end
+      end
+      
       class ListGroupsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -496,6 +575,18 @@ module Google
         end
       end
       
+      class MemberRelation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :member, as: 'member'
+          collection :preferred_member_key, as: 'preferredMemberKey', class: Google::Apis::CloudidentityV1::EntityKey, decorator: Google::Apis::CloudidentityV1::EntityKey::Representation
+      
+          property :relation_type, as: 'relationType'
+          collection :roles, as: 'roles', class: Google::Apis::CloudidentityV1::TransitiveMembershipRole, decorator: Google::Apis::CloudidentityV1::TransitiveMembershipRole::Representation
+      
+        end
+      end
+      
       class Membership
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -507,6 +598,15 @@ module Google
       
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class MembershipAdjacencyList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :edges, as: 'edges', class: Google::Apis::CloudidentityV1::Membership, decorator: Google::Apis::CloudidentityV1::Membership::Representation
+      
+          property :group, as: 'group'
         end
       end
       
@@ -555,12 +655,37 @@ module Google
         end
       end
       
+      class SearchTransitiveGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :memberships, as: 'memberships', class: Google::Apis::CloudidentityV1::GroupRelation, decorator: Google::Apis::CloudidentityV1::GroupRelation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class SearchTransitiveMembershipsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :memberships, as: 'memberships', class: Google::Apis::CloudidentityV1::MemberRelation, decorator: Google::Apis::CloudidentityV1::MemberRelation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class TransitiveMembershipRole
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :role, as: 'role'
         end
       end
     end
