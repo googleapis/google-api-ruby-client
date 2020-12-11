@@ -264,21 +264,21 @@ module Google
       class CohortsRange
         include Google::Apis::Core::Hashable
       
-        # `endOffset` specifies the end date of the extended reporting date range for a
-        # cohort report. `endOffset` can be any positive integer but is commonly set to
-        # 5 to 10 so that reports contain data on the cohort for the next several
-        # granularity time periods. If `granularity` is `DAILY`, the `endDate` of the
-        # extended reporting date range is `endDate` of the cohort plus `endOffset` days.
-        # If `granularity` is `WEEKLY`, the `endDate` of the extended reporting date
-        # range is `endDate` of the cohort plus `endOffset * 7` days. If `granularity`
-        # is `MONTHLY`, the `endDate` of the extended reporting date range is `endDate`
-        # of the cohort plus `endOffset * 30` days.
+        # Required. `endOffset` specifies the end date of the extended reporting date
+        # range for a cohort report. `endOffset` can be any positive integer but is
+        # commonly set to 5 to 10 so that reports contain data on the cohort for the
+        # next several granularity time periods. If `granularity` is `DAILY`, the `
+        # endDate` of the extended reporting date range is `endDate` of the cohort plus `
+        # endOffset` days. If `granularity` is `WEEKLY`, the `endDate` of the extended
+        # reporting date range is `endDate` of the cohort plus `endOffset * 7` days. If `
+        # granularity` is `MONTHLY`, the `endDate` of the extended reporting date range
+        # is `endDate` of the cohort plus `endOffset * 30` days.
         # Corresponds to the JSON property `endOffset`
         # @return [Fixnum]
         attr_accessor :end_offset
       
-        # The granularity used to interpret the `startOffset` and `endOffset` for the
-        # extended reporting date range for a cohort report.
+        # Required. The granularity used to interpret the `startOffset` and `endOffset`
+        # for the extended reporting date range for a cohort report.
         # Corresponds to the JSON property `granularity`
         # @return [String]
         attr_accessor :granularity
