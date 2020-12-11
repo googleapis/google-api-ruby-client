@@ -394,8 +394,8 @@ module Google
         # @return [String]
         attr_accessor :tier
       
-        # Optional. The In-transit encryption mode of Redis instance. If not provided,
-        # in-transit encryption is disabled for instance.
+        # Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled
+        # for the instance.
         # Corresponds to the JSON property `transitEncryptionMode`
         # @return [String]
         attr_accessor :transit_encryption_mode
