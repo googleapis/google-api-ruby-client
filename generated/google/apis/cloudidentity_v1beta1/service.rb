@@ -84,7 +84,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a device. Only company-owned device may be created.
+        # Creates a device. Only company-owned device may be created. **Note**: This
+        # method is available only to customers who have one of the following SKUs:
+        # Enterprise Standard, Enterprise Plus, Enterprise for Education, and Cloud
+        # Identity Premium
         # @param [Google::Apis::CloudidentityV1beta1::CreateDeviceRequest] create_device_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -683,7 +686,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the client state for the device user
+        # Updates the client state for the device user **Note**: This method is
+        # available only to customers who have one of the following SKUs: Enterprise
+        # Standard, Enterprise Plus, Enterprise for Education, and Cloud Identity
+        # Premium
         # @param [String] name
         #   Output only. [Resource name](https://cloud.google.com/apis/design/
         #   resource_names) of the ClientState in format: `devices/`device_id`/deviceUsers/
