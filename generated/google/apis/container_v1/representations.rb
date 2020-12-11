@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GcePersistentDiskCsiDriverConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetJsonWebKeysResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -591,6 +597,8 @@ module Google
       
           property :dns_cache_config, as: 'dnsCacheConfig', class: Google::Apis::ContainerV1::DnsCacheConfig, decorator: Google::Apis::ContainerV1::DnsCacheConfig::Representation
       
+          property :gce_persistent_disk_csi_driver_config, as: 'gcePersistentDiskCsiDriverConfig', class: Google::Apis::ContainerV1::GcePersistentDiskCsiDriverConfig, decorator: Google::Apis::ContainerV1::GcePersistentDiskCsiDriverConfig::Representation
+      
           property :horizontal_pod_autoscaling, as: 'horizontalPodAutoscaling', class: Google::Apis::ContainerV1::HorizontalPodAutoscaling, decorator: Google::Apis::ContainerV1::HorizontalPodAutoscaling::Representation
       
           property :http_load_balancing, as: 'httpLoadBalancing', class: Google::Apis::ContainerV1::HttpLoadBalancing, decorator: Google::Apis::ContainerV1::HttpLoadBalancing::Representation
@@ -802,6 +810,7 @@ module Google
           property :desired_node_version, as: 'desiredNodeVersion'
           property :desired_private_cluster_config, as: 'desiredPrivateClusterConfig', class: Google::Apis::ContainerV1::PrivateClusterConfig, decorator: Google::Apis::ContainerV1::PrivateClusterConfig::Representation
       
+          property :desired_private_ipv6_google_access, as: 'desiredPrivateIpv6GoogleAccess'
           property :desired_release_channel, as: 'desiredReleaseChannel', class: Google::Apis::ContainerV1::ReleaseChannel, decorator: Google::Apis::ContainerV1::ReleaseChannel::Representation
       
           property :desired_resource_usage_export_config, as: 'desiredResourceUsageExportConfig', class: Google::Apis::ContainerV1::ResourceUsageExportConfig, decorator: Google::Apis::ContainerV1::ResourceUsageExportConfig::Representation
@@ -895,6 +904,13 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GcePersistentDiskCsiDriverConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
@@ -1103,6 +1119,7 @@ module Google
       
           property :enable_intra_node_visibility, as: 'enableIntraNodeVisibility'
           property :network, as: 'network'
+          property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :subnetwork, as: 'subnetwork'
         end
       end
