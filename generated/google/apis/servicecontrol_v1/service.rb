@@ -22,8 +22,8 @@ module Google
     module ServicecontrolV1
       # Service Control API
       #
-      # Provides control plane functionality to managed services, such as logging,
-      #  monitoring, and status checks.
+      # Provides admission control and telemetry reporting for services integrated
+      #  with Service Infrastructure.
       #
       # @example
       #    require 'google/apis/servicecontrol_v1'
