@@ -896,6 +896,8 @@ module Google
         # Lists versions.
         # @param [String] parent
         #   The name of the parent resource whose versions will be listed.
+        # @param [String] order_by
+        #   Optional. Sorting field and order
         # @param [Fixnum] page_size
         #   The maximum number of versions to return. Maximum page size is 10,000.
         # @param [String] page_token
@@ -919,11 +921,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_repository_package_versions(parent, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_repository_package_versions(parent, order_by: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta2/{+parent}/versions', options)
           command.response_representation = Google::Apis::ArtifactregistryV1beta2::ListVersionsResponse::Representation
           command.response_class = Google::Apis::ArtifactregistryV1beta2::ListVersionsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['view'] = view unless view.nil?
