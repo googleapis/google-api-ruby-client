@@ -228,7 +228,7 @@ module Google
         # @return [Google::Apis::ArtifactregistryV1beta1::Status]
         attr_accessor :error
       
-        # Google Cloud Storage location for the input content.
+        # Google Cloud Storage location where the artifacts currently reside.
         # Corresponds to the JSON property `gcsSource`
         # @return [Google::Apis::ArtifactregistryV1beta1::GoogleDevtoolsArtifactregistryV1alpha1GcsSource]
         attr_accessor :gcs_source
@@ -244,7 +244,7 @@ module Google
         end
       end
       
-      # Google Cloud Storage location for the input content.
+      # Google Cloud Storage location where the artifacts currently reside.
       class GoogleDevtoolsArtifactregistryV1alpha1GcsSource
         include Google::Apis::Core::Hashable
       
