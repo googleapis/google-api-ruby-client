@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SasPortalChannelWithScore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SasPortalCreateSignedDeviceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -255,6 +261,15 @@ module Google
         end
       end
       
+      class SasPortalChannelWithScore
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :frequency_range, as: 'frequencyRange', class: Google::Apis::ProdTtSasportalV1alpha1::SasPortalFrequencyRange, decorator: Google::Apis::ProdTtSasportalV1alpha1::SasPortalFrequencyRange::Representation
+      
+          property :score, as: 'score'
+        end
+      end
+      
       class SasPortalCreateSignedDeviceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -286,6 +301,9 @@ module Google
           property :name, as: 'name'
           property :preloaded_config, as: 'preloadedConfig', class: Google::Apis::ProdTtSasportalV1alpha1::SasPortalDeviceConfig, decorator: Google::Apis::ProdTtSasportalV1alpha1::SasPortalDeviceConfig::Representation
       
+          collection :recommended_channels, as: 'recommendedChannels', class: Google::Apis::ProdTtSasportalV1alpha1::SasPortalChannelWithScore, decorator: Google::Apis::ProdTtSasportalV1alpha1::SasPortalChannelWithScore::Representation
+      
+          property :recommended_power_dbm_per_mhz, as: 'recommendedPowerDbmPerMhz'
           property :serial_number, as: 'serialNumber'
           property :state, as: 'state'
         end
