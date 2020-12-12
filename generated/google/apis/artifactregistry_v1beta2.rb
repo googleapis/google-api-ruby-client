@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/artifacts/docs/
     module ArtifactregistryV1beta2
       VERSION = 'V1beta2'
-      REVISION = '20201107'
+      REVISION = '20201203'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
