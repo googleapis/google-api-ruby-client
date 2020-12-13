@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MaintenanceWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodeConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -215,6 +221,8 @@ module Google
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::ComposerV1beta1::EncryptionConfig, decorator: Google::Apis::ComposerV1beta1::EncryptionConfig::Representation
       
           property :gke_cluster, as: 'gkeCluster'
+          property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::ComposerV1beta1::MaintenanceWindow, decorator: Google::Apis::ComposerV1beta1::MaintenanceWindow::Representation
+      
           property :node_config, as: 'nodeConfig', class: Google::Apis::ComposerV1beta1::NodeConfig, decorator: Google::Apis::ComposerV1beta1::NodeConfig::Representation
       
           property :node_count, as: 'nodeCount'
@@ -280,6 +288,15 @@ module Google
         end
       end
       
+      class MaintenanceWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :recurrence, as: 'recurrence'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class NodeConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -288,6 +305,7 @@ module Google
       
           property :location, as: 'location'
           property :machine_type, as: 'machineType'
+          property :max_pods_per_node, as: 'maxPodsPerNode'
           property :network, as: 'network'
           collection :oauth_scopes, as: 'oauthScopes'
           property :service_account, as: 'serviceAccount'

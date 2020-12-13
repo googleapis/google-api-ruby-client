@@ -250,6 +250,15 @@ module Google
         # @return [String]
         attr_accessor :gke_cluster
       
+        # The configuration settings for Cloud Composer maintenance window. The
+        # following example: ` "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-
+        # 01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" ` would define a
+        # maintenance window between 01 and 07 hours UTC during each Tuesday and
+        # Wednesday.
+        # Corresponds to the JSON property `maintenanceWindow`
+        # @return [Google::Apis::ComposerV1beta1::MaintenanceWindow]
+        attr_accessor :maintenance_window
+      
         # The configuration information for the Kubernetes Engine nodes running the
         # Apache Airflow software.
         # Corresponds to the JSON property `nodeConfig`
@@ -294,6 +303,7 @@ module Google
           @database_config = args[:database_config] if args.key?(:database_config)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @gke_cluster = args[:gke_cluster] if args.key?(:gke_cluster)
+          @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
           @node_config = args[:node_config] if args.key?(:node_config)
           @node_count = args[:node_count] if args.key?(:node_count)
           @private_environment_config = args[:private_environment_config] if args.key?(:private_environment_config)
@@ -505,6 +515,46 @@ module Google
         end
       end
       
+      # The configuration settings for Cloud Composer maintenance window. The
+      # following example: ` "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-
+      # 01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" ` would define a
+      # maintenance window between 01 and 07 hours UTC during each Tuesday and
+      # Wednesday.
+      class MaintenanceWindow
+        include Google::Apis::Core::Hashable
+      
+        # Required. Maintenance window end time. It is used only to calculate the
+        # duration of the maintenance window. The value for end_time must be in the
+        # future, relative to `start_time`.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Required. Maintenance window recurrence. Format is a subset of [RFC-5545](
+        # https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `
+        # FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=
+        # WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+        # Corresponds to the JSON property `recurrence`
+        # @return [String]
+        attr_accessor :recurrence
+      
+        # Required. Start time of the first recurrence of the maintenance window.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @recurrence = args[:recurrence] if args.key?(:recurrence)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # The configuration information for the Kubernetes Engine nodes running the
       # Apache Airflow software.
       class NodeConfig
@@ -552,6 +602,19 @@ module Google
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
+      
+        # Optional. The maximum number of pods per node in the Cloud Composer GKE
+        # cluster. The value must be between 8 and 110 and it can be set only if the
+        # environment is VPC-native. The default value is 32. Values of this field will
+        # be propagated both to the `default-pool` node pool of the newly created GKE
+        # cluster, and to the default "Maximum Pods per Node" value which is used for
+        # newly created node pools if their value is not explicitly set during node pool
+        # creation. For more information, see [Optimizing IP address allocation] (https:/
+        # /cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr). Cannot be
+        # updated.
+        # Corresponds to the JSON property `maxPodsPerNode`
+        # @return [Fixnum]
+        attr_accessor :max_pods_per_node
       
         # Optional. The Compute Engine network to be used for machine communications,
         # specified as a [relative resource name](/apis/design/resource_names#
@@ -606,6 +669,7 @@ module Google
           @ip_allocation_policy = args[:ip_allocation_policy] if args.key?(:ip_allocation_policy)
           @location = args[:location] if args.key?(:location)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @max_pods_per_node = args[:max_pods_per_node] if args.key?(:max_pods_per_node)
           @network = args[:network] if args.key?(:network)
           @oauth_scopes = args[:oauth_scopes] if args.key?(:oauth_scopes)
           @service_account = args[:service_account] if args.key?(:service_account)
