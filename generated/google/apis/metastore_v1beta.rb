@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/dataproc-metastore/docs
     module MetastoreV1beta
       VERSION = 'V1beta'
-      REVISION = '20201202'
+      REVISION = '20201212'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
