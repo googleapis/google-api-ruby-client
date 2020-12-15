@@ -23,7 +23,7 @@ module Google
     module ManufacturersV1
       
       # Attributes of the product. For more information, see https://support.google.
-      # com/manufacturers/answer/6124116.
+      # com/manufacturers/answer/6124116. Next tag: 47
       class Attributes
         include Google::Apis::Core::Hashable
       
@@ -560,7 +560,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Attributes of the product. For more information, see https://support.google.
-        # com/manufacturers/answer/6124116.
+        # com/manufacturers/answer/6124116. Next tag: 47
         # Corresponds to the JSON property `attributes`
         # @return [Google::Apis::ManufacturersV1::Attributes]
         attr_accessor :attributes
