@@ -200,6 +200,7 @@ module Google
           property :resource_name, as: 'resourceName'
           property :security_marks, as: 'securityMarks', class: Google::Apis::SecuritycenterV1beta2::SecurityMarks, decorator: Google::Apis::SecuritycenterV1beta2::SecurityMarks::Representation
       
+          property :severity, as: 'severity'
           hash :source_properties, as: 'sourceProperties'
           property :state, as: 'state'
         end
