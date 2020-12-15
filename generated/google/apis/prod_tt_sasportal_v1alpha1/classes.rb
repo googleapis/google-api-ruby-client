@@ -89,31 +89,6 @@ module Google
         end
       end
       
-      # The channel with score.
-      class SasPortalChannelWithScore
-        include Google::Apis::Core::Hashable
-      
-        # Frequency range from `low_frequency` to `high_frequency`.
-        # Corresponds to the JSON property `frequencyRange`
-        # @return [Google::Apis::ProdTtSasportalV1alpha1::SasPortalFrequencyRange]
-        attr_accessor :frequency_range
-      
-        # The channel score, normalized to be in [0,1].
-        # Corresponds to the JSON property `score`
-        # @return [Float]
-        attr_accessor :score
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @frequency_range = args[:frequency_range] if args.key?(:frequency_range)
-          @score = args[:score] if args.key?(:score)
-        end
-      end
-      
       # Request for CreateSignedDevice method.
       class SasPortalCreateSignedDeviceRequest
         include Google::Apis::Core::Hashable
@@ -212,16 +187,6 @@ module Google
         # @return [Google::Apis::ProdTtSasportalV1alpha1::SasPortalDeviceConfig]
         attr_accessor :preloaded_config
       
-        # Output only. Recommended channels.
-        # Corresponds to the JSON property `recommendedChannels`
-        # @return [Array<Google::Apis::ProdTtSasportalV1alpha1::SasPortalChannelWithScore>]
-        attr_accessor :recommended_channels
-      
-        # Output only. Recommended power for the device.
-        # Corresponds to the JSON property `recommendedPowerDbmPerMhz`
-        # @return [Float]
-        attr_accessor :recommended_power_dbm_per_mhz
-      
         # A serial number assigned to the device by the device manufacturer.
         # Corresponds to the JSON property `serialNumber`
         # @return [String]
@@ -245,8 +210,6 @@ module Google
           @grants = args[:grants] if args.key?(:grants)
           @name = args[:name] if args.key?(:name)
           @preloaded_config = args[:preloaded_config] if args.key?(:preloaded_config)
-          @recommended_channels = args[:recommended_channels] if args.key?(:recommended_channels)
-          @recommended_power_dbm_per_mhz = args[:recommended_power_dbm_per_mhz] if args.key?(:recommended_power_dbm_per_mhz)
           @serial_number = args[:serial_number] if args.key?(:serial_number)
           @state = args[:state] if args.key?(:state)
         end
