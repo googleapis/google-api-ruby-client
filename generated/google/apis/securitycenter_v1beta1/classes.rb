@@ -401,6 +401,12 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta1::SecurityMarks]
         attr_accessor :security_marks
       
+        # The severity of the finding. This field is managed by the source that writes
+        # the finding.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
         # Source specific properties. These properties are managed by the source that
         # writes the finding. The key names in the source_properties map must be between
         # 1 and 255 characters, and must start with a letter and contain alphanumeric
@@ -428,6 +434,7 @@ module Google
           @parent = args[:parent] if args.key?(:parent)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @security_marks = args[:security_marks] if args.key?(:security_marks)
+          @severity = args[:severity] if args.key?(:severity)
           @source_properties = args[:source_properties] if args.key?(:source_properties)
           @state = args[:state] if args.key?(:state)
         end
