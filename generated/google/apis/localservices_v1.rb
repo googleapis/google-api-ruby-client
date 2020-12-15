@@ -25,7 +25,10 @@ module Google
     # @see https://ads.google.com/local-services-ads/
     module LocalservicesV1
       VERSION = 'V1'
-      REVISION = '20201016'
+      REVISION = '20201213'
+
+      # Manage your AdWords campaigns
+      AUTH_ADWORDS = 'https://www.googleapis.com/auth/adwords'
     end
   end
 end
