@@ -27,7 +27,7 @@ module Google
     # @see https://cloud.google.com/document-ai/docs/
     module DocumentaiV1beta3
       VERSION = 'V1beta3'
-      REVISION = '20201207'
+      REVISION = '20201212'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
