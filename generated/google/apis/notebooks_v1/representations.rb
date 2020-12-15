@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TriggerScheduleRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpgradeHistoryEntry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -538,6 +544,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class TriggerScheduleRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

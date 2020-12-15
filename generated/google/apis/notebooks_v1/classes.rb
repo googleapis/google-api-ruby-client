@@ -1329,6 +1329,19 @@ module Google
         end
       end
       
+      # Request for created scheduled notebooks
+      class TriggerScheduleRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # 
       class UpgradeHistoryEntry
         include Google::Apis::Core::Hashable
