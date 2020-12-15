@@ -115,6 +115,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aggregation_type, as: 'aggregationType'
+          property :data_state, as: 'dataState'
           collection :dimension_filter_groups, as: 'dimensionFilterGroups', class: Google::Apis::WebmastersV3::ApiDimensionFilterGroup, decorator: Google::Apis::WebmastersV3::ApiDimensionFilterGroup::Representation
       
           collection :dimensions, as: 'dimensions'
