@@ -1145,32 +1145,6 @@ module Google
         end
       end
       
-      # Runtime operation information for undeleting a TagKey.
-      class UndeleteTagKeyMetadata
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Runtime operation information for deleting a TagValue.
-      class UndeleteTagValueMetadata
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # A status object which is used as the `metadata` field for the Operation
       # returned by UpdateFolder.
       class UpdateFolderMetadata
