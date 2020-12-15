@@ -82,20 +82,10 @@ module Google
       class GoogleCloudDocumentaiUiv1beta3CreateProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
-        # The creation time of the operation.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # The state of the current disable processor operation.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # The last update time of the operation.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
       
         def initialize(**args)
            update!(**args)
@@ -103,9 +93,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @state = args[:state] if args.key?(:state)
-          @update_time = args[:update_time] if args.key?(:update_time)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
         end
       end
       
@@ -137,27 +125,6 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
         attr_accessor :common_metadata
       
-        # The creation time of the operation.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # The state of the current delete processor operation.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # A message providing more details about the current state of processing. For
-        # example, the error message if the operation is failed.
-        # Corresponds to the JSON property `stateMessage`
-        # @return [String]
-        attr_accessor :state_message
-      
-        # The last update time of the operation.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
         def initialize(**args)
            update!(**args)
         end
@@ -165,10 +132,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @state = args[:state] if args.key?(:state)
-          @state_message = args[:state_message] if args.key?(:state_message)
-          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -232,27 +195,6 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
         attr_accessor :common_metadata
       
-        # The creation time of the operation.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # The state of the current disable processor operation.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # A message providing more details about the current state of processing. For
-        # example, the error message if the operation is failed.
-        # Corresponds to the JSON property `stateMessage`
-        # @return [String]
-        attr_accessor :state_message
-      
-        # The last update time of the operation.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
         def initialize(**args)
            update!(**args)
         end
@@ -260,10 +202,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @state = args[:state] if args.key?(:state)
-          @state_message = args[:state_message] if args.key?(:state_message)
-          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -290,27 +228,6 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
         attr_accessor :common_metadata
       
-        # The creation time of the operation.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # The state of the current enable processor operation.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # A message providing more details about the current state of processing. For
-        # example, the error message if the operation is failed.
-        # Corresponds to the JSON property `stateMessage`
-        # @return [String]
-        attr_accessor :state_message
-      
-        # The last update time of the operation.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
         def initialize(**args)
            update!(**args)
         end
@@ -318,10 +235,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @state = args[:state] if args.key?(:state)
-          @state_message = args[:state_message] if args.key?(:state_message)
-          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
