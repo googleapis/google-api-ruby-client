@@ -403,6 +403,12 @@ module Google
         # @return [Google::Apis::SecuritycenterV1::SecurityMarks]
         attr_accessor :security_marks
       
+        # The severity of the finding. This field is managed by the source that writes
+        # the finding.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
         # Source specific properties. These properties are managed by the source that
         # writes the finding. The key names in the source_properties map must be between
         # 1 and 255 characters, and must start with a letter and contain alphanumeric
@@ -430,6 +436,7 @@ module Google
           @parent = args[:parent] if args.key?(:parent)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @security_marks = args[:security_marks] if args.key?(:security_marks)
+          @severity = args[:severity] if args.key?(:severity)
           @source_properties = args[:source_properties] if args.key?(:source_properties)
           @state = args[:state] if args.key?(:state)
         end
@@ -1111,14 +1118,14 @@ module Google
         # false` without quotes. The following field and operator combinations are
         # supported: * name: `=` * parent: `=`, `:` * resource_name: `=`, `:` * state: `=
         # `, `:` * category: `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<
-        # `, `>=`, `<=` Usage: This should be milliseconds since epoch or an RFC3339
-        # string. Examples: `event_time = "2019-06-10T16:07:18-07:00"` `event_time =
-        # 1560208038000` * security_marks.marks: `=`, `:` * source_properties: `=`, `:`,
-        # `>`, `<`, `>=`, `<=` For example, `source_properties.size = 100` is a valid
-        # filter string. Use a partial match on the empty string to filter based on a
-        # property existing: `source_properties.my_property : ""` Use a negated partial
-        # match on the empty string to filter based on a property not existing: `-
-        # source_properties.my_property : ""`
+        # `, `>=`, `<=` * severity: `=`, `:` Usage: This should be milliseconds since
+        # epoch or an RFC3339 string. Examples: `event_time = "2019-06-10T16:07:18-07:00"
+        # ` `event_time = 1560208038000` * security_marks.marks: `=`, `:` *
+        # source_properties: `=`, `:`, `>`, `<`, `>=`, `<=` For example, `
+        # source_properties.size = 100` is a valid filter string. Use a partial match on
+        # the empty string to filter based on a property existing: `source_properties.
+        # my_property : ""` Use a negated partial match on the empty string to filter
+        # based on a property not existing: `-source_properties.my_property : ""`
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -1126,8 +1133,9 @@ module Google
         # Required. Expression that defines what assets fields to use for grouping (
         # including `state_change`). The string value should follow SQL syntax: comma
         # separated list of fields. For example: "parent,resource_name". The following
-        # fields are supported: * resource_name * category * state * parent The
-        # following fields are supported when compare_duration is set: * state_change
+        # fields are supported: * resource_name * category * state * parent * severity
+        # The following fields are supported when compare_duration is set: *
+        # state_change
         # Corresponds to the JSON property `groupBy`
         # @return [String]
         attr_accessor :group_by
