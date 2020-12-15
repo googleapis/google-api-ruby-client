@@ -2498,6 +2498,47 @@ module Google
         end
       end
       
+      # Represents a whole or partial calendar date, such as a birthday. The time of
+      # day and time zone are either specified elsewhere or are insignificant. The
+      # date is relative to the Gregorian Calendar. This can represent one of the
+      # following: * A full date, with non-zero year, month, and day values * A month
+      # and day value, with a zero year, such as an anniversary * A year on its own,
+      # with zero month and day values * A year and month value, with a zero day, such
+      # as a credit card expiration date Related types are google.type.TimeOfDay and `
+      # google.protobuf.Timestamp`.
+      class Date
+        include Google::Apis::Core::Hashable
+      
+        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        # specify a year by itself or a year and month where the day isn't significant.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        # and day.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        # year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
+        end
+      end
+      
       # Represents civil time (or occasionally physical time). This type can represent
       # a civil time in one of a few possible ways: * When utc_offset is set and
       # time_zone is unset: a civil time on a calendar day with a particular offset
@@ -2950,6 +2991,31 @@ module Google
           @delivery_guarantee_hour = args[:delivery_guarantee_hour] if args.key?(:delivery_guarantee_hour)
           @id = args[:id] if args.key?(:id)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Map of inapplicability details.
+      class InapplicabilityDetails
+        include Google::Apis::Core::Hashable
+      
+        # Count of this inapplicable reason code.
+        # Corresponds to the JSON property `inapplicableCount`
+        # @return [Fixnum]
+        attr_accessor :inapplicable_count
+      
+        # Reason code this rule was not applicable.
+        # Corresponds to the JSON property `inapplicableReason`
+        # @return [String]
+        attr_accessor :inapplicable_reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inapplicable_count = args[:inapplicable_count] if args.key?(:inapplicable_count)
+          @inapplicable_reason = args[:inapplicable_reason] if args.key?(:inapplicable_reason)
         end
       end
       
@@ -3734,6 +3800,58 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @regions = args[:regions] if args.key?(:regions)
+        end
+      end
+      
+      # Response message for the ListRepricingProductReports method.
+      class ListRepricingProductReportsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token for retrieving the next page. Its absence means there is no subsequent
+        # page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Periodic reports for the given Repricing product.
+        # Corresponds to the JSON property `repricingProductReports`
+        # @return [Array<Google::Apis::ContentV2_1::RepricingProductReport>]
+        attr_accessor :repricing_product_reports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @repricing_product_reports = args[:repricing_product_reports] if args.key?(:repricing_product_reports)
+        end
+      end
+      
+      # Response message for the ListRepricingRuleReports method.
+      class ListRepricingRuleReportsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token for retrieving the next page. Its absence means there is no subsequent
+        # page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Daily reports for the given Repricing rule.
+        # Corresponds to the JSON property `repricingRuleReports`
+        # @return [Array<Google::Apis::ContentV2_1::RepricingRuleReport>]
+        attr_accessor :repricing_rule_reports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @repricing_rule_reports = args[:repricing_rule_reports] if args.key?(:repricing_rule_reports)
         end
       end
       
@@ -7201,6 +7319,32 @@ module Google
         end
       end
       
+      # ScheduledDeliveryDetails used to update the scheduled delivery order.
+      class OrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails
+        include Google::Apis::Core::Hashable
+      
+        # The phone number of the carrier fulfilling the delivery. The phone number
+        # should be formatted as the international notation in
+        # Corresponds to the JSON property `carrierPhoneNumber`
+        # @return [String]
+        attr_accessor :carrier_phone_number
+      
+        # The date a shipment is scheduled for delivery, in ISO 8601 format.
+        # Corresponds to the JSON property `scheduledDate`
+        # @return [String]
+        attr_accessor :scheduled_date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @carrier_phone_number = args[:carrier_phone_number] if args.key?(:carrier_phone_number)
+          @scheduled_date = args[:scheduled_date] if args.key?(:scheduled_date)
+        end
+      end
+      
       # 
       class OrdersGetByMerchantOrderIdResponse
         include Google::Apis::Core::Hashable
@@ -8002,6 +8146,11 @@ module Google
         # @return [String]
         attr_accessor :ready_pickup_date
       
+        # ScheduledDeliveryDetails used to update the scheduled delivery order.
+        # Corresponds to the JSON property `scheduledDeliveryDetails`
+        # @return [Google::Apis::ContentV2_1::OrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails]
+        attr_accessor :scheduled_delivery_details
+      
         # The ID of the shipment.
         # Corresponds to the JSON property `shipmentId`
         # @return [String]
@@ -8035,6 +8184,7 @@ module Google
           @last_pickup_date = args[:last_pickup_date] if args.key?(:last_pickup_date)
           @operation_id = args[:operation_id] if args.key?(:operation_id)
           @ready_pickup_date = args[:ready_pickup_date] if args.key?(:ready_pickup_date)
+          @scheduled_delivery_details = args[:scheduled_delivery_details] if args.key?(:scheduled_delivery_details)
           @shipment_id = args[:shipment_id] if args.key?(:shipment_id)
           @status = args[:status] if args.key?(:status)
           @tracking_id = args[:tracking_id] if args.key?(:tracking_id)
@@ -10758,10 +10908,125 @@ module Google
         end
       end
       
+      # Resource that represents a daily Repricing product report. Each report
+      # contains stats for a single type of Repricing rule for a single product on a
+      # given day. If there are multiple rules of the same type for the product on
+      # that day, the report lists all the rules by rule ids, combines the stats, and
+      # paginates the results by date. To retrieve the stats of a particular rule,
+      # provide the rule_id in the request.
+      class RepricingProductReport
+        include Google::Apis::Core::Hashable
+      
+        # Total count of Repricer applications. This value captures how many times the
+        # rule of this type was applied to this product during this reporting period.
+        # Corresponds to the JSON property `applicationCount`
+        # @return [Fixnum]
+        attr_accessor :application_count
+      
+        # Stats specific to buybox winning rules for product report.
+        # Corresponds to the JSON property `buyboxWinningProductStats`
+        # @return [Google::Apis::ContentV2_1::RepricingProductReportBuyboxWinningProductStats]
+        attr_accessor :buybox_winning_product_stats
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values * A month
+        # and day value, with a zero year, such as an anniversary * A year on its own,
+        # with zero month and day values * A year and month value, with a zero day, such
+        # as a credit card expiration date Related types are google.type.TimeOfDay and `
+        # google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `date`
+        # @return [Google::Apis::ContentV2_1::Date]
+        attr_accessor :date
+      
+        # The price represented as a number and currency.
+        # Corresponds to the JSON property `highWatermark`
+        # @return [Google::Apis::ContentV2_1::PriceAmount]
+        attr_accessor :high_watermark
+      
+        # List of all reasons the rule did not apply to the product during the specified
+        # reporting period.
+        # Corresponds to the JSON property `inapplicabilityDetails`
+        # @return [Array<Google::Apis::ContentV2_1::InapplicabilityDetails>]
+        attr_accessor :inapplicability_details
+      
+        # The price represented as a number and currency.
+        # Corresponds to the JSON property `lowWatermark`
+        # @return [Google::Apis::ContentV2_1::PriceAmount]
+        attr_accessor :low_watermark
+      
+        # Total unit count of impacted products ordered while the rule was active on the
+        # date of the report. This count includes all orders that were started while the
+        # rule was active, even if the rule was no longer active when the order was
+        # completed.
+        # Corresponds to the JSON property `orderItemCount`
+        # @return [Fixnum]
+        attr_accessor :order_item_count
+      
+        # Ids of the Repricing rule for this report.
+        # Corresponds to the JSON property `ruleIds`
+        # @return [Array<String>]
+        attr_accessor :rule_ids
+      
+        # The price represented as a number and currency.
+        # Corresponds to the JSON property `totalGmv`
+        # @return [Google::Apis::ContentV2_1::PriceAmount]
+        attr_accessor :total_gmv
+      
+        # Type of the rule.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application_count = args[:application_count] if args.key?(:application_count)
+          @buybox_winning_product_stats = args[:buybox_winning_product_stats] if args.key?(:buybox_winning_product_stats)
+          @date = args[:date] if args.key?(:date)
+          @high_watermark = args[:high_watermark] if args.key?(:high_watermark)
+          @inapplicability_details = args[:inapplicability_details] if args.key?(:inapplicability_details)
+          @low_watermark = args[:low_watermark] if args.key?(:low_watermark)
+          @order_item_count = args[:order_item_count] if args.key?(:order_item_count)
+          @rule_ids = args[:rule_ids] if args.key?(:rule_ids)
+          @total_gmv = args[:total_gmv] if args.key?(:total_gmv)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Stats specific to buybox winning rules for product report.
+      class RepricingProductReportBuyboxWinningProductStats
+        include Google::Apis::Core::Hashable
+      
+        # Number of times this product won the buybox with these rules during this time
+        # period.
+        # Corresponds to the JSON property `buyboxWinsCount`
+        # @return [Fixnum]
+        attr_accessor :buybox_wins_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @buybox_wins_count = args[:buybox_wins_count] if args.key?(:buybox_wins_count)
+        end
+      end
+      
       # Represents a repricing rule. A repricing rule is used by shopping serving to
       # adjust transactable offer prices if conditions are met. Next ID: 24
       class RepricingRule
         include Google::Apis::Core::Hashable
+      
+        # A repricing rule that changes the sale price based on cost of goods sale.
+        # Corresponds to the JSON property `cogsBasedRule`
+        # @return [Google::Apis::ContentV2_1::RepricingRuleCostOfGoodsSaleRule]
+        attr_accessor :cogs_based_rule
       
         # Required. Immutable. CLDR country code (e.g. "US").
         # Corresponds to the JSON property `countryCode`
@@ -10820,6 +11085,11 @@ module Google
         # @return [String]
         attr_accessor :rule_id
       
+        # Definition of stats based rule.
+        # Corresponds to the JSON property `statsBasedRule`
+        # @return [Google::Apis::ContentV2_1::RepricingRuleStatsBasedRule]
+        attr_accessor :stats_based_rule
+      
         # The title for the rule.
         # Corresponds to the JSON property `title`
         # @return [String]
@@ -10836,6 +11106,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cogs_based_rule = args[:cogs_based_rule] if args.key?(:cogs_based_rule)
           @country_code = args[:country_code] if args.key?(:country_code)
           @effective_time_period = args[:effective_time_period] if args.key?(:effective_time_period)
           @eligible_offer_matcher = args[:eligible_offer_matcher] if args.key?(:eligible_offer_matcher)
@@ -10844,8 +11115,35 @@ module Google
           @paused = args[:paused] if args.key?(:paused)
           @restriction = args[:restriction] if args.key?(:restriction)
           @rule_id = args[:rule_id] if args.key?(:rule_id)
+          @stats_based_rule = args[:stats_based_rule] if args.key?(:stats_based_rule)
           @title = args[:title] if args.key?(:title)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # A repricing rule that changes the sale price based on cost of goods sale.
+      class RepricingRuleCostOfGoodsSaleRule
+        include Google::Apis::Core::Hashable
+      
+        # The percent change against the COGS. Ex: 20 would mean to set the adjusted
+        # price 1.2X of the COGS data.
+        # Corresponds to the JSON property `percentageDelta`
+        # @return [Fixnum]
+        attr_accessor :percentage_delta
+      
+        # The price delta against the COGS. E.g. 2 means $2 more of the COGS.
+        # Corresponds to the JSON property `priceDelta`
+        # @return [String]
+        attr_accessor :price_delta
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @percentage_delta = args[:percentage_delta] if args.key?(:percentage_delta)
+          @price_delta = args[:price_delta] if args.key?(:price_delta)
         end
       end
       
@@ -10968,6 +11266,108 @@ module Google
         end
       end
       
+      # Resource that represents a daily Repricing rule report. Next ID: 11
+      class RepricingRuleReport
+        include Google::Apis::Core::Hashable
+      
+        # Stats specific to buybox winning rules for rule report.
+        # Corresponds to the JSON property `buyboxWinningRuleStats`
+        # @return [Google::Apis::ContentV2_1::RepricingRuleReportBuyboxWinningRuleStats]
+        attr_accessor :buybox_winning_rule_stats
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values * A month
+        # and day value, with a zero year, such as an anniversary * A year on its own,
+        # with zero month and day values * A year and month value, with a zero day, such
+        # as a credit card expiration date Related types are google.type.TimeOfDay and `
+        # google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `date`
+        # @return [Google::Apis::ContentV2_1::Date]
+        attr_accessor :date
+      
+        # List of product ids that are impacted by this rule during this reporting
+        # period. Out of stock products and products not searched for by customers are
+        # examples of non-impacted products.
+        # Corresponds to the JSON property `impactedProducts`
+        # @return [Array<String>]
+        attr_accessor :impacted_products
+      
+        # List of all reasons the rule did not apply to the inapplicable products during
+        # the specified reporting period.
+        # Corresponds to the JSON property `inapplicabilityDetails`
+        # @return [Array<Google::Apis::ContentV2_1::InapplicabilityDetails>]
+        attr_accessor :inapplicability_details
+      
+        # List of product ids that are inapplicable to this rule during this reporting
+        # period. To get the inapplicable reason for a specific product, see
+        # RepricingProductReport.
+        # Corresponds to the JSON property `inapplicableProducts`
+        # @return [Array<String>]
+        attr_accessor :inapplicable_products
+      
+        # Total unit count of impacted products ordered while the rule was active on the
+        # date of the report. This count includes all orders that were started while the
+        # rule was active, even if the rule was no longer active when the order was
+        # completed.
+        # Corresponds to the JSON property `orderItemCount`
+        # @return [Fixnum]
+        attr_accessor :order_item_count
+      
+        # Id of the Repricing rule for this report.
+        # Corresponds to the JSON property `ruleId`
+        # @return [String]
+        attr_accessor :rule_id
+      
+        # The price represented as a number and currency.
+        # Corresponds to the JSON property `totalGmv`
+        # @return [Google::Apis::ContentV2_1::PriceAmount]
+        attr_accessor :total_gmv
+      
+        # Type of the rule.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @buybox_winning_rule_stats = args[:buybox_winning_rule_stats] if args.key?(:buybox_winning_rule_stats)
+          @date = args[:date] if args.key?(:date)
+          @impacted_products = args[:impacted_products] if args.key?(:impacted_products)
+          @inapplicability_details = args[:inapplicability_details] if args.key?(:inapplicability_details)
+          @inapplicable_products = args[:inapplicable_products] if args.key?(:inapplicable_products)
+          @order_item_count = args[:order_item_count] if args.key?(:order_item_count)
+          @rule_id = args[:rule_id] if args.key?(:rule_id)
+          @total_gmv = args[:total_gmv] if args.key?(:total_gmv)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Stats specific to buybox winning rules for rule report.
+      class RepricingRuleReportBuyboxWinningRuleStats
+        include Google::Apis::Core::Hashable
+      
+        # Number of unique products that won the buybox with this rule during this
+        # period of time.
+        # Corresponds to the JSON property `buyboxWonProductCount`
+        # @return [Fixnum]
+        attr_accessor :buybox_won_product_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @buybox_won_product_count = args[:buybox_won_product_count] if args.key?(:buybox_won_product_count)
+        end
+      end
+      
       # Definition of a rule restriction. At least one of the following needs to be
       # true: (1) use_auto_pricing_min_price is true (2) floor.price_delta exists (3)
       # floor.percentage_delta exists If floor.price_delta and floor.percentage_delta
@@ -11020,6 +11420,33 @@ module Google
         # must be negative in floor. For example, if an offer is selling at $10 and this
         # field is -$2 in floor, the repricing rule only applies if the calculated new
         # price is >= $8.
+        # Corresponds to the JSON property `priceDelta`
+        # @return [String]
+        attr_accessor :price_delta
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @percentage_delta = args[:percentage_delta] if args.key?(:percentage_delta)
+          @price_delta = args[:price_delta] if args.key?(:price_delta)
+        end
+      end
+      
+      # Definition of stats based rule.
+      class RepricingRuleStatsBasedRule
+        include Google::Apis::Core::Hashable
+      
+        # The percent change against the price target. Valid from 0 to 100 inclusively.
+        # Corresponds to the JSON property `percentageDelta`
+        # @return [Fixnum]
+        attr_accessor :percentage_delta
+      
+        # The price delta against the above price target. A positive value means the
+        # price should be adjusted to be above statistical measure, and a negative value
+        # means below. Currency code must not be included.
         # Corresponds to the JSON property `priceDelta`
         # @return [String]
         attr_accessor :price_delta
@@ -12752,6 +13179,12 @@ module Google
         # @return [Google::Apis::ContentV2_1::TestOrderAddress]
         attr_accessor :address
       
+        # Whether the order is scheduled delivery order.
+        # Corresponds to the JSON property `isScheduledDelivery`
+        # @return [Boolean]
+        attr_accessor :is_scheduled_delivery
+        alias_method :is_scheduled_delivery?, :is_scheduled_delivery
+      
         # The phone number of the person receiving the delivery.
         # Corresponds to the JSON property `phoneNumber`
         # @return [String]
@@ -12764,6 +13197,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @address = args[:address] if args.key?(:address)
+          @is_scheduled_delivery = args[:is_scheduled_delivery] if args.key?(:is_scheduled_delivery)
           @phone_number = args[:phone_number] if args.key?(:phone_number)
         end
       end

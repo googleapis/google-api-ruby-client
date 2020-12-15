@@ -418,6 +418,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Date
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DateTime
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -467,6 +473,12 @@ module Google
       end
       
       class HolidaysHoliday
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InapplicabilityDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -623,6 +635,18 @@ module Google
       end
       
       class ListRegionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListRepricingProductReportsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListRepricingRuleReportsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1126,6 +1150,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OrdersGetByMerchantOrderIdResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1594,7 +1624,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RepricingProductReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RepricingProductReportBuyboxWinningProductStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RepricingRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RepricingRuleCostOfGoodsSaleRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1624,6 +1672,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RepricingRuleReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RepricingRuleReportBuyboxWinningRuleStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RepricingRuleRestriction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1631,6 +1691,12 @@ module Google
       end
       
       class RepricingRuleRestrictionBoundary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RepricingRuleStatsBasedRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2664,6 +2730,15 @@ module Google
         end
       end
       
+      class Date
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
+        end
+      end
+      
       class DateTime
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2772,6 +2847,14 @@ module Google
           property :delivery_guarantee_hour, :numeric_string => true, as: 'deliveryGuaranteeHour'
           property :id, as: 'id'
           property :type, as: 'type'
+        end
+      end
+      
+      class InapplicabilityDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :inapplicable_count, :numeric_string => true, as: 'inapplicableCount'
+          property :inapplicable_reason, as: 'inapplicableReason'
         end
       end
       
@@ -3019,6 +3102,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :regions, as: 'regions', class: Google::Apis::ContentV2_1::Region, decorator: Google::Apis::ContentV2_1::Region::Representation
+      
+        end
+      end
+      
+      class ListRepricingProductReportsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :repricing_product_reports, as: 'repricingProductReports', class: Google::Apis::ContentV2_1::RepricingProductReport, decorator: Google::Apis::ContentV2_1::RepricingProductReport::Representation
+      
+        end
+      end
+      
+      class ListRepricingRuleReportsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :repricing_rule_reports, as: 'repricingRuleReports', class: Google::Apis::ContentV2_1::RepricingRuleReport, decorator: Google::Apis::ContentV2_1::RepricingRuleReport::Representation
       
         end
       end
@@ -3953,6 +4054,14 @@ module Google
         end
       end
       
+      class OrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :carrier_phone_number, as: 'carrierPhoneNumber'
+          property :scheduled_date, as: 'scheduledDate'
+        end
+      end
+      
       class OrdersGetByMerchantOrderIdResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4172,6 +4281,8 @@ module Google
           property :last_pickup_date, as: 'lastPickupDate'
           property :operation_id, as: 'operationId'
           property :ready_pickup_date, as: 'readyPickupDate'
+          property :scheduled_delivery_details, as: 'scheduledDeliveryDetails', class: Google::Apis::ContentV2_1::OrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails, decorator: Google::Apis::ContentV2_1::OrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails::Representation
+      
           property :shipment_id, as: 'shipmentId'
           property :status, as: 'status'
           property :tracking_id, as: 'trackingId'
@@ -4887,9 +4998,40 @@ module Google
         end
       end
       
+      class RepricingProductReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_count, :numeric_string => true, as: 'applicationCount'
+          property :buybox_winning_product_stats, as: 'buyboxWinningProductStats', class: Google::Apis::ContentV2_1::RepricingProductReportBuyboxWinningProductStats, decorator: Google::Apis::ContentV2_1::RepricingProductReportBuyboxWinningProductStats::Representation
+      
+          property :date, as: 'date', class: Google::Apis::ContentV2_1::Date, decorator: Google::Apis::ContentV2_1::Date::Representation
+      
+          property :high_watermark, as: 'highWatermark', class: Google::Apis::ContentV2_1::PriceAmount, decorator: Google::Apis::ContentV2_1::PriceAmount::Representation
+      
+          collection :inapplicability_details, as: 'inapplicabilityDetails', class: Google::Apis::ContentV2_1::InapplicabilityDetails, decorator: Google::Apis::ContentV2_1::InapplicabilityDetails::Representation
+      
+          property :low_watermark, as: 'lowWatermark', class: Google::Apis::ContentV2_1::PriceAmount, decorator: Google::Apis::ContentV2_1::PriceAmount::Representation
+      
+          property :order_item_count, as: 'orderItemCount'
+          collection :rule_ids, as: 'ruleIds'
+          property :total_gmv, as: 'totalGmv', class: Google::Apis::ContentV2_1::PriceAmount, decorator: Google::Apis::ContentV2_1::PriceAmount::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
+      class RepricingProductReportBuyboxWinningProductStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :buybox_wins_count, as: 'buyboxWinsCount'
+        end
+      end
+      
       class RepricingRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cogs_based_rule, as: 'cogsBasedRule', class: Google::Apis::ContentV2_1::RepricingRuleCostOfGoodsSaleRule, decorator: Google::Apis::ContentV2_1::RepricingRuleCostOfGoodsSaleRule::Representation
+      
           property :country_code, as: 'countryCode'
           property :effective_time_period, as: 'effectiveTimePeriod', class: Google::Apis::ContentV2_1::RepricingRuleEffectiveTime, decorator: Google::Apis::ContentV2_1::RepricingRuleEffectiveTime::Representation
       
@@ -4901,8 +5043,18 @@ module Google
           property :restriction, as: 'restriction', class: Google::Apis::ContentV2_1::RepricingRuleRestriction, decorator: Google::Apis::ContentV2_1::RepricingRuleRestriction::Representation
       
           property :rule_id, as: 'ruleId'
+          property :stats_based_rule, as: 'statsBasedRule', class: Google::Apis::ContentV2_1::RepricingRuleStatsBasedRule, decorator: Google::Apis::ContentV2_1::RepricingRuleStatsBasedRule::Representation
+      
           property :title, as: 'title'
           property :type, as: 'type'
+        end
+      end
+      
+      class RepricingRuleCostOfGoodsSaleRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :percentage_delta, as: 'percentageDelta'
+          property :price_delta, as: 'priceDelta'
         end
       end
       
@@ -4943,6 +5095,32 @@ module Google
         end
       end
       
+      class RepricingRuleReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :buybox_winning_rule_stats, as: 'buyboxWinningRuleStats', class: Google::Apis::ContentV2_1::RepricingRuleReportBuyboxWinningRuleStats, decorator: Google::Apis::ContentV2_1::RepricingRuleReportBuyboxWinningRuleStats::Representation
+      
+          property :date, as: 'date', class: Google::Apis::ContentV2_1::Date, decorator: Google::Apis::ContentV2_1::Date::Representation
+      
+          collection :impacted_products, as: 'impactedProducts'
+          collection :inapplicability_details, as: 'inapplicabilityDetails', class: Google::Apis::ContentV2_1::InapplicabilityDetails, decorator: Google::Apis::ContentV2_1::InapplicabilityDetails::Representation
+      
+          collection :inapplicable_products, as: 'inapplicableProducts'
+          property :order_item_count, as: 'orderItemCount'
+          property :rule_id, as: 'ruleId'
+          property :total_gmv, as: 'totalGmv', class: Google::Apis::ContentV2_1::PriceAmount, decorator: Google::Apis::ContentV2_1::PriceAmount::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
+      class RepricingRuleReportBuyboxWinningRuleStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :buybox_won_product_count, as: 'buyboxWonProductCount'
+        end
+      end
+      
       class RepricingRuleRestriction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4953,6 +5131,14 @@ module Google
       end
       
       class RepricingRuleRestrictionBoundary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :percentage_delta, as: 'percentageDelta'
+          property :price_delta, as: 'priceDelta'
+        end
+      end
+      
+      class RepricingRuleStatsBasedRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :percentage_delta, as: 'percentageDelta'
@@ -5445,6 +5631,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address, as: 'address', class: Google::Apis::ContentV2_1::TestOrderAddress, decorator: Google::Apis::ContentV2_1::TestOrderAddress::Representation
       
+          property :is_scheduled_delivery, as: 'isScheduledDelivery'
           property :phone_number, as: 'phoneNumber'
         end
       end
