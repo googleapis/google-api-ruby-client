@@ -25,7 +25,7 @@ module Google
     # @see http://code.google.com/apis/analytics/docs/mgmt/home.html
     module AnalyticsadminV1alpha
       VERSION = 'V1alpha'
-      REVISION = '20201210'
+      REVISION = '20201213'
 
       # Edit Google Analytics management entities
       AUTH_ANALYTICS_EDIT = 'https://www.googleapis.com/auth/analytics.edit'
@@ -36,7 +36,7 @@ module Google
       # View Google Analytics user permissions
       AUTH_ANALYTICS_MANAGE_USERS_READONLY = 'https://www.googleapis.com/auth/analytics.manage.users.readonly'
 
-      # View your Google Analytics data
+      # See and download your Google Analytics data
       AUTH_ANALYTICS_READONLY = 'https://www.googleapis.com/auth/analytics.readonly'
     end
   end

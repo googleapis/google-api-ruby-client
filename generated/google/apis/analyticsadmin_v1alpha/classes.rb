@@ -935,6 +935,13 @@ module Google
         # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFirebaseLink>]
         attr_accessor :firebase_links
       
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages. Currently, Google Analytics
+        # supports only one FirebaseLink per property, so this will never be populated.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
         def initialize(**args)
            update!(**args)
         end
@@ -942,6 +949,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @firebase_links = args[:firebase_links] if args.key?(:firebase_links)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       

@@ -483,6 +483,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :firebase_links, as: 'firebaseLinks', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFirebaseLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFirebaseLink::Representation
       
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
