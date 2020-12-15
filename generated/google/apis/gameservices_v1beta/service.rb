@@ -386,8 +386,8 @@ module Google
         # @param [Google::Apis::GameservicesV1beta::GameServerDeployment] game_server_deployment_object
         # @param [String] update_mask
         #   Required. Mask of fields to update. At least one path must be supplied in this
-        #   field. For the `FieldMask` definition, see https: //developers.google.com/
-        #   protocol-buffers // /docs/reference/google.protobuf#fieldmask
+        #   field. For the `FieldMask` definition, see https://developers.google.com/
+        #   protocol-buffers/docs/reference/google.protobuf#fieldmask
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -431,8 +431,8 @@ module Google
         #   immediately after the proposed rollout completes.
         # @param [String] update_mask
         #   Optional. Mask of fields to update. At least one path must be supplied in this
-        #   field. For the `FieldMask` definition, see https: //developers.google.com/
-        #   protocol-buffers // /docs/reference/google.protobuf#fieldmask
+        #   field. For the `FieldMask` definition, see https://developers.google.com/
+        #   protocol-buffers/docs/reference/google.protobuf#fieldmask
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -551,8 +551,8 @@ module Google
         # @param [Google::Apis::GameservicesV1beta::GameServerDeploymentRollout] game_server_deployment_rollout_object
         # @param [String] update_mask
         #   Required. Mask of fields to update. At least one path must be supplied in this
-        #   field. For the `FieldMask` definition, see https: //developers.google.com/
-        #   protocol-buffers // /docs/reference/google.protobuf#fieldmask
+        #   field. For the `FieldMask` definition, see https://developers.google.com/
+        #   protocol-buffers/docs/reference/google.protobuf#fieldmask
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1041,8 +1041,8 @@ module Google
         # @param [Google::Apis::GameservicesV1beta::Realm] realm_object
         # @param [String] update_mask
         #   Required. The update mask applies to the resource. For the `FieldMask`
-        #   definition, see https: //developers.google.com/protocol-buffers // /docs/
-        #   reference/google.protobuf#fieldmask
+        #   definition, see https://developers.google.com/protocol-buffers/docs/reference/
+        #   google.protobuf#fieldmask
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1083,8 +1083,8 @@ module Google
         #   Optional. The target timestamp to compute the preview.
         # @param [String] update_mask
         #   Required. The update mask applies to the resource. For the `FieldMask`
-        #   definition, see https: //developers.google.com/protocol-buffers // /docs/
-        #   reference/google.protobuf#fieldmask
+        #   definition, see https://developers.google.com/protocol-buffers/docs/reference/
+        #   google.protobuf#fieldmask
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1273,8 +1273,8 @@ module Google
         # @param [Google::Apis::GameservicesV1beta::GameServerCluster] game_server_cluster_object
         # @param [String] update_mask
         #   Required. Mask of fields to update. At least one path must be supplied in this
-        #   field. For the `FieldMask` definition, see https: //developers.google.com/
-        #   protocol-buffers // /docs/reference/google.protobuf#fieldmask
+        #   field. For the `FieldMask` definition, see https://developers.google.com/
+        #   protocol-buffers/docs/reference/google.protobuf#fieldmask
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1390,8 +1390,8 @@ module Google
         #   Optional. The target timestamp to compute the preview.
         # @param [String] update_mask
         #   Required. Mask of fields to update. At least one path must be supplied in this
-        #   field. For the `FieldMask` definition, see https: //developers.google.com/
-        #   protocol-buffers // /docs/reference/google.protobuf#fieldmask
+        #   field. For the `FieldMask` definition, see https://developers.google.com/
+        #   protocol-buffers/docs/reference/google.protobuf#fieldmask
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
