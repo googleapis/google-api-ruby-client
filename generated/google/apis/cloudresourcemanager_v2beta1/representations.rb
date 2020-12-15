@@ -244,18 +244,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UndeleteTagKeyMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class UndeleteTagValueMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class UpdateFolderMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -572,18 +560,6 @@ module Google
       end
       
       class UndeleteProjectMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class UndeleteTagKeyMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class UndeleteTagValueMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
