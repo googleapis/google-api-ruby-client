@@ -213,8 +213,7 @@ module Google
       
         # IAM service account whose credentials will be used at build runtime. Must be
         # of the format `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``. ACCOUNT can
-        # be email address or uniqueId of the service account. This field is in alpha
-        # and is not publicly available.
+        # be email address or uniqueId of the service account. This field is in beta.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -420,7 +419,8 @@ module Google
         attr_accessor :volumes
       
         # Option to specify a `WorkerPool` for the build. Format: projects/`project`/
-        # locations/`location`/workerPools/`workerPool` This field is experimental.
+        # locations/`location`/workerPools/`workerPool` This field is in beta and is
+        # available only to restricted users.
         # Corresponds to the JSON property `workerPool`
         # @return [String]
         attr_accessor :worker_pool
