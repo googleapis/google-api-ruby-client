@@ -799,9 +799,8 @@ module Google
       class GoogleCloudDocumentaiUiv1beta3CreateProcessorVersionMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :state, as: 'state'
-          property :update_time, as: 'updateTime'
+          property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata::Representation
+      
         end
       end
       
@@ -818,10 +817,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata::Representation
       
-          property :create_time, as: 'createTime'
-          property :state, as: 'state'
-          property :state_message, as: 'stateMessage'
-          property :update_time, as: 'updateTime'
         end
       end
       
@@ -852,10 +847,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata::Representation
       
-          property :create_time, as: 'createTime'
-          property :state, as: 'state'
-          property :state_message, as: 'stateMessage'
-          property :update_time, as: 'updateTime'
         end
       end
       
@@ -870,10 +861,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata::Representation
       
-          property :create_time, as: 'createTime'
-          property :state, as: 'state'
-          property :state_message, as: 'stateMessage'
-          property :update_time, as: 'updateTime'
         end
       end
       
