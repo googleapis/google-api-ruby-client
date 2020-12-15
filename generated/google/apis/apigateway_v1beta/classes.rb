@@ -22,7 +22,7 @@ module Google
   module Apis
     module ApigatewayV1beta
       
-      # A consumable API that can be used by multiple Gateways.
+      # An API that can be served by one or more Gateways.
       class ApigatewayApi
         include Google::Apis::Core::Hashable
       
@@ -102,6 +102,16 @@ module Google
         # @return [Google::Apis::ApigatewayV1beta::ApigatewayGatewayConfig]
         attr_accessor :gateway_config
       
+        # Immutable. The Google Cloud IAM Service Account that Gateways serving this
+        # config should use to authenticate to other services. This may either be the
+        # Service Account's email (``ACCOUNT_ID`@`PROJECT`.iam.gserviceaccount.com`) or
+        # its full resource name (`projects/`PROJECT`/accounts/`UNIQUE_ID``). This is
+        # most often used when the service is a GCP resource such as a Cloud Run Service
+        # or an IAP-secured service.
+        # Corresponds to the JSON property `gatewayServiceAccount`
+        # @return [String]
+        attr_accessor :gateway_service_account
+      
         # Optional. gRPC service definition files. If specified, openapi_documents must
         # not be included.
         # Corresponds to the JSON property `grpcServices`
@@ -116,9 +126,9 @@ module Google
         attr_accessor :labels
       
         # Optional. Service Configuration files. At least one must be included when
-        # using gRPC service definitions. See https: //cloud.google.com/endpoints/docs/
-        # grpc/g // rpc-service-config#service_configuration_overview for the expected
-        # file contents. If multiple files are specified, the files are merged with the
+        # using gRPC service definitions. See https://cloud.google.com/endpoints/docs/
+        # grpc/grpc-service-config#service_configuration_overview for the expected file
+        # contents. If multiple files are specified, the files are merged with the
         # following rules: * All singular scalar fields are merged using "last one wins"
         # semantics in the order of the files uploaded. * Repeated fields are
         # concatenated. * Singular embedded messages are merged using these rules for
@@ -164,6 +174,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @gateway_config = args[:gateway_config] if args.key?(:gateway_config)
+          @gateway_service_account = args[:gateway_service_account] if args.key?(:gateway_service_account)
           @grpc_services = args[:grpc_services] if args.key?(:grpc_services)
           @labels = args[:labels] if args.key?(:labels)
           @managed_service_configs = args[:managed_service_configs] if args.key?(:managed_service_configs)
@@ -324,16 +335,16 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Google Cloud IAM service account used to sign OIDC tokens for backends that
-        # have authentication configured (https: //cloud.google.com/service-
-        # infrastructur // e/docs/service-management/reference/rest/v1/services.configs#
+        # have authentication configured (https://cloud.google.com/service-
+        # infrastructure/docs/service-management/reference/rest/v1/services.configs#
         # backend). This may either be the Service Account's email (i.e. "`ACCOUNT_ID`@`
         # PROJECT`.iam.gserviceaccount.com") or its full resource name (i.e. "projects/`
         # PROJECT`/accounts/`UNIQUE_ID`"). This is most often used when the backend is a
         # GCP resource such as a Cloud Run Service or an IAP-secured service. Note that
         # this token is always sent as an authorization header bearer token. The
         # audience of the OIDC token is configured in the associated Service Config in
-        # the BackendRule option (https: //github.com/googleapis/googleapis/blob/ //
-        # master/google/api/backend.proto#L125).
+        # the BackendRule option (https://github.com/googleapis/googleapis/blob/master/
+        # google/api/backend.proto#L125).
         # Corresponds to the JSON property `googleServiceAccount`
         # @return [String]
         attr_accessor :google_service_account

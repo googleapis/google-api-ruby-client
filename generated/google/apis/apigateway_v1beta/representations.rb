@@ -210,6 +210,7 @@ module Google
           property :display_name, as: 'displayName'
           property :gateway_config, as: 'gatewayConfig', class: Google::Apis::ApigatewayV1beta::ApigatewayGatewayConfig, decorator: Google::Apis::ApigatewayV1beta::ApigatewayGatewayConfig::Representation
       
+          property :gateway_service_account, as: 'gatewayServiceAccount'
           collection :grpc_services, as: 'grpcServices', class: Google::Apis::ApigatewayV1beta::ApigatewayApiConfigGrpcServiceDefinition, decorator: Google::Apis::ApigatewayV1beta::ApigatewayApiConfigGrpcServiceDefinition::Representation
       
           hash :labels, as: 'labels'
