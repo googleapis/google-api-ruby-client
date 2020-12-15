@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/shopping-content/v2/
     module ContentV2_1
       VERSION = 'V2_1'
-      REVISION = '20201204'
+      REVISION = '20201211'
 
       # Manage your product listings and accounts for Google Shopping
       AUTH_CONTENT = 'https://www.googleapis.com/auth/content'

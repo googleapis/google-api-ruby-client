@@ -3521,6 +3521,68 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists the metrics report for a given Repricing product. Reports of the last 3
+        # days may not be complete.
+        # @param [Fixnum] merchant_id
+        #   Required. Id of the merchant who owns the Repricing rule.
+        # @param [String] product_id
+        #   Required. Id of the Repricing product. Also known as the [REST_ID](https://
+        #   developers.google.com/shopping-content/reference/rest/v2.1/products#Product.
+        #   FIELDS.id)
+        # @param [String] end_date
+        #   Gets Repricing reports on and before this date in the merchant's timezone. You
+        #   can only retrieve data up to 3 days ago (default) or earlier. Format is YYYY-
+        #   MM-DD.
+        # @param [Fixnum] page_size
+        #   Maximum number of days of reports to return. There can be more than one rule
+        #   report returned per day. For example, if 3 rule types got applied to the same
+        #   product within a 24-hour period, then a page_size of 1 will return 3 rule
+        #   reports. The page size defaults to 50 and values above 1000 are coerced to
+        #   1000. This service may return fewer days of reports than this value, for
+        #   example, if the time between your start and end date is less than the page
+        #   size.
+        # @param [String] page_token
+        #   Token (if provided) to retrieve the subsequent page. All other parameters must
+        #   match the original call that provided the page token.
+        # @param [String] rule_id
+        #   Id of the Repricing rule. If specified, only gets this rule's reports.
+        # @param [String] start_date
+        #   Gets Repricing reports on and after this date in the merchant's timezone, up
+        #   to one year ago. Do not use a start date later than 3 days ago (default).
+        #   Format is YYYY-MM-DD.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::ListRepricingProductReportsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::ListRepricingProductReportsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_productstatus_repricingreports(merchant_id, product_id, end_date: nil, page_size: nil, page_token: nil, rule_id: nil, start_date: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'content/v2.1/{merchantId}/productstatuses/{productId}/repricingreports', options)
+          command.response_representation = Google::Apis::ContentV2_1::ListRepricingProductReportsResponse::Representation
+          command.response_class = Google::Apis::ContentV2_1::ListRepricingProductReportsResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['productId'] = product_id unless product_id.nil?
+          command.query['endDate'] = end_date unless end_date.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['ruleId'] = rule_id unless rule_id.nil?
+          command.query['startDate'] = start_date unless start_date.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves a Merchant Center account's pubsub notification settings.
         # @param [Fixnum] merchant_id
         #   The ID of the account for which to get pubsub notification settings.
@@ -4017,6 +4079,60 @@ module Google
           command.response_class = Google::Apis::ContentV2_1::RepricingRule
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['ruleId'] = rule_id unless rule_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the metrics report for a given Repricing rule. Reports of the last 3
+        # days may not be complete.
+        # @param [Fixnum] merchant_id
+        #   Required. Id of the merchant who owns the Repricing rule.
+        # @param [String] rule_id
+        #   Required. Id of the Repricing rule.
+        # @param [String] end_date
+        #   Gets Repricing reports on and before this date in the merchant's timezone. You
+        #   can only retrieve data up to 3 days ago (default) or earlier. Format: YYYY-MM-
+        #   DD.
+        # @param [Fixnum] page_size
+        #   Maximum number of daily reports to return. Each report includes data from a
+        #   single 24-hour period. The page size defaults to 50 and values above 1000 are
+        #   coerced to 1000. This service may return fewer days than this value, for
+        #   example, if the time between your start and end date is less than page size.
+        # @param [String] page_token
+        #   Token (if provided) to retrieve the subsequent page. All other parameters must
+        #   match the original call that provided the page token.
+        # @param [String] start_date
+        #   Gets Repricing reports on and after this date in the merchant's timezone, up
+        #   to one year ago. Do not use a start date later than 3 days ago (default).
+        #   Format: YYYY-MM-DD.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::ListRepricingRuleReportsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::ListRepricingRuleReportsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_repricingrule_repricingreports(merchant_id, rule_id, end_date: nil, page_size: nil, page_token: nil, start_date: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'content/v2.1/{merchantId}/repricingrules/{ruleId}/repricingreports', options)
+          command.response_representation = Google::Apis::ContentV2_1::ListRepricingRuleReportsResponse::Representation
+          command.response_class = Google::Apis::ContentV2_1::ListRepricingRuleReportsResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['ruleId'] = rule_id unless rule_id.nil?
+          command.query['endDate'] = end_date unless end_date.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['startDate'] = start_date unless start_date.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
