@@ -27,7 +27,7 @@ module Google
     # @see http://developers.google.com/admin-sdk/
     module AdminDirectoryV1
       VERSION = 'DirectoryV1'
-      REVISION = '20201124'
+      REVISION = '20201215'
 
       # View and manage customer related information
       AUTH_ADMIN_DIRECTORY_CUSTOMER = 'https://www.googleapis.com/auth/admin.directory.customer'
