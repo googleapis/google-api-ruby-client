@@ -1323,6 +1323,8 @@ module Google
         #   ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [Boolean] skip_verification
+        #   Whether to skip the verification step (VESS).
         # @param [String] sync_mode
         #   External sync mode.
         # @param [String] fields
@@ -1342,12 +1344,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def start_project_instance_external_sync(project, instance, sync_mode: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def start_project_instance_external_sync(project, instance, skip_verification: nil, sync_mode: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'sql/v1beta4/projects/{project}/instances/{instance}/startExternalSync', options)
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['skipVerification'] = skip_verification unless skip_verification.nil?
           command.query['syncMode'] = sync_mode unless sync_mode.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
