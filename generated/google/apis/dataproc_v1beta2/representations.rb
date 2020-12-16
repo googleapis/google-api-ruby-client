@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InjectCredentialsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupAutoscalingPolicyConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -820,6 +826,14 @@ module Google
           property :query_list, as: 'queryList', class: Google::Apis::DataprocV1beta2::QueryList, decorator: Google::Apis::DataprocV1beta2::QueryList::Representation
       
           hash :script_variables, as: 'scriptVariables'
+        end
+      end
+      
+      class InjectCredentialsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_uuid, as: 'clusterUuid'
+          property :credentials_ciphertext, as: 'credentialsCiphertext'
         end
       end
       

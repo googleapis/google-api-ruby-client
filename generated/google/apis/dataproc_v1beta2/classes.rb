@@ -1240,6 +1240,34 @@ module Google
         end
       end
       
+      # A request to inject credentials into a cluster.
+      class InjectCredentialsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The cluster UUID.
+        # Corresponds to the JSON property `clusterUuid`
+        # @return [String]
+        attr_accessor :cluster_uuid
+      
+        # Required. The encrypted credentials being injected in to the cluster.The
+        # client is responsible for encrypting the credentials in a way that is
+        # supported by the cluster.A wrapped value is used here so that the actual
+        # contents of the encrypted credentials are not written to audit logs.
+        # Corresponds to the JSON property `credentialsCiphertext`
+        # @return [String]
+        attr_accessor :credentials_ciphertext
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_uuid = args[:cluster_uuid] if args.key?(:cluster_uuid)
+          @credentials_ciphertext = args[:credentials_ciphertext] if args.key?(:credentials_ciphertext)
+        end
+      end
+      
       # Configuration for the size bounds of an instance group, including its
       # proportional size to other groups.
       class InstanceGroupAutoscalingPolicyConfig
@@ -1739,7 +1767,7 @@ module Google
       
         # Optional. Maximum number of times in total a driver may be restarted as a
         # result of driver exiting with non-zero code before job is reported failed.
-        # Maximum value is 240
+        # Maximum value is 240.
         # Corresponds to the JSON property `maxFailuresTotal`
         # @return [Fixnum]
         attr_accessor :max_failures_total
