@@ -3288,7 +3288,6 @@ module Google
       class VideoProjectDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :tags, as: 'tags'
         end
       end
       
