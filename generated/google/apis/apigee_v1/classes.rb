@@ -203,22 +203,22 @@ module Google
         end
       end
       
-      # A reference to a certificate or key, certificate pair.
+      # Reference to a certificate or key/certificate pair.
       class GoogleCloudApigeeV1Alias
         include Google::Apis::Core::Hashable
       
-        # The resource ID for this alias. Values must match regular expression `[^/]`1,
+        # Resource ID for this alias. Values must match the regular expression `[^/]`1,
         # 255``.
         # Corresponds to the JSON property `alias`
         # @return [String]
         attr_accessor :alias
       
-        # The chain of certificates under this alias.
+        # Chain of certificates under this alias.
         # Corresponds to the JSON property `certsInfo`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Certificate]
         attr_accessor :certs_info
       
-        # The type of alias.
+        # Type of alias.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1165,61 +1165,62 @@ module Google
         end
       end
       
-      # An X.509 certificate as defined in RFC 5280.
+      # X.509 certificate as defined in RFC 5280.
       class GoogleCloudApigeeV1CertInfo
         include Google::Apis::Core::Hashable
       
-        # The X.509 basic constraints extension.
+        # X.509 basic constraints extension.
         # Corresponds to the JSON property `basicConstraints`
         # @return [String]
         attr_accessor :basic_constraints
       
-        # The X.509 validity / notAfter in milliseconds since the epoch.
+        # X.509 `notAfter` validity period in milliseconds since epoch.
         # Corresponds to the JSON property `expiryDate`
         # @return [Fixnum]
         attr_accessor :expiry_date
       
-        # "Yes" if certificate is valid, "No" if expired and "Not yet" if not yet valid.
+        # Flag that specifies whether the certificate is valid. Flag is set to `Yes` if
+        # the certificate is valid, `No` if expired, or `Not yet` if not yet valid.
         # Corresponds to the JSON property `isValid`
         # @return [String]
         attr_accessor :is_valid
       
-        # The X.509 issuer.
+        # X.509 issuer.
         # Corresponds to the JSON property `issuer`
         # @return [String]
         attr_accessor :issuer
       
-        # The public key component of the X.509 subject public key info.
+        # Public key component of the X.509 subject public key info.
         # Corresponds to the JSON property `publicKey`
         # @return [String]
         attr_accessor :public_key
       
-        # The X.509 serial number.
+        # X.509 serial number.
         # Corresponds to the JSON property `serialNumber`
         # @return [String]
         attr_accessor :serial_number
       
-        # The X.509 signatureAlgorithm.
+        # X.509 signatureAlgorithm.
         # Corresponds to the JSON property `sigAlgName`
         # @return [String]
         attr_accessor :sig_alg_name
       
-        # The X.509 subject.
+        # X.509 subject.
         # Corresponds to the JSON property `subject`
         # @return [String]
         attr_accessor :subject
       
-        # The X.509 subject alternative names (SANs) extension.
+        # X.509 subject alternative names (SANs) extension.
         # Corresponds to the JSON property `subjectAlternativeNames`
         # @return [Array<String>]
         attr_accessor :subject_alternative_names
       
-        # The X.509 validity / notBefore in milliseconds since the epoch.
+        # X.509 `notBefore` validity period in milliseconds since epoch.
         # Corresponds to the JSON property `validFrom`
         # @return [Fixnum]
         attr_accessor :valid_from
       
-        # The X.509 version.
+        # X.509 version.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -1248,7 +1249,7 @@ module Google
       class GoogleCloudApigeeV1Certificate
         include Google::Apis::Core::Hashable
       
-        # The chain of certificates under this name.
+        # Chain of certificates under this name.
         # Corresponds to the JSON property `certInfo`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1CertInfo>]
         attr_accessor :cert_info
@@ -3107,8 +3108,9 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Optional. Customer Managed Encryption Key (CMEK) used for disk & volume
-        # encryption.
+        # Customer Managed Encryption Key (CMEK) used for disk and volume encryption.
+        # Required for Apigee paid subscriptions only. Use the following format: `
+        # projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
         # Corresponds to the JSON property `diskEncryptionKeyName`
         # @return [String]
         attr_accessor :disk_encryption_key_name
@@ -3349,16 +3351,16 @@ module Google
         end
       end
       
-      # A datastore for Certificates and Aliases
+      # Datastore for Certificates and Aliases.
       class GoogleCloudApigeeV1Keystore
         include Google::Apis::Core::Hashable
       
-        # Output only. The aliases in this keystore.
+        # Output only. Aliases in this keystore.
         # Corresponds to the JSON property `aliases`
         # @return [Array<String>]
         attr_accessor :aliases
       
-        # Required. The resource ID for this keystore. Values must match the regular
+        # Required. Resource ID for this keystore. Values must match the regular
         # expression `[\w[:space:]-.]`1,255``.
         # Corresponds to the JSON property `name`
         # @return [String]
