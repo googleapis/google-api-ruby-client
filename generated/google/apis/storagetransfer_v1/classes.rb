@@ -69,6 +69,13 @@ module Google
         # @return [String]
         attr_accessor :bucket_name
       
+        # Root path to transfer objects. Must be an empty string or full path name that
+        # ends with a '/'. This field is treated as an object prefix. As such, it should
+        # generally not begin with a '/'.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
         def initialize(**args)
            update!(**args)
         end
@@ -77,6 +84,7 @@ module Google
         def update!(**args)
           @aws_access_key = args[:aws_access_key] if args.key?(:aws_access_key)
           @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
+          @path = args[:path] if args.key?(:path)
         end
       end
       
@@ -101,6 +109,13 @@ module Google
         # @return [String]
         attr_accessor :container
       
+        # Root path to transfer objects. Must be an empty string or full path name that
+        # ends with a '/'. This field is treated as an object prefix. As such, it should
+        # generally not begin with a '/'.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
         # Required. The name of the Azure Storage account.
         # Corresponds to the JSON property `storageAccount`
         # @return [String]
@@ -114,6 +129,7 @@ module Google
         def update!(**args)
           @azure_credentials = args[:azure_credentials] if args.key?(:azure_credentials)
           @container = args[:container] if args.key?(:container)
+          @path = args[:path] if args.key?(:path)
           @storage_account = args[:storage_account] if args.key?(:storage_account)
         end
       end
@@ -282,6 +298,14 @@ module Google
         # @return [String]
         attr_accessor :bucket_name
       
+        # Root path to transfer objects. Must be an empty string or full path name that
+        # ends with a '/'. This field is treated as an object prefix. As such, it should
+        # generally not begin with a '/'. (must meet Object Name Requirements](https://
+        # cloud.google.com/storage/docs/naming#objectnames)).
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
         def initialize(**args)
            update!(**args)
         end
@@ -289,6 +313,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
+          @path = args[:path] if args.key?(:path)
         end
       end
       
