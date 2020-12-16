@@ -122,6 +122,50 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def webhooks_dm(parent, message_object = nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/webhooks', options)
+          command.request_representation = Google::Apis::ChatV1::Message::Representation
+          command.request_object = message_object
+          command.response_representation = Google::Apis::ChatV1::Message::Representation
+          command.response_class = Google::Apis::ChatV1::Message
+          command.params['parent'] = parent unless parent.nil?
+          command.query['threadKey'] = thread_key unless thread_key.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Legacy path for creating message. Calling these will result in a BadRequest
+        # response.
+        # @param [String] parent
+        #   Required. Space resource name, in the form "spaces/*". Example: spaces/
+        #   AAAAMpdlehY
+        # @param [Google::Apis::ChatV1::Message] message_object
+        # @param [String] thread_key
+        #   Opaque thread identifier string that can be specified to group messages into a
+        #   single thread. If this is the first message with a given thread identifier, a
+        #   new thread is created. Subsequent messages with the same thread identifier
+        #   will be posted into the same thread. This relieves bots and webhooks from
+        #   having to store the Hangouts Chat thread ID of a thread (created earlier by
+        #   them) to post further updates to it. Has no effect if thread field,
+        #   corresponding to an existing thread, is set in message.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::Message] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::Message]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
         def messages_dm_conversation(parent, message_object = nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/messages', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
@@ -248,6 +292,50 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def webhooks_room(parent, message_object = nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/webhooks', options)
+          command.request_representation = Google::Apis::ChatV1::Message::Representation
+          command.request_object = message_object
+          command.response_representation = Google::Apis::ChatV1::Message::Representation
+          command.response_class = Google::Apis::ChatV1::Message
+          command.params['parent'] = parent unless parent.nil?
+          command.query['threadKey'] = thread_key unless thread_key.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Legacy path for creating message. Calling these will result in a BadRequest
+        # response.
+        # @param [String] parent
+        #   Required. Space resource name, in the form "spaces/*". Example: spaces/
+        #   AAAAMpdlehY
+        # @param [Google::Apis::ChatV1::Message] message_object
+        # @param [String] thread_key
+        #   Opaque thread identifier string that can be specified to group messages into a
+        #   single thread. If this is the first message with a given thread identifier, a
+        #   new thread is created. Subsequent messages with the same thread identifier
+        #   will be posted into the same thread. This relieves bots and webhooks from
+        #   having to store the Hangouts Chat thread ID of a thread (created earlier by
+        #   them) to post further updates to it. Has no effect if thread field,
+        #   corresponding to an existing thread, is set in message.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::Message] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::Message]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
         def messages_room_conversation(parent, message_object = nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/messages', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
@@ -321,6 +409,50 @@ module Google
           command.response_class = Google::Apis::ChatV1::ListSpacesResponse
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Legacy path for creating message. Calling these will result in a BadRequest
+        # response.
+        # @param [String] parent
+        #   Required. Space resource name, in the form "spaces/*". Example: spaces/
+        #   AAAAMpdlehY
+        # @param [Google::Apis::ChatV1::Message] message_object
+        # @param [String] thread_key
+        #   Opaque thread identifier string that can be specified to group messages into a
+        #   single thread. If this is the first message with a given thread identifier, a
+        #   new thread is created. Subsequent messages with the same thread identifier
+        #   will be posted into the same thread. This relieves bots and webhooks from
+        #   having to store the Hangouts Chat thread ID of a thread (created earlier by
+        #   them) to post further updates to it. Has no effect if thread field,
+        #   corresponding to an existing thread, is set in message.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::Message] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::Message]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def webhooks_space(parent, message_object = nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/webhooks', options)
+          command.request_representation = Google::Apis::ChatV1::Message::Representation
+          command.request_object = message_object
+          command.response_representation = Google::Apis::ChatV1::Message::Representation
+          command.response_class = Google::Apis::ChatV1::Message
+          command.params['parent'] = parent unless parent.nil?
+          command.query['threadKey'] = thread_key unless thread_key.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
