@@ -1074,9 +1074,9 @@ module Google
         attr_accessor :sql_export_options
       
         # The path to the file in Google Cloud Storage where the export will be stored.
-        # The URI is in the form *gs: //bucketName/fileName*. If the file already exists,
-        # the requests // succeeds, but the operation fails. If *fileType* is // *SQL*
-        # and the filename ends with .gz, the contents are // compressed.
+        # The URI is in the form *gs://bucketName/fileName*. If the file already exists,
+        # the request succeeds, but the operation fails. If *fileType* is *SQL* and the
+        # filename ends with .gz, the contents are compressed.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -1343,10 +1343,10 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Path to the import file in Cloud Storage, in the form *gs: //bucketName/
-        # fileName*. Compressed gzip files (.gz) are supported // when *fileType* is *
-        # SQL*. The instance must have // write permissions to the bucket and read
-        # access to the file.
+        # Path to the import file in Cloud Storage, in the form *gs://bucketName/
+        # fileName*. Compressed gzip files (.gz) are supported when *fileType* is *SQL*.
+        # The instance must have write permissions to the bucket and read access to the
+        # file.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
