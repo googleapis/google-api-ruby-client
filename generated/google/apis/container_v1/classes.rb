@@ -4219,33 +4219,33 @@ module Google
       class UpgradeEvent
         include Google::Apis::Core::Hashable
       
-        # Required. The current version before the upgrade.
+        # The current version before the upgrade.
         # Corresponds to the JSON property `currentVersion`
         # @return [String]
         attr_accessor :current_version
       
-        # Required. The operation associated with this upgrade.
+        # The operation associated with this upgrade.
         # Corresponds to the JSON property `operation`
         # @return [String]
         attr_accessor :operation
       
-        # Required. The time when the operation was started.
+        # The time when the operation was started.
         # Corresponds to the JSON property `operationStartTime`
         # @return [String]
         attr_accessor :operation_start_time
       
-        # Optional. Optional relative path to the resource. For example in node pool
-        # upgrades, the relative path of the node pool.
+        # Optional relative path to the resource. For example in node pool upgrades, the
+        # relative path of the node pool.
         # Corresponds to the JSON property `resource`
         # @return [String]
         attr_accessor :resource
       
-        # Required. The resource type that is upgrading.
+        # The resource type that is upgrading.
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
       
-        # Required. The target version for the upgrade.
+        # The target version for the upgrade.
         # Corresponds to the JSON property `targetVersion`
         # @return [String]
         attr_accessor :target_version
