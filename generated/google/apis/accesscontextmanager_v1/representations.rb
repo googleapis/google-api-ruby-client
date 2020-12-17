@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ApiOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BasicLevel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -76,6 +82,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EgressFrom
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EgressPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EgressTo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -89,6 +113,30 @@ module Google
       end
       
       class GcpUserAccessBinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngressFrom
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngressPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngressSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngressTo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -119,6 +167,12 @@ module Google
       end
       
       class ListServicePerimetersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MethodSelector
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -207,6 +261,15 @@ module Google
         end
       end
       
+      class ApiOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :method_selectors, as: 'methodSelectors', class: Google::Apis::AccesscontextmanagerV1::MethodSelector, decorator: Google::Apis::AccesscontextmanagerV1::MethodSelector::Representation
+      
+          property :service_name, as: 'serviceName'
+        end
+      end
+      
       class BasicLevel
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -271,6 +334,33 @@ module Google
         end
       end
       
+      class EgressFrom
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :identities, as: 'identities'
+          property :identity_type, as: 'identityType'
+        end
+      end
+      
+      class EgressPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :egress_from, as: 'egressFrom', class: Google::Apis::AccesscontextmanagerV1::EgressFrom, decorator: Google::Apis::AccesscontextmanagerV1::EgressFrom::Representation
+      
+          property :egress_to, as: 'egressTo', class: Google::Apis::AccesscontextmanagerV1::EgressTo, decorator: Google::Apis::AccesscontextmanagerV1::EgressTo::Representation
+      
+        end
+      end
+      
+      class EgressTo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :operations, as: 'operations', class: Google::Apis::AccesscontextmanagerV1::ApiOperation, decorator: Google::Apis::AccesscontextmanagerV1::ApiOperation::Representation
+      
+          collection :resources, as: 'resources'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -293,6 +383,43 @@ module Google
           collection :access_levels, as: 'accessLevels'
           property :group_key, as: 'groupKey'
           property :name, as: 'name'
+        end
+      end
+      
+      class IngressFrom
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :identities, as: 'identities'
+          property :identity_type, as: 'identityType'
+          collection :sources, as: 'sources', class: Google::Apis::AccesscontextmanagerV1::IngressSource, decorator: Google::Apis::AccesscontextmanagerV1::IngressSource::Representation
+      
+        end
+      end
+      
+      class IngressPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ingress_from, as: 'ingressFrom', class: Google::Apis::AccesscontextmanagerV1::IngressFrom, decorator: Google::Apis::AccesscontextmanagerV1::IngressFrom::Representation
+      
+          property :ingress_to, as: 'ingressTo', class: Google::Apis::AccesscontextmanagerV1::IngressTo, decorator: Google::Apis::AccesscontextmanagerV1::IngressTo::Representation
+      
+        end
+      end
+      
+      class IngressSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_level, as: 'accessLevel'
+          property :resource, as: 'resource'
+        end
+      end
+      
+      class IngressTo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :operations, as: 'operations', class: Google::Apis::AccesscontextmanagerV1::ApiOperation, decorator: Google::Apis::AccesscontextmanagerV1::ApiOperation::Representation
+      
+          collection :resources, as: 'resources'
         end
       end
       
@@ -338,6 +465,14 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :service_perimeters, as: 'servicePerimeters', class: Google::Apis::AccesscontextmanagerV1::ServicePerimeter, decorator: Google::Apis::AccesscontextmanagerV1::ServicePerimeter::Representation
       
+        end
+      end
+      
+      class MethodSelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :method_prop, as: 'method'
+          property :permission, as: 'permission'
         end
       end
       
@@ -415,6 +550,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :access_levels, as: 'accessLevels'
+          collection :egress_policies, as: 'egressPolicies', class: Google::Apis::AccesscontextmanagerV1::EgressPolicy, decorator: Google::Apis::AccesscontextmanagerV1::EgressPolicy::Representation
+      
+          collection :ingress_policies, as: 'ingressPolicies', class: Google::Apis::AccesscontextmanagerV1::IngressPolicy, decorator: Google::Apis::AccesscontextmanagerV1::IngressPolicy::Representation
+      
           collection :resources, as: 'resources'
           collection :restricted_services, as: 'restrictedServices'
           property :vpc_accessible_services, as: 'vpcAccessibleServices', class: Google::Apis::AccesscontextmanagerV1::VpcAccessibleServices, decorator: Google::Apis::AccesscontextmanagerV1::VpcAccessibleServices::Representation
