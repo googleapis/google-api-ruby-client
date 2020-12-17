@@ -2412,6 +2412,414 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Batch deletes test cases.
+        # @param [String] parent
+        #   Required. The agent to delete test cases from. Format: `projects//locations//
+        #   agents/`.
+        # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1BatchDeleteTestCasesRequest] google_cloud_dialogflow_cx_v3beta1_batch_delete_test_cases_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_project_location_agent_test_case_delete(parent, google_cloud_dialogflow_cx_v3beta1_batch_delete_test_cases_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3beta1/{+parent}/testCases:batchDelete', options)
+          command.request_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1BatchDeleteTestCasesRequest::Representation
+          command.request_object = google_cloud_dialogflow_cx_v3beta1_batch_delete_test_cases_request_object
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleProtobufEmpty
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Kicks off a batch run of test cases.
+        # @param [String] parent
+        #   Required. Agent name. Format: `projects//locations//agents/ `.
+        # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1BatchRunTestCasesRequest] google_cloud_dialogflow_cx_v3beta1_batch_run_test_cases_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_project_location_agent_test_case_run(parent, google_cloud_dialogflow_cx_v3beta1_batch_run_test_cases_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3beta1/{+parent}/testCases:batchRun', options)
+          command.request_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1BatchRunTestCasesRequest::Representation
+          command.request_object = google_cloud_dialogflow_cx_v3beta1_batch_run_test_cases_request_object
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Calculates the test coverage for an agent.
+        # @param [String] agent
+        #   Required. The agent to calculate coverage for. Format: `projects//locations//
+        #   agents/`.
+        # @param [String] type
+        #   Required. The type of coverage requested.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1CalculateCoverageResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1CalculateCoverageResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def calculate_project_location_agent_test_case_coverage(agent, type: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3beta1/{+agent}/testCases:calculateCoverage', options)
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1CalculateCoverageResponse::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1CalculateCoverageResponse
+          command.params['agent'] = agent unless agent.nil?
+          command.query['type'] = type unless type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a test case for the given agent.
+        # @param [String] parent
+        #   Required. The agent to create the test case for. Format: `projects//locations//
+        #   agents/`.
+        # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TestCase] google_cloud_dialogflow_cx_v3beta1_test_case_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TestCase] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TestCase]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_agent_test_case(parent, google_cloud_dialogflow_cx_v3beta1_test_case_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3beta1/{+parent}/testCases', options)
+          command.request_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TestCase::Representation
+          command.request_object = google_cloud_dialogflow_cx_v3beta1_test_case_object
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TestCase::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TestCase
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Exports the test cases under the agent to a Cloud Storage bucket or a local
+        # file. Filter can be applied to export a subset of test cases.
+        # @param [String] parent
+        #   Required. The agent where to export test cases from. Format: `projects//
+        #   locations//agents/`.
+        # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExportTestCasesRequest] google_cloud_dialogflow_cx_v3beta1_export_test_cases_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def export_project_location_agent_test_case(parent, google_cloud_dialogflow_cx_v3beta1_export_test_cases_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3beta1/{+parent}/testCases:export', options)
+          command.request_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExportTestCasesRequest::Representation
+          command.request_object = google_cloud_dialogflow_cx_v3beta1_export_test_cases_request_object
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a test case.
+        # @param [String] name
+        #   Required. The name of the testcase. Format: `projects//locations//agents//
+        #   testCases/`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TestCase] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TestCase]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_agent_test_case(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3beta1/{+name}', options)
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TestCase::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TestCase
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Imports the test cases from a Cloud Storage bucket or a local file. It always
+        # creates new test cases and won't overwite any existing ones. The provided ID
+        # in the imported test case is neglected.
+        # @param [String] parent
+        #   Required. The agent to import test cases to. Format: `projects//locations//
+        #   agents/`.
+        # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ImportTestCasesRequest] google_cloud_dialogflow_cx_v3beta1_import_test_cases_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_project_location_agent_test_case(parent, google_cloud_dialogflow_cx_v3beta1_import_test_cases_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3beta1/{+parent}/testCases:import', options)
+          command.request_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ImportTestCasesRequest::Representation
+          command.request_object = google_cloud_dialogflow_cx_v3beta1_import_test_cases_request_object
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetches a list of test cases for a given agent.
+        # @param [String] parent
+        #   Required. The agent to list all pages for. Format: `projects//locations//
+        #   agents/`.
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return in a single page. By default 20. Note
+        #   that when TestCaseView = FULL, the maximum page size allowed is 20. When
+        #   TestCaseView = BASIC, the maximum page size allowed is 500.
+        # @param [String] page_token
+        #   The next_page_token value returned from a previous list request.
+        # @param [String] view
+        #   Specifies whether response should include all fields or just the metadata.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ListTestCasesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ListTestCasesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_agent_test_cases(parent, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3beta1/{+parent}/testCases', options)
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ListTestCasesResponse::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ListTestCasesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified test case.
+        # @param [String] name
+        #   The unique identifier of the test case. TestCases.CreateTestCase will populate
+        #   the name automatically. Otherwise use format: `projects//locations//agents/ /
+        #   testCases/`.
+        # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TestCase] google_cloud_dialogflow_cx_v3beta1_test_case_object
+        # @param [String] update_mask
+        #   Required. The mask to specify which fields should be updated. Only a test case'
+        #   s metadata and replayed_conversation_turns may be updated. The original
+        #   test_case_conversation_turns may not be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TestCase] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TestCase]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_agent_test_case(name, google_cloud_dialogflow_cx_v3beta1_test_case_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v3beta1/{+name}', options)
+          command.request_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TestCase::Representation
+          command.request_object = google_cloud_dialogflow_cx_v3beta1_test_case_object
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TestCase::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TestCase
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Kicks off a test case run.
+        # @param [String] projects_id
+        # @param [String] locations_id
+        # @param [String] agents_id
+        # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1RunTestCaseRequest] google_cloud_dialogflow_cx_v3beta1_run_test_case_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def run_project_location_agent_test_case(projects_id, locations_id, agents_id, google_cloud_dialogflow_cx_v3beta1_run_test_case_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3beta1/projects/{projectsId}/locations/{locationsId}/agents/{agentsId}/testCases:run', options)
+          command.request_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1RunTestCaseRequest::Representation
+          command.request_object = google_cloud_dialogflow_cx_v3beta1_run_test_case_request_object
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['agentsId'] = agents_id unless agents_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetches a list of results for a given test case.
+        # @param [String] parent
+        #   Required. The test case to list results for. Format: `projects//locations//
+        #   agents// testCases/`. Specify a `-` as a wildcard for TestCase ID to list
+        #   results across multiple test cases.
+        # @param [String] filter
+        #   The filter expression used to filter test case results. See [API Filtering](
+        #   https://aip.dev/160). The expression is case insensitive. Only 'AND' is
+        #   supported for logical operators. The supported syntax is listed below in
+        #   detail: [AND ] ... [AND latest] The supported fields and operators are: field
+        #   operator `environment` `=`, `IN` (Use value `draft` for draft environment) `
+        #   test_time` `>`, `<` `latest` only returns the latest test result in all
+        #   results for each test case. Examples: * "environment=draft AND latest" matches
+        #   the latest test result for each test case in the draft environment. * "
+        #   environment IN (e1,e2)" matches any test case results with an environment
+        #   resource name of either "e1" or "e2". * "test_time > 1602540713" matches any
+        #   test case results with test time later than a unix timestamp in seconds
+        #   1602540713.
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return in a single page. By default 100 and at
+        #   most 1000.
+        # @param [String] page_token
+        #   The next_page_token value returned from a previous list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ListTestCaseResultsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ListTestCaseResultsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_agent_test_case_results(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3beta1/{+parent}/results', options)
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ListTestCaseResultsResponse::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ListTestCaseResultsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a webhook in the specified agent.
         # @param [String] parent
         #   Required. The agent to create a webhook for. Format: `projects//locations//
