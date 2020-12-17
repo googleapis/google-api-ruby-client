@@ -425,7 +425,7 @@ module Google
         end
       end
       
-      # Istio service scoped to a single Kubernetes cluster. Learn more at http://
+      # Istio service scoped to a single Kubernetes cluster. Learn more at https://
       # istio.io. Clusters running OSS Istio will have their services ingested as this
       # type.
       class ClusterIstio
@@ -3236,7 +3236,7 @@ module Google
         # @return [Google::Apis::MonitoringV3::CloudEndpoints]
         attr_accessor :cloud_endpoints
       
-        # Istio service scoped to a single Kubernetes cluster. Learn more at http://
+        # Istio service scoped to a single Kubernetes cluster. Learn more at https://
         # istio.io. Clusters running OSS Istio will have their services ingested as this
         # type.
         # Corresponds to the JSON property `clusterIstio`
