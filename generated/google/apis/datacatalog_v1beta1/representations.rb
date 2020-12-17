@@ -601,6 +601,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :linked_resource, as: 'linkedResource'
+          property :modify_time, as: 'modifyTime'
           property :relative_resource_name, as: 'relativeResourceName'
           property :search_result_subtype, as: 'searchResultSubtype'
           property :search_result_type, as: 'searchResultType'
