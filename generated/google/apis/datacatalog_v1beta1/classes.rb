@@ -1101,6 +1101,11 @@ module Google
         # @return [String]
         attr_accessor :linked_resource
       
+        # Last-modified timestamp of the entry from the managing system.
+        # Corresponds to the JSON property `modifyTime`
+        # @return [String]
+        attr_accessor :modify_time
+      
         # The relative resource name of the resource in URL format. Examples: * `
         # projects/`project_id`/locations/`location_id`/entryGroups/`entry_group_id`/
         # entries/`entry_id`` * `projects/`project_id`/tagTemplates/`tag_template_id``
@@ -1129,6 +1134,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @linked_resource = args[:linked_resource] if args.key?(:linked_resource)
+          @modify_time = args[:modify_time] if args.key?(:modify_time)
           @relative_resource_name = args[:relative_resource_name] if args.key?(:relative_resource_name)
           @search_result_subtype = args[:search_result_subtype] if args.key?(:search_result_subtype)
           @search_result_type = args[:search_result_type] if args.key?(:search_result_type)
