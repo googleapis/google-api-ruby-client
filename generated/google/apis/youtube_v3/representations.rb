@@ -802,24 +802,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Sponsor
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SponsorListResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SponsorSnippet
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Subscription
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2749,44 +2731,6 @@ module Google
           property :thumbnails, as: 'thumbnails', class: Google::Apis::YoutubeV3::ThumbnailDetails, decorator: Google::Apis::YoutubeV3::ThumbnailDetails::Representation
       
           property :title, as: 'title'
-        end
-      end
-      
-      class Sponsor
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :etag, as: 'etag'
-          property :kind, as: 'kind'
-          property :snippet, as: 'snippet', class: Google::Apis::YoutubeV3::SponsorSnippet, decorator: Google::Apis::YoutubeV3::SponsorSnippet::Representation
-      
-        end
-      end
-      
-      class SponsorListResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :etag, as: 'etag'
-          property :event_id, as: 'eventId'
-          collection :items, as: 'items', class: Google::Apis::YoutubeV3::Sponsor, decorator: Google::Apis::YoutubeV3::Sponsor::Representation
-      
-          property :kind, as: 'kind'
-          property :next_page_token, as: 'nextPageToken'
-          property :page_info, as: 'pageInfo', class: Google::Apis::YoutubeV3::PageInfo, decorator: Google::Apis::YoutubeV3::PageInfo::Representation
-      
-          property :token_pagination, as: 'tokenPagination', class: Google::Apis::YoutubeV3::TokenPagination, decorator: Google::Apis::YoutubeV3::TokenPagination::Representation
-      
-          property :visitor_id, as: 'visitorId'
-        end
-      end
-      
-      class SponsorSnippet
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :channel_id, as: 'channelId'
-          property :cumulative_duration_months, as: 'cumulativeDurationMonths'
-          property :sponsor_details, as: 'sponsorDetails', class: Google::Apis::YoutubeV3::ChannelProfileDetails, decorator: Google::Apis::YoutubeV3::ChannelProfileDetails::Representation
-      
-          property :sponsor_since, as: 'sponsorSince'
         end
       end
       
