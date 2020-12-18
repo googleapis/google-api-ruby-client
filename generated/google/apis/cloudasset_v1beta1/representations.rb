@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleIdentityAccesscontextmanagerV1ApiOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleIdentityAccesscontextmanagerV1BasicLevel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -125,6 +131,54 @@ module Google
       end
       
       class GoogleIdentityAccesscontextmanagerV1DevicePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1EgressFrom
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1EgressPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1EgressTo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1IngressFrom
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1IngressPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1IngressSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1IngressTo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1MethodSelector
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -343,6 +397,15 @@ module Google
         end
       end
       
+      class GoogleIdentityAccesscontextmanagerV1ApiOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :method_selectors, as: 'methodSelectors', class: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1MethodSelector, decorator: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1MethodSelector::Representation
+      
+          property :service_name, as: 'serviceName'
+        end
+      end
+      
       class GoogleIdentityAccesscontextmanagerV1BasicLevel
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -386,6 +449,78 @@ module Google
         end
       end
       
+      class GoogleIdentityAccesscontextmanagerV1EgressFrom
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :identities, as: 'identities'
+          property :identity_type, as: 'identityType'
+        end
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1EgressPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :egress_from, as: 'egressFrom', class: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1EgressFrom, decorator: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1EgressFrom::Representation
+      
+          property :egress_to, as: 'egressTo', class: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1EgressTo, decorator: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1EgressTo::Representation
+      
+        end
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1EgressTo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :operations, as: 'operations', class: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1ApiOperation, decorator: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1ApiOperation::Representation
+      
+          collection :resources, as: 'resources'
+        end
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1IngressFrom
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :identities, as: 'identities'
+          property :identity_type, as: 'identityType'
+          collection :sources, as: 'sources', class: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1IngressSource, decorator: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1IngressSource::Representation
+      
+        end
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1IngressPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ingress_from, as: 'ingressFrom', class: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1IngressFrom, decorator: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1IngressFrom::Representation
+      
+          property :ingress_to, as: 'ingressTo', class: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1IngressTo, decorator: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1IngressTo::Representation
+      
+        end
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1IngressSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_level, as: 'accessLevel'
+          property :resource, as: 'resource'
+        end
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1IngressTo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :operations, as: 'operations', class: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1ApiOperation, decorator: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1ApiOperation::Representation
+      
+          collection :resources, as: 'resources'
+        end
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1MethodSelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :method_prop, as: 'method'
+          property :permission, as: 'permission'
+        end
+      end
+      
       class GoogleIdentityAccesscontextmanagerV1OsConstraint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -414,6 +549,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :access_levels, as: 'accessLevels'
+          collection :egress_policies, as: 'egressPolicies', class: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1EgressPolicy, decorator: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1EgressPolicy::Representation
+      
+          collection :ingress_policies, as: 'ingressPolicies', class: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1IngressPolicy, decorator: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1IngressPolicy::Representation
+      
           collection :resources, as: 'resources'
           collection :restricted_services, as: 'restrictedServices'
           property :vpc_accessible_services, as: 'vpcAccessibleServices', class: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices, decorator: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices::Representation
