@@ -418,7 +418,8 @@ module Google
         
         # Makes a recommendation prediction. If using API Key based authentication, the
         # API Key must be registered using the PredictionApiKeyRegistry service. [Learn
-        # more](/recommendations-ai/docs/setting-up#register-key).
+        # more](https://cloud.google.com/recommendations-ai/docs/setting-up#register-key)
+        # .
         # @param [String] name
         #   Required. Full resource name of the format: `name=projects/*/locations/global/
         #   catalogs/default_catalog/eventStores/default_event_store/placements/*` The id
