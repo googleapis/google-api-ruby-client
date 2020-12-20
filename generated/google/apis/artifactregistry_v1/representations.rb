@@ -28,31 +28,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DockerImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleDevtoolsArtifactregistryV1alpha1ErrorInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleDevtoolsArtifactregistryV1alpha1GcsSource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleDevtoolsArtifactregistryV1alpha1ImportArtifactsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleDevtoolsArtifactregistryV1alpha1Package
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -82,47 +64,21 @@ module Google
         end
       end
       
+      class DockerImage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_size_bytes, :numeric_string => true, as: 'imageSizeBytes'
+          property :media_type, as: 'mediaType'
+          property :name, as: 'name'
+          collection :tags, as: 'tags'
+          property :upload_time, as: 'uploadTime'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleDevtoolsArtifactregistryV1alpha1ErrorInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :error, as: 'error', class: Google::Apis::ArtifactregistryV1::Status, decorator: Google::Apis::ArtifactregistryV1::Status::Representation
-      
-          property :gcs_source, as: 'gcsSource', class: Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1alpha1GcsSource, decorator: Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1alpha1GcsSource::Representation
-      
-        end
-      end
-      
-      class GoogleDevtoolsArtifactregistryV1alpha1GcsSource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :uris, as: 'uris'
-          property :use_wildcards, as: 'useWildcards'
-        end
-      end
-      
-      class GoogleDevtoolsArtifactregistryV1alpha1ImportArtifactsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :errors, as: 'errors', class: Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1alpha1ErrorInfo, decorator: Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1alpha1ErrorInfo::Representation
-      
-          collection :packages, as: 'packages', class: Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1alpha1Package, decorator: Google::Apis::ArtifactregistryV1::GoogleDevtoolsArtifactregistryV1alpha1Package::Representation
-      
-        end
-      end
-      
-      class GoogleDevtoolsArtifactregistryV1alpha1Package
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :display_name, as: 'displayName'
-          property :name, as: 'name'
-          property :update_time, as: 'updateTime'
         end
       end
       
