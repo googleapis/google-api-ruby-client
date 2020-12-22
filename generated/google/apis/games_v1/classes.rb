@@ -644,36 +644,6 @@ module Google
         end
       end
       
-      # Hash-like weak identifier of uploaded content bytes (saved game data blob, or
-      # cover image). Consistent per player per application per hash version. Within
-      # the context of a single player/application, it's guaranteed that two identical
-      # blobs coming from two different uploads will have the same content hash. It's
-      # extremely likely, though not guaranteed, that if two content hashes are equal,
-      # the blobs are identical.
-      class ContentHash
-        include Google::Apis::Core::Hashable
-      
-        # Hash-like digest of the content.
-        # Corresponds to the JSON property `digest`
-        # @return [String]
-        attr_accessor :digest
-      
-        # Version of the Hash encoding algorithm to hash the content.
-        # Corresponds to the JSON property `version`
-        # @return [Fixnum]
-        attr_accessor :version
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @digest = args[:digest] if args.key?(:digest)
-          @version = args[:version] if args.key?(:version)
-        end
-      end
-      
       # Container for a URL end point of the requested type.
       class EndPoint
         include Google::Apis::Core::Hashable
@@ -2362,13 +2332,13 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A snapshot represents a saved game state referred to using the developer-
-        # provided snapshot_id (think of it as a file's path). The set of attributes and
-        # binary data for a specific state is called a revision. Each revision is itself
-        # immutable, and referred to by a snapshot_revision_id. At any time, a snapshot
-        # has a "head" revision, and updates are made against that revision. If a
-        # snapshot update is received that isn't against the current head revision, then
-        # instead of changing the head revision it will result in a conflicting revision
-        # that must be specifically resolved.
+        # provided snapshot_name. The set of attributes and binary data for a specific
+        # state is called a revision. Each revision is itself immutable, and referred to
+        # by a snapshot revision id. At any time, a snapshot has a "head" revision, and
+        # updates are made against that revision. If a snapshot update is received that
+        # isn't against the current head revision, then instead of changing the head
+        # revision it will result in a conflicting revision that must be specifically
+        # resolved.
         # Corresponds to the JSON property `snapshot`
         # @return [Google::Apis::GamesV1::SnapshotExtended]
         attr_accessor :snapshot
@@ -2550,14 +2520,12 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. Hash-like weak identifier of the uploaded image bytes, consistent
-        # per player per application per hash version. Within the context of a single
-        # player/application, it's guaranteed that two identical images coming from two
-        # different uploads will have the same content hash for the same hash algorithm
-        # version. It's extremely likely, though not guaranteed, that if two content
-        # hashes are equal, the images are identical. More than one content hash can be
-        # returned if more than one hash versions are supported.
+        # per player per application. The content hash for a given resource will not
+        # change if the binary data hasn't changed. Except in very rare circumstances,
+        # the content_hash for matching binary data will be the same within a given
+        # player and application.
         # Corresponds to the JSON property `contentHash`
-        # @return [Array<Google::Apis::GamesV1::ContentHash>]
+        # @return [String]
         attr_accessor :content_hash
       
         # Output only. A URL the client can use to download the image. May vary across
@@ -2612,15 +2580,13 @@ module Google
       class SnapshotDataResource
         include Google::Apis::Core::Hashable
       
-        # Output only. Hash-like weak identifier of the uploaded blob, consistent per
-        # player per application per hash version. Within the context of a single player/
-        # application, it's guaranteed that two identical blobs coming from two
-        # different uploads will have the same content hash for the same hash algorithm
-        # version. It's extremely likely, though not guaranteed, that if two content
-        # hashes are equal, the blobs are identical. More than one content hash can be
-        # returned if more than one hash versions are supported.
+        # Output only. Hash-like weak identifier of the uploaded blob bytes, consistent
+        # per player per application. The content hash for a given resource will not
+        # change if the binary data hasn't changed. Except in very rare circumstances,
+        # the content_hash for matching binary data will be the same within a given
+        # player and application.
         # Corresponds to the JSON property `contentHash`
-        # @return [Array<Google::Apis::GamesV1::ContentHash>]
+        # @return [String]
         attr_accessor :content_hash
       
         # Output only. A URL that the client can use to download the blob. May vary
@@ -2660,13 +2626,13 @@ module Google
       end
       
       # A snapshot represents a saved game state referred to using the developer-
-      # provided snapshot_id (think of it as a file's path). The set of attributes and
-      # binary data for a specific state is called a revision. Each revision is itself
-      # immutable, and referred to by a snapshot_revision_id. At any time, a snapshot
-      # has a "head" revision, and updates are made against that revision. If a
-      # snapshot update is received that isn't against the current head revision, then
-      # instead of changing the head revision it will result in a conflicting revision
-      # that must be specifically resolved.
+      # provided snapshot_name. The set of attributes and binary data for a specific
+      # state is called a revision. Each revision is itself immutable, and referred to
+      # by a snapshot revision id. At any time, a snapshot has a "head" revision, and
+      # updates are made against that revision. If a snapshot update is received that
+      # isn't against the current head revision, then instead of changing the head
+      # revision it will result in a conflicting revision that must be specifically
+      # resolved.
       class SnapshotExtended
         include Google::Apis::Core::Hashable
       
@@ -2693,10 +2659,11 @@ module Google
         # @return [Google::Apis::GamesV1::SnapshotRevision]
         attr_accessor :head_revision
       
-        # An identifier of the snapshot,developer-specified.
-        # Corresponds to the JSON property `name`
+        # An identifier of the snapshot, developer-specified. It must match the pattern [
+        # 0-9a-zA-Z-._~]`1,100`.
+        # Corresponds to the JSON property `snapshotName`
         # @return [String]
-        attr_accessor :name
+        attr_accessor :snapshot_name
       
         def initialize(**args)
            update!(**args)
@@ -2707,7 +2674,7 @@ module Google
           @conflicting_revisions = args[:conflicting_revisions] if args.key?(:conflicting_revisions)
           @has_conflicting_revisions = args[:has_conflicting_revisions] if args.key?(:has_conflicting_revisions)
           @head_revision = args[:head_revision] if args.key?(:head_revision)
-          @name = args[:name] if args.key?(:name)
+          @snapshot_name = args[:snapshot_name] if args.key?(:snapshot_name)
         end
       end
       
@@ -2806,12 +2773,13 @@ module Google
       
         # The duration associated with this snapshot. Values with sub-millisecond
         # precision can be rounded or trimmed to the closest millisecond.
-        # Corresponds to the JSON property `duration`
+        # Corresponds to the JSON property `gameplayDuration`
         # @return [String]
-        attr_accessor :duration
+        attr_accessor :gameplay_duration
       
-        # The timestamp of the last modification to this snapshot. Values with sub-
-        # millisecond precision can be rounded or trimmed to the closest millisecond.
+        # The timestamp of the last modification to this snapshot as provided by the
+        # client. Values with sub-millisecond precision can be rounded or trimmed to the
+        # closest millisecond.
         # Corresponds to the JSON property `lastModifyTime`
         # @return [String]
         attr_accessor :last_modify_time
@@ -2822,11 +2790,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :progress_value
       
-        # The title of this snapshot.
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
-      
         def initialize(**args)
            update!(**args)
         end
@@ -2835,10 +2798,9 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @device_name = args[:device_name] if args.key?(:device_name)
-          @duration = args[:duration] if args.key?(:duration)
+          @gameplay_duration = args[:gameplay_duration] if args.key?(:gameplay_duration)
           @last_modify_time = args[:last_modify_time] if args.key?(:last_modify_time)
           @progress_value = args[:progress_value] if args.key?(:progress_value)
-          @title = args[:title] if args.key?(:title)
         end
       end
       
