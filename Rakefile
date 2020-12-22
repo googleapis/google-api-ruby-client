@@ -7,7 +7,7 @@ namespace :kokoro do
 
   task :presubmit do
     cd "google-api-client" do
-      Bundler.with_unbundled_env do
+      Bundler.with_clean_env do
         sh "bundle update"
         sh "bundle exec rake spec"
       end
@@ -16,7 +16,7 @@ namespace :kokoro do
 
   task :continuous do
     cd "google-api-client" do
-      Bundler.with_unbundled_env do
+      Bundler.with_clean_env do
         sh "bundle update"
         sh "bundle exec rake spec"
       end
@@ -25,7 +25,7 @@ namespace :kokoro do
 
   task :nightly do
     cd "google-api-client" do
-      Bundler.with_unbundled_env do
+      Bundler.with_clean_env do
         sh "bundle update"
         sh "bundle exec rake spec"
       end
@@ -57,7 +57,7 @@ namespace :kokoro do
     end
 
     cd "google-api-client" do
-      Bundler.with_unbundled_env do
+      Bundler.with_clean_env do
         rm_rf "pkg"
         sh "bundle update"
         sh "bundle exec rake build"
