@@ -1,73 +1,35 @@
-require "bundler/gem_tasks"
 require "json"
-
-task :release_gem, :tag do |_t, args|
-  tag = args[:tag]
-  raise "You must provide a tag to release." if tag.nil?
-
-  # Verify the tag format "vVERSION"
-  m = tag.match(/v(?<version>\S*)/)
-  raise "Tag #{tag} does not match the expected format." if m.nil?
-
-  version = m[:version]
-  raise "You must provide a version." if version.nil?
-
-  api_token = ENV["RUBYGEMS_API_TOKEN"]
-
-  require "gems"
-  if api_token
-    ::Gems.configure do |config|
-      config.key = api_token
-    end
-  end
-
-  Bundler.with_clean_env do
-    sh "rm -rf pkg"
-    sh "bundle update"
-    sh "bundle exec rake build"
-  end
-
-  path_to_be_pushed = "pkg/google-api-client-#{version}.gem"
-  gem_was_published = nil
-  if File.file? path_to_be_pushed
-    begin
-      response = ::Gems.push File.new(path_to_be_pushed)
-      puts response
-      raise unless response.include? "Successfully registered gem:"
-      gem_was_published = true
-      puts "Successfully built and pushed google-api-client for version #{version}"
-    rescue StandardError => e
-      gem_was_published = false
-      puts "Error while releasing google-api-client version #{version}: #{e.message}"
-    end
-  else
-    raise "Cannot build google-api-client for version #{version}"
-  end
-
-  Rake::Task["kokoro:publish_docs"].invoke if gem_was_published
-end
-
-task default: :spec
 
 namespace :kokoro do
   task :load_env_vars do
-    service_account = "#{ENV['KOKORO_GFILE_DIR']}/service-account.json"
-    ENV["GOOGLE_APPLICATION_CREDENTIALS"] = service_account
-    filename = "#{ENV['KOKORO_GFILE_DIR']}/env_vars.json"
-    env_vars = JSON.parse File.read(filename)
-    env_vars.each { |k, v| ENV[k] = v }
+    load_env_vars
   end
 
   task :presubmit do
-    Rake::Task["spec"].invoke
+    cd "google-api-client" do
+      Bundler.with_clean_env do
+        sh "bundle update"
+        sh "bundle exec rake spec"
+      end
+    end
   end
 
   task :continuous do
-    Rake::Task["spec"].invoke
+    cd "google-api-client" do
+      Bundler.with_clean_env do
+        sh "bundle update"
+        sh "bundle exec rake spec"
+      end
+    end
   end
 
   task :nightly do
-    Rake::Task["spec"].invoke
+    cd "google-api-client" do
+      Bundler.with_clean_env do
+        sh "bundle update"
+        sh "bundle exec rake spec"
+      end
+    end
   end
 
   task :post do
@@ -94,20 +56,27 @@ namespace :kokoro do
       end
     end
 
-    rm_rf "pkg"
-    Rake::Task["build"].invoke
-    built_gem_path = Dir.glob("pkg/google-api-client-*.gem").last
+    cd "google-api-client" do
+      Bundler.with_clean_env do
+        rm_rf "pkg"
+        sh "bundle update"
+        sh "bundle exec rake build"
+        built_gem_path = Dir.glob("pkg/google-api-client-*.gem").last
 
-    response = ::Gems.push File.new built_gem_path
-    puts response
-    raise "Failed to release gem" unless response.include? "Successfully registered gem:"
+        response = ::Gems.push File.new built_gem_path
+        puts response
+        raise "Failed to release gem" unless response.include? "Successfully registered gem:"
+      end
+    end
   end
 
   desc "Publish docs for the latest git tag"
   task :publish_docs do
     require_relative "rakelib/devsite/devsite_builder.rb"
 
-    DevsiteBuilder.new.publish ENV["DOCS_BUILD_TAG"]
+    cd "google-api-client" do
+      DevsiteBuilder.new.publish ENV["DOCS_BUILD_TAG"]
+    end
   end
 end
 

@@ -172,7 +172,7 @@ module Google
       end
 
       def api_list_config
-        @api_list_config ||= Psych.load_file(__dir__ + "/../api_list_config.yaml")
+        @api_list_config ||= Psych.load_file(__dir__ + "/../../api_list_config.yaml")
       end
 
       def ensure_active_support
