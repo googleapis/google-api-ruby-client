@@ -16,20 +16,20 @@ Learn how to use the Google API Client Library for Ruby with these guides:
 
 ### Usage Guides
 
-- [Getting Started](docs/getting-started.md)
-- [Installation](docs/installation.md)
-- [Auth](docs/auth.md)
-  - [API Keys](docs/api-keys.md)
-  - [OAuth 2.0](docs/oauth.md)
-  - [OAuth 2.0 for Web Server Applications](docs/oauth-web.md)
-  - [OAuth 2.0 for Installed Applications](docs/oauth-installed.md)
-  - [OAuth 2.0 for Server to Server Applications](docs/oauth-server.md)
-  - [Client Secrets](docs/client-secrets.md)
+- [Getting Started](google-api-client/docs/getting-started.md)
+- [Installation](google-api-client/docs/installation.md)
+- [Auth](google-api-client/docs/auth.md)
+  - [API Keys](google-api-client/docs/api-keys.md)
+  - [OAuth 2.0](google-api-client/docs/oauth.md)
+  - [OAuth 2.0 for Web Server Applications](google-api-client/docs/oauth-web.md)
+  - [OAuth 2.0 for Installed Applications](google-api-client/docs/oauth-installed.md)
+  - [OAuth 2.0 for Server to Server Applications](google-api-client/docs/oauth-server.md)
+  - [Client Secrets](google-api-client/docs/client-secrets.md)
 - How to...
-  - [Use Logging](docs/logging.md)
-  - [Upload Media](docs/media-upload.md)
-  - [Use Pagination](docs/pagination.md)
-  - [Improve Performance](docs/performance.md)
+  - [Use Logging](google-api-client/docs/logging.md)
+  - [Upload Media](google-api-client/docs/media-upload.md)
+  - [Use Pagination](google-api-client/docs/pagination.md)
+  - [Improve Performance](google-api-client/docs/performance.md)
 
 ### Reference Documentation
 
