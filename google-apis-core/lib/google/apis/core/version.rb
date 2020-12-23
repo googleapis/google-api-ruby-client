@@ -1,4 +1,4 @@
-# Copyright 2015 Google Inc.
+# Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,11 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'open3'
-
 module Google
   module Apis
-    # Client library version
-    VERSION = "0.52.0".freeze
+    module Core
+      # Core version
+      VERSION = "0.0.1".freeze
+    end
   end
 end

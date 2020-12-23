@@ -6,30 +6,15 @@ namespace :kokoro do
   end
 
   task :presubmit do
-    cd "google-api-client" do
-      Bundler.with_clean_env do
-        sh "bundle update"
-        sh "bundle exec rake spec"
-      end
-    end
+    Rake::Task["kokoro:run_tests"].invoke
   end
 
   task :continuous do
-    cd "google-api-client" do
-      Bundler.with_clean_env do
-        sh "bundle update"
-        sh "bundle exec rake spec"
-      end
-    end
+    Rake::Task["kokoro:run_tests"].invoke
   end
 
   task :nightly do
-    cd "google-api-client" do
-      Bundler.with_clean_env do
-        sh "bundle update"
-        sh "bundle exec rake spec"
-      end
-    end
+    Rake::Task["kokoro:run_tests"].invoke
   end
 
   task :post do
@@ -43,6 +28,17 @@ namespace :kokoro do
   task :release do
     Rake::Task["kokoro:publish_gem"].invoke
     Rake::Task["kokoro:publish_docs"].invoke
+  end
+
+  task :run_tests do
+    ["google-apis-core", "google-api-client"].each do |gem_name|
+      cd gem_name do
+        Bundler.with_clean_env do
+          sh "bundle update"
+          sh "bundle exec rake spec"
+        end
+      end
+    end
   end
 
   task :publish_gem do
