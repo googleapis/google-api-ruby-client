@@ -1253,6 +1253,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Reserved for future use. This field is set only in responses from the server;
+        # it is ignored if it is set in any requests.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1263,6 +1270,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @message_storage_policy = args[:message_storage_policy] if args.key?(:message_storage_policy)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
         end
       end
       

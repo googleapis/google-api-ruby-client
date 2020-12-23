@@ -537,6 +537,7 @@ module Google
           property :message_storage_policy, as: 'messageStoragePolicy', class: Google::Apis::PubsubV1::MessageStoragePolicy, decorator: Google::Apis::PubsubV1::MessageStoragePolicy::Representation
       
           property :name, as: 'name'
+          property :satisfies_pzs, as: 'satisfiesPzs'
         end
       end
       
