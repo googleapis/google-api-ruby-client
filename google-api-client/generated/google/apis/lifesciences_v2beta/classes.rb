@@ -65,6 +65,12 @@ module Google
         attr_accessor :always_run
         alias_method :always_run?, :always_run
       
+        # Prevents the container from accessing the external network.
+        # Corresponds to the JSON property `blockExternalNetwork`
+        # @return [Boolean]
+        attr_accessor :block_external_network
+        alias_method :block_external_network?, :block_external_network
+      
         # If specified, overrides the `CMD` specified in the container. If the container
         # also has an `ENTRYPOINT` the values are used as entrypoint arguments.
         # Otherwise, they are used as a command and arguments to run inside the
@@ -223,6 +229,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @always_run = args[:always_run] if args.key?(:always_run)
+          @block_external_network = args[:block_external_network] if args.key?(:block_external_network)
           @commands = args[:commands] if args.key?(:commands)
           @container_name = args[:container_name] if args.key?(:container_name)
           @credentials = args[:credentials] if args.key?(:credentials)
@@ -383,7 +390,8 @@ module Google
       
       # Carries information about a disk that can be attached to a VM. See https://
       # cloud.google.com/compute/docs/disks/performance for more information about
-      # disk type, size, and performance considerations.
+      # disk type, size, and performance considerations. Specify either `Volume` or `
+      # Disk`, but not both.
       class Disk
         include Google::Apis::Core::Hashable
       
@@ -1243,7 +1251,8 @@ module Google
         # @return [String]
         attr_accessor :cpu_platform
       
-        # The list of disks to create and attach to the VM.
+        # The list of disks to create and attach to the VM. Specify either the `volumes[]
+        # ` field or the `disks[]` field, but not both.
         # Corresponds to the JSON property `disks`
         # @return [Array<Google::Apis::LifesciencesV2beta::Disk>]
         attr_accessor :disks
@@ -1310,7 +1319,8 @@ module Google
         # @return [Google::Apis::LifesciencesV2beta::ServiceAccount]
         attr_accessor :service_account
       
-        # The list of disks and other storage to create or attach to the VM.
+        # The list of disks and other storage to create or attach to the VM. Specify
+        # either the `volumes[]` field or the `disks[]` field, but not both.
         # Corresponds to the JSON property `volumes`
         # @return [Array<Google::Apis::LifesciencesV2beta::Volume>]
         attr_accessor :volumes
@@ -1338,7 +1348,8 @@ module Google
         end
       end
       
-      # Carries information about storage that can be attached to a VM.
+      # Carries information about storage that can be attached to a VM. Specify either
+      # `Volume` or `Disk`, but not both.
       class Volume
         include Google::Apis::Core::Hashable
       

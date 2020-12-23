@@ -244,6 +244,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :always_run, as: 'alwaysRun'
+          property :block_external_network, as: 'blockExternalNetwork'
           collection :commands, as: 'commands'
           property :container_name, as: 'containerName'
           property :credentials, as: 'credentials', class: Google::Apis::LifesciencesV2beta::Secret, decorator: Google::Apis::LifesciencesV2beta::Secret::Representation

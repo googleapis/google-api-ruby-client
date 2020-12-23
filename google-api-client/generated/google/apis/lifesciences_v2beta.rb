@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/life-sciences
     module LifesciencesV2beta
       VERSION = 'V2beta'
-      REVISION = '20201105'
+      REVISION = '20201213'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
