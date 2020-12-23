@@ -112,12 +112,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ContentHash
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class EndPoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -598,14 +592,6 @@ module Google
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class ContentHash
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :digest, as: 'digest'
-          property :version, as: 'version'
         end
       end
       
@@ -1116,8 +1102,7 @@ module Google
       class SnapshotCoverImageResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :content_hash, as: 'contentHash', class: Google::Apis::GamesV1::ContentHash, decorator: Google::Apis::GamesV1::ContentHash::Representation
-      
+          property :content_hash, as: 'contentHash'
           property :download_url, as: 'downloadUrl'
           property :height, as: 'height'
           property :mime_type, as: 'mimeType'
@@ -1129,8 +1114,7 @@ module Google
       class SnapshotDataResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :content_hash, as: 'contentHash', class: Google::Apis::GamesV1::ContentHash, decorator: Google::Apis::GamesV1::ContentHash::Representation
-      
+          property :content_hash, as: 'contentHash'
           property :download_url, as: 'downloadUrl'
           property :resource_id, as: 'resourceId'
           property :size, :numeric_string => true, as: 'size'
@@ -1145,7 +1129,7 @@ module Google
           property :has_conflicting_revisions, as: 'hasConflictingRevisions'
           property :head_revision, as: 'headRevision', class: Google::Apis::GamesV1::SnapshotRevision, decorator: Google::Apis::GamesV1::SnapshotRevision::Representation
       
-          property :name, as: 'name'
+          property :snapshot_name, as: 'snapshotName'
         end
       end
       
@@ -1175,10 +1159,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :device_name, as: 'deviceName'
-          property :duration, as: 'duration'
+          property :gameplay_duration, as: 'gameplayDuration'
           property :last_modify_time, as: 'lastModifyTime'
           property :progress_value, :numeric_string => true, as: 'progressValue'
-          property :title, as: 'title'
         end
       end
       
