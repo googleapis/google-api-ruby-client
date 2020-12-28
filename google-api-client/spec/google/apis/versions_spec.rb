@@ -17,9 +17,4 @@ require 'google/apis/version'
 
 RSpec.describe Google::Apis::VERSION do
   it { is_expected.to be_a(String) }
-
-  describe Google::Apis::OS_VERSION do
-    it { is_expected.to be_a(String) }
-    it { is_expected.not_to match /\n/ }
-  end
 end

@@ -12,11 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'open3'
+require 'spec_helper'
 
-module Google
-  module Apis
-    # Client library version
-    VERSION = "0.52.0".freeze
+RSpec.describe $LOAD_PATH do
+  it('should contain SPEC_DIR') do
+    expect($LOAD_PATH).to include(SPEC_DIR)
+  end
+
+  it('should contain LIB_DIR') do
+    expect($LOAD_PATH).to include(LIB_DIR)
   end
 end
