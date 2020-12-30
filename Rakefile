@@ -31,10 +31,12 @@ namespace :kokoro do
   end
 
   task :run_tests do
-    ["google-apis-core", "google-api-client"].each do |gem_name|
-      cd gem_name do
+    gem_directories = ["google-apis-core", "google-api-client"] # + Dir.glob("generated/*")
+    gem_directories.each do |dir|
+      next unless File.file?(File.join(dir, "Gemfile"))
+      cd dir do
         Bundler.with_clean_env do
-          sh "bundle update"
+          sh "bundle install"
           sh "bundle exec rake spec"
         end
       end

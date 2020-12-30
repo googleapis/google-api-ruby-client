@@ -28,7 +28,8 @@ module Google
 
     desc 'gen OUTDIR', 'Generate ruby API from an API description'
     method_options url: :array, file: :array, from_discovery: :boolean, preferred_only: :boolean,
-                   verbose: :boolean, names: :string, names_out: :string, api: :string, clean: :boolean
+                   verbose: :boolean, names: :string, names_out: :string, api: :string,
+                   clean: :boolean, spot_check: :boolean
     def gen(dir)
       ensure_active_support
       require 'google/apis/generator'
@@ -129,6 +130,7 @@ module Google
       def clean_from_discovery
         count = 0
         apis = discovery_api_list.map { |api| "#{api.name.underscore}_#{api.version.tr '.', '_'}" }
+        return 0 unless File.directory?("#{destination_root}/google/apis")
         Dir.chdir("#{destination_root}/google/apis") do
           Dir.glob("*.rb").each do |filename|
             filename = File.basename(filename, ".rb")
@@ -143,9 +145,18 @@ module Google
       end
 
       def generate_api(json)
-        files = generator.render(json)
+        result = generator.render(json)
+        files = updater.analyze(destination_root, result)
         files.each do |file, content|
           create_file(file) { |*| content }
+        end
+        run_spot_check(result.gem_name) if !files.empty? && options[:spot_check]
+      end
+
+      def run_spot_check(gem_name)
+        Dir.chdir(File.join(destination_root, gem_name)) do
+          system("bundle install") or error_and_exit("Failed to install bundle for newly generated library")
+          system("bundle exec rake ci") or error_and_exit("Failed to run spot check for newly generated library")
         end
       end
 
@@ -171,6 +182,13 @@ module Google
         @generator ||= Google::Apis::Generator.new(api_names: options[:names], api_names_out: options[:names_out])
       end
 
+      def updater
+        @updater ||= begin
+          require 'google/apis/generator/updater'
+          Google::Apis::Generator::Updater.new
+        end
+      end
+
       def api_list_config
         @api_list_config ||= Psych.load_file(__dir__ + "/../../api_list_config.yaml")
       end
@@ -181,10 +199,13 @@ module Google
           require 'active_support/inflector'
           require 'active_support/core_ext'
         rescue LoadError => e
-          error 'ActiveSupport is required, please run:'
-          error 'gem install activesupport'
-          exit 1
+          error_and_exit('ActiveSupport is required. Please run:', 'gem install activesupport')
         end
+      end
+
+      def error_and_exit(*messages)
+        messages.each { |msg| error(msg) }
+        exit 1
       end
     end
   end

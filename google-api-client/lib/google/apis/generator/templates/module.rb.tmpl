@@ -1,4 +1,4 @@
-# Copyright 2015 Google Inc.
+# Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
 require '<%= to_path(api.qualified_name) %>/service.rb'
 require '<%= to_path(api.qualified_name) %>/classes.rb'
 require '<%= to_path(api.qualified_name) %>/representations.rb'
+require '<%= to_path(api.qualified_name) %>/gem_version.rb'
 
 module Google
   module Apis
@@ -26,8 +27,9 @@ module Google
     # @see <%= api.documentation_link %>
 <% end -%>
     module <%= api.module_name %>
+      # Version of the <%= api.title %> this client connects to.
+      # This is NOT the gem version.
       VERSION = '<%= api.version %>'
-      REVISION = '<%= api.revision %>'
 <% if api.auth && api.auth.oauth2 -%>
 <%   for scope_string, scope in api.auth.oauth2.scopes -%>
 
