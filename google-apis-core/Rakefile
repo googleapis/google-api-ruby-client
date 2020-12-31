@@ -1,28 +1,5 @@
 require "bundler/gem_tasks"
 
-namespace :metrics do
-  task :lines do
-    lines, codelines, total_lines, total_codelines = 0, 0, 0, 0
-    for file_name in FileList['lib/**/*.rb', 'bin/generate-api']
-      f = File.open(file_name)
-      while line = f.gets
-        lines += 1
-        next if line =~ /^\s*$/
-        next if line =~ /^\s*#/
-        codelines += 1
-      end
-      puts "L: #{sprintf('%4d', lines)}, " +
-               "LOC #{sprintf('%4d', codelines)} | #{file_name}"
-      total_lines     += lines
-      total_codelines += codelines
-
-      lines, codelines = 0, 0
-    end
-
-    puts "Total: Lines #{total_lines}, LOC #{total_codelines}"
-  end
-end
-
 require 'rubocop/rake_task'
 
 desc 'Run RuboCop on the lib directory'
@@ -36,7 +13,8 @@ end
 
 require 'rake/clean'
 
-CLOBBER.include('coverage')
+CLOBBER.include('coverage', 'doc')
+CLEAN.include('.yardoc')
 
 require 'rspec/core/rake_task'
 
@@ -56,7 +34,10 @@ begin
   	t.options = ['--verbose', '--markup', 'markdown']
 	end
 rescue LoadError
+  task :yard
   puts "YARD not available"
 end
 
-task :default => :spec
+task :ci => [:spec, :yard, :build]
+
+task :default => :ci
