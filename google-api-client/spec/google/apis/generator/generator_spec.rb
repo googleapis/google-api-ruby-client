@@ -26,7 +26,7 @@ RSpec.describe Google::Apis::Generator do
     before(:context) do
       generator = Google::Apis::Generator.new(api_names: File.join(FIXTURES_DIR, 'files', 'api_names.yaml'))
       discovery = File.read(File.join(FIXTURES_DIR, 'files', 'test_api.json'))
-      generated_files = generator.render(discovery)
+      generated_files = generator.render(discovery).files
       # puts generator.dump_api_names
       tempdir = Dir.mktmpdir
       generated_files.each do |key, content|
@@ -37,7 +37,7 @@ RSpec.describe Google::Apis::Generator do
           f.write(content)
         end
       end
-      $LOAD_PATH.unshift(tempdir)
+      $LOAD_PATH.unshift(File.join(tempdir, "google-apis-test_v1", "lib"))
       require 'google/apis/test_v1'
     end
 
@@ -331,10 +331,10 @@ EOF
     before do
       generated_files = Google::Apis::Generator.new.render(
         '{ "name": "minimal_api", "id": "minimal_api", "version": "v1" }'
-      )
+      ).files
 
       namespace.send(:binding).eval(
-        generated_files.fetch('google/apis/minimal_api_v1/service.rb')
+        generated_files.fetch('google-apis-minimal_api_v1/lib/google/apis/minimal_api_v1/service.rb')
       )
     end
 

@@ -12,21 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'date'
-require 'google/apis/core/base_service'
-require 'google/apis/core/json_representation'
-require 'google/apis/core/hashable'
-require 'google/apis/errors'
-
 module Google
   module Apis
-    module <%= api.module_name %>
-<% for cls in api.schemas.values.partition(&:variant).flatten -%>
-<%= indent(include('representation_stub', :cls => cls), 6) -%>
-<% end -%>
-<% for cls in api.schemas.values.partition(&:variant).flatten -%>
-<%= indent(include('representation', :cls => cls, :api => api), 6) -%>
-<% end -%>
+    class Generator
+      VERSION = "0.1.0"
     end
   end
 end

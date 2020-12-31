@@ -142,6 +142,14 @@ module Google
           sprintf('Google::Apis::%s', module_name)
         end
 
+        def base_path
+          ActiveSupport::Inflector.underscore(qualified_name)
+        end
+
+        def gem_name
+          base_path.tr("/", "-")
+        end
+
         def service_name
           class_name = (canonical_name || name).gsub(/\W/, '')
           ActiveSupport::Inflector.camelize(sprintf('%sService', class_name))

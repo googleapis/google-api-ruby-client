@@ -12,21 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'date'
-require 'google/apis/core/base_service'
-require 'google/apis/core/json_representation'
-require 'google/apis/core/hashable'
-require 'google/apis/errors'
+require "rspec"
 
-module Google
-  module Apis
-    module <%= api.module_name %>
-<% for cls in api.schemas.values.partition(&:variant).flatten -%>
-<%= indent(include('representation_stub', :cls => cls), 6) -%>
-<% end -%>
-<% for cls in api.schemas.values.partition(&:variant).flatten -%>
-<%= indent(include('representation', :cls => cls, :api => api), 6) -%>
-<% end -%>
-    end
+RSpec.describe "<%= api.qualified_name %>" do
+  # Minimal test just to ensure no syntax errors in generated code
+  it "should load" do
+    expect do
+      require "<%= api.base_path %>"
+    end.not_to raise_error
+    expect do
+      <%= api.qualified_name %>::<%= api.service_name %>.new
+    end.not_to raise_error
   end
 end
