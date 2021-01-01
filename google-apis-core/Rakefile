@@ -1,7 +1,10 @@
 require "bundler/gem_tasks"
+task :release_gem do
+  Rake::Task["build"].invoke
+  Rake::Task["release:rubygem_push"].invoke
+end
 
 require 'rubocop/rake_task'
-
 desc 'Run RuboCop on the lib directory'
 RuboCop::RakeTask.new(:rubocop) do |task|
   task.patterns = ['lib/**/*.rb']
@@ -12,23 +15,15 @@ RuboCop::RakeTask.new(:rubocop) do |task|
 end
 
 require 'rake/clean'
-
 CLOBBER.include('coverage', 'doc')
 CLEAN.include('.yardoc')
 
 require 'rspec/core/rake_task'
-
-namespace :spec do
-  RSpec::Core::RakeTask.new(:all)
-end
-
-desc 'Alias to spec:all'
-task 'spec' => 'spec:all'
+RSpec::Core::RakeTask.new(:spec)
 
 begin
 	require 'yard'
 	require 'yard/rake/yardoc_task'
-
 	YARD::Rake::YardocTask.new do |t|
   	t.files   = ['lib/**/*.rb', 'generated/**/*.rb']
   	t.options = ['--verbose', '--markup', 'markdown']

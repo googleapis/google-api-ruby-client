@@ -155,8 +155,19 @@ module Google
 
       def run_spot_check(gem_name)
         Dir.chdir(File.join(destination_root, gem_name)) do
-          system("bundle install") or error_and_exit("Failed to install bundle for newly generated library")
-          system("bundle exec rake ci") or error_and_exit("Failed to run spot check for newly generated library")
+          check_proc = Proc.new do
+            system("bundle install") or error_and_exit("Failed to install bundle for newly generated library")
+            system("bundle exec rake ci") or error_and_exit("Failed to run spot check for newly generated library")
+          end
+          if defined?(Bundler)
+            if Bundler.respond_to?(:with_unbundled_env)
+              Bundler.with_unbundled_env(&check_proc)
+            else
+              Bundler.with_clean_env(&check_proc)
+            end
+          else
+            check_proc.call
+          end
         end
       end
 
