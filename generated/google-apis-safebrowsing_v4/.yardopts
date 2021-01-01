@@ -1,6 +1,7 @@
 --hide-void-return
 --no-private
 --verbose
+--title=google-apis-safebrowsing_v4
 --markup-provider=redcarpet
 --markup=markdown
 --main OVERVIEW.md

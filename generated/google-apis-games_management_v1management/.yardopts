@@ -1,6 +1,7 @@
 --hide-void-return
 --no-private
 --verbose
+--title=google-apis-games_management_v1management
 --markup-provider=redcarpet
 --markup=markdown
 --main OVERVIEW.md

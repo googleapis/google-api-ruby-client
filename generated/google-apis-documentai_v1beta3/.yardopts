@@ -1,6 +1,7 @@
 --hide-void-return
 --no-private
 --verbose
+--title=google-apis-documentai_v1beta3
 --markup-provider=redcarpet
 --markup=markdown
 --main OVERVIEW.md

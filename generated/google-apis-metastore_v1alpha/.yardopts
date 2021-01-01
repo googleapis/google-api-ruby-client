@@ -1,6 +1,7 @@
 --hide-void-return
 --no-private
 --verbose
+--title=google-apis-metastore_v1alpha
 --markup-provider=redcarpet
 --markup=markdown
 --main OVERVIEW.md
