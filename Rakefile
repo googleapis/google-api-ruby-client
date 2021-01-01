@@ -5,6 +5,10 @@ namespace :kokoro do
     load_env_vars
   end
 
+  task :dry_run do
+    ENV["DRY_RUN"] = "true"
+  end
+
   task :presubmit do
     Rake::Task["kokoro:run_tests"].invoke
   end
@@ -26,8 +30,27 @@ namespace :kokoro do
   end
 
   task :release do
-    Rake::Task["kokoro:publish_gem"].invoke
-    Rake::Task["kokoro:publish_docs"].invoke
+    require_relative "rakelib/releaser.rb"
+
+    load_env_vars if ENV["KOKORO_GFILE_DIR"]
+    package = ENV["PACKAGE"]
+    raise "PACKAGE missing" unless package
+    dry_run = ENV["DRY_RUN"]
+
+    if package == "ALL_GENERATED"
+      Dir.glob("generated/google-apis-*") do |gem_dir|
+        gem_name = File.basename(gem_dir)
+        releaser = Releaser.new(gem_name, gem_dir, dry_run: dry_run)
+        if releaser.needs_gem_publish?
+          releaser.publish_gem
+          releaser.publish_docs
+        end
+      end
+    else
+      releaser = Releaser.new(package, package, dry_run: dry_run)
+      releaser.publish_gem if releaser.needs_gem_publish?
+      releaser.publish_docs
+    end
   end
 
   task :run_tests do
@@ -40,40 +63,6 @@ namespace :kokoro do
           sh "bundle exec rake spec"
         end
       end
-    end
-  end
-
-  task :publish_gem do
-    require "gems"
-
-    load_env_vars if ENV["KOKORO_GFILE_DIR"]
-    api_token = ENV["RUBYGEMS_API_TOKEN"]
-    if api_token
-      ::Gems.configure do |config|
-        config.key = api_token
-      end
-    end
-
-    cd "google-api-client" do
-      Bundler.with_clean_env do
-        rm_rf "pkg"
-        sh "bundle update"
-        sh "bundle exec rake build"
-        built_gem_path = Dir.glob("pkg/google-api-client-*.gem").last
-
-        response = ::Gems.push File.new built_gem_path
-        puts response
-        raise "Failed to release gem" unless response.include? "Successfully registered gem:"
-      end
-    end
-  end
-
-  desc "Publish docs for the latest git tag"
-  task :publish_docs do
-    require_relative "rakelib/devsite/devsite_builder.rb"
-
-    cd "google-api-client" do
-      DevsiteBuilder.new.publish ENV["DOCS_BUILD_TAG"]
     end
   end
 end
