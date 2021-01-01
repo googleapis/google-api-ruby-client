@@ -1,16 +1,14 @@
 #!/usr/bin/env ruby
 
-begin
-  require 'thor'
-rescue LoadError => e
-  puts "Thor is required. Please install the gem with development dependencies."
-  exit 1
-end
-
+require 'thor'
 require 'open-uri'
-require 'google/apis/discovery_v1'
 require 'logger'
 require 'psych'
+require 'active_support'
+require 'active_support/core_ext'
+require 'google/apis'
+require 'google/apis/generator'
+require 'google/apis/discovery_v1'
 
 module Google
   class ApiGenerator < Thor
@@ -21,8 +19,8 @@ module Google
 
     include Thor::Actions
 
-    Google::Apis::ClientOptions.default.application_name = "generate-api"
-    Google::Apis::ClientOptions.default.application_version = Google::Apis::VERSION
+    Google::Apis::ClientOptions.default.application_name = "google-apis-generator"
+    Google::Apis::ClientOptions.default.application_version = Google::Apis::Generator::VERSION
 
     Discovery = Google::Apis::DiscoveryV1
 
@@ -31,8 +29,6 @@ module Google
                    verbose: :boolean, names: :string, names_out: :string, api: :string,
                    clean: :boolean, spot_check: :boolean
     def gen(dir)
-      ensure_active_support
-      require 'google/apis/generator'
 
       self.destination_root = dir
       Google::Apis.logger.level = Logger::DEBUG if options[:verbose]
@@ -194,24 +190,11 @@ module Google
       end
 
       def updater
-        @updater ||= begin
-          require 'google/apis/generator/updater'
-          Google::Apis::Generator::Updater.new
-        end
+        @updater ||= Google::Apis::Generator::Updater.new
       end
 
       def api_list_config
         @api_list_config ||= Psych.load_file(__dir__ + "/../../api_list_config.yaml")
-      end
-
-      def ensure_active_support
-        begin
-          require 'active_support'
-          require 'active_support/inflector'
-          require 'active_support/core_ext'
-        rescue LoadError => e
-          error_and_exit('ActiveSupport is required. Please run:', 'gem install activesupport')
-        end
       end
 
       def error_and_exit(*messages)
