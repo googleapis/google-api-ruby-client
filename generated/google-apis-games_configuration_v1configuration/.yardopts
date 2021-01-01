@@ -1,0 +1,12 @@
+--hide-void-return
+--no-private
+--verbose
+--markup-provider=redcarpet
+--markup=markdown
+--main OVERVIEW.md
+lib/google/apis/games_configuration_v1configuration/*.rb
+lib/google/apis/games_configuration_v1configuration.rb
+-
+OVERVIEW.md
+CHANGELOG.md
+LICENSE.md
