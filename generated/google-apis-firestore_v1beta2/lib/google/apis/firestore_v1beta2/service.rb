@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://firestore.googleapis.com/', '')
+          super('https://firestore.googleapis.com/', '',
+                client_name: 'google-apis-firestore_v1beta2',
+                client_version: Google::Apis::FirestoreV1beta2::GEM_VERSION)
           @batch_path = 'batch'
         end
         

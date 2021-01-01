@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://searchconsole.googleapis.com/', '')
+          super('https://searchconsole.googleapis.com/', '',
+                client_name: 'google-apis-searchconsole_v1',
+                client_version: Google::Apis::SearchconsoleV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

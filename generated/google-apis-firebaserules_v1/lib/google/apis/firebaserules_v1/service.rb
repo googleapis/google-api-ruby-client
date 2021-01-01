@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://firebaserules.googleapis.com/', '')
+          super('https://firebaserules.googleapis.com/', '',
+                client_name: 'google-apis-firebaserules_v1',
+                client_version: Google::Apis::FirebaserulesV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://libraryagent.googleapis.com/', '')
+          super('https://libraryagent.googleapis.com/', '',
+                client_name: 'google-apis-libraryagent_v1',
+                client_version: Google::Apis::LibraryagentV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

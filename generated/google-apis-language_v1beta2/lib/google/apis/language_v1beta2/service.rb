@@ -45,7 +45,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://language.googleapis.com/', '')
+          super('https://language.googleapis.com/', '',
+                client_name: 'google-apis-language_v1beta2',
+                client_version: Google::Apis::LanguageV1beta2::GEM_VERSION)
           @batch_path = 'batch'
         end
         

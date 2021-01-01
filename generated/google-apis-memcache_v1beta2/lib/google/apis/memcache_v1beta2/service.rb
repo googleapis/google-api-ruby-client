@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://memcache.googleapis.com/', '')
+          super('https://memcache.googleapis.com/', '',
+                client_name: 'google-apis-memcache_v1beta2',
+                client_version: Google::Apis::MemcacheV1beta2::GEM_VERSION)
           @batch_path = 'batch'
         end
         

@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://vectortile.googleapis.com/', '')
+          super('https://vectortile.googleapis.com/', '',
+                client_name: 'google-apis-vectortile_v1',
+                client_version: Google::Apis::VectortileV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

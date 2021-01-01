@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://accesscontextmanager.googleapis.com/', '')
+          super('https://accesscontextmanager.googleapis.com/', '',
+                client_name: 'google-apis-accesscontextmanager_v1beta',
+                client_version: Google::Apis::AccesscontextmanagerV1beta::GEM_VERSION)
           @batch_path = 'batch'
         end
         

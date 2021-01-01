@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://cloudidentity.googleapis.com/', '')
+          super('https://cloudidentity.googleapis.com/', '',
+                client_name: 'google-apis-cloudidentity_v1beta1',
+                client_version: Google::Apis::CloudidentityV1beta1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

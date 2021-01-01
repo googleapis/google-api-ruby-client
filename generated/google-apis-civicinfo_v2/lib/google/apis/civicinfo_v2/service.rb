@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://civicinfo.googleapis.com/', '')
+          super('https://civicinfo.googleapis.com/', '',
+                client_name: 'google-apis-civicinfo_v2',
+                client_version: Google::Apis::CivicinfoV2::GEM_VERSION)
           @batch_path = 'batch'
         end
         

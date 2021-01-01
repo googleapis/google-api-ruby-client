@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://cloudbuild.googleapis.com/', '')
+          super('https://cloudbuild.googleapis.com/', '',
+                client_name: 'google-apis-cloudbuild_v1',
+                client_version: Google::Apis::CloudbuildV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

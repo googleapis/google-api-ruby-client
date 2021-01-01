@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://composer.googleapis.com/', '')
+          super('https://composer.googleapis.com/', '',
+                client_name: 'google-apis-composer_v1',
+                client_version: Google::Apis::ComposerV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

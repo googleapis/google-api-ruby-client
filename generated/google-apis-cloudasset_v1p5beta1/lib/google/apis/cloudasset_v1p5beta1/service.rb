@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://cloudasset.googleapis.com/', '')
+          super('https://cloudasset.googleapis.com/', '',
+                client_name: 'google-apis-cloudasset_v1p5beta1',
+                client_version: Google::Apis::CloudassetV1p5beta1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

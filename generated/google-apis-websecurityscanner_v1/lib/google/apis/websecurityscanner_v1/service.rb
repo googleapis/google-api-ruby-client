@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://websecurityscanner.googleapis.com/', '')
+          super('https://websecurityscanner.googleapis.com/', '',
+                client_name: 'google-apis-websecurityscanner_v1',
+                client_version: Google::Apis::WebsecurityscannerV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

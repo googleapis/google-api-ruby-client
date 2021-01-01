@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://serviceconsumermanagement.googleapis.com/', '')
+          super('https://serviceconsumermanagement.googleapis.com/', '',
+                client_name: 'google-apis-serviceconsumermanagement_v1beta1',
+                client_version: Google::Apis::ServiceconsumermanagementV1beta1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

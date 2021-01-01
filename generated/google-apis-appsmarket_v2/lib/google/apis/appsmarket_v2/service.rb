@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://appsmarket.googleapis.com/', '')
+          super('https://appsmarket.googleapis.com/', '',
+                client_name: 'google-apis-appsmarket_v2',
+                client_version: Google::Apis::AppsmarketV2::GEM_VERSION)
           @batch_path = 'batch'
         end
         

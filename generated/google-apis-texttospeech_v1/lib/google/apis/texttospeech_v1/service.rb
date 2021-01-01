@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://texttospeech.googleapis.com/', '')
+          super('https://texttospeech.googleapis.com/', '',
+                client_name: 'google-apis-texttospeech_v1',
+                client_version: Google::Apis::TexttospeechV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

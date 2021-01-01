@@ -46,7 +46,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://logging.googleapis.com/', '')
+          super('https://logging.googleapis.com/', '',
+                client_name: 'google-apis-logging_v2',
+                client_version: Google::Apis::LoggingV2::GEM_VERSION)
           @batch_path = 'batch'
         end
         

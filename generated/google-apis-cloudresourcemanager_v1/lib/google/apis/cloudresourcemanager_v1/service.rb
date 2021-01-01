@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://cloudresourcemanager.googleapis.com/', '')
+          super('https://cloudresourcemanager.googleapis.com/', '',
+                client_name: 'google-apis-cloudresourcemanager_v1',
+                client_version: Google::Apis::CloudresourcemanagerV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

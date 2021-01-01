@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://oslogin.googleapis.com/', '')
+          super('https://oslogin.googleapis.com/', '',
+                client_name: 'google-apis-oslogin_v1beta',
+                client_version: Google::Apis::OsloginV1beta::GEM_VERSION)
           @batch_path = 'batch'
         end
         

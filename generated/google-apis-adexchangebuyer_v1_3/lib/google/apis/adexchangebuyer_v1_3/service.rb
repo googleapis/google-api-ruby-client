@@ -48,7 +48,9 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', 'adexchangebuyer/v1.3/')
+          super('https://www.googleapis.com/', 'adexchangebuyer/v1.3/',
+                client_name: 'google-apis-adexchangebuyer_v1_3',
+                client_version: Google::Apis::AdexchangebuyerV1_3::GEM_VERSION)
           @batch_path = 'batch/adexchangebuyer/v1.3'
         end
         

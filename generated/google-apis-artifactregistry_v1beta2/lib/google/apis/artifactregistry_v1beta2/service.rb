@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://artifactregistry.googleapis.com/', '')
+          super('https://artifactregistry.googleapis.com/', '',
+                client_name: 'google-apis-artifactregistry_v1beta2',
+                client_version: Google::Apis::ArtifactregistryV1beta2::GEM_VERSION)
           @batch_path = 'batch'
         end
         

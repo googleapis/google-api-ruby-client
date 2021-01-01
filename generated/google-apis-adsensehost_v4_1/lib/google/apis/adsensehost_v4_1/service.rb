@@ -48,7 +48,9 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', 'adsensehost/v4.1/')
+          super('https://www.googleapis.com/', 'adsensehost/v4.1/',
+                client_name: 'google-apis-adsensehost_v4_1',
+                client_version: Google::Apis::AdsensehostV4_1::GEM_VERSION)
           @batch_path = 'batch/adsensehost/v4.1'
         end
         

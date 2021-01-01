@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://sqladmin.googleapis.com/', '')
+          super('https://sqladmin.googleapis.com/', '',
+                client_name: 'google-apis-sqladmin_v1beta4',
+                client_version: Google::Apis::SqladminV1beta4::GEM_VERSION)
           @batch_path = 'batch'
         end
         

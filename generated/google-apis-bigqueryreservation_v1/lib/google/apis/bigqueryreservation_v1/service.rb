@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://bigqueryreservation.googleapis.com/', '')
+          super('https://bigqueryreservation.googleapis.com/', '',
+                client_name: 'google-apis-bigqueryreservation_v1',
+                client_version: Google::Apis::BigqueryreservationV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

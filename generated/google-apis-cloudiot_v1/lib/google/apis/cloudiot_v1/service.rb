@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://cloudiot.googleapis.com/', '')
+          super('https://cloudiot.googleapis.com/', '',
+                client_name: 'google-apis-cloudiot_v1',
+                client_version: Google::Apis::CloudiotV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

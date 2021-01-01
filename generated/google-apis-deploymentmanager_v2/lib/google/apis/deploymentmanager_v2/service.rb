@@ -45,7 +45,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://deploymentmanager.googleapis.com/', '')
+          super('https://deploymentmanager.googleapis.com/', '',
+                client_name: 'google-apis-deploymentmanager_v2',
+                client_version: Google::Apis::DeploymentmanagerV2::GEM_VERSION)
           @batch_path = 'batch'
         end
         

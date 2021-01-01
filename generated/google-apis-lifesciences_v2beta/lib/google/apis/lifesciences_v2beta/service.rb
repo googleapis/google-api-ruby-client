@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://lifesciences.googleapis.com/', '')
+          super('https://lifesciences.googleapis.com/', '',
+                client_name: 'google-apis-lifesciences_v2beta',
+                client_version: Google::Apis::LifesciencesV2beta::GEM_VERSION)
           @batch_path = 'batch'
         end
         

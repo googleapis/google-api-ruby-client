@@ -47,7 +47,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://cloudtrace.googleapis.com/', '')
+          super('https://cloudtrace.googleapis.com/', '',
+                client_name: 'google-apis-cloudtrace_v2',
+                client_version: Google::Apis::CloudtraceV2::GEM_VERSION)
           @batch_path = 'batch'
         end
         

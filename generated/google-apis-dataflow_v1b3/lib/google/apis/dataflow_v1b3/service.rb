@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://dataflow.googleapis.com/', '')
+          super('https://dataflow.googleapis.com/', '',
+                client_name: 'google-apis-dataflow_v1b3',
+                client_version: Google::Apis::DataflowV1b3::GEM_VERSION)
           @batch_path = 'batch'
         end
         

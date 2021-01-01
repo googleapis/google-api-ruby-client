@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://dataproc.googleapis.com/', '')
+          super('https://dataproc.googleapis.com/', '',
+                client_name: 'google-apis-dataproc_v1beta2',
+                client_version: Google::Apis::DataprocV1beta2::GEM_VERSION)
           @batch_path = 'batch'
         end
         

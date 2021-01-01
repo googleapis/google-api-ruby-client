@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://servicenetworking.googleapis.com/', '')
+          super('https://servicenetworking.googleapis.com/', '',
+                client_name: 'google-apis-servicenetworking_v1',
+                client_version: Google::Apis::ServicenetworkingV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

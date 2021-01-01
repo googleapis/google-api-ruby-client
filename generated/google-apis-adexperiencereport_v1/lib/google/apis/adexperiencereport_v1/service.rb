@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://adexperiencereport.googleapis.com/', '')
+          super('https://adexperiencereport.googleapis.com/', '',
+                client_name: 'google-apis-adexperiencereport_v1',
+                client_version: Google::Apis::AdexperiencereportV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

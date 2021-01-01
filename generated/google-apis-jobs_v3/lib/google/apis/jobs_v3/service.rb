@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://jobs.googleapis.com/', '')
+          super('https://jobs.googleapis.com/', '',
+                client_name: 'google-apis-jobs_v3',
+                client_version: Google::Apis::JobsV3::GEM_VERSION)
           @batch_path = 'batch'
         end
         

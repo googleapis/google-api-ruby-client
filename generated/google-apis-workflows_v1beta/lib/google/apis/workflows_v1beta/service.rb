@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://workflows.googleapis.com/', '')
+          super('https://workflows.googleapis.com/', '',
+                client_name: 'google-apis-workflows_v1beta',
+                client_version: Google::Apis::WorkflowsV1beta::GEM_VERSION)
           @batch_path = 'batch'
         end
         

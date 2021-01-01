@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://spanner.googleapis.com/', '')
+          super('https://spanner.googleapis.com/', '',
+                client_name: 'google-apis-spanner_v1',
+                client_version: Google::Apis::SpannerV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://digitalassetlinks.googleapis.com/', '')
+          super('https://digitalassetlinks.googleapis.com/', '',
+                client_name: 'google-apis-digitalassetlinks_v1',
+                client_version: Google::Apis::DigitalassetlinksV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

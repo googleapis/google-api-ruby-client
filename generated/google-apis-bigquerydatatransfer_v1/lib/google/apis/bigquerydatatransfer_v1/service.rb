@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://bigquerydatatransfer.googleapis.com/', '')
+          super('https://bigquerydatatransfer.googleapis.com/', '',
+                client_name: 'google-apis-bigquerydatatransfer_v1',
+                client_version: Google::Apis::BigquerydatatransferV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

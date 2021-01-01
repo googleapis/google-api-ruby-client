@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://cloudscheduler.googleapis.com/', '')
+          super('https://cloudscheduler.googleapis.com/', '',
+                client_name: 'google-apis-cloudscheduler_v1',
+                client_version: Google::Apis::CloudschedulerV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

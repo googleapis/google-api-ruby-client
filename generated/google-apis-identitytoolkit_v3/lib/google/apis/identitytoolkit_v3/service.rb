@@ -47,7 +47,9 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', 'identitytoolkit/v3/relyingparty/')
+          super('https://www.googleapis.com/', 'identitytoolkit/v3/relyingparty/',
+                client_name: 'google-apis-identitytoolkit_v3',
+                client_version: Google::Apis::IdentitytoolkitV3::GEM_VERSION)
           @batch_path = 'batch/identitytoolkit/v3'
         end
         

@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://androidenterprise.googleapis.com/', '')
+          super('https://androidenterprise.googleapis.com/', '',
+                client_name: 'google-apis-androidenterprise_v1',
+                client_version: Google::Apis::AndroidenterpriseV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

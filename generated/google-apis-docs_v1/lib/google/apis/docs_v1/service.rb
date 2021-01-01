@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://docs.googleapis.com/', '')
+          super('https://docs.googleapis.com/', '',
+                client_name: 'google-apis-docs_v1',
+                client_version: Google::Apis::DocsV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

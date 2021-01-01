@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://pubsublite.googleapis.com/', '')
+          super('https://pubsublite.googleapis.com/', '',
+                client_name: 'google-apis-pubsublite_v1',
+                client_version: Google::Apis::PubsubliteV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

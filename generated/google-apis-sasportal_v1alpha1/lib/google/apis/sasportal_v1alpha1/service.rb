@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://sasportal.googleapis.com/', '')
+          super('https://sasportal.googleapis.com/', '',
+                client_name: 'google-apis-sasportal_v1alpha1',
+                client_version: Google::Apis::SasportalV1alpha1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://dialogflow.googleapis.com/', '')
+          super('https://dialogflow.googleapis.com/', '',
+                client_name: 'google-apis-dialogflow_v3',
+                client_version: Google::Apis::DialogflowV3::GEM_VERSION)
           @batch_path = 'batch'
         end
         

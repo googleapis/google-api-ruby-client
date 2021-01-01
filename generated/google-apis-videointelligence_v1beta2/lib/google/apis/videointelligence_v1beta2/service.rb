@@ -45,7 +45,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://videointelligence.googleapis.com/', '')
+          super('https://videointelligence.googleapis.com/', '',
+                client_name: 'google-apis-videointelligence_v1beta2',
+                client_version: Google::Apis::VideointelligenceV1beta2::GEM_VERSION)
           @batch_path = 'batch'
         end
         

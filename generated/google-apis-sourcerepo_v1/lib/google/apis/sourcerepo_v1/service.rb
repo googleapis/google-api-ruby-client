@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://sourcerepo.googleapis.com/', '')
+          super('https://sourcerepo.googleapis.com/', '',
+                client_name: 'google-apis-sourcerepo_v1',
+                client_version: Google::Apis::SourcerepoV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

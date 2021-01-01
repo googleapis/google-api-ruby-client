@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://chromeuxreport.googleapis.com/', '')
+          super('https://chromeuxreport.googleapis.com/', '',
+                client_name: 'google-apis-chromeuxreport_v1',
+                client_version: Google::Apis::ChromeuxreportV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://fcm.googleapis.com/', '')
+          super('https://fcm.googleapis.com/', '',
+                client_name: 'google-apis-fcm_v1',
+                client_version: Google::Apis::FcmV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://slides.googleapis.com/', '')
+          super('https://slides.googleapis.com/', '',
+                client_name: 'google-apis-slides_v1',
+                client_version: Google::Apis::SlidesV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

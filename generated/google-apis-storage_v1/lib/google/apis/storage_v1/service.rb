@@ -47,7 +47,9 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://storage.googleapis.com/', 'storage/v1/')
+          super('https://storage.googleapis.com/', 'storage/v1/',
+                client_name: 'google-apis-storage_v1',
+                client_version: Google::Apis::StorageV1::GEM_VERSION)
           @batch_path = 'batch/storage/v1'
         end
         

@@ -47,7 +47,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://monitoring.googleapis.com/', '')
+          super('https://monitoring.googleapis.com/', '',
+                client_name: 'google-apis-monitoring_v3',
+                client_version: Google::Apis::MonitoringV3::GEM_VERSION)
           @batch_path = 'batch'
         end
         

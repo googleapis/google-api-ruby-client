@@ -45,7 +45,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://vision.googleapis.com/', '')
+          super('https://vision.googleapis.com/', '',
+                client_name: 'google-apis-vision_v1p2beta1',
+                client_version: Google::Apis::VisionV1p2beta1::GEM_VERSION)
           @batch_path = 'batch'
         end
         
