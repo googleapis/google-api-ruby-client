@@ -1,6 +1,7 @@
 --hide-void-return
 --no-private
 --verbose
+--title=google-apis-lifesciences_v2beta
 --markup-provider=redcarpet
 --markup=markdown
 --main OVERVIEW.md

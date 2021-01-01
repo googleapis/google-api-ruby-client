@@ -31,7 +31,7 @@ namespace :kokoro do
   end
 
   task :run_tests do
-    gem_directories = ["google-apis-core", "google-api-client"] # + Dir.glob("generated/*")
+    gem_directories = ["google-apis-core", "google-apis-generator", "google-api-client"]
     gem_directories.each do |dir|
       next unless File.file?(File.join(dir, "Gemfile"))
       cd dir do
