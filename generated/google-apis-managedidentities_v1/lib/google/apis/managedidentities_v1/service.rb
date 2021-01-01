@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://managedidentities.googleapis.com/', '')
+          super('https://managedidentities.googleapis.com/', '',
+                client_name: 'google-apis-managedidentities_v1',
+                client_version: Google::Apis::ManagedidentitiesV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

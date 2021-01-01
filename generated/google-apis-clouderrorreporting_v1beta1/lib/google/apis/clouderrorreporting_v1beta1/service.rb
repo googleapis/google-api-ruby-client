@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://clouderrorreporting.googleapis.com/', '')
+          super('https://clouderrorreporting.googleapis.com/', '',
+                client_name: 'google-apis-clouderrorreporting_v1beta1',
+                client_version: Google::Apis::ClouderrorreportingV1beta1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

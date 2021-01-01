@@ -47,7 +47,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://apigee.googleapis.com/', '')
+          super('https://apigee.googleapis.com/', '',
+                client_name: 'google-apis-apigee_v1',
+                client_version: Google::Apis::ApigeeV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

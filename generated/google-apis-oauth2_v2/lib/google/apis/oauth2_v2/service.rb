@@ -47,7 +47,9 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '')
+          super('https://www.googleapis.com/', '',
+                client_name: 'google-apis-oauth2_v2',
+                client_version: Google::Apis::Oauth2V2::GEM_VERSION)
           @batch_path = 'batch/oauth2/v2'
         end
         

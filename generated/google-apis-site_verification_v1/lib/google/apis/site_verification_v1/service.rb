@@ -47,7 +47,9 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', 'siteVerification/v1/')
+          super('https://www.googleapis.com/', 'siteVerification/v1/',
+                client_name: 'google-apis-site_verification_v1',
+                client_version: Google::Apis::SiteVerificationV1::GEM_VERSION)
           @batch_path = 'batch/siteVerification/v1'
         end
         

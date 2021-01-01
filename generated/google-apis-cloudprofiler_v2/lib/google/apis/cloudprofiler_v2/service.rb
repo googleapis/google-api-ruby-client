@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://cloudprofiler.googleapis.com/', '')
+          super('https://cloudprofiler.googleapis.com/', '',
+                client_name: 'google-apis-cloudprofiler_v2',
+                client_version: Google::Apis::CloudprofilerV2::GEM_VERSION)
           @batch_path = 'batch'
         end
         

@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://policytroubleshooter.googleapis.com/', '')
+          super('https://policytroubleshooter.googleapis.com/', '',
+                client_name: 'google-apis-policytroubleshooter_v1beta',
+                client_version: Google::Apis::PolicytroubleshooterV1beta::GEM_VERSION)
           @batch_path = 'batch'
         end
         

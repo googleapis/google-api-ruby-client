@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://secretmanager.googleapis.com/', '')
+          super('https://secretmanager.googleapis.com/', '',
+                client_name: 'google-apis-secretmanager_v1beta1',
+                client_version: Google::Apis::SecretmanagerV1beta1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

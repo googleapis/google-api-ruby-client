@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://securitycenter.googleapis.com/', '')
+          super('https://securitycenter.googleapis.com/', '',
+                client_name: 'google-apis-securitycenter_v1beta1',
+                client_version: Google::Apis::SecuritycenterV1beta1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

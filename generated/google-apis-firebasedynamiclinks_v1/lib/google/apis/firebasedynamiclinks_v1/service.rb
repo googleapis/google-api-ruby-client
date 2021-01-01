@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://firebasedynamiclinks.googleapis.com/', '')
+          super('https://firebasedynamiclinks.googleapis.com/', '',
+                client_name: 'google-apis-firebasedynamiclinks_v1',
+                client_version: Google::Apis::FirebasedynamiclinksV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

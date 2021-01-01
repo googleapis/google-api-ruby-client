@@ -45,7 +45,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://streetviewpublish.googleapis.com/', '')
+          super('https://streetviewpublish.googleapis.com/', '',
+                client_name: 'google-apis-streetviewpublish_v1',
+                client_version: Google::Apis::StreetviewpublishV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

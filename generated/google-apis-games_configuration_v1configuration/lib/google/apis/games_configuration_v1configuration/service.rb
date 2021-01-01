@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://gamesconfiguration.googleapis.com/', '')
+          super('https://gamesconfiguration.googleapis.com/', '',
+                client_name: 'google-apis-games_configuration_v1configuration',
+                client_version: Google::Apis::GamesConfigurationV1configuration::GEM_VERSION)
           @batch_path = 'batch'
         end
         

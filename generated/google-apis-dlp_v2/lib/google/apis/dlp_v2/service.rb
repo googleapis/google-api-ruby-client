@@ -45,7 +45,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://dlp.googleapis.com/', '')
+          super('https://dlp.googleapis.com/', '',
+                client_name: 'google-apis-dlp_v2',
+                client_version: Google::Apis::DlpV2::GEM_VERSION)
           @batch_path = 'batch'
         end
         

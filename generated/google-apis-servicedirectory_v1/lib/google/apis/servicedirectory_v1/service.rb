@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://servicedirectory.googleapis.com/', '')
+          super('https://servicedirectory.googleapis.com/', '',
+                client_name: 'google-apis-servicedirectory_v1',
+                client_version: Google::Apis::ServicedirectoryV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

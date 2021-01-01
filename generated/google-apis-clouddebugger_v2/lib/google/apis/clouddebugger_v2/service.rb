@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://clouddebugger.googleapis.com/', '')
+          super('https://clouddebugger.googleapis.com/', '',
+                client_name: 'google-apis-clouddebugger_v2',
+                client_version: Google::Apis::ClouddebuggerV2::GEM_VERSION)
           @batch_path = 'batch'
         end
         

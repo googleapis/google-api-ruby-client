@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://admin-remotebuildexecution.googleapis.com/', '')
+          super('https://admin-remotebuildexecution.googleapis.com/', '',
+                client_name: 'google-apis-remotebuildexecution_v1alpha',
+                client_version: Google::Apis::RemotebuildexecutionV1alpha::GEM_VERSION)
           @batch_path = 'batch'
         end
         

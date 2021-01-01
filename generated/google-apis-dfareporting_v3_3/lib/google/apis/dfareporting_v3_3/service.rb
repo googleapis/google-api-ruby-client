@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://dfareporting.googleapis.com/', 'dfareporting/v3.3/')
+          super('https://dfareporting.googleapis.com/', 'dfareporting/v3.3/',
+                client_name: 'google-apis-dfareporting_v3_3',
+                client_version: Google::Apis::DfareportingV3_3::GEM_VERSION)
           @batch_path = 'batch'
         end
         

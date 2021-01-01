@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://indexing.googleapis.com/', '')
+          super('https://indexing.googleapis.com/', '',
+                client_name: 'google-apis-indexing_v3',
+                client_version: Google::Apis::IndexingV3::GEM_VERSION)
           @batch_path = 'batch'
         end
         

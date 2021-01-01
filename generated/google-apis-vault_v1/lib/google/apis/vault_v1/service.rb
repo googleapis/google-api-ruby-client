@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://vault.googleapis.com/', '')
+          super('https://vault.googleapis.com/', '',
+                client_name: 'google-apis-vault_v1',
+                client_version: Google::Apis::VaultV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

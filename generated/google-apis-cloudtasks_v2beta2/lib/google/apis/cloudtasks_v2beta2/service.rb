@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://cloudtasks.googleapis.com/', '')
+          super('https://cloudtasks.googleapis.com/', '',
+                client_name: 'google-apis-cloudtasks_v2beta2',
+                client_version: Google::Apis::CloudtasksV2beta2::GEM_VERSION)
           @batch_path = 'batch'
         end
         

@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://pubsub.googleapis.com/', '')
+          super('https://pubsub.googleapis.com/', '',
+                client_name: 'google-apis-pubsub_v1',
+                client_version: Google::Apis::PubsubV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

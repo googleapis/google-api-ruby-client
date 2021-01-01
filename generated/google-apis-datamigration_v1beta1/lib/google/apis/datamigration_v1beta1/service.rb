@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://datamigration.googleapis.com/', '')
+          super('https://datamigration.googleapis.com/', '',
+                client_name: 'google-apis-datamigration_v1beta1',
+                client_version: Google::Apis::DatamigrationV1beta1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

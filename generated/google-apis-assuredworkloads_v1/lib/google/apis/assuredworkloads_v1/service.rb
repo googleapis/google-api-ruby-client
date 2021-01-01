@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://assuredworkloads.googleapis.com/', '')
+          super('https://assuredworkloads.googleapis.com/', '',
+                client_name: 'google-apis-assuredworkloads_v1',
+                client_version: Google::Apis::AssuredworkloadsV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

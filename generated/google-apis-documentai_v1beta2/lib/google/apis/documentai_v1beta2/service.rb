@@ -45,7 +45,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://documentai.googleapis.com/', '')
+          super('https://documentai.googleapis.com/', '',
+                client_name: 'google-apis-documentai_v1beta2',
+                client_version: Google::Apis::DocumentaiV1beta2::GEM_VERSION)
           @batch_path = 'batch'
         end
         

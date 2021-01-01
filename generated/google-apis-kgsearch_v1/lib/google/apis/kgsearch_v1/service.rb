@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://kgsearch.googleapis.com/', '')
+          super('https://kgsearch.googleapis.com/', '',
+                client_name: 'google-apis-kgsearch_v1',
+                client_version: Google::Apis::KgsearchV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

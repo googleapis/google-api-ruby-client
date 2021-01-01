@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://webfonts.googleapis.com/', '')
+          super('https://webfonts.googleapis.com/', '',
+                client_name: 'google-apis-webfonts_v1',
+                client_version: Google::Apis::WebfontsV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

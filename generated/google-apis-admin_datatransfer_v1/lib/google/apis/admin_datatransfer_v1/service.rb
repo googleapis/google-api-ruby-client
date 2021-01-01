@@ -45,7 +45,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://admin.googleapis.com/', '')
+          super('https://admin.googleapis.com/', '',
+                client_name: 'google-apis-admin_datatransfer_v1',
+                client_version: Google::Apis::AdminDatatransferV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://tagmanager.googleapis.com/', '')
+          super('https://tagmanager.googleapis.com/', '',
+                client_name: 'google-apis-tagmanager_v2',
+                client_version: Google::Apis::TagmanagerV2::GEM_VERSION)
           @batch_path = 'batch'
         end
         

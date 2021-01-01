@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://doubleclickbidmanager.googleapis.com/', 'doubleclickbidmanager/v1.1/')
+          super('https://doubleclickbidmanager.googleapis.com/', 'doubleclickbidmanager/v1.1/',
+                client_name: 'google-apis-doubleclickbidmanager_v1_1',
+                client_version: Google::Apis::DoubleclickbidmanagerV1_1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

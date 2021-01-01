@@ -45,7 +45,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://firebasehosting.googleapis.com/', '')
+          super('https://firebasehosting.googleapis.com/', '',
+                client_name: 'google-apis-firebasehosting_v1beta1',
+                client_version: Google::Apis::FirebasehostingV1beta1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

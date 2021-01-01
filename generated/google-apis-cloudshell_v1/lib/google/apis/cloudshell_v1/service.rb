@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://cloudshell.googleapis.com/', '')
+          super('https://cloudshell.googleapis.com/', '',
+                client_name: 'google-apis-cloudshell_v1',
+                client_version: Google::Apis::CloudshellV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

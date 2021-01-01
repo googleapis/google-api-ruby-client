@@ -47,7 +47,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://safebrowsing.googleapis.com/', '')
+          super('https://safebrowsing.googleapis.com/', '',
+                client_name: 'google-apis-safebrowsing_v4',
+                client_version: Google::Apis::SafebrowsingV4::GEM_VERSION)
           @batch_path = 'batch'
         end
         

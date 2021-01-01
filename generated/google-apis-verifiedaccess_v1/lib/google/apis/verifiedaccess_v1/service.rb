@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://verifiedaccess.googleapis.com/', '')
+          super('https://verifiedaccess.googleapis.com/', '',
+                client_name: 'google-apis-verifiedaccess_v1',
+                client_version: Google::Apis::VerifiedaccessV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

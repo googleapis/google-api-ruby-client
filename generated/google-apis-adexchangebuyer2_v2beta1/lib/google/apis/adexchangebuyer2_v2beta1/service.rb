@@ -45,7 +45,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://adexchangebuyer.googleapis.com/', '')
+          super('https://adexchangebuyer.googleapis.com/', '',
+                client_name: 'google-apis-adexchangebuyer2_v2beta1',
+                client_version: Google::Apis::Adexchangebuyer2V2beta1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

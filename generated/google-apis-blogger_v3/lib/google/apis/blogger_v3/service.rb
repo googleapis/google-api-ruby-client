@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://blogger.googleapis.com/', '')
+          super('https://blogger.googleapis.com/', '',
+                client_name: 'google-apis-blogger_v3',
+                client_version: Google::Apis::BloggerV3::GEM_VERSION)
           @batch_path = 'batch'
         end
         

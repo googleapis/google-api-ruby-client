@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://redis.googleapis.com/', '')
+          super('https://redis.googleapis.com/', '',
+                client_name: 'google-apis-redis_v1beta1',
+                client_version: Google::Apis::RedisV1beta1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

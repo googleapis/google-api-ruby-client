@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://metastore.googleapis.com/', '')
+          super('https://metastore.googleapis.com/', '',
+                client_name: 'google-apis-metastore_v1beta',
+                client_version: Google::Apis::MetastoreV1beta::GEM_VERSION)
           @batch_path = 'batch'
         end
         

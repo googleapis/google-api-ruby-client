@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://www.googleapis.com/', '')
+          super('https://www.googleapis.com/', '',
+                client_name: 'google-apis-youtube_partner_v1',
+                client_version: Google::Apis::YoutubePartnerV1::GEM_VERSION)
           @batch_path = 'batch/youtubePartner/v1'
         end
         

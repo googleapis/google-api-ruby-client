@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://fitness.googleapis.com/', 'fitness/v1/users/')
+          super('https://fitness.googleapis.com/', 'fitness/v1/users/',
+                client_name: 'google-apis-fitness_v1',
+                client_version: Google::Apis::FitnessV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

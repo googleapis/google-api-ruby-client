@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://books.googleapis.com/', '')
+          super('https://books.googleapis.com/', '',
+                client_name: 'google-apis-books_v1',
+                client_version: Google::Apis::BooksV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

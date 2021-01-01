@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://speech.googleapis.com/', '')
+          super('https://speech.googleapis.com/', '',
+                client_name: 'google-apis-speech_v2beta1',
+                client_version: Google::Apis::SpeechV2beta1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

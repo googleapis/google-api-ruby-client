@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://genomics.googleapis.com/', '')
+          super('https://genomics.googleapis.com/', '',
+                client_name: 'google-apis-genomics_v1',
+                client_version: Google::Apis::GenomicsV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

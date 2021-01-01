@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://analyticsreporting.googleapis.com/', '')
+          super('https://analyticsreporting.googleapis.com/', '',
+                client_name: 'google-apis-analyticsreporting_v4',
+                client_version: Google::Apis::AnalyticsreportingV4::GEM_VERSION)
           @batch_path = 'batch'
         end
         

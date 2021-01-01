@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://licensing.googleapis.com/', '')
+          super('https://licensing.googleapis.com/', '',
+                client_name: 'google-apis-licensing_v1',
+                client_version: Google::Apis::LicensingV1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

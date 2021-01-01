@@ -41,7 +41,9 @@ module Google
 
 <% end -%>
         def initialize
-          super('<%= api.root_url %>', '<%= api.service_path %>')
+          super('<%= api.root_url %>', '<%= api.service_path %>',
+                client_name: '<%= api.gem_name %>',
+                client_version: <%= api.qualified_name %>::GEM_VERSION)
           @batch_path = '<%= api.batch_path %>'
         end
 <% for api_method in api.all_methods -%>

@@ -45,7 +45,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://gmailpostmastertools.googleapis.com/', '')
+          super('https://gmailpostmastertools.googleapis.com/', '',
+                client_name: 'google-apis-gmailpostmastertools_v1beta1',
+                client_version: Google::Apis::GmailpostmastertoolsV1beta1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

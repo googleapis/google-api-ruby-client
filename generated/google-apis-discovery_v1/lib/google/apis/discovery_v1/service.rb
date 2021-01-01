@@ -48,7 +48,9 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', 'discovery/v1/')
+          super('https://www.googleapis.com/', 'discovery/v1/',
+                client_name: 'google-apis-discovery_v1',
+                client_version: Google::Apis::DiscoveryV1::GEM_VERSION)
           @batch_path = 'batch/discovery/v1'
         end
         

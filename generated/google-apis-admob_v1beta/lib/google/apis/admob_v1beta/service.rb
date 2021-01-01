@@ -44,7 +44,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://admob.googleapis.com/', '')
+          super('https://admob.googleapis.com/', '',
+                client_name: 'google-apis-admob_v1beta',
+                client_version: Google::Apis::AdmobV1beta::GEM_VERSION)
           @batch_path = 'batch'
         end
         

@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://recommender.googleapis.com/', '')
+          super('https://recommender.googleapis.com/', '',
+                client_name: 'google-apis-recommender_v1beta1',
+                client_version: Google::Apis::RecommenderV1beta1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

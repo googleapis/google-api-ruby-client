@@ -43,7 +43,9 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://eventarc.googleapis.com/', '')
+          super('https://eventarc.googleapis.com/', '',
+                client_name: 'google-apis-eventarc_v1beta1',
+                client_version: Google::Apis::EventarcV1beta1::GEM_VERSION)
           @batch_path = 'batch'
         end
         

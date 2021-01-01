@@ -48,7 +48,9 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', 'drive/v2/')
+          super('https://www.googleapis.com/', 'drive/v2/',
+                client_name: 'google-apis-drive_v2',
+                client_version: Google::Apis::DriveV2::GEM_VERSION)
           @batch_path = 'batch/drive/v2'
         end
         
