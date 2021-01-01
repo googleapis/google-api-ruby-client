@@ -60,7 +60,7 @@ module Google
         #   Request body
         def initialize(method, url, body: nil, client_version: nil)
           super(method, url, body: body)
-          self.client_version = client_version || '0.0'
+          self.client_version = client_version || Core::VERSION
         end
 
         # Serialize the request body
@@ -151,7 +151,14 @@ module Google
             .split
             .find_all { |s| s !~ %r{^gl-ruby/|^gdcl/} }
             .join(' ')
-          xgac = "gl-ruby/#{RUBY_VERSION} gdcl/#{client_version}"
+          # Report 0.x.y versions that are in separate packages as 1.x.y.
+          # Thus, reported gdcl/0.x.y versions are monopackage clients, while
+          # reported gdcl/1.x.y versions are split clients.
+          # In the unlikely event that we want to release post-1.0 versions of
+          # these clients, we should start the versioning at 2.0 to avoid
+          # confusion.
+          munged_client_version = client_version.sub(/^0\./, "1.")
+          xgac = "gl-ruby/#{RUBY_VERSION} gdcl/#{munged_client_version}"
           xgac = old_xgac.empty? ? xgac : "#{old_xgac} #{xgac}"
           header.delete_if { |k, v| k.downcase == 'x-goog-api-client' }
           header['X-Goog-Api-Client'] = xgac
