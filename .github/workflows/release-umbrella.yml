@@ -3,7 +3,7 @@ on:
     - cron: '49 8 * * 1'
   workflow_dispatch:
 
-name: release-please
+name: release-umbrella
 jobs:
   release-please:
     env:
@@ -20,7 +20,8 @@ jobs:
           token: ${{ secrets.YOSHI_CODE_BOT_TOKEN }}
           fork: true
           release-type: ruby
-          package-name: google-api-ruby-client
+          path: google-api-client
+          package-name: google-api-client
           version-file: lib/google/apis/version.rb
           monorepo-tags: true
           bump-minor-pre-major: true
