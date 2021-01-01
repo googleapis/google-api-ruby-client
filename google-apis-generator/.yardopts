@@ -1,0 +1,13 @@
+--hide-void-return
+--no-private
+--verbose
+--markup-provider=redcarpet
+--markup=markdown
+--title=google-apis-generator
+--main OVERVIEW.md
+
+lib/**/*.rb
+-
+OVERVIEW.md
+CHANGELOG.md
+LICENSE.md

@@ -1,17 +1,20 @@
-# Core classes for Google REST Clients
+# Generator for Google REST Clients
 
-This library includes common base classes and dependencies used by legacy REST
-clients for Google APIs. It is used by client libraries, but you should not
-need to install it by itself.
+This library implements the code generator used by legacy REST clients for
+Google APIs. It automatically generates client gems given discovery documents.
+Google-managed clients for publicly-available APIs are maintained using this
+tool, and users may also use it to generate clients for private or early-access
+APIs.
 
-## Documentation
+## Usage
 
-More detailed descriptions of the Google legacy REST clients are available in two documents.
+To generate from a local discovery file:
 
- *  The [Usage Guide](https://github.com/googleapis/google-api-ruby-client/blob/master/docs/usage-guide.md) discusses how to make API calls, how to use the provided data structures, and how to work the various features of the client library, including media upload and download, error handling, retries, pagination, and logging.
- *  The [Auth Guide](https://github.com/googleapis/google-api-ruby-client/blob/master/docs/auth-guide.md) discusses authentication in the client libraries, including API keys, OAuth 2.0, service accounts, and environment variables.
+    $ generate-api gen <outdir> --file=<path>
 
-For reference information on specific calls in the clients, see the {Google::Apis class reference docs}.
+A URL can also be specified:
+
+    $ generate-api gen <outdir> --url=<url>
 
 ## License
 

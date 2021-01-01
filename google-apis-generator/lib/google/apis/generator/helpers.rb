@@ -1,3 +1,5 @@
+require 'active_support/inflector'
+
 module Google
   module Apis
     # @private

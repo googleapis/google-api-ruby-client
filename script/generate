@@ -4,5 +4,5 @@
 
 DIR=$(dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ))
 
-cd google-api-client
+cd google-apis-generator
 echo 'a' | bundle exec bin/generate-api gen $DIR/generated --from-discovery --no-preferred-only --names=$DIR/api_names.yaml --names-out=$DIR/api_names_out.yaml

@@ -1,0 +1,38 @@
+require "bundler/gem_tasks"
+task :release_gem do
+  Rake::Task["build"].invoke
+  Rake::Task["release:rubygem_push"].invoke
+end
+
+require 'rubocop/rake_task'
+desc 'Run RuboCop on the lib directory'
+RuboCop::RakeTask.new(:rubocop) do |task|
+  task.patterns = ['lib/**/*.rb']
+  # only show the files with failures
+  task.formatters = ['progress']
+  # don't abort rake on failure
+  task.fail_on_error = false
+end
+
+require 'rake/clean'
+CLOBBER.include('coverage', 'doc')
+CLEAN.include('.yardoc')
+
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new(:spec)
+
+begin
+	require 'yard'
+	require 'yard/rake/yardoc_task'
+	YARD::Rake::YardocTask.new do |t|
+  	t.files   = ['lib/**/*.rb', 'generated/**/*.rb']
+  	t.options = ['--verbose', '--markup', 'markdown']
+	end
+rescue LoadError
+  task :yard
+  puts "YARD not available"
+end
+
+task :ci => [:spec, :yard, :build]
+
+task :default => :ci

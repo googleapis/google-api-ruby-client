@@ -1,10 +1,6 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in google-apis.gemspec
 gemspec
-
-gem 'google-apis-core', path: '../google-apis-core'
-gem 'google-apis-generator', path: '../google-apis-generator'
 
 group :development do
   gem 'bundler', '>= 1.7'
@@ -25,7 +21,6 @@ group :development do
   gem 'logging', '~> 2.2'
   gem 'opencensus', '~> 0.4'
   gem 'httparty'
-  gem 'gems', '~> 1.2'
 end
 
 platforms :jruby do
@@ -42,8 +37,4 @@ platforms :ruby do
     gem 'pry-doc', '~> 0.8'
     gem 'pry-byebug', '~> 3.2'
   end
-end
-
-if ENV['RAILS_VERSION']
-  gem 'rails', ENV['RAILS_VERSION']
 end

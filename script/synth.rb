@@ -9,7 +9,7 @@ def execute cmd
   abort unless system cmd
 end
 
-Dir.chdir "google-api-client"
+Dir.chdir "google-apis-generator"
 
 execute "bundle install"
 
