@@ -1,0 +1,12 @@
+--hide-void-return
+--no-private
+--verbose
+--markup-provider=redcarpet
+--markup=markdown
+--main OVERVIEW.md
+lib/google/apis/pubsub_v1beta1a/*.rb
+lib/google/apis/pubsub_v1beta1a.rb
+-
+OVERVIEW.md
+CHANGELOG.md
+LICENSE.md

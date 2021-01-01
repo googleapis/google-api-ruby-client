@@ -1,0 +1,12 @@
+--hide-void-return
+--no-private
+--verbose
+--markup-provider=redcarpet
+--markup=markdown
+--main OVERVIEW.md
+lib/google/apis/tagmanager_v2/*.rb
+lib/google/apis/tagmanager_v2.rb
+-
+OVERVIEW.md
+CHANGELOG.md
+LICENSE.md

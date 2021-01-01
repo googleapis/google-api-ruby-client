@@ -1,0 +1,12 @@
+--hide-void-return
+--no-private
+--verbose
+--markup-provider=redcarpet
+--markup=markdown
+--main OVERVIEW.md
+lib/google/apis/safebrowsing_v4/*.rb
+lib/google/apis/safebrowsing_v4.rb
+-
+OVERVIEW.md
+CHANGELOG.md
+LICENSE.md
