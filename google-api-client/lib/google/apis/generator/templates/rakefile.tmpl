@@ -17,6 +17,7 @@ begin
   	t.options = ['--verbose', '--markup', 'markdown']
 	end
 rescue LoadError
+  task :yard
   puts "YARD not available"
 end
 
