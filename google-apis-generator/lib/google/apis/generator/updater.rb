@@ -30,7 +30,7 @@ module Google
           version_content = changelog_content = nil
           generator_result.files.each do |path, content|
             full_path = File.join(base_dir, path)
-            old_content = File.binread(full_path) if File.readable?(full_path)
+            old_content = File.read(full_path) if File.readable?(full_path)
             if path == generator_result.version_path
               version_content = old_content || content
             elsif path == generator_result.changelog_path
