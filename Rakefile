@@ -74,7 +74,14 @@ def load_env_vars
   filename = "#{ENV['KOKORO_GFILE_DIR']}/ruby_env_vars.json"
   raise "#{filename} is not a file" unless File.file? filename
   env_vars = JSON.parse File.read(filename)
-  env_vars.each { |k, v| ENV[k] ||= v }
+  env_vars.each do |k, v|
+    if ENV[k]
+      puts "Ignoring #{k} because it is already set"
+    else
+      puts "Setting #{k}"
+    end
+    ENV[k] ||= v
+  end
 end
 
 def header str, token = "#"

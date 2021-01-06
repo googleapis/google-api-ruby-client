@@ -37,9 +37,11 @@ class Releaser
 
   def publish_gem
     configure_rubygems_api_token
-    bundle_dir do
+    Dir.chdir(gem_dir) do
       FileUtils.rm_rf("pkg")
-      execute "bundle exec rake build"
+      isolate_bundle do
+        execute "bundle exec rake build"
+      end
       built_gem_path = "pkg/#{gem_name}-#{gem_version}.gem"
       raise "Failed to build #{built_gem_path}" unless File.file?(built_gem_path)
       if dry_run?
@@ -53,10 +55,12 @@ class Releaser
   end
 
   def publish_docs
-    bundle_dir do
+    Dir.chdir(gem_dir) do
       FileUtils.rm_rf("doc")
       FileUtils.rm_rf(".yardoc")
-      execute "bundle exec rake yard"
+      isolate_bundle do
+        execute "bundle exec rake yard"
+      end
       Dir.chdir("doc") do
         execute "python3 -m docuploader create-metadata" \
                 " --name #{gem_name}" \
@@ -117,25 +121,24 @@ class Releaser
       Gems.configure do |config|
         config.key = rubygems_api_token
       end
+      puts "Configured rubygems api token"
     end
   end
 
-  def bundle_dir
+  def isolate_bundle
     block = proc do
       execute "bundle update" unless @bundle_updated
       @bundle_updated = true
       yield
     end
-    Dir.chdir(gem_dir) do
-      if defined?(Bundler)
-        if Bundler.respond_to?(:with_unbundled_env)
-          Bundler.with_unbundled_env(&block)
-        else
-          Bundler.with_clean_env(&block)
-        end
+    if defined?(Bundler)
+      if Bundler.respond_to?(:with_unbundled_env)
+        Bundler.with_unbundled_env(&block)
       else
-        block.call
+        Bundler.with_clean_env(&block)
       end
+    else
+      block.call
     end
   end
 
