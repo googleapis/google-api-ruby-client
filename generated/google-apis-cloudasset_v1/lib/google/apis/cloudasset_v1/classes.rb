@@ -2394,8 +2394,8 @@ module Google
         # @return [Google::Apis::CloudassetV1::Policy]
         attr_accessor :policy
       
-        # The project that the associated GCP resource belongs to, in the form of
-        # projects/`PROJECT_NUMBER`. If an IAM policy is set on a resource (like VM
+        # Optional. The project that the associated GCP resource belongs to, in the form
+        # of projects/`PROJECT_NUMBER`. If an IAM policy is set on a resource (like VM
         # instance, Cloud Storage bucket), the project field will indicate the project
         # that contains the resource. If an IAM policy is set on a folder or orgnization,
         # the project field will be empty. To search against the `project`: * specify
@@ -2404,8 +2404,8 @@ module Google
         # @return [String]
         attr_accessor :project
       
-        # The full resource name of the resource associated with this IAM policy.
-        # Example: `//compute.googleapis.com/projects/my_project_123/zones/zone1/
+        # Required. The full resource name of the resource associated with this IAM
+        # policy. Example: `//compute.googleapis.com/projects/my_project_123/zones/zone1/
         # instances/instance1`. See [Cloud Asset Inventory Resource Name Format](https://
         # cloud.google.com/asset-inventory/docs/resource-name-format) for more
         # information. To search against the `resource`: * use a field query. Example: `
@@ -3018,49 +3018,52 @@ module Google
       class ResourceSearchResult
         include Google::Apis::Core::Hashable
       
-        # The additional searchable attributes of this resource. The attributes may vary
-        # from one resource type to another. Examples: `projectId` for Project, `dnsName`
-        # for DNS ManagedZone. This field contains a subset of the resource metadata
-        # fields that are returned by the List or Get APIs provided by the corresponding
-        # GCP service (e.g., Compute Engine). see [API references and supported
-        # searchable attributes](https://cloud.google.com/asset-inventory/docs/supported-
-        # asset-types#searchable_asset_types) for more information. You can search
-        # values of these fields through free text search. However, you should not
-        # consume the field programically as the field names and values may change as
-        # the GCP service updates to a new incompatible API version. To search against
-        # the `additional_attributes`: * use a free text query to match the attributes
-        # values. Example: to search `additional_attributes = ` dnsName: "foobar" ``,
-        # you can issue a query `foobar`.
+        # Optional. The additional searchable attributes of this resource. The
+        # attributes may vary from one resource type to another. Examples: `projectId`
+        # for Project, `dnsName` for DNS ManagedZone. This field contains a subset of
+        # the resource metadata fields that are returned by the List or Get APIs
+        # provided by the corresponding GCP service (e.g., Compute Engine). see [API
+        # references and supported searchable attributes](https://cloud.google.com/asset-
+        # inventory/docs/supported-asset-types#searchable_asset_types) for more
+        # information. You can search values of these fields through free text search.
+        # However, you should not consume the field programically as the field names and
+        # values may change as the GCP service updates to a new incompatible API version.
+        # To search against the `additional_attributes`: * use a free text query to
+        # match the attributes values. Example: to search `additional_attributes = `
+        # dnsName: "foobar" ``, you can issue a query `foobar`.
         # Corresponds to the JSON property `additionalAttributes`
         # @return [Hash<String,Object>]
         attr_accessor :additional_attributes
       
-        # The type of this resource. Example: `compute.googleapis.com/Disk`. To search
-        # against the `asset_type`: * specify the `asset_type` field in your search
-        # request.
+        # Required. The type of this resource. Example: `compute.googleapis.com/Disk`.
+        # To search against the `asset_type`: * specify the `asset_type` field in your
+        # search request.
         # Corresponds to the JSON property `assetType`
         # @return [String]
         attr_accessor :asset_type
       
-        # One or more paragraphs of text description of this resource. Maximum length
-        # could be up to 1M bytes. To search against the `description`: * use a field
-        # query. Example: `description:"*important instance*"` * use a free text query.
-        # Example: `"*important instance*"`
+        # Optional. One or more paragraphs of text description of this resource. Maximum
+        # length could be up to 1M bytes. This field is available only when the resource'
+        # s proto contains it. To search against the `description`: * use a field query.
+        # Example: `description:"*important instance*"` * use a free text query. Example:
+        # `"*important instance*"`
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # The display name of this resource. To search against the `display_name`: * use
+        # Optional. The display name of this resource. This field is available only when
+        # the resource's proto contains it. To search against the `display_name`: * use
         # a field query. Example: `displayName:"My Instance"` * use a free text query.
         # Example: `"My Instance"`
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Labels associated with this resource. See [Labelling and grouping GCP
-        # resources](https://cloud.google.com/blog/products/gcp/labelling-and-grouping-
-        # your-google-cloud-platform-resources) for more information. To search against
-        # the `labels`: * use a field query: - query on any label's key or value.
+        # Optional. Labels associated with this resource. See [Labelling and grouping
+        # GCP resources](https://cloud.google.com/blog/products/gcp/labelling-and-
+        # grouping-your-google-cloud-platform-resources) for more information. This
+        # field is available only when the resource's proto contains it. To search
+        # against the `labels`: * use a field query: - query on any label's key or value.
         # Example: `labels:prod` - query by a given label. Example: `labels.env:prod` -
         # query by a given label's existence. Example: `labels.env:*` * use a free text
         # query. Example: `prod`
@@ -3068,36 +3071,39 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Location can be `global`, regional like `us-east1`, or zonal like `us-west1-b`.
-        # To search against the `location`: * use a field query. Example: `location:us-
-        # west*` * use a free text query. Example: `us-west*`
+        # Optional. Location can be `global`, regional like `us-east1`, or zonal like `
+        # us-west1-b`. This field is available only when the resource's proto contains
+        # it. To search against the `location`: * use a field query. Example: `location:
+        # us-west*` * use a free text query. Example: `us-west*`
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # The full resource name of this resource. Example: `//compute.googleapis.com/
-        # projects/my_project_123/zones/zone1/instances/instance1`. See [Cloud Asset
-        # Inventory Resource Name Format](https://cloud.google.com/asset-inventory/docs/
-        # resource-name-format) for more information. To search against the `name`: *
-        # use a field query. Example: `name:instance1` * use a free text query. Example:
-        # `instance1`
+        # Required. The full resource name of this resource. Example: `//compute.
+        # googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [
+        # Cloud Asset Inventory Resource Name Format](https://cloud.google.com/asset-
+        # inventory/docs/resource-name-format) for more information. To search against
+        # the `name`: * use a field query. Example: `name:instance1` * use a free text
+        # query. Example: `instance1`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Network tags associated with this resource. Like labels, network tags are a
-        # type of annotations used to group GCP resources. See [Labelling GCP resources](
-        # https://cloud.google.com/blog/products/gcp/labelling-and-grouping-your-google-
-        # cloud-platform-resources) for more information. To search against the `
+        # Optional. Network tags associated with this resource. Like labels, network
+        # tags are a type of annotations used to group GCP resources. See [Labelling GCP
+        # resources](https://cloud.google.com/blog/products/gcp/labelling-and-grouping-
+        # your-google-cloud-platform-resources) for more information. This field is
+        # available only when the resource's proto contains it. To search against the `
         # network_tags`: * use a field query. Example: `networkTags:internal` * use a
         # free text query. Example: `internal`
         # Corresponds to the JSON property `networkTags`
         # @return [Array<String>]
         attr_accessor :network_tags
       
-        # The project that this resource belongs to, in the form of projects/`
-        # PROJECT_NUMBER`. To search against the `project`: * specify the `scope` field
-        # as this project in your search request.
+        # Optional. The project that this resource belongs to, in the form of projects/`
+        # PROJECT_NUMBER`. This field is available when the resource belongs to a
+        # project. To search against the `project`: * specify the `scope` field as this
+        # project in your search request.
         # Corresponds to the JSON property `project`
         # @return [String]
         attr_accessor :project
