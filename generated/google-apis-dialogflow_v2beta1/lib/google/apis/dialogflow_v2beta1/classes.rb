@@ -4753,9 +4753,10 @@ module Google
         # symbol table, dictionary, or JSON object composed of a collection of (MapKey,
         # MapValue) pairs: - MapKey type: string - MapKey value: parameter name -
         # MapValue type: - If parameter's entity type is a composite entity: map - Else:
-        # string or number, depending on parameter value type - MapValue value: - If
-        # parameter's entity type is a composite entity: map from composite entity
-        # property names to property values - Else: parameter value
+        # depending on parameter value type, could be one of string, number, boolean,
+        # null, list or map - MapValue value: - If parameter's entity type is a
+        # composite entity: map from composite entity property names to property values -
+        # Else: parameter value
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
         attr_accessor :parameters
@@ -4933,9 +4934,10 @@ module Google
         # table, dictionary, or JSON object composed of a collection of (MapKey,
         # MapValue) pairs: - MapKey type: string - MapKey value: parameter name -
         # MapValue type: - If parameter's entity type is a composite entity: map - Else:
-        # string or number, depending on parameter value type - MapValue value: - If
-        # parameter's entity type is a composite entity: map from composite entity
-        # property names to property values - Else: parameter value
+        # depending on parameter value type, could be one of string, number, boolean,
+        # null, list or map - MapValue value: - If parameter's entity type is a
+        # composite entity: map from composite entity property names to property values -
+        # Else: parameter value
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
         attr_accessor :parameters
@@ -6412,10 +6414,10 @@ module Google
         # library language, this is a map, associative array, symbol table, dictionary,
         # or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey
         # type: string - MapKey value: parameter name - MapValue type: - If parameter's
-        # entity type is a composite entity: map - Else: string or number, depending on
-        # parameter value type - MapValue value: - If parameter's entity type is a
-        # composite entity: map from composite entity property names to property values -
-        # Else: parameter value
+        # entity type is a composite entity: map - Else: depending on parameter value
+        # type, could be one of string, number, boolean, null, list or map - MapValue
+        # value: - If parameter's entity type is a composite entity: map from composite
+        # entity property names to property values - Else: parameter value
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
         attr_accessor :parameters
@@ -7123,9 +7125,10 @@ module Google
         # symbol table, dictionary, or JSON object composed of a collection of (MapKey,
         # MapValue) pairs: - MapKey type: string - MapKey value: parameter name -
         # MapValue type: - If parameter's entity type is a composite entity: map - Else:
-        # string or number, depending on parameter value type - MapValue value: - If
-        # parameter's entity type is a composite entity: map from composite entity
-        # property names to property values - Else: parameter value
+        # depending on parameter value type, could be one of string, number, boolean,
+        # null, list or map - MapValue value: - If parameter's entity type is a
+        # composite entity: map from composite entity property names to property values -
+        # Else: parameter value
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
         attr_accessor :parameters
@@ -7584,9 +7587,10 @@ module Google
         # table, dictionary, or JSON object composed of a collection of (MapKey,
         # MapValue) pairs: - MapKey type: string - MapKey value: parameter name -
         # MapValue type: - If parameter's entity type is a composite entity: map - Else:
-        # string or number, depending on parameter value type - MapValue value: - If
-        # parameter's entity type is a composite entity: map from composite entity
-        # property names to property values - Else: parameter value
+        # depending on parameter value type, could be one of string, number, boolean,
+        # null, list or map - MapValue value: - If parameter's entity type is a
+        # composite entity: map from composite entity property names to property values -
+        # Else: parameter value
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
         attr_accessor :parameters
@@ -10271,10 +10275,10 @@ module Google
         # library language, this is a map, associative array, symbol table, dictionary,
         # or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey
         # type: string - MapKey value: parameter name - MapValue type: - If parameter's
-        # entity type is a composite entity: map - Else: string or number, depending on
-        # parameter value type - MapValue value: - If parameter's entity type is a
-        # composite entity: map from composite entity property names to property values -
-        # Else: parameter value
+        # entity type is a composite entity: map - Else: depending on parameter value
+        # type, could be one of string, number, boolean, null, list or map - MapValue
+        # value: - If parameter's entity type is a composite entity: map from composite
+        # entity property names to property values - Else: parameter value
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
         attr_accessor :parameters
@@ -10775,7 +10779,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The name of the voice. If not set, the service will choose a voice
-        # based on the other parameters such as language_code and ssml_gender.
+        # based on the other parameters such as language_code and ssml_gender. For the
+        # list of available voices, please refer to [Supported voices and languages](
+        # https://cloud.google.com/text-to-speech/docs/voices).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
