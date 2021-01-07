@@ -66,7 +66,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Input parameters of the execution represented as a JSON string. The size limit
-        # is 32KB.
+        # is 32KB. *Note*: If you are using the REST API directly to run your workflow,
+        # you must escape any JSON string value of `argument`. Example: `'`"argument":"`\
+        # "firstName\":\"FIRST\",\"lastName\":\"LAST\"`"`'`
         # Corresponds to the JSON property `argument`
         # @return [String]
         attr_accessor :argument
