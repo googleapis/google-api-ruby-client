@@ -31,7 +31,7 @@ module Google
       #    Securitycenter = Google::Apis::SecuritycenterV1beta1 # Alias the module
       #    service = Securitycenter::SecurityCommandCenterService.new
       #
-      # @see https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview
+      # @see https://cloud.google.com/security-command-center
       class SecurityCommandCenterService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
