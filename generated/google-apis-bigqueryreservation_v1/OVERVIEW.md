@@ -1,4 +1,4 @@
-# Legacy REST client for version V1 of the BigQuery Reservation API
+# Simple REST client for version V1 of the BigQuery Reservation API
 
 This is a simple client library for version V1 of the BigQuery Reservation API. It provides:
 
@@ -7,7 +7,7 @@ This is a simple client library for version V1 of the BigQuery Reservation API. 
 * Integration with the googleauth gem for authentication using OAuth, API keys, and service accounts.
 * Control of retry, pagination, and timeouts.
 
-Note that although this client library is supported and will continue to be updated to track changes to the service, it is considered legacy. A more modern client may be available for many Google services, especially Cloud Platform services. See the section below titled *Which client should I use?* for more information.
+Note that although this client library is supported and will continue to be updated to track changes to the service, it is otherwise considered complete and not under active development. Many Google services, especially Google Cloud Platform services, may provide a more modern client that is under more active development and improvement. See the section below titled *Which client should I use?* for more information.
 
 ## Getting started
 
@@ -58,26 +58,26 @@ See the class reference docs for information on the methods you can call from a 
 
 ## Documentation
 
-More detailed descriptions of the Google legacy REST clients are available in two documents.
+More detailed descriptions of the Google simple REST clients are available in two documents.
 
  *  The [Usage Guide](https://github.com/googleapis/google-api-ruby-client/blob/master/docs/usage-guide.md) discusses how to make API calls, how to use the provided data structures, and how to work the various features of the client library, including media upload and download, error handling, retries, pagination, and logging.
  *  The [Auth Guide](https://github.com/googleapis/google-api-ruby-client/blob/master/docs/auth-guide.md) discusses authentication in the client libraries, including API keys, OAuth 2.0, service accounts, and environment variables.
 
-(Note: the above documents are written for the legacy clients in general, and their examples may not reflect the Bigqueryreservation service in particular.)
+(Note: the above documents are written for the simple REST clients in general, and their examples may not reflect the Bigqueryreservation service in particular.)
 
 For reference information on specific calls in the BigQuery Reservation API, see the {Google::Apis::BigqueryreservationV1::BigQueryReservationService class reference docs}.
 
 ## Which client should I use?
 
-Google provides two types of Ruby API client libraries: **legacy REST clients** and **modern clients**.
+Google provides two types of Ruby API client libraries: **simple REST clients** and **modern clients**.
 
-This library, `google-apis-bigqueryreservation_v1`, is a legacy REST client. You can identify legacy clients by their gem names, which are always in the form `google-apis-<servicename>_<serviceversion>`. The legacy REST clients connect to HTTP/JSON REST endpoints and are automatically generated from service discovery documents. They support most API functionality, but their class interfaces are sometimes awkward.
+This library, `google-apis-bigqueryreservation_v1`, is a simple REST client. You can identify these clients by their gem names, which are always in the form `google-apis-<servicename>_<serviceversion>`. The simple REST clients connect to HTTP/JSON REST endpoints and are automatically generated from service discovery documents. They support most API functionality, but their class interfaces are sometimes awkward.
 
-Modern clients are produced by a modern code generator, combined with hand-crafted functionality for some services. Most modern clients connect to high-performance gRPC endpoints, although a few are backed by REST services. Modern clients are available for many Google services, especially Cloud Platform services, but do not yet support all the services covered by the legacy clients.
+Modern clients are produced by a modern code generator, sometimes combined with hand-crafted functionality. Most modern clients connect to high-performance gRPC endpoints, although a few are backed by REST services. Modern clients are available for many Google services, especially Google Cloud Platform services, but do not yet support all the services covered by the simple clients.
 
 Gem names for modern clients are often of the form `google-cloud-<service_name>`. (For example, [google-cloud-pubsub](https://rubygems.org/gems/google-cloud-pubsub).) Note that most modern clients also have corresponding "versioned" gems with names like `google-cloud-<service_name>-<version>`. (For example, [google-cloud-pubsub-v1](https://rubygems.org/gems/google-cloud-pubsub-v1).) The "versioned" gems can be used directly, but often provide lower-level interfaces. In most cases, the main gem is recommended.
 
-**For most users, we recommend the modern client, if one is available.** Compared with legacy clients, modern clients are generally much easier to use and more Ruby-like, support more advanced features such as streaming and long-running operations, and often provide much better performance. You may consider using a legacy client instead, if a modern client is not yet available for the service you want to use, or if you are not able to use gRPC on your infrastructure.
+**For most users, we recommend the modern client, if one is available.** Compared with simple clients, modern clients are generally much easier to use and more Ruby-like, support more advanced features such as streaming and long-running operations, and often provide much better performance. You may consider using a simple client instead, if a modern client is not yet available for the service you want to use, or if you are not able to use gRPC on your infrastructure.
 
 The [product documentation](https://cloud.google.com/bigquery/) may provide guidance regarding the preferred client library to use.
 

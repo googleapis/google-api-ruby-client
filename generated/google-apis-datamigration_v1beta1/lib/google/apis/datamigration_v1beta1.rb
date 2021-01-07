@@ -23,7 +23,7 @@ module Google
     #
     # Manage Cloud Database Migration Service resources on Google Cloud Platform.
     #
-    # @see https://cloud.google.com/datamigration/
+    # @see https://cloud.google.com/database-migration/
     module DatamigrationV1beta1
       # Version of the Database Migration API this client connects to.
       # This is NOT the gem version.

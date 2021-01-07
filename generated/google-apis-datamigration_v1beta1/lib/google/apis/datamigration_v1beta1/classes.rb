@@ -257,7 +257,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :database_flags
       
-        # The database engine type and version (such as `MYSQL_5_7` / `POSTGRES_9_6`).
+        # The database engine type and version.
         # Corresponds to the JSON property `databaseVersion`
         # @return [String]
         attr_accessor :database_version
@@ -292,9 +292,8 @@ module Google
         attr_accessor :storage_auto_resize_limit
       
         # The tier (or machine type) for this instance, for example: `db-n1-standard-1` (
-        # MySQL instances) or `db-custom-1-3840` (PostgreSQL instances). For more
-        # information, see [Cloud SQL Instance Settings](https://cloud.google.com/sql/
-        # docs/mysql/instance-settings).
+        # MySQL instances). For more information, see [Cloud SQL Instance Settings](
+        # https://cloud.google.com/sql/docs/mysql/instance-settings).
         # Corresponds to the JSON property `tier`
         # @return [String]
         attr_accessor :tier

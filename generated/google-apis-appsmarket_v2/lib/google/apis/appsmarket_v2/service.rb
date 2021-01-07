@@ -22,17 +22,17 @@ module Google
     module AppsmarketV2
       # G Suite Marketplace API
       #
-      # Lets your G Suite Marketplace applications integrate with Google's licensing
-      #  and billing services.
+      # Lets your Google Workspace Marketplace applications integrate with Google's
+      #  licensing and billing services.
       #
       # @example
       #    require 'google/apis/appsmarket_v2'
       #
       #    Appsmarket = Google::Apis::AppsmarketV2 # Alias the module
-      #    service = Appsmarket::GSuiteMarketplaceAPIService.new
+      #    service = Appsmarket::GoogleWorkspaceMarketplaceAPIService.new
       #
       # @see https://developers.google.com/apps-marketplace
-      class GSuiteMarketplaceAPIService < Google::Apis::Core::BaseService
+      class GoogleWorkspaceMarketplaceAPIService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.

@@ -28,10 +28,10 @@ module Google
       #    require 'google/apis/datamigration_v1beta1'
       #
       #    Datamigration = Google::Apis::DatamigrationV1beta1 # Alias the module
-      #    service = Datamigration::CloudDatabaseMigrationServiceService.new
+      #    service = Datamigration::DatabaseMigrationServiceService.new
       #
-      # @see https://cloud.google.com/datamigration/
-      class CloudDatabaseMigrationServiceService < Google::Apis::Core::BaseService
+      # @see https://cloud.google.com/database-migration/
+      class DatabaseMigrationServiceService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
