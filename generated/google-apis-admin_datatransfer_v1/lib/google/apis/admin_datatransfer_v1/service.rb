@@ -83,7 +83,7 @@ module Google
         
         # Lists the applications available for data transfer for a customer.
         # @param [String] customer_id
-        #   Immutable ID of the Google Apps account.
+        #   Immutable ID of the Google Workspace account.
         # @param [Fixnum] max_results
         #   Maximum number of results to return. Default is 100.
         # @param [String] page_token
@@ -180,7 +180,7 @@ module Google
         
         # Lists the transfers for a customer by source user, destination user, or status.
         # @param [String] customer_id
-        #   Immutable ID of the Google Apps account.
+        #   Immutable ID of the Google Workspace account.
         # @param [Fixnum] max_results
         #   Maximum number of results to return. Default is 100.
         # @param [String] new_owner_user_id
