@@ -5,10 +5,10 @@ Gem::Specification.new do |gem|
   gem.version = Google::Apis::IamV1::GEM_VERSION
   gem.authors = ["Google LLC"]
   gem.email = "googleapis-packages@google.com"
-  gem.summary = "Legacy REST client for Identity and Access Management (IAM) API V1"
+  gem.summary = "Simple REST client for Identity and Access Management (IAM) API V1"
   gem.description =
-      "This is the legacy REST client for Identity and Access Management (IAM) API V1." \
-      " Legacy REST clients are simple Ruby libraries that provide access to" \
+      "This is the simple REST client for Identity and Access Management (IAM) API V1." \
+      " Simple REST clients are Ruby client libraries that provide access to" \
       " Google services via their HTTP REST API endpoints. These libraries are" \
       " generated and updated automatically based on the discovery documents" \
       " published by the service, and they handle most concerns such as" \

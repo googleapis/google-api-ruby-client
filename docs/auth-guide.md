@@ -1,8 +1,8 @@
-# Authentication for Legacy REST Clients
+# Authentication for Simple REST Clients
 
 This document describes how authentication, authorization, and accounting are accomplished. For all API calls, your application needs to be authenticated. When an API accesses a user's private data, your application must also be authorized by the user to access the data. For example, accessing a public Google+ post would not require user authorization, but accessing a user's private calendar would. Also, for quota and billing purposes, all API calls involve accounting. This document summarizes the protocols used by Google APIs and provides links to more information.
 
-> **Note:** this is a "general" document, and not specific to this particular service client. In particular, you may find that the examples in this document are for a different client. All legacy REST clients follow the same usage patterns, and you should be able to adapt the provided examples to the client you are using.
+> **Note:** this is a "general" document, and not specific to this particular service client. In particular, you may find that the examples in this document are for a different client. All simple REST clients follow the same usage patterns, and you should be able to adapt the provided examples to the client you are using.
 
 ## Access types
 

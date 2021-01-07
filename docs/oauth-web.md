@@ -6,7 +6,7 @@ This OAuth 2.0 flow is specifically for user authorization. It is designed for a
 
 Web server applications frequently also use service accounts to authorize API requests, particularly when calling Cloud APIs to access project-based data rather than user-specific data. Web server applications can use service accounts in conjunction with user authorization.
 
-> **Note:** this is a "general" document, and not specific to this particular service client. In particular, you may find that the examples in this document are for a different client. All legacy REST clients follow the same usage patterns, and you should be able to adapt the provided examples to the client you are using.
+> **Note:** this is a "general" document, and not specific to this particular service client. In particular, you may find that the examples in this document are for a different client. All simple REST clients follow the same usage patterns, and you should be able to adapt the provided examples to the client you are using.
 
 ## Prerequisites
 

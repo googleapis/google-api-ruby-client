@@ -21,8 +21,8 @@ module Google
   module Apis
     # G Suite Marketplace API
     #
-    # Lets your G Suite Marketplace applications integrate with Google's licensing
-    # and billing services.
+    # Lets your Google Workspace Marketplace applications integrate with Google's
+    # licensing and billing services.
     #
     # @see https://developers.google.com/apps-marketplace
     module AppsmarketV2

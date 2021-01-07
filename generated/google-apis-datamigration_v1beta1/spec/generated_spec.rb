@@ -21,7 +21,7 @@ RSpec.describe "Google::Apis::DatamigrationV1beta1" do
       require "google/apis/datamigration_v1beta1"
     end.not_to raise_error
     expect do
-      Google::Apis::DatamigrationV1beta1::CloudDatabaseMigrationServiceService.new
+      Google::Apis::DatamigrationV1beta1::DatabaseMigrationServiceService.new
     end.not_to raise_error
   end
 end

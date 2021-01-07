@@ -1,8 +1,8 @@
-# Usage Guide for Legacy REST Clients
+# Usage Guide for Simple REST Clients
 
-This document provides all the basic information you need to start using the legacy REST clients for Google APIs. It covers important library concepts, shows examples for various use cases, and gives links to more information.
+This document provides all the basic information you need to start using the simple REST clients for Google APIs. It covers important library concepts, shows examples for various use cases, and gives links to more information.
 
-> **Note:** this is a "general" document, and not specific to this particular service client. In particular, you may find that the examples in this document are for a different client. All legacy REST clients follow the same usage patterns, and you should be able to adapt the provided examples to the client you are using.
+> **Note:** this is a "general" document, and not specific to this particular service client. In particular, you may find that the examples in this document are for a different client. All simple REST clients follow the same usage patterns, and you should be able to adapt the provided examples to the client you are using.
 
 ## Before you begin
 
@@ -58,11 +58,11 @@ drive.get_file(metadata.id, download_dest: '/tmp/myfile.txt')
 
 ## Authorization
 
-All API calls need to be authenticated, to ensure authorized access to data, and for proper accounting for quota and billing. Google legacy REST clients support several different types of authentication, including OAuth 2.0, service accounts, API keys, and default credentials. Detailed documentation, including examples of several common authentication flows, is provided in the separate [Auth Guide](auth-guide.md). In the present document, we will discuss a few basic cases to get started.
+All API calls need to be authenticated, to ensure authorized access to data, and for proper accounting for quota and billing. Google simple REST clients support several different types of authentication, including OAuth 2.0, service accounts, API keys, and default credentials. Detailed documentation, including examples of several common authentication flows, is provided in the separate [Auth Guide](auth-guide.md). In the present document, we will discuss a few basic cases to get started.
 
 ### Auth libraries
 
-Most auth functionality is provided in two separate Ruby gems, which legacy REST clients bring in as dependencies.
+Most auth functionality is provided in two separate Ruby gems, which simple REST clients bring in as dependencies.
 
 * The [signet](https://github.com/google/signet) gem is a basic implementation of [OAuth 2](https://developers.google.com/accounts/docs/OAuth2). For calls that require per-user authorization, it can be used to direct the OAuth flow needed to obtain authorization.
 * The [googleauth](https://github.com/google/google-auth-library-ruby) gem builds atop signet, and offers a simple way to get credentials for use in Google APIs when auth is independent of the user. In particular, this is the recommend approach for many Cloud APIs.

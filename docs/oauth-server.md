@@ -12,7 +12,7 @@ If you have a G Suite domain—if you use [G Suite](https://gsuite.google.com/),
 
 This document describes how an application can complete the server-to-server OAuth 2.0 flow by using the Google APIs Client Library for Ruby.
 
-> **Note:** this is a "general" document, and not specific to this particular service client. In particular, you may find that the examples in this document are for a different client. All legacy REST clients follow the same usage patterns, and you should be able to adapt the provided examples to the client you are using.
+> **Note:** this is a "general" document, and not specific to this particular service client. In particular, you may find that the examples in this document are for a different client. All simple REST clients follow the same usage patterns, and you should be able to adapt the provided examples to the client you are using.
 
 ## Overview
 
