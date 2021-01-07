@@ -1,14 +1,14 @@
 # Monolithic Client for Google APIs (DEPRECATED)
 
-This library includes REST clients for all Discovery-based Google APIs as of December 2020.
+This library includes REST clients for all public [Discovery]((https://developers.google.com/discovery))-based Google APIs as of December 2020.
 
-This library is **deprecated** and will likely not be updated in the future. Instead, please install the gem corresponding to the specific service you want to use. For example, to use the Google Drive V3 client, install the `google-apis-drive_v3` gem.
+This library is **deprecated** and will likely not be updated further. Instead, please install the gem corresponding to the specific service you want to use. For example, to use the Google Drive V3 client, install the `google-apis-drive_v3` gem. To use the code generator, install the `google-apis-generator` gem.
 
 ## FAQ
 
 ### Why is this gem deprecated?
 
-The `google-api-client` gem is a 75 megabyte installation including client classes for more than 300 services. Although the library is designed so that only the classes being used are loaded into memory, it still takes a nontrivial amount of space on disk (and in deployments), and can take a while to install. Additionally, the documentation is so large that rubydoc.info often fails to build it.
+The `google-api-client` gem is a 75 megabyte installation including client classes for more than 300 services. Although the library is designed so that only the classes being used are loaded into memory, it still takes a nontrivial amount of space on disk (and in deployments), and can take a while to install. Additionally, the class reference documentation is so large that rubydoc.info often fails to build it.
 
 Because few applications would use more than one or two of the included clients at a time, it was decided to release a separate gem for each client.
 
