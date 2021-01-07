@@ -11,7 +11,7 @@ Gem::Specification.new do |gem|
   gem.metadata = {
     "bug_tracker_uri" => "https://github.com/googleapis/google-api-ruby-client/issues",
     "changelog_uri" => "https://github.com/googleapis/google-api-ruby-client/tree/master/google-apis-generator/CHANGELOG.md",
-    "documentation_uri" => "https://googleapis.dev/ruby/google-apis-core/v#{Google::Apis::Generator::VERSION}",
+    "documentation_uri" => "https://googleapis.dev/ruby/google-apis-generator/v#{Google::Apis::Generator::VERSION}",
     "source_code_uri" => "https://github.com/googleapis/google-api-ruby-client/tree/master/google-apis-generator"
   }
 
