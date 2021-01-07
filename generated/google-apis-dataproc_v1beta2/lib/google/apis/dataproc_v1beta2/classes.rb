@@ -394,7 +394,8 @@ module Google
         # cluster's staging bucket according to the Compute Engine zone where your
         # cluster is deployed, and then create and manage this project-level, per-
         # location bucket (see Dataproc staging bucket (https://cloud.google.com/
-        # dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+        # dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field
+        # requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
         # Corresponds to the JSON property `configBucket`
         # @return [String]
         attr_accessor :config_bucket
@@ -469,7 +470,8 @@ module Google
         # your cluster's temp bucket according to the Compute Engine zone where your
         # cluster is deployed, and then create and manage this project-level, per-
         # location bucket. The default bucket has a TTL of 90 days, but you can use any
-        # TTL (or none) if you specify a bucket.
+        # TTL (or none) if you specify a bucket. This field requires a Cloud Storage
+        # bucket name, not a URI to a Cloud Storage bucket.
         # Corresponds to the JSON property `tempBucket`
         # @return [String]
         attr_accessor :temp_bucket
@@ -3496,9 +3498,9 @@ module Google
         # @return [String]
         attr_accessor :dag_start_time
       
-        # Output only. The timeout duration for the DAG of jobs. Minimum timeout
-        # duration is 10 minutes and maximum is 24 hours, expressed as a google.protobuf.
-        # Duration. For example, "1800" = 1800 seconds/30 minutes duration.
+        # Output only. The timeout duration for the DAG of jobs, expressed in seconds (
+        # see JSON representation of duration (https://developers.google.com/protocol-
+        # buffers/docs/proto3#json)).
         # Corresponds to the JSON property `dagTimeout`
         # @return [String]
         attr_accessor :dag_timeout
@@ -3624,13 +3626,13 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and
-        # "d" suffixes for second, minute, hour, and day duration values, respectively.
-        # The timeout duration must be from 10 minutes ("10m") to 24 hours ("24h" or "1d"
-        # ). The timer begins when the first job is submitted. If the workflow is
-        # running at the end of the timeout period, any remaining jobs are cancelled,
-        # the workflow is ended, and if the workflow was running on a managed cluster,
-        # the cluster is deleted.
+        # Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON
+        # representation of duration (https://developers.google.com/protocol-buffers/
+        # docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to
+        # 24 hours ("86400s"). The timer begins when the first job is submitted. If the
+        # workflow is running at the end of the timeout period, any remaining jobs are
+        # cancelled, the workflow is ended, and if the workflow was running on a managed
+        # cluster, the cluster is deleted.
         # Corresponds to the JSON property `dagTimeout`
         # @return [String]
         attr_accessor :dag_timeout
