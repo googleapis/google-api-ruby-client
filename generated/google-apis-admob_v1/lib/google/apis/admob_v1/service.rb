@@ -81,7 +81,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the AdMob publisher account accessible with the client credential.
+        # List the AdMob publisher account accessible with the client credential.
         # Currently, all credentials have access to at most one AdMob account.
         # @param [Fixnum] page_size
         #   Maximum number of accounts to return.
