@@ -78,25 +78,6 @@ module Google
         end
       end
       
-      # The metadata that represents a processor version being created.
-      class GoogleCloudDocumentaiUiv1beta3CreateProcessorVersionMetadata
-        include Google::Apis::Core::Hashable
-      
-        # The common metadata for long running operations.
-        # Corresponds to the JSON property `commonMetadata`
-        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
-        attr_accessor :common_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
-        end
-      end
-      
       # The long running operation metadata for DeleteLabelerPool.
       class GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata
         include Google::Apis::Core::Hashable
@@ -252,6 +233,186 @@ module Google
         end
       end
       
+      # A processor version is an implementation of a processor. Each processor can
+      # have multiple versions, pre-trained by Google internally or up-trained by the
+      # customer. At a time, a processor can only have one default version version. So
+      # the processor's behavior (when processing documents) is defined by a default
+      # version.
+      class GoogleCloudDocumentaiUiv1beta3ProcessorVersion
+        include Google::Apis::Core::Hashable
+      
+        # The time the processor version was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The display name of the processor version.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The resource name of the processor version. Format: projects/`project`/
+        # locations/`location`/processors/`processor`/processorVersions/`
+        # processor_version`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The schema defines the output of the processed document by a processor.
+        # Corresponds to the JSON property `schema`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3Schema]
+        attr_accessor :schema
+      
+        # The state of the processor version.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @schema = args[:schema] if args.key?(:schema)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # The schema defines the output of the processed document by a processor.
+      class GoogleCloudDocumentaiUiv1beta3Schema
+        include Google::Apis::Core::Hashable
+      
+        # Description of the schema.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Display name to show to users.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Entity types of the schema.
+        # Corresponds to the JSON property `entityTypes`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3SchemaEntityType>]
+        attr_accessor :entity_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @entity_types = args[:entity_types] if args.key?(:entity_types)
+        end
+      end
+      
+      # EntityType is the wrapper of a label of the corresponding model with detailed
+      # attributes and limitations for entity-based processors. Multiple types can
+      # also compose a dependency tree to represent nested types.
+      class GoogleCloudDocumentaiUiv1beta3SchemaEntityType
+        include Google::Apis::Core::Hashable
+      
+        # Type of the entity. It can be either a value type (such as "text", "numeric", "
+        # date" and "address"), or an object type which may contain nested entities (
+        # such as "document" and "table").
+        # Corresponds to the JSON property `baseType`
+        # @return [String]
+        attr_accessor :base_type
+      
+        # Description of the entity type.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Occurrence type limits the number of times an entity type appears in the
+        # document.
+        # Corresponds to the JSON property `occurrenceType`
+        # @return [String]
+        attr_accessor :occurrence_type
+      
+        # Describing the nested structure of an entity. An EntityType may consist of
+        # several other EntityTypes. For example, in a document there can be an
+        # EntityType 'ID', which consists of EntityType 'name' and 'address', with
+        # corresponding attributes, such as TEXT for both types and ONCE for occurrence
+        # types.
+        # Corresponds to the JSON property `properties`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3SchemaEntityType>]
+        attr_accessor :properties
+      
+        # Source of this entity type.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Name of the type. It must be unique within the set of same level types.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_type = args[:base_type] if args.key?(:base_type)
+          @description = args[:description] if args.key?(:description)
+          @occurrence_type = args[:occurrence_type] if args.key?(:occurrence_type)
+          @properties = args[:properties] if args.key?(:properties)
+          @source = args[:source] if args.key?(:source)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The metadata that represents a processor version being created.
+      class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # The response for the TrainProcessorVersion method.
+      class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionResponse
+        include Google::Apis::Core::Hashable
+      
+        # A processor version is an implementation of a processor. Each processor can
+        # have multiple versions, pre-trained by Google internally or up-trained by the
+        # customer. At a time, a processor can only have one default version version. So
+        # the processor's behavior (when processing documents) is defined by a default
+        # version.
+        # Corresponds to the JSON property `processorVersion`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3ProcessorVersion]
+        attr_accessor :processor_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @processor_version = args[:processor_version] if args.key?(:processor_version)
+        end
+      end
+      
       # The long running operation metadata for the undeploy processor version method.
       class GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionMetadata
         include Google::Apis::Core::Hashable
@@ -320,6 +481,187 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # The long running operation metadata for batch process method.
+      class GoogleCloudDocumentaiV1BatchProcessMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The creation time of the operation.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The list of response details of each document.
+        # Corresponds to the JSON property `individualProcessStatuses`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus>]
+        attr_accessor :individual_process_statuses
+      
+        # The state of the current batch processing.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # A message providing more details about the current state of processing. For
+        # example, the error message if the operation is failed.
+        # Corresponds to the JSON property `stateMessage`
+        # @return [String]
+        attr_accessor :state_message
+      
+        # The last update time of the operation.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @individual_process_statuses = args[:individual_process_statuses] if args.key?(:individual_process_statuses)
+          @state = args[:state] if args.key?(:state)
+          @state_message = args[:state_message] if args.key?(:state_message)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The status of a each individual document in the batch process.
+      class GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus
+        include Google::Apis::Core::Hashable
+      
+        # The name of the operation triggered by the processed document. If the human
+        # review process is not triggered, this field will be empty. It has the same
+        # response type and metadata as the long running operation returned by
+        # ReviewDocument method.
+        # Corresponds to the JSON property `humanReviewOperation`
+        # @return [String]
+        attr_accessor :human_review_operation
+      
+        # The source of the document, same as the [input_gcs_source] field in the
+        # request when the batch process started. The batch process is started by take
+        # snapshot of that document, since a user can move or change that document
+        # during the process.
+        # Corresponds to the JSON property `inputGcsSource`
+        # @return [String]
+        attr_accessor :input_gcs_source
+      
+        # The output_gcs_destination (in the request as 'output_gcs_destination') of the
+        # processed document if it was successful, otherwise empty.
+        # Corresponds to the JSON property `outputGcsDestination`
+        # @return [String]
+        attr_accessor :output_gcs_destination
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @human_review_operation = args[:human_review_operation] if args.key?(:human_review_operation)
+          @input_gcs_source = args[:input_gcs_source] if args.key?(:input_gcs_source)
+          @output_gcs_destination = args[:output_gcs_destination] if args.key?(:output_gcs_destination)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Response message for batch process document method.
+      class GoogleCloudDocumentaiV1BatchProcessResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The common metadata for long running operations.
+      class GoogleCloudDocumentaiV1CommonOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The creation time of the operation.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The state of the operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # A message providing more details about the current state of processing.
+        # Corresponds to the JSON property `stateMessage`
+        # @return [String]
+        attr_accessor :state_message
+      
+        # The last update time of the operation.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @state = args[:state] if args.key?(:state)
+          @state_message = args[:state_message] if args.key?(:state_message)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The long running operation metadata for review document method.
+      class GoogleCloudDocumentaiV1ReviewDocumentOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # Response message for review document method.
+      class GoogleCloudDocumentaiV1ReviewDocumentResponse
+        include Google::Apis::Core::Hashable
+      
+        # The Cloud Storage uri for the human reviewed document.
+        # Corresponds to the JSON property `gcsDestination`
+        # @return [String]
+        attr_accessor :gcs_destination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
         end
       end
       
@@ -3958,6 +4300,43 @@ module Google
         end
       end
       
+      # The common metadata for long running operations.
+      class GoogleCloudDocumentaiV1beta3CommonOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The creation time of the operation.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The state of the operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # A message providing more details about the current state of processing.
+        # Corresponds to the JSON property `stateMessage`
+        # @return [String]
+        attr_accessor :state_message
+      
+        # The last update time of the operation.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @state = args[:state] if args.key?(:state)
+          @state_message = args[:state_message] if args.key?(:state_message)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Document represents the canonical document resource in Document Understanding
       # AI. It is an interchange format that provides insights into documents and
       # allows for collaboration between users and Document Understanding AI to
@@ -5481,6 +5860,11 @@ module Google
       class GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata
         include Google::Apis::Core::Hashable
       
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
         # The creation time of the operation.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -5508,6 +5892,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
           @create_time = args[:create_time] if args.key?(:create_time)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
