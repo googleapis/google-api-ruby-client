@@ -1,4 +1,4 @@
-# Legacy REST Clients for Google APIs
+# Simple REST Clients for Google APIs
 
 This repository contains a set of simple client libraries for various Google APIs. These libraries are generated automatically from [Discovery Documents](https://developers.google.com/discovery), and the code generator is also hosted here in this repository.
 
@@ -9,7 +9,7 @@ Each client provides:
 * Integration with the googleauth gem for authentication using OAuth, API keys, and service accounts.
 * Control of retry, pagination, and timeouts.
 
-These client libraries are officially supported by Google, and are updated regularly to track changes to the service. However, they are considered legacy. A more modern client may be available for many Google services, especially Google Cloud Platform services such as Cloud Storage, Pub/Sub, and BigQuery. See the section below titled *Which client should I use?* for more information.
+These client libraries are officially supported by Google, and are updated regularly to track changes to the service. However, many Google services, especially Google Cloud Platform services such as Cloud Storage, Pub/Sub, and BigQuery, may provide a more modern client that is easier to use and more performant. See the section below titled ["Which client should I use?"](#which-client-should-i-use) for more information.
 
 ## Using the clients
 
@@ -61,13 +61,13 @@ For more detailed information, see the [Usage Guide](https://github.com/googleap
 
 ## Which client should I use?
 
-Google provides two types of Ruby API client libraries: **legacy REST clients** and **modern clients**.
+Google provides two types of Ruby API client libraries: **simple REST clients** and **modern clients**.
 
-The libraries in this repo are _legacy REST clients_. These clients connect to HTTP/JSON REST endpoints and are automatically generated from service discovery documents. They support most API functionality, but their class interfaces are sometimes awkward.
+The libraries in this repo are _simple REST clients_. These clients connect to HTTP/JSON REST endpoints and are automatically generated from service discovery documents. They support most API functionality, but their class interfaces are sometimes awkward.
 
-Modern clients are produced by a modern code generator, combined with hand-crafted functionality for some services. Most modern clients connect to high-performance gRPC endpoints, although a few are backed by REST services. Modern clients are available for many Google services, especially Cloud Platform services, but do not yet support all the services covered by the legacy clients. Most modern clients live in the https://github.com/googleapis/google-cloud-ruby repository.
+Modern clients are produced by a modern code generator, combined with hand-crafted functionality for some services. Most modern clients connect to high-performance gRPC endpoints, although a few are backed by REST services. Modern clients are available for many Google services, especially Cloud Platform services, but do not yet support all the services covered by the simple clients. Most modern clients live in the https://github.com/googleapis/google-cloud-ruby repository.
 
-**For most users, we recommend the modern client, if one is available.** Compared with legacy clients, modern clients are generally much easier to use and more Ruby-like, support more advanced features such as streaming and long-running operations, and often provide much better performance. You may consider using a legacy client instead, if a modern client is not yet available for the service you want to use, or if you are not able to use gRPC on your infrastructure.
+**For most users, we recommend the modern client, if one is available.** Compared with simple clients, modern clients are generally much easier to use and more Ruby-like, support more advanced features such as streaming and long-running operations, and often provide much better performance. You may consider using a simple client instead, if a modern client is not yet available for the service you want to use, or if you are not able to use gRPC on your infrastructure.
 
 The documentation for the particular Google service you are working with, may provide guidance regarding the preferred client library to use.
 
