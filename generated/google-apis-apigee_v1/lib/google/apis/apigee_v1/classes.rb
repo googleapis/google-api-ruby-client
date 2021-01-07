@@ -2260,7 +2260,8 @@ module Google
         attr_accessor :developer_id
       
         # Required. Email address of the developer. This value is used to uniquely
-        # identify the developer in Apigee hybrid.
+        # identify the developer in Apigee hybrid. Note that the email address has to be
+        # in lowercase only.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
