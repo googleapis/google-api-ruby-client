@@ -213,8 +213,8 @@ module Google
         attr_accessor :start_time
       
         # Required. The type of the alert. This is output only after alert is created.
-        # For a list of available alert types see [G Suite Alert types](/admin-sdk/
-        # alertcenter/reference/alert-types).
+        # For a list of available alert types see [Google Workspace Alert types](/admin-
+        # sdk/alertcenter/reference/alert-types).
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -448,8 +448,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :alert_id
       
-        # Optional. The unique identifier of the G Suite organization account of the
-        # customer the alerts are associated with.
+        # Optional. The unique identifier of the Google Workspace organization account
+        # of the customer the alerts are associated with.
         # Corresponds to the JSON property `customerId`
         # @return [String]
         attr_accessor :customer_id
@@ -499,8 +499,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :alert_id
       
-        # Optional. The unique identifier of the G Suite organization account of the
-        # customer the alerts are associated with.
+        # Optional. The unique identifier of the Google Workspace organization account
+        # of the customer the alerts are associated with.
         # Corresponds to the JSON property `customerId`
         # @return [String]
         attr_accessor :customer_id
@@ -1057,8 +1057,8 @@ module Google
         end
       end
       
-      # Settings for callback notifications. For more details see [G Suite Alert
-      # Notification](/admin-sdk/alertcenter/guides/notifications).
+      # Settings for callback notifications. For more details see [Google Workspace
+      # Alert Notification](/admin-sdk/alertcenter/guides/notifications).
       class Notification
         include Google::Apis::Core::Hashable
       
@@ -1466,9 +1466,9 @@ module Google
       class UndeleteAlertRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. The unique identifier of the G Suite organization account of the
-        # customer the alert is associated with. Inferred from the caller identity if
-        # not provided.
+        # Optional. The unique identifier of the Google Workspace organization account
+        # of the customer the alert is associated with. Inferred from the caller
+        # identity if not provided.
         # Corresponds to the JSON property `customerId`
         # @return [String]
         attr_accessor :customer_id

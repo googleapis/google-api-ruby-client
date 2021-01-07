@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AlertcenterV1beta1
-      # G Suite Alert Center API
+      # Google Workspace Alert Center API
       #
       # Manages alerts on issues affecting your domain.
       #
@@ -117,9 +117,9 @@ module Google
         # @param [String] alert_id
         #   Required. The identifier of the alert to delete.
         # @param [String] customer_id
-        #   Optional. The unique identifier of the G Suite organization account of the
-        #   customer the alert is associated with. Inferred from the caller identity if
-        #   not provided.
+        #   Optional. The unique identifier of the Google Workspace organization account
+        #   of the customer the alert is associated with. Inferred from the caller
+        #   identity if not provided.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -153,9 +153,9 @@ module Google
         # @param [String] alert_id
         #   Required. The identifier of the alert to retrieve.
         # @param [String] customer_id
-        #   Optional. The unique identifier of the G Suite organization account of the
-        #   customer the alert is associated with. Inferred from the caller identity if
-        #   not provided.
+        #   Optional. The unique identifier of the Google Workspace organization account
+        #   of the customer the alert is associated with. Inferred from the caller
+        #   identity if not provided.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -189,9 +189,9 @@ module Google
         # @param [String] alert_id
         #   Required. The identifier of the alert this metadata belongs to.
         # @param [String] customer_id
-        #   Optional. The unique identifier of the G Suite organization account of the
-        #   customer the alert metadata is associated with. Inferred from the caller
-        #   identity if not provided.
+        #   Optional. The unique identifier of the Google Workspace organization account
+        #   of the customer the alert metadata is associated with. Inferred from the
+        #   caller identity if not provided.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -222,9 +222,9 @@ module Google
         
         # Lists the alerts.
         # @param [String] customer_id
-        #   Optional. The unique identifier of the G Suite organization account of the
-        #   customer the alerts are associated with. Inferred from the caller identity if
-        #   not provided.
+        #   Optional. The unique identifier of the Google Workspace organization account
+        #   of the customer the alerts are associated with. Inferred from the caller
+        #   identity if not provided.
         # @param [String] filter
         #   Optional. A query string for filtering alert results. For more details, see [
         #   Query filters](/admin-sdk/alertcenter/guides/query-filters) and [Supported
@@ -318,9 +318,9 @@ module Google
         #   Required. The identifier of the alert this feedback belongs to.
         # @param [Google::Apis::AlertcenterV1beta1::AlertFeedback] alert_feedback_object
         # @param [String] customer_id
-        #   Optional. The unique identifier of the G Suite organization account of the
-        #   customer the alert is associated with. Inferred from the caller identity if
-        #   not provided.
+        #   Optional. The unique identifier of the Google Workspace organization account
+        #   of the customer the alert is associated with. Inferred from the caller
+        #   identity if not provided.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -357,9 +357,9 @@ module Google
         #   Required. The alert identifier. The "-" wildcard could be used to represent
         #   all alerts.
         # @param [String] customer_id
-        #   Optional. The unique identifier of the G Suite organization account of the
-        #   customer the alert feedback are associated with. Inferred from the caller
-        #   identity if not provided.
+        #   Optional. The unique identifier of the Google Workspace organization account
+        #   of the customer the alert feedback are associated with. Inferred from the
+        #   caller identity if not provided.
         # @param [String] filter
         #   Optional. A query string for filtering alert feedback results. For more
         #   details, see [Query filters](/admin-sdk/alertcenter/guides/query-filters) and [
@@ -396,9 +396,9 @@ module Google
         
         # Returns customer-level settings.
         # @param [String] customer_id
-        #   Optional. The unique identifier of the G Suite organization account of the
-        #   customer the alert settings are associated with. Inferred from the caller
-        #   identity if not provided.
+        #   Optional. The unique identifier of the Google Workspace organization account
+        #   of the customer the alert settings are associated with. Inferred from the
+        #   caller identity if not provided.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -429,9 +429,9 @@ module Google
         # Updates the customer-level settings.
         # @param [Google::Apis::AlertcenterV1beta1::Settings] settings_object
         # @param [String] customer_id
-        #   Optional. The unique identifier of the G Suite organization account of the
-        #   customer the alert settings are associated with. Inferred from the caller
-        #   identity if not provided.
+        #   Optional. The unique identifier of the Google Workspace organization account
+        #   of the customer the alert settings are associated with. Inferred from the
+        #   caller identity if not provided.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

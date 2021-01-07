@@ -1,6 +1,6 @@
-# Legacy REST client for version V1beta1 of the G Suite Alert Center API
+# Legacy REST client for version V1beta1 of the Google Workspace Alert Center API
 
-This is a simple client library for version V1beta1 of the G Suite Alert Center API. It provides:
+This is a simple client library for version V1beta1 of the Google Workspace Alert Center API. It provides:
 
 * A client object that connects to the HTTP/JSON REST endpoint for the service.
 * Ruby objects for data structures related to the service.
@@ -65,7 +65,7 @@ More detailed descriptions of the Google legacy REST clients are available in tw
 
 (Note: the above documents are written for the legacy clients in general, and their examples may not reflect the Alertcenter service in particular.)
 
-For reference information on specific calls in the G Suite Alert Center API, see the {Google::Apis::AlertcenterV1beta1::AlertCenterService class reference docs}.
+For reference information on specific calls in the Google Workspace Alert Center API, see the {Google::Apis::AlertcenterV1beta1::AlertCenterService class reference docs}.
 
 ## Which client should I use?
 
