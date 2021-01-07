@@ -17,7 +17,6 @@ class Releaser
       @docuploader_credentials = File.join(ENV["KOKORO_KEYSTORE_DIR"], "73713_docuploader_service_account")
     end
     @dry_run = dry_run ? true : false
-    @rubygems_api_token_configured = false
     @bundle_updated = false
   end
 
@@ -36,7 +35,6 @@ class Releaser
   end
 
   def publish_gem
-    configure_rubygems_api_token
     Dir.chdir(gem_dir) do
       FileUtils.rm_rf("pkg")
       isolate_bundle do
@@ -111,17 +109,14 @@ class Releaser
   end
 
   def gems_client
-    @gems_client ||= Gems::Client.new
-  end
-
-  def configure_rubygems_api_token
-    return if @rubygems_api_token_configured
-    @rubygems_api_token_configured = true
-    if rubygems_api_token
-      Gems.configure do |config|
-        config.key = rubygems_api_token
+    @gems_client ||= begin
+      if rubygems_api_token
+        Gems.configure do |config|
+          config.key = rubygems_api_token
+        end
+        puts "Configured rubygems api token of length #{rubygems_api_token.length}"
       end
-      puts "Configured rubygems api token"
+      Gems::Client.new
     end
   end
 
