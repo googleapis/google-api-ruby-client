@@ -754,6 +754,13 @@ module Google
         # @return [Array<Google::Apis::ServicenetworkingV1beta::GoogleCloudServicenetworkingV1ConsumerConfigReservedRange>]
         attr_accessor :reserved_ranges
       
+        # Output only. Indicates whether the VPC Service Controls reference architecture
+        # is configured for the producer VPC host network.
+        # Corresponds to the JSON property `vpcScReferenceArchitectureEnabled`
+        # @return [Boolean]
+        attr_accessor :vpc_sc_reference_architecture_enabled
+        alias_method :vpc_sc_reference_architecture_enabled?, :vpc_sc_reference_architecture_enabled
+      
         def initialize(**args)
            update!(**args)
         end
@@ -770,6 +777,7 @@ module Google
           @producer_import_subnet_routes_with_public_ip = args[:producer_import_subnet_routes_with_public_ip] if args.key?(:producer_import_subnet_routes_with_public_ip)
           @producer_network = args[:producer_network] if args.key?(:producer_network)
           @reserved_ranges = args[:reserved_ranges] if args.key?(:reserved_ranges)
+          @vpc_sc_reference_architecture_enabled = args[:vpc_sc_reference_architecture_enabled] if args.key?(:vpc_sc_reference_architecture_enabled)
         end
       end
       
