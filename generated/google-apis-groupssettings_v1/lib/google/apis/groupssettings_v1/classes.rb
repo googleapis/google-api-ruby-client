@@ -340,6 +340,7 @@ module Google
         # - ALL_MANAGERS_CAN_CONTACT
         # - ALL_MEMBERS_CAN_CONTACT
         # - ANYONE_CAN_CONTACT
+        # - ALL_OWNERS_CAN_CONTACT
         # Corresponds to the JSON property `whoCanContactOwner`
         # @return [String]
         attr_accessor :who_can_contact_owner
