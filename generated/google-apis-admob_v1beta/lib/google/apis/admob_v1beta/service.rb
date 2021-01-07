@@ -81,7 +81,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the AdMob publisher account accessible with the client credential.
+        # List the AdMob publisher account accessible with the client credential.
         # Currently, all credentials have access to at most one AdMob account.
         # @param [Fixnum] page_size
         #   Maximum number of accounts to return.
@@ -122,7 +122,9 @@ module Google
         #   Required. Resource name of the account to list ad units for. Example: accounts/
         #   pub-9876543210987654
         # @param [Fixnum] page_size
-        #   The maximum number of ad units to return.
+        #   The maximum number of ad units to return. If unspecified or 0, at most 1000 ad
+        #   units will be returned. The maximum value is 10,000; values above 10,000 will
+        #   be coerced to 10,000.
         # @param [String] page_token
         #   The value returned by the last `ListAdUnitsResponse`; indicates that this is a
         #   continuation of a prior `ListAdUnits` call, and that the system should return
