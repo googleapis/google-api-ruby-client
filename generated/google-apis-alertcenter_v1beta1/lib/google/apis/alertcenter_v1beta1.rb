@@ -19,13 +19,13 @@ require 'google/apis/alertcenter_v1beta1/gem_version.rb'
 
 module Google
   module Apis
-    # G Suite Alert Center API
+    # Google Workspace Alert Center API
     #
     # Manages alerts on issues affecting your domain.
     #
     # @see https://developers.google.com/admin-sdk/alertcenter/
     module AlertcenterV1beta1
-      # Version of the G Suite Alert Center API this client connects to.
+      # Version of the Google Workspace Alert Center API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1beta1'
 
