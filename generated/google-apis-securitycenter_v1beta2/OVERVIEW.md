@@ -79,7 +79,7 @@ Gem names for modern clients are often of the form `google-cloud-<service_name>`
 
 **For most users, we recommend the modern client, if one is available.** Compared with legacy clients, modern clients are generally much easier to use and more Ruby-like, support more advanced features such as streaming and long-running operations, and often provide much better performance. You may consider using a legacy client instead, if a modern client is not yet available for the service you want to use, or if you are not able to use gRPC on your infrastructure.
 
-The [product documentation](https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview) may provide guidance regarding the preferred client library to use.
+The [product documentation](https://cloud.google.com/security-command-center) may provide guidance regarding the preferred client library to use.
 
 ## Supported Ruby versions
 
