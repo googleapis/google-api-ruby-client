@@ -844,9 +844,10 @@ module Google
         
         # Provides a list of the authenticated user's contacts. The request returns a
         # 400 error if `personFields` is not specified. The request returns a 410 error
-        # if `sync_token` is specified and is expired. Sync tokens expire after 7 days.
-        # A request without `sync_token` should be made and all contacts should be
-        # synced.
+        # if `sync_token` is specified and is expired. Sync tokens expire after 7 days
+        # to prevent data drift between clients and the server. To handle a sync token
+        # expired error, a request should be sent without `sync_token` to get all
+        # contacts.
         # @param [String] resource_name
         #   Required. The resource name to return connections for. Only `people/me` is
         #   valid.
@@ -873,8 +874,11 @@ module Google
         # @param [Boolean] request_sync_token
         #   Optional. Whether the response should include `next_sync_token` on the last
         #   page, which can be used to get all changes since the last request. For
-        #   subsequent sync requests use the `sync_token` param instead. Initial sync
-        #   requests that specify `request_sync_token` have an additional rate limit.
+        #   subsequent sync requests use the `sync_token` param instead. Initial full sync
+        #   requests that specify `request_sync_token` and do not specify `sync_token`
+        #   have an additional rate limit per user. Each client should generally only be
+        #   doing a full sync once every few days per user and so should not hit this
+        #   limit.
         # @param [String] sort_order
         #   Optional. The order in which the connections should be sorted. Defaults to `
         #   LAST_MODIFIED_ASCENDING`.
@@ -884,9 +888,10 @@ module Google
         # @param [String] sync_token
         #   Optional. A sync token, received from a previous `ListConnections` call.
         #   Provide this to retrieve only the resources changed since the last request.
-        #   Sync requests that specify `sync_token` have an additional rate limit. When
-        #   syncing, all other parameters provided to `ListConnections` must match the
-        #   call that provided the sync token.
+        #   When syncing, all other parameters provided to `ListConnections` except `
+        #   page_size` and `page_token` must match the initial call that provided the sync
+        #   token. Sync tokens expire after seven days, after which a full sync request
+        #   without a `sync_token` should be made.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
