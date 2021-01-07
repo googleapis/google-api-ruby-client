@@ -2063,7 +2063,7 @@ module Google
         #   The *part* parameter serves two purposes in this operation. It identifies the
         #   properties that the write operation will set as well as the properties that
         #   the API response will include. The part properties that you can include in the
-        #   parameter value are id, snippet, cdn, and status.
+        #   parameter value are id, snippet, cdn, content_details, and status.
         # @param [Google::Apis::YoutubeV3::LiveStream] live_stream_object
         # @param [String] on_behalf_of_content_owner
         #   *Note:* This parameter is intended exclusively for YouTube content partners.
