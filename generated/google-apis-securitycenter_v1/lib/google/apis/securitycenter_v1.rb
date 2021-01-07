@@ -24,7 +24,7 @@ module Google
     # Security Command Center API provides access to temporal views of assets and
     # findings within an organization.
     #
-    # @see https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview
+    # @see https://cloud.google.com/security-command-center
     module SecuritycenterV1
       # Version of the Security Command Center API this client connects to.
       # This is NOT the gem version.
