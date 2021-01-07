@@ -430,6 +430,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1AgentValidationResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1AudioInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -562,6 +568,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1Experiment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ExperimentDefinition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ExperimentResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ExperimentResultMetric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1ExportAgentRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -593,6 +635,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1Flow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1FlowValidationResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -760,6 +808,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1ListExperimentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1ListFlowsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -910,6 +964,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1ResourceName
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1ResponseMessage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1018,6 +1078,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1StartExperimentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1StopExperimentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1108,7 +1180,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1ValidateAgentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ValidateFlowRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ValidationMessage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1VariantsHistory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1Version
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1VersionVariants
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1VersionVariantsVariant
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2599,6 +2707,15 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3beta1AgentValidationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :flow_validation_results, as: 'flowValidationResults', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FlowValidationResult, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FlowValidationResult::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3beta1AudioInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2811,6 +2928,75 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3beta1Experiment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :definition, as: 'definition', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExperimentDefinition, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExperimentDefinition::Representation
+      
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :end_time, as: 'endTime'
+          property :experiment_length, as: 'experimentLength'
+          property :last_update_time, as: 'lastUpdateTime'
+          property :name, as: 'name'
+          property :result, as: 'result', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExperimentResult, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExperimentResult::Representation
+      
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+          collection :variants_history, as: 'variantsHistory', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1VariantsHistory, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1VariantsHistory::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ExperimentDefinition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition'
+          property :version_variants, as: 'versionVariants', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1VersionVariants, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1VersionVariants::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ExperimentResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_update_time, as: 'lastUpdateTime'
+          collection :version_metrics, as: 'versionMetrics', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence_level, as: 'confidenceLevel'
+          property :lower_bound, as: 'lowerBound'
+          property :ratio, as: 'ratio'
+          property :upper_bound, as: 'upperBound'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ExperimentResultMetric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence_interval, as: 'confidenceInterval', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval::Representation
+      
+          property :ratio, as: 'ratio'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :metrics, as: 'metrics', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExperimentResultMetric, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExperimentResultMetric::Representation
+      
+          property :session_count, as: 'sessionCount'
+          property :version, as: 'version'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3beta1ExportAgentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2860,6 +3046,16 @@ module Google
           property :nlu_settings, as: 'nluSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1NluSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1NluSettings::Representation
       
           collection :transition_routes, as: 'transitionRoutes', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionRoute, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionRoute::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1FlowValidationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+          collection :validation_messages, as: 'validationMessages', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ValidationMessage, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ValidationMessage::Representation
       
         end
       end
@@ -3118,6 +3314,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :environments, as: 'environments', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Environment, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Environment::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ListExperimentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :experiments, as: 'experiments', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Experiment, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Experiment::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -3397,6 +3602,14 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3beta1ResourceName
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3beta1ResponseMessage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3556,6 +3769,18 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3beta1StartExperimentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1StopExperimentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3712,6 +3937,41 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3beta1ValidateAgentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :language_code, as: 'languageCode'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ValidateFlowRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :language_code, as: 'languageCode'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ValidationMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detail, as: 'detail'
+          collection :resource_names, as: 'resourceNames', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResourceName, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResourceName::Representation
+      
+          property :resource_type, as: 'resourceType'
+          collection :resources, as: 'resources'
+          property :severity, as: 'severity'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1VariantsHistory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :update_time, as: 'updateTime'
+          property :version_variants, as: 'versionVariants', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1VersionVariants, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1VersionVariants::Representation
+      
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3beta1Version
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3722,6 +3982,23 @@ module Google
           property :nlu_settings, as: 'nluSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1NluSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1NluSettings::Representation
       
           property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1VersionVariants
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :variants, as: 'variants', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1VersionVariantsVariant, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1VersionVariantsVariant::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1VersionVariantsVariant
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_control_group, as: 'isControlGroup'
+          property :traffic_allocation, as: 'trafficAllocation'
+          property :version, as: 'version'
         end
       end
       
