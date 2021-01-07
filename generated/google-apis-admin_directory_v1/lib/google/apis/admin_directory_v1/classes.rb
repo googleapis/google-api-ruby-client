@@ -1253,7 +1253,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The unique ID for the customer's G Suite account. (Readonly)
+        # The unique ID for the customer's Google Workspace account. (Readonly)
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -2049,8 +2049,8 @@ module Google
         end
       end
       
-      # G Suite Mobile Management includes Android, [Google Sync](http://support.
-      # google.com/a/bin/answer.py?answer=135937), and iOS devices. For more
+      # Google Workspace Mobile Management includes Android, [Google Sync](http://
+      # support.google.com/a/bin/answer.py?answer=135937), and iOS devices. For more
       # information about common group mobile device API tasks, see the [Developer's
       # Guide](/admin-sdk/directory/v1/guides/manage-mobile-devices.html).
       class MobileDevice
@@ -2064,10 +2064,10 @@ module Google
       
         # The list of applications installed on an Android mobile device. It is not
         # applicable to Google Sync and iOS devices. The list includes any Android
-        # applications that access G Suite data. When updating an applications list, it
-        # is important to note that updates replace the existing list. If the Android
-        # device has two existing applications and the API updates the list with five
-        # applications, the is now the updated list of five applications.
+        # applications that access Google Workspace data. When updating an applications
+        # list, it is important to note that updates replace the existing list. If the
+        # Android device has two existing applications and the API updates the list with
+        # five applications, the is now the updated list of five applications.
         # Corresponds to the JSON property `applications`
         # @return [Array<Google::Apis::AdminDirectoryV1::MobileDevice::Application>]
         attr_accessor :applications
@@ -2492,12 +2492,13 @@ module Google
         # apps' under parent organization '/engineering', the orgUnitPath is '/
         # engineering/apps'. In order to edit an `orgUnitPath`, either update the name
         # of the organization or the `parentOrgunitPath`. A user's organizational unit
-        # determines which G Suite services the user has access to. If the user is moved
-        # to a new organization, the user's access changes. For more information about
-        # organization structures, see the [administration help center](http://support.
-        # google.com/a/bin/answer.py?answer=182433&topic=1227584&ctx=topic). For more
-        # information about moving a user to a different organization, see [Update a
-        # user](/admin-sdk/directory/v1/guides/manage-users.html#update_user).
+        # determines which Google Workspace services the user has access to. If the user
+        # is moved to a new organization, the user's access changes. For more
+        # information about organization structures, see the [administration help center]
+        # (http://support.google.com/a/bin/answer.py?answer=182433&topic=1227584&ctx=
+        # topic). For more information about moving a user to a different organization,
+        # see [Update a user](/admin-sdk/directory/v1/guides/manage-users.html#
+        # update_user).
         # Corresponds to the JSON property `orgUnitPath`
         # @return [String]
         attr_accessor :org_unit_path
@@ -3303,10 +3304,10 @@ module Google
         # @return [Object]
         attr_accessor :ims
       
-        # Indicates if the user's profile is visible in the G Suite global address list
-        # when the contact sharing feature is enabled for the domain. For more
-        # information about excluding user profiles, see the [administration help center]
-        # (http://support.google.com/a/bin/answer.py?answer=1285988).
+        # Indicates if the user's profile is visible in the Google Workspace global
+        # address list when the contact sharing feature is enabled for the domain. For
+        # more information about excluding user profiles, see the [administration help
+        # center](http://support.google.com/a/bin/answer.py?answer=1285988).
         # Corresponds to the JSON property `includeInGlobalAddressList`
         # @return [Boolean]
         attr_accessor :include_in_global_address_list

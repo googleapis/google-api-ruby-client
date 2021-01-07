@@ -186,10 +186,10 @@ module Google
         # information about deprovisioning and disabling devices, visit the [help center]
         # (https://support.google.com/chrome/a/answer/3523633).
         # @param [String] customer_id
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users resource](
-        #   /admin-sdk/directory/v1/reference/users).
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's `customerId`. The `customerId` is also returned as part of the [
+        #   Users resource](/admin-sdk/directory/v1/reference/users).
         # @param [String] resource_id
         #   The unique ID of the device. The `resourceId`s are returned in the response
         #   from the [chromeosdevices.list](/admin-sdk/directory/v1/reference/
@@ -225,10 +225,10 @@ module Google
         
         # Retrieves a Chrome OS device's properties.
         # @param [String] customer_id
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users resource](
-        #   /admin-sdk/directory/v1/reference/users).
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's `customerId`. The `customerId` is also returned as part of the [
+        #   Users resource](/admin-sdk/directory/v1/reference/users).
         # @param [String] device_id
         #   The unique ID of the device. The `deviceId`s are returned in the response from
         #   the [chromeosdevices.list](/admin-sdk/directory/v1/reference/chromeosdevices/
@@ -267,10 +267,10 @@ module Google
         
         # Retrieves a paginated list of Chrome OS devices within an account.
         # @param [String] customer_id
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users resource](
-        #   /admin-sdk/directory/v1/reference/users).
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's `customerId`. The `customerId` is also returned as part of the [
+        #   Users resource](/admin-sdk/directory/v1/reference/users).
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] order_by
@@ -326,7 +326,7 @@ module Google
         # Move or insert multiple Chrome OS devices to an organizational unit. You can
         # move up to 50 devices at once.
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account
+        #   Immutable ID of the Google Workspace account
         # @param [String] org_unit_path
         #   Full path of the target organizational unit or its ID
         # @param [Google::Apis::AdminDirectoryV1::ChromeOsMoveDevicesToOu] chrome_os_move_devices_to_ou_object
@@ -362,10 +362,10 @@ module Google
         # annotatedLocation`, `notes`, `orgUnitPath`, or `annotatedAssetId`. This method
         # supports [patch semantics](/admin-sdk/directory/v1/guides/performance#patch).
         # @param [String] customer_id
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users resource](
-        #   /admin-sdk/directory/v1/reference/users).
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's `customerId`. The `customerId` is also returned as part of the [
+        #   Users resource](/admin-sdk/directory/v1/reference/users).
         # @param [String] device_id
         #   The unique ID of the device. The `deviceId`s are returned in the response from
         #   the [chromeosdevices.list](/admin-sdk/v1/reference/chromeosdevices/list)
@@ -407,10 +407,10 @@ module Google
         # Updates a device's updatable properties, such as `annotatedUser`, `
         # annotatedLocation`, `notes`, `orgUnitPath`, or `annotatedAssetId`.
         # @param [String] customer_id
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users resource](
-        #   /admin-sdk/directory/v1/reference/users).
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's `customerId`. The `customerId` is also returned as part of the [
+        #   Users resource](/admin-sdk/directory/v1/reference/users).
         # @param [String] device_id
         #   The unique ID of the device. The `deviceId`s are returned in the response from
         #   the [chromeosdevices.list](/admin-sdk/v1/reference/chromeosdevices/list)
@@ -451,7 +451,7 @@ module Google
         
         # Issues a command for the device to execute.
         # @param [String] customer_id
-        #   Immutable. Immutable ID of the G Suite account.
+        #   Immutable. Immutable ID of the Google Workspace account.
         # @param [String] device_id
         #   Immutable. Immutable ID of Chrome OS Device.
         # @param [Google::Apis::AdminDirectoryV1::DirectoryChromeosdevicesIssueCommandRequest] directory_chromeosdevices_issue_command_request_object
@@ -487,7 +487,7 @@ module Google
         
         # Gets command data a specific command issued to the device.
         # @param [String] customer_id
-        #   Immutable. Immutable ID of the G Suite account.
+        #   Immutable. Immutable ID of the Google Workspace account.
         # @param [String] device_id
         #   Immutable. Immutable ID of Chrome OS Device.
         # @param [Fixnum] command_id
@@ -619,7 +619,7 @@ module Google
         
         # Deletes a domain Alias of the customer.
         # @param [String] customer
-        #   Immutable ID of the G Suite account.
+        #   Immutable ID of the Google Workspace account.
         # @param [String] domain_alias_name
         #   Name of domain alias to be retrieved.
         # @param [String] fields
@@ -650,7 +650,7 @@ module Google
         
         # Retrieves a domain alias of the customer.
         # @param [String] customer
-        #   Immutable ID of the G Suite account.
+        #   Immutable ID of the Google Workspace account.
         # @param [String] domain_alias_name
         #   Name of domain alias to be retrieved.
         # @param [String] fields
@@ -683,7 +683,7 @@ module Google
         
         # Inserts a domain alias of the customer.
         # @param [String] customer
-        #   Immutable ID of the G Suite account.
+        #   Immutable ID of the Google Workspace account.
         # @param [Google::Apis::AdminDirectoryV1::DomainAlias] domain_alias_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -716,7 +716,7 @@ module Google
         
         # Lists the domain aliases of the customer.
         # @param [String] customer
-        #   Immutable ID of the G Suite account.
+        #   Immutable ID of the Google Workspace account.
         # @param [String] parent_domain_name
         #   Name of the parent domain for which domain aliases are to be fetched.
         # @param [String] fields
@@ -749,7 +749,7 @@ module Google
         
         # Deletes a domain of the customer.
         # @param [String] customer
-        #   Immutable ID of the G Suite account.
+        #   Immutable ID of the Google Workspace account.
         # @param [String] domain_name
         #   Name of domain to be deleted
         # @param [String] fields
@@ -780,7 +780,7 @@ module Google
         
         # Retrieves a domain of the customer.
         # @param [String] customer
-        #   Immutable ID of the G Suite account.
+        #   Immutable ID of the Google Workspace account.
         # @param [String] domain_name
         #   Name of domain to be retrieved
         # @param [String] fields
@@ -813,7 +813,7 @@ module Google
         
         # Inserts a domain of the customer.
         # @param [String] customer
-        #   Immutable ID of the G Suite account.
+        #   Immutable ID of the Google Workspace account.
         # @param [Google::Apis::AdminDirectoryV1::Domains] domains_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -846,7 +846,7 @@ module Google
         
         # Lists the domains of the customer.
         # @param [String] customer
-        #   Immutable ID of the G Suite account.
+        #   Immutable ID of the Google Workspace account.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -966,10 +966,10 @@ module Google
         
         # Retrieve all groups of a domain or of a user given a userKey (paginated)
         # @param [String] customer
-        #   The unique ID for the customer's G Suite account. In case of a multi-domain
-        #   account, to fetch all groups for a customer, fill this field instead of domain.
-        #   As an account administrator, you can also use the `my_customer` alias to
-        #   represent your account's `customerId`. The `customerId` is also returned as
+        #   The unique ID for the customer's Google Workspace account. In case of a multi-
+        #   domain account, to fetch all groups for a customer, fill this field instead of
+        #   domain. As an account administrator, you can also use the `my_customer` alias
+        #   to represent your account's `customerId`. The `customerId` is also returned as
         #   part of the [Users](/admin-sdk/directory/v1/reference/users)
         # @param [String] domain
         #   The domain name. Use this field to get fields from only one domain. To return
@@ -1457,10 +1457,10 @@ module Google
         # Takes an action that affects a mobile device. For example, remotely wiping a
         # device.
         # @param [String] customer_id
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users resource](
-        #   /admin-sdk/directory/v1/reference/users).
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's `customerId`. The `customerId` is also returned as part of the [
+        #   Users resource](/admin-sdk/directory/v1/reference/users).
         # @param [String] resource_id
         #   The unique ID the API service uses to identify the mobile device.
         # @param [Google::Apis::AdminDirectoryV1::MobileDeviceAction] mobile_device_action_object
@@ -1494,10 +1494,10 @@ module Google
         
         # Removes a mobile device.
         # @param [String] customer_id
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users resource](
-        #   /admin-sdk/directory/v1/reference/users).
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's `customerId`. The `customerId` is also returned as part of the [
+        #   Users resource](/admin-sdk/directory/v1/reference/users).
         # @param [String] resource_id
         #   The unique ID the API service uses to identify the mobile device.
         # @param [String] fields
@@ -1528,10 +1528,10 @@ module Google
         
         # Retrieves a mobile device's properties.
         # @param [String] customer_id
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users resource](
-        #   /admin-sdk/directory/v1/reference/users).
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's `customerId`. The `customerId` is also returned as part of the [
+        #   Users resource](/admin-sdk/directory/v1/reference/users).
         # @param [String] resource_id
         #   The unique ID the API service uses to identify the mobile device.
         # @param [String] projection
@@ -1567,10 +1567,10 @@ module Google
         
         # Retrieves a paginated list of all mobile devices for an account.
         # @param [String] customer_id
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users resource](
-        #   /admin-sdk/directory/v1/reference/users).
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's `customerId`. The `customerId` is also returned as part of the [
+        #   Users resource](/admin-sdk/directory/v1/reference/users).
         # @param [Fixnum] max_results
         #   Maximum number of results to return. Max allowed value is 100.
         # @param [String] order_by
@@ -1620,10 +1620,10 @@ module Google
         
         # Removes an organizational unit.
         # @param [String] customer_id
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users resource](
-        #   /admin-sdk/directory/v1/reference/users).
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's `customerId`. The `customerId` is also returned as part of the [
+        #   Users resource](/admin-sdk/directory/v1/reference/users).
         # @param [String] org_unit_path
         #   The full path of the organizational unit or its unique ID.
         # @param [String] fields
@@ -1654,10 +1654,10 @@ module Google
         
         # Retrieves an organizational unit.
         # @param [String] customer_id
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users resource](
-        #   /admin-sdk/directory/v1/reference/users).
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's `customerId`. The `customerId` is also returned as part of the [
+        #   Users resource](/admin-sdk/directory/v1/reference/users).
         # @param [String] org_unit_path
         #   The full path of the organizational unit or its unique ID.
         # @param [String] fields
@@ -1690,10 +1690,10 @@ module Google
         
         # Adds an organizational unit.
         # @param [String] customer_id
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users resource](
-        #   /admin-sdk/directory/v1/reference/users).
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's `customerId`. The `customerId` is also returned as part of the [
+        #   Users resource](/admin-sdk/directory/v1/reference/users).
         # @param [Google::Apis::AdminDirectoryV1::OrgUnit] org_unit_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1726,10 +1726,10 @@ module Google
         
         # Retrieves a list of all organizational units for an account.
         # @param [String] customer_id
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users resource](
-        #   /admin-sdk/directory/v1/reference/users).
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's `customerId`. The `customerId` is also returned as part of the [
+        #   Users resource](/admin-sdk/directory/v1/reference/users).
         # @param [String] org_unit_path
         #   The full path to the organizational unit or its unique ID. Returns the
         #   children of the specified organizational unit.
@@ -1767,10 +1767,10 @@ module Google
         # Updates an organizational unit. This method supports [patch semantics](/admin-
         # sdk/directory/v1/guides/performance#patch)
         # @param [String] customer_id
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users resource](
-        #   /admin-sdk/directory/v1/reference/users).
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's `customerId`. The `customerId` is also returned as part of the [
+        #   Users resource](/admin-sdk/directory/v1/reference/users).
         # @param [String] org_unit_path
         #   The full path of the organizational unit or its unique ID.
         # @param [Google::Apis::AdminDirectoryV1::OrgUnit] org_unit_object
@@ -1806,10 +1806,10 @@ module Google
         
         # Updates an organizational unit.
         # @param [String] customer_id
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users resource](
-        #   /admin-sdk/directory/v1/reference/users).
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's `customerId`. The `customerId` is also returned as part of the [
+        #   Users resource](/admin-sdk/directory/v1/reference/users).
         # @param [String] org_unit_path
         #   The full path of the organizational unit or its unique ID.
         # @param [Google::Apis::AdminDirectoryV1::OrgUnit] org_unit_object
@@ -1845,7 +1845,7 @@ module Google
         
         # Retrieves a paginated list of all privileges for a customer.
         # @param [String] customer
-        #   Immutable ID of the G Suite account.
+        #   Immutable ID of the Google Workspace account.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1875,9 +1875,9 @@ module Google
         
         # Deletes a building.
         # @param [String] customer
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's customer
-        #   ID.
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's customer ID.
         # @param [String] building_id
         #   The id of the building to delete.
         # @param [String] fields
@@ -1908,9 +1908,9 @@ module Google
         
         # Retrieves a building.
         # @param [String] customer
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's customer
-        #   ID.
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's customer ID.
         # @param [String] building_id
         #   The unique ID of the building to retrieve.
         # @param [String] fields
@@ -1943,9 +1943,9 @@ module Google
         
         # Inserts a building.
         # @param [String] customer
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's customer
-        #   ID.
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's customer ID.
         # @param [Google::Apis::AdminDirectoryV1::Building] building_object
         # @param [String] coordinates_source
         #   Source from which Building.coordinates are derived.
@@ -1981,9 +1981,9 @@ module Google
         
         # Retrieves a list of buildings for an account.
         # @param [String] customer
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's customer
-        #   ID.
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's customer ID.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] page_token
@@ -2019,9 +2019,9 @@ module Google
         
         # Patches a building via Apiary Patch Orchestration.
         # @param [String] customer
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's customer
-        #   ID.
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's customer ID.
         # @param [String] building_id
         #   The id of the building to update.
         # @param [Google::Apis::AdminDirectoryV1::Building] building_object
@@ -2060,9 +2060,9 @@ module Google
         
         # Updates a building.
         # @param [String] customer
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's customer
-        #   ID.
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's customer ID.
         # @param [String] building_id
         #   The id of the building to update.
         # @param [Google::Apis::AdminDirectoryV1::Building] building_object
@@ -2101,9 +2101,9 @@ module Google
         
         # Deletes a calendar resource.
         # @param [String] customer
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's customer
-        #   ID.
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's customer ID.
         # @param [String] calendar_resource_id
         #   The unique ID of the calendar resource to delete.
         # @param [String] fields
@@ -2134,9 +2134,9 @@ module Google
         
         # Retrieves a calendar resource.
         # @param [String] customer
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's customer
-        #   ID.
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's customer ID.
         # @param [String] calendar_resource_id
         #   The unique ID of the calendar resource to retrieve.
         # @param [String] fields
@@ -2169,9 +2169,9 @@ module Google
         
         # Inserts a calendar resource.
         # @param [String] customer
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's customer
-        #   ID.
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's customer ID.
         # @param [Google::Apis::AdminDirectoryV1::CalendarResource] calendar_resource_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2204,9 +2204,9 @@ module Google
         
         # Retrieves a list of calendar resources for an account.
         # @param [String] customer
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's customer
-        #   ID.
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's customer ID.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] order_by
@@ -2261,9 +2261,9 @@ module Google
         
         # Patches a calendar resource via Apiary Patch Orchestration.
         # @param [String] customer
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's customer
-        #   ID.
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's customer ID.
         # @param [String] calendar_resource_id
         #   The unique ID of the calendar resource to update.
         # @param [Google::Apis::AdminDirectoryV1::CalendarResource] calendar_resource_object
@@ -2301,9 +2301,9 @@ module Google
         # only need to include the fields you wish to update. Fields that are not
         # present in the request will be preserved.
         # @param [String] customer
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's customer
-        #   ID.
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's customer ID.
         # @param [String] calendar_resource_id
         #   The unique ID of the calendar resource to update.
         # @param [Google::Apis::AdminDirectoryV1::CalendarResource] calendar_resource_object
@@ -2339,9 +2339,9 @@ module Google
         
         # Deletes a feature.
         # @param [String] customer
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's customer
-        #   ID.
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's customer ID.
         # @param [String] feature_key
         #   The unique ID of the feature to delete.
         # @param [String] fields
@@ -2372,9 +2372,9 @@ module Google
         
         # Retrieves a feature.
         # @param [String] customer
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's customer
-        #   ID.
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's customer ID.
         # @param [String] feature_key
         #   The unique ID of the feature to retrieve.
         # @param [String] fields
@@ -2407,9 +2407,9 @@ module Google
         
         # Inserts a feature.
         # @param [String] customer
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's customer
-        #   ID.
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's customer ID.
         # @param [Google::Apis::AdminDirectoryV1::Feature] feature_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2442,9 +2442,9 @@ module Google
         
         # Retrieves a list of features for an account.
         # @param [String] customer
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's customer
-        #   ID.
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's customer ID.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] page_token
@@ -2480,9 +2480,9 @@ module Google
         
         # Patches a feature via Apiary Patch Orchestration.
         # @param [String] customer
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's customer
-        #   ID.
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's customer ID.
         # @param [String] feature_key
         #   The unique ID of the feature to update.
         # @param [Google::Apis::AdminDirectoryV1::Feature] feature_object
@@ -2518,9 +2518,9 @@ module Google
         
         # Renames a feature.
         # @param [String] customer
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's customer
-        #   ID.
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's customer ID.
         # @param [String] old_name
         #   The unique ID of the feature to rename.
         # @param [Google::Apis::AdminDirectoryV1::FeatureRename] feature_rename_object
@@ -2554,9 +2554,9 @@ module Google
         
         # Updates a feature.
         # @param [String] customer
-        #   The unique ID for the customer's G Suite account. As an account administrator,
-        #   you can also use the `my_customer` alias to represent your account's customer
-        #   ID.
+        #   The unique ID for the customer's Google Workspace account. As an account
+        #   administrator, you can also use the `my_customer` alias to represent your
+        #   account's customer ID.
         # @param [String] feature_key
         #   The unique ID of the feature to update.
         # @param [Google::Apis::AdminDirectoryV1::Feature] feature_object
@@ -2592,7 +2592,7 @@ module Google
         
         # Deletes a role assignment.
         # @param [String] customer
-        #   Immutable ID of the G Suite account.
+        #   Immutable ID of the Google Workspace account.
         # @param [String] role_assignment_id
         #   Immutable ID of the role assignment.
         # @param [String] fields
@@ -2623,7 +2623,7 @@ module Google
         
         # Retrieve a role assignment.
         # @param [String] customer
-        #   Immutable ID of the G Suite account.
+        #   Immutable ID of the Google Workspace account.
         # @param [String] role_assignment_id
         #   Immutable ID of the role assignment.
         # @param [String] fields
@@ -2656,7 +2656,7 @@ module Google
         
         # Creates a role assignment.
         # @param [String] customer
-        #   Immutable ID of the G Suite account.
+        #   Immutable ID of the Google Workspace account.
         # @param [Google::Apis::AdminDirectoryV1::RoleAssignment] role_assignment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2689,7 +2689,7 @@ module Google
         
         # Retrieves a paginated list of all roleAssignments.
         # @param [String] customer
-        #   Immutable ID of the G Suite account.
+        #   Immutable ID of the Google Workspace account.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] page_token
@@ -2733,7 +2733,7 @@ module Google
         
         # Deletes a role.
         # @param [String] customer
-        #   Immutable ID of the G Suite account.
+        #   Immutable ID of the Google Workspace account.
         # @param [String] role_id
         #   Immutable ID of the role.
         # @param [String] fields
@@ -2764,7 +2764,7 @@ module Google
         
         # Retrieves a role.
         # @param [String] customer
-        #   Immutable ID of the G Suite account.
+        #   Immutable ID of the Google Workspace account.
         # @param [String] role_id
         #   Immutable ID of the role.
         # @param [String] fields
@@ -2797,7 +2797,7 @@ module Google
         
         # Creates a role.
         # @param [String] customer
-        #   Immutable ID of the G Suite account.
+        #   Immutable ID of the Google Workspace account.
         # @param [Google::Apis::AdminDirectoryV1::Role] role_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2830,7 +2830,7 @@ module Google
         
         # Retrieves a paginated list of all the roles in a domain.
         # @param [String] customer
-        #   Immutable ID of the G Suite account.
+        #   Immutable ID of the Google Workspace account.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] page_token
@@ -2866,7 +2866,7 @@ module Google
         
         # Patch role via Apiary Patch Orchestration
         # @param [String] customer
-        #   Immutable ID of the G Suite account.
+        #   Immutable ID of the Google Workspace account.
         # @param [String] role_id
         #   Immutable ID of the role.
         # @param [Google::Apis::AdminDirectoryV1::Role] role_object
@@ -2902,7 +2902,7 @@ module Google
         
         # Updates a role.
         # @param [String] customer
-        #   Immutable ID of the G Suite account.
+        #   Immutable ID of the Google Workspace account.
         # @param [String] role_id
         #   Immutable ID of the role.
         # @param [Google::Apis::AdminDirectoryV1::Role] role_object
@@ -2938,7 +2938,7 @@ module Google
         
         # Delete schema
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account.
+        #   Immutable ID of the Google Workspace account.
         # @param [String] schema_key
         #   Name or immutable ID of the schema.
         # @param [String] fields
@@ -2969,7 +2969,7 @@ module Google
         
         # Retrieve schema
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account.
+        #   Immutable ID of the Google Workspace account.
         # @param [String] schema_key
         #   Name or immutable ID of the schema.
         # @param [String] fields
@@ -3002,7 +3002,7 @@ module Google
         
         # Create schema.
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account.
+        #   Immutable ID of the Google Workspace account.
         # @param [Google::Apis::AdminDirectoryV1::Schema] schema_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3035,7 +3035,7 @@ module Google
         
         # Retrieve all schemas for a customer
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account.
+        #   Immutable ID of the Google Workspace account.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3065,7 +3065,7 @@ module Google
         
         # Patch Schema via Apiary Patch Orchestration
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account.
+        #   Immutable ID of the Google Workspace account.
         # @param [String] schema_key
         #   Name or immutable ID of the schema.
         # @param [Google::Apis::AdminDirectoryV1::Schema] schema_object
@@ -3101,7 +3101,7 @@ module Google
         
         # Update schema
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account.
+        #   Immutable ID of the Google Workspace account.
         # @param [String] schema_key
         #   Name or immutable ID of the schema.
         # @param [Google::Apis::AdminDirectoryV1::Schema] schema_object
@@ -3368,9 +3368,9 @@ module Google
         #   A comma-separated list of schema names. All fields from these schemas are
         #   fetched. This should only be set when `projection=custom`.
         # @param [String] customer
-        #   The unique ID for the customer's G Suite account. In case of a multi-domain
-        #   account, to fetch all groups for a customer, fill this field instead of domain.
-        #   You can also use the `my_customer` alias to represent your account's `
+        #   The unique ID for the customer's Google Workspace account. In case of a multi-
+        #   domain account, to fetch all groups for a customer, fill this field instead of
+        #   domain. You can also use the `my_customer` alias to represent your account's `
         #   customerId`. The `customerId` is also returned as part of the [Users resource](
         #   /admin-sdk/directory/v1/reference/users). Either the `customer` or the `domain`
         #   parameter must be provided.
@@ -3607,8 +3607,8 @@ module Google
         #   Comma-separated list of schema names. All fields from these schemas are
         #   fetched. This should only be set when projection=custom.
         # @param [String] customer
-        #   Immutable ID of the G Suite account. In case of multi-domain, to fetch all
-        #   users for a customer, fill this field instead of domain.
+        #   Immutable ID of the Google Workspace account. In case of multi-domain, to
+        #   fetch all users for a customer, fill this field instead of domain.
         # @param [String] domain
         #   Name of the domain. Fill this field to get users from only this domain. To
         #   return all users in a multi-domain fill customer field instead."
