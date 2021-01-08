@@ -87,7 +87,9 @@ module Google
       end
       
       # Describes a Safe Browsing API update request. Clients can request updates for
-      # multiple lists in a single request. NOTE: Field index 2 is unused. NEXT: 5
+      # multiple lists in a single request. The server may not respond to all requests,
+      # if the server has no updates for that list. NOTE: Field index 2 is unused.
+      # NEXT: 5
       class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest
         include Google::Apis::Core::Hashable
       
@@ -216,7 +218,9 @@ module Google
       class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse
         include Google::Apis::Core::Hashable
       
-        # The list updates requested by the clients.
+        # The list updates requested by the clients. The number of responses here may be
+        # less than the number of requests sent by clients. This is the case, for
+        # example, if the server has no updates for a particular list.
         # Corresponds to the JSON property `listUpdateResponses`
         # @return [Array<Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse>]
         attr_accessor :list_update_responses
