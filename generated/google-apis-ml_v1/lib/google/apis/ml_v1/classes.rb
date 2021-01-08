@@ -543,9 +543,7 @@ module Google
         # incurred until traffic to the model resumes. If `min_nodes` is not specified
         # and AutoScaling is used with a [Compute Engine (N1) machine type](/ml-engine/
         # docs/machine-types-online-prediction), `min_nodes` defaults to 1. `min_nodes`
-        # must be at least 1 for use with a Compute Engine machine type. Note that you
-        # cannot use AutoScaling if your version uses [GPUs](#Version.FIELDS.
-        # accelerator_config). Instead, you must use ManualScaling. You can set `
+        # must be at least 1 for use with a Compute Engine machine type. You can set `
         # min_nodes` when creating the model version, and you can also update `min_nodes`
         # for an existing version: update_body.json: ` 'autoScaling': ` 'minNodes': 5 `
         # ` HTTP request: PATCH https://ml.googleapis.com/v1/`name=projects/*/models/*/
@@ -3090,6 +3088,16 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Output only. The uCAIP model id for the last model migration.
+        # Corresponds to the JSON property `lastMigrationModelId`
+        # @return [String]
+        attr_accessor :last_migration_model_id
+      
+        # Output only. The last time this version was successfully migrated to uCAIP.
+        # Corresponds to the JSON property `lastMigrationTime`
+        # @return [String]
+        attr_accessor :last_migration_time
+      
         # Output only. The time the version was last used for prediction.
         # Corresponds to the JSON property `lastUseTime`
         # @return [String]
@@ -3234,6 +3242,8 @@ module Google
           @framework = args[:framework] if args.key?(:framework)
           @is_default = args[:is_default] if args.key?(:is_default)
           @labels = args[:labels] if args.key?(:labels)
+          @last_migration_model_id = args[:last_migration_model_id] if args.key?(:last_migration_model_id)
+          @last_migration_time = args[:last_migration_time] if args.key?(:last_migration_time)
           @last_use_time = args[:last_use_time] if args.key?(:last_use_time)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @manual_scaling = args[:manual_scaling] if args.key?(:manual_scaling)
