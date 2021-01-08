@@ -1252,6 +1252,7 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :outside_allocation, as: 'outsideAllocation'
+          property :region, as: 'region'
           collection :secondary_ip_ranges, as: 'secondaryIpRanges', class: Google::Apis::ServicenetworkingV1beta::SecondaryIpRange, decorator: Google::Apis::ServicenetworkingV1beta::SecondaryIpRange::Representation
       
         end

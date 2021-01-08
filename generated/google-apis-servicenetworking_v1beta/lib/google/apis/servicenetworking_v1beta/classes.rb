@@ -3366,6 +3366,11 @@ module Google
         attr_accessor :outside_allocation
         alias_method :outside_allocation?, :outside_allocation
       
+        # GCP region where the subnetwork is located.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # List of secondary IP ranges in this subnetwork.
         # Corresponds to the JSON property `secondaryIpRanges`
         # @return [Array<Google::Apis::ServicenetworkingV1beta::SecondaryIpRange>]
@@ -3381,6 +3386,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @outside_allocation = args[:outside_allocation] if args.key?(:outside_allocation)
+          @region = args[:region] if args.key?(:region)
           @secondary_ip_ranges = args[:secondary_ip_ranges] if args.key?(:secondary_ip_ranges)
         end
       end
@@ -3559,7 +3565,11 @@ module Google
       
         # Requirements that must be satisfied before a consumer project can use the
         # service. Each requirement is of the form /; for example 'serviceusage.
-        # googleapis.com/billing-enabled'.
+        # googleapis.com/billing-enabled'. For Google APIs, a Terms of Service
+        # requirement must be included here. Google Cloud APIs must include "
+        # serviceusage.googleapis.com/tos/cloud". Other Google APIs should include "
+        # serviceusage.googleapis.com/tos/universal". Additional ToS can be included
+        # based on the business needs.
         # Corresponds to the JSON property `requirements`
         # @return [Array<String>]
         attr_accessor :requirements
