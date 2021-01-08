@@ -3066,13 +3066,21 @@ module Google
         # @return [Array<String>]
         attr_accessor :requested_ranges
       
-        # Optional. DO NOT USE - Under development. The size of the desired secondary
-        # ranges for the subnet. Use usual CIDR range notation. For example, '30' to
-        # find unused x.x.x.x/30 CIDR range. The goal is to determine that the allocated
-        # ranges have enough free space for all the requested secondary ranges.
+        # Optional. The size of the desired secondary ranges for the subnet. Use usual
+        # CIDR range notation. For example, '30' to find unused x.x.x.x/30 CIDR range.
+        # The goal is to determine that the allocated ranges have enough free space for
+        # all the requested secondary ranges.
         # Corresponds to the JSON property `secondaryRangeIpPrefixLengths`
         # @return [Array<Fixnum>]
         attr_accessor :secondary_range_ip_prefix_lengths
+      
+        # Optional. List of subnetwork candidates to validate. The required input fields
+        # are `name`, `network`, and `region`. Subnetworks from this list which exist
+        # will be returned in the response with the `ip_cidr_range`, `
+        # secondary_ip_cider_ranges`, and `outside_allocation` fields set.
+        # Corresponds to the JSON property `subnetworkCandidates`
+        # @return [Array<Google::Apis::ServicenetworkingV1::Subnetwork>]
+        attr_accessor :subnetwork_candidates
       
         def initialize(**args)
            update!(**args)
@@ -3083,6 +3091,7 @@ module Google
           @ip_prefix_length = args[:ip_prefix_length] if args.key?(:ip_prefix_length)
           @requested_ranges = args[:requested_ranges] if args.key?(:requested_ranges)
           @secondary_range_ip_prefix_lengths = args[:secondary_range_ip_prefix_lengths] if args.key?(:secondary_range_ip_prefix_lengths)
+          @subnetwork_candidates = args[:subnetwork_candidates] if args.key?(:subnetwork_candidates)
         end
       end
       
@@ -3769,6 +3778,11 @@ module Google
         attr_accessor :outside_allocation
         alias_method :outside_allocation?, :outside_allocation
       
+        # GCP region where the subnetwork is located.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # List of secondary IP ranges in this subnetwork.
         # Corresponds to the JSON property `secondaryIpRanges`
         # @return [Array<Google::Apis::ServicenetworkingV1::SecondaryIpRange>]
@@ -3784,6 +3798,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @outside_allocation = args[:outside_allocation] if args.key?(:outside_allocation)
+          @region = args[:region] if args.key?(:region)
           @secondary_ip_ranges = args[:secondary_ip_ranges] if args.key?(:secondary_ip_ranges)
         end
       end
@@ -4025,7 +4040,11 @@ module Google
       
         # Requirements that must be satisfied before a consumer project can use the
         # service. Each requirement is of the form /; for example 'serviceusage.
-        # googleapis.com/billing-enabled'.
+        # googleapis.com/billing-enabled'. For Google APIs, a Terms of Service
+        # requirement must be included here. Google Cloud APIs must include "
+        # serviceusage.googleapis.com/tos/cloud". Other Google APIs should include "
+        # serviceusage.googleapis.com/tos/universal". Additional ToS can be included
+        # based on the business needs.
         # Corresponds to the JSON property `requirements`
         # @return [Array<String>]
         attr_accessor :requirements
@@ -4144,13 +4163,20 @@ module Google
       class ValidateConsumerConfigResponse
         include Google::Apis::Core::Hashable
       
-        # 
+        # List of subnetwork candidates from the request which exist with the `
+        # ip_cidr_range`, `secondary_ip_cider_ranges`, and `outside_allocation` fields
+        # set.
+        # Corresponds to the JSON property `existingSubnetworkCandidates`
+        # @return [Array<Google::Apis::ServicenetworkingV1::Subnetwork>]
+        attr_accessor :existing_subnetwork_candidates
+      
+        # Indicates whether all the requested validations passed.
         # Corresponds to the JSON property `isValid`
         # @return [Boolean]
         attr_accessor :is_valid
         alias_method :is_valid?, :is_valid
       
-        # 
+        # The first validation which failed.
         # Corresponds to the JSON property `validationError`
         # @return [String]
         attr_accessor :validation_error
@@ -4161,6 +4187,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @existing_subnetwork_candidates = args[:existing_subnetwork_candidates] if args.key?(:existing_subnetwork_candidates)
           @is_valid = args[:is_valid] if args.key?(:is_valid)
           @validation_error = args[:validation_error] if args.key?(:validation_error)
         end
