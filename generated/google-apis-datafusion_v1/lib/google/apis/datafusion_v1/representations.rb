@@ -164,6 +164,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accelerator_type, as: 'acceleratorType'
+          property :state, as: 'state'
         end
       end
       
@@ -187,7 +188,6 @@ module Google
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :binding_id, as: 'bindingId'
           property :condition, as: 'condition', class: Google::Apis::DatafusionV1::Expr, decorator: Google::Apis::DatafusionV1::Expr::Representation
       
           collection :members, as: 'members'
@@ -322,6 +322,7 @@ module Google
       class OperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :additional_status, as: 'additionalStatus'
           property :api_version, as: 'apiVersion'
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
