@@ -124,6 +124,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RemoveIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveIamPolicyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RestartInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -193,7 +205,6 @@ module Google
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :binding_id, as: 'bindingId'
           property :condition, as: 'condition', class: Google::Apis::DatafusionV1beta1::Expr, decorator: Google::Apis::DatafusionV1beta1::Expr::Representation
       
           collection :members, as: 'members'
@@ -347,6 +358,18 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class RemoveIamPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RemoveIamPolicyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
