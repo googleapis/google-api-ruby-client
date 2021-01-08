@@ -1312,6 +1312,8 @@ module Google
           property :ip_prefix_length, as: 'ipPrefixLength'
           collection :requested_ranges, as: 'requestedRanges'
           collection :secondary_range_ip_prefix_lengths, as: 'secondaryRangeIpPrefixLengths'
+          collection :subnetwork_candidates, as: 'subnetworkCandidates', class: Google::Apis::ServicenetworkingV1::Subnetwork, decorator: Google::Apis::ServicenetworkingV1::Subnetwork::Representation
+      
         end
       end
       
@@ -1477,6 +1479,7 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :outside_allocation, as: 'outsideAllocation'
+          property :region, as: 'region'
           collection :secondary_ip_ranges, as: 'secondaryIpRanges', class: Google::Apis::ServicenetworkingV1::SecondaryIpRange, decorator: Google::Apis::ServicenetworkingV1::SecondaryIpRange::Representation
       
         end
@@ -1583,6 +1586,8 @@ module Google
       class ValidateConsumerConfigResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :existing_subnetwork_candidates, as: 'existingSubnetworkCandidates', class: Google::Apis::ServicenetworkingV1::Subnetwork, decorator: Google::Apis::ServicenetworkingV1::Subnetwork::Representation
+      
           property :is_valid, as: 'isValid'
           property :validation_error, as: 'validationError'
         end
