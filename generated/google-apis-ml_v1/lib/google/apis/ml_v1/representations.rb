@@ -1290,6 +1290,8 @@ module Google
           property :framework, as: 'framework'
           property :is_default, as: 'isDefault'
           hash :labels, as: 'labels'
+          property :last_migration_model_id, as: 'lastMigrationModelId'
+          property :last_migration_time, as: 'lastMigrationTime'
           property :last_use_time, as: 'lastUseTime'
           property :machine_type, as: 'machineType'
           property :manual_scaling, as: 'manualScaling', class: Google::Apis::MlV1::GoogleCloudMlV1ManualScaling, decorator: Google::Apis::MlV1::GoogleCloudMlV1ManualScaling::Representation
