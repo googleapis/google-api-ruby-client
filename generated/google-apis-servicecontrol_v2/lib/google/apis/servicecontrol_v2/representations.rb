@@ -340,6 +340,7 @@ module Google
           property :display_name, as: 'displayName'
           property :etag, as: 'etag'
           hash :labels, as: 'labels'
+          property :location, as: 'location'
           property :name, as: 'name'
           property :service, as: 'service'
           property :type, as: 'type'
