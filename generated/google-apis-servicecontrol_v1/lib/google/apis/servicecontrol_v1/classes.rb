@@ -1478,8 +1478,9 @@ module Google
         # @return [Array<Google::Apis::ServicecontrolV1::TraceSpan>]
         attr_accessor :trace_spans
       
-        # User defined labels for the resource that this operation is associated with.
-        # Only a combination of 1000 user labels per consumer project are allowed.
+        # Private Preview. This feature is only available for approved services. User
+        # defined labels for the resource that this operation is associated with. Only a
+        # combination of 1000 user labels per consumer project are allowed.
         # Corresponds to the JSON property `userLabels`
         # @return [Hash<String,String>]
         attr_accessor :user_labels
@@ -2045,8 +2046,8 @@ module Google
       
         # Annotations is an unstructured key-value map stored with a resource that may
         # be set by external tools to store and retrieve arbitrary metadata. They are
-        # not queryable and should be preserved when modifying objects. More info: http:/
-        # /kubernetes.io/docs/user-guide/annotations
+        # not queryable and should be preserved when modifying objects. More info: https:
+        # //kubernetes.io/docs/user-guide/annotations
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
@@ -2080,6 +2081,16 @@ module Google
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
+      
+        # Immutable. The location of the resource. The location encoding is specific to
+        # the service provider, and new encoding may be introduced as the service
+        # evolves. For Google Cloud products, the encoding is what is used by Google
+        # Cloud APIs, such as `us-east1`, `aws-us-east-1`, and `azure-eastus2`. The
+        # semantics of `location` is identical to the `cloud.googleapis.com/location`
+        # label used by some Google Cloud APIs.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
       
         # The stable identifier (name) of a resource on the `service`. A resource can be
         # logically identified as "//`resource.service`/`resource.name`". The
@@ -2136,6 +2147,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
+          @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @service = args[:service] if args.key?(:service)
           @type = args[:type] if args.key?(:type)
