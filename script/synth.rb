@@ -9,6 +9,12 @@ def execute cmd
   abort unless system cmd
 end
 
+# In an autosynth (multi-library) run, a previous library synth may have
+# created a new library. If so, autosynth doesn't clean up those newly created
+# files (i.e. it runs git reset --hard but not git clean). Do that ourselves,
+# so any previously created files don't pollute this and subsequent synth runs.
+execute "git clean -df"
+
 Dir.chdir "google-apis-generator"
 
 execute "bundle install"
