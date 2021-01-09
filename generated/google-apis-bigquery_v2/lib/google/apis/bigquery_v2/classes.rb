@@ -784,11 +784,6 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # 
-        # Corresponds to the JSON property `bindingId`
-        # @return [String]
-        attr_accessor :binding_id
-      
         # Represents a textual expression in the Common Expression Language (CEL) syntax.
         # CEL is a C-like expression language. The syntax and semantics of CEL are
         # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -850,7 +845,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @binding_id = args[:binding_id] if args.key?(:binding_id)
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
@@ -1158,7 +1152,7 @@ module Google
       class ClusteringMetrics
         include Google::Apis::Core::Hashable
       
-        # [Beta] Information for all clusters.
+        # Information for all clusters.
         # Corresponds to the JSON property `clusters`
         # @return [Array<Google::Apis::BigqueryV2::Cluster>]
         attr_accessor :clusters
@@ -2202,7 +2196,7 @@ module Google
         # @return [Google::Apis::BigqueryV2::GoogleSheetsOptions]
         attr_accessor :google_sheets_options
       
-        # [Optional, Trusted Tester] Options to configure hive partitioning support.
+        # [Optional] Options to configure hive partitioning support.
         # Corresponds to the JSON property `hivePartitioningOptions`
         # @return [Google::Apis::BigqueryV2::HivePartitioningOptions]
         attr_accessor :hive_partitioning_options
@@ -2944,23 +2938,24 @@ module Google
         # @return [String]
         attr_accessor :create_disposition
       
-        # [Trusted Tester] Defines the list of possible SQL data types to which the
-        # source decimal values are converted. This list and the precision and the scale
-        # parameters of the decimal field determine the target type. In the order of
-        # NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified
-        # list and if it supports the precision and the scale. STRING supports all
-        # precision and scale values. If none of the listed types supports the precision
-        # and the scale, the type supporting the widest range in the specified list is
-        # picked, and if a value exceeds the supported range when reading the data, an
-        # error will be thrown. For example: suppose decimal_target_type = ["NUMERIC", "
-        # BIGNUMERIC"]. Then if (precision,scale) is: * (38,9) -> NUMERIC; * (39,9) ->
-        # BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (
-        # NUMERIC cannot hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -
-        # > BIGNUMERIC (error if value exeeds supported range). For duplicated types in
-        # this field, only one will be considered and the rest will be ignored. The
-        # order of the types in this field is ignored. For example, ["BIGNUMERIC", "
-        # NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes
-        # precedence over BIGNUMERIC.
+        # Defines the list of possible SQL data types to which the source decimal values
+        # are converted. This list and the precision and the scale parameters of the
+        # decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC ([
+        # Preview](/products/#product-launch-stages)), and STRING, a type is picked if
+        # it is in the specified list and if it supports the precision and the scale.
+        # STRING supports all precision and scale values. If none of the listed types
+        # supports the precision and the scale, the type supporting the widest range in
+        # the specified list is picked, and if a value exceeds the supported range when
+        # reading the data, an error will be thrown. Example: Suppose the value of this
+        # field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: * (38,9) ->
+        # NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,
+        # 10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) ->
+        # BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds supported range).
+        # This field cannot contain duplicate types. The order of the types in this
+        # field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["
+        # NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC.
+        # Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file
+        # formats.
         # Corresponds to the JSON property `decimalTargetTypes`
         # @return [Array<String>]
         attr_accessor :decimal_target_types
@@ -2999,7 +2994,7 @@ module Google
         # @return [String]
         attr_accessor :field_delimiter
       
-        # [Optional, Trusted Tester] Options to configure hive partitioning support.
+        # [Optional] Options to configure hive partitioning support.
         # Corresponds to the JSON property `hivePartitioningOptions`
         # @return [Google::Apis::BigqueryV2::HivePartitioningOptions]
         attr_accessor :hive_partitioning_options
@@ -3015,6 +3010,14 @@ module Google
         # @return [Boolean]
         attr_accessor :ignore_unknown_values
         alias_method :ignore_unknown_values?, :ignore_unknown_values
+      
+        # [Optional] If sourceFormat is set to newline-delimited JSON, indicates whether
+        # it should be processed as a JSON variant such as GeoJSON. For a sourceFormat
+        # other than JSON, omit this field. If the sourceFormat is newline-delimited
+        # JSON: - for newline-delimited GeoJSON: set to GEOJSON.
+        # Corresponds to the JSON property `jsonExtension`
+        # @return [String]
+        attr_accessor :json_extension
       
         # [Optional] The maximum number of bad records that BigQuery can ignore when
         # running the job. If the number of bad records exceeds this value, an invalid
@@ -3162,6 +3165,7 @@ module Google
           @field_delimiter = args[:field_delimiter] if args.key?(:field_delimiter)
           @hive_partitioning_options = args[:hive_partitioning_options] if args.key?(:hive_partitioning_options)
           @ignore_unknown_values = args[:ignore_unknown_values] if args.key?(:ignore_unknown_values)
+          @json_extension = args[:json_extension] if args.key?(:json_extension)
           @max_bad_records = args[:max_bad_records] if args.key?(:max_bad_records)
           @null_marker = args[:null_marker] if args.key?(:null_marker)
           @projection_fields = args[:projection_fields] if args.key?(:projection_fields)
@@ -5212,7 +5216,7 @@ module Google
         # @return [Float]
         attr_accessor :median_absolute_error
       
-        # R^2 score.
+        # R^2 score. This corresponds to r2_score in ML.EVALUATE.
         # Corresponds to the JSON property `rSquared`
         # @return [Float]
         attr_accessor :r_squared
@@ -6228,9 +6232,10 @@ module Google
         attr_accessor :policy_tags
       
         # [Required] The field data type. Possible values include STRING, BYTES, INTEGER,
-        # INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), BOOLEAN, BOOL (same
-        # as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, RECORD (where RECORD indicates
-        # that the field contains a nested schema) or STRUCT (same as RECORD).
+        # INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC,
+        # BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, RECORD (
+        # where RECORD indicates that the field contains a nested schema) or STRUCT (
+        # same as RECORD).
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -6599,7 +6604,7 @@ module Google
         end
       end
       
-      # 
+      # Options used in model training.
       class TrainingOptions
         include Google::Apis::Core::Hashable
       
@@ -6773,8 +6778,8 @@ module Google
         # @return [Float]
         attr_accessor :min_split_loss
       
-        # [Beta] Google Cloud Storage URI from which the model was imported. Only
-        # applicable for imported models.
+        # Google Cloud Storage URI from which the model was imported. Only applicable
+        # for imported models.
         # Corresponds to the JSON property `modelUri`
         # @return [String]
         attr_accessor :model_uri
@@ -6931,8 +6936,7 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
-        # Options that were used for this training run, includes user specified and
-        # default options that were used.
+        # Options used in model training.
         # Corresponds to the JSON property `trainingOptions`
         # @return [Google::Apis::BigqueryV2::TrainingOptions]
         attr_accessor :training_options
