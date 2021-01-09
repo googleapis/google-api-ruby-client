@@ -1361,10 +1361,10 @@ module Google
       end
       
       # Describes a sink used to export log entries to one of the following
-      # destinations in any project: a Cloud Storage bucket, a BigQuery dataset, or a
-      # Cloud Pub/Sub topic. A logs filter controls which log entries are exported.
-      # The sink must be created within a project, organization, billing account, or
-      # folder.
+      # destinations in any project: a Cloud Storage bucket, a BigQuery dataset, a
+      # Cloud Pub/Sub topic or a Cloud Logging Bucket. A logs filter controls which
+      # log entries are exported. The sink must be created within a project,
+      # organization, billing account, or folder.
       class LogSink
         include Google::Apis::Core::Hashable
       
