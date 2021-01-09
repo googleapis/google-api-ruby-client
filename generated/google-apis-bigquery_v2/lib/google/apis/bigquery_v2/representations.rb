@@ -1024,7 +1024,6 @@ module Google
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :binding_id, as: 'bindingId'
           property :condition, as: 'condition', class: Google::Apis::BigqueryV2::Expr, decorator: Google::Apis::BigqueryV2::Expr::Representation
       
           collection :members, as: 'members'
@@ -1553,6 +1552,7 @@ module Google
           property :hive_partitioning_options, as: 'hivePartitioningOptions', class: Google::Apis::BigqueryV2::HivePartitioningOptions, decorator: Google::Apis::BigqueryV2::HivePartitioningOptions::Representation
       
           property :ignore_unknown_values, as: 'ignoreUnknownValues'
+          property :json_extension, as: 'jsonExtension'
           property :max_bad_records, as: 'maxBadRecords'
           property :null_marker, as: 'nullMarker'
           collection :projection_fields, as: 'projectionFields'
