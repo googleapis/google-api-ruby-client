@@ -444,6 +444,7 @@ module Google
           property :can_reschedule, as: 'canReschedule'
           property :end_time, as: 'endTime'
           property :rollout_management_policy, as: 'rolloutManagementPolicy'
+          property :schedule_deadline_time, as: 'scheduleDeadlineTime'
           property :start_time, as: 'startTime'
         end
       end
