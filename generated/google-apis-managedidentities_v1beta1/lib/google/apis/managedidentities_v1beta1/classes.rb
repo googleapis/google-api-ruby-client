@@ -741,6 +741,15 @@ module Google
         # @return [String]
         attr_accessor :rollout_management_policy
       
+        # schedule_deadline_time is the time deadline any schedule start time cannot go
+        # beyond, including reschedule. It's normally the initial schedule start time
+        # plus a week. If the reschedule type is next window, simply take this value as
+        # start time. If reschedule type is IMMEDIATELY or BY_TIME, current or selected
+        # time cannot go beyond this deadline.
+        # Corresponds to the JSON property `scheduleDeadlineTime`
+        # @return [String]
+        attr_accessor :schedule_deadline_time
+      
         # The scheduled start time for the maintenance.
         # Corresponds to the JSON property `startTime`
         # @return [String]
@@ -755,6 +764,7 @@ module Google
           @can_reschedule = args[:can_reschedule] if args.key?(:can_reschedule)
           @end_time = args[:end_time] if args.key?(:end_time)
           @rollout_management_policy = args[:rollout_management_policy] if args.key?(:rollout_management_policy)
+          @schedule_deadline_time = args[:schedule_deadline_time] if args.key?(:schedule_deadline_time)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
