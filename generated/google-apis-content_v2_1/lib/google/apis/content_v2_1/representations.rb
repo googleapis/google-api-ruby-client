@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccountReturnCarrier
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccountStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -281,6 +287,36 @@ module Google
       end
       
       class CarriersCarrier
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Collection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CollectionFeaturedProduct
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CollectionStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CollectionStatusDestinationStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CollectionStatusItemLevelIssue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -623,6 +659,24 @@ module Google
       end
       
       class ListAccountLabelsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAccountReturnCarrierResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListCollectionStatusesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListCollectionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2044,6 +2098,7 @@ module Google
           collection :ads_links, as: 'adsLinks', class: Google::Apis::ContentV2_1::AccountAdsLink, decorator: Google::Apis::ContentV2_1::AccountAdsLink::Representation
       
           property :adult_content, as: 'adultContent'
+          collection :automatic_label_ids, as: 'automaticLabelIds'
           property :business_information, as: 'businessInformation', class: Google::Apis::ContentV2_1::AccountBusinessInformation, decorator: Google::Apis::ContentV2_1::AccountBusinessInformation::Representation
       
           property :css_id, :numeric_string => true, as: 'cssId'
@@ -2124,7 +2179,18 @@ module Google
           property :account_id, :numeric_string => true, as: 'accountId'
           property :description, as: 'description'
           property :label_id, :numeric_string => true, as: 'labelId'
+          property :label_type, as: 'labelType'
           property :name, as: 'name'
+        end
+      end
+      
+      class AccountReturnCarrier
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :carrier_account_id, :numeric_string => true, as: 'carrierAccountId'
+          property :carrier_account_name, as: 'carrierAccountName'
+          property :carrier_account_number, as: 'carrierAccountNumber'
+          property :carrier_code, as: 'carrierCode'
         end
       end
       
@@ -2491,6 +2557,70 @@ module Google
           property :country, as: 'country'
           property :name, as: 'name'
           collection :services, as: 'services'
+        end
+      end
+      
+      class Collection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_label0, as: 'customLabel0'
+          property :custom_label1, as: 'customLabel1'
+          property :custom_label2, as: 'customLabel2'
+          property :custom_label3, as: 'customLabel3'
+          property :custom_label4, as: 'customLabel4'
+          collection :featured_product, as: 'featuredProduct', class: Google::Apis::ContentV2_1::CollectionFeaturedProduct, decorator: Google::Apis::ContentV2_1::CollectionFeaturedProduct::Representation
+      
+          collection :headline, as: 'headline'
+          property :id, as: 'id'
+          collection :image_link, as: 'imageLink'
+          property :language, as: 'language'
+          property :link, as: 'link'
+          property :mobile_link, as: 'mobileLink'
+          property :product_country, as: 'productCountry'
+        end
+      end
+      
+      class CollectionFeaturedProduct
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :offer_id, as: 'offerId'
+          property :x, as: 'x'
+          property :y, as: 'y'
+        end
+      end
+      
+      class CollectionStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :collection_level_issuses, as: 'collectionLevelIssuses', class: Google::Apis::ContentV2_1::CollectionStatusItemLevelIssue, decorator: Google::Apis::ContentV2_1::CollectionStatusItemLevelIssue::Representation
+      
+          property :creation_date, as: 'creationDate'
+          collection :destination_statuses, as: 'destinationStatuses', class: Google::Apis::ContentV2_1::CollectionStatusDestinationStatus, decorator: Google::Apis::ContentV2_1::CollectionStatusDestinationStatus::Representation
+      
+          property :id, as: 'id'
+          property :last_update_date, as: 'lastUpdateDate'
+        end
+      end
+      
+      class CollectionStatusDestinationStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination, as: 'destination'
+          property :status, as: 'status'
+        end
+      end
+      
+      class CollectionStatusItemLevelIssue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribute_name, as: 'attributeName'
+          property :code, as: 'code'
+          property :description, as: 'description'
+          property :destination, as: 'destination'
+          property :detail, as: 'detail'
+          property :documentation, as: 'documentation'
+          property :resolution, as: 'resolution'
+          property :servability, as: 'servability'
         end
       end
       
@@ -3085,6 +3215,32 @@ module Google
           collection :account_labels, as: 'accountLabels', class: Google::Apis::ContentV2_1::AccountLabel, decorator: Google::Apis::ContentV2_1::AccountLabel::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListAccountReturnCarrierResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :account_return_carriers, as: 'accountReturnCarriers', class: Google::Apis::ContentV2_1::AccountReturnCarrier, decorator: Google::Apis::ContentV2_1::AccountReturnCarrier::Representation
+      
+        end
+      end
+      
+      class ListCollectionStatusesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :resources, as: 'resources', class: Google::Apis::ContentV2_1::CollectionStatus, decorator: Google::Apis::ContentV2_1::CollectionStatus::Representation
+      
+        end
+      end
+      
+      class ListCollectionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :resources, as: 'resources', class: Google::Apis::ContentV2_1::Collection, decorator: Google::Apis::ContentV2_1::Collection::Representation
+      
         end
       end
       
