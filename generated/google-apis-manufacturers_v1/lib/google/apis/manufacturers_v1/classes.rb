@@ -23,7 +23,7 @@ module Google
     module ManufacturersV1
       
       # Attributes of the product. For more information, see https://support.google.
-      # com/manufacturers/answer/6124116. Next tag: 47
+      # com/manufacturers/answer/6124116. Next tag: 48
       class Attributes
         include Google::Apis::Core::Hashable
       
@@ -150,6 +150,12 @@ module Google
         # @return [Array<Google::Apis::ManufacturersV1::ProductDetail>]
         attr_accessor :product_detail
       
+        # The product highlights. For more information, see https://support.google.com/
+        # manufacturers/answer/10066942
+        # Corresponds to the JSON property `productHighlight`
+        # @return [Array<String>]
+        attr_accessor :product_highlight
+      
         # The name of the group of products related to the product. For more information,
         # see https://support.google.com/manufacturers/answer/6124116#productline.
         # Corresponds to the JSON property `productLine`
@@ -265,6 +271,7 @@ module Google
           @mpn = args[:mpn] if args.key?(:mpn)
           @pattern = args[:pattern] if args.key?(:pattern)
           @product_detail = args[:product_detail] if args.key?(:product_detail)
+          @product_highlight = args[:product_highlight] if args.key?(:product_highlight)
           @product_line = args[:product_line] if args.key?(:product_line)
           @product_name = args[:product_name] if args.key?(:product_name)
           @product_page_url = args[:product_page_url] if args.key?(:product_page_url)
@@ -560,7 +567,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Attributes of the product. For more information, see https://support.google.
-        # com/manufacturers/answer/6124116. Next tag: 47
+        # com/manufacturers/answer/6124116. Next tag: 48
         # Corresponds to the JSON property `attributes`
         # @return [Google::Apis::ManufacturersV1::Attributes]
         attr_accessor :attributes

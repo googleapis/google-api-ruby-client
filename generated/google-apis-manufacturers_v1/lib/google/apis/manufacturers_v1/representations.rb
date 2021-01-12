@@ -124,6 +124,7 @@ module Google
           property :pattern, as: 'pattern'
           collection :product_detail, as: 'productDetail', class: Google::Apis::ManufacturersV1::ProductDetail, decorator: Google::Apis::ManufacturersV1::ProductDetail::Representation
       
+          collection :product_highlight, as: 'productHighlight'
           property :product_line, as: 'productLine'
           property :product_name, as: 'productName'
           property :product_page_url, as: 'productPageUrl'
