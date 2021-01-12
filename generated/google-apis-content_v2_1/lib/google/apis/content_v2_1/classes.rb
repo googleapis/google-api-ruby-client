@@ -43,6 +43,12 @@ module Google
         attr_accessor :adult_content
         alias_method :adult_content?, :adult_content
       
+        # List of automatically created label IDs that are assigned to the account by
+        # CSS Center.
+        # Corresponds to the JSON property `automaticLabelIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :automatic_label_ids
+      
         # The business information of the account.
         # Corresponds to the JSON property `businessInformation`
         # @return [Google::Apis::ContentV2_1::AccountBusinessInformation]
@@ -70,7 +76,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # List of label IDs that are assigned to the account by CSS.
+        # List of manually created label IDs that are assigned to the account by CSS.
         # Corresponds to the JSON property `labelIds`
         # @return [Array<Fixnum>]
         attr_accessor :label_ids
@@ -113,6 +119,7 @@ module Google
         def update!(**args)
           @ads_links = args[:ads_links] if args.key?(:ads_links)
           @adult_content = args[:adult_content] if args.key?(:adult_content)
+          @automatic_label_ids = args[:automatic_label_ids] if args.key?(:automatic_label_ids)
           @business_information = args[:business_information] if args.key?(:business_information)
           @css_id = args[:css_id] if args.key?(:css_id)
           @google_my_business_link = args[:google_my_business_link] if args.key?(:google_my_business_link)
@@ -349,6 +356,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :label_id
       
+        # Output only. The type of this label.
+        # Corresponds to the JSON property `labelType`
+        # @return [String]
+        attr_accessor :label_type
+      
         # The display name of this label.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -363,7 +375,47 @@ module Google
           @account_id = args[:account_id] if args.key?(:account_id)
           @description = args[:description] if args.key?(:description)
           @label_id = args[:label_id] if args.key?(:label_id)
+          @label_type = args[:label_type] if args.key?(:label_type)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The return carrier information. This service is designed for merchants
+      # enrolled in the Buy on Google program.
+      class AccountReturnCarrier
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Immutable. The Google-provided unique carrier ID, used to update
+        # the resource.
+        # Corresponds to the JSON property `carrierAccountId`
+        # @return [Fixnum]
+        attr_accessor :carrier_account_id
+      
+        # Name of the carrier account.
+        # Corresponds to the JSON property `carrierAccountName`
+        # @return [String]
+        attr_accessor :carrier_account_name
+      
+        # Number of the carrier account.
+        # Corresponds to the JSON property `carrierAccountNumber`
+        # @return [String]
+        attr_accessor :carrier_account_number
+      
+        # The carrier code enum. Accepts the values FEDEX or UPS.
+        # Corresponds to the JSON property `carrierCode`
+        # @return [String]
+        attr_accessor :carrier_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @carrier_account_id = args[:carrier_account_id] if args.key?(:carrier_account_id)
+          @carrier_account_name = args[:carrier_account_name] if args.key?(:carrier_account_name)
+          @carrier_account_number = args[:carrier_account_number] if args.key?(:carrier_account_number)
+          @carrier_code = args[:carrier_code] if args.key?(:carrier_code)
         end
       end
       
@@ -1051,7 +1103,9 @@ module Google
         # @return [String]
         attr_accessor :linked_account_id
       
-        # List of provided services.
+        # Acceptable values are: - "`shoppingAdsProductManagement`" - "`
+        # shoppingAdsOther`" - "`shoppingActionsProductManagement`" - "`
+        # shoppingActionsOrderManagement`" - "`shoppingActionsOther`"
         # Corresponds to the JSON property `services`
         # @return [Array<String>]
         attr_accessor :services
@@ -1633,6 +1687,275 @@ module Google
           @country = args[:country] if args.key?(:country)
           @name = args[:name] if args.key?(:name)
           @services = args[:services] if args.key?(:services)
+        end
+      end
+      
+      # The collection message.
+      class Collection
+        include Google::Apis::Core::Hashable
+      
+        # Label that you assign to a collection to help organize bidding and reporting
+        # in Shopping campaigns. Custom label
+        # Corresponds to the JSON property `customLabel0`
+        # @return [String]
+        attr_accessor :custom_label0
+      
+        # Label that you assign to a collection to help organize bidding and reporting
+        # in Shopping campaigns.
+        # Corresponds to the JSON property `customLabel1`
+        # @return [String]
+        attr_accessor :custom_label1
+      
+        # Label that you assign to a collection to help organize bidding and reporting
+        # in Shopping campaigns.
+        # Corresponds to the JSON property `customLabel2`
+        # @return [String]
+        attr_accessor :custom_label2
+      
+        # Label that you assign to a collection to help organize bidding and reporting
+        # in Shopping campaigns.
+        # Corresponds to the JSON property `customLabel3`
+        # @return [String]
+        attr_accessor :custom_label3
+      
+        # Label that you assign to a collection to help organize bidding and reporting
+        # in Shopping campaigns.
+        # Corresponds to the JSON property `customLabel4`
+        # @return [String]
+        attr_accessor :custom_label4
+      
+        # This identifies one or more products associated with the collection. Used as a
+        # lookup to the corresponding product ID in your product feeds. Provide a
+        # maximum of 100 featuredProduct (for collections). Provide up to 10
+        # featuredProduct (for Shoppable Images only) with ID and X and Y coordinates.
+        # featured_product attribute
+        # Corresponds to the JSON property `featuredProduct`
+        # @return [Array<Google::Apis::ContentV2_1::CollectionFeaturedProduct>]
+        attr_accessor :featured_product
+      
+        # Your collection's name. headline attribute
+        # Corresponds to the JSON property `headline`
+        # @return [Array<String>]
+        attr_accessor :headline
+      
+        # Required. The REST ID of the collection. Content API methods that operate on
+        # collections take this as their collectionId parameter. The REST ID for a
+        # collection is of the form collectionId. id attribute
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The URL of a collection’s image. image_link attribute
+        # Corresponds to the JSON property `imageLink`
+        # @return [Array<String>]
+        attr_accessor :image_link
+      
+        # The language of a collection and the language of any featured products linked
+        # to the collection. language attribute
+        # Corresponds to the JSON property `language`
+        # @return [String]
+        attr_accessor :language
+      
+        # A collection’s landing page. URL directly linking to your collection's page on
+        # your website. link attribute
+        # Corresponds to the JSON property `link`
+        # @return [String]
+        attr_accessor :link
+      
+        # A collection’s mobile-optimized landing page when you have a different URL for
+        # mobile and desktop traffic. mobile_link attribute
+        # Corresponds to the JSON property `mobileLink`
+        # @return [String]
+        attr_accessor :mobile_link
+      
+        # product_country attribute
+        # Corresponds to the JSON property `productCountry`
+        # @return [String]
+        attr_accessor :product_country
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_label0 = args[:custom_label0] if args.key?(:custom_label0)
+          @custom_label1 = args[:custom_label1] if args.key?(:custom_label1)
+          @custom_label2 = args[:custom_label2] if args.key?(:custom_label2)
+          @custom_label3 = args[:custom_label3] if args.key?(:custom_label3)
+          @custom_label4 = args[:custom_label4] if args.key?(:custom_label4)
+          @featured_product = args[:featured_product] if args.key?(:featured_product)
+          @headline = args[:headline] if args.key?(:headline)
+          @id = args[:id] if args.key?(:id)
+          @image_link = args[:image_link] if args.key?(:image_link)
+          @language = args[:language] if args.key?(:language)
+          @link = args[:link] if args.key?(:link)
+          @mobile_link = args[:mobile_link] if args.key?(:mobile_link)
+          @product_country = args[:product_country] if args.key?(:product_country)
+        end
+      end
+      
+      # The message for FeaturedProduct. FeaturedProduct
+      class CollectionFeaturedProduct
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifier for the product item.
+        # Corresponds to the JSON property `offerId`
+        # @return [String]
+        attr_accessor :offer_id
+      
+        # Required. X-coordinate of the product callout on the Shoppable Image.
+        # Corresponds to the JSON property `x`
+        # @return [Float]
+        attr_accessor :x
+      
+        # Required. Y-coordinate of the product callout on the Shoppable Image.
+        # Corresponds to the JSON property `y`
+        # @return [Float]
+        attr_accessor :y
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @offer_id = args[:offer_id] if args.key?(:offer_id)
+          @x = args[:x] if args.key?(:x)
+          @y = args[:y] if args.key?(:y)
+        end
+      end
+      
+      # The collectionstatus message.
+      class CollectionStatus
+        include Google::Apis::Core::Hashable
+      
+        # A list of all issues associated with the collection.
+        # Corresponds to the JSON property `collectionLevelIssuses`
+        # @return [Array<Google::Apis::ContentV2_1::CollectionStatusItemLevelIssue>]
+        attr_accessor :collection_level_issuses
+      
+        # Date on which the collection has been created in [ISO 8601](http://en.
+        # wikipedia.org/wiki/ISO_8601) format: Date, time, and offset, e.g. "2020-01-
+        # 02T09:00:00+01:00" or "2020-01-02T09:00:00Z"
+        # Corresponds to the JSON property `creationDate`
+        # @return [String]
+        attr_accessor :creation_date
+      
+        # The intended destinations for the collection.
+        # Corresponds to the JSON property `destinationStatuses`
+        # @return [Array<Google::Apis::ContentV2_1::CollectionStatusDestinationStatus>]
+        attr_accessor :destination_statuses
+      
+        # Required. The ID of the collection for which status is reported.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Date on which the collection has been last updated in [ISO 8601](http://en.
+        # wikipedia.org/wiki/ISO_8601) format: Date, time, and offset, e.g. "2020-01-
+        # 02T09:00:00+01:00" or "2020-01-02T09:00:00Z"
+        # Corresponds to the JSON property `lastUpdateDate`
+        # @return [String]
+        attr_accessor :last_update_date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @collection_level_issuses = args[:collection_level_issuses] if args.key?(:collection_level_issuses)
+          @creation_date = args[:creation_date] if args.key?(:creation_date)
+          @destination_statuses = args[:destination_statuses] if args.key?(:destination_statuses)
+          @id = args[:id] if args.key?(:id)
+          @last_update_date = args[:last_update_date] if args.key?(:last_update_date)
+        end
+      end
+      
+      # Destination status message.
+      class CollectionStatusDestinationStatus
+        include Google::Apis::Core::Hashable
+      
+        # The name of the destination
+        # Corresponds to the JSON property `destination`
+        # @return [String]
+        attr_accessor :destination
+      
+        # The status for the specified destination.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination = args[:destination] if args.key?(:destination)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Issue associated with the collection.
+      class CollectionStatusItemLevelIssue
+        include Google::Apis::Core::Hashable
+      
+        # The attribute's name, if the issue is caused by a single attribute.
+        # Corresponds to the JSON property `attributeName`
+        # @return [String]
+        attr_accessor :attribute_name
+      
+        # The error code of the issue.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # A short issue description in English.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The destination the issue applies to.
+        # Corresponds to the JSON property `destination`
+        # @return [String]
+        attr_accessor :destination
+      
+        # A detailed issue description in English.
+        # Corresponds to the JSON property `detail`
+        # @return [String]
+        attr_accessor :detail
+      
+        # The URL of a web page to help with resolving this issue.
+        # Corresponds to the JSON property `documentation`
+        # @return [String]
+        attr_accessor :documentation
+      
+        # Whether the issue can be resolved by the merchant.
+        # Corresponds to the JSON property `resolution`
+        # @return [String]
+        attr_accessor :resolution
+      
+        # How this issue affects the serving of the collection.
+        # Corresponds to the JSON property `servability`
+        # @return [String]
+        attr_accessor :servability
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_name = args[:attribute_name] if args.key?(:attribute_name)
+          @code = args[:code] if args.key?(:code)
+          @description = args[:description] if args.key?(:description)
+          @destination = args[:destination] if args.key?(:destination)
+          @detail = args[:detail] if args.key?(:detail)
+          @documentation = args[:documentation] if args.key?(:documentation)
+          @resolution = args[:resolution] if args.key?(:resolution)
+          @servability = args[:servability] if args.key?(:servability)
         end
       end
       
@@ -3748,6 +4071,77 @@ module Google
         def update!(**args)
           @account_labels = args[:account_labels] if args.key?(:account_labels)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response for listing account return carriers.
+      class ListAccountReturnCarrierResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of all available account return carriers for the merchant.
+        # Corresponds to the JSON property `accountReturnCarriers`
+        # @return [Array<Google::Apis::ContentV2_1::AccountReturnCarrier>]
+        attr_accessor :account_return_carriers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_return_carriers = args[:account_return_carriers] if args.key?(:account_return_carriers)
+        end
+      end
+      
+      # Response message for the ListCollectionStatuses method.
+      class ListCollectionStatusesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The collectionstatuses listed.
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::ContentV2_1::CollectionStatus>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
+      # Response message for the ListCollections method.
+      class ListCollectionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The collections listed.
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::ContentV2_1::Collection>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @resources = args[:resources] if args.key?(:resources)
         end
       end
       
@@ -9258,7 +9652,10 @@ module Google
         # @return [String]
         attr_accessor :gender
       
-        # Google's category of the item (see Google product taxonomy).
+        # Google's category of the item (see [Google product taxonomy](https://support.
+        # google.com/merchants/answer/1705911)). When querying products, this field will
+        # contain the user provided value. There is currently no way to get back the
+        # auto assigned google product categories through the API.
         # Corresponds to the JSON property `googleProductCategory`
         # @return [String]
         attr_accessor :google_product_category

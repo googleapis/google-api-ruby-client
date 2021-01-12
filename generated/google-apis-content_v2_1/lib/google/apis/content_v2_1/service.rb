@@ -594,6 +594,140 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Links return carrier to a merchant account.
+        # @param [Fixnum] account_id
+        #   Required. The Merchant Center Account Id under which the Return Carrier is to
+        #   be linked.
+        # @param [Google::Apis::ContentV2_1::AccountReturnCarrier] account_return_carrier_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::AccountReturnCarrier] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::AccountReturnCarrier]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_account_returncarrier(account_id, account_return_carrier_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'content/v2.1/accounts/{accountId}/returncarrier', options)
+          command.request_representation = Google::Apis::ContentV2_1::AccountReturnCarrier::Representation
+          command.request_object = account_return_carrier_object
+          command.response_representation = Google::Apis::ContentV2_1::AccountReturnCarrier::Representation
+          command.response_class = Google::Apis::ContentV2_1::AccountReturnCarrier
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a return carrier in the merchant account.
+        # @param [Fixnum] account_id
+        #   Required. The Merchant Center Account Id under which the Return Carrier is to
+        #   be linked.
+        # @param [Fixnum] carrier_account_id
+        #   Required. The Google-provided unique carrier ID, used to update the resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_account_returncarrier(account_id, carrier_account_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'content/v2.1/accounts/{accountId}/returncarrier/{carrierAccountId}', options)
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.params['carrierAccountId'] = carrier_account_id unless carrier_account_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists available return carriers in the merchant account.
+        # @param [Fixnum] account_id
+        #   Required. The Merchant Center Account Id under which the Return Carrier is to
+        #   be linked.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::ListAccountReturnCarrierResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::ListAccountReturnCarrierResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_returncarriers(account_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'content/v2.1/accounts/{accountId}/returncarrier', options)
+          command.response_representation = Google::Apis::ContentV2_1::ListAccountReturnCarrierResponse::Representation
+          command.response_class = Google::Apis::ContentV2_1::ListAccountReturnCarrierResponse
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a return carrier in the merchant account.
+        # @param [Fixnum] account_id
+        #   Required. The Merchant Center Account Id under which the Return Carrier is to
+        #   be linked.
+        # @param [Fixnum] carrier_account_id
+        #   Required. The Google-provided unique carrier ID, used to update the resource.
+        # @param [Google::Apis::ContentV2_1::AccountReturnCarrier] account_return_carrier_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::AccountReturnCarrier] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::AccountReturnCarrier]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_account_returncarrier(account_id, carrier_account_id, account_return_carrier_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'content/v2.1/accounts/{accountId}/returncarrier/{carrierAccountId}', options)
+          command.request_representation = Google::Apis::ContentV2_1::AccountReturnCarrier::Representation
+          command.request_object = account_return_carrier_object
+          command.response_representation = Google::Apis::ContentV2_1::AccountReturnCarrier::Representation
+          command.response_class = Google::Apis::ContentV2_1::AccountReturnCarrier
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.params['carrierAccountId'] = carrier_account_id unless carrier_account_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves multiple Merchant Center account statuses in a single request.
         # @param [Google::Apis::ContentV2_1::AccountstatusesCustomBatchRequest] accountstatuses_custom_batch_request_object
         # @param [String] fields
@@ -840,6 +974,225 @@ module Google
           command.response_class = Google::Apis::ContentV2_1::AccountTax
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['accountId'] = account_id unless account_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Uploads a collection to your Merchant Center account. If a collection with the
+        # same collectionId already exists, this method updates that entry. In each
+        # update, the collection is completely replaced by the fields in the body of the
+        # update request.
+        # @param [Fixnum] merchant_id
+        #   Required. The ID of the account that contains the collection. This account
+        #   cannot be a multi-client account.
+        # @param [Google::Apis::ContentV2_1::Collection] collection_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::Collection] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::Collection]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_collection(merchant_id, collection_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'content/v2.1/{merchantId}/collections', options)
+          command.request_representation = Google::Apis::ContentV2_1::Collection::Representation
+          command.request_object = collection_object
+          command.response_representation = Google::Apis::ContentV2_1::Collection::Representation
+          command.response_class = Google::Apis::ContentV2_1::Collection
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a collection from your Merchant Center account.
+        # @param [Fixnum] merchant_id
+        #   Required. The ID of the account that contains the collection. This account
+        #   cannot be a multi-client account.
+        # @param [String] collection_id
+        #   Required. The collectionId of the collection. CollectionId is the same as the
+        #   REST ID of the collection.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_collection(merchant_id, collection_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'content/v2.1/{merchantId}/collections/{collectionId}', options)
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['collectionId'] = collection_id unless collection_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a collection from your Merchant Center account.
+        # @param [Fixnum] merchant_id
+        #   Required. The ID of the account that contains the collection. This account
+        #   cannot be a multi-client account.
+        # @param [String] collection_id
+        #   Required. The REST ID of the collection.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::Collection] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::Collection]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_collection(merchant_id, collection_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'content/v2.1/{merchantId}/collections/{collectionId}', options)
+          command.response_representation = Google::Apis::ContentV2_1::Collection::Representation
+          command.response_class = Google::Apis::ContentV2_1::Collection
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['collectionId'] = collection_id unless collection_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the collections in your Merchant Center account. The response might
+        # contain fewer items than specified by page_size. Rely on next_page_token to
+        # determine if there are more items to be requested.
+        # @param [Fixnum] merchant_id
+        #   Required. The ID of the account that contains the collection. This account
+        #   cannot be a multi-client account.
+        # @param [Fixnum] page_size
+        #   The maximum number of collections to return in the response, used for paging.
+        #   Defaults to 50; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Token (if provided) to retrieve the subsequent page. All other parameters must
+        #   match the original call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::ListCollectionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::ListCollectionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_collections(merchant_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'content/v2.1/{merchantId}/collections', options)
+          command.response_representation = Google::Apis::ContentV2_1::ListCollectionsResponse::Representation
+          command.response_class = Google::Apis::ContentV2_1::ListCollectionsResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the status of a collection from your Merchant Center account.
+        # @param [Fixnum] merchant_id
+        #   Required. The ID of the account that contains the collection. This account
+        #   cannot be a multi-client account.
+        # @param [String] collection_id
+        #   Required. The collectionId of the collection. CollectionId is the same as the
+        #   REST ID of the collection.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::CollectionStatus] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::CollectionStatus]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_collectionstatus(merchant_id, collection_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'content/v2.1/{merchantId}/collectionstatuses/{collectionId}', options)
+          command.response_representation = Google::Apis::ContentV2_1::CollectionStatus::Representation
+          command.response_class = Google::Apis::ContentV2_1::CollectionStatus
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['collectionId'] = collection_id unless collection_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the statuses of the collections in your Merchant Center account.
+        # @param [Fixnum] merchant_id
+        #   Required. The ID of the account that contains the collection. This account
+        #   cannot be a multi-client account.
+        # @param [Fixnum] page_size
+        #   The maximum number of collection statuses to return in the response, used for
+        #   paging. Defaults to 50; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Token (if provided) to retrieve the subsequent page. All other parameters must
+        #   match the original call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::ListCollectionStatusesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::ListCollectionStatusesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_collectionstatuses(merchant_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'content/v2.1/{merchantId}/collectionstatuses', options)
+          command.response_representation = Google::Apis::ContentV2_1::ListCollectionStatusesResponse::Representation
+          command.response_class = Google::Apis::ContentV2_1::ListCollectionStatusesResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
