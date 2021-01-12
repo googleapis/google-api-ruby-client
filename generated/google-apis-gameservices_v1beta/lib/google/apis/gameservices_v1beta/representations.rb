@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GkeHubClusterReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LabelSelector
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -563,6 +569,7 @@ module Google
       class GameServerCluster
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocation_priority, as: 'allocationPriority'
           property :connection_info, as: 'connectionInfo', class: Google::Apis::GameservicesV1beta::GameServerClusterConnectionInfo, decorator: Google::Apis::GameservicesV1beta::GameServerClusterConnectionInfo::Representation
       
           property :create_time, as: 'createTime'
@@ -578,6 +585,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gke_cluster_reference, as: 'gkeClusterReference', class: Google::Apis::GameservicesV1beta::GkeClusterReference, decorator: Google::Apis::GameservicesV1beta::GkeClusterReference::Representation
+      
+          property :gke_hub_cluster_reference, as: 'gkeHubClusterReference', class: Google::Apis::GameservicesV1beta::GkeHubClusterReference, decorator: Google::Apis::GameservicesV1beta::GkeHubClusterReference::Representation
       
           property :namespace, as: 'namespace'
         end
@@ -636,6 +645,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster, as: 'cluster'
+        end
+      end
+      
+      class GkeHubClusterReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :membership, as: 'membership'
         end
       end
       
