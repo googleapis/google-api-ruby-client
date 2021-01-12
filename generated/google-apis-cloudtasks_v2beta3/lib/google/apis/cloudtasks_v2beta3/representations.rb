@@ -425,6 +425,8 @@ module Google
           property :state, as: 'state'
           property :stats, as: 'stats', class: Google::Apis::CloudtasksV2beta3::QueueStats, decorator: Google::Apis::CloudtasksV2beta3::QueueStats::Representation
       
+          property :task_ttl, as: 'taskTtl'
+          property :tombstone_ttl, as: 'tombstoneTtl'
           property :type, as: 'type'
         end
       end
