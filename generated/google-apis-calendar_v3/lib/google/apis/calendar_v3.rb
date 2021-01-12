@@ -38,7 +38,7 @@ module Google
       # View events on all your calendars
       AUTH_CALENDAR_EVENTS_READONLY = 'https://www.googleapis.com/auth/calendar.events.readonly'
 
-      # View your calendars
+      # See and download any calendar you can access using your Google Calendar
       AUTH_CALENDAR_READONLY = 'https://www.googleapis.com/auth/calendar.readonly'
 
       # View your Calendar settings
