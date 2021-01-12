@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetInstanceHealthResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GuestOsFeature
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -178,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ShieldedInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StartInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -203,12 +215,6 @@ module Google
       end
       
       class TestIamPermissionsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TriggerScheduleRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -320,6 +326,14 @@ module Google
         end
       end
       
+      class GetInstanceHealthResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :health_info, as: 'healthInfo'
+          property :health_state, as: 'healthState'
+        end
+      end
+      
       class GuestOsFeature
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -357,8 +371,12 @@ module Google
           property :post_startup_script, as: 'postStartupScript'
           property :proxy_uri, as: 'proxyUri'
           property :service_account, as: 'serviceAccount'
+          collection :service_account_scopes, as: 'serviceAccountScopes'
+          property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::NotebooksV1::ShieldedInstanceConfig, decorator: Google::Apis::NotebooksV1::ShieldedInstanceConfig::Representation
+      
           property :state, as: 'state'
           property :subnet, as: 'subnet'
+          collection :tags, as: 'tags'
           property :update_time, as: 'updateTime'
           collection :upgrade_history, as: 'upgradeHistory', class: Google::Apis::NotebooksV1::UpgradeHistoryEntry, decorator: Google::Apis::NotebooksV1::UpgradeHistoryEntry::Representation
       
@@ -512,6 +530,15 @@ module Google
         end
       end
       
+      class ShieldedInstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_integrity_monitoring, as: 'enableIntegrityMonitoring'
+          property :enable_secure_boot, as: 'enableSecureBoot'
+          property :enable_vtpm, as: 'enableVtpm'
+        end
+      end
+      
       class StartInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -547,20 +574,16 @@ module Google
         end
       end
       
-      class TriggerScheduleRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
       class UpgradeHistoryEntry
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
           property :container_image, as: 'containerImage'
           property :create_time, as: 'createTime'
           property :framework, as: 'framework'
           property :snapshot, as: 'snapshot'
           property :state, as: 'state'
+          property :target_image, as: 'targetImage'
           property :version, as: 'version'
           property :vm_image, as: 'vmImage'
         end
