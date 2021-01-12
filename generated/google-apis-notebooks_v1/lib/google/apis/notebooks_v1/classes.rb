@@ -400,6 +400,34 @@ module Google
         end
       end
       
+      # Response for checking if a notebook instance is healthy.
+      class GetInstanceHealthResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Additional information about instance health. Example: healthInfo"
+        # : ` "docker_proxy_agent_status": "1", "docker_status": "1", "
+        # jupyterlab_api_status": "-1", "jupyterlab_status": "-1", "updated": "2020-10-
+        # 18 09:40:03.573409" `
+        # Corresponds to the JSON property `healthInfo`
+        # @return [Hash<String,String>]
+        attr_accessor :health_info
+      
+        # Output only. Runtime health_state.
+        # Corresponds to the JSON property `healthState`
+        # @return [String]
+        attr_accessor :health_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @health_info = args[:health_info] if args.key?(:health_info)
+          @health_state = args[:health_state] if args.key?(:health_state)
+        end
+      end
+      
       # Guest OS features for boot disk.
       class GuestOsFeature
         include Google::Apis::Core::Hashable
@@ -578,6 +606,22 @@ module Google
         # @return [String]
         attr_accessor :service_account
       
+        # Optional. The URIs of service account scopes to be included in Compute Engine
+        # instances. If not specified, the following [scopes](https://cloud.google.com/
+        # compute/docs/access/service-accounts#accesscopesiam) are defined: - https://
+        # www.googleapis.com/auth/cloud-platform - https://www.googleapis.com/auth/
+        # userinfo.email If not using default scopes, you need at least: https://www.
+        # googleapis.com/auth/compute
+        # Corresponds to the JSON property `serviceAccountScopes`
+        # @return [Array<String>]
+        attr_accessor :service_account_scopes
+      
+        # A set of Shielded Instance options. Check [Images using supported Shielded VM
+        # features] Not all combinations are valid.
+        # Corresponds to the JSON property `shieldedInstanceConfig`
+        # @return [Google::Apis::NotebooksV1::ShieldedInstanceConfig]
+        attr_accessor :shielded_instance_config
+      
         # Output only. The state of this instance.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -588,6 +632,12 @@ module Google
         # Corresponds to the JSON property `subnet`
         # @return [String]
         attr_accessor :subnet
+      
+        # Optional. The Compute Engine tags to add to runtime (see [Tagging instances](
+        # https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
       
         # Output only. Instance update time.
         # Corresponds to the JSON property `updateTime`
@@ -635,8 +685,11 @@ module Google
           @post_startup_script = args[:post_startup_script] if args.key?(:post_startup_script)
           @proxy_uri = args[:proxy_uri] if args.key?(:proxy_uri)
           @service_account = args[:service_account] if args.key?(:service_account)
+          @service_account_scopes = args[:service_account_scopes] if args.key?(:service_account_scopes)
+          @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @state = args[:state] if args.key?(:state)
           @subnet = args[:subnet] if args.key?(:subnet)
+          @tags = args[:tags] if args.key?(:tags)
           @update_time = args[:update_time] if args.key?(:update_time)
           @upgrade_history = args[:upgrade_history] if args.key?(:upgrade_history)
           @vm_image = args[:vm_image] if args.key?(:vm_image)
@@ -1224,6 +1277,48 @@ module Google
         end
       end
       
+      # A set of Shielded Instance options. Check [Images using supported Shielded VM
+      # features] Not all combinations are valid.
+      class ShieldedInstanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Defines whether the instance has integrity monitoring enabled. Enables
+        # monitoring and attestation of the boot integrity of the instance. The
+        # attestation is performed against the integrity policy baseline. This baseline
+        # is initially derived from the implicitly trusted boot image when the instance
+        # is created. Enabled by default.
+        # Corresponds to the JSON property `enableIntegrityMonitoring`
+        # @return [Boolean]
+        attr_accessor :enable_integrity_monitoring
+        alias_method :enable_integrity_monitoring?, :enable_integrity_monitoring
+      
+        # Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure
+        # that the system only runs authentic software by verifying the digital
+        # signature of all boot components, and halting the boot process if signature
+        # verification fails. Disabled by default.
+        # Corresponds to the JSON property `enableSecureBoot`
+        # @return [Boolean]
+        attr_accessor :enable_secure_boot
+        alias_method :enable_secure_boot?, :enable_secure_boot
+      
+        # Defines whether the instance has the vTPM enabled. Enabled by default.
+        # Corresponds to the JSON property `enableVtpm`
+        # @return [Boolean]
+        attr_accessor :enable_vtpm
+        alias_method :enable_vtpm?, :enable_vtpm
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_integrity_monitoring = args[:enable_integrity_monitoring] if args.key?(:enable_integrity_monitoring)
+          @enable_secure_boot = args[:enable_secure_boot] if args.key?(:enable_secure_boot)
+          @enable_vtpm = args[:enable_vtpm] if args.key?(:enable_vtpm)
+        end
+      end
+      
       # Request for starting a notebook instance
       class StartInstanceRequest
         include Google::Apis::Core::Hashable
@@ -1329,22 +1424,14 @@ module Google
         end
       end
       
-      # Request for created scheduled notebooks
-      class TriggerScheduleRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # 
+      # The entry of VM image upgrade history.
       class UpgradeHistoryEntry
         include Google::Apis::Core::Hashable
+      
+        # Action. Rolloback or Upgrade.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
       
         # The container image before this instance upgrade.
         # Corresponds to the JSON property `containerImage`
@@ -1371,6 +1458,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Target VM Image. Format: ainotebooks-vm/project/image-name/name.
+        # Corresponds to the JSON property `targetImage`
+        # @return [String]
+        attr_accessor :target_image
+      
         # The version of the notebook instance before this upgrade.
         # Corresponds to the JSON property `version`
         # @return [String]
@@ -1387,11 +1479,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @action = args[:action] if args.key?(:action)
           @container_image = args[:container_image] if args.key?(:container_image)
           @create_time = args[:create_time] if args.key?(:create_time)
           @framework = args[:framework] if args.key?(:framework)
           @snapshot = args[:snapshot] if args.key?(:snapshot)
           @state = args[:state] if args.key?(:state)
+          @target_image = args[:target_image] if args.key?(:target_image)
           @version = args[:version] if args.key?(:version)
           @vm_image = args[:vm_image] if args.key?(:vm_image)
         end
