@@ -8982,7 +8982,10 @@ module Google
         # @return [String]
         attr_accessor :gender
       
-        # Google's category of the item (see Google product taxonomy).
+        # Google's category of the item (see [Google product taxonomy](https://support.
+        # google.com/merchants/answer/1705911)). When querying products, this field will
+        # contain the user provided value. There is currently no way to get back the
+        # auto assigned google product categories through the API.
         # Corresponds to the JSON property `googleProductCategory`
         # @return [String]
         attr_accessor :google_product_category
