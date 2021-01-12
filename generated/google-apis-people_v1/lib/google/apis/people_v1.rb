@@ -44,7 +44,7 @@ module Google
       # View your street addresses
       AUTH_USER_ADDRESSES_READ = 'https://www.googleapis.com/auth/user.addresses.read'
 
-      # View your complete date of birth
+      # See and download your exact date of birth
       AUTH_USER_BIRTHDAY_READ = 'https://www.googleapis.com/auth/user.birthday.read'
 
       # View your email addresses
@@ -56,7 +56,7 @@ module Google
       # See your education, work history and org info
       AUTH_USER_ORGANIZATION_READ = 'https://www.googleapis.com/auth/user.organization.read'
 
-      # View your phone numbers
+      # See and download your personal phone numbers
       AUTH_USER_PHONENUMBERS_READ = 'https://www.googleapis.com/auth/user.phonenumbers.read'
 
       # View your email address
