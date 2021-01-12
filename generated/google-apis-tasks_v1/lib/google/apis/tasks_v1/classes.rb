@@ -22,7 +22,7 @@ module Google
   module Apis
     module TasksV1
       
-      # LINT.IfChange
+      # 
       class Task
         include Google::Apis::Core::Hashable
       
