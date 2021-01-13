@@ -352,9 +352,8 @@ module Google
         attr_accessor :member_count
       
         # Output only. The list of contact person resource names that are members of the
-        # contact group. The field is not populated for LIST requests and can only be
-        # updated through the [ModifyContactGroupMembers](/people/api/rest/v1/
-        # contactgroups/members/modify).
+        # contact group. The field is only populated for GET requests and will only
+        # return as many members as `maxMembers` in the get request.
         # Corresponds to the JSON property `memberResourceNames`
         # @return [Array<String>]
         attr_accessor :member_resource_names
