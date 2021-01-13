@@ -247,11 +247,11 @@ module Google
       class GoogleAnalyticsAdminV1alphaAccount
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :country_code, as: 'countryCode'
           property :create_time, as: 'createTime'
           property :deleted, as: 'deleted'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :region_code, as: 'regionCode'
           property :update_time, as: 'updateTime'
         end
       end
@@ -387,23 +387,17 @@ module Google
       class GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :articles_and_blogs_enabled, as: 'articlesAndBlogsEnabled'
-          property :content_views_enabled, as: 'contentViewsEnabled'
-          property :data_tagged_element_clicks_enabled, as: 'dataTaggedElementClicksEnabled'
-          property :excluded_domains, as: 'excludedDomains'
           property :file_downloads_enabled, as: 'fileDownloadsEnabled'
-          property :form_interactions_enabled, as: 'formInteractionsEnabled'
           property :name, as: 'name'
           property :outbound_clicks_enabled, as: 'outboundClicksEnabled'
           property :page_changes_enabled, as: 'pageChangesEnabled'
           property :page_loads_enabled, as: 'pageLoadsEnabled'
           property :page_views_enabled, as: 'pageViewsEnabled'
-          property :products_and_ecommerce_enabled, as: 'productsAndEcommerceEnabled'
           property :scrolls_enabled, as: 'scrollsEnabled'
           property :search_query_parameter, as: 'searchQueryParameter'
           property :site_search_enabled, as: 'siteSearchEnabled'
           property :stream_enabled, as: 'streamEnabled'
-          property :url_query_parameter, as: 'urlQueryParameter'
+          property :uri_query_parameter, as: 'uriQueryParameter'
           property :video_engagement_enabled, as: 'videoEngagementEnabled'
         end
       end
@@ -434,7 +428,6 @@ module Google
           property :customer_id, as: 'customerId'
           property :email_address, as: 'emailAddress'
           property :name, as: 'name'
-          property :parent, as: 'parent'
           property :update_time, as: 'updateTime'
         end
       end

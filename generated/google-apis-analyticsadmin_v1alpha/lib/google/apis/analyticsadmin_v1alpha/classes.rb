@@ -26,13 +26,6 @@ module Google
       class GoogleAnalyticsAdminV1alphaAccount
         include Google::Apis::Core::Hashable
       
-        # Country of business. Must be a non-deprecated code for a UN M.49 region. https:
-        # //unicode.org/cldr/charts/latest/supplemental/territory_containment_un_m_49.
-        # html
-        # Corresponds to the JSON property `countryCode`
-        # @return [String]
-        attr_accessor :country_code
-      
         # Output only. Time when this account was originally created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -56,6 +49,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Country of business. Must be a Unicode CLDR region code.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
         # Output only. Time when account payload fields were last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -67,11 +65,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @country_code = args[:country_code] if args.key?(:country_code)
           @create_time = args[:create_time] if args.key?(:create_time)
           @deleted = args[:deleted] if args.key?(:deleted)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @region_code = args[:region_code] if args.key?(:region_code)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -515,45 +513,12 @@ module Google
       class GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings
         include Google::Apis::Core::Hashable
       
-        # Capture events when your visitors view content on your site that has articles
-        # or blog posts.
-        # Corresponds to the JSON property `articlesAndBlogsEnabled`
-        # @return [Boolean]
-        attr_accessor :articles_and_blogs_enabled
-        alias_method :articles_and_blogs_enabled?, :articles_and_blogs_enabled
-      
-        # Capture events when your visitors view content on your site that has
-        # structured data (eg, articles, blog posts, product details screens, etc.).
-        # Corresponds to the JSON property `contentViewsEnabled`
-        # @return [Boolean]
-        attr_accessor :content_views_enabled
-        alias_method :content_views_enabled?, :content_views_enabled
-      
-        # If enabled, capture a click event each time a visitor clicks a link or element
-        # that has data attributes beginning with "data-ga".
-        # Corresponds to the JSON property `dataTaggedElementClicksEnabled`
-        # @return [Boolean]
-        attr_accessor :data_tagged_element_clicks_enabled
-        alias_method :data_tagged_element_clicks_enabled?, :data_tagged_element_clicks_enabled
-      
-        # Domains to exclude from measurement. Max length is 1024 characters.
-        # Corresponds to the JSON property `excludedDomains`
-        # @return [String]
-        attr_accessor :excluded_domains
-      
         # If enabled, capture a file download event each time a link is clicked with a
         # common document, compressed file, application, video, or audio extension.
         # Corresponds to the JSON property `fileDownloadsEnabled`
         # @return [Boolean]
         attr_accessor :file_downloads_enabled
         alias_method :file_downloads_enabled?, :file_downloads_enabled
-      
-        # If enabled, capture a view search results event each time a visitor interacts
-        # with a form on your site.
-        # Corresponds to the JSON property `formInteractionsEnabled`
-        # @return [Boolean]
-        attr_accessor :form_interactions_enabled
-        alias_method :form_interactions_enabled?, :form_interactions_enabled
       
         # Output only. Resource name of this Data Stream. Format: properties/`
         # property_id`/webDataStreams/`stream_id`/enhancedMeasurementSettings Example: "
@@ -576,7 +541,7 @@ module Google
         attr_accessor :page_changes_enabled
         alias_method :page_changes_enabled?, :page_changes_enabled
       
-        # If enabled, capture a page view event each time a page loads.
+        # Output only. If enabled, capture a page view event each time a page loads.
         # Corresponds to the JSON property `pageLoadsEnabled`
         # @return [Boolean]
         attr_accessor :page_loads_enabled
@@ -588,13 +553,6 @@ module Google
         # @return [Boolean]
         attr_accessor :page_views_enabled
         alias_method :page_views_enabled?, :page_views_enabled
-      
-        # Capture events when your visitors view content on your site that has product
-        # details screens, etc.
-        # Corresponds to the JSON property `productsAndEcommerceEnabled`
-        # @return [Boolean]
-        attr_accessor :products_and_ecommerce_enabled
-        alias_method :products_and_ecommerce_enabled?, :products_and_ecommerce_enabled
       
         # If enabled, capture scroll events each time a visitor gets to the bottom of a
         # page.
@@ -625,9 +583,9 @@ module Google
         alias_method :stream_enabled?, :stream_enabled
       
         # Additional URL query parameters. Max length is 1024 characters.
-        # Corresponds to the JSON property `urlQueryParameter`
+        # Corresponds to the JSON property `uriQueryParameter`
         # @return [String]
-        attr_accessor :url_query_parameter
+        attr_accessor :uri_query_parameter
       
         # If enabled, capture video play, progress, and complete events as visitors view
         # embedded videos on your site.
@@ -642,23 +600,17 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @articles_and_blogs_enabled = args[:articles_and_blogs_enabled] if args.key?(:articles_and_blogs_enabled)
-          @content_views_enabled = args[:content_views_enabled] if args.key?(:content_views_enabled)
-          @data_tagged_element_clicks_enabled = args[:data_tagged_element_clicks_enabled] if args.key?(:data_tagged_element_clicks_enabled)
-          @excluded_domains = args[:excluded_domains] if args.key?(:excluded_domains)
           @file_downloads_enabled = args[:file_downloads_enabled] if args.key?(:file_downloads_enabled)
-          @form_interactions_enabled = args[:form_interactions_enabled] if args.key?(:form_interactions_enabled)
           @name = args[:name] if args.key?(:name)
           @outbound_clicks_enabled = args[:outbound_clicks_enabled] if args.key?(:outbound_clicks_enabled)
           @page_changes_enabled = args[:page_changes_enabled] if args.key?(:page_changes_enabled)
           @page_loads_enabled = args[:page_loads_enabled] if args.key?(:page_loads_enabled)
           @page_views_enabled = args[:page_views_enabled] if args.key?(:page_views_enabled)
-          @products_and_ecommerce_enabled = args[:products_and_ecommerce_enabled] if args.key?(:products_and_ecommerce_enabled)
           @scrolls_enabled = args[:scrolls_enabled] if args.key?(:scrolls_enabled)
           @search_query_parameter = args[:search_query_parameter] if args.key?(:search_query_parameter)
           @site_search_enabled = args[:site_search_enabled] if args.key?(:site_search_enabled)
           @stream_enabled = args[:stream_enabled] if args.key?(:stream_enabled)
-          @url_query_parameter = args[:url_query_parameter] if args.key?(:url_query_parameter)
+          @uri_query_parameter = args[:uri_query_parameter] if args.key?(:uri_query_parameter)
           @video_engagement_enabled = args[:video_engagement_enabled] if args.key?(:video_engagement_enabled)
         end
       end
@@ -767,11 +719,6 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Immutable. Format: properties/`propertyId`
-        # Corresponds to the JSON property `parent`
-        # @return [String]
-        attr_accessor :parent
-      
         # Output only. Time when this link was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -789,7 +736,6 @@ module Google
           @customer_id = args[:customer_id] if args.key?(:customer_id)
           @email_address = args[:email_address] if args.key?(:email_address)
           @name = args[:name] if args.key?(:name)
-          @parent = args[:parent] if args.key?(:parent)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
