@@ -23,7 +23,7 @@ module Google
     #
     # 
     #
-    # @see  https://cloud.google.com/api-gateway/docs
+    # @see https://cloud.google.com/api-gateway/docs
     module ApigatewayV1
       # Version of the API Gateway API this client connects to.
       # This is NOT the gem version.

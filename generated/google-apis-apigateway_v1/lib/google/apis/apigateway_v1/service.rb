@@ -30,7 +30,7 @@ module Google
       #    Apigateway = Google::Apis::ApigatewayV1 # Alias the module
       #    service = Apigateway::ApigatewayService.new
       #
-      # @see  https://cloud.google.com/api-gateway/docs
+      # @see https://cloud.google.com/api-gateway/docs
       class ApigatewayService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
