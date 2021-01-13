@@ -2921,9 +2921,10 @@ module Google
         # conversation to another page in the same flow, or another flow. When we are in
         # a certain page, the TransitionRoutes are evalauted in the following order: *
         # TransitionRoutes defined in the page with intent specified. * TransitionRoutes
-        # defined in the transition route groups. * TransitionRoutes defined in flow
-        # with intent specified. * TransitionRoutes defined in the page with only
-        # condition specified.
+        # defined in the transition route groups with intent specified. *
+        # TransitionRoutes defined in flow with intent specified. * TransitionRoutes
+        # defined in the page with only condition specified. * TransitionRoutes defined
+        # in the transition route groups with only condition specified.
         # Corresponds to the JSON property `transitionRoutes`
         # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRoute>]
         attr_accessor :transition_routes
@@ -3913,7 +3914,8 @@ module Google
       
         # Always present for WebhookRequest. Ignored for WebhookResponse. The unique
         # identifier of the session. This field can be used by the webhook to identify a
-        # user. Format: `projects//locations//agents//sessions/`.
+        # session. Format: `projects//locations//agents//sessions/` or `projects//
+        # locations//agents//environments//sessions/` if environment is specified.
         # Corresponds to the JSON property `session`
         # @return [String]
         attr_accessor :session
@@ -4519,9 +4521,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Transition routes associated with the TransitionRouteGroup. Duplicate
-        # transition routes (i.e. using the same `intent`) are not allowed. Note that
-        # the `name` field is not used in the transition route group scope.
+        # Transition routes associated with the TransitionRouteGroup.
         # Corresponds to the JSON property `transitionRoutes`
         # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TransitionRoute>]
         attr_accessor :transition_routes
@@ -6287,9 +6287,10 @@ module Google
         # conversation to another page in the same flow, or another flow. When we are in
         # a certain page, the TransitionRoutes are evalauted in the following order: *
         # TransitionRoutes defined in the page with intent specified. * TransitionRoutes
-        # defined in the transition route groups. * TransitionRoutes defined in flow
-        # with intent specified. * TransitionRoutes defined in the page with only
-        # condition specified.
+        # defined in the transition route groups with intent specified. *
+        # TransitionRoutes defined in flow with intent specified. * TransitionRoutes
+        # defined in the page with only condition specified. * TransitionRoutes defined
+        # in the transition route groups with only condition specified.
         # Corresponds to the JSON property `transitionRoutes`
         # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1TransitionRoute>]
         attr_accessor :transition_routes
@@ -6839,7 +6840,8 @@ module Google
       
         # Always present for WebhookRequest. Ignored for WebhookResponse. The unique
         # identifier of the session. This field can be used by the webhook to identify a
-        # user. Format: `projects//locations//agents//sessions/`.
+        # session. Format: `projects//locations//agents//sessions/` or `projects//
+        # locations//agents//environments//sessions/` if environment is specified.
         # Corresponds to the JSON property `session`
         # @return [String]
         attr_accessor :session
