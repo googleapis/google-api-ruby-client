@@ -233,6 +233,7 @@ module Google
           property :available_memory_mb, as: 'availableMemoryMb'
           hash :build_environment_variables, as: 'buildEnvironmentVariables'
           property :build_id, as: 'buildId'
+          property :build_worker_pool, as: 'buildWorkerPool'
           property :description, as: 'description'
           property :entry_point, as: 'entryPoint'
           hash :environment_variables, as: 'environmentVariables'

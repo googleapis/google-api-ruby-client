@@ -237,6 +237,18 @@ module Google
         # @return [String]
         attr_accessor :build_id
       
+        # Name of the Cloud Build Custom Worker Pool that should be used to build the
+        # function. The format of this field is `projects/`project`/locations/`region`/
+        # workerPools/`workerPool`` where `project` and `region` are the project id and
+        # region respectively where the worker pool is defined and `workerPool` is the
+        # short name of the worker pool. If the project id is not the same as the
+        # function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.
+        # gserviceaccount.com) must be granted the role Cloud Build Custom Workers
+        # Builder (roles/cloudbuild.customworkers.builder) in the project.
+        # Corresponds to the JSON property `buildWorkerPool`
+        # @return [String]
+        attr_accessor :build_worker_pool
+      
         # User-provided description of a function.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -387,6 +399,7 @@ module Google
           @available_memory_mb = args[:available_memory_mb] if args.key?(:available_memory_mb)
           @build_environment_variables = args[:build_environment_variables] if args.key?(:build_environment_variables)
           @build_id = args[:build_id] if args.key?(:build_id)
+          @build_worker_pool = args[:build_worker_pool] if args.key?(:build_worker_pool)
           @description = args[:description] if args.key?(:description)
           @entry_point = args[:entry_point] if args.key?(:entry_point)
           @environment_variables = args[:environment_variables] if args.key?(:environment_variables)
