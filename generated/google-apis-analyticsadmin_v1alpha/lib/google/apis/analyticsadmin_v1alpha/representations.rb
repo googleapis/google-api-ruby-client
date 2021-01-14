@@ -415,6 +415,7 @@ module Google
       class GoogleAnalyticsAdminV1alphaGlobalSiteTag
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
           property :snippet, as: 'snippet'
         end
       end
