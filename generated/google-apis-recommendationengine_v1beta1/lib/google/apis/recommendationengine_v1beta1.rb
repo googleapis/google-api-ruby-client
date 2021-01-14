@@ -19,15 +19,18 @@ require 'google/apis/recommendationengine_v1beta1/gem_version.rb'
 
 module Google
   module Apis
-    # Recommendations AI
+    # Recommendations AI (Beta)
     #
-    # Recommendations AI service enables customers to build end-to-end personalized
-    # recommendation systems without requiring a high level of expertise in machine
-    # learning, recommendation system, or Google Cloud.
+    # Note that we now highly recommend new customers to use Retail API that
+    # incorporates the GA version of the Recommendations AI funtionalities. To
+    # enable Retail API, please visit https://console.cloud.google.com/apis/library/
+    # retail.googleapis.com. This is Recommendations AI service enables customers to
+    # build end-to-end personalized recommendation systems without requiring a high
+    # level of expertise in machine learning, recommendation system, or Google Cloud.
     #
     # @see https://cloud.google.com/recommendations-ai/docs
     module RecommendationengineV1beta1
-      # Version of the Recommendations AI this client connects to.
+      # Version of the Recommendations AI (Beta) this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1beta1'
 
