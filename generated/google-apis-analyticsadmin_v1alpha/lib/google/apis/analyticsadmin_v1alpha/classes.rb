@@ -662,6 +662,12 @@ module Google
       class GoogleAnalyticsAdminV1alphaGlobalSiteTag
         include Google::Apis::Core::Hashable
       
+        # Output only. Resource name for this GlobalSiteTag resource. Format: properties/
+        # `propertyId`/globalSiteTag
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # Immutable. JavaScript code snippet to be pasted as the first item into the
         # head tag of every webpage to measure.
         # Corresponds to the JSON property `snippet`
@@ -674,6 +680,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @name = args[:name] if args.key?(:name)
           @snippet = args[:snippet] if args.key?(:snippet)
         end
       end
