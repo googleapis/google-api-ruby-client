@@ -61,6 +61,27 @@ module Google
         end
       end
       
+      # Request message for TablesService.BatchDeleteRows
+      class BatchDeleteRowsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The names of the rows to delete. All rows must belong to the parent
+        # table or else the entire batch will fail. A maximum of 500 rows can be deleted
+        # in a batch. Format: tables/`table`/rows/`row`
+        # Corresponds to the JSON property `names`
+        # @return [Array<String>]
+        attr_accessor :names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @names = args[:names] if args.key?(:names)
+        end
+      end
+      
       # Request message for TablesService.BatchUpdateRows.
       class BatchUpdateRowsRequest
         include Google::Apis::Core::Hashable

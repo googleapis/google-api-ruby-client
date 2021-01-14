@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchDeleteRowsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchUpdateRowsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,6 +143,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :rows, as: 'rows', class: Google::Apis::Area120tablesV1alpha1::Row, decorator: Google::Apis::Area120tablesV1alpha1::Row::Representation
       
+        end
+      end
+      
+      class BatchDeleteRowsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :names, as: 'names'
         end
       end
       
