@@ -1,6 +1,6 @@
-# Simple REST client for version V1beta1 of the Recommendations AI
+# Simple REST client for version V1beta1 of the Recommendations AI (Beta)
 
-This is a simple client library for version V1beta1 of the Recommendations AI. It provides:
+This is a simple client library for version V1beta1 of the Recommendations AI (Beta). It provides:
 
 * A client object that connects to the HTTP/JSON REST endpoint for the service.
 * Ruby objects for data structures related to the service.
@@ -65,7 +65,7 @@ More detailed descriptions of the Google simple REST clients are available in tw
 
 (Note: the above documents are written for the simple REST clients in general, and their examples may not reflect the Recommendationengine service in particular.)
 
-For reference information on specific calls in the Recommendations AI, see the {Google::Apis::RecommendationengineV1beta1::RecommendationsAIService class reference docs}.
+For reference information on specific calls in the Recommendations AI (Beta), see the {Google::Apis::RecommendationengineV1beta1::RecommendationsAIService class reference docs}.
 
 ## Which client should I use?
 
