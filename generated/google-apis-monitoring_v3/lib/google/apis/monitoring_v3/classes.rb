@@ -1592,6 +1592,44 @@ module Google
         end
       end
       
+      # Canonical service scoped to an Istio mesh. Anthos clusters running ASM >= 1.6.
+      # 8 will have their services ingested as this type.
+      class IstioCanonicalService
+        include Google::Apis::Core::Hashable
+      
+        # The name of the canonical service underlying this service. Corresponds to the
+        # destination_canonical_service_name metric label in label in Istio metrics (
+        # https://cloud.google.com/monitoring/api/metrics_istio).
+        # Corresponds to the JSON property `canonicalService`
+        # @return [String]
+        attr_accessor :canonical_service
+      
+        # The namespace of the canonical service underlying this service. Corresponds to
+        # the destination_canonical_service_namespace metric label in Istio metrics (
+        # https://cloud.google.com/monitoring/api/metrics_istio).
+        # Corresponds to the JSON property `canonicalServiceNamespace`
+        # @return [String]
+        attr_accessor :canonical_service_namespace
+      
+        # Identifier for the Istio mesh in which this canonical service is defined.
+        # Corresponds to the mesh_uid metric label in Istio metrics (https://cloud.
+        # google.com/monitoring/api/metrics_istio).
+        # Corresponds to the JSON property `meshUid`
+        # @return [String]
+        attr_accessor :mesh_uid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @canonical_service = args[:canonical_service] if args.key?(:canonical_service)
+          @canonical_service_namespace = args[:canonical_service_namespace] if args.key?(:canonical_service_namespace)
+          @mesh_uid = args[:mesh_uid] if args.key?(:mesh_uid)
+        end
+      end
+      
       # A description of a label.
       class LabelDescriptor
         include Google::Apis::Core::Hashable
@@ -3254,6 +3292,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Canonical service scoped to an Istio mesh. Anthos clusters running ASM >= 1.6.
+        # 8 will have their services ingested as this type.
+        # Corresponds to the JSON property `istioCanonicalService`
+        # @return [Google::Apis::MonitoringV3::IstioCanonicalService]
+        attr_accessor :istio_canonical_service
+      
         # Istio service scoped to an Istio mesh. Anthos clusters running ASM < 1.6.8
         # will have their services ingested as this type.
         # Corresponds to the JSON property `meshIstio`
@@ -3282,6 +3326,7 @@ module Google
           @cluster_istio = args[:cluster_istio] if args.key?(:cluster_istio)
           @custom = args[:custom] if args.key?(:custom)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @istio_canonical_service = args[:istio_canonical_service] if args.key?(:istio_canonical_service)
           @mesh_istio = args[:mesh_istio] if args.key?(:mesh_istio)
           @name = args[:name] if args.key?(:name)
           @telemetry = args[:telemetry] if args.key?(:telemetry)
