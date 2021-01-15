@@ -74,6 +74,11 @@ module Google
         # @return [String]
         attr_accessor :message
       
+        # The region name for REGION_UNREACHABLE warning.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         def initialize(**args)
            update!(**args)
         end
@@ -82,6 +87,7 @@ module Google
         def update!(**args)
           @code = args[:code] if args.key?(:code)
           @message = args[:message] if args.key?(:message)
+          @region = args[:region] if args.key?(:region)
         end
       end
       
@@ -709,12 +715,12 @@ module Google
       
         # The current serving state of the Cloud SQL instance. This can be one of the
         # following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is
-        # unknown. *RUNNABLE*: The instance has been stopped by owner. It is not
-        # currently running, but it's ready to be restarted. *SUSPENDED*: The instance
-        # is not available, for example due to problems with billing. for example due to
-        # problems with billing. *PENDING_DELETE*: The instance is being deleted. *
-        # PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is
-        # down for maintenance. *FAILED*: The instance creation failed.
+        # unknown. *RUNNABLE*: The instance is running, or has been stopped by owner. *
+        # SUSPENDED*: The instance is not available, for example due to problems with
+        # billing. for example due to problems with billing. *PENDING_DELETE*: The
+        # instance is being deleted. *PENDING_CREATE*: The instance is being created. *
+        # MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance
+        # creation failed.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state

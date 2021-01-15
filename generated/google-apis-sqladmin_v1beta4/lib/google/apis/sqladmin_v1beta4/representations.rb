@@ -487,6 +487,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           property :message, as: 'message'
+          property :region, as: 'region'
         end
       end
       
