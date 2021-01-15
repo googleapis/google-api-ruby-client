@@ -121,7 +121,10 @@ module Google
         # @return [String]
         attr_accessor :subject_token
       
-        # Required. `urn:ietf:params:oauth:token-type:access_token`.
+        # Required. An identifier that indicates the type of the security token in the `
+        # subject_token` parameter. Supported values are `urn:ietf:params:oauth:token-
+        # type:jwt`, `urn:ietf:params:aws:token-type:aws4_request`, and `urn:ietf:params:
+        # oauth:token-type:access_token`.
         # Corresponds to the JSON property `subjectTokenType`
         # @return [String]
         attr_accessor :subject_token_type
@@ -154,10 +157,10 @@ module Google
         # @return [String]
         attr_accessor :access_token
       
-        # The amount of time, in seconds, between the time when the `access_token` was
-        # issued and the time when the `access_token` will expire. This field is absent
+        # The amount of time, in seconds, between the time when the access token was
+        # issued and the time when the access token will expire. This field is absent
         # when the `subject_token` in the request is a Google-issued, short-lived access
-        # token. In this case, the `access_token` has the same expiration time as the `
+        # token. In this case, the access token has the same expiration time as the `
         # subject_token`.
         # Corresponds to the JSON property `expires_in`
         # @return [Fixnum]
@@ -169,7 +172,7 @@ module Google
         # @return [String]
         attr_accessor :issued_token_type
       
-        # The type of `access_token`. Always has the value `Bearer`.
+        # The type of access token. Always has the value `Bearer`.
         # Corresponds to the JSON property `token_type`
         # @return [String]
         attr_accessor :token_type
