@@ -410,10 +410,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :expire_time, as: 'expireTime'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :replication, as: 'replication', class: Google::Apis::SecretmanagerV1::Replication, decorator: Google::Apis::SecretmanagerV1::Replication::Representation
       
+          property :ttl, as: 'ttl'
         end
       end
       
