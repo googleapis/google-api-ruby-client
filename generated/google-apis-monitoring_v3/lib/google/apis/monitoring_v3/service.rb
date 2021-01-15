@@ -53,6 +53,334 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Lists time series that match a filter. This method does not require a
+        # Workspace.
+        # @param [String] name
+        #   Required. The project, organization or folder on which to execute the request.
+        #   The format is: projects/[PROJECT_ID_OR_NUMBER] organizations/[ORGANIZATION_ID]
+        #   folders/[FOLDER_ID]
+        # @param [String] aggregation_alignment_period
+        #   The alignment_period specifies a time interval, in seconds, that is used to
+        #   divide the data in all the time series into consistent blocks of time. This
+        #   will be done before the per-series aligner can be applied to the data.The
+        #   value must be at least 60 seconds. If a per-series aligner other than
+        #   ALIGN_NONE is specified, this field is required or an error is returned. If no
+        #   per-series aligner is specified, or the aligner ALIGN_NONE is specified, then
+        #   this field is ignored.The maximum value of the alignment_period is 104 weeks (
+        #   2 years) for charts, and 90,000 seconds (25 hours) for alerting policies.
+        # @param [String] aggregation_cross_series_reducer
+        #   The reduction operation to be used to combine time series into a single time
+        #   series, where the value of each data point in the resulting series is a
+        #   function of all the already aligned values in the input time series.Not all
+        #   reducer operations can be applied to all time series. The valid choices depend
+        #   on the metric_kind and the value_type of the original time series. Reduction
+        #   can yield a time series with a different metric_kind or value_type than the
+        #   input time series.Time series data must first be aligned (see
+        #   per_series_aligner) in order to perform cross-time series reduction. If
+        #   cross_series_reducer is specified, then per_series_aligner must be specified,
+        #   and must not be ALIGN_NONE. An alignment_period must also be specified;
+        #   otherwise, an error is returned.
+        # @param [Array<String>, String] aggregation_group_by_fields
+        #   The set of fields to preserve when cross_series_reducer is specified. The
+        #   group_by_fields determine how the time series are partitioned into subsets
+        #   prior to applying the aggregation operation. Each subset contains time series
+        #   that have the same value for each of the grouping fields. Each individual time
+        #   series is a member of exactly one subset. The cross_series_reducer is applied
+        #   to each subset of time series. It is not possible to reduce across different
+        #   resource types, so this field implicitly contains resource.type. Fields not
+        #   specified in group_by_fields are aggregated away. If group_by_fields is not
+        #   specified and all the time series have the same resource type, then the time
+        #   series are aggregated into a single output time series. If
+        #   cross_series_reducer is not defined, this field is ignored.
+        # @param [String] aggregation_per_series_aligner
+        #   An Aligner describes how to bring the data points in a single time series into
+        #   temporal alignment. Except for ALIGN_NONE, all alignments cause all the data
+        #   points in an alignment_period to be mathematically grouped together, resulting
+        #   in a single data point for each alignment_period with end timestamp at the end
+        #   of the period.Not all alignment operations may be applied to all time series.
+        #   The valid choices depend on the metric_kind and value_type of the original
+        #   time series. Alignment can change the metric_kind or the value_type of the
+        #   time series.Time series data must be aligned in order to perform cross-time
+        #   series reduction. If cross_series_reducer is specified, then
+        #   per_series_aligner must be specified and not equal to ALIGN_NONE and
+        #   alignment_period must be specified; otherwise, an error is returned.
+        # @param [String] filter
+        #   Required. A monitoring filter (https://cloud.google.com/monitoring/api/v3/
+        #   filters) that specifies which time series should be returned. The filter must
+        #   specify a single metric type, and can additionally specify metric labels and
+        #   other information. For example: metric.type = "compute.googleapis.com/instance/
+        #   cpu/usage_time" AND metric.labels.instance_name = "my-instance-name"
+        # @param [String] interval_end_time
+        #   Required. The end of the time interval.
+        # @param [String] interval_start_time
+        #   Optional. The beginning of the time interval. The default value for the start
+        #   time is the end time. The start time must not be later than the end time.
+        # @param [String] order_by
+        #   Unsupported: must be left blank. The points in each time series are currently
+        #   returned in reverse time order (most recent to oldest).
+        # @param [Fixnum] page_size
+        #   A positive number that is the maximum number of results to return. If
+        #   page_size is empty or more than 100,000 results, the effective page_size is
+        #   100,000 results. If view is set to FULL, this is the maximum number of Points
+        #   returned. If view is set to HEADERS, this is the maximum number of TimeSeries
+        #   returned.
+        # @param [String] page_token
+        #   If this field is not empty then it must contain the nextPageToken value
+        #   returned by a previous call to this method. Using this field causes the method
+        #   to return additional results from the previous method call.
+        # @param [String] secondary_aggregation_alignment_period
+        #   The alignment_period specifies a time interval, in seconds, that is used to
+        #   divide the data in all the time series into consistent blocks of time. This
+        #   will be done before the per-series aligner can be applied to the data.The
+        #   value must be at least 60 seconds. If a per-series aligner other than
+        #   ALIGN_NONE is specified, this field is required or an error is returned. If no
+        #   per-series aligner is specified, or the aligner ALIGN_NONE is specified, then
+        #   this field is ignored.The maximum value of the alignment_period is 104 weeks (
+        #   2 years) for charts, and 90,000 seconds (25 hours) for alerting policies.
+        # @param [String] secondary_aggregation_cross_series_reducer
+        #   The reduction operation to be used to combine time series into a single time
+        #   series, where the value of each data point in the resulting series is a
+        #   function of all the already aligned values in the input time series.Not all
+        #   reducer operations can be applied to all time series. The valid choices depend
+        #   on the metric_kind and the value_type of the original time series. Reduction
+        #   can yield a time series with a different metric_kind or value_type than the
+        #   input time series.Time series data must first be aligned (see
+        #   per_series_aligner) in order to perform cross-time series reduction. If
+        #   cross_series_reducer is specified, then per_series_aligner must be specified,
+        #   and must not be ALIGN_NONE. An alignment_period must also be specified;
+        #   otherwise, an error is returned.
+        # @param [Array<String>, String] secondary_aggregation_group_by_fields
+        #   The set of fields to preserve when cross_series_reducer is specified. The
+        #   group_by_fields determine how the time series are partitioned into subsets
+        #   prior to applying the aggregation operation. Each subset contains time series
+        #   that have the same value for each of the grouping fields. Each individual time
+        #   series is a member of exactly one subset. The cross_series_reducer is applied
+        #   to each subset of time series. It is not possible to reduce across different
+        #   resource types, so this field implicitly contains resource.type. Fields not
+        #   specified in group_by_fields are aggregated away. If group_by_fields is not
+        #   specified and all the time series have the same resource type, then the time
+        #   series are aggregated into a single output time series. If
+        #   cross_series_reducer is not defined, this field is ignored.
+        # @param [String] secondary_aggregation_per_series_aligner
+        #   An Aligner describes how to bring the data points in a single time series into
+        #   temporal alignment. Except for ALIGN_NONE, all alignments cause all the data
+        #   points in an alignment_period to be mathematically grouped together, resulting
+        #   in a single data point for each alignment_period with end timestamp at the end
+        #   of the period.Not all alignment operations may be applied to all time series.
+        #   The valid choices depend on the metric_kind and value_type of the original
+        #   time series. Alignment can change the metric_kind or the value_type of the
+        #   time series.Time series data must be aligned in order to perform cross-time
+        #   series reduction. If cross_series_reducer is specified, then
+        #   per_series_aligner must be specified and not equal to ALIGN_NONE and
+        #   alignment_period must be specified; otherwise, an error is returned.
+        # @param [String] view
+        #   Required. Specifies which information is returned about the time series.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::ListTimeSeriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::ListTimeSeriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_folder_time_series(name, aggregation_alignment_period: nil, aggregation_cross_series_reducer: nil, aggregation_group_by_fields: nil, aggregation_per_series_aligner: nil, filter: nil, interval_end_time: nil, interval_start_time: nil, order_by: nil, page_size: nil, page_token: nil, secondary_aggregation_alignment_period: nil, secondary_aggregation_cross_series_reducer: nil, secondary_aggregation_group_by_fields: nil, secondary_aggregation_per_series_aligner: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+name}/timeSeries', options)
+          command.response_representation = Google::Apis::MonitoringV3::ListTimeSeriesResponse::Representation
+          command.response_class = Google::Apis::MonitoringV3::ListTimeSeriesResponse
+          command.params['name'] = name unless name.nil?
+          command.query['aggregation.alignmentPeriod'] = aggregation_alignment_period unless aggregation_alignment_period.nil?
+          command.query['aggregation.crossSeriesReducer'] = aggregation_cross_series_reducer unless aggregation_cross_series_reducer.nil?
+          command.query['aggregation.groupByFields'] = aggregation_group_by_fields unless aggregation_group_by_fields.nil?
+          command.query['aggregation.perSeriesAligner'] = aggregation_per_series_aligner unless aggregation_per_series_aligner.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['interval.endTime'] = interval_end_time unless interval_end_time.nil?
+          command.query['interval.startTime'] = interval_start_time unless interval_start_time.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['secondaryAggregation.alignmentPeriod'] = secondary_aggregation_alignment_period unless secondary_aggregation_alignment_period.nil?
+          command.query['secondaryAggregation.crossSeriesReducer'] = secondary_aggregation_cross_series_reducer unless secondary_aggregation_cross_series_reducer.nil?
+          command.query['secondaryAggregation.groupByFields'] = secondary_aggregation_group_by_fields unless secondary_aggregation_group_by_fields.nil?
+          command.query['secondaryAggregation.perSeriesAligner'] = secondary_aggregation_per_series_aligner unless secondary_aggregation_per_series_aligner.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists time series that match a filter. This method does not require a
+        # Workspace.
+        # @param [String] name
+        #   Required. The project, organization or folder on which to execute the request.
+        #   The format is: projects/[PROJECT_ID_OR_NUMBER] organizations/[ORGANIZATION_ID]
+        #   folders/[FOLDER_ID]
+        # @param [String] aggregation_alignment_period
+        #   The alignment_period specifies a time interval, in seconds, that is used to
+        #   divide the data in all the time series into consistent blocks of time. This
+        #   will be done before the per-series aligner can be applied to the data.The
+        #   value must be at least 60 seconds. If a per-series aligner other than
+        #   ALIGN_NONE is specified, this field is required or an error is returned. If no
+        #   per-series aligner is specified, or the aligner ALIGN_NONE is specified, then
+        #   this field is ignored.The maximum value of the alignment_period is 104 weeks (
+        #   2 years) for charts, and 90,000 seconds (25 hours) for alerting policies.
+        # @param [String] aggregation_cross_series_reducer
+        #   The reduction operation to be used to combine time series into a single time
+        #   series, where the value of each data point in the resulting series is a
+        #   function of all the already aligned values in the input time series.Not all
+        #   reducer operations can be applied to all time series. The valid choices depend
+        #   on the metric_kind and the value_type of the original time series. Reduction
+        #   can yield a time series with a different metric_kind or value_type than the
+        #   input time series.Time series data must first be aligned (see
+        #   per_series_aligner) in order to perform cross-time series reduction. If
+        #   cross_series_reducer is specified, then per_series_aligner must be specified,
+        #   and must not be ALIGN_NONE. An alignment_period must also be specified;
+        #   otherwise, an error is returned.
+        # @param [Array<String>, String] aggregation_group_by_fields
+        #   The set of fields to preserve when cross_series_reducer is specified. The
+        #   group_by_fields determine how the time series are partitioned into subsets
+        #   prior to applying the aggregation operation. Each subset contains time series
+        #   that have the same value for each of the grouping fields. Each individual time
+        #   series is a member of exactly one subset. The cross_series_reducer is applied
+        #   to each subset of time series. It is not possible to reduce across different
+        #   resource types, so this field implicitly contains resource.type. Fields not
+        #   specified in group_by_fields are aggregated away. If group_by_fields is not
+        #   specified and all the time series have the same resource type, then the time
+        #   series are aggregated into a single output time series. If
+        #   cross_series_reducer is not defined, this field is ignored.
+        # @param [String] aggregation_per_series_aligner
+        #   An Aligner describes how to bring the data points in a single time series into
+        #   temporal alignment. Except for ALIGN_NONE, all alignments cause all the data
+        #   points in an alignment_period to be mathematically grouped together, resulting
+        #   in a single data point for each alignment_period with end timestamp at the end
+        #   of the period.Not all alignment operations may be applied to all time series.
+        #   The valid choices depend on the metric_kind and value_type of the original
+        #   time series. Alignment can change the metric_kind or the value_type of the
+        #   time series.Time series data must be aligned in order to perform cross-time
+        #   series reduction. If cross_series_reducer is specified, then
+        #   per_series_aligner must be specified and not equal to ALIGN_NONE and
+        #   alignment_period must be specified; otherwise, an error is returned.
+        # @param [String] filter
+        #   Required. A monitoring filter (https://cloud.google.com/monitoring/api/v3/
+        #   filters) that specifies which time series should be returned. The filter must
+        #   specify a single metric type, and can additionally specify metric labels and
+        #   other information. For example: metric.type = "compute.googleapis.com/instance/
+        #   cpu/usage_time" AND metric.labels.instance_name = "my-instance-name"
+        # @param [String] interval_end_time
+        #   Required. The end of the time interval.
+        # @param [String] interval_start_time
+        #   Optional. The beginning of the time interval. The default value for the start
+        #   time is the end time. The start time must not be later than the end time.
+        # @param [String] order_by
+        #   Unsupported: must be left blank. The points in each time series are currently
+        #   returned in reverse time order (most recent to oldest).
+        # @param [Fixnum] page_size
+        #   A positive number that is the maximum number of results to return. If
+        #   page_size is empty or more than 100,000 results, the effective page_size is
+        #   100,000 results. If view is set to FULL, this is the maximum number of Points
+        #   returned. If view is set to HEADERS, this is the maximum number of TimeSeries
+        #   returned.
+        # @param [String] page_token
+        #   If this field is not empty then it must contain the nextPageToken value
+        #   returned by a previous call to this method. Using this field causes the method
+        #   to return additional results from the previous method call.
+        # @param [String] secondary_aggregation_alignment_period
+        #   The alignment_period specifies a time interval, in seconds, that is used to
+        #   divide the data in all the time series into consistent blocks of time. This
+        #   will be done before the per-series aligner can be applied to the data.The
+        #   value must be at least 60 seconds. If a per-series aligner other than
+        #   ALIGN_NONE is specified, this field is required or an error is returned. If no
+        #   per-series aligner is specified, or the aligner ALIGN_NONE is specified, then
+        #   this field is ignored.The maximum value of the alignment_period is 104 weeks (
+        #   2 years) for charts, and 90,000 seconds (25 hours) for alerting policies.
+        # @param [String] secondary_aggregation_cross_series_reducer
+        #   The reduction operation to be used to combine time series into a single time
+        #   series, where the value of each data point in the resulting series is a
+        #   function of all the already aligned values in the input time series.Not all
+        #   reducer operations can be applied to all time series. The valid choices depend
+        #   on the metric_kind and the value_type of the original time series. Reduction
+        #   can yield a time series with a different metric_kind or value_type than the
+        #   input time series.Time series data must first be aligned (see
+        #   per_series_aligner) in order to perform cross-time series reduction. If
+        #   cross_series_reducer is specified, then per_series_aligner must be specified,
+        #   and must not be ALIGN_NONE. An alignment_period must also be specified;
+        #   otherwise, an error is returned.
+        # @param [Array<String>, String] secondary_aggregation_group_by_fields
+        #   The set of fields to preserve when cross_series_reducer is specified. The
+        #   group_by_fields determine how the time series are partitioned into subsets
+        #   prior to applying the aggregation operation. Each subset contains time series
+        #   that have the same value for each of the grouping fields. Each individual time
+        #   series is a member of exactly one subset. The cross_series_reducer is applied
+        #   to each subset of time series. It is not possible to reduce across different
+        #   resource types, so this field implicitly contains resource.type. Fields not
+        #   specified in group_by_fields are aggregated away. If group_by_fields is not
+        #   specified and all the time series have the same resource type, then the time
+        #   series are aggregated into a single output time series. If
+        #   cross_series_reducer is not defined, this field is ignored.
+        # @param [String] secondary_aggregation_per_series_aligner
+        #   An Aligner describes how to bring the data points in a single time series into
+        #   temporal alignment. Except for ALIGN_NONE, all alignments cause all the data
+        #   points in an alignment_period to be mathematically grouped together, resulting
+        #   in a single data point for each alignment_period with end timestamp at the end
+        #   of the period.Not all alignment operations may be applied to all time series.
+        #   The valid choices depend on the metric_kind and value_type of the original
+        #   time series. Alignment can change the metric_kind or the value_type of the
+        #   time series.Time series data must be aligned in order to perform cross-time
+        #   series reduction. If cross_series_reducer is specified, then
+        #   per_series_aligner must be specified and not equal to ALIGN_NONE and
+        #   alignment_period must be specified; otherwise, an error is returned.
+        # @param [String] view
+        #   Required. Specifies which information is returned about the time series.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::ListTimeSeriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::ListTimeSeriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_time_series(name, aggregation_alignment_period: nil, aggregation_cross_series_reducer: nil, aggregation_group_by_fields: nil, aggregation_per_series_aligner: nil, filter: nil, interval_end_time: nil, interval_start_time: nil, order_by: nil, page_size: nil, page_token: nil, secondary_aggregation_alignment_period: nil, secondary_aggregation_cross_series_reducer: nil, secondary_aggregation_group_by_fields: nil, secondary_aggregation_per_series_aligner: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+name}/timeSeries', options)
+          command.response_representation = Google::Apis::MonitoringV3::ListTimeSeriesResponse::Representation
+          command.response_class = Google::Apis::MonitoringV3::ListTimeSeriesResponse
+          command.params['name'] = name unless name.nil?
+          command.query['aggregation.alignmentPeriod'] = aggregation_alignment_period unless aggregation_alignment_period.nil?
+          command.query['aggregation.crossSeriesReducer'] = aggregation_cross_series_reducer unless aggregation_cross_series_reducer.nil?
+          command.query['aggregation.groupByFields'] = aggregation_group_by_fields unless aggregation_group_by_fields.nil?
+          command.query['aggregation.perSeriesAligner'] = aggregation_per_series_aligner unless aggregation_per_series_aligner.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['interval.endTime'] = interval_end_time unless interval_end_time.nil?
+          command.query['interval.startTime'] = interval_start_time unless interval_start_time.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['secondaryAggregation.alignmentPeriod'] = secondary_aggregation_alignment_period unless secondary_aggregation_alignment_period.nil?
+          command.query['secondaryAggregation.crossSeriesReducer'] = secondary_aggregation_cross_series_reducer unless secondary_aggregation_cross_series_reducer.nil?
+          command.query['secondaryAggregation.groupByFields'] = secondary_aggregation_group_by_fields unless secondary_aggregation_group_by_fields.nil?
+          command.query['secondaryAggregation.perSeriesAligner'] = secondary_aggregation_per_series_aligner unless secondary_aggregation_per_series_aligner.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new alerting policy.
         # @param [String] name
         #   Required. The project in which to create the alerting policy. The format is:
@@ -1222,8 +1550,9 @@ module Google
         # Lists time series that match a filter. This method does not require a
         # Workspace.
         # @param [String] name
-        #   Required. The project on which to execute the request. The format is: projects/
-        #   [PROJECT_ID_OR_NUMBER]
+        #   Required. The project, organization or folder on which to execute the request.
+        #   The format is: projects/[PROJECT_ID_OR_NUMBER] organizations/[ORGANIZATION_ID]
+        #   folders/[FOLDER_ID]
         # @param [String] aggregation_alignment_period
         #   The alignment_period specifies a time interval, in seconds, that is used to
         #   divide the data in all the time series into consistent blocks of time. This

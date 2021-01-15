@@ -238,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IstioCanonicalService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LabelDescriptor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -972,6 +978,15 @@ module Google
         end
       end
       
+      class IstioCanonicalService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :canonical_service, as: 'canonicalService'
+          property :canonical_service_namespace, as: 'canonicalServiceNamespace'
+          property :mesh_uid, as: 'meshUid'
+        end
+      end
+      
       class LabelDescriptor
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1383,6 +1398,8 @@ module Google
           property :custom, as: 'custom', class: Google::Apis::MonitoringV3::Custom, decorator: Google::Apis::MonitoringV3::Custom::Representation
       
           property :display_name, as: 'displayName'
+          property :istio_canonical_service, as: 'istioCanonicalService', class: Google::Apis::MonitoringV3::IstioCanonicalService, decorator: Google::Apis::MonitoringV3::IstioCanonicalService::Representation
+      
           property :mesh_istio, as: 'meshIstio', class: Google::Apis::MonitoringV3::MeshIstio, decorator: Google::Apis::MonitoringV3::MeshIstio::Representation
       
           property :name, as: 'name'
