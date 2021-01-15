@@ -37,9 +37,11 @@ module Google
       class GoogleIdentityStsV1ExchangeTokenRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :audience, as: 'audience'
           property :grant_type, as: 'grantType'
           property :options, as: 'options'
           property :requested_token_type, as: 'requestedTokenType'
+          property :scope, as: 'scope'
           property :subject_token, as: 'subjectToken'
           property :subject_token_type, as: 'subjectTokenType'
         end
