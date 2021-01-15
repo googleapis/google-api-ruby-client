@@ -23,7 +23,7 @@ module Google
     #
     # 
     #
-    # @see https://tables.area120.google.com
+    # @see https://support.google.com/area120-tables/answer/10011390
     module Area120tablesV1alpha1
       # Version of the Area120 Tables API this client connects to.
       # This is NOT the gem version.

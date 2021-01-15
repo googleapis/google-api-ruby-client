@@ -30,7 +30,7 @@ module Google
       #    Area120tables = Google::Apis::Area120tablesV1alpha1 # Alias the module
       #    service = Area120tables::Area120TablesService.new
       #
-      # @see https://tables.area120.google.com
+      # @see https://support.google.com/area120-tables/answer/10011390
       class Area120TablesService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
