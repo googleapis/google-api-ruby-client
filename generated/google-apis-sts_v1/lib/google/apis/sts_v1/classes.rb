@@ -26,6 +26,13 @@ module Google
       class GoogleIdentityStsV1ExchangeTokenRequest
         include Google::Apis::Core::Hashable
       
+        # The full resource name of the identity provider; for example: `//iam.
+        # googleapis.com/projects//workloadIdentityPools//providers/`. Required when
+        # exchanging an external credential for a Google access token.
+        # Corresponds to the JSON property `audience`
+        # @return [String]
+        attr_accessor :audience
+      
         # Required. The grant type. Must be `urn:ietf:params:oauth:grant-type:token-
         # exchange`, which indicates a token exchange.
         # Corresponds to the JSON property `grantType`
@@ -44,6 +51,13 @@ module Google
         # Corresponds to the JSON property `requestedTokenType`
         # @return [String]
         attr_accessor :requested_token_type
+      
+        # The OAuth 2.0 scopes to include on the resulting access token, formatted as a
+        # list of space-delimited, case-sensitive strings. Required when exchanging an
+        # external credential for a Google access token.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
       
         # Required. The input token. You can use a Google-issued OAuth 2.0 access token
         # with this field to obtain an access token with new security attributes applied,
@@ -66,9 +80,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @audience = args[:audience] if args.key?(:audience)
           @grant_type = args[:grant_type] if args.key?(:grant_type)
           @options = args[:options] if args.key?(:options)
           @requested_token_type = args[:requested_token_type] if args.key?(:requested_token_type)
+          @scope = args[:scope] if args.key?(:scope)
           @subject_token = args[:subject_token] if args.key?(:subject_token)
           @subject_token_type = args[:subject_token_type] if args.key?(:subject_token_type)
         end
@@ -84,10 +100,10 @@ module Google
         # @return [String]
         attr_accessor :access_token
       
-        # The amount of time, in seconds, between the time when the `access_token` was
-        # issued and the time when the `access_token` will expire. This field is absent
+        # The amount of time, in seconds, between the time when the access token was
+        # issued and the time when the access token will expire. This field is absent
         # when the `subject_token` in the request is a Google-issued, short-lived access
-        # token. In this case, the `access_token` has the same expiration time as the `
+        # token. In this case, the access token has the same expiration time as the `
         # subject_token`.
         # Corresponds to the JSON property `expires_in`
         # @return [Fixnum]
@@ -99,7 +115,7 @@ module Google
         # @return [String]
         attr_accessor :issued_token_type
       
-        # The type of `access_token`. Always has the value `Bearer`.
+        # The type of access token. Always has the value `Bearer`.
         # Corresponds to the JSON property `token_type`
         # @return [String]
         attr_accessor :token_type
