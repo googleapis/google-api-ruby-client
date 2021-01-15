@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DatabaseConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Date
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -124,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WebServerConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WebServerNetworkAccessControl
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -135,6 +147,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :value, as: 'value'
+        end
+      end
+      
+      class DatabaseConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :machine_type, as: 'machineType'
         end
       end
       
@@ -172,6 +191,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :airflow_uri, as: 'airflowUri'
           property :dag_gcs_prefix, as: 'dagGcsPrefix'
+          property :database_config, as: 'databaseConfig', class: Google::Apis::ComposerV1::DatabaseConfig, decorator: Google::Apis::ComposerV1::DatabaseConfig::Representation
+      
           property :gke_cluster, as: 'gkeCluster'
           property :node_config, as: 'nodeConfig', class: Google::Apis::ComposerV1::NodeConfig, decorator: Google::Apis::ComposerV1::NodeConfig::Representation
       
@@ -179,6 +200,8 @@ module Google
           property :private_environment_config, as: 'privateEnvironmentConfig', class: Google::Apis::ComposerV1::PrivateEnvironmentConfig, decorator: Google::Apis::ComposerV1::PrivateEnvironmentConfig::Representation
       
           property :software_config, as: 'softwareConfig', class: Google::Apis::ComposerV1::SoftwareConfig, decorator: Google::Apis::ComposerV1::SoftwareConfig::Representation
+      
+          property :web_server_config, as: 'webServerConfig', class: Google::Apis::ComposerV1::WebServerConfig, decorator: Google::Apis::ComposerV1::WebServerConfig::Representation
       
           property :web_server_network_access_control, as: 'webServerNetworkAccessControl', class: Google::Apis::ComposerV1::WebServerNetworkAccessControl, decorator: Google::Apis::ComposerV1::WebServerNetworkAccessControl::Representation
       
@@ -314,6 +337,13 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class WebServerConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :machine_type, as: 'machineType'
         end
       end
       

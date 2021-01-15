@@ -51,6 +51,28 @@ module Google
         end
       end
       
+      # The configuration of Cloud SQL instance that is used by the Apache Airflow
+      # software.
+      class DatabaseConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Cloud SQL machine type used by Airflow database. It has to be one of:
+        # db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If
+        # not specified, db-n1-standard-2 will be used.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+        end
+      end
+      
       # Represents a whole or partial calendar date, such as a birthday. The time of
       # day and time zone are either specified elsewhere or are insignificant. The
       # date is relative to the Gregorian Calendar. This can represent one of the
@@ -191,6 +213,12 @@ module Google
         # @return [String]
         attr_accessor :dag_gcs_prefix
       
+        # The configuration of Cloud SQL instance that is used by the Apache Airflow
+        # software.
+        # Corresponds to the JSON property `databaseConfig`
+        # @return [Google::Apis::ComposerV1::DatabaseConfig]
+        attr_accessor :database_config
+      
         # Output only. The Kubernetes Engine cluster used to run this environment.
         # Corresponds to the JSON property `gkeCluster`
         # @return [String]
@@ -219,6 +247,11 @@ module Google
         # @return [Google::Apis::ComposerV1::SoftwareConfig]
         attr_accessor :software_config
       
+        # The configuration settings for the Airflow web server App Engine instance.
+        # Corresponds to the JSON property `webServerConfig`
+        # @return [Google::Apis::ComposerV1::WebServerConfig]
+        attr_accessor :web_server_config
+      
         # Network-level access control policy for the Airflow web server.
         # Corresponds to the JSON property `webServerNetworkAccessControl`
         # @return [Google::Apis::ComposerV1::WebServerNetworkAccessControl]
@@ -232,11 +265,13 @@ module Google
         def update!(**args)
           @airflow_uri = args[:airflow_uri] if args.key?(:airflow_uri)
           @dag_gcs_prefix = args[:dag_gcs_prefix] if args.key?(:dag_gcs_prefix)
+          @database_config = args[:database_config] if args.key?(:database_config)
           @gke_cluster = args[:gke_cluster] if args.key?(:gke_cluster)
           @node_config = args[:node_config] if args.key?(:node_config)
           @node_count = args[:node_count] if args.key?(:node_count)
           @private_environment_config = args[:private_environment_config] if args.key?(:private_environment_config)
           @software_config = args[:software_config] if args.key?(:software_config)
+          @web_server_config = args[:web_server_config] if args.key?(:web_server_config)
           @web_server_network_access_control = args[:web_server_network_access_control] if args.key?(:web_server_network_access_control)
         end
       end
@@ -869,6 +904,29 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # The configuration settings for the Airflow web server App Engine instance.
+      class WebServerConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Machine type on which Airflow web server is running. It has to be
+        # one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-
+        # webserver-8. If not specified, composer-n1-webserver-2 will be used. Value
+        # custom is returned only in response, if Airflow web server parameters were
+        # manually changed to a non-standard values.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
         end
       end
       
