@@ -751,6 +751,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. Timestamp in UTC when the Secret is scheduled to expire. This is
+        # always provided on output, regardless of what was sent on input.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
         # The labels assigned to this Secret. Label keys must be between 1 and 63
         # characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform
         # to the following PCRE regular expression: `\p`Ll`\p`Lo``0,62`` Label values
@@ -772,6 +778,11 @@ module Google
         # @return [Google::Apis::SecretmanagerV1::Replication]
         attr_accessor :replication
       
+        # Input only. The TTL for the Secret.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
         def initialize(**args)
            update!(**args)
         end
@@ -779,9 +790,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @replication = args[:replication] if args.key?(:replication)
+          @ttl = args[:ttl] if args.key?(:ttl)
         end
       end
       
