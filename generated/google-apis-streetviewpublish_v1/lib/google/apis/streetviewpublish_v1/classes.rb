@@ -620,8 +620,8 @@ module Google
       class UploadRef
         include Google::Apis::Core::Hashable
       
-        # Required. An upload reference should be unique for each user. It follows the
-        # form: "https://streetviewpublish.googleapis.com/media/user/`account_id`/photo/`
+        # An upload reference should be unique for each user. It follows the form: "
+        # https://streetviewpublish.googleapis.com/media/user/`account_id`/photo/`
         # upload_reference`"
         # Corresponds to the JSON property `uploadUrl`
         # @return [String]
