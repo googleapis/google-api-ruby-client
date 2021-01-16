@@ -1526,6 +1526,12 @@ module Google
         attr_accessor :enable_streaming_engine
         alias_method :enable_streaming_engine?, :enable_streaming_engine
       
+        # Set FlexRS goal for the job. https://cloud.google.com/dataflow/docs/guides/
+        # flexrs
+        # Corresponds to the JSON property `flexrsGoal`
+        # @return [String]
+        attr_accessor :flexrs_goal
+      
         # Configuration for VM IPs.
         # Corresponds to the JSON property `ipConfiguration`
         # @return [String]
@@ -1615,6 +1621,7 @@ module Google
           @additional_experiments = args[:additional_experiments] if args.key?(:additional_experiments)
           @additional_user_labels = args[:additional_user_labels] if args.key?(:additional_user_labels)
           @enable_streaming_engine = args[:enable_streaming_engine] if args.key?(:enable_streaming_engine)
+          @flexrs_goal = args[:flexrs_goal] if args.key?(:flexrs_goal)
           @ip_configuration = args[:ip_configuration] if args.key?(:ip_configuration)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
@@ -1988,7 +1995,7 @@ module Google
         end
       end
       
-      # Defines a job to be run by the Cloud Dataflow service.
+      # Defines a job to be run by the Cloud Dataflow service. nextID: 26
       class Job
         include Google::Apis::Core::Hashable
       
@@ -2110,6 +2117,13 @@ module Google
         # @return [String]
         attr_accessor :requested_state
       
+        # Reserved for future use. This field is set only in responses from the server;
+        # it is ignored if it is set in any requests.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # This field may be mutated by the Cloud Dataflow service; callers cannot mutate
         # it.
         # Corresponds to the JSON property `stageStates`
@@ -2179,6 +2193,7 @@ module Google
           @replace_job_id = args[:replace_job_id] if args.key?(:replace_job_id)
           @replaced_by_job_id = args[:replaced_by_job_id] if args.key?(:replaced_by_job_id)
           @requested_state = args[:requested_state] if args.key?(:requested_state)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @stage_states = args[:stage_states] if args.key?(:stage_states)
           @start_time = args[:start_time] if args.key?(:start_time)
           @steps = args[:steps] if args.key?(:steps)
@@ -2498,8 +2513,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :parameters
       
-        # Users need to set transform_name_mappings Ex:`"oldTransformName":"
-        # newTransformName",...`'
+        # Use this to pass transform_name_mappings for streaming update jobs. Ex:`"
+        # oldTransformName":"newTransformName",...`'
         # Corresponds to the JSON property `transformNameMappings`
         # @return [Hash<String,String>]
         attr_accessor :transform_name_mappings
@@ -2558,7 +2573,7 @@ module Google
       class LaunchFlexTemplateResponse
         include Google::Apis::Core::Hashable
       
-        # Defines a job to be run by the Cloud Dataflow service.
+        # Defines a job to be run by the Cloud Dataflow service. nextID: 26
         # Corresponds to the JSON property `job`
         # @return [Google::Apis::DataflowV1b3::Job]
         attr_accessor :job
@@ -2623,7 +2638,7 @@ module Google
       class LaunchTemplateResponse
         include Google::Apis::Core::Hashable
       
-        # Defines a job to be run by the Cloud Dataflow service.
+        # Defines a job to be run by the Cloud Dataflow service. nextID: 26
         # Corresponds to the JSON property `job`
         # @return [Google::Apis::DataflowV1b3::Job]
         attr_accessor :job
