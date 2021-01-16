@@ -24,7 +24,7 @@ module Google
     # Schedule queries or transfer external data from SaaS applications to Google
     # BigQuery on a regular basis.
     #
-    # @see https://cloud.google.com/bigquery/
+    # @see https://cloud.google.com/bigquery-transfer/
     module BigquerydatatransferV1
       # Version of the BigQuery Data Transfer API this client connects to.
       # This is NOT the gem version.
