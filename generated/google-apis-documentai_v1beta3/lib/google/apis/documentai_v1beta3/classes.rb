@@ -532,13 +532,10 @@ module Google
       class GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus
         include Google::Apis::Core::Hashable
       
-        # The name of the operation triggered by the processed document. If the human
-        # review process is not triggered, this field will be empty. It has the same
-        # response type and metadata as the long running operation returned by
-        # ReviewDocument method.
-        # Corresponds to the JSON property `humanReviewOperation`
-        # @return [String]
-        attr_accessor :human_review_operation
+        # The status of human review on a processed document.
+        # Corresponds to the JSON property `humanReviewStatus`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1HumanReviewStatus]
+        attr_accessor :human_review_status
       
         # The source of the document, same as the [input_gcs_source] field in the
         # request when the batch process started. The batch process is started by take
@@ -570,7 +567,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @human_review_operation = args[:human_review_operation] if args.key?(:human_review_operation)
+          @human_review_status = args[:human_review_status] if args.key?(:human_review_status)
           @input_gcs_source = args[:input_gcs_source] if args.key?(:input_gcs_source)
           @output_gcs_destination = args[:output_gcs_destination] if args.key?(:output_gcs_destination)
           @status = args[:status] if args.key?(:status)
@@ -624,6 +621,39 @@ module Google
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The status of human review on a processed document.
+      class GoogleCloudDocumentaiV1HumanReviewStatus
+        include Google::Apis::Core::Hashable
+      
+        # The name of the operation triggered by the processed document. Non-empty only
+        # when the [state] is [HUMAN_REVIEW_IN_PROGRESS]. It has the same response type
+        # and metadata as the long running operation returned by [ReviewDocument] method.
+        # Corresponds to the JSON property `humanReviewOperation`
+        # @return [String]
+        attr_accessor :human_review_operation
+      
+        # The state of human review on the processing request.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # A message providing more details about the human review state.
+        # Corresponds to the JSON property `stateMessage`
+        # @return [String]
+        attr_accessor :state_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @human_review_operation = args[:human_review_operation] if args.key?(:human_review_operation)
+          @state = args[:state] if args.key?(:state)
+          @state_message = args[:state_message] if args.key?(:state_message)
         end
       end
       
@@ -4149,10 +4179,15 @@ module Google
         # The name of the operation triggered by the processed document. If the human
         # review process is not triggered, this field will be empty. It has the same
         # response type and metadata as the long running operation returned by
-        # ReviewDocument method.
+        # ReviewDocument method. .
         # Corresponds to the JSON property `humanReviewOperation`
         # @return [String]
         attr_accessor :human_review_operation
+      
+        # The status of human review on a processed document.
+        # Corresponds to the JSON property `humanReviewStatus`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3HumanReviewStatus]
+        attr_accessor :human_review_status
       
         # The source of the document, same as the [input_gcs_source] field in the
         # request when the batch process started. The batch process is started by take
@@ -4185,6 +4220,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @human_review_operation = args[:human_review_operation] if args.key?(:human_review_operation)
+          @human_review_status = args[:human_review_status] if args.key?(:human_review_status)
           @input_gcs_source = args[:input_gcs_source] if args.key?(:input_gcs_source)
           @output_gcs_destination = args[:output_gcs_destination] if args.key?(:output_gcs_destination)
           @status = args[:status] if args.key?(:status)
@@ -4205,6 +4241,13 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchOutputConfig]
         attr_accessor :output_config
       
+        # Whether Human Review feature should be skipped for this request. Default to
+        # false.
+        # Corresponds to the JSON property `skipHumanReview`
+        # @return [Boolean]
+        attr_accessor :skip_human_review
+        alias_method :skip_human_review?, :skip_human_review
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4213,6 +4256,7 @@ module Google
         def update!(**args)
           @input_configs = args[:input_configs] if args.key?(:input_configs)
           @output_config = args[:output_config] if args.key?(:output_config)
+          @skip_human_review = args[:skip_human_review] if args.key?(:skip_human_review)
         end
       end
       
@@ -5769,6 +5813,39 @@ module Google
         end
       end
       
+      # The status of human review on a processed document.
+      class GoogleCloudDocumentaiV1beta3HumanReviewStatus
+        include Google::Apis::Core::Hashable
+      
+        # The name of the operation triggered by the processed document. Non-empty only
+        # when the [state] is [HUMAN_REVIEW_IN_PROGRESS]. It has the same response type
+        # and metadata as the long running operation returned by [ReviewDocument] method.
+        # Corresponds to the JSON property `humanReviewOperation`
+        # @return [String]
+        attr_accessor :human_review_operation
+      
+        # The state of human review on the processing request.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # A message providing more details about the human review state.
+        # Corresponds to the JSON property `stateMessage`
+        # @return [String]
+        attr_accessor :state_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @human_review_operation = args[:human_review_operation] if args.key?(:human_review_operation)
+          @state = args[:state] if args.key?(:state)
+          @state_message = args[:state_message] if args.key?(:state_message)
+        end
+      end
+      
       # A vertex represents a 2D point in the image. NOTE: the normalized vertex
       # coordinates are relative to the original image and range from 0 to 1.
       class GoogleCloudDocumentaiV1beta3NormalizedVertex
@@ -5840,10 +5917,15 @@ module Google
         # The name of the operation triggered by the processed document. If the human
         # review process is not triggered, this field will be empty. It has the same
         # response type and metadata as the long running operation returned by
-        # ReviewDocument method.
+        # ReviewDocument method. .
         # Corresponds to the JSON property `humanReviewOperation`
         # @return [String]
         attr_accessor :human_review_operation
+      
+        # The status of human review on a processed document.
+        # Corresponds to the JSON property `humanReviewStatus`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3HumanReviewStatus]
+        attr_accessor :human_review_status
       
         def initialize(**args)
            update!(**args)
@@ -5853,6 +5935,7 @@ module Google
         def update!(**args)
           @document = args[:document] if args.key?(:document)
           @human_review_operation = args[:human_review_operation] if args.key?(:human_review_operation)
+          @human_review_status = args[:human_review_status] if args.key?(:human_review_status)
         end
       end
       

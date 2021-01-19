@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1HumanReviewStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1ReviewDocumentOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -946,6 +952,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta3HumanReviewStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta3NormalizedVertex
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1234,7 +1246,8 @@ module Google
       class GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :human_review_operation, as: 'humanReviewOperation'
+          property :human_review_status, as: 'humanReviewStatus', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1HumanReviewStatus, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1HumanReviewStatus::Representation
+      
           property :input_gcs_source, as: 'inputGcsSource'
           property :output_gcs_destination, as: 'outputGcsDestination'
           property :status, as: 'status', class: Google::Apis::DocumentaiV1beta3::GoogleRpcStatus, decorator: Google::Apis::DocumentaiV1beta3::GoogleRpcStatus::Representation
@@ -1255,6 +1268,15 @@ module Google
           property :state, as: 'state'
           property :state_message, as: 'stateMessage'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1HumanReviewStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :human_review_operation, as: 'humanReviewOperation'
+          property :state, as: 'state'
+          property :state_message, as: 'stateMessage'
         end
       end
       
@@ -2281,6 +2303,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :human_review_operation, as: 'humanReviewOperation'
+          property :human_review_status, as: 'humanReviewStatus', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3HumanReviewStatus, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3HumanReviewStatus::Representation
+      
           property :input_gcs_source, as: 'inputGcsSource'
           property :output_gcs_destination, as: 'outputGcsDestination'
           property :status, as: 'status', class: Google::Apis::DocumentaiV1beta3::GoogleRpcStatus, decorator: Google::Apis::DocumentaiV1beta3::GoogleRpcStatus::Representation
@@ -2295,6 +2319,7 @@ module Google
       
           property :output_config, as: 'outputConfig', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchOutputConfig, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchOutputConfig::Representation
       
+          property :skip_human_review, as: 'skipHumanReview'
         end
       end
       
@@ -2743,6 +2768,15 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1beta3HumanReviewStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :human_review_operation, as: 'humanReviewOperation'
+          property :state, as: 'state'
+          property :state_message, as: 'stateMessage'
+        end
+      end
+      
       class GoogleCloudDocumentaiV1beta3NormalizedVertex
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2766,6 +2800,8 @@ module Google
           property :document, as: 'document', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Document, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Document::Representation
       
           property :human_review_operation, as: 'humanReviewOperation'
+          property :human_review_status, as: 'humanReviewStatus', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3HumanReviewStatus, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3HumanReviewStatus::Representation
+      
         end
       end
       
