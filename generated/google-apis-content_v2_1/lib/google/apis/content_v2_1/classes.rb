@@ -28,11 +28,11 @@ module Google
       class Account
         include Google::Apis::Core::Hashable
       
-        # List of linked Ads accounts that are active or pending approval. To create a
-        # new link request, add a new link with status `active` to the list. It will
-        # remain in a `pending` state until approved or rejected either in the Ads
-        # interface or through the AdWords API. To delete an active link, or to cancel a
-        # link request, remove it from the list.
+        # Linked Ads accounts that are active or pending approval. To create a new link
+        # request, add a new link with status `active` to the list. It will remain in a `
+        # pending` state until approved or rejected either in the Ads interface or
+        # through the AdWords API. To delete an active link, or to cancel a link request,
+        # remove it from the list.
         # Corresponds to the JSON property `adsLinks`
         # @return [Array<Google::Apis::ContentV2_1::AccountAdsLink>]
         attr_accessor :ads_links
@@ -43,8 +43,7 @@ module Google
         attr_accessor :adult_content
         alias_method :adult_content?, :adult_content
       
-        # List of automatically created label IDs that are assigned to the account by
-        # CSS Center.
+        # Automatically created label IDs that are assigned to the account by CSS Center.
         # Corresponds to the JSON property `automaticLabelIds`
         # @return [Array<Fixnum>]
         attr_accessor :automatic_label_ids
@@ -76,7 +75,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # List of manually created label IDs that are assigned to the account by CSS.
+        # Manually created label IDs that are assigned to the account by CSS.
         # Corresponds to the JSON property `labelIds`
         # @return [Array<Fixnum>]
         attr_accessor :label_ids
@@ -102,11 +101,11 @@ module Google
         # @return [String]
         attr_accessor :website_url
       
-        # List of linked YouTube channels that are active or pending approval. To create
-        # a new link request, add a new link with status `active` to the list. It will
-        # remain in a `pending` state until approved or rejected in the YT Creator
-        # Studio interface. To delete an active link, or to cancel a link request,
-        # remove it from the list.
+        # Linked YouTube channels that are active or pending approval. To create a new
+        # link request, add a new link with status `active` to the list. It will remain
+        # in a `pending` state until approved or rejected in the YT Creator Studio
+        # interface. To delete an active link, or to cancel a link request, remove it
+        # from the list.
         # Corresponds to the JSON property `youtubeChannelLinks`
         # @return [Array<Google::Apis::ContentV2_1::AccountYouTubeChannelLink>]
         attr_accessor :youtube_channel_links
