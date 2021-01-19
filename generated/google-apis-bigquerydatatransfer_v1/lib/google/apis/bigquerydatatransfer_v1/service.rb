@@ -31,7 +31,7 @@ module Google
       #    Bigquerydatatransfer = Google::Apis::BigquerydatatransferV1 # Alias the module
       #    service = Bigquerydatatransfer::BigQueryDataTransferService.new
       #
-      # @see https://cloud.google.com/bigquery/
+      # @see https://cloud.google.com/bigquery-transfer/
       class BigQueryDataTransferService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
