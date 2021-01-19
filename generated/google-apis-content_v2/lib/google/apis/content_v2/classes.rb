@@ -3729,7 +3729,7 @@ module Google
         # @return [Google::Apis::ContentV2::Errors]
         attr_accessor :errors
       
-        # The the list of accessible GMB accounts.
+        # The list of accessible GMB accounts.
         # Corresponds to the JSON property `gmbAccounts`
         # @return [Google::Apis::ContentV2::GmbAccounts]
         attr_accessor :gmb_accounts
@@ -8871,8 +8871,8 @@ module Google
         # @return [String]
         attr_accessor :color
       
-        # Condition or state of the item. Acceptable values are: - "`local`" - "`online`"
-        # 
+        # Condition or state of the item. Acceptable values are: - "`new`" - "`
+        # refurbished`" - "`used`"
         # Corresponds to the JSON property `condition`
         # @return [String]
         attr_accessor :condition
