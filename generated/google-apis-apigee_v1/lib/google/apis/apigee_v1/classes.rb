@@ -4521,8 +4521,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Primary Cloud Platform region for analytics data storage. For valid values,
-        # see [Create an organization](https://docs.apigee.com/hybrid/latest/precog-
-        # provision). Defaults to us-west1.
+        # see [Create an organization](https://cloud.google.com/apigee/docs/hybrid/
+        # latest/precog-provision). Defaults to `us-west1`.
         # Corresponds to the JSON property `analyticsRegion`
         # @return [String]
         attr_accessor :analytics_region
@@ -4534,7 +4534,7 @@ module Google
         # @return [String]
         attr_accessor :authorized_network
       
-        # Cloud Platform location for the runtime instance. Defaults to us-west1-a.
+        # Cloud Platform location for the runtime instance. Defaults to `us-west1-a`.
         # Corresponds to the JSON property `runtimeLocation`
         # @return [String]
         attr_accessor :runtime_location
