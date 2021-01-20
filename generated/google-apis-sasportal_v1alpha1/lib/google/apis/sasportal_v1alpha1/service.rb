@@ -149,6 +149,136 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new deployment.
+        # @param [String] parent
+        #   Required. The parent resource name where the deployment is to be created.
+        # @param [Google::Apis::SasportalV1alpha1::SasPortalDeployment] sas_portal_deployment_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SasportalV1alpha1::SasPortalDeployment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SasportalV1alpha1::SasPortalDeployment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_customer_deployment(parent, sas_portal_deployment_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha1/{+parent}/deployments', options)
+          command.request_representation = Google::Apis::SasportalV1alpha1::SasPortalDeployment::Representation
+          command.request_object = sas_portal_deployment_object
+          command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalDeployment::Representation
+          command.response_class = Google::Apis::SasportalV1alpha1::SasPortalDeployment
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a deployment.
+        # @param [String] name
+        #   Required. The name of the deployment.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SasportalV1alpha1::SasPortalEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SasportalV1alpha1::SasPortalEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_customer_deployment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha1/{+name}', options)
+          command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalEmpty::Representation
+          command.response_class = Google::Apis::SasportalV1alpha1::SasPortalEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a requested deployment.
+        # @param [String] name
+        #   Required. The name of the deployment.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SasportalV1alpha1::SasPortalDeployment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SasportalV1alpha1::SasPortalDeployment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_customer_deployment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha1/{+name}', options)
+          command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalDeployment::Representation
+          command.response_class = Google::Apis::SasportalV1alpha1::SasPortalDeployment
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists deployments.
+        # @param [String] parent
+        #   Required. The parent resource name, for example, "nodes/1", customer/1/nodes/2.
+        # @param [Fixnum] page_size
+        #   The maximum number of deployments to return in the response.
+        # @param [String] page_token
+        #   A pagination token returned from a previous call to ListDeployments method
+        #   that indicates where this listing should continue from.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SasportalV1alpha1::SasPortalListDeploymentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SasportalV1alpha1::SasPortalListDeploymentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_customer_deployments(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha1/{+parent}/deployments', options)
+          command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalListDeploymentsResponse::Representation
+          command.response_class = Google::Apis::SasportalV1alpha1::SasPortalListDeploymentsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Moves a deployment under another node or customer.
         # @param [String] name
         #   Required. The name of the deployment to move.
@@ -177,6 +307,42 @@ module Google
           command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalOperation::Representation
           command.response_class = Google::Apis::SasportalV1alpha1::SasPortalOperation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing deployment.
+        # @param [String] name
+        #   Output only. Resource name.
+        # @param [Google::Apis::SasportalV1alpha1::SasPortalDeployment] sas_portal_deployment_object
+        # @param [String] update_mask
+        #   Fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SasportalV1alpha1::SasPortalDeployment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SasportalV1alpha1::SasPortalDeployment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_customer_deployment(name, sas_portal_deployment_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha1/{+name}', options)
+          command.request_representation = Google::Apis::SasportalV1alpha1::SasPortalDeployment::Representation
+          command.request_object = sas_portal_deployment_object
+          command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalDeployment::Representation
+          command.response_class = Google::Apis::SasportalV1alpha1::SasPortalDeployment
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -286,39 +452,6 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Creates a device under a node or customer. Returned devices are unordered.
-        # @param [String] parent
-        #   Required. The name of the parent resource.
-        # @param [Google::Apis::SasportalV1alpha1::SasPortalBulkCreateDeviceRequest] sas_portal_bulk_create_device_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SasportalV1alpha1::SasPortalBulkCreateDeviceResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SasportalV1alpha1::SasPortalBulkCreateDeviceResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def bulk_customer_device(parent, sas_portal_bulk_create_device_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha1/{+parent}/devices:bulk', options)
-          command.request_representation = Google::Apis::SasportalV1alpha1::SasPortalBulkCreateDeviceRequest::Representation
-          command.request_object = sas_portal_bulk_create_device_request_object
-          command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalBulkCreateDeviceResponse::Representation
-          command.response_class = Google::Apis::SasportalV1alpha1::SasPortalBulkCreateDeviceResponse
-          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -827,6 +960,76 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new deployment.
+        # @param [String] parent
+        #   Required. The parent resource name where the deployment is to be created.
+        # @param [Google::Apis::SasportalV1alpha1::SasPortalDeployment] sas_portal_deployment_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SasportalV1alpha1::SasPortalDeployment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SasportalV1alpha1::SasPortalDeployment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_customer_node_deployment(parent, sas_portal_deployment_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha1/{+parent}/deployments', options)
+          command.request_representation = Google::Apis::SasportalV1alpha1::SasPortalDeployment::Representation
+          command.request_object = sas_portal_deployment_object
+          command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalDeployment::Representation
+          command.response_class = Google::Apis::SasportalV1alpha1::SasPortalDeployment
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists deployments.
+        # @param [String] parent
+        #   Required. The parent resource name, for example, "nodes/1", customer/1/nodes/2.
+        # @param [Fixnum] page_size
+        #   The maximum number of deployments to return in the response.
+        # @param [String] page_token
+        #   A pagination token returned from a previous call to ListDeployments method
+        #   that indicates where this listing should continue from.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SasportalV1alpha1::SasPortalListDeploymentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SasportalV1alpha1::SasPortalListDeploymentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_customer_node_deployments(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha1/{+parent}/deployments', options)
+          command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalListDeploymentsResponse::Representation
+          command.response_class = Google::Apis::SasportalV1alpha1::SasPortalListDeploymentsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a device under a node or customer.
         # @param [String] parent
         #   Required. The name of the parent resource.
@@ -1001,6 +1204,36 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a requested deployment.
+        # @param [String] name
+        #   Required. The name of the deployment.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SasportalV1alpha1::SasPortalDeployment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SasportalV1alpha1::SasPortalDeployment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_deployment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha1/{+name}', options)
+          command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalDeployment::Representation
+          command.response_class = Google::Apis::SasportalV1alpha1::SasPortalDeployment
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1291,6 +1524,103 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes a deployment.
+        # @param [String] name
+        #   Required. The name of the deployment.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SasportalV1alpha1::SasPortalEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SasportalV1alpha1::SasPortalEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_node_deployment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha1/{+name}', options)
+          command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalEmpty::Representation
+          command.response_class = Google::Apis::SasportalV1alpha1::SasPortalEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a requested deployment.
+        # @param [String] name
+        #   Required. The name of the deployment.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SasportalV1alpha1::SasPortalDeployment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SasportalV1alpha1::SasPortalDeployment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_node_deployment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha1/{+name}', options)
+          command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalDeployment::Representation
+          command.response_class = Google::Apis::SasportalV1alpha1::SasPortalDeployment
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists deployments.
+        # @param [String] parent
+        #   Required. The parent resource name, for example, "nodes/1", customer/1/nodes/2.
+        # @param [Fixnum] page_size
+        #   The maximum number of deployments to return in the response.
+        # @param [String] page_token
+        #   A pagination token returned from a previous call to ListDeployments method
+        #   that indicates where this listing should continue from.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SasportalV1alpha1::SasPortalListDeploymentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SasportalV1alpha1::SasPortalListDeploymentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_node_deployments(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha1/{+parent}/deployments', options)
+          command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalListDeploymentsResponse::Representation
+          command.response_class = Google::Apis::SasportalV1alpha1::SasPortalListDeploymentsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Moves a deployment under another node or customer.
         # @param [String] name
         #   Required. The name of the deployment to move.
@@ -1319,6 +1649,42 @@ module Google
           command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalOperation::Representation
           command.response_class = Google::Apis::SasportalV1alpha1::SasPortalOperation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing deployment.
+        # @param [String] name
+        #   Output only. Resource name.
+        # @param [Google::Apis::SasportalV1alpha1::SasPortalDeployment] sas_portal_deployment_object
+        # @param [String] update_mask
+        #   Fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SasportalV1alpha1::SasPortalDeployment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SasportalV1alpha1::SasPortalDeployment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_node_deployment(name, sas_portal_deployment_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha1/{+name}', options)
+          command.request_representation = Google::Apis::SasportalV1alpha1::SasPortalDeployment::Representation
+          command.request_object = sas_portal_deployment_object
+          command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalDeployment::Representation
+          command.response_class = Google::Apis::SasportalV1alpha1::SasPortalDeployment
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1428,39 +1794,6 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Creates a device under a node or customer. Returned devices are unordered.
-        # @param [String] parent
-        #   Required. The name of the parent resource.
-        # @param [Google::Apis::SasportalV1alpha1::SasPortalBulkCreateDeviceRequest] sas_portal_bulk_create_device_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SasportalV1alpha1::SasPortalBulkCreateDeviceResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SasportalV1alpha1::SasPortalBulkCreateDeviceResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def bulk_node_device(parent, sas_portal_bulk_create_device_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha1/{+parent}/devices:bulk', options)
-          command.request_representation = Google::Apis::SasportalV1alpha1::SasPortalBulkCreateDeviceRequest::Representation
-          command.request_object = sas_portal_bulk_create_device_request_object
-          command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalBulkCreateDeviceResponse::Representation
-          command.response_class = Google::Apis::SasportalV1alpha1::SasPortalBulkCreateDeviceResponse
-          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1969,10 +2302,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a device under a node or customer. Returned devices are unordered.
+        # Creates a new deployment.
         # @param [String] parent
-        #   Required. The name of the parent resource.
-        # @param [Google::Apis::SasportalV1alpha1::SasPortalBulkCreateDeviceRequest] sas_portal_bulk_create_device_request_object
+        #   Required. The parent resource name where the deployment is to be created.
+        # @param [Google::Apis::SasportalV1alpha1::SasPortalDeployment] sas_portal_deployment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1982,21 +2315,58 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SasportalV1alpha1::SasPortalBulkCreateDeviceResponse] parsed result object
+        # @yieldparam result [Google::Apis::SasportalV1alpha1::SasPortalDeployment] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::SasportalV1alpha1::SasPortalBulkCreateDeviceResponse]
+        # @return [Google::Apis::SasportalV1alpha1::SasPortalDeployment]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def bulk_node_node_device(parent, sas_portal_bulk_create_device_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha1/{+parent}/devices:bulk', options)
-          command.request_representation = Google::Apis::SasportalV1alpha1::SasPortalBulkCreateDeviceRequest::Representation
-          command.request_object = sas_portal_bulk_create_device_request_object
-          command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalBulkCreateDeviceResponse::Representation
-          command.response_class = Google::Apis::SasportalV1alpha1::SasPortalBulkCreateDeviceResponse
+        def create_node_node_deployment(parent, sas_portal_deployment_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha1/{+parent}/deployments', options)
+          command.request_representation = Google::Apis::SasportalV1alpha1::SasPortalDeployment::Representation
+          command.request_object = sas_portal_deployment_object
+          command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalDeployment::Representation
+          command.response_class = Google::Apis::SasportalV1alpha1::SasPortalDeployment
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists deployments.
+        # @param [String] parent
+        #   Required. The parent resource name, for example, "nodes/1", customer/1/nodes/2.
+        # @param [Fixnum] page_size
+        #   The maximum number of deployments to return in the response.
+        # @param [String] page_token
+        #   A pagination token returned from a previous call to ListDeployments method
+        #   that indicates where this listing should continue from.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SasportalV1alpha1::SasPortalListDeploymentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SasportalV1alpha1::SasPortalListDeploymentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_node_node_deployments(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha1/{+parent}/deployments', options)
+          command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalListDeploymentsResponse::Representation
+          command.response_class = Google::Apis::SasportalV1alpha1::SasPortalListDeploymentsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
