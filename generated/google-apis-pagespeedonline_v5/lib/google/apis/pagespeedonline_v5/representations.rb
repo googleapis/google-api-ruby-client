@@ -177,6 +177,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :channel, as: 'channel'
           property :emulated_form_factor, as: 'emulatedFormFactor'
+          property :form_factor, as: 'formFactor'
           property :locale, as: 'locale'
           property :only_categories, as: 'onlyCategories'
         end

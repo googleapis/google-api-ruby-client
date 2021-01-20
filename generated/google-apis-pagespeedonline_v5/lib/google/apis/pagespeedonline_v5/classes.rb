@@ -163,10 +163,17 @@ module Google
         # @return [String]
         attr_accessor :channel
       
-        # The form factor the emulation should use.
+        # The form factor the emulation should use. This field is deprecated,
+        # form_factor should be used instead.
         # Corresponds to the JSON property `emulatedFormFactor`
         # @return [String]
         attr_accessor :emulated_form_factor
+      
+        # How Lighthouse should interpret this run in regards to scoring performance
+        # metrics and skipping mobile-only tests in desktop.
+        # Corresponds to the JSON property `formFactor`
+        # @return [String]
+        attr_accessor :form_factor
       
         # The locale setting.
         # Corresponds to the JSON property `locale`
@@ -186,6 +193,7 @@ module Google
         def update!(**args)
           @channel = args[:channel] if args.key?(:channel)
           @emulated_form_factor = args[:emulated_form_factor] if args.key?(:emulated_form_factor)
+          @form_factor = args[:form_factor] if args.key?(:form_factor)
           @locale = args[:locale] if args.key?(:locale)
           @only_categories = args[:only_categories] if args.key?(:only_categories)
         end
