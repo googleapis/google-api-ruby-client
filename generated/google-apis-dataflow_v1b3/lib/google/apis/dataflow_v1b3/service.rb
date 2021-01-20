@@ -349,7 +349,8 @@ module Google
         #   Set this to the 'next_page_token' field of a previous response to request
         #   additional results in a long list.
         # @param [String] view
-        #   Level of information requested in response. Default is `JOB_VIEW_SUMMARY`.
+        #   Deprecated. ListJobs always returns summaries now. Use GetJob for other
+        #   JobViews.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -538,7 +539,8 @@ module Google
         #   Set this to the 'next_page_token' field of a previous response to request
         #   additional results in a long list.
         # @param [String] view
-        #   Level of information requested in response. Default is `JOB_VIEW_SUMMARY`.
+        #   Deprecated. ListJobs always returns summaries now. Use GetJob for other
+        #   JobViews.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1134,7 +1136,8 @@ module Google
         #   Set this to the 'next_page_token' field of a previous response to request
         #   additional results in a long list.
         # @param [String] view
-        #   Level of information requested in response. Default is `JOB_VIEW_SUMMARY`.
+        #   Deprecated. ListJobs always returns summaries now. Use GetJob for other
+        #   JobViews.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
