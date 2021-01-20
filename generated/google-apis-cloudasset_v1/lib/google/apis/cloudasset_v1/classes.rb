@@ -3045,8 +3045,8 @@ module Google
         # Optional. One or more paragraphs of text description of this resource. Maximum
         # length could be up to 1M bytes. This field is available only when the resource'
         # s proto contains it. To search against the `description`: * use a field query.
-        # Example: `description:"*important instance*"` * use a free text query. Example:
-        # `"*important instance*"`
+        # Example: `description:"important instance"` * use a free text query. Example: `
+        # "important instance"`
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -3058,6 +3058,15 @@ module Google
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
+      
+        # Optional. The folder(s) that this resource belongs to, in the form of folders/`
+        # FOLDER_NUMBER`. This field is available when the resource belongs to one or
+        # more folders. To search against `folders`: * use a field query. Example: `
+        # folders:(123 OR 456)` * specify the `scope` field as this folder in your
+        # search request.
+        # Corresponds to the JSON property `folders`
+        # @return [Array<String>]
+        attr_accessor :folders
       
         # Optional. Labels associated with this resource. See [Labelling and grouping
         # GCP resources](https://cloud.google.com/blog/products/gcp/labelling-and-
@@ -3100,10 +3109,19 @@ module Google
         # @return [Array<String>]
         attr_accessor :network_tags
       
+        # Optional. The organization that this resource belongs to, in the form of
+        # organizations/`ORGANIZATION_NUMBER`. This field is available when the resource
+        # belongs to a organization. To search against `organization`: * use a field
+        # query. Example: `organization:123` * specify the `scope` field as this
+        # organization in your search request.
+        # Corresponds to the JSON property `organization`
+        # @return [String]
+        attr_accessor :organization
+      
         # Optional. The project that this resource belongs to, in the form of projects/`
         # PROJECT_NUMBER`. This field is available when the resource belongs to a
-        # project. To search against the `project`: * specify the `scope` field as this
-        # project in your search request.
+        # project. To search against `project`: * use a field query. Example: `project:
+        # 12345` * specify the `scope` field as this project in your search request.
         # Corresponds to the JSON property `project`
         # @return [String]
         attr_accessor :project
@@ -3118,10 +3136,12 @@ module Google
           @asset_type = args[:asset_type] if args.key?(:asset_type)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @folders = args[:folders] if args.key?(:folders)
           @labels = args[:labels] if args.key?(:labels)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @network_tags = args[:network_tags] if args.key?(:network_tags)
+          @organization = args[:organization] if args.key?(:organization)
           @project = args[:project] if args.key?(:project)
         end
       end
