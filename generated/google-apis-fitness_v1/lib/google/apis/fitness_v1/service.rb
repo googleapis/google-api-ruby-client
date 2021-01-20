@@ -404,17 +404,15 @@ module Google
         # Adds data points to a dataset. The dataset need not be previously created. All
         # points within the given dataset will be returned with subsquent calls to
         # retrieve this dataset. Data points can belong to more than one dataset. This
-        # method does not use patch semantics.
+        # method does not use patch semantics: the data points provided are merely
+        # inserted, with no existing data replaced.
         # @param [String] user_id
         #   Patch a dataset for the person identified. Use me to indicate the
         #   authenticated user. Only me is supported at this time.
         # @param [String] data_source_id
         #   The data stream ID of the data source that created the dataset.
         # @param [String] dataset_id
-        #   Dataset identifier that is a composite of the minimum data point start time
-        #   and maximum data point end time represented as nanoseconds from the epoch. The
-        #   ID is formatted like: "startTime-endTime" where startTime and endTime are 64
-        #   bit integers.
+        #   This field is not used, and can be safely omitted.
         # @param [Google::Apis::FitnessV1::Dataset] dataset_object
         # @param [Fixnum] current_time_millis
         #   The client's current time in milliseconds since epoch. Note that the
