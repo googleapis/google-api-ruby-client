@@ -368,7 +368,11 @@ module Google
         # @return [Array<Google::Apis::VectortileV1::Area>]
         attr_accessor :areas
       
-        # The extruded areas present in this geometry.
+        # The extruded areas present in this geometry. Not populated if modeled_volumes
+        # are included in this geometry unless always_include_building_footprints is set
+        # in GetFeatureTileRequest, in which case the client should decide which (
+        # extruded areas or modeled volumes) should be used (they should not be rendered
+        # together).
         # Corresponds to the JSON property `extrudedAreas`
         # @return [Array<Google::Apis::VectortileV1::ExtrudedArea>]
         attr_accessor :extruded_areas
@@ -378,7 +382,8 @@ module Google
         # @return [Array<Google::Apis::VectortileV1::Line>]
         attr_accessor :lines
       
-        # The modeled volumes present in this geometry.
+        # The modeled volumes present in this geometry. Not populated unless
+        # enable_modeled_volumes has been set in GetFeatureTileRequest.
         # Corresponds to the JSON property `modeledVolumes`
         # @return [Array<Google::Apis::VectortileV1::ModeledVolume>]
         attr_accessor :modeled_volumes
