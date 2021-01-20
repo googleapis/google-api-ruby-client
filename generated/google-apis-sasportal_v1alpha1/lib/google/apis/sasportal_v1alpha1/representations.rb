@@ -28,18 +28,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SasPortalBulkCreateDeviceRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SasPortalBulkCreateDeviceResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class SasPortalCreateSignedDeviceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -47,6 +35,12 @@ module Google
       end
       
       class SasPortalCustomer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SasPortalDeployment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -131,6 +125,12 @@ module Google
       end
       
       class SasPortalListCustomersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SasPortalListDeploymentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -240,21 +240,6 @@ module Google
         end
       end
       
-      class SasPortalBulkCreateDeviceRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :csv, as: 'csv'
-        end
-      end
-      
-      class SasPortalBulkCreateDeviceResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :devices, as: 'devices', class: Google::Apis::SasportalV1alpha1::SasPortalDevice, decorator: Google::Apis::SasportalV1alpha1::SasPortalDevice::Representation
-      
-        end
-      end
-      
       class SasPortalCreateSignedDeviceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -266,6 +251,17 @@ module Google
       class SasPortalCustomer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          collection :sas_user_ids, as: 'sasUserIds'
+        end
+      end
+      
+      class SasPortalDeployment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_billing_modes, as: 'allowedBillingModes'
+          property :default_billing_mode, as: 'defaultBillingMode'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           collection :sas_user_ids, as: 'sasUserIds'
@@ -418,6 +414,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :customers, as: 'customers', class: Google::Apis::SasportalV1alpha1::SasPortalCustomer, decorator: Google::Apis::SasportalV1alpha1::SasPortalCustomer::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class SasPortalListDeploymentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deployments, as: 'deployments', class: Google::Apis::SasportalV1alpha1::SasPortalDeployment, decorator: Google::Apis::SasportalV1alpha1::SasPortalDeployment::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
