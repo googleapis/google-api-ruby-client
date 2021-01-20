@@ -512,9 +512,11 @@ module Google
         attr_accessor :is_list
         alias_method :is_list?, :is_list
       
-        # Indicates whether the parameter content is logged in text and audio. If it is
-        # set to true, the parameter content will be replaced to parameter name in both
-        # request and response. The default value is false.
+        # Indicates whether the parameter content should be redacted in text and audio.
+        # If the flag is set to true, the parameter content will be replaced by
+        # parameter name in both request and response. Note: the parameter content is
+        # subject to redaction if either parameter level redaction or entity type level
+        # redaction is enabled.
         # Corresponds to the JSON property `redact`
         # @return [Boolean]
         attr_accessor :redact
@@ -1057,9 +1059,11 @@ module Google
         attr_accessor :is_list
         alias_method :is_list?, :is_list
       
-        # Indicates whether the parameter content is logged in text and audio. If it is
-        # set to true, the parameter content will be replaced to parameter id in both
-        # request and response. The default value is false.
+        # Indicates whether the parameter content should be redacted in text and audio.
+        # If the flag is set to true, the parameter content will be replaced by
+        # parameter name in both request and response. Note: the parameter content is
+        # subject to redaction if either parameter level redaction or entity type level
+        # redaction is enabled.
         # Corresponds to the JSON property `redact`
         # @return [Boolean]
         attr_accessor :redact
@@ -2384,6 +2388,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Name of the SecuritySettings reference for the agent. Format: `projects//
+        # locations//securitySettings/`.
+        # Corresponds to the JSON property `securitySettings`
+        # @return [String]
+        attr_accessor :security_settings
+      
         # Settings related to speech recognition.
         # Corresponds to the JSON property `speechToTextSettings`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SpeechToTextSettings]
@@ -2415,6 +2425,7 @@ module Google
           @enable_spell_correction = args[:enable_spell_correction] if args.key?(:enable_spell_correction)
           @enable_stackdriver_logging = args[:enable_stackdriver_logging] if args.key?(:enable_stackdriver_logging)
           @name = args[:name] if args.key?(:name)
+          @security_settings = args[:security_settings] if args.key?(:security_settings)
           @speech_to_text_settings = args[:speech_to_text_settings] if args.key?(:speech_to_text_settings)
           @start_flow = args[:start_flow] if args.key?(:start_flow)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
@@ -2975,7 +2986,7 @@ module Google
         end
       end
       
-      # An **entity entry** for an associated entity type. Next Id = 8
+      # An **entity entry** for an associated entity type.
       class GoogleCloudDialogflowCxV3beta1EntityTypeEntity
         include Google::Apis::Core::Hashable
       
@@ -3171,255 +3182,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @event = args[:event] if args.key?(:event)
-        end
-      end
-      
-      # Represents an experiment in an environment. Next ID: 13
-      class GoogleCloudDialogflowCxV3beta1Experiment
-        include Google::Apis::Core::Hashable
-      
-        # Creation time of this experiment.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Definition of the experiment. Next ID: 3
-        # Corresponds to the JSON property `definition`
-        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExperimentDefinition]
-        attr_accessor :definition
-      
-        # The human-readable description of the experiment.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Required. The human-readable name of the experiment (unique in an environment).
-        # Limit of 64 characters.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # End time of this experiment.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # Maximum number of days to run the experiment.
-        # Corresponds to the JSON property `experimentLength`
-        # @return [String]
-        attr_accessor :experiment_length
-      
-        # Last update time of this experiment.
-        # Corresponds to the JSON property `lastUpdateTime`
-        # @return [String]
-        attr_accessor :last_update_time
-      
-        # The name of the experiment. Format: projects//locations//agents//environments//
-        # experiments/..
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The inference result which includes an objective metric to optimize and the
-        # confidence interval.
-        # Corresponds to the JSON property `result`
-        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExperimentResult]
-        attr_accessor :result
-      
-        # Start time of this experiment.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
-        # The current state of the experiment. Transition triggered by Expriments.
-        # StartExperiment: PENDING->RUNNING. Transition triggered by Expriments.
-        # CancelExperiment: PENDING->CANCELLED or RUNNING->CANCELLED.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # The history of updates to the experiment variants.
-        # Corresponds to the JSON property `variantsHistory`
-        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1VariantsHistory>]
-        attr_accessor :variants_history
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @definition = args[:definition] if args.key?(:definition)
-          @description = args[:description] if args.key?(:description)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @experiment_length = args[:experiment_length] if args.key?(:experiment_length)
-          @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
-          @name = args[:name] if args.key?(:name)
-          @result = args[:result] if args.key?(:result)
-          @start_time = args[:start_time] if args.key?(:start_time)
-          @state = args[:state] if args.key?(:state)
-          @variants_history = args[:variants_history] if args.key?(:variants_history)
-        end
-      end
-      
-      # Definition of the experiment. Next ID: 3
-      class GoogleCloudDialogflowCxV3beta1ExperimentDefinition
-        include Google::Apis::Core::Hashable
-      
-        # The condition defines which subset of sessions are selected for this
-        # experiment. If not specified, all sessions are eligible. E.g. "query_input.
-        # language_code=en" See the [conditions reference](https://cloud.google.com/
-        # dialogflow/cx/docs/reference/condition).
-        # Corresponds to the JSON property `condition`
-        # @return [String]
-        attr_accessor :condition
-      
-        # A list of flow version variants.
-        # Corresponds to the JSON property `versionVariants`
-        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1VersionVariants]
-        attr_accessor :version_variants
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @condition = args[:condition] if args.key?(:condition)
-          @version_variants = args[:version_variants] if args.key?(:version_variants)
-        end
-      end
-      
-      # The inference result which includes an objective metric to optimize and the
-      # confidence interval.
-      class GoogleCloudDialogflowCxV3beta1ExperimentResult
-        include Google::Apis::Core::Hashable
-      
-        # The last time the experiment's stats data was updated. Will have default value
-        # if stats have never been computed for this experiment.
-        # Corresponds to the JSON property `lastUpdateTime`
-        # @return [String]
-        attr_accessor :last_update_time
-      
-        # Version variants and metrics.
-        # Corresponds to the JSON property `versionMetrics`
-        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics>]
-        attr_accessor :version_metrics
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
-          @version_metrics = args[:version_metrics] if args.key?(:version_metrics)
-        end
-      end
-      
-      # A confidence interval is a range of possible values for the experiment
-      # objective you are trying to measure.
-      class GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval
-        include Google::Apis::Core::Hashable
-      
-        # The confidence level used to construct the interval, i.e. there is X% chance
-        # that the true value is within this interval.
-        # Corresponds to the JSON property `confidenceLevel`
-        # @return [Float]
-        attr_accessor :confidence_level
-      
-        # Lower bound of the interval.
-        # Corresponds to the JSON property `lowerBound`
-        # @return [Float]
-        attr_accessor :lower_bound
-      
-        # The percent change between an experiment metric's value and the value for its
-        # control.
-        # Corresponds to the JSON property `ratio`
-        # @return [Float]
-        attr_accessor :ratio
-      
-        # Upper bound of the interval.
-        # Corresponds to the JSON property `upperBound`
-        # @return [Float]
-        attr_accessor :upper_bound
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @confidence_level = args[:confidence_level] if args.key?(:confidence_level)
-          @lower_bound = args[:lower_bound] if args.key?(:lower_bound)
-          @ratio = args[:ratio] if args.key?(:ratio)
-          @upper_bound = args[:upper_bound] if args.key?(:upper_bound)
-        end
-      end
-      
-      # Metric and corresponding confidence intervals.
-      class GoogleCloudDialogflowCxV3beta1ExperimentResultMetric
-        include Google::Apis::Core::Hashable
-      
-        # A confidence interval is a range of possible values for the experiment
-        # objective you are trying to measure.
-        # Corresponds to the JSON property `confidenceInterval`
-        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval]
-        attr_accessor :confidence_interval
-      
-        # Ratio value of a metric.
-        # Corresponds to the JSON property `ratio`
-        # @return [Float]
-        attr_accessor :ratio
-      
-        # The type of the metric.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @confidence_interval = args[:confidence_interval] if args.key?(:confidence_interval)
-          @ratio = args[:ratio] if args.key?(:ratio)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # Version variant and associated metrics.
-      class GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics
-        include Google::Apis::Core::Hashable
-      
-        # The metrics and corresponding confidence intervals in the inference result.
-        # Corresponds to the JSON property `metrics`
-        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExperimentResultMetric>]
-        attr_accessor :metrics
-      
-        # Number of sessions that were allocated to this version.
-        # Corresponds to the JSON property `sessionCount`
-        # @return [Fixnum]
-        attr_accessor :session_count
-      
-        # The name of the flow Version. Format: `projects//locations//agents//flows//
-        # versions/`.
-        # Corresponds to the JSON property `version`
-        # @return [String]
-        attr_accessor :version
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @metrics = args[:metrics] if args.key?(:metrics)
-          @session_count = args[:session_count] if args.key?(:session_count)
-          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -3712,9 +3474,11 @@ module Google
         attr_accessor :is_list
         alias_method :is_list?, :is_list
       
-        # Indicates whether the parameter content is logged in text and audio. If it is
-        # set to true, the parameter content will be replaced to parameter name in both
-        # request and response. The default value is false.
+        # Indicates whether the parameter content should be redacted in text and audio.
+        # If the flag is set to true, the parameter content will be replaced by
+        # parameter name in both request and response. Note: the parameter content is
+        # subject to redaction if either parameter level redaction or entity type level
+        # redaction is enabled.
         # Corresponds to the JSON property `redact`
         # @return [Boolean]
         attr_accessor :redact
@@ -4413,9 +4177,11 @@ module Google
         attr_accessor :is_list
         alias_method :is_list?, :is_list
       
-        # Indicates whether the parameter content is logged in text and audio. If it is
-        # set to true, the parameter content will be replaced to parameter id in both
-        # request and response. The default value is false.
+        # Indicates whether the parameter content should be redacted in text and audio.
+        # If the flag is set to true, the parameter content will be replaced by
+        # parameter name in both request and response. Note: the parameter content is
+        # subject to redaction if either parameter level redaction or entity type level
+        # redaction is enabled.
         # Corresponds to the JSON property `redact`
         # @return [Boolean]
         attr_accessor :redact
@@ -4579,34 +4345,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @environments = args[:environments] if args.key?(:environments)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # The response message for Experiments.ListExperiments.
-      class GoogleCloudDialogflowCxV3beta1ListExperimentsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The list of experiments. There will be a maximum number of items returned
-        # based on the page_size field in the request. The list may in some cases be
-        # empty or contain fewer entries than page_size even if this isn't the last page.
-        # Corresponds to the JSON property `experiments`
-        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Experiment>]
-        attr_accessor :experiments
-      
-        # Token to retrieve the next page of results, or empty if there are no more
-        # results in the list.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @experiments = args[:experiments] if args.key?(:experiments)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -6260,32 +5998,6 @@ module Google
         end
       end
       
-      # The request message for Experiments.StartExperiment.
-      class GoogleCloudDialogflowCxV3beta1StartExperimentRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # The request message for Experiments.StopExperiment.
-      class GoogleCloudDialogflowCxV3beta1StopExperimentRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Configuration of how speech should be synthesized.
       class GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig
         include Google::Apis::Core::Hashable
@@ -6947,31 +6659,6 @@ module Google
         end
       end
       
-      # The history of variants update.
-      class GoogleCloudDialogflowCxV3beta1VariantsHistory
-        include Google::Apis::Core::Hashable
-      
-        # Update time of the variants.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        # A list of flow version variants.
-        # Corresponds to the JSON property `versionVariants`
-        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1VersionVariants]
-        attr_accessor :version_variants
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @update_time = args[:update_time] if args.key?(:update_time)
-          @version_variants = args[:version_variants] if args.key?(:version_variants)
-        end
-      end
-      
       # Represents a version of a flow.
       class GoogleCloudDialogflowCxV3beta1Version
         include Google::Apis::Core::Hashable
@@ -7021,59 +6708,6 @@ module Google
           @name = args[:name] if args.key?(:name)
           @nlu_settings = args[:nlu_settings] if args.key?(:nlu_settings)
           @state = args[:state] if args.key?(:state)
-        end
-      end
-      
-      # A list of flow version variants.
-      class GoogleCloudDialogflowCxV3beta1VersionVariants
-        include Google::Apis::Core::Hashable
-      
-        # A list of flow version variants.
-        # Corresponds to the JSON property `variants`
-        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1VersionVariantsVariant>]
-        attr_accessor :variants
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @variants = args[:variants] if args.key?(:variants)
-        end
-      end
-      
-      # A single flow version with specified traffic allocation.
-      class GoogleCloudDialogflowCxV3beta1VersionVariantsVariant
-        include Google::Apis::Core::Hashable
-      
-        # Whether the variant is for the control group.
-        # Corresponds to the JSON property `isControlGroup`
-        # @return [Boolean]
-        attr_accessor :is_control_group
-        alias_method :is_control_group?, :is_control_group
-      
-        # Percentage of the traffic which should be routed to this version of flow.
-        # Traffic allocation for a single flow must sum up to 1.0.
-        # Corresponds to the JSON property `trafficAllocation`
-        # @return [Float]
-        attr_accessor :traffic_allocation
-      
-        # The name of the flow version. Format: `projects//locations//agents//flows//
-        # versions/`.
-        # Corresponds to the JSON property `version`
-        # @return [String]
-        attr_accessor :version
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @is_control_group = args[:is_control_group] if args.key?(:is_control_group)
-          @traffic_allocation = args[:traffic_allocation] if args.key?(:traffic_allocation)
-          @version = args[:version] if args.key?(:version)
         end
       end
       
