@@ -55,6 +55,10 @@ module Google
         #   collection ID `tiles/` followed by the resource ID, which encodes the tile's
         #   global x and y coordinates and zoom level as `@,,z`. For example, `tiles/@1,2,
         #   3z`.
+        # @param [Boolean] always_include_building_footprints
+        #   Flag indicating whether the returned tile will always contain 2.5D footprints
+        #   for structures. If enabled_modeled_volumes is set, this will mean that
+        #   structures will have both their 3D models and 2.5D footprints returned.
         # @param [String] client_info_api_client
         #   API client name and version. For example, the SDK calling the API. The exact
         #   format is up to the client.
@@ -132,11 +136,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_featuretile(name, client_info_api_client: nil, client_info_application_id: nil, client_info_application_version: nil, client_info_device_model: nil, client_info_operating_system: nil, client_info_platform: nil, client_info_user_id: nil, client_tile_version_id: nil, enable_detailed_highway_types: nil, enable_feature_names: nil, enable_modeled_volumes: nil, enable_political_features: nil, enable_private_roads: nil, enable_unclipped_buildings: nil, language_code: nil, region_code: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_featuretile(name, always_include_building_footprints: nil, client_info_api_client: nil, client_info_application_id: nil, client_info_application_version: nil, client_info_device_model: nil, client_info_operating_system: nil, client_info_platform: nil, client_info_user_id: nil, client_tile_version_id: nil, enable_detailed_highway_types: nil, enable_feature_names: nil, enable_modeled_volumes: nil, enable_political_features: nil, enable_private_roads: nil, enable_unclipped_buildings: nil, language_code: nil, region_code: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::VectortileV1::FeatureTile::Representation
           command.response_class = Google::Apis::VectortileV1::FeatureTile
           command.params['name'] = name unless name.nil?
+          command.query['alwaysIncludeBuildingFootprints'] = always_include_building_footprints unless always_include_building_footprints.nil?
           command.query['clientInfo.apiClient'] = client_info_api_client unless client_info_api_client.nil?
           command.query['clientInfo.applicationId'] = client_info_application_id unless client_info_application_id.nil?
           command.query['clientInfo.applicationVersion'] = client_info_application_version unless client_info_application_version.nil?
