@@ -357,6 +357,7 @@ module Google
       class Domain
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :audit_logs_enabled, as: 'auditLogsEnabled'
           collection :authorized_networks, as: 'authorizedNetworks'
           property :create_time, as: 'createTime'
           property :fqdn, as: 'fqdn'

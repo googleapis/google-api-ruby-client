@@ -276,6 +276,13 @@ module Google
       class Domain
         include Google::Apis::Core::Hashable
       
+        # Optional. Configuration for audit logs. True if audit logs are enabled, else
+        # false. Default is audit logs disabled.
+        # Corresponds to the JSON property `auditLogsEnabled`
+        # @return [Boolean]
+        attr_accessor :audit_logs_enabled
+        alias_method :audit_logs_enabled?, :audit_logs_enabled
+      
         # Optional. The full names of the Google Compute Engine [networks](/compute/docs/
         # networks-and-firewalls#networks) to which the instance is connected. Network
         # can be added using UpdateDomain later. Domain is only available on network
@@ -358,6 +365,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @audit_logs_enabled = args[:audit_logs_enabled] if args.key?(:audit_logs_enabled)
           @authorized_networks = args[:authorized_networks] if args.key?(:authorized_networks)
           @create_time = args[:create_time] if args.key?(:create_time)
           @fqdn = args[:fqdn] if args.key?(:fqdn)
