@@ -512,9 +512,11 @@ module Google
         attr_accessor :is_list
         alias_method :is_list?, :is_list
       
-        # Indicates whether the parameter content is logged in text and audio. If it is
-        # set to true, the parameter content will be replaced to parameter name in both
-        # request and response. The default value is false.
+        # Indicates whether the parameter content should be redacted in text and audio.
+        # If the flag is set to true, the parameter content will be replaced by
+        # parameter name in both request and response. Note: the parameter content is
+        # subject to redaction if either parameter level redaction or entity type level
+        # redaction is enabled.
         # Corresponds to the JSON property `redact`
         # @return [Boolean]
         attr_accessor :redact
@@ -1057,9 +1059,11 @@ module Google
         attr_accessor :is_list
         alias_method :is_list?, :is_list
       
-        # Indicates whether the parameter content is logged in text and audio. If it is
-        # set to true, the parameter content will be replaced to parameter id in both
-        # request and response. The default value is false.
+        # Indicates whether the parameter content should be redacted in text and audio.
+        # If the flag is set to true, the parameter content will be replaced by
+        # parameter name in both request and response. Note: the parameter content is
+        # subject to redaction if either parameter level redaction or entity type level
+        # redaction is enabled.
         # Corresponds to the JSON property `redact`
         # @return [Boolean]
         attr_accessor :redact
@@ -2821,9 +2825,11 @@ module Google
         attr_accessor :is_list
         alias_method :is_list?, :is_list
       
-        # Indicates whether the parameter content is logged in text and audio. If it is
-        # set to true, the parameter content will be replaced to parameter name in both
-        # request and response. The default value is false.
+        # Indicates whether the parameter content should be redacted in text and audio.
+        # If the flag is set to true, the parameter content will be replaced by
+        # parameter name in both request and response. Note: the parameter content is
+        # subject to redaction if either parameter level redaction or entity type level
+        # redaction is enabled.
         # Corresponds to the JSON property `redact`
         # @return [Boolean]
         attr_accessor :redact
@@ -3366,9 +3372,11 @@ module Google
         attr_accessor :is_list
         alias_method :is_list?, :is_list
       
-        # Indicates whether the parameter content is logged in text and audio. If it is
-        # set to true, the parameter content will be replaced to parameter id in both
-        # request and response. The default value is false.
+        # Indicates whether the parameter content should be redacted in text and audio.
+        # If the flag is set to true, the parameter content will be replaced by
+        # parameter name in both request and response. Note: the parameter content is
+        # subject to redaction if either parameter level redaction or entity type level
+        # redaction is enabled.
         # Corresponds to the JSON property `redact`
         # @return [Boolean]
         attr_accessor :redact
