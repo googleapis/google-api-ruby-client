@@ -1460,6 +1460,7 @@ module Google
           collection :additional_experiments, as: 'additionalExperiments'
           hash :additional_user_labels, as: 'additionalUserLabels'
           property :enable_streaming_engine, as: 'enableStreamingEngine'
+          property :flexrs_goal, as: 'flexrsGoal'
           property :ip_configuration, as: 'ipConfiguration'
           property :kms_key_name, as: 'kmsKeyName'
           property :machine_type, as: 'machineType'
@@ -1608,6 +1609,7 @@ module Google
           property :replace_job_id, as: 'replaceJobId'
           property :replaced_by_job_id, as: 'replacedByJobId'
           property :requested_state, as: 'requestedState'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           collection :stage_states, as: 'stageStates', class: Google::Apis::DataflowV1b3::ExecutionStageState, decorator: Google::Apis::DataflowV1b3::ExecutionStageState::Representation
       
           property :start_time, as: 'startTime'
