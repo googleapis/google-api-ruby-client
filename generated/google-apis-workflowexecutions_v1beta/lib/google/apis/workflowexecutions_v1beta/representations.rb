@@ -46,6 +46,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StackTrace
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StackTraceElement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelExecutionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -57,6 +69,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :context, as: 'context'
           property :payload, as: 'payload'
+          property :stack_trace, as: 'stackTrace', class: Google::Apis::WorkflowexecutionsV1beta::StackTrace, decorator: Google::Apis::WorkflowexecutionsV1beta::StackTrace::Representation
+      
         end
       end
       
@@ -81,6 +95,24 @@ module Google
           collection :executions, as: 'executions', class: Google::Apis::WorkflowexecutionsV1beta::Execution, decorator: Google::Apis::WorkflowexecutionsV1beta::Execution::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class StackTrace
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :elements, as: 'elements', class: Google::Apis::WorkflowexecutionsV1beta::StackTraceElement, decorator: Google::Apis::WorkflowexecutionsV1beta::StackTraceElement::Representation
+      
+        end
+      end
+      
+      class StackTraceElement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, :numeric_string => true, as: 'column'
+          property :line, :numeric_string => true, as: 'line'
+          property :routine, as: 'routine'
+          property :step, as: 'step'
         end
       end
     end
