@@ -531,6 +531,17 @@ module Google
         #   bar") * projects/`PROJECT_NUMBER` (e.g., "projects/12345678") * folders/`
         #   FOLDER_NUMBER` (e.g., "folders/1234567") * organizations/`ORGANIZATION_NUMBER`
         #   (e.g., "organizations/123456")
+        # @param [Array<String>, String] asset_types
+        #   Optional. A list of asset types that this request searches for. If empty, it
+        #   will search all the [searchable asset types](https://cloud.google.com/asset-
+        #   inventory/docs/supported-asset-types#searchable_asset_types). Regular
+        #   expressions are also supported. For example: * "compute.googleapis.com.*"
+        #   snapshots resources whose asset type starts with "compute.googleapis.com". * ".
+        #   *Instance" snapshots resources whose asset type ends with "Instance". * ".*
+        #   Instance.*" snapshots resources whose asset type contains "Instance". See [RE2]
+        #   (https://github.com/google/re2/wiki/Syntax) for all supported regular
+        #   expression syntax. If the regular expression does not match any supported
+        #   asset type, an INVALID_ARGUMENT error will be returned.
         # @param [Fixnum] page_size
         #   Optional. The page size for search result pagination. Page size is capped at
         #   500 even if a larger value is given. If set to zero, server will pick an
@@ -552,21 +563,24 @@ module Google
         #   policy structure, see [IAM policy doc](https://cloud.google.com/iam/docs/
         #   policies#structure). Examples: * `policy:amy@gmail.com` to find IAM policy
         #   bindings that specify user "amy@gmail.com". * `policy:roles/compute.admin` to
-        #   find IAM policy bindings that specify the Compute Admin role. * `policy.role.
-        #   permissions:storage.buckets.update` to find IAM policy bindings that specify a
-        #   role containing "storage.buckets.update" permission. Note that if callers don'
-        #   t have `iam.roles.get` access to a role's included permissions, policy
-        #   bindings that specify this role will be dropped from the search results. * `
-        #   resource:organizations/123456` to find IAM policy bindings that are set on "
-        #   organizations/123456". * `resource=//cloudresourcemanager.googleapis.com/
-        #   projects/myproject` to find IAM policy bindings that are set on the project
-        #   named "myproject". * `Important` to find IAM policy bindings that contain "
-        #   Important" as a word in any of the searchable fields (except for the included
-        #   permissions). * `*por*` to find IAM policy bindings that contain "por" as a
-        #   substring in any of the searchable fields (except for the included permissions)
-        #   . * `resource:(instance1 OR instance2) policy:amy` to find IAM policy bindings
-        #   that are set on resources "instance1" or "instance2" and also specify user "
-        #   amy".
+        #   find IAM policy bindings that specify the Compute Admin role. * `policy:comp*`
+        #   to find IAM policy bindings that contain "comp" as a prefix of any word in the
+        #   binding. * `policy.role.permissions:storage.buckets.update` to find IAM policy
+        #   bindings that specify a role containing "storage.buckets.update" permission.
+        #   Note that if callers don't have `iam.roles.get` access to a role's included
+        #   permissions, policy bindings that specify this role will be dropped from the
+        #   search results. * `policy.role.permissions:upd*` to find IAM policy bindings
+        #   that specify a role containing "upd" as a prefix of any word in the role
+        #   permission. Note that if callers don't have `iam.roles.get` access to a role's
+        #   included permissions, policy bindings that specify this role will be dropped
+        #   from the search results. * `resource:organizations/123456` to find IAM policy
+        #   bindings that are set on "organizations/123456". * `resource=//
+        #   cloudresourcemanager.googleapis.com/projects/myproject` to find IAM policy
+        #   bindings that are set on the project named "myproject". * `Important` to find
+        #   IAM policy bindings that contain "Important" as a word in any of the
+        #   searchable fields (except for the included permissions). * `resource:(
+        #   instance1 OR instance2) policy:amy` to find IAM policy bindings that are set
+        #   on resources "instance1" or "instance2" and also specify user "amy".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -584,11 +598,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_all_iam_policies(scope, page_size: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def search_all_iam_policies(scope, asset_types: nil, page_size: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+scope}:searchAllIamPolicies', options)
           command.response_representation = Google::Apis::CloudassetV1::SearchAllIamPoliciesResponse::Representation
           command.response_class = Google::Apis::CloudassetV1::SearchAllIamPoliciesResponse
           command.params['scope'] = scope unless scope.nil?
+          command.query['assetTypes'] = asset_types unless asset_types.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['query'] = query unless query.nil?
@@ -647,19 +662,17 @@ module Google
         #   Cloud resources whose name contains "Important" as a word. * `name=Important`
         #   to find the Cloud resource whose name is exactly "Important". * `displayName:
         #   Impor*` to find Cloud resources whose display name contains "Impor" as a
-        #   prefix. * `description:*por*` to find Cloud resources whose description
-        #   contains "por" as a substring. * `location:us-west*` to find Cloud resources
-        #   whose location is prefixed with "us-west". * `labels:prod` to find Cloud
-        #   resources whose labels contain "prod" as a key or value. * `labels.env:prod`
-        #   to find Cloud resources that have a label "env" and its value is "prod". * `
-        #   labels.env:*` to find Cloud resources that have a label "env". * `Important`
-        #   to find Cloud resources that contain "Important" as a word in any of the
-        #   searchable fields. * `Impor*` to find Cloud resources that contain "Impor" as
-        #   a prefix in any of the searchable fields. * `*por*` to find Cloud resources
-        #   that contain "por" as a substring in any of the searchable fields. * `
-        #   Important location:(us-west1 OR global)` to find Cloud resources that contain "
-        #   Important" as a word in any of the searchable fields and are also located in
-        #   the "us-west1" region or the "global" location.
+        #   prefix of any word in the field. * `location:us-west*` to find Cloud resources
+        #   whose location contains both "us" and "west" as prefixes. * `labels:prod` to
+        #   find Cloud resources whose labels contain "prod" as a key or value. * `labels.
+        #   env:prod` to find Cloud resources that have a label "env" and its value is "
+        #   prod". * `labels.env:*` to find Cloud resources that have a label "env". * `
+        #   Important` to find Cloud resources that contain "Important" as a word in any
+        #   of the searchable fields. * `Impor*` to find Cloud resources that contain "
+        #   Impor" as a prefix of any word in any of the searchable fields. * `Important
+        #   location:(us-west1 OR global)` to find Cloud resources that contain "Important"
+        #   as a word in any of the searchable fields and are also located in the "us-
+        #   west1" region or the "global" location.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
