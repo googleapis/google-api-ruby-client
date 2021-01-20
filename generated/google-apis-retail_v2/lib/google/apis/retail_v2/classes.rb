@@ -367,7 +367,7 @@ module Google
         end
       end
       
-      # A custom attribute that is not explicitly modeled in Product].
+      # A custom attribute that is not explicitly modeled in Product.
       class GoogleCloudRetailV2CustomAttribute
         include Google::Apis::Core::Hashable
       
@@ -895,10 +895,11 @@ module Google
         # customer. Numerical features. Some examples would be the height/weight of a
         # product, or age of a customer. For example: `` "vendor": `"text": ["vendor123",
         # "vendor456"]`, "lengths_cm": `"numbers":[2.3, 15.4]`, "heights_cm": `"numbers"
-        # :[8.1, 6.4]` ``. A maximum of 150 attributes are allowed. Otherwise, an
-        # INVALID_ARGUMENT error is returned. The key must be a UTF-8 encoded string
-        # with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error
-        # is returned.
+        # :[8.1, 6.4]` ``. This field needs to pass all below criteria, otherwise an
+        # INVALID_ARGUMENT error is returned: * Max entries count: 150 by default; 100
+        # for Type.VARIANT. * Max indexable entries count: 150 by default; 40 for Type.
+        # VARIANT. * Max searchable entries count: 30. * The key must be a UTF-8 encoded
+        # string with a length limit of 128 characters.
         # Corresponds to the JSON property `attributes`
         # @return [Hash<String,Google::Apis::RetailV2::GoogleCloudRetailV2CustomAttribute>]
         attr_accessor :attributes
@@ -1458,8 +1459,9 @@ module Google
       
         # The user's search query. The value must be a UTF-8 encoded string with a
         # length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is
-        # returned. Required for `search` events. Other event types should not set this
-        # field. Otherwise, an INVALID_ARGUMENT error is returned.
+        # returned. At least one of search_query or filter is required for `search`
+        # events. Other event types should not set this field. Otherwise, an
+        # INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `searchQuery`
         # @return [String]
         attr_accessor :search_query
