@@ -1445,8 +1445,9 @@ module Google
         # @return [Array<Google::Apis::CloudassetV1p5beta1::Asset>]
         attr_accessor :assets
       
-        # Token to retrieve the next page of results. Set to empty if there are no
-        # remaining results.
+        # Token to retrieve the next page of results. It expires 72 hours after the page
+        # token for the first page is generated. Set to empty if there are no remaining
+        # results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
