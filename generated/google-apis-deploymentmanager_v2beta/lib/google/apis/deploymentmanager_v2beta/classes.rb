@@ -986,6 +986,16 @@ module Google
         # @return [String]
         attr_accessor :layout
       
+        # Output only. The computed size of the fully expanded manifest.
+        # Corresponds to the JSON property `manifestSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :manifest_size_bytes
+      
+        # Output only. The size limit for expanded manifests in the project.
+        # Corresponds to the JSON property `manifestSizeLimitBytes`
+        # @return [Fixnum]
+        attr_accessor :manifest_size_limit_bytes
+      
         # Output only. The name of the manifest.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1008,6 +1018,8 @@ module Google
           @imports = args[:imports] if args.key?(:imports)
           @insert_time = args[:insert_time] if args.key?(:insert_time)
           @layout = args[:layout] if args.key?(:layout)
+          @manifest_size_bytes = args[:manifest_size_bytes] if args.key?(:manifest_size_bytes)
+          @manifest_size_limit_bytes = args[:manifest_size_limit_bytes] if args.key?(:manifest_size_limit_bytes)
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
         end
