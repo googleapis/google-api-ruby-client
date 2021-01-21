@@ -328,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LogcatCollectionError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MatrixDimensionDefinition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1153,6 +1159,12 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :test_cases, as: 'testCases', class: Google::Apis::ToolresultsV1beta3::TestCase, decorator: Google::Apis::ToolresultsV1beta3::TestCase::Representation
       
+        end
+      end
+      
+      class LogcatCollectionError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
