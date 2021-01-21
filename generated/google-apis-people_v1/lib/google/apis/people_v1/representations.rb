@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GroupClientData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImClient
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -490,6 +496,8 @@ module Google
       class ContactGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :client_data, as: 'clientData', class: Google::Apis::PeopleV1::GroupClientData, decorator: Google::Apis::PeopleV1::GroupClientData::Representation
+      
           property :etag, as: 'etag'
           property :formatted_name, as: 'formattedName'
           property :group_type, as: 'groupType'
@@ -553,6 +561,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :contact_group, as: 'contactGroup', class: Google::Apis::PeopleV1::ContactGroup, decorator: Google::Apis::PeopleV1::ContactGroup::Representation
       
+          property :read_group_fields, as: 'readGroupFields'
         end
       end
       
@@ -656,6 +665,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :responses, as: 'responses', class: Google::Apis::PeopleV1::PersonResponse, decorator: Google::Apis::PeopleV1::PersonResponse::Representation
       
+        end
+      end
+      
+      class GroupClientData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
         end
       end
       
@@ -1090,6 +1107,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :contact_group, as: 'contactGroup', class: Google::Apis::PeopleV1::ContactGroup, decorator: Google::Apis::PeopleV1::ContactGroup::Representation
       
+          property :read_group_fields, as: 'readGroupFields'
+          property :update_group_fields, as: 'updateGroupFields'
         end
       end
       

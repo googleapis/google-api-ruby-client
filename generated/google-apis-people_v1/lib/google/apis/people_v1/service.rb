@@ -51,6 +51,11 @@ module Google
         
         # Get a list of contact groups owned by the authenticated user by specifying a
         # list of contact group resource names.
+        # @param [String] group_fields
+        #   Optional. A field mask to restrict which fields on the group are returned.
+        #   Defaults to `metadata`, `groupType`, `memberCount`, and `name` if not set or
+        #   set to empty. Valid fields are: * clientData * groupType * memberCount *
+        #   metadata * name
         # @param [Fixnum] max_members
         #   Optional. Specifies the maximum number of members to return for each group.
         #   Defaults to 0 if not set, which will return zero members.
@@ -73,10 +78,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_contact_group_get(max_members: nil, resource_names: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def batch_contact_group_get(group_fields: nil, max_members: nil, resource_names: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/contactGroups:batchGet', options)
           command.response_representation = Google::Apis::PeopleV1::BatchGetContactGroupsResponse::Representation
           command.response_class = Google::Apis::PeopleV1::BatchGetContactGroupsResponse
+          command.query['groupFields'] = group_fields unless group_fields.nil?
           command.query['maxMembers'] = max_members unless max_members.nil?
           command.query['resourceNames'] = resource_names unless resource_names.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -152,6 +158,11 @@ module Google
         # contact group resource name.
         # @param [String] resource_name
         #   Required. The resource name of the contact group to get.
+        # @param [String] group_fields
+        #   Optional. A field mask to restrict which fields on the group are returned.
+        #   Defaults to `metadata`, `groupType`, `memberCount`, and `name` if not set or
+        #   set to empty. Valid fields are: * clientData * groupType * memberCount *
+        #   metadata * name
         # @param [Fixnum] max_members
         #   Optional. Specifies the maximum number of members to return. Defaults to 0 if
         #   not set, which will return zero members.
@@ -172,11 +183,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_contact_group(resource_name, max_members: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_contact_group(resource_name, group_fields: nil, max_members: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+resourceName}', options)
           command.response_representation = Google::Apis::PeopleV1::ContactGroup::Representation
           command.response_class = Google::Apis::PeopleV1::ContactGroup
           command.params['resourceName'] = resource_name unless resource_name.nil?
+          command.query['groupFields'] = group_fields unless group_fields.nil?
           command.query['maxMembers'] = max_members unless max_members.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -185,6 +197,11 @@ module Google
         
         # List all contact groups owned by the authenticated user. Members of the
         # contact groups are not populated.
+        # @param [String] group_fields
+        #   Optional. A field mask to restrict which fields on the group are returned.
+        #   Defaults to `metadata`, `groupType`, `memberCount`, and `name` if not set or
+        #   set to empty. Valid fields are: * clientData * groupType * memberCount *
+        #   metadata * name
         # @param [Fixnum] page_size
         #   Optional. The maximum number of resources to return. Valid values are between
         #   1 and 1000, inclusive. Defaults to 30 if not set or set to 0.
@@ -212,10 +229,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_contact_groups(page_size: nil, page_token: nil, sync_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_contact_groups(group_fields: nil, page_size: nil, page_token: nil, sync_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/contactGroups', options)
           command.response_representation = Google::Apis::PeopleV1::ListContactGroupsResponse::Representation
           command.response_class = Google::Apis::PeopleV1::ListContactGroupsResponse
+          command.query['groupFields'] = group_fields unless group_fields.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['syncToken'] = sync_token unless sync_token.nil?

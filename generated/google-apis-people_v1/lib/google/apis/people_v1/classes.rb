@@ -327,6 +327,11 @@ module Google
       class ContactGroup
         include Google::Apis::Core::Hashable
       
+        # The group's client data.
+        # Corresponds to the JSON property `clientData`
+        # @return [Array<Google::Apis::PeopleV1::GroupClientData>]
+        attr_accessor :client_data
+      
         # The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the resource.
         # Used for web cache validation.
         # Corresponds to the JSON property `etag`
@@ -381,6 +386,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @client_data = args[:client_data] if args.key?(:client_data)
           @etag = args[:etag] if args.key?(:etag)
           @formatted_name = args[:formatted_name] if args.key?(:formatted_name)
           @group_type = args[:group_type] if args.key?(:group_type)
@@ -569,6 +575,13 @@ module Google
         # @return [Google::Apis::PeopleV1::ContactGroup]
         attr_accessor :contact_group
       
+        # Optional. A field mask to restrict which fields on the group are returned.
+        # Defaults to `metadata`, `groupType`, and `name` if not set or set to empty.
+        # Valid fields are: * clientData * groupType * metadata * name
+        # Corresponds to the JSON property `readGroupFields`
+        # @return [String]
+        attr_accessor :read_group_fields
+      
         def initialize(**args)
            update!(**args)
         end
@@ -576,6 +589,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @contact_group = args[:contact_group] if args.key?(:contact_group)
+          @read_group_fields = args[:read_group_fields] if args.key?(:read_group_fields)
         end
       end
       
@@ -927,6 +941,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @responses = args[:responses] if args.key?(:responses)
+        end
+      end
+      
+      # Arbitrary client data that is populated by clients. Duplicate keys and values
+      # are allowed. LINT.IfChange(GroupClientData)
+      class GroupClientData
+        include Google::Apis::Core::Hashable
+      
+        # The client specified key of the client data.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # The client specified value of the client data.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -2481,6 +2521,21 @@ module Google
         # @return [Google::Apis::PeopleV1::ContactGroup]
         attr_accessor :contact_group
       
+        # Optional. A field mask to restrict which fields on the group are returned.
+        # Defaults to `metadata`, `groupType`, and `name` if not set or set to empty.
+        # Valid fields are: * clientData * groupType * memberCount * metadata * name
+        # Corresponds to the JSON property `readGroupFields`
+        # @return [String]
+        attr_accessor :read_group_fields
+      
+        # Optional. A field mask to restrict which fields on the group are updated.
+        # Multiple fields can be specified by separating them with commas. Defaults to `
+        # name` if not set or set to empty. Updated fields are replaced. Valid values
+        # are: * clientData * name
+        # Corresponds to the JSON property `updateGroupFields`
+        # @return [String]
+        attr_accessor :update_group_fields
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2488,6 +2543,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @contact_group = args[:contact_group] if args.key?(:contact_group)
+          @read_group_fields = args[:read_group_fields] if args.key?(:read_group_fields)
+          @update_group_fields = args[:update_group_fields] if args.key?(:update_group_fields)
         end
       end
       
