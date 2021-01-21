@@ -1701,6 +1701,19 @@ module Google
         end
       end
       
+      # A warning that there were issues in logcat collection.
+      class LogcatCollectionError
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # One dimension of the matrix of different runs of a step.
       class MatrixDimensionDefinition
         include Google::Apis::Core::Hashable
