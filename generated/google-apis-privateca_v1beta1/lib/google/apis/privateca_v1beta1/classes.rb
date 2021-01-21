@@ -1868,8 +1868,9 @@ module Google
         # @return [Array<Google::Apis::PrivatecaV1beta1::GoogleApiServicecontrolV1TraceSpan>]
         attr_accessor :trace_spans
       
-        # User defined labels for the resource that this operation is associated with.
-        # Only a combination of 1000 user labels per consumer project are allowed.
+        # Private Preview. This feature is only available for approved services. User
+        # defined labels for the resource that this operation is associated with. Only a
+        # combination of 1000 user labels per consumer project are allowed.
         # Corresponds to the JSON property `userLabels`
         # @return [Hash<String,String>]
         attr_accessor :user_labels
