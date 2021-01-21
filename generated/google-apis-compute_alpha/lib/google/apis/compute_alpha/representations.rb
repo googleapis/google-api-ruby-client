@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Any
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AttachedDisk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -533,6 +539,12 @@ module Google
       end
       
       class BulkInsertInstanceResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BulkInsertInstanceResourcePerInstanceProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5242,6 +5254,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpcomingMaintenanceTimeWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UrlMap
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5966,6 +5984,14 @@ module Google
         end
       end
       
+      class Any
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type_url, as: 'typeUrl'
+          property :value, :base64 => true, as: 'value'
+        end
+      end
+      
       class AttachedDisk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6405,6 +6431,8 @@ module Google
           property :locality_lb_policy, as: 'localityLbPolicy'
           property :log_config, as: 'logConfig', class: Google::Apis::ComputeAlpha::BackendServiceLogConfig, decorator: Google::Apis::ComputeAlpha::BackendServiceLogConfig::Representation
       
+          property :max_stream_duration, as: 'maxStreamDuration', class: Google::Apis::ComputeAlpha::Duration, decorator: Google::Apis::ComputeAlpha::Duration::Representation
+      
           property :name, as: 'name'
           property :network, as: 'network'
           property :outlier_detection, as: 'outlierDetection', class: Google::Apis::ComputeAlpha::OutlierDetection, decorator: Google::Apis::ComputeAlpha::OutlierDetection::Representation
@@ -6498,6 +6526,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connection_persistence_on_unhealthy_backends, as: 'connectionPersistenceOnUnhealthyBackends'
+          property :idle_timeout_sec, as: 'idleTimeoutSec'
+          property :tracking_mode, as: 'trackingMode'
         end
       end
       
@@ -6697,8 +6727,17 @@ module Google
       
           property :min_count, :numeric_string => true, as: 'minCount'
           property :name_pattern, as: 'namePattern'
+          hash :per_instance_properties, as: 'perInstanceProperties', class: Google::Apis::ComputeAlpha::BulkInsertInstanceResourcePerInstanceProperties, decorator: Google::Apis::ComputeAlpha::BulkInsertInstanceResourcePerInstanceProperties::Representation
+      
           collection :predefined_names, as: 'predefinedNames'
           property :source_instance_template, as: 'sourceInstanceTemplate'
+        end
+      end
+      
+      class BulkInsertInstanceResourcePerInstanceProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -6992,6 +7031,7 @@ module Google
           property :last_detach_timestamp, as: 'lastDetachTimestamp'
           collection :license_codes, as: 'licenseCodes'
           collection :licenses, as: 'licenses'
+          property :location_hint, as: 'locationHint'
           property :multi_writer, as: 'multiWriter'
           property :name, as: 'name'
           property :options, as: 'options'
@@ -8302,6 +8342,8 @@ module Google
       
           property :fault_injection_policy, as: 'faultInjectionPolicy', class: Google::Apis::ComputeAlpha::HttpFaultInjection, decorator: Google::Apis::ComputeAlpha::HttpFaultInjection::Representation
       
+          property :max_stream_duration, as: 'maxStreamDuration', class: Google::Apis::ComputeAlpha::Duration, decorator: Google::Apis::ComputeAlpha::Duration::Representation
+      
           property :request_mirror_policy, as: 'requestMirrorPolicy', class: Google::Apis::ComputeAlpha::RequestMirrorPolicy, decorator: Google::Apis::ComputeAlpha::RequestMirrorPolicy::Representation
       
           property :retry_policy, as: 'retryPolicy', class: Google::Apis::ComputeAlpha::HttpRetryPolicy, decorator: Google::Apis::ComputeAlpha::HttpRetryPolicy::Representation
@@ -8427,6 +8469,7 @@ module Google
           property :name, as: 'name'
           property :raw_disk, as: 'rawDisk', class: Google::Apis::ComputeAlpha::Image::RawDisk, decorator: Google::Apis::ComputeAlpha::Image::RawDisk::Representation
       
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :shielded_instance_initial_state, as: 'shieldedInstanceInitialState', class: Google::Apis::ComputeAlpha::InitialStateConfig, decorator: Google::Apis::ComputeAlpha::InitialStateConfig::Representation
@@ -9569,6 +9612,7 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :region, as: 'region'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :source_disk, as: 'sourceDisk'
@@ -10265,6 +10309,7 @@ module Google
           property :machine_image_encryption_key, as: 'machineImageEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
           property :name, as: 'name'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           collection :source_disk_encryption_keys, as: 'sourceDiskEncryptionKeys', class: Google::Apis::ComputeAlpha::SourceDiskEncryptionKey, decorator: Google::Apis::ComputeAlpha::SourceDiskEncryptionKey::Representation
@@ -11495,6 +11540,8 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :insert_time, as: 'insertTime'
           property :kind, as: 'kind'
+          property :metadata, as: 'metadata', class: Google::Apis::ComputeAlpha::Any, decorator: Google::Apis::ComputeAlpha::Any::Representation
+      
           property :name, as: 'name'
           property :operation_type, as: 'operationType'
           property :progress, as: 'progress'
@@ -13747,6 +13794,7 @@ module Google
           property :priority, as: 'priority'
           property :rate_limit_options, as: 'rateLimitOptions', class: Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptions, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptions::Representation
       
+          property :redirect_target, as: 'redirectTarget'
           property :rule_number, :numeric_string => true, as: 'ruleNumber'
           property :rule_tuple_count, as: 'ruleTupleCount'
           collection :target_resources, as: 'targetResources'
@@ -13876,6 +13924,7 @@ module Google
       
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :enable_proxy_protocol, as: 'enableProxyProtocol'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -14022,6 +14071,7 @@ module Google
           hash :labels, as: 'labels'
           collection :license_codes, as: 'licenseCodes'
           collection :licenses, as: 'licenses'
+          property :location_hint, as: 'locationHint'
           property :name, as: 'name'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
@@ -15450,8 +15500,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :date, as: 'date'
+          property :start_time_window, as: 'startTimeWindow', class: Google::Apis::ComputeAlpha::UpcomingMaintenanceTimeWindow, decorator: Google::Apis::ComputeAlpha::UpcomingMaintenanceTimeWindow::Representation
+      
           property :time, as: 'time'
           property :type, as: 'type'
+        end
+      end
+      
+      class UpcomingMaintenanceTimeWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :earliest, as: 'earliest'
+          property :latest, as: 'latest'
         end
       end
       

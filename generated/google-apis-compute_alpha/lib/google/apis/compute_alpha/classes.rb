@@ -1291,6 +1291,80 @@ module Google
         end
       end
       
+      # `Any` contains an arbitrary serialized protocol buffer message along with a
+      # URL that describes the type of the serialized message.
+      # Protobuf library provides support to pack/unpack Any values in the form of
+      # utility functions or additional generated methods of the Any type.
+      # Example 1: Pack and unpack a message in C++.
+      # Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) ` ... `
+      # Example 2: Pack and unpack a message in Java.
+      # Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) ` foo = any.
+      # unpack(Foo.class); `
+      # Example 3: Pack and unpack a message in Python.
+      # foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.
+      # Unpack(foo) ...
+      # Example 4: Pack and unpack a message in Go
+      # foo := &pb.Foo`...` any, err := anypb.New(foo) if err != nil ` ... ` ... foo :=
+      # &pb.Foo`` if err := any.UnmarshalTo(foo); err != nil ` ... `
+      # The pack methods provided by protobuf library will by default use 'type.
+      # googleapis.com/full.type.name' as the type URL and the unpack methods only use
+      # the fully qualified type name after the last '/' in the type URL, for example "
+      # foo.bar.com/x/y.z" will yield type name "y.z".
+      # JSON ==== The JSON representation of an `Any` value uses the regular
+      # representation of the deserialized, embedded message, with an additional field
+      # `@type` which contains the type URL. Example:
+      # package google.profile; message Person ` string first_name = 1; string
+      # last_name = 2; `
+      # ` "@type": "type.googleapis.com/google.profile.Person", "firstName": , "
+      # lastName":  `
+      # If the embedded message type is well-known and has a custom JSON
+      # representation, that representation will be embedded adding a field `value`
+      # which holds the custom JSON in addition to the `@type` field. Example (for
+      # message [google.protobuf.Duration][]):
+      # ` "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" `
+      class Any
+        include Google::Apis::Core::Hashable
+      
+        # A URL/resource name that uniquely identifies the type of the serialized
+        # protocol buffer message. This string must contain at least one "/" character.
+        # The last segment of the URL's path must represent the fully qualified name of
+        # the type (as in `path/google.protobuf.Duration`). The name should be in a
+        # canonical form (e.g., leading "." is not accepted).
+        # In practice, teams usually precompile into the binary all types that they
+        # expect it to use in the context of Any. However, for URLs which use the scheme
+        # `http`, `https`, or no scheme, one can optionally set up a type server that
+        # maps type URLs to message definitions as follows:
+        # * If no scheme is provided, `https` is assumed. * An HTTP GET on the URL must
+        # yield a [google.protobuf.Type][] value in binary format, or produce an error. *
+        # Applications are allowed to cache lookup results based on the URL, or have
+        # them precompiled into a binary to avoid any lookup. Therefore, binary
+        # compatibility needs to be preserved on changes to types. (Use versioned type
+        # names to manage breaking changes.)
+        # Note: this functionality is not currently available in the official protobuf
+        # release, and it is not used for type URLs beginning with type.googleapis.com.
+        # Schemes other than `http`, `https` (or the empty scheme) might be used with
+        # implementation specific semantics.
+        # Corresponds to the JSON property `typeUrl`
+        # @return [String]
+        attr_accessor :type_url
+      
+        # Must be a valid serialized protocol buffer of the above specified type.
+        # Corresponds to the JSON property `value`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type_url = args[:type_url] if args.key?(:type_url)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # An instance-attached disk resource.
       class AttachedDisk
         include Google::Apis::Core::Hashable
@@ -3485,6 +3559,14 @@ module Google
         # @return [Google::Apis::ComputeAlpha::BackendServiceLogConfig]
         attr_accessor :log_config
       
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `maxStreamDuration`
+        # @return [Google::Apis::ComputeAlpha::Duration]
+        attr_accessor :max_stream_duration
+      
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
@@ -3624,6 +3706,7 @@ module Google
           @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
           @locality_lb_policy = args[:locality_lb_policy] if args.key?(:locality_lb_policy)
           @log_config = args[:log_config] if args.key?(:log_config)
+          @max_stream_duration = args[:max_stream_duration] if args.key?(:max_stream_duration)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @outlier_detection = args[:outlier_detection] if args.key?(:outlier_detection)
@@ -3987,6 +4070,25 @@ module Google
         # @return [String]
         attr_accessor :connection_persistence_on_unhealthy_backends
       
+        # Specifies how long to keep a Connection Tracking entry while there is no
+        # matching traffic (in seconds).
+        # For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours.
+        # For NLB the minimum(default) is 60 seconds and the maximum is 16 hours.
+        # This field will be supported only if the Connection Tracking key is less than
+        # 5-tuple.
+        # Corresponds to the JSON property `idleTimeoutSec`
+        # @return [Fixnum]
+        attr_accessor :idle_timeout_sec
+      
+        # Specifies the key used for connection tracking. There are two options:
+        # PER_CONNECTION: This is the default mode. The Connection Tracking is performed
+        # as per the Connection Key (default Hash Method) for the specific protocol.
+        # PER_SESSION: The Connection Tracking is performed as per the configured
+        # Session Affinity. It matches the configured Session Affinity.
+        # Corresponds to the JSON property `trackingMode`
+        # @return [String]
+        attr_accessor :tracking_mode
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3994,6 +4096,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @connection_persistence_on_unhealthy_backends = args[:connection_persistence_on_unhealthy_backends] if args.key?(:connection_persistence_on_unhealthy_backends)
+          @idle_timeout_sec = args[:idle_timeout_sec] if args.key?(:idle_timeout_sec)
+          @tracking_mode = args[:tracking_mode] if args.key?(:tracking_mode)
         end
       end
       
@@ -4830,6 +4934,12 @@ module Google
         # @return [String]
         attr_accessor :name_pattern
       
+        # Per-instance properties to be set on individual instances. Keys of this map
+        # specify requested instance names. Can be empty if name_pattern is used.
+        # Corresponds to the JSON property `perInstanceProperties`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::BulkInsertInstanceResourcePerInstanceProperties>]
+        attr_accessor :per_instance_properties
+      
         # List of predefined names. The number of names provided must be equal to count.
         # Corresponds to the JSON property `predefinedNames`
         # @return [Array<String>]
@@ -4862,8 +4972,29 @@ module Google
           @location_policy = args[:location_policy] if args.key?(:location_policy)
           @min_count = args[:min_count] if args.key?(:min_count)
           @name_pattern = args[:name_pattern] if args.key?(:name_pattern)
+          @per_instance_properties = args[:per_instance_properties] if args.key?(:per_instance_properties)
           @predefined_names = args[:predefined_names] if args.key?(:predefined_names)
           @source_instance_template = args[:source_instance_template] if args.key?(:source_instance_template)
+        end
+      end
+      
+      # Per-instance properties to be set on individual instances. To be extended in
+      # the future.
+      class BulkInsertInstanceResourcePerInstanceProperties
+        include Google::Apis::Core::Hashable
+      
+        # This field is only temporary. It will be removed. Do not use it.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -5776,8 +5907,7 @@ module Google
         attr_accessor :allow_methods
       
         # Specifies the regualar expression patterns that match allowed origins. For
-        # regular expression grammar please see en.cppreference.com/w/cpp/regex/
-        # ecmascript
+        # regular expression grammar please see github.com/google/re2/wiki/Syntax
         # An origin is allowed if it matches either an item in allowOrigins or an item
         # in allowOriginRegexes.
         # Corresponds to the JSON property `allowOriginRegexes`
@@ -6070,6 +6200,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :licenses
       
+        # An opaque location hint used to place the disk close to other resources. This
+        # field is for use by internal tools that use the public API.
+        # Corresponds to the JSON property `locationHint`
+        # @return [String]
+        attr_accessor :location_hint
+      
         # Indicates whether or not the disk can be read/write attached to more than one
         # instance.
         # Corresponds to the JSON property `multiWriter`
@@ -6271,7 +6407,9 @@ module Google
         # The full Google Cloud Storage URI where the disk image is stored. This file
         # must be a gzip-compressed tarball whose name ends in .tar.gz or virtual
         # machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https:
-        # //storage.googleapis.com/.
+        # //storage.googleapis.com/. This flag is not optimized for creating multiple
+        # disks from a source storage object. To create many disks from a source storage
+        # object, use gcloud compute images import instead.
         # Corresponds to the JSON property `sourceStorageObject`
         # @return [String]
         attr_accessor :source_storage_object
@@ -6337,6 +6475,7 @@ module Google
           @last_detach_timestamp = args[:last_detach_timestamp] if args.key?(:last_detach_timestamp)
           @license_codes = args[:license_codes] if args.key?(:license_codes)
           @licenses = args[:licenses] if args.key?(:licenses)
+          @location_hint = args[:location_hint] if args.key?(:location_hint)
           @multi_writer = args[:multi_writer] if args.key?(:multi_writer)
           @name = args[:name] if args.key?(:name)
           @options = args[:options] if args.key?(:options)
@@ -8629,7 +8768,7 @@ module Google
         attr_accessor :rule_tuple_count
       
         # A list of network resource URLs to which this rule applies. This field allows
-        # you to control which network?s VMs get this rule. If this field is left blank,
+        # you to control which network's VMs get this rule. If this field is left blank,
         # all VMs within the organization will receive the rule.
         # Corresponds to the JSON property `targetResources`
         # @return [Array<String>]
@@ -8818,8 +8957,6 @@ module Google
         # ip_address_specifications).
         # Must be set to `0.0.0.0` when the target is targetGrpcProxy that has
         # validateForProxyless field set to true.
-        # For Private Service Connect forwarding rules that forward traffic to Google
-        # APIs, IP address must be provided.
         # Corresponds to the JSON property `IPAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -8992,8 +9129,6 @@ module Google
         # For Internal TCP/UDP Load Balancing, this field identifies the network that
         # the load balanced IP should belong to for this Forwarding Rule. If this field
         # is not specified, the default network will be used.
-        # For Private Service Connect forwarding rules that forward traffic to Google
-        # APIs, a network must be provided.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -9104,15 +9239,6 @@ module Google
         # resource. The forwarded traffic must be of a type appropriate to the target
         # object. For more information, see the "Target" column in [Port specifications](
         # /load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-        # For Private Service Connect forwarding rules that forward traffic to Google
-        # APIs, provide the name of a supported Google API bundle. Currently, the
-        # supported Google API bundles include:
-        # 
-        # - vpc-sc - GCP APIs that support VPC Service Controls. For more information
-        # about which APIs support VPC Service Controls, refer to VPC-SC supported
-        # products and limitations.
-        # - all-apis - All GCP APIs. For more information about which APIs are supported
-        # with this bundle, refer to Private Google Access-specific domains and VIPs.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -11314,8 +11440,8 @@ module Google
         attr_accessor :range_match
       
         # The value of the header must match the regular expression specified in
-        # regexMatch. For regular expression grammar, please see:  en.cppreference.com/w/
-        # cpp/regex/ecmascript
+        # regexMatch. For regular expression grammar, please see:  github.com/google/re2/
+        # wiki/Syntax
         # For matching against a port specified in the HTTP request, use a headerMatch
         # with headerName set to PORT and a regular expression that satisfies the
         # RFC2616 Host header's port specifier.
@@ -11644,7 +11770,7 @@ module Google
       
         # The queryParameterMatch matches if the value of the parameter matches the
         # regular expression specified by regexMatch. For the regular expression grammar,
-        # please see en.cppreference.com/w/cpp/regex/ecmascript
+        # please see github.com/google/re2/wiki/Syntax
         # Only one of presentMatch, exactMatch or regexMatch must be set.
         # Note that regexMatch only applies when the loadBalancingScheme is set to
         # INTERNAL_SELF_MANAGED.
@@ -11823,6 +11949,14 @@ module Google
         # @return [Google::Apis::ComputeAlpha::HttpFaultInjection]
         attr_accessor :fault_injection_policy
       
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `maxStreamDuration`
+        # @return [Google::Apis::ComputeAlpha::Duration]
+        attr_accessor :max_stream_duration
+      
         # A policy that specifies how requests intended for the route's backends are
         # shadowed to a separate mirrored backend service. Loadbalancer does not wait
         # for responses from the shadow service. Prior to sending traffic to the shadow
@@ -11871,6 +12005,7 @@ module Google
         def update!(**args)
           @cors_policy = args[:cors_policy] if args.key?(:cors_policy)
           @fault_injection_policy = args[:fault_injection_policy] if args.key?(:fault_injection_policy)
+          @max_stream_duration = args[:max_stream_duration] if args.key?(:max_stream_duration)
           @request_mirror_policy = args[:request_mirror_policy] if args.key?(:request_mirror_policy)
           @retry_policy = args[:retry_policy] if args.key?(:retry_policy)
           @timeout = args[:timeout] if args.key?(:timeout)
@@ -12057,7 +12192,7 @@ module Google
         # For satisfying the matchRule condition, the path of the request must satisfy
         # the regular expression specified in regexMatch after removing any query
         # parameters and anchor supplied with the original URL. For regular expression
-        # grammar please see en.cppreference.com/w/cpp/regex/ecmascript
+        # grammar please see github.com/google/re2/wiki/Syntax
         # Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
         # Note that regexMatch only applies to Loadbalancers that have their
         # loadBalancingScheme set to INTERNAL_SELF_MANAGED.
@@ -12424,6 +12559,12 @@ module Google
         # @return [Google::Apis::ComputeAlpha::Image::RawDisk]
         attr_accessor :raw_disk
       
+        # [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -12555,6 +12696,7 @@ module Google
           @licenses = args[:licenses] if args.key?(:licenses)
           @name = args[:name] if args.key?(:name)
           @raw_disk = args[:raw_disk] if args.key?(:raw_disk)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @shielded_instance_initial_state = args[:shielded_instance_initial_state] if args.key?(:shielded_instance_initial_state)
@@ -16919,6 +17061,12 @@ module Google
         # @return [String]
         attr_accessor :region
       
+        # [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -16976,6 +17124,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @region = args[:region] if args.key?(:region)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @source_disk = args[:source_disk] if args.key?(:source_disk)
@@ -19878,6 +20027,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # [Output Only] The URL for this machine image. The server defines this URL.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -19940,6 +20095,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @machine_image_encryption_key = args[:machine_image_encryption_key] if args.key?(:machine_image_encryption_key)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @source_disk_encryption_keys = args[:source_disk_encryption_keys] if args.key?(:source_disk_encryption_keys)
@@ -21156,9 +21312,8 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
-        # Optional port number of network endpoint. If not specified and the
-        # NetworkEndpointGroup.network_endpoint_type is GCE_IP_PORT, the defaultPort for
-        # the network endpoint group will be used.
+        # Optional port number of network endpoint. If not specified, the defaultPort
+        # for the network endpoint group will be used.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
@@ -24739,6 +24894,41 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # `Any` contains an arbitrary serialized protocol buffer message along with a
+        # URL that describes the type of the serialized message.
+        # Protobuf library provides support to pack/unpack Any values in the form of
+        # utility functions or additional generated methods of the Any type.
+        # Example 1: Pack and unpack a message in C++.
+        # Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) ` ... `
+        # Example 2: Pack and unpack a message in Java.
+        # Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) ` foo = any.
+        # unpack(Foo.class); `
+        # Example 3: Pack and unpack a message in Python.
+        # foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.
+        # Unpack(foo) ...
+        # Example 4: Pack and unpack a message in Go
+        # foo := &pb.Foo`...` any, err := anypb.New(foo) if err != nil ` ... ` ... foo :=
+        # &pb.Foo`` if err := any.UnmarshalTo(foo); err != nil ` ... `
+        # The pack methods provided by protobuf library will by default use 'type.
+        # googleapis.com/full.type.name' as the type URL and the unpack methods only use
+        # the fully qualified type name after the last '/' in the type URL, for example "
+        # foo.bar.com/x/y.z" will yield type name "y.z".
+        # JSON ==== The JSON representation of an `Any` value uses the regular
+        # representation of the deserialized, embedded message, with an additional field
+        # `@type` which contains the type URL. Example:
+        # package google.profile; message Person ` string first_name = 1; string
+        # last_name = 2; `
+        # ` "@type": "type.googleapis.com/google.profile.Person", "firstName": , "
+        # lastName":  `
+        # If the embedded message type is well-known and has a custom JSON
+        # representation, that representation will be embedded adding a field `value`
+        # which holds the custom JSON in addition to the `@type` field. Example (for
+        # message [google.protobuf.Duration][]):
+        # ` "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" `
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::ComputeAlpha::Any]
+        attr_accessor :metadata
+      
         # [Output Only] Name of the operation.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -24839,6 +25029,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @insert_time = args[:insert_time] if args.key?(:insert_time)
           @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @operation_type = args[:operation_type] if args.key?(:operation_type)
           @progress = args[:progress] if args.key?(:progress)
@@ -33564,6 +33755,12 @@ module Google
         # @return [Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptions]
         attr_accessor :rate_limit_options
       
+        # This must be specified for redirect actions. Cannot be specified for any other
+        # actions.
+        # Corresponds to the JSON property `redirectTarget`
+        # @return [String]
+        attr_accessor :redirect_target
+      
         # Identifier for the rule. This is only unique within the given security policy.
         # This can only be set during rule creation, if rule number is not specified it
         # will be generated by the server.
@@ -33606,6 +33803,7 @@ module Google
           @preview = args[:preview] if args.key?(:preview)
           @priority = args[:priority] if args.key?(:priority)
           @rate_limit_options = args[:rate_limit_options] if args.key?(:rate_limit_options)
+          @redirect_target = args[:redirect_target] if args.key?(:redirect_target)
           @rule_number = args[:rule_number] if args.key?(:rule_number)
           @rule_tuple_count = args[:rule_tuple_count] if args.key?(:rule_tuple_count)
           @target_resources = args[:target_resources] if args.key?(:target_resources)
@@ -34108,6 +34306,14 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # If true, enable the proxy protocol which is for supplying client TCP/IP
+        # address data in TCP connections that traverse proxies on their way to
+        # destination servers.
+        # Corresponds to the JSON property `enableProxyProtocol`
+        # @return [Boolean]
+        attr_accessor :enable_proxy_protocol
+        alias_method :enable_proxy_protocol?, :enable_proxy_protocol
+      
         # [Output Only] The unique identifier for the resource type. The server
         # generates this identifier.
         # Corresponds to the JSON property `id`
@@ -34164,6 +34370,7 @@ module Google
           @consumer_forwarding_rules = args[:consumer_forwarding_rules] if args.key?(:consumer_forwarding_rules)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @enable_proxy_protocol = args[:enable_proxy_protocol] if args.key?(:enable_proxy_protocol)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
@@ -34678,6 +34885,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :licenses
       
+        # An opaque location hint used to place the snapshot close to other resources.
+        # This field is for use by internal tools that use the public API.
+        # Corresponds to the JSON property `locationHint`
+        # @return [String]
+        attr_accessor :location_hint
+      
         # Name of the resource; provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
@@ -34782,6 +34995,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @license_codes = args[:license_codes] if args.key?(:license_codes)
           @licenses = args[:licenses] if args.key?(:licenses)
+          @location_hint = args[:location_hint] if args.key?(:location_hint)
           @name = args[:name] if args.key?(:name)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -35460,8 +35674,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :domain_status
       
-        # The domains for which a managed SSL certificate will be generated. Currently
-        # only single-domain certs are supported.
+        # The domains for which a managed SSL certificate will be generated. Each Google-
+        # managed SSL certificate supports up to the [maximum number of domains per
+        # Google-managed SSL certificate](/load-balancing/docs/quotas#ssl_certificates).
         # Corresponds to the JSON property `domains`
         # @return [Array<String>]
         attr_accessor :domains
@@ -40462,6 +40677,12 @@ module Google
         # @return [String]
         attr_accessor :date
       
+        # Represents a window of time using two timestamps: `earliest` and `latest`.
+        # This timestamp values are in RFC3339 text format.
+        # Corresponds to the JSON property `startTimeWindow`
+        # @return [Google::Apis::ComputeAlpha::UpcomingMaintenanceTimeWindow]
+        attr_accessor :start_time_window
+      
         # [Output Only] The time when the maintenance will take place. This value is in
         # RFC3339 text format. DEPRECATED: Use start_time_window instead.
         # Corresponds to the JSON property `time`
@@ -40480,8 +40701,35 @@ module Google
         # Update properties of this object
         def update!(**args)
           @date = args[:date] if args.key?(:date)
+          @start_time_window = args[:start_time_window] if args.key?(:start_time_window)
           @time = args[:time] if args.key?(:time)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Represents a window of time using two timestamps: `earliest` and `latest`.
+      # This timestamp values are in RFC3339 text format.
+      class UpcomingMaintenanceTimeWindow
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `earliest`
+        # @return [String]
+        attr_accessor :earliest
+      
+        # 
+        # Corresponds to the JSON property `latest`
+        # @return [String]
+        attr_accessor :latest
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @earliest = args[:earliest] if args.key?(:earliest)
+          @latest = args[:latest] if args.key?(:latest)
         end
       end
       
@@ -42182,9 +42430,9 @@ module Google
         attr_accessor :id
       
         # URL of the interconnect attachment resource. When the value of this field is
-        # present, the VPN Gateway will be used for IPsec over Interconnect; all Egress
-        # or Ingress traffic for this VPN Gateway interface will go through the
-        # specified interconnect attachment resource.
+        # present, the VPN Gateway will be used for IPsec-encrypted Cloud Interconnect;
+        # all Egress or Ingress traffic for this VPN Gateway interface will go through
+        # the specified interconnect attachment resource.
         # Corresponds to the JSON property `interconnectAttachment`
         # @return [String]
         attr_accessor :interconnect_attachment
