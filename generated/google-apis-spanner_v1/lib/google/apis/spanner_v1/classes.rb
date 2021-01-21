@@ -1652,6 +1652,12 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # The list of unreachable instances. It includes the names of instances whose
+        # metadata could not be retrieved within instance_deadline.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1660,6 +1666,7 @@ module Google
         def update!(**args)
           @instances = args[:instances] if args.key?(:instances)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       

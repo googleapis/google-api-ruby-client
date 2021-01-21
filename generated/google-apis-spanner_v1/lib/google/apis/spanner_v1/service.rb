@@ -290,6 +290,10 @@ module Google
         #   value of the label contains the string "dev". * `name:howl labels.env:dev` -->
         #   The instance's name contains "howl" and it has the label "env" with its value
         #   containing "dev".
+        # @param [String] instance_deadline
+        #   Deadline used while retrieving metadata for instances. Instances whose
+        #   metadata cannot be retrieved within this deadline will be added to unreachable
+        #   in ListInstancesResponse.
         # @param [Fixnum] page_size
         #   Number of instances to be returned in the response. If 0 or less, defaults to
         #   the server's maximum allowed page size.
@@ -313,12 +317,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_instances(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_instances(parent, filter: nil, instance_deadline: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/instances', options)
           command.response_representation = Google::Apis::SpannerV1::ListInstancesResponse::Representation
           command.response_class = Google::Apis::SpannerV1::ListInstancesResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['instanceDeadline'] = instance_deadline unless instance_deadline.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
