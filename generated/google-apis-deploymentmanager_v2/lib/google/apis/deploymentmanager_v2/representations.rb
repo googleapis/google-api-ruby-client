@@ -395,6 +395,8 @@ module Google
       
           property :insert_time, as: 'insertTime'
           property :layout, as: 'layout'
+          property :manifest_size_bytes, :numeric_string => true, as: 'manifestSizeBytes'
+          property :manifest_size_limit_bytes, :numeric_string => true, as: 'manifestSizeLimitBytes'
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
         end
