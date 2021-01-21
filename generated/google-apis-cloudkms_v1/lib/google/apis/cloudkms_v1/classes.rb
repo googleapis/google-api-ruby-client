@@ -85,6 +85,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :plaintext_crc32c
       
+        # The ProtectionLevel of the CryptoKeyVersion used in decryption.
+        # Corresponds to the JSON property `protectionLevel`
+        # @return [String]
+        attr_accessor :protection_level
+      
         # Integrity verification field. A flag indicating whether
         # AsymmetricDecryptRequest.ciphertext_crc32c was received by
         # KeyManagementService and used for the integrity verification of the ciphertext.
@@ -106,6 +111,7 @@ module Google
         def update!(**args)
           @plaintext = args[:plaintext] if args.key?(:plaintext)
           @plaintext_crc32c = args[:plaintext_crc32c] if args.key?(:plaintext_crc32c)
+          @protection_level = args[:protection_level] if args.key?(:protection_level)
           @verified_ciphertext_crc32c = args[:verified_ciphertext_crc32c] if args.key?(:verified_ciphertext_crc32c)
         end
       end
@@ -157,6 +163,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The ProtectionLevel of the CryptoKeyVersion used for signing.
+        # Corresponds to the JSON property `protectionLevel`
+        # @return [String]
+        attr_accessor :protection_level
+      
         # The created signature.
         # Corresponds to the JSON property `signature`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -197,6 +208,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+          @protection_level = args[:protection_level] if args.key?(:protection_level)
           @signature = args[:signature] if args.key?(:signature)
           @signature_crc32c = args[:signature_crc32c] if args.key?(:signature_crc32c)
           @verified_digest_crc32c = args[:verified_digest_crc32c] if args.key?(:verified_digest_crc32c)
@@ -684,6 +696,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :plaintext_crc32c
       
+        # The ProtectionLevel of the CryptoKeyVersion used in decryption.
+        # Corresponds to the JSON property `protectionLevel`
+        # @return [String]
+        attr_accessor :protection_level
+      
+        # Whether the Decryption was performed using the primary key version.
+        # Corresponds to the JSON property `usedPrimary`
+        # @return [Boolean]
+        attr_accessor :used_primary
+        alias_method :used_primary?, :used_primary
+      
         def initialize(**args)
            update!(**args)
         end
@@ -692,6 +715,8 @@ module Google
         def update!(**args)
           @plaintext = args[:plaintext] if args.key?(:plaintext)
           @plaintext_crc32c = args[:plaintext_crc32c] if args.key?(:plaintext_crc32c)
+          @protection_level = args[:protection_level] if args.key?(:protection_level)
+          @used_primary = args[:used_primary] if args.key?(:used_primary)
         end
       end
       
@@ -841,6 +866,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The ProtectionLevel of the CryptoKeyVersion used in encryption.
+        # Corresponds to the JSON property `protectionLevel`
+        # @return [String]
+        attr_accessor :protection_level
+      
         # Integrity verification field. A flag indicating whether EncryptRequest.
         # additional_authenticated_data_crc32c was received by KeyManagementService and
         # used for the integrity verification of the AAD. A false value of this field
@@ -875,6 +905,7 @@ module Google
           @ciphertext = args[:ciphertext] if args.key?(:ciphertext)
           @ciphertext_crc32c = args[:ciphertext_crc32c] if args.key?(:ciphertext_crc32c)
           @name = args[:name] if args.key?(:name)
+          @protection_level = args[:protection_level] if args.key?(:protection_level)
           @verified_additional_authenticated_data_crc32c = args[:verified_additional_authenticated_data_crc32c] if args.key?(:verified_additional_authenticated_data_crc32c)
           @verified_plaintext_crc32c = args[:verified_plaintext_crc32c] if args.key?(:verified_plaintext_crc32c)
         end
@@ -1512,6 +1543,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :pem_crc32c
       
+        # The ProtectionLevel of the CryptoKeyVersion public key.
+        # Corresponds to the JSON property `protectionLevel`
+        # @return [String]
+        attr_accessor :protection_level
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1522,6 +1558,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @pem = args[:pem] if args.key?(:pem)
           @pem_crc32c = args[:pem_crc32c] if args.key?(:pem_crc32c)
+          @protection_level = args[:protection_level] if args.key?(:protection_level)
         end
       end
       
