@@ -850,6 +850,7 @@ module Google
           collection :instances, as: 'instances', class: Google::Apis::SpannerV1::Instance, decorator: Google::Apis::SpannerV1::Instance::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
