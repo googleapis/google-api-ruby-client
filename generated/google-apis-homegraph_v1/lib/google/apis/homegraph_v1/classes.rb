@@ -78,7 +78,9 @@ module Google
         # Custom device attributes stored in Home Graph and provided to your smart home
         # Action in each [QUERY](https://developers.google.com/assistant/smarthome/
         # reference/intent/query) and [EXECUTE](https://developers.google.com/assistant/
-        # smarthome/reference/intent/execute) intent.
+        # smarthome/reference/intent/execute) intent. Data in this object has a few
+        # constraints: No sensitive information, including but not limited to Personally
+        # Identifiable Information.
         # Corresponds to the JSON property `customData`
         # @return [Hash<String,Object>]
         attr_accessor :custom_data
