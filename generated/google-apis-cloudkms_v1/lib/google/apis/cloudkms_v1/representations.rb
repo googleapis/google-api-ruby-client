@@ -263,6 +263,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :plaintext, :base64 => true, as: 'plaintext'
           property :plaintext_crc32c, :numeric_string => true, as: 'plaintextCrc32c'
+          property :protection_level, as: 'protectionLevel'
           property :verified_ciphertext_crc32c, as: 'verifiedCiphertextCrc32c'
         end
       end
@@ -280,6 +281,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+          property :protection_level, as: 'protectionLevel'
           property :signature, :base64 => true, as: 'signature'
           property :signature_crc32c, :numeric_string => true, as: 'signatureCrc32c'
           property :verified_digest_crc32c, as: 'verifiedDigestCrc32c'
@@ -382,6 +384,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :plaintext, :base64 => true, as: 'plaintext'
           property :plaintext_crc32c, :numeric_string => true, as: 'plaintextCrc32c'
+          property :protection_level, as: 'protectionLevel'
+          property :used_primary, as: 'usedPrimary'
         end
       end
       
@@ -416,6 +420,7 @@ module Google
           property :ciphertext, :base64 => true, as: 'ciphertext'
           property :ciphertext_crc32c, :numeric_string => true, as: 'ciphertextCrc32c'
           property :name, as: 'name'
+          property :protection_level, as: 'protectionLevel'
           property :verified_additional_authenticated_data_crc32c, as: 'verifiedAdditionalAuthenticatedDataCrc32c'
           property :verified_plaintext_crc32c, as: 'verifiedPlaintextCrc32c'
         end
@@ -570,6 +575,7 @@ module Google
           property :name, as: 'name'
           property :pem, as: 'pem'
           property :pem_crc32c, :numeric_string => true, as: 'pemCrc32c'
+          property :protection_level, as: 'protectionLevel'
         end
       end
       
