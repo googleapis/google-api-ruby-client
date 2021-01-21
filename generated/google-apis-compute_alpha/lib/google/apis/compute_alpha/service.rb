@@ -12865,7 +12865,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an instance's network interface. This method follows PATCH semantics.
+        # Updates an instance's network interface. This method can only update an
+        # interface's alias IP range and attached network. See Modifying alias IP ranges
+        # for an existing instance for instructions on changing alias IP ranges. See
+        # Migrating a VM between networks for instructions on migrating an interface.
+        # This method follows PATCH semantics.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
