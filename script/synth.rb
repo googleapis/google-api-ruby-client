@@ -15,8 +15,16 @@ end
 # so any previously created files don't pollute this and subsequent synth runs.
 execute "git clean -df"
 
-Dir.chdir "google-apis-generator"
+# This script is generally run as a superuser in a container. As a result,
+# newly generated files will have a superuser owner, and cannot easily be
+# removed by the caller. Thus, we must ensure any files generated during this
+# run are given a reasonable owner before the script exits.
+at_exit do
+  user_group = ENV["USER_GROUP"]
+  execute "chown -R #{user_group} #{DIR}/generated" if user_group
+end
 
+Dir.chdir "google-apis-generator"
 execute "bundle install"
 
 if ARGV.empty?
