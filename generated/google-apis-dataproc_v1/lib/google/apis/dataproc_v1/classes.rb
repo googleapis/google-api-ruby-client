@@ -762,8 +762,9 @@ module Google
         attr_accessor :boot_disk_size_gb
       
         # Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-
-        # ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk
-        # Hard Disk Drive).
+        # balanced" (Persistent Disk Balanced Solid State Drive), "pd-ssd" (Persistent
+        # Disk Solid State Drive), or "pd-standard" (Persistent Disk Hard Disk Drive).
+        # See Disk types (https://cloud.google.com/compute/docs/disks#disk-types).
         # Corresponds to the JSON property `bootDiskType`
         # @return [String]
         attr_accessor :boot_disk_type
@@ -982,7 +983,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :service_account_scopes
       
-        # Shielded Instance Config for clusters using shielded VMs.
+        # Shielded Instance Config for clusters using Compute Engine Shielded VMs (https:
+        # //cloud.google.com/security/shielded-cloud/shielded-vm).
         # Corresponds to the JSON property `shieldedInstanceConfig`
         # @return [Google::Apis::DataprocV1::ShieldedInstanceConfig]
         attr_accessor :shielded_instance_config
@@ -1923,7 +1925,7 @@ module Google
         # Optional. The duration to keep the cluster alive while idling (when no jobs
         # are running). Passing this threshold will cause the cluster to be deleted.
         # Minimum value is 5 minutes; maximum value is 14 days (see JSON representation
-        # of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json).
+        # of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
         # Corresponds to the JSON property `idleDeleteTtl`
         # @return [String]
         attr_accessor :idle_delete_ttl
@@ -2835,7 +2837,8 @@ module Google
         end
       end
       
-      # Shielded Instance Config for clusters using shielded VMs.
+      # Shielded Instance Config for clusters using Compute Engine Shielded VMs (https:
+      # //cloud.google.com/security/shielded-cloud/shielded-vm).
       class ShieldedInstanceConfig
         include Google::Apis::Core::Hashable
       
