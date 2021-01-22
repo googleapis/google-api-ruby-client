@@ -31,6 +31,7 @@ command = [
     f"-v{os.getcwd()}:/workspace",
     "-v/var/run/docker.sock:/var/run/docker.sock",
     "-w", "/workspace",
+    "-e", f"USER_GROUP={os.getuid()}:{os.getgid()}",
     "--entrypoint", "script/synth.rb",
     "gcr.io/cloud-devrel-kokoro-resources/yoshi-ruby/autosynth"]
 if extra_args():
