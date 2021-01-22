@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ApplySoftwareUpdateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -190,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Schedule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -233,6 +245,14 @@ module Google
       end
       
       class ApplyParametersRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :apply_all, as: 'applyAll'
+          collection :node_ids, as: 'nodeIds'
+        end
+      end
+      
+      class ApplySoftwareUpdateRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :apply_all, as: 'applyAll'
@@ -418,6 +438,7 @@ module Google
           property :parameters, as: 'parameters', class: Google::Apis::MemcacheV1beta2::MemcacheParameters, decorator: Google::Apis::MemcacheV1beta2::MemcacheParameters::Representation
       
           property :state, as: 'state'
+          property :update_available, as: 'updateAvailable'
           property :update_time, as: 'updateTime'
           collection :zones, as: 'zones'
         end
@@ -511,6 +532,7 @@ module Google
       
           property :port, as: 'port'
           property :state, as: 'state'
+          property :update_available, as: 'updateAvailable'
           property :zone, as: 'zone'
         end
       end
@@ -532,6 +554,19 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+        end
+      end
+      
+      class OperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :cancel_requested, as: 'cancelRequested'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :status_detail, as: 'statusDetail'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
         end
       end
       
