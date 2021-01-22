@@ -55,39 +55,6 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Remove IAM policy that is currently set on the given resource.
-        # @param [String] resource
-        #   The resource on which IAM policy to be removed is attached to.
-        # @param [Google::Apis::DatafusionV1beta1::RemoveIamPolicyRequest] remove_iam_policy_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DatafusionV1beta1::RemoveIamPolicyResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DatafusionV1beta1::RemoveIamPolicyResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def remove_project_iam_policy(resource, remove_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta1/{+resource}:removeIamPolicy', options)
-          command.request_representation = Google::Apis::DatafusionV1beta1::RemoveIamPolicyRequest::Representation
-          command.request_object = remove_iam_policy_request_object
-          command.response_representation = Google::Apis::DatafusionV1beta1::RemoveIamPolicyResponse::Representation
-          command.response_class = Google::Apis::DatafusionV1beta1::RemoveIamPolicyResponse
-          command.params['resource'] = resource unless resource.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Gets information about a location.
         # @param [String] name
         #   Resource name for the location.
@@ -155,6 +122,39 @@ module Google
           command.query['includeUnrevealedLocations'] = include_unrevealed_locations unless include_unrevealed_locations.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Remove IAM policy that is currently set on the given resource.
+        # @param [String] resource
+        #   The resource on which IAM policy to be removed is attached to.
+        # @param [Google::Apis::DatafusionV1beta1::RemoveIamPolicyRequest] remove_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatafusionV1beta1::RemoveIamPolicyResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatafusionV1beta1::RemoveIamPolicyResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_location_iam_policy(resource, remove_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:removeIamPolicy', options)
+          command.request_representation = Google::Apis::DatafusionV1beta1::RemoveIamPolicyRequest::Representation
+          command.request_object = remove_iam_policy_request_object
+          command.response_representation = Google::Apis::DatafusionV1beta1::RemoveIamPolicyResponse::Representation
+          command.response_class = Google::Apis::DatafusionV1beta1::RemoveIamPolicyResponse
+          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
