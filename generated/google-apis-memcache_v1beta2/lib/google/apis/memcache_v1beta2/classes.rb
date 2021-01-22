@@ -50,6 +50,35 @@ module Google
         end
       end
       
+      # Request for ApplySoftwareUpdate.
+      class ApplySoftwareUpdateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Whether to apply the update to all nodes. If set to true, will explicitly
+        # restrict users from specifying any nodes, and apply software update to all
+        # nodes (where applicable) within the instance.
+        # Corresponds to the JSON property `applyAll`
+        # @return [Boolean]
+        attr_accessor :apply_all
+        alias_method :apply_all?, :apply_all
+      
+        # Nodes to which we should apply the update to. Note all the selected nodes are
+        # updated in parallel.
+        # Corresponds to the JSON property `nodeIds`
+        # @return [Array<String>]
+        attr_accessor :node_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apply_all = args[:apply_all] if args.key?(:apply_all)
+          @node_ids = args[:node_ids] if args.key?(:node_ids)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -774,6 +803,12 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Output only. Returns true if there is an update waiting to be applied
+        # Corresponds to the JSON property `updateAvailable`
+        # @return [Boolean]
+        attr_accessor :update_available
+        alias_method :update_available?, :update_available
+      
         # Output only. The time the instance was updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -806,6 +841,7 @@ module Google
           @node_count = args[:node_count] if args.key?(:node_count)
           @parameters = args[:parameters] if args.key?(:parameters)
           @state = args[:state] if args.key?(:state)
+          @update_available = args[:update_available] if args.key?(:update_available)
           @update_time = args[:update_time] if args.key?(:update_time)
           @zones = args[:zones] if args.key?(:zones)
         end
@@ -1114,6 +1150,12 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Output only. Returns true if there is an update waiting to be applied
+        # Corresponds to the JSON property `updateAvailable`
+        # @return [Boolean]
+        attr_accessor :update_available
+        alias_method :update_available?, :update_available
+      
         # Output only. Location (GCP Zone) for the Memcached node.
         # Corresponds to the JSON property `zone`
         # @return [String]
@@ -1130,6 +1172,7 @@ module Google
           @parameters = args[:parameters] if args.key?(:parameters)
           @port = args[:port] if args.key?(:port)
           @state = args[:state] if args.key?(:state)
+          @update_available = args[:update_available] if args.key?(:update_available)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
@@ -1218,6 +1261,65 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # Represents the metadata of a long-running operation.
+      class OperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. API version used to start the operation.
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # Output only. Identifies whether the user has requested cancellation of the
+        # operation. Operations that have successfully been cancelled have Operation.
+        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
+        # CANCELLED`.
+        # Corresponds to the JSON property `cancelRequested`
+        # @return [Boolean]
+        attr_accessor :cancel_requested
+        alias_method :cancel_requested?, :cancel_requested
+      
+        # Output only. Time when the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Time when the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Human-readable status of the operation, if any.
+        # Corresponds to the JSON property `statusDetail`
+        # @return [String]
+        attr_accessor :status_detail
+      
+        # Output only. Server-defined resource path for the target of the operation.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Output only. Name of the verb executed by the operation.
+        # Corresponds to the JSON property `verb`
+        # @return [String]
+        attr_accessor :verb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @cancel_requested = args[:cancel_requested] if args.key?(:cancel_requested)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @status_detail = args[:status_detail] if args.key?(:status_detail)
+          @target = args[:target] if args.key?(:target)
+          @verb = args[:verb] if args.key?(:verb)
         end
       end
       

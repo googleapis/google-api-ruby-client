@@ -1,8 +1,9 @@
 # Release history for google-apis-memcache_v1beta2
 
-### v0.2.0 (2021-01-13)
+### v0.2.0 (2021-01-22)
 
-* Regenerated from discovery document revision 20210112
+* Regenerated from discovery document revision 20210121
+* Regenerated using generator version 0.1.2
 
 ### v0.1.0 (2021-01-07)
 
