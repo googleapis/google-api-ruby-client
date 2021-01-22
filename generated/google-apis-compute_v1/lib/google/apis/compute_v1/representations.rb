@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdvancedMachineFeatures
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AliasIpRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4432,6 +4438,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UrlMapTestHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UrlMapValidationResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5035,6 +5047,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class AdvancedMachineFeatures
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_nested_virtualization, as: 'enableNestedVirtualization'
         end
       end
       
@@ -5869,6 +5888,7 @@ module Google
           property :region, as: 'region'
           collection :replica_zones, as: 'replicaZones'
           collection :resource_policies, as: 'resourcePolicies'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :size_gb, :numeric_string => true, as: 'sizeGb'
           property :source_disk, as: 'sourceDisk'
@@ -6388,6 +6408,7 @@ module Google
           property :ip_version, as: 'ipVersion'
           property :is_mirroring_collector, as: 'isMirroringCollector'
           property :kind, as: 'kind'
+          hash :labels, as: 'labels'
           property :load_balancing_scheme, as: 'loadBalancingScheme'
           collection :metadata_filters, as: 'metadataFilters', class: Google::Apis::ComputeV1::MetadataFilter, decorator: Google::Apis::ComputeV1::MetadataFilter::Representation
       
@@ -7211,6 +7232,8 @@ module Google
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_machine_features, as: 'advancedMachineFeatures', class: Google::Apis::ComputeV1::AdvancedMachineFeatures, decorator: Google::Apis::ComputeV1::AdvancedMachineFeatures::Representation
+      
           property :can_ip_forward, as: 'canIpForward'
           property :confidential_instance_config, as: 'confidentialInstanceConfig', class: Google::Apis::ComputeV1::ConfidentialInstanceConfig, decorator: Google::Apis::ComputeV1::ConfidentialInstanceConfig::Representation
       
@@ -7244,6 +7267,7 @@ module Google
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeV1::ReservationAffinity, decorator: Google::Apis::ComputeV1::ReservationAffinity::Representation
       
           collection :resource_policies, as: 'resourcePolicies'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeV1::Scheduling, decorator: Google::Apis::ComputeV1::Scheduling::Representation
       
           property :self_link, as: 'selfLink'
@@ -7911,6 +7935,8 @@ module Google
       class InstanceProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_machine_features, as: 'advancedMachineFeatures', class: Google::Apis::ComputeV1::AdvancedMachineFeatures, decorator: Google::Apis::ComputeV1::AdvancedMachineFeatures::Representation
+      
           property :can_ip_forward, as: 'canIpForward'
           property :confidential_instance_config, as: 'confidentialInstanceConfig', class: Google::Apis::ComputeV1::ConfidentialInstanceConfig, decorator: Google::Apis::ComputeV1::ConfidentialInstanceConfig::Representation
       
@@ -10204,6 +10230,7 @@ module Google
       
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
+          property :supports_pzs, as: 'supportsPzs'
           collection :zones, as: 'zones'
         end
       end
@@ -11533,6 +11560,7 @@ module Google
           collection :license_codes, as: 'licenseCodes'
           collection :licenses, as: 'licenses'
           property :name, as: 'name'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :snapshot_encryption_key, as: 'snapshotEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
       
@@ -12773,8 +12801,14 @@ module Google
       class TestFailure
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :actual_output_url, as: 'actualOutputUrl'
+          property :actual_redirect_response_code, as: 'actualRedirectResponseCode'
           property :actual_service, as: 'actualService'
+          property :expected_output_url, as: 'expectedOutputUrl'
+          property :expected_redirect_response_code, as: 'expectedRedirectResponseCode'
           property :expected_service, as: 'expectedService'
+          collection :headers, as: 'headers', class: Google::Apis::ComputeV1::UrlMapTestHeader, decorator: Google::Apis::ComputeV1::UrlMapTestHeader::Representation
+      
           property :host, as: 'host'
           property :path, as: 'path'
         end
@@ -12864,9 +12898,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
+          property :expected_output_url, as: 'expectedOutputUrl'
+          property :expected_redirect_response_code, as: 'expectedRedirectResponseCode'
+          collection :headers, as: 'headers', class: Google::Apis::ComputeV1::UrlMapTestHeader, decorator: Google::Apis::ComputeV1::UrlMapTestHeader::Representation
+      
           property :host, as: 'host'
           property :path, as: 'path'
           property :service, as: 'service'
+        end
+      end
+      
+      class UrlMapTestHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value'
         end
       end
       
@@ -13444,6 +13490,7 @@ module Google
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
+          property :supports_pzs, as: 'supportsPzs'
         end
       end
       
