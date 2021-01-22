@@ -3898,6 +3898,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceAttachment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceAttachmentConsumerForwardingRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceAttachmentList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ShieldedInstanceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4727,6 +4757,12 @@ module Google
       end
       
       class UrlMapTest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UrlMapTestHeader
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5707,6 +5743,7 @@ module Google
           property :negative_caching, as: 'negativeCaching'
           collection :negative_caching_policy, as: 'negativeCachingPolicy', class: Google::Apis::ComputeBeta::BackendBucketCdnPolicyNegativeCachingPolicy, decorator: Google::Apis::ComputeBeta::BackendBucketCdnPolicyNegativeCachingPolicy::Representation
       
+          property :request_coalescing, as: 'requestCoalescing'
           property :serve_while_stale, as: 'serveWhileStale'
           property :signed_url_cache_max_age_sec, :numeric_string => true, as: 'signedUrlCacheMaxAgeSec'
           collection :signed_url_key_names, as: 'signedUrlKeyNames'
@@ -5857,6 +5894,7 @@ module Google
           property :negative_caching, as: 'negativeCaching'
           collection :negative_caching_policy, as: 'negativeCachingPolicy', class: Google::Apis::ComputeBeta::BackendServiceCdnPolicyNegativeCachingPolicy, decorator: Google::Apis::ComputeBeta::BackendServiceCdnPolicyNegativeCachingPolicy::Representation
       
+          property :request_coalescing, as: 'requestCoalescing'
           property :serve_while_stale, as: 'serveWhileStale'
           property :signed_url_cache_max_age_sec, :numeric_string => true, as: 'signedUrlCacheMaxAgeSec'
           collection :signed_url_key_names, as: 'signedUrlKeyNames'
@@ -5882,6 +5920,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connection_persistence_on_unhealthy_backends, as: 'connectionPersistenceOnUnhealthyBackends'
+          property :idle_timeout_sec, as: 'idleTimeoutSec'
+          property :tracking_mode, as: 'trackingMode'
         end
       end
       
@@ -6319,6 +6359,7 @@ module Google
           property :region, as: 'region'
           collection :replica_zones, as: 'replicaZones'
           collection :resource_policies, as: 'resourcePolicies'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :size_gb, :numeric_string => true, as: 'sizeGb'
           property :source_disk, as: 'sourceDisk'
@@ -7765,6 +7806,7 @@ module Google
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeBeta::ReservationAffinity, decorator: Google::Apis::ComputeBeta::ReservationAffinity::Representation
       
           collection :resource_policies, as: 'resourcePolicies'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeBeta::Scheduling, decorator: Google::Apis::ComputeBeta::Scheduling::Representation
       
           property :self_link, as: 'selfLink'
@@ -10932,6 +10974,7 @@ module Google
       
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
+          property :supports_pzs, as: 'supportsPzs'
           collection :zones, as: 'zones'
         end
       end
@@ -12323,6 +12366,65 @@ module Google
         end
       end
       
+      class ServiceAttachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_preference, as: 'connectionPreference'
+          collection :consumer_forwarding_rules, as: 'consumerForwardingRules', class: Google::Apis::ComputeBeta::ServiceAttachmentConsumerForwardingRule, decorator: Google::Apis::ComputeBeta::ServiceAttachmentConsumerForwardingRule::Representation
+      
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :enable_proxy_protocol, as: 'enableProxyProtocol'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          collection :nat_subnets, as: 'natSubnets'
+          property :producer_forwarding_rule, as: 'producerForwardingRule'
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class ServiceAttachmentConsumerForwardingRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :forwarding_rule, as: 'forwardingRule'
+          property :status, as: 'status'
+        end
+      end
+      
+      class ServiceAttachmentList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::ServiceAttachment, decorator: Google::Apis::ComputeBeta::ServiceAttachment::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::ServiceAttachmentList::Warning, decorator: Google::Apis::ComputeBeta::ServiceAttachmentList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::ServiceAttachmentList::Warning::Datum, decorator: Google::Apis::ComputeBeta::ServiceAttachmentList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class ShieldedInstanceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12418,6 +12520,7 @@ module Google
           collection :license_codes, as: 'licenseCodes'
           collection :licenses, as: 'licenses'
           property :name, as: 'name'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :snapshot_encryption_key, as: 'snapshotEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
@@ -13722,8 +13825,14 @@ module Google
       class TestFailure
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :actual_output_url, as: 'actualOutputUrl'
+          property :actual_redirect_response_code, as: 'actualRedirectResponseCode'
           property :actual_service, as: 'actualService'
+          property :expected_output_url, as: 'expectedOutputUrl'
+          property :expected_redirect_response_code, as: 'expectedRedirectResponseCode'
           property :expected_service, as: 'expectedService'
+          collection :headers, as: 'headers', class: Google::Apis::ComputeBeta::UrlMapTestHeader, decorator: Google::Apis::ComputeBeta::UrlMapTestHeader::Representation
+      
           property :host, as: 'host'
           property :path, as: 'path'
         end
@@ -13813,9 +13922,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
+          property :expected_output_url, as: 'expectedOutputUrl'
+          property :expected_redirect_response_code, as: 'expectedRedirectResponseCode'
+          collection :headers, as: 'headers', class: Google::Apis::ComputeBeta::UrlMapTestHeader, decorator: Google::Apis::ComputeBeta::UrlMapTestHeader::Representation
+      
           property :host, as: 'host'
           property :path, as: 'path'
           property :service, as: 'service'
+        end
+      end
+      
+      class UrlMapTestHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value'
         end
       end
       
@@ -14395,6 +14516,7 @@ module Google
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
+          property :supports_pzs, as: 'supportsPzs'
         end
       end
       
