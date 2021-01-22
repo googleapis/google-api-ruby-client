@@ -1028,6 +1028,30 @@ module Google
         end
       end
       
+      # Specifies options for controlling advanced machine features. Options that
+      # would traditionally be configured in a BIOS belong here. Features that require
+      # operating system support may have corresponding entries in the GuestOsFeatures
+      # of an Image (e.g., whether or not the OS in the Image supports nested
+      # virtualization being enabled or disabled).
+      class AdvancedMachineFeatures
+        include Google::Apis::Core::Hashable
+      
+        # Whether to enable nested virtualization or not (default is false).
+        # Corresponds to the JSON property `enableNestedVirtualization`
+        # @return [Boolean]
+        attr_accessor :enable_nested_virtualization
+        alias_method :enable_nested_virtualization?, :enable_nested_virtualization
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_nested_virtualization = args[:enable_nested_virtualization] if args.key?(:enable_nested_virtualization)
+        end
+      end
+      
       # An alias IP range attached to an instance's network interface.
       class AliasIpRange
         include Google::Apis::Core::Hashable
@@ -4554,8 +4578,7 @@ module Google
         attr_accessor :allow_methods
       
         # Specifies the regualar expression patterns that match allowed origins. For
-        # regular expression grammar please see en.cppreference.com/w/cpp/regex/
-        # ecmascript
+        # regular expression grammar please see github.com/google/re2/wiki/Syntax
         # An origin is allowed if it matches either an item in allowOrigins or an item
         # in allowOriginRegexes.
         # Corresponds to the JSON property `allowOriginRegexes`
@@ -4863,6 +4886,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
+        # [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # [Output Only] Server-defined fully-qualified URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -5006,6 +5035,7 @@ module Google
           @region = args[:region] if args.key?(:region)
           @replica_zones = args[:replica_zones] if args.key?(:replica_zones)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
           @source_disk = args[:source_disk] if args.key?(:source_disk)
@@ -6998,8 +7028,6 @@ module Google
         # ip_address_specifications).
         # Must be set to `0.0.0.0` when the target is targetGrpcProxy that has
         # validateForProxyless field set to true.
-        # For Private Service Connect forwarding rules that forward traffic to Google
-        # APIs, IP address must be provided.
         # Corresponds to the JSON property `IPAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -7100,6 +7128,13 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Labels for this resource. These can only be added or modified by the setLabels
+        # method. Each label key/value pair must comply with RFC1035. Label values may
+        # be empty.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Specifies the forwarding rule type.
         # 
         # - EXTERNAL is used for:
@@ -7152,8 +7187,6 @@ module Google
         # For Internal TCP/UDP Load Balancing, this field identifies the network that
         # the load balanced IP should belong to for this Forwarding Rule. If this field
         # is not specified, the default network will be used.
-        # For Private Service Connect forwarding rules that forward traffic to Google
-        # APIs, a network must be provided.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -7251,15 +7284,6 @@ module Google
         # resource. The forwarded traffic must be of a type appropriate to the target
         # object. For more information, see the "Target" column in [Port specifications](
         # /load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-        # For Private Service Connect forwarding rules that forward traffic to Google
-        # APIs, provide the name of a supported Google API bundle. Currently, the
-        # supported Google API bundles include:
-        # 
-        # - vpc-sc - GCP APIs that support VPC Service Controls. For more information
-        # about which APIs support VPC Service Controls, refer to VPC-SC supported
-        # products and limitations.
-        # - all-apis - All GCP APIs. For more information about which APIs are supported
-        # with this bundle, refer to Private Google Access-specific domains and VIPs.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -7282,6 +7306,7 @@ module Google
           @ip_version = args[:ip_version] if args.key?(:ip_version)
           @is_mirroring_collector = args[:is_mirroring_collector] if args.key?(:is_mirroring_collector)
           @kind = args[:kind] if args.key?(:kind)
+          @labels = args[:labels] if args.key?(:labels)
           @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
           @metadata_filters = args[:metadata_filters] if args.key?(:metadata_filters)
           @name = args[:name] if args.key?(:name)
@@ -9309,8 +9334,8 @@ module Google
         attr_accessor :range_match
       
         # The value of the header must match the regular expression specified in
-        # regexMatch. For regular expression grammar, please see:  en.cppreference.com/w/
-        # cpp/regex/ecmascript
+        # regexMatch. For regular expression grammar, please see:  github.com/google/re2/
+        # wiki/Syntax
         # For matching against a port specified in the HTTP request, use a headerMatch
         # with headerName set to PORT and a regular expression that satisfies the
         # RFC2616 Host header's port specifier.
@@ -9633,7 +9658,7 @@ module Google
       
         # The queryParameterMatch matches if the value of the parameter matches the
         # regular expression specified by regexMatch. For the regular expression grammar,
-        # please see en.cppreference.com/w/cpp/regex/ecmascript
+        # please see github.com/google/re2/wiki/Syntax
         # Only one of presentMatch, exactMatch or regexMatch must be set.
         # Note that regexMatch only applies when the loadBalancingScheme is set to
         # INTERNAL_SELF_MANAGED.
@@ -10023,7 +10048,7 @@ module Google
         # For satisfying the matchRule condition, the path of the request must satisfy
         # the regular expression specified in regexMatch after removing any query
         # parameters and anchor supplied with the original URL. For regular expression
-        # grammar please see en.cppreference.com/w/cpp/regex/ecmascript
+        # grammar please see github.com/google/re2/wiki/Syntax
         # Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
         # Note that regexMatch only applies to Loadbalancers that have their
         # loadBalancingScheme set to INTERNAL_SELF_MANAGED.
@@ -10724,6 +10749,15 @@ module Google
       class Instance
         include Google::Apis::Core::Hashable
       
+        # Specifies options for controlling advanced machine features. Options that
+        # would traditionally be configured in a BIOS belong here. Features that require
+        # operating system support may have corresponding entries in the GuestOsFeatures
+        # of an Image (e.g., whether or not the OS in the Image supports nested
+        # virtualization being enabled or disabled).
+        # Corresponds to the JSON property `advancedMachineFeatures`
+        # @return [Google::Apis::ComputeV1::AdvancedMachineFeatures]
+        attr_accessor :advanced_machine_features
+      
         # Allows this instance to send and receive packets with non-matching destination
         # or source IPs. This is required if you plan to use this instance to forward
         # routes. For more information, see Enabling IP Forwarding.
@@ -10900,6 +10934,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
+        # [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Sets the scheduling options for an Instance. NextID: 13
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeV1::Scheduling]
@@ -10968,6 +11008,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advanced_machine_features = args[:advanced_machine_features] if args.key?(:advanced_machine_features)
           @can_ip_forward = args[:can_ip_forward] if args.key?(:can_ip_forward)
           @confidential_instance_config = args[:confidential_instance_config] if args.key?(:confidential_instance_config)
           @cpu_platform = args[:cpu_platform] if args.key?(:cpu_platform)
@@ -10994,6 +11035,7 @@ module Google
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @self_link = args[:self_link] if args.key?(:self_link)
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
@@ -13430,6 +13472,15 @@ module Google
       class InstanceProperties
         include Google::Apis::Core::Hashable
       
+        # Specifies options for controlling advanced machine features. Options that
+        # would traditionally be configured in a BIOS belong here. Features that require
+        # operating system support may have corresponding entries in the GuestOsFeatures
+        # of an Image (e.g., whether or not the OS in the Image supports nested
+        # virtualization being enabled or disabled).
+        # Corresponds to the JSON property `advancedMachineFeatures`
+        # @return [Google::Apis::ComputeV1::AdvancedMachineFeatures]
+        attr_accessor :advanced_machine_features
+      
         # Enables instances created based on these properties to send packets with
         # source IP addresses other than their own and receive packets with destination
         # IP addresses other than their own. If these instances will be used as an IP
@@ -13539,6 +13590,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advanced_machine_features = args[:advanced_machine_features] if args.key?(:advanced_machine_features)
           @can_ip_forward = args[:can_ip_forward] if args.key?(:can_ip_forward)
           @confidential_instance_config = args[:confidential_instance_config] if args.key?(:confidential_instance_config)
           @description = args[:description] if args.key?(:description)
@@ -17233,9 +17285,8 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
-        # Optional port number of network endpoint. If not specified and the
-        # NetworkEndpointGroup.network_endpoint_type is GCE_IP_PORT, the defaultPort for
-        # the network endpoint group will be used.
+        # Optional port number of network endpoint. If not specified, the defaultPort
+        # for the network endpoint group will be used.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
@@ -22548,6 +22599,12 @@ module Google
         # @return [String]
         attr_accessor :status
       
+        # [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `supportsPzs`
+        # @return [Boolean]
+        attr_accessor :supports_pzs
+        alias_method :supports_pzs?, :supports_pzs
+      
         # [Output Only] A list of zones available in this region, in the form of
         # resource URLs.
         # Corresponds to the JSON property `zones`
@@ -22569,6 +22626,7 @@ module Google
           @quotas = args[:quotas] if args.key?(:quotas)
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
+          @supports_pzs = args[:supports_pzs] if args.key?(:supports_pzs)
           @zones = args[:zones] if args.key?(:zones)
         end
       end
@@ -27650,6 +27708,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -27732,6 +27796,7 @@ module Google
           @license_codes = args[:license_codes] if args.key?(:license_codes)
           @licenses = args[:licenses] if args.key?(:licenses)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @snapshot_encryption_key = args[:snapshot_encryption_key] if args.key?(:snapshot_encryption_key)
           @source_disk = args[:source_disk] if args.key?(:source_disk)
@@ -28262,8 +28327,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :domain_status
       
-        # The domains for which a managed SSL certificate will be generated. Currently
-        # only single-domain certs are supported.
+        # The domains for which a managed SSL certificate will be generated. Each Google-
+        # managed SSL certificate supports up to the [maximum number of domains per
+        # Google-managed SSL certificate](/load-balancing/docs/quotas#ssl_certificates).
         # Corresponds to the JSON property `domains`
         # @return [Array<String>]
         attr_accessor :domains
@@ -32606,16 +32672,45 @@ module Google
       class TestFailure
         include Google::Apis::Core::Hashable
       
+        # The actual output URL evaluated by load balancer containing the scheme, host,
+        # path and query parameters.
+        # Corresponds to the JSON property `actualOutputUrl`
+        # @return [String]
+        attr_accessor :actual_output_url
+      
+        # Actual HTTP status code for rule with `urlRedirect` calculated by load
+        # balancer
+        # Corresponds to the JSON property `actualRedirectResponseCode`
+        # @return [Fixnum]
+        attr_accessor :actual_redirect_response_code
+      
         # BackendService or BackendBucket returned by load balancer.
         # Corresponds to the JSON property `actualService`
         # @return [String]
         attr_accessor :actual_service
+      
+        # The expected output URL evaluated by load balancer containing the scheme, host,
+        # path and query parameters.
+        # Corresponds to the JSON property `expectedOutputUrl`
+        # @return [String]
+        attr_accessor :expected_output_url
+      
+        # Expected HTTP status code for rule with `urlRedirect` calculated by load
+        # balancer
+        # Corresponds to the JSON property `expectedRedirectResponseCode`
+        # @return [Fixnum]
+        attr_accessor :expected_redirect_response_code
       
         # Expected BackendService or BackendBucket resource the given URL should be
         # mapped to.
         # Corresponds to the JSON property `expectedService`
         # @return [String]
         attr_accessor :expected_service
+      
+        # HTTP headers of the request.
+        # Corresponds to the JSON property `headers`
+        # @return [Array<Google::Apis::ComputeV1::UrlMapTestHeader>]
+        attr_accessor :headers
       
         # Host portion of the URL.
         # Corresponds to the JSON property `host`
@@ -32633,8 +32728,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @actual_output_url = args[:actual_output_url] if args.key?(:actual_output_url)
+          @actual_redirect_response_code = args[:actual_redirect_response_code] if args.key?(:actual_redirect_response_code)
           @actual_service = args[:actual_service] if args.key?(:actual_service)
+          @expected_output_url = args[:expected_output_url] if args.key?(:expected_output_url)
+          @expected_redirect_response_code = args[:expected_redirect_response_code] if args.key?(:expected_redirect_response_code)
           @expected_service = args[:expected_service] if args.key?(:expected_service)
+          @headers = args[:headers] if args.key?(:headers)
           @host = args[:host] if args.key?(:host)
           @path = args[:path] if args.key?(:path)
         end
@@ -32984,6 +33084,37 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # The expected output URL evaluated by load balancer containing the scheme, host,
+        # path and query parameters.
+        # For rules that forward requests to backends, the test passes only when
+        # expectedOutputUrl matches the request forwarded by load balancer to backends.
+        # For rules with urlRewrite, the test verifies that the forwarded request
+        # matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When
+        # service is specified, expectedOutputUrl`s scheme is ignored.
+        # For rules with urlRedirect, the test passes only if expectedOutputUrl matches
+        # the URL in the load balancer's redirect response. If urlRedirect specifies
+        # https_redirect, the test passes only if the scheme in expectedOutputUrl is
+        # also set to https. If urlRedirect specifies strip_query, the test passes only
+        # if expectedOutputUrl does not contain any query parameters.
+        # expectedOutputUrl is optional when service is specified.
+        # Corresponds to the JSON property `expectedOutputUrl`
+        # @return [String]
+        attr_accessor :expected_output_url
+      
+        # For rules with urlRedirect, the test passes only if
+        # expectedRedirectResponseCode matches the HTTP status code in load balancer's
+        # redirect response.
+        # expectedRedirectResponseCode cannot be set when service is set.
+        # Corresponds to the JSON property `expectedRedirectResponseCode`
+        # @return [Fixnum]
+        attr_accessor :expected_redirect_response_code
+      
+        # HTTP headers for this request. If headers contains a host header, then host
+        # must also match the header value.
+        # Corresponds to the JSON property `headers`
+        # @return [Array<Google::Apis::ComputeV1::UrlMapTestHeader>]
+        attr_accessor :headers
+      
         # Host portion of the URL. If headers contains a host header, then host must
         # also match the header value.
         # Corresponds to the JSON property `host`
@@ -33009,9 +33140,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @description = args[:description] if args.key?(:description)
+          @expected_output_url = args[:expected_output_url] if args.key?(:expected_output_url)
+          @expected_redirect_response_code = args[:expected_redirect_response_code] if args.key?(:expected_redirect_response_code)
+          @headers = args[:headers] if args.key?(:headers)
           @host = args[:host] if args.key?(:host)
           @path = args[:path] if args.key?(:path)
           @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # HTTP headers used in UrlMapTests.
+      class UrlMapTestHeader
+        include Google::Apis::Core::Hashable
+      
+        # Header name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Header value.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -35201,6 +35360,12 @@ module Google
         # @return [String]
         attr_accessor :status
       
+        # [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `supportsPzs`
+        # @return [Boolean]
+        attr_accessor :supports_pzs
+        alias_method :supports_pzs?, :supports_pzs
+      
         def initialize(**args)
            update!(**args)
         end
@@ -35217,6 +35382,7 @@ module Google
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
+          @supports_pzs = args[:supports_pzs] if args.key?(:supports_pzs)
         end
       end
       
