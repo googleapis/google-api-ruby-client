@@ -158,7 +158,7 @@ module Google
       end
       
       # Defines a cohort selection criteria. A cohort is a group of users who share a
-      # common characteristic. For example, users with the same `firstTouchDate`
+      # common characteristic. For example, users with the same `firstSessionDate`
       # belong to the same cohort.
       class Cohort
         include Google::Apis::Core::Hashable
@@ -169,7 +169,7 @@ module Google
         # @return [Google::Apis::AnalyticsdataV1alpha::DateRange]
         attr_accessor :date_range
       
-        # Dimension used by the cohort. Required and only supports `firstTouchDate`.
+        # Dimension used by the cohort. Required and only supports `firstSessionDate`.
         # Corresponds to the JSON property `dimension`
         # @return [String]
         attr_accessor :dimension
