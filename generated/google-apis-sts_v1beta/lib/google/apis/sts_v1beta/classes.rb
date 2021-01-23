@@ -82,41 +82,43 @@ module Google
         # ` ``` Example payload: ``` ` "iss": "https://accounts.google.com", "iat":
         # 1517963104, "exp": 1517966704, "aud": "113475438248934895348", "sub": "
         # 113475438248934895348", "my_claims": ` "additional_claim": "value" ` ` ``` If `
-        # subject_token` is an AWS token, it must be a serialized, [signed](https://docs.
-        # aws.amazon.com/general/latest/gr/signing_aws_api_requests.html) request to the
-        # AWS [`GetCallerIdentity()`](https://docs.aws.amazon.com/STS/latest/
-        # APIReference/API_GetCallerIdentity) method. Format the request as URL-encoded
-        # JSON, and set the `subject_token_type` parameter to `urn:ietf:params:aws:token-
-        # type:aws4_request`. The following parameters are required: - `url`: The URL of
-        # the AWS STS endpoint for `GetCallerIdentity()`, such as `https://sts.amazonaws.
-        # com?Action=GetCallerIdentity&Version=2011-06-15`. Regional endpoints are also
+        # subject_token` is for AWS, it must be a serialized `GetCallerIdentity` token.
+        # This token contains the same information as a request to the AWS [`
+        # GetCallerIdentity()`](https://docs.aws.amazon.com/STS/latest/APIReference/
+        # API_GetCallerIdentity) method, as well as the AWS [signature](https://docs.aws.
+        # amazon.com/general/latest/gr/signing_aws_api_requests.html) for the request
+        # information. Use Signature Version 4. Format the request as URL-encoded JSON,
+        # and set the `subject_token_type` parameter to `urn:ietf:params:aws:token-type:
+        # aws4_request`. The following parameters are required: - `url`: The URL of the
+        # AWS STS endpoint for `GetCallerIdentity()`, such as `https://sts.amazonaws.com?
+        # Action=GetCallerIdentity&Version=2011-06-15`. Regional endpoints are also
         # supported. - `method`: The HTTP request method: `POST`. - `headers`: The HTTP
         # request headers, which must include: - `Authorization`: The request signature.
         # - `x-amz-date`: The time you will send the request, formatted as an [ISO8601
         # Basic](https://docs.aws.amazon.com/general/latest/gr/sigv4_elements.html#
-        # sigv4_elements_date) string. This is typically set to the current time and
-        # used to prevent replay attacks. - `host`: The hostname of the `url` field; for
-        # example, `sts.amazonaws.com`. - `x-goog-cloud-target-resource`: The full,
-        # canonical resource name of the workload identity pool provider, with or
-        # without an `https:` prefix. To help ensure data integrity, we recommend
+        # sigv4_elements_date) string. This value is typically set to the current time
+        # and is used to help prevent replay attacks. - `host`: The hostname of the `url`
+        # field; for example, `sts.amazonaws.com`. - `x-goog-cloud-target-resource`:
+        # The full, canonical resource name of the workload identity pool provider, with
+        # or without an `https:` prefix. To help ensure data integrity, we recommend
         # including this header in the `SignedHeaders` field of the signed request. For
         # example: //iam.googleapis.com/projects//locations//workloadIdentityPools//
         # providers/ https://iam.googleapis.com/projects//locations//
         # workloadIdentityPools//providers/ If you are using temporary security
         # credentials provided by AWS, you must also include the header `x-amz-security-
-        # token`, with the value ``. The following example shows a signed, serialized
-        # request: ``` ` "headers":[ `"key": "x-amz-date", "value": "20200815T015049Z"`,
-        # `"key": "Authorization", "value": "AWS4-HMAC-SHA256+Credential=$credential,+
-        # SignedHeaders=host;x-amz-date;x-goog-cloud-target-resource,+Signature=$
-        # signature"`, `"key": "x-goog-cloud-target-resource", "value": "//iam.
-        # googleapis.com/projects//locations//workloadIdentityPools//providers/"`, `"key"
-        # : "host", "value": "sts.amazonaws.com"` . ], "method":"POST", "url":"https://
-        # sts.amazonaws.com?Action=GetCallerIdentity&Version=2011-06-15" ` ``` You can
-        # also use a Google-issued OAuth 2.0 access token with this field to obtain an
-        # access token with new security attributes applied, such as a Credential Access
-        # Boundary. In this case, set `subject_token_type` to `urn:ietf:params:oauth:
-        # token-type:access_token`. If an access token already contains security
-        # attributes, you cannot apply additional security attributes.
+        # token`, with the value set to the session token. The following example shows a
+        # `GetCallerIdentity` token: ``` ` "headers": [ `"key": "x-amz-date", "value": "
+        # 20200815T015049Z"`, `"key": "Authorization", "value": "AWS4-HMAC-SHA256+
+        # Credential=$credential,+SignedHeaders=host;x-amz-date;x-goog-cloud-target-
+        # resource,+Signature=$signature"`, `"key": "x-goog-cloud-target-resource", "
+        # value": "//iam.googleapis.com/projects//locations//workloadIdentityPools//
+        # providers/"`, `"key": "host", "value": "sts.amazonaws.com"` . ], "method": "
+        # POST", "url": "https://sts.amazonaws.com?Action=GetCallerIdentity&Version=2011-
+        # 06-15" ` ``` You can also use a Google-issued OAuth 2.0 access token with this
+        # field to obtain an access token with new security attributes applied, such as
+        # a Credential Access Boundary. In this case, set `subject_token_type` to `urn:
+        # ietf:params:oauth:token-type:access_token`. If an access token already
+        # contains security attributes, you cannot apply additional security attributes.
         # Corresponds to the JSON property `subjectToken`
         # @return [String]
         attr_accessor :subject_token
