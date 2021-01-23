@@ -251,6 +251,7 @@ module Google
           property :source_archive_url, as: 'sourceArchiveUrl'
           property :source_repository, as: 'sourceRepository', class: Google::Apis::CloudfunctionsV1::SourceRepository, decorator: Google::Apis::CloudfunctionsV1::SourceRepository::Representation
       
+          property :source_token, as: 'sourceToken'
           property :source_upload_url, as: 'sourceUploadUrl'
           property :status, as: 'status'
           property :timeout, as: 'timeout'
@@ -320,6 +321,7 @@ module Google
       class HttpsTrigger
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :security_level, as: 'securityLevel'
           property :url, as: 'url'
         end
       end
