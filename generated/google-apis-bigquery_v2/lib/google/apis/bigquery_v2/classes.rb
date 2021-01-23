@@ -1721,6 +1721,25 @@ module Google
         end
       end
       
+      # Model evaluation metrics for dimensionality reduction models.
+      class DimensionalityReductionMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Total percentage of variance explained by the selected principal components.
+        # Corresponds to the JSON property `totalExplainedVarianceRatio`
+        # @return [Float]
+        attr_accessor :total_explained_variance_ratio
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @total_explained_variance_ratio = args[:total_explained_variance_ratio] if args.key?(:total_explained_variance_ratio)
+        end
+      end
+      
       # 
       class EncryptionConfiguration
         include Google::Apis::Core::Hashable
@@ -1827,6 +1846,11 @@ module Google
         # @return [Google::Apis::BigqueryV2::ClusteringMetrics]
         attr_accessor :clustering_metrics
       
+        # Model evaluation metrics for dimensionality reduction models.
+        # Corresponds to the JSON property `dimensionalityReductionMetrics`
+        # @return [Google::Apis::BigqueryV2::DimensionalityReductionMetrics]
+        attr_accessor :dimensionality_reduction_metrics
+      
         # Evaluation metrics for multi-class classification/classifier models.
         # Corresponds to the JSON property `multiClassClassificationMetrics`
         # @return [Google::Apis::BigqueryV2::MultiClassClassificationMetrics]
@@ -1853,6 +1877,7 @@ module Google
           @arima_forecasting_metrics = args[:arima_forecasting_metrics] if args.key?(:arima_forecasting_metrics)
           @binary_classification_metrics = args[:binary_classification_metrics] if args.key?(:binary_classification_metrics)
           @clustering_metrics = args[:clustering_metrics] if args.key?(:clustering_metrics)
+          @dimensionality_reduction_metrics = args[:dimensionality_reduction_metrics] if args.key?(:dimensionality_reduction_metrics)
           @multi_class_classification_metrics = args[:multi_class_classification_metrics] if args.key?(:multi_class_classification_metrics)
           @ranking_metrics = args[:ranking_metrics] if args.key?(:ranking_metrics)
           @regression_metrics = args[:regression_metrics] if args.key?(:regression_metrics)
@@ -2624,6 +2649,11 @@ module Google
         # @return [Float]
         attr_accessor :learn_rate
       
+        # The information of the principal components.
+        # Corresponds to the JSON property `principalComponentInfos`
+        # @return [Array<Google::Apis::BigqueryV2::PrincipalComponentInfo>]
+        attr_accessor :principal_component_infos
+      
         # Loss computed on the training data at the end of iteration.
         # Corresponds to the JSON property `trainingLoss`
         # @return [Float]
@@ -2641,6 +2671,7 @@ module Google
           @eval_loss = args[:eval_loss] if args.key?(:eval_loss)
           @index = args[:index] if args.key?(:index)
           @learn_rate = args[:learn_rate] if args.key?(:learn_rate)
+          @principal_component_infos = args[:principal_component_infos] if args.key?(:principal_component_infos)
           @training_loss = args[:training_loss] if args.key?(:training_loss)
         end
       end
@@ -4554,6 +4585,45 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Principal component infos, used only for eigen decomposition based models, e.g.
+      # , PCA. Ordered by explained_variance in the descending order.
+      class PrincipalComponentInfo
+        include Google::Apis::Core::Hashable
+      
+        # The explained_variance is pre-ordered in the descending order to compute the
+        # cumulative explained variance ratio.
+        # Corresponds to the JSON property `cumulativeExplainedVarianceRatio`
+        # @return [Float]
+        attr_accessor :cumulative_explained_variance_ratio
+      
+        # Explained variance by this principal component, which is simply the eigenvalue.
+        # Corresponds to the JSON property `explainedVariance`
+        # @return [Float]
+        attr_accessor :explained_variance
+      
+        # Explained_variance over the total explained variance.
+        # Corresponds to the JSON property `explainedVarianceRatio`
+        # @return [Float]
+        attr_accessor :explained_variance_ratio
+      
+        # Id of the principal component.
+        # Corresponds to the JSON property `principalComponentId`
+        # @return [Fixnum]
+        attr_accessor :principal_component_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cumulative_explained_variance_ratio = args[:cumulative_explained_variance_ratio] if args.key?(:cumulative_explained_variance_ratio)
+          @explained_variance = args[:explained_variance] if args.key?(:explained_variance)
+          @explained_variance_ratio = args[:explained_variance_ratio] if args.key?(:explained_variance_ratio)
+          @principal_component_id = args[:principal_component_id] if args.key?(:principal_component_id)
         end
       end
       
