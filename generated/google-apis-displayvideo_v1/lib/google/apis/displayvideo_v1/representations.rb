@@ -1054,6 +1054,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MobileApp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Money
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2646,6 +2652,7 @@ module Google
           property :frequency_cap, as: 'frequencyCap', class: Google::Apis::DisplayvideoV1::FrequencyCap, decorator: Google::Apis::DisplayvideoV1::FrequencyCap::Representation
       
           property :insertion_order_id, :numeric_string => true, as: 'insertionOrderId'
+          property :insertion_order_type, as: 'insertionOrderType'
           property :integration_details, as: 'integrationDetails', class: Google::Apis::DisplayvideoV1::IntegrationDetails, decorator: Google::Apis::DisplayvideoV1::IntegrationDetails::Representation
       
           property :name, as: 'name'
@@ -2836,6 +2843,8 @@ module Google
           collection :inventory_source_ids, as: 'inventorySourceIds'
           property :line_item_id, :numeric_string => true, as: 'lineItemId'
           property :line_item_type, as: 'lineItemType'
+          property :mobile_app, as: 'mobileApp', class: Google::Apis::DisplayvideoV1::MobileApp, decorator: Google::Apis::DisplayvideoV1::MobileApp::Representation
+      
           property :name, as: 'name'
           property :pacing, as: 'pacing', class: Google::Apis::DisplayvideoV1::Pacing, decorator: Google::Apis::DisplayvideoV1::Pacing::Representation
       
@@ -3149,6 +3158,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dv360_to_cm_cost_reporting_enabled, as: 'dv360ToCmCostReportingEnabled'
           property :dv360_to_cm_data_sharing_enabled, as: 'dv360ToCmDataSharingEnabled'
+        end
+      end
+      
+      class MobileApp
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_id, as: 'appId'
+          property :display_name, as: 'displayName'
+          property :platform, as: 'platform'
+          property :publisher, as: 'publisher'
         end
       end
       

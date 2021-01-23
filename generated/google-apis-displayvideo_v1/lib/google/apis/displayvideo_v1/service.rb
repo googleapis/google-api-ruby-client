@@ -283,15 +283,21 @@ module Google
         #   expressions are made up of one or more restrictions. * Restrictions can be
         #   combined by `AND` or `OR` logical operators. A sequence of restrictions
         #   implicitly uses `AND`. * A restriction has the form of ``field` `operator` `
-        #   value``. * The operator must be `EQUALS (=)`. * Supported fields: - `
-        #   advertiserId` - `displayName` - `entityStatus` Examples: * All active
-        #   advertisers under a partner: `entityStatus="ENTITY_STATUS_ACTIVE"` The length
-        #   of this field should be no more than 500 characters.
+        #   value``. * The operator used on `updateTime` must be `GREATER THAN OR EQUAL TO
+        #   (>=)` or `LESS THAN OR EQUAL TO (<=)`. * The operator must be `EQUALS (=)`. *
+        #   Supported fields: - `advertiserId` - `displayName` - `entityStatus` - `
+        #   updateTime` (input in ISO 8601 format, or YYYY-MM-DDTHH:MM:SSZ) Examples: *
+        #   All active advertisers under a partner: `entityStatus="ENTITY_STATUS_ACTIVE"` *
+        #   All advertisers with an update time less than or equal to `2020-11-04T18:54:
+        #   47Z (format of ISO 8601)`: `updateTime<="2020-11-04T18:54:47Z"` * All
+        #   advertisers with an update time greater than or equal to `2020-11-04T18:54:47Z
+        #   (format of ISO 8601)`: `updateTime>="2020-11-04T18:54:47Z"` The length of this
+        #   field should be no more than 500 characters.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `displayName` (
-        #   default) * `entityStatus` The default sorting order is ascending. To specify
-        #   descending order for a field, a suffix "desc" should be added to the field
-        #   name. For example, `displayName desc`.
+        #   default) * `entityStatus` * `updateTime` The default sorting order is
+        #   ascending. To specify descending order for a field, a suffix "desc" should be
+        #   added to the field name. For example, `displayName desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `100`. If unspecified will
         #   default to `100`.
