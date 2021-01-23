@@ -4613,6 +4613,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :insertion_order_id
       
+        # The type of insertion order. If this field is unspecified in creation, the
+        # value defaults to `RTB`.
+        # Corresponds to the JSON property `insertionOrderType`
+        # @return [String]
+        attr_accessor :insertion_order_type
+      
         # Integration details of an entry.
         # Corresponds to the JSON property `integrationDetails`
         # @return [Google::Apis::DisplayvideoV1::IntegrationDetails]
@@ -4660,6 +4666,7 @@ module Google
           @entity_status = args[:entity_status] if args.key?(:entity_status)
           @frequency_cap = args[:frequency_cap] if args.key?(:frequency_cap)
           @insertion_order_id = args[:insertion_order_id] if args.key?(:insertion_order_id)
+          @insertion_order_type = args[:insertion_order_type] if args.key?(:insertion_order_type)
           @integration_details = args[:integration_details] if args.key?(:integration_details)
           @name = args[:name] if args.key?(:name)
           @pacing = args[:pacing] if args.key?(:pacing)
@@ -5348,6 +5355,11 @@ module Google
         # @return [String]
         attr_accessor :line_item_type
       
+        # A mobile app promoted by a mobile app install line item.
+        # Corresponds to the JSON property `mobileApp`
+        # @return [Google::Apis::DisplayvideoV1::MobileApp]
+        attr_accessor :mobile_app
+      
         # Output only. The resource name of the line item.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -5411,6 +5423,7 @@ module Google
           @inventory_source_ids = args[:inventory_source_ids] if args.key?(:inventory_source_ids)
           @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
           @line_item_type = args[:line_item_type] if args.key?(:line_item_type)
+          @mobile_app = args[:mobile_app] if args.key?(:mobile_app)
           @name = args[:name] if args.key?(:name)
           @pacing = args[:pacing] if args.key?(:pacing)
           @partner_costs = args[:partner_costs] if args.key?(:partner_costs)
@@ -6406,6 +6419,46 @@ module Google
         def update!(**args)
           @dv360_to_cm_cost_reporting_enabled = args[:dv360_to_cm_cost_reporting_enabled] if args.key?(:dv360_to_cm_cost_reporting_enabled)
           @dv360_to_cm_data_sharing_enabled = args[:dv360_to_cm_data_sharing_enabled] if args.key?(:dv360_to_cm_data_sharing_enabled)
+        end
+      end
+      
+      # A mobile app promoted by a mobile app install line item.
+      class MobileApp
+        include Google::Apis::Core::Hashable
+      
+        # Required. The ID of the app provided by the platform store. Android apps are
+        # identified by the bundle ID used by Android's Play store, such as `com.google.
+        # android.gm`. iOS apps are identified by a nine-digit app ID used by Apple's
+        # App store, such as `422689480`.
+        # Corresponds to the JSON property `appId`
+        # @return [String]
+        attr_accessor :app_id
+      
+        # Output only. The app name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The app platform.
+        # Corresponds to the JSON property `platform`
+        # @return [String]
+        attr_accessor :platform
+      
+        # Output only. The app publisher.
+        # Corresponds to the JSON property `publisher`
+        # @return [String]
+        attr_accessor :publisher
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_id = args[:app_id] if args.key?(:app_id)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @platform = args[:platform] if args.key?(:platform)
+          @publisher = args[:publisher] if args.key?(:publisher)
         end
       end
       
