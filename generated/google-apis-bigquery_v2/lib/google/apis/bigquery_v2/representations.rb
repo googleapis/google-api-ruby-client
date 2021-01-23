@@ -244,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DimensionalityReductionMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EncryptionConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -515,6 +521,12 @@ module Google
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrincipalComponentInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1243,6 +1255,13 @@ module Google
         end
       end
       
+      class DimensionalityReductionMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :total_explained_variance_ratio, as: 'totalExplainedVarianceRatio'
+        end
+      end
+      
       class EncryptionConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1276,6 +1295,8 @@ module Google
           property :binary_classification_metrics, as: 'binaryClassificationMetrics', class: Google::Apis::BigqueryV2::BinaryClassificationMetrics, decorator: Google::Apis::BigqueryV2::BinaryClassificationMetrics::Representation
       
           property :clustering_metrics, as: 'clusteringMetrics', class: Google::Apis::BigqueryV2::ClusteringMetrics, decorator: Google::Apis::BigqueryV2::ClusteringMetrics::Representation
+      
+          property :dimensionality_reduction_metrics, as: 'dimensionalityReductionMetrics', class: Google::Apis::BigqueryV2::DimensionalityReductionMetrics, decorator: Google::Apis::BigqueryV2::DimensionalityReductionMetrics::Representation
       
           property :multi_class_classification_metrics, as: 'multiClassClassificationMetrics', class: Google::Apis::BigqueryV2::MultiClassClassificationMetrics, decorator: Google::Apis::BigqueryV2::MultiClassClassificationMetrics::Representation
       
@@ -1464,6 +1485,8 @@ module Google
           property :eval_loss, as: 'evalLoss'
           property :index, as: 'index'
           property :learn_rate, as: 'learnRate'
+          collection :principal_component_infos, as: 'principalComponentInfos', class: Google::Apis::BigqueryV2::PrincipalComponentInfo, decorator: Google::Apis::BigqueryV2::PrincipalComponentInfo::Representation
+      
           property :training_loss, as: 'trainingLoss'
         end
       end
@@ -1905,6 +1928,16 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class PrincipalComponentInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cumulative_explained_variance_ratio, as: 'cumulativeExplainedVarianceRatio'
+          property :explained_variance, as: 'explainedVariance'
+          property :explained_variance_ratio, as: 'explainedVarianceRatio'
+          property :principal_component_id, :numeric_string => true, as: 'principalComponentId'
         end
       end
       
