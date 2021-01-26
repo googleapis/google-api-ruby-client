@@ -1306,7 +1306,8 @@ module Google
           property :channel_title, as: 'channelTitle'
           property :description, as: 'description'
           property :group_id, as: 'groupId'
-          property :published_at, as: 'publishedAt'
+          property :published_at, as: 'publishedAt', type: DateTime
+      
           property :thumbnails, as: 'thumbnails', class: Google::Apis::YoutubeV3::ThumbnailDetails, decorator: Google::Apis::YoutubeV3::ThumbnailDetails::Representation
       
           property :title, as: 'title'
@@ -1348,7 +1349,8 @@ module Google
           property :is_easy_reader, as: 'isEasyReader'
           property :is_large, as: 'isLarge'
           property :language, as: 'language'
-          property :last_updated, as: 'lastUpdated'
+          property :last_updated, as: 'lastUpdated', type: DateTime
+      
           property :name, as: 'name'
           property :status, as: 'status'
           property :track_kind, as: 'trackKind'
@@ -1452,7 +1454,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content_owner, as: 'contentOwner'
-          property :time_linked, as: 'timeLinked'
+          property :time_linked, as: 'timeLinked', type: DateTime
+      
         end
       end
       
@@ -1604,7 +1607,8 @@ module Google
           property :description, as: 'description'
           property :localized, as: 'localized', class: Google::Apis::YoutubeV3::ChannelLocalization, decorator: Google::Apis::YoutubeV3::ChannelLocalization::Representation
       
-          property :published_at, as: 'publishedAt'
+          property :published_at, as: 'publishedAt', type: DateTime
+      
           property :thumbnails, as: 'thumbnails', class: Google::Apis::YoutubeV3::ThumbnailDetails, decorator: Google::Apis::YoutubeV3::ThumbnailDetails::Representation
       
           property :title, as: 'title'
@@ -1690,10 +1694,12 @@ module Google
           property :like_count, as: 'likeCount'
           property :moderation_status, as: 'moderationStatus'
           property :parent_id, as: 'parentId'
-          property :published_at, as: 'publishedAt'
+          property :published_at, as: 'publishedAt', type: DateTime
+      
           property :text_display, as: 'textDisplay'
           property :text_original, as: 'textOriginal'
-          property :updated_at, as: 'updatedAt'
+          property :updated_at, as: 'updatedAt', type: DateTime
+      
           property :video_id, as: 'videoId'
           property :viewer_rating, as: 'viewerRating'
         end
@@ -2023,7 +2029,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bound_stream_id, as: 'boundStreamId'
-          property :bound_stream_last_update_time_ms, as: 'boundStreamLastUpdateTimeMs'
+          property :bound_stream_last_update_time_ms, as: 'boundStreamLastUpdateTimeMs', type: DateTime
+      
           property :closed_captions_type, as: 'closedCaptionsType'
           property :enable_auto_start, as: 'enableAutoStart'
           property :enable_auto_stop, as: 'enableAutoStop'
@@ -2063,15 +2070,20 @@ module Google
       class LiveBroadcastSnippet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :actual_end_time, as: 'actualEndTime'
-          property :actual_start_time, as: 'actualStartTime'
+          property :actual_end_time, as: 'actualEndTime', type: DateTime
+      
+          property :actual_start_time, as: 'actualStartTime', type: DateTime
+      
           property :channel_id, as: 'channelId'
           property :description, as: 'description'
           property :is_default_broadcast, as: 'isDefaultBroadcast'
           property :live_chat_id, as: 'liveChatId'
-          property :published_at, as: 'publishedAt'
-          property :scheduled_end_time, as: 'scheduledEndTime'
-          property :scheduled_start_time, as: 'scheduledStartTime'
+          property :published_at, as: 'publishedAt', type: DateTime
+      
+          property :scheduled_end_time, as: 'scheduledEndTime', type: DateTime
+      
+          property :scheduled_start_time, as: 'scheduledStartTime', type: DateTime
+      
           property :thumbnails, as: 'thumbnails', class: Google::Apis::YoutubeV3::ThumbnailDetails, decorator: Google::Apis::YoutubeV3::ThumbnailDetails::Representation
       
           property :title, as: 'title'
@@ -2172,7 +2184,8 @@ module Google
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
-          property :offline_at, as: 'offlineAt'
+          property :offline_at, as: 'offlineAt', type: DateTime
+      
           property :page_info, as: 'pageInfo', class: Google::Apis::YoutubeV3::PageInfo, decorator: Google::Apis::YoutubeV3::PageInfo::Representation
       
           property :polling_interval_millis, as: 'pollingIntervalMillis'
@@ -2202,7 +2215,8 @@ module Google
       
           property :message_retracted_details, as: 'messageRetractedDetails', class: Google::Apis::YoutubeV3::LiveChatMessageRetractedDetails, decorator: Google::Apis::YoutubeV3::LiveChatMessageRetractedDetails::Representation
       
-          property :published_at, as: 'publishedAt'
+          property :published_at, as: 'publishedAt', type: DateTime
+      
           property :super_chat_details, as: 'superChatDetails', class: Google::Apis::YoutubeV3::LiveChatSuperChatDetails, decorator: Google::Apis::YoutubeV3::LiveChatSuperChatDetails::Representation
       
           property :super_sticker_details, as: 'superStickerDetails', class: Google::Apis::YoutubeV3::LiveChatSuperStickerDetails, decorator: Google::Apis::YoutubeV3::LiveChatSuperStickerDetails::Representation
@@ -2362,7 +2376,8 @@ module Google
           property :channel_id, as: 'channelId'
           property :description, as: 'description'
           property :is_default_stream, as: 'isDefaultStream'
-          property :published_at, as: 'publishedAt'
+          property :published_at, as: 'publishedAt', type: DateTime
+      
           property :title, as: 'title'
         end
       end
@@ -2560,7 +2575,8 @@ module Google
           property :note, as: 'note'
           property :start_at, as: 'startAt'
           property :video_id, as: 'videoId'
-          property :video_published_at, as: 'videoPublishedAt'
+          property :video_published_at, as: 'videoPublishedAt', type: DateTime
+      
         end
       end
       
@@ -2590,7 +2606,8 @@ module Google
           property :description, as: 'description'
           property :playlist_id, as: 'playlistId'
           property :position, as: 'position'
-          property :published_at, as: 'publishedAt'
+          property :published_at, as: 'publishedAt', type: DateTime
+      
           property :resource_id, as: 'resourceId', class: Google::Apis::YoutubeV3::ResourceId, decorator: Google::Apis::YoutubeV3::ResourceId::Representation
       
           property :thumbnails, as: 'thumbnails', class: Google::Apis::YoutubeV3::ThumbnailDetails, decorator: Google::Apis::YoutubeV3::ThumbnailDetails::Representation
@@ -2648,7 +2665,8 @@ module Google
           property :description, as: 'description'
           property :localized, as: 'localized', class: Google::Apis::YoutubeV3::PlaylistLocalization, decorator: Google::Apis::YoutubeV3::PlaylistLocalization::Representation
       
-          property :published_at, as: 'publishedAt'
+          property :published_at, as: 'publishedAt', type: DateTime
+      
           collection :tags, as: 'tags'
           property :thumbnails, as: 'thumbnails', class: Google::Apis::YoutubeV3::ThumbnailDetails, decorator: Google::Apis::YoutubeV3::ThumbnailDetails::Representation
       
@@ -2727,7 +2745,8 @@ module Google
           property :channel_title, as: 'channelTitle'
           property :description, as: 'description'
           property :live_broadcast_content, as: 'liveBroadcastContent'
-          property :published_at, as: 'publishedAt'
+          property :published_at, as: 'publishedAt', type: DateTime
+      
           property :thumbnails, as: 'thumbnails', class: Google::Apis::YoutubeV3::ThumbnailDetails, decorator: Google::Apis::YoutubeV3::ThumbnailDetails::Representation
       
           property :title, as: 'title'
@@ -2782,7 +2801,8 @@ module Google
           property :channel_id, as: 'channelId'
           property :channel_title, as: 'channelTitle'
           property :description, as: 'description'
-          property :published_at, as: 'publishedAt'
+          property :published_at, as: 'publishedAt', type: DateTime
+      
           property :resource_id, as: 'resourceId', class: Google::Apis::YoutubeV3::ResourceId, decorator: Google::Apis::YoutubeV3::ResourceId::Representation
       
           property :thumbnails, as: 'thumbnails', class: Google::Apis::YoutubeV3::ThumbnailDetails, decorator: Google::Apis::YoutubeV3::ThumbnailDetails::Representation
@@ -2836,7 +2856,8 @@ module Google
           property :amount_micros, :numeric_string => true, as: 'amountMicros'
           property :channel_id, as: 'channelId'
           property :comment_text, as: 'commentText'
-          property :created_at, as: 'createdAt'
+          property :created_at, as: 'createdAt', type: DateTime
+      
           property :currency, as: 'currency'
           property :display_string, as: 'displayString'
           property :is_super_sticker_event, as: 'isSuperStickerEvent'
@@ -3172,11 +3193,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :active_live_chat_id, as: 'activeLiveChatId'
-          property :actual_end_time, as: 'actualEndTime'
-          property :actual_start_time, as: 'actualStartTime'
+          property :actual_end_time, as: 'actualEndTime', type: DateTime
+      
+          property :actual_start_time, as: 'actualStartTime', type: DateTime
+      
           property :concurrent_viewers, :numeric_string => true, as: 'concurrentViewers'
-          property :scheduled_end_time, as: 'scheduledEndTime'
-          property :scheduled_start_time, as: 'scheduledStartTime'
+          property :scheduled_end_time, as: 'scheduledEndTime', type: DateTime
+      
+          property :scheduled_start_time, as: 'scheduledStartTime', type: DateTime
+      
         end
       end
       
@@ -3261,7 +3286,8 @@ module Google
           property :location, as: 'location', class: Google::Apis::YoutubeV3::GeoPoint, decorator: Google::Apis::YoutubeV3::GeoPoint::Representation
       
           property :location_description, as: 'locationDescription'
-          property :recording_date, as: 'recordingDate'
+          property :recording_date, as: 'recordingDate', type: DateTime
+      
         end
       end
       
@@ -3277,7 +3303,8 @@ module Google
           property :live_broadcast_content, as: 'liveBroadcastContent'
           property :localized, as: 'localized', class: Google::Apis::YoutubeV3::VideoLocalization, decorator: Google::Apis::YoutubeV3::VideoLocalization::Representation
       
-          property :published_at, as: 'publishedAt'
+          property :published_at, as: 'publishedAt', type: DateTime
+      
           collection :tags, as: 'tags'
           property :thumbnails, as: 'thumbnails', class: Google::Apis::YoutubeV3::ThumbnailDetails, decorator: Google::Apis::YoutubeV3::ThumbnailDetails::Representation
       
@@ -3305,7 +3332,8 @@ module Google
           property :made_for_kids, as: 'madeForKids'
           property :privacy_status, as: 'privacyStatus'
           property :public_stats_viewable, as: 'publicStatsViewable'
-          property :publish_at, as: 'publishAt'
+          property :publish_at, as: 'publishAt', type: DateTime
+      
           property :rejection_reason, as: 'rejectionReason'
           property :self_declared_made_for_kids, as: 'selfDeclaredMadeForKids'
           property :upload_status, as: 'uploadStatus'
