@@ -118,6 +118,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HttpBody
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InlineSecret
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListBuildTriggersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -184,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReceiveTriggerWebhookResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RepoSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +227,18 @@ module Google
       end
       
       class Secret
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecretManagerSecret
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Secrets
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -288,6 +318,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :artifacts, as: 'artifacts', class: Google::Apis::CloudbuildV1::Artifacts, decorator: Google::Apis::CloudbuildV1::Artifacts::Representation
+      
+          property :available_secrets, as: 'availableSecrets', class: Google::Apis::CloudbuildV1::Secrets, decorator: Google::Apis::CloudbuildV1::Secrets::Representation
       
           property :build_trigger_id, as: 'buildTriggerId'
           property :create_time, as: 'createTime'
@@ -461,6 +493,23 @@ module Google
         end
       end
       
+      class HttpBody
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_type, as: 'contentType'
+          property :data, :base64 => true, as: 'data'
+          collection :extensions, as: 'extensions'
+        end
+      end
+      
+      class InlineSecret
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :env_map, as: 'envMap'
+          property :kms_key_name, as: 'kmsKeyName'
+        end
+      end
+      
       class ListBuildTriggersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -568,6 +617,12 @@ module Google
         end
       end
       
+      class ReceiveTriggerWebhookResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class RepoSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -623,6 +678,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kms_key_name, as: 'kmsKeyName'
           hash :secret_env, as: 'secretEnv'
+        end
+      end
+      
+      class SecretManagerSecret
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :env, as: 'env'
+          property :version_name, as: 'versionName'
+        end
+      end
+      
+      class Secrets
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :inline, as: 'inline', class: Google::Apis::CloudbuildV1::InlineSecret, decorator: Google::Apis::CloudbuildV1::InlineSecret::Representation
+      
+          collection :secret_manager, as: 'secretManager', class: Google::Apis::CloudbuildV1::SecretManagerSecret, decorator: Google::Apis::CloudbuildV1::SecretManagerSecret::Representation
+      
         end
       end
       

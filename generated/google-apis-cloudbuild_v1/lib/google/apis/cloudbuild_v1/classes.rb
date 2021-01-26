@@ -134,6 +134,11 @@ module Google
         # @return [Google::Apis::CloudbuildV1::Artifacts]
         attr_accessor :artifacts
       
+        # Secrets and secret environment variables.
+        # Corresponds to the JSON property `availableSecrets`
+        # @return [Google::Apis::CloudbuildV1::Secrets]
+        attr_accessor :available_secrets
+      
         # Output only. The ID of the `BuildTrigger` that triggered this build, if it was
         # triggered automatically.
         # Corresponds to the JSON property `buildTriggerId`
@@ -206,7 +211,11 @@ module Google
         # @return [Google::Apis::CloudbuildV1::Results]
         attr_accessor :results
       
-        # Secrets to decrypt using Cloud Key Management Service.
+        # Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is
+        # the recommended technique for managing sensitive data with Cloud Build. Use `
+        # available_secrets` to configure builds to access secrets from Secret Manager.
+        # For instructions, see: https://cloud.google.com/cloud-build/docs/securing-
+        # builds/use-secrets
         # Corresponds to the JSON property `secrets`
         # @return [Array<Google::Apis::CloudbuildV1::Secret>]
         attr_accessor :secrets
@@ -282,6 +291,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @artifacts = args[:artifacts] if args.key?(:artifacts)
+          @available_secrets = args[:available_secrets] if args.key?(:available_secrets)
           @build_trigger_id = args[:build_trigger_id] if args.key?(:build_trigger_id)
           @create_time = args[:create_time] if args.key?(:create_time)
           @finish_time = args[:finish_time] if args.key?(:finish_time)
@@ -895,6 +905,84 @@ module Google
         end
       end
       
+      # Message that represents an arbitrary HTTP body. It should only be used for
+      # payload formats that can't be represented as JSON, such as raw binary or an
+      # HTML page. This message can be used both in streaming and non-streaming API
+      # methods in the request as well as the response. It can be used as a top-level
+      # request field, which is convenient if one wants to extract parameters from
+      # either the URL or HTTP template into the request fields and also want access
+      # to the raw HTTP body. Example: message GetResourceRequest ` // A unique
+      # request id. string request_id = 1; // The raw HTTP body is bound to this field.
+      # google.api.HttpBody http_body = 2; ` service ResourceService ` rpc
+      # GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
+      # UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); ` Example
+      # with streaming methods: service CaldavService ` rpc GetCalendar(stream google.
+      # api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream
+      # google.api.HttpBody) returns (stream google.api.HttpBody); ` Use of this type
+      # only changes how the request and response bodies are handled, all other
+      # features will continue to work unchanged.
+      class HttpBody
+        include Google::Apis::Core::Hashable
+      
+        # The HTTP Content-Type header value specifying the content type of the body.
+        # Corresponds to the JSON property `contentType`
+        # @return [String]
+        attr_accessor :content_type
+      
+        # The HTTP request/response body as raw binary.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        # Application specific response metadata. Must be set in the first response for
+        # streaming APIs.
+        # Corresponds to the JSON property `extensions`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :extensions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_type = args[:content_type] if args.key?(:content_type)
+          @data = args[:data] if args.key?(:data)
+          @extensions = args[:extensions] if args.key?(:extensions)
+        end
+      end
+      
+      # Pairs a set of secret environment variables mapped to encrypted values with
+      # the Cloud KMS key to use to decrypt the value.
+      class InlineSecret
+        include Google::Apis::Core::Hashable
+      
+        # Map of environment variable name to its encrypted value. Secret environment
+        # variables must be unique across all of a build's secrets, and must be used by
+        # at least one build step. Values can be at most 64 KB in size. There can be at
+        # most 100 secret values across all of a build's secrets.
+        # Corresponds to the JSON property `envMap`
+        # @return [Hash<String,String>]
+        attr_accessor :env_map
+      
+        # Resource name of Cloud KMS crypto key to decrypt the encrypted value. In
+        # format: projects/*/locations/*/keyRings/*/cryptoKeys/*
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @env_map = args[:env_map] if args.key?(:env_map)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+        end
+      end
+      
       # Response containing existing `BuildTriggers`.
       class ListBuildTriggersResponse
         include Google::Apis::Core::Hashable
@@ -1272,6 +1360,20 @@ module Google
         end
       end
       
+      # ReceiveTriggerWebhookResponse [Experimental] is the response object for the
+      # ReceiveTriggerWebhook method.
+      class ReceiveTriggerWebhookResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Location of the source in a Google Cloud Source Repository.
       class RepoSource
         include Google::Apis::Core::Hashable
@@ -1479,7 +1581,10 @@ module Google
       end
       
       # Pairs a set of secret environment variables containing encrypted values with
-      # the Cloud KMS key to use to decrypt the value.
+      # the Cloud KMS key to use to decrypt the value. Note: Use `kmsKeyName` with `
+      # available_secrets` instead of using `kmsKeyName` with `secret`. For
+      # instructions see: https://cloud.google.com/cloud-build/docs/securing-builds/
+      # use-encrypted-credentials.
       class Secret
         include Google::Apis::Core::Hashable
       
@@ -1504,6 +1609,58 @@ module Google
         def update!(**args)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @secret_env = args[:secret_env] if args.key?(:secret_env)
+        end
+      end
+      
+      # Pairs a secret environment variable with a SecretVersion in Secret Manager.
+      class SecretManagerSecret
+        include Google::Apis::Core::Hashable
+      
+        # Environment variable name to associate with the secret. Secret environment
+        # variables must be unique across all of a build's secrets, and must be used by
+        # at least one build step.
+        # Corresponds to the JSON property `env`
+        # @return [String]
+        attr_accessor :env
+      
+        # Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*
+        # Corresponds to the JSON property `versionName`
+        # @return [String]
+        attr_accessor :version_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @env = args[:env] if args.key?(:env)
+          @version_name = args[:version_name] if args.key?(:version_name)
+        end
+      end
+      
+      # Secrets and secret environment variables.
+      class Secrets
+        include Google::Apis::Core::Hashable
+      
+        # Secrets encrypted with KMS key and the associated secret environment variable.
+        # Corresponds to the JSON property `inline`
+        # @return [Array<Google::Apis::CloudbuildV1::InlineSecret>]
+        attr_accessor :inline
+      
+        # Secrets in Secret Manager and associated secret environment variable.
+        # Corresponds to the JSON property `secretManager`
+        # @return [Array<Google::Apis::CloudbuildV1::SecretManagerSecret>]
+        attr_accessor :secret_manager
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inline = args[:inline] if args.key?(:inline)
+          @secret_manager = args[:secret_manager] if args.key?(:secret_manager)
         end
       end
       
