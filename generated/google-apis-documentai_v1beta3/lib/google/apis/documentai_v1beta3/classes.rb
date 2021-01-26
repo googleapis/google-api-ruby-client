@@ -233,6 +233,158 @@ module Google
         end
       end
       
+      # Metadata of the EvaluateProcessorVersion method.
+      class GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # Metadata of the EvaluateProcessorVersion method.
+      class GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionResponse
+        include Google::Apis::Core::Hashable
+      
+        # An evaluation of a ProcessorVersion's performance.
+        # Corresponds to the JSON property `evaluation`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3Evaluation]
+        attr_accessor :evaluation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @evaluation = args[:evaluation] if args.key?(:evaluation)
+        end
+      end
+      
+      # An evaluation of a ProcessorVersion's performance.
+      class GoogleCloudDocumentaiUiv1beta3Evaluation
+        include Google::Apis::Core::Hashable
+      
+        # Metrics across multiple confidence levels.
+        # Corresponds to the JSON property `allEntitiesMetrics`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3EvaluationMultiConfidenceMetrics]
+        attr_accessor :all_entities_metrics
+      
+        # The time that the evaluation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Metrics across confidence levels, for different entities.
+        # Corresponds to the JSON property `entityMetrics`
+        # @return [Hash<String,Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3EvaluationMultiConfidenceMetrics>]
+        attr_accessor :entity_metrics
+      
+        # The resource name of the evaluation. Format: projects/`project`/locations/`
+        # location`/processors/`processor`/processorVersions/`processor_version`/
+        # evaluations/`evaluation`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @all_entities_metrics = args[:all_entities_metrics] if args.key?(:all_entities_metrics)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @entity_metrics = args[:entity_metrics] if args.key?(:entity_metrics)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Evaluations metrics, at a specific confidence level.
+      class GoogleCloudDocumentaiUiv1beta3EvaluationConfidenceLevelMetrics
+        include Google::Apis::Core::Hashable
+      
+        # The confidence level.
+        # Corresponds to the JSON property `confidenceLevel`
+        # @return [Float]
+        attr_accessor :confidence_level
+      
+        # Evaluation metrics, either in aggregate or about a specific entity.
+        # Corresponds to the JSON property `metrics`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3EvaluationMetrics]
+        attr_accessor :metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence_level = args[:confidence_level] if args.key?(:confidence_level)
+          @metrics = args[:metrics] if args.key?(:metrics)
+        end
+      end
+      
+      # Evaluation metrics, either in aggregate or about a specific entity.
+      class GoogleCloudDocumentaiUiv1beta3EvaluationMetrics
+        include Google::Apis::Core::Hashable
+      
+        # The calculated f1 score.
+        # Corresponds to the JSON property `f1Score`
+        # @return [Float]
+        attr_accessor :f1_score
+      
+        # The calculated precision.
+        # Corresponds to the JSON property `precision`
+        # @return [Float]
+        attr_accessor :precision
+      
+        # The calculated recall.
+        # Corresponds to the JSON property `recall`
+        # @return [Float]
+        attr_accessor :recall
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @f1_score = args[:f1_score] if args.key?(:f1_score)
+          @precision = args[:precision] if args.key?(:precision)
+          @recall = args[:recall] if args.key?(:recall)
+        end
+      end
+      
+      # Metrics across multiple confidence levels.
+      class GoogleCloudDocumentaiUiv1beta3EvaluationMultiConfidenceMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Metrics across confidence levels.
+        # Corresponds to the JSON property `confidenceLevelMetrics`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3EvaluationConfidenceLevelMetrics>]
+        attr_accessor :confidence_level_metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence_level_metrics = args[:confidence_level_metrics] if args.key?(:confidence_level_metrics)
+        end
+      end
+      
       # A processor version is an implementation of a processor. Each processor can
       # have multiple versions, pre-trained by Google internally or up-trained by the
       # customer. At a time, a processor can only have one default version version. So
