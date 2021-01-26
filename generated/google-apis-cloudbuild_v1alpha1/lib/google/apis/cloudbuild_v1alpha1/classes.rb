@@ -134,6 +134,11 @@ module Google
         # @return [Google::Apis::CloudbuildV1alpha1::Artifacts]
         attr_accessor :artifacts
       
+        # Secrets and secret environment variables.
+        # Corresponds to the JSON property `availableSecrets`
+        # @return [Google::Apis::CloudbuildV1alpha1::Secrets]
+        attr_accessor :available_secrets
+      
         # Output only. The ID of the `BuildTrigger` that triggered this build, if it was
         # triggered automatically.
         # Corresponds to the JSON property `buildTriggerId`
@@ -206,7 +211,11 @@ module Google
         # @return [Google::Apis::CloudbuildV1alpha1::Results]
         attr_accessor :results
       
-        # Secrets to decrypt using Cloud Key Management Service.
+        # Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is
+        # the recommended technique for managing sensitive data with Cloud Build. Use `
+        # available_secrets` to configure builds to access secrets from Secret Manager.
+        # For instructions, see: https://cloud.google.com/cloud-build/docs/securing-
+        # builds/use-secrets
         # Corresponds to the JSON property `secrets`
         # @return [Array<Google::Apis::CloudbuildV1alpha1::Secret>]
         attr_accessor :secrets
@@ -282,6 +291,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @artifacts = args[:artifacts] if args.key?(:artifacts)
+          @available_secrets = args[:available_secrets] if args.key?(:available_secrets)
           @build_trigger_id = args[:build_trigger_id] if args.key?(:build_trigger_id)
           @create_time = args[:create_time] if args.key?(:create_time)
           @finish_time = args[:finish_time] if args.key?(:finish_time)
@@ -698,6 +708,36 @@ module Google
         def update!(**args)
           @type = args[:type] if args.key?(:type)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Pairs a set of secret environment variables mapped to encrypted values with
+      # the Cloud KMS key to use to decrypt the value.
+      class InlineSecret
+        include Google::Apis::Core::Hashable
+      
+        # Map of environment variable name to its encrypted value. Secret environment
+        # variables must be unique across all of a build's secrets, and must be used by
+        # at least one build step. Values can be at most 64 KB in size. There can be at
+        # most 100 secret values across all of a build's secrets.
+        # Corresponds to the JSON property `envMap`
+        # @return [Hash<String,String>]
+        attr_accessor :env_map
+      
+        # Resource name of Cloud KMS crypto key to decrypt the encrypted value. In
+        # format: projects/*/locations/*/keyRings/*/cryptoKeys/*
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @env_map = args[:env_map] if args.key?(:env_map)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
         end
       end
       
@@ -1185,7 +1225,10 @@ module Google
       end
       
       # Pairs a set of secret environment variables containing encrypted values with
-      # the Cloud KMS key to use to decrypt the value.
+      # the Cloud KMS key to use to decrypt the value. Note: Use `kmsKeyName` with `
+      # available_secrets` instead of using `kmsKeyName` with `secret`. For
+      # instructions see: https://cloud.google.com/cloud-build/docs/securing-builds/
+      # use-encrypted-credentials.
       class Secret
         include Google::Apis::Core::Hashable
       
@@ -1210,6 +1253,58 @@ module Google
         def update!(**args)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @secret_env = args[:secret_env] if args.key?(:secret_env)
+        end
+      end
+      
+      # Pairs a secret environment variable with a SecretVersion in Secret Manager.
+      class SecretManagerSecret
+        include Google::Apis::Core::Hashable
+      
+        # Environment variable name to associate with the secret. Secret environment
+        # variables must be unique across all of a build's secrets, and must be used by
+        # at least one build step.
+        # Corresponds to the JSON property `env`
+        # @return [String]
+        attr_accessor :env
+      
+        # Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*
+        # Corresponds to the JSON property `versionName`
+        # @return [String]
+        attr_accessor :version_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @env = args[:env] if args.key?(:env)
+          @version_name = args[:version_name] if args.key?(:version_name)
+        end
+      end
+      
+      # Secrets and secret environment variables.
+      class Secrets
+        include Google::Apis::Core::Hashable
+      
+        # Secrets encrypted with KMS key and the associated secret environment variable.
+        # Corresponds to the JSON property `inline`
+        # @return [Array<Google::Apis::CloudbuildV1alpha1::InlineSecret>]
+        attr_accessor :inline
+      
+        # Secrets in Secret Manager and associated secret environment variable.
+        # Corresponds to the JSON property `secretManager`
+        # @return [Array<Google::Apis::CloudbuildV1alpha1::SecretManagerSecret>]
+        attr_accessor :secret_manager
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inline = args[:inline] if args.key?(:inline)
+          @secret_manager = args[:secret_manager] if args.key?(:secret_manager)
         end
       end
       
