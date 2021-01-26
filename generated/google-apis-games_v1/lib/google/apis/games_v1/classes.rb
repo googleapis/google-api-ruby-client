@@ -2310,6 +2310,15 @@ module Google
       class ResolveSnapshotHeadRequest
         include Google::Apis::Core::Hashable
       
+        # The maximum number of SnapshotRevision resources for `conflictingRevisions` to
+        # return per SnapshotExtended resource in the response. For any response, the
+        # actual number of resources returned may be less than specified by `
+        # maxConflictsPerSnapshot`. The value provided should be greater or equal to 0.
+        # If no value is provided, the server will use a sensible default.
+        # Corresponds to the JSON property `maxConflictsPerSnapshot`
+        # @return [Fixnum]
+        attr_accessor :max_conflicts_per_snapshot
+      
         # Required. The automatic resolution policy. All conflicts are resolved in
         # chronological order, starting from the/ least recent. If the comparison metric
         # is equal for the tentative head and the conflict, the head wins.
@@ -2323,6 +2332,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @max_conflicts_per_snapshot = args[:max_conflicts_per_snapshot] if args.key?(:max_conflicts_per_snapshot)
           @resolution_policy = args[:resolution_policy] if args.key?(:resolution_policy)
         end
       end

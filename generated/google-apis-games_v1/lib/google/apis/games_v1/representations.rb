@@ -1049,6 +1049,7 @@ module Google
       class ResolveSnapshotHeadRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_conflicts_per_snapshot, as: 'maxConflictsPerSnapshot'
           property :resolution_policy, as: 'resolutionPolicy'
         end
       end
