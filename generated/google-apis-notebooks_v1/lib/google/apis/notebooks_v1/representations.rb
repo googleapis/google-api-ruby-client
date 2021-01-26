@@ -64,6 +64,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Execution
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecutionTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -100,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListExecutionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListInstancesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,6 +131,12 @@ module Google
       end
       
       class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSchedulesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -155,6 +179,18 @@ module Google
       end
       
       class ResetInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Schedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SchedulerAcceleratorConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -215,6 +251,12 @@ module Google
       end
       
       class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TriggerScheduleRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -316,6 +358,36 @@ module Google
         end
       end
       
+      class Execution
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :execution_template, as: 'executionTemplate', class: Google::Apis::NotebooksV1::ExecutionTemplate, decorator: Google::Apis::NotebooksV1::ExecutionTemplate::Representation
+      
+          property :name, as: 'name'
+          property :output_notebook_file, as: 'outputNotebookFile'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ExecutionTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_config, as: 'acceleratorConfig', class: Google::Apis::NotebooksV1::SchedulerAcceleratorConfig, decorator: Google::Apis::NotebooksV1::SchedulerAcceleratorConfig::Representation
+      
+          property :container_image_uri, as: 'containerImageUri'
+          property :input_notebook_file, as: 'inputNotebookFile'
+          hash :labels, as: 'labels'
+          property :master_type, as: 'masterType'
+          property :output_notebook_folder, as: 'outputNotebookFolder'
+          property :params_yaml_file, as: 'paramsYamlFile'
+          property :scale_tier, as: 'scaleTier'
+        end
+      end
+      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -404,6 +476,16 @@ module Google
         end
       end
       
+      class ListExecutionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :executions, as: 'executions', class: Google::Apis::NotebooksV1::Execution, decorator: Google::Apis::NotebooksV1::Execution::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListInstancesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -429,6 +511,16 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::NotebooksV1::Operation, decorator: Google::Apis::NotebooksV1::Operation::Representation
       
+        end
+      end
+      
+      class ListSchedulesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :schedules, as: 'schedules', class: Google::Apis::NotebooksV1::Schedule, decorator: Google::Apis::NotebooksV1::Schedule::Representation
+      
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -497,6 +589,30 @@ module Google
       class ResetInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Schedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :cron_schedule, as: 'cronSchedule'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :execution_template, as: 'executionTemplate', class: Google::Apis::NotebooksV1::ExecutionTemplate, decorator: Google::Apis::NotebooksV1::ExecutionTemplate::Representation
+      
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :time_zone, as: 'timeZone'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class SchedulerAcceleratorConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :core_count, :numeric_string => true, as: 'coreCount'
+          property :type, as: 'type'
         end
       end
       
@@ -571,6 +687,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class TriggerScheduleRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
