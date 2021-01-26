@@ -861,6 +861,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # A header to display above the incident message. Typcially used to attach a
+        # localized notice on the timeline for followup comms translations.
+        # Corresponds to the JSON property `header`
+        # @return [String]
+        attr_accessor :header
+      
         # A one-line incident description.
         # Corresponds to the JSON property `title`
         # @return [String]
@@ -875,6 +881,7 @@ module Google
           @affected_user_emails = args[:affected_user_emails] if args.key?(:affected_user_emails)
           @attachment_data = args[:attachment_data] if args.key?(:attachment_data)
           @description = args[:description] if args.key?(:description)
+          @header = args[:header] if args.key?(:header)
           @title = args[:title] if args.key?(:title)
         end
       end
