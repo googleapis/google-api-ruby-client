@@ -3876,8 +3876,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the metrics report for a given Repricing product. Reports of the last 3
-        # days may not be complete.
+        # Lists the metrics report for a given Repricing product.
         # @param [Fixnum] merchant_id
         #   Required. Id of the merchant who owns the Repricing rule.
         # @param [String] product_id
@@ -3886,7 +3885,7 @@ module Google
         #   FIELDS.id)
         # @param [String] end_date
         #   Gets Repricing reports on and before this date in the merchant's timezone. You
-        #   can only retrieve data up to 3 days ago (default) or earlier. Format is YYYY-
+        #   can only retrieve data up to 7 days ago (default) or earlier. Format is YYYY-
         #   MM-DD.
         # @param [Fixnum] page_size
         #   Maximum number of days of reports to return. There can be more than one rule
@@ -3903,7 +3902,7 @@ module Google
         #   Id of the Repricing rule. If specified, only gets this rule's reports.
         # @param [String] start_date
         #   Gets Repricing reports on and after this date in the merchant's timezone, up
-        #   to one year ago. Do not use a start date later than 3 days ago (default).
+        #   to one year ago. Do not use a start date later than 7 days ago (default).
         #   Format is YYYY-MM-DD.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4439,15 +4438,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the metrics report for a given Repricing rule. Reports of the last 3
-        # days may not be complete.
+        # Lists the metrics report for a given Repricing rule.
         # @param [Fixnum] merchant_id
         #   Required. Id of the merchant who owns the Repricing rule.
         # @param [String] rule_id
         #   Required. Id of the Repricing rule.
         # @param [String] end_date
         #   Gets Repricing reports on and before this date in the merchant's timezone. You
-        #   can only retrieve data up to 3 days ago (default) or earlier. Format: YYYY-MM-
+        #   can only retrieve data up to 7 days ago (default) or earlier. Format: YYYY-MM-
         #   DD.
         # @param [Fixnum] page_size
         #   Maximum number of daily reports to return. Each report includes data from a
@@ -4459,7 +4457,7 @@ module Google
         #   match the original call that provided the page token.
         # @param [String] start_date
         #   Gets Repricing reports on and after this date in the merchant's timezone, up
-        #   to one year ago. Do not use a start date later than 3 days ago (default).
+        #   to one year ago. Do not use a start date later than 7 days ago (default).
         #   Format: YYYY-MM-DD.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
