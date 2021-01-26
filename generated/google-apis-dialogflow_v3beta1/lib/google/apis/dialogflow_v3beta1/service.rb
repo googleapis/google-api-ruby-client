@@ -2840,9 +2840,8 @@ module Google
         #   testCases/`.
         # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TestCase] google_cloud_dialogflow_cx_v3beta1_test_case_object
         # @param [String] update_mask
-        #   Required. The mask to specify which fields should be updated. Only a test case'
-        #   s metadata and replayed_conversation_turns may be updated. The original
-        #   test_case_conversation_turns may not be updated.
+        #   Required. The mask to specify which fields should be updated. The `
+        #   creationTime` and `lastTestResult` cannot be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
