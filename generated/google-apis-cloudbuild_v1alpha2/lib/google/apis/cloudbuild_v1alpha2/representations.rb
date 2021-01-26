@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InlineSecret
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListWorkerPoolsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,6 +179,18 @@ module Google
       end
       
       class Secret
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecretManagerSecret
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Secrets
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -264,6 +282,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :artifacts, as: 'artifacts', class: Google::Apis::CloudbuildV1alpha2::Artifacts, decorator: Google::Apis::CloudbuildV1alpha2::Artifacts::Representation
+      
+          property :available_secrets, as: 'availableSecrets', class: Google::Apis::CloudbuildV1alpha2::Secrets, decorator: Google::Apis::CloudbuildV1alpha2::Secrets::Representation
       
           property :build_trigger_id, as: 'buildTriggerId'
           property :create_time, as: 'createTime'
@@ -390,6 +410,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
           property :value, :base64 => true, as: 'value'
+        end
+      end
+      
+      class InlineSecret
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :env_map, as: 'envMap'
+          property :kms_key_name, as: 'kmsKeyName'
         end
       end
       
@@ -525,6 +553,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kms_key_name, as: 'kmsKeyName'
           hash :secret_env, as: 'secretEnv'
+        end
+      end
+      
+      class SecretManagerSecret
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :env, as: 'env'
+          property :version_name, as: 'versionName'
+        end
+      end
+      
+      class Secrets
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :inline, as: 'inline', class: Google::Apis::CloudbuildV1alpha2::InlineSecret, decorator: Google::Apis::CloudbuildV1alpha2::InlineSecret::Representation
+      
+          collection :secret_manager, as: 'secretManager', class: Google::Apis::CloudbuildV1alpha2::SecretManagerSecret, decorator: Google::Apis::CloudbuildV1alpha2::SecretManagerSecret::Representation
+      
         end
       end
       
