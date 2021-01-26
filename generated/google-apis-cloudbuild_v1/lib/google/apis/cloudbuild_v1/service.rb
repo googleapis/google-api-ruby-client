@@ -821,6 +821,46 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # ReceiveTriggerWebhook [Experimental] is called when the API receives a webhook
+        # request targeted at a specific trigger.
+        # @param [String] project_id
+        #   Project in which the specified trigger lives
+        # @param [String] trigger
+        #   Name of the trigger to run the payload against
+        # @param [Google::Apis::CloudbuildV1::HttpBody] http_body_object
+        # @param [String] secret
+        #   Secret token used for authorization if an OAuth token isn't provided.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::ReceiveTriggerWebhookResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::ReceiveTriggerWebhookResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def webhook_project_trigger(project_id, trigger, http_body_object = nil, secret: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/triggers/{trigger}:webhook', options)
+          command.request_representation = Google::Apis::CloudbuildV1::HttpBody::Representation
+          command.request_object = http_body_object
+          command.response_representation = Google::Apis::CloudbuildV1::ReceiveTriggerWebhookResponse::Representation
+          command.response_class = Google::Apis::CloudbuildV1::ReceiveTriggerWebhookResponse
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['trigger'] = trigger unless trigger.nil?
+          command.query['secret'] = secret unless secret.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 
