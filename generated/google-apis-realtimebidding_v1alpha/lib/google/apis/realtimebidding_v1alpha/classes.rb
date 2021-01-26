@@ -31,13 +31,13 @@ module Google
         # a Javascript object, `inputs`, that contains the following named fields: `
         # openrtbContextualBidRequest` OR `googleContextualBidRequest`, `
         # customContextualSignal`, `interestBasedBidData`, `interestGroupData`, `
-        # recentImpressionAges`, and returns the bid price CPM (double). Example: /*
+        # recentImpressionAges`, and returns the bid price CPM (double). Example: ``` /*
         # Returns a bid price CPM (double). * * @param `Object` inputs an object with
         # the * following named fields: * - openrtbContextualBidRequest * OR
         # googleContextualBidRequest * - customContextualSignal * - interestBasedBidData
         # * - interestGroupData * - recentImpressionAges */ function biddingFunction(
         # inputs) ` ... return inputs.interestBasedBidData.cpm * inputs.
-        # customContextualSignals.placementMultiplier; `
+        # customContextualSignals.placementMultiplier; ` ```
         # Corresponds to the JSON property `biddingFunction`
         # @return [String]
         attr_accessor :bidding_function
