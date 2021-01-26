@@ -703,7 +703,8 @@ module Google
       
         # Max number of bytes to scan from a file. If a scanned file's size is bigger
         # than this value then the rest of the bytes are omitted. Only one of
-        # bytes_limit_per_file and bytes_limit_per_file_percent can be specified.
+        # bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot
+        # be set if de-identification is requested.
         # Corresponds to the JSON property `bytesLimitPerFile`
         # @return [Fixnum]
         attr_accessor :bytes_limit_per_file
@@ -711,7 +712,8 @@ module Google
         # Max percentage of bytes to scan from a file. The rest are omitted. The number
         # of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both
         # 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and
-        # bytes_limit_per_file_percent can be specified.
+        # bytes_limit_per_file_percent can be specified. Cannot be set if de-
+        # identification is requested.
         # Corresponds to the JSON property `bytesLimitPerFilePercent`
         # @return [Fixnum]
         attr_accessor :bytes_limit_per_file_percent
@@ -1826,8 +1828,7 @@ module Google
         attr_accessor :display_name
       
         # Output only. The template name. The template will have one of the following
-        # formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR `
-        # organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
+        # formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2523,7 +2524,8 @@ module Google
         end
       end
       
-      # Configuration to control the number of findings returned.
+      # Configuration to control the number of findings returned. Cannot be set if de-
+      # identification is requested.
       class GooglePrivacyDlpV2FindingLimits
         include Google::Apis::Core::Hashable
       
@@ -3127,7 +3129,8 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType>]
         attr_accessor :info_types
       
-        # Configuration to control the number of findings returned.
+        # Configuration to control the number of findings returned. Cannot be set if de-
+        # identification is requested.
         # Corresponds to the JSON property `limits`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FindingLimits]
         attr_accessor :limits
@@ -3346,8 +3349,7 @@ module Google
         attr_accessor :inspect_config
       
         # Output only. The template name. The template will have one of the following
-        # formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/
-        # ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
+        # formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -5439,7 +5441,7 @@ module Google
         end
       end
       
-      # Schedule for triggeredJobs.
+      # Schedule for inspect job triggers.
       class GooglePrivacyDlpV2Schedule
         include Google::Apis::Core::Hashable
       
@@ -6181,7 +6183,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Manual]
         attr_accessor :manual
       
-        # Schedule for triggeredJobs.
+        # Schedule for inspect job triggers.
         # Corresponds to the JSON property `schedule`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Schedule]
         attr_accessor :schedule
