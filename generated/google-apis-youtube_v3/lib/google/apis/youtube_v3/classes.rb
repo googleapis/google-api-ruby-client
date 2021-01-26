@@ -660,10 +660,9 @@ module Google
         # @return [String]
         attr_accessor :group_id
       
-        # The date and time that the video was uploaded. The value is specified in ISO
-        # 8601 format.
+        # The date and time that the video was uploaded.
         # Corresponds to the JSON property `publishedAt`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :published_at
       
         # Internal representation of thumbnails for a YouTube resource.
@@ -842,10 +841,9 @@ module Google
         # @return [String]
         attr_accessor :language
       
-        # The date and time when the caption track was last updated. The value is
-        # specified in ISO 8601 format.
+        # The date and time when the caption track was last updated.
         # Corresponds to the JSON property `lastUpdated`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :last_updated
       
         # The name of the caption track. The name is intended to be visible to the user
@@ -1217,10 +1215,9 @@ module Google
         # @return [String]
         attr_accessor :content_owner
       
-        # The date and time of when the channel was linked to the content owner. The
-        # value is specified in ISO 8601 format.
+        # The date and time when the channel was linked to the content owner.
         # Corresponds to the JSON property `timeLinked`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :time_linked
       
         def initialize(**args)
@@ -1784,10 +1781,9 @@ module Google
         # @return [Google::Apis::YoutubeV3::ChannelLocalization]
         attr_accessor :localized
       
-        # The date and time that the channel was created. The value is specified in < a
-        # href="//www.w3.org/TR/NOTE-datetime">ISO 8601 format.
+        # The date and time that the channel was created.
         # Corresponds to the JSON property `publishedAt`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :published_at
       
         # Internal representation of thumbnails for a YouTube resource.
@@ -2117,10 +2113,9 @@ module Google
         # @return [String]
         attr_accessor :parent_id
       
-        # The date and time when the comment was orignally published. The value is
-        # specified in ISO 8601 format.
+        # The date and time when the comment was originally published.
         # Corresponds to the JSON property `publishedAt`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :published_at
       
         # The comment's text. The format is either plain text or HTML dependent on what
@@ -2138,10 +2133,9 @@ module Google
         # @return [String]
         attr_accessor :text_original
       
-        # The date and time when was last updated . The value is specified in ISO 8601
-        # format.
+        # The date and time when the comment was last updated.
         # Corresponds to the JSON property `updatedAt`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :updated_at
       
         # The ID of the video the comment refers to, if any.
@@ -3564,7 +3558,7 @@ module Google
         # The date and time that the live stream referenced by boundStreamId was last
         # updated.
         # Corresponds to the JSON property `boundStreamLastUpdateTimeMs`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :bound_stream_last_update_time_ms
       
         # 
@@ -3780,17 +3774,15 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The date and time that the broadcast actually ended. This information is only
-        # available once the broadcast's state is complete. The value is specified in
-        # ISO 8601 format.
+        # available once the broadcast's state is complete.
         # Corresponds to the JSON property `actualEndTime`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :actual_end_time
       
         # The date and time that the broadcast actually started. This information is
-        # only available once the broadcast's state is live. The value is specified in
-        # ISO 8601 format.
+        # only available once the broadcast's state is live.
         # Corresponds to the JSON property `actualStartTime`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :actual_start_time
       
         # The ID that YouTube uses to uniquely identify the channel that is publishing
@@ -3818,21 +3810,19 @@ module Google
         attr_accessor :live_chat_id
       
         # The date and time that the broadcast was added to YouTube's live broadcast
-        # schedule. The value is specified in ISO 8601 format.
+        # schedule.
         # Corresponds to the JSON property `publishedAt`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :published_at
       
-        # The date and time that the broadcast is scheduled to end. The value is
-        # specified in ISO 8601 format.
+        # The date and time that the broadcast is scheduled to start.
         # Corresponds to the JSON property `scheduledEndTime`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :scheduled_end_time
       
-        # The date and time that the broadcast is scheduled to start. The value is
-        # specified in ISO 8601 format.
+        # The date and time that the broadcast is scheduled to end.
         # Corresponds to the JSON property `scheduledStartTime`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :scheduled_start_time
       
         # Internal representation of thumbnails for a YouTube resource.
@@ -4221,10 +4211,9 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # The date and time when the underlying stream went offline. The value is
-        # specified in ISO 8601 format.
+        # The date and time when the underlying stream went offline.
         # Corresponds to the JSON property `offlineAt`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :offline_at
       
         # Paging details for lists of resources, including total number of items
@@ -4335,10 +4324,9 @@ module Google
         # @return [Google::Apis::YoutubeV3::LiveChatMessageRetractedDetails]
         attr_accessor :message_retracted_details
       
-        # The date and time when the message was orignally published. The value is
-        # specified in ISO 8601 format.
+        # The date and time when the message was orignally published.
         # Corresponds to the JSON property `publishedAt`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :published_at
       
         # Details about the Super Chat event, this is only set if the type is '
@@ -4920,10 +4908,9 @@ module Google
         attr_accessor :is_default_stream
         alias_method :is_default_stream?, :is_default_stream
       
-        # The date and time that the stream was created. The value is specified in ISO
-        # 8601 format.
+        # The date and time that the stream was created.
         # Corresponds to the JSON property `publishedAt`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :published_at
       
         # The stream's title. The value must be between 1 and 128 characters long.
@@ -5625,10 +5612,9 @@ module Google
         # @return [String]
         attr_accessor :video_id
       
-        # The date and time that the video was published to YouTube. The value is
-        # specified in ISO 8601 format.
+        # The date and time that the video was published to YouTube.
         # Corresponds to the JSON property `videoPublishedAt`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :video_published_at
       
         def initialize(**args)
@@ -5750,10 +5736,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :position
       
-        # The date and time that the item was added to the playlist. The value is
-        # specified in ISO 8601 format.
+        # The date and time that the item was added to the playlist.
         # Corresponds to the JSON property `publishedAt`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :published_at
       
         # A resource id is a generic reference that points to another YouTube resource.
@@ -5953,10 +5938,9 @@ module Google
         # @return [Google::Apis::YoutubeV3::PlaylistLocalization]
         attr_accessor :localized
       
-        # The date and time that the playlist was created. The value is specified in ISO
-        # 8601 format.
+        # The date and time that the playlist was created.
         # Corresponds to the JSON property `publishedAt`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :published_at
       
         # Keyword tags associated with the playlist.
@@ -6247,9 +6231,8 @@ module Google
         attr_accessor :live_broadcast_content
       
         # The creation date and time of the resource that the search result identifies.
-        # The value is specified in ISO 8601 format.
         # Corresponds to the JSON property `publishedAt`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :published_at
       
         # Internal representation of thumbnails for a YouTube resource.
@@ -6455,10 +6438,9 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The date and time that the subscription was created. The value is specified in
-        # ISO 8601 format.
+        # The date and time that the subscription was created.
         # Corresponds to the JSON property `publishedAt`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :published_at
       
         # A resource id is a generic reference that points to another YouTube resource.
@@ -6653,10 +6635,9 @@ module Google
         # @return [String]
         attr_accessor :comment_text
       
-        # The date and time when the event occurred. The value is specified in ISO 8601
-        # format.
+        # The date and time when the event occurred.
         # Corresponds to the JSON property `createdAt`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :created_at
       
         # The currency in which the purchase was made. ISO 4217.
@@ -7897,16 +7878,16 @@ module Google
         # @return [String]
         attr_accessor :active_live_chat_id
       
-        # The time that the broadcast actually ended. The value is specified in ISO 8601
-        # format. This value will not be available until the broadcast is over.
+        # The time that the broadcast actually ended. This value will not be available
+        # until the broadcast is over.
         # Corresponds to the JSON property `actualEndTime`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :actual_end_time
       
-        # The time that the broadcast actually started. The value is specified in ISO
-        # 8601 format. This value will not be available until the broadcast begins.
+        # The time that the broadcast actually started. This value will not be available
+        # until the broadcast begins.
         # Corresponds to the JSON property `actualStartTime`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :actual_start_time
       
         # The number of viewers currently watching the broadcast. The property and its
@@ -7919,17 +7900,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :concurrent_viewers
       
-        # The time that the broadcast is scheduled to end. The value is specified in ISO
-        # 8601 format. If the value is empty or the property is not present, then the
-        # broadcast is scheduled to continue indefinitely.
+        # The time that the broadcast is scheduled to end. If the value is empty or the
+        # property is not present, then the broadcast is scheduled to contiue
+        # indefinitely.
         # Corresponds to the JSON property `scheduledEndTime`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :scheduled_end_time
       
-        # The time that the broadcast is scheduled to begin. The value is specified in
-        # ISO 8601 format.
+        # The time that the broadcast is scheduled to begin.
         # Corresponds to the JSON property `scheduledStartTime`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :scheduled_start_time
       
         def initialize(**args)
@@ -8242,10 +8222,9 @@ module Google
         # @return [String]
         attr_accessor :location_description
       
-        # The date and time when the video was recorded. The value is specified in ISO
-        # 8601 (YYYY-MM-DDThh:mm:ss.sssZ) format.
+        # The date and time when the video was recorded.
         # Corresponds to the JSON property `recordingDate`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :recording_date
       
         def initialize(**args)
@@ -8308,10 +8287,9 @@ module Google
         # @return [Google::Apis::YoutubeV3::VideoLocalization]
         attr_accessor :localized
       
-        # The date and time that the video was uploaded. The value is specified in ISO
-        # 8601 format.
+        # The date and time when the video was uploaded.
         # Corresponds to the JSON property `publishedAt`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :published_at
       
         # A list of keyword tags associated with the video. Tags may contain spaces.
@@ -8438,10 +8416,9 @@ module Google
         alias_method :public_stats_viewable?, :public_stats_viewable
       
         # The date and time when the video is scheduled to publish. It can be set only
-        # if the privacy status of the video is private. The value is specified in ISO
-        # 8601 format.
+        # if the privacy status of the video is private..
         # Corresponds to the JSON property `publishAt`
-        # @return [String]
+        # @return [DateTime]
         attr_accessor :publish_at
       
         # This value explains why YouTube rejected an uploaded video. This property is
