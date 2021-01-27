@@ -1216,6 +1216,7 @@ module Google
       class SslCertsCreateEphemeralRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_token, as: 'access_token'
           property :public_key, as: 'public_key'
         end
       end

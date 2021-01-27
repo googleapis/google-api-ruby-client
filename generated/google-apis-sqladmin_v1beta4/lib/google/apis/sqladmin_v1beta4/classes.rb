@@ -297,7 +297,8 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # The type of this run; can be either "AUTOMATED" or "ON_DEMAND".
+        # The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field
+        # defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2834,6 +2835,11 @@ module Google
       class SslCertsCreateEphemeralRequest
         include Google::Apis::Core::Hashable
       
+        # Access token to include in the signed certificate.
+        # Corresponds to the JSON property `access_token`
+        # @return [String]
+        attr_accessor :access_token
+      
         # PEM encoded public key to include in the signed certificate.
         # Corresponds to the JSON property `public_key`
         # @return [String]
@@ -2845,6 +2851,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @access_token = args[:access_token] if args.key?(:access_token)
           @public_key = args[:public_key] if args.key?(:public_key)
         end
       end
