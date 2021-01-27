@@ -1608,19 +1608,6 @@ module Google
       end
       
       # 
-      class ResourceRecordSetsDeleteResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # 
       class ResourceRecordSetsListResponse
         include Google::Apis::Core::Hashable
       
@@ -1682,6 +1669,334 @@ module Google
         # Update properties of this object
         def update!(**args)
           @operation_id = args[:operation_id] if args.key?(:operation_id)
+        end
+      end
+      
+      # 
+      class ResponsePoliciesListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Elements common to every response.
+        # Corresponds to the JSON property `header`
+        # @return [Google::Apis::DnsV1beta2::ResponseHeader]
+        attr_accessor :header
+      
+        # The presence of this field indicates that there exist more results following
+        # your last page of results in pagination order. To fetch them, make another
+        # list request using this value as your page token. In this way you can retrieve
+        # the complete contents of even very large collections one page at a time.
+        # However, if the contents of the collection change between the first and last
+        # paginated list request, the set of all elements returned will be an
+        # inconsistent view of the collection. There is no way to retrieve a consistent
+        # snapshot of a collection larger than the maximum page size.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The Response Policy resources.
+        # Corresponds to the JSON property `responsePolicies`
+        # @return [Array<Google::Apis::DnsV1beta2::ResponsePolicy>]
+        attr_accessor :response_policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header = args[:header] if args.key?(:header)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @response_policies = args[:response_policies] if args.key?(:response_policies)
+        end
+      end
+      
+      # 
+      class ResponsePoliciesPatchResponse
+        include Google::Apis::Core::Hashable
+      
+        # Elements common to every response.
+        # Corresponds to the JSON property `header`
+        # @return [Google::Apis::DnsV1beta2::ResponseHeader]
+        attr_accessor :header
+      
+        # A Response Policy is a collection of selectors that apply to queries made
+        # against one or more Virtual Private Cloud networks.
+        # Corresponds to the JSON property `responsePolicy`
+        # @return [Google::Apis::DnsV1beta2::ResponsePolicy]
+        attr_accessor :response_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header = args[:header] if args.key?(:header)
+          @response_policy = args[:response_policy] if args.key?(:response_policy)
+        end
+      end
+      
+      # 
+      class ResponsePoliciesUpdateResponse
+        include Google::Apis::Core::Hashable
+      
+        # Elements common to every response.
+        # Corresponds to the JSON property `header`
+        # @return [Google::Apis::DnsV1beta2::ResponseHeader]
+        attr_accessor :header
+      
+        # A Response Policy is a collection of selectors that apply to queries made
+        # against one or more Virtual Private Cloud networks.
+        # Corresponds to the JSON property `responsePolicy`
+        # @return [Google::Apis::DnsV1beta2::ResponsePolicy]
+        attr_accessor :response_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header = args[:header] if args.key?(:header)
+          @response_policy = args[:response_policy] if args.key?(:response_policy)
+        end
+      end
+      
+      # A Response Policy is a collection of selectors that apply to queries made
+      # against one or more Virtual Private Cloud networks.
+      class ResponsePolicy
+        include Google::Apis::Core::Hashable
+      
+        # User-provided description for this Response Policy.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Unique identifier for the resource; defined by the server (output only).
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # 
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # List of network names specifying networks to which this policy is applied.
+        # Corresponds to the JSON property `networks`
+        # @return [Array<Google::Apis::DnsV1beta2::ResponsePolicyNetwork>]
+        attr_accessor :networks
+      
+        # User assigned name for this Response Policy.
+        # Corresponds to the JSON property `responsePolicyName`
+        # @return [String]
+        attr_accessor :response_policy_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @networks = args[:networks] if args.key?(:networks)
+          @response_policy_name = args[:response_policy_name] if args.key?(:response_policy_name)
+        end
+      end
+      
+      # 
+      class ResponsePolicyNetwork
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The fully qualified URL of the VPC network to bind to. This should be
+        # formatted like https://www.googleapis.com/compute/v1/projects/`project`/global/
+        # networks/`network`
+        # Corresponds to the JSON property `networkUrl`
+        # @return [String]
+        attr_accessor :network_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @network_url = args[:network_url] if args.key?(:network_url)
+        end
+      end
+      
+      # A Response Policy Rule is a selector that applies its behavior to queries that
+      # match the selector. Selectors are DNS names, which may be wildcards or exact
+      # matches. Each DNS query subject to a Response Policy matches at most one
+      # ResponsePolicyRule, as identified by the dns_name field with the longest
+      # matching suffix.
+      class ResponsePolicyRule
+        include Google::Apis::Core::Hashable
+      
+        # Answer this query with a behavior rather than DNS data.
+        # Corresponds to the JSON property `behavior`
+        # @return [String]
+        attr_accessor :behavior
+      
+        # The DNS name (wildcard or exact) to apply this rule to. Must be unique within
+        # the Response Policy Rule.
+        # Corresponds to the JSON property `dnsName`
+        # @return [String]
+        attr_accessor :dns_name
+      
+        # 
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Answer this query directly with DNS data. These ResourceRecordSets override
+        # any other DNS behavior for the matched name; in particular they override
+        # private zones, the public internet, and GCP internal DNS. No SOA nor NS types
+        # are allowed.
+        # Corresponds to the JSON property `localData`
+        # @return [Google::Apis::DnsV1beta2::ResponsePolicyRuleLocalData]
+        attr_accessor :local_data
+      
+        # An identifier for this rule. Must be unique with the ResponsePolicy.
+        # Corresponds to the JSON property `ruleName`
+        # @return [String]
+        attr_accessor :rule_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @behavior = args[:behavior] if args.key?(:behavior)
+          @dns_name = args[:dns_name] if args.key?(:dns_name)
+          @kind = args[:kind] if args.key?(:kind)
+          @local_data = args[:local_data] if args.key?(:local_data)
+          @rule_name = args[:rule_name] if args.key?(:rule_name)
+        end
+      end
+      
+      # 
+      class ResponsePolicyRuleLocalData
+        include Google::Apis::Core::Hashable
+      
+        # All resource record sets for this selector, one per resource record type. The
+        # name must match the dns_name.
+        # Corresponds to the JSON property `localDatas`
+        # @return [Array<Google::Apis::DnsV1beta2::ResourceRecordSet>]
+        attr_accessor :local_datas
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @local_datas = args[:local_datas] if args.key?(:local_datas)
+        end
+      end
+      
+      # 
+      class ResponsePolicyRulesListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Elements common to every response.
+        # Corresponds to the JSON property `header`
+        # @return [Google::Apis::DnsV1beta2::ResponseHeader]
+        attr_accessor :header
+      
+        # The presence of this field indicates that there exist more results following
+        # your last page of results in pagination order. To fetch them, make another
+        # list request using this value as your page token. In this way you can retrieve
+        # the complete contents of even very large collections one page at a time.
+        # However, if the contents of the collection change between the first and last
+        # paginated list request, the set of all elements returned will be an
+        # inconsistent view of the collection. There is no way to retrieve a consistent
+        # snapshot of a collection larger than the maximum page size.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The Response Policy Rule resources.
+        # Corresponds to the JSON property `responsePolicyRules`
+        # @return [Array<Google::Apis::DnsV1beta2::ResponsePolicyRule>]
+        attr_accessor :response_policy_rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header = args[:header] if args.key?(:header)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @response_policy_rules = args[:response_policy_rules] if args.key?(:response_policy_rules)
+        end
+      end
+      
+      # 
+      class ResponsePolicyRulesPatchResponse
+        include Google::Apis::Core::Hashable
+      
+        # Elements common to every response.
+        # Corresponds to the JSON property `header`
+        # @return [Google::Apis::DnsV1beta2::ResponseHeader]
+        attr_accessor :header
+      
+        # A Response Policy Rule is a selector that applies its behavior to queries that
+        # match the selector. Selectors are DNS names, which may be wildcards or exact
+        # matches. Each DNS query subject to a Response Policy matches at most one
+        # ResponsePolicyRule, as identified by the dns_name field with the longest
+        # matching suffix.
+        # Corresponds to the JSON property `responsePolicyRule`
+        # @return [Google::Apis::DnsV1beta2::ResponsePolicyRule]
+        attr_accessor :response_policy_rule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header = args[:header] if args.key?(:header)
+          @response_policy_rule = args[:response_policy_rule] if args.key?(:response_policy_rule)
+        end
+      end
+      
+      # 
+      class ResponsePolicyRulesUpdateResponse
+        include Google::Apis::Core::Hashable
+      
+        # Elements common to every response.
+        # Corresponds to the JSON property `header`
+        # @return [Google::Apis::DnsV1beta2::ResponseHeader]
+        attr_accessor :header
+      
+        # A Response Policy Rule is a selector that applies its behavior to queries that
+        # match the selector. Selectors are DNS names, which may be wildcards or exact
+        # matches. Each DNS query subject to a Response Policy matches at most one
+        # ResponsePolicyRule, as identified by the dns_name field with the longest
+        # matching suffix.
+        # Corresponds to the JSON property `responsePolicyRule`
+        # @return [Google::Apis::DnsV1beta2::ResponsePolicyRule]
+        attr_accessor :response_policy_rule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header = args[:header] if args.key?(:header)
+          @response_policy_rule = args[:response_policy_rule] if args.key?(:response_policy_rule)
         end
       end
     end
