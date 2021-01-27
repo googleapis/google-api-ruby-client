@@ -244,12 +244,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ResourceRecordSetsDeleteResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ResourceRecordSetsListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -257,6 +251,66 @@ module Google
       end
       
       class ResponseHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResponsePoliciesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResponsePoliciesPatchResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResponsePoliciesUpdateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResponsePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResponsePolicyNetwork
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResponsePolicyRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResponsePolicyRuleLocalData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResponsePolicyRulesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResponsePolicyRulesPatchResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResponsePolicyRulesUpdateResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -687,12 +741,6 @@ module Google
         end
       end
       
-      class ResourceRecordSetsDeleteResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
       class ResourceRecordSetsListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -709,6 +757,108 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :operation_id, as: 'operationId'
+        end
+      end
+      
+      class ResponsePoliciesListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header, as: 'header', class: Google::Apis::DnsV1beta2::ResponseHeader, decorator: Google::Apis::DnsV1beta2::ResponseHeader::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :response_policies, as: 'responsePolicies', class: Google::Apis::DnsV1beta2::ResponsePolicy, decorator: Google::Apis::DnsV1beta2::ResponsePolicy::Representation
+      
+        end
+      end
+      
+      class ResponsePoliciesPatchResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header, as: 'header', class: Google::Apis::DnsV1beta2::ResponseHeader, decorator: Google::Apis::DnsV1beta2::ResponseHeader::Representation
+      
+          property :response_policy, as: 'responsePolicy', class: Google::Apis::DnsV1beta2::ResponsePolicy, decorator: Google::Apis::DnsV1beta2::ResponsePolicy::Representation
+      
+        end
+      end
+      
+      class ResponsePoliciesUpdateResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header, as: 'header', class: Google::Apis::DnsV1beta2::ResponseHeader, decorator: Google::Apis::DnsV1beta2::ResponseHeader::Representation
+      
+          property :response_policy, as: 'responsePolicy', class: Google::Apis::DnsV1beta2::ResponsePolicy, decorator: Google::Apis::DnsV1beta2::ResponsePolicy::Representation
+      
+        end
+      end
+      
+      class ResponsePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          collection :networks, as: 'networks', class: Google::Apis::DnsV1beta2::ResponsePolicyNetwork, decorator: Google::Apis::DnsV1beta2::ResponsePolicyNetwork::Representation
+      
+          property :response_policy_name, as: 'responsePolicyName'
+        end
+      end
+      
+      class ResponsePolicyNetwork
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :network_url, as: 'networkUrl'
+        end
+      end
+      
+      class ResponsePolicyRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :behavior, as: 'behavior'
+          property :dns_name, as: 'dnsName'
+          property :kind, as: 'kind'
+          property :local_data, as: 'localData', class: Google::Apis::DnsV1beta2::ResponsePolicyRuleLocalData, decorator: Google::Apis::DnsV1beta2::ResponsePolicyRuleLocalData::Representation
+      
+          property :rule_name, as: 'ruleName'
+        end
+      end
+      
+      class ResponsePolicyRuleLocalData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :local_datas, as: 'localDatas', class: Google::Apis::DnsV1beta2::ResourceRecordSet, decorator: Google::Apis::DnsV1beta2::ResourceRecordSet::Representation
+      
+        end
+      end
+      
+      class ResponsePolicyRulesListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header, as: 'header', class: Google::Apis::DnsV1beta2::ResponseHeader, decorator: Google::Apis::DnsV1beta2::ResponseHeader::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :response_policy_rules, as: 'responsePolicyRules', class: Google::Apis::DnsV1beta2::ResponsePolicyRule, decorator: Google::Apis::DnsV1beta2::ResponsePolicyRule::Representation
+      
+        end
+      end
+      
+      class ResponsePolicyRulesPatchResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header, as: 'header', class: Google::Apis::DnsV1beta2::ResponseHeader, decorator: Google::Apis::DnsV1beta2::ResponseHeader::Representation
+      
+          property :response_policy_rule, as: 'responsePolicyRule', class: Google::Apis::DnsV1beta2::ResponsePolicyRule, decorator: Google::Apis::DnsV1beta2::ResponsePolicyRule::Representation
+      
+        end
+      end
+      
+      class ResponsePolicyRulesUpdateResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header, as: 'header', class: Google::Apis::DnsV1beta2::ResponseHeader, decorator: Google::Apis::DnsV1beta2::ResponseHeader::Representation
+      
+          property :response_policy_rule, as: 'responsePolicyRule', class: Google::Apis::DnsV1beta2::ResponsePolicyRule, decorator: Google::Apis::DnsV1beta2::ResponsePolicyRule::Representation
+      
         end
       end
     end
