@@ -328,6 +328,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :deadline, as: 'deadline'
+          hash :features, as: 'features'
           hash :metadata, as: 'metadata'
         end
       end
