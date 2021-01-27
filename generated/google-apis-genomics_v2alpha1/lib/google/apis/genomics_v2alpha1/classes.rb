@@ -266,6 +266,11 @@ module Google
         # @return [String]
         attr_accessor :deadline
       
+        # Feature configuration for the operation.
+        # Corresponds to the JSON property `features`
+        # @return [Hash<String,Object>]
+        attr_accessor :features
+      
         # The metadata that describes the operation assigned to the worker.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
@@ -278,6 +283,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @deadline = args[:deadline] if args.key?(:deadline)
+          @features = args[:features] if args.key?(:features)
           @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
