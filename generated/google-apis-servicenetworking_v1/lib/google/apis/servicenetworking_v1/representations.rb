@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeleteConnectionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeletePeeredDnsDomainMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -269,6 +275,12 @@ module Google
       end
       
       class GoogleCloudServicenetworkingV1ConsumerConfigReservedRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudServicenetworkingV1betaConnection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -888,6 +900,12 @@ module Google
         end
       end
       
+      class DeleteConnectionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class DeletePeeredDnsDomainMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1012,6 +1030,16 @@ module Google
           property :address, as: 'address'
           property :ip_prefix_length, as: 'ipPrefixLength'
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudServicenetworkingV1betaConnection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network, as: 'network'
+          property :peering, as: 'peering'
+          collection :reserved_peering_ranges, as: 'reservedPeeringRanges'
+          property :service, as: 'service'
         end
       end
       
