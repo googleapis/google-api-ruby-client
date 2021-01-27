@@ -173,7 +173,7 @@ module Google
         #   The service producer peering service that is managing peering connectivity for
         #   a service producer organization. For Google services that support this
         #   functionality, this is `services/servicenetworking.googleapis.com`.
-        # @param [Google::Apis::ServicenetworkingV1beta::Connection] connection_object
+        # @param [Google::Apis::ServicenetworkingV1beta::GoogleCloudServicenetworkingV1betaConnection] google_cloud_servicenetworking_v1beta_connection_object
         # @param [Boolean] force
         #   If a previously defined allocated range is removed, force flag must be set to
         #   true.
@@ -197,10 +197,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_service_connections(name, connection_object = nil, force: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_service_connections(name, google_cloud_servicenetworking_v1beta_connection_object = nil, force: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1beta/{+name}/connections', options)
-          command.request_representation = Google::Apis::ServicenetworkingV1beta::Connection::Representation
-          command.request_object = connection_object
+          command.request_representation = Google::Apis::ServicenetworkingV1beta::GoogleCloudServicenetworkingV1betaConnection::Representation
+          command.request_object = google_cloud_servicenetworking_v1beta_connection_object
           command.response_representation = Google::Apis::ServicenetworkingV1beta::Operation::Representation
           command.response_class = Google::Apis::ServicenetworkingV1beta::Operation
           command.params['name'] = name unless name.nil?
@@ -223,7 +223,7 @@ module Google
         #   The service that is managing peering connectivity for a service producer's
         #   organization. For Google services that support this functionality, this value
         #   is `services/servicenetworking.googleapis.com`.
-        # @param [Google::Apis::ServicenetworkingV1beta::Connection] connection_object
+        # @param [Google::Apis::ServicenetworkingV1beta::GoogleCloudServicenetworkingV1betaConnection] google_cloud_servicenetworking_v1beta_connection_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -241,10 +241,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_service_connection(parent, connection_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_service_connection(parent, google_cloud_servicenetworking_v1beta_connection_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1beta/{+parent}/connections', options)
-          command.request_representation = Google::Apis::ServicenetworkingV1beta::Connection::Representation
-          command.request_object = connection_object
+          command.request_representation = Google::Apis::ServicenetworkingV1beta::GoogleCloudServicenetworkingV1betaConnection::Representation
+          command.request_object = google_cloud_servicenetworking_v1beta_connection_object
           command.response_representation = Google::Apis::ServicenetworkingV1beta::Operation::Representation
           command.response_class = Google::Apis::ServicenetworkingV1beta::Operation
           command.params['parent'] = parent unless parent.nil?

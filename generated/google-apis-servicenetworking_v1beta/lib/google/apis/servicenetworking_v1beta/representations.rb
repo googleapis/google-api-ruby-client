@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeleteConnectionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeletePeeredDnsDomainMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -221,6 +227,12 @@ module Google
       end
       
       class GoogleCloudServicenetworkingV1ConsumerConfigReservedRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudServicenetworkingV1betaConnection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -736,6 +748,12 @@ module Google
         end
       end
       
+      class DeleteConnectionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class DeletePeeredDnsDomainMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -843,6 +861,16 @@ module Google
         end
       end
       
+      class GoogleCloudServicenetworkingV1betaConnection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network, as: 'network'
+          property :peering, as: 'peering'
+          collection :reserved_peering_ranges, as: 'reservedPeeringRanges'
+          property :service, as: 'service'
+        end
+      end
+      
       class GoogleCloudServicenetworkingV1betaSubnetwork
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -901,7 +929,7 @@ module Google
       class ListConnectionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :connections, as: 'connections', class: Google::Apis::ServicenetworkingV1beta::Connection, decorator: Google::Apis::ServicenetworkingV1beta::Connection::Representation
+          collection :connections, as: 'connections', class: Google::Apis::ServicenetworkingV1beta::GoogleCloudServicenetworkingV1betaConnection, decorator: Google::Apis::ServicenetworkingV1beta::GoogleCloudServicenetworkingV1betaConnection::Representation
       
         end
       end
