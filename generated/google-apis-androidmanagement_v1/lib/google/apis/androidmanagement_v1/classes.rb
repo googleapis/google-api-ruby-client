@@ -1112,7 +1112,7 @@ module Google
         # @return [String]
         attr_accessor :allow_personal_usage
       
-        # The length of time the enrollment token is valid, ranging from 1 minute to 30
+        # The length of time the enrollment token is valid, ranging from 1 minute to 90
         # days. If not specified, the default duration is 1 hour.
         # Corresponds to the JSON property `duration`
         # @return [String]
@@ -1911,6 +1911,13 @@ module Google
         # @return [String]
         attr_accessor :network_operator_name
       
+        # Provides telephony information associated with each SIM card on the device.
+        # Only supported on fully managed devices starting from Android API level 23 and
+        # above.
+        # Corresponds to the JSON property `telephonyInfos`
+        # @return [Array<Google::Apis::AndroidmanagementV1::TelephonyInfo>]
+        attr_accessor :telephony_infos
+      
         # Wi-Fi MAC address of the device. For example, 7c:11:11:11:11:11.
         # Corresponds to the JSON property `wifiMacAddress`
         # @return [String]
@@ -1925,6 +1932,7 @@ module Google
           @imei = args[:imei] if args.key?(:imei)
           @meid = args[:meid] if args.key?(:meid)
           @network_operator_name = args[:network_operator_name] if args.key?(:network_operator_name)
+          @telephony_infos = args[:telephony_infos] if args.key?(:telephony_infos)
           @wifi_mac_address = args[:wifi_mac_address] if args.key?(:wifi_mac_address)
         end
       end
@@ -3522,6 +3530,33 @@ module Google
         def update!(**args)
           @update_received_time = args[:update_received_time] if args.key?(:update_received_time)
           @update_status = args[:update_status] if args.key?(:update_status)
+        end
+      end
+      
+      # Telephony information associated with a given SIM card on the device. Only
+      # supported on fully managed devices starting from Android API level 23 and
+      # above.
+      class TelephonyInfo
+        include Google::Apis::Core::Hashable
+      
+        # The carrier name associated with this SIM card.
+        # Corresponds to the JSON property `carrierName`
+        # @return [String]
+        attr_accessor :carrier_name
+      
+        # The phone number associated with this SIM card.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @carrier_name = args[:carrier_name] if args.key?(:carrier_name)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
         end
       end
       
