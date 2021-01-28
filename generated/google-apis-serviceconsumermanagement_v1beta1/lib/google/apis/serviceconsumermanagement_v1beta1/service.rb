@@ -245,11 +245,14 @@ module Google
         #   googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
         # @param [Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1QuotaOverride] v1_beta1_quota_override_object
         # @param [Boolean] force
-        #   Whether to force the creation of the quota override. If creating an override
-        #   would cause the effective quota for the consumer to decrease by more than 10
-        #   percent, the call is rejected, as a safety measure to avoid accidentally
-        #   decreasing quota too quickly. Setting the force parameter to true ignores this
-        #   restriction.
+        #   Whether to force the creation of the quota override. Setting the force
+        #   parameter to 'true' ignores all quota safety checks that would fail the
+        #   request. QuotaSafetyCheck lists all such validations.
+        # @param [Array<String>, String] force_only
+        #   The list of quota safety checks to ignore before the override mutation. Unlike
+        #   'force' field that ignores all the quota safety checks, the 'force_only' field
+        #   ignores only the specified checks; other checks are still enforced. The 'force'
+        #   and 'force_only' fields cannot both be set.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -267,7 +270,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_service_consumer_quota_metric_limit_producer_override(parent, v1_beta1_quota_override_object = nil, force: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_service_consumer_quota_metric_limit_producer_override(parent, v1_beta1_quota_override_object = nil, force: nil, force_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1beta1/{+parent}/producerOverrides', options)
           command.request_representation = Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1QuotaOverride::Representation
           command.request_object = v1_beta1_quota_override_object
@@ -275,6 +278,7 @@ module Google
           command.response_class = Google::Apis::ServiceconsumermanagementV1beta1::Operation
           command.params['parent'] = parent unless parent.nil?
           command.query['force'] = force unless force.nil?
+          command.query['forceOnly'] = force_only unless force_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -286,11 +290,14 @@ module Google
         #   services/compute.googleapis.com/projects/123/consumerQuotaMetrics/compute.
         #   googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/producerOverrides/4a3f2c1d`
         # @param [Boolean] force
-        #   Whether to force the deletion of the quota override. If deleting an override
-        #   would cause the effective quota for the consumer to decrease by more than 10
-        #   percent, the call is rejected, as a safety measure to avoid accidentally
-        #   decreasing quota too quickly. Setting the force parameter to true ignores this
-        #   restriction.
+        #   Whether to force the deletion of the quota override. Setting the force
+        #   parameter to 'true' ignores all quota safety checks that would fail the
+        #   request. QuotaSafetyCheck lists all such validations.
+        # @param [Array<String>, String] force_only
+        #   The list of quota safety checks to ignore before the override mutation. Unlike
+        #   'force' field that ignores all the quota safety checks, the 'force_only' field
+        #   ignores only the specified checks; other checks are still enforced. The 'force'
+        #   and 'force_only' fields cannot both be set.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -308,12 +315,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_service_consumer_quota_metric_limit_producer_override(name, force: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_service_consumer_quota_metric_limit_producer_override(name, force: nil, force_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::ServiceconsumermanagementV1beta1::Operation::Representation
           command.response_class = Google::Apis::ServiceconsumermanagementV1beta1::Operation
           command.params['name'] = name unless name.nil?
           command.query['force'] = force unless force.nil?
+          command.query['forceOnly'] = force_only unless force_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -365,11 +373,14 @@ module Google
         #   googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/producerOverrides/4a3f2c1d`
         # @param [Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1QuotaOverride] v1_beta1_quota_override_object
         # @param [Boolean] force
-        #   Whether to force the update of the quota override. If updating an override
-        #   would cause the effective quota for the consumer to decrease by more than 10
-        #   percent, the call is rejected, as a safety measure to avoid accidentally
-        #   decreasing quota too quickly. Setting the force parameter to true ignores this
-        #   restriction.
+        #   Whether to force the update of the quota override. Setting the force parameter
+        #   to 'true' ignores all quota safety checks that would fail the request.
+        #   QuotaSafetyCheck lists all such validations.
+        # @param [Array<String>, String] force_only
+        #   The list of quota safety checks to ignore before the override mutation. Unlike
+        #   'force' field that ignores all the quota safety checks, the 'force_only' field
+        #   ignores only the specified checks; other checks are still enforced. The 'force'
+        #   and 'force_only' fields cannot both be set.
         # @param [String] update_mask
         #   Update only the specified fields. If unset, all modifiable fields will be
         #   updated.
@@ -390,7 +401,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_service_consumer_quota_metric_limit_producer_override(name, v1_beta1_quota_override_object = nil, force: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_service_consumer_quota_metric_limit_producer_override(name, v1_beta1_quota_override_object = nil, force: nil, force_only: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1QuotaOverride::Representation
           command.request_object = v1_beta1_quota_override_object
@@ -398,6 +409,7 @@ module Google
           command.response_class = Google::Apis::ServiceconsumermanagementV1beta1::Operation
           command.params['name'] = name unless name.nil?
           command.query['force'] = force unless force.nil?
+          command.query['forceOnly'] = force_only unless force_only.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
