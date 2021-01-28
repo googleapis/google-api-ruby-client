@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CommitStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateBackupMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -518,6 +524,7 @@ module Google
           collection :referencing_databases, as: 'referencingDatabases'
           property :size_bytes, :numeric_string => true, as: 'sizeBytes'
           property :state, as: 'state'
+          property :version_time, as: 'versionTime'
         end
       end
       
@@ -527,6 +534,7 @@ module Google
           property :backup, as: 'backup'
           property :create_time, as: 'createTime'
           property :source_database, as: 'sourceDatabase'
+          property :version_time, as: 'versionTime'
         end
       end
       
@@ -579,6 +587,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :mutations, as: 'mutations', class: Google::Apis::SpannerV1::Mutation, decorator: Google::Apis::SpannerV1::Mutation::Representation
       
+          property :return_commit_stats, as: 'returnCommitStats'
           property :single_use_transaction, as: 'singleUseTransaction', class: Google::Apis::SpannerV1::TransactionOptions, decorator: Google::Apis::SpannerV1::TransactionOptions::Representation
       
           property :transaction_id, :base64 => true, as: 'transactionId'
@@ -588,7 +597,16 @@ module Google
       class CommitResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :commit_stats, as: 'commitStats', class: Google::Apis::SpannerV1::CommitStats, decorator: Google::Apis::SpannerV1::CommitStats::Representation
+      
           property :commit_timestamp, as: 'commitTimestamp'
+        end
+      end
+      
+      class CommitStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mutation_count, :numeric_string => true, as: 'mutationCount'
         end
       end
       
@@ -650,10 +668,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :earliest_version_time, as: 'earliestVersionTime'
           property :name, as: 'name'
           property :restore_info, as: 'restoreInfo', class: Google::Apis::SpannerV1::RestoreInfo, decorator: Google::Apis::SpannerV1::RestoreInfo::Representation
       
           property :state, as: 'state'
+          property :version_retention_period, as: 'versionRetentionPeriod'
         end
       end
       
