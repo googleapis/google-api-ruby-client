@@ -790,10 +790,11 @@ module Google
         # updateCreate). This determines if the client can use an Update operation to
         # create a new resource with a client-specified ID. If false, all IDs are server-
         # assigned through the Create operation and attempts to update a non-existent
-        # resource return errors. Be careful with the audit logs if client-specified
-        # resource IDs contain sensitive data such as patient identifiers, those IDs are
-        # part of the FHIR resource path recorded in Cloud audit logs and Cloud Pub/Sub
-        # notifications.
+        # resource return errors. It is strongly advised not to include or encode any
+        # sensitive data such as patient identifiers in client-specified resource IDs.
+        # Those IDs are part of the FHIR resource path recorded in Cloud audit logs and
+        # Cloud Pub/Sub notifications. Those IDs can also be contained in reference
+        # fields within other resources.
         # Corresponds to the JSON property `enableUpdateCreate`
         # @return [Boolean]
         attr_accessor :enable_update_create
@@ -1037,7 +1038,10 @@ module Google
       
         # If this flag is `TRUE`, all tables are deleted from the dataset before the new
         # exported tables are written. If the flag is not set and the destination
-        # dataset contains tables, the export call returns an error.
+        # dataset contains tables, the export call returns an error. If `
+        # write_disposition` is specified, this parameter is ignored. force=false is
+        # equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to
+        # write_disposition=WRITE_TRUNCATE.
         # Corresponds to the JSON property `force`
         # @return [Boolean]
         attr_accessor :force
@@ -1049,6 +1053,13 @@ module Google
         # @return [Google::Apis::HealthcareV1::SchemaConfig]
         attr_accessor :schema_config
       
+        # Determines whether existing tables in the destination dataset are overwritten
+        # or appended to. If a write_disposition is specified, the `force` parameter is
+        # ignored.
+        # Corresponds to the JSON property `writeDisposition`
+        # @return [String]
+        attr_accessor :write_disposition
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1058,6 +1069,7 @@ module Google
           @dataset_uri = args[:dataset_uri] if args.key?(:dataset_uri)
           @force = args[:force] if args.key?(:force)
           @schema_config = args[:schema_config] if args.key?(:schema_config)
+          @write_disposition = args[:write_disposition] if args.key?(:write_disposition)
         end
       end
       
