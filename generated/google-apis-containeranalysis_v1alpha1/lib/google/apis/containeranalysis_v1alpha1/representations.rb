@@ -600,6 +600,7 @@ module Google
           property :package, as: 'package'
           property :package_type, as: 'packageType'
           property :severity_name, as: 'severityName'
+          property :source, as: 'source'
         end
       end
       
@@ -1103,6 +1104,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :epoch, as: 'epoch'
+          property :inclusive, as: 'inclusive'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :revision, as: 'revision'

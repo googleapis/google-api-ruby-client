@@ -715,6 +715,11 @@ module Google
         # @return [String]
         attr_accessor :severity_name
       
+        # The source from which the information in this Detail was obtained.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
         def initialize(**args)
            update!(**args)
         end
@@ -730,6 +735,7 @@ module Google
           @package = args[:package] if args.key?(:package)
           @package_type = args[:package_type] if args.key?(:package_type)
           @severity_name = args[:severity_name] if args.key?(:severity_name)
+          @source = args[:source] if args.key?(:source)
         end
       end
       
@@ -2557,6 +2563,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :epoch
       
+        # Whether this version is vulnerable, when defining the version bounds. For
+        # example, if the minimum version is 2.0, inclusive=true would say 2.0 is
+        # vulnerable, while inclusive=false would say it's not
+        # Corresponds to the JSON property `inclusive`
+        # @return [Boolean]
+        attr_accessor :inclusive
+        alias_method :inclusive?, :inclusive
+      
         # Distinguish between sentinel MIN/MAX versions and normal versions. If kind is
         # not NORMAL, then the other fields are ignored.
         # Corresponds to the JSON property `kind`
@@ -2580,6 +2594,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @epoch = args[:epoch] if args.key?(:epoch)
+          @inclusive = args[:inclusive] if args.key?(:inclusive)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @revision = args[:revision] if args.key?(:revision)
