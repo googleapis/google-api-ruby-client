@@ -26,9 +26,9 @@ module Google
       class Backup
         include Google::Apis::Core::Hashable
       
-        # Output only. The backup will contain an externally consistent copy of the
-        # database at the timestamp specified by `create_time`. `create_time` is
-        # approximately the time the CreateBackup request is received.
+        # Output only. The time the CreateBackup request is received. If the request
+        # does not specify `version_time`, the `version_time` of the backup will be
+        # equivalent to the `create_time`.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -80,6 +80,13 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # The backup will contain an externally consistent copy of the database at the
+        # timestamp specified by `version_time`. If `version_time` is not specified, the
+        # system will set `version_time` to the `create_time` of the backup.
+        # Corresponds to the JSON property `versionTime`
+        # @return [String]
+        attr_accessor :version_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -93,6 +100,7 @@ module Google
           @referencing_databases = args[:referencing_databases] if args.key?(:referencing_databases)
           @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
           @state = args[:state] if args.key?(:state)
+          @version_time = args[:version_time] if args.key?(:version_time)
         end
       end
       
@@ -105,8 +113,7 @@ module Google
         # @return [String]
         attr_accessor :backup
       
-        # The backup contains an externally consistent copy of `source_database` at the
-        # timestamp specified by `create_time`.
+        # The time the CreateBackup request was received.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -115,6 +122,14 @@ module Google
         # Corresponds to the JSON property `sourceDatabase`
         # @return [String]
         attr_accessor :source_database
+      
+        # The backup contains an externally consistent copy of `source_database` at the
+        # timestamp specified by `version_time`. If the CreateBackup request did not
+        # specify `version_time`, the `version_time` of the backup is equivalent to the `
+        # create_time`.
+        # Corresponds to the JSON property `versionTime`
+        # @return [String]
+        attr_accessor :version_time
       
         def initialize(**args)
            update!(**args)
@@ -125,6 +140,7 @@ module Google
           @backup = args[:backup] if args.key?(:backup)
           @create_time = args[:create_time] if args.key?(:create_time)
           @source_database = args[:source_database] if args.key?(:source_database)
+          @version_time = args[:version_time] if args.key?(:version_time)
         end
       end
       
@@ -472,6 +488,13 @@ module Google
         # @return [Array<Google::Apis::SpannerV1::Mutation>]
         attr_accessor :mutations
       
+        # If `true`, then statistics related to the transaction will be included in the
+        # CommitResponse. Default value is `false`.
+        # Corresponds to the JSON property `returnCommitStats`
+        # @return [Boolean]
+        attr_accessor :return_commit_stats
+        alias_method :return_commit_stats?, :return_commit_stats
+      
         # # Transactions Each session can have at most one active transaction at a time (
         # note that standalone reads and queries use a transaction internally and do
         # count towards the one transaction limit). After the active transaction is
@@ -648,6 +671,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @mutations = args[:mutations] if args.key?(:mutations)
+          @return_commit_stats = args[:return_commit_stats] if args.key?(:return_commit_stats)
           @single_use_transaction = args[:single_use_transaction] if args.key?(:single_use_transaction)
           @transaction_id = args[:transaction_id] if args.key?(:transaction_id)
         end
@@ -656,6 +680,11 @@ module Google
       # The response for Commit.
       class CommitResponse
         include Google::Apis::Core::Hashable
+      
+        # Additional statistics about a commit.
+        # Corresponds to the JSON property `commitStats`
+        # @return [Google::Apis::SpannerV1::CommitStats]
+        attr_accessor :commit_stats
       
         # The Cloud Spanner timestamp at which the transaction committed.
         # Corresponds to the JSON property `commitTimestamp`
@@ -668,7 +697,34 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @commit_stats = args[:commit_stats] if args.key?(:commit_stats)
           @commit_timestamp = args[:commit_timestamp] if args.key?(:commit_timestamp)
+        end
+      end
+      
+      # Additional statistics about a commit.
+      class CommitStats
+        include Google::Apis::Core::Hashable
+      
+        # The total number of mutations for the transaction. Knowing the `mutation_count`
+        # value can help you maximize the number of mutations in a transaction and
+        # minimize the number of API round trips. You can also monitor this value to
+        # prevent transactions from exceeding the system [limit](http://cloud.google.com/
+        # spanner/quotas#limits_for_creating_reading_updating_and_deleting_data). If the
+        # number of mutations exceeds the limit, the server returns [INVALID_ARGUMENT](
+        # http://cloud.google.com/spanner/docs/reference/rest/v1/Code#ENUM_VALUES.
+        # INVALID_ARGUMENT).
+        # Corresponds to the JSON property `mutationCount`
+        # @return [Fixnum]
+        attr_accessor :mutation_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mutation_count = args[:mutation_count] if args.key?(:mutation_count)
         end
       end
       
@@ -861,6 +917,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. Earliest timestamp at which older versions of the data can be
+        # read.
+        # Corresponds to the JSON property `earliestVersionTime`
+        # @return [String]
+        attr_accessor :earliest_version_time
+      
         # Required. The name of the database. Values are of the form `projects//
         # instances//databases/`, where `` is as specified in the `CREATE DATABASE`
         # statement. This name can be passed to other API methods to identify the
@@ -879,6 +941,13 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Output only. The period in which Cloud Spanner retains all versions of data
+        # for the database. This is same as the value of version_retention_period
+        # database option set using UpdateDatabaseDdl. Defaults to 1 hour, if not set.
+        # Corresponds to the JSON property `versionRetentionPeriod`
+        # @return [String]
+        attr_accessor :version_retention_period
+      
         def initialize(**args)
            update!(**args)
         end
@@ -886,9 +955,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @earliest_version_time = args[:earliest_version_time] if args.key?(:earliest_version_time)
           @name = args[:name] if args.key?(:name)
           @restore_info = args[:restore_info] if args.key?(:restore_info)
           @state = args[:state] if args.key?(:state)
+          @version_retention_period = args[:version_retention_period] if args.key?(:version_retention_period)
         end
       end
       
