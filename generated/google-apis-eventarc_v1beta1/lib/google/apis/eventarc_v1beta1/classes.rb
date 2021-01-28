@@ -673,16 +673,18 @@ module Google
       class Pubsub
         include Google::Apis::Core::Hashable
       
-        # The name of the Pub/Sub subscription created and managed by Eventarc system as
-        # a transport for the event delivery. The value must be in the form of `projects/
-        # `PROJECT_ID`/subscriptions/`SUBSCRIPTION_NAME``.
+        # Output only. The name of the Pub/Sub subscription created and managed by
+        # Eventarc system as a transport for the event delivery. Format: `projects/`
+        # PROJECT_ID`/subscriptions/`SUBSCRIPTION_NAME``.
         # Corresponds to the JSON property `subscription`
         # @return [String]
         attr_accessor :subscription
       
-        # The name of the Pub/Sub topic created and managed by Eventarc system as a
-        # transport for the event delivery. The value must be in the form of `projects/`
-        # PROJECT_ID`/topics/`TOPIC_NAME``.
+        # Optional. The name of the Pub/Sub topic created and managed by Eventarc system
+        # as a transport for the event delivery. Format: `projects/`PROJECT_ID`/topics/`
+        # TOPIC_NAME``. You may set an existing topic for triggers of the type `google.
+        # cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will
+        # not be deleted by Eventarc at trigger deletion.
         # Corresponds to the JSON property `topic`
         # @return [String]
         attr_accessor :topic
