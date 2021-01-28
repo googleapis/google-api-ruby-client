@@ -3042,6 +3042,15 @@ module Google
         # @return [String]
         attr_accessor :asset_type
       
+        # Optional. The create timestamp of this resource, at which the resource was
+        # created. The granularity is in seconds. Timestamp.nanos will always be 0. This
+        # field is available only when the resource's proto contains it. To search
+        # against `create_time`: * use a field query (value in seconds). Example: `
+        # createTime >= 1594294238`
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # Optional. One or more paragraphs of text description of this resource. Maximum
         # length could be up to 1M bytes. This field is available only when the resource'
         # s proto contains it. To search against the `description`: * use a field query.
@@ -3067,6 +3076,17 @@ module Google
         # Corresponds to the JSON property `folders`
         # @return [Array<String>]
         attr_accessor :folders
+      
+        # Optional. The Cloud KMS [CryptoKey](https://cloud.google.com/kms/docs/
+        # reference/rest/v1/projects.locations.keyRings.cryptoKeys?hl=en) name or [
+        # CryptoKeyVersion](https://cloud.google.com/kms/docs/reference/rest/v1/projects.
+        # locations.keyRings.cryptoKeys.cryptoKeyVersions?hl=en) name. This field is
+        # available only when the resource's proto contains it. To search against the `
+        # kms_key`: * use a field query. Example: `kmsKey:key` * use a free text query.
+        # Example: `key`
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
       
         # Optional. Labels associated with this resource. See [Labelling and grouping
         # GCP resources](https://cloud.google.com/blog/products/gcp/labelling-and-
@@ -3126,6 +3146,32 @@ module Google
         # @return [String]
         attr_accessor :project
       
+        # Optional. The state of this resource. Different resources types have different
+        # state definitions that are mapped from various fields of different resource
+        # types. This field is available only when the resource's proto contains it.
+        # Example: If the resource is an instance provided by Compute Engine, its state
+        # will include PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED,
+        # REPAIRING, and TERMINATED. See `status` definition in [API Reference](https://
+        # cloud.google.com/compute/docs/reference/rest/v1/instances). If the resource is
+        # a project provided by Cloud Resource Manager, its state will include
+        # LIFECYCLE_STATE_UNSPECIFIED, ACTIVE, DELETE_REQUESTED and DELETE_IN_PROGRESS.
+        # See `lifecycleState` definition in [API Reference](https://cloud.google.com/
+        # resource-manager/reference/rest/v1/projects). To search against the `state`: *
+        # use a field query. Example: `state:RUNNING` * use a free text query. Example: `
+        # RUNNING`
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Optional. The last update timestamp of this resource, at which the resource
+        # was last modified or deleted. The granularity is in seconds. Timestamp.nanos
+        # will always be 0. This field is available only when the resource's proto
+        # contains it. To search against `update_time`: * use a field query (value in
+        # seconds). Example: `updateTime < 1594294238`
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3134,15 +3180,19 @@ module Google
         def update!(**args)
           @additional_attributes = args[:additional_attributes] if args.key?(:additional_attributes)
           @asset_type = args[:asset_type] if args.key?(:asset_type)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @folders = args[:folders] if args.key?(:folders)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
           @labels = args[:labels] if args.key?(:labels)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @network_tags = args[:network_tags] if args.key?(:network_tags)
           @organization = args[:organization] if args.key?(:organization)
           @project = args[:project] if args.key?(:project)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
