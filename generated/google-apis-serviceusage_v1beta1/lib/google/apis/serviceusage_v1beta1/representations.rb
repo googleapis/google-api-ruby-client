@@ -1040,6 +1040,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :force, as: 'force'
+          collection :force_only, as: 'forceOnly'
           property :inline_source, as: 'inlineSource', class: Google::Apis::ServiceusageV1beta1::OverrideInlineSource, decorator: Google::Apis::ServiceusageV1beta1::OverrideInlineSource::Representation
       
         end
@@ -1065,6 +1066,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :force, as: 'force'
+          collection :force_only, as: 'forceOnly'
           property :inline_source, as: 'inlineSource', class: Google::Apis::ServiceusageV1beta1::OverrideInlineSource, decorator: Google::Apis::ServiceusageV1beta1::OverrideInlineSource::Representation
       
         end
