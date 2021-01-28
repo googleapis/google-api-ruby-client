@@ -758,6 +758,7 @@ module Google
           property :force, as: 'force'
           property :schema_config, as: 'schemaConfig', class: Google::Apis::HealthcareV1::SchemaConfig, decorator: Google::Apis::HealthcareV1::SchemaConfig::Representation
       
+          property :write_disposition, as: 'writeDisposition'
         end
       end
       
