@@ -894,6 +894,11 @@ module Google
         # @return [String]
         attr_accessor :severity_name
       
+        # The source from which the information in this Detail was obtained.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
         # The time this information was last changed at the source. This is an upstream
         # timestamp from the underlying information source - e.g. Ubuntu security
         # tracker.
@@ -916,6 +921,7 @@ module Google
           @package = args[:package] if args.key?(:package)
           @package_type = args[:package_type] if args.key?(:package_type)
           @severity_name = args[:severity_name] if args.key?(:severity_name)
+          @source = args[:source] if args.key?(:source)
           @source_update_time = args[:source_update_time] if args.key?(:source_update_time)
         end
       end
@@ -2959,6 +2965,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :epoch
       
+        # Whether this version is specifying part of an inclusive range. Grafeas does
+        # not have the capability to specify version ranges; instead we have fields that
+        # specify start version and end versions. At times this is insufficient - we
+        # also need to specify whether the version is included in the range or is
+        # excluded from the range. This boolean is expected to be set to true when the
+        # version is included in a range.
+        # Corresponds to the JSON property `inclusive`
+        # @return [Boolean]
+        attr_accessor :inclusive
+        alias_method :inclusive?, :inclusive
+      
         # Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -2981,6 +2998,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @epoch = args[:epoch] if args.key?(:epoch)
+          @inclusive = args[:inclusive] if args.key?(:inclusive)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @revision = args[:revision] if args.key?(:revision)
