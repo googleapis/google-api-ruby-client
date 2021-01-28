@@ -2198,15 +2198,21 @@ module Google
       class ImportAdminOverridesRequest
         include Google::Apis::Core::Hashable
       
-        # Whether to force the creation of the quota overrides. If creating an override
-        # would cause the effective quota for the consumer to decrease by more than 10
-        # percent, the call is rejected, as a safety measure to avoid accidentally
-        # decreasing quota too quickly. Setting the force parameter to true ignores this
-        # restriction.
+        # Whether to force the creation of the quota overrides. Setting the force
+        # parameter to 'true' ignores all quota safety checks that would fail the
+        # request. QuotaSafetyCheck lists all such validations.
         # Corresponds to the JSON property `force`
         # @return [Boolean]
         attr_accessor :force
         alias_method :force?, :force
+      
+        # The list of quota safety checks to ignore before the override mutation. Unlike
+        # 'force' field that ignores all the quota safety checks, the 'force_only' field
+        # ignores only the specified checks; other checks are still enforced. The 'force'
+        # and 'force_only' fields cannot both be set.
+        # Corresponds to the JSON property `forceOnly`
+        # @return [Array<String>]
+        attr_accessor :force_only
       
         # Import data embedded in the request message
         # Corresponds to the JSON property `inlineSource`
@@ -2220,6 +2226,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @force = args[:force] if args.key?(:force)
+          @force_only = args[:force_only] if args.key?(:force_only)
           @inline_source = args[:inline_source] if args.key?(:inline_source)
         end
       end
@@ -2266,15 +2273,21 @@ module Google
       class ImportConsumerOverridesRequest
         include Google::Apis::Core::Hashable
       
-        # Whether to force the creation of the quota overrides. If creating an override
-        # would cause the effective quota for the consumer to decrease by more than 10
-        # percent, the call is rejected, as a safety measure to avoid accidentally
-        # decreasing quota too quickly. Setting the force parameter to true ignores this
-        # restriction.
+        # Whether to force the creation of the quota overrides. Setting the force
+        # parameter to 'true' ignores all quota safety checks that would fail the
+        # request. QuotaSafetyCheck lists all such validations.
         # Corresponds to the JSON property `force`
         # @return [Boolean]
         attr_accessor :force
         alias_method :force?, :force
+      
+        # The list of quota safety checks to ignore before the override mutation. Unlike
+        # 'force' field that ignores all the quota safety checks, the 'force_only' field
+        # ignores only the specified checks; other checks are still enforced. The 'force'
+        # and 'force_only' fields cannot both be set.
+        # Corresponds to the JSON property `forceOnly`
+        # @return [Array<String>]
+        attr_accessor :force_only
       
         # Import data embedded in the request message
         # Corresponds to the JSON property `inlineSource`
@@ -2288,6 +2301,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @force = args[:force] if args.key?(:force)
+          @force_only = args[:force_only] if args.key?(:force_only)
           @inline_source = args[:inline_source] if args.key?(:inline_source)
         end
       end
