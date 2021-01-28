@@ -2046,6 +2046,7 @@ module Google
           property :projection, as: 'projection'
           property :record_from_start, as: 'recordFromStart'
           property :start_with_slate, as: 'startWithSlate'
+          property :stereo_layout, as: 'stereoLayout'
         end
       end
       
