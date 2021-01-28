@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NonLocalTrait
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QueryRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,6 +173,8 @@ module Google
           property :id, as: 'id'
           property :name, as: 'name', class: Google::Apis::HomegraphV1::DeviceNames, decorator: Google::Apis::HomegraphV1::DeviceNames::Representation
       
+          collection :non_local_traits, as: 'nonLocalTraits', class: Google::Apis::HomegraphV1::NonLocalTrait, decorator: Google::Apis::HomegraphV1::NonLocalTrait::Representation
+      
           property :notification_supported_by_agent, as: 'notificationSupportedByAgent'
           collection :other_device_ids, as: 'otherDeviceIds', class: Google::Apis::HomegraphV1::AgentOtherDeviceId, decorator: Google::Apis::HomegraphV1::AgentOtherDeviceId::Representation
       
@@ -200,6 +208,13 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class NonLocalTrait
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :trait, as: 'trait'
         end
       end
       
