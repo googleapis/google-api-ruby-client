@@ -3673,6 +3673,11 @@ module Google
         attr_accessor :start_with_slate
         alias_method :start_with_slate?, :start_with_slate
       
+        # The 3D stereo layout of this broadcast. This defaults to mono.
+        # Corresponds to the JSON property `stereoLayout`
+        # @return [String]
+        attr_accessor :stereo_layout
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3695,6 +3700,7 @@ module Google
           @projection = args[:projection] if args.key?(:projection)
           @record_from_start = args[:record_from_start] if args.key?(:record_from_start)
           @start_with_slate = args[:start_with_slate] if args.key?(:start_with_slate)
+          @stereo_layout = args[:stereo_layout] if args.key?(:stereo_layout)
         end
       end
       
