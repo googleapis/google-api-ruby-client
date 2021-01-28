@@ -2002,8 +2002,8 @@ module Google
         # OR` operators, using parentheses to specify precedence. If neither operator is
         # specified, `AND` is assumed. Examples: Include only pools with more than 100
         # reserved workers: `(worker_count > 100) (worker_config.reserved = true)`
-        # Include only pools with a certain label or machines of the n1-standard family:
-        # `worker_config.labels.key1 : * OR worker_config.machine_type: n1-standard`
+        # Include only pools with a certain label or machines of the e2-standard family:
+        # `worker_config.labels.key1 : * OR worker_config.machine_type: e2-standard`
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -2154,7 +2154,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. Machine type of the worker, such as `n1-standard-2`. See https://
+        # Required. Machine type of the worker, such as `e2-standard-2`. See https://
         # cloud.google.com/compute/docs/machine-types for a list of supported machine
         # types. Note that `f1-micro` and `g1-small` are not yet supported.
         # Corresponds to the JSON property `machineType`
