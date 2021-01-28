@@ -1202,15 +1202,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :additional_attributes, as: 'additionalAttributes'
           property :asset_type, as: 'assetType'
+          property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           collection :folders, as: 'folders'
+          property :kms_key, as: 'kmsKey'
           hash :labels, as: 'labels'
           property :location, as: 'location'
           property :name, as: 'name'
           collection :network_tags, as: 'networkTags'
           property :organization, as: 'organization'
           property :project, as: 'project'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
         end
       end
       
