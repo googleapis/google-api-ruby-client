@@ -862,6 +862,60 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FirewallPoliciesListAssociationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FirewallPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FirewallPolicyAssociation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FirewallPolicyList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FirewallPolicyRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FirewallPolicyRuleMatcher
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FirewallPolicyRuleMatcherLayer4Config
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FixedOrPercent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -947,6 +1001,12 @@ module Google
       end
       
       class GlobalNetworkEndpointGroupsDetachEndpointsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GlobalOrganizationSetPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5882,6 +5942,7 @@ module Google
           property :last_detach_timestamp, as: 'lastDetachTimestamp'
           collection :license_codes, as: 'licenseCodes'
           collection :licenses, as: 'licenses'
+          property :location_hint, as: 'locationHint'
           property :name, as: 'name'
           property :options, as: 'options'
           property :physical_block_size_bytes, :numeric_string => true, as: 'physicalBlockSizeBytes'
@@ -5901,6 +5962,7 @@ module Google
           property :source_snapshot_encryption_key, as: 'sourceSnapshotEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
       
           property :source_snapshot_id, as: 'sourceSnapshotId'
+          property :source_storage_object, as: 'sourceStorageObject'
           property :status, as: 'status'
           property :type, as: 'type'
           collection :users, as: 'users'
@@ -6384,6 +6446,115 @@ module Google
         end
       end
       
+      class FirewallPoliciesListAssociationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :associations, as: 'associations', class: Google::Apis::ComputeV1::FirewallPolicyAssociation, decorator: Google::Apis::ComputeV1::FirewallPolicyAssociation::Representation
+      
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class FirewallPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :associations, as: 'associations', class: Google::Apis::ComputeV1::FirewallPolicyAssociation, decorator: Google::Apis::ComputeV1::FirewallPolicyAssociation::Representation
+      
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :parent, as: 'parent'
+          property :rule_tuple_count, as: 'ruleTupleCount'
+          collection :rules, as: 'rules', class: Google::Apis::ComputeV1::FirewallPolicyRule, decorator: Google::Apis::ComputeV1::FirewallPolicyRule::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+        end
+      end
+      
+      class FirewallPolicyAssociation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attachment_target, as: 'attachmentTarget'
+          property :display_name, as: 'displayName'
+          property :firewall_policy_id, as: 'firewallPolicyId'
+          property :name, as: 'name'
+        end
+      end
+      
+      class FirewallPolicyList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::FirewallPolicy, decorator: Google::Apis::ComputeV1::FirewallPolicy::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::FirewallPolicyList::Warning, decorator: Google::Apis::ComputeV1::FirewallPolicyList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::FirewallPolicyList::Warning::Datum, decorator: Google::Apis::ComputeV1::FirewallPolicyList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class FirewallPolicyRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :description, as: 'description'
+          property :direction, as: 'direction'
+          property :disabled, as: 'disabled'
+          property :enable_logging, as: 'enableLogging'
+          property :kind, as: 'kind'
+          property :match, as: 'match', class: Google::Apis::ComputeV1::FirewallPolicyRuleMatcher, decorator: Google::Apis::ComputeV1::FirewallPolicyRuleMatcher::Representation
+      
+          property :priority, as: 'priority'
+          property :rule_tuple_count, as: 'ruleTupleCount'
+          collection :target_resources, as: 'targetResources'
+          collection :target_secure_labels, as: 'targetSecureLabels'
+          collection :target_service_accounts, as: 'targetServiceAccounts'
+        end
+      end
+      
+      class FirewallPolicyRuleMatcher
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dest_ip_ranges, as: 'destIpRanges'
+          collection :layer4_configs, as: 'layer4Configs', class: Google::Apis::ComputeV1::FirewallPolicyRuleMatcherLayer4Config, decorator: Google::Apis::ComputeV1::FirewallPolicyRuleMatcherLayer4Config::Representation
+      
+          collection :src_ip_ranges, as: 'srcIpRanges'
+          collection :src_secure_labels, as: 'srcSecureLabels'
+        end
+      end
+      
+      class FirewallPolicyRuleMatcherLayer4Config
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_protocol, as: 'ipProtocol'
+          collection :ports, as: 'ports'
+        end
+      end
+      
       class FixedOrPercent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6408,6 +6579,7 @@ module Google
           property :ip_version, as: 'ipVersion'
           property :is_mirroring_collector, as: 'isMirroringCollector'
           property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
           property :load_balancing_scheme, as: 'loadBalancingScheme'
           collection :metadata_filters, as: 'metadataFilters', class: Google::Apis::ComputeV1::MetadataFilter, decorator: Google::Apis::ComputeV1::MetadataFilter::Representation
@@ -6548,6 +6720,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :network_endpoints, as: 'networkEndpoints', class: Google::Apis::ComputeV1::NetworkEndpoint, decorator: Google::Apis::ComputeV1::NetworkEndpoint::Representation
+      
+        end
+      end
+      
+      class GlobalOrganizationSetPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bindings, as: 'bindings', class: Google::Apis::ComputeV1::Binding, decorator: Google::Apis::ComputeV1::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :policy, as: 'policy', class: Google::Apis::ComputeV1::Policy, decorator: Google::Apis::ComputeV1::Policy::Representation
       
         end
       end
@@ -11559,6 +11742,7 @@ module Google
           hash :labels, as: 'labels'
           collection :license_codes, as: 'licenseCodes'
           collection :licenses, as: 'licenses'
+          property :location_hint, as: 'locationHint'
           property :name, as: 'name'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
