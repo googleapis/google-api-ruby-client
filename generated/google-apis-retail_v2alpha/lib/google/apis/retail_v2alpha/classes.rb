@@ -500,10 +500,11 @@ module Google
         # The schema to use when parsing the data from the source. Supported values for
         # product imports: * `product` (default): One JSON Product per line. Each
         # product must have a valid Product.id. * `product_merchant_center`: See [
-        # Importing catalog data from Merchant Center](/retail/recommendations-ai/docs/
-        # upload-catalog#mc). Supported values for user events imports: * `user_event` (
-        # default): One JSON UserEvent per line. * `user_event_ga360`: Using https://
-        # support.google.com/analytics/answer/3437719?hl=en.
+        # Importing catalog data from Merchant Center](https://cloud.google.com/retail/
+        # recommendations-ai/docs/upload-catalog#mc). Supported values for user events
+        # imports: * `user_event` (default): One JSON UserEvent per line. * `
+        # user_event_ga360`: Using https://support.google.com/analytics/answer/3437719?
+        # hl=en.
         # Corresponds to the JSON property `dataSchema`
         # @return [String]
         attr_accessor :data_schema
@@ -724,10 +725,11 @@ module Google
         # The schema to use when parsing the data from the source. Supported values for
         # product imports: * `product` (default): One JSON Product per line. Each
         # product must have a valid Product.id. * `product_merchant_center`: See [
-        # Importing catalog data from Merchant Center](/retail/recommendations-ai/docs/
-        # upload-catalog#mc). Supported values for user events imports: * `user_event` (
-        # default): One JSON UserEvent per line. * `user_event_ga360`: Using https://
-        # support.google.com/analytics/answer/3437719?hl=en.
+        # Importing catalog data from Merchant Center](https://cloud.google.com/retail/
+        # recommendations-ai/docs/upload-catalog#mcc). Supported values for user events
+        # imports: * `user_event` (default): One JSON UserEvent per line. * `
+        # user_event_ga360`: Using https://support.google.com/analytics/answer/3437719?
+        # hl=en.
         # Corresponds to the JSON property `dataSchema`
         # @return [String]
         attr_accessor :data_schema
@@ -736,9 +738,9 @@ module Google
         # characters long. URIs can match the full object path (for example, `gs://
         # bucket/directory/object.json`) or a pattern matching one or more files, such
         # as `gs://bucket/directory/*.json`. A request can contain at most 100 files,
-        # and each file can be up to 2 GB. See [Importing product information](/
-        # recommendations-ai/docs/upload-catalog) for the expected file format and setup
-        # instructions.
+        # and each file can be up to 2 GB. See [Importing product information](https://
+        # cloud.google.com/recommendations-ai/docs/upload-catalog) for the expected file
+        # format and setup instructions.
         # Corresponds to the JSON property `inputUris`
         # @return [Array<String>]
         attr_accessor :input_uris
@@ -1335,8 +1337,10 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # Canonical URL directly linking to the product detail page. This field must be
-        # a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an
+        # Canonical URL directly linking to the product detail page. It is strongly
+        # recommended to provide a valid uri for the product, otherwise the service
+        # performance could be significantly degraded. This field must be a UTF-8
+        # encoded string with a length limit of 5,000 characters. Otherwise, an
         # INVALID_ARGUMENT error is returned. Google Merchant Center property [link](
         # https://support.google.com/merchants/answer/6324416). Schema.org property [
         # Offer.url](https://schema.org/url).
