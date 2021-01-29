@@ -568,6 +568,25 @@ module Google
         # @return [String]
         attr_accessor :global_policy_evaluation_mode
       
+        # Optional. Per-istio-service-identity admission rules. Istio service identity
+        # spec format: spiffe:///ns//sa/ or /ns//sa/ e.g. spiffe://example.com/ns/test-
+        # ns/sa/default
+        # Corresponds to the JSON property `istioServiceIdentityAdmissionRules`
+        # @return [Hash<String,Google::Apis::BinaryauthorizationV1beta1::AdmissionRule>]
+        attr_accessor :istio_service_identity_admission_rules
+      
+        # Optional. Per-kubernetes-namespace admission rules. K8s namespace spec format:
+        # [a-z.-]+, e.g. 'some-namespace'
+        # Corresponds to the JSON property `kubernetesNamespaceAdmissionRules`
+        # @return [Hash<String,Google::Apis::BinaryauthorizationV1beta1::AdmissionRule>]
+        attr_accessor :kubernetes_namespace_admission_rules
+      
+        # Optional. Per-kubernetes-service-account admission rules. Service account spec
+        # format: `namespace:serviceaccount`. e.g. 'test-ns:default'
+        # Corresponds to the JSON property `kubernetesServiceAccountAdmissionRules`
+        # @return [Hash<String,Google::Apis::BinaryauthorizationV1beta1::AdmissionRule>]
+        attr_accessor :kubernetes_service_account_admission_rules
+      
         # Output only. The resource name, in the format `projects/*/policy`. There is at
         # most one policy per project.
         # Corresponds to the JSON property `name`
@@ -590,6 +609,9 @@ module Google
           @default_admission_rule = args[:default_admission_rule] if args.key?(:default_admission_rule)
           @description = args[:description] if args.key?(:description)
           @global_policy_evaluation_mode = args[:global_policy_evaluation_mode] if args.key?(:global_policy_evaluation_mode)
+          @istio_service_identity_admission_rules = args[:istio_service_identity_admission_rules] if args.key?(:istio_service_identity_admission_rules)
+          @kubernetes_namespace_admission_rules = args[:kubernetes_namespace_admission_rules] if args.key?(:kubernetes_namespace_admission_rules)
+          @kubernetes_service_account_admission_rules = args[:kubernetes_service_account_admission_rules] if args.key?(:kubernetes_service_account_admission_rules)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
