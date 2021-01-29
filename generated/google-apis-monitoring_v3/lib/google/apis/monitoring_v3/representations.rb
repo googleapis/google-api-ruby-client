@@ -1269,10 +1269,14 @@ module Google
       class NotificationChannel
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_record, as: 'creationRecord', class: Google::Apis::MonitoringV3::MutationRecord, decorator: Google::Apis::MonitoringV3::MutationRecord::Representation
+      
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :enabled, as: 'enabled'
           hash :labels, as: 'labels'
+          collection :mutation_records, as: 'mutationRecords', class: Google::Apis::MonitoringV3::MutationRecord, decorator: Google::Apis::MonitoringV3::MutationRecord::Representation
+      
           property :name, as: 'name'
           property :type, as: 'type'
           hash :user_labels, as: 'userLabels'
