@@ -2323,49 +2323,22 @@ module Google
       class Backend
         include Google::Apis::Core::Hashable
       
-        # Specifies the balancing mode for the backend.
-        # When choosing a balancing mode, you need to consider the loadBalancingScheme,
-        # and protocol for the backend service, as well as the type of backend (instance
-        # group or NEG).
-        # 
-        # - If the load balancing mode is CONNECTION, then the load is spread based on
-        # how many concurrent connections the backend can handle.
-        # You can use the CONNECTION balancing mode if the protocol for the backend
-        # service is SSL, TCP, or UDP.
-        # If the loadBalancingScheme for the backend service is EXTERNAL (SSL Proxy and
-        # TCP Proxy load balancers), you must also specify exactly one of the following
-        # parameters: maxConnections (except for regional managed instance groups),
-        # maxConnectionsPerInstance, or maxConnectionsPerEndpoint.
-        # If the loadBalancingScheme for the backend service is INTERNAL (internal TCP/
-        # UDP Load Balancers) or EXTERNAL  (Network Load Balancing), you cannot specify
-        # any additional parameters.
-        # 
-        # - If the load balancing mode is RATE, the load is spread based on the rate of
-        # HTTP requests per second (RPS).
-        # You can use the RATE balancing mode if the protocol for the backend service is
-        # HTTP, HTTP2, or HTTPS. You must specify exactly one of the following
-        # parameters: maxRate (except for regional managed instance groups),
-        # maxRatePerInstance, or maxRatePerEndpoint.
-        # 
-        # - If the load balancing mode is UTILIZATION, the load is spread based on the
-        # backend utilization of instances in an instance group.
-        # You can use the UTILIZATION balancing mode if the loadBalancingScheme of the
-        # backend service is EXTERNAL (except Network Load Balancing),
-        # INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED and the backends are instance
-        # groups. There are no restrictions on the backend service protocol.
+        # Specifies how to determine whether the backend of a load balancer can handle
+        # additional traffic or is fully loaded. For usage guidelines, see  Connection
+        # balancing mode.
         # Corresponds to the JSON property `balancingMode`
         # @return [String]
         attr_accessor :balancing_mode
       
-        # A multiplier applied to the group's maximum servicing capacity (based on
-        # UTILIZATION, RATE or CONNECTION). Default value is 1, which means the group
-        # will serve up to 100% of its configured capacity (depending on balancingMode).
-        # A setting of 0 means the group is completely drained, offering 0% of its
-        # available capacity. Valid range is 0.0 and [0.1,1.0]. You cannot configure a
-        # setting larger than 0 and smaller than 0.1. You cannot configure a setting of
-        # 0 when there is only one backend attached to the backend service.
-        # This cannot be used for Internal TCP/UDP Load Balancing and Network Load
-        # Balancing.
+        # A multiplier applied to the backend's target capacity of its balancing mode.
+        # The default value is 1, which means the group serves up to 100% of its
+        # configured capacity (depending on balancingMode). A setting of 0 means the
+        # group is completely drained, offering 0% of its available capacity. The valid
+        # ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and
+        # smaller than 0.1. You cannot configure a setting of 0 when there is only one
+        # backend attached to the backend service.
+        # Not supported by:
+        # - Internal TCP/UDP Load Balancing - Network Load Balancing
         # Corresponds to the JSON property `capacityScaler`
         # @return [Float]
         attr_accessor :capacity_scaler
@@ -2403,91 +2376,52 @@ module Google
         # @return [String]
         attr_accessor :group
       
-        # Defines a target maximum number of simultaneous connections that the backend
-        # can handle. Valid for network endpoint group and instance group backends (
-        # except for regional managed instance groups). If the backend's balancingMode
-        # is UTILIZATION, this is an optional parameter. If the backend's balancingMode
-        # is CONNECTION, and backend is attached to a backend service whose
-        # loadBalancingScheme is EXTERNAL (except Network Load Balancing), you must
-        # specify either this parameter, maxConnectionsPerInstance, or
-        # maxConnectionsPerEndpoint.
-        # Not available if the backend's balancingMode is RATE. Cannot be specified for
-        # Network Load Balancing or Internal TCP/UDP Load Balancing, even though those
-        # load balancers require a balancing mode of CONNECTION.
+        # Defines a target maximum number of simultaneous connections. For usage
+        # guidelines, see Connection balancing mode and Utilization balancing mode. Not
+        # available if the backend's balancingMode is RATE. Not supported by:
+        # - Internal TCP/UDP Load Balancing - Network Load Balancing
         # Corresponds to the JSON property `maxConnections`
         # @return [Fixnum]
         attr_accessor :max_connections
       
-        # Defines a target maximum number of simultaneous connections for an endpoint of
-        # a NEG. This is multiplied by the number of endpoints in the NEG to implicitly
-        # calculate a maximum number of target maximum simultaneous connections for the
-        # NEG. If the backend's balancingMode is CONNECTION, and backend is attached to
-        # a backend service whose loadBalancingScheme is EXTERNAL (except Network Load
-        # Balancing), you must specify either this parameter, maxConnections, or
-        # maxConnectionsPerInstance.
-        # Not available if the backend's balancingMode is RATE. Cannot be specified for
-        # Network Load Balancing or Internal TCP/UDP Load Balancing, even though those
-        # load balancers require a balancing mode of CONNECTION.
+        # Defines a target maximum number of simultaneous connections. For usage
+        # guidelines, see Connection balancing mode and Utilization balancing mode.
+        # Not available if the backend's balancingMode is RATE. Not supported by:
+        # - Internal TCP/UDP Load Balancing - Network Load Balancing.
         # Corresponds to the JSON property `maxConnectionsPerEndpoint`
         # @return [Fixnum]
         attr_accessor :max_connections_per_endpoint
       
-        # Defines a target maximum number of simultaneous connections for a single VM in
-        # a backend instance group. This is multiplied by the number of instances in the
-        # instance group to implicitly calculate a target maximum number of simultaneous
-        # connections for the whole instance group. If the backend's balancingMode is
-        # UTILIZATION, this is an optional parameter. If the backend's balancingMode is
-        # CONNECTION, and backend is attached to a backend service whose
-        # loadBalancingScheme is EXTERNAL (except Network Load Balancing), you must
-        # specify either this parameter,  maxConnections, or maxConnectionsPerEndpoint.
-        # Not available if the backend's balancingMode is RATE. Cannot be specified for
-        # Network Load Balancing or Internal TCP/UDP Load Balancing, even though those
-        # load balancers require a balancing mode of CONNECTION.
+        # Defines a target maximum number of simultaneous connections. For usage
+        # guidelines, see Connection balancing mode and Utilization balancing mode.
+        # Not available if the backend's balancingMode is RATE. Not supported by:
+        # - Internal TCP/UDP Load Balancing - Network Load Balancing.
         # Corresponds to the JSON property `maxConnectionsPerInstance`
         # @return [Fixnum]
         attr_accessor :max_connections_per_instance
       
-        # Defines a maximum number of HTTP requests per second (RPS) that the backend
-        # can handle. Valid for network endpoint group and instance group backends (
-        # except for regional managed instance groups). Must not be defined if the
-        # backend is a managed instance group that uses autoscaling based on load
-        # balancing.
-        # If the backend's balancingMode is UTILIZATION, this is an optional parameter.
-        # If the backend's balancingMode is RATE, you must specify maxRate,
-        # maxRatePerInstance, or maxRatePerEndpoint.
+        # Defines a maximum number of HTTP requests per second (RPS). For usage
+        # guidelines, see Rate balancing mode and Utilization balancing mode.
         # Not available if the backend's balancingMode is CONNECTION.
         # Corresponds to the JSON property `maxRate`
         # @return [Fixnum]
         attr_accessor :max_rate
       
-        # Defines a maximum target for requests per second (RPS) for an endpoint of a
-        # NEG. This is multiplied by the number of endpoints in the NEG to implicitly
-        # calculate a target maximum rate for the NEG.
-        # If the backend's balancingMode is RATE, you must specify either this parameter,
-        # maxRate (except for regional managed instance groups), or maxRatePerInstance.
+        # Defines a maximum target for requests per second (RPS). For usage guidelines,
+        # see Rate balancing mode and Utilization balancing mode.
         # Not available if the backend's balancingMode is CONNECTION.
         # Corresponds to the JSON property `maxRatePerEndpoint`
         # @return [Float]
         attr_accessor :max_rate_per_endpoint
       
-        # Defines a maximum target for requests per second (RPS) for a single VM in a
-        # backend instance group. This is multiplied by the number of instances in the
-        # instance group to implicitly calculate a target maximum rate for the whole
-        # instance group.
-        # If the backend's balancingMode is UTILIZATION, this is an optional parameter.
-        # If the backend's balancingMode is RATE, you must specify either this parameter,
-        # maxRate (except for regional managed instance groups), or maxRatePerEndpoint.
+        # Defines a maximum target for requests per second (RPS). For usage guidelines,
+        # see Rate balancing mode and Utilization balancing mode.
         # Not available if the backend's balancingMode is CONNECTION.
         # Corresponds to the JSON property `maxRatePerInstance`
         # @return [Float]
         attr_accessor :max_rate_per_instance
       
-        # Defines the maximum average backend utilization of a backend VM in an instance
-        # group. The valid range is [0.0, 1.0]. This is an optional parameter if the
-        # backend's balancingMode is UTILIZATION.
-        # This parameter can be used in conjunction with maxRate, maxRatePerInstance,
-        # maxConnections (except for regional managed instance groups), or
-        # maxConnectionsPerInstance.
+        # 
         # Corresponds to the JSON property `maxUtilization`
         # @return [Float]
         attr_accessor :max_utilization
@@ -3072,7 +3006,8 @@ module Google
       
         # The backend service timeout has a different meaning depending on the type of
         # load balancer. For more information see,  Backend service settings The default
-        # is 30 seconds.
+        # is 30 seconds. The full range of timeout values allowed is 1 - 2,147,483,647
+        # seconds.
         # Corresponds to the JSON property `timeoutSec`
         # @return [Fixnum]
         attr_accessor :timeout_sec
@@ -4465,9 +4400,9 @@ module Google
       class ConnectionDraining
         include Google::Apis::Core::Hashable
       
-        # The amount of time in seconds to allow existing connections to persist while
-        # on unhealthy backend VMs. Only applicable if the protocol is not UDP. The
-        # valid range is [0, 3600].
+        # Configures a duration timeout for existing requests on a removed backend
+        # instance. For supported load balancers and protocols, as described in Enabling
+        # connection draining.
         # Corresponds to the JSON property `drainingTimeoutSec`
         # @return [Fixnum]
         attr_accessor :draining_timeout_sec
@@ -4845,6 +4780,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :licenses
       
+        # An opaque location hint used to place the disk close to other resources. This
+        # field is for use by internal tools that use the public API.
+        # Corresponds to the JSON property `locationHint`
+        # @return [String]
+        attr_accessor :location_hint
+      
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
@@ -4984,9 +4925,22 @@ module Google
         # @return [String]
         attr_accessor :source_snapshot_id
       
-        # [Output Only] The status of disk creation. CREATING: Disk is provisioning.
-        # RESTORING: Source data is being copied into the disk. FAILED: Disk creation
-        # failed. READY: Disk is ready for use. DELETING: Disk is deleting.
+        # The full Google Cloud Storage URI where the disk image is stored. This file
+        # must be a gzip-compressed tarball whose name ends in .tar.gz or virtual
+        # machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https:
+        # //storage.googleapis.com/. This flag is not optimized for creating multiple
+        # disks from a source storage object. To create many disks from a source storage
+        # object, use gcloud compute images import instead.
+        # Corresponds to the JSON property `sourceStorageObject`
+        # @return [String]
+        attr_accessor :source_storage_object
+      
+        # [Output Only] The status of disk creation.
+        # - CREATING: Disk is provisioning.
+        # - RESTORING: Source data is being copied into the disk.
+        # - FAILED: Disk creation failed.
+        # - READY: Disk is ready for use.
+        # - DELETING: Disk is deleting.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -5029,6 +4983,7 @@ module Google
           @last_detach_timestamp = args[:last_detach_timestamp] if args.key?(:last_detach_timestamp)
           @license_codes = args[:license_codes] if args.key?(:license_codes)
           @licenses = args[:licenses] if args.key?(:licenses)
+          @location_hint = args[:location_hint] if args.key?(:location_hint)
           @name = args[:name] if args.key?(:name)
           @options = args[:options] if args.key?(:options)
           @physical_block_size_bytes = args[:physical_block_size_bytes] if args.key?(:physical_block_size_bytes)
@@ -5046,6 +5001,7 @@ module Google
           @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
           @source_snapshot_encryption_key = args[:source_snapshot_encryption_key] if args.key?(:source_snapshot_encryption_key)
           @source_snapshot_id = args[:source_snapshot_id] if args.key?(:source_snapshot_id)
+          @source_storage_object = args[:source_storage_object] if args.key?(:source_storage_object)
           @status = args[:status] if args.key?(:status)
           @type = args[:type] if args.key?(:type)
           @users = args[:users] if args.key?(:users)
@@ -6954,6 +6910,475 @@ module Google
         end
       end
       
+      # 
+      class FirewallPoliciesListAssociationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of associations.
+        # Corresponds to the JSON property `associations`
+        # @return [Array<Google::Apis::ComputeV1::FirewallPolicyAssociation>]
+        attr_accessor :associations
+      
+        # [Output Only] Type of firewallPolicy associations. Always compute#
+        # FirewallPoliciesListAssociations for lists of firewallPolicy associations.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @associations = args[:associations] if args.key?(:associations)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # Represents a Firewall Policy resource. (== resource_for `$api_version`.
+      # firewallPolicies ==)
+      class FirewallPolicy
+        include Google::Apis::Core::Hashable
+      
+        # A list of associations that belong to this firewall policy.
+        # Corresponds to the JSON property `associations`
+        # @return [Array<Google::Apis::ComputeV1::FirewallPolicyAssociation>]
+        attr_accessor :associations
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # User-provided name of the Organization firewall plicy. The name should be
+        # unique in the organization in which the firewall policy is created. The name
+        # must be 1-63 characters long, and comply with RFC1035. Specifically, the name
+        # must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*
+        # [a-z0-9])?` which means the first character must be a lowercase letter, and
+        # all following characters must be a dash, lowercase letter, or digit, except
+        # the last character, which cannot be a dash.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Specifies a fingerprint for this resource, which is essentially a hash of the
+        # metadata's contents and used for optimistic locking. The fingerprint is
+        # initially generated by Compute Engine and changes after every request to
+        # modify or update metadata. You must always provide an up-to-date fingerprint
+        # hash in order to update or change metadata, otherwise the request will fail
+        # with error 412 conditionNotMet.
+        # To see the latest fingerprint, make get() request to the firewall policy.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output only] Type of the resource. Always compute#firewallPolicyfor firewall
+        # policies
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] Name of the resource. It is a numeric ID allocated by GCP which
+        # uniquely identifies the Firewall Policy.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] The parent of the firewall policy.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # [Output Only] Total count of all firewall policy rule tuples. A firewall
+        # policy can not exceed a set number of tuples.
+        # Corresponds to the JSON property `ruleTupleCount`
+        # @return [Fixnum]
+        attr_accessor :rule_tuple_count
+      
+        # A list of rules that belong to this policy. There must always be a default
+        # rule (rule with priority 2147483647 and match "*"). If no rules are provided
+        # when creating a firewall policy, a default rule with action "allow" will be
+        # added.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::ComputeV1::FirewallPolicyRule>]
+        attr_accessor :rules
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Server-defined URL for this resource with the resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @associations = args[:associations] if args.key?(:associations)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @parent = args[:parent] if args.key?(:parent)
+          @rule_tuple_count = args[:rule_tuple_count] if args.key?(:rule_tuple_count)
+          @rules = args[:rules] if args.key?(:rules)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+        end
+      end
+      
+      # 
+      class FirewallPolicyAssociation
+        include Google::Apis::Core::Hashable
+      
+        # The target that the firewall policy is attached to.
+        # Corresponds to the JSON property `attachmentTarget`
+        # @return [String]
+        attr_accessor :attachment_target
+      
+        # [Output Only] The display name of the firewall policy of the association.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # [Output Only] The firewall policy ID of the association.
+        # Corresponds to the JSON property `firewallPolicyId`
+        # @return [String]
+        attr_accessor :firewall_policy_id
+      
+        # The name for an association.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attachment_target = args[:attachment_target] if args.key?(:attachment_target)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @firewall_policy_id = args[:firewall_policy_id] if args.key?(:firewall_policy_id)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # 
+      class FirewallPolicyList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of FirewallPolicy resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::FirewallPolicy>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#firewallPolicyList for listsof
+        # FirewallPolicies
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::FirewallPolicyList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::FirewallPolicyList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # Represents a rule that describes one or more match conditions along with the
+      # action to be taken when traffic matches this condition (allow or deny).
+      class FirewallPolicyRule
+        include Google::Apis::Core::Hashable
+      
+        # The Action to perform when the client connection triggers the rule. Can
+        # currently be either "allow" or "deny()" where valid values for status are 403,
+        # 404, and 502.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The direction in which this rule applies.
+        # Corresponds to the JSON property `direction`
+        # @return [String]
+        attr_accessor :direction
+      
+        # Denotes whether the firewall policy rule is disabled. When set to true, the
+        # firewall policy rule is not enforced and traffic behaves as if it did not
+        # exist. If this is unspecified, the firewall policy rule will be enabled.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # Denotes whether to enable logging for a particular rule. If logging is enabled,
+        # logs will be exported to the configured export destination in Stackdriver.
+        # Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging
+        # on "goto_next" rules.
+        # Corresponds to the JSON property `enableLogging`
+        # @return [Boolean]
+        attr_accessor :enable_logging
+        alias_method :enable_logging?, :enable_logging
+      
+        # [Output only] Type of the resource. Always compute#firewallPolicyRule for
+        # firewall policy rules
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Represents a match condition that incoming traffic is evaluated against.
+        # Exactly one field must be specified.
+        # Corresponds to the JSON property `match`
+        # @return [Google::Apis::ComputeV1::FirewallPolicyRuleMatcher]
+        attr_accessor :match
+      
+        # An integer indicating the priority of a rule in the list. The priority must be
+        # a positive value between 0 and 2147483647. Rules are evaluated from highest to
+        # lowest priority where 0 is the highest priority and 2147483647 is the lowest
+        # prority.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
+        # [Output Only] Calculation of the complexity of a single firewall policy rule.
+        # Corresponds to the JSON property `ruleTupleCount`
+        # @return [Fixnum]
+        attr_accessor :rule_tuple_count
+      
+        # A list of network resource URLs to which this rule applies. This field allows
+        # you to control which network's VMs get this rule. If this field is left blank,
+        # all VMs within the organization will receive the rule.
+        # Corresponds to the JSON property `targetResources`
+        # @return [Array<String>]
+        attr_accessor :target_resources
+      
+        # A list of secure labels that controls which instances the firewall rule
+        # applies to. If targetSecureLabel are specified, then the firewall rule applies
+        # only to instances in the VPC network that have one of those secure labels.
+        # targetSecureLabel may not be set at the same time as targetServiceAccounts. If
+        # neither targetServiceAccounts nor targetSecureLabel are specified, the
+        # firewall rule applies to all instances on the specified network. Maximum
+        # number of target label values allowed is 256.
+        # Corresponds to the JSON property `targetSecureLabels`
+        # @return [Array<String>]
+        attr_accessor :target_secure_labels
+      
+        # A list of service accounts indicating the sets of instances that are applied
+        # with this rule.
+        # Corresponds to the JSON property `targetServiceAccounts`
+        # @return [Array<String>]
+        attr_accessor :target_service_accounts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @description = args[:description] if args.key?(:description)
+          @direction = args[:direction] if args.key?(:direction)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @enable_logging = args[:enable_logging] if args.key?(:enable_logging)
+          @kind = args[:kind] if args.key?(:kind)
+          @match = args[:match] if args.key?(:match)
+          @priority = args[:priority] if args.key?(:priority)
+          @rule_tuple_count = args[:rule_tuple_count] if args.key?(:rule_tuple_count)
+          @target_resources = args[:target_resources] if args.key?(:target_resources)
+          @target_secure_labels = args[:target_secure_labels] if args.key?(:target_secure_labels)
+          @target_service_accounts = args[:target_service_accounts] if args.key?(:target_service_accounts)
+        end
+      end
+      
+      # Represents a match condition that incoming traffic is evaluated against.
+      # Exactly one field must be specified.
+      class FirewallPolicyRuleMatcher
+        include Google::Apis::Core::Hashable
+      
+        # CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is
+        # 256.
+        # Corresponds to the JSON property `destIpRanges`
+        # @return [Array<String>]
+        attr_accessor :dest_ip_ranges
+      
+        # Pairs of IP protocols and ports that the rule should match.
+        # Corresponds to the JSON property `layer4Configs`
+        # @return [Array<Google::Apis::ComputeV1::FirewallPolicyRuleMatcherLayer4Config>]
+        attr_accessor :layer4_configs
+      
+        # CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+        # Corresponds to the JSON property `srcIpRanges`
+        # @return [Array<String>]
+        attr_accessor :src_ip_ranges
+      
+        # List of firewall label values, which should be matched at the source of the
+        # traffic. Maximum number of source label values allowed is 256.
+        # Corresponds to the JSON property `srcSecureLabels`
+        # @return [Array<String>]
+        attr_accessor :src_secure_labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dest_ip_ranges = args[:dest_ip_ranges] if args.key?(:dest_ip_ranges)
+          @layer4_configs = args[:layer4_configs] if args.key?(:layer4_configs)
+          @src_ip_ranges = args[:src_ip_ranges] if args.key?(:src_ip_ranges)
+          @src_secure_labels = args[:src_secure_labels] if args.key?(:src_secure_labels)
+        end
+      end
+      
+      # 
+      class FirewallPolicyRuleMatcherLayer4Config
+        include Google::Apis::Core::Hashable
+      
+        # The IP protocol to which this rule applies. The protocol type is required when
+        # creating a firewall rule. This value can either be one of the following well
+        # known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP
+        # protocol number.
+        # Corresponds to the JSON property `ipProtocol`
+        # @return [String]
+        attr_accessor :ip_protocol
+      
+        # An optional list of ports to which this rule applies. This field is only
+        # applicable for UDP or TCP protocol. Each entry must be either an integer or a
+        # range. If not specified, this rule applies to connections through any port.
+        # Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+        # Corresponds to the JSON property `ports`
+        # @return [Array<String>]
+        attr_accessor :ports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_protocol = args[:ip_protocol] if args.key?(:ip_protocol)
+          @ports = args[:ports] if args.key?(:ports)
+        end
+      end
+      
       # Encapsulates numeric value that can be either absolute or relative.
       class FixedOrPercent
         include Google::Apis::Core::Hashable
@@ -7127,6 +7552,19 @@ module Google
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # A fingerprint for the labels being applied to this resource, which is
+        # essentially a hash of the labels set used for optimistic locking. The
+        # fingerprint is initially generated by Compute Engine and changes after every
+        # request to modify or update labels. You must always provide an up-to-date
+        # fingerprint hash in order to update or change labels, otherwise the request
+        # will fail with error 412 conditionNotMet.
+        # To see the latest fingerprint, make a get() request to retrieve a
+        # ForwardingRule.
+        # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :label_fingerprint
       
         # Labels for this resource. These can only be added or modified by the setLabels
         # method. Each label key/value pair must comply with RFC1035. Label values may
@@ -7306,6 +7744,7 @@ module Google
           @ip_version = args[:ip_version] if args.key?(:ip_version)
           @is_mirroring_collector = args[:is_mirroring_collector] if args.key?(:is_mirroring_collector)
           @kind = args[:kind] if args.key?(:kind)
+          @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
           @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
           @metadata_filters = args[:metadata_filters] if args.key?(:metadata_filters)
@@ -7763,6 +8202,69 @@ module Google
         # Update properties of this object
         def update!(**args)
           @network_endpoints = args[:network_endpoints] if args.key?(:network_endpoints)
+        end
+      end
+      
+      # 
+      class GlobalOrganizationSetPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Flatten Policy to create a backward compatible wire-format. Deprecated. Use '
+        # policy' to specify bindings.
+        # Corresponds to the JSON property `bindings`
+        # @return [Array<Google::Apis::ComputeV1::Binding>]
+        attr_accessor :bindings
+      
+        # Flatten Policy to create a backward compatible wire-format. Deprecated. Use '
+        # policy' to specify the etag.
+        # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :etag
+      
+        # An Identity and Access Management (IAM) policy, which specifies access
+        # controls for Google Cloud resources.
+        # A `Policy` is a collection of `bindings`. A `binding` binds one or more `
+        # members` to a single `role`. Members can be user accounts, service accounts,
+        # Google groups, and domains (such as G Suite). A `role` is a named list of
+        # permissions; each `role` can be an IAM predefined role or a user-created
+        # custom role.
+        # For some types of Google Cloud resources, a `binding` can also specify a `
+        # condition`, which is a logical expression that allows access to a resource
+        # only if the expression evaluates to `true`. A condition can add constraints
+        # based on attributes of the request, the resource, or both. To learn which
+        # resources support conditions in their IAM policies, see the [IAM documentation]
+        # (https://cloud.google.com/iam/help/conditions/resource-policies).
+        # **JSON example:**
+        # ` "bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members":
+        # [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+        # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+        # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+        # ], "condition": ` "title": "expirable access", "description": "Does not grant
+        # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 `
+        # **YAML example:**
+        # bindings: - members: - user:mike@example.com - group:admins@example.com -
+        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
+        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
+        # access description: Does not grant access after Sep 2020 expression: request.
+        # time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3
+        # For a description of IAM and its features, see the [IAM documentation](https://
+        # cloud.google.com/iam/docs/).
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::ComputeV1::Policy]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bindings = args[:bindings] if args.key?(:bindings)
+          @etag = args[:etag] if args.key?(:etag)
+          @policy = args[:policy] if args.key?(:policy)
         end
       end
       
@@ -27698,6 +28200,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :licenses
       
+        # An opaque location hint used to place the snapshot close to other resources.
+        # This field is for use by internal tools that use the public API.
+        # Corresponds to the JSON property `locationHint`
+        # @return [String]
+        attr_accessor :location_hint
+      
         # Name of the resource; provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
@@ -27795,6 +28303,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @license_codes = args[:license_codes] if args.key?(:license_codes)
           @licenses = args[:licenses] if args.key?(:licenses)
+          @location_hint = args[:location_hint] if args.key?(:location_hint)
           @name = args[:name] if args.key?(:name)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -29620,9 +30129,10 @@ module Google
       
       # Represents a Target gRPC Proxy resource.
       # A target gRPC proxy is a component of load balancers intended for load
-      # balancing gRPC traffic. Global forwarding rules reference a target gRPC proxy.
-      # The Target gRPC Proxy references a URL map which specifies how traffic routes
-      # to gRPC backend services. (== resource_for `$api_version`.targetGrpcProxies ==)
+      # balancing gRPC traffic. Only global forwarding rules with load balancing
+      # scheme INTERNAL_SELF_MANAGED can reference a target gRPC proxy. The target
+      # gRPC Proxy references a URL map that specifies how traffic is routed to gRPC
+      # backend services. (== resource_for `$api_version`.targetGrpcProxies ==)
       class TargetGrpcProxy
         include Google::Apis::Core::Hashable
       
@@ -30416,7 +30926,6 @@ module Google
         # possible.
         # - When quic-override is set to DISABLE, the load balancer doesn't use QUIC.
         # - If the quic-override flag is not specified, NONE is implied.
-        # -
         # Corresponds to the JSON property `quicOverride`
         # @return [String]
         attr_accessor :quic_override
@@ -31203,8 +31712,7 @@ module Google
         attr_accessor :failover_ratio
       
         # The URL of the HttpHealthCheck resource. A member instance in this pool is
-        # considered healthy if and only if the health checks pass. An empty list means
-        # all member instances will be considered healthy at all times. Only legacy
+        # considered healthy if and only if the health checks pass. Only legacy
         # HttpHealthChecks are supported. Only one health check may be specified.
         # Corresponds to the JSON property `healthChecks`
         # @return [Array<String>]
