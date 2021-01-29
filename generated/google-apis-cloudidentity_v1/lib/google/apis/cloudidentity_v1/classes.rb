@@ -45,6 +45,89 @@ module Google
         end
       end
       
+      # Dynamic group metadata like queries and status.
+      class DynamicGroupMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Memberships will be the union of all queries. Only one entry with USER
+        # resource is currently supported. Customers can create up to 100 dynamic groups.
+        # Corresponds to the JSON property `queries`
+        # @return [Array<Google::Apis::CloudidentityV1::DynamicGroupQuery>]
+        attr_accessor :queries
+      
+        # The current status of a dynamic group along with timestamp.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::CloudidentityV1::DynamicGroupStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @queries = args[:queries] if args.key?(:queries)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Defines a query on a resource.
+      class DynamicGroupQuery
+        include Google::Apis::Core::Hashable
+      
+        # Query that determines the memberships of the dynamic group. Examples: All
+        # users with at least one `organizations.department` of engineering. `user.
+        # organizations.exists(org, org.department=='engineering')` All users with at
+        # least one location that has `area` of `foo` and `building_id` of `bar`. `user.
+        # locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        # Resource type for the Dynamic Group Query
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @query = args[:query] if args.key?(:query)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+        end
+      end
+      
+      # The current status of a dynamic group along with timestamp.
+      class DynamicGroupStatus
+        include Google::Apis::Core::Hashable
+      
+        # Status of the dynamic group.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # The latest time at which the dynamic group is guaranteed to be in the given
+        # status. If status is `UP_TO_DATE`, the latest time at which the dynamic group
+        # was confirmed to be up-to-date. If status is `UPDATING_MEMBERSHIPS`, the time
+        # at which dynamic group was created.
+        # Corresponds to the JSON property `statusTime`
+        # @return [String]
+        attr_accessor :status_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @status = args[:status] if args.key?(:status)
+          @status_time = args[:status_time] if args.key?(:status_time)
+        end
+      end
+      
       # A unique identifier for an entity in the Cloud Identity Groups API. An entity
       # can represent either a group with an optional `namespace` or a user without a `
       # namespace`. The combination of `id` and `namespace` must be unique; however,
@@ -77,6 +160,25 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @namespace = args[:namespace] if args.key?(:namespace)
+        end
+      end
+      
+      # The `MembershipRole` expiry details.
+      class ExpiryDetail
+        include Google::Apis::Core::Hashable
+      
+        # The time at which the `MembershipRole` will expire.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
         end
       end
       
@@ -951,6 +1053,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Dynamic group metadata like queries and status.
+        # Corresponds to the JSON property `dynamicGroupMetadata`
+        # @return [Google::Apis::CloudidentityV1::DynamicGroupMetadata]
+        attr_accessor :dynamic_group_metadata
+      
         # A unique identifier for an entity in the Cloud Identity Groups API. An entity
         # can represent either a group with an optional `namespace` or a user without a `
         # namespace`. The combination of `id` and `namespace` must be unique; however,
@@ -1002,6 +1109,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @dynamic_group_metadata = args[:dynamic_group_metadata] if args.key?(:dynamic_group_metadata)
           @group_key = args[:group_key] if args.key?(:group_key)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
@@ -1284,6 +1392,11 @@ module Google
       class MembershipRole
         include Google::Apis::Core::Hashable
       
+        # The `MembershipRole` expiry details.
+        # Corresponds to the JSON property `expiryDetail`
+        # @return [Google::Apis::CloudidentityV1::ExpiryDetail]
+        attr_accessor :expiry_detail
+      
         # The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1295,6 +1408,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @expiry_detail = args[:expiry_detail] if args.key?(:expiry_detail)
           @name = args[:name] if args.key?(:name)
         end
       end
@@ -1319,6 +1433,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :remove_roles
       
+        # The `MembershipRole`s to be updated. Updating roles in the same request as
+        # adding or removing roles is not supported. Must not be set if either `
+        # add_roles` or `remove_roles` is set.
+        # Corresponds to the JSON property `updateRolesParams`
+        # @return [Array<Google::Apis::CloudidentityV1::UpdateMembershipRolesParams>]
+        attr_accessor :update_roles_params
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1327,6 +1448,7 @@ module Google
         def update!(**args)
           @add_roles = args[:add_roles] if args.key?(:add_roles)
           @remove_roles = args[:remove_roles] if args.key?(:remove_roles)
+          @update_roles_params = args[:update_roles_params] if args.key?(:update_roles_params)
         end
       end
       
@@ -1547,6 +1669,71 @@ module Google
         # Update properties of this object
         def update!(**args)
           @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # The details of an update to a `MembershipRole`.
+      class UpdateMembershipRolesParams
+        include Google::Apis::Core::Hashable
+      
+        # The fully-qualified names of fields to update. May only contain the field `
+        # expiry_detail`.
+        # Corresponds to the JSON property `fieldMask`
+        # @return [String]
+        attr_accessor :field_mask
+      
+        # A membership role within the Cloud Identity Groups API. A `MembershipRole`
+        # defines the privileges granted to a `Membership`.
+        # Corresponds to the JSON property `membershipRole`
+        # @return [Google::Apis::CloudidentityV1::MembershipRole]
+        attr_accessor :membership_role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_mask = args[:field_mask] if args.key?(:field_mask)
+          @membership_role = args[:membership_role] if args.key?(:membership_role)
+        end
+      end
+      
+      # UserInvitation to join a Google Workspace organization.
+      class UserInvitation
+        include Google::Apis::Core::Hashable
+      
+        # Number of invitation emails sent to the user.
+        # Corresponds to the JSON property `mailsSentCount`
+        # @return [Fixnum]
+        attr_accessor :mails_sent_count
+      
+        # Shall be of the form `customers/`customer`/userinvitations/`user_email_address`
+        # `
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # State of the `UserInvitation`.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Time when the `UserInvitation` was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mails_sent_count = args[:mails_sent_count] if args.key?(:mails_sent_count)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
     end
