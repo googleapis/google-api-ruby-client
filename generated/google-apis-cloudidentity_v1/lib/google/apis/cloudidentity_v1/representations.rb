@@ -28,7 +28,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DynamicGroupMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DynamicGroupQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DynamicGroupStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EntityKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExpiryDetail
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -274,10 +298,48 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateMembershipRolesParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserInvitation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CheckTransitiveMembershipResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :has_membership, as: 'hasMembership'
+        end
+      end
+      
+      class DynamicGroupMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :queries, as: 'queries', class: Google::Apis::CloudidentityV1::DynamicGroupQuery, decorator: Google::Apis::CloudidentityV1::DynamicGroupQuery::Representation
+      
+          property :status, as: 'status', class: Google::Apis::CloudidentityV1::DynamicGroupStatus, decorator: Google::Apis::CloudidentityV1::DynamicGroupStatus::Representation
+      
+        end
+      end
+      
+      class DynamicGroupQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :query, as: 'query'
+          property :resource_type, as: 'resourceType'
+        end
+      end
+      
+      class DynamicGroupStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :status, as: 'status'
+          property :status_time, as: 'statusTime'
         end
       end
       
@@ -286,6 +348,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :namespace, as: 'namespace'
+        end
+      end
+      
+      class ExpiryDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expire_time, as: 'expireTime'
         end
       end
       
@@ -520,6 +589,8 @@ module Google
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :dynamic_group_metadata, as: 'dynamicGroupMetadata', class: Google::Apis::CloudidentityV1::DynamicGroupMetadata, decorator: Google::Apis::CloudidentityV1::DynamicGroupMetadata::Representation
+      
           property :group_key, as: 'groupKey', class: Google::Apis::CloudidentityV1::EntityKey, decorator: Google::Apis::CloudidentityV1::EntityKey::Representation
       
           hash :labels, as: 'labels'
@@ -613,6 +684,8 @@ module Google
       class MembershipRole
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :expiry_detail, as: 'expiryDetail', class: Google::Apis::CloudidentityV1::ExpiryDetail, decorator: Google::Apis::CloudidentityV1::ExpiryDetail::Representation
+      
           property :name, as: 'name'
         end
       end
@@ -623,6 +696,8 @@ module Google
           collection :add_roles, as: 'addRoles', class: Google::Apis::CloudidentityV1::MembershipRole, decorator: Google::Apis::CloudidentityV1::MembershipRole::Representation
       
           collection :remove_roles, as: 'removeRoles'
+          collection :update_roles_params, as: 'updateRolesParams', class: Google::Apis::CloudidentityV1::UpdateMembershipRolesParams, decorator: Google::Apis::CloudidentityV1::UpdateMembershipRolesParams::Representation
+      
         end
       end
       
@@ -686,6 +761,25 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :role, as: 'role'
+        end
+      end
+      
+      class UpdateMembershipRolesParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field_mask, as: 'fieldMask'
+          property :membership_role, as: 'membershipRole', class: Google::Apis::CloudidentityV1::MembershipRole, decorator: Google::Apis::CloudidentityV1::MembershipRole::Representation
+      
+        end
+      end
+      
+      class UserInvitation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mails_sent_count, :numeric_string => true, as: 'mailsSentCount'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
         end
       end
     end
