@@ -226,12 +226,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ReportInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ReportRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -718,15 +712,6 @@ module Google
         end
       end
       
-      class ReportInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :operation_id, as: 'operationId'
-          property :quota_info, as: 'quotaInfo', class: Google::Apis::ServicecontrolV1::QuotaInfo, decorator: Google::Apis::ServicecontrolV1::QuotaInfo::Representation
-      
-        end
-      end
-      
       class ReportRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -740,8 +725,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :report_errors, as: 'reportErrors', class: Google::Apis::ServicecontrolV1::ReportError, decorator: Google::Apis::ServicecontrolV1::ReportError::Representation
-      
-          collection :report_infos, as: 'reportInfos', class: Google::Apis::ServicecontrolV1::ReportInfo, decorator: Google::Apis::ServicecontrolV1::ReportInfo::Representation
       
           property :service_config_id, as: 'serviceConfigId'
           property :service_rollout_id, as: 'serviceRolloutId'

@@ -1767,31 +1767,6 @@ module Google
         end
       end
       
-      # Contains additional info about the report operation.
-      class ReportInfo
-        include Google::Apis::Core::Hashable
-      
-        # The Operation.operation_id value from the request.
-        # Corresponds to the JSON property `operationId`
-        # @return [String]
-        attr_accessor :operation_id
-      
-        # Contains the quota information for a quota check response.
-        # Corresponds to the JSON property `quotaInfo`
-        # @return [Google::Apis::ServicecontrolV1::QuotaInfo]
-        attr_accessor :quota_info
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @operation_id = args[:operation_id] if args.key?(:operation_id)
-          @quota_info = args[:quota_info] if args.key?(:quota_info)
-        end
-      end
-      
       # Request message for the Report method.
       class ReportRequest
         include Google::Apis::Core::Hashable
@@ -1842,16 +1817,6 @@ module Google
         # @return [Array<Google::Apis::ServicecontrolV1::ReportError>]
         attr_accessor :report_errors
       
-        # Quota usage for each quota release `Operation` request. Fully or partially
-        # failed quota release request may or may not be present in `report_quota_info`.
-        # For example, a failed quota release request will have the current quota usage
-        # info when precise quota library returns the info. A deadline exceeded quota
-        # request will not have quota usage info. If there is no quota release request,
-        # report_quota_info will be empty.
-        # Corresponds to the JSON property `reportInfos`
-        # @return [Array<Google::Apis::ServicecontrolV1::ReportInfo>]
-        attr_accessor :report_infos
-      
         # The actual config id used to process the request.
         # Corresponds to the JSON property `serviceConfigId`
         # @return [String]
@@ -1869,7 +1834,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @report_errors = args[:report_errors] if args.key?(:report_errors)
-          @report_infos = args[:report_infos] if args.key?(:report_infos)
           @service_config_id = args[:service_config_id] if args.key?(:service_config_id)
           @service_rollout_id = args[:service_rollout_id] if args.key?(:service_rollout_id)
         end
