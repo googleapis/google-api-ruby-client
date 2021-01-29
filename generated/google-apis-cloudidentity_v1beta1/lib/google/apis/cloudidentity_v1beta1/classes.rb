@@ -2218,6 +2218,44 @@ module Google
         end
       end
       
+      # UserInvitation to join a Google Workspace organization.
+      class UserInvitation
+        include Google::Apis::Core::Hashable
+      
+        # Number of invitation emails sent to the user.
+        # Corresponds to the JSON property `mailsSentCount`
+        # @return [Fixnum]
+        attr_accessor :mails_sent_count
+      
+        # Shall be of the form `customers/`customer`/userinvitations/`user_email_address`
+        # `
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # State of the `UserInvitation`.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Time when the `UserInvitation` was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mails_sent_count = args[:mails_sent_count] if args.key?(:mails_sent_count)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Request message for wiping all data on the device.
       class WipeDeviceRequest
         include Google::Apis::Core::Hashable
