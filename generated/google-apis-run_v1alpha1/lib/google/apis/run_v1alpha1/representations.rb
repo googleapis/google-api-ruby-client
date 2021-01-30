@@ -280,7 +280,49 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceTemplateSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IntOrString
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Job
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class JobCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class JobSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class JobStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -335,6 +377,12 @@ module Google
       end
       
       class ListDomainMappingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListJobsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1155,12 +1203,103 @@ module Google
         end
       end
       
+      class InstanceSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_deadline_seconds, :numeric_string => true, as: 'activeDeadlineSeconds'
+          collection :containers, as: 'containers', class: Google::Apis::RunV1alpha1::Container, decorator: Google::Apis::RunV1alpha1::Container::Representation
+      
+          property :restart_policy, as: 'restartPolicy'
+          property :service_account_name, as: 'serviceAccountName'
+          property :termination_grace_period_seconds, :numeric_string => true, as: 'terminationGracePeriodSeconds'
+          collection :volumes, as: 'volumes', class: Google::Apis::RunV1alpha1::Volume, decorator: Google::Apis::RunV1alpha1::Volume::Representation
+      
+        end
+      end
+      
+      class InstanceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :completion_time, as: 'completionTime'
+          property :failed, as: 'failed'
+          property :index, as: 'index'
+          property :last_exit_code, as: 'lastExitCode'
+          property :restarted, as: 'restarted'
+          property :start_time, as: 'startTime'
+          property :succeeded, as: 'succeeded'
+        end
+      end
+      
+      class InstanceTemplateSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :spec, as: 'spec', class: Google::Apis::RunV1alpha1::InstanceSpec, decorator: Google::Apis::RunV1alpha1::InstanceSpec::Representation
+      
+        end
+      end
+      
       class IntOrString
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :int_val, as: 'intVal'
           property :str_val, as: 'strVal'
           property :type, as: 'type'
+        end
+      end
+      
+      class Job
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :kind, as: 'kind'
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ObjectMeta, decorator: Google::Apis::RunV1alpha1::ObjectMeta::Representation
+      
+          property :spec, as: 'spec', class: Google::Apis::RunV1alpha1::JobSpec, decorator: Google::Apis::RunV1alpha1::JobSpec::Representation
+      
+          property :status, as: 'status', class: Google::Apis::RunV1alpha1::JobStatus, decorator: Google::Apis::RunV1alpha1::JobStatus::Representation
+      
+        end
+      end
+      
+      class JobCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_transition_time, as: 'lastTransitionTime'
+          property :message, as: 'message'
+          property :reason, as: 'reason'
+          property :severity, as: 'severity'
+          property :status, as: 'status'
+          property :type, as: 'type'
+        end
+      end
+      
+      class JobSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_deadline_seconds, :numeric_string => true, as: 'activeDeadlineSeconds'
+          property :backoff_limit, as: 'backoffLimit'
+          property :completions, as: 'completions'
+          property :parallelism, as: 'parallelism'
+          property :template, as: 'template', class: Google::Apis::RunV1alpha1::InstanceTemplateSpec, decorator: Google::Apis::RunV1alpha1::InstanceTemplateSpec::Representation
+      
+          property :ttl_seconds_after_finished, as: 'ttlSecondsAfterFinished'
+        end
+      end
+      
+      class JobStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active, as: 'active'
+          property :completion_time, as: 'completionTime'
+          collection :conditions, as: 'conditions', class: Google::Apis::RunV1alpha1::JobCondition, decorator: Google::Apis::RunV1alpha1::JobCondition::Representation
+      
+          property :failed, as: 'failed'
+          property :image_digest, as: 'imageDigest'
+          collection :instances, as: 'instances', class: Google::Apis::RunV1alpha1::InstanceStatus, decorator: Google::Apis::RunV1alpha1::InstanceStatus::Representation
+      
+          property :observed_generation, as: 'observedGeneration'
+          property :start_time, as: 'startTime'
+          property :succeeded, as: 'succeeded'
         end
       end
       
@@ -1266,6 +1405,20 @@ module Google
           property :kind, as: 'kind'
           property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ListMeta, decorator: Google::Apis::RunV1alpha1::ListMeta::Representation
       
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListJobsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          collection :items, as: 'items', class: Google::Apis::RunV1alpha1::Job, decorator: Google::Apis::RunV1alpha1::Job::Representation
+      
+          property :kind, as: 'kind'
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ListMeta, decorator: Google::Apis::RunV1alpha1::ListMeta::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
         end
       end
