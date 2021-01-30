@@ -262,6 +262,12 @@ module Google
       
           property :description, as: 'description'
           property :global_policy_evaluation_mode, as: 'globalPolicyEvaluationMode'
+          hash :istio_service_identity_admission_rules, as: 'istioServiceIdentityAdmissionRules', class: Google::Apis::BinaryauthorizationV1::AdmissionRule, decorator: Google::Apis::BinaryauthorizationV1::AdmissionRule::Representation
+      
+          hash :kubernetes_namespace_admission_rules, as: 'kubernetesNamespaceAdmissionRules', class: Google::Apis::BinaryauthorizationV1::AdmissionRule, decorator: Google::Apis::BinaryauthorizationV1::AdmissionRule::Representation
+      
+          hash :kubernetes_service_account_admission_rules, as: 'kubernetesServiceAccountAdmissionRules', class: Google::Apis::BinaryauthorizationV1::AdmissionRule, decorator: Google::Apis::BinaryauthorizationV1::AdmissionRule::Representation
+      
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
         end
