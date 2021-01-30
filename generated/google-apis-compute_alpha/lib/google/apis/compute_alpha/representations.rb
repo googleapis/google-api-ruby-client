@@ -982,6 +982,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FirewallPoliciesListAssociationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FirewallPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1132,6 +1138,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GlobalOrganizationSetPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GlobalSetLabelsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1234,6 +1246,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HealthCheckServiceAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HealthCheckServiceReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1241,6 +1271,24 @@ module Google
       end
       
       class HealthCheckServicesList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HealthCheckServicesScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Warning
@@ -2644,6 +2692,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkEndpointGroupServerlessDeployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkEndpointGroupsAttachEndpointsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2711,6 +2765,12 @@ module Google
       end
       
       class NetworkInterface
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkInterfaceSubInterface
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3034,6 +3094,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NotificationEndpointAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NotificationEndpointGrpcSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3041,6 +3119,24 @@ module Google
       end
       
       class NotificationEndpointList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NotificationEndpointsScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Warning
@@ -3664,6 +3760,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegionInstanceGroupManagersResizeAdvancedRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RegionInstanceGroupManagersSetAutoHealingRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3989,6 +4091,18 @@ module Google
       end
       
       class ResourcePolicyWeeklyCycleDayOfWeek
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceStatusScheduling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5947,6 +6061,7 @@ module Google
       class AllocationShareSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :projects, as: 'projects'
           property :share_type, as: 'shareType'
         end
       end
@@ -7548,6 +7663,15 @@ module Google
         end
       end
       
+      class FirewallPoliciesListAssociationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :associations, as: 'associations', class: Google::Apis::ComputeAlpha::FirewallPolicyAssociation, decorator: Google::Apis::ComputeAlpha::FirewallPolicyAssociation::Representation
+      
+          property :kind, as: 'kind'
+        end
+      end
+      
       class FirewallPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7835,6 +7959,17 @@ module Google
         end
       end
       
+      class GlobalOrganizationSetPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bindings, as: 'bindings', class: Google::Apis::ComputeAlpha::Binding, decorator: Google::Apis::ComputeAlpha::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :policy, as: 'policy', class: Google::Apis::ComputeAlpha::Policy, decorator: Google::Apis::ComputeAlpha::Policy::Representation
+      
+        end
+      end
+      
       class GlobalSetLabelsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8042,6 +8177,39 @@ module Google
         end
       end
       
+      class HealthCheckServiceAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeAlpha::HealthCheckServicesScopedList, decorator: Google::Apis::ComputeAlpha::HealthCheckServicesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::HealthCheckServiceAggregatedList::Warning, decorator: Google::Apis::ComputeAlpha::HealthCheckServiceAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::HealthCheckServiceAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::HealthCheckServiceAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class HealthCheckServiceReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8067,6 +8235,34 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
             collection :data, as: 'data', class: Google::Apis::ComputeAlpha::HealthCheckServicesList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::HealthCheckServicesList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class HealthCheckServicesScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resources, as: 'resources', class: Google::Apis::ComputeAlpha::HealthCheckService, decorator: Google::Apis::ComputeAlpha::HealthCheckService::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::HealthCheckServicesScopedList::Warning, decorator: Google::Apis::ComputeAlpha::HealthCheckServicesScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::HealthCheckServicesScopedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::HealthCheckServicesScopedList::Warning::Datum::Representation
         
             property :message, as: 'message'
           end
@@ -8646,6 +8842,8 @@ module Google
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeAlpha::ReservationAffinity, decorator: Google::Apis::ComputeAlpha::ReservationAffinity::Representation
       
           collection :resource_policies, as: 'resourcePolicies'
+          property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeAlpha::ResourceStatus, decorator: Google::Apis::ComputeAlpha::ResourceStatus::Representation
+      
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeAlpha::Scheduling, decorator: Google::Apis::ComputeAlpha::Scheduling::Representation
       
@@ -10658,6 +10856,8 @@ module Google
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
+          property :serverless_deployment, as: 'serverlessDeployment', class: Google::Apis::ComputeAlpha::NetworkEndpointGroupServerlessDeployment, decorator: Google::Apis::ComputeAlpha::NetworkEndpointGroupServerlessDeployment::Representation
+      
           property :size, as: 'size'
           property :subnetwork, as: 'subnetwork'
           property :type, as: 'type'
@@ -10763,6 +10963,16 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class NetworkEndpointGroupServerlessDeployment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :platform, as: 'platform'
+          property :resource, as: 'resource'
+          property :url_mask, as: 'urlMask'
+          property :version, as: 'version'
         end
       end
       
@@ -10888,7 +11098,18 @@ module Google
           property :nic_type, as: 'nicType'
           property :queue_count, as: 'queueCount'
           property :stack_type, as: 'stackType'
+          collection :subinterfaces, as: 'subinterfaces', class: Google::Apis::ComputeAlpha::NetworkInterfaceSubInterface, decorator: Google::Apis::ComputeAlpha::NetworkInterfaceSubInterface::Representation
+      
           property :subnetwork, as: 'subnetwork'
+        end
+      end
+      
+      class NetworkInterfaceSubInterface
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_address, as: 'ipAddress'
+          property :subnetwork, as: 'subnetwork'
+          property :vlan, as: 'vlan'
         end
       end
       
@@ -11482,6 +11703,39 @@ module Google
         end
       end
       
+      class NotificationEndpointAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeAlpha::NotificationEndpointsScopedList, decorator: Google::Apis::ComputeAlpha::NotificationEndpointsScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::NotificationEndpointAggregatedList::Warning, decorator: Google::Apis::ComputeAlpha::NotificationEndpointAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::NotificationEndpointAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::NotificationEndpointAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class NotificationEndpointGrpcSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -11512,6 +11766,34 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
             collection :data, as: 'data', class: Google::Apis::ComputeAlpha::NotificationEndpointList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::NotificationEndpointList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class NotificationEndpointsScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resources, as: 'resources', class: Google::Apis::ComputeAlpha::NotificationEndpoint, decorator: Google::Apis::ComputeAlpha::NotificationEndpoint::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::NotificationEndpointsScopedList::Warning, decorator: Google::Apis::ComputeAlpha::NotificationEndpointsScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::NotificationEndpointsScopedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::NotificationEndpointsScopedList::Warning::Datum::Representation
         
             property :message, as: 'message'
           end
@@ -12614,6 +12896,14 @@ module Google
         end
       end
       
+      class RegionInstanceGroupManagersResizeAdvancedRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :no_creation_retries, as: 'noCreationRetries'
+          property :target_size, as: 'targetSize'
+        end
+      end
+      
       class RegionInstanceGroupManagersSetAutoHealingRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -13164,6 +13454,21 @@ module Google
         end
       end
       
+      class ResourceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scheduling, as: 'scheduling', class: Google::Apis::ComputeAlpha::ResourceStatusScheduling, decorator: Google::Apis::ComputeAlpha::ResourceStatusScheduling::Representation
+      
+        end
+      end
+      
+      class ResourceStatusScheduling
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability_domain, as: 'availabilityDomain'
+        end
+      end
+      
       class Route
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -13628,6 +13933,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :automatic_restart, as: 'automaticRestart'
+          property :availability_domain, as: 'availabilityDomain'
           property :latency_tolerant, as: 'latencyTolerant'
           property :location_hint, as: 'locationHint'
           property :maintenance_freeze_duration_hours, as: 'maintenanceFreezeDurationHours'
@@ -14155,6 +14461,7 @@ module Google
           property :min_cpu_platform, as: 'minCpuPlatform'
           collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeAlpha::NetworkInterface, decorator: Google::Apis::ComputeAlpha::NetworkInterface::Representation
       
+          property :post_key_revocation_action_type, as: 'postKeyRevocationActionType'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeAlpha::Scheduling, decorator: Google::Apis::ComputeAlpha::Scheduling::Representation
       
           collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::ComputeAlpha::ServiceAccount, decorator: Google::Apis::ComputeAlpha::ServiceAccount::Representation
@@ -14414,6 +14721,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :enable_flow_logs, as: 'enableFlowLogs'
+          property :enable_l2, as: 'enableL2'
           property :enable_private_v6_access, as: 'enablePrivateV6Access'
           property :external_ipv6_prefix, as: 'externalIpv6Prefix'
           property :fingerprint, :base64 => true, as: 'fingerprint'
@@ -14441,6 +14749,7 @@ module Google
           property :self_link_with_id, as: 'selfLinkWithId'
           property :stack_type, as: 'stackType'
           property :state, as: 'state'
+          collection :vlans, as: 'vlans'
         end
       end
       
