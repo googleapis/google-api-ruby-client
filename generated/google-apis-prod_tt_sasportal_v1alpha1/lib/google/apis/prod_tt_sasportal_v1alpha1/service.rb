@@ -83,7 +83,7 @@ module Google
         # @param [Fixnum] page_size
         #   The maximum number of customers to return in the response.
         # @param [String] page_token
-        #   A pagination token returned from a previous call to ListCustomers method that
+        #   A pagination token returned from a previous call to ListCustomers that
         #   indicates where this listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -252,8 +252,8 @@ module Google
         # @param [Fixnum] page_size
         #   The maximum number of deployments to return in the response.
         # @param [String] page_token
-        #   A pagination token returned from a previous call to ListDeployments method
-        #   that indicates where this listing should continue from.
+        #   A pagination token returned from a previous call to ListDeployments that
+        #   indicates where this listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -424,7 +424,7 @@ module Google
         #   Required. The name of the parent resource.
         # @param [String] filter
         #   The filter expression. The filter should have one of the following formats: "
-        #   sn=123454" or "display_name=MyDevice". sn corresponds to serial_number of the
+        #   sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the
         #   device. The filter is case insensitive.
         # @param [Fixnum] page_size
         #   The maximum number of devices to return in the response. If empty or zero, all
@@ -593,7 +593,7 @@ module Google
         #   Required. The name of the parent resource.
         # @param [String] filter
         #   The filter expression. The filter should have one of the following formats: "
-        #   sn=123454" or "display_name=MyDevice". sn corresponds to serial_number of the
+        #   sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the
         #   device. The filter is case insensitive.
         # @param [Fixnum] page_size
         #   The maximum number of devices to return in the response. If empty or zero, all
@@ -869,8 +869,8 @@ module Google
         # @param [Fixnum] page_size
         #   The maximum number of nodes to return in the response.
         # @param [String] page_token
-        #   A pagination token returned from a previous call to ListNodes method that
-        #   indicates where this listing should continue from.
+        #   A pagination token returned from a previous call to ListNodes that indicates
+        #   where this listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1013,8 +1013,8 @@ module Google
         # @param [Fixnum] page_size
         #   The maximum number of deployments to return in the response.
         # @param [String] page_token
-        #   A pagination token returned from a previous call to ListDeployments method
-        #   that indicates where this listing should continue from.
+        #   A pagination token returned from a previous call to ListDeployments that
+        #   indicates where this listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1116,7 +1116,7 @@ module Google
         #   Required. The name of the parent resource.
         # @param [String] filter
         #   The filter expression. The filter should have one of the following formats: "
-        #   sn=123454" or "display_name=MyDevice". sn corresponds to serial_number of the
+        #   sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the
         #   device. The filter is case insensitive.
         # @param [Fixnum] page_size
         #   The maximum number of devices to return in the response. If empty or zero, all
@@ -1197,8 +1197,8 @@ module Google
         # @param [Fixnum] page_size
         #   The maximum number of nodes to return in the response.
         # @param [String] page_token
-        #   A pagination token returned from a previous call to ListNodes method that
-        #   indicates where this listing should continue from.
+        #   A pagination token returned from a previous call to ListNodes that indicates
+        #   where this listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1454,7 +1454,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Generates a secret to be used with the ValidateInstaller method
+        # Generates a secret to be used with the ValidateInstaller.
         # @param [Google::Apis::ProdTtSasportalV1alpha1::SasPortalGenerateSecretRequest] sas_portal_generate_secret_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1614,8 +1614,8 @@ module Google
         # @param [Fixnum] page_size
         #   The maximum number of deployments to return in the response.
         # @param [String] page_token
-        #   A pagination token returned from a previous call to ListDeployments method
-        #   that indicates where this listing should continue from.
+        #   A pagination token returned from a previous call to ListDeployments that
+        #   indicates where this listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1786,7 +1786,7 @@ module Google
         #   Required. The name of the parent resource.
         # @param [String] filter
         #   The filter expression. The filter should have one of the following formats: "
-        #   sn=123454" or "display_name=MyDevice". sn corresponds to serial_number of the
+        #   sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the
         #   device. The filter is case insensitive.
         # @param [Fixnum] page_size
         #   The maximum number of devices to return in the response. If empty or zero, all
@@ -1955,7 +1955,7 @@ module Google
         #   Required. The name of the parent resource.
         # @param [String] filter
         #   The filter expression. The filter should have one of the following formats: "
-        #   sn=123454" or "display_name=MyDevice". sn corresponds to serial_number of the
+        #   sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the
         #   device. The filter is case insensitive.
         # @param [Fixnum] page_size
         #   The maximum number of devices to return in the response. If empty or zero, all
@@ -2231,8 +2231,8 @@ module Google
         # @param [Fixnum] page_size
         #   The maximum number of nodes to return in the response.
         # @param [String] page_token
-        #   A pagination token returned from a previous call to ListNodes method that
-        #   indicates where this listing should continue from.
+        #   A pagination token returned from a previous call to ListNodes that indicates
+        #   where this listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2375,8 +2375,8 @@ module Google
         # @param [Fixnum] page_size
         #   The maximum number of deployments to return in the response.
         # @param [String] page_token
-        #   A pagination token returned from a previous call to ListDeployments method
-        #   that indicates where this listing should continue from.
+        #   A pagination token returned from a previous call to ListDeployments that
+        #   indicates where this listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2478,7 +2478,7 @@ module Google
         #   Required. The name of the parent resource.
         # @param [String] filter
         #   The filter expression. The filter should have one of the following formats: "
-        #   sn=123454" or "display_name=MyDevice". sn corresponds to serial_number of the
+        #   sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the
         #   device. The filter is case insensitive.
         # @param [Fixnum] page_size
         #   The maximum number of devices to return in the response. If empty or zero, all
@@ -2559,8 +2559,8 @@ module Google
         # @param [Fixnum] page_size
         #   The maximum number of nodes to return in the response.
         # @param [String] page_token
-        #   A pagination token returned from a previous call to ListNodes method that
-        #   indicates where this listing should continue from.
+        #   A pagination token returned from a previous call to ListNodes that indicates
+        #   where this listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
