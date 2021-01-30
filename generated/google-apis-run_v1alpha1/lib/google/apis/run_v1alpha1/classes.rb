@@ -1998,6 +1998,154 @@ module Google
         end
       end
       
+      # InstanceSpec is a description of an instance.
+      class InstanceSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional duration in seconds the instance may be active relative to
+        # StartTime before the system will actively try to mark it failed and kill
+        # associated containers. If set to zero, the system will never attempt to kill
+        # an instance based on time. Otherwise, value must be a positive integer. +
+        # optional
+        # Corresponds to the JSON property `activeDeadlineSeconds`
+        # @return [Fixnum]
+        attr_accessor :active_deadline_seconds
+      
+        # Optional. List of containers belonging to the instance. We disallow a number
+        # of fields on this Container. Only a single container may be provided.
+        # Corresponds to the JSON property `containers`
+        # @return [Array<Google::Apis::RunV1alpha1::Container>]
+        attr_accessor :containers
+      
+        # Optional. Restart policy for all containers within the instance. Allowed
+        # values are: - OnFailure: Instances will always be restarted on failure if the
+        # backoffLimit has not been reached. - Never: Instances are never restarted and
+        # all failures are permanent. Cannot be used if backoffLimit is set. +optional
+        # Corresponds to the JSON property `restartPolicy`
+        # @return [String]
+        attr_accessor :restart_policy
+      
+        # Optional. Email address of the IAM service account associated with the
+        # instance of a Job. The service account represents the identity of the running
+        # instance, and determines what permissions the instance has. If not provided,
+        # the instance will use the project's default service account. +optional
+        # Corresponds to the JSON property `serviceAccountName`
+        # @return [String]
+        attr_accessor :service_account_name
+      
+        # Optional. Optional duration in seconds the instance needs to terminate
+        # gracefully. Value must be non-negative integer. The value zero indicates
+        # delete immediately. The grace period is the duration in seconds after the
+        # processes running in the instance are sent a termination signal and the time
+        # when the processes are forcibly halted with a kill signal. Set this value
+        # longer than the expected cleanup time for your process. +optional
+        # Corresponds to the JSON property `terminationGracePeriodSeconds`
+        # @return [Fixnum]
+        attr_accessor :termination_grace_period_seconds
+      
+        # Optional. List of volumes that can be mounted by containers belonging to the
+        # instance. More info: https://kubernetes.io/docs/concepts/storage/volumes +
+        # optional
+        # Corresponds to the JSON property `volumes`
+        # @return [Array<Google::Apis::RunV1alpha1::Volume>]
+        attr_accessor :volumes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_deadline_seconds = args[:active_deadline_seconds] if args.key?(:active_deadline_seconds)
+          @containers = args[:containers] if args.key?(:containers)
+          @restart_policy = args[:restart_policy] if args.key?(:restart_policy)
+          @service_account_name = args[:service_account_name] if args.key?(:service_account_name)
+          @termination_grace_period_seconds = args[:termination_grace_period_seconds] if args.key?(:termination_grace_period_seconds)
+          @volumes = args[:volumes] if args.key?(:volumes)
+        end
+      end
+      
+      # Instance represents the status of an instance of a Job.
+      class InstanceStatus
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Represents time when the instance was completed. It is not
+        # guaranteed to be set in happens-before order across separate operations. It is
+        # represented in RFC3339 form and is in UTC. +optional
+        # Corresponds to the JSON property `completionTime`
+        # @return [String]
+        attr_accessor :completion_time
+      
+        # Optional. The number of times this instance exited with code > 0; +optional
+        # Corresponds to the JSON property `failed`
+        # @return [Fixnum]
+        attr_accessor :failed
+      
+        # Required. Index of the instance, unique per Job, and beginning at 0.
+        # Corresponds to the JSON property `index`
+        # @return [Fixnum]
+        attr_accessor :index
+      
+        # Optional. Last exit code seen for this instance. +optional
+        # Corresponds to the JSON property `lastExitCode`
+        # @return [Fixnum]
+        attr_accessor :last_exit_code
+      
+        # Optional. The number of times this instance was restarted. Instances are
+        # restarted according the restartPolicy configured in the Job template. +
+        # optional
+        # Corresponds to the JSON property `restarted`
+        # @return [Fixnum]
+        attr_accessor :restarted
+      
+        # Optional. Represents time when the instance was created by the job controller.
+        # It is not guaranteed to be set in happens-before order across separate
+        # operations. It is represented in RFC3339 form and is in UTC. +optional
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Optional. The number of times this instance exited with code == 0. +optional
+        # Corresponds to the JSON property `succeeded`
+        # @return [Fixnum]
+        attr_accessor :succeeded
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @completion_time = args[:completion_time] if args.key?(:completion_time)
+          @failed = args[:failed] if args.key?(:failed)
+          @index = args[:index] if args.key?(:index)
+          @last_exit_code = args[:last_exit_code] if args.key?(:last_exit_code)
+          @restarted = args[:restarted] if args.key?(:restarted)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @succeeded = args[:succeeded] if args.key?(:succeeded)
+        end
+      end
+      
+      # InstanceTemplateSpec describes the data an instance should have when created
+      # from a template.
+      class InstanceTemplateSpec
+        include Google::Apis::Core::Hashable
+      
+        # InstanceSpec is a description of an instance.
+        # Corresponds to the JSON property `spec`
+        # @return [Google::Apis::RunV1alpha1::InstanceSpec]
+        attr_accessor :spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @spec = args[:spec] if args.key?(:spec)
+        end
+      end
+      
       # IntOrString is a type that can hold an int32 or a string. When used in JSON or
       # YAML marshalling and unmarshalling, it produces or consumes the inner type.
       # This allows you to have, for example, a JSON field that can accept a name or
@@ -2029,6 +2177,258 @@ module Google
           @int_val = args[:int_val] if args.key?(:int_val)
           @str_val = args[:str_val] if args.key?(:str_val)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Job represents the configuration of a single job. A job an immutable resource
+      # that references a container image which is run to completion.
+      class Job
+        include Google::Apis::Core::Hashable
+      
+        # Optional. APIVersion defines the versioned schema of this representation of an
+        # object. Servers should convert recognized schemas to the latest internal value,
+        # and may reject unrecognized values. More info: https://git.k8s.io/community/
+        # contributors/devel/sig-architecture/api-conventions.md#resources +optional
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # Optional. Kind is a string value representing the REST resource this object
+        # represents. Servers may infer this from the endpoint the client submits
+        # requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/
+        # community/contributors/devel/sig-architecture/api-conventions.md#types-kinds +
+        # optional
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # ObjectMeta is metadata that all persisted resources must have, which includes
+        # all objects users must create.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1alpha1::ObjectMeta]
+        attr_accessor :metadata
+      
+        # JobSpec describes how the job execution will look like.
+        # Corresponds to the JSON property `spec`
+        # @return [Google::Apis::RunV1alpha1::JobSpec]
+        attr_accessor :spec
+      
+        # JobStatus represents the current state of a Job.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::RunV1alpha1::JobStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @spec = args[:spec] if args.key?(:spec)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # JobCondition defines a readiness condition for a Revision.
+      class JobCondition
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Last time the condition transitioned from one status to another.
+        # Corresponds to the JSON property `lastTransitionTime`
+        # @return [String]
+        attr_accessor :last_transition_time
+      
+        # Optional. Human readable message indicating details about the current status.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Optional. One-word CamelCase reason for the condition's last transition.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # Optional. How to interpret failures of this condition, one of Error, Warning,
+        # Info
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # Required. Status of the condition, one of True, False, Unknown.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Required. Type is used to communicate the status of the reconciliation process.
+        # See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#
+        # error-conditions-and-reporting Types include: * "Completed": True when the Job
+        # has successfully completed. * "Started": True when the Job has successfully
+        # started running. * "ResourcesAvailable": True when underlying resources have
+        # been provisioned.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_transition_time = args[:last_transition_time] if args.key?(:last_transition_time)
+          @message = args[:message] if args.key?(:message)
+          @reason = args[:reason] if args.key?(:reason)
+          @severity = args[:severity] if args.key?(:severity)
+          @status = args[:status] if args.key?(:status)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # JobSpec describes how the job execution will look like.
+      class JobSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the duration in seconds relative to the startTime that the
+        # job may be active before the system tries to terminate it. If set to zero, the
+        # system will never attempt to terminate the job based on time. Otherwise, the
+        # value must be positive integer. +optional
+        # Corresponds to the JSON property `activeDeadlineSeconds`
+        # @return [Fixnum]
+        attr_accessor :active_deadline_seconds
+      
+        # Optional. Specifies the number of retries per instance, before marking this
+        # job failed. If set to zero, instances will never retry on failure. +optional
+        # Corresponds to the JSON property `backoffLimit`
+        # @return [Fixnum]
+        attr_accessor :backoff_limit
+      
+        # Optional. Specifies the desired number of successfully finished instances the
+        # job should be run with. Setting to 1 means that parallelism is limited to 1
+        # and the success of that instance signals the success of the job. More info:
+        # https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-
+        # completion/ +optional
+        # Corresponds to the JSON property `completions`
+        # @return [Fixnum]
+        attr_accessor :completions
+      
+        # Optional. Specifies the maximum desired number of instances the job should run
+        # at any given time. Must be <= completions. The actual number of instances
+        # running in steady state will be less than this number when ((.spec.completions
+        # - .status.successful) < .spec.parallelism), i.e. when the work left to do is
+        # less than max parallelism. More info: https://kubernetes.io/docs/concepts/
+        # workloads/controllers/jobs-run-to-completion/ +optional
+        # Corresponds to the JSON property `parallelism`
+        # @return [Fixnum]
+        attr_accessor :parallelism
+      
+        # InstanceTemplateSpec describes the data an instance should have when created
+        # from a template.
+        # Corresponds to the JSON property `template`
+        # @return [Google::Apis::RunV1alpha1::InstanceTemplateSpec]
+        attr_accessor :template
+      
+        # Optional. ttlSecondsAfterFinished limits the lifetime of a Job that has
+        # finished execution (either Complete or Failed). If this field is set,
+        # ttlSecondsAfterFinished after the Job finishes, it is eligible to be
+        # automatically deleted. When the Job is being deleted, its lifecycle guarantees
+        # (e.g. finalizers) will be honored. If this field is set to zero, the Job won't
+        # be automatically deleted. +optional
+        # Corresponds to the JSON property `ttlSecondsAfterFinished`
+        # @return [Fixnum]
+        attr_accessor :ttl_seconds_after_finished
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_deadline_seconds = args[:active_deadline_seconds] if args.key?(:active_deadline_seconds)
+          @backoff_limit = args[:backoff_limit] if args.key?(:backoff_limit)
+          @completions = args[:completions] if args.key?(:completions)
+          @parallelism = args[:parallelism] if args.key?(:parallelism)
+          @template = args[:template] if args.key?(:template)
+          @ttl_seconds_after_finished = args[:ttl_seconds_after_finished] if args.key?(:ttl_seconds_after_finished)
+        end
+      end
+      
+      # JobStatus represents the current state of a Job.
+      class JobStatus
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The number of actively running instances. +optional
+        # Corresponds to the JSON property `active`
+        # @return [Fixnum]
+        attr_accessor :active
+      
+        # Optional. Represents time when the job was completed. It is not guaranteed to
+        # be set in happens-before order across separate operations. It is represented
+        # in RFC3339 form and is in UTC. +optional
+        # Corresponds to the JSON property `completionTime`
+        # @return [String]
+        attr_accessor :completion_time
+      
+        # Optional. The latest available observations of a job's current state. More
+        # info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-
+        # completion/ +optional
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::RunV1alpha1::JobCondition>]
+        attr_accessor :conditions
+      
+        # Optional. The number of instances which reached phase Failed. +optional
+        # Corresponds to the JSON property `failed`
+        # @return [Fixnum]
+        attr_accessor :failed
+      
+        # Optional. ImageDigest holds the resolved digest for the image specified within
+        # .Spec.Template.Spec.Container.Image. The digest is resolved during the
+        # creation of the Job. This field holds the digest value regardless of whether a
+        # tag or digest was originally specified in the Container object.
+        # Corresponds to the JSON property `imageDigest`
+        # @return [String]
+        attr_accessor :image_digest
+      
+        # Optional. Status of completed, failed, and running instances. +optional
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::RunV1alpha1::InstanceStatus>]
+        attr_accessor :instances
+      
+        # Optional. The 'generation' of the job that was last processed by the
+        # controller.
+        # Corresponds to the JSON property `observedGeneration`
+        # @return [Fixnum]
+        attr_accessor :observed_generation
+      
+        # Optional. Represents time when the job was acknowledged by the job controller.
+        # It is not guaranteed to be set in happens-before order across separate
+        # operations. It is represented in RFC3339 form and is in UTC. +optional
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Optional. The number of instances which reached phase Succeeded. +optional
+        # Corresponds to the JSON property `succeeded`
+        # @return [Fixnum]
+        attr_accessor :succeeded
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active = args[:active] if args.key?(:active)
+          @completion_time = args[:completion_time] if args.key?(:completion_time)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @failed = args[:failed] if args.key?(:failed)
+          @image_digest = args[:image_digest] if args.key?(:image_digest)
+          @instances = args[:instances] if args.key?(:instances)
+          @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @succeeded = args[:succeeded] if args.key?(:succeeded)
         end
       end
       
@@ -2386,6 +2786,63 @@ module Google
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # ListJobsResponse is a list of Jobs resources.
+      class ListJobsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The API version for this call such as "run.googleapis.com/v1alpha1".
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # List of Jobs.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::RunV1alpha1::Job>]
+        attr_accessor :items
+      
+        # The kind of this resource, in this case "JobsList".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # ListMeta describes metadata that synthetic resources must have, including
+        # lists and various status objects. A resource may have only one of `ObjectMeta,
+        # ListMeta`.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1alpha1::ListMeta]
+        attr_accessor :metadata
+      
+        # This field is equivalent to the metadata.continue field and is provided as a
+        # convenience for compatibility with https://google.aip.dev/158. The value is
+        # opaque and may be used to issue another request to the endpoint that served
+        # this list to retrieve the next set of available objects. Continuing a list may
+        # not be possible if the server configuration has changed or more than a few
+        # minutes have passed. The metadata.resourceVersion field returned when using
+        # this field will be identical to the value in the first response.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
