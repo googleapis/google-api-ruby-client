@@ -1156,6 +1156,12 @@ module Google
       class AllocationShareSettings
         include Google::Apis::Core::Hashable
       
+        # A List of Project names to specify consumer projects for this shared-
+        # reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
+        # Corresponds to the JSON property `projects`
+        # @return [Array<String>]
+        attr_accessor :projects
+      
         # Type of sharing for this shared-reservation
         # Corresponds to the JSON property `shareType`
         # @return [String]
@@ -1167,6 +1173,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @projects = args[:projects] if args.key?(:projects)
           @share_type = args[:share_type] if args.key?(:share_type)
         end
       end
@@ -2771,49 +2778,22 @@ module Google
       class Backend
         include Google::Apis::Core::Hashable
       
-        # Specifies the balancing mode for the backend.
-        # When choosing a balancing mode, you need to consider the loadBalancingScheme,
-        # and protocol for the backend service, as well as the type of backend (instance
-        # group or NEG).
-        # 
-        # - If the load balancing mode is CONNECTION, then the load is spread based on
-        # how many concurrent connections the backend can handle.
-        # You can use the CONNECTION balancing mode if the protocol for the backend
-        # service is SSL, TCP, or UDP.
-        # If the loadBalancingScheme for the backend service is EXTERNAL (SSL Proxy and
-        # TCP Proxy load balancers), you must also specify exactly one of the following
-        # parameters: maxConnections (except for regional managed instance groups),
-        # maxConnectionsPerInstance, or maxConnectionsPerEndpoint.
-        # If the loadBalancingScheme for the backend service is INTERNAL (internal TCP/
-        # UDP Load Balancers) or EXTERNAL  (Network Load Balancing), you cannot specify
-        # any additional parameters.
-        # 
-        # - If the load balancing mode is RATE, the load is spread based on the rate of
-        # HTTP requests per second (RPS).
-        # You can use the RATE balancing mode if the protocol for the backend service is
-        # HTTP, HTTP2, or HTTPS. You must specify exactly one of the following
-        # parameters: maxRate (except for regional managed instance groups),
-        # maxRatePerInstance, or maxRatePerEndpoint.
-        # 
-        # - If the load balancing mode is UTILIZATION, the load is spread based on the
-        # backend utilization of instances in an instance group.
-        # You can use the UTILIZATION balancing mode if the loadBalancingScheme of the
-        # backend service is EXTERNAL (except Network Load Balancing),
-        # INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED and the backends are instance
-        # groups. There are no restrictions on the backend service protocol.
+        # Specifies how to determine whether the backend of a load balancer can handle
+        # additional traffic or is fully loaded. For usage guidelines, see  Connection
+        # balancing mode.
         # Corresponds to the JSON property `balancingMode`
         # @return [String]
         attr_accessor :balancing_mode
       
-        # A multiplier applied to the group's maximum servicing capacity (based on
-        # UTILIZATION, RATE or CONNECTION). Default value is 1, which means the group
-        # will serve up to 100% of its configured capacity (depending on balancingMode).
-        # A setting of 0 means the group is completely drained, offering 0% of its
-        # available capacity. Valid range is 0.0 and [0.1,1.0]. You cannot configure a
-        # setting larger than 0 and smaller than 0.1. You cannot configure a setting of
-        # 0 when there is only one backend attached to the backend service.
-        # This cannot be used for Internal TCP/UDP Load Balancing and Network Load
-        # Balancing.
+        # A multiplier applied to the backend's target capacity of its balancing mode.
+        # The default value is 1, which means the group serves up to 100% of its
+        # configured capacity (depending on balancingMode). A setting of 0 means the
+        # group is completely drained, offering 0% of its available capacity. The valid
+        # ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and
+        # smaller than 0.1. You cannot configure a setting of 0 when there is only one
+        # backend attached to the backend service.
+        # Not supported by:
+        # - Internal TCP/UDP Load Balancing - Network Load Balancing
         # Corresponds to the JSON property `capacityScaler`
         # @return [Float]
         attr_accessor :capacity_scaler
@@ -2851,91 +2831,52 @@ module Google
         # @return [String]
         attr_accessor :group
       
-        # Defines a target maximum number of simultaneous connections that the backend
-        # can handle. Valid for network endpoint group and instance group backends (
-        # except for regional managed instance groups). If the backend's balancingMode
-        # is UTILIZATION, this is an optional parameter. If the backend's balancingMode
-        # is CONNECTION, and backend is attached to a backend service whose
-        # loadBalancingScheme is EXTERNAL (except Network Load Balancing), you must
-        # specify either this parameter, maxConnectionsPerInstance, or
-        # maxConnectionsPerEndpoint.
-        # Not available if the backend's balancingMode is RATE. Cannot be specified for
-        # Network Load Balancing or Internal TCP/UDP Load Balancing, even though those
-        # load balancers require a balancing mode of CONNECTION.
+        # Defines a target maximum number of simultaneous connections. For usage
+        # guidelines, see Connection balancing mode and Utilization balancing mode. Not
+        # available if the backend's balancingMode is RATE. Not supported by:
+        # - Internal TCP/UDP Load Balancing - Network Load Balancing
         # Corresponds to the JSON property `maxConnections`
         # @return [Fixnum]
         attr_accessor :max_connections
       
-        # Defines a target maximum number of simultaneous connections for an endpoint of
-        # a NEG. This is multiplied by the number of endpoints in the NEG to implicitly
-        # calculate a maximum number of target maximum simultaneous connections for the
-        # NEG. If the backend's balancingMode is CONNECTION, and backend is attached to
-        # a backend service whose loadBalancingScheme is EXTERNAL (except Network Load
-        # Balancing), you must specify either this parameter, maxConnections, or
-        # maxConnectionsPerInstance.
-        # Not available if the backend's balancingMode is RATE. Cannot be specified for
-        # Network Load Balancing or Internal TCP/UDP Load Balancing, even though those
-        # load balancers require a balancing mode of CONNECTION.
+        # Defines a target maximum number of simultaneous connections. For usage
+        # guidelines, see Connection balancing mode and Utilization balancing mode.
+        # Not available if the backend's balancingMode is RATE. Not supported by:
+        # - Internal TCP/UDP Load Balancing - Network Load Balancing.
         # Corresponds to the JSON property `maxConnectionsPerEndpoint`
         # @return [Fixnum]
         attr_accessor :max_connections_per_endpoint
       
-        # Defines a target maximum number of simultaneous connections for a single VM in
-        # a backend instance group. This is multiplied by the number of instances in the
-        # instance group to implicitly calculate a target maximum number of simultaneous
-        # connections for the whole instance group. If the backend's balancingMode is
-        # UTILIZATION, this is an optional parameter. If the backend's balancingMode is
-        # CONNECTION, and backend is attached to a backend service whose
-        # loadBalancingScheme is EXTERNAL (except Network Load Balancing), you must
-        # specify either this parameter,  maxConnections, or maxConnectionsPerEndpoint.
-        # Not available if the backend's balancingMode is RATE. Cannot be specified for
-        # Network Load Balancing or Internal TCP/UDP Load Balancing, even though those
-        # load balancers require a balancing mode of CONNECTION.
+        # Defines a target maximum number of simultaneous connections. For usage
+        # guidelines, see Connection balancing mode and Utilization balancing mode.
+        # Not available if the backend's balancingMode is RATE. Not supported by:
+        # - Internal TCP/UDP Load Balancing - Network Load Balancing.
         # Corresponds to the JSON property `maxConnectionsPerInstance`
         # @return [Fixnum]
         attr_accessor :max_connections_per_instance
       
-        # Defines a maximum number of HTTP requests per second (RPS) that the backend
-        # can handle. Valid for network endpoint group and instance group backends (
-        # except for regional managed instance groups). Must not be defined if the
-        # backend is a managed instance group that uses autoscaling based on load
-        # balancing.
-        # If the backend's balancingMode is UTILIZATION, this is an optional parameter.
-        # If the backend's balancingMode is RATE, you must specify maxRate,
-        # maxRatePerInstance, or maxRatePerEndpoint.
+        # Defines a maximum number of HTTP requests per second (RPS). For usage
+        # guidelines, see Rate balancing mode and Utilization balancing mode.
         # Not available if the backend's balancingMode is CONNECTION.
         # Corresponds to the JSON property `maxRate`
         # @return [Fixnum]
         attr_accessor :max_rate
       
-        # Defines a maximum target for requests per second (RPS) for an endpoint of a
-        # NEG. This is multiplied by the number of endpoints in the NEG to implicitly
-        # calculate a target maximum rate for the NEG.
-        # If the backend's balancingMode is RATE, you must specify either this parameter,
-        # maxRate (except for regional managed instance groups), or maxRatePerInstance.
+        # Defines a maximum target for requests per second (RPS). For usage guidelines,
+        # see Rate balancing mode and Utilization balancing mode.
         # Not available if the backend's balancingMode is CONNECTION.
         # Corresponds to the JSON property `maxRatePerEndpoint`
         # @return [Float]
         attr_accessor :max_rate_per_endpoint
       
-        # Defines a maximum target for requests per second (RPS) for a single VM in a
-        # backend instance group. This is multiplied by the number of instances in the
-        # instance group to implicitly calculate a target maximum rate for the whole
-        # instance group.
-        # If the backend's balancingMode is UTILIZATION, this is an optional parameter.
-        # If the backend's balancingMode is RATE, you must specify either this parameter,
-        # maxRate (except for regional managed instance groups), or maxRatePerEndpoint.
+        # Defines a maximum target for requests per second (RPS). For usage guidelines,
+        # see Rate balancing mode and Utilization balancing mode.
         # Not available if the backend's balancingMode is CONNECTION.
         # Corresponds to the JSON property `maxRatePerInstance`
         # @return [Float]
         attr_accessor :max_rate_per_instance
       
-        # Defines the maximum average backend utilization of a backend VM in an instance
-        # group. The valid range is [0.0, 1.0]. This is an optional parameter if the
-        # backend's balancingMode is UTILIZATION.
-        # This parameter can be used in conjunction with maxRate, maxRatePerInstance,
-        # maxConnections (except for regional managed instance groups), or
-        # maxConnectionsPerInstance.
+        # 
         # Corresponds to the JSON property `maxUtilization`
         # @return [Float]
         attr_accessor :max_utilization
@@ -3673,7 +3614,8 @@ module Google
       
         # The backend service timeout has a different meaning depending on the type of
         # load balancer. For more information see,  Backend service settings The default
-        # is 30 seconds.
+        # is 30 seconds. The full range of timeout values allowed is 1 - 2,147,483,647
+        # seconds.
         # Corresponds to the JSON property `timeoutSec`
         # @return [Fixnum]
         attr_accessor :timeout_sec
@@ -5794,9 +5736,9 @@ module Google
       class ConnectionDraining
         include Google::Apis::Core::Hashable
       
-        # The amount of time in seconds to allow existing connections to persist while
-        # on unhealthy backend VMs. Only applicable if the protocol is not UDP. The
-        # valid range is [0, 3600].
+        # Configures a duration timeout for existing requests on a removed backend
+        # instance. For supported load balancers and protocols, as described in Enabling
+        # connection draining.
         # Corresponds to the JSON property `drainingTimeoutSec`
         # @return [Fixnum]
         attr_accessor :draining_timeout_sec
@@ -6414,9 +6356,12 @@ module Google
         # @return [String]
         attr_accessor :source_storage_object
       
-        # [Output Only] The status of disk creation. CREATING: Disk is provisioning.
-        # RESTORING: Source data is being copied into the disk. FAILED: Disk creation
-        # failed. READY: Disk is ready for use. DELETING: Disk is deleting.
+        # [Output Only] The status of disk creation.
+        # - CREATING: Disk is provisioning.
+        # - RESTORING: Source data is being copied into the disk.
+        # - FAILED: Disk creation failed.
+        # - READY: Disk is ready for use.
+        # - DELETING: Disk is deleting.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -8440,6 +8385,32 @@ module Google
         end
       end
       
+      # 
+      class FirewallPoliciesListAssociationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of associations.
+        # Corresponds to the JSON property `associations`
+        # @return [Array<Google::Apis::ComputeAlpha::FirewallPolicyAssociation>]
+        attr_accessor :associations
+      
+        # [Output Only] Type of firewallPolicy associations. Always compute#
+        # FirewallPoliciesListAssociations for lists of firewallPolicy associations.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @associations = args[:associations] if args.key?(:associations)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
       # Represents a Firewall Policy resource. (== resource_for `$api_version`.
       # firewallPolicies ==)
       class FirewallPolicy
@@ -9771,6 +9742,69 @@ module Google
       end
       
       # 
+      class GlobalOrganizationSetPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Flatten Policy to create a backward compatible wire-format. Deprecated. Use '
+        # policy' to specify bindings.
+        # Corresponds to the JSON property `bindings`
+        # @return [Array<Google::Apis::ComputeAlpha::Binding>]
+        attr_accessor :bindings
+      
+        # Flatten Policy to create a backward compatible wire-format. Deprecated. Use '
+        # policy' to specify the etag.
+        # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :etag
+      
+        # An Identity and Access Management (IAM) policy, which specifies access
+        # controls for Google Cloud resources.
+        # A `Policy` is a collection of `bindings`. A `binding` binds one or more `
+        # members` to a single `role`. Members can be user accounts, service accounts,
+        # Google groups, and domains (such as G Suite). A `role` is a named list of
+        # permissions; each `role` can be an IAM predefined role or a user-created
+        # custom role.
+        # For some types of Google Cloud resources, a `binding` can also specify a `
+        # condition`, which is a logical expression that allows access to a resource
+        # only if the expression evaluates to `true`. A condition can add constraints
+        # based on attributes of the request, the resource, or both. To learn which
+        # resources support conditions in their IAM policies, see the [IAM documentation]
+        # (https://cloud.google.com/iam/help/conditions/resource-policies).
+        # **JSON example:**
+        # ` "bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members":
+        # [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+        # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+        # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+        # ], "condition": ` "title": "expirable access", "description": "Does not grant
+        # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 `
+        # **YAML example:**
+        # bindings: - members: - user:mike@example.com - group:admins@example.com -
+        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
+        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
+        # access description: Does not grant access after Sep 2020 expression: request.
+        # time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3
+        # For a description of IAM and its features, see the [IAM documentation](https://
+        # cloud.google.com/iam/docs/).
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::ComputeAlpha::Policy]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bindings = args[:bindings] if args.key?(:bindings)
+          @etag = args[:etag] if args.key?(:etag)
+          @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
+      # 
       class GlobalSetLabelsRequest
         include Google::Apis::Core::Hashable
       
@@ -10705,6 +10739,129 @@ module Google
         end
       end
       
+      # Contains a list of HealthCheckServicesScopedList.
+      class HealthCheckServiceAggregatedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of HealthCheckServicesScopedList resources.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::HealthCheckServicesScopedList>]
+        attr_accessor :items
+      
+        # Type of resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::HealthCheckServiceAggregatedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::HealthCheckServiceAggregatedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # A full or valid partial URL to a health check service. For example, the
       # following are valid URLs:
       # - https://www.googleapis.com/compute/beta/projects/project-id/regions/us-west1/
@@ -10797,6 +10954,97 @@ module Google
           # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::HealthCheckServicesList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class HealthCheckServicesScopedList
+        include Google::Apis::Core::Hashable
+      
+        # A list of HealthCheckServices contained in this scope.
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::ComputeAlpha::HealthCheckService>]
+        attr_accessor :resources
+      
+        # Informational warning which replaces the list of backend services when the
+        # list is empty.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::HealthCheckServicesScopedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resources = args[:resources] if args.key?(:resources)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # Informational warning which replaces the list of backend services when the
+        # list is empty.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::HealthCheckServicesScopedList::Warning::Datum>]
           attr_accessor :data
         
           # [Output Only] A human-readable description of the warning code.
@@ -13397,6 +13645,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
+        # Contains output only fields. Use this sub-message for actual values set on
+        # Instance attributes as compared to the value requested by the user (intent) in
+        # their instance CRUD calls.
+        # Corresponds to the JSON property `resourceStatus`
+        # @return [Google::Apis::ComputeAlpha::ResourceStatus]
+        attr_accessor :resource_status
+      
         # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
@@ -13546,6 +13801,7 @@ module Google
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
+          @resource_status = args[:resource_status] if args.key?(:resource_status)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @secure_labels = args[:secure_labels] if args.key?(:secure_labels)
@@ -21449,6 +21705,14 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
+        # Configuration for a Serverless Deployment network endpoint group (NEG). The
+        # platform must be provided.
+        # Note: The target backend service must be in the same project and located in
+        # the same region as the Serverless NEG.
+        # Corresponds to the JSON property `serverlessDeployment`
+        # @return [Google::Apis::ComputeAlpha::NetworkEndpointGroupServerlessDeployment]
+        attr_accessor :serverless_deployment
+      
         # [Output only] Number of network endpoints in the network endpoint group.
         # Corresponds to the JSON property `size`
         # @return [Fixnum]
@@ -21493,6 +21757,7 @@ module Google
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @serverless_deployment = args[:serverless_deployment] if args.key?(:serverless_deployment)
           @size = args[:size] if args.key?(:size)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @type = args[:type] if args.key?(:type)
@@ -21909,6 +22174,72 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Configuration for a Serverless Deployment network endpoint group (NEG). The
+      # platform must be provided.
+      # Note: The target backend service must be in the same project and located in
+      # the same region as the Serverless NEG.
+      class NetworkEndpointGroupServerlessDeployment
+        include Google::Apis::Core::Hashable
+      
+        # The platform of the backend target(s) of this NEG. Possible values include:
+        # 
+        # - apigateway.googleapis.com
+        # - appengine.googleapies.com
+        # - cloudfunctions.googleapis.com
+        # - run.googleapis.com
+        # Corresponds to the JSON property `platform`
+        # @return [String]
+        attr_accessor :platform
+      
+        # The user-defined name of the workload/instance. This value must be provided
+        # explicitly or in the urlMask. The resource identified by this value is
+        # platform-specific and is as follows:
+        # 
+        # - API Gateway: The gateway id
+        # - AppEngine: The service name
+        # - Cloud Functions: The function name
+        # - Cloud Run: The service name
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        # A template to parse platform-specific fields from a request URL. URL mask
+        # allows for routing to multiple services on the same serverless platform
+        # without having to create multiple Network Endpoint Groups and backend services.
+        # The fields parsed by this template is platform-specific and are as follows:
+        # 
+        # - API Gateway: The gateway id
+        # - AppEngine: The service and version
+        # - Cloud Functions: The function
+        # - Cloud Run: The service and tag
+        # Corresponds to the JSON property `urlMask`
+        # @return [String]
+        attr_accessor :url_mask
+      
+        # The optional resource version. The version identified by this value is as
+        # platform-specific and is follows:
+        # 
+        # - API Gateway: Unused
+        # - AppEngine: The service version
+        # - Cloud Functions: Unused
+        # - Cloud Run: The service tag
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @platform = args[:platform] if args.key?(:platform)
+          @resource = args[:resource] if args.key?(:resource)
+          @url_mask = args[:url_mask] if args.key?(:url_mask)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -22331,6 +22662,14 @@ module Google
         # @return [String]
         attr_accessor :stack_type
       
+        # SubInterfaces help enable L2 communication for the instance over subnetworks
+        # that support L2. Every network interface will get a default untagged (vlan not
+        # specified) subinterface. Users can specify additional tagged subinterfaces
+        # which are sub-fields to the Network Interface.
+        # Corresponds to the JSON property `subinterfaces`
+        # @return [Array<Google::Apis::ComputeAlpha::NetworkInterfaceSubInterface>]
+        attr_accessor :subinterfaces
+      
         # The URL of the Subnetwork resource for this instance. If the network resource
         # is in legacy mode, do not specify this field. If the network is in auto subnet
         # mode, specifying the subnetwork is optional. If the network is in custom
@@ -22364,7 +22703,46 @@ module Google
           @nic_type = args[:nic_type] if args.key?(:nic_type)
           @queue_count = args[:queue_count] if args.key?(:queue_count)
           @stack_type = args[:stack_type] if args.key?(:stack_type)
+          @subinterfaces = args[:subinterfaces] if args.key?(:subinterfaces)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+        end
+      end
+      
+      # 
+      class NetworkInterfaceSubInterface
+        include Google::Apis::Core::Hashable
+      
+        # An IPv4 internal IP address to assign to the instance for this subinterface.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # If specified, this subnetwork must belong to the same network as that of the
+        # network interface. If not specified the subnet of network interface will be
+        # used. If you specify this property, you can specify the subnetwork as a full
+        # or partial URL. For example, the following are all valid URLs:
+        # - https://www.googleapis.com/compute/v1/projects/project/regions/region/
+        # subnetworks/subnetwork
+        # - regions/region/subnetworks/subnetwork
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
+        # VLAN tag. Should match the VLAN(s) supported by the subnetwork to which this
+        # subinterface is connecting.
+        # Corresponds to the JSON property `vlan`
+        # @return [Fixnum]
+        attr_accessor :vlan
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+          @vlan = args[:vlan] if args.key?(:vlan)
         end
       end
       
@@ -24645,6 +25023,129 @@ module Google
         end
       end
       
+      # Contains a list of NotificationEndpointsScopedList.
+      class NotificationEndpointAggregatedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of NotificationEndpointsScopedList resources.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::NotificationEndpointsScopedList>]
+        attr_accessor :items
+      
+        # Type of resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::NotificationEndpointAggregatedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::NotificationEndpointAggregatedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # Represents a gRPC setting that describes one gRPC notification endpoint and
       # the retry duration attempting to send notification to this endpoint.
       class NotificationEndpointGrpcSettings
@@ -24765,6 +25266,97 @@ module Google
           # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NotificationEndpointList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class NotificationEndpointsScopedList
+        include Google::Apis::Core::Hashable
+      
+        # A list of NotificationEndpoints contained in this scope.
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::ComputeAlpha::NotificationEndpoint>]
+        attr_accessor :resources
+      
+        # Informational warning which replaces the list of notification endpoints when
+        # the list is empty.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::NotificationEndpointsScopedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resources = args[:resources] if args.key?(:resources)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # Informational warning which replaces the list of notification endpoints when
+        # the list is empty.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::NotificationEndpointsScopedList::Warning::Datum>]
           attr_accessor :data
         
           # [Output Only] A human-readable description of the warning code.
@@ -29067,6 +29659,49 @@ module Google
       end
       
       # 
+      class RegionInstanceGroupManagersResizeAdvancedRequest
+        include Google::Apis::Core::Hashable
+      
+        # If this flag is true, the managed instance group attempts to create all
+        # instances initiated by this resize request only once. If there is an error
+        # during creation, the managed instance group does not retry create this
+        # instance, and we will decrease the targetSize of the request instead. If the
+        # flag is false, the group attempts to recreate each instance continuously until
+        # it succeeds.
+        # This flag matters only in the first attempt of creation of an instance. After
+        # an instance is successfully created while this flag is enabled, the instance
+        # behaves the same way as all the other instances created with a regular resize
+        # request. In particular, if a running instance dies unexpectedly at a later
+        # time and needs to be recreated, this mode does not affect the recreation
+        # behavior in that scenario.
+        # This flag is applicable only to the current resize request. It does not
+        # influence other resize requests in any way.
+        # You can see which instances ar being created in which mode by calling the get
+        # or listManagedInstances API.
+        # Corresponds to the JSON property `noCreationRetries`
+        # @return [Boolean]
+        attr_accessor :no_creation_retries
+        alias_method :no_creation_retries?, :no_creation_retries
+      
+        # The number of running instances that the managed instance group should
+        # maintain at any given time. The group automatically adds or removes instances
+        # to maintain the number of instances specified by this parameter.
+        # Corresponds to the JSON property `targetSize`
+        # @return [Fixnum]
+        attr_accessor :target_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @no_creation_retries = args[:no_creation_retries] if args.key?(:no_creation_retries)
+          @target_size = args[:target_size] if args.key?(:target_size)
+        end
+      end
+      
+      # 
       class RegionInstanceGroupManagersSetAutoHealingRequest
         include Google::Apis::Core::Hashable
       
@@ -31057,6 +31692,50 @@ module Google
           @day = args[:day] if args.key?(:day)
           @duration = args[:duration] if args.key?(:duration)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Contains output only fields. Use this sub-message for actual values set on
+      # Instance attributes as compared to the value requested by the user (intent) in
+      # their instance CRUD calls.
+      class ResourceStatus
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `scheduling`
+        # @return [Google::Apis::ComputeAlpha::ResourceStatusScheduling]
+        attr_accessor :scheduling
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scheduling = args[:scheduling] if args.key?(:scheduling)
+        end
+      end
+      
+      # 
+      class ResourceStatusScheduling
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the availability domain (AD), which this instance should be
+        # scheduled on. The AD belongs to the spread GroupPlacementPolicy resource
+        # policy that has been assigned to the instance. Specify a value between 1-max
+        # count of availability domains in your GroupPlacementPolicy. See go/placement-
+        # policy-extension for more details.
+        # Corresponds to the JSON property `availabilityDomain`
+        # @return [Fixnum]
+        attr_accessor :availability_domain
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @availability_domain = args[:availability_domain] if args.key?(:availability_domain)
         end
       end
       
@@ -33104,6 +33783,15 @@ module Google
         attr_accessor :automatic_restart
         alias_method :automatic_restart?, :automatic_restart
       
+        # Specifies the availability domain (AD), which this instance should be
+        # scheduled on. The AD belongs to the spread GroupPlacementPolicy resource
+        # policy that has been assigned to the instance. Specify a value between 1-max
+        # count of availability domains in your GroupPlacementPolicy. See go/placement-
+        # policy-extension for more details.
+        # Corresponds to the JSON property `availabilityDomain`
+        # @return [Fixnum]
+        attr_accessor :availability_domain
+      
         # Defines whether the instance is tolerant of higher cpu latency. This can only
         # be set during instance creation, or when the instance is not currently running.
         # It must not be set if the preemptible option is also set.
@@ -33167,6 +33855,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @automatic_restart = args[:automatic_restart] if args.key?(:automatic_restart)
+          @availability_domain = args[:availability_domain] if args.key?(:availability_domain)
           @latency_tolerant = args[:latency_tolerant] if args.key?(:latency_tolerant)
           @location_hint = args[:location_hint] if args.key?(:location_hint)
           @maintenance_freeze_duration_hours = args[:maintenance_freeze_duration_hours] if args.key?(:maintenance_freeze_duration_hours)
@@ -33749,8 +34438,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :priority
       
-        # Must be specified if the action is "rate_based_blacklist" or "throttle".
-        # Cannot be specified for any other actions.
+        # Must be specified if the action is "rate_based_ban" or "throttle". Cannot be
+        # specified for any other actions.
         # Corresponds to the JSON property `rateLimitOptions`
         # @return [Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptions]
         attr_accessor :rate_limit_options
@@ -35250,6 +35939,11 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::NetworkInterface>]
         attr_accessor :network_interfaces
       
+        # PostKeyRevocationActionType of the instance.
+        # Corresponds to the JSON property `postKeyRevocationActionType`
+        # @return [String]
+        attr_accessor :post_key_revocation_action_type
+      
         # Sets the scheduling options for an Instance. NextID: 13
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeAlpha::Scheduling]
@@ -35284,6 +35978,7 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
+          @post_key_revocation_action_type = args[:post_key_revocation_action_type] if args.key?(:post_key_revocation_action_type)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
           @tags = args[:tags] if args.key?(:tags)
@@ -36275,6 +36970,12 @@ module Google
         attr_accessor :enable_flow_logs
         alias_method :enable_flow_logs?, :enable_flow_logs
       
+        # Enables Layer2 communication on the subnetwork.
+        # Corresponds to the JSON property `enableL2`
+        # @return [Boolean]
+        attr_accessor :enable_l2
+        alias_method :enable_l2?, :enable_l2
+      
         # Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in
         # this subnet can directly access Google services via internal IPv6 addresses.
         # This field can be both set at resource creation time and updated using patch.
@@ -36471,6 +37172,14 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # A repeated field indicating the VLAN IDs supported on this subnetwork. During
+        # Subnet creation, specifying vlan is valid only if enable_l2 is true. During
+        # Subnet Update, specifying vlan is allowed only for l2 enabled subnets.
+        # Restricted to only one VLAN.
+        # Corresponds to the JSON property `vlans`
+        # @return [Array<Fixnum>]
+        attr_accessor :vlans
+      
         def initialize(**args)
            update!(**args)
         end
@@ -36482,6 +37191,7 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @enable_flow_logs = args[:enable_flow_logs] if args.key?(:enable_flow_logs)
+          @enable_l2 = args[:enable_l2] if args.key?(:enable_l2)
           @enable_private_v6_access = args[:enable_private_v6_access] if args.key?(:enable_private_v6_access)
           @external_ipv6_prefix = args[:external_ipv6_prefix] if args.key?(:external_ipv6_prefix)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
@@ -36507,6 +37217,7 @@ module Google
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @stack_type = args[:stack_type] if args.key?(:stack_type)
           @state = args[:state] if args.key?(:state)
+          @vlans = args[:vlans] if args.key?(:vlans)
         end
       end
       
@@ -37095,9 +37806,10 @@ module Google
       
       # Represents a Target gRPC Proxy resource.
       # A target gRPC proxy is a component of load balancers intended for load
-      # balancing gRPC traffic. Global forwarding rules reference a target gRPC proxy.
-      # The Target gRPC Proxy references a URL map which specifies how traffic routes
-      # to gRPC backend services. (== resource_for `$api_version`.targetGrpcProxies ==)
+      # balancing gRPC traffic. Only global forwarding rules with load balancing
+      # scheme INTERNAL_SELF_MANAGED can reference a target gRPC proxy. The target
+      # gRPC Proxy references a URL map that specifies how traffic is routed to gRPC
+      # backend services. (== resource_for `$api_version`.targetGrpcProxies ==)
       class TargetGrpcProxy
         include Google::Apis::Core::Hashable
       
@@ -38045,7 +38757,6 @@ module Google
         # possible.
         # - When quic-override is set to DISABLE, the load balancer doesn't use QUIC.
         # - If the quic-override flag is not specified, NONE is implied.
-        # -
         # Corresponds to the JSON property `quicOverride`
         # @return [String]
         attr_accessor :quic_override
@@ -38857,8 +39568,7 @@ module Google
         attr_accessor :failover_ratio
       
         # The URL of the HttpHealthCheck resource. A member instance in this pool is
-        # considered healthy if and only if the health checks pass. An empty list means
-        # all member instances will be considered healthy at all times. Only legacy
+        # considered healthy if and only if the health checks pass. Only legacy
         # HttpHealthChecks are supported. Only one health check may be specified.
         # Corresponds to the JSON property `healthChecks`
         # @return [Array<String>]
