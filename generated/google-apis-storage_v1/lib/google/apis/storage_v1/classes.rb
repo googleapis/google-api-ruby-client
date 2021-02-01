@@ -150,6 +150,12 @@ module Google
         # @return [Google::Apis::StorageV1::Bucket::RetentionPolicy]
         attr_accessor :retention_policy
       
+        # Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPZS`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # The URI of this bucket.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -223,6 +229,7 @@ module Google
           @owner = args[:owner] if args.key?(:owner)
           @project_number = args[:project_number] if args.key?(:project_number)
           @retention_policy = args[:retention_policy] if args.key?(:retention_policy)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @storage_class = args[:storage_class] if args.key?(:storage_class)
           @time_created = args[:time_created] if args.key?(:time_created)
