@@ -527,6 +527,7 @@ module Google
       
           property :end_time_unspecified, as: 'endTimeUnspecified'
           property :etag, as: 'etag'
+          property :event_type, as: 'eventType'
           property :extended_properties, as: 'extendedProperties', class: Google::Apis::CalendarV3::Event::ExtendedProperties, decorator: Google::Apis::CalendarV3::Event::ExtendedProperties::Representation
       
           property :gadget, as: 'gadget', class: Google::Apis::CalendarV3::Event::Gadget, decorator: Google::Apis::CalendarV3::Event::Gadget::Representation
