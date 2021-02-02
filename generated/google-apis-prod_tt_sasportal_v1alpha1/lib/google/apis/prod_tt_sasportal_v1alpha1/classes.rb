@@ -725,7 +725,7 @@ module Google
       
         # A pagination token returned from a previous call to ListDeployments that
         # indicates from where listing should continue. If the field is missing or empty,
-        # it means there is no more deployments.
+        # it means there are no more deployments.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -819,8 +819,8 @@ module Google
       class SasPortalMoveDeviceRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The name of the new parent resource node [spectrum.sas.portal.
-        # v1alpha1.Node] or customer to reparent the device under.
+        # Required. The name of the new parent resource node or customer to reparent the
+        # device under.
         # Corresponds to the JSON property `destination`
         # @return [String]
         attr_accessor :destination
