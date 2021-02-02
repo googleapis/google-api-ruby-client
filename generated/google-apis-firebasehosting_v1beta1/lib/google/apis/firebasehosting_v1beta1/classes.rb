@@ -404,14 +404,14 @@ module Google
         end
       end
       
-      # A [`header`](/docs/hosting/full-config#headers) is an object that specifies a
-      # URL pattern that, if matched to the request URL path, triggers Hosting to
-      # apply the specified custom response headers.
+      # A [`Header`](https://firebase.google.com/docs/hosting/full-config#headers)
+      # specifies a URL pattern that, if matched to the request URL path, triggers
+      # Hosting to apply the specified custom response headers.
       class Header
         include Google::Apis::Core::Hashable
       
-        # The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching) to
-        # match against the request URL path.
+        # The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#
+        # glob_pattern_matching) to match against the request URL path.
         # Corresponds to the JSON property `glob`
         # @return [String]
         attr_accessor :glob
@@ -514,9 +514,9 @@ module Google
       class ListReleasesResponse
         include Google::Apis::Core::Hashable
       
-        # If there are additional releases remaining beyond the ones in this response,
-        # then supply this token in the next [`list`](../sites.versions.files/list) call
-        # to continue with the next set of releases.
+        # The pagination token, if more results exist beyond the ones in this response.
+        # Include this token in your next call to `ListReleases`. Page tokens are short-
+        # lived and should not be stored.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -541,12 +541,14 @@ module Google
       class ListVersionFilesResponse
         include Google::Apis::Core::Hashable
       
-        # The list path/hashes in the specified version.
+        # The list of paths to the hashes of the files in the specified version.
         # Corresponds to the JSON property `files`
         # @return [Array<Google::Apis::FirebasehostingV1beta1::VersionFile>]
         attr_accessor :files
       
-        # The pagination token, if more results exist.
+        # The pagination token, if more results exist beyond the ones in this response.
+        # Include this token in your next call to `ListVersionFiles`. Page tokens are
+        # short-lived and should not be stored.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -668,14 +670,14 @@ module Google
         end
       end
       
-      # The request to populate a Version's Files.
+      # 
       class PopulateVersionFilesRequest
         include Google::Apis::Core::Hashable
       
         # A set of file paths to the hashes corresponding to assets that should be added
-        # to the version. Note that a file path to an empty hash will remove the path
-        # from the version. Calculate a hash by Gzipping the file then taking the SHA256
-        # hash of the newly compressed file.
+        # to the version. A file path to an empty hash will remove the path from the
+        # version. Calculate a hash by Gzipping the file then taking the SHA256 hash of
+        # the newly compressed file.
         # Corresponds to the JSON property `files`
         # @return [Hash<String,String>]
         attr_accessor :files
@@ -695,14 +697,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The content hashes of the specified files that need to be uploaded to the
-        # specified endpoint.
+        # specified URL.
         # Corresponds to the JSON property `uploadRequiredHashes`
         # @return [Array<String>]
         attr_accessor :upload_required_hashes
       
         # The URL to which the files should be uploaded, in the format: "https://upload-
-        # firebasehosting.googleapis.com/upload/sites/site-name /versions/versionID/
-        # files". Perform a multipart `POST` of the Gzipped file contents to the URL
+        # firebasehosting.googleapis.com/upload/sites/SITE_NAME /versions/VERSION_ID/
+        # files" Perform a multipart `POST` of the Gzipped file contents to the URL
         # using a forward slash and the hash of the file appended to the end.
         # Corresponds to the JSON property `uploadUrl`
         # @return [String]
@@ -748,14 +750,14 @@ module Google
         end
       end
       
-      # A [`redirect`](/docs/hosting/full-config#redirects) object specifies a URL
-      # pattern that, if matched to the request URL path, triggers Hosting to respond
-      # with a redirect to the specified destination path.
+      # A [`Redirect`](https://firebase.google.com/docs/hosting/full-config#redirects)
+      # specifies a URL pattern that, if matched to the request URL path, triggers
+      # Hosting to respond with a redirect to the specified destination path.
       class Redirect
         include Google::Apis::Core::Hashable
       
-        # The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching) to
-        # match against the request URL path.
+        # The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#
+        # glob_pattern_matching) to match against the request URL path.
         # Corresponds to the JSON property `glob`
         # @return [String]
         attr_accessor :glob
@@ -804,9 +806,9 @@ module Google
         # @return [String]
         attr_accessor :message
       
-        # Output only. The unique identifier for the release, in the format: sites/ site-
-        # name/releases/releaseID This name is provided in the response body when you
-        # call the [`CreateRelease`](sites.releases/create) endpoint.
+        # Output only. The unique identifier for the release, in the format: sites/
+        # SITE_NAME/releases/RELEASE_ID This name is provided in the response body when
+        # you call [`CreateRelease`](sites.releases/create).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -828,8 +830,8 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # A `Version` is the collection of configuration and [static files](sites.
-        # versions.files) that determine how a site is displayed.
+        # A `Version` is a configuration and a collection of static files which
+        # determine how a site is displayed.
         # Corresponds to the JSON property `version`
         # @return [Google::Apis::FirebasehostingV1beta1::Version]
         attr_accessor :version
@@ -849,9 +851,9 @@ module Google
         end
       end
       
-      # A [`rewrite`](/docs/hosting/full-config#rewrites) object specifies a URL
-      # pattern that, if matched to the request URL path, triggers Hosting to respond
-      # as if the service were given the specified destination URL.
+      # A [`Rewrite`](https://firebase.google.com/docs/hosting/full-config#rewrites)
+      # specifies a URL pattern that, if matched to the request URL path, triggers
+      # Hosting to respond as if the service were given the specified destination URL.
       class Rewrite
         include Google::Apis::Core::Hashable
       
@@ -867,8 +869,8 @@ module Google
         # @return [String]
         attr_accessor :function
       
-        # The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching) to
-        # match against the request URL path.
+        # The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#
+        # glob_pattern_matching) to match against the request URL path.
         # Corresponds to the JSON property `glob`
         # @return [String]
         attr_accessor :glob
@@ -910,8 +912,8 @@ module Google
       # The configuration for how incoming requests to a site should be routed and
       # processed before serving content. The URL request paths are matched against
       # the specified URL patterns in the configuration, then Hosting applies the
-      # applicable configuration according to a specific [priority order](/docs/
-      # hosting/full-config#hosting_priority_order).
+      # applicable configuration according to a specific [priority order](https://
+      # firebase.google.com/docs/hosting/full-config#hosting_priority_order).
       class ServingConfig
         include Google::Apis::Core::Hashable
       
@@ -1043,16 +1045,16 @@ module Google
         end
       end
       
-      # A `Version` is the collection of configuration and [static files](sites.
-      # versions.files) that determine how a site is displayed.
+      # A `Version` is a configuration and a collection of static files which
+      # determine how a site is displayed.
       class Version
         include Google::Apis::Core::Hashable
       
         # The configuration for how incoming requests to a site should be routed and
         # processed before serving content. The URL request paths are matched against
         # the specified URL patterns in the configuration, then Hosting applies the
-        # applicable configuration according to a specific [priority order](/docs/
-        # hosting/full-config#hosting_priority_order).
+        # applicable configuration according to a specific [priority order](https://
+        # firebase.google.com/docs/hosting/full-config#hosting_priority_order).
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::FirebasehostingV1beta1::ServingConfig]
         attr_accessor :config
@@ -1101,9 +1103,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The unique identifier for a version, in the format: sites/site-name /versions/
-        # versionID This name is provided in the response body when you call the [`
-        # CreateVersion`](../sites.versions/create) endpoint.
+        # The unique identifier for a version, in the format: sites/SITE_NAME /versions/
+        # VERSION_ID This name is provided in the response body when you call [`
+        # CreateVersion`](sites.versions/create).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1115,14 +1117,14 @@ module Google
         # @return [Google::Apis::FirebasehostingV1beta1::PreviewConfig]
         attr_accessor :preview
       
-        # The deploy status of a version. For a successful deploy, call the [`
-        # CreateVersion`](sites.versions/create) endpoint to make a new version (`
-        # CREATED` status), [upload all desired files](sites.versions/populateFiles) to
-        # the version, then [update](sites.versions/patch) the version to the `FINALIZED`
-        # status. Note that if you leave the version in the `CREATED` state for more
-        # than 12 hours, the system will automatically mark the version as `ABANDONED`.
-        # You can also change the status of a version to `DELETED` by calling the [`
-        # DeleteVersion`](sites.versions/delete) endpoint.
+        # The deploy status of a version. For a successful deploy, call [`CreateVersion`]
+        # (sites.versions/create) to make a new version (`CREATED` status), [upload all
+        # desired files](sites.versions/populateFiles) to the version, then [update](
+        # sites.versions/patch) the version to the `FINALIZED` status. Note that if you
+        # leave the version in the `CREATED` state for more than 12 hours, the system
+        # will automatically mark the version as `ABANDONED`. You can also change the
+        # status of a version to `DELETED` by calling [`DeleteVersion`](sites.versions/
+        # delete).
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
