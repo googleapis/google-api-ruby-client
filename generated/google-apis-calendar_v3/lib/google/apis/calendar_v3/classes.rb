@@ -1107,6 +1107,13 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Specific type of the event. Read-only. Possible values are:
+        # - "default" - A regular event or not further specified.
+        # - "outOfOffice" - An out-of-office event.
+        # Corresponds to the JSON property `eventType`
+        # @return [String]
+        attr_accessor :event_type
+      
         # Extended properties of the event.
         # Corresponds to the JSON property `extendedProperties`
         # @return [Google::Apis::CalendarV3::Event::ExtendedProperties]
@@ -1338,6 +1345,7 @@ module Google
           @end = args[:end] if args.key?(:end)
           @end_time_unspecified = args[:end_time_unspecified] if args.key?(:end_time_unspecified)
           @etag = args[:etag] if args.key?(:etag)
+          @event_type = args[:event_type] if args.key?(:event_type)
           @extended_properties = args[:extended_properties] if args.key?(:extended_properties)
           @gadget = args[:gadget] if args.key?(:gadget)
           @guests_can_invite_others = args[:guests_can_invite_others] if args.key?(:guests_can_invite_others)
