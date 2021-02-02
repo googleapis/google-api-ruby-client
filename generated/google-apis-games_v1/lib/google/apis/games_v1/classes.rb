@@ -2550,7 +2550,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :height
       
-        # The MIME type of the image.
+        # Output only. The MIME type of the image.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
