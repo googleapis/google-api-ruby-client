@@ -649,7 +649,8 @@ module Google
       class Image
         include Google::Apis::Core::Hashable
       
-        # Target image opacity. Valid values: `1` (solid, default), `0` (transparent).
+        # Target image opacity. Valid values: `1.0` (solid, default) to `0.0` (
+        # transparent).
         # Corresponds to the JSON property `alpha`
         # @return [Float]
         attr_accessor :alpha
@@ -692,8 +693,9 @@ module Google
         # @return [Google::Apis::TranscoderV1beta1::PreprocessingConfig]
         attr_accessor :preprocessing_config
       
-        # URI of the media. It must be stored in Cloud Storage. Example `gs://bucket/
-        # inputs/file.mp4`. If empty the value will be populated from `Job.input_uri`.
+        # URI of the media. Input files must be at least 5 seconds in duration and
+        # stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty,
+        # the value will be populated from `Job.input_uri`.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -744,8 +746,8 @@ module Google
       
         # Input only. Specify the `input_uri` to populate empty `uri` fields in each
         # element of `Job.config.inputs` or `JobTemplate.config.inputs` when using
-        # template. URI of the media. It must be stored in Cloud Storage. For example, `
-        # gs://bucket/inputs/file.mp4`.
+        # template. URI of the media. Input files must be at least 5 seconds in duration
+        # and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
         # Corresponds to the JSON property `inputUri`
         # @return [String]
         attr_accessor :input_uri
@@ -1119,6 +1121,65 @@ module Google
         end
       end
       
+      # Represents the metadata of the long-running operation.
+      class OperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # [Output only] API version used to start the operation.
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # [Output only] Identifies whether the user has requested cancellation of the
+        # operation. Operations that have successfully been cancelled have Operation.
+        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
+        # CANCELLED`.
+        # Corresponds to the JSON property `cancelRequested`
+        # @return [Boolean]
+        attr_accessor :cancel_requested
+        alias_method :cancel_requested?, :cancel_requested
+      
+        # [Output only] The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # [Output only] The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # [Output only] Human-readable status of the operation, if any.
+        # Corresponds to the JSON property `statusDetail`
+        # @return [String]
+        attr_accessor :status_detail
+      
+        # [Output only] Server-defined resource path for the target of the operation.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # [Output only] Name of the verb executed by the operation.
+        # Corresponds to the JSON property `verb`
+        # @return [String]
+        attr_accessor :verb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @cancel_requested = args[:cancel_requested] if args.key?(:cancel_requested)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @status_detail = args[:status_detail] if args.key?(:status_detail)
+          @target = args[:target] if args.key?(:target)
+          @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
       # The origin URI.
       class OriginUri
         include Google::Apis::Core::Hashable
@@ -1322,7 +1383,9 @@ module Google
         attr_accessor :individual_segments
         alias_method :individual_segments?, :individual_segments
       
-        # Duration of the segments in seconds. The default is `"6.0s"`.
+        # Duration of the segments in seconds. The default is `"6.0s"`. Note that `
+        # segmentDuration` must be greater than or equal to [`gopDuration`](#videostream)
+        # , and `segmentDuration` must be divisible by [`gopDuration`](#videostream).
         # Corresponds to the JSON property `segmentDuration`
         # @return [String]
         attr_accessor :segment_duration
@@ -1574,18 +1637,21 @@ module Google
         # input frame rate. The API will generate an output FPS that is divisible by the
         # input FPS, and smaller or equal to the target FPS. The following table shows
         # the computed video FPS given the target FPS (in parenthesis) and input FPS (in
-        # the first column): | | (30) | (60) | (25) | (50) | |--------|--------|--------|
-        # ------|------| | 240 | Fail | Fail | Fail | Fail | | 120 | 30 | 60 | 20 | 30 |
-        # | 100 | 25 | 50 | 20 | 30 | | 50 | 25 | 50 | 20 | 30 | | 60 | 30 | 60 | 20 |
-        # 30 | | 59.94 | 29.97 | 59.94 | 20 | 30 | | 48 | 24 | 48 | 20 | 30 | | 30 | 30 |
-        # 30 | 20 | 30 | | 25 | 25 | 25 | 20 | 30 | | 24 | 24 | 24 | 20 | 30 | | 23.976
-        # | 23.976 | 23.976 | 20 | 30 | | 15 | 15 | 15 | 20 | 30 | | 12 | 12 | 12 | 20 |
-        # 30 | | 10 | 10 | 10 | 20 | 30 |
+        # the first column): ``` | | (30) | (60) | (25) | (50) | |--------|--------|-----
+        # ---|------|------| | 240 | Fail | Fail | Fail | Fail | | 120 | 30 | 60 | 20 |
+        # 30 | | 100 | 25 | 50 | 20 | 30 | | 50 | 25 | 50 | 20 | 30 | | 60 | 30 | 60 |
+        # 20 | 30 | | 59.94 | 29.97 | 59.94 | 20 | 30 | | 48 | 24 | 48 | 20 | 30 | | 30 |
+        # 30 | 30 | 20 | 30 | | 25 | 25 | 25 | 20 | 30 | | 24 | 24 | 24 | 20 | 30 | |
+        # 23.976 | 23.976 | 23.976 | 20 | 30 | | 15 | 15 | 15 | 20 | 30 | | 12 | 12 | 12
+        # | 20 | 30 | | 10 | 10 | 10 | 20 | 30 | ```
         # Corresponds to the JSON property `frameRate`
         # @return [Float]
         attr_accessor :frame_rate
       
         # Select the GOP size based on the specified duration. The default is `"3s"`.
+        # Note that `gopDuration` must be less than or equal to [`segmentDuration`](#
+        # SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible
+        # by `gopDuration`.
         # Corresponds to the JSON property `gopDuration`
         # @return [String]
         attr_accessor :gop_duration
