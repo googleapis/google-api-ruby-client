@@ -52,6 +52,9 @@ module Google
         
         # Creates an enterprise. This is the last step in the enterprise signup flow.
         # @param [Google::Apis::AndroidmanagementV1::Enterprise] enterprise_object
+        # @param [Boolean] agreement_accepted
+        #   This feature is not generally available yet. Whether the managed Google Play
+        #   Agreement is presented and agreed.
         # @param [String] enterprise_token
         #   The enterprise token appended to the callback URL.
         # @param [String] project_id
@@ -75,15 +78,47 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_enterprise(enterprise_object = nil, enterprise_token: nil, project_id: nil, signup_url_name: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_enterprise(enterprise_object = nil, agreement_accepted: nil, enterprise_token: nil, project_id: nil, signup_url_name: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/enterprises', options)
           command.request_representation = Google::Apis::AndroidmanagementV1::Enterprise::Representation
           command.request_object = enterprise_object
           command.response_representation = Google::Apis::AndroidmanagementV1::Enterprise::Representation
           command.response_class = Google::Apis::AndroidmanagementV1::Enterprise
+          command.query['agreementAccepted'] = agreement_accepted unless agreement_accepted.nil?
           command.query['enterpriseToken'] = enterprise_token unless enterprise_token.nil?
           command.query['projectId'] = project_id unless project_id.nil?
           command.query['signupUrlName'] = signup_url_name unless signup_url_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # This feature is not generally available yet. Deletes an enterprise.
+        # @param [String] name
+        #   This feature is not generally available yet. The name of the enterprise in the
+        #   form enterprises/`enterpriseId`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidmanagementV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidmanagementV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_enterprise(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AndroidmanagementV1::Empty::Representation
+          command.response_class = Google::Apis::AndroidmanagementV1::Empty
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -114,6 +149,50 @@ module Google
           command.response_representation = Google::Apis::AndroidmanagementV1::Enterprise::Representation
           command.response_class = Google::Apis::AndroidmanagementV1::Enterprise
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # This feature is not generally available yet. Lists enterprises that are
+        # managed by an EMM. Only partial views are returned.
+        # @param [Fixnum] page_size
+        #   This feature is not generally available yet. The requested page size. The
+        #   actual page size may be fixed to a min or max value.
+        # @param [String] page_token
+        #   This feature is not generally available yet. A token identifying a page of
+        #   results returned by the server.
+        # @param [String] project_id
+        #   Required. This feature is not generally available yet. The ID of the Cloud
+        #   project of the EMM the enterprises belongs to.
+        # @param [String] view
+        #   This feature is not generally available yet. View that specify that partial
+        #   response should be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidmanagementV1::ListEnterprisesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidmanagementV1::ListEnterprisesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_enterprises(page_size: nil, page_token: nil, project_id: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/enterprises', options)
+          command.response_representation = Google::Apis::AndroidmanagementV1::ListEnterprisesResponse::Representation
+          command.response_class = Google::Apis::AndroidmanagementV1::ListEnterprisesResponse
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['projectId'] = project_id unless project_id.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

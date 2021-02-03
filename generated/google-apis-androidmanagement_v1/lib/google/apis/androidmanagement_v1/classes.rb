@@ -247,7 +247,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :accessible_track_ids
       
-        # This feature is not generally available.
+        # This feature is not generally available yet.
         # Corresponds to the JSON property `autoUpdateMode`
         # @return [String]
         attr_accessor :auto_update_mode
@@ -657,6 +657,65 @@ module Google
           @disable_apps = args[:disable_apps] if args.key?(:disable_apps)
           @non_compliance_detail_condition = args[:non_compliance_detail_condition] if args.key?(:non_compliance_detail_condition)
           @package_names_to_disable = args[:package_names_to_disable] if args.key?(:package_names_to_disable)
+        end
+      end
+      
+      # Contact details for LaForge enterprises.
+      class ContactInfo
+        include Google::Apis::Core::Hashable
+      
+        # Email address for a point of contact, which will be used to send important
+        # announcements related to managed Google Play.
+        # Corresponds to the JSON property `contactEmail`
+        # @return [String]
+        attr_accessor :contact_email
+      
+        # The email of the data protection officer. The email is validated but not
+        # verified.
+        # Corresponds to the JSON property `dataProtectionOfficerEmail`
+        # @return [String]
+        attr_accessor :data_protection_officer_email
+      
+        # The name of the data protection officer.
+        # Corresponds to the JSON property `dataProtectionOfficerName`
+        # @return [String]
+        attr_accessor :data_protection_officer_name
+      
+        # The phone number of the data protection officer The phone number is validated
+        # but not verified.
+        # Corresponds to the JSON property `dataProtectionOfficerPhone`
+        # @return [String]
+        attr_accessor :data_protection_officer_phone
+      
+        # The email of the EU representative. The email is validated but not verified.
+        # Corresponds to the JSON property `euRepresentativeEmail`
+        # @return [String]
+        attr_accessor :eu_representative_email
+      
+        # The name of the EU representative.
+        # Corresponds to the JSON property `euRepresentativeName`
+        # @return [String]
+        attr_accessor :eu_representative_name
+      
+        # The phone number of the EU representative. The phone number is validated but
+        # not verified.
+        # Corresponds to the JSON property `euRepresentativePhone`
+        # @return [String]
+        attr_accessor :eu_representative_phone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contact_email = args[:contact_email] if args.key?(:contact_email)
+          @data_protection_officer_email = args[:data_protection_officer_email] if args.key?(:data_protection_officer_email)
+          @data_protection_officer_name = args[:data_protection_officer_name] if args.key?(:data_protection_officer_name)
+          @data_protection_officer_phone = args[:data_protection_officer_phone] if args.key?(:data_protection_officer_phone)
+          @eu_representative_email = args[:eu_representative_email] if args.key?(:eu_representative_email)
+          @eu_representative_name = args[:eu_representative_name] if args.key?(:eu_representative_name)
+          @eu_representative_phone = args[:eu_representative_phone] if args.key?(:eu_representative_phone)
         end
       end
       
@@ -1197,6 +1256,11 @@ module Google
         attr_accessor :app_auto_approval_enabled
         alias_method :app_auto_approval_enabled?, :app_auto_approval_enabled
       
+        # Contact details for LaForge enterprises.
+        # Corresponds to the JSON property `contactInfo`
+        # @return [Google::Apis::AndroidmanagementV1::ContactInfo]
+        attr_accessor :contact_info
+      
         # The types of Google Pub/Sub notifications enabled for the enterprise.
         # Corresponds to the JSON property `enabledNotificationTypes`
         # @return [Array<String>]
@@ -1252,6 +1316,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @app_auto_approval_enabled = args[:app_auto_approval_enabled] if args.key?(:app_auto_approval_enabled)
+          @contact_info = args[:contact_info] if args.key?(:contact_info)
           @enabled_notification_types = args[:enabled_notification_types] if args.key?(:enabled_notification_types)
           @enterprise_display_name = args[:enterprise_display_name] if args.key?(:enterprise_display_name)
           @logo = args[:logo] if args.key?(:logo)
@@ -1644,6 +1709,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @devices = args[:devices] if args.key?(:devices)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # This feature is not generally available yet. Response to a request to list
+      # enterprises.
+      class ListEnterprisesResponse
+        include Google::Apis::Core::Hashable
+      
+        # This feature is not generally available yet. The list of enterprises.
+        # Corresponds to the JSON property `enterprises`
+        # @return [Array<Google::Apis::AndroidmanagementV1::Enterprise>]
+        attr_accessor :enterprises
+      
+        # This feature is not generally available yet. If there are more results, a
+        # token to retrieve next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enterprises = args[:enterprises] if args.key?(:enterprises)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
