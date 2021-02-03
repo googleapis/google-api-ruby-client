@@ -2424,6 +2424,8 @@ module Google
       class GoogleCloudDialogflowCxV3WebhookRequestIntentInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :display_name, as: 'displayName'
           property :last_matched_intent, as: 'lastMatchedIntent'
           hash :parameters, as: 'parameters', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue::Representation
       
@@ -3076,6 +3078,8 @@ module Google
       class GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :display_name, as: 'displayName'
           property :last_matched_intent, as: 'lastMatchedIntent'
           hash :parameters, as: 'parameters', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue::Representation
       
