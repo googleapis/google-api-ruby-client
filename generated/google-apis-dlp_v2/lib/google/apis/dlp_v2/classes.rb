@@ -1828,7 +1828,8 @@ module Google
         attr_accessor :display_name
       
         # Output only. The template name. The template will have one of the following
-        # formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID`.
+        # formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR `
+        # organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3349,7 +3350,8 @@ module Google
         attr_accessor :inspect_config
       
         # Output only. The template name. The template will have one of the following
-        # formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID`
+        # formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/
+        # ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

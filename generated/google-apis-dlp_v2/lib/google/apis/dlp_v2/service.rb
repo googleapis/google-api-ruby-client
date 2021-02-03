@@ -137,6 +137,630 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a DeidentifyTemplate for re-using frequently used configuration for de-
+        # identifying content, images, and storage. See https://cloud.google.com/dlp/
+        # docs/creating-templates-deid to learn more.
+        # @param [String] parent
+        #   Required. Parent resource name. The format of this value varies depending on
+        #   the scope of the request (project or organization) and whether you have [
+        #   specified a processing location](https://cloud.google.com/dlp/docs/specifying-
+        #   location): + Projects scope, location specified: `projects/`PROJECT_ID`/
+        #   locations/`LOCATION_ID + Projects scope, no location specified (defaults to
+        #   global): `projects/`PROJECT_ID + Organizations scope, location specified: `
+        #   organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+        #   location specified (defaults to global): `organizations/`ORG_ID The following
+        #   example `parent` string specifies a parent project with the identifier `
+        #   example-project`, and specifies the `europe-west3` location for processing
+        #   data: parent=projects/example-project/locations/europe-west3
+        # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDeidentifyTemplateRequest] google_privacy_dlp_v2_create_deidentify_template_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_deidentify_template(parent, google_privacy_dlp_v2_create_deidentify_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/deidentifyTemplates', options)
+          command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDeidentifyTemplateRequest::Representation
+          command.request_object = google_privacy_dlp_v2_create_deidentify_template_request_object
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates-deid to learn more.
+        # @param [String] name
+        #   Required. Resource name of the organization and deidentify template to be
+        #   deleted, for example `organizations/433245324/deidentifyTemplates/432452342`
+        #   or projects/project-id/deidentifyTemplates/432452342.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_deidentify_template(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DlpV2::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DlpV2::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates-deid to learn more.
+        # @param [String] name
+        #   Required. Resource name of the organization and deidentify template to be read,
+        #   for example `organizations/433245324/deidentifyTemplates/432452342` or
+        #   projects/project-id/deidentifyTemplates/432452342.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_deidentify_template(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists DeidentifyTemplates. See https://cloud.google.com/dlp/docs/creating-
+        # templates-deid to learn more.
+        # @param [String] parent
+        #   Required. Parent resource name. The format of this value varies depending on
+        #   the scope of the request (project or organization) and whether you have [
+        #   specified a processing location](https://cloud.google.com/dlp/docs/specifying-
+        #   location): + Projects scope, location specified: `projects/`PROJECT_ID`/
+        #   locations/`LOCATION_ID + Projects scope, no location specified (defaults to
+        #   global): `projects/`PROJECT_ID + Organizations scope, location specified: `
+        #   organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+        #   location specified (defaults to global): `organizations/`ORG_ID The following
+        #   example `parent` string specifies a parent project with the identifier `
+        #   example-project`, and specifies the `europe-west3` location for processing
+        #   data: parent=projects/example-project/locations/europe-west3
+        # @param [String] location_id
+        #   Deprecated. This field has no effect.
+        # @param [String] order_by
+        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   postfix. This list is case-insensitive, default sorting order is ascending,
+        #   redundant space characters are insignificant. Example: `name asc,update_time,
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
+        #   the template was created. - `update_time`: corresponds to time the template
+        #   was last updated. - `name`: corresponds to template's name. - `display_name`:
+        #   corresponds to template's display name.
+        # @param [Fixnum] page_size
+        #   Size of the page, can be limited by server. If zero server returns a page of
+        #   max size 100.
+        # @param [String] page_token
+        #   Page token to continue retrieval. Comes from previous call to `
+        #   ListDeidentifyTemplates`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2ListDeidentifyTemplatesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ListDeidentifyTemplatesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_deidentify_templates(parent, location_id: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/deidentifyTemplates', options)
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListDeidentifyTemplatesResponse::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListDeidentifyTemplatesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['locationId'] = location_id unless location_id.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates-deid to learn more.
+        # @param [String] name
+        #   Required. Resource name of organization and deidentify template to be updated,
+        #   for example `organizations/433245324/deidentifyTemplates/432452342` or
+        #   projects/project-id/deidentifyTemplates/432452342.
+        # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest] google_privacy_dlp_v2_update_deidentify_template_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_deidentify_template(name, google_privacy_dlp_v2_update_deidentify_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest::Representation
+          command.request_object = google_privacy_dlp_v2_update_deidentify_template_request_object
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an InspectTemplate for re-using frequently used configuration for
+        # inspecting content, images, and storage. See https://cloud.google.com/dlp/docs/
+        # creating-templates to learn more.
+        # @param [String] parent
+        #   Required. Parent resource name. The format of this value varies depending on
+        #   the scope of the request (project or organization) and whether you have [
+        #   specified a processing location](https://cloud.google.com/dlp/docs/specifying-
+        #   location): + Projects scope, location specified: `projects/`PROJECT_ID`/
+        #   locations/`LOCATION_ID + Projects scope, no location specified (defaults to
+        #   global): `projects/`PROJECT_ID + Organizations scope, location specified: `
+        #   organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+        #   location specified (defaults to global): `organizations/`ORG_ID The following
+        #   example `parent` string specifies a parent project with the identifier `
+        #   example-project`, and specifies the `europe-west3` location for processing
+        #   data: parent=projects/example-project/locations/europe-west3
+        # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateInspectTemplateRequest] google_privacy_dlp_v2_create_inspect_template_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_inspect_template(parent, google_privacy_dlp_v2_create_inspect_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/inspectTemplates', options)
+          command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2CreateInspectTemplateRequest::Representation
+          command.request_object = google_privacy_dlp_v2_create_inspect_template_request_object
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates to learn more.
+        # @param [String] name
+        #   Required. Resource name of the organization and inspectTemplate to be deleted,
+        #   for example `organizations/433245324/inspectTemplates/432452342` or projects/
+        #   project-id/inspectTemplates/432452342.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_inspect_template(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DlpV2::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DlpV2::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates to learn more.
+        # @param [String] name
+        #   Required. Resource name of the organization and inspectTemplate to be read,
+        #   for example `organizations/433245324/inspectTemplates/432452342` or projects/
+        #   project-id/inspectTemplates/432452342.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_inspect_template(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists InspectTemplates. See https://cloud.google.com/dlp/docs/creating-
+        # templates to learn more.
+        # @param [String] parent
+        #   Required. Parent resource name. The format of this value varies depending on
+        #   the scope of the request (project or organization) and whether you have [
+        #   specified a processing location](https://cloud.google.com/dlp/docs/specifying-
+        #   location): + Projects scope, location specified: `projects/`PROJECT_ID`/
+        #   locations/`LOCATION_ID + Projects scope, no location specified (defaults to
+        #   global): `projects/`PROJECT_ID + Organizations scope, location specified: `
+        #   organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+        #   location specified (defaults to global): `organizations/`ORG_ID The following
+        #   example `parent` string specifies a parent project with the identifier `
+        #   example-project`, and specifies the `europe-west3` location for processing
+        #   data: parent=projects/example-project/locations/europe-west3
+        # @param [String] location_id
+        #   Deprecated. This field has no effect.
+        # @param [String] order_by
+        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   postfix. This list is case-insensitive, default sorting order is ascending,
+        #   redundant space characters are insignificant. Example: `name asc,update_time,
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
+        #   the template was created. - `update_time`: corresponds to time the template
+        #   was last updated. - `name`: corresponds to template's name. - `display_name`:
+        #   corresponds to template's display name.
+        # @param [Fixnum] page_size
+        #   Size of the page, can be limited by server. If zero server returns a page of
+        #   max size 100.
+        # @param [String] page_token
+        #   Page token to continue retrieval. Comes from previous call to `
+        #   ListInspectTemplates`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2ListInspectTemplatesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ListInspectTemplatesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_inspect_templates(parent, location_id: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/inspectTemplates', options)
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInspectTemplatesResponse::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInspectTemplatesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['locationId'] = location_id unless location_id.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the InspectTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates to learn more.
+        # @param [String] name
+        #   Required. Resource name of organization and inspectTemplate to be updated, for
+        #   example `organizations/433245324/inspectTemplates/432452342` or projects/
+        #   project-id/inspectTemplates/432452342.
+        # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateInspectTemplateRequest] google_privacy_dlp_v2_update_inspect_template_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_inspect_template(name, google_privacy_dlp_v2_update_inspect_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateInspectTemplateRequest::Representation
+          command.request_object = google_privacy_dlp_v2_update_inspect_template_request_object
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a DeidentifyTemplate for re-using frequently used configuration for de-
+        # identifying content, images, and storage. See https://cloud.google.com/dlp/
+        # docs/creating-templates-deid to learn more.
+        # @param [String] parent
+        #   Required. Parent resource name. The format of this value varies depending on
+        #   the scope of the request (project or organization) and whether you have [
+        #   specified a processing location](https://cloud.google.com/dlp/docs/specifying-
+        #   location): + Projects scope, location specified: `projects/`PROJECT_ID`/
+        #   locations/`LOCATION_ID + Projects scope, no location specified (defaults to
+        #   global): `projects/`PROJECT_ID + Organizations scope, location specified: `
+        #   organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+        #   location specified (defaults to global): `organizations/`ORG_ID The following
+        #   example `parent` string specifies a parent project with the identifier `
+        #   example-project`, and specifies the `europe-west3` location for processing
+        #   data: parent=projects/example-project/locations/europe-west3
+        # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDeidentifyTemplateRequest] google_privacy_dlp_v2_create_deidentify_template_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_location_deidentify_template(parent, google_privacy_dlp_v2_create_deidentify_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/deidentifyTemplates', options)
+          command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDeidentifyTemplateRequest::Representation
+          command.request_object = google_privacy_dlp_v2_create_deidentify_template_request_object
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates-deid to learn more.
+        # @param [String] name
+        #   Required. Resource name of the organization and deidentify template to be
+        #   deleted, for example `organizations/433245324/deidentifyTemplates/432452342`
+        #   or projects/project-id/deidentifyTemplates/432452342.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_location_deidentify_template(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DlpV2::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DlpV2::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates-deid to learn more.
+        # @param [String] name
+        #   Required. Resource name of the organization and deidentify template to be read,
+        #   for example `organizations/433245324/deidentifyTemplates/432452342` or
+        #   projects/project-id/deidentifyTemplates/432452342.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_location_deidentify_template(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists DeidentifyTemplates. See https://cloud.google.com/dlp/docs/creating-
+        # templates-deid to learn more.
+        # @param [String] parent
+        #   Required. Parent resource name. The format of this value varies depending on
+        #   the scope of the request (project or organization) and whether you have [
+        #   specified a processing location](https://cloud.google.com/dlp/docs/specifying-
+        #   location): + Projects scope, location specified: `projects/`PROJECT_ID`/
+        #   locations/`LOCATION_ID + Projects scope, no location specified (defaults to
+        #   global): `projects/`PROJECT_ID + Organizations scope, location specified: `
+        #   organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+        #   location specified (defaults to global): `organizations/`ORG_ID The following
+        #   example `parent` string specifies a parent project with the identifier `
+        #   example-project`, and specifies the `europe-west3` location for processing
+        #   data: parent=projects/example-project/locations/europe-west3
+        # @param [String] location_id
+        #   Deprecated. This field has no effect.
+        # @param [String] order_by
+        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   postfix. This list is case-insensitive, default sorting order is ascending,
+        #   redundant space characters are insignificant. Example: `name asc,update_time,
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
+        #   the template was created. - `update_time`: corresponds to time the template
+        #   was last updated. - `name`: corresponds to template's name. - `display_name`:
+        #   corresponds to template's display name.
+        # @param [Fixnum] page_size
+        #   Size of the page, can be limited by server. If zero server returns a page of
+        #   max size 100.
+        # @param [String] page_token
+        #   Page token to continue retrieval. Comes from previous call to `
+        #   ListDeidentifyTemplates`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2ListDeidentifyTemplatesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ListDeidentifyTemplatesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_deidentify_templates(parent, location_id: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/deidentifyTemplates', options)
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListDeidentifyTemplatesResponse::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListDeidentifyTemplatesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['locationId'] = location_id unless location_id.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates-deid to learn more.
+        # @param [String] name
+        #   Required. Resource name of organization and deidentify template to be updated,
+        #   for example `organizations/433245324/deidentifyTemplates/432452342` or
+        #   projects/project-id/deidentifyTemplates/432452342.
+        # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest] google_privacy_dlp_v2_update_deidentify_template_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_location_deidentify_template(name, google_privacy_dlp_v2_update_deidentify_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest::Representation
+          command.request_object = google_privacy_dlp_v2_update_deidentify_template_request_object
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists DlpJobs that match the specified filter in the request. See https://
         # cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/
         # docs/compute-risk-analysis to learn more.
@@ -209,6 +833,214 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['type'] = type unless type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an InspectTemplate for re-using frequently used configuration for
+        # inspecting content, images, and storage. See https://cloud.google.com/dlp/docs/
+        # creating-templates to learn more.
+        # @param [String] parent
+        #   Required. Parent resource name. The format of this value varies depending on
+        #   the scope of the request (project or organization) and whether you have [
+        #   specified a processing location](https://cloud.google.com/dlp/docs/specifying-
+        #   location): + Projects scope, location specified: `projects/`PROJECT_ID`/
+        #   locations/`LOCATION_ID + Projects scope, no location specified (defaults to
+        #   global): `projects/`PROJECT_ID + Organizations scope, location specified: `
+        #   organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+        #   location specified (defaults to global): `organizations/`ORG_ID The following
+        #   example `parent` string specifies a parent project with the identifier `
+        #   example-project`, and specifies the `europe-west3` location for processing
+        #   data: parent=projects/example-project/locations/europe-west3
+        # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateInspectTemplateRequest] google_privacy_dlp_v2_create_inspect_template_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_location_inspect_template(parent, google_privacy_dlp_v2_create_inspect_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/inspectTemplates', options)
+          command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2CreateInspectTemplateRequest::Representation
+          command.request_object = google_privacy_dlp_v2_create_inspect_template_request_object
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates to learn more.
+        # @param [String] name
+        #   Required. Resource name of the organization and inspectTemplate to be deleted,
+        #   for example `organizations/433245324/inspectTemplates/432452342` or projects/
+        #   project-id/inspectTemplates/432452342.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_location_inspect_template(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DlpV2::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DlpV2::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates to learn more.
+        # @param [String] name
+        #   Required. Resource name of the organization and inspectTemplate to be read,
+        #   for example `organizations/433245324/inspectTemplates/432452342` or projects/
+        #   project-id/inspectTemplates/432452342.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_location_inspect_template(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists InspectTemplates. See https://cloud.google.com/dlp/docs/creating-
+        # templates to learn more.
+        # @param [String] parent
+        #   Required. Parent resource name. The format of this value varies depending on
+        #   the scope of the request (project or organization) and whether you have [
+        #   specified a processing location](https://cloud.google.com/dlp/docs/specifying-
+        #   location): + Projects scope, location specified: `projects/`PROJECT_ID`/
+        #   locations/`LOCATION_ID + Projects scope, no location specified (defaults to
+        #   global): `projects/`PROJECT_ID + Organizations scope, location specified: `
+        #   organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+        #   location specified (defaults to global): `organizations/`ORG_ID The following
+        #   example `parent` string specifies a parent project with the identifier `
+        #   example-project`, and specifies the `europe-west3` location for processing
+        #   data: parent=projects/example-project/locations/europe-west3
+        # @param [String] location_id
+        #   Deprecated. This field has no effect.
+        # @param [String] order_by
+        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   postfix. This list is case-insensitive, default sorting order is ascending,
+        #   redundant space characters are insignificant. Example: `name asc,update_time,
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
+        #   the template was created. - `update_time`: corresponds to time the template
+        #   was last updated. - `name`: corresponds to template's name. - `display_name`:
+        #   corresponds to template's display name.
+        # @param [Fixnum] page_size
+        #   Size of the page, can be limited by server. If zero server returns a page of
+        #   max size 100.
+        # @param [String] page_token
+        #   Page token to continue retrieval. Comes from previous call to `
+        #   ListInspectTemplates`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2ListInspectTemplatesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ListInspectTemplatesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_inspect_templates(parent, location_id: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/inspectTemplates', options)
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInspectTemplatesResponse::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInspectTemplatesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['locationId'] = location_id unless location_id.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the InspectTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates to learn more.
+        # @param [String] name
+        #   Required. Resource name of organization and inspectTemplate to be updated, for
+        #   example `organizations/433245324/inspectTemplates/432452342` or projects/
+        #   project-id/inspectTemplates/432452342.
+        # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateInspectTemplateRequest] google_privacy_dlp_v2_update_inspect_template_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_location_inspect_template(name, google_privacy_dlp_v2_update_inspect_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateInspectTemplateRequest::Representation
+          command.request_object = google_privacy_dlp_v2_update_inspect_template_request_object
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -430,6 +1262,422 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a pre-built stored infoType to be used for inspection. See https://
+        # cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+        # @param [String] parent
+        #   Required. Parent resource name. The format of this value varies depending on
+        #   the scope of the request (project or organization) and whether you have [
+        #   specified a processing location](https://cloud.google.com/dlp/docs/specifying-
+        #   location): + Projects scope, location specified: `projects/`PROJECT_ID`/
+        #   locations/`LOCATION_ID + Projects scope, no location specified (defaults to
+        #   global): `projects/`PROJECT_ID + Organizations scope, location specified: `
+        #   organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+        #   location specified (defaults to global): `organizations/`ORG_ID The following
+        #   example `parent` string specifies a parent project with the identifier `
+        #   example-project`, and specifies the `europe-west3` location for processing
+        #   data: parent=projects/example-project/locations/europe-west3
+        # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateStoredInfoTypeRequest] google_privacy_dlp_v2_create_stored_info_type_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_location_stored_info_type(parent, google_privacy_dlp_v2_create_stored_info_type_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/storedInfoTypes', options)
+          command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2CreateStoredInfoTypeRequest::Representation
+          command.request_object = google_privacy_dlp_v2_create_stored_info_type_request_object
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-
+        # stored-infotypes to learn more.
+        # @param [String] name
+        #   Required. Resource name of the organization and storedInfoType to be deleted,
+        #   for example `organizations/433245324/storedInfoTypes/432452342` or projects/
+        #   project-id/storedInfoTypes/432452342.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_location_stored_info_type(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DlpV2::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DlpV2::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-
+        # infotypes to learn more.
+        # @param [String] name
+        #   Required. Resource name of the organization and storedInfoType to be read, for
+        #   example `organizations/433245324/storedInfoTypes/432452342` or projects/
+        #   project-id/storedInfoTypes/432452342.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_location_stored_info_type(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-
+        # infotypes to learn more.
+        # @param [String] parent
+        #   Required. Parent resource name. The format of this value varies depending on
+        #   the scope of the request (project or organization) and whether you have [
+        #   specified a processing location](https://cloud.google.com/dlp/docs/specifying-
+        #   location): + Projects scope, location specified: `projects/`PROJECT_ID`/
+        #   locations/`LOCATION_ID + Projects scope, no location specified (defaults to
+        #   global): `projects/`PROJECT_ID + Organizations scope, location specified: `
+        #   organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+        #   location specified (defaults to global): `organizations/`ORG_ID The following
+        #   example `parent` string specifies a parent project with the identifier `
+        #   example-project`, and specifies the `europe-west3` location for processing
+        #   data: parent=projects/example-project/locations/europe-west3
+        # @param [String] location_id
+        #   Deprecated. This field has no effect.
+        # @param [String] order_by
+        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   postfix. This list is case-insensitive, default sorting order is ascending,
+        #   redundant space characters are insignificant. Example: `name asc, display_name,
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
+        #   the most recent version of the resource was created. - `state`: corresponds to
+        #   the state of the resource. - `name`: corresponds to resource name. - `
+        #   display_name`: corresponds to info type's display name.
+        # @param [Fixnum] page_size
+        #   Size of the page, can be limited by server. If zero server returns a page of
+        #   max size 100.
+        # @param [String] page_token
+        #   Page token to continue retrieval. Comes from previous call to `
+        #   ListStoredInfoTypes`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2ListStoredInfoTypesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ListStoredInfoTypesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_stored_info_types(parent, location_id: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/storedInfoTypes', options)
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListStoredInfoTypesResponse::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListStoredInfoTypesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['locationId'] = location_id unless location_id.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the stored infoType by creating a new version. The existing version
+        # will continue to be used until the new version is ready. See https://cloud.
+        # google.com/dlp/docs/creating-stored-infotypes to learn more.
+        # @param [String] name
+        #   Required. Resource name of organization and storedInfoType to be updated, for
+        #   example `organizations/433245324/storedInfoTypes/432452342` or projects/
+        #   project-id/storedInfoTypes/432452342.
+        # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateStoredInfoTypeRequest] google_privacy_dlp_v2_update_stored_info_type_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_location_stored_info_type(name, google_privacy_dlp_v2_update_stored_info_type_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateStoredInfoTypeRequest::Representation
+          command.request_object = google_privacy_dlp_v2_update_stored_info_type_request_object
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a pre-built stored infoType to be used for inspection. See https://
+        # cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+        # @param [String] parent
+        #   Required. Parent resource name. The format of this value varies depending on
+        #   the scope of the request (project or organization) and whether you have [
+        #   specified a processing location](https://cloud.google.com/dlp/docs/specifying-
+        #   location): + Projects scope, location specified: `projects/`PROJECT_ID`/
+        #   locations/`LOCATION_ID + Projects scope, no location specified (defaults to
+        #   global): `projects/`PROJECT_ID + Organizations scope, location specified: `
+        #   organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+        #   location specified (defaults to global): `organizations/`ORG_ID The following
+        #   example `parent` string specifies a parent project with the identifier `
+        #   example-project`, and specifies the `europe-west3` location for processing
+        #   data: parent=projects/example-project/locations/europe-west3
+        # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateStoredInfoTypeRequest] google_privacy_dlp_v2_create_stored_info_type_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_stored_info_type(parent, google_privacy_dlp_v2_create_stored_info_type_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/storedInfoTypes', options)
+          command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2CreateStoredInfoTypeRequest::Representation
+          command.request_object = google_privacy_dlp_v2_create_stored_info_type_request_object
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-
+        # stored-infotypes to learn more.
+        # @param [String] name
+        #   Required. Resource name of the organization and storedInfoType to be deleted,
+        #   for example `organizations/433245324/storedInfoTypes/432452342` or projects/
+        #   project-id/storedInfoTypes/432452342.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_stored_info_type(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DlpV2::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DlpV2::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-
+        # infotypes to learn more.
+        # @param [String] name
+        #   Required. Resource name of the organization and storedInfoType to be read, for
+        #   example `organizations/433245324/storedInfoTypes/432452342` or projects/
+        #   project-id/storedInfoTypes/432452342.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_stored_info_type(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-
+        # infotypes to learn more.
+        # @param [String] parent
+        #   Required. Parent resource name. The format of this value varies depending on
+        #   the scope of the request (project or organization) and whether you have [
+        #   specified a processing location](https://cloud.google.com/dlp/docs/specifying-
+        #   location): + Projects scope, location specified: `projects/`PROJECT_ID`/
+        #   locations/`LOCATION_ID + Projects scope, no location specified (defaults to
+        #   global): `projects/`PROJECT_ID + Organizations scope, location specified: `
+        #   organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+        #   location specified (defaults to global): `organizations/`ORG_ID The following
+        #   example `parent` string specifies a parent project with the identifier `
+        #   example-project`, and specifies the `europe-west3` location for processing
+        #   data: parent=projects/example-project/locations/europe-west3
+        # @param [String] location_id
+        #   Deprecated. This field has no effect.
+        # @param [String] order_by
+        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   postfix. This list is case-insensitive, default sorting order is ascending,
+        #   redundant space characters are insignificant. Example: `name asc, display_name,
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
+        #   the most recent version of the resource was created. - `state`: corresponds to
+        #   the state of the resource. - `name`: corresponds to resource name. - `
+        #   display_name`: corresponds to info type's display name.
+        # @param [Fixnum] page_size
+        #   Size of the page, can be limited by server. If zero server returns a page of
+        #   max size 100.
+        # @param [String] page_token
+        #   Page token to continue retrieval. Comes from previous call to `
+        #   ListStoredInfoTypes`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2ListStoredInfoTypesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ListStoredInfoTypesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_stored_info_types(parent, location_id: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/storedInfoTypes', options)
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListStoredInfoTypesResponse::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListStoredInfoTypesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['locationId'] = location_id unless location_id.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the stored infoType by creating a new version. The existing version
+        # will continue to be used until the new version is ready. See https://cloud.
+        # google.com/dlp/docs/creating-stored-infotypes to learn more.
+        # @param [String] name
+        #   Required. Resource name of organization and storedInfoType to be updated, for
+        #   example `organizations/433245324/storedInfoTypes/432452342` or projects/
+        #   project-id/storedInfoTypes/432452342.
+        # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateStoredInfoTypeRequest] google_privacy_dlp_v2_update_stored_info_type_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_stored_info_type(name, google_privacy_dlp_v2_update_stored_info_type_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateStoredInfoTypeRequest::Representation
+          command.request_object = google_privacy_dlp_v2_update_stored_info_type_request_object
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # De-identifies potentially sensitive info from a ContentItem. This method has
         # limits on input size and output size. See https://cloud.google.com/dlp/docs/
         # deidentify-sensitive-data to learn more. When no InfoTypes or CustomInfoTypes
@@ -571,10 +1819,12 @@ module Google
         #   specified a processing location](https://cloud.google.com/dlp/docs/specifying-
         #   location): + Projects scope, location specified: `projects/`PROJECT_ID`/
         #   locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-        #   global): `projects/`PROJECT_ID The following example `parent` string specifies
-        #   a parent project with the identifier `example-project`, and specifies the `
-        #   europe-west3` location for processing data: parent=projects/example-project/
-        #   locations/europe-west3
+        #   global): `projects/`PROJECT_ID + Organizations scope, location specified: `
+        #   organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+        #   location specified (defaults to global): `organizations/`ORG_ID The following
+        #   example `parent` string specifies a parent project with the identifier `
+        #   example-project`, and specifies the `europe-west3` location for processing
+        #   data: parent=projects/example-project/locations/europe-west3
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDeidentifyTemplateRequest] google_privacy_dlp_v2_create_deidentify_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -608,8 +1858,9 @@ module Google
         # Deletes a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-
         # templates-deid to learn more.
         # @param [String] name
-        #   Required. Resource name of the deidentify template to be deleted, for example
-        #   projects/project-id/deidentifyTemplates/432452342.
+        #   Required. Resource name of the organization and deidentify template to be
+        #   deleted, for example `organizations/433245324/deidentifyTemplates/432452342`
+        #   or projects/project-id/deidentifyTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -640,7 +1891,8 @@ module Google
         # Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-
         # templates-deid to learn more.
         # @param [String] name
-        #   Required. Resource name of the deidentify template to be read, for example
+        #   Required. Resource name of the organization and deidentify template to be read,
+        #   for example `organizations/433245324/deidentifyTemplates/432452342` or
         #   projects/project-id/deidentifyTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -673,14 +1925,16 @@ module Google
         # templates-deid to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
-        #   the scope of the request (project) and whether you have [specified a
-        #   processing location](https://cloud.google.com/dlp/docs/specifying-location): +
-        #   Projects scope, location specified: `projects/`PROJECT_ID`/locations/`
-        #   LOCATION_ID + Projects scope, no location specified (defaults to global): `
-        #   projects/`PROJECT_ID The following example `parent` string specifies a parent
-        #   project with the identifier `example-project`, and specifies the `europe-west3`
-        #   location for processing data: parent=projects/example-project/locations/
-        #   europe-west3
+        #   the scope of the request (project or organization) and whether you have [
+        #   specified a processing location](https://cloud.google.com/dlp/docs/specifying-
+        #   location): + Projects scope, location specified: `projects/`PROJECT_ID`/
+        #   locations/`LOCATION_ID + Projects scope, no location specified (defaults to
+        #   global): `projects/`PROJECT_ID + Organizations scope, location specified: `
+        #   organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+        #   location specified (defaults to global): `organizations/`ORG_ID The following
+        #   example `parent` string specifies a parent project with the identifier `
+        #   example-project`, and specifies the `europe-west3` location for processing
+        #   data: parent=projects/example-project/locations/europe-west3
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -731,7 +1985,8 @@ module Google
         # Updates the DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-
         # templates-deid to learn more.
         # @param [String] name
-        #   Required. Resource name of deidentify template to be updated, for example
+        #   Required. Resource name of organization and deidentify template to be updated,
+        #   for example `organizations/433245324/deidentifyTemplates/432452342` or
         #   projects/project-id/deidentifyTemplates/432452342.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest] google_privacy_dlp_v2_update_deidentify_template_request_object
         # @param [String] fields
@@ -1040,10 +2295,12 @@ module Google
         #   specified a processing location](https://cloud.google.com/dlp/docs/specifying-
         #   location): + Projects scope, location specified: `projects/`PROJECT_ID`/
         #   locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-        #   global): `projects/`PROJECT_ID The following example `parent` string specifies
-        #   a parent project with the identifier `example-project`, and specifies the `
-        #   europe-west3` location for processing data: parent=projects/example-project/
-        #   locations/europe-west3
+        #   global): `projects/`PROJECT_ID + Organizations scope, location specified: `
+        #   organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+        #   location specified (defaults to global): `organizations/`ORG_ID The following
+        #   example `parent` string specifies a parent project with the identifier `
+        #   example-project`, and specifies the `europe-west3` location for processing
+        #   data: parent=projects/example-project/locations/europe-west3
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateInspectTemplateRequest] google_privacy_dlp_v2_create_inspect_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1077,8 +2334,9 @@ module Google
         # Deletes an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-
         # templates to learn more.
         # @param [String] name
-        #   Required. Resource name of the inspectTemplate to be deleted, for example
-        #   projects/project-id/inspectTemplates/432452342.
+        #   Required. Resource name of the organization and inspectTemplate to be deleted,
+        #   for example `organizations/433245324/inspectTemplates/432452342` or projects/
+        #   project-id/inspectTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1109,8 +2367,9 @@ module Google
         # Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-
         # templates to learn more.
         # @param [String] name
-        #   Required. Resource name of the inspectTemplate to be read, for example
-        #   projects/project-id/inspectTemplates/432452342.
+        #   Required. Resource name of the organization and inspectTemplate to be read,
+        #   for example `organizations/433245324/inspectTemplates/432452342` or projects/
+        #   project-id/inspectTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1146,10 +2405,12 @@ module Google
         #   specified a processing location](https://cloud.google.com/dlp/docs/specifying-
         #   location): + Projects scope, location specified: `projects/`PROJECT_ID`/
         #   locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-        #   global): `projects/`PROJECT_ID The following example `parent` string specifies
-        #   a parent project with the identifier `example-project`, and specifies the `
-        #   europe-west3` location for processing data: parent=projects/example-project/
-        #   locations/europe-west3
+        #   global): `projects/`PROJECT_ID + Organizations scope, location specified: `
+        #   organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+        #   location specified (defaults to global): `organizations/`ORG_ID The following
+        #   example `parent` string specifies a parent project with the identifier `
+        #   example-project`, and specifies the `europe-west3` location for processing
+        #   data: parent=projects/example-project/locations/europe-west3
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -1200,7 +2461,8 @@ module Google
         # Updates the InspectTemplate. See https://cloud.google.com/dlp/docs/creating-
         # templates to learn more.
         # @param [String] name
-        #   Required. Resource name of inspectTemplate to be updated, for example projects/
+        #   Required. Resource name of organization and inspectTemplate to be updated, for
+        #   example `organizations/433245324/inspectTemplates/432452342` or projects/
         #   project-id/inspectTemplates/432452342.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateInspectTemplateRequest] google_privacy_dlp_v2_update_inspect_template_request_object
         # @param [String] fields
@@ -1624,10 +2886,12 @@ module Google
         #   specified a processing location](https://cloud.google.com/dlp/docs/specifying-
         #   location): + Projects scope, location specified: `projects/`PROJECT_ID`/
         #   locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-        #   global): `projects/`PROJECT_ID The following example `parent` string specifies
-        #   a parent project with the identifier `example-project`, and specifies the `
-        #   europe-west3` location for processing data: parent=projects/example-project/
-        #   locations/europe-west3
+        #   global): `projects/`PROJECT_ID + Organizations scope, location specified: `
+        #   organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+        #   location specified (defaults to global): `organizations/`ORG_ID The following
+        #   example `parent` string specifies a parent project with the identifier `
+        #   example-project`, and specifies the `europe-west3` location for processing
+        #   data: parent=projects/example-project/locations/europe-west3
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDeidentifyTemplateRequest] google_privacy_dlp_v2_create_deidentify_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1661,8 +2925,9 @@ module Google
         # Deletes a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-
         # templates-deid to learn more.
         # @param [String] name
-        #   Required. Resource name of the deidentify template to be deleted, for example
-        #   projects/project-id/deidentifyTemplates/432452342.
+        #   Required. Resource name of the organization and deidentify template to be
+        #   deleted, for example `organizations/433245324/deidentifyTemplates/432452342`
+        #   or projects/project-id/deidentifyTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1693,7 +2958,8 @@ module Google
         # Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-
         # templates-deid to learn more.
         # @param [String] name
-        #   Required. Resource name of the deidentify template to be read, for example
+        #   Required. Resource name of the organization and deidentify template to be read,
+        #   for example `organizations/433245324/deidentifyTemplates/432452342` or
         #   projects/project-id/deidentifyTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1726,14 +2992,16 @@ module Google
         # templates-deid to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
-        #   the scope of the request (project) and whether you have [specified a
-        #   processing location](https://cloud.google.com/dlp/docs/specifying-location): +
-        #   Projects scope, location specified: `projects/`PROJECT_ID`/locations/`
-        #   LOCATION_ID + Projects scope, no location specified (defaults to global): `
-        #   projects/`PROJECT_ID The following example `parent` string specifies a parent
-        #   project with the identifier `example-project`, and specifies the `europe-west3`
-        #   location for processing data: parent=projects/example-project/locations/
-        #   europe-west3
+        #   the scope of the request (project or organization) and whether you have [
+        #   specified a processing location](https://cloud.google.com/dlp/docs/specifying-
+        #   location): + Projects scope, location specified: `projects/`PROJECT_ID`/
+        #   locations/`LOCATION_ID + Projects scope, no location specified (defaults to
+        #   global): `projects/`PROJECT_ID + Organizations scope, location specified: `
+        #   organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+        #   location specified (defaults to global): `organizations/`ORG_ID The following
+        #   example `parent` string specifies a parent project with the identifier `
+        #   example-project`, and specifies the `europe-west3` location for processing
+        #   data: parent=projects/example-project/locations/europe-west3
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -1784,7 +3052,8 @@ module Google
         # Updates the DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-
         # templates-deid to learn more.
         # @param [String] name
-        #   Required. Resource name of deidentify template to be updated, for example
+        #   Required. Resource name of organization and deidentify template to be updated,
+        #   for example `organizations/433245324/deidentifyTemplates/432452342` or
         #   projects/project-id/deidentifyTemplates/432452342.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest] google_privacy_dlp_v2_update_deidentify_template_request_object
         # @param [String] fields
@@ -2162,10 +3431,12 @@ module Google
         #   specified a processing location](https://cloud.google.com/dlp/docs/specifying-
         #   location): + Projects scope, location specified: `projects/`PROJECT_ID`/
         #   locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-        #   global): `projects/`PROJECT_ID The following example `parent` string specifies
-        #   a parent project with the identifier `example-project`, and specifies the `
-        #   europe-west3` location for processing data: parent=projects/example-project/
-        #   locations/europe-west3
+        #   global): `projects/`PROJECT_ID + Organizations scope, location specified: `
+        #   organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+        #   location specified (defaults to global): `organizations/`ORG_ID The following
+        #   example `parent` string specifies a parent project with the identifier `
+        #   example-project`, and specifies the `europe-west3` location for processing
+        #   data: parent=projects/example-project/locations/europe-west3
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateInspectTemplateRequest] google_privacy_dlp_v2_create_inspect_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2199,8 +3470,9 @@ module Google
         # Deletes an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-
         # templates to learn more.
         # @param [String] name
-        #   Required. Resource name of the inspectTemplate to be deleted, for example
-        #   projects/project-id/inspectTemplates/432452342.
+        #   Required. Resource name of the organization and inspectTemplate to be deleted,
+        #   for example `organizations/433245324/inspectTemplates/432452342` or projects/
+        #   project-id/inspectTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2231,8 +3503,9 @@ module Google
         # Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-
         # templates to learn more.
         # @param [String] name
-        #   Required. Resource name of the inspectTemplate to be read, for example
-        #   projects/project-id/inspectTemplates/432452342.
+        #   Required. Resource name of the organization and inspectTemplate to be read,
+        #   for example `organizations/433245324/inspectTemplates/432452342` or projects/
+        #   project-id/inspectTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2268,10 +3541,12 @@ module Google
         #   specified a processing location](https://cloud.google.com/dlp/docs/specifying-
         #   location): + Projects scope, location specified: `projects/`PROJECT_ID`/
         #   locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-        #   global): `projects/`PROJECT_ID The following example `parent` string specifies
-        #   a parent project with the identifier `example-project`, and specifies the `
-        #   europe-west3` location for processing data: parent=projects/example-project/
-        #   locations/europe-west3
+        #   global): `projects/`PROJECT_ID + Organizations scope, location specified: `
+        #   organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+        #   location specified (defaults to global): `organizations/`ORG_ID The following
+        #   example `parent` string specifies a parent project with the identifier `
+        #   example-project`, and specifies the `europe-west3` location for processing
+        #   data: parent=projects/example-project/locations/europe-west3
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -2322,7 +3597,8 @@ module Google
         # Updates the InspectTemplate. See https://cloud.google.com/dlp/docs/creating-
         # templates to learn more.
         # @param [String] name
-        #   Required. Resource name of inspectTemplate to be updated, for example projects/
+        #   Required. Resource name of organization and inspectTemplate to be updated, for
+        #   example `organizations/433245324/inspectTemplates/432452342` or projects/
         #   project-id/inspectTemplates/432452342.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateInspectTemplateRequest] google_privacy_dlp_v2_update_inspect_template_request_object
         # @param [String] fields
@@ -2645,14 +3921,16 @@ module Google
         # cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
-        #   the scope of the request (project) and whether you have [specified a
-        #   processing location](https://cloud.google.com/dlp/docs/specifying-location): +
-        #   Projects scope, location specified: `projects/`PROJECT_ID`/locations/`
-        #   LOCATION_ID + Projects scope, no location specified (defaults to global): `
-        #   projects/`PROJECT_ID The following example `parent` string specifies a parent
-        #   project with the identifier `example-project`, and specifies the `europe-west3`
-        #   location for processing data: parent=projects/example-project/locations/
-        #   europe-west3
+        #   the scope of the request (project or organization) and whether you have [
+        #   specified a processing location](https://cloud.google.com/dlp/docs/specifying-
+        #   location): + Projects scope, location specified: `projects/`PROJECT_ID`/
+        #   locations/`LOCATION_ID + Projects scope, no location specified (defaults to
+        #   global): `projects/`PROJECT_ID + Organizations scope, location specified: `
+        #   organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+        #   location specified (defaults to global): `organizations/`ORG_ID The following
+        #   example `parent` string specifies a parent project with the identifier `
+        #   example-project`, and specifies the `europe-west3` location for processing
+        #   data: parent=projects/example-project/locations/europe-west3
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateStoredInfoTypeRequest] google_privacy_dlp_v2_create_stored_info_type_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2686,8 +3964,9 @@ module Google
         # Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-
         # stored-infotypes to learn more.
         # @param [String] name
-        #   Required. Resource name of the storedInfoType to be deleted, for example
-        #   projects/project-id/storedInfoTypes/432452342.
+        #   Required. Resource name of the organization and storedInfoType to be deleted,
+        #   for example `organizations/433245324/storedInfoTypes/432452342` or projects/
+        #   project-id/storedInfoTypes/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2718,7 +3997,8 @@ module Google
         # Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-
         # infotypes to learn more.
         # @param [String] name
-        #   Required. Resource name of the storedInfoType to be read, for example projects/
+        #   Required. Resource name of the organization and storedInfoType to be read, for
+        #   example `organizations/433245324/storedInfoTypes/432452342` or projects/
         #   project-id/storedInfoTypes/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2751,14 +4031,16 @@ module Google
         # infotypes to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
-        #   the scope of the request (project) and whether you have [specified a
-        #   processing location](https://cloud.google.com/dlp/docs/specifying-location): +
-        #   Projects scope, location specified: `projects/`PROJECT_ID`/locations/`
-        #   LOCATION_ID + Projects scope, no location specified (defaults to global): `
-        #   projects/`PROJECT_ID The following example `parent` string specifies a parent
-        #   project with the identifier `example-project`, and specifies the `europe-west3`
-        #   location for processing data: parent=projects/example-project/locations/
-        #   europe-west3
+        #   the scope of the request (project or organization) and whether you have [
+        #   specified a processing location](https://cloud.google.com/dlp/docs/specifying-
+        #   location): + Projects scope, location specified: `projects/`PROJECT_ID`/
+        #   locations/`LOCATION_ID + Projects scope, no location specified (defaults to
+        #   global): `projects/`PROJECT_ID + Organizations scope, location specified: `
+        #   organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+        #   location specified (defaults to global): `organizations/`ORG_ID The following
+        #   example `parent` string specifies a parent project with the identifier `
+        #   example-project`, and specifies the `europe-west3` location for processing
+        #   data: parent=projects/example-project/locations/europe-west3
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -2810,7 +4092,8 @@ module Google
         # will continue to be used until the new version is ready. See https://cloud.
         # google.com/dlp/docs/creating-stored-infotypes to learn more.
         # @param [String] name
-        #   Required. Resource name of storedInfoType to be updated, for example projects/
+        #   Required. Resource name of organization and storedInfoType to be updated, for
+        #   example `organizations/433245324/storedInfoTypes/432452342` or projects/
         #   project-id/storedInfoTypes/432452342.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateStoredInfoTypeRequest] google_privacy_dlp_v2_update_stored_info_type_request_object
         # @param [String] fields
@@ -2846,14 +4129,16 @@ module Google
         # cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
-        #   the scope of the request (project) and whether you have [specified a
-        #   processing location](https://cloud.google.com/dlp/docs/specifying-location): +
-        #   Projects scope, location specified: `projects/`PROJECT_ID`/locations/`
-        #   LOCATION_ID + Projects scope, no location specified (defaults to global): `
-        #   projects/`PROJECT_ID The following example `parent` string specifies a parent
-        #   project with the identifier `example-project`, and specifies the `europe-west3`
-        #   location for processing data: parent=projects/example-project/locations/
-        #   europe-west3
+        #   the scope of the request (project or organization) and whether you have [
+        #   specified a processing location](https://cloud.google.com/dlp/docs/specifying-
+        #   location): + Projects scope, location specified: `projects/`PROJECT_ID`/
+        #   locations/`LOCATION_ID + Projects scope, no location specified (defaults to
+        #   global): `projects/`PROJECT_ID + Organizations scope, location specified: `
+        #   organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+        #   location specified (defaults to global): `organizations/`ORG_ID The following
+        #   example `parent` string specifies a parent project with the identifier `
+        #   example-project`, and specifies the `europe-west3` location for processing
+        #   data: parent=projects/example-project/locations/europe-west3
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateStoredInfoTypeRequest] google_privacy_dlp_v2_create_stored_info_type_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2887,8 +4172,9 @@ module Google
         # Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-
         # stored-infotypes to learn more.
         # @param [String] name
-        #   Required. Resource name of the storedInfoType to be deleted, for example
-        #   projects/project-id/storedInfoTypes/432452342.
+        #   Required. Resource name of the organization and storedInfoType to be deleted,
+        #   for example `organizations/433245324/storedInfoTypes/432452342` or projects/
+        #   project-id/storedInfoTypes/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2919,7 +4205,8 @@ module Google
         # Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-
         # infotypes to learn more.
         # @param [String] name
-        #   Required. Resource name of the storedInfoType to be read, for example projects/
+        #   Required. Resource name of the organization and storedInfoType to be read, for
+        #   example `organizations/433245324/storedInfoTypes/432452342` or projects/
         #   project-id/storedInfoTypes/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2952,14 +4239,16 @@ module Google
         # infotypes to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
-        #   the scope of the request (project) and whether you have [specified a
-        #   processing location](https://cloud.google.com/dlp/docs/specifying-location): +
-        #   Projects scope, location specified: `projects/`PROJECT_ID`/locations/`
-        #   LOCATION_ID + Projects scope, no location specified (defaults to global): `
-        #   projects/`PROJECT_ID The following example `parent` string specifies a parent
-        #   project with the identifier `example-project`, and specifies the `europe-west3`
-        #   location for processing data: parent=projects/example-project/locations/
-        #   europe-west3
+        #   the scope of the request (project or organization) and whether you have [
+        #   specified a processing location](https://cloud.google.com/dlp/docs/specifying-
+        #   location): + Projects scope, location specified: `projects/`PROJECT_ID`/
+        #   locations/`LOCATION_ID + Projects scope, no location specified (defaults to
+        #   global): `projects/`PROJECT_ID + Organizations scope, location specified: `
+        #   organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+        #   location specified (defaults to global): `organizations/`ORG_ID The following
+        #   example `parent` string specifies a parent project with the identifier `
+        #   example-project`, and specifies the `europe-west3` location for processing
+        #   data: parent=projects/example-project/locations/europe-west3
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -3011,7 +4300,8 @@ module Google
         # will continue to be used until the new version is ready. See https://cloud.
         # google.com/dlp/docs/creating-stored-infotypes to learn more.
         # @param [String] name
-        #   Required. Resource name of storedInfoType to be updated, for example projects/
+        #   Required. Resource name of organization and storedInfoType to be updated, for
+        #   example `organizations/433245324/storedInfoTypes/432452342` or projects/
         #   project-id/storedInfoTypes/432452342.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateStoredInfoTypeRequest] google_privacy_dlp_v2_update_stored_info_type_request_object
         # @param [String] fields
