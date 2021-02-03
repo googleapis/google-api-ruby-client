@@ -1,6 +1,6 @@
-# Simple REST client for version V1 of the Hangouts Chat API
+# Simple REST client for version V1 of the Google Chat API
 
-This is a simple client library for version V1 of the Hangouts Chat API. It provides:
+This is a simple client library for version V1 of the Google Chat API. It provides:
 
 * A client object that connects to the HTTP/JSON REST endpoint for the service.
 * Ruby objects for data structures related to the service.
@@ -65,7 +65,7 @@ More detailed descriptions of the Google simple REST clients are available in tw
 
 (Note: the above documents are written for the simple REST clients in general, and their examples may not reflect the Chat service in particular.)
 
-For reference information on specific calls in the Hangouts Chat API, see the {Google::Apis::ChatV1::HangoutsChatService class reference docs}.
+For reference information on specific calls in the Google Chat API, see the {Google::Apis::ChatV1::HangoutsChatService class reference docs}.
 
 ## Which client should I use?
 
