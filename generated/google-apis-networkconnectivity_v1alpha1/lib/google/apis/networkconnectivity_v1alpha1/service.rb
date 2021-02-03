@@ -31,7 +31,7 @@ module Google
       #    Networkconnectivity = Google::Apis::NetworkconnectivityV1alpha1 # Alias the module
       #    service = Networkconnectivity::NetworkconnectivityService.new
       #
-      # @see https://cloud.google.com/
+      # @see https://cloud.google.com/network-connectivity/docs
       class NetworkconnectivityService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,

@@ -24,7 +24,7 @@ module Google
     # The Network Connectivity API will be home to various services which provide
     # information pertaining to network connectivity.
     #
-    # @see https://cloud.google.com/
+    # @see https://cloud.google.com/network-connectivity/docs
     module NetworkconnectivityV1alpha1
       # Version of the Network Connectivity API this client connects to.
       # This is NOT the gem version.
