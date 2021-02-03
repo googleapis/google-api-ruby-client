@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Autofit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchUpdatePresentationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -834,6 +840,15 @@ module Google
           property :style, as: 'style', class: Google::Apis::SlidesV1::TextStyle, decorator: Google::Apis::SlidesV1::TextStyle::Representation
       
           property :type, as: 'type'
+        end
+      end
+      
+      class Autofit
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :autofit_type, as: 'autofitType'
+          property :font_scale, as: 'fontScale'
+          property :line_spacing_reduction, as: 'lineSpacingReduction'
         end
       end
       
@@ -1760,6 +1775,8 @@ module Google
       class ShapeProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :autofit, as: 'autofit', class: Google::Apis::SlidesV1::Autofit, decorator: Google::Apis::SlidesV1::Autofit::Representation
+      
           property :content_alignment, as: 'contentAlignment'
           property :link, as: 'link', class: Google::Apis::SlidesV1::Link, decorator: Google::Apis::SlidesV1::Link::Representation
       
