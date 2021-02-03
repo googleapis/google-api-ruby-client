@@ -20,9 +20,9 @@ require 'google/apis/errors'
 module Google
   module Apis
     module ChatV1
-      # Hangouts Chat API
+      # Google Chat API
       #
-      # Enables bots to fetch information and perform actions in Hangouts Chat.
+      # Enables bots to fetch information and perform actions in Google Chat.
       #
       # @example
       #    require 'google/apis/chat_v1'

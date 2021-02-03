@@ -19,13 +19,13 @@ require 'google/apis/chat_v1/gem_version.rb'
 
 module Google
   module Apis
-    # Hangouts Chat API
+    # Google Chat API
     #
-    # Enables bots to fetch information and perform actions in Hangouts Chat.
+    # Enables bots to fetch information and perform actions in Google Chat.
     #
     # @see https://developers.google.com/hangouts/chat
     module ChatV1
-      # Version of the Hangouts Chat API this client connects to.
+      # Version of the Google Chat API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1'
     end
