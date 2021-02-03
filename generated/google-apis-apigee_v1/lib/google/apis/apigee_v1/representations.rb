@@ -1618,6 +1618,7 @@ module Google
           property :name, as: 'name'
           property :properties, as: 'properties', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Properties, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Properties::Representation
       
+          property :state, as: 'state'
         end
       end
       
@@ -1660,6 +1661,7 @@ module Google
           collection :hostnames, as: 'hostnames'
           property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
           property :name, as: 'name'
+          property :state, as: 'state'
         end
       end
       
@@ -2120,6 +2122,7 @@ module Google
           property :analytics_region, as: 'analyticsRegion'
           collection :attributes, as: 'attributes'
           property :authorized_network, as: 'authorizedNetwork'
+          property :billing_type, as: 'billingType'
           property :ca_certificate, :base64 => true, as: 'caCertificate'
           property :created_at, :numeric_string => true, as: 'createdAt'
           property :customer_name, as: 'customerName'
@@ -2133,6 +2136,7 @@ module Google
       
           property :runtime_database_encryption_key_name, as: 'runtimeDatabaseEncryptionKeyName'
           property :runtime_type, as: 'runtimeType'
+          property :state, as: 'state'
           property :subscription_type, as: 'subscriptionType'
           property :type, as: 'type'
         end
