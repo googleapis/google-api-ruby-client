@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiUiv1beta3EvaluationReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3ProcessorVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1030,11 +1036,23 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiUiv1beta3EvaluationReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregate_metrics, as: 'aggregateMetrics', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3EvaluationMetrics, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3EvaluationMetrics::Representation
+      
+          property :evaluation, as: 'evaluation'
+          property :operation, as: 'operation'
+        end
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3ProcessorVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
+          property :latest_evaluation, as: 'latestEvaluation', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3EvaluationReference, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3EvaluationReference::Representation
+      
           property :name, as: 'name'
           property :schema, as: 'schema', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3Schema, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3Schema::Representation
       

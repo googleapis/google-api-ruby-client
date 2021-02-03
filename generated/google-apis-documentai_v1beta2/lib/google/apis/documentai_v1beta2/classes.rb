@@ -385,6 +385,37 @@ module Google
         end
       end
       
+      # Gives a short summary of an evaluation, and links to the evaluation itself.
+      class GoogleCloudDocumentaiUiv1beta3EvaluationReference
+        include Google::Apis::Core::Hashable
+      
+        # Evaluation metrics, either in aggregate or about a specific entity.
+        # Corresponds to the JSON property `aggregateMetrics`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3EvaluationMetrics]
+        attr_accessor :aggregate_metrics
+      
+        # The resource name of the evaluation.
+        # Corresponds to the JSON property `evaluation`
+        # @return [String]
+        attr_accessor :evaluation
+      
+        # The resource name of the Long Running Operation for the evaluation.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregate_metrics = args[:aggregate_metrics] if args.key?(:aggregate_metrics)
+          @evaluation = args[:evaluation] if args.key?(:evaluation)
+          @operation = args[:operation] if args.key?(:operation)
+        end
+      end
+      
       # A processor version is an implementation of a processor. Each processor can
       # have multiple versions, pre-trained by Google internally or up-trained by the
       # customer. At a time, a processor can only have one default version version. So
@@ -402,6 +433,11 @@ module Google
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
+      
+        # Gives a short summary of an evaluation, and links to the evaluation itself.
+        # Corresponds to the JSON property `latestEvaluation`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3EvaluationReference]
+        attr_accessor :latest_evaluation
       
         # The resource name of the processor version. Format: projects/`project`/
         # locations/`location`/processors/`processor`/processorVersions/`
@@ -428,6 +464,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @latest_evaluation = args[:latest_evaluation] if args.key?(:latest_evaluation)
           @name = args[:name] if args.key?(:name)
           @schema = args[:schema] if args.key?(:schema)
           @state = args[:state] if args.key?(:state)
