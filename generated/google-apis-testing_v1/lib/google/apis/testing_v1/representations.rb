@@ -615,6 +615,7 @@ module Google
           property :min_sdk_version, as: 'minSdkVersion'
           property :package_name, as: 'packageName'
           property :target_sdk_version, as: 'targetSdkVersion'
+          collection :uses_permission, as: 'usesPermission'
         end
       end
       
