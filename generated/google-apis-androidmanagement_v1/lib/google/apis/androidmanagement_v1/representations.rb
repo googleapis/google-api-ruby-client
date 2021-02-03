@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContactInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Date
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -197,6 +203,12 @@ module Google
       end
       
       class ListDevicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListEnterprisesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -600,6 +612,19 @@ module Google
         end
       end
       
+      class ContactInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contact_email, as: 'contactEmail'
+          property :data_protection_officer_email, as: 'dataProtectionOfficerEmail'
+          property :data_protection_officer_name, as: 'dataProtectionOfficerName'
+          property :data_protection_officer_phone, as: 'dataProtectionOfficerPhone'
+          property :eu_representative_email, as: 'euRepresentativeEmail'
+          property :eu_representative_name, as: 'euRepresentativeName'
+          property :eu_representative_phone, as: 'euRepresentativePhone'
+        end
+      end
+      
       class Date
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -717,6 +742,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :app_auto_approval_enabled, as: 'appAutoApprovalEnabled'
+          property :contact_info, as: 'contactInfo', class: Google::Apis::AndroidmanagementV1::ContactInfo, decorator: Google::Apis::AndroidmanagementV1::ContactInfo::Representation
+      
           collection :enabled_notification_types, as: 'enabledNotificationTypes'
           property :enterprise_display_name, as: 'enterpriseDisplayName'
           property :logo, as: 'logo', class: Google::Apis::AndroidmanagementV1::ExternalData, decorator: Google::Apis::AndroidmanagementV1::ExternalData::Representation
@@ -816,6 +843,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :devices, as: 'devices', class: Google::Apis::AndroidmanagementV1::Device, decorator: Google::Apis::AndroidmanagementV1::Device::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListEnterprisesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :enterprises, as: 'enterprises', class: Google::Apis::AndroidmanagementV1::Enterprise, decorator: Google::Apis::AndroidmanagementV1::Enterprise::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
