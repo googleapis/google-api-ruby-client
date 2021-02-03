@@ -123,6 +123,48 @@ module Google
         end
       end
       
+      # The autofit properties of a Shape.
+      class Autofit
+        include Google::Apis::Core::Hashable
+      
+        # The autofit type of the shape. If unspecified, the autofit type is inherited
+        # from a parent placeholder if it exists. The field will be automatically set to
+        # NONE if a request is made that may affect text fitting within its bounding
+        # text box. In this case the font_scale will be applied to the font_size and the
+        # line_spacing_reduction will be applied to the line_spacing. Both properties
+        # would also be reset to default values.
+        # Corresponds to the JSON property `autofitType`
+        # @return [String]
+        attr_accessor :autofit_type
+      
+        # The font scale applied to the shape. For shapes with autofit_type NONE or
+        # SHAPE_AUTOFIT, this value will be the default value of 1. For TEXT_AUTOFIT,
+        # this value multiplied by the font_size will give the font size that is
+        # rendered in the editor. This property is read-only.
+        # Corresponds to the JSON property `fontScale`
+        # @return [Float]
+        attr_accessor :font_scale
+      
+        # The line spacing reduction applied to the shape. For shapes with autofit_type
+        # NONE or SHAPE_AUTOFIT, this value will be the default value of 0. For
+        # TEXT_AUTOFIT, this value subtracted from the line_spacing will give the line
+        # spacing that is rendered in the editor. This property is read-only.
+        # Corresponds to the JSON property `lineSpacingReduction`
+        # @return [Float]
+        attr_accessor :line_spacing_reduction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @autofit_type = args[:autofit_type] if args.key?(:autofit_type)
+          @font_scale = args[:font_scale] if args.key?(:font_scale)
+          @line_spacing_reduction = args[:line_spacing_reduction] if args.key?(:line_spacing_reduction)
+        end
+      end
+      
       # Request message for PresentationsService.BatchUpdatePresentation.
       class BatchUpdatePresentationRequest
         include Google::Apis::Core::Hashable
@@ -3346,6 +3388,11 @@ module Google
       class ShapeProperties
         include Google::Apis::Core::Hashable
       
+        # The autofit properties of a Shape.
+        # Corresponds to the JSON property `autofit`
+        # @return [Google::Apis::SlidesV1::Autofit]
+        attr_accessor :autofit
+      
         # The alignment of the content in the shape. If unspecified, the alignment is
         # inherited from a parent placeholder if it exists. If the shape has no parent,
         # the default alignment matches the alignment for new shapes created in the
@@ -3386,6 +3433,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @autofit = args[:autofit] if args.key?(:autofit)
           @content_alignment = args[:content_alignment] if args.key?(:content_alignment)
           @link = args[:link] if args.key?(:link)
           @outline = args[:outline] if args.key?(:outline)
