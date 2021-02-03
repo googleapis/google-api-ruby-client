@@ -2575,6 +2575,12 @@ module Google
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Properties]
         attr_accessor :properties
       
+        # Output only. State of the environment. Values other than ACTIVE means the
+        # resource is not ready to use.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2587,6 +2593,7 @@ module Google
           @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
           @name = args[:name] if args.key?(:name)
           @properties = args[:properties] if args.key?(:properties)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -2738,6 +2745,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. State of the environment group. Values other than ACTIVE means
+        # the resource is not ready to use.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2748,6 +2761,7 @@ module Google
           @hostnames = args[:hostnames] if args.key?(:hostnames)
           @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
           @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -4234,6 +4248,12 @@ module Google
         # @return [String]
         attr_accessor :authorized_network
       
+        # Output only. Billing type of the Apigee organization. See [Apigee pricing](
+        # https://cloud.google.com/apigee/pricing).
+        # Corresponds to the JSON property `billingType`
+        # @return [String]
+        attr_accessor :billing_type
+      
         # Output only. Base64-encoded public certificate for the root CA of the Apigee
         # organization. Valid only when [RuntimeType] is CLOUD.
         # Corresponds to the JSON property `caCertificate`
@@ -4304,10 +4324,17 @@ module Google
         # @return [String]
         attr_accessor :runtime_type
       
-        # Output only. Subscription type of the Apigee organization. Valid values
-        # include trial (free, limited, and for evaluation purposes only) or paid (full
-        # subscription has been purchased). See [Apigee pricing](https://cloud.google.
-        # com/apigee/pricing/).
+        # Output only. State of the organization. Values other than ACTIVE means the
+        # resource is not ready to use.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. DEPRECATED: This will eventually be replaced by BillingType.
+        # Subscription type of the Apigee organization. Valid values include trial (free,
+        # limited, and for evaluation purposes only) or paid (full subscription has
+        # been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/)
+        # .
         # Corresponds to the JSON property `subscriptionType`
         # @return [String]
         attr_accessor :subscription_type
@@ -4326,6 +4353,7 @@ module Google
           @analytics_region = args[:analytics_region] if args.key?(:analytics_region)
           @attributes = args[:attributes] if args.key?(:attributes)
           @authorized_network = args[:authorized_network] if args.key?(:authorized_network)
+          @billing_type = args[:billing_type] if args.key?(:billing_type)
           @ca_certificate = args[:ca_certificate] if args.key?(:ca_certificate)
           @created_at = args[:created_at] if args.key?(:created_at)
           @customer_name = args[:customer_name] if args.key?(:customer_name)
@@ -4338,6 +4366,7 @@ module Google
           @properties = args[:properties] if args.key?(:properties)
           @runtime_database_encryption_key_name = args[:runtime_database_encryption_key_name] if args.key?(:runtime_database_encryption_key_name)
           @runtime_type = args[:runtime_type] if args.key?(:runtime_type)
+          @state = args[:state] if args.key?(:state)
           @subscription_type = args[:subscription_type] if args.key?(:subscription_type)
           @type = args[:type] if args.key?(:type)
         end
