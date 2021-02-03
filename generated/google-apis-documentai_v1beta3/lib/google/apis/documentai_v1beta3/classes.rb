@@ -385,6 +385,37 @@ module Google
         end
       end
       
+      # Gives a short summary of an evaluation, and links to the evaluation itself.
+      class GoogleCloudDocumentaiUiv1beta3EvaluationReference
+        include Google::Apis::Core::Hashable
+      
+        # Evaluation metrics, either in aggregate or about a specific entity.
+        # Corresponds to the JSON property `aggregateMetrics`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3EvaluationMetrics]
+        attr_accessor :aggregate_metrics
+      
+        # The resource name of the evaluation.
+        # Corresponds to the JSON property `evaluation`
+        # @return [String]
+        attr_accessor :evaluation
+      
+        # The resource name of the Long Running Operation for the evaluation.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregate_metrics = args[:aggregate_metrics] if args.key?(:aggregate_metrics)
+          @evaluation = args[:evaluation] if args.key?(:evaluation)
+          @operation = args[:operation] if args.key?(:operation)
+        end
+      end
+      
       # A processor version is an implementation of a processor. Each processor can
       # have multiple versions, pre-trained by Google internally or up-trained by the
       # customer. At a time, a processor can only have one default version version. So
@@ -402,6 +433,11 @@ module Google
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
+      
+        # Gives a short summary of an evaluation, and links to the evaluation itself.
+        # Corresponds to the JSON property `latestEvaluation`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3EvaluationReference]
+        attr_accessor :latest_evaluation
       
         # The resource name of the processor version. Format: projects/`project`/
         # locations/`location`/processors/`processor`/processorVersions/`
@@ -428,6 +464,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @latest_evaluation = args[:latest_evaluation] if args.key?(:latest_evaluation)
           @name = args[:name] if args.key?(:name)
           @schema = args[:schema] if args.key?(:schema)
           @state = args[:state] if args.key?(:state)
@@ -4383,10 +4420,21 @@ module Google
       class GoogleCloudDocumentaiV1beta3BatchProcessRequest
         include Google::Apis::Core::Hashable
       
+        # Config that controls the output of documents. All documents will be written as
+        # a JSON file.
+        # Corresponds to the JSON property `documentOutputConfig`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentOutputConfig]
+        attr_accessor :document_output_config
+      
         # The input config for each single document in the batch process.
         # Corresponds to the JSON property `inputConfigs`
         # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig>]
         attr_accessor :input_configs
+      
+        # The message for input config in batch process.
+        # Corresponds to the JSON property `inputDocuments`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig]
+        attr_accessor :input_documents
       
         # The message for output config in batch process.
         # Corresponds to the JSON property `outputConfig`
@@ -4406,7 +4454,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @document_output_config = args[:document_output_config] if args.key?(:document_output_config)
           @input_configs = args[:input_configs] if args.key?(:input_configs)
+          @input_documents = args[:input_documents] if args.key?(:input_documents)
           @output_config = args[:output_config] if args.key?(:output_config)
           @skip_human_review = args[:skip_human_review] if args.key?(:skip_human_review)
         end
@@ -4836,6 +4886,45 @@ module Google
           @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
           @relation = args[:relation] if args.key?(:relation)
           @subject_id = args[:subject_id] if args.key?(:subject_id)
+        end
+      end
+      
+      # Config that controls the output of documents. All documents will be written as
+      # a JSON file.
+      class GoogleCloudDocumentaiV1beta3DocumentOutputConfig
+        include Google::Apis::Core::Hashable
+      
+        # The configuration used when outputting documents.
+        # Corresponds to the JSON property `gcsOutputConfig`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentOutputConfigGcsOutputConfig]
+        attr_accessor :gcs_output_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_output_config = args[:gcs_output_config] if args.key?(:gcs_output_config)
+        end
+      end
+      
+      # The configuration used when outputting documents.
+      class GoogleCloudDocumentaiV1beta3DocumentOutputConfigGcsOutputConfig
+        include Google::Apis::Core::Hashable
+      
+        # The Cloud Storage uri (a directory) of the output.
+        # Corresponds to the JSON property `gcsUri`
+        # @return [String]
+        attr_accessor :gcs_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
         end
       end
       
@@ -6036,6 +6125,19 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Document]
         attr_accessor :document
       
+        # Document represents the canonical document resource in Document Understanding
+        # AI. It is an interchange format that provides insights into documents and
+        # allows for collaboration between users and Document Understanding AI to
+        # iterate and optimize for quality.
+        # Corresponds to the JSON property `inlineDocument`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Document]
+        attr_accessor :inline_document
+      
+        # Payload message of raw document content (bytes).
+        # Corresponds to the JSON property `rawDocument`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3RawDocument]
+        attr_accessor :raw_document
+      
         # Whether Human Review feature should be skipped for this request. Default to
         # false.
         # Corresponds to the JSON property `skipHumanReview`
@@ -6050,6 +6152,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @document = args[:document] if args.key?(:document)
+          @inline_document = args[:inline_document] if args.key?(:inline_document)
+          @raw_document = args[:raw_document] if args.key?(:raw_document)
           @skip_human_review = args[:skip_human_review] if args.key?(:skip_human_review)
         end
       end
@@ -6088,6 +6192,32 @@ module Google
           @document = args[:document] if args.key?(:document)
           @human_review_operation = args[:human_review_operation] if args.key?(:human_review_operation)
           @human_review_status = args[:human_review_status] if args.key?(:human_review_status)
+        end
+      end
+      
+      # Payload message of raw document content (bytes).
+      class GoogleCloudDocumentaiV1beta3RawDocument
+        include Google::Apis::Core::Hashable
+      
+        # Inline document content.
+        # Corresponds to the JSON property `content`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :content
+      
+        # An IANA MIME type (RFC6838) indicating the nature and format of the [content].
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
         end
       end
       
@@ -6147,6 +6277,14 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Document]
         attr_accessor :document
       
+        # Document represents the canonical document resource in Document Understanding
+        # AI. It is an interchange format that provides insights into documents and
+        # allows for collaboration between users and Document Understanding AI to
+        # iterate and optimize for quality.
+        # Corresponds to the JSON property `inlineDocument`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Document]
+        attr_accessor :inline_document
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6154,6 +6292,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @document = args[:document] if args.key?(:document)
+          @inline_document = args[:inline_document] if args.key?(:inline_document)
         end
       end
       

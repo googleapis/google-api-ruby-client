@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiUiv1beta3EvaluationReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3ProcessorVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -814,6 +820,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta3DocumentOutputConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentOutputConfigGcsOutputConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta3DocumentPage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1007,6 +1025,12 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1beta3ProcessResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3RawDocument
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1240,11 +1264,23 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiUiv1beta3EvaluationReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregate_metrics, as: 'aggregateMetrics', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3EvaluationMetrics, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3EvaluationMetrics::Representation
+      
+          property :evaluation, as: 'evaluation'
+          property :operation, as: 'operation'
+        end
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3ProcessorVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
+          property :latest_evaluation, as: 'latestEvaluation', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3EvaluationReference, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3EvaluationReference::Representation
+      
           property :name, as: 'name'
           property :schema, as: 'schema', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3Schema, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3Schema::Representation
       
@@ -2405,7 +2441,11 @@ module Google
       class GoogleCloudDocumentaiV1beta3BatchProcessRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_output_config, as: 'documentOutputConfig', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentOutputConfig, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentOutputConfig::Representation
+      
           collection :input_configs, as: 'inputConfigs', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig::Representation
+      
+          property :input_documents, as: 'inputDocuments', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig::Representation
       
           property :output_config, as: 'outputConfig', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchOutputConfig, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchOutputConfig::Representation
       
@@ -2525,6 +2565,21 @@ module Google
           property :object_id_prop, as: 'objectId'
           property :relation, as: 'relation'
           property :subject_id, as: 'subjectId'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentOutputConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_output_config, as: 'gcsOutputConfig', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentOutputConfigGcsOutputConfig, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentOutputConfigGcsOutputConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentOutputConfigGcsOutputConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_uri, as: 'gcsUri'
         end
       end
       
@@ -2880,6 +2935,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :document, as: 'document', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Document, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Document::Representation
       
+          property :inline_document, as: 'inlineDocument', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Document, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Document::Representation
+      
+          property :raw_document, as: 'rawDocument', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3RawDocument, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3RawDocument::Representation
+      
           property :skip_human_review, as: 'skipHumanReview'
         end
       end
@@ -2892,6 +2951,14 @@ module Google
           property :human_review_operation, as: 'humanReviewOperation'
           property :human_review_status, as: 'humanReviewStatus', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3HumanReviewStatus, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3HumanReviewStatus::Representation
       
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3RawDocument
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, :base64 => true, as: 'content'
+          property :mime_type, as: 'mimeType'
         end
       end
       
@@ -2911,6 +2978,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :document, as: 'document', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Document, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Document::Representation
+      
+          property :inline_document, as: 'inlineDocument', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Document, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Document::Representation
       
         end
       end
