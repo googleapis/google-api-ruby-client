@@ -512,11 +512,10 @@ module Google
         attr_accessor :is_list
         alias_method :is_list?, :is_list
       
-        # Indicates whether the parameter content should be redacted in text and audio.
-        # If the flag is set to true, the parameter content will be replaced by
-        # parameter name in both request and response. Note: the parameter content is
-        # subject to redaction if either parameter level redaction or entity type level
-        # redaction is enabled.
+        # Indicates whether the parameter content should be redacted in log. If
+        # redaction is enabled, the parameter content will be replaced by parameter name
+        # during logging. Note: the parameter content is subject to redaction if either
+        # parameter level redaction or entity type level redaction is enabled.
         # Corresponds to the JSON property `redact`
         # @return [Boolean]
         attr_accessor :redact
@@ -1059,11 +1058,10 @@ module Google
         attr_accessor :is_list
         alias_method :is_list?, :is_list
       
-        # Indicates whether the parameter content should be redacted in text and audio.
-        # If the flag is set to true, the parameter content will be replaced by
-        # parameter name in both request and response. Note: the parameter content is
-        # subject to redaction if either parameter level redaction or entity type level
-        # redaction is enabled.
+        # Indicates whether the parameter content should be redacted in log. If
+        # redaction is enabled, the parameter content will be replaced by parameter name
+        # during logging. Note: the parameter content is subject to redaction if either
+        # parameter level redaction or entity type level redaction is enabled.
         # Corresponds to the JSON property `redact`
         # @return [Boolean]
         attr_accessor :redact
@@ -1219,8 +1217,10 @@ module Google
         # TransitionRoutes defined in the page with intent specified. * TransitionRoutes
         # defined in the transition route groups with intent specified. *
         # TransitionRoutes defined in flow with intent specified. * TransitionRoutes
-        # defined in the page with only condition specified. * TransitionRoutes defined
-        # in the transition route groups with only condition specified.
+        # defined in the transition route groups with intent specified. *
+        # TransitionRoutes defined in the page with only condition specified. *
+        # TransitionRoutes defined in the transition route groups with only condition
+        # specified.
         # Corresponds to the JSON property `transitionRoutes`
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3TransitionRoute>]
         attr_accessor :transition_routes
@@ -1895,8 +1895,8 @@ module Google
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3ConversationTurn>]
         attr_accessor :conversation_turns
       
-        # Optional. Environment where the test was run. If not set, it indicates the
-        # draft environment.
+        # Environment where the test was run. If not set, it indicates the draft
+        # environment.
         # Corresponds to the JSON property `environment`
         # @return [String]
         attr_accessor :environment
@@ -2208,6 +2208,17 @@ module Google
       class GoogleCloudDialogflowCxV3WebhookRequestIntentInfo
         include Google::Apis::Core::Hashable
       
+        # The confidence of the matched intent. Values range from 0.0 (completely
+        # uncertain) to 1.0 (completely certain).
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Always present. The display name of the last matched intent.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # Always present. The unique identifier of the last matched intent. Format: `
         # projects//locations//agents//intents/`.
         # Corresponds to the JSON property `lastMatchedIntent`
@@ -2228,6 +2239,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @last_matched_intent = args[:last_matched_intent] if args.key?(:last_matched_intent)
           @parameters = args[:parameters] if args.key?(:parameters)
         end
@@ -2825,11 +2838,10 @@ module Google
         attr_accessor :is_list
         alias_method :is_list?, :is_list
       
-        # Indicates whether the parameter content should be redacted in text and audio.
-        # If the flag is set to true, the parameter content will be replaced by
-        # parameter name in both request and response. Note: the parameter content is
-        # subject to redaction if either parameter level redaction or entity type level
-        # redaction is enabled.
+        # Indicates whether the parameter content should be redacted in log. If
+        # redaction is enabled, the parameter content will be replaced by parameter name
+        # during logging. Note: the parameter content is subject to redaction if either
+        # parameter level redaction or entity type level redaction is enabled.
         # Corresponds to the JSON property `redact`
         # @return [Boolean]
         attr_accessor :redact
@@ -3372,11 +3384,10 @@ module Google
         attr_accessor :is_list
         alias_method :is_list?, :is_list
       
-        # Indicates whether the parameter content should be redacted in text and audio.
-        # If the flag is set to true, the parameter content will be replaced by
-        # parameter name in both request and response. Note: the parameter content is
-        # subject to redaction if either parameter level redaction or entity type level
-        # redaction is enabled.
+        # Indicates whether the parameter content should be redacted in log. If
+        # redaction is enabled, the parameter content will be replaced by parameter name
+        # during logging. Note: the parameter content is subject to redaction if either
+        # parameter level redaction or entity type level redaction is enabled.
         # Corresponds to the JSON property `redact`
         # @return [Boolean]
         attr_accessor :redact
@@ -3532,8 +3543,10 @@ module Google
         # TransitionRoutes defined in the page with intent specified. * TransitionRoutes
         # defined in the transition route groups with intent specified. *
         # TransitionRoutes defined in flow with intent specified. * TransitionRoutes
-        # defined in the page with only condition specified. * TransitionRoutes defined
-        # in the transition route groups with only condition specified.
+        # defined in the transition route groups with intent specified. *
+        # TransitionRoutes defined in the page with only condition specified. *
+        # TransitionRoutes defined in the transition route groups with only condition
+        # specified.
         # Corresponds to the JSON property `transitionRoutes`
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1TransitionRoute>]
         attr_accessor :transition_routes
@@ -4208,8 +4221,8 @@ module Google
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1ConversationTurn>]
         attr_accessor :conversation_turns
       
-        # Optional. Environment where the test was run. If not set, it indicates the
-        # draft environment.
+        # Environment where the test was run. If not set, it indicates the draft
+        # environment.
         # Corresponds to the JSON property `environment`
         # @return [String]
         attr_accessor :environment
@@ -4521,6 +4534,17 @@ module Google
       class GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo
         include Google::Apis::Core::Hashable
       
+        # The confidence of the matched intent. Values range from 0.0 (completely
+        # uncertain) to 1.0 (completely certain).
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Always present. The display name of the last matched intent.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # Always present. The unique identifier of the last matched intent. Format: `
         # projects//locations//agents//intents/`.
         # Corresponds to the JSON property `lastMatchedIntent`
@@ -4541,6 +4565,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @last_matched_intent = args[:last_matched_intent] if args.key?(:last_matched_intent)
           @parameters = args[:parameters] if args.key?(:parameters)
         end
