@@ -778,6 +778,247 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates an Experiment in the specified Environment.
+        # @param [String] parent
+        #   Required. The Agent to create an Environment for. Format: `projects//locations/
+        #   /agents//environments/`.
+        # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Experiment] google_cloud_dialogflow_cx_v3beta1_experiment_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Experiment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Experiment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_agent_environment_experiment(parent, google_cloud_dialogflow_cx_v3beta1_experiment_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3beta1/{+parent}/experiments', options)
+          command.request_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Experiment::Representation
+          command.request_object = google_cloud_dialogflow_cx_v3beta1_experiment_object
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Experiment::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Experiment
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified Experiment.
+        # @param [String] name
+        #   Required. The name of the Environment to delete. Format: `projects//locations//
+        #   agents//environments//experiments/`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_agent_environment_experiment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v3beta1/{+name}', options)
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the specified Experiment.
+        # @param [String] name
+        #   Required. The name of the Environment. Format: `projects//locations//agents//
+        #   environments//experiments/`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Experiment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Experiment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_agent_environment_experiment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3beta1/{+name}', options)
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Experiment::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Experiment
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the list of all experiments in the specified Environment.
+        # @param [String] parent
+        #   Required. The Environment to list all environments for. Format: `projects//
+        #   locations//agents//environments/`.
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return in a single page. By default 20 and at
+        #   most 100.
+        # @param [String] page_token
+        #   The next_page_token value returned from a previous list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ListExperimentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ListExperimentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_agent_environment_experiments(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3beta1/{+parent}/experiments', options)
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ListExperimentsResponse::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ListExperimentsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified Experiment.
+        # @param [String] name
+        #   The name of the experiment. Format: projects//locations//agents//environments//
+        #   experiments/..
+        # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Experiment] google_cloud_dialogflow_cx_v3beta1_experiment_object
+        # @param [String] update_mask
+        #   Required. The mask to control which fields get updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Experiment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Experiment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_agent_environment_experiment(name, google_cloud_dialogflow_cx_v3beta1_experiment_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v3beta1/{+name}', options)
+          command.request_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Experiment::Representation
+          command.request_object = google_cloud_dialogflow_cx_v3beta1_experiment_object
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Experiment::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Experiment
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Starts the specified Experiment. This rpc only changes the state of experiment
+        # from PENDING to RUNNING.
+        # @param [String] name
+        #   Required. Resource name of the experiment to start. Format: `projects//
+        #   locations//agents//environments//experiments/`.
+        # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1StartExperimentRequest] google_cloud_dialogflow_cx_v3beta1_start_experiment_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Experiment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Experiment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def start_project_location_agent_environment_experiment(name, google_cloud_dialogflow_cx_v3beta1_start_experiment_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3beta1/{+name}:start', options)
+          command.request_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1StartExperimentRequest::Representation
+          command.request_object = google_cloud_dialogflow_cx_v3beta1_start_experiment_request_object
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Experiment::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Experiment
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Stops the specified Experiment. This rpc only changes the state of experiment
+        # from RUNNING to DONE.
+        # @param [String] name
+        #   Required. Resource name of the experiment to stop. Format: `projects//
+        #   locations//agents//environments//experiments/`.
+        # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1StopExperimentRequest] google_cloud_dialogflow_cx_v3beta1_stop_experiment_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Experiment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Experiment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stop_project_location_agent_environment_experiment(name, google_cloud_dialogflow_cx_v3beta1_stop_experiment_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3beta1/{+name}:stop', options)
+          command.request_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1StopExperimentRequest::Representation
+          command.request_object = google_cloud_dialogflow_cx_v3beta1_stop_experiment_request_object
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Experiment::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Experiment
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Processes a natural language query and returns structured, actionable data as
         # a result. This method is not idempotent, because it may cause session entity
         # types to be updated, which in turn might affect results of future queries.
