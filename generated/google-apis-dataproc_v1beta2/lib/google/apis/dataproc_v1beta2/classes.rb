@@ -3198,19 +3198,21 @@ module Google
       class StartClusterRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. Specifying the cluster_uuid means the RPC should fail (with error
-        # NOT_FOUND) if cluster with specified UUID does not exist.
+        # Optional. Specifying the cluster_uuid means the RPC will fail (with error
+        # NOT_FOUND) if a cluster with the specified UUID does not exist.
         # Corresponds to the JSON property `clusterUuid`
         # @return [String]
         attr_accessor :cluster_uuid
       
         # Optional. A unique id used to identify the request. If the server receives two
-        # StartClusterRequest requests with the same id, then the second request will be
+        # StartClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/
+        # google.cloud.dataproc.v1beta2#google.cloud.dataproc.v1beta2.
+        # StartClusterRequest)s with the same id, then the second request will be
         # ignored and the first google.longrunning.Operation created and stored in the
-        # backend is returned.It is recommended to always set this value to a UUID (
-        # https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
-        # contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-
-        # ). The maximum length is 40 characters.
+        # backend is returned.Recommendation: Set this value to a UUID (https://en.
+        # wikipedia.org/wiki/Universally_unique_identifier).The id must contain only
+        # letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+        # maximum length is 40 characters.
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
@@ -3269,19 +3271,21 @@ module Google
       class StopClusterRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. Specifying the cluster_uuid means the RPC should fail (with error
-        # NOT_FOUND) if cluster with specified UUID does not exist.
+        # Optional. Specifying the cluster_uuid means the RPC will fail (with error
+        # NOT_FOUND) if a cluster with the specified UUID does not exist.
         # Corresponds to the JSON property `clusterUuid`
         # @return [String]
         attr_accessor :cluster_uuid
       
         # Optional. A unique id used to identify the request. If the server receives two
-        # StopClusterRequest requests with the same id, then the second request will be
-        # ignored and the first google.longrunning.Operation created and stored in the
-        # backend is returned.It is recommended to always set this value to a UUID (
-        # https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
-        # contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-
-        # ). The maximum length is 40 characters.
+        # StopClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/
+        # google.cloud.dataproc.v1beta2#google.cloud.dataproc.v1beta2.StopClusterRequest)
+        # s with the same id, then the second request will be ignored and the first
+        # google.longrunning.Operation created and stored in the backend is returned.
+        # Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/
+        # Universally_unique_identifier).The id must contain only letters (a-z, A-Z),
+        # numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+        # characters.
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
@@ -3307,12 +3311,13 @@ module Google
         attr_accessor :job
       
         # Optional. A unique id used to identify the request. If the server receives two
-        # SubmitJobRequest requests with the same id, then the second request will be
-        # ignored and the first Job created and stored in the backend is returned.It is
-        # recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/
-        # Universally_unique_identifier).The id must contain only letters (a-z, A-Z),
-        # numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
-        # characters.
+        # SubmitJobRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.
+        # cloud.dataproc.v1beta2#google.cloud.dataproc.v1.SubmitJobRequest)s with the
+        # same id, then the second request will be ignored and the first Job created and
+        # stored in the backend is returned.It is recommended to always set this value
+        # to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id
+        # must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+        # hyphens (-). The maximum length is 40 characters.
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
