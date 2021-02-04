@@ -2048,6 +2048,12 @@ module Google
       class GoogleDevtoolsRemotebuildbotCommandDurations
         include Google::Apis::Core::Hashable
       
+        # The time spent waiting for Container Manager to assign an asynchronous
+        # container for execution.
+        # Corresponds to the JSON property `cmWaitForAssignment`
+        # @return [String]
+        attr_accessor :cm_wait_for_assignment
+      
         # The time spent preparing the command to be run in a Docker container (includes
         # pulling the Docker image, if necessary).
         # Corresponds to the JSON property `dockerPrep`
@@ -2111,6 +2117,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cm_wait_for_assignment = args[:cm_wait_for_assignment] if args.key?(:cm_wait_for_assignment)
           @docker_prep = args[:docker_prep] if args.key?(:docker_prep)
           @docker_prep_start_time = args[:docker_prep_start_time] if args.key?(:docker_prep_start_time)
           @download = args[:download] if args.key?(:download)
@@ -2157,6 +2164,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_warnings
       
+        # Indicates whether an asynchronous container was used for execution.
+        # Corresponds to the JSON property `usedAsyncContainer`
+        # @return [Boolean]
+        attr_accessor :used_async_container
+        alias_method :used_async_container?, :used_async_container
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2168,6 +2181,7 @@ module Google
           @input_cache_miss = args[:input_cache_miss] if args.key?(:input_cache_miss)
           @num_errors = args[:num_errors] if args.key?(:num_errors)
           @num_warnings = args[:num_warnings] if args.key?(:num_warnings)
+          @used_async_container = args[:used_async_container] if args.key?(:used_async_container)
         end
       end
       
