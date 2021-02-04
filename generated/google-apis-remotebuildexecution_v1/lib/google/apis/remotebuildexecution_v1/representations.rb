@@ -677,6 +677,7 @@ module Google
       class GoogleDevtoolsRemotebuildbotCommandDurations
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cm_wait_for_assignment, as: 'cmWaitForAssignment'
           property :docker_prep, as: 'dockerPrep'
           property :docker_prep_start_time, as: 'dockerPrepStartTime'
           property :download, as: 'download'
@@ -699,6 +700,7 @@ module Google
           property :input_cache_miss, as: 'inputCacheMiss'
           property :num_errors, :numeric_string => true, as: 'numErrors'
           property :num_warnings, :numeric_string => true, as: 'numWarnings'
+          property :used_async_container, as: 'usedAsyncContainer'
         end
       end
       
