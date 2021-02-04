@@ -83,7 +83,7 @@ module Google
         # @param [Fixnum] page_size
         #   The maximum number of customers to return in the response.
         # @param [String] page_token
-        #   A pagination token returned from a previous call to ListCustomers method that
+        #   A pagination token returned from a previous call to ListCustomers that
         #   indicates where this listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -245,11 +245,15 @@ module Google
         # Lists deployments.
         # @param [String] parent
         #   Required. The parent resource name, for example, "nodes/1", customer/1/nodes/2.
+        # @param [String] filter
+        #   The filter expression. The filter should have the following format: "
+        #   DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive.
+        #   If empty, then no deployments are filtered.
         # @param [Fixnum] page_size
         #   The maximum number of deployments to return in the response.
         # @param [String] page_token
-        #   A pagination token returned from a previous call to ListDeployments method
-        #   that indicates where this listing should continue from.
+        #   A pagination token returned from a previous call to ListDeployments that
+        #   indicates where this listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -267,11 +271,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_customer_deployments(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_customer_deployments(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha1/{+parent}/deployments', options)
           command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalListDeploymentsResponse::Representation
           command.response_class = Google::Apis::SasportalV1alpha1::SasPortalListDeploymentsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -419,7 +424,7 @@ module Google
         #   Required. The name of the parent resource.
         # @param [String] filter
         #   The filter expression. The filter should have one of the following formats: "
-        #   sn=123454" or "display_name=MyDevice". sn corresponds to serial_number of the
+        #   sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the
         #   device. The filter is case insensitive.
         # @param [Fixnum] page_size
         #   The maximum number of devices to return in the response. If empty or zero, all
@@ -588,7 +593,7 @@ module Google
         #   Required. The name of the parent resource.
         # @param [String] filter
         #   The filter expression. The filter should have one of the following formats: "
-        #   sn=123454" or "display_name=MyDevice". sn corresponds to serial_number of the
+        #   sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the
         #   device. The filter is case insensitive.
         # @param [Fixnum] page_size
         #   The maximum number of devices to return in the response. If empty or zero, all
@@ -857,11 +862,15 @@ module Google
         # Lists nodes.
         # @param [String] parent
         #   Required. The parent resource name, for example, "nodes/1".
+        # @param [String] filter
+        #   The filter expression. The filter should have the following format: "
+        #   DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive.
+        #   If empty, then no nodes are filtered.
         # @param [Fixnum] page_size
         #   The maximum number of nodes to return in the response.
         # @param [String] page_token
-        #   A pagination token returned from a previous call to ListNodes method that
-        #   indicates where this listing should continue from.
+        #   A pagination token returned from a previous call to ListNodes that indicates
+        #   where this listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -879,11 +888,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_customer_nodes(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_customer_nodes(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha1/{+parent}/nodes', options)
           command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalListNodesResponse::Representation
           command.response_class = Google::Apis::SasportalV1alpha1::SasPortalListNodesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -996,11 +1006,15 @@ module Google
         # Lists deployments.
         # @param [String] parent
         #   Required. The parent resource name, for example, "nodes/1", customer/1/nodes/2.
+        # @param [String] filter
+        #   The filter expression. The filter should have the following format: "
+        #   DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive.
+        #   If empty, then no deployments are filtered.
         # @param [Fixnum] page_size
         #   The maximum number of deployments to return in the response.
         # @param [String] page_token
-        #   A pagination token returned from a previous call to ListDeployments method
-        #   that indicates where this listing should continue from.
+        #   A pagination token returned from a previous call to ListDeployments that
+        #   indicates where this listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1018,11 +1032,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_customer_node_deployments(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_customer_node_deployments(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha1/{+parent}/deployments', options)
           command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalListDeploymentsResponse::Representation
           command.response_class = Google::Apis::SasportalV1alpha1::SasPortalListDeploymentsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1101,7 +1116,7 @@ module Google
         #   Required. The name of the parent resource.
         # @param [String] filter
         #   The filter expression. The filter should have one of the following formats: "
-        #   sn=123454" or "display_name=MyDevice". sn corresponds to serial_number of the
+        #   sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the
         #   device. The filter is case insensitive.
         # @param [Fixnum] page_size
         #   The maximum number of devices to return in the response. If empty or zero, all
@@ -1175,11 +1190,15 @@ module Google
         # Lists nodes.
         # @param [String] parent
         #   Required. The parent resource name, for example, "nodes/1".
+        # @param [String] filter
+        #   The filter expression. The filter should have the following format: "
+        #   DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive.
+        #   If empty, then no nodes are filtered.
         # @param [Fixnum] page_size
         #   The maximum number of nodes to return in the response.
         # @param [String] page_token
-        #   A pagination token returned from a previous call to ListNodes method that
-        #   indicates where this listing should continue from.
+        #   A pagination token returned from a previous call to ListNodes that indicates
+        #   where this listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1197,11 +1216,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_customer_node_nodes(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_customer_node_nodes(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha1/{+parent}/nodes', options)
           command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalListNodesResponse::Representation
           command.response_class = Google::Apis::SasportalV1alpha1::SasPortalListNodesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1434,7 +1454,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Generates a secret to be used with the ValidateInstaller method
+        # Generates a secret to be used with the ValidateInstaller.
         # @param [Google::Apis::SasportalV1alpha1::SasPortalGenerateSecretRequest] sas_portal_generate_secret_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1587,11 +1607,15 @@ module Google
         # Lists deployments.
         # @param [String] parent
         #   Required. The parent resource name, for example, "nodes/1", customer/1/nodes/2.
+        # @param [String] filter
+        #   The filter expression. The filter should have the following format: "
+        #   DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive.
+        #   If empty, then no deployments are filtered.
         # @param [Fixnum] page_size
         #   The maximum number of deployments to return in the response.
         # @param [String] page_token
-        #   A pagination token returned from a previous call to ListDeployments method
-        #   that indicates where this listing should continue from.
+        #   A pagination token returned from a previous call to ListDeployments that
+        #   indicates where this listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1609,11 +1633,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_node_deployments(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_node_deployments(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha1/{+parent}/deployments', options)
           command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalListDeploymentsResponse::Representation
           command.response_class = Google::Apis::SasportalV1alpha1::SasPortalListDeploymentsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1761,7 +1786,7 @@ module Google
         #   Required. The name of the parent resource.
         # @param [String] filter
         #   The filter expression. The filter should have one of the following formats: "
-        #   sn=123454" or "display_name=MyDevice". sn corresponds to serial_number of the
+        #   sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the
         #   device. The filter is case insensitive.
         # @param [Fixnum] page_size
         #   The maximum number of devices to return in the response. If empty or zero, all
@@ -1930,7 +1955,7 @@ module Google
         #   Required. The name of the parent resource.
         # @param [String] filter
         #   The filter expression. The filter should have one of the following formats: "
-        #   sn=123454" or "display_name=MyDevice". sn corresponds to serial_number of the
+        #   sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the
         #   device. The filter is case insensitive.
         # @param [Fixnum] page_size
         #   The maximum number of devices to return in the response. If empty or zero, all
@@ -2199,11 +2224,15 @@ module Google
         # Lists nodes.
         # @param [String] parent
         #   Required. The parent resource name, for example, "nodes/1".
+        # @param [String] filter
+        #   The filter expression. The filter should have the following format: "
+        #   DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive.
+        #   If empty, then no nodes are filtered.
         # @param [Fixnum] page_size
         #   The maximum number of nodes to return in the response.
         # @param [String] page_token
-        #   A pagination token returned from a previous call to ListNodes method that
-        #   indicates where this listing should continue from.
+        #   A pagination token returned from a previous call to ListNodes that indicates
+        #   where this listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2221,11 +2250,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_node_nodes(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_node_nodes(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha1/{+parent}/nodes', options)
           command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalListNodesResponse::Representation
           command.response_class = Google::Apis::SasportalV1alpha1::SasPortalListNodesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2338,11 +2368,15 @@ module Google
         # Lists deployments.
         # @param [String] parent
         #   Required. The parent resource name, for example, "nodes/1", customer/1/nodes/2.
+        # @param [String] filter
+        #   The filter expression. The filter should have the following format: "
+        #   DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive.
+        #   If empty, then no deployments are filtered.
         # @param [Fixnum] page_size
         #   The maximum number of deployments to return in the response.
         # @param [String] page_token
-        #   A pagination token returned from a previous call to ListDeployments method
-        #   that indicates where this listing should continue from.
+        #   A pagination token returned from a previous call to ListDeployments that
+        #   indicates where this listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2360,11 +2394,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_node_node_deployments(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_node_node_deployments(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha1/{+parent}/deployments', options)
           command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalListDeploymentsResponse::Representation
           command.response_class = Google::Apis::SasportalV1alpha1::SasPortalListDeploymentsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2443,7 +2478,7 @@ module Google
         #   Required. The name of the parent resource.
         # @param [String] filter
         #   The filter expression. The filter should have one of the following formats: "
-        #   sn=123454" or "display_name=MyDevice". sn corresponds to serial_number of the
+        #   sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the
         #   device. The filter is case insensitive.
         # @param [Fixnum] page_size
         #   The maximum number of devices to return in the response. If empty or zero, all
@@ -2517,11 +2552,15 @@ module Google
         # Lists nodes.
         # @param [String] parent
         #   Required. The parent resource name, for example, "nodes/1".
+        # @param [String] filter
+        #   The filter expression. The filter should have the following format: "
+        #   DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive.
+        #   If empty, then no nodes are filtered.
         # @param [Fixnum] page_size
         #   The maximum number of nodes to return in the response.
         # @param [String] page_token
-        #   A pagination token returned from a previous call to ListNodes method that
-        #   indicates where this listing should continue from.
+        #   A pagination token returned from a previous call to ListNodes that indicates
+        #   where this listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2539,11 +2578,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_node_node_nodes(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_node_node_nodes(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha1/{+parent}/nodes', options)
           command.response_representation = Google::Apis::SasportalV1alpha1::SasPortalListNodesResponse::Representation
           command.response_class = Google::Apis::SasportalV1alpha1::SasPortalListNodesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
