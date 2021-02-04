@@ -131,6 +131,27 @@ module Google
         end
       end
       
+      # The encryption options for the Cloud Composer environment and its dependencies.
+      class EncryptionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Customer-managed Encryption Key available through Google's Key
+        # Management Service. Cannot be updated. If not specified, Google-managed key
+        # will be used.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+        end
+      end
+      
       # An environment for running orchestration tasks.
       class Environment
         include Google::Apis::Core::Hashable
@@ -219,6 +240,11 @@ module Google
         # @return [Google::Apis::ComposerV1::DatabaseConfig]
         attr_accessor :database_config
       
+        # The encryption options for the Cloud Composer environment and its dependencies.
+        # Corresponds to the JSON property `encryptionConfig`
+        # @return [Google::Apis::ComposerV1::EncryptionConfig]
+        attr_accessor :encryption_config
+      
         # Output only. The Kubernetes Engine cluster used to run this environment.
         # Corresponds to the JSON property `gkeCluster`
         # @return [String]
@@ -266,6 +292,7 @@ module Google
           @airflow_uri = args[:airflow_uri] if args.key?(:airflow_uri)
           @dag_gcs_prefix = args[:dag_gcs_prefix] if args.key?(:dag_gcs_prefix)
           @database_config = args[:database_config] if args.key?(:database_config)
+          @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @gke_cluster = args[:gke_cluster] if args.key?(:gke_cluster)
           @node_config = args[:node_config] if args.key?(:node_config)
           @node_count = args[:node_count] if args.key?(:node_count)
@@ -526,11 +553,11 @@ module Google
         # Optional. The Compute Engine network to be used for machine communications,
         # specified as a [relative resource name](/apis/design/resource_names#
         # relative_resource_name). For example: "projects/`projectId`/global/networks/`
-        # networkId`". [Shared VPC](/vpc/docs/shared-vpc) is not currently supported.
-        # The network must belong to the environment's project. If unspecified, the "
-        # default" network ID in the environment's project is used. If a [Custom Subnet
-        # Network](/vpc/docs/vpc#vpc_networks_and_subnets) is provided, `nodeConfig.
-        # subnetwork` must also be provided.
+        # networkId`". If unspecified, the "default" network ID in the environment's
+        # project is used. If a [Custom Subnet Network](/vpc/docs/vpc#
+        # vpc_networks_and_subnets) is provided, `nodeConfig.subnetwork` must also be
+        # provided. For [Shared VPC](/vpc/docs/shared-vpc) subnetwork requirements, see `
+        # nodeConfig.subnetwork`.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network

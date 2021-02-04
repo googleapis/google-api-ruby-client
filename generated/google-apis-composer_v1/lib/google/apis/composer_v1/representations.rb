@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EncryptionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Environment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -172,6 +178,13 @@ module Google
         end
       end
       
+      class EncryptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
+        end
+      end
+      
       class Environment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -192,6 +205,8 @@ module Google
           property :airflow_uri, as: 'airflowUri'
           property :dag_gcs_prefix, as: 'dagGcsPrefix'
           property :database_config, as: 'databaseConfig', class: Google::Apis::ComposerV1::DatabaseConfig, decorator: Google::Apis::ComposerV1::DatabaseConfig::Representation
+      
+          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::ComposerV1::EncryptionConfig, decorator: Google::Apis::ComposerV1::EncryptionConfig::Representation
       
           property :gke_cluster, as: 'gkeCluster'
           property :node_config, as: 'nodeConfig', class: Google::Apis::ComposerV1::NodeConfig, decorator: Google::Apis::ComposerV1::NodeConfig::Representation
