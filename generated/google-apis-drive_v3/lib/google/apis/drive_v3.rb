@@ -33,7 +33,7 @@ module Google
       # See, edit, create, and delete all of your Google Drive files
       AUTH_DRIVE = 'https://www.googleapis.com/auth/drive'
 
-      # View and manage its own configuration data in your Google Drive
+      # See, create, and delete its own configuration data in your Google Drive
       AUTH_DRIVE_APPDATA = 'https://www.googleapis.com/auth/drive.appdata'
 
       # View and manage Google Drive files and folders that you have opened or created with this app
