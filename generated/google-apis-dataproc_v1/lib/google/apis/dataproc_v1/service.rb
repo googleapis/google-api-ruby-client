@@ -1081,12 +1081,14 @@ module Google
         # @param [Google::Apis::DataprocV1::Cluster] cluster_object
         # @param [String] request_id
         #   Optional. A unique id used to identify the request. If the server receives two
-        #   CreateClusterRequest requests with the same id, then the second request will
-        #   be ignored and the first google.longrunning.Operation created and stored in
-        #   the backend is returned.It is recommended to always set this value to a UUID (
-        #   https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
-        #   contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-
-        #   ). The maximum length is 40 characters.
+        #   CreateClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/
+        #   google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateClusterRequest)s with
+        #   the same id, then the second request will be ignored and the first google.
+        #   longrunning.Operation created and stored in the backend is returned.It is
+        #   recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/
+        #   Universally_unique_identifier).The id must contain only letters (a-z, A-Z),
+        #   numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+        #   characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1133,12 +1135,14 @@ module Google
         #   NOT_FOUND) if cluster with specified UUID does not exist.
         # @param [String] request_id
         #   Optional. A unique id used to identify the request. If the server receives two
-        #   DeleteClusterRequest requests with the same id, then the second request will
-        #   be ignored and the first google.longrunning.Operation created and stored in
-        #   the backend is returned.It is recommended to always set this value to a UUID (
-        #   https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
-        #   contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-
-        #   ). The maximum length is 40 characters.
+        #   DeleteClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/
+        #   google.cloud.dataproc.v1#google.cloud.dataproc.v1.DeleteClusterRequest)s with
+        #   the same id, then the second request will be ignored and the first google.
+        #   longrunning.Operation created and stored in the backend is returned.It is
+        #   recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/
+        #   Universally_unique_identifier).The id must contain only letters (a-z, A-Z),
+        #   numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+        #   characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1403,12 +1407,14 @@ module Google
         #   higher.
         # @param [String] request_id
         #   Optional. A unique id used to identify the request. If the server receives two
-        #   UpdateClusterRequest requests with the same id, then the second request will
-        #   be ignored and the first google.longrunning.Operation created and stored in
-        #   the backend is returned.It is recommended to always set this value to a UUID (
-        #   https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
-        #   contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-
-        #   ). The maximum length is 40 characters.
+        #   UpdateClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/
+        #   google.cloud.dataproc.v1#google.cloud.dataproc.v1.UpdateClusterRequest)s with
+        #   the same id, then the second request will be ignored and the first google.
+        #   longrunning.Operation created and stored in the backend is returned.It is
+        #   recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/
+        #   Universally_unique_identifier).The id must contain only letters (a-z, A-Z),
+        #   numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+        #   characters.
         # @param [String] update_mask
         #   Required. Specifies the path, relative to Cluster, of the field to update. For
         #   example, to change the number of workers in a cluster to 5, the update_mask
@@ -1488,6 +1494,84 @@ module Google
           command.response_representation = Google::Apis::DataprocV1::Policy::Representation
           command.response_class = Google::Apis::DataprocV1::Policy
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Starts a cluster in a project.
+        # @param [String] project_id
+        #   Required. The ID of the Google Cloud Platform project the cluster belongs to.
+        # @param [String] region
+        #   Required. The Dataproc region in which to handle the request.
+        # @param [String] cluster_name
+        #   Required. The cluster name.
+        # @param [Google::Apis::DataprocV1::StartClusterRequest] start_cluster_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def start_cluster(project_id, region, cluster_name, start_cluster_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/regions/{region}/clusters/{clusterName}:start', options)
+          command.request_representation = Google::Apis::DataprocV1::StartClusterRequest::Representation
+          command.request_object = start_cluster_request_object
+          command.response_representation = Google::Apis::DataprocV1::Operation::Representation
+          command.response_class = Google::Apis::DataprocV1::Operation
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['clusterName'] = cluster_name unless cluster_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Stops a cluster in a project.
+        # @param [String] project_id
+        #   Required. The ID of the Google Cloud Platform project the cluster belongs to.
+        # @param [String] region
+        #   Required. The Dataproc region in which to handle the request.
+        # @param [String] cluster_name
+        #   Required. The cluster name.
+        # @param [Google::Apis::DataprocV1::StopClusterRequest] stop_cluster_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stop_cluster(project_id, region, cluster_name, stop_cluster_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/regions/{region}/clusters/{clusterName}:stop', options)
+          command.request_representation = Google::Apis::DataprocV1::StopClusterRequest::Representation
+          command.request_object = stop_cluster_request_object
+          command.response_representation = Google::Apis::DataprocV1::Operation::Representation
+          command.response_class = Google::Apis::DataprocV1::Operation
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['clusterName'] = cluster_name unless cluster_name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

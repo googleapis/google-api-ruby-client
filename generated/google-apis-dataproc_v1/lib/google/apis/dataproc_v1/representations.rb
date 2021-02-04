@@ -310,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MetastoreConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodeGroupAffinity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -424,7 +430,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StartClusterRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StopClusterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -596,6 +614,8 @@ module Google
           property :lifecycle_config, as: 'lifecycleConfig', class: Google::Apis::DataprocV1::LifecycleConfig, decorator: Google::Apis::DataprocV1::LifecycleConfig::Representation
       
           property :master_config, as: 'masterConfig', class: Google::Apis::DataprocV1::InstanceGroupConfig, decorator: Google::Apis::DataprocV1::InstanceGroupConfig::Representation
+      
+          property :metastore_config, as: 'metastoreConfig', class: Google::Apis::DataprocV1::MetastoreConfig, decorator: Google::Apis::DataprocV1::MetastoreConfig::Representation
       
           property :secondary_worker_config, as: 'secondaryWorkerConfig', class: Google::Apis::DataprocV1::InstanceGroupConfig, decorator: Google::Apis::DataprocV1::InstanceGroupConfig::Representation
       
@@ -1028,6 +1048,13 @@ module Google
         end
       end
       
+      class MetastoreConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataproc_metastore_service, as: 'dataprocMetastoreService'
+        end
+      end
+      
       class NodeGroupAffinity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1246,12 +1273,28 @@ module Google
         end
       end
       
+      class StartClusterRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_uuid, as: 'clusterUuid'
+          property :request_id, as: 'requestId'
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class StopClusterRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_uuid, as: 'clusterUuid'
+          property :request_id, as: 'requestId'
         end
       end
       
