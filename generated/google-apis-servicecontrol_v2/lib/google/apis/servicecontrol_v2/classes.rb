@@ -430,8 +430,9 @@ module Google
         # @return [String]
         attr_accessor :permission
       
-        # The resource being accessed, as a REST-style string. For example: bigquery.
-        # googleapis.com/projects/PROJECTID/datasets/DATASETID
+        # The resource being accessed, as a REST-style or cloud resource string. For
+        # example: bigquery.googleapis.com/projects/PROJECTID/datasets/DATASETID or
+        # projects/PROJECTID/datasets/DATASETID
         # Corresponds to the JSON property `resource`
         # @return [String]
         attr_accessor :resource
@@ -475,6 +476,11 @@ module Google
         # @return [Google::Apis::ServicecontrolV2::AttributeContext]
         attr_accessor :attributes
       
+        # Optional. Contains a comma-separated list of flags.
+        # Corresponds to the JSON property `flags`
+        # @return [String]
+        attr_accessor :flags
+      
         # Describes the resources and the policies applied to each resource.
         # Corresponds to the JSON property `resources`
         # @return [Array<Google::Apis::ServicecontrolV2::ResourceInfo>]
@@ -494,6 +500,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @attributes = args[:attributes] if args.key?(:attributes)
+          @flags = args[:flags] if args.key?(:flags)
           @resources = args[:resources] if args.key?(:resources)
           @service_config_id = args[:service_config_id] if args.key?(:service_config_id)
         end

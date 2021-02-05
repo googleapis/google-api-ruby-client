@@ -250,6 +250,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :attributes, as: 'attributes', class: Google::Apis::ServicecontrolV2::AttributeContext, decorator: Google::Apis::ServicecontrolV2::AttributeContext::Representation
       
+          property :flags, as: 'flags'
           collection :resources, as: 'resources', class: Google::Apis::ServicecontrolV2::ResourceInfo, decorator: Google::Apis::ServicecontrolV2::ResourceInfo::Representation
       
           property :service_config_id, as: 'serviceConfigId'
