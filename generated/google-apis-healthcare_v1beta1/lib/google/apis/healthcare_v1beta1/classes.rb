@@ -434,6 +434,25 @@ module Google
         end
       end
       
+      # Gets multiple messages in a specified HL7v2 store.
+      class BatchGetMessagesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The returned Messages. See `MessageView` for populated fields.
+        # Corresponds to the JSON property `messages`
+        # @return [Array<Google::Apis::HealthcareV1beta1::Message>]
+        attr_accessor :messages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @messages = args[:messages] if args.key?(:messages)
+        end
+      end
+      
       # Associates `members` with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -1984,6 +2003,11 @@ module Google
         # @return [Array<Google::Apis::HealthcareV1beta1::StreamConfig>]
         attr_accessor :stream_configs
       
+        # Contains the configuration for FHIR profiles and validation.
+        # Corresponds to the JSON property `validationConfig`
+        # @return [Google::Apis::HealthcareV1beta1::ValidationConfig]
+        attr_accessor :validation_config
+      
         # Immutable. The FHIR specification version that this FHIR store supports
         # natively. This field is immutable after store creation. Requests are rejected
         # if they contain FHIR resources of a different version. Version is required for
@@ -2006,6 +2030,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @notification_config = args[:notification_config] if args.key?(:notification_config)
           @stream_configs = args[:stream_configs] if args.key?(:stream_configs)
+          @validation_config = args[:validation_config] if args.key?(:validation_config)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -5122,6 +5147,46 @@ module Google
           @name = args[:name] if args.key?(:name)
           @resource_attributes = args[:resource_attributes] if args.key?(:resource_attributes)
           @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Contains the configuration for FHIR profiles and validation.
+      class ValidationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether to disable profile validation for this FHIR store. Set this to true to
+        # disable checking incoming resources for conformance against
+        # StructureDefinitions in this FHIR store.
+        # Corresponds to the JSON property `disableProfileValidation`
+        # @return [Boolean]
+        attr_accessor :disable_profile_validation
+        alias_method :disable_profile_validation?, :disable_profile_validation
+      
+        # A list of ImplementationGuide URLs in this FHIR store that are used to
+        # configure the profiles to use for validation. For example, to use the US Core
+        # profiles for validation, set `enabled_implementation_guides` to `["http://hl7.
+        # org/fhir/us/core/ImplementationGuide/ig"]`. If `enabled_implementation_guides`
+        # is empty or omitted, then incoming resources are only required to conform to
+        # the base FHIR profiles. Otherwise, a resource must conform to at least one
+        # profile listed in the `global` property of one of the enabled
+        # ImplementationGuides. The Cloud Healthcare API does not currently enforce all
+        # of the rules in a StructureDefinition. The following rules are supported: -
+        # min/max - minValue/maxValue - maxLength - type - fixed[x] - pattern[x] on
+        # simple types - slicing, when using "value" as the discriminator type When a
+        # URL cannot be resolved (for example, in a type assertion), the server does not
+        # return an error.
+        # Corresponds to the JSON property `enabledImplementationGuides`
+        # @return [Array<String>]
+        attr_accessor :enabled_implementation_guides
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disable_profile_validation = args[:disable_profile_validation] if args.key?(:disable_profile_validation)
+          @enabled_implementation_guides = args[:enabled_implementation_guides] if args.key?(:enabled_implementation_guides)
         end
       end
       
