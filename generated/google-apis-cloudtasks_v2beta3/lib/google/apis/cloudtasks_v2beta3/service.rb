@@ -202,9 +202,8 @@ module Google
         # @param [String] read_mask
         #   Optional. Read mask is used for a more granular control over what the API
         #   returns. If the mask is not present all fields will be returned except [Queue.
-        #   stats], if the mask is set to "*" all fields including [Queue.stats] will be
-        #   returned, otherwise only the fields explicitly specified in the mask will be
-        #   returned.
+        #   stats]. [Queue.stats] will be returned only if it was explicitly specified in
+        #   the mask.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -293,11 +292,10 @@ module Google
         #   call to ListQueues method. It is an error to switch the value of the filter
         #   while iterating through pages.
         # @param [String] read_mask
-        #   Optional. Read mask is used for a more granular control on the queues that the
-        #   API returns. If the mask is not present all fields will be returned except [
-        #   Queue.stats], if the mask is set to "*" all fields including [Queue.stats]
-        #   will be returned, otherwise only the fields explicitly specified in the mask
-        #   will be returned.
+        #   Optional. Read mask is used for a more granular control over what the API
+        #   returns. If the mask is not present all fields will be returned except [Queue.
+        #   stats]. [Queue.stats] will be returned only if it was explicitly specified in
+        #   the mask.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
