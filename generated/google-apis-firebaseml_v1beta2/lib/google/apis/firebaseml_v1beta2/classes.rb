@@ -22,6 +22,44 @@ module Google
   module Apis
     module FirebasemlV1beta2
       
+      # The response for downloading a model to device.
+      class DownloadModelResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A download URI for the model/zip file.
+        # Corresponds to the JSON property `downloadUri`
+        # @return [String]
+        attr_accessor :download_uri
+      
+        # Output only. The time that the download URI link expires. If the link has
+        # expired, the REST call must be repeated.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Output only. The format of the model being downloaded.
+        # Corresponds to the JSON property `modelFormat`
+        # @return [String]
+        attr_accessor :model_format
+      
+        # Output only. The size of the file(s), if this information is available.
+        # Corresponds to the JSON property `sizeBytes`
+        # @return [Fixnum]
+        attr_accessor :size_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @download_uri = args[:download_uri] if args.key?(:download_uri)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @model_format = args[:model_format] if args.key?(:model_format)
+          @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
