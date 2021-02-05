@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchGetMessagesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -958,6 +964,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ValidationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VersionSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1084,6 +1096,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exempted_members, as: 'exemptedMembers'
           property :log_type, as: 'logType'
+        end
+      end
+      
+      class BatchGetMessagesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :messages, as: 'messages', class: Google::Apis::HealthcareV1beta1::Message, decorator: Google::Apis::HealthcareV1beta1::Message::Representation
+      
         end
       end
       
@@ -1514,6 +1534,8 @@ module Google
           property :notification_config, as: 'notificationConfig', class: Google::Apis::HealthcareV1beta1::NotificationConfig, decorator: Google::Apis::HealthcareV1beta1::NotificationConfig::Representation
       
           collection :stream_configs, as: 'streamConfigs', class: Google::Apis::HealthcareV1beta1::StreamConfig, decorator: Google::Apis::HealthcareV1beta1::StreamConfig::Representation
+      
+          property :validation_config, as: 'validationConfig', class: Google::Apis::HealthcareV1beta1::ValidationConfig, decorator: Google::Apis::HealthcareV1beta1::ValidationConfig::Representation
       
           property :version, as: 'version'
         end
@@ -2392,6 +2414,14 @@ module Google
           collection :resource_attributes, as: 'resourceAttributes', class: Google::Apis::HealthcareV1beta1::Attribute, decorator: Google::Apis::HealthcareV1beta1::Attribute::Representation
       
           property :user_id, as: 'userId'
+        end
+      end
+      
+      class ValidationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_profile_validation, as: 'disableProfileValidation'
+          collection :enabled_implementation_guides, as: 'enabledImplementationGuides'
         end
       end
       
