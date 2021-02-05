@@ -50,7 +50,9 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Exchanges a credential for a Google OAuth 2.0 access token.
+        # Exchanges a credential for a Google OAuth 2.0 access token. The token asserts
+        # an external identity within a workload identity pool, or it applies a
+        # Credential Access Boundary to a Google access token.
         # @param [Google::Apis::StsV1::GoogleIdentityStsV1ExchangeTokenRequest] google_identity_sts_v1_exchange_token_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
