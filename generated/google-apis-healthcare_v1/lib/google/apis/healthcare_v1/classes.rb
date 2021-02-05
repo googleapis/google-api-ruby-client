@@ -1974,7 +1974,7 @@ module Google
         alias_method :allow_null_header?, :allow_null_header
       
         # Byte(s) to use as the segment terminator. If this is unset, '\r' is used as
-        # segment terminator.
+        # segment terminator, matching the HL7 version 2 specification.
         # Corresponds to the JSON property `segmentTerminator`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
