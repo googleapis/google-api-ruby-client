@@ -682,6 +682,11 @@ module Google
         # @return [Array<Google::Apis::ContainerV1::NodePool>]
         attr_accessor :node_pools
       
+        # NotificationConfig is the configuration of notifications.
+        # Corresponds to the JSON property `notificationConfig`
+        # @return [Google::Apis::ContainerV1::NotificationConfig]
+        attr_accessor :notification_config
+      
         # Configuration options for private clusters.
         # Corresponds to the JSON property `privateClusterConfig`
         # @return [Google::Apis::ContainerV1::PrivateClusterConfig]
@@ -810,6 +815,7 @@ module Google
           @node_config = args[:node_config] if args.key?(:node_config)
           @node_ipv4_cidr_size = args[:node_ipv4_cidr_size] if args.key?(:node_ipv4_cidr_size)
           @node_pools = args[:node_pools] if args.key?(:node_pools)
+          @notification_config = args[:notification_config] if args.key?(:notification_config)
           @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
           @release_channel = args[:release_channel] if args.key?(:release_channel)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
@@ -990,6 +996,11 @@ module Google
         # @return [String]
         attr_accessor :desired_node_version
       
+        # NotificationConfig is the configuration of notifications.
+        # Corresponds to the JSON property `desiredNotificationConfig`
+        # @return [Google::Apis::ContainerV1::NotificationConfig]
+        attr_accessor :desired_notification_config
+      
         # Configuration options for private clusters.
         # Corresponds to the JSON property `desiredPrivateClusterConfig`
         # @return [Google::Apis::ContainerV1::PrivateClusterConfig]
@@ -1051,6 +1062,7 @@ module Google
           @desired_node_pool_autoscaling = args[:desired_node_pool_autoscaling] if args.key?(:desired_node_pool_autoscaling)
           @desired_node_pool_id = args[:desired_node_pool_id] if args.key?(:desired_node_pool_id)
           @desired_node_version = args[:desired_node_version] if args.key?(:desired_node_version)
+          @desired_notification_config = args[:desired_notification_config] if args.key?(:desired_notification_config)
           @desired_private_cluster_config = args[:desired_private_cluster_config] if args.key?(:desired_private_cluster_config)
           @desired_private_ipv6_google_access = args[:desired_private_ipv6_google_access] if args.key?(:desired_private_ipv6_google_access)
           @desired_release_channel = args[:desired_release_channel] if args.key?(:desired_release_channel)
@@ -2657,6 +2669,25 @@ module Google
         end
       end
       
+      # NotificationConfig is the configuration of notifications.
+      class NotificationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Pub/Sub specific notification config.
+        # Corresponds to the JSON property `pubsub`
+        # @return [Google::Apis::ContainerV1::PubSub]
+        attr_accessor :pubsub
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pubsub = args[:pubsub] if args.key?(:pubsub)
+        end
+      end
+      
       # This operation resource represents operations that may have happened or are
       # happening on the cluster. All fields are output only.
       class Operation
@@ -2881,6 +2912,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # Pub/Sub specific notification config.
+      class PubSub
+        include Google::Apis::Core::Hashable
+      
+        # Enable notifications for Pub/Sub.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # The desired Pub/Sub topic to which notifications will be sent by GKE. Format
+        # is `projects/`project`/topics/`topic``.
+        # Corresponds to the JSON property `topic`
+        # @return [String]
+        attr_accessor :topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @topic = args[:topic] if args.key?(:topic)
         end
       end
       
