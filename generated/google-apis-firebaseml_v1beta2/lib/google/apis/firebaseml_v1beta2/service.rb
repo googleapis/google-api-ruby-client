@@ -115,6 +115,38 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets Download information for a model. This is meant for downloading model
+        # resources onto devices. It gives very limited information about the model.
+        # @param [String] name
+        #   Required. The name of the model to download. The name must have the form `
+        #   projects/`project`/models/`model``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasemlV1beta2::DownloadModelResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasemlV1beta2::DownloadModelResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def download_project_model(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta2/{+name}:download', options)
+          command.response_representation = Google::Apis::FirebasemlV1beta2::DownloadModelResponse::Representation
+          command.response_class = Google::Apis::FirebasemlV1beta2::DownloadModelResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a model resource.
         # @param [String] name
         #   Required. The name of the model to get. The name must have the form `projects/`

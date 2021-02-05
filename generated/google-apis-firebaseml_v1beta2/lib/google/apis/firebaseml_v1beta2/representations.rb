@@ -22,6 +22,12 @@ module Google
   module Apis
     module FirebasemlV1beta2
       
+      class DownloadModelResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -68,6 +74,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DownloadModelResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :download_uri, as: 'downloadUri'
+          property :expire_time, as: 'expireTime'
+          property :model_format, as: 'modelFormat'
+          property :size_bytes, :numeric_string => true, as: 'sizeBytes'
+        end
       end
       
       class Empty
