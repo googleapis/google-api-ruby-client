@@ -340,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NotificationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -359,6 +365,12 @@ module Google
       end
       
       class PrivateClusterMasterGlobalAccessConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PubSub
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -747,6 +759,8 @@ module Google
           property :node_ipv4_cidr_size, as: 'nodeIpv4CidrSize'
           collection :node_pools, as: 'nodePools', class: Google::Apis::ContainerV1::NodePool, decorator: Google::Apis::ContainerV1::NodePool::Representation
       
+          property :notification_config, as: 'notificationConfig', class: Google::Apis::ContainerV1::NotificationConfig, decorator: Google::Apis::ContainerV1::NotificationConfig::Representation
+      
           property :private_cluster_config, as: 'privateClusterConfig', class: Google::Apis::ContainerV1::PrivateClusterConfig, decorator: Google::Apis::ContainerV1::PrivateClusterConfig::Representation
       
           property :release_channel, as: 'releaseChannel', class: Google::Apis::ContainerV1::ReleaseChannel, decorator: Google::Apis::ContainerV1::ReleaseChannel::Representation
@@ -808,6 +822,8 @@ module Google
       
           property :desired_node_pool_id, as: 'desiredNodePoolId'
           property :desired_node_version, as: 'desiredNodeVersion'
+          property :desired_notification_config, as: 'desiredNotificationConfig', class: Google::Apis::ContainerV1::NotificationConfig, decorator: Google::Apis::ContainerV1::NotificationConfig::Representation
+      
           property :desired_private_cluster_config, as: 'desiredPrivateClusterConfig', class: Google::Apis::ContainerV1::PrivateClusterConfig, decorator: Google::Apis::ContainerV1::PrivateClusterConfig::Representation
       
           property :desired_private_ipv6_google_access, as: 'desiredPrivateIpv6GoogleAccess'
@@ -1227,6 +1243,14 @@ module Google
         end
       end
       
+      class NotificationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pubsub, as: 'pubsub', class: Google::Apis::ContainerV1::PubSub, decorator: Google::Apis::ContainerV1::PubSub::Representation
+      
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1280,6 +1304,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+        end
+      end
+      
+      class PubSub
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :topic, as: 'topic'
         end
       end
       
