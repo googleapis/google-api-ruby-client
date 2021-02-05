@@ -459,8 +459,9 @@ module Google
         # @return [String]
         attr_accessor :permission
       
-        # The resource being accessed, as a REST-style string. For example: bigquery.
-        # googleapis.com/projects/PROJECTID/datasets/DATASETID
+        # The resource being accessed, as a REST-style or cloud resource string. For
+        # example: bigquery.googleapis.com/projects/PROJECTID/datasets/DATASETID or
+        # projects/PROJECTID/datasets/DATASETID
         # Corresponds to the JSON property `resource`
         # @return [String]
         attr_accessor :resource
