@@ -533,14 +533,16 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The filter applied to the endpoints of the resolved service. General
-        # filter string syntax: () can be "name" or "metadata." for map field. can be "<,
-        # >, <=, >=, !=, =, :". Of which ":" means HAS and is roughly the same as "=".
-        # must be the same data type as the field. can be "AND, OR, NOT". Examples of
-        # valid filters: * "metadata.owner" returns Endpoints that have a label with the
-        # key "owner", this is the same as "metadata:owner" * "metadata.protocol=gRPC"
-        # returns Endpoints that have key/value "protocol=gRPC" * "metadata.owner!=sd
-        # AND metadata.foo=bar" returns Endpoints that have "owner" field in metadata
-        # with a value that is not "sd" AND have the key/value foo=bar.
+        # filter string syntax: *`field operator value`* (*`logical connector`*) *`field`
+        # * can be `name` or `metadata.`*`key`* for map field. *`operator`* can be `\<`,
+        # `>`, `\<=`, `>=`, `!=`, `=`, `:`. Of which `:` means `HAS` and is roughly the
+        # same as `=`. *`value`* must be the same data type as the field. *`logical
+        # connector*` can be `AND`, `OR`, `NOT`. Examples of valid filters: * `metadata.
+        # owner` returns endpoints that have a label with the key `owner`, this is the
+        # same as `metadata:owner` * `metadata.protocol=gRPC` returns endpoints that
+        # have key/value `protocol=gRPC` * `metadata.owner!=sd AND metadata.foo=bar`
+        # returns endpoints that have `owner` field in metadata with a value that is not
+        # `sd` and have the key/value `foo=bar`.
         # Corresponds to the JSON property `endpointFilter`
         # @return [String]
         attr_accessor :endpoint_filter
