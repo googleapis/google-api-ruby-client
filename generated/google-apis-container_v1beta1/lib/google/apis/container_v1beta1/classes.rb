@@ -4834,6 +4834,48 @@ module Google
         end
       end
       
+      # UpgradeAvailableEvent is a notification sent to customers when a new available
+      # version is released.
+      class UpgradeAvailableEvent
+        include Google::Apis::Core::Hashable
+      
+        # ReleaseChannel indicates which release channel a cluster is subscribed to.
+        # Release channels are arranged in order of risk. When a cluster is subscribed
+        # to a release channel, Google maintains both the master version and the node
+        # version. Node auto-upgrade defaults to true and cannot be disabled.
+        # Corresponds to the JSON property `releaseChannel`
+        # @return [Google::Apis::ContainerV1beta1::ReleaseChannel]
+        attr_accessor :release_channel
+      
+        # Optional. Optional relative path to the resource. For example, the relative
+        # path of the node pool.
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        # The resource type of the release version.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        # The release version available for upgrade.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @release_channel = args[:release_channel] if args.key?(:release_channel)
+          @resource = args[:resource] if args.key?(:resource)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # UpgradeEvent is a notification sent to customers by the cluster server when a
       # resource is upgrading.
       class UpgradeEvent
