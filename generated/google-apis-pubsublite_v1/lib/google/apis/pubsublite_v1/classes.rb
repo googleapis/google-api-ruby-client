@@ -47,6 +47,44 @@ module Google
         end
       end
       
+      # Compute the current head cursor for a partition.
+      class ComputeHeadCursorRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The partition for which we should compute the head cursor.
+        # Corresponds to the JSON property `partition`
+        # @return [Fixnum]
+        attr_accessor :partition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @partition = args[:partition] if args.key?(:partition)
+        end
+      end
+      
+      # Response containing the head cursor for the requested topic and partition.
+      class ComputeHeadCursorResponse
+        include Google::Apis::Core::Hashable
+      
+        # A cursor that describes the position of a message within a topic partition.
+        # Corresponds to the JSON property `headCursor`
+        # @return [Google::Apis::PubsubliteV1::Cursor]
+        attr_accessor :head_cursor
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @head_cursor = args[:head_cursor] if args.key?(:head_cursor)
+        end
+      end
+      
       # Compute statistics about a range of messages in a given topic and partition.
       class ComputeMessageStatsRequest
         include Google::Apis::Core::Hashable
