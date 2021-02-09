@@ -7662,7 +7662,9 @@ module Google
         attr_accessor :amount
       
         # If set to true, all shipping costs for the order will be refunded. If this is
-        # true, amount should not be provided and will be ignored.
+        # true, amount should not be provided and will be ignored. If set to false,
+        # submit the amount of the partial shipping refund, excluding the shipping tax.
+        # The shipping tax is calculated and handled on Google's side.
         # Corresponds to the JSON property `fullRefund`
         # @return [Boolean]
         attr_accessor :full_refund
@@ -8174,7 +8176,7 @@ module Google
         # @return [String]
         attr_accessor :product_id
       
-        # The quantity to return and refund.
+        # The quantity to return and refund. Quantity is required.
         # Corresponds to the JSON property `quantity`
         # @return [Fixnum]
         attr_accessor :quantity
@@ -12002,6 +12004,11 @@ module Google
         # @return [String]
         attr_accessor :return_policy_id
       
+        # The return shipping fee that will apply to non free return reasons.
+        # Corresponds to the JSON property `returnShippingFee`
+        # @return [Google::Apis::ContentV2_1::Price]
+        attr_accessor :return_shipping_fee
+      
         # An optional list of seasonal overrides.
         # Corresponds to the JSON property `seasonalOverrides`
         # @return [Array<Google::Apis::ContentV2_1::ReturnPolicySeasonalOverride>]
@@ -12020,6 +12027,7 @@ module Google
           @non_free_return_reasons = args[:non_free_return_reasons] if args.key?(:non_free_return_reasons)
           @policy = args[:policy] if args.key?(:policy)
           @return_policy_id = args[:return_policy_id] if args.key?(:return_policy_id)
+          @return_shipping_fee = args[:return_shipping_fee] if args.key?(:return_shipping_fee)
           @seasonal_overrides = args[:seasonal_overrides] if args.key?(:seasonal_overrides)
         end
       end
