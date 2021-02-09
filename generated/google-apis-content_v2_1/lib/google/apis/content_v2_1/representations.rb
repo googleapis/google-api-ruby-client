@@ -5338,6 +5338,8 @@ module Google
           property :policy, as: 'policy', class: Google::Apis::ContentV2_1::ReturnPolicyPolicy, decorator: Google::Apis::ContentV2_1::ReturnPolicyPolicy::Representation
       
           property :return_policy_id, as: 'returnPolicyId'
+          property :return_shipping_fee, as: 'returnShippingFee', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+      
           collection :seasonal_overrides, as: 'seasonalOverrides', class: Google::Apis::ContentV2_1::ReturnPolicySeasonalOverride, decorator: Google::Apis::ContentV2_1::ReturnPolicySeasonalOverride::Representation
       
         end
