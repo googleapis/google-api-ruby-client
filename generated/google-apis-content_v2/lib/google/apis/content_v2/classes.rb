@@ -7523,7 +7523,7 @@ module Google
         # @return [String]
         attr_accessor :product_id
       
-        # The quantity to return and refund.
+        # The quantity to return and refund. Quantity is required.
         # Corresponds to the JSON property `quantity`
         # @return [Fixnum]
         attr_accessor :quantity
