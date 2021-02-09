@@ -2614,6 +2614,8 @@ module Google
           property :thumbnails, as: 'thumbnails', class: Google::Apis::YoutubeV3::ThumbnailDetails, decorator: Google::Apis::YoutubeV3::ThumbnailDetails::Representation
       
           property :title, as: 'title'
+          property :video_owner_channel_id, as: 'videoOwnerChannelId'
+          property :video_owner_channel_title, as: 'videoOwnerChannelTitle'
         end
       end
       

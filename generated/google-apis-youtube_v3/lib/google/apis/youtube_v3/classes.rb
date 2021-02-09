@@ -5562,7 +5562,7 @@ module Google
         attr_accessor :kind
       
         # Basic details about a playlist, including title, description and thumbnails.
-        # Basic details of a YouTube Playlist item provided by the author. Next ID: 13
+        # Basic details of a YouTube Playlist item provided by the author. Next ID: 15
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::PlaylistItemSnippet]
         attr_accessor :snippet
@@ -5709,7 +5709,7 @@ module Google
       end
       
       # Basic details about a playlist, including title, description and thumbnails.
-      # Basic details of a YouTube Playlist item provided by the author. Next ID: 13
+      # Basic details of a YouTube Playlist item provided by the author. Next ID: 15
       class PlaylistItemSnippet
         include Google::Apis::Core::Hashable
       
@@ -5762,6 +5762,16 @@ module Google
         # @return [String]
         attr_accessor :title
       
+        # Channel id for the channel this video belongs to.
+        # Corresponds to the JSON property `videoOwnerChannelId`
+        # @return [String]
+        attr_accessor :video_owner_channel_id
+      
+        # Channel title for the channel this video belongs to.
+        # Corresponds to the JSON property `videoOwnerChannelTitle`
+        # @return [String]
+        attr_accessor :video_owner_channel_title
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5777,6 +5787,8 @@ module Google
           @resource_id = args[:resource_id] if args.key?(:resource_id)
           @thumbnails = args[:thumbnails] if args.key?(:thumbnails)
           @title = args[:title] if args.key?(:title)
+          @video_owner_channel_id = args[:video_owner_channel_id] if args.key?(:video_owner_channel_id)
+          @video_owner_channel_title = args[:video_owner_channel_title] if args.key?(:video_owner_channel_title)
         end
       end
       
