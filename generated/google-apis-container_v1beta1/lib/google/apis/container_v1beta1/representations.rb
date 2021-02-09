@@ -634,6 +634,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpgradeAvailableEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpgradeEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1860,6 +1866,17 @@ module Google
           property :workload_metadata_config, as: 'workloadMetadataConfig', class: Google::Apis::ContainerV1beta1::WorkloadMetadataConfig, decorator: Google::Apis::ContainerV1beta1::WorkloadMetadataConfig::Representation
       
           property :zone, as: 'zone'
+        end
+      end
+      
+      class UpgradeAvailableEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :release_channel, as: 'releaseChannel', class: Google::Apis::ContainerV1beta1::ReleaseChannel, decorator: Google::Apis::ContainerV1beta1::ReleaseChannel::Representation
+      
+          property :resource, as: 'resource'
+          property :resource_type, as: 'resourceType'
+          property :version, as: 'version'
         end
       end
       
