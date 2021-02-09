@@ -2448,6 +2448,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :expires_at
       
+        # Input only. Expiration time, in seconds, for the consumer key. If not set or
+        # left to the default value of `-1`, the API key never expires. The expiration
+        # time can't be updated after it is set.
+        # Corresponds to the JSON property `expiresInSeconds`
+        # @return [Fixnum]
+        attr_accessor :expires_in_seconds
+      
         # Time the developer app was created in milliseconds since epoch.
         # Corresponds to the JSON property `issuedAt`
         # @return [Fixnum]
@@ -2475,6 +2482,7 @@ module Google
           @consumer_key = args[:consumer_key] if args.key?(:consumer_key)
           @consumer_secret = args[:consumer_secret] if args.key?(:consumer_secret)
           @expires_at = args[:expires_at] if args.key?(:expires_at)
+          @expires_in_seconds = args[:expires_in_seconds] if args.key?(:expires_in_seconds)
           @issued_at = args[:issued_at] if args.key?(:issued_at)
           @scopes = args[:scopes] if args.key?(:scopes)
           @status = args[:status] if args.key?(:status)
@@ -3157,6 +3165,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The size of the CIDR block range that will be reserved by the
+        # instance. If not specified, default to SLASH_16.
+        # Corresponds to the JSON property `peeringCidrRange`
+        # @return [String]
+        attr_accessor :peering_cidr_range
+      
         # Output only. Port number of the exposed Apigee endpoint.
         # Corresponds to the JSON property `port`
         # @return [String]
@@ -3182,6 +3196,7 @@ module Google
           @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
+          @peering_cidr_range = args[:peering_cidr_range] if args.key?(:peering_cidr_range)
           @port = args[:port] if args.key?(:port)
           @state = args[:state] if args.key?(:state)
         end
@@ -4241,9 +4256,14 @@ module Google
         # Compute Engine network used for Service Networking to be peered with Apigee
         # runtime instances. See [Getting started with the Service Networking API](https:
         # //cloud.google.com/service-infrastructure/docs/service-networking/getting-
-        # started). Valid only when [RuntimeType] is set to CLOUD. The value can be
-        # updated only when there are no runtime instances. For example: "default". **
-        # Note:** Not supported for Apigee hybrid.
+        # started). Valid only when [RuntimeType](#RuntimeType) is set to `CLOUD`. The
+        # value can be updated only when there are no runtime instances. For example: `
+        # default`. Apigee also supports shared VPC (that is, the host network project
+        # is not the same as the one that is peering with Apigee). See [Shared VPC
+        # overview](https://cloud.google.com/vpc/docs/shared-vpc). To use a shared VPC
+        # network, use the following format: `projects/`host-project-id`/`region`/
+        # networks/`network-name``. For example: `projects/my-sharedvpc-host/global/
+        # networks/mynetwork` **Note:** Not supported for Apigee hybrid.
         # Corresponds to the JSON property `authorizedNetwork`
         # @return [String]
         attr_accessor :authorized_network
@@ -4255,7 +4275,7 @@ module Google
         attr_accessor :billing_type
       
         # Output only. Base64-encoded public certificate for the root CA of the Apigee
-        # organization. Valid only when [RuntimeType] is CLOUD.
+        # organization. Valid only when [RuntimeType](#RuntimeType) is `CLOUD`.
         # Corresponds to the JSON property `caCertificate`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -4298,7 +4318,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The project ID associated with the Apigee organization.
+        # Project ID associated with the Apigee organization.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -4312,8 +4332,9 @@ module Google
         # Cloud KMS key name used for encrypting the data that is stored and replicated
         # across runtime instances. Update is not allowed after the organization is
         # created. If not specified, a Google-Managed encryption key will be used. Valid
-        # only when [RuntimeType] is CLOUD. For example: "projects/foo/locations/us/
-        # keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
+        # only when [RuntimeType](#RuntimeType) is `CLOUD`. For example: "projects/foo/
+        # locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee
+        # hybrid.
         # Corresponds to the JSON property `runtimeDatabaseEncryptionKeyName`
         # @return [String]
         attr_accessor :runtime_database_encryption_key_name

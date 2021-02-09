@@ -4778,10 +4778,10 @@ module Google
         # @param [String] name
         #   Required. The resource name for which the interactive query will be executed.
         #   Must be of the form `organizations/`organization_id`/environments/`
-        #   environment_id/stats/`dimensions`` Dimensions let you view metrics in
+        #   environment_id/optimizedStats/`dimensions`` Dimensions let you view metrics in
         #   meaningful groupings. E.g. apiproxy, target_host. The value of dimensions
         #   should be comma separated list as shown below `organizations/`org`/
-        #   environments/`env`/stats/apiproxy,request_verb`
+        #   environments/`env`/optimizedStats/apiproxy,request_verb`
         # @param [String] accuracy
         #   Legacy field: not used anymore.
         # @param [String] agg_table
@@ -5973,10 +5973,10 @@ module Google
         # given timerange.
         # @param [String] name
         #   Required. The resource name for which the interactive query will be executed.
-        #   Must be of the form `organizations/`organization_id`/stats/`dimensions``.
+        #   Must be of the form `organizations/`organization_id`/hostStats/`dimensions``.
         #   Dimensions let you view metrics in meaningful groupings. E.g. apiproxy,
         #   target_host. The value of dimensions should be comma separated list as shown
-        #   below `organizations/`org`/stats/apiproxy,request_verb`
+        #   below `organizations/`org`/hostStats/apiproxy,request_verb`
         # @param [String] accuracy
         #   Legacy field: not used anymore.
         # @param [String] envgroup_hostname
@@ -6749,10 +6749,10 @@ module Google
         # This api is similar to GetHostStats except that the response is less verbose.
         # @param [String] name
         #   Required. The resource name for which the interactive query will be executed.
-        #   Must be of the form `organizations/`organization_id`/stats/`dimensions``.
-        #   Dimensions let you view metrics in meaningful groupings. E.g. apiproxy,
-        #   target_host. The value of dimensions should be comma separated list as shown
-        #   below `organizations/`org`/stats/apiproxy,request_verb`
+        #   Must be of the form `organizations/`organization_id`/optimizedHostStats/`
+        #   dimensions``. Dimensions let you view metrics in meaningful groupings. E.g.
+        #   apiproxy, target_host. The value of dimensions should be comma separated list
+        #   as shown below `organizations/`org`/optimizedHostStats/apiproxy,request_verb`
         # @param [String] accuracy
         #   Legacy field: not used anymore.
         # @param [String] envgroup_hostname

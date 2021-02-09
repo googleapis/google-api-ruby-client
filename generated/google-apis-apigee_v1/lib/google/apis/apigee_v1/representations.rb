@@ -1584,6 +1584,7 @@ module Google
           property :consumer_key, as: 'consumerKey'
           property :consumer_secret, as: 'consumerSecret'
           property :expires_at, :numeric_string => true, as: 'expiresAt'
+          property :expires_in_seconds, :numeric_string => true, as: 'expiresInSeconds'
           property :issued_at, :numeric_string => true, as: 'issuedAt'
           collection :scopes, as: 'scopes'
           property :status, as: 'status'
@@ -1762,6 +1763,7 @@ module Google
           property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
           property :location, as: 'location'
           property :name, as: 'name'
+          property :peering_cidr_range, as: 'peeringCidrRange'
           property :port, as: 'port'
           property :state, as: 'state'
         end
