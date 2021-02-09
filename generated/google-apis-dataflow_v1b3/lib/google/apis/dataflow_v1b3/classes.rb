@@ -1281,6 +1281,11 @@ module Google
         # @return [String]
         attr_accessor :service_kms_key_name
       
+        # Output only. The shuffle mode used for the job.
+        # Corresponds to the JSON property `shuffleMode`
+        # @return [String]
+        attr_accessor :shuffle_mode
+      
         # The prefix of the resources the system should use for temporary storage. The
         # system will append the suffix "/temp-`JOBNAME` to this resource prefix, where `
         # JOBNAME` is the value of the job_name field. The resulting bucket and object
@@ -1340,6 +1345,7 @@ module Google
           @sdk_pipeline_options = args[:sdk_pipeline_options] if args.key?(:sdk_pipeline_options)
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
           @service_kms_key_name = args[:service_kms_key_name] if args.key?(:service_kms_key_name)
+          @shuffle_mode = args[:shuffle_mode] if args.key?(:shuffle_mode)
           @temp_storage_prefix = args[:temp_storage_prefix] if args.key?(:temp_storage_prefix)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
           @version = args[:version] if args.key?(:version)
@@ -4162,6 +4168,12 @@ module Google
         # @return [String]
         attr_accessor :container_image
       
+        # Environment ID for the Beam runner API proto Environment that corresponds to
+        # the current SDK Harness.
+        # Corresponds to the JSON property `environmentId`
+        # @return [String]
+        attr_accessor :environment_id
+      
         # If true, recommends the Dataflow service to use only one core per SDK
         # container instance with this image. If false (or unset) recommends using more
         # than one core per SDK container instance with this image for efficiency. Note
@@ -4178,6 +4190,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @container_image = args[:container_image] if args.key?(:container_image)
+          @environment_id = args[:environment_id] if args.key?(:environment_id)
           @use_single_core_per_container = args[:use_single_core_per_container] if args.key?(:use_single_core_per_container)
         end
       end
