@@ -188,7 +188,7 @@ module Google
       class ConfigureContactSettingsRequest
         include Google::Apis::Core::Hashable
       
-        # The list of contact notices that the caller acknowledges. The notices required
+        # The list of contact notices that the caller acknowledges. The notices needed
         # here depend on the values specified in `contact_settings`.
         # Corresponds to the JSON property `contactNotices`
         # @return [Array<String>]
@@ -1153,7 +1153,7 @@ module Google
       class RegisterDomainRequest
         include Google::Apis::Core::Hashable
       
-        # The list of contact notices that the caller acknowledges. The notices required
+        # The list of contact notices that the caller acknowledges. The notices needed
         # here depend on the values specified in `registration.contact_settings`.
         # Corresponds to the JSON property `contactNotices`
         # @return [Array<String>]
