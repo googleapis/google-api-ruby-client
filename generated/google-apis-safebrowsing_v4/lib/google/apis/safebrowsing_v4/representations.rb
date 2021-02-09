@@ -22,176 +22,170 @@ module Google
   module Apis
     module SafebrowsingV4
       
-      class GoogleProtobufEmpty
+      class Checksum
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleSecuritySafebrowsingV4Checksum
+      class ClientInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleSecuritySafebrowsingV4ClientInfo
+      class Constraints
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest
+      class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest
+      class FetchThreatListUpdatesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints
+      class FetchThreatListUpdatesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse
+      class FindFullHashesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse
+      class FindFullHashesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleSecuritySafebrowsingV4FindFullHashesRequest
+      class FindThreatMatchesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleSecuritySafebrowsingV4FindFullHashesResponse
+      class FindThreatMatchesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleSecuritySafebrowsingV4FindThreatMatchesRequest
+      class ListThreatListsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleSecuritySafebrowsingV4FindThreatMatchesResponse
+      class ListUpdateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleSecuritySafebrowsingV4ListThreatListsResponse
+      class ListUpdateResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleSecuritySafebrowsingV4RawHashes
+      class MetadataEntry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleSecuritySafebrowsingV4RawIndices
+      class RawHashes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleSecuritySafebrowsingV4RiceDeltaEncoding
+      class RawIndices
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleSecuritySafebrowsingV4ThreatEntry
+      class RiceDeltaEncoding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleSecuritySafebrowsingV4ThreatEntryMetadata
+      class ThreatEntry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry
+      class ThreatEntryMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleSecuritySafebrowsingV4ThreatEntrySet
+      class ThreatEntrySet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleSecuritySafebrowsingV4ThreatHit
+      class ThreatHit
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleSecuritySafebrowsingV4ThreatHitThreatSource
+      class ThreatInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleSecuritySafebrowsingV4ThreatHitUserInfo
+      class ThreatListDescriptor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleSecuritySafebrowsingV4ThreatInfo
+      class ThreatMatch
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleSecuritySafebrowsingV4ThreatListDescriptor
+      class ThreatSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleSecuritySafebrowsingV4ThreatMatch
+      class UserInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleProtobufEmpty
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleSecuritySafebrowsingV4Checksum
+      class Checksum
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :sha256, :base64 => true, as: 'sha256'
         end
       end
       
-      class GoogleSecuritySafebrowsingV4ClientInfo
+      class ClientInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :client_id, as: 'clientId'
@@ -199,29 +193,7 @@ module Google
         end
       end
       
-      class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :client, as: 'client', class: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ClientInfo, decorator: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ClientInfo::Representation
-      
-          collection :list_update_requests, as: 'listUpdateRequests', class: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest, decorator: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest::Representation
-      
-        end
-      end
-      
-      class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :constraints, as: 'constraints', class: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints, decorator: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints::Representation
-      
-          property :platform_type, as: 'platformType'
-          property :state, :base64 => true, as: 'state'
-          property :threat_entry_type, as: 'threatEntryType'
-          property :threat_type, as: 'threatType'
-        end
-      end
-      
-      class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints
+      class Constraints
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :device_location, as: 'deviceLocation'
@@ -233,25 +205,102 @@ module Google
         end
       end
       
-      class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse
+      class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :list_update_responses, as: 'listUpdateResponses', class: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse, decorator: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse::Representation
+        end
+      end
+      
+      class FetchThreatListUpdatesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client, as: 'client', class: Google::Apis::SafebrowsingV4::ClientInfo, decorator: Google::Apis::SafebrowsingV4::ClientInfo::Representation
+      
+          collection :list_update_requests, as: 'listUpdateRequests', class: Google::Apis::SafebrowsingV4::ListUpdateRequest, decorator: Google::Apis::SafebrowsingV4::ListUpdateRequest::Representation
+      
+        end
+      end
+      
+      class FetchThreatListUpdatesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :list_update_responses, as: 'listUpdateResponses', class: Google::Apis::SafebrowsingV4::ListUpdateResponse, decorator: Google::Apis::SafebrowsingV4::ListUpdateResponse::Representation
       
           property :minimum_wait_duration, as: 'minimumWaitDuration'
         end
       end
       
-      class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse
+      class FindFullHashesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :additions, as: 'additions', class: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatEntrySet, decorator: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatEntrySet::Representation
+          property :api_client, as: 'apiClient', class: Google::Apis::SafebrowsingV4::ClientInfo, decorator: Google::Apis::SafebrowsingV4::ClientInfo::Representation
       
-          property :checksum, as: 'checksum', class: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4Checksum, decorator: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4Checksum::Representation
+          property :client, as: 'client', class: Google::Apis::SafebrowsingV4::ClientInfo, decorator: Google::Apis::SafebrowsingV4::ClientInfo::Representation
+      
+          collection :client_states, as: 'clientStates'
+          property :threat_info, as: 'threatInfo', class: Google::Apis::SafebrowsingV4::ThreatInfo, decorator: Google::Apis::SafebrowsingV4::ThreatInfo::Representation
+      
+        end
+      end
+      
+      class FindFullHashesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :matches, as: 'matches', class: Google::Apis::SafebrowsingV4::ThreatMatch, decorator: Google::Apis::SafebrowsingV4::ThreatMatch::Representation
+      
+          property :minimum_wait_duration, as: 'minimumWaitDuration'
+          property :negative_cache_duration, as: 'negativeCacheDuration'
+        end
+      end
+      
+      class FindThreatMatchesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client, as: 'client', class: Google::Apis::SafebrowsingV4::ClientInfo, decorator: Google::Apis::SafebrowsingV4::ClientInfo::Representation
+      
+          property :threat_info, as: 'threatInfo', class: Google::Apis::SafebrowsingV4::ThreatInfo, decorator: Google::Apis::SafebrowsingV4::ThreatInfo::Representation
+      
+        end
+      end
+      
+      class FindThreatMatchesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :matches, as: 'matches', class: Google::Apis::SafebrowsingV4::ThreatMatch, decorator: Google::Apis::SafebrowsingV4::ThreatMatch::Representation
+      
+        end
+      end
+      
+      class ListThreatListsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :threat_lists, as: 'threatLists', class: Google::Apis::SafebrowsingV4::ThreatListDescriptor, decorator: Google::Apis::SafebrowsingV4::ThreatListDescriptor::Representation
+      
+        end
+      end
+      
+      class ListUpdateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :constraints, as: 'constraints', class: Google::Apis::SafebrowsingV4::Constraints, decorator: Google::Apis::SafebrowsingV4::Constraints::Representation
+      
+          property :platform_type, as: 'platformType'
+          property :state, :base64 => true, as: 'state'
+          property :threat_entry_type, as: 'threatEntryType'
+          property :threat_type, as: 'threatType'
+        end
+      end
+      
+      class ListUpdateResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additions, as: 'additions', class: Google::Apis::SafebrowsingV4::ThreatEntrySet, decorator: Google::Apis::SafebrowsingV4::ThreatEntrySet::Representation
+      
+          property :checksum, as: 'checksum', class: Google::Apis::SafebrowsingV4::Checksum, decorator: Google::Apis::SafebrowsingV4::Checksum::Representation
       
           property :new_client_state, :base64 => true, as: 'newClientState'
           property :platform_type, as: 'platformType'
-          collection :removals, as: 'removals', class: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatEntrySet, decorator: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatEntrySet::Representation
+          collection :removals, as: 'removals', class: Google::Apis::SafebrowsingV4::ThreatEntrySet, decorator: Google::Apis::SafebrowsingV4::ThreatEntrySet::Representation
       
           property :response_type, as: 'responseType'
           property :threat_entry_type, as: 'threatEntryType'
@@ -259,56 +308,15 @@ module Google
         end
       end
       
-      class GoogleSecuritySafebrowsingV4FindFullHashesRequest
+      class MetadataEntry
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_client, as: 'apiClient', class: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ClientInfo, decorator: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ClientInfo::Representation
-      
-          property :client, as: 'client', class: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ClientInfo, decorator: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ClientInfo::Representation
-      
-          collection :client_states, as: 'clientStates'
-          property :threat_info, as: 'threatInfo', class: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatInfo, decorator: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatInfo::Representation
-      
+          property :key, :base64 => true, as: 'key'
+          property :value, :base64 => true, as: 'value'
         end
       end
       
-      class GoogleSecuritySafebrowsingV4FindFullHashesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :matches, as: 'matches', class: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatMatch, decorator: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatMatch::Representation
-      
-          property :minimum_wait_duration, as: 'minimumWaitDuration'
-          property :negative_cache_duration, as: 'negativeCacheDuration'
-        end
-      end
-      
-      class GoogleSecuritySafebrowsingV4FindThreatMatchesRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :client, as: 'client', class: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ClientInfo, decorator: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ClientInfo::Representation
-      
-          property :threat_info, as: 'threatInfo', class: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatInfo, decorator: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatInfo::Representation
-      
-        end
-      end
-      
-      class GoogleSecuritySafebrowsingV4FindThreatMatchesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :matches, as: 'matches', class: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatMatch, decorator: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatMatch::Representation
-      
-        end
-      end
-      
-      class GoogleSecuritySafebrowsingV4ListThreatListsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :threat_lists, as: 'threatLists', class: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatListDescriptor, decorator: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatListDescriptor::Representation
-      
-        end
-      end
-      
-      class GoogleSecuritySafebrowsingV4RawHashes
+      class RawHashes
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :prefix_size, as: 'prefixSize'
@@ -316,14 +324,14 @@ module Google
         end
       end
       
-      class GoogleSecuritySafebrowsingV4RawIndices
+      class RawIndices
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :indices, as: 'indices'
         end
       end
       
-      class GoogleSecuritySafebrowsingV4RiceDeltaEncoding
+      class RiceDeltaEncoding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :encoded_data, :base64 => true, as: 'encodedData'
@@ -333,7 +341,7 @@ module Google
         end
       end
       
-      class GoogleSecuritySafebrowsingV4ThreatEntry
+      class ThreatEntry
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :digest, :base64 => true, as: 'digest'
@@ -342,54 +350,80 @@ module Google
         end
       end
       
-      class GoogleSecuritySafebrowsingV4ThreatEntryMetadata
+      class ThreatEntryMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :entries, as: 'entries', class: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry, decorator: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry::Representation
+          collection :entries, as: 'entries', class: Google::Apis::SafebrowsingV4::MetadataEntry, decorator: Google::Apis::SafebrowsingV4::MetadataEntry::Representation
       
         end
       end
       
-      class GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :key, :base64 => true, as: 'key'
-          property :value, :base64 => true, as: 'value'
-        end
-      end
-      
-      class GoogleSecuritySafebrowsingV4ThreatEntrySet
+      class ThreatEntrySet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :compression_type, as: 'compressionType'
-          property :raw_hashes, as: 'rawHashes', class: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4RawHashes, decorator: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4RawHashes::Representation
+          property :raw_hashes, as: 'rawHashes', class: Google::Apis::SafebrowsingV4::RawHashes, decorator: Google::Apis::SafebrowsingV4::RawHashes::Representation
       
-          property :raw_indices, as: 'rawIndices', class: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4RawIndices, decorator: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4RawIndices::Representation
+          property :raw_indices, as: 'rawIndices', class: Google::Apis::SafebrowsingV4::RawIndices, decorator: Google::Apis::SafebrowsingV4::RawIndices::Representation
       
-          property :rice_hashes, as: 'riceHashes', class: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4RiceDeltaEncoding, decorator: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4RiceDeltaEncoding::Representation
+          property :rice_hashes, as: 'riceHashes', class: Google::Apis::SafebrowsingV4::RiceDeltaEncoding, decorator: Google::Apis::SafebrowsingV4::RiceDeltaEncoding::Representation
       
-          property :rice_indices, as: 'riceIndices', class: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4RiceDeltaEncoding, decorator: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4RiceDeltaEncoding::Representation
+          property :rice_indices, as: 'riceIndices', class: Google::Apis::SafebrowsingV4::RiceDeltaEncoding, decorator: Google::Apis::SafebrowsingV4::RiceDeltaEncoding::Representation
       
         end
       end
       
-      class GoogleSecuritySafebrowsingV4ThreatHit
+      class ThreatHit
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :client_info, as: 'clientInfo', class: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ClientInfo, decorator: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ClientInfo::Representation
+          property :client_info, as: 'clientInfo', class: Google::Apis::SafebrowsingV4::ClientInfo, decorator: Google::Apis::SafebrowsingV4::ClientInfo::Representation
       
-          property :entry, as: 'entry', class: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatEntry, decorator: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatEntry::Representation
+          property :entry, as: 'entry', class: Google::Apis::SafebrowsingV4::ThreatEntry, decorator: Google::Apis::SafebrowsingV4::ThreatEntry::Representation
       
           property :platform_type, as: 'platformType'
-          collection :resources, as: 'resources', class: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatHitThreatSource, decorator: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatHitThreatSource::Representation
+          collection :resources, as: 'resources', class: Google::Apis::SafebrowsingV4::ThreatSource, decorator: Google::Apis::SafebrowsingV4::ThreatSource::Representation
       
           property :threat_type, as: 'threatType'
-          property :user_info, as: 'userInfo', class: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatHitUserInfo, decorator: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatHitUserInfo::Representation
+          property :user_info, as: 'userInfo', class: Google::Apis::SafebrowsingV4::UserInfo, decorator: Google::Apis::SafebrowsingV4::UserInfo::Representation
       
         end
       end
       
-      class GoogleSecuritySafebrowsingV4ThreatHitThreatSource
+      class ThreatInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :platform_types, as: 'platformTypes'
+          collection :threat_entries, as: 'threatEntries', class: Google::Apis::SafebrowsingV4::ThreatEntry, decorator: Google::Apis::SafebrowsingV4::ThreatEntry::Representation
+      
+          collection :threat_entry_types, as: 'threatEntryTypes'
+          collection :threat_types, as: 'threatTypes'
+        end
+      end
+      
+      class ThreatListDescriptor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :platform_type, as: 'platformType'
+          property :threat_entry_type, as: 'threatEntryType'
+          property :threat_type, as: 'threatType'
+        end
+      end
+      
+      class ThreatMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cache_duration, as: 'cacheDuration'
+          property :platform_type, as: 'platformType'
+          property :threat, as: 'threat', class: Google::Apis::SafebrowsingV4::ThreatEntry, decorator: Google::Apis::SafebrowsingV4::ThreatEntry::Representation
+      
+          property :threat_entry_metadata, as: 'threatEntryMetadata', class: Google::Apis::SafebrowsingV4::ThreatEntryMetadata, decorator: Google::Apis::SafebrowsingV4::ThreatEntryMetadata::Representation
+      
+          property :threat_entry_type, as: 'threatEntryType'
+          property :threat_type, as: 'threatType'
+        end
+      end
+      
+      class ThreatSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :referrer, as: 'referrer'
@@ -399,45 +433,11 @@ module Google
         end
       end
       
-      class GoogleSecuritySafebrowsingV4ThreatHitUserInfo
+      class UserInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :region_code, as: 'regionCode'
           property :user_id, :base64 => true, as: 'userId'
-        end
-      end
-      
-      class GoogleSecuritySafebrowsingV4ThreatInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :platform_types, as: 'platformTypes'
-          collection :threat_entries, as: 'threatEntries', class: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatEntry, decorator: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatEntry::Representation
-      
-          collection :threat_entry_types, as: 'threatEntryTypes'
-          collection :threat_types, as: 'threatTypes'
-        end
-      end
-      
-      class GoogleSecuritySafebrowsingV4ThreatListDescriptor
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :platform_type, as: 'platformType'
-          property :threat_entry_type, as: 'threatEntryType'
-          property :threat_type, as: 'threatType'
-        end
-      end
-      
-      class GoogleSecuritySafebrowsingV4ThreatMatch
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cache_duration, as: 'cacheDuration'
-          property :platform_type, as: 'platformType'
-          property :threat, as: 'threat', class: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatEntry, decorator: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatEntry::Representation
-      
-          property :threat_entry_metadata, as: 'threatEntryMetadata', class: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatEntryMetadata, decorator: Google::Apis::SafebrowsingV4::GoogleSecuritySafebrowsingV4ThreatEntryMetadata::Representation
-      
-          property :threat_entry_type, as: 'threatEntryType'
-          property :threat_type, as: 'threatType'
         end
       end
     end
