@@ -1648,6 +1648,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TextDetectionParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TextProperty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4193,6 +4199,8 @@ module Google
       
           property :product_search_params, as: 'productSearchParams', class: Google::Apis::VisionV1::ProductSearchParams, decorator: Google::Apis::VisionV1::ProductSearchParams::Representation
       
+          property :text_detection_params, as: 'textDetectionParams', class: Google::Apis::VisionV1::TextDetectionParams, decorator: Google::Apis::VisionV1::TextDetectionParams::Representation
+      
           property :web_detection_params, as: 'webDetectionParams', class: Google::Apis::VisionV1::WebDetectionParams, decorator: Google::Apis::VisionV1::WebDetectionParams::Representation
       
         end
@@ -4577,6 +4585,13 @@ module Google
           collection :pages, as: 'pages', class: Google::Apis::VisionV1::Page, decorator: Google::Apis::VisionV1::Page::Representation
       
           property :text, as: 'text'
+        end
+      end
+      
+      class TextDetectionParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_text_detection_confidence_score, as: 'enableTextDetectionConfidenceScore'
         end
       end
       
