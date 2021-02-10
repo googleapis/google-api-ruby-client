@@ -941,6 +941,7 @@ module Google
       class ProvidedSoftwareCatalog
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :androidx_orchestrator_version, as: 'androidxOrchestratorVersion'
           property :orchestrator_version, as: 'orchestratorVersion'
         end
       end
