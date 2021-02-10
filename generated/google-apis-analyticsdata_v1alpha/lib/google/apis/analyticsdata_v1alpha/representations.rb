@@ -487,7 +487,6 @@ module Google
           property :field_name, as: 'fieldName'
           property :in_list_filter, as: 'inListFilter', class: Google::Apis::AnalyticsdataV1alpha::InListFilter, decorator: Google::Apis::AnalyticsdataV1alpha::InListFilter::Representation
       
-          property :null_filter, as: 'nullFilter'
           property :numeric_filter, as: 'numericFilter', class: Google::Apis::AnalyticsdataV1alpha::NumericFilter, decorator: Google::Apis::AnalyticsdataV1alpha::NumericFilter::Representation
       
           property :string_filter, as: 'stringFilter', class: Google::Apis::AnalyticsdataV1alpha::StringFilter, decorator: Google::Apis::AnalyticsdataV1alpha::StringFilter::Representation

@@ -605,15 +605,6 @@ module Google
         # @return [Google::Apis::AnalyticsdataV1alpha::InListFilter]
         attr_accessor :in_list_filter
       
-        # A filter for null values. If True, a null dimension value is matched by this
-        # filter. Null filter is commonly used inside a NOT filter expression. For
-        # example, a NOT expression of a null filter removes rows when a dimension is
-        # null.
-        # Corresponds to the JSON property `nullFilter`
-        # @return [Boolean]
-        attr_accessor :null_filter
-        alias_method :null_filter?, :null_filter
-      
         # Filters for numeric or date values.
         # Corresponds to the JSON property `numericFilter`
         # @return [Google::Apis::AnalyticsdataV1alpha::NumericFilter]
@@ -633,7 +624,6 @@ module Google
           @between_filter = args[:between_filter] if args.key?(:between_filter)
           @field_name = args[:field_name] if args.key?(:field_name)
           @in_list_filter = args[:in_list_filter] if args.key?(:in_list_filter)
-          @null_filter = args[:null_filter] if args.key?(:null_filter)
           @numeric_filter = args[:numeric_filter] if args.key?(:numeric_filter)
           @string_filter = args[:string_filter] if args.key?(:string_filter)
         end
@@ -1025,8 +1015,10 @@ module Google
         attr_accessor :field_names
       
         # The number of rows to return in this pivot. If the `limit` parameter is
-        # unspecified, up to 10,000 rows are returned. The API returns a maximum of 100,
-        # 000 rows per request, no matter how many you ask for.
+        # unspecified, up to 10,000 rows are returned. The product of the `limit` for
+        # each `pivot` in a `RunPivotReportRequest` must not exceed 100,000. For example,
+        # a two pivot request with `limit: 1000` in each pivot will fail because the
+        # product is `1,000,000`.
         # Corresponds to the JSON property `limit`
         # @return [Fixnum]
         attr_accessor :limit
