@@ -494,6 +494,12 @@ module Google
         attr_accessor :exclude
         alias_method :exclude?, :exclude
       
+        # Optional. If the update call is triggered from rollback, set the value as true.
+        # Corresponds to the JSON property `isRollback`
+        # @return [Boolean]
+        attr_accessor :is_rollback
+        alias_method :is_rollback?, :is_rollback
+      
         # Optional. The MaintenancePolicies that have been attached to the instance. The
         # key must be of the type name of the oneof policy name defined in
         # MaintenancePolicy, and the embedded policy must define the same policy type.
@@ -511,6 +517,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @exclude = args[:exclude] if args.key?(:exclude)
+          @is_rollback = args[:is_rollback] if args.key?(:is_rollback)
           @maintenance_policies = args[:maintenance_policies] if args.key?(:maintenance_policies)
         end
       end
