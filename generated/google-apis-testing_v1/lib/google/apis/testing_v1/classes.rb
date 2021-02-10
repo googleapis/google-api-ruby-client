@@ -1728,8 +1728,16 @@ module Google
       class ProvidedSoftwareCatalog
         include Google::Apis::Core::Hashable
       
+        # A string representing the current version of AndroidX Test Orchestrator that
+        # is used in the environment. The package is available at https://maven.google.
+        # com/web/index.html#androidx.test:orchestrator.
+        # Corresponds to the JSON property `androidxOrchestratorVersion`
+        # @return [String]
+        attr_accessor :androidx_orchestrator_version
+      
         # A string representing the current version of Android Test Orchestrator that is
-        # provided by TestExecutionService. Example: "1.0.2 beta".
+        # used in the environment. The package is available at https://maven.google.com/
+        # web/index.html#com.android.support.test:orchestrator.
         # Corresponds to the JSON property `orchestratorVersion`
         # @return [String]
         attr_accessor :orchestrator_version
@@ -1740,6 +1748,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @androidx_orchestrator_version = args[:androidx_orchestrator_version] if args.key?(:androidx_orchestrator_version)
           @orchestrator_version = args[:orchestrator_version] if args.key?(:orchestrator_version)
         end
       end
