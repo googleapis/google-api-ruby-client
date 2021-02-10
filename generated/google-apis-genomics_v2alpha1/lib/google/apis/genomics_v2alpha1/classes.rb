@@ -1130,6 +1130,14 @@ module Google
         # @return [Google::Apis::GenomicsV2alpha1::Pipeline]
         attr_accessor :pipeline
       
+        # The name of an existing Pub/Sub topic. The server will publish messages to
+        # this topic whenever the status of the operation changes. The Genomics Service
+        # Agent account must have publisher permissions to the specified topic or
+        # notifications will not be sent.
+        # Corresponds to the JSON property `pubSubTopic`
+        # @return [String]
+        attr_accessor :pub_sub_topic
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1138,6 +1146,7 @@ module Google
         def update!(**args)
           @labels = args[:labels] if args.key?(:labels)
           @pipeline = args[:pipeline] if args.key?(:pipeline)
+          @pub_sub_topic = args[:pub_sub_topic] if args.key?(:pub_sub_topic)
         end
       end
       
