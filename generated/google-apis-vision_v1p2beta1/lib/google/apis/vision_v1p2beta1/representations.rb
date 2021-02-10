@@ -748,6 +748,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudVisionV1p2beta1TextDetectionParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudVisionV1p2beta1Vertex
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2674,6 +2680,8 @@ module Google
       
           property :product_search_params, as: 'productSearchParams', class: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1ProductSearchParams, decorator: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1ProductSearchParams::Representation
       
+          property :text_detection_params, as: 'textDetectionParams', class: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1TextDetectionParams, decorator: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1TextDetectionParams::Representation
+      
           property :web_detection_params, as: 'webDetectionParams', class: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1WebDetectionParams, decorator: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1WebDetectionParams::Representation
       
         end
@@ -2934,6 +2942,13 @@ module Google
       
           collection :detected_languages, as: 'detectedLanguages', class: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage, decorator: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage::Representation
       
+        end
+      end
+      
+      class GoogleCloudVisionV1p2beta1TextDetectionParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_text_detection_confidence_score, as: 'enableTextDetectionConfidenceScore'
         end
       end
       
