@@ -2476,7 +2476,7 @@ module Google
         attr_accessor :add_user_disabled
         alias_method :add_user_disabled?, :add_user_disabled
       
-        # Whether adjusting the master volume is disabled.
+        # Whether adjusting the master volume is disabled. Also mutes the device.
         # Corresponds to the JSON property `adjustVolumeDisabled`
         # @return [Boolean]
         attr_accessor :adjust_volume_disabled
