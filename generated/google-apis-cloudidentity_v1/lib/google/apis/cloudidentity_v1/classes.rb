@@ -1699,7 +1699,11 @@ module Google
         end
       end
       
-      # UserInvitation to join a Google Workspace organization.
+      # The `UserInvitation` resource represents an email sent to an unmanaged user
+      # account (an email address that shares the domain of the Google Workspace
+      # customer but is not managed by it yet), inviting them to join the customer’s
+      # domain. If the user accepts the `UserInvitation`, the account will become a
+      # managed account.
       class UserInvitation
         include Google::Apis::Core::Hashable
       
@@ -1709,7 +1713,7 @@ module Google
         attr_accessor :mails_sent_count
       
         # Shall be of the form `customers/`customer`/userinvitations/`user_email_address`
-        # `
+        # `.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
