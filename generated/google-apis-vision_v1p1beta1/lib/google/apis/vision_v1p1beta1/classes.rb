@@ -1979,6 +1979,12 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1ProductSearchParams]
         attr_accessor :product_search_params
       
+        # Parameters for text detections. This is used to control TEXT_DETECTION and
+        # DOCUMENT_TEXT_DETECTION features.
+        # Corresponds to the JSON property `textDetectionParams`
+        # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1TextDetectionParams]
+        attr_accessor :text_detection_params
+      
         # Parameters for web detection request.
         # Corresponds to the JSON property `webDetectionParams`
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1WebDetectionParams]
@@ -1994,6 +2000,7 @@ module Google
           @language_hints = args[:language_hints] if args.key?(:language_hints)
           @lat_long_rect = args[:lat_long_rect] if args.key?(:lat_long_rect)
           @product_search_params = args[:product_search_params] if args.key?(:product_search_params)
+          @text_detection_params = args[:text_detection_params] if args.key?(:text_detection_params)
           @web_detection_params = args[:web_detection_params] if args.key?(:web_detection_params)
         end
       end
@@ -2884,6 +2891,29 @@ module Google
         def update!(**args)
           @detected_break = args[:detected_break] if args.key?(:detected_break)
           @detected_languages = args[:detected_languages] if args.key?(:detected_languages)
+        end
+      end
+      
+      # Parameters for text detections. This is used to control TEXT_DETECTION and
+      # DOCUMENT_TEXT_DETECTION features.
+      class GoogleCloudVisionV1p1beta1TextDetectionParams
+        include Google::Apis::Core::Hashable
+      
+        # By default, Cloud Vision API only includes confidence score for
+        # DOCUMENT_TEXT_DETECTION result. Set the flag to true to include confidence
+        # score for TEXT_DETECTION as well.
+        # Corresponds to the JSON property `enableTextDetectionConfidenceScore`
+        # @return [Boolean]
+        attr_accessor :enable_text_detection_confidence_score
+        alias_method :enable_text_detection_confidence_score?, :enable_text_detection_confidence_score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_text_detection_confidence_score = args[:enable_text_detection_confidence_score] if args.key?(:enable_text_detection_confidence_score)
         end
       end
       
