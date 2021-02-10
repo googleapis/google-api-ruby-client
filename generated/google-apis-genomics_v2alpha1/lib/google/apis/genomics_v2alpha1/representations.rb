@@ -561,6 +561,7 @@ module Google
           hash :labels, as: 'labels'
           property :pipeline, as: 'pipeline', class: Google::Apis::GenomicsV2alpha1::Pipeline, decorator: Google::Apis::GenomicsV2alpha1::Pipeline::Representation
       
+          property :pub_sub_topic, as: 'pubSubTopic'
         end
       end
       
