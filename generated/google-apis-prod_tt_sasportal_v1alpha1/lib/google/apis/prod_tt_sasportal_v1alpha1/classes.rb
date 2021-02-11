@@ -177,6 +177,11 @@ module Google
         # @return [String]
         attr_accessor :fcc_id
       
+        # Only ranges within the allowlists are available for new grants.
+        # Corresponds to the JSON property `grantRangeAllowlists`
+        # @return [Array<Google::Apis::ProdTtSasportalV1alpha1::SasPortalFrequencyRange>]
+        attr_accessor :grant_range_allowlists
+      
         # Output only. Grants held by the device.
         # Corresponds to the JSON property `grants`
         # @return [Array<Google::Apis::ProdTtSasportalV1alpha1::SasPortalDeviceGrant>]
@@ -212,6 +217,7 @@ module Google
           @device_metadata = args[:device_metadata] if args.key?(:device_metadata)
           @display_name = args[:display_name] if args.key?(:display_name)
           @fcc_id = args[:fcc_id] if args.key?(:fcc_id)
+          @grant_range_allowlists = args[:grant_range_allowlists] if args.key?(:grant_range_allowlists)
           @grants = args[:grants] if args.key?(:grants)
           @name = args[:name] if args.key?(:name)
           @preloaded_config = args[:preloaded_config] if args.key?(:preloaded_config)
