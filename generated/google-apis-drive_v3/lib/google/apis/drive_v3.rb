@@ -42,7 +42,7 @@ module Google
       # View and manage metadata of files in your Google Drive
       AUTH_DRIVE_METADATA = 'https://www.googleapis.com/auth/drive.metadata'
 
-      # View metadata for files in your Google Drive
+      # See information about your Google Drive files
       AUTH_DRIVE_METADATA_READONLY = 'https://www.googleapis.com/auth/drive.metadata.readonly'
 
       # View the photos, videos and albums in your Google Photos
