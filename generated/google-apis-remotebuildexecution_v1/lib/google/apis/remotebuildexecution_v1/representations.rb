@@ -695,6 +695,7 @@ module Google
       class GoogleDevtoolsRemotebuildbotCommandEvents
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cm_usage, as: 'cmUsage'
           property :docker_cache_hit, as: 'dockerCacheHit'
           property :docker_image_name, as: 'dockerImageName'
           property :input_cache_miss, as: 'inputCacheMiss'
