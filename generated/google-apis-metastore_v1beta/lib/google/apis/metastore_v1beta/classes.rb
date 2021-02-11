@@ -717,6 +717,11 @@ module Google
         # @return [Array<Google::Apis::MetastoreV1beta::MetadataExport>]
         attr_accessor :metadata_exports
       
+        # Output only. The latest restores of the metastore service.
+        # Corresponds to the JSON property `restores`
+        # @return [Array<Google::Apis::MetastoreV1beta::Restore>]
+        attr_accessor :restores
+      
         def initialize(**args)
            update!(**args)
         end
@@ -724,6 +729,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @metadata_exports = args[:metadata_exports] if args.key?(:metadata_exports)
+          @restores = args[:restores] if args.key?(:restores)
         end
       end
       
@@ -877,6 +883,51 @@ module Google
         end
       end
       
+      # The details of a metadata restore operation.
+      class Restore
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The relative resource name of the metastore service backup to
+        # restore from, in the following form:projects/`project_id`/locations/`
+        # location_id`/services/`service_id`/backups/`backup_id`
+        # Corresponds to the JSON property `backup`
+        # @return [String]
+        attr_accessor :backup
+      
+        # Output only. The time when the restore ended.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. The time when the restore started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. The current state of the restore.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The type of restore.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup = args[:backup] if args.key?(:backup)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # A securely stored value.
       class Secret
         include Google::Apis::Core::Hashable
@@ -952,9 +1003,8 @@ module Google
         attr_accessor :name
       
         # Immutable. The relative resource name of the VPC network on which the instance
-        # can be accessed. The network must belong to the same project as the metastore
-        # instance. It is specified in the following form:"projects/`project_number`/
-        # global/networks/`network_id`".
+        # can be accessed. It is specified in the following form:"projects/`
+        # project_number`/global/networks/`network_id`".
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
