@@ -2671,6 +2671,7 @@ module Google
           property :published_at, as: 'publishedAt', type: DateTime
       
           collection :tags, as: 'tags'
+          property :thumbnail_video_id, as: 'thumbnailVideoId'
           property :thumbnails, as: 'thumbnails', class: Google::Apis::YoutubeV3::ThumbnailDetails, decorator: Google::Apis::YoutubeV3::ThumbnailDetails::Representation
       
           property :title, as: 'title'
