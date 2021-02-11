@@ -700,6 +700,7 @@ module Google
           property :insert_time, as: 'insertTime'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :operation_group_id, as: 'operationGroupId'
           property :operation_type, as: 'operationType'
           property :progress, as: 'progress'
           property :region, as: 'region'
