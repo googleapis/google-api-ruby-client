@@ -694,6 +694,15 @@ module Google
         # @return [Array<Google::Apis::ServiceusageV1beta1::ConsumerQuotaLimit>]
         attr_accessor :consumer_quota_limits
       
+        # The quota limits targeting the descendant containers of the consumer in
+        # request. If the consumer in request is of type `organizations` or `folders`,
+        # the field will list per-project limits in the metric; if the consumer in
+        # request is of type `project`, the field will be empty. The `quota_buckets`
+        # field of each descendant consumer quota limit will not be populated.
+        # Corresponds to the JSON property `descendantConsumerQuotaLimits`
+        # @return [Array<Google::Apis::ServiceusageV1beta1::ConsumerQuotaLimit>]
+        attr_accessor :descendant_consumer_quota_limits
+      
         # The display name of the metric. An example name would be: "CPUs"
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -725,6 +734,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @consumer_quota_limits = args[:consumer_quota_limits] if args.key?(:consumer_quota_limits)
+          @descendant_consumer_quota_limits = args[:descendant_consumer_quota_limits] if args.key?(:descendant_consumer_quota_limits)
           @display_name = args[:display_name] if args.key?(:display_name)
           @metric = args[:metric] if args.key?(:metric)
           @name = args[:name] if args.key?(:name)
