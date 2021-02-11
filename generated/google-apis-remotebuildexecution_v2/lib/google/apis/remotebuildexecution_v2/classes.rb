@@ -2137,6 +2137,11 @@ module Google
       class GoogleDevtoolsRemotebuildbotCommandEvents
         include Google::Apis::Core::Hashable
       
+        # Indicates if and how Container Manager is being used for task execution.
+        # Corresponds to the JSON property `cmUsage`
+        # @return [String]
+        attr_accessor :cm_usage
+      
         # Indicates whether we are using a cached Docker image (true) or had to pull the
         # Docker image (false) for this command.
         # Corresponds to the JSON property `dockerCacheHit`
@@ -2176,6 +2181,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cm_usage = args[:cm_usage] if args.key?(:cm_usage)
           @docker_cache_hit = args[:docker_cache_hit] if args.key?(:docker_cache_hit)
           @docker_image_name = args[:docker_image_name] if args.key?(:docker_image_name)
           @input_cache_miss = args[:input_cache_miss] if args.key?(:input_cache_miss)
