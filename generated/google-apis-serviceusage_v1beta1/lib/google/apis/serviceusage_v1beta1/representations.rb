@@ -712,6 +712,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :consumer_quota_limits, as: 'consumerQuotaLimits', class: Google::Apis::ServiceusageV1beta1::ConsumerQuotaLimit, decorator: Google::Apis::ServiceusageV1beta1::ConsumerQuotaLimit::Representation
       
+          collection :descendant_consumer_quota_limits, as: 'descendantConsumerQuotaLimits', class: Google::Apis::ServiceusageV1beta1::ConsumerQuotaLimit, decorator: Google::Apis::ServiceusageV1beta1::ConsumerQuotaLimit::Representation
+      
           property :display_name, as: 'displayName'
           property :metric, as: 'metric'
           property :name, as: 'name'
