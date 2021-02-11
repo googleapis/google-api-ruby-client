@@ -378,10 +378,10 @@ module Google
         # @return [String]
         attr_accessor :linked_resource
       
-        # The Data Catalog resource name of the entry in URL format. Example: * projects/
-        # `project_id`/locations/`location`/entryGroups/`entry_group_id`/entries/`
-        # entry_id` Note that this Entry and its child resources may not actually be
-        # stored in the location in this name.
+        # Output only. The Data Catalog resource name of the entry in URL format.
+        # Example: * projects/`project_id`/locations/`location`/entryGroups/`
+        # entry_group_id`/entries/`entry_id` Note that this Entry and its child
+        # resources may not actually be stored in the location in this name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

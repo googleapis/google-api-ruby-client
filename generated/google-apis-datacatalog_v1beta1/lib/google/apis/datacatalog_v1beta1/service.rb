@@ -651,10 +651,10 @@ module Google
         # Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project)
         # for more information).
         # @param [String] name
-        #   The Data Catalog resource name of the entry in URL format. Example: * projects/
-        #   `project_id`/locations/`location`/entryGroups/`entry_group_id`/entries/`
-        #   entry_id` Note that this Entry and its child resources may not actually be
-        #   stored in the location in this name.
+        #   Output only. The Data Catalog resource name of the entry in URL format.
+        #   Example: * projects/`project_id`/locations/`location`/entryGroups/`
+        #   entry_group_id`/entries/`entry_id` Note that this Entry and its child
+        #   resources may not actually be stored in the location in this name.
         # @param [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Entry] google_cloud_datacatalog_v1beta1_entry_object
         # @param [String] update_mask
         #   The fields to update on the entry. If absent or empty, all modifiable fields
