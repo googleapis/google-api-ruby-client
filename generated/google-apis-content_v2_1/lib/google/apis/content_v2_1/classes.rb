@@ -1694,7 +1694,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Label that you assign to a collection to help organize bidding and reporting
-        # in Shopping campaigns. Custom label
+        # in Shopping campaigns. [Custom label](https://support.google.com/merchants/
+        # answer/9674217)
         # Corresponds to the JSON property `customLabel0`
         # @return [String]
         attr_accessor :custom_label0
@@ -1726,48 +1727,56 @@ module Google
         # This identifies one or more products associated with the collection. Used as a
         # lookup to the corresponding product ID in your product feeds. Provide a
         # maximum of 100 featuredProduct (for collections). Provide up to 10
-        # featuredProduct (for Shoppable Images only) with ID and X and Y coordinates.
-        # featured_product attribute
+        # featuredProduct (for Shoppable Images only) with ID and X and Y coordinates. [
+        # featured_product attribute](https://support.google.com/merchants/answer/
+        # 9703736)
         # Corresponds to the JSON property `featuredProduct`
         # @return [Array<Google::Apis::ContentV2_1::CollectionFeaturedProduct>]
         attr_accessor :featured_product
       
-        # Your collection's name. headline attribute
+        # Your collection's name. [headline attribute](https://support.google.com/
+        # merchants/answer/9673580)
         # Corresponds to the JSON property `headline`
         # @return [Array<String>]
         attr_accessor :headline
       
         # Required. The REST ID of the collection. Content API methods that operate on
         # collections take this as their collectionId parameter. The REST ID for a
-        # collection is of the form collectionId. id attribute
+        # collection is of the form collectionId. [id attribute](https://support.google.
+        # com/merchants/answer/9649290)
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # The URL of a collection’s image. image_link attribute
+        # The URL of a collection’s image. [image_link attribute](https://support.google.
+        # com/merchants/answer/9703236)
         # Corresponds to the JSON property `imageLink`
         # @return [Array<String>]
         attr_accessor :image_link
       
         # The language of a collection and the language of any featured products linked
-        # to the collection. language attribute
+        # to the collection. [language attribute](https://support.google.com/merchants/
+        # answer/9673781)
         # Corresponds to the JSON property `language`
         # @return [String]
         attr_accessor :language
       
         # A collection’s landing page. URL directly linking to your collection's page on
-        # your website. link attribute
+        # your website. [link attribute](https://support.google.com/merchants/answer/
+        # 9673983)
         # Corresponds to the JSON property `link`
         # @return [String]
         attr_accessor :link
       
         # A collection’s mobile-optimized landing page when you have a different URL for
-        # mobile and desktop traffic. mobile_link attribute
+        # mobile and desktop traffic. [mobile_link attribute](https://support.google.com/
+        # merchants/answer/9646123)
         # Corresponds to the JSON property `mobileLink`
         # @return [String]
         attr_accessor :mobile_link
       
-        # product_country attribute
+        # [product_country attribute](https://support.google.com/merchants/answer/
+        # 9674155)
         # Corresponds to the JSON property `productCountry`
         # @return [String]
         attr_accessor :product_country
@@ -1794,7 +1803,8 @@ module Google
         end
       end
       
-      # The message for FeaturedProduct. FeaturedProduct
+      # The message for FeaturedProduct. [FeaturedProduct](https://support.google.com/
+      # merchants/answer/9703736)
       class CollectionFeaturedProduct
         include Google::Apis::Core::Hashable
       
