@@ -1273,11 +1273,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :dns_keys_per_managed_zone
       
-        # Maximum allowed number of GKE clusters per policy.
-        # Corresponds to the JSON property `gkeClustersPerPolicy`
-        # @return [Fixnum]
-        attr_accessor :gke_clusters_per_policy
-      
         # 
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -1357,7 +1352,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dns_keys_per_managed_zone = args[:dns_keys_per_managed_zone] if args.key?(:dns_keys_per_managed_zone)
-          @gke_clusters_per_policy = args[:gke_clusters_per_policy] if args.key?(:gke_clusters_per_policy)
           @kind = args[:kind] if args.key?(:kind)
           @managed_zones = args[:managed_zones] if args.key?(:managed_zones)
           @managed_zones_per_network = args[:managed_zones_per_network] if args.key?(:managed_zones_per_network)
@@ -1375,179 +1369,6 @@ module Google
         end
       end
       
-      # A RRSetRoutingPolicy represents ResourceRecordSet data that will be returned
-      # dynamically with the response varying based on configured properties such as
-      # geolocation or by weighted random selection.
-      class RrSetRoutingPolicy
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `geoPolicy`
-        # @return [Google::Apis::DnsV1::RrSetRoutingPolicyGeoPolicy]
-        attr_accessor :geo_policy
-      
-        # 
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # 
-        # Corresponds to the JSON property `wrrPolicy`
-        # @return [Google::Apis::DnsV1::RrSetRoutingPolicyWrrPolicy]
-        attr_accessor :wrr_policy
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @geo_policy = args[:geo_policy] if args.key?(:geo_policy)
-          @kind = args[:kind] if args.key?(:kind)
-          @wrr_policy = args[:wrr_policy] if args.key?(:wrr_policy)
-        end
-      end
-      
-      # 
-      class RrSetRoutingPolicyGeoPolicy
-        include Google::Apis::Core::Hashable
-      
-        # If the health check for the primary target for a geo location returns an
-        # unhealthy status, the failover target is returned instead. This failover
-        # configuration is not mandatory. If a failover is not provided, the primary
-        # target won't be healthchecked - we'll return the primarily configured rrdata
-        # irrespective of whether it is healthy or not.
-        # Corresponds to the JSON property `failovers`
-        # @return [Array<Google::Apis::DnsV1::RrSetRoutingPolicyGeoPolicyGeoPolicyItem>]
-        attr_accessor :failovers
-      
-        # The primary geo routing configuration. If there are multiple items with the
-        # same location, an error is returned instead.
-        # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::DnsV1::RrSetRoutingPolicyGeoPolicyGeoPolicyItem>]
-        attr_accessor :items
-      
-        # 
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @failovers = args[:failovers] if args.key?(:failovers)
-          @items = args[:items] if args.key?(:items)
-          @kind = args[:kind] if args.key?(:kind)
-        end
-      end
-      
-      # 
-      class RrSetRoutingPolicyGeoPolicyGeoPolicyItem
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The geo-location granularity is a GCP region. This location string should
-        # correspond to a GCP region. e.g "us-east1", "southamerica-east1", "asia-east1",
-        # etc.
-        # Corresponds to the JSON property `location`
-        # @return [String]
-        attr_accessor :location
-      
-        # 
-        # Corresponds to the JSON property `rrdatas`
-        # @return [Array<String>]
-        attr_accessor :rrdatas
-      
-        # DNSSEC generated signatures for the above geo_rrdata.
-        # Corresponds to the JSON property `signatureRrdatas`
-        # @return [Array<String>]
-        attr_accessor :signature_rrdatas
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @kind = args[:kind] if args.key?(:kind)
-          @location = args[:location] if args.key?(:location)
-          @rrdatas = args[:rrdatas] if args.key?(:rrdatas)
-          @signature_rrdatas = args[:signature_rrdatas] if args.key?(:signature_rrdatas)
-        end
-      end
-      
-      # 
-      class RrSetRoutingPolicyWrrPolicy
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::DnsV1::RrSetRoutingPolicyWrrPolicyWrrPolicyItem>]
-        attr_accessor :items
-      
-        # 
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @items = args[:items] if args.key?(:items)
-          @kind = args[:kind] if args.key?(:kind)
-        end
-      end
-      
-      # 
-      class RrSetRoutingPolicyWrrPolicyWrrPolicyItem
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # 
-        # Corresponds to the JSON property `rrdatas`
-        # @return [Array<String>]
-        attr_accessor :rrdatas
-      
-        # DNSSEC generated signatures for the above wrr_rrdata.
-        # Corresponds to the JSON property `signatureRrdatas`
-        # @return [Array<String>]
-        attr_accessor :signature_rrdatas
-      
-        # The weight corresponding to this subset of rrdata. When multiple
-        # WeightedRoundRobinPolicyItems are configured, the probability of returning an
-        # rrset is proportional to its weight relative to the sum of weights configured
-        # for all items. This weight should be a decimal in the range [0,1].
-        # Corresponds to the JSON property `weight`
-        # @return [Float]
-        attr_accessor :weight
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @kind = args[:kind] if args.key?(:kind)
-          @rrdatas = args[:rrdatas] if args.key?(:rrdatas)
-          @signature_rrdatas = args[:signature_rrdatas] if args.key?(:signature_rrdatas)
-          @weight = args[:weight] if args.key?(:weight)
-        end
-      end
-      
       # A unit of data that will be returned by the DNS servers.
       class ResourceRecordSet
         include Google::Apis::Core::Hashable
@@ -1561,13 +1382,6 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
-        # A RRSetRoutingPolicy represents ResourceRecordSet data that will be returned
-        # dynamically with the response varying based on configured properties such as
-        # geolocation or by weighted random selection.
-        # Corresponds to the JSON property `routingPolicy`
-        # @return [Google::Apis::DnsV1::RrSetRoutingPolicy]
-        attr_accessor :routing_policy
       
         # As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see
         # examples.
@@ -1599,7 +1413,6 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
-          @routing_policy = args[:routing_policy] if args.key?(:routing_policy)
           @rrdatas = args[:rrdatas] if args.key?(:rrdatas)
           @signature_rrdatas = args[:signature_rrdatas] if args.key?(:signature_rrdatas)
           @ttl = args[:ttl] if args.key?(:ttl)
