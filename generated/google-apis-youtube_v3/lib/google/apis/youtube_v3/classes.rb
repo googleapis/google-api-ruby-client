@@ -5966,6 +5966,17 @@ module Google
         # @return [Array<String>]
         attr_accessor :tags
       
+        # Note: if the playlist has a custom thumbnail, this field will not be populated.
+        # The video id selected by the user that will be used as the thumbnail of this
+        # playlist. This field defaults to the first publicly viewable video in the
+        # playlist, if: 1. The user has never selected a video to be the thumbnail of
+        # the playlist. 2. The user selects a video to be the thumbnail, and then
+        # removes that video from the playlist. 3. The user selects a non-owned video to
+        # be the thumbnail, but that video becomes private, or gets deleted.
+        # Corresponds to the JSON property `thumbnailVideoId`
+        # @return [String]
+        attr_accessor :thumbnail_video_id
+      
         # Internal representation of thumbnails for a YouTube resource.
         # Corresponds to the JSON property `thumbnails`
         # @return [Google::Apis::YoutubeV3::ThumbnailDetails]
@@ -5989,6 +6000,7 @@ module Google
           @localized = args[:localized] if args.key?(:localized)
           @published_at = args[:published_at] if args.key?(:published_at)
           @tags = args[:tags] if args.key?(:tags)
+          @thumbnail_video_id = args[:thumbnail_video_id] if args.key?(:thumbnail_video_id)
           @thumbnails = args[:thumbnails] if args.key?(:thumbnails)
           @title = args[:title] if args.key?(:title)
         end
