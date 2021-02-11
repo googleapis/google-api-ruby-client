@@ -208,36 +208,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RrSetRoutingPolicy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RrSetRoutingPolicyGeoPolicy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RrSetRoutingPolicyGeoPolicyGeoPolicyItem
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RrSetRoutingPolicyWrrPolicy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RrSetRoutingPolicyWrrPolicyWrrPolicyItem
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ResourceRecordSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -597,7 +567,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dns_keys_per_managed_zone, as: 'dnsKeysPerManagedZone'
-          property :gke_clusters_per_policy, as: 'gkeClustersPerPolicy'
           property :kind, as: 'kind'
           property :managed_zones, as: 'managedZones'
           property :managed_zones_per_network, as: 'managedZonesPerNetwork'
@@ -616,64 +585,11 @@ module Google
         end
       end
       
-      class RrSetRoutingPolicy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :geo_policy, as: 'geoPolicy', class: Google::Apis::DnsV1::RrSetRoutingPolicyGeoPolicy, decorator: Google::Apis::DnsV1::RrSetRoutingPolicyGeoPolicy::Representation
-      
-          property :kind, as: 'kind'
-          property :wrr_policy, as: 'wrrPolicy', class: Google::Apis::DnsV1::RrSetRoutingPolicyWrrPolicy, decorator: Google::Apis::DnsV1::RrSetRoutingPolicyWrrPolicy::Representation
-      
-        end
-      end
-      
-      class RrSetRoutingPolicyGeoPolicy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :failovers, as: 'failovers', class: Google::Apis::DnsV1::RrSetRoutingPolicyGeoPolicyGeoPolicyItem, decorator: Google::Apis::DnsV1::RrSetRoutingPolicyGeoPolicyGeoPolicyItem::Representation
-      
-          collection :items, as: 'items', class: Google::Apis::DnsV1::RrSetRoutingPolicyGeoPolicyGeoPolicyItem, decorator: Google::Apis::DnsV1::RrSetRoutingPolicyGeoPolicyGeoPolicyItem::Representation
-      
-          property :kind, as: 'kind'
-        end
-      end
-      
-      class RrSetRoutingPolicyGeoPolicyGeoPolicyItem
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :kind, as: 'kind'
-          property :location, as: 'location'
-          collection :rrdatas, as: 'rrdatas'
-          collection :signature_rrdatas, as: 'signatureRrdatas'
-        end
-      end
-      
-      class RrSetRoutingPolicyWrrPolicy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :items, as: 'items', class: Google::Apis::DnsV1::RrSetRoutingPolicyWrrPolicyWrrPolicyItem, decorator: Google::Apis::DnsV1::RrSetRoutingPolicyWrrPolicyWrrPolicyItem::Representation
-      
-          property :kind, as: 'kind'
-        end
-      end
-      
-      class RrSetRoutingPolicyWrrPolicyWrrPolicyItem
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :kind, as: 'kind'
-          collection :rrdatas, as: 'rrdatas'
-          collection :signature_rrdatas, as: 'signatureRrdatas'
-          property :weight, as: 'weight'
-        end
-      end
-      
       class ResourceRecordSet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :name, as: 'name'
-          property :routing_policy, as: 'routingPolicy', class: Google::Apis::DnsV1::RrSetRoutingPolicy, decorator: Google::Apis::DnsV1::RrSetRoutingPolicy::Representation
-      
           collection :rrdatas, as: 'rrdatas'
           collection :signature_rrdatas, as: 'signatureRrdatas'
           property :ttl, as: 'ttl'
