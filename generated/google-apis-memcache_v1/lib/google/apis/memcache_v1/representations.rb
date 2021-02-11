@@ -341,6 +341,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :exclude, as: 'exclude'
+          property :is_rollback, as: 'isRollback'
           hash :maintenance_policies, as: 'maintenancePolicies', class: Google::Apis::MemcacheV1::MaintenancePolicy, decorator: Google::Apis::MemcacheV1::MaintenancePolicy::Representation
       
         end
