@@ -783,6 +783,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] An ID that represents a group of operations, such as when a
+        # group of operations results from a `bulkInsert` API request.
+        # Corresponds to the JSON property `operationGroupId`
+        # @return [String]
+        attr_accessor :operation_group_id
+      
         # [Output Only] The type of operation, such as `insert`, `update`, or `delete`,
         # and so on.
         # Corresponds to the JSON property `operationType`
@@ -874,6 +880,7 @@ module Google
           @insert_time = args[:insert_time] if args.key?(:insert_time)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @operation_group_id = args[:operation_group_id] if args.key?(:operation_group_id)
           @operation_type = args[:operation_type] if args.key?(:operation_type)
           @progress = args[:progress] if args.key?(:progress)
           @region = args[:region] if args.key?(:region)
