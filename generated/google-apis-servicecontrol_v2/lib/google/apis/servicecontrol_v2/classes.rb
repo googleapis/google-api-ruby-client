@@ -725,7 +725,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :size
       
-        # The timestamp when the `destination` service receives the first byte of the
+        # The timestamp when the `destination` service receives the last byte of the
         # request.
         # Corresponds to the JSON property `time`
         # @return [String]
@@ -1002,6 +1002,14 @@ module Google
       class Response
         include Google::Apis::Core::Hashable
       
+        # The length of time it takes the backend service to fully respond to a request.
+        # Measured from when the destination service starts to send the request to the
+        # backend until when the destination service receives the complete response from
+        # the backend.
+        # Corresponds to the JSON property `backendLatency`
+        # @return [String]
+        attr_accessor :backend_latency
+      
         # The HTTP response status code, such as `200` and `404`.
         # Corresponds to the JSON property `code`
         # @return [Fixnum]
@@ -1019,7 +1027,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :size
       
-        # The timestamp when the `destination` service generates the first byte of the
+        # The timestamp when the `destination` service sends the last byte of the
         # response.
         # Corresponds to the JSON property `time`
         # @return [String]
@@ -1031,6 +1039,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @backend_latency = args[:backend_latency] if args.key?(:backend_latency)
           @code = args[:code] if args.key?(:code)
           @headers = args[:headers] if args.key?(:headers)
           @size = args[:size] if args.key?(:size)

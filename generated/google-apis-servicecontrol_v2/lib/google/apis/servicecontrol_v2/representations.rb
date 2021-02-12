@@ -370,6 +370,7 @@ module Google
       class Response
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backend_latency, as: 'backendLatency'
           property :code, :numeric_string => true, as: 'code'
           hash :headers, as: 'headers'
           property :size, :numeric_string => true, as: 'size'
