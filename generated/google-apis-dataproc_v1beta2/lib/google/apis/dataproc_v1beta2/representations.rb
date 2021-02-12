@@ -940,6 +940,7 @@ module Google
       class JobPlacement
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :cluster_labels, as: 'clusterLabels'
           property :cluster_name, as: 'clusterName'
           property :cluster_uuid, as: 'clusterUuid'
         end
