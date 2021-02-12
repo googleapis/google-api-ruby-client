@@ -22,7 +22,8 @@ module Google
     module DfareportingV3_4
       # Campaign Manager 360 API
       #
-      # Manage your DoubleClick Campaign Manager ad campaigns and reports.
+      # Build applications to efficiently manage large or complex trafficking,
+      #  reporting, and attribution workflows for Campaign Manager 360.
       #
       # @example
       #    require 'google/apis/dfareporting_v3_4'

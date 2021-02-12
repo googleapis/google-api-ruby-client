@@ -4963,7 +4963,7 @@ module Google
         attr_accessor :type
       
         # The value of the custom floodlight variable. The length of string must not
-        # exceed 50 characters.
+        # exceed 100 characters.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -10947,14 +10947,14 @@ module Google
           class ReportProperties
             include Google::Apis::Core::Hashable
           
-            # DFA checks to see if a click interaction occurred within the specified period
-            # of time before a conversion. By default the value is pulled from Floodlight or
-            # you can manually enter a custom value. Valid values: 1-90.
+            # CM360 checks to see if a click interaction occurred within the specified
+            # period of time before a conversion. By default the value is pulled from
+            # Floodlight or you can manually enter a custom value. Valid values: 1-90.
             # Corresponds to the JSON property `clicksLookbackWindow`
             # @return [Fixnum]
             attr_accessor :clicks_lookback_window
           
-            # DFA checks to see if an impression interaction occurred within the specified
+            # CM360 checks to see if an impression interaction occurred within the specified
             # period of time before a conversion. By default the value is pulled from
             # Floodlight or you can manually enter a custom value. Valid values: 1-90.
             # Corresponds to the JSON property `impressionsLookbackWindow`
