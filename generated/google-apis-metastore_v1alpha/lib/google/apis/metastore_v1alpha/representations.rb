@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Restore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Secret
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -402,6 +408,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :metadata_exports, as: 'metadataExports', class: Google::Apis::MetastoreV1alpha::MetadataExport, decorator: Google::Apis::MetastoreV1alpha::MetadataExport::Representation
       
+          collection :restores, as: 'restores', class: Google::Apis::MetastoreV1alpha::Restore, decorator: Google::Apis::MetastoreV1alpha::Restore::Representation
+      
         end
       end
       
@@ -426,6 +434,17 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class Restore
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup, as: 'backup'
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+          property :type, as: 'type'
         end
       end
       
