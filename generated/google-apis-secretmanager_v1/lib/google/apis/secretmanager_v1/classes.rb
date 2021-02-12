@@ -778,6 +778,12 @@ module Google
         # @return [Google::Apis::SecretmanagerV1::Replication]
         attr_accessor :replication
       
+        # Optional. A list of up to 10 Pub/Sub topics to which messages are published
+        # when control plane operations are called on the secret or its versions.
+        # Corresponds to the JSON property `topics`
+        # @return [Array<Google::Apis::SecretmanagerV1::Topic>]
+        attr_accessor :topics
+      
         # Input only. The TTL for the Secret.
         # Corresponds to the JSON property `ttl`
         # @return [String]
@@ -794,6 +800,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @replication = args[:replication] if args.key?(:replication)
+          @topics = args[:topics] if args.key?(:topics)
           @ttl = args[:ttl] if args.key?(:ttl)
         end
       end
@@ -955,6 +962,28 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # A Pub/Sub topic which SM will publish to when control plane events occur on
+      # this secret.
+      class Topic
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name of the Pub/Sub topic that will be published to, in
+        # the following format: `projects/*/topics/*`. For publication to succeed, the
+        # Secret Manager P4SA must have `pubsub.publisher` permissions on the topic.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       

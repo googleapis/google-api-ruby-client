@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Topic
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UserManaged
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -415,6 +421,8 @@ module Google
           property :name, as: 'name'
           property :replication, as: 'replication', class: Google::Apis::SecretmanagerV1::Replication, decorator: Google::Apis::SecretmanagerV1::Replication::Representation
       
+          collection :topics, as: 'topics', class: Google::Apis::SecretmanagerV1::Topic, decorator: Google::Apis::SecretmanagerV1::Topic::Representation
+      
           property :ttl, as: 'ttl'
         end
       end
@@ -458,6 +466,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class Topic
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
