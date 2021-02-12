@@ -451,7 +451,7 @@ module Google
         # @return [Google::Apis::DataprocV1::InstanceGroupConfig]
         attr_accessor :secondary_worker_config
       
-        # Security related configuration, including Kerberos.
+        # Security related configuration, including encryption, Kerberos, etc.
         # Corresponds to the JSON property `securityConfig`
         # @return [Google::Apis::DataprocV1::SecurityConfig]
         attr_accessor :security_config
@@ -1667,6 +1667,11 @@ module Google
       class JobPlacement
         include Google::Apis::Core::Hashable
       
+        # Optional. Cluster labels to identify a cluster where the job will be submitted.
+        # Corresponds to the JSON property `clusterLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :cluster_labels
+      
         # Required. The name of the cluster where the job will be submitted.
         # Corresponds to the JSON property `clusterName`
         # @return [String]
@@ -1684,6 +1689,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cluster_labels = args[:cluster_labels] if args.key?(:cluster_labels)
           @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
           @cluster_uuid = args[:cluster_uuid] if args.key?(:cluster_uuid)
         end
@@ -2799,7 +2805,7 @@ module Google
         end
       end
       
-      # Security related configuration, including Kerberos.
+      # Security related configuration, including encryption, Kerberos, etc.
       class SecurityConfig
         include Google::Apis::Core::Hashable
       
