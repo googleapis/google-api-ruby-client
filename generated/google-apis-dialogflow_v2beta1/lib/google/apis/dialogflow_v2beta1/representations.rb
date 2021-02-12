@@ -412,6 +412,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3WebhookResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -809,6 +815,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2457,6 +2469,8 @@ module Google
           property :page_info, as: 'pageInfo', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3PageInfo, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3PageInfo::Representation
       
           hash :payload, as: 'payload'
+          property :sentiment_analysis_result, as: 'sentimentAnalysisResult', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult::Representation
+      
           property :session_info, as: 'sessionInfo', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3SessionInfo, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3SessionInfo::Representation
       
         end
@@ -2485,6 +2499,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :original_value, as: 'originalValue'
           property :resolved_value, as: 'resolvedValue'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :magnitude, as: 'magnitude'
+          property :score, as: 'score'
         end
       end
       
@@ -3111,6 +3133,8 @@ module Google
           property :page_info, as: 'pageInfo', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1PageInfo, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1PageInfo::Representation
       
           hash :payload, as: 'payload'
+          property :sentiment_analysis_result, as: 'sentimentAnalysisResult', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult::Representation
+      
           property :session_info, as: 'sessionInfo', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1SessionInfo, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1SessionInfo::Representation
       
         end
@@ -3139,6 +3163,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :original_value, as: 'originalValue'
           property :resolved_value, as: 'resolvedValue'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :magnitude, as: 'magnitude'
+          property :score, as: 'score'
         end
       end
       
