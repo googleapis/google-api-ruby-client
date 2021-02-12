@@ -21,7 +21,8 @@ module Google
   module Apis
     # Campaign Manager 360 API
     #
-    # Manage your DoubleClick Campaign Manager ad campaigns and reports.
+    # Build applications to efficiently manage large or complex trafficking,
+    # reporting, and attribution workflows for Campaign Manager 360.
     #
     # @see https://developers.google.com/doubleclick-advertisers/
     module DfareportingV3_3
