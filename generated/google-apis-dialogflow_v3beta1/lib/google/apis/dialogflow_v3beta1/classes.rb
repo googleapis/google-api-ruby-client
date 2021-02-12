@@ -2164,6 +2164,11 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :payload
       
+        # Represents the result of sentiment analysis.
+        # Corresponds to the JSON property `sentimentAnalysisResult`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult]
+        attr_accessor :sentiment_analysis_result
+      
         # Represents session information communicated to and from the webhook.
         # Corresponds to the JSON property `sessionInfo`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3SessionInfo]
@@ -2181,6 +2186,7 @@ module Google
           @messages = args[:messages] if args.key?(:messages)
           @page_info = args[:page_info] if args.key?(:page_info)
           @payload = args[:payload] if args.key?(:payload)
+          @sentiment_analysis_result = args[:sentiment_analysis_result] if args.key?(:sentiment_analysis_result)
           @session_info = args[:session_info] if args.key?(:session_info)
         end
       end
@@ -2269,6 +2275,32 @@ module Google
         def update!(**args)
           @original_value = args[:original_value] if args.key?(:original_value)
           @resolved_value = args[:resolved_value] if args.key?(:resolved_value)
+        end
+      end
+      
+      # Represents the result of sentiment analysis.
+      class GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult
+        include Google::Apis::Core::Hashable
+      
+        # A non-negative number in the [0, +inf) range, which represents the absolute
+        # magnitude of sentiment, regardless of score (positive or negative).
+        # Corresponds to the JSON property `magnitude`
+        # @return [Float]
+        attr_accessor :magnitude
+      
+        # Sentiment score between -1.0 (negative sentiment) and 1.0 (positive sentiment).
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @magnitude = args[:magnitude] if args.key?(:magnitude)
+          @score = args[:score] if args.key?(:score)
         end
       end
       
@@ -7285,6 +7317,11 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :payload
       
+        # Represents the result of sentiment analysis.
+        # Corresponds to the JSON property `sentimentAnalysisResult`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult]
+        attr_accessor :sentiment_analysis_result
+      
         # Represents session information communicated to and from the webhook.
         # Corresponds to the JSON property `sessionInfo`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SessionInfo]
@@ -7302,6 +7339,7 @@ module Google
           @messages = args[:messages] if args.key?(:messages)
           @page_info = args[:page_info] if args.key?(:page_info)
           @payload = args[:payload] if args.key?(:payload)
+          @sentiment_analysis_result = args[:sentiment_analysis_result] if args.key?(:sentiment_analysis_result)
           @session_info = args[:session_info] if args.key?(:session_info)
         end
       end
@@ -7390,6 +7428,32 @@ module Google
         def update!(**args)
           @original_value = args[:original_value] if args.key?(:original_value)
           @resolved_value = args[:resolved_value] if args.key?(:resolved_value)
+        end
+      end
+      
+      # Represents the result of sentiment analysis.
+      class GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult
+        include Google::Apis::Core::Hashable
+      
+        # A non-negative number in the [0, +inf) range, which represents the absolute
+        # magnitude of sentiment, regardless of score (positive or negative).
+        # Corresponds to the JSON property `magnitude`
+        # @return [Float]
+        attr_accessor :magnitude
+      
+        # Sentiment score between -1.0 (negative sentiment) and 1.0 (positive sentiment).
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @magnitude = args[:magnitude] if args.key?(:magnitude)
+          @score = args[:score] if args.key?(:score)
         end
       end
       
