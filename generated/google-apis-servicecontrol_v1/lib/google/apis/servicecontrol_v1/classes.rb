@@ -1912,7 +1912,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :size
       
-        # The timestamp when the `destination` service receives the first byte of the
+        # The timestamp when the `destination` service receives the last byte of the
         # request.
         # Corresponds to the JSON property `time`
         # @return [String]
