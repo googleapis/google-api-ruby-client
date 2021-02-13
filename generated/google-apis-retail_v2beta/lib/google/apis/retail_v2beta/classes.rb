@@ -1553,7 +1553,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :available_quantity
       
-        # The timestamp when this Product becomes available recommendation and search.
+        # The timestamp when this Product becomes available for recommendation.
         # Corresponds to the JSON property `availableTime`
         # @return [String]
         attr_accessor :available_time
@@ -1598,9 +1598,10 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Product images for the product. A maximum of 300 images are allowed. Google
-        # Merchant Center property [image_link](https://support.google.com/merchants/
-        # answer/6324350). Schema.org property [Product.image](https://schema.org/image).
+        # Product images for the product.Highly recommended to put the main image to the
+        # first. A maximum of 300 images are allowed. Google Merchant Center property [
+        # image_link](https://support.google.com/merchants/answer/6324350). Schema.org
+        # property [Product.image](https://schema.org/image).
         # Corresponds to the JSON property `images`
         # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaImage>]
         attr_accessor :images

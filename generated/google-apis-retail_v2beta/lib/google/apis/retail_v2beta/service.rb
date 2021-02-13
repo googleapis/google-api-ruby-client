@@ -217,7 +217,8 @@ module Google
         #   Product to delete does not exist, a NOT_FOUND error is returned. The Product
         #   to delete can neither be a Product.Type.COLLECTION Product member nor a
         #   Product.Type.PRIMARY Product with more than one variants. Otherwise, an
-        #   INVALID_ARGUMENT error is returned.
+        #   INVALID_ARGUMENT error is returned. All inventory information for the named
+        #   Product will be deleted.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
