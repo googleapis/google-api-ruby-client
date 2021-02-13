@@ -1483,6 +1483,15 @@ module Google
         class Access
           include Google::Apis::Core::Hashable
         
+          # [Pick one] A grant authorizing all resources of a particular type in a
+          # particular dataset access to this dataset. Only views are supported for now.
+          # The role field is not required when this field is set. If that dataset is
+          # deleted and re-created, its access needs to be granted again via an update
+          # operation.
+          # Corresponds to the JSON property `dataset`
+          # @return [Google::Apis::BigqueryV2::DatasetAccessEntry]
+          attr_accessor :dataset
+        
           # [Pick one] A domain to grant access to. Any users signed in with the domain
           # specified will be granted the specified access. Example: "example.com". Maps
           # to IAM policy member "domain:DOMAIN".
@@ -1551,6 +1560,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
+            @dataset = args[:dataset] if args.key?(:dataset)
             @domain = args[:domain] if args.key?(:domain)
             @group_by_email = args[:group_by_email] if args.key?(:group_by_email)
             @iam_member = args[:iam_member] if args.key?(:iam_member)
@@ -1559,6 +1569,52 @@ module Google
             @special_group = args[:special_group] if args.key?(:special_group)
             @user_by_email = args[:user_by_email] if args.key?(:user_by_email)
             @view = args[:view] if args.key?(:view)
+          end
+        end
+      end
+      
+      # 
+      class DatasetAccessEntry
+        include Google::Apis::Core::Hashable
+      
+        # [Required] The dataset this entry applies to.
+        # Corresponds to the JSON property `dataset`
+        # @return [Google::Apis::BigqueryV2::DatasetReference]
+        attr_accessor :dataset
+      
+        # 
+        # Corresponds to the JSON property `target_types`
+        # @return [Array<Google::Apis::BigqueryV2::DatasetAccessEntry::TargetType>]
+        attr_accessor :target_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset = args[:dataset] if args.key?(:dataset)
+          @target_types = args[:target_types] if args.key?(:target_types)
+        end
+        
+        # 
+        class TargetType
+          include Google::Apis::Core::Hashable
+        
+          # [Required] Which resources in the dataset this entry applies to. Currently,
+          # only views are supported, but additional target types may be added in the
+          # future. Possible values: VIEWS: This entry applies to all views in the dataset.
+          # Corresponds to the JSON property `targetType`
+          # @return [String]
+          attr_accessor :target_type
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @target_type = args[:target_type] if args.key?(:target_type)
           end
         end
       end
