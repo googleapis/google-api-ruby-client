@@ -761,9 +761,8 @@ module Google
       
         # schedule_deadline_time is the time deadline any schedule start time cannot go
         # beyond, including reschedule. It's normally the initial schedule start time
-        # plus a week. If the reschedule type is next window, simply take this value as
-        # start time. If reschedule type is IMMEDIATELY or BY_TIME, current or selected
-        # time cannot go beyond this deadline.
+        # plus maintenance window length (1 day or 1 week). Maintenance cannot be
+        # scheduled to start beyond this deadline.
         # Corresponds to the JSON property `scheduleDeadlineTime`
         # @return [String]
         attr_accessor :schedule_deadline_time
@@ -800,6 +799,12 @@ module Google
         attr_accessor :exclude
         alias_method :exclude?, :exclude
       
+        # Optional. If the update call is triggered from rollback, set the value as true.
+        # Corresponds to the JSON property `isRollback`
+        # @return [Boolean]
+        attr_accessor :is_rollback
+        alias_method :is_rollback?, :is_rollback
+      
         # Optional. The MaintenancePolicies that have been attached to the instance. The
         # key must be of the type name of the oneof policy name defined in
         # MaintenancePolicy, and the embedded policy must define the same policy type.
@@ -817,6 +822,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @exclude = args[:exclude] if args.key?(:exclude)
+          @is_rollback = args[:is_rollback] if args.key?(:is_rollback)
           @maintenance_policies = args[:maintenance_policies] if args.key?(:maintenance_policies)
         end
       end
@@ -855,6 +861,35 @@ module Google
           @exclusions = args[:exclusions] if args.key?(:exclusions)
           @location = args[:location] if args.key?(:location)
           @node_id = args[:node_id] if args.key?(:node_id)
+        end
+      end
+      
+      # PerSliSloEligibility is a mapping from an SLI name to eligibility.
+      class GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility
+        include Google::Apis::Core::Hashable
+      
+        # An entry in the eligibilities map specifies an eligibility for a particular
+        # SLI for the given instance. The SLI key in the name must be a valid SLI name
+        # specified in the Eligibility Exporter binary flags otherwise an error will be
+        # emitted by Eligibility Exporter and the oncaller will be alerted. If an SLI
+        # has been defined in the binary flags but the eligibilities map does not
+        # contain it, the corresponding SLI time series will not be emitted by the
+        # Eligibility Exporter. This ensures a smooth rollout and compatibility between
+        # the data produced by different versions of the Eligibility Exporters. If
+        # eligibilities map contains a key for an SLI which has not been declared in the
+        # binary flags, there will be an error message emitted in the Eligibility
+        # Exporter log and the metric for the SLI in question will not be emitted.
+        # Corresponds to the JSON property `eligibilities`
+        # @return [Hash<String,Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility>]
+        attr_accessor :eligibilities
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @eligibilities = args[:eligibilities] if args.key?(:eligibilities)
         end
       end
       
@@ -940,8 +975,7 @@ module Google
         attr_accessor :reason
       
         # Name of an SLI that this exclusion applies to. Can be left empty, signaling
-        # that the instance should be excluded from all SLIs defined in the service SLO
-        # configuration.
+        # that the instance should be excluded from all SLIs.
         # Corresponds to the JSON property `sliName`
         # @return [String]
         attr_accessor :sli_name
@@ -998,6 +1032,11 @@ module Google
         # @return [Array<Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>]
         attr_accessor :nodes
       
+        # PerSliSloEligibility is a mapping from an SLI name to eligibility.
+        # Corresponds to the JSON property `perSliEligibility`
+        # @return [Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility]
+        attr_accessor :per_sli_eligibility
+      
         # Name of the SLO tier the Instance belongs to. This name will be expected to
         # match the tiers specified in the service SLO configuration. Field is mandatory
         # and must not be empty.
@@ -1014,6 +1053,7 @@ module Google
           @eligibility = args[:eligibility] if args.key?(:eligibility)
           @exclusions = args[:exclusions] if args.key?(:exclusions)
           @nodes = args[:nodes] if args.key?(:nodes)
+          @per_sli_eligibility = args[:per_sli_eligibility] if args.key?(:per_sli_eligibility)
           @tier = args[:tier] if args.key?(:tier)
         end
       end

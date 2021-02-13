@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -466,6 +472,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :exclude, as: 'exclude'
+          property :is_rollback, as: 'isRollback'
           hash :maintenance_policies, as: 'maintenancePolicies', class: Google::Apis::ManagedidentitiesV1alpha1::MaintenancePolicy, decorator: Google::Apis::ManagedidentitiesV1alpha1::MaintenancePolicy::Representation
       
         end
@@ -478,6 +485,14 @@ module Google
       
           property :location, as: 'location'
           property :node_id, as: 'nodeId'
+        end
+      end
+      
+      class GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :eligibilities, as: 'eligibilities', class: Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility, decorator: Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility::Representation
+      
         end
       end
       
@@ -515,6 +530,8 @@ module Google
           collection :exclusions, as: 'exclusions', class: Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion, decorator: Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion::Representation
       
           collection :nodes, as: 'nodes', class: Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata, decorator: Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata::Representation
+      
+          property :per_sli_eligibility, as: 'perSliEligibility', class: Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility, decorator: Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility::Representation
       
           property :tier, as: 'tier'
         end
