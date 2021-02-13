@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -226,12 +232,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SqlIntegration
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Schedule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -239,6 +239,12 @@ module Google
       end
       
       class SetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlIntegration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -466,6 +472,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :exclude, as: 'exclude'
+          property :is_rollback, as: 'isRollback'
           hash :maintenance_policies, as: 'maintenancePolicies', class: Google::Apis::ManagedidentitiesV1beta1::MaintenancePolicy, decorator: Google::Apis::ManagedidentitiesV1beta1::MaintenancePolicy::Representation
       
         end
@@ -478,6 +485,14 @@ module Google
       
           property :location, as: 'location'
           property :node_id, as: 'nodeId'
+        end
+      end
+      
+      class GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :eligibilities, as: 'eligibilities', class: Google::Apis::ManagedidentitiesV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility, decorator: Google::Apis::ManagedidentitiesV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility::Representation
+      
         end
       end
       
@@ -515,6 +530,8 @@ module Google
           collection :exclusions, as: 'exclusions', class: Google::Apis::ManagedidentitiesV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion, decorator: Google::Apis::ManagedidentitiesV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion::Representation
       
           collection :nodes, as: 'nodes', class: Google::Apis::ManagedidentitiesV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata, decorator: Google::Apis::ManagedidentitiesV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata::Representation
+      
+          property :per_sli_eligibility, as: 'perSliEligibility', class: Google::Apis::ManagedidentitiesV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility, decorator: Google::Apis::ManagedidentitiesV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility::Representation
       
           property :tier, as: 'tier'
         end
@@ -649,17 +666,6 @@ module Google
         end
       end
       
-      class SqlIntegration
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :name, as: 'name'
-          property :sql_instance, as: 'sqlInstance'
-          property :state, as: 'state'
-          property :update_time, as: 'updateTime'
-        end
-      end
-      
       class Schedule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -675,6 +681,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :policy, as: 'policy', class: Google::Apis::ManagedidentitiesV1beta1::Policy, decorator: Google::Apis::ManagedidentitiesV1beta1::Policy::Representation
       
+        end
+      end
+      
+      class SqlIntegration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+          property :sql_instance, as: 'sqlInstance'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
         end
       end
       
