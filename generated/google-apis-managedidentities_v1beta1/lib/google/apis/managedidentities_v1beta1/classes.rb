@@ -751,9 +751,8 @@ module Google
       
         # schedule_deadline_time is the time deadline any schedule start time cannot go
         # beyond, including reschedule. It's normally the initial schedule start time
-        # plus a week. If the reschedule type is next window, simply take this value as
-        # start time. If reschedule type is IMMEDIATELY or BY_TIME, current or selected
-        # time cannot go beyond this deadline.
+        # plus maintenance window length (1 day or 1 week). Maintenance cannot be
+        # scheduled to start beyond this deadline.
         # Corresponds to the JSON property `scheduleDeadlineTime`
         # @return [String]
         attr_accessor :schedule_deadline_time
@@ -790,6 +789,12 @@ module Google
         attr_accessor :exclude
         alias_method :exclude?, :exclude
       
+        # Optional. If the update call is triggered from rollback, set the value as true.
+        # Corresponds to the JSON property `isRollback`
+        # @return [Boolean]
+        attr_accessor :is_rollback
+        alias_method :is_rollback?, :is_rollback
+      
         # Optional. The MaintenancePolicies that have been attached to the instance. The
         # key must be of the type name of the oneof policy name defined in
         # MaintenancePolicy, and the embedded policy must define the same policy type.
@@ -807,6 +812,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @exclude = args[:exclude] if args.key?(:exclude)
+          @is_rollback = args[:is_rollback] if args.key?(:is_rollback)
           @maintenance_policies = args[:maintenance_policies] if args.key?(:maintenance_policies)
         end
       end
@@ -845,6 +851,35 @@ module Google
           @exclusions = args[:exclusions] if args.key?(:exclusions)
           @location = args[:location] if args.key?(:location)
           @node_id = args[:node_id] if args.key?(:node_id)
+        end
+      end
+      
+      # PerSliSloEligibility is a mapping from an SLI name to eligibility.
+      class GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility
+        include Google::Apis::Core::Hashable
+      
+        # An entry in the eligibilities map specifies an eligibility for a particular
+        # SLI for the given instance. The SLI key in the name must be a valid SLI name
+        # specified in the Eligibility Exporter binary flags otherwise an error will be
+        # emitted by Eligibility Exporter and the oncaller will be alerted. If an SLI
+        # has been defined in the binary flags but the eligibilities map does not
+        # contain it, the corresponding SLI time series will not be emitted by the
+        # Eligibility Exporter. This ensures a smooth rollout and compatibility between
+        # the data produced by different versions of the Eligibility Exporters. If
+        # eligibilities map contains a key for an SLI which has not been declared in the
+        # binary flags, there will be an error message emitted in the Eligibility
+        # Exporter log and the metric for the SLI in question will not be emitted.
+        # Corresponds to the JSON property `eligibilities`
+        # @return [Hash<String,Google::Apis::ManagedidentitiesV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility>]
+        attr_accessor :eligibilities
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @eligibilities = args[:eligibilities] if args.key?(:eligibilities)
         end
       end
       
@@ -930,8 +965,7 @@ module Google
         attr_accessor :reason
       
         # Name of an SLI that this exclusion applies to. Can be left empty, signaling
-        # that the instance should be excluded from all SLIs defined in the service SLO
-        # configuration.
+        # that the instance should be excluded from all SLIs.
         # Corresponds to the JSON property `sliName`
         # @return [String]
         attr_accessor :sli_name
@@ -988,6 +1022,11 @@ module Google
         # @return [Array<Google::Apis::ManagedidentitiesV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>]
         attr_accessor :nodes
       
+        # PerSliSloEligibility is a mapping from an SLI name to eligibility.
+        # Corresponds to the JSON property `perSliEligibility`
+        # @return [Google::Apis::ManagedidentitiesV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility]
+        attr_accessor :per_sli_eligibility
+      
         # Name of the SLO tier the Instance belongs to. This name will be expected to
         # match the tiers specified in the service SLO configuration. Field is mandatory
         # and must not be empty.
@@ -1004,6 +1043,7 @@ module Google
           @eligibility = args[:eligibility] if args.key?(:eligibility)
           @exclusions = args[:exclusions] if args.key?(:exclusions)
           @nodes = args[:nodes] if args.key?(:nodes)
+          @per_sli_eligibility = args[:per_sli_eligibility] if args.key?(:per_sli_eligibility)
           @tier = args[:tier] if args.key?(:tier)
         end
       end
@@ -1090,7 +1130,7 @@ module Google
         end
       end
       
-      # ListSQLIntegrationsResponse is the response message for ListSQLIntegrations
+      # ListSqlIntegrationsResponse is the response message for ListSqlIntegrations
       # method.
       class ListSqlIntegrationsResponse
         include Google::Apis::Core::Hashable
@@ -1101,7 +1141,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # A list of SQLIntegrations of a domain.
+        # A list of SqlIntegrations of a domain.
         # Corresponds to the JSON property `sqlIntegrations`
         # @return [Array<Google::Apis::ManagedidentitiesV1beta1::SqlIntegration>]
         attr_accessor :sql_integrations
@@ -1521,53 +1561,6 @@ module Google
         end
       end
       
-      # Represents the SQL instance integrated with AD.
-      class SqlIntegration
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The time sql integration was created. Synthetic field is
-        # populated automatically by CCFE.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # The unique name of the sql integration in the form of `projects/`project_id`/
-        # locations/global/domains/`domain_name`/sqlIntegrations/`sql_integration``
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The full resource name of an integrated sql instance TODO(b/161918255) Add
-        # resource type annotation post CloudSQL API fix.
-        # Corresponds to the JSON property `sqlInstance`
-        # @return [String]
-        attr_accessor :sql_instance
-      
-        # Output only. The current state of the sql integration.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # Output only. The time sql integration was updated. Synthetic field is
-        # populated automatically by CCFE.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @name = args[:name] if args.key?(:name)
-          @sql_instance = args[:sql_instance] if args.key?(:sql_instance)
-          @state = args[:state] if args.key?(:state)
-          @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
       # Configure the schedule.
       class Schedule
         include Google::Apis::Core::Hashable
@@ -1643,6 +1636,53 @@ module Google
         # Update properties of this object
         def update!(**args)
           @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
+      # Represents the Sql instance integrated with AD.
+      class SqlIntegration
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time sql integration was created. Synthetic field is
+        # populated automatically by CCFE.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The unique name of the sql integration in the form of `projects/`project_id`/
+        # locations/global/domains/`domain_name`/sqlIntegrations/`sql_integration``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The full resource name of an integrated sql instance Reference to: http://
+        # google3/google/cloud/sql/v1/cloud_sql_resources.proto?l=351&rcl=354416019
+        # Corresponds to the JSON property `sqlInstance`
+        # @return [String]
+        attr_accessor :sql_instance
+      
+        # Output only. The current state of the sql integration.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The time sql integration was updated. Synthetic field is
+        # populated automatically by CCFE.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @sql_instance = args[:sql_instance] if args.key?(:sql_instance)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       

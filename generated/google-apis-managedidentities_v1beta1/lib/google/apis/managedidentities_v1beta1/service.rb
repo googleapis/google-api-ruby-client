@@ -600,7 +600,7 @@ module Google
         
         # Gets details of a single sqlIntegration.
         # @param [String] name
-        #   Required. SQLIntegration resource name using the form: `projects/`project_id`/
+        #   Required. SqlIntegration resource name using the form: `projects/`project_id`/
         #   locations/global/domains/*/sqlIntegrations/`name``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -629,13 +629,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists SQLIntegrations in a given domain.
+        # Lists SqlIntegrations in a given domain.
         # @param [String] parent
-        #   Required. The resource name of the SQLIntegrations using the form: `projects/`
+        #   Required. The resource name of the SqlIntegrations using the form: `projects/`
         #   project_id`/locations/global/domains/*`
         # @param [String] filter
         #   Optional. Filter specifying constraints of a list operation. For example, `
-        #   SQLIntegration.name="sql"`.
+        #   SqlIntegration.name="sql"`.
         # @param [String] order_by
         #   Optional. Specifies the ordering of results following syntax at https://cloud.
         #   google.com/apis/design/design_patterns#sorting_order.
