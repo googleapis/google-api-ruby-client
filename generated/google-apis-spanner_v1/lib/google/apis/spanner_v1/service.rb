@@ -693,18 +693,19 @@ module Google
         #   contains operator. Filter rules are not case sensitive. The following fields
         #   in the Backup are eligible for filtering: * `name` * `database` * `state` * `
         #   create_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ) * `
-        #   expire_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ) * `size_bytes`
-        #   You can combine multiple expressions by enclosing each expression in
-        #   parentheses. By default, expressions are combined with AND logic, but you can
-        #   specify AND, OR, and NOT logic explicitly. Here are a few examples: * `name:
-        #   Howl` - The backup's name contains the string "howl". * `database:prod` - The
-        #   database's name contains the string "prod". * `state:CREATING` - The backup is
-        #   pending creation. * `state:READY` - The backup is fully created and ready for
-        #   use. * `(name:howl) AND (create_time < \"2018-03-28T14:50:00Z\")` - The backup
-        #   name contains the string "howl" and `create_time` of the backup is before 2018-
-        #   03-28T14:50:00Z. * `expire_time < \"2018-03-28T14:50:00Z\"` - The backup `
-        #   expire_time` is before 2018-03-28T14:50:00Z. * `size_bytes > 10000000000` -
-        #   The backup's size is greater than 10GB
+        #   expire_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ) * `
+        #   version_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ) * `
+        #   size_bytes` You can combine multiple expressions by enclosing each expression
+        #   in parentheses. By default, expressions are combined with AND logic, but you
+        #   can specify AND, OR, and NOT logic explicitly. Here are a few examples: * `
+        #   name:Howl` - The backup's name contains the string "howl". * `database:prod` -
+        #   The database's name contains the string "prod". * `state:CREATING` - The
+        #   backup is pending creation. * `state:READY` - The backup is fully created and
+        #   ready for use. * `(name:howl) AND (create_time < \"2018-03-28T14:50:00Z\")` -
+        #   The backup name contains the string "howl" and `create_time` of the backup is
+        #   before 2018-03-28T14:50:00Z. * `expire_time < \"2018-03-28T14:50:00Z\"` - The
+        #   backup `expire_time` is before 2018-03-28T14:50:00Z. * `size_bytes >
+        #   10000000000` - The backup's size is greater than 10GB
         # @param [Fixnum] page_size
         #   Number of backups to be returned in the response. If 0 or less, defaults to
         #   the server's maximum allowed page size.

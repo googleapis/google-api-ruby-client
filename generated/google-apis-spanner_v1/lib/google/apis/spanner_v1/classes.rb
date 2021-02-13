@@ -228,7 +228,7 @@ module Google
         # inactivity at the client may cause Cloud Spanner to release a transaction's
         # locks and abort it. Conceptually, a read-write transaction consists of zero or
         # more reads or SQL statements followed by Commit. At any time before Commit,
-        # the client can send a Rollback request to abort the transaction. ### Semantics
+        # the client can send a Rollback request to abort the transaction. ## Semantics
         # Cloud Spanner can commit the transaction if all read locks it acquired are
         # still valid at commit time, and it is able to acquire write locks for all
         # writes. Cloud Spanner can abort the transaction for any reason. If a commit
@@ -236,7 +236,7 @@ module Google
         # not modified any user data in Cloud Spanner. Unless the transaction commits,
         # Cloud Spanner makes no guarantees about how long the transaction's locks were
         # held for. It is an error to use Cloud Spanner locks for any sort of mutual
-        # exclusion other than between Cloud Spanner transactions themselves. ###
+        # exclusion other than between Cloud Spanner transactions themselves. ##
         # Retrying Aborted Transactions When a transaction aborts, the application can
         # choose to retry the whole transaction again. To maximize the chances of
         # successfully committing the retry, the client should execute the retry in the
@@ -247,7 +247,7 @@ module Google
         # can abort many times in a short period before successfully committing. Thus,
         # it is not a good idea to cap the number of retries a transaction can attempt;
         # instead, it is better to limit the total amount of wall time spent retrying. ##
-        # # Idle Transactions A transaction is considered idle if it has no outstanding
+        # Idle Transactions A transaction is considered idle if it has no outstanding
         # reads or SQL queries and has not started a read or SQL query within the last
         # 10 seconds. Idle transactions can be aborted by Cloud Spanner so that they don'
         # t hold on to locks indefinitely. In that case, the commit will fail with error
@@ -271,7 +271,7 @@ module Google
         # is geographically distributed, stale read-only transactions can execute more
         # quickly than strong or read-write transaction, because they are able to
         # execute far from the leader replica. Each type of timestamp bound is discussed
-        # in detail below. ### Strong Strong reads are guaranteed to see the effects of
+        # in detail below. ## Strong Strong reads are guaranteed to see the effects of
         # all transactions that have committed before the start of the read. Furthermore,
         # all rows yielded by a single read are consistent with each other -- if any
         # part of the read observes a transaction, all parts of the read see the
@@ -279,7 +279,7 @@ module Google
         # transactions might return inconsistent results if there are concurrent writes.
         # If consistency across reads is required, the reads should be executed within a
         # transaction or at an exact read timestamp. See TransactionOptions.ReadOnly.
-        # strong. ### Exact Staleness These timestamp bounds execute reads at a user-
+        # strong. ## Exact Staleness These timestamp bounds execute reads at a user-
         # specified timestamp. Reads at a timestamp are guaranteed to see a consistent
         # prefix of the global transaction history: they observe modifications done by
         # all transactions with a commit timestamp <= the read timestamp, and observe
@@ -291,7 +291,7 @@ module Google
         # to pick a timestamp. As a result, they execute slightly faster than the
         # equivalent boundedly stale concurrency modes. On the other hand, boundedly
         # stale reads usually return fresher results. See TransactionOptions.ReadOnly.
-        # read_timestamp and TransactionOptions.ReadOnly.exact_staleness. ### Bounded
+        # read_timestamp and TransactionOptions.ReadOnly.exact_staleness. ## Bounded
         # Staleness Bounded staleness modes allow Cloud Spanner to pick the read
         # timestamp, subject to a user-provided staleness bound. Cloud Spanner chooses
         # the newest timestamp within the staleness bound that allows execution of the
@@ -309,7 +309,7 @@ module Google
         # timestamp negotiation requires up-front knowledge of which rows will be read,
         # it can only be used with single-use read-only transactions. See
         # TransactionOptions.ReadOnly.max_staleness and TransactionOptions.ReadOnly.
-        # min_read_timestamp. ### Old Read Timestamps and Garbage Collection Cloud
+        # min_read_timestamp. ## Old Read Timestamps and Garbage Collection Cloud
         # Spanner continuously garbage collects deleted and overwritten data in the
         # background to reclaim storage space. This process is known as "version GC". By
         # default, version GC reclaims versions after they are one hour old. Because of
@@ -528,7 +528,7 @@ module Google
         # inactivity at the client may cause Cloud Spanner to release a transaction's
         # locks and abort it. Conceptually, a read-write transaction consists of zero or
         # more reads or SQL statements followed by Commit. At any time before Commit,
-        # the client can send a Rollback request to abort the transaction. ### Semantics
+        # the client can send a Rollback request to abort the transaction. ## Semantics
         # Cloud Spanner can commit the transaction if all read locks it acquired are
         # still valid at commit time, and it is able to acquire write locks for all
         # writes. Cloud Spanner can abort the transaction for any reason. If a commit
@@ -536,7 +536,7 @@ module Google
         # not modified any user data in Cloud Spanner. Unless the transaction commits,
         # Cloud Spanner makes no guarantees about how long the transaction's locks were
         # held for. It is an error to use Cloud Spanner locks for any sort of mutual
-        # exclusion other than between Cloud Spanner transactions themselves. ###
+        # exclusion other than between Cloud Spanner transactions themselves. ##
         # Retrying Aborted Transactions When a transaction aborts, the application can
         # choose to retry the whole transaction again. To maximize the chances of
         # successfully committing the retry, the client should execute the retry in the
@@ -547,7 +547,7 @@ module Google
         # can abort many times in a short period before successfully committing. Thus,
         # it is not a good idea to cap the number of retries a transaction can attempt;
         # instead, it is better to limit the total amount of wall time spent retrying. ##
-        # # Idle Transactions A transaction is considered idle if it has no outstanding
+        # Idle Transactions A transaction is considered idle if it has no outstanding
         # reads or SQL queries and has not started a read or SQL query within the last
         # 10 seconds. Idle transactions can be aborted by Cloud Spanner so that they don'
         # t hold on to locks indefinitely. In that case, the commit will fail with error
@@ -571,7 +571,7 @@ module Google
         # is geographically distributed, stale read-only transactions can execute more
         # quickly than strong or read-write transaction, because they are able to
         # execute far from the leader replica. Each type of timestamp bound is discussed
-        # in detail below. ### Strong Strong reads are guaranteed to see the effects of
+        # in detail below. ## Strong Strong reads are guaranteed to see the effects of
         # all transactions that have committed before the start of the read. Furthermore,
         # all rows yielded by a single read are consistent with each other -- if any
         # part of the read observes a transaction, all parts of the read see the
@@ -579,7 +579,7 @@ module Google
         # transactions might return inconsistent results if there are concurrent writes.
         # If consistency across reads is required, the reads should be executed within a
         # transaction or at an exact read timestamp. See TransactionOptions.ReadOnly.
-        # strong. ### Exact Staleness These timestamp bounds execute reads at a user-
+        # strong. ## Exact Staleness These timestamp bounds execute reads at a user-
         # specified timestamp. Reads at a timestamp are guaranteed to see a consistent
         # prefix of the global transaction history: they observe modifications done by
         # all transactions with a commit timestamp <= the read timestamp, and observe
@@ -591,7 +591,7 @@ module Google
         # to pick a timestamp. As a result, they execute slightly faster than the
         # equivalent boundedly stale concurrency modes. On the other hand, boundedly
         # stale reads usually return fresher results. See TransactionOptions.ReadOnly.
-        # read_timestamp and TransactionOptions.ReadOnly.exact_staleness. ### Bounded
+        # read_timestamp and TransactionOptions.ReadOnly.exact_staleness. ## Bounded
         # Staleness Bounded staleness modes allow Cloud Spanner to pick the read
         # timestamp, subject to a user-provided staleness bound. Cloud Spanner chooses
         # the newest timestamp within the staleness bound that allows execution of the
@@ -609,7 +609,7 @@ module Google
         # timestamp negotiation requires up-front knowledge of which rows will be read,
         # it can only be used with single-use read-only transactions. See
         # TransactionOptions.ReadOnly.max_staleness and TransactionOptions.ReadOnly.
-        # min_read_timestamp. ### Old Read Timestamps and Garbage Collection Cloud
+        # min_read_timestamp. ## Old Read Timestamps and Garbage Collection Cloud
         # Spanner continuously garbage collects deleted and overwritten data in the
         # background to reclaim storage space. This process is known as "version GC". By
         # default, version GC reclaims versions after they are one hour old. Because of
@@ -918,7 +918,10 @@ module Google
         attr_accessor :create_time
       
         # Output only. Earliest timestamp at which older versions of the data can be
-        # read.
+        # read. This value is continuously updated by Cloud Spanner and becomes stale
+        # the moment it is queried. If you are using this value to recover data, make
+        # sure to account for the time from the moment when the value is queried to the
+        # moment when you initiate the recovery.
         # Corresponds to the JSON property `earliestVersionTime`
         # @return [String]
         attr_accessor :earliest_version_time
@@ -942,7 +945,7 @@ module Google
         attr_accessor :state
       
         # Output only. The period in which Cloud Spanner retains all versions of data
-        # for the database. This is same as the value of version_retention_period
+        # for the database. This is the same as the value of version_retention_period
         # database option set using UpdateDatabaseDdl. Defaults to 1 hour, if not set.
         # Corresponds to the JSON property `versionRetentionPeriod`
         # @return [String]
@@ -3213,7 +3216,7 @@ module Google
       # inactivity at the client may cause Cloud Spanner to release a transaction's
       # locks and abort it. Conceptually, a read-write transaction consists of zero or
       # more reads or SQL statements followed by Commit. At any time before Commit,
-      # the client can send a Rollback request to abort the transaction. ### Semantics
+      # the client can send a Rollback request to abort the transaction. ## Semantics
       # Cloud Spanner can commit the transaction if all read locks it acquired are
       # still valid at commit time, and it is able to acquire write locks for all
       # writes. Cloud Spanner can abort the transaction for any reason. If a commit
@@ -3221,7 +3224,7 @@ module Google
       # not modified any user data in Cloud Spanner. Unless the transaction commits,
       # Cloud Spanner makes no guarantees about how long the transaction's locks were
       # held for. It is an error to use Cloud Spanner locks for any sort of mutual
-      # exclusion other than between Cloud Spanner transactions themselves. ###
+      # exclusion other than between Cloud Spanner transactions themselves. ##
       # Retrying Aborted Transactions When a transaction aborts, the application can
       # choose to retry the whole transaction again. To maximize the chances of
       # successfully committing the retry, the client should execute the retry in the
@@ -3232,7 +3235,7 @@ module Google
       # can abort many times in a short period before successfully committing. Thus,
       # it is not a good idea to cap the number of retries a transaction can attempt;
       # instead, it is better to limit the total amount of wall time spent retrying. ##
-      # # Idle Transactions A transaction is considered idle if it has no outstanding
+      # Idle Transactions A transaction is considered idle if it has no outstanding
       # reads or SQL queries and has not started a read or SQL query within the last
       # 10 seconds. Idle transactions can be aborted by Cloud Spanner so that they don'
       # t hold on to locks indefinitely. In that case, the commit will fail with error
@@ -3256,7 +3259,7 @@ module Google
       # is geographically distributed, stale read-only transactions can execute more
       # quickly than strong or read-write transaction, because they are able to
       # execute far from the leader replica. Each type of timestamp bound is discussed
-      # in detail below. ### Strong Strong reads are guaranteed to see the effects of
+      # in detail below. ## Strong Strong reads are guaranteed to see the effects of
       # all transactions that have committed before the start of the read. Furthermore,
       # all rows yielded by a single read are consistent with each other -- if any
       # part of the read observes a transaction, all parts of the read see the
@@ -3264,7 +3267,7 @@ module Google
       # transactions might return inconsistent results if there are concurrent writes.
       # If consistency across reads is required, the reads should be executed within a
       # transaction or at an exact read timestamp. See TransactionOptions.ReadOnly.
-      # strong. ### Exact Staleness These timestamp bounds execute reads at a user-
+      # strong. ## Exact Staleness These timestamp bounds execute reads at a user-
       # specified timestamp. Reads at a timestamp are guaranteed to see a consistent
       # prefix of the global transaction history: they observe modifications done by
       # all transactions with a commit timestamp <= the read timestamp, and observe
@@ -3276,7 +3279,7 @@ module Google
       # to pick a timestamp. As a result, they execute slightly faster than the
       # equivalent boundedly stale concurrency modes. On the other hand, boundedly
       # stale reads usually return fresher results. See TransactionOptions.ReadOnly.
-      # read_timestamp and TransactionOptions.ReadOnly.exact_staleness. ### Bounded
+      # read_timestamp and TransactionOptions.ReadOnly.exact_staleness. ## Bounded
       # Staleness Bounded staleness modes allow Cloud Spanner to pick the read
       # timestamp, subject to a user-provided staleness bound. Cloud Spanner chooses
       # the newest timestamp within the staleness bound that allows execution of the
@@ -3294,7 +3297,7 @@ module Google
       # timestamp negotiation requires up-front knowledge of which rows will be read,
       # it can only be used with single-use read-only transactions. See
       # TransactionOptions.ReadOnly.max_staleness and TransactionOptions.ReadOnly.
-      # min_read_timestamp. ### Old Read Timestamps and Garbage Collection Cloud
+      # min_read_timestamp. ## Old Read Timestamps and Garbage Collection Cloud
       # Spanner continuously garbage collects deleted and overwritten data in the
       # background to reclaim storage space. This process is known as "version GC". By
       # default, version GC reclaims versions after they are one hour old. Because of
@@ -3408,7 +3411,7 @@ module Google
         # inactivity at the client may cause Cloud Spanner to release a transaction's
         # locks and abort it. Conceptually, a read-write transaction consists of zero or
         # more reads or SQL statements followed by Commit. At any time before Commit,
-        # the client can send a Rollback request to abort the transaction. ### Semantics
+        # the client can send a Rollback request to abort the transaction. ## Semantics
         # Cloud Spanner can commit the transaction if all read locks it acquired are
         # still valid at commit time, and it is able to acquire write locks for all
         # writes. Cloud Spanner can abort the transaction for any reason. If a commit
@@ -3416,7 +3419,7 @@ module Google
         # not modified any user data in Cloud Spanner. Unless the transaction commits,
         # Cloud Spanner makes no guarantees about how long the transaction's locks were
         # held for. It is an error to use Cloud Spanner locks for any sort of mutual
-        # exclusion other than between Cloud Spanner transactions themselves. ###
+        # exclusion other than between Cloud Spanner transactions themselves. ##
         # Retrying Aborted Transactions When a transaction aborts, the application can
         # choose to retry the whole transaction again. To maximize the chances of
         # successfully committing the retry, the client should execute the retry in the
@@ -3427,7 +3430,7 @@ module Google
         # can abort many times in a short period before successfully committing. Thus,
         # it is not a good idea to cap the number of retries a transaction can attempt;
         # instead, it is better to limit the total amount of wall time spent retrying. ##
-        # # Idle Transactions A transaction is considered idle if it has no outstanding
+        # Idle Transactions A transaction is considered idle if it has no outstanding
         # reads or SQL queries and has not started a read or SQL query within the last
         # 10 seconds. Idle transactions can be aborted by Cloud Spanner so that they don'
         # t hold on to locks indefinitely. In that case, the commit will fail with error
@@ -3451,7 +3454,7 @@ module Google
         # is geographically distributed, stale read-only transactions can execute more
         # quickly than strong or read-write transaction, because they are able to
         # execute far from the leader replica. Each type of timestamp bound is discussed
-        # in detail below. ### Strong Strong reads are guaranteed to see the effects of
+        # in detail below. ## Strong Strong reads are guaranteed to see the effects of
         # all transactions that have committed before the start of the read. Furthermore,
         # all rows yielded by a single read are consistent with each other -- if any
         # part of the read observes a transaction, all parts of the read see the
@@ -3459,7 +3462,7 @@ module Google
         # transactions might return inconsistent results if there are concurrent writes.
         # If consistency across reads is required, the reads should be executed within a
         # transaction or at an exact read timestamp. See TransactionOptions.ReadOnly.
-        # strong. ### Exact Staleness These timestamp bounds execute reads at a user-
+        # strong. ## Exact Staleness These timestamp bounds execute reads at a user-
         # specified timestamp. Reads at a timestamp are guaranteed to see a consistent
         # prefix of the global transaction history: they observe modifications done by
         # all transactions with a commit timestamp <= the read timestamp, and observe
@@ -3471,7 +3474,7 @@ module Google
         # to pick a timestamp. As a result, they execute slightly faster than the
         # equivalent boundedly stale concurrency modes. On the other hand, boundedly
         # stale reads usually return fresher results. See TransactionOptions.ReadOnly.
-        # read_timestamp and TransactionOptions.ReadOnly.exact_staleness. ### Bounded
+        # read_timestamp and TransactionOptions.ReadOnly.exact_staleness. ## Bounded
         # Staleness Bounded staleness modes allow Cloud Spanner to pick the read
         # timestamp, subject to a user-provided staleness bound. Cloud Spanner chooses
         # the newest timestamp within the staleness bound that allows execution of the
@@ -3489,7 +3492,7 @@ module Google
         # timestamp negotiation requires up-front knowledge of which rows will be read,
         # it can only be used with single-use read-only transactions. See
         # TransactionOptions.ReadOnly.max_staleness and TransactionOptions.ReadOnly.
-        # min_read_timestamp. ### Old Read Timestamps and Garbage Collection Cloud
+        # min_read_timestamp. ## Old Read Timestamps and Garbage Collection Cloud
         # Spanner continuously garbage collects deleted and overwritten data in the
         # background to reclaim storage space. This process is known as "version GC". By
         # default, version GC reclaims versions after they are one hour old. Because of
@@ -3577,7 +3580,7 @@ module Google
         # inactivity at the client may cause Cloud Spanner to release a transaction's
         # locks and abort it. Conceptually, a read-write transaction consists of zero or
         # more reads or SQL statements followed by Commit. At any time before Commit,
-        # the client can send a Rollback request to abort the transaction. ### Semantics
+        # the client can send a Rollback request to abort the transaction. ## Semantics
         # Cloud Spanner can commit the transaction if all read locks it acquired are
         # still valid at commit time, and it is able to acquire write locks for all
         # writes. Cloud Spanner can abort the transaction for any reason. If a commit
@@ -3585,7 +3588,7 @@ module Google
         # not modified any user data in Cloud Spanner. Unless the transaction commits,
         # Cloud Spanner makes no guarantees about how long the transaction's locks were
         # held for. It is an error to use Cloud Spanner locks for any sort of mutual
-        # exclusion other than between Cloud Spanner transactions themselves. ###
+        # exclusion other than between Cloud Spanner transactions themselves. ##
         # Retrying Aborted Transactions When a transaction aborts, the application can
         # choose to retry the whole transaction again. To maximize the chances of
         # successfully committing the retry, the client should execute the retry in the
@@ -3596,7 +3599,7 @@ module Google
         # can abort many times in a short period before successfully committing. Thus,
         # it is not a good idea to cap the number of retries a transaction can attempt;
         # instead, it is better to limit the total amount of wall time spent retrying. ##
-        # # Idle Transactions A transaction is considered idle if it has no outstanding
+        # Idle Transactions A transaction is considered idle if it has no outstanding
         # reads or SQL queries and has not started a read or SQL query within the last
         # 10 seconds. Idle transactions can be aborted by Cloud Spanner so that they don'
         # t hold on to locks indefinitely. In that case, the commit will fail with error
@@ -3620,7 +3623,7 @@ module Google
         # is geographically distributed, stale read-only transactions can execute more
         # quickly than strong or read-write transaction, because they are able to
         # execute far from the leader replica. Each type of timestamp bound is discussed
-        # in detail below. ### Strong Strong reads are guaranteed to see the effects of
+        # in detail below. ## Strong Strong reads are guaranteed to see the effects of
         # all transactions that have committed before the start of the read. Furthermore,
         # all rows yielded by a single read are consistent with each other -- if any
         # part of the read observes a transaction, all parts of the read see the
@@ -3628,7 +3631,7 @@ module Google
         # transactions might return inconsistent results if there are concurrent writes.
         # If consistency across reads is required, the reads should be executed within a
         # transaction or at an exact read timestamp. See TransactionOptions.ReadOnly.
-        # strong. ### Exact Staleness These timestamp bounds execute reads at a user-
+        # strong. ## Exact Staleness These timestamp bounds execute reads at a user-
         # specified timestamp. Reads at a timestamp are guaranteed to see a consistent
         # prefix of the global transaction history: they observe modifications done by
         # all transactions with a commit timestamp <= the read timestamp, and observe
@@ -3640,7 +3643,7 @@ module Google
         # to pick a timestamp. As a result, they execute slightly faster than the
         # equivalent boundedly stale concurrency modes. On the other hand, boundedly
         # stale reads usually return fresher results. See TransactionOptions.ReadOnly.
-        # read_timestamp and TransactionOptions.ReadOnly.exact_staleness. ### Bounded
+        # read_timestamp and TransactionOptions.ReadOnly.exact_staleness. ## Bounded
         # Staleness Bounded staleness modes allow Cloud Spanner to pick the read
         # timestamp, subject to a user-provided staleness bound. Cloud Spanner chooses
         # the newest timestamp within the staleness bound that allows execution of the
@@ -3658,7 +3661,7 @@ module Google
         # timestamp negotiation requires up-front knowledge of which rows will be read,
         # it can only be used with single-use read-only transactions. See
         # TransactionOptions.ReadOnly.max_staleness and TransactionOptions.ReadOnly.
-        # min_read_timestamp. ### Old Read Timestamps and Garbage Collection Cloud
+        # min_read_timestamp. ## Old Read Timestamps and Garbage Collection Cloud
         # Spanner continuously garbage collects deleted and overwritten data in the
         # background to reclaim storage space. This process is known as "version GC". By
         # default, version GC reclaims versions after they are one hour old. Because of
