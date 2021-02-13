@@ -220,6 +220,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DatasetAccessEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class TargetType
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DatasetList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -1200,6 +1212,8 @@ module Google
         class Access
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
+            property :dataset, as: 'dataset', class: Google::Apis::BigqueryV2::DatasetAccessEntry, decorator: Google::Apis::BigqueryV2::DatasetAccessEntry::Representation
+        
             property :domain, as: 'domain'
             property :group_by_email, as: 'groupByEmail'
             property :iam_member, as: 'iamMember'
@@ -1210,6 +1224,23 @@ module Google
             property :user_by_email, as: 'userByEmail'
             property :view, as: 'view', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
         
+          end
+        end
+      end
+      
+      class DatasetAccessEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset, as: 'dataset', class: Google::Apis::BigqueryV2::DatasetReference, decorator: Google::Apis::BigqueryV2::DatasetReference::Representation
+      
+          collection :target_types, as: 'target_types', class: Google::Apis::BigqueryV2::DatasetAccessEntry::TargetType, decorator: Google::Apis::BigqueryV2::DatasetAccessEntry::TargetType::Representation
+      
+        end
+        
+        class TargetType
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :target_type, as: 'targetType'
           end
         end
       end
