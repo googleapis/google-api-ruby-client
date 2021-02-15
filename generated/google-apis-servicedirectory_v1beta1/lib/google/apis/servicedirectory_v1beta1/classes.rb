@@ -115,38 +115,40 @@ module Google
       class Endpoint
         include Google::Apis::Core::Hashable
       
-        # Optional. An IPv4 or IPv6 address. Service Directory will reject bad addresses
-        # like: "8.8.8" "8.8.8.8:53" "test:bad:address" "[::1]" "[::1]:8080" Limited to
-        # 45 characters.
+        # Optional. An IPv4 or IPv6 address. Service Directory rejects bad addresses
+        # like: * `8.8.8` * `8.8.8.8:53` * `test:bad:address` * `[::1]` * `[::1]:8080`
+        # Limited to 45 characters.
         # Corresponds to the JSON property `address`
         # @return [String]
         attr_accessor :address
       
         # Optional. Metadata for the endpoint. This data can be consumed by service
-        # clients. Restrictions: - The entire metadata dictionary may contain up to 512
-        # characters, spread accoss all key-value pairs. Metadata that goes beyond any
-        # these limits will be rejected. - Valid metadata keys have two segments: an
-        # optional prefix and name, separated by a slash (/). The name segment is
-        # required and must be 63 characters or less, beginning and ending with an
-        # alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.)
-        # , and alphanumerics between. The prefix is optional. If specified, the prefix
-        # must be a DNS subdomain: a series of DNS labels separated by dots (.), not
-        # longer than 253 characters in total, followed by a slash (/). Metadata that
-        # fails to meet these requirements will be rejected. - The '(*.)google.com/' and
-        # '(*.)googleapis.com/' prefixes are reserved for system metadata managed by
-        # Service Directory. If the user tries to write to these keyspaces, those
-        # entries will be silently ignored by the system.
+        # clients. Restrictions: * The entire metadata dictionary may contain up to 512
+        # characters, spread accoss all key-value pairs. Metadata that goes beyond this
+        # limit are rejected * Valid metadata keys have two segments: an optional prefix
+        # and name, separated by a slash (/). The name segment is required and must be
+        # 63 characters or less, beginning and ending with an alphanumeric character ([a-
+        # z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics
+        # between. The prefix is optional. If specified, the prefix must be a DNS
+        # subdomain: a series of DNS labels separated by dots (.), not longer than 253
+        # characters in total, followed by a slash (/). Metadata that fails to meet
+        # these requirements are rejected * The `(*.)google.com/` and `(*.)googleapis.
+        # com/` prefixes are reserved for system metadata managed by Service Directory.
+        # If the user tries to write to these keyspaces, those entries are silently
+        # ignored by the system Note: This field is equivalent to the `annotations`
+        # field in the v1 API. They have the same syntax and read/write to the same
+        # location in Service Directory.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
-        # Immutable. The resource name for the endpoint in the format 'projects/*/
-        # locations/*/namespaces/*/services/*/endpoints/*'.
+        # Immutable. The resource name for the endpoint in the format `projects/*/
+        # locations/*/namespaces/*/services/*/endpoints/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Optional. Service Directory will reject values outside of [0, 65535].
+        # Optional. Service Directory rejects values outside of `[0, 65535]`.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
@@ -417,15 +419,15 @@ module Google
       class Namespace
         include Google::Apis::Core::Hashable
       
-        # Optional. Resource labels associated with this Namespace. No more than 64 user
+        # Optional. Resource labels associated with this namespace. No more than 64 user
         # labels can be associated with a given resource. Label keys and values can be
         # no longer than 63 characters.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Immutable. The resource name for the namespace in the format 'projects/*/
-        # locations/*/namespaces/*'.
+        # Immutable. The resource name for the namespace in the format `projects/*/
+        # locations/*/namespaces/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -531,16 +533,24 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The filter applied to the endpoints of the resolved service. General
-        # filter string syntax: *`field operator value`* (*`logical connector`*) *`field`
-        # * can be `name` or `metadata.`*`key`* for map field. *`operator`* can be `\<`,
-        # `>`, `\<=`, `>=`, `!=`, `=`, `:`. Of which `:` means `HAS` and is roughly the
-        # same as `=`. *`value`* must be the same data type as the field. *`logical
-        # connector*` can be `AND`, `OR`, `NOT`. Examples of valid filters: * `metadata.
-        # owner` returns endpoints that have a label with the key `owner`, this is the
-        # same as `metadata:owner` * `metadata.protocol=gRPC` returns endpoints that
-        # have key/value `protocol=gRPC` * `metadata.owner!=sd AND metadata.foo=bar`
-        # returns endpoints that have `owner` field in metadata with a value that is not
-        # `sd` and have the key/value `foo=bar`.
+        # `filter` string syntax: ` ()` * `` can be `name`, `address`, `port`, or `
+        # metadata.` for map field * `` can be `<`, `>`, `<=`, `>=`, `!=`, `=`, `:`. Of
+        # which `:` means `HAS`, and is roughly the same as `=` * `` must be the same
+        # data type as field * `` can be `AND`, `OR`, `NOT` Examples of valid filters: *
+        # `metadata.owner` returns endpoints that have a annotation with the key `owner`,
+        # this is the same as `metadata:owner` * `metadata.protocol=gRPC` returns
+        # endpoints that have key/value `protocol=gRPC` * `address=192.108.1.105`
+        # returns endpoints that have this address * `port>8080` returns endpoints that
+        # have port number larger than 8080 * `name>projects/my-project/locations/us-
+        # east1/namespaces/my-namespace/services/my-service/endpoints/endpoint-c`
+        # returns endpoints that have name that is alphabetically later than the string,
+        # so "endpoint-e" is returned but "endpoint-a" is not * `metadata.owner!=sd AND
+        # metadata.foo=bar` returns endpoints that have `owner` in annotation key but
+        # value is not `sd` AND have key/value `foo=bar` * `doesnotexist.foo=bar`
+        # returns an empty list. Note that endpoint doesn't have a field called "
+        # doesnotexist". Since the filter does not match any endpoint, it returns no
+        # results For more information about filtering, see [API Filtering](https://aip.
+        # dev/160).
         # Corresponds to the JSON property `endpointFilter`
         # @return [String]
         attr_accessor :endpoint_filter
@@ -589,31 +599,34 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. Endpoints associated with this service. Returned on LookupService.
-        # Resolve. Control plane clients should use RegistrationService.ListEndpoints.
+        # ResolveService. Control plane clients should use RegistrationService.
+        # ListEndpoints.
         # Corresponds to the JSON property `endpoints`
         # @return [Array<Google::Apis::ServicedirectoryV1beta1::Endpoint>]
         attr_accessor :endpoints
       
         # Optional. Metadata for the service. This data can be consumed by service
-        # clients. Restrictions: - The entire metadata dictionary may contain up to 2000
-        # characters, spread accoss all key-value pairs. Metadata that goes beyond any
-        # these limits will be rejected. - Valid metadata keys have two segments: an
-        # optional prefix and name, separated by a slash (/). The name segment is
-        # required and must be 63 characters or less, beginning and ending with an
-        # alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.)
-        # , and alphanumerics between. The prefix is optional. If specified, the prefix
-        # must be a DNS subdomain: a series of DNS labels separated by dots (.), not
-        # longer than 253 characters in total, followed by a slash (/). Metadata that
-        # fails to meet these requirements will be rejected. - The '(*.)google.com/' and
-        # '(*.)googleapis.com/' prefixes are reserved for system metadata managed by
-        # Service Directory. If the user tries to write to these keyspaces, those
-        # entries will be silently ignored by the system.
+        # clients. Restrictions: * The entire metadata dictionary may contain up to 512
+        # characters, spread accoss all key-value pairs. Metadata that goes beyond this
+        # limit are rejected * Valid metadata keys have two segments: an optional prefix
+        # and name, separated by a slash (/). The name segment is required and must be
+        # 63 characters or less, beginning and ending with an alphanumeric character ([a-
+        # z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics
+        # between. The prefix is optional. If specified, the prefix must be a DNS
+        # subdomain: a series of DNS labels separated by dots (.), not longer than 253
+        # characters in total, followed by a slash (/). Metadata that fails to meet
+        # these requirements are rejected * The `(*.)google.com/` and `(*.)googleapis.
+        # com/` prefixes are reserved for system metadata managed by Service Directory.
+        # If the user tries to write to these keyspaces, those entries are silently
+        # ignored by the system Note: This field is equivalent to the `annotations`
+        # field in the v1 API. They have the same syntax and read/write to the same
+        # location in Service Directory.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
-        # Immutable. The resource name for the service in the format 'projects/*/
-        # locations/*/namespaces/*/services/*'.
+        # Immutable. The resource name for the service in the format `projects/*/
+        # locations/*/namespaces/*/services/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
