@@ -4703,6 +4703,39 @@ module Google
         end
       end
       
+      # Performance metrics. Values are only set for metrics requested explicitly in
+      # the request's search query.
+      class Metrics
+        include Google::Apis::Core::Hashable
+      
+        # Number of clicks.
+        # Corresponds to the JSON property `clicks`
+        # @return [Fixnum]
+        attr_accessor :clicks
+      
+        # Number of clicks merchant's products receive (clicks) divided by the number of
+        # times the products are shown (impressions).
+        # Corresponds to the JSON property `ctr`
+        # @return [Float]
+        attr_accessor :ctr
+      
+        # Number of times merchant's products are shown.
+        # Corresponds to the JSON property `impressions`
+        # @return [Fixnum]
+        attr_accessor :impressions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @clicks = args[:clicks] if args.key?(:clicks)
+          @ctr = args[:ctr] if args.key?(:ctr)
+          @impressions = args[:impressions] if args.key?(:impressions)
+        end
+      end
+      
       # 
       class MinimumOrderValueTable
         include Google::Apis::Core::Hashable
@@ -11316,6 +11349,37 @@ module Google
         end
       end
       
+      # Result row returned from the search query.
+      class ReportRow
+        include Google::Apis::Core::Hashable
+      
+        # Performance metrics. Values are only set for metrics requested explicitly in
+        # the request's search query.
+        # Corresponds to the JSON property `metrics`
+        # @return [Google::Apis::ContentV2_1::Metrics]
+        attr_accessor :metrics
+      
+        # Dimensions according to which metrics are segmented in the response. Values of
+        # product dimensions, e.g., offer id, reflect the state of a product at the time
+        # of the corresponding event, e.g., impression or order. Segment fields cannot
+        # be selected in queries without also selecting at least one metric field.
+        # Values are only set for dimensions requested explicitly in the request's
+        # search query.
+        # Corresponds to the JSON property `segments`
+        # @return [Google::Apis::ContentV2_1::Segments]
+        attr_accessor :segments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @segments = args[:segments] if args.key?(:segments)
+        end
+      end
+      
       # Resource that represents a daily Repricing product report. Each report
       # contains stats for a single type of Repricing rule for a single product on a
       # given day. If there are multiple rules of the same type for the product on
@@ -12565,6 +12629,110 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cells = args[:cells] if args.key?(:cells)
+        end
+      end
+      
+      # Request message for the ReportService.Search method.
+      class SearchRequest
+        include Google::Apis::Core::Hashable
+      
+        # Number of ReportRows to retrieve in a single page. Defaults to the maximum of
+        # 1000. Values above 1000 are coerced to 1000.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # Token of the page to retrieve. If not specified, the first page of results is
+        # returned. In order to request the next page of results, the value obtained
+        # from `next_page_token` in the previous response should be used.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # Required. Search query that defines performance metrics to retrieve and
+        # dimensions according to which the metrics are to be segmented.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @query = args[:query] if args.key?(:query)
+        end
+      end
+      
+      # Response message for the ReportService.Search method.
+      class SearchResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token which can be sent as `page_token` to retrieve the next page. If omitted,
+        # there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Rows that matched the search query.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::ContentV2_1::ReportRow>]
+        attr_accessor :results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @results = args[:results] if args.key?(:results)
+        end
+      end
+      
+      # Dimensions according to which metrics are segmented in the response. Values of
+      # product dimensions, e.g., offer id, reflect the state of a product at the time
+      # of the corresponding event, e.g., impression or order. Segment fields cannot
+      # be selected in queries without also selecting at least one metric field.
+      # Values are only set for dimensions requested explicitly in the request's
+      # search query.
+      class Segments
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values * A month
+        # and day value, with a zero year, such as an anniversary * A year on its own,
+        # with zero month and day values * A year and month value, with a zero day, such
+        # as a credit card expiration date Related types are google.type.TimeOfDay and `
+        # google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `date`
+        # @return [Google::Apis::ContentV2_1::Date]
+        attr_accessor :date
+      
+        # Merchant-provided id of the product.
+        # Corresponds to the JSON property `offerId`
+        # @return [String]
+        attr_accessor :offer_id
+      
+        # Program to which metrics apply, e.g., Free Product Listing.
+        # Corresponds to the JSON property `program`
+        # @return [String]
+        attr_accessor :program
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date = args[:date] if args.key?(:date)
+          @offer_id = args[:offer_id] if args.key?(:offer_id)
+          @program = args[:program] if args.key?(:program)
         end
       end
       
