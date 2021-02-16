@@ -323,6 +323,10 @@ module Google
         # Lists rows in a table. Returns NOT_FOUND if the table does not exist.
         # @param [String] parent
         #   Required. The parent table. Format: tables/`table`
+        # @param [String] filter
+        #   Optional. Raw text query to search for in rows of the table. Special
+        #   characters must be escaped. Logical operators and field specific filtering not
+        #   supported.
         # @param [Fixnum] page_size
         #   The maximum number of rows to return. The service may return fewer than this
         #   value. If unspecified, at most 50 rows are returned. The maximum value is 1,
@@ -351,11 +355,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_table_rows(parent, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_table_rows(parent, filter: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha1/{+parent}/rows', options)
           command.response_representation = Google::Apis::Area120tablesV1alpha1::ListRowsResponse::Representation
           command.response_class = Google::Apis::Area120tablesV1alpha1::ListRowsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['view'] = view unless view.nil?
