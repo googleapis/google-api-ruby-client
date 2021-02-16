@@ -2004,8 +2004,7 @@ module Google
         attr_accessor :network_operator_name
       
         # Provides telephony information associated with each SIM card on the device.
-        # Only supported on fully managed devices starting from Android API level 23 and
-        # above.
+        # Only supported on fully managed devices starting from Android API level 23.
         # Corresponds to the JSON property `telephonyInfos`
         # @return [Array<Google::Apis::AndroidmanagementV1::TelephonyInfo>]
         attr_accessor :telephony_infos
@@ -2423,7 +2422,8 @@ module Google
         attr_accessor :camera_disabled
         alias_method :camera_disabled?, :camera_disabled
       
-        # Controls how long the work profile can stay off.
+        # Controls how long the work profile can stay off. The duration must be at least
+        # 3 days.
         # Corresponds to the JSON property `maxDaysWithWorkOff`
         # @return [Fixnum]
         attr_accessor :max_days_with_work_off
@@ -3626,8 +3626,7 @@ module Google
       end
       
       # Telephony information associated with a given SIM card on the device. Only
-      # supported on fully managed devices starting from Android API level 23 and
-      # above.
+      # supported on fully managed devices starting from Android API level 23.
       class TelephonyInfo
         include Google::Apis::Core::Hashable
       
