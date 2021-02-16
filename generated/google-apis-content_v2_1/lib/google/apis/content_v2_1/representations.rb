@@ -772,6 +772,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Metrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MinimumOrderValueTable
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1678,6 +1684,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReportRow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RepricingProductReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1859,6 +1871,24 @@ module Google
       end
       
       class Row
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Segments
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3405,6 +3435,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :reason_code, as: 'reasonCode'
+        end
+      end
+      
+      class Metrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :clicks, :numeric_string => true, as: 'clicks'
+          property :ctr, as: 'ctr'
+          property :impressions, :numeric_string => true, as: 'impressions'
         end
       end
       
@@ -5154,6 +5193,16 @@ module Google
         end
       end
       
+      class ReportRow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metrics, as: 'metrics', class: Google::Apis::ContentV2_1::Metrics, decorator: Google::Apis::ContentV2_1::Metrics::Representation
+      
+          property :segments, as: 'segments', class: Google::Apis::ContentV2_1::Segments, decorator: Google::Apis::ContentV2_1::Segments::Representation
+      
+        end
+      end
+      
       class RepricingProductReport
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5500,6 +5549,34 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :cells, as: 'cells', class: Google::Apis::ContentV2_1::Value, decorator: Google::Apis::ContentV2_1::Value::Representation
       
+        end
+      end
+      
+      class SearchRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :page_size, as: 'pageSize'
+          property :page_token, as: 'pageToken'
+          property :query, as: 'query'
+        end
+      end
+      
+      class SearchResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :results, as: 'results', class: Google::Apis::ContentV2_1::ReportRow, decorator: Google::Apis::ContentV2_1::ReportRow::Representation
+      
+        end
+      end
+      
+      class Segments
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date, as: 'date', class: Google::Apis::ContentV2_1::Date, decorator: Google::Apis::ContentV2_1::Date::Representation
+      
+          property :offer_id, as: 'offerId'
+          property :program, as: 'program'
         end
       end
       
