@@ -99,7 +99,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -217,7 +217,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -300,7 +300,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -520,7 +520,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -603,7 +603,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -824,7 +824,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1250,7 +1250,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1490,7 +1490,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1794,7 +1794,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2034,7 +2034,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2152,7 +2152,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2290,7 +2290,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2621,7 +2621,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3080,7 +3080,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3621,7 +3621,7 @@ module Google
         #   Parent ID for this request.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4178,7 +4178,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4366,7 +4366,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4587,7 +4587,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4963,7 +4963,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5173,7 +5173,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5634,7 +5634,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5712,7 +5712,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5795,7 +5795,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5942,7 +5942,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6135,7 +6135,7 @@ module Google
         #   Parent ID for this request.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6218,7 +6218,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6428,7 +6428,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6743,7 +6743,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7058,7 +7058,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7508,7 +7508,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7826,7 +7826,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8266,7 +8266,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8350,7 +8350,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8436,7 +8436,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8519,7 +8519,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9082,7 +9082,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9310,7 +9310,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9393,7 +9393,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9763,7 +9763,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10038,7 +10038,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10335,6 +10335,48 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns effective firewalls applied to an interface of the instance.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] instance
+        #   Name of the instance scoping this request.
+        # @param [String] network_interface
+        #   The name of the network interface to get the effective firewalls.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::InstancesGetEffectiveFirewallsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::InstancesGetEffectiveFirewallsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_instance_effective_firewalls(project, zone, instance, network_interface, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/zones/{zone}/instances/{instance}/getEffectiveFirewalls', options)
+          command.response_representation = Google::Apis::ComputeV1::InstancesGetEffectiveFirewallsResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::InstancesGetEffectiveFirewallsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['networkInterface'] = network_interface unless network_interface.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -10665,7 +10707,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10749,7 +10791,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12133,7 +12175,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12357,7 +12399,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12527,7 +12569,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12772,7 +12814,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13163,7 +13205,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13327,7 +13369,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13445,7 +13487,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13528,7 +13570,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13870,7 +13912,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13953,7 +13995,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14171,6 +14213,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns the effective firewalls on a given network.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] network
+        #   Name of the network for this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::NetworksGetEffectiveFirewallsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::NetworksGetEffectiveFirewallsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_network_effective_firewalls(project, network, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/global/networks/{network}/getEffectiveFirewalls', options)
+          command.response_representation = Google::Apis::ComputeV1::NetworksGetEffectiveFirewallsResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::NetworksGetEffectiveFirewallsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['network'] = network unless network.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a network in the specified project using the data included in the
         # request.
         # @param [String] project
@@ -14259,7 +14337,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14343,7 +14421,7 @@ module Google
         #   routes and dynamic routes in the region.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14688,7 +14766,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15011,7 +15089,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15091,7 +15169,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15368,7 +15446,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15632,7 +15710,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15800,7 +15878,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15918,7 +15996,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16001,7 +16079,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16222,7 +16300,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16652,7 +16730,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16728,7 +16806,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -17194,7 +17272,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -17568,7 +17646,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -17763,7 +17841,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -17933,7 +18011,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -18051,7 +18129,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -18429,7 +18507,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -18899,7 +18977,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -19177,7 +19255,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -19787,7 +19865,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -19870,7 +19948,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -19953,7 +20031,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -20035,7 +20113,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -20560,7 +20638,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -20644,7 +20722,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -20929,7 +21007,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -21149,7 +21227,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -21303,7 +21381,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -21574,7 +21652,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -21796,7 +21874,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -22072,7 +22150,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -22384,7 +22462,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -22632,7 +22710,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -22714,7 +22792,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -22978,7 +23056,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23201,7 +23279,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23464,7 +23542,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23632,7 +23710,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23804,7 +23882,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23974,7 +24052,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -24340,7 +24418,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -24626,7 +24704,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -24702,7 +24780,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -25041,7 +25119,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -25243,7 +25321,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -25454,7 +25532,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -25665,7 +25743,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -25741,7 +25819,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -25875,7 +25953,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -26193,7 +26271,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -26269,7 +26347,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -26683,7 +26761,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -26819,7 +26897,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -27030,7 +27108,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -27217,7 +27295,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -27428,7 +27506,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -27772,7 +27850,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -27994,7 +28072,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -28185,7 +28263,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -28449,7 +28527,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -28825,7 +28903,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -29243,7 +29321,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -29427,7 +29505,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -29649,7 +29727,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -29733,7 +29811,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -29997,7 +30075,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -30223,7 +30301,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -30483,7 +30561,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -30663,7 +30741,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -30885,7 +30963,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -31039,7 +31117,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -31201,7 +31279,7 @@ module Google
         #   by a previous list request to get the next page of results.
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false and the logic is the same as today.
+        #   failure. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
