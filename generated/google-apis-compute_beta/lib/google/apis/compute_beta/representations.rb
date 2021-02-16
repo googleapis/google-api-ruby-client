@@ -2542,6 +2542,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkPerformanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkRoutingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3658,6 +3664,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourcePolicyInstanceSchedulePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicyInstanceSchedulePolicySchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourcePolicyList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -3672,6 +3690,18 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicyResourceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicyResourceStatusInstanceSchedulePolicyStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -4042,6 +4072,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceAttachmentAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceAttachmentConsumerForwardingRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4049,6 +4097,24 @@ module Google
       end
       
       class ServiceAttachmentList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceAttachmentsScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Warning
@@ -5544,6 +5610,7 @@ module Google
       
           collection :local_ssds, as: 'localSsds', class: Google::Apis::ComputeBeta::AllocationSpecificSkuAllocationAllocatedInstancePropertiesReservedDisk, decorator: Google::Apis::ComputeBeta::AllocationSpecificSkuAllocationAllocatedInstancePropertiesReservedDisk::Representation
       
+          property :location_hint, as: 'locationHint'
           property :machine_type, as: 'machineType'
           property :min_cpu_platform, as: 'minCpuPlatform'
         end
@@ -7143,6 +7210,7 @@ module Google
           property :network_tier, as: 'networkTier'
           property :port_range, as: 'portRange'
           collection :ports, as: 'ports'
+          property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           collection :service_directory_registrations, as: 'serviceDirectoryRegistrations', class: Google::Apis::ComputeBeta::ForwardingRuleServiceDirectoryRegistration, decorator: Google::Apis::ComputeBeta::ForwardingRuleServiceDirectoryRegistration::Representation
@@ -7231,6 +7299,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :namespace, as: 'namespace'
           property :service, as: 'service'
+          property :service_directory_region, as: 'serviceDirectoryRegion'
         end
       end
       
@@ -7914,6 +7983,7 @@ module Google
           property :name, as: 'name'
           property :raw_disk, as: 'rawDisk', class: Google::Apis::ComputeBeta::Image::RawDisk, decorator: Google::Apis::ComputeBeta::Image::RawDisk::Representation
       
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :shielded_instance_initial_state, as: 'shieldedInstanceInitialState', class: Google::Apis::ComputeBeta::InitialStateConfig, decorator: Google::Apis::ComputeBeta::InitialStateConfig::Representation
       
@@ -8024,6 +8094,8 @@ module Google
           property :min_cpu_platform, as: 'minCpuPlatform'
           property :name, as: 'name'
           collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeBeta::NetworkInterface, decorator: Google::Apis::ComputeBeta::NetworkInterface::Representation
+      
+          property :network_performance_config, as: 'networkPerformanceConfig', class: Google::Apis::ComputeBeta::NetworkPerformanceConfig, decorator: Google::Apis::ComputeBeta::NetworkPerformanceConfig::Representation
       
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeBeta::ReservationAffinity, decorator: Google::Apis::ComputeBeta::ReservationAffinity::Representation
@@ -8742,6 +8814,8 @@ module Google
       
           property :min_cpu_platform, as: 'minCpuPlatform'
           collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeBeta::NetworkInterface, decorator: Google::Apis::ComputeBeta::NetworkInterface::Representation
+      
+          property :network_performance_config, as: 'networkPerformanceConfig', class: Google::Apis::ComputeBeta::NetworkPerformanceConfig, decorator: Google::Apis::ComputeBeta::NetworkPerformanceConfig::Representation
       
           property :post_key_revocation_action_type, as: 'postKeyRevocationActionType'
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
@@ -9483,6 +9557,7 @@ module Google
           property :machine_image_encryption_key, as: 'machineImageEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
           property :name, as: 'name'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           collection :source_disk_encryption_keys, as: 'sourceDiskEncryptionKeys', class: Google::Apis::ComputeBeta::SourceDiskEncryptionKey, decorator: Google::Apis::ComputeBeta::SourceDiskEncryptionKey::Representation
       
@@ -10084,6 +10159,13 @@ module Google
         end
       end
       
+      class NetworkPerformanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :total_egress_bandwidth_tier, as: 'totalEgressBandwidthTier'
+        end
+      end
+      
       class NetworkRoutingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10159,6 +10241,7 @@ module Google
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :location_hint, as: 'locationHint'
           property :maintenance_policy, as: 'maintenancePolicy'
           property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::ComputeBeta::NodeGroupMaintenanceWindow, decorator: Google::Apis::ComputeBeta::NodeGroupMaintenanceWindow::Representation
       
@@ -10265,6 +10348,7 @@ module Google
           collection :instances, as: 'instances'
           property :name, as: 'name'
           property :node_type, as: 'nodeType'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :server_binding, as: 'serverBinding', class: Google::Apis::ComputeBeta::ServerBinding, decorator: Google::Apis::ComputeBeta::ServerBinding::Representation
       
           property :server_id, as: 'serverId'
@@ -11811,6 +11895,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :specific_reservation, as: 'specificReservation', class: Google::Apis::ComputeBeta::AllocationSpecificSkuReservation, decorator: Google::Apis::ComputeBeta::AllocationSpecificSkuReservation::Representation
       
@@ -11981,9 +12066,13 @@ module Google
           property :group_placement_policy, as: 'groupPlacementPolicy', class: Google::Apis::ComputeBeta::ResourcePolicyGroupPlacementPolicy, decorator: Google::Apis::ComputeBeta::ResourcePolicyGroupPlacementPolicy::Representation
       
           property :id, :numeric_string => true, as: 'id'
+          property :instance_schedule_policy, as: 'instanceSchedulePolicy', class: Google::Apis::ComputeBeta::ResourcePolicyInstanceSchedulePolicy, decorator: Google::Apis::ComputeBeta::ResourcePolicyInstanceSchedulePolicy::Representation
+      
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :region, as: 'region'
+          property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeBeta::ResourcePolicyResourceStatus, decorator: Google::Apis::ComputeBeta::ResourcePolicyResourceStatus::Representation
+      
           property :self_link, as: 'selfLink'
           property :snapshot_schedule_policy, as: 'snapshotSchedulePolicy', class: Google::Apis::ComputeBeta::ResourcePolicySnapshotSchedulePolicy, decorator: Google::Apis::ComputeBeta::ResourcePolicySnapshotSchedulePolicy::Representation
       
@@ -12052,6 +12141,26 @@ module Google
         end
       end
       
+      class ResourcePolicyInstanceSchedulePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expiration_time, as: 'expirationTime'
+          property :start_time, as: 'startTime'
+          property :time_zone, as: 'timeZone'
+          property :vm_start_schedule, as: 'vmStartSchedule', class: Google::Apis::ComputeBeta::ResourcePolicyInstanceSchedulePolicySchedule, decorator: Google::Apis::ComputeBeta::ResourcePolicyInstanceSchedulePolicySchedule::Representation
+      
+          property :vm_stop_schedule, as: 'vmStopSchedule', class: Google::Apis::ComputeBeta::ResourcePolicyInstanceSchedulePolicySchedule, decorator: Google::Apis::ComputeBeta::ResourcePolicyInstanceSchedulePolicySchedule::Representation
+      
+        end
+      end
+      
+      class ResourcePolicyInstanceSchedulePolicySchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :schedule, as: 'schedule'
+        end
+      end
+      
       class ResourcePolicyList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12082,6 +12191,22 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class ResourcePolicyResourceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_schedule_policy, as: 'instanceSchedulePolicy', class: Google::Apis::ComputeBeta::ResourcePolicyResourceStatusInstanceSchedulePolicyStatus, decorator: Google::Apis::ComputeBeta::ResourcePolicyResourceStatusInstanceSchedulePolicyStatus::Representation
+      
+        end
+      end
+      
+      class ResourcePolicyResourceStatusInstanceSchedulePolicyStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_run_start_time, as: 'lastRunStartTime'
+          property :next_run_start_time, as: 'nextRunStartTime'
         end
       end
       
@@ -12797,6 +12922,39 @@ module Google
         end
       end
       
+      class ServiceAttachmentAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeBeta::ServiceAttachmentsScopedList, decorator: Google::Apis::ComputeBeta::ServiceAttachmentsScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::ServiceAttachmentAggregatedList::Warning, decorator: Google::Apis::ComputeBeta::ServiceAttachmentAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::ServiceAttachmentAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::ServiceAttachmentAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class ServiceAttachmentConsumerForwardingRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12823,6 +12981,34 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
             collection :data, as: 'data', class: Google::Apis::ComputeBeta::ServiceAttachmentList::Warning::Datum, decorator: Google::Apis::ComputeBeta::ServiceAttachmentList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class ServiceAttachmentsScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resources, as: 'resources', class: Google::Apis::ComputeBeta::ServiceAttachment, decorator: Google::Apis::ComputeBeta::ServiceAttachment::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::ServiceAttachmentsScopedList::Warning, decorator: Google::Apis::ComputeBeta::ServiceAttachmentsScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::ServiceAttachmentsScopedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::ServiceAttachmentsScopedList::Warning::Datum::Representation
         
             property :message, as: 'message'
           end
