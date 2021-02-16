@@ -690,9 +690,9 @@ module Google
         # @return [String]
         attr_accessor :purpose
       
-        # [Output Only] The URL of the region where the regional address resides. This
-        # field is not applicable to global addresses. You must specify this field as
-        # part of the HTTP request URL.
+        # [Output Only] The URL of the region where a regional address resides. For
+        # regional addresses, you must specify the region as a path parameter in the
+        # HTTP request URL. This field is not applicable to global addresses.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -3532,8 +3532,8 @@ module Google
       
         # Deprecated in favor of portName. The TCP port to connect on the backend. The
         # default value is 80.
-        # This cannot be used if the loadBalancingScheme is INTERNAL (Internal TCP/UDP
-        # Load Balancing).
+        # Backend services for Internal TCP/UDP Load Balancing and Network Load
+        # Balancing require you omit port.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
@@ -6019,6 +6019,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # A rollout policy configuration.
+        # Corresponds to the JSON property `stateOverride`
+        # @return [Google::Apis::ComputeAlpha::RolloutPolicy]
+        attr_accessor :state_override
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6030,6 +6035,7 @@ module Google
           @obsolete = args[:obsolete] if args.key?(:obsolete)
           @replacement = args[:replacement] if args.key?(:replacement)
           @state = args[:state] if args.key?(:state)
+          @state_override = args[:state_override] if args.key?(:state_override)
         end
       end
       
@@ -8685,8 +8691,7 @@ module Google
         # @return [String]
         attr_accessor :action
       
-        # An optional description of this resource. Provide this property when you
-        # create the resource.
+        # An optional description for this resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -8756,6 +8761,18 @@ module Google
         # @return [Array<String>]
         attr_accessor :target_secure_labels
       
+        # A list of secure tags that controls which instances the firewall rule applies
+        # to. If targetSecureTag are specified, then the firewall rule applies only to
+        # instances in the VPC network that have one of those EFFECTIVE secure tags, if
+        # all the target_secure_tag are in INEFFECTIVE state, then this rule will be
+        # ignored. targetSecureTag may not be set at the same time as
+        # targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag
+        # are specified, the firewall rule applies to all instances on the specified
+        # network. Maximum number of target label tags allowed is 256.
+        # Corresponds to the JSON property `targetSecureTags`
+        # @return [Array<Google::Apis::ComputeAlpha::FirewallPolicyRuleSecureTag>]
+        attr_accessor :target_secure_tags
+      
         # A list of service accounts indicating the sets of instances that are applied
         # with this rule.
         # Corresponds to the JSON property `targetServiceAccounts`
@@ -8779,6 +8796,7 @@ module Google
           @rule_tuple_count = args[:rule_tuple_count] if args.key?(:rule_tuple_count)
           @target_resources = args[:target_resources] if args.key?(:target_resources)
           @target_secure_labels = args[:target_secure_labels] if args.key?(:target_secure_labels)
+          @target_secure_tags = args[:target_secure_tags] if args.key?(:target_secure_tags)
           @target_service_accounts = args[:target_service_accounts] if args.key?(:target_service_accounts)
         end
       end
@@ -8810,6 +8828,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :src_secure_labels
       
+        # List of secure tag values, which should be matched at the source of the
+        # traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there
+        # is no srcIpRange, this rule will be ignored. Maximum number of source tag
+        # values allowed is 256.
+        # Corresponds to the JSON property `srcSecureTags`
+        # @return [Array<Google::Apis::ComputeAlpha::FirewallPolicyRuleSecureTag>]
+        attr_accessor :src_secure_tags
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8820,6 +8846,7 @@ module Google
           @layer4_configs = args[:layer4_configs] if args.key?(:layer4_configs)
           @src_ip_ranges = args[:src_ip_ranges] if args.key?(:src_ip_ranges)
           @src_secure_labels = args[:src_secure_labels] if args.key?(:src_secure_labels)
+          @src_secure_tags = args[:src_secure_tags] if args.key?(:src_secure_tags)
         end
       end
       
@@ -8851,6 +8878,32 @@ module Google
         def update!(**args)
           @ip_protocol = args[:ip_protocol] if args.key?(:ip_protocol)
           @ports = args[:ports] if args.key?(:ports)
+        end
+      end
+      
+      # 
+      class FirewallPolicyRuleSecureTag
+        include Google::Apis::Core::Hashable
+      
+        # Name of the secure tag, created with TagManager's TagValue API.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A
+        # secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -9149,6 +9202,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :ports
       
+        # [Output Only] The PSC connection id of the PSC Forwarding Rule.
+        # Corresponds to the JSON property `pscConnectionId`
+        # @return [Fixnum]
+        attr_accessor :psc_connection_id
+      
         # [Output Only] URL of the region where the regional forwarding rule resides.
         # This field is not applicable to global forwarding rules. You must specify this
         # field as part of the HTTP request URL. It is not settable as a field in the
@@ -9241,6 +9299,7 @@ module Google
           @network_tier = args[:network_tier] if args.key?(:network_tier)
           @port_range = args[:port_range] if args.key?(:port_range)
           @ports = args[:ports] if args.key?(:ports)
+          @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
@@ -9528,6 +9587,14 @@ module Google
         # @return [String]
         attr_accessor :service
       
+        # [Optional] Service Directory region to register this global forwarding rule
+        # under. Default to "us-central1". Only used for PSC for Google APIs. All PSC
+        # for Google APIs Forwarding Rules on the same network should use the same
+        # Service Directory region.
+        # Corresponds to the JSON property `serviceDirectoryRegion`
+        # @return [String]
+        attr_accessor :service_directory_region
+      
         def initialize(**args)
            update!(**args)
         end
@@ -9536,6 +9603,7 @@ module Google
         def update!(**args)
           @namespace = args[:namespace] if args.key?(:namespace)
           @service = args[:service] if args.key?(:service)
+          @service_directory_region = args[:service_directory_region] if args.key?(:service_directory_region)
         end
       end
       
@@ -11329,7 +11397,9 @@ module Google
         # @return [String]
         attr_accessor :instance
       
-        # A forwarding rule IP address assigned to this instance.
+        # For target pool based Network Load Balancing, it indicates the forwarding rule'
+        # s IP address assigned to this instance. For other types of load balancing, the
+        # field indicates VM internal ip.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -12807,6 +12877,11 @@ module Google
         # @return [Google::Apis::ComputeAlpha::Image::RawDisk]
         attr_accessor :raw_disk
       
+        # A rollout policy configuration.
+        # Corresponds to the JSON property `rolloutOverride`
+        # @return [Google::Apis::ComputeAlpha::RolloutPolicy]
+        attr_accessor :rollout_override
+      
         # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
@@ -12944,6 +13019,7 @@ module Google
           @licenses = args[:licenses] if args.key?(:licenses)
           @name = args[:name] if args.key?(:name)
           @raw_disk = args[:raw_disk] if args.key?(:raw_disk)
+          @rollout_override = args[:rollout_override] if args.key?(:rollout_override)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
@@ -12995,6 +13071,27 @@ module Google
             @sha1_checksum = args[:sha1_checksum] if args.key?(:sha1_checksum)
             @source = args[:source] if args.key?(:source)
           end
+        end
+      end
+      
+      # 
+      class ImageFamilyView
+        include Google::Apis::Core::Hashable
+      
+        # Represents an Image resource.
+        # You can use images to create boot disks for your VM instances. For more
+        # information, read Images. (== resource_for `$api_version`.images ==)
+        # Corresponds to the JSON property `image`
+        # @return [Google::Apis::ComputeAlpha::Image]
+        attr_accessor :image
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image = args[:image] if args.key?(:image)
         end
       end
       
@@ -13658,7 +13755,7 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
-        # Sets the scheduling options for an Instance. NextID: 13
+        # Sets the scheduling options for an Instance. NextID: 17
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeAlpha::Scheduling]
         attr_accessor :scheduling
@@ -16492,7 +16589,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
-        # Sets the scheduling options for an Instance. NextID: 13
+        # Sets the scheduling options for an Instance. NextID: 17
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeAlpha::Scheduling]
         attr_accessor :scheduling
@@ -30300,6 +30397,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # [Output Only] Server-defined fully-qualified URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -30351,6 +30454,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @share_settings = args[:share_settings] if args.key?(:share_settings)
@@ -30954,6 +31058,13 @@ module Google
         # @return [String]
         attr_accessor :region
       
+        # Contains output only fields. Use this sub-message for all output fields set on
+        # ResourcePolicy. The internal structure of this "status" field should mimic the
+        # structure of ResourcePolicy proto specification.
+        # Corresponds to the JSON property `resourceStatus`
+        # @return [Google::Apis::ComputeAlpha::ResourcePolicyResourceStatus]
+        attr_accessor :resource_status
+      
         # [Output Only] Server-defined fully-qualified URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -30995,6 +31106,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @region = args[:region] if args.key?(:region)
+          @resource_status = args[:resource_status] if args.key?(:resource_status)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @snapshot_schedule_policy = args[:snapshot_schedule_policy] if args.key?(:snapshot_schedule_policy)
@@ -31258,6 +31370,16 @@ module Google
       class ResourcePolicyInstanceSchedulePolicy
         include Google::Apis::Core::Hashable
       
+        # The expiration time of the schedule. The timestamp is an RFC3339 string.
+        # Corresponds to the JSON property `expirationTime`
+        # @return [String]
+        attr_accessor :expiration_time
+      
+        # The start time of the schedule. The timestamp is an RFC3339 string.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
         # Specifies the time zone to be used in interpreting Schedule.schedule. The
         # value of this field must be a time zone name from the tz database: http://en.
         # wikipedia.org/wiki/Tz_database.
@@ -31281,6 +31403,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
           @vm_start_schedule = args[:vm_start_schedule] if args.key?(:vm_start_schedule)
           @vm_stop_schedule = args[:vm_stop_schedule] if args.key?(:vm_stop_schedule)
@@ -31428,6 +31552,56 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Contains output only fields. Use this sub-message for all output fields set on
+      # ResourcePolicy. The internal structure of this "status" field should mimic the
+      # structure of ResourcePolicy proto specification.
+      class ResourcePolicyResourceStatus
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Specifies a set of output values reffering to the
+        # instance_schedule_policy system status. This field should have the same name
+        # as corresponding policy field.
+        # Corresponds to the JSON property `instanceSchedulePolicy`
+        # @return [Google::Apis::ComputeAlpha::ResourcePolicyResourceStatusInstanceSchedulePolicyStatus]
+        attr_accessor :instance_schedule_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_schedule_policy = args[:instance_schedule_policy] if args.key?(:instance_schedule_policy)
+        end
+      end
+      
+      # 
+      class ResourcePolicyResourceStatusInstanceSchedulePolicyStatus
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The last time the schedule successfully ran. The timestamp is an
+        # RFC3339 string.
+        # Corresponds to the JSON property `lastRunStartTime`
+        # @return [String]
+        attr_accessor :last_run_start_time
+      
+        # [Output Only] The next time the schedule is planned to run. The actual time
+        # might be slightly different. The timestamp is an RFC3339 string.
+        # Corresponds to the JSON property `nextRunStartTime`
+        # @return [String]
+        attr_accessor :next_run_start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_run_start_time = args[:last_run_start_time] if args.key?(:last_run_start_time)
+          @next_run_start_time = args[:next_run_start_time] if args.key?(:next_run_start_time)
         end
       end
       
@@ -31736,6 +31910,36 @@ module Google
         # Update properties of this object
         def update!(**args)
           @availability_domain = args[:availability_domain] if args.key?(:availability_domain)
+        end
+      end
+      
+      # A rollout policy configuration.
+      class RolloutPolicy
+        include Google::Apis::Core::Hashable
+      
+        # An optional RFC3339 timestamp on or after which the update is considered
+        # rolled out to any zone that is not explicitly stated.
+        # Corresponds to the JSON property `defaultRolloutTime`
+        # @return [String]
+        attr_accessor :default_rollout_time
+      
+        # Location based rollout policies to apply to the resource.
+        # Currently only zone names are supported and must be represented as valid URLs,
+        # like: zones/us-central1-a.
+        # The value expects an RFC3339 timestamp on or after which the update is
+        # considered rolled out to the specified location.
+        # Corresponds to the JSON property `locationRolloutPolicies`
+        # @return [Hash<String,String>]
+        attr_accessor :location_rollout_policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_rollout_time = args[:default_rollout_time] if args.key?(:default_rollout_time)
+          @location_rollout_policies = args[:location_rollout_policies] if args.key?(:location_rollout_policies)
         end
       end
       
@@ -33768,7 +33972,7 @@ module Google
         end
       end
       
-      # Sets the scheduling options for an Instance. NextID: 13
+      # Sets the scheduling options for an Instance. NextID: 17
       class Scheduling
         include Google::Apis::Core::Hashable
       
@@ -34967,7 +35171,7 @@ module Google
       # A service attachment represents a service that a producer has exposed. It
       # encapsulates the load balancer which fronts the service runs and a list of NAT
       # IP ranges that the producers uses to represent the consumers connecting to the
-      # service.
+      # service. next tag = 16
       class ServiceAttachment
         include Google::Apis::Core::Hashable
       
@@ -35070,6 +35274,129 @@ module Google
         end
       end
       
+      # Contains a list of ServiceAttachmentsScopedList.
+      class ServiceAttachmentAggregatedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of ServiceAttachmentsScopedList resources.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::ServiceAttachmentsScopedList>]
+        attr_accessor :items
+      
+        # Type of resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::ServiceAttachmentAggregatedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::ServiceAttachmentAggregatedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # [Output Only] A consumer forwarding rule connected to this service attachment.
       class ServiceAttachmentConsumerForwardingRule
         include Google::Apis::Core::Hashable
@@ -35162,6 +35489,97 @@ module Google
           # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ServiceAttachmentList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class ServiceAttachmentsScopedList
+        include Google::Apis::Core::Hashable
+      
+        # A list of ServiceAttachments contained in this scope.
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::ComputeAlpha::ServiceAttachment>]
+        attr_accessor :resources
+      
+        # Informational warning which replaces the list of service attachments when the
+        # list is empty.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::ServiceAttachmentsScopedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resources = args[:resources] if args.key?(:resources)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # Informational warning which replaces the list of service attachments when the
+        # list is empty.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::ServiceAttachmentsScopedList::Warning::Datum>]
           attr_accessor :data
         
           # [Output Only] A human-readable description of the warning code.
@@ -35944,7 +36362,7 @@ module Google
         # @return [String]
         attr_accessor :post_key_revocation_action_type
       
-        # Sets the scheduling options for an Instance. NextID: 13
+        # Sets the scheduling options for an Instance. NextID: 17
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeAlpha::Scheduling]
         attr_accessor :scheduling
