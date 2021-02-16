@@ -970,6 +970,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ForwardingRuleServiceDirectoryRegistration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ForwardingRulesScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -1774,6 +1780,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstancesGetEffectiveFirewallsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstancesRemoveResourcePoliciesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2405,6 +2423,18 @@ module Google
       end
       
       class NetworksAddPeeringRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworksGetEffectiveFirewallsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3376,6 +3406,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourcePolicyInstanceSchedulePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicyInstanceSchedulePolicySchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourcePolicyList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -3390,6 +3432,18 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicyResourceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicyResourceStatusInstanceSchedulePolicyStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -5140,6 +5194,7 @@ module Google
       
           collection :local_ssds, as: 'localSsds', class: Google::Apis::ComputeV1::AllocationSpecificSkuAllocationAllocatedInstancePropertiesReservedDisk, decorator: Google::Apis::ComputeV1::AllocationSpecificSkuAllocationAllocatedInstancePropertiesReservedDisk::Representation
       
+          property :location_hint, as: 'locationHint'
           property :machine_type, as: 'machineType'
           property :min_cpu_platform, as: 'minCpuPlatform'
         end
@@ -5189,6 +5244,7 @@ module Google
           property :disk_type, as: 'diskType'
           hash :labels, as: 'labels'
           property :on_update_action, as: 'onUpdateAction'
+          property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
           collection :resource_policies, as: 'resourcePolicies'
           property :source_image, as: 'sourceImage'
           property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
@@ -5946,6 +6002,7 @@ module Google
           property :name, as: 'name'
           property :options, as: 'options'
           property :physical_block_size_bytes, :numeric_string => true, as: 'physicalBlockSizeBytes'
+          property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
           property :region, as: 'region'
           collection :replica_zones, as: 'replicaZones'
           collection :resource_policies, as: 'resourcePolicies'
@@ -6589,8 +6646,11 @@ module Google
           property :network_tier, as: 'networkTier'
           property :port_range, as: 'portRange'
           collection :ports, as: 'ports'
+          property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          collection :service_directory_registrations, as: 'serviceDirectoryRegistrations', class: Google::Apis::ComputeV1::ForwardingRuleServiceDirectoryRegistration, decorator: Google::Apis::ComputeV1::ForwardingRuleServiceDirectoryRegistration::Representation
+      
           property :service_label, as: 'serviceLabel'
           property :service_name, as: 'serviceName'
           property :subnetwork, as: 'subnetwork'
@@ -6667,6 +6727,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :forwarding_rule, as: 'forwardingRule'
+        end
+      end
+      
+      class ForwardingRuleServiceDirectoryRegistration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :namespace, as: 'namespace'
+          property :service, as: 'service'
+          property :service_directory_region, as: 'serviceDirectoryRegion'
         end
       end
       
@@ -7336,6 +7405,7 @@ module Google
           property :name, as: 'name'
           property :raw_disk, as: 'rawDisk', class: Google::Apis::ComputeV1::Image::RawDisk, decorator: Google::Apis::ComputeV1::Image::RawDisk::Representation
       
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :shielded_instance_initial_state, as: 'shieldedInstanceInitialState', class: Google::Apis::ComputeV1::InitialStateConfig, decorator: Google::Apis::ComputeV1::InitialStateConfig::Representation
       
@@ -8220,6 +8290,27 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :resource_policies, as: 'resourcePolicies'
+        end
+      end
+      
+      class InstancesGetEffectiveFirewallsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :firewall_policys, as: 'firewallPolicys', class: Google::Apis::ComputeV1::InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy, decorator: Google::Apis::ComputeV1::InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy::Representation
+      
+          collection :firewalls, as: 'firewalls', class: Google::Apis::ComputeV1::Firewall, decorator: Google::Apis::ComputeV1::Firewall::Representation
+      
+        end
+      end
+      
+      class InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          collection :rules, as: 'rules', class: Google::Apis::ComputeV1::FirewallPolicyRule, decorator: Google::Apis::ComputeV1::FirewallPolicyRule::Representation
+      
+          property :type, as: 'type'
         end
       end
       
@@ -9370,6 +9461,27 @@ module Google
         end
       end
       
+      class NetworksGetEffectiveFirewallsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :firewall_policys, as: 'firewallPolicys', class: Google::Apis::ComputeV1::NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy, decorator: Google::Apis::ComputeV1::NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy::Representation
+      
+          collection :firewalls, as: 'firewalls', class: Google::Apis::ComputeV1::Firewall, decorator: Google::Apis::ComputeV1::Firewall::Representation
+      
+        end
+      end
+      
+      class NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          collection :rules, as: 'rules', class: Google::Apis::ComputeV1::FirewallPolicyRule, decorator: Google::Apis::ComputeV1::FirewallPolicyRule::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
       class NetworksRemovePeeringRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9395,6 +9507,7 @@ module Google
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :location_hint, as: 'locationHint'
           property :maintenance_policy, as: 'maintenancePolicy'
           property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::ComputeV1::NodeGroupMaintenanceWindow, decorator: Google::Apis::ComputeV1::NodeGroupMaintenanceWindow::Representation
       
@@ -9501,6 +9614,7 @@ module Google
           collection :instances, as: 'instances'
           property :name, as: 'name'
           property :node_type, as: 'nodeType'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :server_binding, as: 'serverBinding', class: Google::Apis::ComputeV1::ServerBinding, decorator: Google::Apis::ComputeV1::ServerBinding::Representation
       
           property :server_id, as: 'serverId'
@@ -10822,6 +10936,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :specific_reservation, as: 'specificReservation', class: Google::Apis::ComputeV1::AllocationSpecificSkuReservation, decorator: Google::Apis::ComputeV1::AllocationSpecificSkuReservation::Representation
       
@@ -10992,9 +11107,13 @@ module Google
           property :group_placement_policy, as: 'groupPlacementPolicy', class: Google::Apis::ComputeV1::ResourcePolicyGroupPlacementPolicy, decorator: Google::Apis::ComputeV1::ResourcePolicyGroupPlacementPolicy::Representation
       
           property :id, :numeric_string => true, as: 'id'
+          property :instance_schedule_policy, as: 'instanceSchedulePolicy', class: Google::Apis::ComputeV1::ResourcePolicyInstanceSchedulePolicy, decorator: Google::Apis::ComputeV1::ResourcePolicyInstanceSchedulePolicy::Representation
+      
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :region, as: 'region'
+          property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeV1::ResourcePolicyResourceStatus, decorator: Google::Apis::ComputeV1::ResourcePolicyResourceStatus::Representation
+      
           property :self_link, as: 'selfLink'
           property :snapshot_schedule_policy, as: 'snapshotSchedulePolicy', class: Google::Apis::ComputeV1::ResourcePolicySnapshotSchedulePolicy, decorator: Google::Apis::ComputeV1::ResourcePolicySnapshotSchedulePolicy::Representation
       
@@ -11063,6 +11182,26 @@ module Google
         end
       end
       
+      class ResourcePolicyInstanceSchedulePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expiration_time, as: 'expirationTime'
+          property :start_time, as: 'startTime'
+          property :time_zone, as: 'timeZone'
+          property :vm_start_schedule, as: 'vmStartSchedule', class: Google::Apis::ComputeV1::ResourcePolicyInstanceSchedulePolicySchedule, decorator: Google::Apis::ComputeV1::ResourcePolicyInstanceSchedulePolicySchedule::Representation
+      
+          property :vm_stop_schedule, as: 'vmStopSchedule', class: Google::Apis::ComputeV1::ResourcePolicyInstanceSchedulePolicySchedule, decorator: Google::Apis::ComputeV1::ResourcePolicyInstanceSchedulePolicySchedule::Representation
+      
+        end
+      end
+      
+      class ResourcePolicyInstanceSchedulePolicySchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :schedule, as: 'schedule'
+        end
+      end
+      
       class ResourcePolicyList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -11093,6 +11232,22 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class ResourcePolicyResourceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_schedule_policy, as: 'instanceSchedulePolicy', class: Google::Apis::ComputeV1::ResourcePolicyResourceStatusInstanceSchedulePolicyStatus, decorator: Google::Apis::ComputeV1::ResourcePolicyResourceStatusInstanceSchedulePolicyStatus::Representation
+      
+        end
+      end
+      
+      class ResourcePolicyResourceStatusInstanceSchedulePolicyStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_run_start_time, as: 'lastRunStartTime'
+          property :next_run_start_time, as: 'nextRunStartTime'
         end
       end
       
@@ -12834,6 +12989,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :proxy_bind, as: 'proxyBind'
           property :proxy_header, as: 'proxyHeader'
           property :self_link, as: 'selfLink'
           property :service, as: 'service'
