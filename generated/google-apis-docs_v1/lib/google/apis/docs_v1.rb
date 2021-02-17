@@ -29,7 +29,7 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1'
 
-      # View and manage your Google Docs documents
+      # See, create, and edit all Google Docs documents you have access to
       AUTH_DOCUMENTS = 'https://www.googleapis.com/auth/documents'
 
       # View your Google Docs documents
