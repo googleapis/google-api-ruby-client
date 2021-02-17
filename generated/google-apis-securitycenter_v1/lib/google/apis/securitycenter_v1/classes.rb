@@ -69,8 +69,7 @@ module Google
         # @return [Google::Apis::SecuritycenterV1::SecurityMarks]
         attr_accessor :security_marks
       
-        # The time at which the asset was last updated, added, or deleted in Security
-        # Command Center.
+        # The time at which the asset was last updated or added in Cloud SCC.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
