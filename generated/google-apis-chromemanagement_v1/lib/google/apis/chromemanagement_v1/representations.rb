@@ -1,0 +1,128 @@
+# Copyright 2020 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+require 'date'
+require 'google/apis/core/base_service'
+require 'google/apis/core/json_representation'
+require 'google/apis/core/hashable'
+require 'google/apis/errors'
+
+module Google
+  module Apis
+    module ChromemanagementV1
+      
+      class GoogleChromeManagementV1BrowserVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1CountChromeVersionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1CountInstalledAppsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1Device
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1FindInstalledAppDevicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1InstalledApp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1BrowserVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel, as: 'channel'
+          property :count, :numeric_string => true, as: 'count'
+          property :device_os_version, as: 'deviceOsVersion'
+          property :system, as: 'system'
+          property :version, as: 'version'
+        end
+      end
+      
+      class GoogleChromeManagementV1CountChromeVersionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :browser_versions, as: 'browserVersions', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BrowserVersion, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BrowserVersion::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          property :total_size, as: 'totalSize'
+        end
+      end
+      
+      class GoogleChromeManagementV1CountInstalledAppsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :installed_apps, as: 'installedApps', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1InstalledApp, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1InstalledApp::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          property :total_size, as: 'totalSize'
+        end
+      end
+      
+      class GoogleChromeManagementV1Device
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_id, as: 'deviceId'
+          property :machine, as: 'machine'
+        end
+      end
+      
+      class GoogleChromeManagementV1FindInstalledAppDevicesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :devices, as: 'devices', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1Device, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1Device::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          property :total_size, as: 'totalSize'
+        end
+      end
+      
+      class GoogleChromeManagementV1InstalledApp
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_id, as: 'appId'
+          property :app_install_type, as: 'appInstallType'
+          property :app_source, as: 'appSource'
+          property :app_type, as: 'appType'
+          property :browser_device_count, :numeric_string => true, as: 'browserDeviceCount'
+          property :description, as: 'description'
+          property :disabled, as: 'disabled'
+          property :display_name, as: 'displayName'
+          property :homepage_uri, as: 'homepageUri'
+          property :os_user_count, :numeric_string => true, as: 'osUserCount'
+          collection :permissions, as: 'permissions'
+        end
+      end
+    end
+  end
+end
