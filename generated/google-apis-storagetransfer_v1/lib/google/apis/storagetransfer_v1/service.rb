@@ -228,6 +228,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Attempts to start a new TransferOperation for the current TransferJob. A
+        # TransferJob has a maximum of one active TransferOperation. If this method is
+        # called while a TransferOperation is active, an error wil be returned.
+        # @param [String] job_name
+        #   Required. The name of the transfer job.
+        # @param [Google::Apis::StoragetransferV1::RunTransferJobRequest] run_transfer_job_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StoragetransferV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StoragetransferV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def run_transfer_job(job_name, run_transfer_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+jobName}:run', options)
+          command.request_representation = Google::Apis::StoragetransferV1::RunTransferJobRequest::Representation
+          command.request_object = run_transfer_job_request_object
+          command.response_representation = Google::Apis::StoragetransferV1::Operation::Representation
+          command.response_class = Google::Apis::StoragetransferV1::Operation
+          command.params['jobName'] = job_name unless job_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Cancels a transfer. Use the transferOperations.get method to check if the
         # cancellation succeeded or if the operation completed despite the `cancel`
         # request. When you cancel an operation, the currently running transfer is
@@ -308,9 +343,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists transfer operations.
+        # Lists transfer operations. Operations are ordered by their creation time in
+        # reverse chronological order.
         # @param [String] name
-        #   Required. The value `transferOperations`.
+        #   Not used.
         # @param [String] filter
         #   Required. A list of query parameters specified as JSON text in the form of: ``"
         #   projectId":"my_project_id", "jobNames":["jobid1","jobid2",...], "
