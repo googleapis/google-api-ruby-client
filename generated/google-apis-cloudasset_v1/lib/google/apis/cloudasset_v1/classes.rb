@@ -3068,8 +3068,8 @@ module Google
         # The folder(s) that this resource belongs to, in the form of folders/`
         # FOLDER_NUMBER`. This field is available when the resource belongs to one or
         # more folders. To search against `folders`: * use a field query. Example: `
-        # folders:(123 OR 456)` * specify the `scope` field as this folder in your
-        # search request.
+        # folders:(123 OR 456)` * use a free text query. Example: `123` * specify the `
+        # scope` field as this folder in your search request.
         # Corresponds to the JSON property `folders`
         # @return [Array<String>]
         attr_accessor :folders
@@ -3128,16 +3128,30 @@ module Google
         # The organization that this resource belongs to, in the form of organizations/`
         # ORGANIZATION_NUMBER`. This field is available when the resource belongs to an
         # organization. To search against `organization`: * use a field query. Example: `
-        # organization:123` * specify the `scope` field as this organization in your
-        # search request.
+        # organization:123` * use a free text query. Example: `123` * specify the `scope`
+        # field as this organization in your search request.
         # Corresponds to the JSON property `organization`
         # @return [String]
         attr_accessor :organization
       
+        # The type of this resource's immediate parent, if there is one. To search
+        # against the `parent_asset_type`: * use a field query. Example: `
+        # parentAssetType:"cloudresourcemanager.googleapis.com/Project"` * use a free
+        # text query. Example: `cloudresourcemanager.googleapis.com/Project`
+        # Corresponds to the JSON property `parentAssetType`
+        # @return [String]
+        attr_accessor :parent_asset_type
+      
+        # The full resource name of this resource's parent, if it has one.
+        # Corresponds to the JSON property `parentFullResourceName`
+        # @return [String]
+        attr_accessor :parent_full_resource_name
+      
         # The project that this resource belongs to, in the form of projects/`
         # PROJECT_NUMBER`. This field is available when the resource belongs to a
         # project. To search against `project`: * use a field query. Example: `project:
-        # 12345` * specify the `scope` field as this project in your search request.
+        # 12345` * use a free text query. Example: `12345` * specify the `scope` field
+        # as this project in your search request.
         # Corresponds to the JSON property `project`
         # @return [String]
         attr_accessor :project
@@ -3186,6 +3200,8 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network_tags = args[:network_tags] if args.key?(:network_tags)
           @organization = args[:organization] if args.key?(:organization)
+          @parent_asset_type = args[:parent_asset_type] if args.key?(:parent_asset_type)
+          @parent_full_resource_name = args[:parent_full_resource_name] if args.key?(:parent_full_resource_name)
           @project = args[:project] if args.key?(:project)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
