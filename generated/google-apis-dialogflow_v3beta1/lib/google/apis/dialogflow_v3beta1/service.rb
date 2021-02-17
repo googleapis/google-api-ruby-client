@@ -3114,9 +3114,9 @@ module Google
         end
         
         # Kicks off a test case run.
-        # @param [String] projects_id
-        # @param [String] locations_id
-        # @param [String] agents_id
+        # @param [String] name
+        #   Required. Format of test case name to run: `projects//locations/ /agents//
+        #   testCases/`.
         # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1RunTestCaseRequest] google_cloud_dialogflow_cx_v3beta1_run_test_case_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3135,15 +3135,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def run_project_location_agent_test_case(projects_id, locations_id, agents_id, google_cloud_dialogflow_cx_v3beta1_run_test_case_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v3beta1/projects/{projectsId}/locations/{locationsId}/agents/{agentsId}/testCases:run', options)
+        def run_project_location_agent_test_case(name, google_cloud_dialogflow_cx_v3beta1_run_test_case_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3beta1/{+name}:run', options)
           command.request_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1RunTestCaseRequest::Representation
           command.request_object = google_cloud_dialogflow_cx_v3beta1_run_test_case_request_object
           command.response_representation = Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation
-          command.params['projectsId'] = projects_id unless projects_id.nil?
-          command.params['locationsId'] = locations_id unless locations_id.nil?
-          command.params['agentsId'] = agents_id unless agents_id.nil?
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
