@@ -905,12 +905,13 @@ module Google
         #   projects//agent/environments//users//sessions/`, - `projects//locations//agent/
         #   environments//users//sessions/`, If `Location ID` is not specified we assume
         #   default 'us' location. If `Environment ID` is not specified, we assume default
-        #   'draft' environment. If `User ID` is not specified, we are using "-". It's up
-        #   to the API caller to choose an appropriate `Session ID` and `User Id`. They
-        #   can be a random number or some type of user and session identifiers (
-        #   preferably hashed). The length of the `Session ID` and `User ID` must not
-        #   exceed 36 characters. For more information, see the [API interactions guide](
-        #   https://cloud.google.com/dialogflow/docs/api-overview). Note: Always use agent
+        #   'draft' environment (`Environment ID` might be referred to as environment name
+        #   at some places). If `User ID` is not specified, we are using "-". It's up to
+        #   the API caller to choose an appropriate `Session ID` and `User Id`. They can
+        #   be a random number or some type of user and session identifiers (preferably
+        #   hashed). The length of the `Session ID` and `User ID` must not exceed 36
+        #   characters. For more information, see the [API interactions guide](https://
+        #   cloud.google.com/dialogflow/docs/api-overview). Note: Always use agent
         #   versions for production traffic. See [Versions and environments](https://cloud.
         #   google.com/dialogflow/es/docs/agents-versions).
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentRequest] google_cloud_dialogflow_v2beta1_detect_intent_request_object
@@ -2108,12 +2109,13 @@ module Google
         #   projects//agent/environments//users//sessions/`, - `projects//locations//agent/
         #   environments//users//sessions/`, If `Location ID` is not specified we assume
         #   default 'us' location. If `Environment ID` is not specified, we assume default
-        #   'draft' environment. If `User ID` is not specified, we are using "-". It's up
-        #   to the API caller to choose an appropriate `Session ID` and `User Id`. They
-        #   can be a random number or some type of user and session identifiers (
-        #   preferably hashed). The length of the `Session ID` and `User ID` must not
-        #   exceed 36 characters. For more information, see the [API interactions guide](
-        #   https://cloud.google.com/dialogflow/docs/api-overview). Note: Always use agent
+        #   'draft' environment (`Environment ID` might be referred to as environment name
+        #   at some places). If `User ID` is not specified, we are using "-". It's up to
+        #   the API caller to choose an appropriate `Session ID` and `User Id`. They can
+        #   be a random number or some type of user and session identifiers (preferably
+        #   hashed). The length of the `Session ID` and `User ID` must not exceed 36
+        #   characters. For more information, see the [API interactions guide](https://
+        #   cloud.google.com/dialogflow/docs/api-overview). Note: Always use agent
         #   versions for production traffic. See [Versions and environments](https://cloud.
         #   google.com/dialogflow/es/docs/agents-versions).
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentRequest] google_cloud_dialogflow_v2beta1_detect_intent_request_object
@@ -3842,12 +3844,13 @@ module Google
         #   projects//agent/environments//users//sessions/`, - `projects//locations//agent/
         #   environments//users//sessions/`, If `Location ID` is not specified we assume
         #   default 'us' location. If `Environment ID` is not specified, we assume default
-        #   'draft' environment. If `User ID` is not specified, we are using "-". It's up
-        #   to the API caller to choose an appropriate `Session ID` and `User Id`. They
-        #   can be a random number or some type of user and session identifiers (
-        #   preferably hashed). The length of the `Session ID` and `User ID` must not
-        #   exceed 36 characters. For more information, see the [API interactions guide](
-        #   https://cloud.google.com/dialogflow/docs/api-overview). Note: Always use agent
+        #   'draft' environment (`Environment ID` might be referred to as environment name
+        #   at some places). If `User ID` is not specified, we are using "-". It's up to
+        #   the API caller to choose an appropriate `Session ID` and `User Id`. They can
+        #   be a random number or some type of user and session identifiers (preferably
+        #   hashed). The length of the `Session ID` and `User ID` must not exceed 36
+        #   characters. For more information, see the [API interactions guide](https://
+        #   cloud.google.com/dialogflow/docs/api-overview). Note: Always use agent
         #   versions for production traffic. See [Versions and environments](https://cloud.
         #   google.com/dialogflow/es/docs/agents-versions).
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentRequest] google_cloud_dialogflow_v2beta1_detect_intent_request_object
@@ -4609,12 +4612,13 @@ module Google
         #   projects//agent/environments//users//sessions/`, - `projects//locations//agent/
         #   environments//users//sessions/`, If `Location ID` is not specified we assume
         #   default 'us' location. If `Environment ID` is not specified, we assume default
-        #   'draft' environment. If `User ID` is not specified, we are using "-". It's up
-        #   to the API caller to choose an appropriate `Session ID` and `User Id`. They
-        #   can be a random number or some type of user and session identifiers (
-        #   preferably hashed). The length of the `Session ID` and `User ID` must not
-        #   exceed 36 characters. For more information, see the [API interactions guide](
-        #   https://cloud.google.com/dialogflow/docs/api-overview). Note: Always use agent
+        #   'draft' environment (`Environment ID` might be referred to as environment name
+        #   at some places). If `User ID` is not specified, we are using "-". It's up to
+        #   the API caller to choose an appropriate `Session ID` and `User Id`. They can
+        #   be a random number or some type of user and session identifiers (preferably
+        #   hashed). The length of the `Session ID` and `User ID` must not exceed 36
+        #   characters. For more information, see the [API interactions guide](https://
+        #   cloud.google.com/dialogflow/docs/api-overview). Note: Always use agent
         #   versions for production traffic. See [Versions and environments](https://cloud.
         #   google.com/dialogflow/es/docs/agents-versions).
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentRequest] google_cloud_dialogflow_v2beta1_detect_intent_request_object
