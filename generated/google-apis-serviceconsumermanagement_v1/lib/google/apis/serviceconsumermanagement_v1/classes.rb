@@ -3678,6 +3678,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The Default Identity tag. If specified when creating the account, the tag must
+        # be present in activation_grants. If not specified when creating the account,
+        # the tag is set to the tag specified in activation_grants.
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
         # The unique and stable id of the default identity.
         # Corresponds to the JSON property `uniqueId`
         # @return [String]
@@ -3691,6 +3698,7 @@ module Google
         def update!(**args)
           @email = args[:email] if args.key?(:email)
           @name = args[:name] if args.key?(:name)
+          @tag = args[:tag] if args.key?(:tag)
           @unique_id = args[:unique_id] if args.key?(:unique_id)
         end
       end

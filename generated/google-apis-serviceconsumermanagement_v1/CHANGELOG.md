@@ -1,5 +1,9 @@
 # Release history for google-apis-serviceconsumermanagement_v1
 
+### v0.3.0 (2021-02-17)
+
+* Regenerated from discovery document revision 20210213
+
 ### v0.2.0 (2021-02-02)
 
 * Regenerated from discovery document revision 20210131
