@@ -1626,6 +1626,8 @@ module Google
         #   Users resource](/admin-sdk/directory/v1/reference/users).
         # @param [String] org_unit_path
         #   The full path of the organizational unit or its unique ID.
+        # @param [Boolean] allow_plus
+        #   Parses org unit path without url decode to allow for plus in ou name
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1643,10 +1645,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_org_unit(customer_id, org_unit_path, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_org_unit(customer_id, org_unit_path, allow_plus: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'admin/directory/v1/customer/{customerId}/orgunits/{+orgUnitPath}', options)
           command.params['customerId'] = customer_id unless customer_id.nil?
           command.params['orgUnitPath'] = org_unit_path unless org_unit_path.nil?
+          command.query['allowPlus'] = allow_plus unless allow_plus.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1660,6 +1663,8 @@ module Google
         #   Users resource](/admin-sdk/directory/v1/reference/users).
         # @param [String] org_unit_path
         #   The full path of the organizational unit or its unique ID.
+        # @param [Boolean] allow_plus
+        #   Parses org unit path without url decode to allow for plus in ou name
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1677,12 +1682,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_org_unit(customer_id, org_unit_path, fields: nil, quota_user: nil, options: nil, &block)
+        def get_org_unit(customer_id, org_unit_path, allow_plus: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'admin/directory/v1/customer/{customerId}/orgunits/{+orgUnitPath}', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::OrgUnit::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::OrgUnit
           command.params['customerId'] = customer_id unless customer_id.nil?
           command.params['orgUnitPath'] = org_unit_path unless org_unit_path.nil?
+          command.query['allowPlus'] = allow_plus unless allow_plus.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1774,6 +1780,8 @@ module Google
         # @param [String] org_unit_path
         #   The full path of the organizational unit or its unique ID.
         # @param [Google::Apis::AdminDirectoryV1::OrgUnit] org_unit_object
+        # @param [Boolean] allow_plus
+        #   Parses org unit path without url decode to allow for plus in ou name
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1791,7 +1799,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_org_unit(customer_id, org_unit_path, org_unit_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_org_unit(customer_id, org_unit_path, org_unit_object = nil, allow_plus: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'admin/directory/v1/customer/{customerId}/orgunits/{+orgUnitPath}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::OrgUnit::Representation
           command.request_object = org_unit_object
@@ -1799,6 +1807,7 @@ module Google
           command.response_class = Google::Apis::AdminDirectoryV1::OrgUnit
           command.params['customerId'] = customer_id unless customer_id.nil?
           command.params['orgUnitPath'] = org_unit_path unless org_unit_path.nil?
+          command.query['allowPlus'] = allow_plus unless allow_plus.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1813,6 +1822,8 @@ module Google
         # @param [String] org_unit_path
         #   The full path of the organizational unit or its unique ID.
         # @param [Google::Apis::AdminDirectoryV1::OrgUnit] org_unit_object
+        # @param [Boolean] allow_plus
+        #   Parses org unit path without url decode to allow for plus in ou name
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1830,7 +1841,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_org_unit(customer_id, org_unit_path, org_unit_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_org_unit(customer_id, org_unit_path, org_unit_object = nil, allow_plus: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'admin/directory/v1/customer/{customerId}/orgunits/{+orgUnitPath}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::OrgUnit::Representation
           command.request_object = org_unit_object
@@ -1838,6 +1849,7 @@ module Google
           command.response_class = Google::Apis::AdminDirectoryV1::OrgUnit
           command.params['customerId'] = customer_id unless customer_id.nil?
           command.params['orgUnitPath'] = org_unit_path unless org_unit_path.nil?
+          command.query['allowPlus'] = allow_plus unless allow_plus.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
