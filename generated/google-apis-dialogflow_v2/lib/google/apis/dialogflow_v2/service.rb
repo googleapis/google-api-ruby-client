@@ -889,7 +889,8 @@ module Google
         # @param [String] session
         #   Required. The name of the session this query is sent to. Format: `projects//
         #   agent/sessions/`, or `projects//agent/environments//users//sessions/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
+        #   Environment ID` is not specified, we assume default 'draft' environment (`
+        #   Environment ID` might be referred to as environment name at some places). If `
         #   User ID` is not specified, we are using "-". It's up to the API caller to
         #   choose an appropriate `Session ID` and `User Id`. They can be a random number
         #   or some type of user and session identifiers (preferably hashed). The length
@@ -1625,7 +1626,8 @@ module Google
         # @param [String] session
         #   Required. The name of the session this query is sent to. Format: `projects//
         #   agent/sessions/`, or `projects//agent/environments//users//sessions/`. If `
-        #   Environment ID` is not specified, we assume default 'draft' environment. If `
+        #   Environment ID` is not specified, we assume default 'draft' environment (`
+        #   Environment ID` might be referred to as environment name at some places). If `
         #   User ID` is not specified, we are using "-". It's up to the API caller to
         #   choose an appropriate `Session ID` and `User Id`. They can be a random number
         #   or some type of user and session identifiers (preferably hashed). The length
