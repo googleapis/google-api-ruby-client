@@ -1212,6 +1212,8 @@ module Google
           property :name, as: 'name'
           collection :network_tags, as: 'networkTags'
           property :organization, as: 'organization'
+          property :parent_asset_type, as: 'parentAssetType'
+          property :parent_full_resource_name, as: 'parentFullResourceName'
           property :project, as: 'project'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
