@@ -600,9 +600,8 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
-        # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the `name` should
-        # have the format of `transferOperations/some/unique/name`.
+        # The server-assigned unique name. The format of `name` is `transferOperations/
+        # some/unique/name`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -655,6 +654,26 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Request passed to RunTransferJob.
+      class RunTransferJobRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The ID of the Google Cloud Platform Console project that owns the
+        # transfer job.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_id = args[:project_id] if args.key?(:project_id)
         end
       end
       

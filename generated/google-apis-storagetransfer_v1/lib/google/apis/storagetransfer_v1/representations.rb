@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RunTransferJobRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Schedule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -347,6 +353,13 @@ module Google
       class ResumeTransferOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RunTransferJobRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_id, as: 'projectId'
         end
       end
       
