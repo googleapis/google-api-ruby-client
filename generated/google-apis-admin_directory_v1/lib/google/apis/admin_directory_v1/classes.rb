@@ -100,8 +100,8 @@ module Google
       # accept a verification code when logging into the application on certain
       # devices. The ASP access code is used instead of the login and password you
       # commonly use when accessing an application through a browser. For more
-      # information about ASPs and how to create one, see the [help center](//http://
-      # support.google.com/a/bin/answer.py?amp;answer=1032419).
+      # information about ASPs and how to create one, see the [help center](https://
+      # support.google.com/a/answer/2537800#asp).
       class Asp
         include Google::Apis::Core::Hashable
       
@@ -110,7 +110,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :code_id
       
-        # The time when the ASP was created. Expressed in [Unix time](http://en.
+        # The time when the ASP was created. Expressed in [Unix time](https://en.
         # wikipedia.org/wiki/Epoch_time) format.
         # Corresponds to the JSON property `creationTime`
         # @return [Fixnum]
@@ -126,7 +126,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The time when the ASP was last used. Expressed in [Unix time](http://en.
+        # The time when the ASP was last used. Expressed in [Unix time](https://en.
         # wikipedia.org/wiki/Epoch_time) format.
         # Corresponds to the JSON property `lastTimeUsed`
         # @return [Fixnum]
@@ -601,7 +601,7 @@ module Google
         end
       end
       
-      # Google Chrome devices run on the [Chrome OS](http://support.google.com/
+      # Google Chrome devices run on the [Chrome OS](https://support.google.com/
       # chromeos). For more information about common API tasks, see the [Developer's
       # Guide](/admin-sdk/directory/v1/guides/manage-chrome-devices).
       class ChromeOsDevice
@@ -640,7 +640,7 @@ module Google
         # device is running a valid version of the Chrome OS. * `Dev`: The devices's
         # developer hardware switch is enabled. When booted, the device has a command
         # line shell. For an example of a developer switch, see the [Chromebook
-        # developer information](http://www.chromium.org/chromium-os/developer-
+        # developer information](https://www.chromium.org/chromium-os/developer-
         # information-for-chrome-os-devices/samsung-series-5-chromebook#TOC-Developer-
         # switch).
         # Corresponds to the JSON property `bootMode`
@@ -750,10 +750,9 @@ module Google
         attr_accessor :model
       
         # Notes about this device added by the administrator. This property can be [
-        # searched](http://support.google.com/chromeos/a/bin/answer.py?answer=1698333)
-        # with the [list](/admin-sdk/directory/v1/reference/chromeosdevices/list) method'
-        # s `query` parameter. Maximum length is 500 characters. Empty values are
-        # allowed.
+        # searched](https://support.google.com/chrome/a/answer/1698333) with the [list](/
+        # admin-sdk/directory/v1/reference/chromeosdevices/list) method's `query`
+        # parameter. Maximum length is 500 characters. Empty values are allowed.
         # Corresponds to the JSON property `notes`
         # @return [String]
         attr_accessor :notes
@@ -770,7 +769,7 @@ module Google
         # property can be [updated](/admin-sdk/directory/v1/guides/manage-chrome-devices#
         # update_chrome_device) using the API. For more information about how to create
         # an organizational structure for your device, see the [administration help
-        # center](http://support.google.com/a/bin/answer.py?answer=182433).
+        # center](https://support.google.com/a/answer/182433).
         # Corresponds to the JSON property `orgUnitPath`
         # @return [String]
         attr_accessor :org_unit_path
@@ -1271,7 +1270,7 @@ module Google
         # @return [String]
         attr_accessor :language
       
-        # The customer's contact phone number in [E.164](http://en.wikipedia.org/wiki/E.
+        # The customer's contact phone number in [E.164](https://en.wikipedia.org/wiki/E.
         # 164) format.
         # Corresponds to the JSON property `phoneNumber`
         # @return [String]
@@ -1326,7 +1325,7 @@ module Google
         attr_accessor :contact_name
       
         # This is a required property. For `countryCode` information see the [ISO 3166
-        # country code elements](http://www.iso.org/iso/country_codes.htm).
+        # country code elements](https://www.iso.org/iso/country_codes.htm).
         # Corresponds to the JSON property `countryCode`
         # @return [String]
         attr_accessor :country_code
@@ -1594,7 +1593,7 @@ module Google
       class Domains
         include Google::Apis::Core::Hashable
       
-        # Creation time of the domain. Expressed in [Unix time](http://en.wikipedia.org/
+        # Creation time of the domain. Expressed in [Unix time](https://en.wikipedia.org/
         # wiki/Epoch_time) format. (Read-only).
         # Corresponds to the JSON property `creationTime`
         # @return [Fixnum]
@@ -1823,9 +1822,8 @@ module Google
         # The group's email address. If your account has multiple domains, select the
         # appropriate domain for the email address. The `email` must be unique. This
         # property is required when creating a group. Group email addresses are subject
-        # to the same character usage rules as usernames, see the [administration help
-        # center](http://support.google.com/a/bin/answer.py?answer=33386) for the
-        # details.
+        # to the same character usage rules as usernames, see the [help center](https://
+        # support.google.com/a/answer/9193374) for details.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
@@ -1958,8 +1956,7 @@ module Google
         # The member's role in a group. The API returns an error for cycles in group
         # memberships. For example, if `group1` is a member of `group2`, `group2` cannot
         # be a member of `group1`. For more information about a member's role, see the [
-        # administration help center](http://support.google.com/a/bin/answer.py?answer=
-        # 167094).
+        # administration help center](https://support.google.com/a/answer/167094).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -2049,10 +2046,10 @@ module Google
         end
       end
       
-      # Google Workspace Mobile Management includes Android, [Google Sync](http://
-      # support.google.com/a/bin/answer.py?answer=135937), and iOS devices. For more
-      # information about common group mobile device API tasks, see the [Developer's
-      # Guide](/admin-sdk/directory/v1/guides/manage-mobile-devices.html).
+      # Google Workspace Mobile Management includes Android, [Google Sync](https://
+      # support.google.com/a/answer/135937), and iOS devices. For more information
+      # about common group mobile device API tasks, see the [Developer's Guide](/admin-
+      # sdk/directory/v1/guides/manage-mobile-devices.html).
       class MobileDevice
         include Google::Apis::Core::Hashable
       
@@ -2352,7 +2349,7 @@ module Google
         
           # The list of permissions of this application. These can be either a standard
           # Android permission or one defined by the application, and are found in an
-          # application's [Android manifest](http://developer.android.com/guide/topics/
+          # application's [Android manifest](https://developer.android.com/guide/topics/
           # manifest/uses-permission-element.html). Examples of a Calendar application's
           # permissions are `READ_CALENDAR`, or `MANAGE_ACCOUNTS`.
           # Corresponds to the JSON property `permission`
@@ -2451,8 +2448,7 @@ module Google
         # organization. The default value is `false`, meaning a sub-organizational unit
         # inherits the settings of the nearest parent organizational unit. For more
         # information on inheritance and users in an organization structure, see the [
-        # administration help center](http://support.google.com/a/bin/answer.py?answer=
-        # 182442&topic=1227584&ctx=topic).
+        # administration help center](https://support.google.com/a/answer/4352075).
         # Corresponds to the JSON property `blockInheritance`
         # @return [Boolean]
         attr_accessor :block_inheritance
@@ -2495,10 +2491,9 @@ module Google
         # determines which Google Workspace services the user has access to. If the user
         # is moved to a new organization, the user's access changes. For more
         # information about organization structures, see the [administration help center]
-        # (http://support.google.com/a/bin/answer.py?answer=182433&topic=1227584&ctx=
-        # topic). For more information about moving a user to a different organization,
-        # see [Update a user](/admin-sdk/directory/v1/guides/manage-users.html#
-        # update_user).
+        # (https://support.google.com/a/answer/4352075). For more information about
+        # moving a user to a different organization, see [Update a user](/admin-sdk/
+        # directory/v1/guides/manage-users.html#update_user).
         # Corresponds to the JSON property `orgUnitPath`
         # @return [String]
         attr_accessor :org_unit_path
@@ -3284,9 +3279,9 @@ module Google
       
         # Stores the hash format of the password property. We recommend sending the `
         # password` property value as a base 16 bit hexadecimal-encoded hash value. Set
-        # the `hashFunction` values as either the [SHA-1](http://wikipedia.org/wiki/SHA-
-        # 1), [MD5](http://wikipedia.org/wiki/MD5), or [crypt](https://en.wikipedia.org/
-        # wiki/Crypt_(C)) hash format.
+        # the `hashFunction` values as either the [SHA-1](https://wikipedia.org/wiki/SHA-
+        # 1), [MD5](https://wikipedia.org/wiki/MD5), or [crypt](https://en.wikipedia.org/
+        # wiki/Crypt_\(C\)) hash format.
         # Corresponds to the JSON property `hashFunction`
         # @return [String]
         attr_accessor :hash_function
@@ -3307,14 +3302,14 @@ module Google
         # Indicates if the user's profile is visible in the Google Workspace global
         # address list when the contact sharing feature is enabled for the domain. For
         # more information about excluding user profiles, see the [administration help
-        # center](http://support.google.com/a/bin/answer.py?answer=1285988).
+        # center](https://support.google.com/a/answer/1285988).
         # Corresponds to the JSON property `includeInGlobalAddressList`
         # @return [Boolean]
         attr_accessor :include_in_global_address_list
         alias_method :include_in_global_address_list?, :include_in_global_address_list
       
-        # If `true`, the user's IP address is [white listed](http://support.google.com/a/
-        # bin/answer.py?answer=60752).
+        # If `true`, the user's IP address is [whitelisted](https://support.google.com/a/
+        # answer/60752).
         # Corresponds to the JSON property `ipWhitelisted`
         # @return [Boolean]
         attr_accessor :ip_whitelisted
@@ -3336,7 +3331,7 @@ module Google
         # administrators are supported by the API but cannot create or undelete users,
         # or make users administrators. These requests are ignored by the API service.
         # Roles and privileges for administrators are assigned using the [Admin console](
-        # http://support.google.com/a/bin/answer.py?answer=33325).
+        # https://support.google.com/a/answer/33325).
         # Corresponds to the JSON property `isDelegatedAdmin`
         # @return [Boolean]
         attr_accessor :is_delegated_admin
@@ -3392,8 +3387,8 @@ module Google
         # familyName` values is 60. In addition, name values support unicode/UTF-8
         # characters, and can contain spaces, letters (a-z), numbers (0-9), dashes (-),
         # forward slashes (/), and periods (.). For more information about character
-        # usage rules, see the [administration help center](http://support.google.com/a/
-        # bin/answer.py?answer=33386). Maximum allowed data size for this field is 1Kb.
+        # usage rules, see the [administration help center](https://support.google.com/a/
+        # answer/9193374). Maximum allowed data size for this field is 1Kb.
         # Corresponds to the JSON property `name`
         # @return [Google::Apis::AdminDirectoryV1::UserName]
         attr_accessor :name
@@ -3433,7 +3428,7 @@ module Google
         # @return [Object]
         attr_accessor :phones
       
-        # A list of [POSIX](http://www.opengroup.org/austin/papers/posix_faq.html)
+        # A list of [POSIX](https://www.opengroup.org/austin/papers/posix_faq.html)
         # account information for the user.
         # Corresponds to the JSON property `posixAccounts`
         # @return [Object]
@@ -4170,8 +4165,8 @@ module Google
         # @return [String]
         attr_accessor :mime_type
       
-        # The user photo's upload data in [web-safe Base64](https://code.google.com/p/
-        # stringencoders/wiki/WebSafeBase64) format in bytes. This means: * The slash (/)
+        # The user photo's upload data in [web-safe Base64](https://en.wikipedia.org/
+        # wiki/Base64#URL_applications) format in bytes. This means: * The slash (/)
         # character is replaced with the underscore (_) character. * The plus sign (+)
         # character is replaced with the hyphen (-) character. * The equals sign (=)
         # character is replaced with the asterisk (*). * For padding, the period (.)
