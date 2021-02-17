@@ -404,6 +404,7 @@ module Google
           hash :labels, as: 'labels'
           property :pipeline, as: 'pipeline', class: Google::Apis::LifesciencesV2beta::Pipeline, decorator: Google::Apis::LifesciencesV2beta::Pipeline::Representation
       
+          property :pub_sub_topic, as: 'pubSubTopic'
           property :start_time, as: 'startTime'
         end
       end
@@ -496,6 +497,7 @@ module Google
           hash :labels, as: 'labels'
           property :pipeline, as: 'pipeline', class: Google::Apis::LifesciencesV2beta::Pipeline, decorator: Google::Apis::LifesciencesV2beta::Pipeline::Representation
       
+          property :pub_sub_topic, as: 'pubSubTopic'
         end
       end
       

@@ -726,6 +726,12 @@ module Google
         # @return [Google::Apis::LifesciencesV2beta::Pipeline]
         attr_accessor :pipeline
       
+        # The name of the Cloud Pub/Sub topic where notifications of operation status
+        # changes are sent.
+        # Corresponds to the JSON property `pubSubTopic`
+        # @return [String]
+        attr_accessor :pub_sub_topic
+      
         # The first time at which resources were allocated to execute the pipeline.
         # Corresponds to the JSON property `startTime`
         # @return [String]
@@ -742,6 +748,7 @@ module Google
           @events = args[:events] if args.key?(:events)
           @labels = args[:labels] if args.key?(:labels)
           @pipeline = args[:pipeline] if args.key?(:pipeline)
+          @pub_sub_topic = args[:pub_sub_topic] if args.key?(:pub_sub_topic)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
@@ -1064,6 +1071,14 @@ module Google
         # @return [Google::Apis::LifesciencesV2beta::Pipeline]
         attr_accessor :pipeline
       
+        # The name of an existing Pub/Sub topic. The server will publish messages to
+        # this topic whenever the status of the operation changes. The Life Sciences
+        # Service Agent account must have publisher permissions to the specified topic
+        # or notifications will not be sent.
+        # Corresponds to the JSON property `pubSubTopic`
+        # @return [String]
+        attr_accessor :pub_sub_topic
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1072,6 +1087,7 @@ module Google
         def update!(**args)
           @labels = args[:labels] if args.key?(:labels)
           @pipeline = args[:pipeline] if args.key?(:pipeline)
+          @pub_sub_topic = args[:pub_sub_topic] if args.key?(:pub_sub_topic)
         end
       end
       
