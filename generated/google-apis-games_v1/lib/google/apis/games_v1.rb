@@ -30,7 +30,7 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1'
 
-      # View and manage its own configuration data in your Google Drive
+      # See, create, and delete its own configuration data in your Google Drive
       AUTH_DRIVE_APPDATA = 'https://www.googleapis.com/auth/drive.appdata'
 
       # Create, edit, and delete your Google Play Games activity
