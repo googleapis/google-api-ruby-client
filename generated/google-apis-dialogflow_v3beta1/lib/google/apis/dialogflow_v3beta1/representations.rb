@@ -1180,6 +1180,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverageTransition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1UpdateDocumentOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2787,6 +2805,8 @@ module Google
           property :agent, as: 'agent'
           property :intent_coverage, as: 'intentCoverage', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1IntentCoverage, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1IntentCoverage::Representation
       
+          property :route_group_coverage, as: 'routeGroupCoverage', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverage, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverage::Representation
+      
           property :transition_coverage, as: 'transitionCoverage', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionCoverage, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionCoverage::Representation
       
         end
@@ -3739,7 +3759,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :environment, as: 'environment'
-          property :name, as: 'name'
         end
       end
       
@@ -3953,6 +3972,35 @@ module Google
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           collection :transition_routes, as: 'transitionRoutes', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionRoute, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionRoute::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :coverage_score, as: 'coverageScore'
+          collection :coverages, as: 'coverages', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverage, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverage::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :coverage_score, as: 'coverageScore'
+          property :route_group, as: 'routeGroup', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionRouteGroup, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionRouteGroup::Representation
+      
+          collection :transitions, as: 'transitions', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverageTransition, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverageTransition::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverageTransition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :covered, as: 'covered'
+          property :transition_route, as: 'transitionRoute', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionRoute, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionRoute::Representation
       
         end
       end

@@ -2634,8 +2634,16 @@ module Google
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1IntentCoverage]
         attr_accessor :intent_coverage
       
-        # Transition coverage represents the percentage of all possible transitions
-        # present within any of a parent's test cases.
+        # Transition route group coverage represents the percentage of all possible
+        # transition routes present within any of a parent's test cases. The results are
+        # grouped by the transition route group.
+        # Corresponds to the JSON property `routeGroupCoverage`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverage]
+        attr_accessor :route_group_coverage
+      
+        # Transition coverage represents the percentage of all possible page transitions
+        # (page-level transition routes and event handlers, excluding transition route
+        # groups) present within any of a parent's test cases.
         # Corresponds to the JSON property `transitionCoverage`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionCoverage]
         attr_accessor :transition_coverage
@@ -2648,6 +2656,7 @@ module Google
         def update!(**args)
           @agent = args[:agent] if args.key?(:agent)
           @intent_coverage = args[:intent_coverage] if args.key?(:intent_coverage)
+          @route_group_coverage = args[:route_group_coverage] if args.key?(:route_group_coverage)
           @transition_coverage = args[:transition_coverage] if args.key?(:transition_coverage)
         end
       end
@@ -6118,12 +6127,6 @@ module Google
         # @return [String]
         attr_accessor :environment
       
-        # Required. Format of test case name to run: `projects//locations/ /agents//
-        # testCases/`.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
         def initialize(**args)
            update!(**args)
         end
@@ -6131,7 +6134,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @environment = args[:environment] if args.key?(:environment)
-          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -6690,8 +6692,9 @@ module Google
         end
       end
       
-      # Transition coverage represents the percentage of all possible transitions
-      # present within any of a parent's test cases.
+      # Transition coverage represents the percentage of all possible page transitions
+      # (page-level transition routes and event handlers, excluding transition route
+      # groups) present within any of a parent's test cases.
       class GoogleCloudDialogflowCxV3beta1TransitionCoverage
         include Google::Apis::Core::Hashable
       
@@ -6716,7 +6719,7 @@ module Google
         end
       end
       
-      # A transition in the agent's graph.
+      # A transition in a page.
       class GoogleCloudDialogflowCxV3beta1TransitionCoverageTransition
         include Google::Apis::Core::Hashable
       
@@ -6927,6 +6930,100 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @transition_routes = args[:transition_routes] if args.key?(:transition_routes)
+        end
+      end
+      
+      # Transition route group coverage represents the percentage of all possible
+      # transition routes present within any of a parent's test cases. The results are
+      # grouped by the transition route group.
+      class GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverage
+        include Google::Apis::Core::Hashable
+      
+        # The percent of transition routes in all the transition route groups that are
+        # covered.
+        # Corresponds to the JSON property `coverageScore`
+        # @return [Float]
+        attr_accessor :coverage_score
+      
+        # Transition route group coverages.
+        # Corresponds to the JSON property `coverages`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverage>]
+        attr_accessor :coverages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @coverage_score = args[:coverage_score] if args.key?(:coverage_score)
+          @coverages = args[:coverages] if args.key?(:coverages)
+        end
+      end
+      
+      # Coverage result message for one transition route group.
+      class GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverage
+        include Google::Apis::Core::Hashable
+      
+        # The percent of transition routes in the transition route group that are
+        # covered.
+        # Corresponds to the JSON property `coverageScore`
+        # @return [Float]
+        attr_accessor :coverage_score
+      
+        # An TransitionRouteGroup represents a group of `TransitionRoutes` to be used by
+        # a Page.
+        # Corresponds to the JSON property `routeGroup`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionRouteGroup]
+        attr_accessor :route_group
+      
+        # The list of transition routes and coverage in the transition route group.
+        # Corresponds to the JSON property `transitions`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverageTransition>]
+        attr_accessor :transitions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @coverage_score = args[:coverage_score] if args.key?(:coverage_score)
+          @route_group = args[:route_group] if args.key?(:route_group)
+          @transitions = args[:transitions] if args.key?(:transitions)
+        end
+      end
+      
+      # A transition coverage in a transition route group.
+      class GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverageTransition
+        include Google::Apis::Core::Hashable
+      
+        # Whether or not the transition route is covered by at least one of the agent's
+        # test cases.
+        # Corresponds to the JSON property `covered`
+        # @return [Boolean]
+        attr_accessor :covered
+        alias_method :covered?, :covered
+      
+        # A transition route specifies a intent that can be matched and/or a data
+        # condition that can be evaluated during a session. When a specified transition
+        # is matched, the following actions are taken in order: * If there is a `
+        # trigger_fulfillment` associated with the transition, it will be called. * If
+        # there is a `target_page` associated with the transition, the session will
+        # transition into the specified page. * If there is a `target_flow` associated
+        # with the transition, the session will transition into the specified flow.
+        # Corresponds to the JSON property `transitionRoute`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionRoute]
+        attr_accessor :transition_route
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @covered = args[:covered] if args.key?(:covered)
+          @transition_route = args[:transition_route] if args.key?(:transition_route)
         end
       end
       
