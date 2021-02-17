@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBillingBudgetsV1CustomPeriod
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudBillingBudgetsV1Filter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -65,6 +71,12 @@ module Google
       end
       
       class GoogleProtobufEmpty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleTypeDate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -103,11 +115,24 @@ module Google
         end
       end
       
+      class GoogleCloudBillingBudgetsV1CustomPeriod
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_date, as: 'endDate', class: Google::Apis::BillingbudgetsV1::GoogleTypeDate, decorator: Google::Apis::BillingbudgetsV1::GoogleTypeDate::Representation
+      
+          property :start_date, as: 'startDate', class: Google::Apis::BillingbudgetsV1::GoogleTypeDate, decorator: Google::Apis::BillingbudgetsV1::GoogleTypeDate::Representation
+      
+        end
+      end
+      
       class GoogleCloudBillingBudgetsV1Filter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :calendar_period, as: 'calendarPeriod'
           collection :credit_types, as: 'creditTypes'
           property :credit_types_treatment, as: 'creditTypesTreatment'
+          property :custom_period, as: 'customPeriod', class: Google::Apis::BillingbudgetsV1::GoogleCloudBillingBudgetsV1CustomPeriod, decorator: Google::Apis::BillingbudgetsV1::GoogleCloudBillingBudgetsV1CustomPeriod::Representation
+      
           hash :labels, as: 'labels', :class => Array do
         include Representable::JSON::Collection
         items
@@ -155,6 +180,15 @@ module Google
       class GoogleProtobufEmpty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleTypeDate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
         end
       end
       

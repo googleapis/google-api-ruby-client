@@ -24,9 +24,9 @@ module Google
       
       # A budget is a plan that describes what you expect to spend on Cloud projects,
       # plus the rules to execute as spend is tracked against that plan, (for example,
-      # send an alert when 90% of the target spend is met). Currently all plans are
-      # monthly budgets so the usage period(s) tracked are implied (calendar months of
-      # usage back-to-back).
+      # send an alert when 90% of the target spend is met). The budget time period is
+      # configurable, with options such as month (default), quarter, year, or custom
+      # time period.
       class GoogleCloudBillingBudgetsV1Budget
         include Google::Apis::Core::Hashable
       
@@ -115,9 +115,57 @@ module Google
         end
       end
       
+      # All date times begin at 12 AM US and Canadian Pacific Time (UTC-8).
+      class GoogleCloudBillingBudgetsV1CustomPeriod
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values * A month
+        # and day value, with a zero year, such as an anniversary * A year on its own,
+        # with zero month and day values * A year and month value, with a zero day, such
+        # as a credit card expiration date Related types are google.type.TimeOfDay and `
+        # google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `endDate`
+        # @return [Google::Apis::BillingbudgetsV1::GoogleTypeDate]
+        attr_accessor :end_date
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values * A month
+        # and day value, with a zero year, such as an anniversary * A year on its own,
+        # with zero month and day values * A year and month value, with a zero day, such
+        # as a credit card expiration date Related types are google.type.TimeOfDay and `
+        # google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `startDate`
+        # @return [Google::Apis::BillingbudgetsV1::GoogleTypeDate]
+        attr_accessor :start_date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @start_date = args[:start_date] if args.key?(:start_date)
+        end
+      end
+      
       # A filter for a budget, limiting the scope of the cost to calculate.
       class GoogleCloudBillingBudgetsV1Filter
         include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies to track usage for recurring calendar period. E.g. Assume
+        # that CalendarPeriod.QUARTER is set. The budget will track usage from April 1
+        # to June 30, when current calendar month is April, May, June. After that, it
+        # will track usage from July 1 to September 30 when current calendar month is
+        # July, August, September, and so on.
+        # Corresponds to the JSON property `calendarPeriod`
+        # @return [String]
+        attr_accessor :calendar_period
       
         # Optional. If Filter.credit_types_treatment is INCLUDE_SPECIFIED_CREDITS, this
         # is a list of credit types to be subtracted from gross cost to determine the
@@ -133,6 +181,11 @@ module Google
         # Corresponds to the JSON property `creditTypesTreatment`
         # @return [String]
         attr_accessor :credit_types_treatment
+      
+        # All date times begin at 12 AM US and Canadian Pacific Time (UTC-8).
+        # Corresponds to the JSON property `customPeriod`
+        # @return [Google::Apis::BillingbudgetsV1::GoogleCloudBillingBudgetsV1CustomPeriod]
+        attr_accessor :custom_period
       
         # Optional. A single label and value pair specifying that usage from only this
         # set of labeled resources should be included in the budget. Currently, multiple
@@ -175,8 +228,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @calendar_period = args[:calendar_period] if args.key?(:calendar_period)
           @credit_types = args[:credit_types] if args.key?(:credit_types)
           @credit_types_treatment = args[:credit_types_treatment] if args.key?(:credit_types_treatment)
+          @custom_period = args[:custom_period] if args.key?(:custom_period)
           @labels = args[:labels] if args.key?(:labels)
           @projects = args[:projects] if args.key?(:projects)
           @services = args[:services] if args.key?(:services)
@@ -330,6 +385,47 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Represents a whole or partial calendar date, such as a birthday. The time of
+      # day and time zone are either specified elsewhere or are insignificant. The
+      # date is relative to the Gregorian Calendar. This can represent one of the
+      # following: * A full date, with non-zero year, month, and day values * A month
+      # and day value, with a zero year, such as an anniversary * A year on its own,
+      # with zero month and day values * A year and month value, with a zero day, such
+      # as a credit card expiration date Related types are google.type.TimeOfDay and `
+      # google.protobuf.Timestamp`.
+      class GoogleTypeDate
+        include Google::Apis::Core::Hashable
+      
+        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        # specify a year by itself or a year and month where the day isn't significant.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        # and day.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        # year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
         end
       end
       
