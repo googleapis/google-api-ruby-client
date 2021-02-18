@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Aws
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,6 +143,24 @@ module Google
       end
       
       class ListServiceAccountsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListWorkloadIdentityPoolProvidersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListWorkloadIdentityPoolsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Oidc
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -298,7 +322,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UndeleteWorkloadIdentityPoolProviderRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UndeleteWorkloadIdentityPoolRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UploadServiceAccountKeyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkloadIdentityPool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkloadIdentityPoolProvider
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -341,6 +389,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+        end
+      end
+      
+      class Aws
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
         end
       end
       
@@ -471,6 +526,32 @@ module Google
           collection :accounts, as: 'accounts', class: Google::Apis::IamV1::ServiceAccount, decorator: Google::Apis::IamV1::ServiceAccount::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListWorkloadIdentityPoolProvidersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :workload_identity_pool_providers, as: 'workloadIdentityPoolProviders', class: Google::Apis::IamV1::WorkloadIdentityPoolProvider, decorator: Google::Apis::IamV1::WorkloadIdentityPoolProvider::Representation
+      
+        end
+      end
+      
+      class ListWorkloadIdentityPoolsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :workload_identity_pools, as: 'workloadIdentityPools', class: Google::Apis::IamV1::WorkloadIdentityPool, decorator: Google::Apis::IamV1::WorkloadIdentityPool::Representation
+      
+        end
+      end
+      
+      class Oidc
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_audiences, as: 'allowedAudiences'
+          property :issuer_uri, as: 'issuerUri'
         end
       end
       
@@ -715,10 +796,50 @@ module Google
         end
       end
       
+      class UndeleteWorkloadIdentityPoolProviderRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UndeleteWorkloadIdentityPoolRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class UploadServiceAccountKeyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :public_key_data, :base64 => true, as: 'publicKeyData'
+        end
+      end
+      
+      class WorkloadIdentityPool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :disabled, as: 'disabled'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :state, as: 'state'
+        end
+      end
+      
+      class WorkloadIdentityPoolProvider
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribute_condition, as: 'attributeCondition'
+          hash :attribute_mapping, as: 'attributeMapping'
+          property :aws, as: 'aws', class: Google::Apis::IamV1::Aws, decorator: Google::Apis::IamV1::Aws::Representation
+      
+          property :description, as: 'description'
+          property :disabled, as: 'disabled'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :oidc, as: 'oidc', class: Google::Apis::IamV1::Oidc, decorator: Google::Apis::IamV1::Oidc::Representation
+      
+          property :state, as: 'state'
         end
       end
     end

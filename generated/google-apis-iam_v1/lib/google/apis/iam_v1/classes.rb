@@ -155,6 +155,25 @@ module Google
         end
       end
       
+      # Represents an Amazon Web Services identity provider.
+      class Aws
+        include Google::Apis::Core::Hashable
+      
+        # Required. The AWS account ID.
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_id = args[:account_id] if args.key?(:account_id)
+        end
+      end
+      
       # Associates `members` with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -653,6 +672,91 @@ module Google
         def update!(**args)
           @accounts = args[:accounts] if args.key?(:accounts)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for ListWorkloadIdentityPoolProviders.
+      class ListWorkloadIdentityPoolProvidersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of providers.
+        # Corresponds to the JSON property `workloadIdentityPoolProviders`
+        # @return [Array<Google::Apis::IamV1::WorkloadIdentityPoolProvider>]
+        attr_accessor :workload_identity_pool_providers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @workload_identity_pool_providers = args[:workload_identity_pool_providers] if args.key?(:workload_identity_pool_providers)
+        end
+      end
+      
+      # Response message for ListWorkloadIdentityPools.
+      class ListWorkloadIdentityPoolsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of pools.
+        # Corresponds to the JSON property `workloadIdentityPools`
+        # @return [Array<Google::Apis::IamV1::WorkloadIdentityPool>]
+        attr_accessor :workload_identity_pools
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @workload_identity_pools = args[:workload_identity_pools] if args.key?(:workload_identity_pools)
+        end
+      end
+      
+      # Represents an OpenId Connect 1.0 identity provider.
+      class Oidc
+        include Google::Apis::Core::Hashable
+      
+        # Acceptable values for the `aud` field (audience) in the OIDC token. Token
+        # exchange requests are rejected if the token audience does not match one of the
+        # configured values. Each audience may be at most 256 characters. A maximum of
+        # 10 audiences may be configured. If this list is empty, the OIDC token audience
+        # must be equal to the full canonical resource name of the
+        # WorkloadIdentityPoolProvider, with or without the HTTPS prefix. For example: ``
+        # ` //iam.googleapis.com/projects//locations//workloadIdentityPools//providers/
+        # https://iam.googleapis.com/projects//locations//workloadIdentityPools//
+        # providers/ ```
+        # Corresponds to the JSON property `allowedAudiences`
+        # @return [Array<String>]
+        attr_accessor :allowed_audiences
+      
+        # Required. The OIDC issuer URL.
+        # Corresponds to the JSON property `issuerUri`
+        # @return [String]
+        attr_accessor :issuer_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_audiences = args[:allowed_audiences] if args.key?(:allowed_audiences)
+          @issuer_uri = args[:issuer_uri] if args.key?(:issuer_uri)
         end
       end
       
@@ -1667,6 +1771,32 @@ module Google
         end
       end
       
+      # Request message for UndeleteWorkloadIdentityPoolProvider.
+      class UndeleteWorkloadIdentityPoolProviderRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for UndeleteWorkloadIdentityPool.
+      class UndeleteWorkloadIdentityPoolRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The service account key upload request.
       class UploadServiceAccountKeyRequest
         include Google::Apis::Core::Hashable
@@ -1686,6 +1816,169 @@ module Google
         # Update properties of this object
         def update!(**args)
           @public_key_data = args[:public_key_data] if args.key?(:public_key_data)
+        end
+      end
+      
+      # Represents a collection of external workload identities. You can define IAM
+      # policies to grant these identities access to Google Cloud resources.
+      class WorkloadIdentityPool
+        include Google::Apis::Core::Hashable
+      
+        # A description of the pool. Cannot exceed 256 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Whether the pool is disabled. You cannot use a disabled pool to exchange
+        # tokens, or use existing tokens to access resources. If the pool is re-enabled,
+        # existing tokens grant access again.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # A display name for the pool. Cannot exceed 32 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The resource name of the pool.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The state of the pool.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # A configuration for an external identity provider.
+      class WorkloadIdentityPoolProvider
+        include Google::Apis::Core::Hashable
+      
+        # [A Common Expression Language](https://opensource.google/projects/cel)
+        # expression, in plain text, to restrict what otherwise valid authentication
+        # credentials issued by the provider should not be accepted. The expression must
+        # output a boolean representing whether to allow the federation. The following
+        # keywords may be referenced in the expressions: * `assertion`: JSON
+        # representing the authentication credential issued by the provider. * `google`:
+        # The Google attributes mapped from the assertion in the `attribute_mappings`. *
+        # `attribute`: The custom attributes mapped from the assertion in the `
+        # attribute_mappings`. The maximum length of the attribute condition expression
+        # is 4096 characters. If unspecified, all valid authentication credential are
+        # accepted. The following example shows how to only allow credentials with a
+        # mapped `google.groups` value of `admins`: ``` "'admins' in google.groups" ```
+        # Corresponds to the JSON property `attributeCondition`
+        # @return [String]
+        attr_accessor :attribute_condition
+      
+        # Maps attributes from authentication credentials issued by an external identity
+        # provider to Google Cloud attributes, such as `subject` and `segment`. Each key
+        # must be a string specifying the Google Cloud IAM attribute to map to. The
+        # following keys are supported: * `google.subject`: The principal IAM is
+        # authenticating. You can reference this value in IAM bindings. This is also the
+        # subject that appears in Cloud Logging logs. Cannot exceed 127 characters. * `
+        # google.groups`: Groups the external identity belongs to. You can grant groups
+        # access to resources using an IAM `principalSet` binding; access applies to all
+        # members of the group. You can also provide custom attributes by specifying `
+        # attribute.`custom_attribute``, where ``custom_attribute`` is the name of the
+        # custom attribute to be mapped. You can define a maximum of 50 custom
+        # attributes. The maximum length of a mapped attribute key is 100 characters,
+        # and the key may only contain the characters [a-z0-9_]. You can reference these
+        # attributes in IAM policies to define fine-grained access for a workload to
+        # Google Cloud resources. For example: * `google.subject`: `principal://iam.
+        # googleapis.com/projects/`project`/locations/`location`/workloadIdentityPools/`
+        # pool`/subject/`value`` * `google.groups`: `principalSet://iam.googleapis.com/
+        # projects/`project`/locations/`location`/workloadIdentityPools/`pool`/group/`
+        # value`` * `attribute.`custom_attribute``: `principalSet://iam.googleapis.com/
+        # projects/`project`/locations/`location`/workloadIdentityPools/`pool`/attribute.
+        # `custom_attribute`/`value`` Each value must be a [Common Expression Language] (
+        # https://opensource.google/projects/cel) function that maps an identity
+        # provider credential to the normalized attribute specified by the corresponding
+        # map key. You can use the `assertion` keyword in the expression to access a
+        # JSON representation of the authentication credential issued by the provider.
+        # The maximum length of an attribute mapping expression is 2048 characters. When
+        # evaluated, the total size of all mapped attributes must not exceed 8KB. For
+        # AWS providers, if no attribute mapping is defined, the following default
+        # mapping applies: ``` ` "google.subject":"assertion.arn", "attribute.aws_role":
+        # "assertion.arn.contains('assumed-role')" " ? assertion.arn.extract('`
+        # account_arn`assumed-role/')" " + 'assumed-role/'" " + assertion.arn.extract('
+        # assumed-role/`role_name`/')" " : assertion.arn", ` ``` If any custom attribute
+        # mappings are defined, they must include a mapping to the `google.subject`
+        # attribute. For OIDC providers, you must supply a custom mapping, which must
+        # include the `google.subject` attribute. For example, the following maps the `
+        # sub` claim of the incoming credential to the `subject` attribute on a Google
+        # token: ``` `"google.subject": "assertion.sub"` ```
+        # Corresponds to the JSON property `attributeMapping`
+        # @return [Hash<String,String>]
+        attr_accessor :attribute_mapping
+      
+        # Represents an Amazon Web Services identity provider.
+        # Corresponds to the JSON property `aws`
+        # @return [Google::Apis::IamV1::Aws]
+        attr_accessor :aws
+      
+        # A description for the provider. Cannot exceed 256 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Whether the provider is disabled. You cannot use a disabled provider to
+        # exchange tokens. However, existing tokens still grant access.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # A display name for the provider. Cannot exceed 32 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The resource name of the provider.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Represents an OpenId Connect 1.0 identity provider.
+        # Corresponds to the JSON property `oidc`
+        # @return [Google::Apis::IamV1::Oidc]
+        attr_accessor :oidc
+      
+        # Output only. The state of the provider.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_condition = args[:attribute_condition] if args.key?(:attribute_condition)
+          @attribute_mapping = args[:attribute_mapping] if args.key?(:attribute_mapping)
+          @aws = args[:aws] if args.key?(:aws)
+          @description = args[:description] if args.key?(:description)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @oidc = args[:oidc] if args.key?(:oidc)
+          @state = args[:state] if args.key?(:state)
         end
       end
     end
