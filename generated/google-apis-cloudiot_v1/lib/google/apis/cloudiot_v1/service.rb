@@ -477,7 +477,8 @@ module Google
         #   central1/registries/registry0/devices/`num_id``.
         # @param [String] field_mask
         #   The fields of the `Device` resource to be returned in the response. If the
-        #   field mask is unset or empty, all fields are returned.
+        #   field mask is unset or empty, all fields are returned. Fields have to be
+        #   provided in snake_case format, for example: `last_heartbeat_time`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -518,7 +519,8 @@ module Google
         #   000.
         # @param [String] field_mask
         #   The fields of the `Device` resource to be returned in the response. The fields
-        #   `id` and `num_id` are always returned, along with any other fields specified.
+        #   `id` and `num_id` are always returned, along with any other fields specified
+        #   in snake_case format, for example: `last_heartbeat_time`.
         # @param [String] gateway_list_options_associations_device_id
         #   If set, returns only the gateways with which the specified device is
         #   associated. The device ID can be numeric (`num_id`) or the user-defined string
@@ -896,7 +898,8 @@ module Google
         #   000.
         # @param [String] field_mask
         #   The fields of the `Device` resource to be returned in the response. The fields
-        #   `id` and `num_id` are always returned, along with any other fields specified.
+        #   `id` and `num_id` are always returned, along with any other fields specified
+        #   in snake_case format, for example: `last_heartbeat_time`.
         # @param [String] gateway_list_options_associations_device_id
         #   If set, returns only the gateways with which the specified device is
         #   associated. The device ID can be numeric (`num_id`) or the user-defined string
