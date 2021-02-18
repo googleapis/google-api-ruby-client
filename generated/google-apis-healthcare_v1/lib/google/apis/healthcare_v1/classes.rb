@@ -1130,11 +1130,30 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Restricts notifications sent for messages matching a filter. If this is empty,
-        # all messages are matched. Syntax: https://cloud.google.com/appengine/docs/
-        # standard/python/search/query_strings The following fields and functions are
-        # available for filtering: * `message_type`, from the MSH-9.1 field. For example,
-        # `NOT message_type = "ADT"`. * `send_date` or `sendDate`, the YYYY-MM-DD date
-        # the message was sent in the dataset's time_zone, from the MSH-7 segment. For
+        # all messages are matched. The following syntax is available: * A string field
+        # value can be written as text inside quotation marks, for example `"query text"`
+        # . The only valid relational operation for text fields is equality (`=`), where
+        # text is searched within the field, rather than having the field be equal to
+        # the text. For example, `"Comment = great"` returns messages with `great` in
+        # the comment field. * A number field value can be written as an integer, a
+        # decimal, or an exponential. The valid relational operators for number fields
+        # are the equality operator (`=`), along with the less than/greater than
+        # operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`)
+        # operator. You can prepend the `NOT` operator to an expression to negate it. *
+        # A date field value must be written in `yyyy-mm-dd` form. Fields with date and
+        # time use the RFC3339 time format. Leading zeros are required for one-digit
+        # months and days. The valid relational operators for date fields are the
+        # equality operator (`=`) , along with the less than/greater than operators (`<`,
+        # `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can
+        # prepend the `NOT` operator to an expression to negate it. * Multiple field
+        # query expressions can be combined in one query by adding `AND` or `OR`
+        # operators between the expressions. If a boolean operator appears within a
+        # quoted string, it is not treated as special, it's just another part of the
+        # character string to be matched. You can prepend the `NOT` operator to an
+        # expression to negate it. The following fields and functions are available for
+        # filtering: * `message_type`, from the MSH-9.1 field. For example, `NOT
+        # message_type = "ADT"`. * `send_date` or `sendDate`, the YYYY-MM-DD date the
+        # message was sent in the dataset's time_zone, from the MSH-7 segment. For
         # example, `send_date < "2017-01-02"`. * `send_time`, the timestamp when the
         # message was sent, using the RFC3339 time format for comparisons, from the MSH-
         # 7 segment. For example, `send_time < "2017-01-02T00:00:00-05:00"`. * `
