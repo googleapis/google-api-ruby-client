@@ -159,6 +159,40 @@ module Google
         end
       end
       
+      # Position contains source position information about the stack trace element
+      # such as line number, column number and length of the code block in bytes.
+      class Position
+        include Google::Apis::Core::Hashable
+      
+        # The source code column position (of the line) the current instruction was
+        # generated from.
+        # Corresponds to the JSON property `column`
+        # @return [Fixnum]
+        attr_accessor :column
+      
+        # The length in bytes of text in this character group, e.g. digits of a number,
+        # string length, or AST (abstract syntax tree) node.
+        # Corresponds to the JSON property `length`
+        # @return [Fixnum]
+        attr_accessor :length
+      
+        # The source code line number the current instruction was generated from.
+        # Corresponds to the JSON property `line`
+        # @return [Fixnum]
+        attr_accessor :line
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+          @length = args[:length] if args.key?(:length)
+          @line = args[:line] if args.key?(:line)
+        end
+      end
+      
       # A collection of stack elements (frames) where an error occurred.
       class StackTrace
         include Google::Apis::Core::Hashable
@@ -178,20 +212,17 @@ module Google
         end
       end
       
-      # A single stack element (frame) where an error occurred.
+      # A single stack element (frame) where an error occurred. This field currently
+      # only exists in v1Beta. We will need to roll this change out to V1 after the
+      # feature is thoroughly tested. TODO(b/178540475)
       class StackTraceElement
         include Google::Apis::Core::Hashable
       
-        # The source code column position (of the line) the current instruction was
-        # generated from.
-        # Corresponds to the JSON property `column`
-        # @return [Fixnum]
-        attr_accessor :column
-      
-        # The source code line number the current instruction was generated from.
-        # Corresponds to the JSON property `line`
-        # @return [Fixnum]
-        attr_accessor :line
+        # Position contains source position information about the stack trace element
+        # such as line number, column number and length of the code block in bytes.
+        # Corresponds to the JSON property `position`
+        # @return [Google::Apis::WorkflowexecutionsV1beta::Position]
+        attr_accessor :position
       
         # The routine where the error occurred.
         # Corresponds to the JSON property `routine`
@@ -209,8 +240,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @column = args[:column] if args.key?(:column)
-          @line = args[:line] if args.key?(:line)
+          @position = args[:position] if args.key?(:position)
           @routine = args[:routine] if args.key?(:routine)
           @step = args[:step] if args.key?(:step)
         end

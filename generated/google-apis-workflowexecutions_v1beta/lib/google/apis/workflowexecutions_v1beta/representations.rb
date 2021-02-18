@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Position
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StackTrace
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -98,6 +104,15 @@ module Google
         end
       end
       
+      class Position
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, :numeric_string => true, as: 'column'
+          property :length, :numeric_string => true, as: 'length'
+          property :line, :numeric_string => true, as: 'line'
+        end
+      end
+      
       class StackTrace
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -109,8 +124,8 @@ module Google
       class StackTraceElement
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :column, :numeric_string => true, as: 'column'
-          property :line, :numeric_string => true, as: 'line'
+          property :position, as: 'position', class: Google::Apis::WorkflowexecutionsV1beta::Position, decorator: Google::Apis::WorkflowexecutionsV1beta::Position::Representation
+      
           property :routine, as: 'routine'
           property :step, as: 'step'
         end
