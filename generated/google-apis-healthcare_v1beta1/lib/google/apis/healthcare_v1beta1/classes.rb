@@ -2685,148 +2685,6 @@ module Google
         end
       end
       
-      # Response when errors occur while exporting resources. This structure is
-      # included in the error details to describe the detailed outcome. It is only
-      # included when the operation finishes with errors.
-      class GoogleCloudHealthcareV1beta1FhirRestExportResourcesErrorDetails
-        include Google::Apis::Core::Hashable
-      
-        # The number of resources that had errors.
-        # Corresponds to the JSON property `errorCount`
-        # @return [Fixnum]
-        attr_accessor :error_count
-      
-        # The name of the FHIR store where resources have been exported, in the format `
-        # projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/fhirStores/
-        # `fhir_store_id``.
-        # Corresponds to the JSON property `fhirStore`
-        # @return [String]
-        attr_accessor :fhir_store
-      
-        # The total number of resources included in the export operation. This is the
-        # sum of the success and error counts.
-        # Corresponds to the JSON property `resourceCount`
-        # @return [Fixnum]
-        attr_accessor :resource_count
-      
-        # The number of resources that were exported.
-        # Corresponds to the JSON property `successCount`
-        # @return [Fixnum]
-        attr_accessor :success_count
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @error_count = args[:error_count] if args.key?(:error_count)
-          @fhir_store = args[:fhir_store] if args.key?(:fhir_store)
-          @resource_count = args[:resource_count] if args.key?(:resource_count)
-          @success_count = args[:success_count] if args.key?(:success_count)
-        end
-      end
-      
-      # Response when all resources export successfully. This structure is included
-      # in the response to describe the detailed outcome after the operation finishes
-      # successfully.
-      class GoogleCloudHealthcareV1beta1FhirRestExportResourcesResponse
-        include Google::Apis::Core::Hashable
-      
-        # The name of the FHIR store where resources have been exported, in the format `
-        # projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/fhirStores/
-        # `fhir_store_id``.
-        # Corresponds to the JSON property `fhirStore`
-        # @return [String]
-        attr_accessor :fhir_store
-      
-        # The total number of resources exported from the requested FHIR store.
-        # Corresponds to the JSON property `resourceCount`
-        # @return [Fixnum]
-        attr_accessor :resource_count
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @fhir_store = args[:fhir_store] if args.key?(:fhir_store)
-          @resource_count = args[:resource_count] if args.key?(:resource_count)
-        end
-      end
-      
-      # Error response of importing resources. This structure is included in the
-      # error details to describe the detailed error after the operation finishes with
-      # some failure.
-      class GoogleCloudHealthcareV1beta1FhirRestImportResourcesErrorDetails
-        include Google::Apis::Core::Hashable
-      
-        # The number of resources that had errors.
-        # Corresponds to the JSON property `errorCount`
-        # @return [Fixnum]
-        attr_accessor :error_count
-      
-        # The name of the FHIR store where resources have been imported, in the format `
-        # projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/fhirStores/
-        # `fhir_store_id``.
-        # Corresponds to the JSON property `fhirStore`
-        # @return [String]
-        attr_accessor :fhir_store
-      
-        # The total number of resources included in the source data. This is the sum of
-        # the success and error counts.
-        # Corresponds to the JSON property `inputSize`
-        # @return [Fixnum]
-        attr_accessor :input_size
-      
-        # The number of resources that have been imported.
-        # Corresponds to the JSON property `successCount`
-        # @return [Fixnum]
-        attr_accessor :success_count
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @error_count = args[:error_count] if args.key?(:error_count)
-          @fhir_store = args[:fhir_store] if args.key?(:fhir_store)
-          @input_size = args[:input_size] if args.key?(:input_size)
-          @success_count = args[:success_count] if args.key?(:success_count)
-        end
-      end
-      
-      # Final response of importing resources. This structure is included in the
-      # response to describe the detailed outcome after the operation finishes
-      # successfully.
-      class GoogleCloudHealthcareV1beta1FhirRestImportResourcesResponse
-        include Google::Apis::Core::Hashable
-      
-        # The name of the FHIR store where the resources have been imported, in the
-        # format `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        # fhirStores/`fhir_store_id``.
-        # Corresponds to the JSON property `fhirStore`
-        # @return [String]
-        attr_accessor :fhir_store
-      
-        # The total number of resources included in the source data.
-        # Corresponds to the JSON property `inputSize`
-        # @return [Fixnum]
-        attr_accessor :input_size
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @fhir_store = args[:fhir_store] if args.key?(:fhir_store)
-          @input_size = args[:input_size] if args.key?(:input_size)
-        end
-      end
-      
       # Construct representing a logical group or a segment.
       class GroupOrSegment
         include Google::Apis::Core::Hashable
@@ -2912,22 +2770,40 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Restricts notifications sent for messages matching a filter. If this is empty,
-        # all messages are matched. Syntax: https://cloud.google.com/appengine/docs/
-        # standard/python/search/query_strings The following fields and functions are
-        # available for filtering: * `message_type`, from the MSH-9.1 field. For example,
-        # `NOT message_type = "ADT"`. * `send_date` or `sendDate`, the YYYY-MM-DD date
-        # the message was sent in the dataset's time_zone, from the MSH-7 segment. For
-        # example, `send_date < "2017-01-02"`. * `send_time`, the timestamp when the
-        # message was sent, using the RFC3339 time format for comparisons, from the MSH-
-        # 7 segment. For example, `send_time < "2017-01-02T00:00:00-05:00"`. * `
-        # send_facility`, the care center that the message came from, from the MSH-4
-        # segment. For example, `send_facility = "ABC"`. * `PatientId(value, type)`,
-        # which matches if the message lists a patient having an ID of the given value
-        # and type in the PID-2, PID-3, or PID-4 segments. For example, `PatientId("
-        # 123456", "MRN")`. * `labels.x`, a string value of the label with key `x` as
-        # set using the Message.labels map. For example, `labels."priority"="high"`. The
-        # operator `:*` can be used to assert the existence of a label. For example, `
-        # labels."priority":*`.
+        # all messages are matched. The following syntax is available: * A string field
+        # value can be written as text inside quotation marks, for example `"query text"`
+        # . The only valid relational operation for text fields is equality (`=`), where
+        # text is searched within the field, rather than having the field be equal to
+        # the text. For example, `"Comment = great"` returns messages with `great` in
+        # the comment field. * A number field value can be written as an integer, a
+        # decimal, or an exponential. The valid relational operators for number fields
+        # are the equality operator (`=`), along with the less than/greater than
+        # operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`)
+        # operator. You can prepend the `NOT` operator to an expression to negate it. *
+        # A date field value must be written in `yyyy-mm-dd` form. Fields with date and
+        # time use the RFC3339 time format. Leading zeros are required for one-digit
+        # months and days. The valid relational operators for date fields are the
+        # equality operator (`=`) , along with the less than/greater than operators (`<`,
+        # `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can
+        # prepend the `NOT` operator to an expression to negate it. * Multiple field
+        # query expressions can be combined in one query by adding `AND` or `OR`
+        # operators between the expressions. If a boolean operator appears within a
+        # quoted string, it is not treated as special, it's just another part of the
+        # character string to be matched. You can prepend the `NOT` operator to an
+        # expression to negate it. Fields/functions available for filtering are: * `
+        # message_type`, from the MSH-9.1 field. For example, `NOT message_type = "ADT"`.
+        # * `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent in the
+        # dataset's time_zone, from the MSH-7 segment. For example, `send_date < "2017-
+        # 01-02"`. * `send_time`, the timestamp when the message was sent, using the
+        # RFC3339 time format for comparisons, from the MSH-7 segment. For example, `
+        # send_time < "2017-01-02T00:00:00-05:00"`. * `send_facility`, the care center
+        # that the message came from, from the MSH-4 segment. For example, `
+        # send_facility = "ABC"`. * `PatientId(value, type)`, which matches if the
+        # message lists a patient having an ID of the given value and type in the PID-2,
+        # PID-3, or PID-4 segments. For example, `PatientId("123456", "MRN")`. * `labels.
+        # x`, a string value of the label with key `x` as set using the Message.labels
+        # map. For example, `labels."priority"="high"`. The operator `:*` can be used to
+        # assert the existence of a label. For example, `labels."priority":*`.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter

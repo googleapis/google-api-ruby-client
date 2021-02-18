@@ -502,30 +502,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudHealthcareV1beta1FhirRestExportResourcesErrorDetails
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudHealthcareV1beta1FhirRestExportResourcesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudHealthcareV1beta1FhirRestImportResourcesErrorDetails
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudHealthcareV1beta1FhirRestImportResourcesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GroupOrSegment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1712,42 +1688,6 @@ module Google
       class GoogleCloudHealthcareV1beta1FhirImportResourcesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleCloudHealthcareV1beta1FhirRestExportResourcesErrorDetails
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :error_count, :numeric_string => true, as: 'errorCount'
-          property :fhir_store, as: 'fhirStore'
-          property :resource_count, :numeric_string => true, as: 'resourceCount'
-          property :success_count, :numeric_string => true, as: 'successCount'
-        end
-      end
-      
-      class GoogleCloudHealthcareV1beta1FhirRestExportResourcesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :fhir_store, as: 'fhirStore'
-          property :resource_count, :numeric_string => true, as: 'resourceCount'
-        end
-      end
-      
-      class GoogleCloudHealthcareV1beta1FhirRestImportResourcesErrorDetails
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :error_count, :numeric_string => true, as: 'errorCount'
-          property :fhir_store, as: 'fhirStore'
-          property :input_size, :numeric_string => true, as: 'inputSize'
-          property :success_count, :numeric_string => true, as: 'successCount'
-        end
-      end
-      
-      class GoogleCloudHealthcareV1beta1FhirRestImportResourcesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :fhir_store, as: 'fhirStore'
-          property :input_size, :numeric_string => true, as: 'inputSize'
         end
       end
       
