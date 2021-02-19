@@ -184,6 +184,27 @@ module Google
         end
       end
       
+      # Autopilot is the configuration for Autopilot settings on the cluster. It is
+      # the official product name of what is previously known as AutoGKE
+      class Autopilot
+        include Google::Apis::Core::Hashable
+      
+        # Enable Autopilot
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # AutoprovisioningNodePoolDefaults contains defaults for a node pool created by
       # NAP.
       class AutoprovisioningNodePoolDefaults
@@ -481,6 +502,12 @@ module Google
         # Corresponds to the JSON property `authenticatorGroupsConfig`
         # @return [Google::Apis::ContainerV1beta1::AuthenticatorGroupsConfig]
         attr_accessor :authenticator_groups_config
+      
+        # Autopilot is the configuration for Autopilot settings on the cluster. It is
+        # the official product name of what is previously known as AutoGKE
+        # Corresponds to the JSON property `autopilot`
+        # @return [Google::Apis::ContainerV1beta1::Autopilot]
+        attr_accessor :autopilot
       
         # ClusterAutoscaling contains global, per-cluster information required by
         # Cluster Autoscaler to automatically adjust the size of the cluster and create/
@@ -873,6 +900,7 @@ module Google
         def update!(**args)
           @addons_config = args[:addons_config] if args.key?(:addons_config)
           @authenticator_groups_config = args[:authenticator_groups_config] if args.key?(:authenticator_groups_config)
+          @autopilot = args[:autopilot] if args.key?(:autopilot)
           @autoscaling = args[:autoscaling] if args.key?(:autoscaling)
           @binary_authorization = args[:binary_authorization] if args.key?(:binary_authorization)
           @cluster_ipv4_cidr = args[:cluster_ipv4_cidr] if args.key?(:cluster_ipv4_cidr)
