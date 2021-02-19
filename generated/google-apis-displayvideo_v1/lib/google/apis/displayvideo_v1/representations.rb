@@ -298,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BulkListInsertionOrderAssignedTargetingOptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BulkListLineItemAssignedTargetingOptionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -935,6 +941,12 @@ module Google
       end
       
       class ListGoogleAudiencesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListInsertionOrderAssignedTargetingOptionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1901,6 +1913,15 @@ module Google
         end
       end
       
+      class BulkListInsertionOrderAssignedTargetingOptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assigned_targeting_options, as: 'assignedTargetingOptions', class: Google::Apis::DisplayvideoV1::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV1::AssignedTargetingOption::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class BulkListLineItemAssignedTargetingOptionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2046,6 +2067,7 @@ module Google
       class ContentInstreamPositionAssignedTargetingOptionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_type, as: 'adType'
           property :content_instream_position, as: 'contentInstreamPosition'
           property :targeting_option_id, as: 'targetingOptionId'
         end
@@ -2061,6 +2083,7 @@ module Google
       class ContentOutstreamPositionAssignedTargetingOptionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_type, as: 'adType'
           property :content_outstream_position, as: 'contentOutstreamPosition'
           property :targeting_option_id, as: 'targetingOptionId'
         end
@@ -2164,10 +2187,12 @@ module Google
           property :js_tracker_url, as: 'jsTrackerUrl'
           collection :line_item_ids, as: 'lineItemIds'
           property :media_duration, as: 'mediaDuration'
+          property :mp3_audio, as: 'mp3Audio'
           property :name, as: 'name'
           property :notes, as: 'notes'
           property :oba_icon, as: 'obaIcon', class: Google::Apis::DisplayvideoV1::ObaIcon, decorator: Google::Apis::DisplayvideoV1::ObaIcon::Representation
       
+          property :ogg_audio, as: 'oggAudio'
           property :progress_offset, as: 'progressOffset', class: Google::Apis::DisplayvideoV1::AudioVideoOffset, decorator: Google::Apis::DisplayvideoV1::AudioVideoOffset::Representation
       
           property :require_html5, as: 'requireHtml5'
@@ -2986,6 +3011,15 @@ module Google
         end
       end
       
+      class ListInsertionOrderAssignedTargetingOptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assigned_targeting_options, as: 'assignedTargetingOptions', class: Google::Apis::DisplayvideoV1::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV1::AssignedTargetingOption::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListInsertionOrdersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3223,6 +3257,7 @@ module Google
       class OnScreenPositionAssignedTargetingOptionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_type, as: 'adType'
           property :on_screen_position, as: 'onScreenPosition'
           property :targeting_option_id, as: 'targetingOptionId'
         end
