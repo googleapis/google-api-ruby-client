@@ -186,6 +186,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # User notes on how to apply this tag in the container. @mutable tagmanager.
+        # accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.
+        # containers.workspaces.tags.update
+        # Corresponds to the JSON property `notes`
+        # @return [String]
+        attr_accessor :notes
+      
         # The client's parameters. @mutable tagmanager.accounts.containers.workspaces.
         # clients.create @mutable tagmanager.accounts.containers.workspaces.clients.
         # update
@@ -237,6 +244,7 @@ module Google
           @container_id = args[:container_id] if args.key?(:container_id)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @name = args[:name] if args.key?(:name)
+          @notes = args[:notes] if args.key?(:notes)
           @parameter = args[:parameter] if args.key?(:parameter)
           @parent_folder_id = args[:parent_folder_id] if args.key?(:parent_folder_id)
           @path = args[:path] if args.key?(:path)
