@@ -25,7 +25,7 @@ module Google
       # An admission rule specifies either that all container images used in a pod
       # creation request must be attested to by one or more attestors, that all pod
       # creations will be allowed, or that all pod creations will be denied. Images
-      # matching an admission whitelist pattern are exempted from admission rules and
+      # matching an admission allowlist pattern are exempted from admission rules and
       # will never block a pod creation.
       class AdmissionRule
         include Google::Apis::Core::Hashable
@@ -62,7 +62,7 @@ module Google
         end
       end
       
-      # An admission whitelist pattern exempts images from checks by admission rules.
+      # An admission allowlist pattern exempts images from checks by admission rules.
       class AdmissionWhitelistPattern
         include Google::Apis::Core::Hashable
       
@@ -549,7 +549,7 @@ module Google
         # An admission rule specifies either that all container images used in a pod
         # creation request must be attested to by one or more attestors, that all pod
         # creations will be allowed, or that all pod creations will be denied. Images
-        # matching an admission whitelist pattern are exempted from admission rules and
+        # matching an admission allowlist pattern are exempted from admission rules and
         # will never block a pod creation.
         # Corresponds to the JSON property `defaultAdmissionRule`
         # @return [Google::Apis::BinaryauthorizationV1beta1::AdmissionRule]
