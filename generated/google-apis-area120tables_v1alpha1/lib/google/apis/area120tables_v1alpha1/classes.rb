@@ -379,11 +379,21 @@ module Google
       class Row
         include Google::Apis::Core::Hashable
       
+        # Time when the row was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # The resource name of the row. Row names have the form `tables/`table`/rows/`
         # row``. The name is ignored when creating a row.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Time when the row was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
       
         # The values of the row. This is a map of column key to value. Key is user
         # entered name(default) or the internal column id based on the view in the
@@ -398,7 +408,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
           @values = args[:values] if args.key?(:values)
         end
       end
@@ -412,6 +424,11 @@ module Google
         # @return [Array<Google::Apis::Area120tablesV1alpha1::ColumnDescription>]
         attr_accessor :columns
       
+        # Time when the table was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # The human readable title of the table.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -422,6 +439,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Time when the table was last updated excluding updates to individual rows
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -429,8 +451,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @columns = args[:columns] if args.key?(:columns)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -470,6 +494,11 @@ module Google
       class Workspace
         include Google::Apis::Core::Hashable
       
+        # Time when the workspace was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # The human readable title of the workspace.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -486,15 +515,22 @@ module Google
         # @return [Array<Google::Apis::Area120tablesV1alpha1::Table>]
         attr_accessor :tables
       
+        # Time when the workspace was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @tables = args[:tables] if args.key?(:tables)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
     end

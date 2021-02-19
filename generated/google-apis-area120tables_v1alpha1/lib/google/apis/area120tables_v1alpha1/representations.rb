@@ -253,7 +253,9 @@ module Google
       class Row
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
           property :name, as: 'name'
+          property :update_time, as: 'updateTime'
           hash :values, as: 'values'
         end
       end
@@ -263,8 +265,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :columns, as: 'columns', class: Google::Apis::Area120tablesV1alpha1::ColumnDescription, decorator: Google::Apis::Area120tablesV1alpha1::ColumnDescription::Representation
       
+          property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -281,10 +285,12 @@ module Google
       class Workspace
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           collection :tables, as: 'tables', class: Google::Apis::Area120tablesV1alpha1::Table, decorator: Google::Apis::Area120tablesV1alpha1::Table::Representation
       
+          property :update_time, as: 'updateTime'
         end
       end
     end
