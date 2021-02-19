@@ -420,68 +420,6 @@ module Google
         end
       end
       
-      # Metadata pertaining to the Folder creation process.
-      class CreateFolderMetadata
-        include Google::Apis::Core::Hashable
-      
-        # The display name of the folder.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # The resource name of the folder or organization we are creating the folder
-        # under.
-        # Corresponds to the JSON property `parent`
-        # @return [String]
-        attr_accessor :parent
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @parent = args[:parent] if args.key?(:parent)
-        end
-      end
-      
-      # A status object which is used as the `metadata` field for the Operation
-      # returned by CreateProject. It provides insight for when significant phases of
-      # Project creation have completed.
-      class CreateProjectMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Creation time of the project creation workflow.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # True if the project can be retrieved using GetProject. No other operations on
-        # the project are guaranteed to work until the project creation is complete.
-        # Corresponds to the JSON property `gettable`
-        # @return [Boolean]
-        attr_accessor :gettable
-        alias_method :gettable?, :gettable
-      
-        # True if the project creation process is complete.
-        # Corresponds to the JSON property `ready`
-        # @return [Boolean]
-        attr_accessor :ready
-        alias_method :ready?, :ready
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @gettable = args[:gettable] if args.key?(:gettable)
-          @ready = args[:ready] if args.key?(:ready)
-        end
-      end
-      
       # Runtime operation information for creating a TagKey.
       class CreateTagKeyMetadata
         include Google::Apis::Core::Hashable
@@ -497,48 +435,6 @@ module Google
       
       # Runtime operation information for creating a TagValue.
       class CreateTagValueMetadata
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # A status object which is used as the `metadata` field for the Operation
-      # returned by DeleteFolder.
-      class DeleteFolderMetadata
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # A status object which is used as the `metadata` field for the Operation
-      # returned by DeleteOrganization.
-      class DeleteOrganizationMetadata
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # A status object which is used as the `metadata` field for the Operation
-      # returned by DeleteProject.
-      class DeleteProjectMetadata
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -1193,51 +1089,6 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @projects = args[:projects] if args.key?(:projects)
-        end
-      end
-      
-      # Metadata pertaining to the Folder move process.
-      class MoveFolderMetadata
-        include Google::Apis::Core::Hashable
-      
-        # The resource name of the folder or organization to move the folder to.
-        # Corresponds to the JSON property `destinationParent`
-        # @return [String]
-        attr_accessor :destination_parent
-      
-        # The display name of the folder.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # The resource name of the folder's parent.
-        # Corresponds to the JSON property `sourceParent`
-        # @return [String]
-        attr_accessor :source_parent
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @destination_parent = args[:destination_parent] if args.key?(:destination_parent)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @source_parent = args[:source_parent] if args.key?(:source_parent)
-        end
-      end
-      
-      # A status object which is used as the `metadata` field for the Operation
-      # returned by MoveProject.
-      class MoveProjectMetadata
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -1939,78 +1790,8 @@ module Google
         end
       end
       
-      # A status object which is used as the `metadata` field for the Operation
-      # returned by UndeleteFolder.
-      class UndeleteFolderMetadata
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # A status object which is used as the `metadata` field for the Operation
-      # returned by UndeleteOrganization.
-      class UndeleteOrganizationMetadata
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # A status object which is used as the `metadata` field for the Operation
-      # returned by UndeleteProject.
-      class UndeleteProjectMetadata
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # The request sent to the UndeleteProject method.
       class UndeleteProjectRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # A status object which is used as the `metadata` field for the Operation
-      # returned by UpdateFolder.
-      class UpdateFolderMetadata
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # A status object which is used as the `metadata` field for the Operation
-      # returned by UpdateProject.
-      class UpdateProjectMetadata
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
