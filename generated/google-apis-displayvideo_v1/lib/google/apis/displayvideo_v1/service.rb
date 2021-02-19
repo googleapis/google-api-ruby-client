@@ -1194,6 +1194,70 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists assigned targeting options of an insertion order across targeting types.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser the insertion order belongs to.
+        # @param [Fixnum] insertion_order_id
+        #   Required. The ID of the insertion order to list assigned targeting options for.
+        # @param [String] filter
+        #   Allows filtering by assigned targeting option properties. Supported syntax: *
+        #   Filter expressions are made up of one or more restrictions. * Restrictions can
+        #   be combined by the logical operator `OR` on the same field. * A restriction
+        #   has the form of ``field` `operator` `value``. * The operator must be `EQUALS (=
+        #   )`. * Supported fields: - `targetingType` - `inheritance` Examples: *
+        #   AssignedTargetingOptions of targeting type
+        #   TARGETING_TYPE_PROXIMITY_LOCATION_LIST or TARGETING_TYPE_CHANNEL `
+        #   targetingType="TARGETING_TYPE_PROXIMITY_LOCATION_LIST" OR targetingType="
+        #   TARGETING_TYPE_CHANNEL"` * AssignedTargetingOptions with inheritance status of
+        #   NOT_INHERITED or INHERITED_FROM_PARTNER `inheritance="NOT_INHERITED" OR
+        #   inheritance="INHERITED_FROM_PARTNER"` The length of this field should be no
+        #   more than 500 characters.
+        # @param [String] order_by
+        #   Field by which to sort the list. Acceptable values are: * `targetingType` (
+        #   default) The default sorting order is ascending. To specify descending order
+        #   for a field, a suffix "desc" should be added to the field name. Example: `
+        #   targetingType desc`.
+        # @param [Fixnum] page_size
+        #   Requested page size. The size must be an integer between `1` and `5000`. If
+        #   unspecified, the default is `5000`. Returns error code `INVALID_ARGUMENT` if
+        #   an invalid value is specified.
+        # @param [String] page_token
+        #   A token that lets the client fetch the next page of results. Typically, this
+        #   is the value of next_page_token returned from the previous call to `
+        #   BulkListInsertionOrderAssignedTargetingOptions` method. If not specified, the
+        #   first page of results will be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::BulkListInsertionOrderAssignedTargetingOptionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::BulkListInsertionOrderAssignedTargetingOptionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def bulk_advertiser_insertion_order_list_insertion_order_assigned_targeting_options(advertiser_id, insertion_order_id, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}:bulkListInsertionOrderAssignedTargetingOptions', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::BulkListInsertionOrderAssignedTargetingOptionsResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::BulkListInsertionOrderAssignedTargetingOptionsResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['insertionOrderId'] = insertion_order_id unless insertion_order_id.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new insertion order. Returns the newly created insertion order if
         # successful.
         # @param [Fixnum] advertiser_id
@@ -1403,6 +1467,112 @@ module Google
           command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
           command.params['insertionOrderId'] = insertion_order_id unless insertion_order_id.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a single targeting option assigned to an insertion order.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser the insertion order belongs to.
+        # @param [Fixnum] insertion_order_id
+        #   Required. The ID of the insertion order the assigned targeting option belongs
+        #   to.
+        # @param [String] targeting_type
+        #   Required. Identifies the type of this assigned targeting option.
+        # @param [String] assigned_targeting_option_id
+        #   Required. An identifier unique to the targeting type in this insertion order
+        #   that identifies the assigned targeting option being requested.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::AssignedTargetingOption] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::AssignedTargetingOption]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_advertiser_insertion_order_targeting_type_assigned_targeting_option(advertiser_id, insertion_order_id, targeting_type, assigned_targeting_option_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::AssignedTargetingOption::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::AssignedTargetingOption
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['insertionOrderId'] = insertion_order_id unless insertion_order_id.nil?
+          command.params['targetingType'] = targeting_type unless targeting_type.nil?
+          command.params['assignedTargetingOptionId'] = assigned_targeting_option_id unless assigned_targeting_option_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the targeting options assigned to an insertion order.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser the insertion order belongs to.
+        # @param [Fixnum] insertion_order_id
+        #   Required. The ID of the insertion order to list assigned targeting options for.
+        # @param [String] targeting_type
+        #   Required. Identifies the type of assigned targeting options to list.
+        # @param [String] filter
+        #   Allows filtering by assigned targeting option properties. Supported syntax: *
+        #   Filter expressions are made up of one or more restrictions. * Restrictions can
+        #   be combined by the logical operator `OR`. * A restriction has the form of ``
+        #   field` `operator` `value``. * The operator must be `EQUALS (=)`. * Supported
+        #   fields: - `assignedTargetingOptionId` - `inheritance` Examples: *
+        #   AssignedTargetingOptions with ID 1 or 2 `assignedTargetingOptionId="1" OR
+        #   assignedTargetingOptionId="2"` * AssignedTargetingOptions with inheritance
+        #   status of NOT_INHERITED or INHERITED_FROM_PARTNER `inheritance="NOT_INHERITED"
+        #   OR inheritance="INHERITED_FROM_PARTNER"` The length of this field should be no
+        #   more than 500 characters.
+        # @param [String] order_by
+        #   Field by which to sort the list. Acceptable values are: * `
+        #   assignedTargetingOptionId` (default) The default sorting order is ascending.
+        #   To specify descending order for a field, a suffix "desc" should be added to
+        #   the field name. Example: `assignedTargetingOptionId desc`.
+        # @param [Fixnum] page_size
+        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
+        #   specified.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListInsertionOrderAssignedTargetingOptions` method. If not specified, the
+        #   first page of results will be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::ListInsertionOrderAssignedTargetingOptionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::ListInsertionOrderAssignedTargetingOptionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_advertiser_insertion_order_targeting_type_assigned_targeting_options(advertiser_id, insertion_order_id, targeting_type, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}/targetingTypes/{+targetingType}/assignedTargetingOptions', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::ListInsertionOrderAssignedTargetingOptionsResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::ListInsertionOrderAssignedTargetingOptionsResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['insertionOrderId'] = insertion_order_id unless insertion_order_id.nil?
+          command.params['targetingType'] = targeting_type unless targeting_type.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

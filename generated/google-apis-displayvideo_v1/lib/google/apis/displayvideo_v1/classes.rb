@@ -1782,6 +1782,35 @@ module Google
         end
       end
       
+      # Response message for BulkListInsertionOrderAssignedTargetingOptions.
+      class BulkListInsertionOrderAssignedTargetingOptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of assigned targeting options. This list will be absent if empty.
+        # Corresponds to the JSON property `assignedTargetingOptions`
+        # @return [Array<Google::Apis::DisplayvideoV1::AssignedTargetingOption>]
+        attr_accessor :assigned_targeting_options
+      
+        # A token identifying the next page of results. This value should be specified
+        # as the pageToken in a subsequent
+        # BulkListInsertionOrderAssignedTargetingOptionsRequest to fetch the next page
+        # of results. This token will be absent if there are no more
+        # assigned_targeting_options to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assigned_targeting_options = args[:assigned_targeting_options] if args.key?(:assigned_targeting_options)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # 
       class BulkListLineItemAssignedTargetingOptionsResponse
         include Google::Apis::Core::Hashable
@@ -2302,6 +2331,17 @@ module Google
       class ContentInstreamPositionAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
+        # Output only. The ad type to target. Only applicable to insertion order
+        # targeting and new line items supporting the specified ad type will inherit
+        # this targeting option by default. Possible values are: * `AD_TYPE_VIDEO`, the
+        # setting will be inherited by new line item when line_item_type is `
+        # LINE_ITEM_TYPE_VIDEO_DEFAULT`. * `AD_TYPE_AUDIO`, the setting will be
+        # inherited by new line item when line_item_type is `
+        # LINE_ITEM_TYPE_AUDIO_DEFAULT`.
+        # Corresponds to the JSON property `adType`
+        # @return [String]
+        attr_accessor :ad_type
+      
         # Output only. The content instream position for video or audio ads.
         # Corresponds to the JSON property `contentInstreamPosition`
         # @return [String]
@@ -2319,6 +2359,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ad_type = args[:ad_type] if args.key?(:ad_type)
           @content_instream_position = args[:content_instream_position] if args.key?(:content_instream_position)
           @targeting_option_id = args[:targeting_option_id] if args.key?(:targeting_option_id)
         end
@@ -2352,6 +2393,17 @@ module Google
       class ContentOutstreamPositionAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
+        # Output only. The ad type to target. Only applicable to insertion order
+        # targeting and new line items supporting the specified ad type will inherit
+        # this targeting option by default. Possible values are: * `AD_TYPE_DISPLAY`,
+        # the setting will be inherited by new line item when line_item_type is `
+        # LINE_ITEM_TYPE_DISPLAY_DEFAULT`. * `AD_TYPE_VIDEO`, the setting will be
+        # inherited by new line item when line_item_type is `
+        # LINE_ITEM_TYPE_VIDEO_DEFAULT`.
+        # Corresponds to the JSON property `adType`
+        # @return [String]
+        attr_accessor :ad_type
+      
         # Output only. The content outstream position.
         # Corresponds to the JSON property `contentOutstreamPosition`
         # @return [String]
@@ -2369,6 +2421,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ad_type = args[:ad_type] if args.key?(:ad_type)
           @content_outstream_position = args[:content_outstream_position] if args.key?(:content_outstream_position)
           @targeting_option_id = args[:targeting_option_id] if args.key?(:targeting_option_id)
         end
@@ -2758,6 +2811,16 @@ module Google
         # @return [String]
         attr_accessor :media_duration
       
+        # Output only. Indicates the third-party audio creative supports MP3. Output
+        # only and only valid for third-party audio creatives. Third-party audio
+        # creatives are creatives with following hosting_source: * `
+        # HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `
+        # CREATIVE_TYPE_AUDIO`
+        # Corresponds to the JSON property `mp3Audio`
+        # @return [Boolean]
+        attr_accessor :mp3_audio
+        alias_method :mp3_audio?, :mp3_audio
+      
         # Output only. The resource name of the creative.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2773,6 +2836,16 @@ module Google
         # Corresponds to the JSON property `obaIcon`
         # @return [Google::Apis::DisplayvideoV1::ObaIcon]
         attr_accessor :oba_icon
+      
+        # Output only. Indicates the third-party audio creative supports OGG. Output
+        # only and only valid for third-party audio creatives. Third-party audio
+        # creatives are creatives with following hosting_source: * `
+        # HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `
+        # CREATIVE_TYPE_AUDIO`
+        # Corresponds to the JSON property `oggAudio`
+        # @return [Boolean]
+        attr_accessor :ogg_audio
+        alias_method :ogg_audio?, :ogg_audio
       
         # The length an audio or a video has been played.
         # Corresponds to the JSON property `progressOffset`
@@ -2944,9 +3017,11 @@ module Google
           @js_tracker_url = args[:js_tracker_url] if args.key?(:js_tracker_url)
           @line_item_ids = args[:line_item_ids] if args.key?(:line_item_ids)
           @media_duration = args[:media_duration] if args.key?(:media_duration)
+          @mp3_audio = args[:mp3_audio] if args.key?(:mp3_audio)
           @name = args[:name] if args.key?(:name)
           @notes = args[:notes] if args.key?(:notes)
           @oba_icon = args[:oba_icon] if args.key?(:oba_icon)
+          @ogg_audio = args[:ogg_audio] if args.key?(:ogg_audio)
           @progress_offset = args[:progress_offset] if args.key?(:progress_offset)
           @require_html5 = args[:require_html5] if args.key?(:require_html5)
           @require_mraid = args[:require_mraid] if args.key?(:require_mraid)
@@ -5841,6 +5916,35 @@ module Google
         end
       end
       
+      # Response message for ListInsertionOrderAssignedTargetingOptions.
+      class ListInsertionOrderAssignedTargetingOptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of assigned targeting options. This list will be absent if empty.
+        # Corresponds to the JSON property `assignedTargetingOptions`
+        # @return [Array<Google::Apis::DisplayvideoV1::AssignedTargetingOption>]
+        attr_accessor :assigned_targeting_options
+      
+        # A token identifying the next page of results. This value should be specified
+        # as the pageToken in a subsequent
+        # ListInsertionOrderAssignedTargetingOptionsRequest to fetch the next page of
+        # results. This token will be absent if there are no more
+        # assigned_targeting_options to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assigned_targeting_options = args[:assigned_targeting_options] if args.key?(:assigned_targeting_options)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # 
       class ListInsertionOrdersResponse
         include Google::Apis::Core::Hashable
@@ -6660,6 +6764,17 @@ module Google
       class OnScreenPositionAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
+        # Output only. The ad type to target. Only applicable to insertion order
+        # targeting and new line items supporting the specified ad type will inherit
+        # this targeting option by default. Possible values are: * `AD_TYPE_DISPLAY`,
+        # the setting will be inherited by new line item when line_item_type is `
+        # LINE_ITEM_TYPE_DISPLAY_DEFAULT`. * `AD_TYPE_VIDEO`, the setting will be
+        # inherited by new line item when line_item_type is `
+        # LINE_ITEM_TYPE_VIDEO_DEFAULT`.
+        # Corresponds to the JSON property `adType`
+        # @return [String]
+        attr_accessor :ad_type
+      
         # Output only. The on screen position.
         # Corresponds to the JSON property `onScreenPosition`
         # @return [String]
@@ -6677,6 +6792,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ad_type = args[:ad_type] if args.key?(:ad_type)
           @on_screen_position = args[:on_screen_position] if args.key?(:on_screen_position)
           @targeting_option_id = args[:targeting_option_id] if args.key?(:targeting_option_id)
         end
@@ -7184,16 +7300,19 @@ module Google
         # The goal amount, in micros of the advertiser's currency. Applicable when
         # performance_goal_type is one of: * `PERFORMANCE_GOAL_TYPE_CPM` * `
         # PERFORMANCE_GOAL_TYPE_CPC` * `PERFORMANCE_GOAL_TYPE_CPA` * `
-        # PERFORMANCE_GOAL_TYPE_CPIAVC` For example 1500000 represents 1.5 standard
-        # units of the currency.
+        # PERFORMANCE_GOAL_TYPE_CPIAVC` * `PERFORMANCE_GOAL_TYPE_VCPM` For example
+        # 1500000 represents 1.5 standard units of the currency.
         # Corresponds to the JSON property `performanceGoalAmountMicros`
         # @return [Fixnum]
         attr_accessor :performance_goal_amount_micros
       
         # The decimal representation of the goal percentage in micros. Applicable when
         # performance_goal_type is one of: * `PERFORMANCE_GOAL_TYPE_CTR` * `
-        # PERFORMANCE_GOAL_TYPE_VIEWABILITY` For example, 70000 represents 7% (decimal 0.
-        # 07).
+        # PERFORMANCE_GOAL_TYPE_VIEWABILITY` * `PERFORMANCE_GOAL_TYPE_CLICK_CVR` * `
+        # PERFORMANCE_GOAL_TYPE_IMPRESSION_CVR` * `PERFORMANCE_GOAL_TYPE_VTR` * `
+        # PERFORMANCE_GOAL_TYPE_AUDIO_COMPLETION_RATE` * `
+        # PERFORMANCE_GOAL_TYPE_VIDEO_COMPLETION_RATE` For example, 70000 represents 7% (
+        # decimal 0.07).
         # Corresponds to the JSON property `performanceGoalPercentageMicros`
         # @return [Fixnum]
         attr_accessor :performance_goal_percentage_micros
