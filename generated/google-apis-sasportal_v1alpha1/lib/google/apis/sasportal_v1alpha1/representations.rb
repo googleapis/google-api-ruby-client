@@ -277,6 +277,8 @@ module Google
       
           property :display_name, as: 'displayName'
           property :fcc_id, as: 'fccId'
+          collection :grant_range_allowlists, as: 'grantRangeAllowlists', class: Google::Apis::SasportalV1alpha1::SasPortalFrequencyRange, decorator: Google::Apis::SasportalV1alpha1::SasPortalFrequencyRange::Representation
+      
           collection :grants, as: 'grants', class: Google::Apis::SasportalV1alpha1::SasPortalDeviceGrant, decorator: Google::Apis::SasportalV1alpha1::SasPortalDeviceGrant::Representation
       
           property :name, as: 'name'
