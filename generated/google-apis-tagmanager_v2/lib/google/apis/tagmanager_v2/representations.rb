@@ -403,6 +403,7 @@ module Google
           property :container_id, as: 'containerId'
           property :fingerprint, as: 'fingerprint'
           property :name, as: 'name'
+          property :notes, as: 'notes'
           collection :parameter, as: 'parameter', class: Google::Apis::TagmanagerV2::Parameter, decorator: Google::Apis::TagmanagerV2::Parameter::Representation
       
           property :parent_folder_id, as: 'parentFolderId'
