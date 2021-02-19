@@ -47,7 +47,7 @@ module Google
       # See and download your exact date of birth
       AUTH_USER_BIRTHDAY_READ = 'https://www.googleapis.com/auth/user.birthday.read'
 
-      # View your email addresses
+      # See and download all of your Google Account email addresses
       AUTH_USER_EMAILS_READ = 'https://www.googleapis.com/auth/user.emails.read'
 
       # See your gender
