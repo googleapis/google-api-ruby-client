@@ -16,13 +16,13 @@ module Google
   module Apis
     module CalendarV3
       # Version of the google-apis-calendar_v3 gem
-      GEM_VERSION = "0.2.0"
+      GEM_VERSION = "0.3.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.1.2"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20210128"
+      REVISION = "20210215"
     end
   end
 end
