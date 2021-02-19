@@ -22,6 +22,24 @@ module Google
   module Apis
     module CloudresourcemanagerV3
       
+      class AuditConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuditLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Binding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -34,18 +52,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CreateFolderMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CreateProjectMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CreateTagKeyMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,24 +59,6 @@ module Google
       end
       
       class CreateTagValueMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DeleteFolderMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DeleteOrganizationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DeleteProjectMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -94,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FolderOperation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -101,6 +95,18 @@ module Google
       end
       
       class FolderOperationError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetPolicyOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -118,13 +124,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class MoveFolderMetadata
+      class ListTagBindingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class MoveProjectMetadata
+      class ListTagKeysResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListTagValuesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -136,7 +148,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProjectCreationStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -148,31 +172,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UndeleteFolderMetadata
+      class TagBinding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UndeleteOrganizationMetadata
+      class TagKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UndeleteProjectMetadata
+      class TagValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UpdateFolderMetadata
+      class TestIamPermissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UpdateProjectMetadata
+      class TestIamPermissionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -188,6 +212,33 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuditConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::CloudresourcemanagerV3::AuditLogConfig, decorator: Google::Apis::CloudresourcemanagerV3::AuditLogConfig::Representation
+      
+          property :service, as: 'service'
+        end
+      end
+      
+      class AuditLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exempted_members, as: 'exemptedMembers'
+          property :log_type, as: 'logType'
+        end
+      end
+      
+      class Binding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition', class: Google::Apis::CloudresourcemanagerV3::Expr, decorator: Google::Apis::CloudresourcemanagerV3::Expr::Representation
+      
+          collection :members, as: 'members'
+          property :role, as: 'role'
+        end
       end
       
       class CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation
@@ -210,23 +261,6 @@ module Google
         end
       end
       
-      class CreateFolderMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :display_name, as: 'displayName'
-          property :parent, as: 'parent'
-        end
-      end
-      
-      class CreateProjectMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :gettable, as: 'gettable'
-          property :ready, as: 'ready'
-        end
-      end
-      
       class CreateTagKeyMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -234,24 +268,6 @@ module Google
       end
       
       class CreateTagValueMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class DeleteFolderMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class DeleteOrganizationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class DeleteProjectMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -275,6 +291,16 @@ module Google
         end
       end
       
+      class Expr
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :expression, as: 'expression'
+          property :location, as: 'location'
+          property :title, as: 'title'
+        end
+      end
+      
       class FolderOperation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -289,6 +315,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :error_message_id, as: 'errorMessageId'
+        end
+      end
+      
+      class GetIamPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :options, as: 'options', class: Google::Apis::CloudresourcemanagerV3::GetPolicyOptions, decorator: Google::Apis::CloudresourcemanagerV3::GetPolicyOptions::Representation
+      
+        end
+      end
+      
+      class GetPolicyOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :requested_policy_version, as: 'requestedPolicyVersion'
         end
       end
       
@@ -313,18 +354,30 @@ module Google
         end
       end
       
-      class MoveFolderMetadata
+      class ListTagBindingsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :destination_parent, as: 'destinationParent'
-          property :display_name, as: 'displayName'
-          property :source_parent, as: 'sourceParent'
+          property :next_page_token, as: 'nextPageToken'
+          collection :tag_bindings, as: 'tagBindings', class: Google::Apis::CloudresourcemanagerV3::TagBinding, decorator: Google::Apis::CloudresourcemanagerV3::TagBinding::Representation
+      
         end
       end
       
-      class MoveProjectMetadata
+      class ListTagKeysResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :tag_keys, as: 'tagKeys', class: Google::Apis::CloudresourcemanagerV3::TagKey, decorator: Google::Apis::CloudresourcemanagerV3::TagKey::Representation
+      
+        end
+      end
+      
+      class ListTagValuesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :tag_values, as: 'tagValues', class: Google::Apis::CloudresourcemanagerV3::TagValue, decorator: Google::Apis::CloudresourcemanagerV3::TagValue::Representation
+      
         end
       end
       
@@ -340,12 +393,33 @@ module Google
         end
       end
       
+      class Policy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::CloudresourcemanagerV3::AuditConfig, decorator: Google::Apis::CloudresourcemanagerV3::AuditConfig::Representation
+      
+          collection :bindings, as: 'bindings', class: Google::Apis::CloudresourcemanagerV3::Binding, decorator: Google::Apis::CloudresourcemanagerV3::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :version, as: 'version'
+        end
+      end
+      
       class ProjectCreationStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :gettable, as: 'gettable'
           property :ready, as: 'ready'
+        end
+      end
+      
+      class SetIamPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy', class: Google::Apis::CloudresourcemanagerV3::Policy, decorator: Google::Apis::CloudresourcemanagerV3::Policy::Representation
+      
+          property :update_mask, as: 'updateMask'
         end
       end
       
@@ -358,33 +432,54 @@ module Google
         end
       end
       
-      class UndeleteFolderMetadata
+      class TagBinding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :parent, as: 'parent'
+          property :tag_value, as: 'tagValue'
         end
       end
       
-      class UndeleteOrganizationMetadata
+      class TagKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :namespaced_name, as: 'namespacedName'
+          property :parent, as: 'parent'
+          property :short_name, as: 'shortName'
+          property :update_time, as: 'updateTime'
         end
       end
       
-      class UndeleteProjectMetadata
+      class TagValue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :namespaced_name, as: 'namespacedName'
+          property :parent, as: 'parent'
+          property :short_name, as: 'shortName'
+          property :update_time, as: 'updateTime'
         end
       end
       
-      class UpdateFolderMetadata
+      class TestIamPermissionsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
         end
       end
       
-      class UpdateProjectMetadata
+      class TestIamPermissionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
         end
       end
       
