@@ -172,6 +172,27 @@ module Google
         end
       end
       
+      # Autopilot is the configuration for Autopilot settings on the cluster. It is
+      # the official product name of what is previously known as AutoGKE
+      class Autopilot
+        include Google::Apis::Core::Hashable
+      
+        # Enable Autopilot
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # AutoprovisioningNodePoolDefaults contains defaults for a node pool created by
       # NAP.
       class AutoprovisioningNodePoolDefaults
@@ -434,6 +455,12 @@ module Google
         # Corresponds to the JSON property `authenticatorGroupsConfig`
         # @return [Google::Apis::ContainerV1::AuthenticatorGroupsConfig]
         attr_accessor :authenticator_groups_config
+      
+        # Autopilot is the configuration for Autopilot settings on the cluster. It is
+        # the official product name of what is previously known as AutoGKE
+        # Corresponds to the JSON property `autopilot`
+        # @return [Google::Apis::ContainerV1::Autopilot]
+        attr_accessor :autopilot
       
         # ClusterAutoscaling contains global, per-cluster information required by
         # Cluster Autoscaler to automatically adjust the size of the cluster and create/
@@ -780,6 +807,7 @@ module Google
         def update!(**args)
           @addons_config = args[:addons_config] if args.key?(:addons_config)
           @authenticator_groups_config = args[:authenticator_groups_config] if args.key?(:authenticator_groups_config)
+          @autopilot = args[:autopilot] if args.key?(:autopilot)
           @autoscaling = args[:autoscaling] if args.key?(:autoscaling)
           @binary_authorization = args[:binary_authorization] if args.key?(:binary_authorization)
           @cluster_ipv4_cidr = args[:cluster_ipv4_cidr] if args.key?(:cluster_ipv4_cidr)
@@ -1815,6 +1843,28 @@ module Google
         end
       end
       
+      # Parameters that can be configured on Linux nodes.
+      class LinuxNodeConfig
+        include Google::Apis::Core::Hashable
+      
+        # The Linux kernel parameters to be applied to the nodes and all pods running on
+        # the nodes. The following parameters are supported. net.core.netdev_max_backlog
+        # net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max
+        # net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
+        # Corresponds to the JSON property `sysctls`
+        # @return [Hash<String,String>]
+        attr_accessor :sysctls
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sysctls = args[:sysctls] if args.key?(:sysctls)
+        end
+      end
+      
       # ListClustersResponse is the result of ListClustersRequest.
       class ListClustersResponse
         include Google::Apis::Core::Hashable
@@ -2263,6 +2313,11 @@ module Google
         # @return [String]
         attr_accessor :image_type
       
+        # Node kubelet configs.
+        # Corresponds to the JSON property `kubeletConfig`
+        # @return [Google::Apis::ContainerV1::NodeKubeletConfig]
+        attr_accessor :kubelet_config
+      
         # The map of Kubernetes labels (key/value pairs) to be applied to each node.
         # These will added in addition to any default label(s) that Kubernetes may apply
         # to the node. In case of conflict in label keys, the applied set may differ
@@ -2273,6 +2328,11 @@ module Google
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
+      
+        # Parameters that can be configured on Linux nodes.
+        # Corresponds to the JSON property `linuxNodeConfig`
+        # @return [Google::Apis::ContainerV1::LinuxNodeConfig]
+        attr_accessor :linux_node_config
       
         # The number of local SSD disks to be attached to the node. The limit for this
         # value is dependent upon the maximum number of disks available on a machine per
@@ -2402,7 +2462,9 @@ module Google
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @image_type = args[:image_type] if args.key?(:image_type)
+          @kubelet_config = args[:kubelet_config] if args.key?(:kubelet_config)
           @labels = args[:labels] if args.key?(:labels)
+          @linux_node_config = args[:linux_node_config] if args.key?(:linux_node_config)
           @local_ssd_count = args[:local_ssd_count] if args.key?(:local_ssd_count)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
@@ -2417,6 +2479,52 @@ module Google
           @tags = args[:tags] if args.key?(:tags)
           @taints = args[:taints] if args.key?(:taints)
           @workload_metadata_config = args[:workload_metadata_config] if args.key?(:workload_metadata_config)
+        end
+      end
+      
+      # Node kubelet configs.
+      class NodeKubeletConfig
+        include Google::Apis::Core::Hashable
+      
+        # Enable CPU CFS quota enforcement for containers that specify CPU limits. This
+        # option is enabled by default which makes kubelet use CFS quota (https://www.
+        # kernel.org/doc/Documentation/scheduler/sched-bwc.txt) to enforce container CPU
+        # limits. Otherwise, CPU limits will not be enforced at all. Disable this option
+        # to mitigate CPU throttling problems while still having your pods to be in
+        # Guaranteed QoS class by specifying the CPU limits. The default value is 'true'
+        # if unspecified.
+        # Corresponds to the JSON property `cpuCfsQuota`
+        # @return [Boolean]
+        attr_accessor :cpu_cfs_quota
+        alias_method :cpu_cfs_quota?, :cpu_cfs_quota
+      
+        # Set the CPU CFS quota period value 'cpu.cfs_period_us'. The string must be a
+        # sequence of decimal numbers, each with optional fraction and a unit suffix,
+        # such as "300ms". Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h"
+        # . The value must be a positive duration.
+        # Corresponds to the JSON property `cpuCfsQuotaPeriod`
+        # @return [String]
+        attr_accessor :cpu_cfs_quota_period
+      
+        # Control the CPU management policy on the node. See https://kubernetes.io/docs/
+        # tasks/administer-cluster/cpu-management-policies/ The following values are
+        # allowed. - "none": the default, which represents the existing scheduling
+        # behavior. - "static": allows pods with certain resource characteristics to be
+        # granted increased CPU affinity and exclusivity on the node. The default value
+        # is 'none' if unspecified.
+        # Corresponds to the JSON property `cpuManagerPolicy`
+        # @return [String]
+        attr_accessor :cpu_manager_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cpu_cfs_quota = args[:cpu_cfs_quota] if args.key?(:cpu_cfs_quota)
+          @cpu_cfs_quota_period = args[:cpu_cfs_quota_period] if args.key?(:cpu_cfs_quota_period)
+          @cpu_manager_policy = args[:cpu_manager_policy] if args.key?(:cpu_manager_policy)
         end
       end
       
@@ -4183,6 +4291,16 @@ module Google
         # @return [String]
         attr_accessor :image_type
       
+        # Node kubelet configs.
+        # Corresponds to the JSON property `kubeletConfig`
+        # @return [Google::Apis::ContainerV1::NodeKubeletConfig]
+        attr_accessor :kubelet_config
+      
+        # Parameters that can be configured on Linux nodes.
+        # Corresponds to the JSON property `linuxNodeConfig`
+        # @return [Google::Apis::ContainerV1::LinuxNodeConfig]
+        attr_accessor :linux_node_config
+      
         # The desired list of Google Compute Engine [zones](https://cloud.google.com/
         # compute/docs/zones#available) in which the node pool's nodes should be located.
         # Changing the locations for a node pool will result in nodes being either
@@ -4261,6 +4379,8 @@ module Google
         def update!(**args)
           @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
           @image_type = args[:image_type] if args.key?(:image_type)
+          @kubelet_config = args[:kubelet_config] if args.key?(:kubelet_config)
+          @linux_node_config = args[:linux_node_config] if args.key?(:linux_node_config)
           @locations = args[:locations] if args.key?(:locations)
           @name = args[:name] if args.key?(:name)
           @node_pool_id = args[:node_pool_id] if args.key?(:node_pool_id)

@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Autopilot
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AutoprovisioningNodePoolDefaults
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -232,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LinuxNodeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListClustersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -311,6 +323,12 @@ module Google
       end
       
       class NodeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeKubeletConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -638,6 +656,13 @@ module Google
         end
       end
       
+      class Autopilot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class AutoprovisioningNodePoolDefaults
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -709,6 +734,8 @@ module Google
           property :addons_config, as: 'addonsConfig', class: Google::Apis::ContainerV1::AddonsConfig, decorator: Google::Apis::ContainerV1::AddonsConfig::Representation
       
           property :authenticator_groups_config, as: 'authenticatorGroupsConfig', class: Google::Apis::ContainerV1::AuthenticatorGroupsConfig, decorator: Google::Apis::ContainerV1::AuthenticatorGroupsConfig::Representation
+      
+          property :autopilot, as: 'autopilot', class: Google::Apis::ContainerV1::Autopilot, decorator: Google::Apis::ContainerV1::Autopilot::Representation
       
           property :autoscaling, as: 'autoscaling', class: Google::Apis::ContainerV1::ClusterAutoscaling, decorator: Google::Apis::ContainerV1::ClusterAutoscaling::Representation
       
@@ -1033,6 +1060,13 @@ module Google
         end
       end
       
+      class LinuxNodeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :sysctls, as: 'sysctls'
+        end
+      end
+      
       class ListClustersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1164,7 +1198,11 @@ module Google
           property :disk_size_gb, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
           property :image_type, as: 'imageType'
+          property :kubelet_config, as: 'kubeletConfig', class: Google::Apis::ContainerV1::NodeKubeletConfig, decorator: Google::Apis::ContainerV1::NodeKubeletConfig::Representation
+      
           hash :labels, as: 'labels'
+          property :linux_node_config, as: 'linuxNodeConfig', class: Google::Apis::ContainerV1::LinuxNodeConfig, decorator: Google::Apis::ContainerV1::LinuxNodeConfig::Representation
+      
           property :local_ssd_count, as: 'localSsdCount'
           property :machine_type, as: 'machineType'
           hash :metadata, as: 'metadata'
@@ -1184,6 +1222,15 @@ module Google
       
           property :workload_metadata_config, as: 'workloadMetadataConfig', class: Google::Apis::ContainerV1::WorkloadMetadataConfig, decorator: Google::Apis::ContainerV1::WorkloadMetadataConfig::Representation
       
+        end
+      end
+      
+      class NodeKubeletConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpu_cfs_quota, as: 'cpuCfsQuota'
+          property :cpu_cfs_quota_period, as: 'cpuCfsQuotaPeriod'
+          property :cpu_manager_policy, as: 'cpuManagerPolicy'
         end
       end
       
@@ -1613,6 +1660,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_id, as: 'clusterId'
           property :image_type, as: 'imageType'
+          property :kubelet_config, as: 'kubeletConfig', class: Google::Apis::ContainerV1::NodeKubeletConfig, decorator: Google::Apis::ContainerV1::NodeKubeletConfig::Representation
+      
+          property :linux_node_config, as: 'linuxNodeConfig', class: Google::Apis::ContainerV1::LinuxNodeConfig, decorator: Google::Apis::ContainerV1::LinuxNodeConfig::Representation
+      
           collection :locations, as: 'locations'
           property :name, as: 'name'
           property :node_pool_id, as: 'nodePoolId'
