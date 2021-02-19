@@ -49,6 +49,223 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Creates a schema.
+        # @param [String] parent
+        #   Required. The name of the project in which to create the schema. Format is `
+        #   projects/`project-id``.
+        # @param [Google::Apis::PubsubV1::Schema] schema_object
+        # @param [String] schema_id
+        #   The ID to use for the schema, which will become the final component of the
+        #   schema's resource name. See https://cloud.google.com/pubsub/docs/admin#
+        #   resource_names for resource name constraints.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubV1::Schema] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubV1::Schema]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_schema(parent, schema_object = nil, schema_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/schemas', options)
+          command.request_representation = Google::Apis::PubsubV1::Schema::Representation
+          command.request_object = schema_object
+          command.response_representation = Google::Apis::PubsubV1::Schema::Representation
+          command.response_class = Google::Apis::PubsubV1::Schema
+          command.params['parent'] = parent unless parent.nil?
+          command.query['schemaId'] = schema_id unless schema_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a schema.
+        # @param [String] name
+        #   Required. Name of the schema to delete. Format is `projects/`project`/schemas/`
+        #   schema``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_schema(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::PubsubV1::Empty::Representation
+          command.response_class = Google::Apis::PubsubV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a schema.
+        # @param [String] name
+        #   Required. The name of the schema to get. Format is `projects/`project`/schemas/
+        #   `schema``.
+        # @param [String] view
+        #   The set of fields to return in the response. If not set, returns a Schema with
+        #   `name` and `type`, but not `definition`. Set to `FULL` to retrieve all fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubV1::Schema] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubV1::Schema]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_schema(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::PubsubV1::Schema::Representation
+          command.response_class = Google::Apis::PubsubV1::Schema
+          command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists schemas in a project.
+        # @param [String] parent
+        #   Required. The name of the project in which to list schemas. Format is `
+        #   projects/`project-id``.
+        # @param [Fixnum] page_size
+        #   Maximum number of schemas to return.
+        # @param [String] page_token
+        #   The value returned by the last `ListSchemasResponse`; indicates that this is a
+        #   continuation of a prior `ListSchemas` call, and that the system should return
+        #   the next page of data.
+        # @param [String] view
+        #   The set of Schema fields to return in the response. If not set, returns
+        #   Schemas with `name` and `type`, but not `definition`. Set to `FULL` to
+        #   retrieve all fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubV1::ListSchemasResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubV1::ListSchemasResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_schemas(parent, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/schemas', options)
+          command.response_representation = Google::Apis::PubsubV1::ListSchemasResponse::Representation
+          command.response_class = Google::Apis::PubsubV1::ListSchemasResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Validates a schema.
+        # @param [String] parent
+        #   Required. The name of the project in which to validate schemas. Format is `
+        #   projects/`project-id``.
+        # @param [Google::Apis::PubsubV1::ValidateSchemaRequest] validate_schema_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubV1::ValidateSchemaResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubV1::ValidateSchemaResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def validate_schema(parent, validate_schema_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/schemas:validate', options)
+          command.request_representation = Google::Apis::PubsubV1::ValidateSchemaRequest::Representation
+          command.request_object = validate_schema_request_object
+          command.response_representation = Google::Apis::PubsubV1::ValidateSchemaResponse::Representation
+          command.response_class = Google::Apis::PubsubV1::ValidateSchemaResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Validates a message against a schema.
+        # @param [String] parent
+        #   Required. The name of the project in which to validate schemas. Format is `
+        #   projects/`project-id``.
+        # @param [Google::Apis::PubsubV1::ValidateMessageRequest] validate_message_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubV1::ValidateMessageResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubV1::ValidateMessageResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def validate_schema_message(parent, validate_message_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/schemas:validateMessage', options)
+          command.request_representation = Google::Apis::PubsubV1::ValidateMessageRequest::Representation
+          command.request_object = validate_message_request_object
+          command.response_representation = Google::Apis::PubsubV1::ValidateMessageResponse::Representation
+          command.response_class = Google::Apis::PubsubV1::ValidateMessageResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a snapshot from the requested subscription. Snapshots are used in [
         # Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations, which
         # allow you to manage message acknowledgments in bulk. That is, you can set the

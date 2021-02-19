@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListSchemasResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSnapshotsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -178,6 +184,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Schema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SchemaSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SeekRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -244,6 +262,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ValidateMessageRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ValidateMessageResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ValidateSchemaRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ValidateSchemaResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AcknowledgeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -303,6 +345,15 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class ListSchemasResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :schemas, as: 'schemas', class: Google::Apis::PubsubV1::Schema, decorator: Google::Apis::PubsubV1::Schema::Representation
+      
         end
       end
       
@@ -460,6 +511,23 @@ module Google
         end
       end
       
+      class Schema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :definition, as: 'definition'
+          property :name, as: 'name'
+          property :type, as: 'type'
+        end
+      end
+      
+      class SchemaSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encoding, as: 'encoding'
+          property :schema, as: 'schema'
+        end
+      end
+      
       class SeekRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -538,6 +606,8 @@ module Google
       
           property :name, as: 'name'
           property :satisfies_pzs, as: 'satisfiesPzs'
+          property :schema_settings, as: 'schemaSettings', class: Google::Apis::PubsubV1::SchemaSettings, decorator: Google::Apis::PubsubV1::SchemaSettings::Representation
+      
         end
       end
       
@@ -565,6 +635,37 @@ module Google
           property :topic, as: 'topic', class: Google::Apis::PubsubV1::Topic, decorator: Google::Apis::PubsubV1::Topic::Representation
       
           property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class ValidateMessageRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encoding, as: 'encoding'
+          property :message, :base64 => true, as: 'message'
+          property :name, as: 'name'
+          property :schema, as: 'schema', class: Google::Apis::PubsubV1::Schema, decorator: Google::Apis::PubsubV1::Schema::Representation
+      
+        end
+      end
+      
+      class ValidateMessageResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ValidateSchemaRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :schema, as: 'schema', class: Google::Apis::PubsubV1::Schema, decorator: Google::Apis::PubsubV1::Schema::Representation
+      
+        end
+      end
+      
+      class ValidateSchemaResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
     end

@@ -292,6 +292,32 @@ module Google
         end
       end
       
+      # Response for the `ListSchemas` method.
+      class ListSchemasResponse
+        include Google::Apis::Core::Hashable
+      
+        # If not empty, indicates that there may be more schemas that match the request;
+        # this value should be passed in a new `ListSchemasRequest`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The resulting schemas.
+        # Corresponds to the JSON property `schemas`
+        # @return [Array<Google::Apis::PubsubV1::Schema>]
+        attr_accessor :schemas
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @schemas = args[:schemas] if args.key?(:schemas)
+        end
+      end
+      
       # Response for the `ListSnapshots` method.
       class ListSnapshotsResponse
         include Google::Apis::Core::Hashable
@@ -898,6 +924,66 @@ module Google
         end
       end
       
+      # A schema resource.
+      class Schema
+        include Google::Apis::Core::Hashable
+      
+        # The definition of the schema. This should contain a string representing the
+        # full definition of the schema that is a valid schema definition of the type
+        # specified in `type`.
+        # Corresponds to the JSON property `definition`
+        # @return [String]
+        attr_accessor :definition
+      
+        # Required. Name of the schema. Format is `projects/`project`/schemas/`schema``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The type of the schema definition.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @definition = args[:definition] if args.key?(:definition)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Settings for validating messages published against a schema.
+      class SchemaSettings
+        include Google::Apis::Core::Hashable
+      
+        # The encoding of messages validated against `schema`.
+        # Corresponds to the JSON property `encoding`
+        # @return [String]
+        attr_accessor :encoding
+      
+        # Required. The name of the schema that messages published should be validated
+        # against. Format is `projects/`project`/schemas/`schema``. The value of this
+        # field will be `_deleted-schema_` if the schema has been deleted.
+        # Corresponds to the JSON property `schema`
+        # @return [String]
+        attr_accessor :schema
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encoding = args[:encoding] if args.key?(:encoding)
+          @schema = args[:schema] if args.key?(:schema)
+        end
+      end
+      
       # Request for the `Seek` method.
       class SeekRequest
         include Google::Apis::Core::Hashable
@@ -1260,6 +1346,11 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
+        # Settings for validating messages published against a schema.
+        # Corresponds to the JSON property `schemaSettings`
+        # @return [Google::Apis::PubsubV1::SchemaSettings]
+        attr_accessor :schema_settings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1271,6 +1362,7 @@ module Google
           @message_storage_policy = args[:message_storage_policy] if args.key?(:message_storage_policy)
           @name = args[:name] if args.key?(:name)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
+          @schema_settings = args[:schema_settings] if args.key?(:schema_settings)
         end
       end
       
@@ -1355,6 +1447,90 @@ module Google
         def update!(**args)
           @topic = args[:topic] if args.key?(:topic)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Request for the `ValidateMessage` method.
+      class ValidateMessageRequest
+        include Google::Apis::Core::Hashable
+      
+        # The encoding expected for messages
+        # Corresponds to the JSON property `encoding`
+        # @return [String]
+        attr_accessor :encoding
+      
+        # Message to validate against the provided `schema_spec`.
+        # Corresponds to the JSON property `message`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :message
+      
+        # Name of the schema against which to validate. Format is `projects/`project`/
+        # schemas/`schema``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A schema resource.
+        # Corresponds to the JSON property `schema`
+        # @return [Google::Apis::PubsubV1::Schema]
+        attr_accessor :schema
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encoding = args[:encoding] if args.key?(:encoding)
+          @message = args[:message] if args.key?(:message)
+          @name = args[:name] if args.key?(:name)
+          @schema = args[:schema] if args.key?(:schema)
+        end
+      end
+      
+      # Response for the `ValidateMessage` method. Empty for now.
+      class ValidateMessageResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request for the `ValidateSchema` method.
+      class ValidateSchemaRequest
+        include Google::Apis::Core::Hashable
+      
+        # A schema resource.
+        # Corresponds to the JSON property `schema`
+        # @return [Google::Apis::PubsubV1::Schema]
+        attr_accessor :schema
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @schema = args[:schema] if args.key?(:schema)
+        end
+      end
+      
+      # Response for the `ValidateSchema` method. Empty for now.
+      class ValidateSchemaResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
     end
