@@ -3874,6 +3874,12 @@ module Google
         # @return [String]
         attr_accessor :ddl_operation_performed
       
+        # [Output-only] The DDL target dataset. Present only for CREATE/ALTER/DROP
+        # SCHEMA queries.
+        # Corresponds to the JSON property `ddlTargetDataset`
+        # @return [Google::Apis::BigqueryV2::DatasetReference]
+        attr_accessor :ddl_target_dataset
+      
         # The DDL target routine. Present only for CREATE/DROP FUNCTION/PROCEDURE
         # queries.
         # Corresponds to the JSON property `ddlTargetRoutine`
@@ -4017,6 +4023,7 @@ module Google
           @cache_hit = args[:cache_hit] if args.key?(:cache_hit)
           @ddl_affected_row_access_policy_count = args[:ddl_affected_row_access_policy_count] if args.key?(:ddl_affected_row_access_policy_count)
           @ddl_operation_performed = args[:ddl_operation_performed] if args.key?(:ddl_operation_performed)
+          @ddl_target_dataset = args[:ddl_target_dataset] if args.key?(:ddl_target_dataset)
           @ddl_target_routine = args[:ddl_target_routine] if args.key?(:ddl_target_routine)
           @ddl_target_row_access_policy = args[:ddl_target_row_access_policy] if args.key?(:ddl_target_row_access_policy)
           @ddl_target_table = args[:ddl_target_table] if args.key?(:ddl_target_table)

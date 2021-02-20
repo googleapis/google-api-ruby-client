@@ -1770,6 +1770,8 @@ module Google
           property :cache_hit, as: 'cacheHit'
           property :ddl_affected_row_access_policy_count, :numeric_string => true, as: 'ddlAffectedRowAccessPolicyCount'
           property :ddl_operation_performed, as: 'ddlOperationPerformed'
+          property :ddl_target_dataset, as: 'ddlTargetDataset', class: Google::Apis::BigqueryV2::DatasetReference, decorator: Google::Apis::BigqueryV2::DatasetReference::Representation
+      
           property :ddl_target_routine, as: 'ddlTargetRoutine', class: Google::Apis::BigqueryV2::RoutineReference, decorator: Google::Apis::BigqueryV2::RoutineReference::Representation
       
           property :ddl_target_row_access_policy, as: 'ddlTargetRowAccessPolicy', class: Google::Apis::BigqueryV2::RowAccessPolicyReference, decorator: Google::Apis::BigqueryV2::RowAccessPolicyReference::Representation
