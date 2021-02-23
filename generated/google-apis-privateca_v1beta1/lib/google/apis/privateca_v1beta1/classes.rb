@@ -1869,8 +1869,7 @@ module Google
         attr_accessor :trace_spans
       
         # Private Preview. This feature is only available for approved services. User
-        # defined labels for the resource that this operation is associated with. Only a
-        # combination of 1000 user labels per consumer project are allowed.
+        # defined labels for the resource that this operation is associated with.
         # Corresponds to the JSON property `userLabels`
         # @return [Hash<String,String>]
         attr_accessor :user_labels
