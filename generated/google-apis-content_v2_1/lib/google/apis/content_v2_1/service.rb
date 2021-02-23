@@ -4389,7 +4389,8 @@ module Google
         # @param [Fixnum] merchant_id
         #   Required. The id of the merchant who owns the repricing rule.
         # @param [String] country_code
-        #   CLDR country code (e.g. "US"), used as a filter on repricing rules.
+        #   [CLDR country code](http://www.unicode.org/repos/cldr/tags/latest/common/main/
+        #   en.xml) (e.g. "US"), used as a filter on repricing rules.
         # @param [String] language_code
         #   The two-letter ISO 639-1 language code associated with the repricing rule,
         #   used as a filter.
@@ -4845,6 +4846,174 @@ module Google
           command.response_representation = Google::Apis::ContentV2_1::ReturnpolicyListResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::ReturnpolicyListResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new return policy.
+        # @param [Fixnum] merchant_id
+        #   Required. The id of the merchant for which to retrieve the return policy
+        #   online object.
+        # @param [Google::Apis::ContentV2_1::ReturnPolicyOnline] return_policy_online_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::ReturnPolicyOnline] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::ReturnPolicyOnline]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_returnpolicyonline(merchant_id, return_policy_online_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'content/v2.1/{merchantId}/returnpolicyonline', options)
+          command.request_representation = Google::Apis::ContentV2_1::ReturnPolicyOnline::Representation
+          command.request_object = return_policy_online_object
+          command.response_representation = Google::Apis::ContentV2_1::ReturnPolicyOnline::Representation
+          command.response_class = Google::Apis::ContentV2_1::ReturnPolicyOnline
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an existing return policy.
+        # @param [Fixnum] merchant_id
+        #   Required. The id of the merchant for which to retrieve the return policy
+        #   online object.
+        # @param [String] return_policy_id
+        #   Required. The id of the return policy to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_returnpolicyonline(merchant_id, return_policy_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'content/v2.1/{merchantId}/returnpolicyonline/{returnPolicyId}', options)
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['returnPolicyId'] = return_policy_id unless return_policy_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an existing return policy.
+        # @param [Fixnum] merchant_id
+        #   Required. The id of the merchant for which to retrieve the return policy
+        #   online object.
+        # @param [String] return_policy_id
+        #   Required. The id of the return policy to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::ReturnPolicyOnline] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::ReturnPolicyOnline]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_returnpolicyonline(merchant_id, return_policy_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'content/v2.1/{merchantId}/returnpolicyonline/{returnPolicyId}', options)
+          command.response_representation = Google::Apis::ContentV2_1::ReturnPolicyOnline::Representation
+          command.response_class = Google::Apis::ContentV2_1::ReturnPolicyOnline
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['returnPolicyId'] = return_policy_id unless return_policy_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all existing return policies.
+        # @param [Fixnum] merchant_id
+        #   Required. The id of the merchant for which to retrieve the return policy
+        #   online object.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::ListReturnPolicyOnlineResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::ListReturnPolicyOnlineResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_returnpolicyonlines(merchant_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'content/v2.1/{merchantId}/returnpolicyonline', options)
+          command.response_representation = Google::Apis::ContentV2_1::ListReturnPolicyOnlineResponse::Representation
+          command.response_class = Google::Apis::ContentV2_1::ListReturnPolicyOnlineResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing return policy.
+        # @param [Fixnum] merchant_id
+        #   Required. The id of the merchant for which to retrieve the return policy
+        #   online object.
+        # @param [String] return_policy_id
+        #   Required. The id of the return policy to update.
+        # @param [Google::Apis::ContentV2_1::ReturnPolicyOnline] return_policy_online_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::ReturnPolicyOnline] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::ReturnPolicyOnline]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_returnpolicyonline(merchant_id, return_policy_id, return_policy_online_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'content/v2.1/{merchantId}/returnpolicyonline/{returnPolicyId}', options)
+          command.request_representation = Google::Apis::ContentV2_1::ReturnPolicyOnline::Representation
+          command.request_object = return_policy_online_object
+          command.response_representation = Google::Apis::ContentV2_1::ReturnPolicyOnline::Representation
+          command.response_class = Google::Apis::ContentV2_1::ReturnPolicyOnline
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['returnPolicyId'] = return_policy_id unless return_policy_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
