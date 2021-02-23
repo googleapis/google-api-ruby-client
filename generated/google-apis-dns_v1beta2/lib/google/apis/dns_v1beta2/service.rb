@@ -49,7 +49,7 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Atomically update the ResourceRecordSet collection.
+        # Atomically updates the ResourceRecordSet collection.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
@@ -90,7 +90,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Fetch the representation of an existing Change.
+        # Fetches the representation of an existing Change.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
@@ -132,7 +132,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Enumerate Changes to a ResourceRecordSet collection.
+        # Enumerates Changes to a ResourceRecordSet collection.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
@@ -140,7 +140,7 @@ module Google
         #   name or ID.
         # @param [Fixnum] max_results
         #   Optional. Maximum number of results to be returned. If unspecified, the server
-        #   will decide how many results to return.
+        #   decides how many results to return.
         # @param [String] page_token
         #   Optional. A tag returned by a previous list request that was truncated. Use
         #   this parameter to continue a previous list request.
@@ -193,7 +193,7 @@ module Google
         #   client. Must be unique for operation resources in the Operations collection.
         # @param [String] digest_type
         #   An optional comma-separated list of digest types to compute and display for
-        #   key signing keys. If omitted, the recommended digest type will be computed and
+        #   key signing keys. If omitted, the recommended digest type is computed and
         #   displayed.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -234,11 +234,11 @@ module Google
         #   name or ID.
         # @param [String] digest_type
         #   An optional comma-separated list of digest types to compute and display for
-        #   key signing keys. If omitted, the recommended digest type will be computed and
+        #   key signing keys. If omitted, the recommended digest type is computed and
         #   displayed.
         # @param [Fixnum] max_results
         #   Optional. Maximum number of results to be returned. If unspecified, the server
-        #   will decide how many results to return.
+        #   decides how many results to return.
         # @param [String] page_token
         #   Optional. A tag returned by a previous list request that was truncated. Use
         #   this parameter to continue a previous list request.
@@ -273,13 +273,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Fetch the representation of an existing Operation.
+        # Fetches the representation of an existing Operation.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
         #   Identifies the managed zone addressed by this request.
         # @param [String] operation
-        #   Identifies the operation addressed by this request.
+        #   Identifies the operation addressed by this request (ID of the operation).
         # @param [String] client_operation_id
         #   For mutating operation requests only. An optional identifier specified by the
         #   client. Must be unique for operation resources in the Operations collection.
@@ -313,14 +313,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Enumerate Operations for the given ManagedZone.
+        # Enumerates Operations for the given ManagedZone.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
         #   Identifies the managed zone addressed by this request.
         # @param [Fixnum] max_results
         #   Optional. Maximum number of results to be returned. If unspecified, the server
-        #   will decide how many results to return.
+        #   decides how many results to return.
         # @param [String] page_token
         #   Optional. A tag returned by a previous list request that was truncated. Use
         #   this parameter to continue a previous list request.
@@ -475,7 +475,7 @@ module Google
         #   Restricts the list to return only zones with this domain name.
         # @param [Fixnum] max_results
         #   Optional. Maximum number of results to be returned. If unspecified, the server
-        #   will decide how many results to return.
+        #   decides how many results to return.
         # @param [String] page_token
         #   Optional. A tag returned by a previous list request that was truncated. Use
         #   this parameter to continue a previous list request.
@@ -591,7 +591,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a new Policy
+        # Creates a new Policy
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [Google::Apis::DnsV1beta2::Policy] policy_object
@@ -628,7 +628,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete a previously created Policy. Will fail if the policy is still being
+        # Delete a previously created Policy. Fails if the policy is still being
         # referenced by a network.
         # @param [String] project
         #   Identifies the project addressed by this request.
@@ -664,7 +664,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Fetch the representation of an existing Policy.
+        # Fetches the representation of an existing Policy.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] policy
@@ -701,12 +701,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Enumerate all Policies associated with a project.
+        # Enumerates all Policies associated with a project.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [Fixnum] max_results
         #   Optional. Maximum number of results to be returned. If unspecified, the server
-        #   will decide how many results to return.
+        #   decides how many results to return.
         # @param [String] page_token
         #   Optional. A tag returned by a previous list request that was truncated. Use
         #   this parameter to continue a previous list request.
@@ -1027,7 +1027,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Enumerate ResourceRecordSets that have been created but not yet deleted.
+        # Enumerate ResourceRecordSets that you have created but not yet deleted.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
@@ -1035,7 +1035,7 @@ module Google
         #   name or ID.
         # @param [Fixnum] max_results
         #   Optional. Maximum number of results to be returned. If unspecified, the server
-        #   will decide how many results to return.
+        #   decides how many results to return.
         # @param [String] name
         #   Restricts the list to return only records with this fully qualified domain
         #   name.
@@ -1077,7 +1077,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a new Response Policy
+        # Creates a new Response Policy
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [Google::Apis::DnsV1beta2::ResponsePolicy] response_policy_object
@@ -1192,7 +1192,7 @@ module Google
         #   Identifies the project addressed by this request.
         # @param [Fixnum] max_results
         #   Optional. Maximum number of results to be returned. If unspecified, the server
-        #   will decide how many results to return.
+        #   decides how many results to return.
         # @param [String] page_token
         #   Optional. A tag returned by a previous list request that was truncated. Use
         #   this parameter to continue a previous list request.
@@ -1305,7 +1305,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a new Response Policy Rule.
+        # Creates a new Response Policy Rule.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] response_policy
@@ -1430,7 +1430,7 @@ module Google
         #   User assigned name of the Response Policy to list.
         # @param [Fixnum] max_results
         #   Optional. Maximum number of results to be returned. If unspecified, the server
-        #   will decide how many results to return.
+        #   decides how many results to return.
         # @param [String] page_token
         #   Optional. A tag returned by a previous list request that was truncated. Use
         #   this parameter to continue a previous list request.
