@@ -1006,6 +1006,7 @@ module Google
       class GoogleCloudChannelV1Plan
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :billing_account, as: 'billingAccount'
           property :payment_cycle, as: 'paymentCycle', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Period, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Period::Representation
       
           property :payment_plan, as: 'paymentPlan'
