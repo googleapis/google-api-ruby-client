@@ -1566,6 +1566,12 @@ module Google
       class GoogleCloudChannelV1Plan
         include Google::Apis::Core::Hashable
       
+        # Reseller Billing account that will be charged when this offer is transacted.
+        # Only present for GCP offers.
+        # Corresponds to the JSON property `billingAccount`
+        # @return [String]
+        attr_accessor :billing_account
+      
         # Represents period in days/months/years.
         # Corresponds to the JSON property `paymentCycle`
         # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1Period]
@@ -1592,6 +1598,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @billing_account = args[:billing_account] if args.key?(:billing_account)
           @payment_cycle = args[:payment_cycle] if args.key?(:payment_cycle)
           @payment_plan = args[:payment_plan] if args.key?(:payment_plan)
           @payment_type = args[:payment_type] if args.key?(:payment_type)
