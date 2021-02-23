@@ -402,6 +402,49 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Provides a list of contacts in the authenticated user's other contacts that
+        # matches the search query.
+        # @param [Fixnum] page_size
+        #   Optional. The number of results to return. Defaults to 10 if field is not set,
+        #   or set to 0.
+        # @param [String] query
+        #   Required. The plain-text query for the request. The query is used to match
+        #   prefix phrases of the fields on a person. For example, a person with name "foo
+        #   name" matches queries such as "f", "fo", "foo", "foo n", "nam", etc., but not "
+        #   oo n".
+        # @param [String] read_mask
+        #   Required. A field mask to restrict which fields on each person are returned.
+        #   Multiple fields can be specified by separating them with commas. Valid values
+        #   are: * emailAddresses * names * phoneNumbers
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PeopleV1::SearchResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PeopleV1::SearchResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_other_contacts(page_size: nil, query: nil, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/otherContacts:search', options)
+          command.response_representation = Google::Apis::PeopleV1::SearchResponse::Representation
+          command.response_class = Google::Apis::PeopleV1::SearchResponse
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['query'] = query unless query.nil?
+          command.query['readMask'] = read_mask unless read_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Create a new contact and return the person resource for that contact. The
         # request returns a 400 error if more than one field is specified on a field
         # that is a singleton for contact sources: * biographies * birthdays * genders *
@@ -695,6 +738,52 @@ module Google
           command.query['requestSyncToken'] = request_sync_token unless request_sync_token.nil?
           command.query['sources'] = sources unless sources.nil?
           command.query['syncToken'] = sync_token unless sync_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Provides a list of contacts in the authenticated user's grouped contacts that
+        # matches the search query.
+        # @param [Fixnum] page_size
+        #   Optional. The number of results to return.
+        # @param [String] query
+        #   Required. The plain-text query for the request. The query is used to match
+        #   prefix phrases of the fields on a person. For example, a person with name "foo
+        #   name" matches queries such as "f", "fo", "foo", "foo n", "nam", etc., but not "
+        #   oo n".
+        # @param [String] read_mask
+        #   Required. A field mask to restrict which fields on each person are returned.
+        #   Multiple fields can be specified by separating them with commas. Valid values
+        #   are: * addresses * ageRanges * biographies * birthdays * calendarUrls *
+        #   clientData * coverPhotos * emailAddresses * events * externalIds * genders *
+        #   imClients * interests * locales * locations * memberships * metadata *
+        #   miscKeywords * names * nicknames * occupations * organizations * phoneNumbers *
+        #   photos * relations * sipAddresses * skills * urls * userDefined
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PeopleV1::SearchResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PeopleV1::SearchResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_person_contacts(page_size: nil, query: nil, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/people:searchContacts', options)
+          command.response_representation = Google::Apis::PeopleV1::SearchResponse::Representation
+          command.response_class = Google::Apis::PeopleV1::SearchResponse
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['query'] = query unless query.nil?
+          command.query['readMask'] = read_mask unless read_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -346,6 +346,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SearchResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SipAddress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1049,6 +1061,22 @@ module Google
           collection :people, as: 'people', class: Google::Apis::PeopleV1::Person, decorator: Google::Apis::PeopleV1::Person::Representation
       
           property :total_size, as: 'totalSize'
+        end
+      end
+      
+      class SearchResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :results, as: 'results', class: Google::Apis::PeopleV1::SearchResult, decorator: Google::Apis::PeopleV1::SearchResult::Representation
+      
+        end
+      end
+      
+      class SearchResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :person, as: 'person', class: Google::Apis::PeopleV1::Person, decorator: Google::Apis::PeopleV1::Person::Representation
+      
         end
       end
       
