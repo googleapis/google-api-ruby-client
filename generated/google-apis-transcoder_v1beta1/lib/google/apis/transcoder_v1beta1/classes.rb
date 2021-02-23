@@ -196,12 +196,12 @@ module Google
         alias_method :low_boost?, :low_boost
       
         # Specify audio loudness normalization in loudness units relative to full scale (
-        # LUFS). Enter a value between -24 and 0, where -24 is the Advanced Television
-        # Systems Committee (ATSC A/85), -23 is the EU R128 broadcast standard, -19 is
-        # the prior standard for online mono audio, -18 is the ReplayGain standard, -16
-        # is the prior standard for stereo audio, -14 is the new online audio standard
-        # recommended by Spotify, as well as Amazon Echo, and 0 disables normalization.
-        # The default is 0.
+        # LUFS). Enter a value between -24 and 0 (the default), where: * -24 is the
+        # Advanced Television Systems Committee (ATSC A/85) standard * -23 is the EU
+        # R128 broadcast standard * -19 is the prior standard for online mono audio * -
+        # 18 is the ReplayGain standard * -16 is the prior standard for stereo audio * -
+        # 14 is the new online audio standard recommended by Spotify, as well as Amazon
+        # Echo * 0 disables normalization
         # Corresponds to the JSON property `lufs`
         # @return [Float]
         attr_accessor :lufs
@@ -1252,6 +1252,44 @@ module Google
         end
       end
       
+      # Pad filter configuration for the input video. The padded input video is scaled
+      # after padding with black to match the output resolution.
+      class Pad
+        include Google::Apis::Core::Hashable
+      
+        # The number of pixels to add to the bottom. The default is 0.
+        # Corresponds to the JSON property `bottomPixels`
+        # @return [Fixnum]
+        attr_accessor :bottom_pixels
+      
+        # The number of pixels to add to the left. The default is 0.
+        # Corresponds to the JSON property `leftPixels`
+        # @return [Fixnum]
+        attr_accessor :left_pixels
+      
+        # The number of pixels to add to the right. The default is 0.
+        # Corresponds to the JSON property `rightPixels`
+        # @return [Fixnum]
+        attr_accessor :right_pixels
+      
+        # The number of pixels to add to the top. The default is 0.
+        # Corresponds to the JSON property `topPixels`
+        # @return [Fixnum]
+        attr_accessor :top_pixels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bottom_pixels = args[:bottom_pixels] if args.key?(:bottom_pixels)
+          @left_pixels = args[:left_pixels] if args.key?(:left_pixels)
+          @right_pixels = args[:right_pixels] if args.key?(:right_pixels)
+          @top_pixels = args[:top_pixels] if args.key?(:top_pixels)
+        end
+      end
+      
       # Preprocessing configurations.
       class PreprocessingConfig
         include Google::Apis::Core::Hashable
@@ -1282,6 +1320,12 @@ module Google
         # @return [Google::Apis::TranscoderV1beta1::Denoise]
         attr_accessor :denoise
       
+        # Pad filter configuration for the input video. The padded input video is scaled
+        # after padding with black to match the output resolution.
+        # Corresponds to the JSON property `pad`
+        # @return [Google::Apis::TranscoderV1beta1::Pad]
+        attr_accessor :pad
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1293,6 +1337,7 @@ module Google
           @crop = args[:crop] if args.key?(:crop)
           @deblock = args[:deblock] if args.key?(:deblock)
           @denoise = args[:denoise] if args.key?(:denoise)
+          @pad = args[:pad] if args.key?(:pad)
         end
       end
       
@@ -1436,6 +1481,13 @@ module Google
         # @return [String]
         attr_accessor :interval
       
+        # The quality of the generated sprite sheet. Enter a value between 1 and 100,
+        # where 1 is the lowest quality and 100 is the highest quality. The default is
+        # 100. A high quality value corresponds to a low image data compression ratio.
+        # Corresponds to the JSON property `quality`
+        # @return [Fixnum]
+        attr_accessor :quality
+      
         # The maximum number of rows per sprite sheet. When the sprite sheet is full, a
         # new sprite sheet is created. The default is 0, which indicates no maximum
         # limit.
@@ -1476,6 +1528,7 @@ module Google
           @file_prefix = args[:file_prefix] if args.key?(:file_prefix)
           @format = args[:format] if args.key?(:format)
           @interval = args[:interval] if args.key?(:interval)
+          @quality = args[:quality] if args.key?(:quality)
           @row_count = args[:row_count] if args.key?(:row_count)
           @sprite_height_pixels = args[:sprite_height_pixels] if args.key?(:sprite_height_pixels)
           @sprite_width_pixels = args[:sprite_width_pixels] if args.key?(:sprite_width_pixels)
