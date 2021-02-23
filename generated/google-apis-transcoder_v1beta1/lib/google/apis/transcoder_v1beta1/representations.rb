@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Pad
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PreprocessingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -654,6 +660,16 @@ module Google
         end
       end
       
+      class Pad
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bottom_pixels, as: 'bottomPixels'
+          property :left_pixels, as: 'leftPixels'
+          property :right_pixels, as: 'rightPixels'
+          property :top_pixels, as: 'topPixels'
+        end
+      end
+      
       class PreprocessingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -666,6 +682,8 @@ module Google
           property :deblock, as: 'deblock', class: Google::Apis::TranscoderV1beta1::Deblock, decorator: Google::Apis::TranscoderV1beta1::Deblock::Representation
       
           property :denoise, as: 'denoise', class: Google::Apis::TranscoderV1beta1::Denoise, decorator: Google::Apis::TranscoderV1beta1::Denoise::Representation
+      
+          property :pad, as: 'pad', class: Google::Apis::TranscoderV1beta1::Pad, decorator: Google::Apis::TranscoderV1beta1::Pad::Representation
       
         end
       end
@@ -710,6 +728,7 @@ module Google
           property :file_prefix, as: 'filePrefix'
           property :format, as: 'format'
           property :interval, as: 'interval'
+          property :quality, as: 'quality'
           property :row_count, as: 'rowCount'
           property :sprite_height_pixels, as: 'spriteHeightPixels'
           property :sprite_width_pixels, as: 'spriteWidthPixels'
