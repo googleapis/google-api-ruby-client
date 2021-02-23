@@ -712,6 +712,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListReturnPolicyOnlineResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LocalInventory
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1781,6 +1787,36 @@ module Google
       end
       
       class ReturnPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReturnPolicyOnline
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReturnPolicyOnlinePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReturnPolicyOnlineRestockingFee
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReturnPolicyOnlineReturnReasonCategoryInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReturnPolicyOnlineReturnShippingFee
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3315,6 +3351,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :repricing_rules, as: 'repricingRules', class: Google::Apis::ContentV2_1::RepricingRule, decorator: Google::Apis::ContentV2_1::RepricingRule::Representation
+      
+        end
+      end
+      
+      class ListReturnPolicyOnlineResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :return_policies, as: 'returnPolicies', class: Google::Apis::ContentV2_1::ReturnPolicyOnline, decorator: Google::Apis::ContentV2_1::ReturnPolicyOnline::Representation
       
         end
       end
@@ -5391,6 +5435,61 @@ module Google
       
           collection :seasonal_overrides, as: 'seasonalOverrides', class: Google::Apis::ContentV2_1::ReturnPolicySeasonalOverride, decorator: Google::Apis::ContentV2_1::ReturnPolicySeasonalOverride::Representation
       
+        end
+      end
+      
+      class ReturnPolicyOnline
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :countries, as: 'countries'
+          collection :item_conditions, as: 'itemConditions'
+          property :label, as: 'label'
+          property :name, as: 'name'
+          property :policy, as: 'policy', class: Google::Apis::ContentV2_1::ReturnPolicyOnlinePolicy, decorator: Google::Apis::ContentV2_1::ReturnPolicyOnlinePolicy::Representation
+      
+          property :restocking_fee, as: 'restockingFee', class: Google::Apis::ContentV2_1::ReturnPolicyOnlineRestockingFee, decorator: Google::Apis::ContentV2_1::ReturnPolicyOnlineRestockingFee::Representation
+      
+          collection :return_methods, as: 'returnMethods'
+          property :return_policy_id, as: 'returnPolicyId'
+          property :return_policy_uri, as: 'returnPolicyUri'
+          collection :return_reason_category_info, as: 'returnReasonCategoryInfo', class: Google::Apis::ContentV2_1::ReturnPolicyOnlineReturnReasonCategoryInfo, decorator: Google::Apis::ContentV2_1::ReturnPolicyOnlineReturnReasonCategoryInfo::Representation
+      
+        end
+      end
+      
+      class ReturnPolicyOnlinePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :days, :numeric_string => true, as: 'days'
+          property :type, as: 'type'
+        end
+      end
+      
+      class ReturnPolicyOnlineRestockingFee
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fixed_fee, as: 'fixedFee', class: Google::Apis::ContentV2_1::PriceAmount, decorator: Google::Apis::ContentV2_1::PriceAmount::Representation
+      
+          property :micro_percent, as: 'microPercent'
+        end
+      end
+      
+      class ReturnPolicyOnlineReturnReasonCategoryInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :return_label_source, as: 'returnLabelSource'
+          property :return_reason_category, as: 'returnReasonCategory'
+          property :return_shipping_fee, as: 'returnShippingFee', class: Google::Apis::ContentV2_1::ReturnPolicyOnlineReturnShippingFee, decorator: Google::Apis::ContentV2_1::ReturnPolicyOnlineReturnShippingFee::Representation
+      
+        end
+      end
+      
+      class ReturnPolicyOnlineReturnShippingFee
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fixed_fee, as: 'fixedFee', class: Google::Apis::ContentV2_1::PriceAmount, decorator: Google::Apis::ContentV2_1::PriceAmount::Representation
+      
+          property :type, as: 'type'
         end
       end
       
