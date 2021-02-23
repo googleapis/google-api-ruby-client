@@ -2335,6 +2335,47 @@ module Google
         end
       end
       
+      # The response to a search request for the authenticated user, given a query.
+      class SearchResponse
+        include Google::Apis::Core::Hashable
+      
+        # The results of the request.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::PeopleV1::SearchResult>]
+        attr_accessor :results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @results = args[:results] if args.key?(:results)
+        end
+      end
+      
+      # A result of a search query.
+      class SearchResult
+        include Google::Apis::Core::Hashable
+      
+        # Information about a person merged from various data sources such as the
+        # authenticated user's contacts and profile data. Most fields can have multiple
+        # items. The items in a field have no guaranteed order, but each non-empty field
+        # is guaranteed to have exactly one field with `metadata.primary` set to true.
+        # Corresponds to the JSON property `person`
+        # @return [Google::Apis::PeopleV1::Person]
+        attr_accessor :person
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @person = args[:person] if args.key?(:person)
+        end
+      end
+      
       # A person's SIP address. Session Initial Protocol addresses are used for VoIP
       # communications to make voice or video calls over the internet.
       class SipAddress
