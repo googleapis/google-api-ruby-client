@@ -112,7 +112,7 @@ module Google
         # list request using this value as your pagination token. In this way you can
         # retrieve the complete contents of even very large collections one page at a
         # time. However, if the contents of the collection change between the first and
-        # last paginated list request, the set of all elements returned will be an
+        # last paginated list request, the set of all elements returned are an
         # inconsistent view of the collection. There is no way to retrieve a "snapshot"
         # of collections larger than the maximum page size.
         # Corresponds to the JSON property `nextPageToken`
@@ -166,15 +166,15 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Active keys will be used to sign subsequent changes to the ManagedZone.
-        # Inactive keys will still be present as DNSKEY Resource Records for the use of
-        # resolvers validating existing signatures.
+        # Active keys are used to sign subsequent changes to the ManagedZone. Inactive
+        # keys will still be present as DNSKEY Resource Records for the use of resolvers
+        # validating existing signatures.
         # Corresponds to the JSON property `isActive`
         # @return [Boolean]
         attr_accessor :is_active
         alias_method :is_active?, :is_active
       
-        # Length of the key in bits. Specified at creation time then immutable.
+        # Length of the key in bits. Specified at creation time, then immutable.
         # Corresponds to the JSON property `keyLength`
         # @return [Fixnum]
         attr_accessor :key_length
@@ -200,10 +200,10 @@ module Google
         attr_accessor :public_key
       
         # One of "KEY_SIGNING" or "ZONE_SIGNING". Keys of type KEY_SIGNING have the
-        # Secure Entry Point flag set and, when active, will be used to sign only
-        # resource record sets of type DNSKEY. Otherwise, the Secure Entry Point flag
-        # will be cleared and this key will be used to sign only resource record sets of
-        # other types. Immutable after creation time.
+        # Secure Entry Point flag set and, when active, are used to sign only resource
+        # record sets of type DNSKEY. Otherwise, the Secure Entry Point flag is cleared
+        # and this key is used to sign only resource record sets of other types.
+        # Immutable after creation time.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -270,10 +270,10 @@ module Google
         attr_accessor :key_length
       
         # Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK).
-        # Key signing keys have the Secure Entry Point flag set and, when active, will
-        # only be used to sign resource record sets of type DNSKEY. Zone signing keys do
-        # not have the Secure Entry Point flag set and will be used to sign all other
-        # types of resource record sets.
+        # Key signing keys have the Secure Entry Point flag set and, when active, are
+        # only used to sign resource record sets of type DNSKEY. Zone signing keys do
+        # not have the Secure Entry Point flag set and are used to sign all other types
+        # of resource record sets.
         # Corresponds to the JSON property `keyType`
         # @return [String]
         attr_accessor :key_type
@@ -320,7 +320,7 @@ module Google
         # list request using this value as your pagination token. In this way you can
         # retrieve the complete contents of even very large collections one page at a
         # time. However, if the contents of the collection change between the first and
-        # last paginated list request, the set of all elements returned will be an
+        # last paginated list request, the set of all elements returned are an
         # inconsistent view of the collection. There is no way to retrieve a "snapshot"
         # of collections larger than the maximum page size.
         # Corresponds to the JSON property `nextPageToken`
@@ -399,7 +399,8 @@ module Google
       
         # Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet
         # is a set of DNS name servers that all host the same ManagedZones. Most users
-        # will leave this field unset.
+        # will leave this field unset. If you need to use this field, please reach out
+        # to your account team.
         # Corresponds to the JSON property `nameServerSet`
         # @return [String]
         attr_accessor :name_server_set
@@ -423,7 +424,7 @@ module Google
         attr_accessor :private_visibility_config
       
         # The presence of this field indicates that this is a managed reverse lookup
-        # zone and Cloud DNS will resolve reverse lookup queries using automatically
+        # zone and Cloud DNS resolves reverse lookup queries using automatically
         # configured records for VPC resources. This only applies to networks listed
         # under private_visibility_config.
         # Corresponds to the JSON property `reverseLookupConfig`
@@ -514,7 +515,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # List of target name servers to forward to. Cloud DNS will select the best
+        # List of target name servers to forward to. Cloud DNS selects the best
         # available name server if more than one target is given.
         # Corresponds to the JSON property `targetNameServers`
         # @return [Array<Google::Apis::DnsV1::ManagedZoneForwardingConfigNameServerTarget>]
@@ -536,9 +537,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud
-        # DNS will make forwarding decision based on address ranges, i.e. RFC1918
-        # addresses go to the VPC, non-RFC1918 addresses go to the Internet. When set to
-        # PRIVATE, Cloud DNS will always send queries through VPC for this target.
+        # DNS makes forwarding decisions based on address ranges; that is, RFC1918
+        # addresses go to the VPC, non-RFC1918 addresses go to the internet. When set to
+        # PRIVATE, Cloud DNS always sends queries through VPC for this target.
         # Corresponds to the JSON property `forwardingPath`
         # @return [String]
         attr_accessor :forwarding_path
@@ -584,9 +585,9 @@ module Google
         # list request using this value as your page token. In this way you can retrieve
         # the complete contents of even very large collections one page at a time.
         # However, if the contents of the collection change between the first and last
-        # paginated list request, the set of all elements returned will be an
-        # inconsistent view of the collection. There is no way to retrieve a consistent
-        # snapshot of a collection larger than the maximum page size.
+        # paginated list request, the set of all elements returned are an inconsistent
+        # view of the collection. There is no way to retrieve a consistent snapshot of a
+        # collection larger than the maximum page size.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -824,9 +825,9 @@ module Google
         # list request using this value as your page token. In this way you can retrieve
         # the complete contents of even very large collections one page at a time.
         # However, if the contents of the collection change between the first and last
-        # paginated list request, the set of all elements returned will be an
-        # inconsistent view of the collection. There is no way to retrieve a consistent
-        # snapshot of a collection larger than the maximum page size.
+        # paginated list request, the set of all elements returned are an inconsistent
+        # view of the collection. There is no way to retrieve a consistent snapshot of a
+        # collection larger than the maximum page size.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -989,9 +990,9 @@ module Google
         # list request using this value as your page token. In this way you can retrieve
         # the complete contents of even very large collections one page at a time.
         # However, if the contents of the collection change between the first and last
-        # paginated list request, the set of all elements returned will be an
-        # inconsistent view of the collection. There is no way to retrieve a consistent
-        # snapshot of a collection larger than the maximum page size.
+        # paginated list request, the set of all elements returned are an inconsistent
+        # view of the collection. There is no way to retrieve a consistent snapshot of a
+        # collection larger than the maximum page size.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1085,7 +1086,7 @@ module Google
         attr_accessor :description
       
         # Allows networks bound to this policy to receive DNS queries sent by VMs or
-        # applications over VPN connections. When enabled, a virtual IP address will be
+        # applications over VPN connections. When enabled, a virtual IP address is
         # allocated from each of the sub-networks that are bound to this policy.
         # Corresponds to the JSON property `enableInboundForwarding`
         # @return [Boolean]
@@ -1109,7 +1110,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # User assigned name for this policy.
+        # User-assigned name for this policy.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1168,9 +1169,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud
-        # DNS will make forwarding decision based on address ranges, i.e. RFC1918
-        # addresses go to the VPC, non-RFC1918 addresses go to the Internet. When set to
-        # PRIVATE, Cloud DNS will always send queries through VPC for this target.
+        # DNS makes forwarding decision based on address ranges; that is, RFC1918
+        # addresses go to the VPC, non-RFC1918 addresses go to the internet. When set to
+        # PRIVATE, Cloud DNS always sends queries through VPC for this target.
         # Corresponds to the JSON property `forwardingPath`
         # @return [String]
         attr_accessor :forwarding_path
@@ -1436,12 +1437,12 @@ module Google
       
         # The presence of this field indicates that there exist more results following
         # your last page of results in pagination order. To fetch them, make another
-        # list request using this value as your pagination token. In this way you can
-        # retrieve the complete contents of even very large collections one page at a
-        # time. However, if the contents of the collection change between the first and
-        # last paginated list request, the set of all elements returned will be an
-        # inconsistent view of the collection. There is no way to retrieve a consistent
-        # snapshot of a collection larger than the maximum page size.
+        # list request using this value as your pagination token. This lets you retrieve
+        # complete contents of even larger collections, one page at a time. However, if
+        # the contents of the collection change between the first and last paginated
+        # list request, the set of elements returned are an inconsistent view of the
+        # collection. You cannot retrieve a consistent snapshot of a collection larger
+        # than the maximum page size.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
