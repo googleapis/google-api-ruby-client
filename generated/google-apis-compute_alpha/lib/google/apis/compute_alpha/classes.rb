@@ -3025,10 +3025,15 @@ module Google
         # @return [String]
         attr_accessor :cache_mode
       
-        # Specifies a separate client (e.g. browser client) TTL, separate from the TTL
-        # for Cloud CDN's edge caches. Leaving this empty will use the same cache TTL
-        # for both Cloud CDN and the client-facing response. The maximum allowed value
-        # is 86400s (1 day).
+        # Specifies a separate client (e.g. browser client) maximum TTL. This is used to
+        # clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL,
+        # the lesser of client_ttl and default_ttl is used for the response max-age
+        # directive, along with a "public" directive. For cacheable content in
+        # CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if
+        # specified), or else sets the response max-age directive to the lesser of the
+        # client_ttl and default_ttl, and also ensures a "public" cache-control
+        # directive is present. If a client TTL is not specified, a default value (1
+        # hour) will be used. The maximum allowed value is 86400s (1 day).
         # Corresponds to the JSON property `clientTtl`
         # @return [Fixnum]
         attr_accessor :client_ttl
@@ -3823,10 +3828,15 @@ module Google
         # @return [String]
         attr_accessor :cache_mode
       
-        # Specifies a separate client (e.g. browser client) TTL, separate from the TTL
-        # for Cloud CDN's edge caches. Leaving this empty will use the same cache TTL
-        # for both Cloud CDN and the client-facing response. The maximum allowed value
-        # is 86400s (1 day).
+        # Specifies a separate client (e.g. browser client) maximum TTL. This is used to
+        # clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL,
+        # the lesser of client_ttl and default_ttl is used for the response max-age
+        # directive, along with a "public" directive. For cacheable content in
+        # CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if
+        # specified), or else sets the response max-age directive to the lesser of the
+        # client_ttl and default_ttl, and also ensures a "public" cache-control
+        # directive is present. If a client TTL is not specified, a default value (1
+        # hour) will be used. The maximum allowed value is 86400s (1 day).
         # Corresponds to the JSON property `clientTtl`
         # @return [Fixnum]
         attr_accessor :client_ttl
@@ -6235,8 +6245,13 @@ module Google
         # The source disk used to create this disk. You can provide this as a partial or
         # full URL to the resource. For example, the following are valid values:
         # - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk
+        # 
+        # - https://www.googleapis.com/compute/v1/projects/project/regions/region/disks/
+        # disk
         # - projects/project/zones/zone/disks/disk
+        # - projects/project/regions/region/disks/disk
         # - zones/zone/disks/disk
+        # - regions/region/disks/disk
         # Corresponds to the JSON property `sourceDisk`
         # @return [String]
         attr_accessor :source_disk
@@ -10414,11 +10429,12 @@ module Google
         attr_accessor :log_config
       
         # Name of the resource. Provided by the client when the resource is created. The
-        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
-        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
-        # and all following characters must be a dash, lowercase letter, or digit,
-        # except the last character, which cannot be a dash.
+        # name must be 1-63 characters long, and comply with RFC1035. For example, a
+        # name that is 1-63 characters long, matches the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?`, and otherwise complies with RFC1035. This regular
+        # expression describes a name where the first character is a lowercase letter,
+        # and all following characters are a dash, lowercase letter, or digit, except
+        # the last character, which isn't a dash.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -17435,8 +17451,13 @@ module Google
         # created. This can be a full or valid partial URL. For example, the following
         # are valid values:
         # - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk
+        # 
+        # - https://www.googleapis.com/compute/v1/projects/project/regions/region/disks/
+        # disk
         # - projects/project/zones/zone/disks/disk
+        # - projects/project/regions/region/disks/disk
         # - zones/zone/disks/disk
+        # - regions/region/disks/disk
         # Corresponds to the JSON property `sourceDisk`
         # @return [String]
         attr_accessor :source_disk
@@ -25623,6 +25644,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] An ID that represents a group of operations, such as when a
+        # group of operations results from a `bulkInsert` API request.
+        # Corresponds to the JSON property `operationGroupId`
+        # @return [String]
+        attr_accessor :operation_group_id
+      
         # [Output Only] The type of operation, such as `insert`, `update`, or `delete`,
         # and so on.
         # Corresponds to the JSON property `operationType`
@@ -25720,6 +25747,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+          @operation_group_id = args[:operation_group_id] if args.key?(:operation_group_id)
           @operation_type = args[:operation_type] if args.key?(:operation_type)
           @progress = args[:progress] if args.key?(:progress)
           @region = args[:region] if args.key?(:region)
@@ -27485,6 +27513,18 @@ module Google
         # @return [Hash<String,Google::Apis::ComputeAlpha::PreservedStatePreservedDisk>]
         attr_accessor :disks
       
+        # Preserved external IPs defined for this instance. This map is keyed with the
+        # name of the network interface.
+        # Corresponds to the JSON property `externalIPs`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::PreservedStatePreservedNetworkIp>]
+        attr_accessor :external_i_ps
+      
+        # Preserved internal IPs defined for this instance. This map is keyed with the
+        # name of the network interface.
+        # Corresponds to the JSON property `internalIPs`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::PreservedStatePreservedNetworkIp>]
+        attr_accessor :internal_i_ps
+      
         # Preserved metadata defined for this instance.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,String>]
@@ -27497,6 +27537,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disks = args[:disks] if args.key?(:disks)
+          @external_i_ps = args[:external_i_ps] if args.key?(:external_i_ps)
+          @internal_i_ps = args[:internal_i_ps] if args.key?(:internal_i_ps)
           @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
@@ -27535,6 +27577,60 @@ module Google
           @auto_delete = args[:auto_delete] if args.key?(:auto_delete)
           @mode = args[:mode] if args.key?(:mode)
           @source = args[:source] if args.key?(:source)
+        end
+      end
+      
+      # 
+      class PreservedStatePreservedNetworkIp
+        include Google::Apis::Core::Hashable
+      
+        # These stateful IPs will never be released during autohealing, update or VM
+        # instance recreate operations. This flag is used to configure if the IP
+        # reservation should be deleted after it is no longer used by the group, e.g.
+        # when the given instance or the whole group is deleted.
+        # Corresponds to the JSON property `autoDelete`
+        # @return [String]
+        attr_accessor :auto_delete
+      
+        # Ip address representation
+        # Corresponds to the JSON property `ipAddress`
+        # @return [Google::Apis::ComputeAlpha::PreservedStatePreservedNetworkIpIpAddress]
+        attr_accessor :ip_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_delete = args[:auto_delete] if args.key?(:auto_delete)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+        end
+      end
+      
+      # 
+      class PreservedStatePreservedNetworkIpIpAddress
+        include Google::Apis::Core::Hashable
+      
+        # The URL of the reservation for this IP address.
+        # Corresponds to the JSON property `address`
+        # @return [String]
+        attr_accessor :address
+      
+        # An IPv4 internal network address to assign to the instance for this network
+        # interface.
+        # Corresponds to the JSON property `literal`
+        # @return [String]
+        attr_accessor :literal
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address = args[:address] if args.key?(:address)
+          @literal = args[:literal] if args.key?(:literal)
         end
       end
       
@@ -29559,9 +29655,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :instances
       
-        # If false and the request contains references to instances that cannot be
-        # deleted (that is, instances that are not in the group or are already deleted),
-        # the request fails. Otherwise, such instances are ignored.
+        # Skip instances which cannot be deleted (instances not belonging to this
+        # managed group, already being deleted or being abandoned). If `false`, fail
+        # whole flow, if such instance is passed.
         # Corresponds to the JSON property `skipInapplicableInstances`
         # @return [Boolean]
         attr_accessor :skip_inapplicable_instances
@@ -37301,6 +37397,20 @@ module Google
         # @return [Hash<String,Google::Apis::ComputeAlpha::StatefulPolicyPreservedStateDiskDevice>]
         attr_accessor :disks
       
+        # External network IPs assigned to the instances that will be preserved on
+        # instance delete, update, etc. This map is keyed with the network interface
+        # name.
+        # Corresponds to the JSON property `externalIPs`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::StatefulPolicyPreservedStateNetworkIp>]
+        attr_accessor :external_i_ps
+      
+        # Internal network IPs assigned to the instances that will be preserved on
+        # instance delete, update, etc. This map is keyed with the network interface
+        # name.
+        # Corresponds to the JSON property `internalIPs`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::StatefulPolicyPreservedStateNetworkIp>]
+        attr_accessor :internal_i_ps
+      
         def initialize(**args)
            update!(**args)
         end
@@ -37308,6 +37418,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disks = args[:disks] if args.key?(:disks)
+          @external_i_ps = args[:external_i_ps] if args.key?(:external_i_ps)
+          @internal_i_ps = args[:internal_i_ps] if args.key?(:internal_i_ps)
         end
       end
       
@@ -37320,6 +37432,28 @@ module Google
         # should be deleted after it is no longer used by the group, e.g. when the given
         # instance or the whole group is deleted. Note: disks attached in READ_ONLY mode
         # cannot be auto-deleted.
+        # Corresponds to the JSON property `autoDelete`
+        # @return [String]
+        attr_accessor :auto_delete
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_delete = args[:auto_delete] if args.key?(:auto_delete)
+        end
+      end
+      
+      # 
+      class StatefulPolicyPreservedStateNetworkIp
+        include Google::Apis::Core::Hashable
+      
+        # These stateful IPs will never be released during autohealing, update or VM
+        # instance recreate operations. This flag is used to configure if the IP
+        # reservation should be deleted after it is no longer used by the group, e.g.
+        # when the given instance or the whole group is deleted.
         # Corresponds to the JSON property `autoDelete`
         # @return [String]
         attr_accessor :auto_delete
@@ -37443,9 +37577,9 @@ module Google
         # The range of internal addresses that are owned by this subnetwork. Provide
         # this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.
         # 64.0.0/10. Ranges must be unique and non-overlapping within a network. Only
-        # IPv4 is supported. This field is set at resource creation time. This may be a
-        # RFC 1918 IP range, or a privately routed, non-RFC 1918 IP range, not belonging
-        # to Google. The range can be expanded after creation using expandIpCidrRange.
+        # IPv4 is supported. This field is set at resource creation time. The range can
+        # be any range listed in the Valid ranges list. The range can be expanded after
+        # creation using expandIpCidrRange.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range
@@ -37951,8 +38085,8 @@ module Google
         # The range of IP addresses belonging to this subnetwork secondary range.
         # Provide this property when you create the subnetwork. Ranges must be unique
         # and non-overlapping with all primary and secondary IP ranges within a network.
-        # Only IPv4 is supported. This may be a RFC 1918 IP range, or a privately, non-
-        # RFC 1918 IP range, not belonging to Google.
+        # Only IPv4 is supported. The range can be any range listed in the Valid ranges
+        # list.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range

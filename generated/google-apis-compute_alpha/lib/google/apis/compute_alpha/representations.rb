@@ -3430,6 +3430,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PreservedStatePreservedNetworkIp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreservedStatePreservedNetworkIpIpAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Principal
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4811,6 +4823,12 @@ module Google
       end
       
       class StatefulPolicyPreservedStateDiskDevice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StatefulPolicyPreservedStateNetworkIp
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -11917,6 +11935,7 @@ module Google
           property :metadata, as: 'metadata', class: Google::Apis::ComputeAlpha::Any, decorator: Google::Apis::ComputeAlpha::Any::Representation
       
           property :name, as: 'name'
+          property :operation_group_id, as: 'operationGroupId'
           property :operation_type, as: 'operationType'
           property :progress, as: 'progress'
           property :region, as: 'region'
@@ -12381,6 +12400,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :disks, as: 'disks', class: Google::Apis::ComputeAlpha::PreservedStatePreservedDisk, decorator: Google::Apis::ComputeAlpha::PreservedStatePreservedDisk::Representation
       
+          hash :external_i_ps, as: 'externalIPs', class: Google::Apis::ComputeAlpha::PreservedStatePreservedNetworkIp, decorator: Google::Apis::ComputeAlpha::PreservedStatePreservedNetworkIp::Representation
+      
+          hash :internal_i_ps, as: 'internalIPs', class: Google::Apis::ComputeAlpha::PreservedStatePreservedNetworkIp, decorator: Google::Apis::ComputeAlpha::PreservedStatePreservedNetworkIp::Representation
+      
           hash :metadata, as: 'metadata'
         end
       end
@@ -12391,6 +12414,23 @@ module Google
           property :auto_delete, as: 'autoDelete'
           property :mode, as: 'mode'
           property :source, as: 'source'
+        end
+      end
+      
+      class PreservedStatePreservedNetworkIp
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_delete, as: 'autoDelete'
+          property :ip_address, as: 'ipAddress', class: Google::Apis::ComputeAlpha::PreservedStatePreservedNetworkIpIpAddress, decorator: Google::Apis::ComputeAlpha::PreservedStatePreservedNetworkIpIpAddress::Representation
+      
+        end
+      end
+      
+      class PreservedStatePreservedNetworkIpIpAddress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address'
+          property :literal, as: 'literal'
         end
       end
       
@@ -14885,10 +14925,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :disks, as: 'disks', class: Google::Apis::ComputeAlpha::StatefulPolicyPreservedStateDiskDevice, decorator: Google::Apis::ComputeAlpha::StatefulPolicyPreservedStateDiskDevice::Representation
       
+          hash :external_i_ps, as: 'externalIPs', class: Google::Apis::ComputeAlpha::StatefulPolicyPreservedStateNetworkIp, decorator: Google::Apis::ComputeAlpha::StatefulPolicyPreservedStateNetworkIp::Representation
+      
+          hash :internal_i_ps, as: 'internalIPs', class: Google::Apis::ComputeAlpha::StatefulPolicyPreservedStateNetworkIp, decorator: Google::Apis::ComputeAlpha::StatefulPolicyPreservedStateNetworkIp::Representation
+      
         end
       end
       
       class StatefulPolicyPreservedStateDiskDevice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_delete, as: 'autoDelete'
+        end
+      end
+      
+      class StatefulPolicyPreservedStateNetworkIp
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_delete, as: 'autoDelete'
