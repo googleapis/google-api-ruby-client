@@ -1151,6 +1151,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address_value, as: 'addressValue', class: Google::Apis::DocumentaiV1beta2::GoogleTypePostalAddress, decorator: Google::Apis::DocumentaiV1beta2::GoogleTypePostalAddress::Representation
       
+          property :boolean_value, as: 'booleanValue'
           property :date_value, as: 'dateValue', class: Google::Apis::DocumentaiV1beta2::GoogleTypeDate, decorator: Google::Apis::DocumentaiV1beta2::GoogleTypeDate::Representation
       
           property :datetime_value, as: 'datetimeValue', class: Google::Apis::DocumentaiV1beta2::GoogleTypeDateTime, decorator: Google::Apis::DocumentaiV1beta2::GoogleTypeDateTime::Representation
@@ -1658,6 +1659,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address_value, as: 'addressValue', class: Google::Apis::DocumentaiV1beta2::GoogleTypePostalAddress, decorator: Google::Apis::DocumentaiV1beta2::GoogleTypePostalAddress::Representation
       
+          property :boolean_value, as: 'booleanValue'
           property :date_value, as: 'dateValue', class: Google::Apis::DocumentaiV1beta2::GoogleTypeDate, decorator: Google::Apis::DocumentaiV1beta2::GoogleTypeDate::Representation
       
           property :datetime_value, as: 'datetimeValue', class: Google::Apis::DocumentaiV1beta2::GoogleTypeDateTime, decorator: Google::Apis::DocumentaiV1beta2::GoogleTypeDateTime::Representation
