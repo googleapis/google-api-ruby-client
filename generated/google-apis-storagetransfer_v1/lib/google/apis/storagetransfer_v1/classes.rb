@@ -1272,7 +1272,7 @@ module Google
         # request. Fields in `transferJob` that can be updated are: description,
         # transfer_spec, notification_config, and status. To update the `transfer_spec`
         # of the job, a complete transfer specification must be provided. An incomplete
-        # specification missing any required fields will be rejected with the error
+        # specification missing any required fields is rejected with the error
         # INVALID_ARGUMENT.
         # Corresponds to the JSON property `updateTransferJobFieldMask`
         # @return [String]
