@@ -22,24 +22,25 @@ module Google
   module Apis
     module PolicysimulatorV1beta1
       
-      # The difference in AccessState between baseline and simulated policies. If
-      # either AccessState cannot be fully evaluated, i.e. the AccessState is one of
-      # the UNKNOWN_* values, the explanation why full evaluation was not possible is
-      # in the ExplainedAccess message.
+      # A summary and comparison of the member's access under the current (baseline)
+      # policies and the proposed (simulated) policies for a single access tuple.
       class GoogleCloudPolicysimulatorV1beta1AccessStateDiff
         include Google::Apis::Core::Hashable
       
-        # A single value interpretation of the difference between baseline and simulated.
+        # How the member's access, specified in the AccessState field, changed between
+        # the current (baseline) policies and proposed (simulated) policies.
         # Corresponds to the JSON property `accessChange`
         # @return [String]
         attr_accessor :access_change
       
-        # Details about how the set of Explained Policies resulted in the Access State.
+        # Details about how a set of policies, listed in ExplainedPolicy, resulted in a
+        # certain AccessState when replaying an access tuple.
         # Corresponds to the JSON property `baseline`
         # @return [Google::Apis::PolicysimulatorV1beta1::GoogleCloudPolicysimulatorV1beta1ExplainedAccess]
         attr_accessor :baseline
       
-        # Details about how the set of Explained Policies resulted in the Access State.
+        # Details about how a set of policies, listed in ExplainedPolicy, resulted in a
+        # certain AccessState when replaying an access tuple.
         # Corresponds to the JSON property `simulated`
         # @return [Google::Apis::PolicysimulatorV1beta1::GoogleCloudPolicysimulatorV1beta1ExplainedAccess]
         attr_accessor :simulated
@@ -137,9 +138,9 @@ module Google
         # the binding, and each value indicates whether the member in the binding
         # includes the member in the request. For example, suppose that a binding
         # includes the following members: * `user:alice@example.com` * `group:product-
-        # eng@example.com` You want to troubleshoot access for `user:bob@example.com`.
-        # This user is a member of the group `group:product-eng@example.com`. For the
-        # first member in the binding, the key is `user:alice@example.com`, and the `
+        # eng@example.com` The member in the replayed access tuple is `user:bob@example.
+        # com`. This user is a member of the group `group:product-eng@example.com`. For
+        # the first member in the binding, the key is `user:alice@example.com`, and the `
         # membership` field in the value is set to `MEMBERSHIP_NOT_INCLUDED`. For the
         # second member in the binding, the key is `group:product-eng@example.com`, and
         # the `membership` field in the value is set to `MEMBERSHIP_INCLUDED`.
@@ -214,23 +215,27 @@ module Google
         end
       end
       
-      # Details about how the set of Explained Policies resulted in the Access State.
+      # Details about how a set of policies, listed in ExplainedPolicy, resulted in a
+      # certain AccessState when replaying an access tuple.
       class GoogleCloudPolicysimulatorV1beta1ExplainedAccess
         include Google::Apis::Core::Hashable
       
-        # The overall access state for the included set of policies.
+        # Whether the member in the access tuple has permission to access the resource
+        # in the access tuple under the given policies.
         # Corresponds to the JSON property `accessState`
         # @return [String]
         attr_accessor :access_state
       
-        # The list of problems encountered when explaining this access. This list
-        # provides the reason why UNKNOWN information in `policies` was unknown.
+        # If the AccessState is `UNKNOWN`, this field contains a list of errors
+        # explaining why the result is `UNKNOWN`. If the `AccessState` is `GRANTED` or `
+        # NOT_GRANTED`, this field is omitted.
         # Corresponds to the JSON property `errors`
         # @return [Array<Google::Apis::PolicysimulatorV1beta1::GoogleRpcStatus>]
         attr_accessor :errors
       
-        # The set of policies causing an UNKNOWN AccessState, if any. If the Access is
-        # GRANTED or NOT_GRANTED, this list will be empty.
+        # If the AccessState is `UNKNOWN`, this field contains the policies that led to
+        # that result. If the `AccessState` is `GRANTED` or `NOT_GRANTED`, this field is
+        # omitted.
         # Corresponds to the JSON property `policies`
         # @return [Array<Google::Apis::PolicysimulatorV1beta1::GoogleCloudPolicysimulatorV1beta1ExplainedPolicy>]
         attr_accessor :policies
@@ -262,17 +267,18 @@ module Google
         attr_accessor :access
       
         # Details about how each binding in the policy affects the member's ability, or
-        # inability, to use the permission for the resource. If the Simulator user does
-        # not have access to the policy, this field is omitted.
+        # inability, to use the permission for the resource. If the user who created the
+        # Replay does not have access to the policy, this field is omitted.
         # Corresponds to the JSON property `bindingExplanations`
         # @return [Array<Google::Apis::PolicysimulatorV1beta1::GoogleCloudPolicysimulatorV1beta1BindingExplanation>]
         attr_accessor :binding_explanations
       
         # The full resource name that identifies the resource. For example, `//compute.
         # googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`.
-        # If the Simulator user does not have access to the policy, this field is
-        # omitted. For examples of full resource names for Google Cloud services, see
-        # https://cloud.google.com/iam/help/troubleshooter/full-resource-names.
+        # If the user who created the Replay does not have access to the policy, this
+        # field is omitted. For examples of full resource names for Google Cloud
+        # services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-
+        # names.
         # Corresponds to the JSON property `fullResourceName`
         # @return [String]
         attr_accessor :full_resource_name
@@ -309,8 +315,8 @@ module Google
         attr_accessor :policy
       
         # The relevance of this policy to the overall determination in the
-        # TroubleshootIamPolicyResponse. If the Simulator user does not have access to
-        # the policy, this field is omitted.
+        # TroubleshootIamPolicyResponse. If the user who created the Replay does not
+        # have access to the policy, this field is omitted.
         # Corresponds to the JSON property `relevance`
         # @return [String]
         attr_accessor :relevance
@@ -329,17 +335,17 @@ module Google
         end
       end
       
-      # The results of a replay.
+      # Response message for Simulator.ListReplayResults.
       class GoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse
         include Google::Apis::Core::Hashable
       
-        # A token, which can be sent as `page_token` to retrieve the next page. If this
-        # field is omitted, there are no subsequent pages.
+        # A token that you can use to retrieve the next page of ReplayResult objects. If
+        # this field is omitted, there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # The results of running a replay.
+        # The results of running a Replay.
         # Corresponds to the JSON property `replayResults`
         # @return [Array<Google::Apis::PolicysimulatorV1beta1::GoogleCloudPolicysimulatorV1beta1ReplayResult>]
         attr_accessor :replay_results
@@ -355,19 +361,20 @@ module Google
         end
       end
       
-      # A Replay of Accesses against a simulated state.
+      # A resource describing a `Replay`, or simulation.
       class GoogleCloudPolicysimulatorV1beta1Replay
         include Google::Apis::Core::Hashable
       
-        # The configuration used for the replay.
+        # The configuration used for a Replay.
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::PolicysimulatorV1beta1::GoogleCloudPolicysimulatorV1beta1ReplayConfig]
         attr_accessor :config
       
-        # The resource name of the replay. The replay id is randomly generated on
-        # creation. Format is `PARENT/locations/`location`/replays/`replay`` where
-        # PARENT is a project, folder, or organization. Example: `projects/my-example-
-        # project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
+        # Output only. The resource name of the `Replay`, which has the following format:
+        # ``projects|folders|organizations`/`resource-id`/locations/global/replays/`
+        # replay-id``, where ``resource-id`` is the ID of the project, folder, or
+        # organization that owns the Replay. Example: `projects/my-example-project/
+        # locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -377,7 +384,7 @@ module Google
         # @return [Google::Apis::PolicysimulatorV1beta1::GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary]
         attr_accessor :results_summary
       
-        # Output only. The current state of the replay. https://aip.dev/216
+        # Output only. The current state of the `Replay`.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -395,17 +402,24 @@ module Google
         end
       end
       
-      # The configuration used for the replay.
+      # The configuration used for a Replay.
       class GoogleCloudPolicysimulatorV1beta1ReplayConfig
         include Google::Apis::Core::Hashable
       
-        # The logs to use as input for the replay.
+        # The logs to use as input for the Replay.
         # Corresponds to the JSON property `logSource`
         # @return [String]
         attr_accessor :log_source
       
-        # The policy overlay used during the replay. Keys are full resource names and
-        # the values are the policies to apply on these resources in the simulated state.
+        # A mapping of the resources that you want to simulate policies for and the
+        # policies that you want to simulate. Keys are the full resource names for the
+        # resources. For example, `//cloudresourcemanager.googleapis.com/projects/my-
+        # project`. For examples of full resource names for Google Cloud services, see
+        # https://cloud.google.com/iam/help/troubleshooter/full-resource-names. Values
+        # are Policy objects representing the policies that you want to simulate.
+        # Replays automatically take into account any IAM policies inherited through the
+        # resource hierarchy, and any policies set on descendant resources. You do not
+        # need to include these policies in the policy overlay.
         # Corresponds to the JSON property `policyOverlay`
         # @return [Hash<String,Google::Apis::PolicysimulatorV1beta1::GoogleIamV1Policy>]
         attr_accessor :policy_overlay
@@ -421,15 +435,15 @@ module Google
         end
       end
       
-      # A successful replay of an AccessTuple that resulted in a difference between
-      # baseline and simulated.
+      # The difference between the results of evaluating an access tuple under the
+      # current (baseline) policies and under the proposed (simulated) policies. This
+      # difference explains how a member's access could change if the proposed
+      # policies were applied.
       class GoogleCloudPolicysimulatorV1beta1ReplayDiff
         include Google::Apis::Core::Hashable
       
-        # The difference in AccessState between baseline and simulated policies. If
-        # either AccessState cannot be fully evaluated, i.e. the AccessState is one of
-        # the UNKNOWN_* values, the explanation why full evaluation was not possible is
-        # in the ExplainedAccess message.
+        # A summary and comparison of the member's access under the current (baseline)
+        # policies and the proposed (simulated) policies for a single access tuple.
         # Corresponds to the JSON property `accessDiff`
         # @return [Google::Apis::PolicysimulatorV1beta1::GoogleCloudPolicysimulatorV1beta1AccessStateDiff]
         attr_accessor :access_diff
@@ -444,7 +458,7 @@ module Google
         end
       end
       
-      # Metadata about a ReplayAccessLogs operation.
+      # Metadata about a Replay operation.
       class GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata
         include Google::Apis::Core::Hashable
       
@@ -472,8 +486,10 @@ module Google
         # @return [Google::Apis::PolicysimulatorV1beta1::GoogleCloudPolicysimulatorV1beta1AccessTuple]
         attr_accessor :access_tuple
       
-        # A successful replay of an AccessTuple that resulted in a difference between
-        # baseline and simulated.
+        # The difference between the results of evaluating an access tuple under the
+        # current (baseline) policies and under the proposed (simulated) policies. This
+        # difference explains how a member's access could change if the proposed
+        # policies were applied.
         # Corresponds to the JSON property `diff`
         # @return [Google::Apis::PolicysimulatorV1beta1::GoogleCloudPolicysimulatorV1beta1ReplayDiff]
         attr_accessor :diff
@@ -500,15 +516,17 @@ module Google
         # @return [Google::Apis::PolicysimulatorV1beta1::GoogleTypeDate]
         attr_accessor :last_seen_date
       
-        # The resource name of the replay result. Format is `PARENT/locations/`location`/
-        # replays/`replay`/results/`replay_result`` where PARENT is a project, folder,
-        # or organization. Example: `projects/my-example-project/locations/global/
-        # replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36/results/1234`
+        # The resource name of the `ReplayResult`, in the following format: ``projects|
+        # folders|organizations`/`resource-id`/locations/global/replays/`replay-id`/
+        # results/`replay-result-id``, where ``resource-id`` is the ID of the project,
+        # folder, or organization that owns the Replay. Example: `projects/my-example-
+        # project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36/results/
+        # 1234`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The replay the access tuple was included in.
+        # The Replay that the access tuple was included in.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -532,19 +550,18 @@ module Google
       class GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary
         include Google::Apis::Core::Hashable
       
-        # Number of replayed log entries with a difference between baseline and
+        # The number of replayed log entries with a difference between baseline and
         # simulated policies.
         # Corresponds to the JSON property `differenceCount`
         # @return [Fixnum]
         attr_accessor :difference_count
       
-        # Number of log entries with an error during replay.
+        # The number of log entries that could not be replayed.
         # Corresponds to the JSON property `errorCount`
         # @return [Fixnum]
         attr_accessor :error_count
       
-        # Number of log entries replayed. log_count == unchanged_count +
-        # difference_count + error_count
+        # The total number of log entries replayed.
         # Corresponds to the JSON property `logCount`
         # @return [Fixnum]
         attr_accessor :log_count
@@ -573,8 +590,8 @@ module Google
         # @return [Google::Apis::PolicysimulatorV1beta1::GoogleTypeDate]
         attr_accessor :oldest_date
       
-        # Number of replayed log entries with no difference between baseline and
-        # simulated
+        # The number of replayed log entries with no difference between baseline and
+        # simulated policies.
         # Corresponds to the JSON property `unchangedCount`
         # @return [Fixnum]
         attr_accessor :unchanged_count

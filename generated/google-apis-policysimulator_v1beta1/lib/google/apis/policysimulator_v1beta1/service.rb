@@ -22,7 +22,13 @@ module Google
     module PolicysimulatorV1beta1
       # Policy Simulator API
       #
-      # 
+      # Policy Simulator is a collection of endpoints for creating, running, and
+      #  viewing a Replay. A `Replay` is a type of simulation that lets you see how
+      #  your members' access to resources might change if you changed your IAM policy.
+      #  During a `Replay`, Policy Simulator re-evaluates, or replays, past access
+      #  attempts under both the current policy and your proposed policy, and compares
+      #  those results to determine how your members' access might change under the
+      #  proposed policy.
       #
       # @example
       #    require 'google/apis/policysimulator_v1beta1'
@@ -49,15 +55,10 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Create a replay using the given ReplayConfig. The parent of the replay must
-        # contain all resources in the overlay. For example, if the overlay contains: ```
-        # ReplayConfig ` policy_overlay = map = ` "//cloudresourcemanager.googleapis.
-        # com/projects/project-1": ..., "//cloudresourcemanager.googleapis.com/projects/
-        # project-2": ..., ` ``` Then, the parent used for CreateReplay must be the
-        # organization or a folder that contains both projects as children.
+        # Creates and starts a Replay using the given ReplayConfig.
         # @param [String] parent
-        #   Required. The parent resource where this Replay will be created. This must be
-        #   a project, folder, or organization with included location. Example: `projects/
+        #   Required. The parent resource where this Replay will be created. This resource
+        #   must be a project, folder, or organization with a location. Example: `projects/
         #   my-example-project/locations/global`
         # @param [Google::Apis::PolicysimulatorV1beta1::GoogleCloudPolicysimulatorV1beta1Replay] google_cloud_policysimulator_v1beta1_replay_object
         # @param [String] fields
@@ -89,12 +90,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the specified Replay.
+        # Gets the specified Replay. Each `Replay` is available for at least 7 days.
         # @param [String] name
-        #   Required. The name of the replay to retrieve. Format is `PARENT/locations/`
-        #   location`/replays/`replay`` where PARENT is a project, folder, or organization.
-        #   Example: `projects/my-example-project/locations/`location`/replays/506a5f7f-
-        #   38ce-4d7d-8e03-479ce1833c36`
+        #   Required. The name of the Replay to retrieve, in the following format: ``
+        #   projects|folders|organizations`/`resource-id`/locations/global/replays/`replay-
+        #   id``, where ``resource-id`` is the ID of the project, folder, or organization
+        #   that owns the `Replay`. Example: `projects/my-example-project/locations/global/
+        #   replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -122,18 +124,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List the results of running a replay
+        # Lists the results of running a Replay.
         # @param [String] parent
-        #   Required. The replay we are listing results for.
+        #   Required. The Replay whose results are listed, in the following format: ``
+        #   projects|folders|organizations`/`resource-id`/locations/global/replays/`replay-
+        #   id`` Example: `projects/my-project/locations/global/replays/506a5f7f-38ce-4d7d-
+        #   8e03-479ce1833c36`
         # @param [Fixnum] page_size
-        #   The maximum number of `ReplayResults` to return. If unspecified, at most 5000 `
-        #   Replays` will be returned. The maximum value is 5000; values above 5000 will
-        #   be coerced to 5000.
+        #   The maximum number of ReplayResult objects to return. Defaults to 5000. The
+        #   maximum value is 5000; values above 5000 are rounded down to 5000.
         # @param [String] page_token
-        #   A page token, received from a previous `ListReplayResults` call. Provide this
-        #   to retrieve the subsequent page. When paginating, all other parameters
-        #   provided to `ListReplayResults` must match the call that provided the page
-        #   token.
+        #   A page token, received from a previous Simulator.ListReplayResults call.
+        #   Provide this token to retrieve the next page of results. When paginating, all
+        #   other parameters provided to [Simulator.ListReplayResults[] must match the
+        #   call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -240,15 +244,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a replay using the given ReplayConfig. The parent of the replay must
-        # contain all resources in the overlay. For example, if the overlay contains: ```
-        # ReplayConfig ` policy_overlay = map = ` "//cloudresourcemanager.googleapis.
-        # com/projects/project-1": ..., "//cloudresourcemanager.googleapis.com/projects/
-        # project-2": ..., ` ``` Then, the parent used for CreateReplay must be the
-        # organization or a folder that contains both projects as children.
+        # Creates and starts a Replay using the given ReplayConfig.
         # @param [String] parent
-        #   Required. The parent resource where this Replay will be created. This must be
-        #   a project, folder, or organization with included location. Example: `projects/
+        #   Required. The parent resource where this Replay will be created. This resource
+        #   must be a project, folder, or organization with a location. Example: `projects/
         #   my-example-project/locations/global`
         # @param [Google::Apis::PolicysimulatorV1beta1::GoogleCloudPolicysimulatorV1beta1Replay] google_cloud_policysimulator_v1beta1_replay_object
         # @param [String] fields
@@ -280,12 +279,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the specified Replay.
+        # Gets the specified Replay. Each `Replay` is available for at least 7 days.
         # @param [String] name
-        #   Required. The name of the replay to retrieve. Format is `PARENT/locations/`
-        #   location`/replays/`replay`` where PARENT is a project, folder, or organization.
-        #   Example: `projects/my-example-project/locations/`location`/replays/506a5f7f-
-        #   38ce-4d7d-8e03-479ce1833c36`
+        #   Required. The name of the Replay to retrieve, in the following format: ``
+        #   projects|folders|organizations`/`resource-id`/locations/global/replays/`replay-
+        #   id``, where ``resource-id`` is the ID of the project, folder, or organization
+        #   that owns the `Replay`. Example: `projects/my-example-project/locations/global/
+        #   replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -313,18 +313,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List the results of running a replay
+        # Lists the results of running a Replay.
         # @param [String] parent
-        #   Required. The replay we are listing results for.
+        #   Required. The Replay whose results are listed, in the following format: ``
+        #   projects|folders|organizations`/`resource-id`/locations/global/replays/`replay-
+        #   id`` Example: `projects/my-project/locations/global/replays/506a5f7f-38ce-4d7d-
+        #   8e03-479ce1833c36`
         # @param [Fixnum] page_size
-        #   The maximum number of `ReplayResults` to return. If unspecified, at most 5000 `
-        #   Replays` will be returned. The maximum value is 5000; values above 5000 will
-        #   be coerced to 5000.
+        #   The maximum number of ReplayResult objects to return. Defaults to 5000. The
+        #   maximum value is 5000; values above 5000 are rounded down to 5000.
         # @param [String] page_token
-        #   A page token, received from a previous `ListReplayResults` call. Provide this
-        #   to retrieve the subsequent page. When paginating, all other parameters
-        #   provided to `ListReplayResults` must match the call that provided the page
-        #   token.
+        #   A page token, received from a previous Simulator.ListReplayResults call.
+        #   Provide this token to retrieve the next page of results. When paginating, all
+        #   other parameters provided to [Simulator.ListReplayResults[] must match the
+        #   call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -354,15 +356,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a replay using the given ReplayConfig. The parent of the replay must
-        # contain all resources in the overlay. For example, if the overlay contains: ```
-        # ReplayConfig ` policy_overlay = map = ` "//cloudresourcemanager.googleapis.
-        # com/projects/project-1": ..., "//cloudresourcemanager.googleapis.com/projects/
-        # project-2": ..., ` ``` Then, the parent used for CreateReplay must be the
-        # organization or a folder that contains both projects as children.
+        # Creates and starts a Replay using the given ReplayConfig.
         # @param [String] parent
-        #   Required. The parent resource where this Replay will be created. This must be
-        #   a project, folder, or organization with included location. Example: `projects/
+        #   Required. The parent resource where this Replay will be created. This resource
+        #   must be a project, folder, or organization with a location. Example: `projects/
         #   my-example-project/locations/global`
         # @param [Google::Apis::PolicysimulatorV1beta1::GoogleCloudPolicysimulatorV1beta1Replay] google_cloud_policysimulator_v1beta1_replay_object
         # @param [String] fields
@@ -394,12 +391,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the specified Replay.
+        # Gets the specified Replay. Each `Replay` is available for at least 7 days.
         # @param [String] name
-        #   Required. The name of the replay to retrieve. Format is `PARENT/locations/`
-        #   location`/replays/`replay`` where PARENT is a project, folder, or organization.
-        #   Example: `projects/my-example-project/locations/`location`/replays/506a5f7f-
-        #   38ce-4d7d-8e03-479ce1833c36`
+        #   Required. The name of the Replay to retrieve, in the following format: ``
+        #   projects|folders|organizations`/`resource-id`/locations/global/replays/`replay-
+        #   id``, where ``resource-id`` is the ID of the project, folder, or organization
+        #   that owns the `Replay`. Example: `projects/my-example-project/locations/global/
+        #   replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -427,18 +425,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List the results of running a replay
+        # Lists the results of running a Replay.
         # @param [String] parent
-        #   Required. The replay we are listing results for.
+        #   Required. The Replay whose results are listed, in the following format: ``
+        #   projects|folders|organizations`/`resource-id`/locations/global/replays/`replay-
+        #   id`` Example: `projects/my-project/locations/global/replays/506a5f7f-38ce-4d7d-
+        #   8e03-479ce1833c36`
         # @param [Fixnum] page_size
-        #   The maximum number of `ReplayResults` to return. If unspecified, at most 5000 `
-        #   Replays` will be returned. The maximum value is 5000; values above 5000 will
-        #   be coerced to 5000.
+        #   The maximum number of ReplayResult objects to return. Defaults to 5000. The
+        #   maximum value is 5000; values above 5000 are rounded down to 5000.
         # @param [String] page_token
-        #   A page token, received from a previous `ListReplayResults` call. Provide this
-        #   to retrieve the subsequent page. When paginating, all other parameters
-        #   provided to `ListReplayResults` must match the call that provided the page
-        #   token.
+        #   A page token, received from a previous Simulator.ListReplayResults call.
+        #   Provide this token to retrieve the next page of results. When paginating, all
+        #   other parameters provided to [Simulator.ListReplayResults[] must match the
+        #   call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
