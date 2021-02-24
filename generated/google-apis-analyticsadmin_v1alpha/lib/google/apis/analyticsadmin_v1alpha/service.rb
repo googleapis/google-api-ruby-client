@@ -237,9 +237,9 @@ module Google
         #   "accounts/100"
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccount] google_analytics_admin_v1alpha_account_object
         # @param [String] update_mask
-        #   Required. The list of fields to be updated. Omitted fields will not be updated.
-        #   To replace the entire entity, use one path with the string "*" to match all
-        #   fields.
+        #   Required. The list of fields to be updated. Field names must be in snake case (
+        #   e.g., "field_to_update"). Omitted fields will not be updated. To replace the
+        #   entire entity, use one path with the string "*" to match all fields.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -814,9 +814,9 @@ module Google
         #   Example: "properties/1000"
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty] google_analytics_admin_v1alpha_property_object
         # @param [String] update_mask
-        #   Required. The list of fields to be updated. Omitted fields will not be updated.
-        #   To replace the entire entity, use one path with the string "*" to match all
-        #   fields.
+        #   Required. The list of fields to be updated. Field names must be in snake case (
+        #   e.g., "field_to_update"). Omitted fields will not be updated. To replace the
+        #   entire entity, use one path with the string "*" to match all fields.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1000,9 +1000,9 @@ module Google
         #   androidAppDataStreams/2000"
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAndroidAppDataStream] google_analytics_admin_v1alpha_android_app_data_stream_object
         # @param [String] update_mask
-        #   Required. The list of fields to be updated. Omitted fields will not be updated.
-        #   To replace the entire entity, use one path with the string "*" to match all
-        #   fields.
+        #   Required. The list of fields to be updated. Field names must be in snake case (
+        #   e.g., "field_to_update"). Omitted fields will not be updated. To replace the
+        #   entire entity, use one path with the string "*" to match all fields.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1144,9 +1144,9 @@ module Google
         #   Output only. Example format: properties/1234/firebaseLinks/5678
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFirebaseLink] google_analytics_admin_v1alpha_firebase_link_object
         # @param [String] update_mask
-        #   Required. The list of fields to be updated. Omitted fields will not be updated.
-        #   To replace the entire entity, use one path with the string "*" to match all
-        #   fields.
+        #   Required. The list of fields to be updated. Field names must be in snake case (
+        #   e.g., "field_to_update"). Omitted fields will not be updated. To replace the
+        #   entire entity, use one path with the string "*" to match all fields.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1287,9 +1287,9 @@ module Google
         #   Note: googleAdsLinkId is not the Google Ads customer ID.
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGoogleAdsLink] google_analytics_admin_v1alpha_google_ads_link_object
         # @param [String] update_mask
-        #   Required. The list of fields to be updated. Omitted fields will not be updated.
-        #   To replace the entire entity, use one path with the string "*" to match all
-        #   fields.
+        #   Required. The list of fields to be updated. Field names must be in snake case (
+        #   e.g., "field_to_update"). Omitted fields will not be updated. To replace the
+        #   entire entity, use one path with the string "*" to match all fields.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1473,9 +1473,9 @@ module Google
         #   iosAppDataStreams/2000"
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaIosAppDataStream] google_analytics_admin_v1alpha_ios_app_data_stream_object
         # @param [String] update_mask
-        #   Required. The list of fields to be updated. Omitted fields will not be updated.
-        #   To replace the entire entity, use one path with the string "*" to match all
-        #   fields.
+        #   Required. The list of fields to be updated. Field names must be in snake case (
+        #   e.g., "field_to_update"). Omitted fields will not be updated. To replace the
+        #   entire entity, use one path with the string "*" to match all fields.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2078,9 +2078,9 @@ module Google
         #   webDataStreams/2000"
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaWebDataStream] google_analytics_admin_v1alpha_web_data_stream_object
         # @param [String] update_mask
-        #   Required. The list of fields to be updated. Omitted fields will not be updated.
-        #   To replace the entire entity, use one path with the string "*" to match all
-        #   fields.
+        #   Required. The list of fields to be updated. Field names must be in snake case (
+        #   e.g., "field_to_update"). Omitted fields will not be updated. To replace the
+        #   entire entity, use one path with the string "*" to match all fields.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2120,9 +2120,9 @@ module Google
         #   properties/1000/webDataStreams/2000/enhancedMeasurementSettings"
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings] google_analytics_admin_v1alpha_enhanced_measurement_settings_object
         # @param [String] update_mask
-        #   Required. The list of fields to be updated. Omitted fields will not be updated.
-        #   To replace the entire entity, use one path with the string "*" to match all
-        #   fields.
+        #   Required. The list of fields to be updated. Field names must be in snake case (
+        #   e.g., "field_to_update"). Omitted fields will not be updated. To replace the
+        #   entire entity, use one path with the string "*" to match all fields.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
