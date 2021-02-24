@@ -634,7 +634,7 @@ module Google
         end
       end
       
-      # The response for deleteing a contact's photo.
+      # The response for deleting a contact's photo.
       class DeleteContactPhotoResponse
         include Google::Apis::Core::Hashable
       
