@@ -896,6 +896,12 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleTypePostalAddress]
         attr_accessor :address_value
       
+        # Boolean value. Can be used for entities with binary values, or for checkboxes.
+        # Corresponds to the JSON property `booleanValue`
+        # @return [Boolean]
+        attr_accessor :boolean_value
+        alias_method :boolean_value?, :boolean_value
+      
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
@@ -948,6 +954,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @address_value = args[:address_value] if args.key?(:address_value)
+          @boolean_value = args[:boolean_value] if args.key?(:boolean_value)
           @date_value = args[:date_value] if args.key?(:date_value)
           @datetime_value = args[:datetime_value] if args.key?(:datetime_value)
           @money_value = args[:money_value] if args.key?(:money_value)
@@ -2632,6 +2639,12 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleTypePostalAddress]
         attr_accessor :address_value
       
+        # Boolean value. Can be used for entities with binary values, or for checkboxes.
+        # Corresponds to the JSON property `booleanValue`
+        # @return [Boolean]
+        attr_accessor :boolean_value
+        alias_method :boolean_value?, :boolean_value
+      
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
@@ -2684,6 +2697,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @address_value = args[:address_value] if args.key?(:address_value)
+          @boolean_value = args[:boolean_value] if args.key?(:boolean_value)
           @date_value = args[:date_value] if args.key?(:date_value)
           @datetime_value = args[:datetime_value] if args.key?(:datetime_value)
           @money_value = args[:money_value] if args.key?(:money_value)
