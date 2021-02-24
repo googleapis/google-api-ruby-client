@@ -40,6 +40,11 @@ module Google
         # @return [String]
         attr_accessor :database
       
+        # Encryption information for a Cloud Spanner database or backup.
+        # Corresponds to the JSON property `encryptionInfo`
+        # @return [Google::Apis::SpannerV1::EncryptionInfo]
+        attr_accessor :encryption_info
+      
         # Required for the CreateBackup operation. The expiration time of the backup,
         # with microseconds granularity that must be at least 6 hours and at most 366
         # days from the time the CreateBackup request is processed. Once the `
@@ -95,6 +100,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @database = args[:database] if args.key?(:database)
+          @encryption_info = args[:encryption_info] if args.key?(:encryption_info)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @name = args[:name] if args.key?(:name)
           @referencing_databases = args[:referencing_databases] if args.key?(:referencing_databases)
@@ -805,6 +811,11 @@ module Google
         # @return [String]
         attr_accessor :create_statement
       
+        # Encryption configuration for a Cloud Spanner database.
+        # Corresponds to the JSON property `encryptionConfig`
+        # @return [Google::Apis::SpannerV1::EncryptionConfig]
+        attr_accessor :encryption_config
+      
         # Optional. A list of DDL statements to run inside the newly created database.
         # Statements can create tables, indexes, etc. These statements execute
         # atomically with the creation of the database: if there is an error in any
@@ -820,6 +831,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_statement = args[:create_statement] if args.key?(:create_statement)
+          @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @extra_statements = args[:extra_statements] if args.key?(:extra_statements)
         end
       end
@@ -926,6 +938,21 @@ module Google
         # @return [String]
         attr_accessor :earliest_version_time
       
+        # Encryption configuration for a Cloud Spanner database.
+        # Corresponds to the JSON property `encryptionConfig`
+        # @return [Google::Apis::SpannerV1::EncryptionConfig]
+        attr_accessor :encryption_config
+      
+        # Output only. For databases that are using customer managed encryption, this
+        # field contains the encryption information for the database, such as encryption
+        # state and the Cloud KMS key versions that are in use. For databases that are
+        # using Google default or other types of encryption, this field is empty. This
+        # field is propagated lazily from the backend. There might be a delay from when
+        # a key version is being used and when it appears in this field.
+        # Corresponds to the JSON property `encryptionInfo`
+        # @return [Array<Google::Apis::SpannerV1::EncryptionInfo>]
+        attr_accessor :encryption_info
+      
         # Required. The name of the database. Values are of the form `projects//
         # instances//databases/`, where `` is as specified in the `CREATE DATABASE`
         # statement. This name can be passed to other API methods to identify the
@@ -959,6 +986,8 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @earliest_version_time = args[:earliest_version_time] if args.key?(:earliest_version_time)
+          @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
+          @encryption_info = args[:encryption_info] if args.key?(:encryption_info)
           @name = args[:name] if args.key?(:name)
           @restore_info = args[:restore_info] if args.key?(:restore_info)
           @state = args[:state] if args.key?(:state)
@@ -1009,6 +1038,63 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Encryption configuration for a Cloud Spanner database.
+      class EncryptionConfig
+        include Google::Apis::Core::Hashable
+      
+        # The Cloud KMS key to be used for encrypting and decrypting the database.
+        # Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+        end
+      end
+      
+      # Encryption information for a Cloud Spanner database or backup.
+      class EncryptionInfo
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `encryptionStatus`
+        # @return [Google::Apis::SpannerV1::Status]
+        attr_accessor :encryption_status
+      
+        # Output only. The type of encryption.
+        # Corresponds to the JSON property `encryptionType`
+        # @return [String]
+        attr_accessor :encryption_type
+      
+        # Output only. A Cloud KMS key version that is being used to protect the
+        # database or backup.
+        # Corresponds to the JSON property `kmsKeyVersion`
+        # @return [String]
+        attr_accessor :kms_key_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encryption_status = args[:encryption_status] if args.key?(:encryption_status)
+          @encryption_type = args[:encryption_type] if args.key?(:encryption_type)
+          @kms_key_version = args[:kms_key_version] if args.key?(:kms_key_version)
         end
       end
       
@@ -2657,6 +2743,34 @@ module Google
         end
       end
       
+      # Encryption configuration for the restored database.
+      class RestoreDatabaseEncryptionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The encryption type of the restored database.
+        # Corresponds to the JSON property `encryptionType`
+        # @return [String]
+        attr_accessor :encryption_type
+      
+        # Optional. The Cloud KMS key that will be used to encrypt/decrypt the restored
+        # database. This field should be set only when encryption_type is `
+        # CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//
+        # keyRings//cryptoKeys/`.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encryption_type = args[:encryption_type] if args.key?(:encryption_type)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+        end
+      end
+      
       # Metadata type for the long-running operation returned by RestoreDatabase.
       class RestoreDatabaseMetadata
         include Google::Apis::Core::Hashable
@@ -2739,6 +2853,11 @@ module Google
         # @return [String]
         attr_accessor :database_id
       
+        # Encryption configuration for the restored database.
+        # Corresponds to the JSON property `encryptionConfig`
+        # @return [Google::Apis::SpannerV1::RestoreDatabaseEncryptionConfig]
+        attr_accessor :encryption_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2747,6 +2866,7 @@ module Google
         def update!(**args)
           @backup = args[:backup] if args.key?(:backup)
           @database_id = args[:database_id] if args.key?(:database_id)
+          @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
         end
       end
       

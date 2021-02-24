@@ -136,6 +136,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EncryptionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EncryptionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExecuteBatchDmlRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -370,6 +382,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RestoreDatabaseEncryptionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RestoreDatabaseMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -519,6 +537,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :database, as: 'database'
+          property :encryption_info, as: 'encryptionInfo', class: Google::Apis::SpannerV1::EncryptionInfo, decorator: Google::Apis::SpannerV1::EncryptionInfo::Representation
+      
           property :expire_time, as: 'expireTime'
           property :name, as: 'name'
           collection :referencing_databases, as: 'referencingDatabases'
@@ -632,6 +652,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_statement, as: 'createStatement'
+          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::SpannerV1::EncryptionConfig, decorator: Google::Apis::SpannerV1::EncryptionConfig::Representation
+      
           collection :extra_statements, as: 'extraStatements'
         end
       end
@@ -669,6 +691,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :earliest_version_time, as: 'earliestVersionTime'
+          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::SpannerV1::EncryptionConfig, decorator: Google::Apis::SpannerV1::EncryptionConfig::Representation
+      
+          collection :encryption_info, as: 'encryptionInfo', class: Google::Apis::SpannerV1::EncryptionInfo, decorator: Google::Apis::SpannerV1::EncryptionInfo::Representation
+      
           property :name, as: 'name'
           property :restore_info, as: 'restoreInfo', class: Google::Apis::SpannerV1::RestoreInfo, decorator: Google::Apis::SpannerV1::RestoreInfo::Representation
       
@@ -689,6 +715,23 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EncryptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
+        end
+      end
+      
+      class EncryptionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_status, as: 'encryptionStatus', class: Google::Apis::SpannerV1::Status, decorator: Google::Apis::SpannerV1::Status::Representation
+      
+          property :encryption_type, as: 'encryptionType'
+          property :kms_key_version, as: 'kmsKeyVersion'
         end
       end
       
@@ -1094,6 +1137,14 @@ module Google
         end
       end
       
+      class RestoreDatabaseEncryptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_type, as: 'encryptionType'
+          property :kms_key_name, as: 'kmsKeyName'
+        end
+      end
+      
       class RestoreDatabaseMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1113,6 +1164,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup, as: 'backup'
           property :database_id, as: 'databaseId'
+          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::SpannerV1::RestoreDatabaseEncryptionConfig, decorator: Google::Apis::SpannerV1::RestoreDatabaseEncryptionConfig::Representation
+      
         end
       end
       
