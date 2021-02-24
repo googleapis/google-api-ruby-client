@@ -508,6 +508,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BulkInsertInstanceResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BulkInsertInstanceResourcePerInstanceProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CacheInvalidationRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2177,6 +2189,18 @@ module Google
       end
       
       class LocalDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LocationPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LocationPolicyLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6298,6 +6322,29 @@ module Google
         end
       end
       
+      class BulkInsertInstanceResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+          property :instance_properties, as: 'instanceProperties', class: Google::Apis::ComputeBeta::InstanceProperties, decorator: Google::Apis::ComputeBeta::InstanceProperties::Representation
+      
+          property :location_policy, as: 'locationPolicy', class: Google::Apis::ComputeBeta::LocationPolicy, decorator: Google::Apis::ComputeBeta::LocationPolicy::Representation
+      
+          property :min_count, :numeric_string => true, as: 'minCount'
+          property :name_pattern, as: 'namePattern'
+          hash :per_instance_properties, as: 'perInstanceProperties', class: Google::Apis::ComputeBeta::BulkInsertInstanceResourcePerInstanceProperties, decorator: Google::Apis::ComputeBeta::BulkInsertInstanceResourcePerInstanceProperties::Representation
+      
+          property :source_instance_template, as: 'sourceInstanceTemplate'
+        end
+      end
+      
+      class BulkInsertInstanceResourcePerInstanceProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
       class CacheInvalidationRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9500,6 +9547,21 @@ module Google
         end
       end
       
+      class LocationPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :locations, as: 'locations', class: Google::Apis::ComputeBeta::LocationPolicyLocation, decorator: Google::Apis::ComputeBeta::LocationPolicyLocation::Representation
+      
+        end
+      end
+      
+      class LocationPolicyLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :preference, as: 'preference'
+        end
+      end
+      
       class LogConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10751,6 +10813,7 @@ module Google
           property :insert_time, as: 'insertTime'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :operation_group_id, as: 'operationGroupId'
           property :operation_type, as: 'operationType'
           property :progress, as: 'progress'
           property :region, as: 'region'
