@@ -896,6 +896,12 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleTypePostalAddress]
         attr_accessor :address_value
       
+        # Boolean value. Can be used for entities with binary values, or for checkboxes.
+        # Corresponds to the JSON property `booleanValue`
+        # @return [Boolean]
+        attr_accessor :boolean_value
+        alias_method :boolean_value?, :boolean_value
+      
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
@@ -948,6 +954,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @address_value = args[:address_value] if args.key?(:address_value)
+          @boolean_value = args[:boolean_value] if args.key?(:boolean_value)
           @date_value = args[:date_value] if args.key?(:date_value)
           @datetime_value = args[:datetime_value] if args.key?(:datetime_value)
           @money_value = args[:money_value] if args.key?(:money_value)
@@ -2592,6 +2599,12 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleTypePostalAddress]
         attr_accessor :address_value
       
+        # Boolean value. Can be used for entities with binary values, or for checkboxes.
+        # Corresponds to the JSON property `booleanValue`
+        # @return [Boolean]
+        attr_accessor :boolean_value
+        alias_method :boolean_value?, :boolean_value
+      
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
@@ -2644,6 +2657,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @address_value = args[:address_value] if args.key?(:address_value)
+          @boolean_value = args[:boolean_value] if args.key?(:boolean_value)
           @date_value = args[:date_value] if args.key?(:date_value)
           @datetime_value = args[:datetime_value] if args.key?(:datetime_value)
           @money_value = args[:money_value] if args.key?(:money_value)
@@ -4068,6 +4082,31 @@ module Google
         end
       end
       
+      # The common config to specify a set of documents used as input.
+      class GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies a set of documents on Cloud Storage.
+        # Corresponds to the JSON property `gcsDocuments`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GcsDocuments]
+        attr_accessor :gcs_documents
+      
+        # Specifies all documents on Cloud Storage with a common prefix.
+        # Corresponds to the JSON property `gcsPrefix`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GcsPrefix]
+        attr_accessor :gcs_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_documents = args[:gcs_documents] if args.key?(:gcs_documents)
+          @gcs_prefix = args[:gcs_prefix] if args.key?(:gcs_prefix)
+        end
+      end
+      
       # The long running operation metadata for batch process method.
       class GoogleCloudDocumentaiV1beta3BatchProcessMetadata
         include Google::Apis::Core::Hashable
@@ -4182,9 +4221,9 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig>]
         attr_accessor :input_configs
       
-        # The message for input config in batch process.
+        # The common config to specify a set of documents used as input.
         # Corresponds to the JSON property `inputDocuments`
-        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig]
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig]
         attr_accessor :input_documents
       
         # The message for output config in batch process.
@@ -4550,6 +4589,12 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleTypePostalAddress]
         attr_accessor :address_value
       
+        # Boolean value. Can be used for entities with binary values, or for checkboxes.
+        # Corresponds to the JSON property `booleanValue`
+        # @return [Boolean]
+        attr_accessor :boolean_value
+        alias_method :boolean_value?, :boolean_value
+      
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
@@ -4602,6 +4647,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @address_value = args[:address_value] if args.key?(:address_value)
+          @boolean_value = args[:boolean_value] if args.key?(:boolean_value)
           @date_value = args[:date_value] if args.key?(:date_value)
           @datetime_value = args[:datetime_value] if args.key?(:datetime_value)
           @money_value = args[:money_value] if args.key?(:money_value)
@@ -5802,6 +5848,69 @@ module Google
           @provenance = args[:provenance] if args.key?(:provenance)
           @text_anchor = args[:text_anchor] if args.key?(:text_anchor)
           @translated_text = args[:translated_text] if args.key?(:translated_text)
+        end
+      end
+      
+      # Specifies a document stored on Cloud Storage.
+      class GoogleCloudDocumentaiV1beta3GcsDocument
+        include Google::Apis::Core::Hashable
+      
+        # The Cloud Storage object uri.
+        # Corresponds to the JSON property `gcsUri`
+        # @return [String]
+        attr_accessor :gcs_uri
+      
+        # An IANA MIME type (RFC6838) of the content.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
+      # Specifies a set of documents on Cloud Storage.
+      class GoogleCloudDocumentaiV1beta3GcsDocuments
+        include Google::Apis::Core::Hashable
+      
+        # The list of documents.
+        # Corresponds to the JSON property `documents`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GcsDocument>]
+        attr_accessor :documents
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @documents = args[:documents] if args.key?(:documents)
+        end
+      end
+      
+      # Specifies all documents on Cloud Storage with a common prefix.
+      class GoogleCloudDocumentaiV1beta3GcsPrefix
+        include Google::Apis::Core::Hashable
+      
+        # The URI prefix.
+        # Corresponds to the JSON property `gcsUriPrefix`
+        # @return [String]
+        attr_accessor :gcs_uri_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_uri_prefix = args[:gcs_uri_prefix] if args.key?(:gcs_uri_prefix)
         end
       end
       
