@@ -706,6 +706,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta3BatchProcessMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -959,6 +965,24 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1beta3DocumentTranslation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3GcsDocument
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3GcsDocuments
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3GcsPrefix
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1379,6 +1403,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address_value, as: 'addressValue', class: Google::Apis::DocumentaiV1beta3::GoogleTypePostalAddress, decorator: Google::Apis::DocumentaiV1beta3::GoogleTypePostalAddress::Representation
       
+          property :boolean_value, as: 'booleanValue'
           property :date_value, as: 'dateValue', class: Google::Apis::DocumentaiV1beta3::GoogleTypeDate, decorator: Google::Apis::DocumentaiV1beta3::GoogleTypeDate::Representation
       
           property :datetime_value, as: 'datetimeValue', class: Google::Apis::DocumentaiV1beta3::GoogleTypeDateTime, decorator: Google::Apis::DocumentaiV1beta3::GoogleTypeDateTime::Representation
@@ -1871,6 +1896,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address_value, as: 'addressValue', class: Google::Apis::DocumentaiV1beta3::GoogleTypePostalAddress, decorator: Google::Apis::DocumentaiV1beta3::GoogleTypePostalAddress::Representation
       
+          property :boolean_value, as: 'booleanValue'
           property :date_value, as: 'dateValue', class: Google::Apis::DocumentaiV1beta3::GoogleTypeDate, decorator: Google::Apis::DocumentaiV1beta3::GoogleTypeDate::Representation
       
           property :datetime_value, as: 'datetimeValue', class: Google::Apis::DocumentaiV1beta3::GoogleTypeDateTime, decorator: Google::Apis::DocumentaiV1beta3::GoogleTypeDateTime::Representation
@@ -2298,6 +2324,16 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_documents, as: 'gcsDocuments', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GcsDocuments, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GcsDocuments::Representation
+      
+          property :gcs_prefix, as: 'gcsPrefix', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GcsPrefix, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GcsPrefix::Representation
+      
+        end
+      end
+      
       class GoogleCloudDocumentaiV1beta3BatchProcessMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2330,7 +2366,7 @@ module Google
       
           collection :input_configs, as: 'inputConfigs', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig::Representation
       
-          property :input_documents, as: 'inputDocuments', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig::Representation
+          property :input_documents, as: 'inputDocuments', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig::Representation
       
           property :output_config, as: 'outputConfig', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchOutputConfig, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchOutputConfig::Representation
       
@@ -2434,6 +2470,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address_value, as: 'addressValue', class: Google::Apis::DocumentaiV1beta3::GoogleTypePostalAddress, decorator: Google::Apis::DocumentaiV1beta3::GoogleTypePostalAddress::Representation
       
+          property :boolean_value, as: 'booleanValue'
           property :date_value, as: 'dateValue', class: Google::Apis::DocumentaiV1beta3::GoogleTypeDate, decorator: Google::Apis::DocumentaiV1beta3::GoogleTypeDate::Representation
       
           property :datetime_value, as: 'datetimeValue', class: Google::Apis::DocumentaiV1beta3::GoogleTypeDateTime, decorator: Google::Apis::DocumentaiV1beta3::GoogleTypeDateTime::Representation
@@ -2795,6 +2832,29 @@ module Google
           property :text_anchor, as: 'textAnchor', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentTextAnchor, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentTextAnchor::Representation
       
           property :translated_text, as: 'translatedText'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3GcsDocument
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_uri, as: 'gcsUri'
+          property :mime_type, as: 'mimeType'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3GcsDocuments
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :documents, as: 'documents', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GcsDocument, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GcsDocument::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3GcsPrefix
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_uri_prefix, as: 'gcsUriPrefix'
         end
       end
       
