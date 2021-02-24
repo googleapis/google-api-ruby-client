@@ -1371,7 +1371,7 @@ module Google
         attr_accessor :intent
       
         # Required. The language of the input. See [Language Support](https://cloud.
-        # google.com/dialogflow/docs/reference/language) for a list of the currently
+        # google.com/dialogflow/cx/docs/reference/language) for a list of the currently
         # supported language codes. Note that queries in the same session do not
         # necessarily need to specify the same language.
         # Corresponds to the JSON property `languageCode`
@@ -3729,7 +3729,7 @@ module Google
         attr_accessor :intent
       
         # Required. The language of the input. See [Language Support](https://cloud.
-        # google.com/dialogflow/docs/reference/language) for a list of the currently
+        # google.com/dialogflow/cx/docs/reference/language) for a list of the currently
         # supported language codes. Note that queries in the same session do not
         # necessarily need to specify the same language.
         # Corresponds to the JSON property `languageCode`
