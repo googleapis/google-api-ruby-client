@@ -369,7 +369,7 @@ module Google
         #   The language of the following fields in `entity_type`: * `EntityType.entities.
         #   value` * `EntityType.entities.synonyms` * `EntityType.excluded_phrases.value`
         #   If not specified, the agent's default language is used. [Many languages](https:
-        #   //cloud.google.com/dialogflow/docs/reference/language) are supported. Note:
+        #   //cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note:
         #   languages must be enabled in the agent before they can be used.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -449,8 +449,8 @@ module Google
         #   language dependent: * `EntityType.entities.value` * `EntityType.entities.
         #   synonyms` * `EntityType.excluded_phrases.value` If not specified, the agent's
         #   default language is used. [Many languages](https://cloud.google.com/dialogflow/
-        #   docs/reference/language) are supported. Note: languages must be enabled in the
-        #   agent before they can be used.
+        #   cx/docs/reference/language) are supported. Note: languages must be enabled in
+        #   the agent before they can be used.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -487,7 +487,7 @@ module Google
         #   The language to list entity types for. The following fields are language
         #   dependent: * `EntityType.entities.value` * `EntityType.entities.synonyms` * `
         #   EntityType.excluded_phrases.value` If not specified, the agent's default
-        #   language is used. [Many languages](https://cloud.google.com/dialogflow/docs/
+        #   language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/
         #   reference/language) are supported. Note: languages must be enabled in the
         #   agent before they can be used.
         # @param [Fixnum] page_size
@@ -534,7 +534,7 @@ module Google
         #   The language of the following fields in `entity_type`: * `EntityType.entities.
         #   value` * `EntityType.entities.synonyms` * `EntityType.excluded_phrases.value`
         #   If not specified, the agent's default language is used. [Many languages](https:
-        #   //cloud.google.com/dialogflow/docs/reference/language) are supported. Note:
+        #   //cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note:
         #   languages must be enabled in the agent before they can be used.
         # @param [String] update_mask
         #   The mask to control which fields get updated.
@@ -1338,7 +1338,7 @@ module Google
         #   The language of the following fields in `flow`: * `Flow.event_handlers.
         #   trigger_fulfillment.messages` * `Flow.transition_routes.trigger_fulfillment.
         #   messages` If not specified, the agent's default language is used. [Many
-        #   languages](https://cloud.google.com/dialogflow/docs/reference/language) are
+        #   languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are
         #   supported. Note: languages must be enabled in the agent before they can be
         #   used.
         # @param [String] fields
@@ -1419,8 +1419,8 @@ module Google
         #   dependent: * `Flow.event_handlers.trigger_fulfillment.messages` * `Flow.
         #   transition_routes.trigger_fulfillment.messages` If not specified, the agent's
         #   default language is used. [Many languages](https://cloud.google.com/dialogflow/
-        #   docs/reference/language) are supported. Note: languages must be enabled in the
-        #   agent before they can be used.
+        #   cx/docs/reference/language) are supported. Note: languages must be enabled in
+        #   the agent before they can be used.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1492,9 +1492,9 @@ module Google
         #   The language to list flows for. The following fields are language dependent: *
         #   `Flow.event_handlers.trigger_fulfillment.messages` * `Flow.transition_routes.
         #   trigger_fulfillment.messages` If not specified, the agent's default language
-        #   is used. [Many languages](https://cloud.google.com/dialogflow/docs/reference/
-        #   language) are supported. Note: languages must be enabled in the agent before
-        #   they can be used.
+        #   is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/
+        #   reference/language) are supported. Note: languages must be enabled in the
+        #   agent before they can be used.
         # @param [Fixnum] page_size
         #   The maximum number of items to return in a single page. By default 100 and at
         #   most 1000.
@@ -1539,7 +1539,7 @@ module Google
         #   The language of the following fields in `flow`: * `Flow.event_handlers.
         #   trigger_fulfillment.messages` * `Flow.transition_routes.trigger_fulfillment.
         #   messages` If not specified, the agent's default language is used. [Many
-        #   languages](https://cloud.google.com/dialogflow/docs/reference/language) are
+        #   languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are
         #   supported. Note: languages must be enabled in the agent before they can be
         #   used.
         # @param [String] update_mask
@@ -1657,7 +1657,7 @@ module Google
         #   messages` * `Page.transition_routes.trigger_fulfillment.messages` * `Page.
         #   transition_route_groups.transition_routes.trigger_fulfillment.messages` If not
         #   specified, the agent's default language is used. [Many languages](https://
-        #   cloud.google.com/dialogflow/docs/reference/language) are supported. Note:
+        #   cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note:
         #   languages must be enabled in the agent before they can be used.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1740,8 +1740,8 @@ module Google
         #   trigger_fulfillment.messages` * `Page.transition_route_groups.
         #   transition_routes.trigger_fulfillment.messages` If not specified, the agent's
         #   default language is used. [Many languages](https://cloud.google.com/dialogflow/
-        #   docs/reference/language) are supported. Note: languages must be enabled in the
-        #   agent before they can be used.
+        #   cx/docs/reference/language) are supported. Note: languages must be enabled in
+        #   the agent before they can be used.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1782,8 +1782,8 @@ module Google
         #   trigger_fulfillment.messages` * `Page.transition_route_groups.
         #   transition_routes.trigger_fulfillment.messages` If not specified, the agent's
         #   default language is used. [Many languages](https://cloud.google.com/dialogflow/
-        #   docs/reference/language) are supported. Note: languages must be enabled in the
-        #   agent before they can be used.
+        #   cx/docs/reference/language) are supported. Note: languages must be enabled in
+        #   the agent before they can be used.
         # @param [Fixnum] page_size
         #   The maximum number of items to return in a single page. By default 100 and at
         #   most 1000.
@@ -1832,7 +1832,7 @@ module Google
         #   messages` * `Page.transition_routes.trigger_fulfillment.messages` * `Page.
         #   transition_route_groups.transition_routes.trigger_fulfillment.messages` If not
         #   specified, the agent's default language is used. [Many languages](https://
-        #   cloud.google.com/dialogflow/docs/reference/language) are supported. Note:
+        #   cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note:
         #   languages must be enabled in the agent before they can be used.
         # @param [String] update_mask
         #   The mask to control which fields get updated. If the mask is not present, all
@@ -1876,7 +1876,7 @@ module Google
         # @param [String] language_code
         #   The language to list transition route groups for. The field `messages` in
         #   TransitionRoute is language dependent. If not specified, the agent's default
-        #   language is used. [Many languages](https://cloud.google.com/dialogflow/docs/
+        #   language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/
         #   reference/language) are supported. Note: languages must be enabled in the
         #   agent before they can be used.
         # @param [String] fields
@@ -1954,7 +1954,7 @@ module Google
         # @param [String] language_code
         #   The language to list transition route groups for. The field `messages` in
         #   TransitionRoute is language dependent. If not specified, the agent's default
-        #   language is used. [Many languages](https://cloud.google.com/dialogflow/docs/
+        #   language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/
         #   reference/language) are supported. Note: languages must be enabled in the
         #   agent before they can be used.
         # @param [String] fields
@@ -1992,7 +1992,7 @@ module Google
         # @param [String] language_code
         #   The language to list transition route groups for. The field `messages` in
         #   TransitionRoute is language dependent. If not specified, the agent's default
-        #   language is used. [Many languages](https://cloud.google.com/dialogflow/docs/
+        #   language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/
         #   reference/language) are supported. Note: languages must be enabled in the
         #   agent before they can be used.
         # @param [Fixnum] page_size
@@ -2039,7 +2039,7 @@ module Google
         # @param [String] language_code
         #   The language to list transition route groups for. The field `messages` in
         #   TransitionRoute is language dependent. If not specified, the agent's default
-        #   language is used. [Many languages](https://cloud.google.com/dialogflow/docs/
+        #   language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/
         #   reference/language) are supported. Note: languages must be enabled in the
         #   agent before they can be used.
         # @param [String] update_mask
@@ -2289,7 +2289,7 @@ module Google
         # @param [String] language_code
         #   The language of the following fields in `intent`: * `Intent.training_phrases.
         #   parts.text` If not specified, the agent's default language is used. [Many
-        #   languages](https://cloud.google.com/dialogflow/docs/reference/language) are
+        #   languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are
         #   supported. Note: languages must be enabled in the agent before they can be
         #   used.
         # @param [String] fields
@@ -2361,7 +2361,7 @@ module Google
         #   The language to retrieve the intent for. The following fields are language
         #   dependent: * `Intent.training_phrases.parts.text` If not specified, the agent'
         #   s default language is used. [Many languages](https://cloud.google.com/
-        #   dialogflow/docs/reference/language) are supported. Note: languages must be
+        #   dialogflow/cx/docs/reference/language) are supported. Note: languages must be
         #   enabled in the agent before they can be used.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2400,7 +2400,7 @@ module Google
         # @param [String] language_code
         #   The language to list intents for. The following fields are language dependent:
         #   * `Intent.training_phrases.parts.text` If not specified, the agent's default
-        #   language is used. [Many languages](https://cloud.google.com/dialogflow/docs/
+        #   language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/
         #   reference/language) are supported. Note: languages must be enabled in the
         #   agent before they can be used.
         # @param [Fixnum] page_size
@@ -2448,7 +2448,7 @@ module Google
         # @param [String] language_code
         #   The language of the following fields in `intent`: * `Intent.training_phrases.
         #   parts.text` If not specified, the agent's default language is used. [Many
-        #   languages](https://cloud.google.com/dialogflow/docs/reference/language) are
+        #   languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are
         #   supported. Note: languages must be enabled in the agent before they can be
         #   used.
         # @param [String] update_mask
