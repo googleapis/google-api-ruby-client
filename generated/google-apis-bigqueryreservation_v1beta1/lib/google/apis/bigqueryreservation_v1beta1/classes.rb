@@ -67,7 +67,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The resource name of the singleton BI reservation. Reservation names have the
-        # form `projects/`project_id`/locations/`location_id`/bireservation`.
+        # form `projects/`project_id`/locations/`location_id`/biReservation`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -347,6 +347,13 @@ module Google
         attr_accessor :ignore_idle_slots
         alias_method :ignore_idle_slots?, :ignore_idle_slots
       
+        # Maximum number of queries that are allowed to run concurrently in this
+        # reservation. Default value is 0 which means that maximum concurrency will be
+        # automatically set based on the reservation size.
+        # Corresponds to the JSON property `maxConcurrency`
+        # @return [Fixnum]
+        attr_accessor :max_concurrency
+      
         # The resource name of the reservation, e.g., `projects/*/locations/*/
         # reservations/team1-prod`.
         # Corresponds to the JSON property `name`
@@ -377,6 +384,7 @@ module Google
         def update!(**args)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @ignore_idle_slots = args[:ignore_idle_slots] if args.key?(:ignore_idle_slots)
+          @max_concurrency = args[:max_concurrency] if args.key?(:max_concurrency)
           @name = args[:name] if args.key?(:name)
           @slot_capacity = args[:slot_capacity] if args.key?(:slot_capacity)
           @update_time = args[:update_time] if args.key?(:update_time)

@@ -205,6 +205,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_time, as: 'creationTime'
           property :ignore_idle_slots, as: 'ignoreIdleSlots'
+          property :max_concurrency, :numeric_string => true, as: 'maxConcurrency'
           property :name, as: 'name'
           property :slot_capacity, :numeric_string => true, as: 'slotCapacity'
           property :update_time, as: 'updateTime'
