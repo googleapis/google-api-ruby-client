@@ -468,6 +468,11 @@ module Google
         # @return [String]
         attr_accessor :output_notebook_folder
       
+        # Parameters used within the 'input_notebook_file' notebook.
+        # Corresponds to the JSON property `parameters`
+        # @return [String]
+        attr_accessor :parameters
+      
         # Parameters to be overridden in the notebook during execution. Ref https://
         # papermill.readthedocs.io/en/latest/usage-parameterize.html on how to
         # specifying parameters in the input notebook and pass them here in an YAML file.
@@ -493,6 +498,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @master_type = args[:master_type] if args.key?(:master_type)
           @output_notebook_folder = args[:output_notebook_folder] if args.key?(:output_notebook_folder)
+          @parameters = args[:parameters] if args.key?(:parameters)
           @params_yaml_file = args[:params_yaml_file] if args.key?(:params_yaml_file)
           @scale_tier = args[:scale_tier] if args.key?(:scale_tier)
         end
@@ -1422,6 +1428,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The most recent execution names triggered from this schedule and
+        # their corresponding states.
+        # Corresponds to the JSON property `recentExecutions`
+        # @return [Array<Google::Apis::NotebooksV1::Execution>]
+        attr_accessor :recent_executions
+      
         # 
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -1437,7 +1449,7 @@ module Google
         # @return [String]
         attr_accessor :time_zone
       
-        # Output only. TIme the schedule was last updated.
+        # Output only. Time the schedule was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -1454,6 +1466,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @execution_template = args[:execution_template] if args.key?(:execution_template)
           @name = args[:name] if args.key?(:name)
+          @recent_executions = args[:recent_executions] if args.key?(:recent_executions)
           @state = args[:state] if args.key?(:state)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -1799,6 +1812,11 @@ module Google
         # @return [String]
         attr_accessor :target_image
       
+        # Target VM Version, like m63.
+        # Corresponds to the JSON property `targetVersion`
+        # @return [String]
+        attr_accessor :target_version
+      
         # The version of the notebook instance before this upgrade.
         # Corresponds to the JSON property `version`
         # @return [String]
@@ -1822,6 +1840,7 @@ module Google
           @snapshot = args[:snapshot] if args.key?(:snapshot)
           @state = args[:state] if args.key?(:state)
           @target_image = args[:target_image] if args.key?(:target_image)
+          @target_version = args[:target_version] if args.key?(:target_version)
           @version = args[:version] if args.key?(:version)
           @vm_image = args[:vm_image] if args.key?(:vm_image)
         end
