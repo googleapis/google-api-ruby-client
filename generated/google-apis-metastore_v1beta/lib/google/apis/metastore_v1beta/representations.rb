@@ -422,6 +422,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup, as: 'backup'
+          property :details, as: 'details'
           property :end_time, as: 'endTime'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
