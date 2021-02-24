@@ -25,8 +25,7 @@ module Google
       # Use the Apigee API to programmatically develop and manage APIs with a set of
       #  RESTful operations. Develop and secure API proxies, deploy and undeploy API
       #  proxy revisions, monitor APIs, configure environments, manage users, and more.
-      #  Get started using the APIs. *Note:* This product is available as a free trial
-      #  for a time period of 60 days.
+      #  Note: This product is available as a free trial for a time period of 60 days.
       #
       # @example
       #    require 'google/apis/apigee_v1'
@@ -3816,21 +3815,23 @@ module Google
         #   organizations/`org`/environments/`env`/apis/`api`/revisions/`rev``
         # @param [Boolean] override
         #   Flag that specifies whether the new deployment replaces other deployed
-        #   revisions of the API proxy in the environment. Set override to true to replace
-        #   other deployed revisions. By default, override is false and the deployment is
-        #   rejected if other revisions of the API proxy are deployed in the environment.
+        #   revisions of the API proxy in the environment. Set `override` to `true` to
+        #   replace other deployed revisions. By default, `override` is `false` and the
+        #   deployment is rejected if other revisions of the API proxy are deployed in the
+        #   environment.
         # @param [Boolean] sequenced_rollout
-        #   If true, a best-effort attempt will be made to roll out the routing rules
-        #   corresponding to this deployment and the environment changes to add this
-        #   deployment in a safe order. This reduces the risk of downtime that could be
-        #   caused by changing the environment group's routing before the new destination
-        #   for the affected traffic is ready to receive it. This should only be necessary
-        #   if the new deployment will be capturing traffic from another environment under
-        #   a shared environment group or if traffic will be rerouted to a different
-        #   environment due to a basepath removal. The GenerateDeployChangeReport API may
-        #   be used to examine routing changes before issuing the deployment request, and
-        #   its response will indicate if a sequenced rollout is recommended for the
-        #   deployment.
+        #   Flag that specifies whether to enable sequenced rollout. If set to `true`, a
+        #   best-effort attempt will be made to roll out the routing rules corresponding
+        #   to this deployment and the environment changes to add this deployment in a
+        #   safe order. This reduces the risk of downtime that could be caused by changing
+        #   the environment group's routing before the new destination for the affected
+        #   traffic is ready to receive it. This should only be necessary if the new
+        #   deployment will be capturing traffic from another environment under a shared
+        #   environment group or if traffic will be rerouted to a different environment
+        #   due to a base path removal. The [GenerateDeployChangeReport API](
+        #   GenerateDeployChangeReport) may be used to examine routing changes before
+        #   issuing the deployment request, and its response will indicate if a sequenced
+        #   rollout is recommended for the deployment.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3902,14 +3903,16 @@ module Google
         #   Required. Name of the API proxy revision deployment in the following format: `
         #   organizations/`org`/environments/`env`/apis/`api`/revisions/`rev``
         # @param [Boolean] sequenced_rollout
-        #   If true, a best-effort attempt will be made to remove the environment group
-        #   routing rules corresponding to this deployment before removing the deployment
-        #   from the runtime. This is likely to be a rare use case; it is only needed when
-        #   the intended effect of undeploying this proxy is to cause the traffic it
-        #   currently handles to be rerouted to some other existing proxy in the
-        #   environment group. The GenerateUndeployChangeReport API may be used to examine
-        #   routing changes before issuing the undeployment request, and its response will
-        #   indicate if a sequenced rollout is recommended for the undeployment.
+        #   Flag that specifies whether to enable sequenced rollout. If set to `true`, a
+        #   best-effort attempt will be made to remove the environment group routing rules
+        #   corresponding to this deployment before removing the deployment from the
+        #   runtime. This is likely to be a rare use case; it is only needed when the
+        #   intended effect of undeploying this proxy is to cause the traffic it currently
+        #   handles to be rerouted to some other existing proxy in the environment group.
+        #   The [GenerateUndeployChangeReport API](GenerateUndeployChangeReport) may be
+        #   used to examine routing changes before issuing the undeployment request, and
+        #   its response will indicate if a sequenced rollout is recommended for the
+        #   undeployment.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5439,12 +5442,11 @@ module Google
         #   organizations/`org`/environments/`env`/sharedflows/`sharedflow`/revisions/`rev`
         #   `
         # @param [Boolean] override
-        #   Flag that specifies whether to force the deployment of the new revision over
-        #   the currently deployed revision by overriding conflict checks. If an existing
-        #   shared flow revision is deployed, to ensure seamless deployment with no
-        #   downtime, set this parameter to `true`. In this case, hybrid deploys the new
-        #   revision fully before undeploying the existing revision. If set to `false`,
-        #   you must undeploy the existing revision before deploying the new revision.
+        #   Flag that specifies whether the new deployment replaces other deployed
+        #   revisions of the shared flow in the environment. Set `override` to `true` to
+        #   replace other deployed revisions. By default, `override` is `false` and the
+        #   deployment is rejected if other revisions of the shared flow are deployed in
+        #   the environment.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
