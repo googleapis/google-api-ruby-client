@@ -52,7 +52,7 @@ module Google
         # Retrieves a BI reservation.
         # @param [String] name
         #   Required. Name of the requested reservation, for example: `projects/`
-        #   project_id`/locations/`location_id`/bireservation`
+        #   project_id`/locations/`location_id`/biReservation`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -138,7 +138,7 @@ module Google
         # 0. In order to release BI capacity reservation size must be set to 0.
         # @param [String] name
         #   The resource name of the singleton BI reservation. Reservation names have the
-        #   form `projects/`project_id`/locations/`location_id`/bireservation`.
+        #   form `projects/`project_id`/locations/`location_id`/biReservation`.
         # @param [Google::Apis::BigqueryreservationV1beta1::BiReservation] bi_reservation_object
         # @param [String] update_mask
         #   A list of fields to be updated in this request.
@@ -619,11 +619,14 @@ module Google
         # levels. Example: * The organization `organizationA` contains two projects, `
         # project1` and `project2`. * Assignments for all three entities (`organizationA`
         # , `project1`, and `project2`) could all be created and mapped to the same or
-        # different reservations. Returns `google.rpc.Code.PERMISSION_DENIED` if user
-        # does not have 'bigquery.admin' permissions on the project using the
-        # reservation and the project that owns this reservation. Returns `google.rpc.
-        # Code.INVALID_ARGUMENT` when location of the assignment does not match location
-        # of the reservation.
+        # different reservations. "None" assignments represent an absence of the
+        # assignment. Projects assigned to None use on-demand pricing. To create a "None"
+        # assignment, use "none" as a reservation_id in the parent. Example parent: `
+        # projects/myproject/locations/US/reservations/none`. Returns `google.rpc.Code.
+        # PERMISSION_DENIED` if user does not have 'bigquery.admin' permissions on the
+        # project using the reservation and the project that owns this reservation.
+        # Returns `google.rpc.Code.INVALID_ARGUMENT` when location of the assignment
+        # does not match location of the reservation.
         # @param [String] parent
         #   Required. The parent resource name of the assignment E.g. `projects/myproject/
         #   locations/US/reservations/team1-prod`
