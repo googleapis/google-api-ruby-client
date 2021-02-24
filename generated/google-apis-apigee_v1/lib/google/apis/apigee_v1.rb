@@ -24,8 +24,7 @@ module Google
     # Use the Apigee API to programmatically develop and manage APIs with a set of
     # RESTful operations. Develop and secure API proxies, deploy and undeploy API
     # proxy revisions, monitor APIs, configure environments, manage users, and more.
-    # Get started using the APIs. *Note:* This product is available as a free trial
-    # for a time period of 60 days.
+    # Note: This product is available as a free trial for a time period of 60 days.
     #
     # @see https://cloud.google.com/apigee-api-management/
     module ApigeeV1

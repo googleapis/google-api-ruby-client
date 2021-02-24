@@ -2131,6 +2131,7 @@ module Google
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           collection :environments, as: 'environments'
+          property :expires_at, :numeric_string => true, as: 'expiresAt'
           property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
           property :name, as: 'name'
           property :project_id, as: 'projectId'

@@ -1963,7 +1963,9 @@ module Google
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1InstanceDeploymentStatus>]
         attr_accessor :instances
       
-        # Status reported by runtime pods. This field is not populated for List APIs.
+        # Status reported by runtime pods. This field is not populated for List APIs. **
+        # Note**: **This field is deprecated**. Runtime versions 1.3 and above report
+        # instance level status rather than pod status.
         # Corresponds to the JSON property `pods`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1PodStatus>]
         attr_accessor :pods
@@ -1974,9 +1976,9 @@ module Google
         attr_accessor :revision
       
         # Conflicts in the desired state routing configuration. The presence of
-        # conflicts does not cause the state to be ERROR, but it will mean that some of
-        # the deployments basepaths are not routed to its environment. If the conflicts
-        # change, the state will transition to PROGRESSING until the latest
+        # conflicts does not cause the state to be `ERROR`, but it will mean that some
+        # of the deployment's base paths are not routed to its environment. If the
+        # conflicts change, the state will transition to `PROGRESSING` until the latest
         # configuration is rolled out to all instances. This field is not populated in
         # List APIs.
         # Corresponds to the JSON property `routeConflicts`
@@ -2014,8 +2016,8 @@ module Google
       # request is to effect a routing change. The primary purposes of the routing
       # messages are: 1) To inform users of routing changes that may have an effect on
       # traffic currently being routed to other existing deployments. 2) To warn users
-      # if some basepath in the proxy will not receive traffic due to an existing
-      # deployment having already claimed that basepath. The presence of routing
+      # if some base path in the proxy will not receive traffic due to an existing
+      # deployment having already claimed that base path. The presence of routing
       # conflicts/changes will not cause non-dry-run DeployApiProxy/UndeployApiProxy
       # requests to be rejected.
       class GoogleCloudApigeeV1DeploymentChangeReport
@@ -2026,7 +2028,7 @@ module Google
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingChange>]
         attr_accessor :routing_changes
       
-        # All basepath conflicts detected for a deployment request.
+        # All base path conflicts detected for a deployment request.
         # Corresponds to the JSON property `routingConflicts`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>]
         attr_accessor :routing_conflicts
@@ -2055,30 +2057,30 @@ module Google
       class GoogleCloudApigeeV1DeploymentChangeReportRoutingChange
         include Google::Apis::Core::Hashable
       
-        # A human-readable description of this routing change.
+        # Human-readable description of this routing change.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # The name of the environment group affected by this routing change.
+        # Name of the environment group affected by this routing change.
         # Corresponds to the JSON property `environmentGroup`
         # @return [String]
         attr_accessor :environment_group
       
-        # A tuple representing a basepath and the deployment containing it.
+        # Tuple representing a base path and the deployment containing it.
         # Corresponds to the JSON property `fromDeployment`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment]
         attr_accessor :from_deployment
       
-        # True if using sequenced rollout would make this routing change safer. Note:
-        # this does not necessarily imply that automated sequenced rollout mode is
-        # supported for the operation.
+        # Set to `true` if using sequenced rollout would make this routing change safer.
+        # **Note**: This does not necessarily imply that automated sequenced rollout
+        # mode is supported for the operation.
         # Corresponds to the JSON property `shouldSequenceRollout`
         # @return [Boolean]
         attr_accessor :should_sequence_rollout
         alias_method :should_sequence_rollout?, :should_sequence_rollout
       
-        # A tuple representing a basepath and the deployment containing it.
+        # Tuple representing a base path and the deployment containing it.
         # Corresponds to the JSON property `toDeployment`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment]
         attr_accessor :to_deployment
@@ -2098,21 +2100,21 @@ module Google
       end
       
       # Describes a routing conflict that may cause a deployment not to receive
-      # traffic at some basepath.
+      # traffic at some base path.
       class GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict
         include Google::Apis::Core::Hashable
       
-        # A tuple representing a basepath and the deployment containing it.
+        # Tuple representing a base path and the deployment containing it.
         # Corresponds to the JSON property `conflictingDeployment`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment]
         attr_accessor :conflicting_deployment
       
-        # A human-readable description of this conflict.
+        # Human-readable description of this conflict.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # The name of the environment group in which this conflict exists.
+        # Name of the environment group in which this conflict exists.
         # Corresponds to the JSON property `environmentGroup`
         # @return [String]
         attr_accessor :environment_group
@@ -2129,26 +2131,26 @@ module Google
         end
       end
       
-      # A tuple representing a basepath and the deployment containing it.
+      # Tuple representing a base path and the deployment containing it.
       class GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment
         include Google::Apis::Core::Hashable
       
-        # The name of the deployed proxy revision containing the basepath.
+        # Name of the deployed API proxy revision containing the base path.
         # Corresponds to the JSON property `apiProxy`
         # @return [String]
         attr_accessor :api_proxy
       
-        # The basepath receiving traffic.
+        # Base path receiving traffic.
         # Corresponds to the JSON property `basepath`
         # @return [String]
         attr_accessor :basepath
       
-        # The name of the environment in which the proxy is deployed.
+        # Name of the environment in which the proxy is deployed.
         # Corresponds to the JSON property `environment`
         # @return [String]
         attr_accessor :environment
       
-        # The name of the deployed proxy revision containing the basepath.
+        # Name of the deployed API proxy revision containing the base path.
         # Corresponds to the JSON property `revision`
         # @return [String]
         attr_accessor :revision
@@ -2985,7 +2987,7 @@ module Google
       
         # Optional. Flag that specifies whether execution should continue if the flow
         # hook throws an exception. Set to `true` to continue execution. Set to `false`
-        # to stop execution if the flow hook throws an exception.Defaults to `true`.
+        # to stop execution if the flow hook throws an exception. Defaults to `true`.
         # Corresponds to the JSON property `continueOnError`
         # @return [Boolean]
         attr_accessor :continue_on_error
@@ -3143,7 +3145,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. Hostname or IP address of the exposed Apigee endpoint used by
+        # Output only. Internal hostname or IP address of the Apigee endpoint used by
         # clients to connect to the service.
         # Corresponds to the JSON property `host`
         # @return [String]
@@ -3165,8 +3167,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. The size of the CIDR block range that will be reserved by the
-        # instance. If not specified, default to SLASH_16.
+        # Optional. Size of the CIDR block range that will be reserved by the instance.
+        # PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`.
+        # Evaluation organizations support only `SLASH_23`.
         # Corresponds to the JSON property `peeringCidrRange`
         # @return [String]
         attr_accessor :peering_cidr_range
@@ -3176,7 +3179,7 @@ module Google
         # @return [String]
         attr_accessor :port
       
-        # Output only. State of the instance. Values other than ACTIVE means the
+        # Output only. State of the instance. Values other than `ACTIVE` means the
         # resource is not ready to use.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -3243,8 +3246,8 @@ module Google
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision>]
         attr_accessor :deployed_revisions
       
-        # The current routes deployed in the ingress routing table. A route which is
-        # missing will appear in missing_routes.
+        # Current routes deployed in the ingress routing table. A route which is missing
+        # will appear in `missing_routes`.
         # Corresponds to the JSON property `deployedRoutes`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute>]
         attr_accessor :deployed_routes
@@ -3270,12 +3273,12 @@ module Google
       class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision
         include Google::Apis::Core::Hashable
       
-        # The percentage of MP replicas reporting this revision
+        # Percentage of MP replicas reporting this revision.
         # Corresponds to the JSON property `percentage`
         # @return [Fixnum]
         attr_accessor :percentage
       
-        # The proxy revision reported as deployed.
+        # API proxy revision reported as deployed.
         # Corresponds to the JSON property `revision`
         # @return [String]
         attr_accessor :revision
@@ -3291,27 +3294,26 @@ module Google
         end
       end
       
-      # A route deployed in the ingress routing table.
+      # Route deployed in the ingress routing table.
       class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute
         include Google::Apis::Core::Hashable
       
-        # The basepath in the routing table.
+        # Base path in the routing table.
         # Corresponds to the JSON property `basepath`
         # @return [String]
         attr_accessor :basepath
       
-        # The envgroup where this route is installed.
+        # Environment group where this route is installed.
         # Corresponds to the JSON property `envgroup`
         # @return [String]
         attr_accessor :envgroup
       
-        # The destination environment. This will be empty if the route is not yet
-        # reported.
+        # Destination environment. This will be empty if the route is not yet reported.
         # Corresponds to the JSON property `environment`
         # @return [String]
         attr_accessor :environment
       
-        # The percentage of ingress replicas reporting this route.
+        # Percentage of ingress replicas reporting this route.
         # Corresponds to the JSON property `percentage`
         # @return [Fixnum]
         attr_accessor :percentage
@@ -3987,7 +3989,7 @@ module Google
       class GoogleCloudApigeeV1NatAddress
         include Google::Apis::Core::Hashable
       
-        # Required. The static IPV4 address.
+        # Output only. The static IPV4 address.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -3997,7 +3999,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. State of the nat address.
+        # Output only. State of the nat address.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -4307,6 +4309,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :environments
       
+        # Output only. Time that the Apigee organization is scheduled for deletion.
+        # Corresponds to the JSON property `expiresAt`
+        # @return [Fixnum]
+        attr_accessor :expires_at
+      
         # Output only. Time that the Apigee organization was last modified in
         # milliseconds since epoch.
         # Corresponds to the JSON property `lastModifiedAt`
@@ -4381,6 +4388,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @environments = args[:environments] if args.key?(:environments)
+          @expires_at = args[:expires_at] if args.key?(:expires_at)
           @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
           @name = args[:name] if args.key?(:name)
           @project_id = args[:project_id] if args.key?(:project_id)
