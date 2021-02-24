@@ -383,6 +383,7 @@ module Google
           hash :labels, as: 'labels'
           property :master_type, as: 'masterType'
           property :output_notebook_folder, as: 'outputNotebookFolder'
+          property :parameters, as: 'parameters'
           property :params_yaml_file, as: 'paramsYamlFile'
           property :scale_tier, as: 'scaleTier'
         end
@@ -602,6 +603,8 @@ module Google
           property :execution_template, as: 'executionTemplate', class: Google::Apis::NotebooksV1::ExecutionTemplate, decorator: Google::Apis::NotebooksV1::ExecutionTemplate::Representation
       
           property :name, as: 'name'
+          collection :recent_executions, as: 'recentExecutions', class: Google::Apis::NotebooksV1::Execution, decorator: Google::Apis::NotebooksV1::Execution::Representation
+      
           property :state, as: 'state'
           property :time_zone, as: 'timeZone'
           property :update_time, as: 'updateTime'
@@ -706,6 +709,7 @@ module Google
           property :snapshot, as: 'snapshot'
           property :state, as: 'state'
           property :target_image, as: 'targetImage'
+          property :target_version, as: 'targetVersion'
           property :version, as: 'version'
           property :vm_image, as: 'vmImage'
         end
