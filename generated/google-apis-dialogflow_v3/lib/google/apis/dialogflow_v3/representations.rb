@@ -2940,6 +2940,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :analyze_query_text_sentiment, as: 'analyzeQueryTextSentiment'
+          property :disable_webhook, as: 'disableWebhook'
           property :geo_location, as: 'geoLocation', class: Google::Apis::DialogflowV3::GoogleTypeLatLng, decorator: Google::Apis::DialogflowV3::GoogleTypeLatLng::Representation
       
           hash :parameters, as: 'parameters'

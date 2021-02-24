@@ -38,7 +38,7 @@ module Google
         attr_accessor :avatar_uri
       
         # Immutable. The default language of the agent as a language tag. See [Language
-        # Support](https://cloud.google.com/dialogflow/docs/reference/language) for a
+        # Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a
         # list of the currently supported language codes. This field cannot be set by
         # the Agents.UpdateAgent method.
         # Corresponds to the JSON property `defaultLanguageCode`
@@ -3118,7 +3118,7 @@ module Google
         attr_accessor :intent
       
         # Required. The language of the input. See [Language Support](https://cloud.
-        # google.com/dialogflow/docs/reference/language) for a list of the currently
+        # google.com/dialogflow/cx/docs/reference/language) for a list of the currently
         # supported language codes. Note that queries in the same session do not
         # necessarily need to specify the same language.
         # Corresponds to the JSON property `languageCode`
@@ -3155,6 +3155,12 @@ module Google
         # @return [Boolean]
         attr_accessor :analyze_query_text_sentiment
         alias_method :analyze_query_text_sentiment?, :analyze_query_text_sentiment
+      
+        # Whether to disable webhook calls for this request.
+        # Corresponds to the JSON property `disableWebhook`
+        # @return [Boolean]
+        attr_accessor :disable_webhook
+        alias_method :disable_webhook?, :disable_webhook
       
         # An object that represents a latitude/longitude pair. This is expressed as a
         # pair of doubles to represent degrees latitude and degrees longitude. Unless
@@ -3217,6 +3223,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @analyze_query_text_sentiment = args[:analyze_query_text_sentiment] if args.key?(:analyze_query_text_sentiment)
+          @disable_webhook = args[:disable_webhook] if args.key?(:disable_webhook)
           @geo_location = args[:geo_location] if args.key?(:geo_location)
           @parameters = args[:parameters] if args.key?(:parameters)
           @payload = args[:payload] if args.key?(:payload)
@@ -3272,7 +3279,7 @@ module Google
         attr_accessor :intent_detection_confidence
       
         # The language that was triggered during intent detection. See [Language Support]
-        # (https://cloud.google.com/dialogflow/docs/reference/language) for a list of
+        # (https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of
         # the currently supported language codes.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
@@ -6621,7 +6628,7 @@ module Google
         attr_accessor :intent
       
         # Required. The language of the input. See [Language Support](https://cloud.
-        # google.com/dialogflow/docs/reference/language) for a list of the currently
+        # google.com/dialogflow/cx/docs/reference/language) for a list of the currently
         # supported language codes. Note that queries in the same session do not
         # necessarily need to specify the same language.
         # Corresponds to the JSON property `languageCode`
