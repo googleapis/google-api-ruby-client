@@ -621,7 +621,8 @@ module Google
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
-        # Path, from the source root, to a file whose contents is used for the template.
+        # Path, from the source root, to the build configuration file (i.e. cloudbuild.
+        # yaml).
         # Corresponds to the JSON property `filename`
         # @return [String]
         attr_accessor :filename
