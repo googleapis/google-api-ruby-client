@@ -67,7 +67,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The resource name of the singleton BI reservation. Reservation names have the
-        # form `projects/`project_id`/locations/`location_id`/bireservation`.
+        # form `projects/`project_id`/locations/`location_id`/biReservation`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
