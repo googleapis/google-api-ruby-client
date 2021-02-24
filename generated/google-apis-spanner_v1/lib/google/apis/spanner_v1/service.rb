@@ -549,6 +549,12 @@ module Google
         # @param [String] backup_id
         #   Required. The id of the backup to be created. The `backup_id` appended to `
         #   parent` forms the full backup name of the form `projects//instances//backups/`.
+        # @param [String] encryption_config_encryption_type
+        #   Required. The encryption type of the backup.
+        # @param [String] encryption_config_kms_key_name
+        #   Optional. The Cloud KMS key that will be used to protect the backup. This
+        #   field should be set only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`.
+        #   Values are of the form `projects//locations//keyRings//cryptoKeys/`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -566,7 +572,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_instance_backup(parent, backup_object = nil, backup_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_instance_backup(parent, backup_object = nil, backup_id: nil, encryption_config_encryption_type: nil, encryption_config_kms_key_name: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/backups', options)
           command.request_representation = Google::Apis::SpannerV1::Backup::Representation
           command.request_object = backup_object
@@ -574,6 +580,8 @@ module Google
           command.response_class = Google::Apis::SpannerV1::Operation
           command.params['parent'] = parent unless parent.nil?
           command.query['backupId'] = backup_id unless backup_id.nil?
+          command.query['encryptionConfig.encryptionType'] = encryption_config_encryption_type unless encryption_config_encryption_type.nil?
+          command.query['encryptionConfig.kmsKeyName'] = encryption_config_kms_key_name unless encryption_config_kms_key_name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
