@@ -2736,10 +2736,15 @@ module Google
         # @return [String]
         attr_accessor :cache_mode
       
-        # Specifies a separate client (e.g. browser client) TTL, separate from the TTL
-        # for Cloud CDN's edge caches. Leaving this empty will use the same cache TTL
-        # for both Cloud CDN and the client-facing response. The maximum allowed value
-        # is 86400s (1 day).
+        # Specifies a separate client (e.g. browser client) maximum TTL. This is used to
+        # clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL,
+        # the lesser of client_ttl and default_ttl is used for the response max-age
+        # directive, along with a "public" directive. For cacheable content in
+        # CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if
+        # specified), or else sets the response max-age directive to the lesser of the
+        # client_ttl and default_ttl, and also ensures a "public" cache-control
+        # directive is present. If a client TTL is not specified, a default value (1
+        # hour) will be used. The maximum allowed value is 86400s (1 day).
         # Corresponds to the JSON property `clientTtl`
         # @return [Fixnum]
         attr_accessor :client_ttl
@@ -3506,10 +3511,15 @@ module Google
         # @return [String]
         attr_accessor :cache_mode
       
-        # Specifies a separate client (e.g. browser client) TTL, separate from the TTL
-        # for Cloud CDN's edge caches. Leaving this empty will use the same cache TTL
-        # for both Cloud CDN and the client-facing response. The maximum allowed value
-        # is 86400s (1 day).
+        # Specifies a separate client (e.g. browser client) maximum TTL. This is used to
+        # clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL,
+        # the lesser of client_ttl and default_ttl is used for the response max-age
+        # directive, along with a "public" directive. For cacheable content in
+        # CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if
+        # specified), or else sets the response max-age directive to the lesser of the
+        # client_ttl and default_ttl, and also ensures a "public" cache-control
+        # directive is present. If a client TTL is not specified, a default value (1
+        # hour) will be used. The maximum allowed value is 86400s (1 day).
         # Corresponds to the JSON property `clientTtl`
         # @return [Fixnum]
         attr_accessor :client_ttl
@@ -4442,6 +4452,105 @@ module Google
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # 
+      class BulkInsertInstanceResource
+        include Google::Apis::Core::Hashable
+      
+        # The maximum number of instances to create.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # 
+        # Corresponds to the JSON property `instanceProperties`
+        # @return [Google::Apis::ComputeBeta::InstanceProperties]
+        attr_accessor :instance_properties
+      
+        # Configuration for location policy among multiple possible locations (e.g.
+        # preferences for zone selection among zones in a single region).
+        # Corresponds to the JSON property `locationPolicy`
+        # @return [Google::Apis::ComputeBeta::LocationPolicy]
+        attr_accessor :location_policy
+      
+        # The minimum number of instances to create. If no min_count is specified then
+        # count is used as the default value. If min_count instances cannot be created,
+        # then no instances will be created.
+        # Corresponds to the JSON property `minCount`
+        # @return [Fixnum]
+        attr_accessor :min_count
+      
+        # The string pattern used for the names of the VMs. Either name_pattern or
+        # predefined_names must be set. The pattern should contain one consecutive
+        # sequence of placeholder hash characters (#) with each character corresponding
+        # to one digit of the generated instance name. Example: name_pattern of inst-####
+        # will generate instance names like inst-0001, inst-0002, ... . If there
+        # already exist instance(s) whose names match the name pattern in the same
+        # project and zone, then the generated instance numbers will start after the
+        # biggest existing number. For example, if there exists an instance with name
+        # inst-0050, then instance names generated using the pattern inst-#### will be
+        # inst-0051, inst-0052, etc. The name pattern placeholder #...# can contain up
+        # to 18 characters.
+        # Corresponds to the JSON property `namePattern`
+        # @return [String]
+        attr_accessor :name_pattern
+      
+        # Per-instance properties to be set on individual instances. Keys of this map
+        # specify requested instance names. Can be empty if name_pattern is used.
+        # Corresponds to the JSON property `perInstanceProperties`
+        # @return [Hash<String,Google::Apis::ComputeBeta::BulkInsertInstanceResourcePerInstanceProperties>]
+        attr_accessor :per_instance_properties
+      
+        # Specifies the instance template from which to create instances. You may
+        # combine sourceInstanceTemplate with instanceProperties to override specific
+        # values from an existing instance template. Bulk API follows the semantics of
+        # JSON Merge Patch described by RFC 7396.
+        # It can be a full or partial URL. For example, the following are all valid URLs
+        # to an instance template:
+        # - https://www.googleapis.com/compute/v1/projects/project/global/
+        # instanceTemplates/instanceTemplate
+        # - projects/project/global/instanceTemplates/instanceTemplate
+        # - global/instanceTemplates/instanceTemplate
+        # This field is optional.
+        # Corresponds to the JSON property `sourceInstanceTemplate`
+        # @return [String]
+        attr_accessor :source_instance_template
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @instance_properties = args[:instance_properties] if args.key?(:instance_properties)
+          @location_policy = args[:location_policy] if args.key?(:location_policy)
+          @min_count = args[:min_count] if args.key?(:min_count)
+          @name_pattern = args[:name_pattern] if args.key?(:name_pattern)
+          @per_instance_properties = args[:per_instance_properties] if args.key?(:per_instance_properties)
+          @source_instance_template = args[:source_instance_template] if args.key?(:source_instance_template)
+        end
+      end
+      
+      # Per-instance properties to be set on individual instances. To be extended in
+      # the future.
+      class BulkInsertInstanceResourcePerInstanceProperties
+        include Google::Apis::Core::Hashable
+      
+        # This field is only temporary. It will be removed. Do not use it.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -5614,8 +5723,13 @@ module Google
         # The source disk used to create this disk. You can provide this as a partial or
         # full URL to the resource. For example, the following are valid values:
         # - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk
+        # 
+        # - https://www.googleapis.com/compute/v1/projects/project/regions/region/disks/
+        # disk
         # - projects/project/zones/zone/disks/disk
+        # - projects/project/regions/region/disks/disk
         # - zones/zone/disks/disk
+        # - regions/region/disks/disk
         # Corresponds to the JSON property `sourceDisk`
         # @return [String]
         attr_accessor :source_disk
@@ -9617,11 +9731,12 @@ module Google
         attr_accessor :log_config
       
         # Name of the resource. Provided by the client when the resource is created. The
-        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
-        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
-        # and all following characters must be a dash, lowercase letter, or digit,
-        # except the last character, which cannot be a dash.
+        # name must be 1-63 characters long, and comply with RFC1035. For example, a
+        # name that is 1-63 characters long, matches the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?`, and otherwise complies with RFC1035. This regular
+        # expression describes a name where the first character is a lowercase letter,
+        # and all following characters are a dash, lowercase letter, or digit, except
+        # the last character, which isn't a dash.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -17878,6 +17993,47 @@ module Google
         end
       end
       
+      # Configuration for location policy among multiple possible locations (e.g.
+      # preferences for zone selection among zones in a single region).
+      class LocationPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Location configurations mapped by location name. Currently only zone names are
+        # supported and must be represented as valid internal URLs, like: zones/us-
+        # central1-a.
+        # Corresponds to the JSON property `locations`
+        # @return [Hash<String,Google::Apis::ComputeBeta::LocationPolicyLocation>]
+        attr_accessor :locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @locations = args[:locations] if args.key?(:locations)
+        end
+      end
+      
+      # 
+      class LocationPolicyLocation
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `preference`
+        # @return [String]
+        attr_accessor :preference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @preference = args[:preference] if args.key?(:preference)
+        end
+      end
+      
       # Specifies what kind of log the caller must write
       class LogConfig
         include Google::Apis::Core::Hashable
@@ -22772,6 +22928,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] An ID that represents a group of operations, such as when a
+        # group of operations results from a `bulkInsert` API request.
+        # Corresponds to the JSON property `operationGroupId`
+        # @return [String]
+        attr_accessor :operation_group_id
+      
         # [Output Only] The type of operation, such as `insert`, `update`, or `delete`,
         # and so on.
         # Corresponds to the JSON property `operationType`
@@ -22863,6 +23025,7 @@ module Google
           @insert_time = args[:insert_time] if args.key?(:insert_time)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @operation_group_id = args[:operation_group_id] if args.key?(:operation_group_id)
           @operation_type = args[:operation_type] if args.key?(:operation_type)
           @progress = args[:progress] if args.key?(:progress)
           @region = args[:region] if args.key?(:region)
@@ -33425,9 +33588,9 @@ module Google
         # The range of internal addresses that are owned by this subnetwork. Provide
         # this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.
         # 64.0.0/10. Ranges must be unique and non-overlapping within a network. Only
-        # IPv4 is supported. This field is set at resource creation time. This may be a
-        # RFC 1918 IP range, or a privately routed, non-RFC 1918 IP range, not belonging
-        # to Google. The range can be expanded after creation using expandIpCidrRange.
+        # IPv4 is supported. This field is set at resource creation time. The range can
+        # be any range listed in the Valid ranges list. The range can be expanded after
+        # creation using expandIpCidrRange.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range
@@ -33876,8 +34039,8 @@ module Google
         # The range of IP addresses belonging to this subnetwork secondary range.
         # Provide this property when you create the subnetwork. Ranges must be unique
         # and non-overlapping with all primary and secondary IP ranges within a network.
-        # Only IPv4 is supported. This may be a RFC 1918 IP range, or a privately, non-
-        # RFC 1918 IP range, not belonging to Google.
+        # Only IPv4 is supported. The range can be any range listed in the Valid ranges
+        # list.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range
