@@ -894,6 +894,12 @@ module Google
         # @return [String]
         attr_accessor :backup
       
+        # Output only. The restore details containing the revision of the service to be
+        # restored to, in format of JSON.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
         # Output only. The time when the restore ended.
         # Corresponds to the JSON property `endTime`
         # @return [String]
@@ -921,6 +927,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backup = args[:backup] if args.key?(:backup)
+          @details = args[:details] if args.key?(:details)
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
