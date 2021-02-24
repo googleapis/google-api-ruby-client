@@ -187,7 +187,7 @@ module Google
       end
       
       # Represents device relationships, for instance, structure/room to which the
-      # device is assigned to. For now this is only filled in the enterprise flow.
+      # device is assigned to.
       class GoogleHomeEnterpriseSdmV1ParentRelation
         include Google::Apis::Core::Hashable
       
