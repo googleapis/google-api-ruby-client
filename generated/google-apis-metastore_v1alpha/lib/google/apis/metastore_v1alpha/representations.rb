@@ -64,12 +64,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudMetastoreV1alphaOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class HiveMetastoreConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -268,19 +262,6 @@ module Google
         end
       end
       
-      class GoogleCloudMetastoreV1alphaOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          property :create_time, as: 'createTime'
-          property :end_time, as: 'endTime'
-          property :requested_cancellation, as: 'requestedCancellation'
-          property :status_message, as: 'statusMessage'
-          property :target, as: 'target'
-          property :verb, as: 'verb'
-        end
-      end
-      
       class HiveMetastoreConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -441,6 +422,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup, as: 'backup'
+          property :details, as: 'details'
           property :end_time, as: 'endTime'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
