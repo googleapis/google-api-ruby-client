@@ -280,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BuyOnGoogleProgramStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CarrierRate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -797,6 +803,12 @@ module Google
       end
       
       class MonetaryAmount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OnboardBuyOnGoogleProgramRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2604,6 +2616,15 @@ module Google
         end
       end
       
+      class BuyOnGoogleProgramStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_service_pending_email, as: 'customerServicePendingEmail'
+          property :customer_service_verified_email, as: 'customerServiceVerifiedEmail'
+          property :participation_stage, as: 'participationStage'
+        end
+      end
+      
       class CarrierRate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3515,6 +3536,13 @@ module Google
       
           property :tax_amount, as: 'taxAmount', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
       
+        end
+      end
+      
+      class OnboardBuyOnGoogleProgramRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_service_email, as: 'customerServiceEmail'
         end
       end
       
