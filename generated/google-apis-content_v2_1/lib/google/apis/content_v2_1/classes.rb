@@ -1600,6 +1600,37 @@ module Google
         end
       end
       
+      # Response message for the GetProgramStatus method.
+      class BuyOnGoogleProgramStatus
+        include Google::Apis::Core::Hashable
+      
+        # The customer service pending email.
+        # Corresponds to the JSON property `customerServicePendingEmail`
+        # @return [String]
+        attr_accessor :customer_service_pending_email
+      
+        # The customer service verified email.
+        # Corresponds to the JSON property `customerServiceVerifiedEmail`
+        # @return [String]
+        attr_accessor :customer_service_verified_email
+      
+        # The current participation stage for the program.
+        # Corresponds to the JSON property `participationStage`
+        # @return [String]
+        attr_accessor :participation_stage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer_service_pending_email = args[:customer_service_pending_email] if args.key?(:customer_service_pending_email)
+          @customer_service_verified_email = args[:customer_service_verified_email] if args.key?(:customer_service_verified_email)
+          @participation_stage = args[:participation_stage] if args.key?(:participation_stage)
+        end
+      end
+      
       # 
       class CarrierRate
         include Google::Apis::Core::Hashable
@@ -4827,6 +4858,25 @@ module Google
         def update!(**args)
           @price_amount = args[:price_amount] if args.key?(:price_amount)
           @tax_amount = args[:tax_amount] if args.key?(:tax_amount)
+        end
+      end
+      
+      # Request message for the OnboardProgram method.
+      class OnboardBuyOnGoogleProgramRequest
+        include Google::Apis::Core::Hashable
+      
+        # The customer service email.
+        # Corresponds to the JSON property `customerServiceEmail`
+        # @return [String]
+        attr_accessor :customer_service_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer_service_email = args[:customer_service_email] if args.key?(:customer_service_email)
         end
       end
       

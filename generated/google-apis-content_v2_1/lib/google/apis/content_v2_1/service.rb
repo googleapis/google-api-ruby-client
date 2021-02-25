@@ -979,6 +979,76 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves a status of BoG program for your Merchant Center account.
+        # @param [Fixnum] merchant_id
+        #   Required. The ID of the account.
+        # @param [String] region_code
+        #   The Program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/
+        #   ISO_3166-1_alpha-2). Currently only US is available.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::BuyOnGoogleProgramStatus] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::BuyOnGoogleProgramStatus]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_buyongoogleprogram(merchant_id, region_code, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'content/v2.1/{merchantId}/buyongoogleprograms/{regionCode}', options)
+          command.response_representation = Google::Apis::ContentV2_1::BuyOnGoogleProgramStatus::Representation
+          command.response_class = Google::Apis::ContentV2_1::BuyOnGoogleProgramStatus
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['regionCode'] = region_code unless region_code.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Onboards BoG in your Merchant Center account. By using this method, you agree
+        # to the Terms of Service.
+        # @param [Fixnum] merchant_id
+        #   Required. The ID of the account.
+        # @param [String] region_code
+        #   The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/
+        #   ISO_3166-1_alpha-2). Currently only US is available.
+        # @param [Google::Apis::ContentV2_1::OnboardBuyOnGoogleProgramRequest] onboard_buy_on_google_program_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def onboard_buyongoogleprogram_buy_on_google_program(merchant_id, region_code, onboard_buy_on_google_program_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'content/v2.1/{merchantId}/buyongoogleprograms/{regionCode}/onboard', options)
+          command.request_representation = Google::Apis::ContentV2_1::OnboardBuyOnGoogleProgramRequest::Representation
+          command.request_object = onboard_buy_on_google_program_request_object
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['regionCode'] = region_code unless region_code.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Uploads a collection to your Merchant Center account. If a collection with the
         # same collectionId already exists, this method updates that entry. In each
         # update, the collection is completely replaced by the fields in the body of the
