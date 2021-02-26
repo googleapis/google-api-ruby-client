@@ -685,7 +685,7 @@ module Google
         attr_accessor :app_details
       
         # Output only. The unique ID of the assigned targeting option. The ID is only
-        # unique within a given line item and targeting type. It may be reused in other
+        # unique within a given resource and targeting type. It may be reused in other
         # contexts.
         # Corresponds to the JSON property `assignedTargetingOptionId`
         # @return [String]
@@ -1301,8 +1301,7 @@ module Google
         attr_accessor :display_name
       
         # Indicates if this option is being negatively targeted. All assigned browser
-        # targeting options on the same line item must have the same value for this
-        # field.
+        # targeting options on the same resource must have the same value for this field.
         # Corresponds to the JSON property `negative`
         # @return [Boolean]
         attr_accessor :negative
@@ -1978,7 +1977,7 @@ module Google
         attr_accessor :display_name
       
         # Indicates if this option is being negatively targeted. All assigned carrier
-        # and ISP targeting options on the same line item must have the same value for
+        # and ISP targeting options on the same resource must have the same value for
         # this field.
         # Corresponds to the JSON property `negative`
         # @return [Boolean]
@@ -5295,8 +5294,7 @@ module Google
         attr_accessor :display_name
       
         # Indicates if this option is being negatively targeted. All assigned language
-        # targeting options on the same line item must have the same value for this
-        # field.
+        # targeting options on the same resource must have the same value for this field.
         # Corresponds to the JSON property `negative`
         # @return [Boolean]
         attr_accessor :negative
@@ -7423,9 +7421,9 @@ module Google
       
         # Required. Radius range for proximity location list. This represents the size
         # of the area around a chosen location that will be targeted. `All` proximity
-        # location targeting under a single line item must have the same radius range
+        # location targeting under a single resource must have the same radius range
         # value. Set this value to match any existing targeting. If updated, this field
-        # will change the radius range for all proximity targeting under the line item.
+        # will change the radius range for all proximity targeting under the resource.
         # Corresponds to the JSON property `proximityRadiusRange`
         # @return [String]
         attr_accessor :proximity_radius_range
@@ -7788,7 +7786,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. The URL or app ID of the site. Must be UTF-8 encoded with a maximum
+        # Required. The app ID or URL of the site. Must be UTF-8 encoded with a maximum
         # length of 240 bytes.
         # Corresponds to the JSON property `urlOrAppId`
         # @return [String]
