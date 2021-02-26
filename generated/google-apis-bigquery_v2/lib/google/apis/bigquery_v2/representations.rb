@@ -532,6 +532,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ParquetOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1417,6 +1423,8 @@ module Google
       
           property :ignore_unknown_values, as: 'ignoreUnknownValues'
           property :max_bad_records, as: 'maxBadRecords'
+          property :parquet_options, as: 'parquetOptions', class: Google::Apis::BigqueryV2::ParquetOptions, decorator: Google::Apis::BigqueryV2::ParquetOptions::Representation
+      
           property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
       
           property :source_format, as: 'sourceFormat'
@@ -1609,6 +1617,8 @@ module Google
           property :json_extension, as: 'jsonExtension'
           property :max_bad_records, as: 'maxBadRecords'
           property :null_marker, as: 'nullMarker'
+          property :parquet_options, as: 'parquetOptions', class: Google::Apis::BigqueryV2::ParquetOptions, decorator: Google::Apis::BigqueryV2::ParquetOptions::Representation
+      
           collection :projection_fields, as: 'projectionFields'
           property :quote, as: 'quote'
           property :range_partitioning, as: 'rangePartitioning', class: Google::Apis::BigqueryV2::RangePartitioning, decorator: Google::Apis::BigqueryV2::RangePartitioning::Representation
@@ -1949,6 +1959,14 @@ module Google
       
           collection :confusion_matrix_list, as: 'confusionMatrixList', class: Google::Apis::BigqueryV2::ConfusionMatrix, decorator: Google::Apis::BigqueryV2::ConfusionMatrix::Representation
       
+        end
+      end
+      
+      class ParquetOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_list_inference, as: 'enableListInference'
+          property :enum_as_string, as: 'enumAsString'
         end
       end
       
