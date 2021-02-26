@@ -101,15 +101,23 @@ module Google
         # @return [Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Digest]
         attr_accessor :input_root_digest
       
-        # List of required supported NodeProperty keys. In order to ensure that
-        # equivalent `Action`s always hash to the same value, the supported node
-        # properties MUST be lexicographically sorted by name. Sorting of strings is
-        # done by code point, equivalently, by the UTF-8 bytes. The interpretation of
-        # these properties is server-dependent. If a property is not recognized by the
-        # server, the server will return an `INVALID_ARGUMENT` error.
-        # Corresponds to the JSON property `outputNodeProperties`
-        # @return [Array<String>]
-        attr_accessor :output_node_properties
+        # A `Platform` is a set of requirements, such as hardware, operating system, or
+        # compiler toolchain, for an Action's execution environment. A `Platform` is
+        # represented as a series of key-value pairs representing the properties that
+        # are required of the platform.
+        # Corresponds to the JSON property `platform`
+        # @return [Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Platform]
+        attr_accessor :platform
+      
+        # An optional additional salt value used to place this `Action` into a separate
+        # cache namespace from other instances having the same field contents. This salt
+        # typically comes from operational configuration specific to sources such as
+        # repo and service configuration, and allows disowning an entire set of
+        # ActionResults that might have been poisoned by buggy software or tool failures.
+        # Corresponds to the JSON property `salt`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :salt
       
         # A timeout after which the execution should be killed. If the timeout is absent,
         # then the client is specifying that the execution should continue as long as
@@ -137,12 +145,16 @@ module Google
           @command_digest = args[:command_digest] if args.key?(:command_digest)
           @do_not_cache = args[:do_not_cache] if args.key?(:do_not_cache)
           @input_root_digest = args[:input_root_digest] if args.key?(:input_root_digest)
-          @output_node_properties = args[:output_node_properties] if args.key?(:output_node_properties)
+          @platform = args[:platform] if args.key?(:platform)
+          @salt = args[:salt] if args.key?(:salt)
           @timeout = args[:timeout] if args.key?(:timeout)
         end
       end
       
-      # An ActionResult represents the result of an Action being run.
+      # An ActionResult represents the result of an Action being run. It is advised
+      # that at least one field (for example `ActionResult.execution_metadata.Worker`)
+      # have a non-default value, to ensure that the serialized value is non-empty,
+      # which can then be used as a basic data sanity check.
       class BuildBazelRemoteExecutionV2ActionResult
         include Google::Apis::Core::Hashable
       
@@ -405,6 +417,18 @@ module Google
         # @return [Array<String>]
         attr_accessor :output_files
       
+        # A list of keys for node properties the client expects to retrieve for output
+        # files and directories. Keys are either names of string-based NodeProperty or
+        # names of fields in NodeProperties. In order to ensure that equivalent `Action`
+        # s always hash to the same value, the node properties MUST be lexicographically
+        # sorted by name. Sorting of strings is done by code point, equivalently, by the
+        # UTF-8 bytes. The interpretation of string-based properties is server-dependent.
+        # If a property is not recognized by the server, the server will return an `
+        # INVALID_ARGUMENT`.
+        # Corresponds to the JSON property `outputNodeProperties`
+        # @return [Array<String>]
+        attr_accessor :output_node_properties
+      
         # A list of the output paths that the client expects to retrieve from the action.
         # Only the listed paths will be returned to the client as output. The type of
         # the output (file or directory) is not specified, and will be determined by the
@@ -453,6 +477,7 @@ module Google
           @environment_variables = args[:environment_variables] if args.key?(:environment_variables)
           @output_directories = args[:output_directories] if args.key?(:output_directories)
           @output_files = args[:output_files] if args.key?(:output_files)
+          @output_node_properties = args[:output_node_properties] if args.key?(:output_node_properties)
           @output_paths = args[:output_paths] if args.key?(:output_paths)
           @platform = args[:platform] if args.key?(:platform)
           @working_directory = args[:working_directory] if args.key?(:working_directory)
@@ -573,9 +598,10 @@ module Google
         # @return [Array<Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2FileNode>]
         attr_accessor :files
       
-        # The node properties of the Directory.
+        # Node properties for FileNodes, DirectoryNodes, and SymlinkNodes. The server is
+        # responsible for specifying the properties that it accepts.
         # Corresponds to the JSON property `nodeProperties`
-        # @return [Array<Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2NodeProperty>]
+        # @return [Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2NodeProperties]
         attr_accessor :node_properties
       
         # The symlinks in the directory.
@@ -683,14 +709,14 @@ module Google
         # @return [String]
         attr_accessor :stage
       
-        # If set, the client can use this name with ByteStream.Read to stream the
-        # standard error.
+        # If set, the client can use this resource name with ByteStream.Read to stream
+        # the standard error from the endpoint hosting streamed responses.
         # Corresponds to the JSON property `stderrStreamName`
         # @return [String]
         attr_accessor :stderr_stream_name
       
-        # If set, the client can use this name with ByteStream.Read to stream the
-        # standard output.
+        # If set, the client can use this resource name with ByteStream.Read to stream
+        # the standard output from the endpoint hosting streamed responses.
         # Corresponds to the JSON property `stdoutStreamName`
         # @return [String]
         attr_accessor :stdout_stream_name
@@ -725,7 +751,10 @@ module Google
         # @return [String]
         attr_accessor :message
       
-        # An ActionResult represents the result of an Action being run.
+        # An ActionResult represents the result of an Action being run. It is advised
+        # that at least one field (for example `ActionResult.execution_metadata.Worker`)
+        # have a non-default value, to ensure that the serialized value is non-empty,
+        # which can then be used as a basic data sanity check.
         # Corresponds to the JSON property `result`
         # @return [Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2ActionResult]
         attr_accessor :result
@@ -767,6 +796,12 @@ module Google
       # ExecutedActionMetadata contains details about a completed execution.
       class BuildBazelRemoteExecutionV2ExecutedActionMetadata
         include Google::Apis::Core::Hashable
+      
+        # Details that are specific to the kind of worker used. For example, on POSIX-
+        # like systems this could contain a message with getrusage(2) statistics.
+        # Corresponds to the JSON property `auxiliaryMetadata`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :auxiliary_metadata
       
         # When the worker completed executing the action command.
         # Corresponds to the JSON property `executionCompletedTimestamp`
@@ -824,6 +859,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auxiliary_metadata = args[:auxiliary_metadata] if args.key?(:auxiliary_metadata)
           @execution_completed_timestamp = args[:execution_completed_timestamp] if args.key?(:execution_completed_timestamp)
           @execution_start_timestamp = args[:execution_start_timestamp] if args.key?(:execution_start_timestamp)
           @input_fetch_completed_timestamp = args[:input_fetch_completed_timestamp] if args.key?(:input_fetch_completed_timestamp)
@@ -880,9 +916,10 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The node properties of the FileNode.
+        # Node properties for FileNodes, DirectoryNodes, and SymlinkNodes. The server is
+        # responsible for specifying the properties that it accepts.
         # Corresponds to the JSON property `nodeProperties`
-        # @return [Array<Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2NodeProperty>]
+        # @return [Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2NodeProperties]
         attr_accessor :node_properties
       
         def initialize(**args)
@@ -948,6 +985,38 @@ module Google
         def update!(**args)
           @digest = args[:digest] if args.key?(:digest)
           @human_readable = args[:human_readable] if args.key?(:human_readable)
+        end
+      end
+      
+      # Node properties for FileNodes, DirectoryNodes, and SymlinkNodes. The server is
+      # responsible for specifying the properties that it accepts.
+      class BuildBazelRemoteExecutionV2NodeProperties
+        include Google::Apis::Core::Hashable
+      
+        # The file's last modification timestamp.
+        # Corresponds to the JSON property `mtime`
+        # @return [String]
+        attr_accessor :mtime
+      
+        # A list of string-based NodeProperties.
+        # Corresponds to the JSON property `properties`
+        # @return [Array<Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2NodeProperty>]
+        attr_accessor :properties
+      
+        # The UNIX file mode, e.g., 0755.
+        # Corresponds to the JSON property `unixMode`
+        # @return [Fixnum]
+        attr_accessor :unix_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mtime = args[:mtime] if args.key?(:mtime)
+          @properties = args[:properties] if args.key?(:properties)
+          @unix_mode = args[:unix_mode] if args.key?(:unix_mode)
         end
       end
       
@@ -1079,9 +1148,10 @@ module Google
         attr_accessor :is_executable
         alias_method :is_executable?, :is_executable
       
-        # The supported node properties of the OutputFile, if requested by the Action.
+        # Node properties for FileNodes, DirectoryNodes, and SymlinkNodes. The server is
+        # responsible for specifying the properties that it accepts.
         # Corresponds to the JSON property `nodeProperties`
-        # @return [Array<Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2NodeProperty>]
+        # @return [Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2NodeProperties]
         attr_accessor :node_properties
       
         # The full path of the file relative to the working directory, including the
@@ -1110,9 +1180,10 @@ module Google
       class BuildBazelRemoteExecutionV2OutputSymlink
         include Google::Apis::Core::Hashable
       
-        # The supported node properties of the OutputSymlink, if requested by the Action.
+        # Node properties for FileNodes, DirectoryNodes, and SymlinkNodes. The server is
+        # responsible for specifying the properties that it accepts.
         # Corresponds to the JSON property `nodeProperties`
-        # @return [Array<Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2NodeProperty>]
+        # @return [Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2NodeProperties]
         attr_accessor :node_properties
       
         # The full path of the symlink relative to the working directory, including the
@@ -1125,9 +1196,8 @@ module Google
         # The target path of the symlink. The path separator is a forward slash `/`. The
         # target path can be relative to the parent directory of the symlink or it can
         # be an absolute path starting with `/`. Support for absolute paths can be
-        # checked using the Capabilities API. The canonical form forbids the substrings `
-        # /./` and `//` in the target path. `..` components are allowed anywhere in the
-        # target path.
+        # checked using the Capabilities API. `..` components are allowed anywhere in
+        # the target path.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -1180,7 +1250,10 @@ module Google
       # on which the action must be performed may require an exact match with the
       # worker's OS. The server MAY use the `value` of one or more properties to
       # determine how it sets up the execution environment, such as by making specific
-      # system files available to the worker.
+      # system files available to the worker. Both names and values are typically case-
+      # sensitive. Note that the platform is implicitly part of the action digest, so
+      # even tiny changes in the names or values (like changing case) may result in
+      # different action cache entries.
       class BuildBazelRemoteExecutionV2PlatformProperty
         include Google::Apis::Core::Hashable
       
@@ -1264,17 +1337,20 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The node properties of the SymlinkNode.
+        # Node properties for FileNodes, DirectoryNodes, and SymlinkNodes. The server is
+        # responsible for specifying the properties that it accepts.
         # Corresponds to the JSON property `nodeProperties`
-        # @return [Array<Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2NodeProperty>]
+        # @return [Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2NodeProperties]
         attr_accessor :node_properties
       
         # The target path of the symlink. The path separator is a forward slash `/`. The
         # target path can be relative to the parent directory of the symlink or it can
         # be an absolute path starting with `/`. Support for absolute paths can be
-        # checked using the Capabilities API. The canonical form forbids the substrings `
-        # /./` and `//` in the target path. `..` components are allowed anywhere in the
-        # target path.
+        # checked using the Capabilities API. `..` components are allowed anywhere in
+        # the target path as logical canonicalization may lead to different behavior in
+        # the presence of directory symlinks (e.g. `foo/../bar` may not be the same as `
+        # bar`). To reduce potential cache misses, canonicalization is still recommended
+        # where this is possible without impacting correctness.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -1375,6 +1451,11 @@ module Google
       class GoogleDevtoolsRemotebuildbotCommandDurations
         include Google::Apis::Core::Hashable
       
+        # The time spent to release the CAS blobs used by the task.
+        # Corresponds to the JSON property `casRelease`
+        # @return [String]
+        attr_accessor :cas_release
+      
         # The time spent waiting for Container Manager to assign an asynchronous
         # container for execution.
         # Corresponds to the JSON property `cmWaitForAssignment`
@@ -1444,6 +1525,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cas_release = args[:cas_release] if args.key?(:cas_release)
           @cm_wait_for_assignment = args[:cm_wait_for_assignment] if args.key?(:cm_wait_for_assignment)
           @docker_prep = args[:docker_prep] if args.key?(:docker_prep)
           @docker_prep_start_time = args[:docker_prep_start_time] if args.key?(:docker_prep_start_time)
