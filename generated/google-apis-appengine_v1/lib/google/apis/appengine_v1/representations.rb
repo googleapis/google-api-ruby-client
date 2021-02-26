@@ -873,6 +873,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :flexible_environment_available, as: 'flexibleEnvironmentAvailable'
+          property :search_api_available, as: 'searchApiAvailable'
           property :standard_environment_available, as: 'standardEnvironmentAvailable'
         end
       end
