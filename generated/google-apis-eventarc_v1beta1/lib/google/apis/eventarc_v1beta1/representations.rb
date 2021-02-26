@@ -365,6 +365,7 @@ module Google
           property :destination, as: 'destination', class: Google::Apis::EventarcV1beta1::Destination, decorator: Google::Apis::EventarcV1beta1::Destination::Representation
       
           property :etag, as: 'etag'
+          hash :labels, as: 'labels'
           collection :matching_criteria, as: 'matchingCriteria', class: Google::Apis::EventarcV1beta1::MatchingCriteria, decorator: Google::Apis::EventarcV1beta1::MatchingCriteria::Representation
       
           property :name, as: 'name'
