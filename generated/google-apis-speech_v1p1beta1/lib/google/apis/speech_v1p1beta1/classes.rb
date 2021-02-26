@@ -41,6 +41,63 @@ module Google
         end
       end
       
+      # Message sent by the client for the `CreateCustomClass` method.
+      class CreateCustomClassRequest
+        include Google::Apis::Core::Hashable
+      
+        # A set of words or phrases that represents a common concept likely to appear in
+        # your audio, for example a list of passenger ship names. CustomClass items can
+        # be substituted into placeholders that you set in PhraseSet phrases.
+        # Corresponds to the JSON property `customClass`
+        # @return [Google::Apis::SpeechV1p1beta1::CustomClass]
+        attr_accessor :custom_class
+      
+        # The ID to use for the custom class, which will become the final component of
+        # the custom class' resource name. This value should be 4-63 characters, and
+        # valid characters are /a-z-/.
+        # Corresponds to the JSON property `customClassId`
+        # @return [String]
+        attr_accessor :custom_class_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_class = args[:custom_class] if args.key?(:custom_class)
+          @custom_class_id = args[:custom_class_id] if args.key?(:custom_class_id)
+        end
+      end
+      
+      # Message sent by the client for the `CreatePhraseSet` method.
+      class CreatePhraseSetRequest
+        include Google::Apis::Core::Hashable
+      
+        # Provides "hints" to the speech recognizer to favor specific words and phrases
+        # in the results.
+        # Corresponds to the JSON property `phraseSet`
+        # @return [Google::Apis::SpeechV1p1beta1::PhraseSet]
+        attr_accessor :phrase_set
+      
+        # The ID to use for the phrase set, which will become the final component of the
+        # phrase set's resource name. This value should be 4-63 characters, and valid
+        # characters are /a-z-/.
+        # Corresponds to the JSON property `phraseSetId`
+        # @return [String]
+        attr_accessor :phrase_set_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @phrase_set = args[:phrase_set] if args.key?(:phrase_set)
+          @phrase_set_id = args[:phrase_set_id] if args.key?(:phrase_set_id)
+        end
+      end
+      
       # A set of words or phrases that represents a common concept likely to appear in
       # your audio, for example a list of passenger ship names. CustomClass items can
       # be substituted into placeholders that you set in PhraseSet phrases.
@@ -75,6 +132,49 @@ module Google
         end
       end
       
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Message returned to the client by the `ListCustomClasses` method.
+      class ListCustomClassesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The custom classes.
+        # Corresponds to the JSON property `customClasses`
+        # @return [Array<Google::Apis::SpeechV1p1beta1::CustomClass>]
+        attr_accessor :custom_classes
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_classes = args[:custom_classes] if args.key?(:custom_classes)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
@@ -97,6 +197,32 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # Message returned to the client by the `ListPhraseSet` method.
+      class ListPhraseSetResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The phrase set.
+        # Corresponds to the JSON property `phraseSets`
+        # @return [Array<Google::Apis::SpeechV1p1beta1::PhraseSet>]
+        attr_accessor :phrase_sets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @phrase_sets = args[:phrase_sets] if args.key?(:phrase_sets)
         end
       end
       
@@ -761,6 +887,11 @@ module Google
         # @return [Array<Google::Apis::SpeechV1p1beta1::CustomClass>]
         attr_accessor :custom_classes
       
+        # A collection of phrase set resource names to use.
+        # Corresponds to the JSON property `phraseSetReferences`
+        # @return [Array<String>]
+        attr_accessor :phrase_set_references
+      
         # A collection of phrase sets. To specify the hints inline, leave the phrase set'
         # s `name` blank and fill in the rest of its fields. Any phrase set can use any
         # custom class.
@@ -775,6 +906,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @custom_classes = args[:custom_classes] if args.key?(:custom_classes)
+          @phrase_set_references = args[:phrase_set_references] if args.key?(:phrase_set_references)
           @phrase_sets = args[:phrase_sets] if args.key?(:phrase_sets)
         end
       end
