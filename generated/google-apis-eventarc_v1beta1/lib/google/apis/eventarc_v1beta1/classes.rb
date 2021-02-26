@@ -873,8 +873,14 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Required. The criteria by which events are filtered. Only events that match
-        # with this criteria will be sent to the destination.
+        # Optional. User labels attached to the triggers that can be used to group
+        # resources.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. null The criteria by which events are filtered. Only events that
+        # match with this criteria will be sent to the destination.
         # Corresponds to the JSON property `matchingCriteria`
         # @return [Array<Google::Apis::EventarcV1beta1::MatchingCriteria>]
         attr_accessor :matching_criteria
@@ -920,6 +926,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @destination = args[:destination] if args.key?(:destination)
           @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
           @matching_criteria = args[:matching_criteria] if args.key?(:matching_criteria)
           @name = args[:name] if args.key?(:name)
           @service_account = args[:service_account] if args.key?(:service_account)
