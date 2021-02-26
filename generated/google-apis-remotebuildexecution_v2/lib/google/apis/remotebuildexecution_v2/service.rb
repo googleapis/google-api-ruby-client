@@ -52,7 +52,7 @@ module Google
         # Retrieve a cached execution result. Implementations SHOULD ensure that any
         # blobs referenced from the ContentAddressableStorage are available at the time
         # of returning the ActionResult and will be for some period of time afterwards.
-        # The TTLs of the referenced blobs SHOULD be increased if necessary and
+        # The lifetimes of the referenced blobs SHOULD be increased if necessary and
         # applicable. Errors: * `NOT_FOUND`: The requested `ActionResult` is not in the
         # cache.
         # @param [String] instance_name
@@ -67,7 +67,8 @@ module Google
         #   The size of the blob, in bytes.
         # @param [Array<String>, String] inline_output_files
         #   A hint to the server to inline the contents of the listed output files. Each
-        #   path needs to exactly match one path in `output_files` in the Command message.
+        #   path needs to exactly match one file path in either `output_paths` or `
+        #   output_files` (DEPRECATED since v2.1) in the Command message.
         # @param [Boolean] inline_stderr
         #   A hint to the server to request inlining stderr in the ActionResult message.
         # @param [Boolean] inline_stdout
@@ -107,11 +108,12 @@ module Google
         # Upload a new execution result. In order to allow the server to perform access
         # control based on the type of action, and to assist with client debugging, the
         # client MUST first upload the Action that produced the result, along with its
-        # Command, into the `ContentAddressableStorage`. Errors: * `INVALID_ARGUMENT`:
-        # One or more arguments are invalid. * `FAILED_PRECONDITION`: One or more errors
-        # occurred in updating the action result, such as a missing command or action. *
-        # `RESOURCE_EXHAUSTED`: There is insufficient storage space to add the entry to
-        # the cache.
+        # Command, into the `ContentAddressableStorage`. Server implementations MAY
+        # modify the `UpdateActionResultRequest.action_result` and return an equivalent
+        # value. Errors: * `INVALID_ARGUMENT`: One or more arguments are invalid. * `
+        # FAILED_PRECONDITION`: One or more errors occurred in updating the action
+        # result, such as a missing command or action. * `RESOURCE_EXHAUSTED`: There is
+        # insufficient storage space to add the entry to the cache.
         # @param [String] instance_name
         #   The instance of the execution system to operate against. A server may support
         #   multiple instances of the execution system (with their own workers, storage,
@@ -201,7 +203,10 @@ module Google
         # additionally send a PreconditionFailure error detail where, for each requested
         # blob not present in the CAS, there is a `Violation` with a `type` of `MISSING`
         # and a `subject` of `"blobs/`hash`/`size`"` indicating the digest of the
-        # missing blob.
+        # missing blob. The server does not need to guarantee that a call to this method
+        # leads to at most one execution of the action. The server MAY execute the
+        # action multiple times, potentially in parallel. These redundant executions MAY
+        # continue to run, even if the operation is completed.
         # @param [String] instance_name
         #   The instance of the execution system to operate against. A server may support
         #   multiple instances of the execution system (with their own workers, storage,
@@ -329,7 +334,7 @@ module Google
         
         # Determine if blobs are present in the CAS. Clients can use this API before
         # uploading blobs to determine which ones are already present in the CAS and do
-        # not need to be uploaded again. Servers SHOULD increase the TTLs of the
+        # not need to be uploaded again. Servers SHOULD increase the lifetimes of the
         # referenced blobs if necessary and applicable. There are no method-specific
         # errors.
         # @param [String] instance_name
