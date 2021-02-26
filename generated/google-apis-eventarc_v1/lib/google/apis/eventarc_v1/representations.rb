@@ -367,6 +367,7 @@ module Google
           property :etag, as: 'etag'
           collection :event_filters, as: 'eventFilters', class: Google::Apis::EventarcV1::EventFilter, decorator: Google::Apis::EventarcV1::EventFilter::Representation
       
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :service_account, as: 'serviceAccount'
           property :transport, as: 'transport', class: Google::Apis::EventarcV1::Transport, decorator: Google::Apis::EventarcV1::Transport::Representation

@@ -873,11 +873,17 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Required. The list of filters that applies to event attributes. Only events
-        # that match all the provided filters will be sent to the destination.
+        # Required. null The list of filters that applies to event attributes. Only
+        # events that match all the provided filters will be sent to the destination.
         # Corresponds to the JSON property `eventFilters`
         # @return [Array<Google::Apis::EventarcV1::EventFilter>]
         attr_accessor :event_filters
+      
+        # Optional. User labels attached to the triggers that can be used to group
+        # resources.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
       
         # Required. The resource name of the trigger. Must be unique within the location
         # on the project and must be in `projects/`project`/locations/`location`/
@@ -894,8 +900,8 @@ module Google
         # account is used to generate identity tokens when invoking the service. See
         # https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-
         # account for information on how to invoke authenticated Cloud Run services. In
-        # order to create Audit Log triggers, the service account should also have '
-        # eventarc.events.receiveAuditLogV1Written' permission.
+        # order to create Audit Log triggers, the service account should also have `
+        # roles/eventarc.eventReceiver` IAM role.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -927,6 +933,7 @@ module Google
           @destination = args[:destination] if args.key?(:destination)
           @etag = args[:etag] if args.key?(:etag)
           @event_filters = args[:event_filters] if args.key?(:event_filters)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @service_account = args[:service_account] if args.key?(:service_account)
           @transport = args[:transport] if args.key?(:transport)
