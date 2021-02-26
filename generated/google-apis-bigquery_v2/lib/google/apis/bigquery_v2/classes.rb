@@ -276,7 +276,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :seasonal_periods
       
-        # The id to indicate different time series.
+        # The time_series_id value for this time series. It will be one of the unique
+        # values from the time_series_id_column specified during ARIMA model training.
+        # Only present when time_series_id_column training option was used.
         # Corresponds to the JSON property `timeSeriesId`
         # @return [String]
         attr_accessor :time_series_id
@@ -381,7 +383,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :seasonal_periods
       
-        # The id to indicate different time series.
+        # The time_series_id value for this time series. It will be one of the unique
+        # values from the time_series_id_column specified during ARIMA model training.
+        # Only present when time_series_id_column training option was used.
         # Corresponds to the JSON property `timeSeriesId`
         # @return [String]
         attr_accessor :time_series_id
@@ -2306,6 +2310,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_bad_records
       
+        # Additional properties to set if sourceFormat is set to Parquet.
+        # Corresponds to the JSON property `parquetOptions`
+        # @return [Google::Apis::BigqueryV2::ParquetOptions]
+        attr_accessor :parquet_options
+      
         # [Optional] The schema for the data. Schema is required for CSV and JSON
         # formats. Schema is disallowed for Google Cloud Bigtable, Cloud Datastore
         # backups, and Avro formats.
@@ -2348,6 +2357,7 @@ module Google
           @hive_partitioning_options = args[:hive_partitioning_options] if args.key?(:hive_partitioning_options)
           @ignore_unknown_values = args[:ignore_unknown_values] if args.key?(:ignore_unknown_values)
           @max_bad_records = args[:max_bad_records] if args.key?(:max_bad_records)
+          @parquet_options = args[:parquet_options] if args.key?(:parquet_options)
           @schema = args[:schema] if args.key?(:schema)
           @source_format = args[:source_format] if args.key?(:source_format)
           @source_uris = args[:source_uris] if args.key?(:source_uris)
@@ -3124,6 +3134,11 @@ module Google
         # @return [String]
         attr_accessor :null_marker
       
+        # [Optional] Options to configure parquet support.
+        # Corresponds to the JSON property `parquetOptions`
+        # @return [Google::Apis::BigqueryV2::ParquetOptions]
+        attr_accessor :parquet_options
+      
         # If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity
         # properties to load into BigQuery from a Cloud Datastore backup. Property names
         # are case sensitive and must be top-level properties. If no properties are
@@ -3255,6 +3270,7 @@ module Google
           @json_extension = args[:json_extension] if args.key?(:json_extension)
           @max_bad_records = args[:max_bad_records] if args.key?(:max_bad_records)
           @null_marker = args[:null_marker] if args.key?(:null_marker)
+          @parquet_options = args[:parquet_options] if args.key?(:parquet_options)
           @projection_fields = args[:projection_fields] if args.key?(:projection_fields)
           @quote = args[:quote] if args.key?(:quote)
           @range_partitioning = args[:range_partitioning] if args.key?(:range_partitioning)
@@ -4558,6 +4574,35 @@ module Google
         def update!(**args)
           @aggregate_classification_metrics = args[:aggregate_classification_metrics] if args.key?(:aggregate_classification_metrics)
           @confusion_matrix_list = args[:confusion_matrix_list] if args.key?(:confusion_matrix_list)
+        end
+      end
+      
+      # 
+      class ParquetOptions
+        include Google::Apis::Core::Hashable
+      
+        # [Optional] Indicates whether to use schema inference specifically for Parquet
+        # LIST logical type.
+        # Corresponds to the JSON property `enableListInference`
+        # @return [Boolean]
+        attr_accessor :enable_list_inference
+        alias_method :enable_list_inference?, :enable_list_inference
+      
+        # [Optional] Indicates whether to infer Parquet ENUM logical type as STRING
+        # instead of BYTES by default.
+        # Corresponds to the JSON property `enumAsString`
+        # @return [Boolean]
+        attr_accessor :enum_as_string
+        alias_method :enum_as_string?, :enum_as_string
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_list_inference = args[:enable_list_inference] if args.key?(:enable_list_inference)
+          @enum_as_string = args[:enum_as_string] if args.key?(:enum_as_string)
         end
       end
       
@@ -6956,8 +7001,7 @@ module Google
         # @return [String]
         attr_accessor :time_series_data_column
       
-        # The id column that will be used to indicate different time series to forecast
-        # in parallel.
+        # The time series id column that was used during ARIMA model training.
         # Corresponds to the JSON property `timeSeriesIdColumn`
         # @return [String]
         attr_accessor :time_series_id_column
