@@ -28,13 +28,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateCustomClassRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreatePhraseSetRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomClass
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListCustomClassesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListPhraseSetResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -155,6 +185,24 @@ module Google
         end
       end
       
+      class CreateCustomClassRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_class, as: 'customClass', class: Google::Apis::SpeechV1p1beta1::CustomClass, decorator: Google::Apis::SpeechV1p1beta1::CustomClass::Representation
+      
+          property :custom_class_id, as: 'customClassId'
+        end
+      end
+      
+      class CreatePhraseSetRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :phrase_set, as: 'phraseSet', class: Google::Apis::SpeechV1p1beta1::PhraseSet, decorator: Google::Apis::SpeechV1p1beta1::PhraseSet::Representation
+      
+          property :phrase_set_id, as: 'phraseSetId'
+        end
+      end
+      
       class CustomClass
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -165,11 +213,35 @@ module Google
         end
       end
       
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ListCustomClassesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :custom_classes, as: 'customClasses', class: Google::Apis::SpeechV1p1beta1::CustomClass, decorator: Google::Apis::SpeechV1p1beta1::CustomClass::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::SpeechV1p1beta1::Operation, decorator: Google::Apis::SpeechV1p1beta1::Operation::Representation
+      
+        end
+      end
+      
+      class ListPhraseSetResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :phrase_sets, as: 'phraseSets', class: Google::Apis::SpeechV1p1beta1::PhraseSet, decorator: Google::Apis::SpeechV1p1beta1::PhraseSet::Representation
       
         end
       end
@@ -317,6 +389,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :custom_classes, as: 'customClasses', class: Google::Apis::SpeechV1p1beta1::CustomClass, decorator: Google::Apis::SpeechV1p1beta1::CustomClass::Representation
       
+          collection :phrase_set_references, as: 'phraseSetReferences'
           collection :phrase_sets, as: 'phraseSets', class: Google::Apis::SpeechV1p1beta1::PhraseSet, decorator: Google::Apis::SpeechV1p1beta1::PhraseSet::Representation
       
         end
