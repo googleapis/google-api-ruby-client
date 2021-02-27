@@ -900,7 +900,10 @@ module Google
         attr_accessor :json_payload
       
         # Optional. A set of user-defined (key, value) data that provides additional
-        # information about the log entry.
+        # information about the log entry.Cloud Logging truncates label keys that exceed
+        # 512 B and label values that exceed 64 KB upon their associated log entry being
+        # written. The truncation is indicated by an ellipsis at the end of the
+        # character string.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
