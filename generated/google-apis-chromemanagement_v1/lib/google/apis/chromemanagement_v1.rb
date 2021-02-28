@@ -32,6 +32,9 @@ module Google
       # Version of the Chrome Management API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1'
+
+      # See reports about devices and Chrome browsers managed within your organization
+      AUTH_CHROME_MANAGEMENT_REPORTS_READONLY = 'https://www.googleapis.com/auth/chrome.management.reports.readonly'
     end
   end
 end
