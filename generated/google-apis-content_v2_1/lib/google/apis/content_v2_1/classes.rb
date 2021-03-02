@@ -244,6 +244,38 @@ module Google
         end
       end
       
+      # Credentials allowing Google to call a partner's API on behalf of a merchant.
+      class AccountCredentials
+        include Google::Apis::Core::Hashable
+      
+        # An OAuth access token.
+        # Corresponds to the JSON property `accessToken`
+        # @return [String]
+        attr_accessor :access_token
+      
+        # The amount of time, in seconds, after which the access token is no longer
+        # valid.
+        # Corresponds to the JSON property `expiresIn`
+        # @return [Fixnum]
+        attr_accessor :expires_in
+      
+        # Indicates to Google how Google should use these OAuth tokens.
+        # Corresponds to the JSON property `purpose`
+        # @return [String]
+        attr_accessor :purpose
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_token = args[:access_token] if args.key?(:access_token)
+          @expires_in = args[:expires_in] if args.key?(:expires_in)
+          @purpose = args[:purpose] if args.key?(:purpose)
+        end
+      end
+      
       # 
       class AccountCustomerService
         include Google::Apis::Core::Hashable
