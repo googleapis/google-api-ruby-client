@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccountCredentials
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccountCustomerService
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2222,6 +2228,15 @@ module Google
           property :customer_service, as: 'customerService', class: Google::Apis::ContentV2_1::AccountCustomerService, decorator: Google::Apis::ContentV2_1::AccountCustomerService::Representation
       
           property :phone_number, as: 'phoneNumber'
+        end
+      end
+      
+      class AccountCredentials
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_token, as: 'accessToken'
+          property :expires_in, :numeric_string => true, as: 'expiresIn'
+          property :purpose, as: 'purpose'
         end
       end
       

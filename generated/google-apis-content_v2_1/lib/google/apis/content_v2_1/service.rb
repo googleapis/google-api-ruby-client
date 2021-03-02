@@ -453,6 +453,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Uploads credentials for the Merchant Center account. If credentials already
+        # exist for this Merchant Center account and purpose, this method updates them.
+        # @param [Fixnum] account_id
+        #   Required. The merchant id of the account these credentials belong to.
+        # @param [Google::Apis::ContentV2_1::AccountCredentials] account_credentials_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::AccountCredentials] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::AccountCredentials]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_account_credential(account_id, account_credentials_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'content/v2.1/accounts/{accountId}/credentials', options)
+          command.request_representation = Google::Apis::ContentV2_1::AccountCredentials::Representation
+          command.request_object = account_credentials_object
+          command.response_representation = Google::Apis::ContentV2_1::AccountCredentials::Representation
+          command.response_class = Google::Apis::ContentV2_1::AccountCredentials
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new label, not assigned to any account.
         # @param [Fixnum] account_id
         #   Required. The id of the account this label belongs to.
@@ -1014,7 +1048,8 @@ module Google
         end
         
         # Onboards BoG in your Merchant Center account. By using this method, you agree
-        # to the Terms of Service.
+        # to the [Terms of Service](https://merchants.google.com/mc/termsofservice/
+        # transactions/US/latest).
         # @param [Fixnum] merchant_id
         #   Required. The ID of the account.
         # @param [String] region_code
