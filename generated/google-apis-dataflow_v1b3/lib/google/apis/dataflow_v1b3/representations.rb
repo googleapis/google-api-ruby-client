@@ -1395,6 +1395,7 @@ module Google
           hash :sdk_pipeline_options, as: 'sdkPipelineOptions'
           property :service_account_email, as: 'serviceAccountEmail'
           property :service_kms_key_name, as: 'serviceKmsKeyName'
+          collection :service_options, as: 'serviceOptions'
           property :shuffle_mode, as: 'shuffleMode'
           property :temp_storage_prefix, as: 'tempStoragePrefix'
           hash :user_agent, as: 'userAgent'
