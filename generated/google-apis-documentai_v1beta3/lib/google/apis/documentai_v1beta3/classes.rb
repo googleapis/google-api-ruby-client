@@ -271,6 +271,38 @@ module Google
         end
       end
       
+      # The long running operation metadata for set default processor version method.
+      class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # Response message for set default processor version method.
+      class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The metadata that represents a processor version being created.
       class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadata
         include Google::Apis::Core::Hashable
