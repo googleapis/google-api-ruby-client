@@ -574,6 +574,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ListTraceConfigOverridesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1Metadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -893,6 +899,24 @@ module Google
       end
       
       class GoogleCloudApigeeV1TlsInfoConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1TraceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1TraceConfigOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1TraceSamplingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2027,6 +2051,15 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1ListTraceConfigOverridesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :trace_config_overrides, as: 'traceConfigOverrides', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfigOverride, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfigOverride::Representation
+      
+        end
+      end
+      
       class GoogleCloudApigeeV1Metadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2604,6 +2637,34 @@ module Google
       
           collection :protocols, as: 'protocols'
           property :trust_store, as: 'trustStore'
+        end
+      end
+      
+      class GoogleCloudApigeeV1TraceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :endpoint, as: 'endpoint'
+          property :exporter, as: 'exporter'
+          property :sampling_config, as: 'samplingConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceSamplingConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceSamplingConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1TraceConfigOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_proxy, as: 'apiProxy'
+          property :name, as: 'name'
+          property :sampling_config, as: 'samplingConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceSamplingConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceSamplingConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1TraceSamplingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sampler, as: 'sampler'
+          property :sampling_rate, as: 'samplingRate'
         end
       end
       

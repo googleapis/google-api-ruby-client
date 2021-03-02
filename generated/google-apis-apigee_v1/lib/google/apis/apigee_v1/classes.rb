@@ -3927,6 +3927,32 @@ module Google
         end
       end
       
+      # Response for ListTraceConfigOverrides.
+      class GoogleCloudApigeeV1ListTraceConfigOverridesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token value that can be passed as `page_token` to retrieve the next page of
+        # content.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List all trace configuration overrides in an environment.
+        # Corresponds to the JSON property `traceConfigOverrides`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfigOverride>]
+        attr_accessor :trace_config_overrides
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @trace_config_overrides = args[:trace_config_overrides] if args.key?(:trace_config_overrides)
+        end
+      end
+      
       # This message type encapsulates additional information about query execution.
       class GoogleCloudApigeeV1Metadata
         include Google::Apis::Core::Hashable
@@ -6181,6 +6207,102 @@ module Google
           @key_alias_reference = args[:key_alias_reference] if args.key?(:key_alias_reference)
           @protocols = args[:protocols] if args.key?(:protocols)
           @trust_store = args[:trust_store] if args.key?(:trust_store)
+        end
+      end
+      
+      # TraceConfig defines the configurations in an environment of distributed trace.
+      class GoogleCloudApigeeV1TraceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Endpoint of the exporter.
+        # Corresponds to the JSON property `endpoint`
+        # @return [String]
+        attr_accessor :endpoint
+      
+        # Required. Exporter that is used to view the distributed trace captured using
+        # OpenCensus. An exporter sends traces to any backend that is capable of
+        # consuming them. Recorded spans can be exported by registered exporters.
+        # Corresponds to the JSON property `exporter`
+        # @return [String]
+        attr_accessor :exporter
+      
+        # TraceSamplingConfig represents the detail settings of distributed tracing.
+        # Only the fields that are defined in the distributed trace configuration can be
+        # overridden using the distribute trace configuration override APIs.
+        # Corresponds to the JSON property `samplingConfig`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceSamplingConfig]
+        attr_accessor :sampling_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @exporter = args[:exporter] if args.key?(:exporter)
+          @sampling_config = args[:sampling_config] if args.key?(:sampling_config)
+        end
+      end
+      
+      # A representation of a configuration override.
+      class GoogleCloudApigeeV1TraceConfigOverride
+        include Google::Apis::Core::Hashable
+      
+        # ID of the API proxy that will have its trace configuration overridden.
+        # Corresponds to the JSON property `apiProxy`
+        # @return [String]
+        attr_accessor :api_proxy
+      
+        # ID of the trace configuration override specified as a system-generated UUID.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # TraceSamplingConfig represents the detail settings of distributed tracing.
+        # Only the fields that are defined in the distributed trace configuration can be
+        # overridden using the distribute trace configuration override APIs.
+        # Corresponds to the JSON property `samplingConfig`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceSamplingConfig]
+        attr_accessor :sampling_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_proxy = args[:api_proxy] if args.key?(:api_proxy)
+          @name = args[:name] if args.key?(:name)
+          @sampling_config = args[:sampling_config] if args.key?(:sampling_config)
+        end
+      end
+      
+      # TraceSamplingConfig represents the detail settings of distributed tracing.
+      # Only the fields that are defined in the distributed trace configuration can be
+      # overridden using the distribute trace configuration override APIs.
+      class GoogleCloudApigeeV1TraceSamplingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Sampler of distributed tracing. OFF is the default value.
+        # Corresponds to the JSON property `sampler`
+        # @return [String]
+        attr_accessor :sampler
+      
+        # Field sampling rate. This value is only applicable when using the PROBABILITY
+        # sampler. The supported values are > 0 and <= 0.5.
+        # Corresponds to the JSON property `samplingRate`
+        # @return [Float]
+        attr_accessor :sampling_rate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sampler = args[:sampler] if args.key?(:sampler)
+          @sampling_rate = args[:sampling_rate] if args.key?(:sampling_rate)
         end
       end
       
