@@ -3373,6 +3373,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Get distributed trace configuration in an environment.
+        # @param [String] name
+        #   Required. Name of the trace configuration. Use the following structure in your
+        #   request: "organizations/*/environments/*/traceConfig".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_environment_trace_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfig::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Sets the IAM policy on an environment, if the policy already exists it will be
         # replaced. For more information, see [Manage users, roles, and permissions
         # using the API](https://cloud.google.com/apigee/docs/api-platform/system-
@@ -3626,6 +3657,45 @@ module Google
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Environment::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Environment
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the trace configurations in an environment. Note that the repeated
+        # fields have replace semantics when included in the field mask and that they
+        # will be overwritten by the value of the fields in the request body.
+        # @param [String] name
+        #   Required. Name of the trace configuration. Use the following structure in your
+        #   request: "organizations/*/environments/*/traceConfig".
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfig] google_cloud_apigee_v1_trace_config_object
+        # @param [String] update_mask
+        #   List of fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_organization_environment_trace_config(name, google_cloud_apigee_v1_trace_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfig::Representation
+          command.request_object = google_cloud_apigee_v1_trace_config_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfig::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -5773,6 +5843,189 @@ module Google
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1TargetServer::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1TargetServer
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a trace configuration override. The response contains a system-
+        # generated UUID, that can be used to view, update, or delete the configuration
+        # override. Use the List API to view the existing trace configuration overrides.
+        # @param [String] parent
+        #   Required. Parent resource of the trace configuration override. Use the
+        #   following structure in your request. "organizations/*/environments/*/
+        #   traceConfig".
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfigOverride] google_cloud_apigee_v1_trace_config_override_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfigOverride] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfigOverride]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_environment_trace_config_override(parent, google_cloud_apigee_v1_trace_config_override_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/overrides', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfigOverride::Representation
+          command.request_object = google_cloud_apigee_v1_trace_config_override_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfigOverride::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfigOverride
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a distributed trace configuration override.
+        # @param [String] name
+        #   Required. Name of the trace configuration override. Use the following
+        #   structure in your request: "organizations/*/environments/*/traceConfig/
+        #   overrides/*".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_environment_trace_config_override(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a trace configuration override.
+        # @param [String] name
+        #   Required. Name of the trace configuration override. Use the following
+        #   structure in your request: "organizations/*/environments/*/traceConfig/
+        #   overrides/*".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfigOverride] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfigOverride]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_environment_trace_config_override(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfigOverride::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfigOverride
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all of the distributed trace configuration overrides in an environment.
+        # @param [String] parent
+        #   Required. Parent resource of the trace configuration override. Use the
+        #   following structure in your request: "organizations/*/environments/*/
+        #   traceConfig".
+        # @param [Fixnum] page_size
+        #   Maximum number of trace configuration overrides to return. If not specified,
+        #   the maximum number returned is 25. The maximum number cannot exceed 100.
+        # @param [String] page_token
+        #   A page token, returned from a previous `ListTraceConfigOverrides` call. Token
+        #   value that can be used to retrieve the subsequent page. When paginating, all
+        #   other parameters provided to `ListTraceConfigOverrides` must match those
+        #   specified in the call to obtain the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListTraceConfigOverridesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListTraceConfigOverridesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_environment_trace_config_overrides(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/overrides', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListTraceConfigOverridesResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListTraceConfigOverridesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a distributed trace configuration override. Note that the repeated
+        # fields have replace semantics when included in the field mask and that they
+        # will be overwritten by the value of the fields in the request body.
+        # @param [String] name
+        #   Required. Name of the trace configuration override. Use the following
+        #   structure in your request: "organizations/*/environments/*/traceConfig/
+        #   overrides/*".
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfigOverride] google_cloud_apigee_v1_trace_config_override_object
+        # @param [String] update_mask
+        #   List of fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfigOverride] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfigOverride]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_environment_trace_config_override(name, google_cloud_apigee_v1_trace_config_override_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfigOverride::Representation
+          command.request_object = google_cloud_apigee_v1_trace_config_override_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfigOverride::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfigOverride
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
