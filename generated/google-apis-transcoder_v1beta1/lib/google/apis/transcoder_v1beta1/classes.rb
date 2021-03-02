@@ -660,8 +660,8 @@ module Google
         # @return [Google::Apis::TranscoderV1beta1::NormalizedCoordinate]
         attr_accessor :resolution
       
-        # Required. URI of the image in Cloud Storage. For example, `gs://bucket/inputs/
-        # image.jpeg`.
+        # Required. URI of the JPEG image in Cloud Storage. For example, `gs://bucket/
+        # inputs/image.jpeg`. JPEG is the only supported image type.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
