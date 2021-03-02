@@ -1247,7 +1247,10 @@ module Google
         # @return [String]
         attr_accessor :dataset
       
-        # The list of experiments to enable.
+        # The list of experiments to enable. This field should be used for SDK related
+        # experiments and not for service related experiments. The proper field for
+        # service related experiments is service_options. For more details see the
+        # rationale at go/user-specified-service-options.
         # Corresponds to the JSON property `experiments`
         # @return [Array<String>]
         attr_accessor :experiments
@@ -1280,6 +1283,14 @@ module Google
         # Corresponds to the JSON property `serviceKmsKeyName`
         # @return [String]
         attr_accessor :service_kms_key_name
+      
+        # The list of service options to enable. This field should be used for service
+        # related experiments only. These experiments, when graduating to GA, should be
+        # replaced by dedicated fields or become default (i.e. always on). For more
+        # details see the rationale at go/user-specified-service-options.
+        # Corresponds to the JSON property `serviceOptions`
+        # @return [Array<String>]
+        attr_accessor :service_options
       
         # Output only. The shuffle mode used for the job.
         # Corresponds to the JSON property `shuffleMode`
@@ -1345,6 +1356,7 @@ module Google
           @sdk_pipeline_options = args[:sdk_pipeline_options] if args.key?(:sdk_pipeline_options)
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
           @service_kms_key_name = args[:service_kms_key_name] if args.key?(:service_kms_key_name)
+          @service_options = args[:service_options] if args.key?(:service_options)
           @shuffle_mode = args[:shuffle_mode] if args.key?(:shuffle_mode)
           @temp_storage_prefix = args[:temp_storage_prefix] if args.key?(:temp_storage_prefix)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
