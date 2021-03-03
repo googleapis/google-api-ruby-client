@@ -2911,6 +2911,48 @@ module Google
         end
       end
       
+      # Parameters for node pool-level network config. Only applicable if `
+      # ip_allocation_policy.use_ip_aliases` is true.
+      class NodeNetworkConfig
+        include Google::Apis::Core::Hashable
+      
+        # Input only. [Input only] Whether to create a new range for pod IPs in this
+        # node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if
+        # they are not specified. If neither `create_pod_range` or `pod_range` are
+        # specified, the cluster-level default (`ip_allocation_policy.
+        # cluster_ipv4_cidr_block`) is used.
+        # Corresponds to the JSON property `createPodRange`
+        # @return [Boolean]
+        attr_accessor :create_pod_range
+        alias_method :create_pod_range?, :create_pod_range
+      
+        # The IP address range for pod IPs in this node pool. Only applicable if `
+        # create_pod_range` is true. Set to blank to have a range chosen with the
+        # default size. Set to /netmask (e.g. `/14`) to have a range chosen with a
+        # specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-
+        # Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use.
+        # Corresponds to the JSON property `podIpv4CidrBlock`
+        # @return [String]
+        attr_accessor :pod_ipv4_cidr_block
+      
+        # The ID of the secondary range for pod IPs. If `create_pod_range` is true, this
+        # ID is used for the new range.
+        # Corresponds to the JSON property `podRange`
+        # @return [String]
+        attr_accessor :pod_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_pod_range = args[:create_pod_range] if args.key?(:create_pod_range)
+          @pod_ipv4_cidr_block = args[:pod_ipv4_cidr_block] if args.key?(:pod_ipv4_cidr_block)
+          @pod_range = args[:pod_range] if args.key?(:pod_range)
+        end
+      end
+      
       # NodePool contains the name and configuration for a cluster's node pool. Node
       # pools are a set of nodes (i.e. VM's), with a common configuration and
       # specification, under the control of the cluster master. They may have a set of
@@ -2977,6 +3019,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Parameters for node pool-level network config. Only applicable if `
+        # ip_allocation_policy.use_ip_aliases` is true.
+        # Corresponds to the JSON property `networkConfig`
+        # @return [Google::Apis::ContainerV1beta1::NodeNetworkConfig]
+        attr_accessor :network_config
+      
         # [Output only] The pod CIDR block size per node in this node pool.
         # Corresponds to the JSON property `podIpv4CidrSize`
         # @return [Fixnum]
@@ -3036,6 +3084,7 @@ module Google
           @management = args[:management] if args.key?(:management)
           @max_pods_constraint = args[:max_pods_constraint] if args.key?(:max_pods_constraint)
           @name = args[:name] if args.key?(:name)
+          @network_config = args[:network_config] if args.key?(:network_config)
           @pod_ipv4_cidr_size = args[:pod_ipv4_cidr_size] if args.key?(:pod_ipv4_cidr_size)
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)

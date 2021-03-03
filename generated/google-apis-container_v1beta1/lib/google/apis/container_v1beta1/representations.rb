@@ -394,6 +394,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodeNetworkConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodePool
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1420,6 +1426,15 @@ module Google
         end
       end
       
+      class NodeNetworkConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_pod_range, as: 'createPodRange'
+          property :pod_ipv4_cidr_block, as: 'podIpv4CidrBlock'
+          property :pod_range, as: 'podRange'
+        end
+      end
+      
       class NodePool
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1437,6 +1452,8 @@ module Google
           property :max_pods_constraint, as: 'maxPodsConstraint', class: Google::Apis::ContainerV1beta1::MaxPodsConstraint, decorator: Google::Apis::ContainerV1beta1::MaxPodsConstraint::Representation
       
           property :name, as: 'name'
+          property :network_config, as: 'networkConfig', class: Google::Apis::ContainerV1beta1::NodeNetworkConfig, decorator: Google::Apis::ContainerV1beta1::NodeNetworkConfig::Representation
+      
           property :pod_ipv4_cidr_size, as: 'podIpv4CidrSize'
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
