@@ -58,8 +58,8 @@ module Google
         # parameters, see the activity parameters reference guides.
         # @param [String] user_key
         #   Represents the profile ID or the user email for which the data should be
-        #   filtered. Can be `all` for all information, or `userKey` for a user's unique G
-        #   Suite profile ID or their primary email address.
+        #   filtered. Can be `all` for all information, or `userKey` for a user's unique
+        #   Google Workspace profile ID or their primary email address.
         # @param [String] application_name
         #   Application name for which the events are to be retrieved.
         # @param [String] actor_ip_address
@@ -87,8 +87,8 @@ module Google
         #   180 days in the past.
         # @param [String] event_name
         #   The name of the event being queried by the API. Each `eventName` is related to
-        #   a specific G Suite service or feature which the API organizes into types of
-        #   events. An example is the Google Calendar events in the Admin console
+        #   a specific Google Workspace service or feature which the API organizes into
+        #   types of events. An example is the Google Calendar events in the Admin console
         #   application's reports. The Calendar Settings `type` structure has all of the
         #   Calendar `eventName` activities reported by the API. When an administrator
         #   changes a Calendar setting, the API reports this activity in the Calendar
@@ -192,8 +192,8 @@ module Google
         # see Receiving Push Notifications.
         # @param [String] user_key
         #   Represents the profile ID or the user email for which the data should be
-        #   filtered. Can be `all` for all information, or `userKey` for a user's unique G
-        #   Suite profile ID or their primary email address.
+        #   filtered. Can be `all` for all information, or `userKey` for a user's unique
+        #   Google Workspace profile ID or their primary email address.
         # @param [String] application_name
         #   Application name for which the events are to be retrieved.
         # @param [Google::Apis::AdminReportsV1::Channel] channel_object
@@ -222,8 +222,8 @@ module Google
         #   180 days in the past.
         # @param [String] event_name
         #   The name of the event being queried by the API. Each `eventName` is related to
-        #   a specific G Suite service or feature which the API organizes into types of
-        #   events. An example is the Google Calendar events in the Admin console
+        #   a specific Google Workspace service or feature which the API organizes into
+        #   types of events. An example is the Google Calendar events in the Admin console
         #   application's reports. The Calendar Settings `type` structure has all of the
         #   Calendar `eventName` activities reported by the API. When an administrator
         #   changes a Calendar setting, the API reports this activity in the Calendar
@@ -503,8 +503,8 @@ module Google
         # Usage parameters reference guides.
         # @param [String] user_key
         #   Represents the profile ID or the user email for which the data should be
-        #   filtered. Can be `all` for all information, or `userKey` for a user's unique G
-        #   Suite profile ID or their primary email address.
+        #   filtered. Can be `all` for all information, or `userKey` for a user's unique
+        #   Google Workspace profile ID or their primary email address.
         # @param [String] date
         #   Represents the date the usage occurred. The timestamp is in the ISO 8601
         #   format, yyyy-mm-dd. We recommend you use your account's time zone for this.

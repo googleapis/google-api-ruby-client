@@ -86,10 +86,10 @@ module Google
         attr_accessor :id
       
         # IP address of the user doing the action. This is the Internet Protocol (IP)
-        # address of the user when logging into G Suite which may or may not reflect the
-        # user's physical location. For example, the IP address can be the user's proxy
-        # server's address or a virtual private network (VPN) address. The API supports
-        # IPv4 and IPv6.
+        # address of the user when logging into Google Workspace, which may or may not
+        # reflect the user's physical location. For example, the IP address can be the
+        # user's proxy server's address or a virtual private network (VPN) address. The
+        # API supports IPv4 and IPv6.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -142,8 +142,8 @@ module Google
           # @return [String]
           attr_accessor :key
         
-          # The unique G Suite profile ID of the actor. May be absent if the actor is not
-          # a G Suite user.
+          # The unique Google Workspace profile ID of the actor. May be absent if the
+          # actor is not a Google Workspace user.
           # Corresponds to the JSON property `profileId`
           # @return [String]
           attr_accessor :profile_id
@@ -166,8 +166,8 @@ module Google
           include Google::Apis::Core::Hashable
         
           # Name of the event. This is the specific name of the activity reported by the
-          # API. And each `eventName` is related to a specific G Suite service or feature
-          # which the API organizes into types of events. For `eventName` request
+          # API. And each `eventName` is related to a specific Google Workspace service or
+          # feature which the API organizes into types of events. For `eventName` request
           # parameters in general: - If no `eventName` is given, the report returns all
           # possible instances of an `eventName`. - When you request an `eventName`, the
           # API's response returns all activities which contain that `eventName`. It is
@@ -186,10 +186,10 @@ module Google
           # @return [Array<Google::Apis::AdminReportsV1::Activity::Event::Parameter>]
           attr_accessor :parameters
         
-          # Type of event. The G Suite service or feature that an administrator changes is
-          # identified in the `type` property which identifies an event using the `
-          # eventName` property. For a full list of the API's `type` categories, see the
-          # list of event names for various applications above in `applicationName`.
+          # Type of event. The Google Workspace service or feature that an administrator
+          # changes is identified in the `type` property which identifies an event using
+          # the `eventName` property. For a full list of the API's `type` categories, see
+          # the list of event names for various applications above in `applicationName`.
           # Corresponds to the JSON property `type`
           # @return [String]
           attr_accessor :type
@@ -322,7 +322,7 @@ module Google
           # @return [String]
           attr_accessor :application_name
         
-          # The unique identifier for a G suite account.
+          # The unique identifier for a Google Workspace account.
           # Corresponds to the JSON property `customerId`
           # @return [String]
           attr_accessor :customer_id
@@ -546,7 +546,7 @@ module Google
           # @return [String]
           attr_accessor :entity_id
         
-          # Output only. The user's immutable G Suite profile identifier.
+          # Output only. The user's immutable Google Workspace profile identifier.
           # Corresponds to the JSON property `profileId`
           # @return [String]
           attr_accessor :profile_id
