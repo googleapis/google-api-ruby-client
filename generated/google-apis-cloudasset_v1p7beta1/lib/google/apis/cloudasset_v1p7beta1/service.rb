@@ -63,7 +63,7 @@ module Google
         #   organization number (such as "organizations/123"), a project ID (such as "
         #   projects/my-project-id"), or a project number (such as "projects/12345"), or a
         #   folder number (such as "folders/123").
-        # @param [Google::Apis::CloudassetV1p7beta1::ExportAssetsRequest] export_assets_request_object
+        # @param [Google::Apis::CloudassetV1p7beta1::GoogleCloudAssetV1p7beta1ExportAssetsRequest] google_cloud_asset_v1p7beta1_export_assets_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -81,10 +81,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def export_assets(parent, export_assets_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def export_assets(parent, google_cloud_asset_v1p7beta1_export_assets_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1p7beta1/{+parent}:exportAssets', options)
-          command.request_representation = Google::Apis::CloudassetV1p7beta1::ExportAssetsRequest::Representation
-          command.request_object = export_assets_request_object
+          command.request_representation = Google::Apis::CloudassetV1p7beta1::GoogleCloudAssetV1p7beta1ExportAssetsRequest::Representation
+          command.request_object = google_cloud_asset_v1p7beta1_export_assets_request_object
           command.response_representation = Google::Apis::CloudassetV1p7beta1::Operation::Representation
           command.response_class = Google::Apis::CloudassetV1p7beta1::Operation
           command.params['parent'] = parent unless parent.nil?
