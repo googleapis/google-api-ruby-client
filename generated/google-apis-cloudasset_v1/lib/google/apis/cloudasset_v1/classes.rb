@@ -763,7 +763,9 @@ module Google
         # The uri of the Cloud Storage object. It's the same uri that is used by gsutil.
         # Example: "gs://bucket_name/object_name". See [Viewing and Editing Object
         # Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata) for
-        # more information.
+        # more information. If the specified Cloud Storage object already exists and
+        # there is no [hold](https://cloud.google.com/storage/docs/object-holds), it
+        # will be overwritten with the exported result.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -954,9 +956,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The uri of the Cloud Storage object. It's the same uri that is used
-        # by gsutil. For example: "gs://bucket_name/object_name". See [Quickstart: Using
-        # the gsutil tool] (https://cloud.google.com/storage/docs/quickstart-gsutil) for
-        # examples.
+        # by gsutil. Example: "gs://bucket_name/object_name". See [Viewing and Editing
+        # Object Metadata](https://cloud.google.com/storage/docs/viewing-editing-
+        # metadata) for more information. If the specified Cloud Storage object already
+        # exists and there is no [hold](https://cloud.google.com/storage/docs/object-
+        # holds), it will be overwritten with the analysis result.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -1055,6 +1059,326 @@ module Google
         def update!(**args)
           @analysis_state = args[:analysis_state] if args.key?(:analysis_state)
           @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
+        end
+      end
+      
+      # An asset in Google Cloud. An asset can be any resource in the Google Cloud [
+      # resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-
+      # platform-resource-hierarchy), a resource outside the Google Cloud resource
+      # hierarchy (such as Google Kubernetes Engine clusters and objects), or a policy
+      # (e.g. Cloud IAM policy). See [Supported asset types](https://cloud.google.com/
+      # asset-inventory/docs/supported-asset-types) for more information.
+      class GoogleCloudAssetV1p7beta1Asset
+        include Google::Apis::Core::Hashable
+      
+        # An `AccessLevel` is a label that can be applied to requests to Google Cloud
+        # services, along with a list of requirements necessary for the label to be
+        # applied.
+        # Corresponds to the JSON property `accessLevel`
+        # @return [Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1AccessLevel]
+        attr_accessor :access_level
+      
+        # `AccessPolicy` is a container for `AccessLevels` (which define the necessary
+        # attributes to use Google Cloud services) and `ServicePerimeters` (which define
+        # regions of services able to freely pass data within a perimeter). An access
+        # policy is globally visible within an organization, and the restrictions it
+        # specifies apply to all projects within an organization.
+        # Corresponds to the JSON property `accessPolicy`
+        # @return [Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1AccessPolicy]
+        attr_accessor :access_policy
+      
+        # The ancestry path of an asset in Google Cloud [resource hierarchy](https://
+        # cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy),
+        # represented as a list of relative resource names. An ancestry path starts with
+        # the closest ancestor in the hierarchy and ends at root. If the asset is a
+        # project, folder, or organization, the ancestry path starts from the asset
+        # itself. Example: `["projects/123456789", "folders/5432", "organizations/1234"]`
+        # Corresponds to the JSON property `ancestors`
+        # @return [Array<String>]
+        attr_accessor :ancestors
+      
+        # The type of the asset. Example: `compute.googleapis.com/Disk` See [Supported
+        # asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-
+        # types) for more information.
+        # Corresponds to the JSON property `assetType`
+        # @return [String]
+        attr_accessor :asset_type
+      
+        # An Identity and Access Management (IAM) policy, which specifies access
+        # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
+        # A `binding` binds one or more `members` to a single `role`. Members can be
+        # user accounts, service accounts, Google groups, and domains (such as G Suite).
+        # A `role` is a named list of permissions; each `role` can be an IAM predefined
+        # role or a user-created custom role. For some types of Google Cloud resources,
+        # a `binding` can also specify a `condition`, which is a logical expression that
+        # allows access to a resource only if the expression evaluates to `true`. A
+        # condition can add constraints based on attributes of the request, the resource,
+        # or both. To learn which resources support conditions in their IAM policies,
+        # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
+        # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
+        # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
+        # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
+        # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
+        # title": "expirable access", "description": "Does not grant access after Sep
+        # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
+        # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
+        # members: - user:mike@example.com - group:admins@example.com - domain:google.
+        # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
+        # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+        # roles/resourcemanager.organizationViewer condition: title: expirable access
+        # description: Does not grant access after Sep 2020 expression: request.time <
+        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+        # description of IAM and its features, see the [IAM documentation](https://cloud.
+        # google.com/iam/docs/).
+        # Corresponds to the JSON property `iamPolicy`
+        # @return [Google::Apis::CloudassetV1::Policy]
+        attr_accessor :iam_policy
+      
+        # The full name of the asset. Example: `//compute.googleapis.com/projects/
+        # my_project_123/zones/zone1/instances/instance1` See [Resource names](https://
+        # cloud.google.com/apis/design/resource_names#full_resource_name) for more
+        # information.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A representation of an [organization policy](https://cloud.google.com/resource-
+        # manager/docs/organization-policy/overview#organization_policy). There can be
+        # more than one organization policy with different constraints set on a given
+        # resource.
+        # Corresponds to the JSON property `orgPolicy`
+        # @return [Array<Google::Apis::CloudassetV1::GoogleCloudOrgpolicyV1Policy>]
+        attr_accessor :org_policy
+      
+        # The detailed related assets with the `relationship_type`.
+        # Corresponds to the JSON property `relatedAssets`
+        # @return [Google::Apis::CloudassetV1::GoogleCloudAssetV1p7beta1RelatedAssets]
+        attr_accessor :related_assets
+      
+        # A representation of a Google Cloud resource.
+        # Corresponds to the JSON property `resource`
+        # @return [Google::Apis::CloudassetV1::GoogleCloudAssetV1p7beta1Resource]
+        attr_accessor :resource
+      
+        # `ServicePerimeter` describes a set of Google Cloud resources which can freely
+        # import and export data amongst themselves, but not export outside of the `
+        # ServicePerimeter`. If a request with a source within this `ServicePerimeter`
+        # has a target outside of the `ServicePerimeter`, the request will be blocked.
+        # Otherwise the request is allowed. There are two types of Service Perimeter -
+        # Regular and Bridge. Regular Service Perimeters cannot overlap, a single Google
+        # Cloud project can only belong to a single regular Service Perimeter. Service
+        # Perimeter Bridges can contain only Google Cloud projects as members, a single
+        # Google Cloud project may belong to multiple Service Perimeter Bridges.
+        # Corresponds to the JSON property `servicePerimeter`
+        # @return [Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1ServicePerimeter]
+        attr_accessor :service_perimeter
+      
+        # The last update timestamp of an asset. update_time is updated when create/
+        # update/delete operation is performed.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_level = args[:access_level] if args.key?(:access_level)
+          @access_policy = args[:access_policy] if args.key?(:access_policy)
+          @ancestors = args[:ancestors] if args.key?(:ancestors)
+          @asset_type = args[:asset_type] if args.key?(:asset_type)
+          @iam_policy = args[:iam_policy] if args.key?(:iam_policy)
+          @name = args[:name] if args.key?(:name)
+          @org_policy = args[:org_policy] if args.key?(:org_policy)
+          @related_assets = args[:related_assets] if args.key?(:related_assets)
+          @resource = args[:resource] if args.key?(:resource)
+          @service_perimeter = args[:service_perimeter] if args.key?(:service_perimeter)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # An asset identify in Google Cloud which contains its name, type and ancestors.
+      # An asset can be any resource in the Google Cloud [resource hierarchy](https://
+      # cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), a
+      # resource outside the Google Cloud resource hierarchy (such as Google
+      # Kubernetes Engine clusters and objects), or a policy (e.g. Cloud IAM policy).
+      # See [Supported asset types](https://cloud.google.com/asset-inventory/docs/
+      # supported-asset-types) for more information.
+      class GoogleCloudAssetV1p7beta1RelatedAsset
+        include Google::Apis::Core::Hashable
+      
+        # The ancestors of an asset in Google Cloud [resource hierarchy](https://cloud.
+        # google.com/resource-manager/docs/cloud-platform-resource-hierarchy),
+        # represented as a list of relative resource names. An ancestry path starts with
+        # the closest ancestor in the hierarchy and ends at root. Example: `["projects/
+        # 123456789", "folders/5432", "organizations/1234"]`
+        # Corresponds to the JSON property `ancestors`
+        # @return [Array<String>]
+        attr_accessor :ancestors
+      
+        # The full name of the asset. Example: `//compute.googleapis.com/projects/
+        # my_project_123/zones/zone1/instances/instance1` See [Resource names](https://
+        # cloud.google.com/apis/design/resource_names#full_resource_name) for more
+        # information.
+        # Corresponds to the JSON property `asset`
+        # @return [String]
+        attr_accessor :asset
+      
+        # The type of the asset. Example: `compute.googleapis.com/Disk` See [Supported
+        # asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-
+        # types) for more information.
+        # Corresponds to the JSON property `assetType`
+        # @return [String]
+        attr_accessor :asset_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ancestors = args[:ancestors] if args.key?(:ancestors)
+          @asset = args[:asset] if args.key?(:asset)
+          @asset_type = args[:asset_type] if args.key?(:asset_type)
+        end
+      end
+      
+      # The detailed related assets with the `relationship_type`.
+      class GoogleCloudAssetV1p7beta1RelatedAssets
+        include Google::Apis::Core::Hashable
+      
+        # The peer resources of the relationship.
+        # Corresponds to the JSON property `assets`
+        # @return [Array<Google::Apis::CloudassetV1::GoogleCloudAssetV1p7beta1RelatedAsset>]
+        attr_accessor :assets
+      
+        # The relationship attributes which include `type`, `source_resource_type`, `
+        # target_resource_type` and `action`.
+        # Corresponds to the JSON property `relationshipAttributes`
+        # @return [Google::Apis::CloudassetV1::GoogleCloudAssetV1p7beta1RelationshipAttributes]
+        attr_accessor :relationship_attributes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assets = args[:assets] if args.key?(:assets)
+          @relationship_attributes = args[:relationship_attributes] if args.key?(:relationship_attributes)
+        end
+      end
+      
+      # The relationship attributes which include `type`, `source_resource_type`, `
+      # target_resource_type` and `action`.
+      class GoogleCloudAssetV1p7beta1RelationshipAttributes
+        include Google::Apis::Core::Hashable
+      
+        # The detail of the relationship, e.g. `contains`, `attaches`
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # The source asset type. Example: `compute.googleapis.com/Instance`
+        # Corresponds to the JSON property `sourceResourceType`
+        # @return [String]
+        attr_accessor :source_resource_type
+      
+        # The target asset type. Example: `compute.googleapis.com/Disk`
+        # Corresponds to the JSON property `targetResourceType`
+        # @return [String]
+        attr_accessor :target_resource_type
+      
+        # The unique identifier of the relationship type. Example: `
+        # INSTANCE_TO_INSTANCEGROUP`
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @source_resource_type = args[:source_resource_type] if args.key?(:source_resource_type)
+          @target_resource_type = args[:target_resource_type] if args.key?(:target_resource_type)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # A representation of a Google Cloud resource.
+      class GoogleCloudAssetV1p7beta1Resource
+        include Google::Apis::Core::Hashable
+      
+        # The content of the resource, in which some sensitive fields are removed and
+        # may not be present.
+        # Corresponds to the JSON property `data`
+        # @return [Hash<String,Object>]
+        attr_accessor :data
+      
+        # The URL of the discovery document containing the resource's JSON schema.
+        # Example: `https://www.googleapis.com/discovery/v1/apis/compute/v1/rest` This
+        # value is unspecified for resources that do not have an API based on a
+        # discovery document, such as Cloud Bigtable.
+        # Corresponds to the JSON property `discoveryDocumentUri`
+        # @return [String]
+        attr_accessor :discovery_document_uri
+      
+        # The JSON schema name listed in the discovery document. Example: `Project` This
+        # value is unspecified for resources that do not have an API based on a
+        # discovery document, such as Cloud Bigtable.
+        # Corresponds to the JSON property `discoveryName`
+        # @return [String]
+        attr_accessor :discovery_name
+      
+        # The location of the resource in Google Cloud, such as its zone and region. For
+        # more information, see https://cloud.google.com/about/locations/.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # The full name of the immediate parent of this resource. See [Resource Names](
+        # https://cloud.google.com/apis/design/resource_names#full_resource_name) for
+        # more information. For Google Cloud assets, this value is the parent resource
+        # defined in the [Cloud IAM policy hierarchy](https://cloud.google.com/iam/docs/
+        # overview#policy_hierarchy). Example: `//cloudresourcemanager.googleapis.com/
+        # projects/my_project_123` For third-party assets, this field may be set
+        # differently.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # The REST URL for accessing the resource. An HTTP `GET` request using this URL
+        # returns the resource itself. Example: `https://cloudresourcemanager.googleapis.
+        # com/v1/projects/my-project-123` This value is unspecified for resources
+        # without a REST API.
+        # Corresponds to the JSON property `resourceUrl`
+        # @return [String]
+        attr_accessor :resource_url
+      
+        # The API version. Example: `v1`
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @discovery_document_uri = args[:discovery_document_uri] if args.key?(:discovery_document_uri)
+          @discovery_name = args[:discovery_name] if args.key?(:discovery_name)
+          @location = args[:location] if args.key?(:location)
+          @parent = args[:parent] if args.key?(:parent)
+          @resource_url = args[:resource_url] if args.key?(:resource_url)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
