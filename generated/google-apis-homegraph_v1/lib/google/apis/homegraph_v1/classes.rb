@@ -506,6 +506,58 @@ module Google
         end
       end
       
+      # Request type for the [`RequestLink`](#google.home.graph.v1.HomeGraphApiService.
+      # RequestLink) call.
+      class RequestLinkRequest
+        include Google::Apis::Core::Hashable
+      
+        # Payload containing potential devices detected and when they were detected.
+        # Corresponds to the JSON property `payload`
+        # @return [Google::Apis::HomegraphV1::RequestLinkRequestPayload]
+        attr_accessor :payload
+      
+        # Required. Request ID used for debugging.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @payload = args[:payload] if args.key?(:payload)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # Payload containing potential devices detected and when they were detected.
+      class RequestLinkRequestPayload
+        include Google::Apis::Core::Hashable
+      
+        # Required. Time at which devices represented in `potential_cast_device_ids`
+        # were detected.
+        # Corresponds to the JSON property `detectionTime`
+        # @return [String]
+        attr_accessor :detection_time
+      
+        # Required. List of device IDs detected that may potentially be for Cast devices.
+        # Corresponds to the JSON property `potentialCastDeviceIds`
+        # @return [Array<String>]
+        attr_accessor :potential_cast_device_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detection_time = args[:detection_time] if args.key?(:detection_time)
+          @potential_cast_device_ids = args[:potential_cast_device_ids] if args.key?(:potential_cast_device_ids)
+        end
+      end
+      
       # Request type for the [`RequestSyncDevices`](#google.home.graph.v1.
       # HomeGraphApiService.RequestSyncDevices) call.
       class RequestSyncDevicesRequest
