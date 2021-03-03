@@ -945,7 +945,7 @@ module Google
       end
       
       # Arbitrary client data that is populated by clients. Duplicate keys and values
-      # are allowed. LINT.IfChange(GroupClientData)
+      # are allowed.
       class GroupClientData
         include Google::Apis::Core::Hashable
       
