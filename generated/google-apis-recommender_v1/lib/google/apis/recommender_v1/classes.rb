@@ -396,9 +396,9 @@ module Google
         attr_accessor :path_filters
       
         # Similar to path_filters, this contains set of filters to apply if `path` field
-        # referes to array elements. This is meant to support value matching beyond
-        # exact match. To perform exact match, use path_filters. When both path_filters
-        # and path_value_matchers are set, an implicit AND must be performed.
+        # refers to array elements. This is meant to support value matching beyond exact
+        # match. To perform exact match, use path_filters. When both path_filters and
+        # path_value_matchers are set, an implicit AND must be performed.
         # Corresponds to the JSON property `pathValueMatchers`
         # @return [Hash<String,Google::Apis::RecommenderV1::GoogleCloudRecommenderV1ValueMatcher>]
         attr_accessor :path_value_matchers
