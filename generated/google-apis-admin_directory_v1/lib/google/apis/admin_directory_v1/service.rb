@@ -3390,6 +3390,8 @@ module Google
         #   The domain name. Use this field to get fields from only one domain. To return
         #   all domains for a customer account, use the `customer` query parameter instead.
         #   Either the `customer` or the `domain` parameter must be provided.
+        # @param [String] event
+        #   Event on which subscription is intended (if subscribing)
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] order_by
@@ -3427,13 +3429,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_users(custom_field_mask: nil, customer: nil, domain: nil, max_results: nil, order_by: nil, page_token: nil, projection: nil, query: nil, show_deleted: nil, sort_order: nil, view_type: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_users(custom_field_mask: nil, customer: nil, domain: nil, event: nil, max_results: nil, order_by: nil, page_token: nil, projection: nil, query: nil, show_deleted: nil, sort_order: nil, view_type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'admin/directory/v1/users', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::Users::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::Users
           command.query['customFieldMask'] = custom_field_mask unless custom_field_mask.nil?
           command.query['customer'] = customer unless customer.nil?
           command.query['domain'] = domain unless domain.nil?
+          command.query['event'] = event unless event.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
