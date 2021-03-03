@@ -172,6 +172,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssetV1p7beta1Asset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssetV1p7beta1RelatedAsset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssetV1p7beta1RelatedAssets
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssetV1p7beta1RelationshipAttributes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssetV1p7beta1Resource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudOrgpolicyV1BooleanPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -754,6 +784,72 @@ module Google
           property :analysis_state, as: 'analysisState', class: Google::Apis::CloudassetV1::IamPolicyAnalysisState, decorator: Google::Apis::CloudassetV1::IamPolicyAnalysisState::Representation
       
           property :full_resource_name, as: 'fullResourceName'
+        end
+      end
+      
+      class GoogleCloudAssetV1p7beta1Asset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_level, as: 'accessLevel', class: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1AccessLevel, decorator: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1AccessLevel::Representation
+      
+          property :access_policy, as: 'accessPolicy', class: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1AccessPolicy, decorator: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1AccessPolicy::Representation
+      
+          collection :ancestors, as: 'ancestors'
+          property :asset_type, as: 'assetType'
+          property :iam_policy, as: 'iamPolicy', class: Google::Apis::CloudassetV1::Policy, decorator: Google::Apis::CloudassetV1::Policy::Representation
+      
+          property :name, as: 'name'
+          collection :org_policy, as: 'orgPolicy', class: Google::Apis::CloudassetV1::GoogleCloudOrgpolicyV1Policy, decorator: Google::Apis::CloudassetV1::GoogleCloudOrgpolicyV1Policy::Representation
+      
+          property :related_assets, as: 'relatedAssets', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1p7beta1RelatedAssets, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1p7beta1RelatedAssets::Representation
+      
+          property :resource, as: 'resource', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1p7beta1Resource, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1p7beta1Resource::Representation
+      
+          property :service_perimeter, as: 'servicePerimeter', class: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1ServicePerimeter, decorator: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1ServicePerimeter::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudAssetV1p7beta1RelatedAsset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ancestors, as: 'ancestors'
+          property :asset, as: 'asset'
+          property :asset_type, as: 'assetType'
+        end
+      end
+      
+      class GoogleCloudAssetV1p7beta1RelatedAssets
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assets, as: 'assets', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1p7beta1RelatedAsset, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1p7beta1RelatedAsset::Representation
+      
+          property :relationship_attributes, as: 'relationshipAttributes', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1p7beta1RelationshipAttributes, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1p7beta1RelationshipAttributes::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAssetV1p7beta1RelationshipAttributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :source_resource_type, as: 'sourceResourceType'
+          property :target_resource_type, as: 'targetResourceType'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudAssetV1p7beta1Resource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :data, as: 'data'
+          property :discovery_document_uri, as: 'discoveryDocumentUri'
+          property :discovery_name, as: 'discoveryName'
+          property :location, as: 'location'
+          property :parent, as: 'parent'
+          property :resource_url, as: 'resourceUrl'
+          property :version, as: 'version'
         end
       end
       
