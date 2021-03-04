@@ -54,7 +54,8 @@ namespace :kokoro do
   end
 
   task :run_tests do
-    gem_directories = ["google-apis-core", "google-apis-generator", "google-api-client"]
+    gem_directories = ["google-apis-core", "google-apis-generator"]
+    gem_directories << "google-api-client" unless RUBY_VERSION.start_with? "3."
     gem_directories.each do |dir|
       next unless File.file?(File.join(dir, "Gemfile"))
       cd dir do
