@@ -173,8 +173,8 @@ module Google
         # @return [String]
         attr_accessor :database_type
       
-        # A Cloud Storage object URI that specifies the source from which to import
-        # metadata. It must begin with gs://.
+        # A Cloud Storage object or folder URI that specifies the source from which to
+        # import metadata. It must begin with gs://.
         # Corresponds to the JSON property `gcsUri`
         # @return [String]
         attr_accessor :gcs_uri
@@ -183,6 +183,11 @@ module Google
         # Corresponds to the JSON property `sourceDatabase`
         # @return [String]
         attr_accessor :source_database
+      
+        # Optional. The type of the database dump. If unspecified, defaults to MYSQL.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
       
         def initialize(**args)
            update!(**args)
@@ -193,6 +198,7 @@ module Google
           @database_type = args[:database_type] if args.key?(:database_type)
           @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
           @source_database = args[:source_database] if args.key?(:source_database)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -216,6 +222,11 @@ module Google
       # Request message for DataprocMetastore.ExportMetadata.
       class ExportMetadataRequest
         include Google::Apis::Core::Hashable
+      
+        # Optional. The type of the database dump. If unspecified, defaults to MYSQL.
+        # Corresponds to the JSON property `databaseDumpType`
+        # @return [String]
+        attr_accessor :database_dump_type
       
         # Required. A Cloud Storage URI of a folder that metadata are exported to, in
         # the format gs:///. A sub-folder containing exported files will be created
@@ -242,6 +253,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @database_dump_type = args[:database_dump_type] if args.key?(:database_dump_type)
           @destination_gcs_folder = args[:destination_gcs_folder] if args.key?(:destination_gcs_folder)
           @request_id = args[:request_id] if args.key?(:request_id)
         end
@@ -609,6 +621,11 @@ module Google
       class MetadataExport
         include Google::Apis::Core::Hashable
       
+        # Output only. The type of the database dump.
+        # Corresponds to the JSON property `databaseDumpType`
+        # @return [String]
+        attr_accessor :database_dump_type
+      
         # Output only. A Cloud Storage URI of a folder that metadata are exported to, in
         # the form of gs:////, where ` is automatically generated.
         # Corresponds to the JSON property `destinationGcsUri`
@@ -636,6 +653,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @database_dump_type = args[:database_dump_type] if args.key?(:database_dump_type)
           @destination_gcs_uri = args[:destination_gcs_uri] if args.key?(:destination_gcs_uri)
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
