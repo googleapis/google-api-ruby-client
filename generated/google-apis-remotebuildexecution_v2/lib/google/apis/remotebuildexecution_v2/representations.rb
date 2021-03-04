@@ -1010,6 +1010,7 @@ module Google
           property :input_cache_miss, as: 'inputCacheMiss'
           property :num_errors, :numeric_string => true, as: 'numErrors'
           property :num_warnings, :numeric_string => true, as: 'numWarnings'
+          property :output_location, as: 'outputLocation'
           property :used_async_container, as: 'usedAsyncContainer'
         end
       end

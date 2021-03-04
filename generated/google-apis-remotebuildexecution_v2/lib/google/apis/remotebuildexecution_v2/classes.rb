@@ -2253,6 +2253,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_warnings
       
+        # Indicates whether output files and/or output directories were found relative
+        # to the execution root or to the user provided work directory or both or none.
+        # Corresponds to the JSON property `outputLocation`
+        # @return [String]
+        attr_accessor :output_location
+      
         # Indicates whether an asynchronous container was used for execution.
         # Corresponds to the JSON property `usedAsyncContainer`
         # @return [Boolean]
@@ -2271,6 +2277,7 @@ module Google
           @input_cache_miss = args[:input_cache_miss] if args.key?(:input_cache_miss)
           @num_errors = args[:num_errors] if args.key?(:num_errors)
           @num_warnings = args[:num_warnings] if args.key?(:num_warnings)
+          @output_location = args[:output_location] if args.key?(:output_location)
           @used_async_container = args[:used_async_container] if args.key?(:used_async_container)
         end
       end
