@@ -2748,8 +2748,8 @@ module Google
       class ChartData
         include Google::Apis::Core::Hashable
       
-        # The aggregation type for the series of a data source chart. Not supported for
-        # regular charts.
+        # The aggregation type for the series of a data source chart. Only supported for
+        # data source charts.
         # Corresponds to the JSON property `aggregateType`
         # @return [String]
         attr_accessor :aggregate_type
