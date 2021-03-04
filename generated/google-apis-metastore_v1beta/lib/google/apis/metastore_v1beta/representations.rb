@@ -235,6 +235,7 @@ module Google
           property :database_type, as: 'databaseType'
           property :gcs_uri, as: 'gcsUri'
           property :source_database, as: 'sourceDatabase'
+          property :type, as: 'type'
         end
       end
       
@@ -247,6 +248,7 @@ module Google
       class ExportMetadataRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_dump_type, as: 'databaseDumpType'
           property :destination_gcs_folder, as: 'destinationGcsFolder'
           property :request_id, as: 'requestId'
         end
@@ -358,6 +360,7 @@ module Google
       class MetadataExport
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_dump_type, as: 'databaseDumpType'
           property :destination_gcs_uri, as: 'destinationGcsUri'
           property :end_time, as: 'endTime'
           property :start_time, as: 'startTime'
