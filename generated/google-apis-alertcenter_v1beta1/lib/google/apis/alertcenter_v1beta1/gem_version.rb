@@ -16,7 +16,7 @@ module Google
   module Apis
     module AlertcenterV1beta1
       # Version of the google-apis-alertcenter_v1beta1 gem
-      GEM_VERSION = "0.2.0"
+      GEM_VERSION = "0.3.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.1.2"
