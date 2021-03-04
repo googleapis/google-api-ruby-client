@@ -591,7 +591,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new Policy
+        # Creates a new Policy.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [Google::Apis::DnsV1::Policy] policy_object
@@ -628,7 +628,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete a previously created Policy. Fails if the policy is still being
+        # Deletes a previously created Policy. Fails if the policy is still being
         # referenced by a network.
         # @param [String] project
         #   Identifies the project addressed by this request.
@@ -853,7 +853,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Enumerate ResourceRecordSets that you have created but not yet deleted.
+        # Enumerates ResourceRecordSets that you have created but not yet deleted.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
