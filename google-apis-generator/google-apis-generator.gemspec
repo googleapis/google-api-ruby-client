@@ -15,11 +15,11 @@ Gem::Specification.new do |gem|
     "source_code_uri" => "https://github.com/googleapis/google-api-ruby-client/tree/master/google-apis-generator"
   }
 
-  gem.files = Dir.glob("lib/**/*.rb") + Dir.glob("bin/*") + Dir.glob("*.md") + [".yardopts"]
+  gem.files = Dir.glob("lib/**/*.rb") + Dir.glob("lib/**/*.tmpl") + Dir.glob("bin/*") + Dir.glob("*.md") + [".yardopts"]
   gem.executables = ["generate-api"]
   gem.require_paths = ["lib"]
 
-  gem.required_ruby_version = ">= 2.4"
+  gem.required_ruby_version = ">= 2.5"
   gem.add_runtime_dependency "activesupport", ">= 5.0"
   gem.add_runtime_dependency "gems", "~> 1.2"
   gem.add_runtime_dependency "google-apis-core", "~> 0.1"
