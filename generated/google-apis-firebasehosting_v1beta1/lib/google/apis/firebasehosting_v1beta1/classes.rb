@@ -103,8 +103,8 @@ module Google
       end
       
       # A `Channel` represents a stream of releases for a site. All sites have a
-      # default `live` channel that serves content to the live Firebase-provided
-      # domains and any connected custom domains.
+      # default `live` channel that serves content to the Firebase-provided subdomains
+      # and any connected custom domains.
       class Channel
         include Google::Apis::Core::Hashable
       
@@ -114,8 +114,8 @@ module Google
         attr_accessor :create_time
       
         # The time at which the channel will be automatically deleted. If null, the
-        # channel will not be automatically deleted. This field is present in output
-        # whether set directly or via the `ttl` field.
+        # channel will not be automatically deleted. This field is present in the output
+        # whether it's set directly or via the `ttl` field.
         # Corresponds to the JSON property `expireTime`
         # @return [String]
         attr_accessor :expire_time
@@ -125,7 +125,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The fully-qualified identifier of the Channel.
+        # The fully-qualified identifier for the channel, in the format: sites/
+        # SITE_NAME/channels/CHANNEL_ID
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -153,8 +154,12 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Output only. The URL at which the channel can be viewed. For the `live`
-        # channel, the content of the current release may also be visible at other URLs.
+        # Output only. The URL at which the content of this channel's current release
+        # can be viewed. This URL is a Firebase-provided subdomain of `web.app`. The
+        # content of this channel's current release can also be viewed at the Firebase-
+        # provided subdomain of `firebaseapp.com`. If this channel is the `live` channel
+        # for the Hosting site, then the content of this channel's current release can
+        # also be viewed at any connected custom domains.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -177,7 +182,7 @@ module Google
         end
       end
       
-      # The request sent to CloneVersion.
+      # 
       class CloneVersionRequest
         include Google::Apis::Core::Hashable
       
@@ -186,7 +191,10 @@ module Google
         # @return [Google::Apis::FirebasehostingV1beta1::PathFilter]
         attr_accessor :exclude
       
-        # If true, immediately finalize the version after cloning is complete.
+        # If true, the call to `CloneVersion` immediately finalizes the version after
+        # cloning is complete. If false, the cloned version will have a status of `
+        # CREATED`. Use [`UpdateVersion`](patch) to set the status of the version to `
+        # FINALIZED`.
         # Corresponds to the JSON property `finalize`
         # @return [Boolean]
         attr_accessor :finalize
@@ -197,8 +205,8 @@ module Google
         # @return [Google::Apis::FirebasehostingV1beta1::PathFilter]
         attr_accessor :include
       
-        # Required. The name of the version to be cloned, in the format: `sites/`site`/
-        # versions/`version``
+        # Required. The unique identifier for the version to be cloned, in the format:
+        # sites/SITE_NAME/versions/VERSION_ID
         # Corresponds to the JSON property `sourceVersion`
         # @return [String]
         attr_accessor :source_version
@@ -458,7 +466,7 @@ module Google
         end
       end
       
-      # The response returned by ListChannels.
+      # 
       class ListChannelsResponse
         include Google::Apis::Core::Hashable
       
@@ -467,9 +475,9 @@ module Google
         # @return [Array<Google::Apis::FirebasehostingV1beta1::Channel>]
         attr_accessor :channels
       
-        # If there are additional releases remaining beyond the ones in this response,
-        # then supply this token in the next [`list`](../sites.channels/list) call to
-        # continue with the next set of releases.
+        # The pagination token, if more results exist beyond the ones in this response.
+        # Include this token in your next call to `ListChannels`. Page tokens are short-
+        # lived and should not be stored.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -568,7 +576,9 @@ module Google
       class ListVersionsResponse
         include Google::Apis::Core::Hashable
       
-        # The pagination token, if more results exist
+        # The pagination token, if more results exist beyond the ones in this response.
+        # Include this token in your next call to `ListVersions`. Page tokens are short-
+        # lived and should not be stored.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -655,7 +665,7 @@ module Google
       class PathFilter
         include Google::Apis::Core::Hashable
       
-        # An array of regexes to filter by.
+        # An array of RegEx values by which to filter.
         # Corresponds to the JSON property `regexes`
         # @return [Array<String>]
         attr_accessor :regexes
@@ -721,9 +731,7 @@ module Google
         end
       end
       
-      # Version preview configuration. If active and unexpired, this version will be
-      # accessible via a custom URL even if it is not the currently released version.
-      # Deprecated in favor of site channels.
+      # Deprecated in favor of [site channels](sites.channels).
       class PreviewConfig
         include Google::Apis::Core::Hashable
       
@@ -806,9 +814,11 @@ module Google
         # @return [String]
         attr_accessor :message
       
-        # Output only. The unique identifier for the release, in the format: sites/
-        # SITE_NAME/releases/RELEASE_ID This name is provided in the response body when
-        # you call [`CreateRelease`](sites.releases/create).
+        # Output only. The unique identifier for the release, in either of the following
+        # formats: - sites/SITE_NAME/releases/RELEASE_ID - sites/SITE_NAME/channels/
+        # CHANNEL_ID/releases/RELEASE_ID This name is provided in the response body when
+        # you call [`releases.create`](sites.releases/create) or [`channels.releases.
+        # create`](sites.channels.releases/create).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1103,28 +1113,26 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The unique identifier for a version, in the format: sites/SITE_NAME /versions/
-        # VERSION_ID This name is provided in the response body when you call [`
-        # CreateVersion`](sites.versions/create).
+        # The fully-qualified identifier for the version, in the format: sites/
+        # SITE_NAME/versions/VERSION_ID This name is provided in the response body when
+        # you call [`CreateVersion`](sites.versions/create).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Version preview configuration. If active and unexpired, this version will be
-        # accessible via a custom URL even if it is not the currently released version.
-        # Deprecated in favor of site channels.
+        # Deprecated in favor of [site channels](sites.channels).
         # Corresponds to the JSON property `preview`
         # @return [Google::Apis::FirebasehostingV1beta1::PreviewConfig]
         attr_accessor :preview
       
-        # The deploy status of a version. For a successful deploy, call [`CreateVersion`]
-        # (sites.versions/create) to make a new version (`CREATED` status), [upload all
-        # desired files](sites.versions/populateFiles) to the version, then [update](
-        # sites.versions/patch) the version to the `FINALIZED` status. Note that if you
-        # leave the version in the `CREATED` state for more than 12 hours, the system
-        # will automatically mark the version as `ABANDONED`. You can also change the
-        # status of a version to `DELETED` by calling [`DeleteVersion`](sites.versions/
-        # delete).
+        # The deploy status of the version. For a successful deploy, call [`
+        # CreateVersion`](sites.versions/create) to make a new version (`CREATED` status)
+        # , [upload all desired files](sites.versions/populateFiles) to the version,
+        # then [update](sites.versions/patch) the version to the `FINALIZED` status.
+        # Note that if you leave the version in the `CREATED` state for more than 12
+        # hours, the system will automatically mark the version as `ABANDONED`. You can
+        # also change the status of a version to `DELETED` by calling [`DeleteVersion`](
+        # sites.versions/delete).
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
