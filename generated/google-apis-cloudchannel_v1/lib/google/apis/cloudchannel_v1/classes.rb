@@ -1566,8 +1566,8 @@ module Google
       class GoogleCloudChannelV1Plan
         include Google::Apis::Core::Hashable
       
-        # Reseller Billing account that will be charged when this offer is transacted.
-        # Only present for GCP offers.
+        # Reseller Billing account to charge after an offer transaction. Only present
+        # for Google Cloud Platform offers.
         # Corresponds to the JSON property `billingAccount`
         # @return [String]
         attr_accessor :billing_account
