@@ -24,25 +24,27 @@ module Google
       
       # Activates the latest revision of the specified Consent by committing a new
       # revision with `state` updated to `ACTIVE`. If the latest revision of the given
-      # consent is in the `ACTIVE` state, no new revision is committed.
+      # Consent is in the `ACTIVE` state, no new revision is committed. A
+      # FAILED_PRECONDITION error occurs if the latest revision of the given consent
+      # is in the `REJECTED` or `REVOKED` state.
       class ActivateConsentRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The resource name of the consent artifact that contains proof of the
-        # end user's consent, of the form `projects/`project_id`/locations/`location_id`/
-        # datasets/`dataset_id`/consentStores/`consent_store_id`/consentArtifacts/`
-        # consent_artifact_id``. If the draft consent had a consent artifact, this
-        # consent artifact overwrites it.
+        # Required. The resource name of the Consent artifact that contains
+        # documentation of the user's consent, of the form `projects/`project_id`/
+        # locations/`location_id`/datasets/`dataset_id`/consentStores/`consent_store_id`/
+        # consentArtifacts/`consent_artifact_id``. If the draft Consent had a Consent
+        # artifact, this Consent artifact overwrites it.
         # Corresponds to the JSON property `consentArtifact`
         # @return [String]
         attr_accessor :consent_artifact
       
-        # Timestamp in UTC of when this consent is considered expired.
+        # Timestamp in UTC of when this Consent is considered expired.
         # Corresponds to the JSON property `expireTime`
         # @return [String]
         attr_accessor :expire_time
       
-        # The time to live for this consent from when it is marked as active.
+        # The time to live for this Consent from when it is marked as active.
         # Corresponds to the JSON property `ttl`
         # @return [String]
         attr_accessor :ttl
@@ -88,7 +90,7 @@ module Google
         # @return [Array<Google::Apis::HealthcareV1beta1::Entity>]
         attr_accessor :entities
       
-        # entity_mentions contains all the annotated medical entities that were were
+        # entity_mentions contains all the annotated medical entities that were
         # mentioned in the provided document.
         # Corresponds to the JSON property `entityMentions`
         # @return [Array<Google::Apis::HealthcareV1beta1::EntityMention>]
@@ -276,13 +278,13 @@ module Google
         end
       end
       
-      # An attribute value for a consent or data mapping. Each Attribute must have a
-      # corresponding AttributeDefinition in the consent store that defines the
+      # An attribute value for a Consent or User data mapping. Each Attribute must
+      # have a corresponding AttributeDefinition in the consent store that defines the
       # default and allowed values.
       class Attribute
         include Google::Apis::Core::Hashable
       
-        # Indicates the name of an attribute defined at the consent store.
+        # Indicates the name of an attribute defined in the consent store.
         # Corresponds to the JSON property `attributeDefinitionId`
         # @return [String]
         attr_accessor :attribute_definition_id
@@ -323,27 +325,28 @@ module Google
         # @return [String]
         attr_accessor :category
       
-        # Default values of the attribute in consents. If no default values are
-        # specified, it defaults to an empty value.
+        # Optional. Default values of the attribute in Consents. If no default values
+        # are specified, it defaults to an empty value.
         # Corresponds to the JSON property `consentDefaultValues`
         # @return [Array<String>]
         attr_accessor :consent_default_values
       
-        # Default value of the attribute in user data mappings. If no default value is
-        # specified, it defaults to an empty value. This field is only applicable to
-        # attributes of the category `RESOURCE`.
+        # Optional. Default value of the attribute in User data mappings. If no default
+        # value is specified, it defaults to an empty value. This field is only
+        # applicable to attributes of the category `RESOURCE`.
         # Corresponds to the JSON property `dataMappingDefaultValue`
         # @return [String]
         attr_accessor :data_mapping_default_value
       
-        # A description of the attribute.
+        # Optional. A description of the attribute.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Resource name of the attribute definition, of the form `projects/`project_id`/
+        # Resource name of the Attribute definition, of the form `projects/`project_id`/
         # locations/`location_id`/datasets/`dataset_id`/consentStores/`consent_store_id`/
-        # attributeDefinitions/`attribute_definition_id``.
+        # attributeDefinitions/`attribute_definition_id``. Cannot be changed after
+        # creation.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -581,7 +584,7 @@ module Google
         end
       end
       
-      # Checks if a particular data_id of a User data mapping in the given Consent
+      # Checks if a particular data_id of a User data mapping in the given consent
       # store is consented for a given use.
       class CheckDataAccessRequest
         include Google::Apis::Core::Hashable
@@ -591,8 +594,8 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::ConsentList]
         attr_accessor :consent_list
       
-        # The unique identifier of the data to check access for. It must exist in the
-        # given `consent_store`.
+        # Required. The unique identifier of the resource to check access for. This
+        # identifier must correspond to a User data mapping in the given consent store.
         # Corresponds to the JSON property `dataId`
         # @return [String]
         attr_accessor :data_id
@@ -602,8 +605,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :request_attributes
       
-        # The view for CheckDataAccessResponse. If unspecified, defaults to `BASIC` and
-        # returns `consented` as `TRUE` or `FALSE`.
+        # Optional. The view for CheckDataAccessResponse. If unspecified, defaults to `
+        # BASIC` and returns `consented` as `TRUE` or `FALSE`.
         # Corresponds to the JSON property `responseView`
         # @return [String]
         attr_accessor :response_view
@@ -621,7 +624,7 @@ module Google
         end
       end
       
-      # Checks if a particular data_id of a User data mapping in the given Consent
+      # Checks if a particular data_id of a User data mapping in the given consent
       # store is consented for a given use.
       class CheckDataAccessResponse
         include Google::Apis::Core::Hashable
@@ -631,7 +634,7 @@ module Google
         # @return [Hash<String,Google::Apis::HealthcareV1beta1::ConsentEvaluation>]
         attr_accessor :consent_details
       
-        # Whether the requested data is consented for the given use.
+        # Whether the requested resource is consented for the given use.
         # Corresponds to the JSON property `consented`
         # @return [Boolean]
         attr_accessor :consented
@@ -667,11 +670,11 @@ module Google
         end
       end
       
-      # Represents an end user's consent.
+      # Represents a user's consent.
       class Consent
         include Google::Apis::Core::Hashable
       
-        # Required. The resource name of the consent artifact that contains proof of the
+        # Required. The resource name of the Consent artifact that contains proof of the
         # end user's consent, of the form `projects/`project_id`/locations/`location_id`/
         # datasets/`dataset_id`/consentStores/`consent_store_id`/consentArtifacts/`
         # consent_artifact_id``.
@@ -679,17 +682,17 @@ module Google
         # @return [String]
         attr_accessor :consent_artifact
       
-        # Timestamp in UTC of when this consent is considered expired.
+        # Timestamp in UTC of when this Consent is considered expired.
         # Corresponds to the JSON property `expireTime`
         # @return [String]
         attr_accessor :expire_time
       
-        # User-supplied key-value pairs used to organize consent resources. Metadata
-        # keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of
-        # maximum 128 bytes - begin with a letter - consist of up to 63 characters
-        # including lowercase letters, numeric characters, underscores, and dashes
-        # Metadata values must be: - be between 1 and 63 characters long - have a UTF-8
-        # encoding of maximum 128 bytes - consist of up to 63 characters including
+        # Optional. User-supplied key-value pairs used to organize Consent resources.
+        # Metadata keys must: - be between 1 and 63 characters long - have a UTF-8
+        # encoding of maximum 128 bytes - begin with a letter - consist of up to 63
+        # characters including lowercase letters, numeric characters, underscores, and
+        # dashes Metadata values must be: - be between 1 and 63 characters long - have a
+        # UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including
         # lowercase letters, numeric characters, underscores, and dashes No more than 64
         # metadata entries can be associated with a given consent.
         # Corresponds to the JSON property `metadata`
@@ -698,12 +701,12 @@ module Google
       
         # Resource name of the Consent, of the form `projects/`project_id`/locations/`
         # location_id`/datasets/`dataset_id`/consentStores/`consent_store_id`/consents/`
-        # consent_id``.
+        # consent_id``. Cannot be changed after creation.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Represents an end user's consent in terms of the resources that can be
+        # Optional. Represents a user's consent in terms of the resources that can be
         # accessed and under what conditions.
         # Corresponds to the JSON property `policies`
         # @return [Array<Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1ConsentPolicy>]
@@ -714,19 +717,19 @@ module Google
         # @return [String]
         attr_accessor :revision_create_time
       
-        # Output only. The revision ID of the consent. The format is an 8-character
+        # Output only. The revision ID of the Consent. The format is an 8-character
         # hexadecimal string. Refer to a specific revision of a Consent by appending `@`
         # revision_id`` to the Consent's resource name.
         # Corresponds to the JSON property `revisionId`
         # @return [String]
         attr_accessor :revision_id
       
-        # Indicates the current state of this consent.
+        # Required. Indicates the current state of this Consent.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Input only. The time to live for this consent from when it is created.
+        # Input only. The time to live for this Consent from when it is created.
         # Corresponds to the JSON property `ttl`
         # @return [String]
         attr_accessor :ttl
@@ -755,16 +758,18 @@ module Google
         end
       end
       
-      # Proof of an end user's consent.
+      # Documentation of a user's consent.
       class ConsentArtifact
         include Google::Apis::Core::Hashable
       
-        # Screenshots of the consent content.
+        # Optional. Screenshots, PDFs, or other binary information documenting the user'
+        # s consent.
         # Corresponds to the JSON property `consentContentScreenshots`
         # @return [Array<Google::Apis::HealthcareV1beta1::Image>]
         attr_accessor :consent_content_screenshots
       
-        # An string indicating the version of the consent content.
+        # Optional. An string indicating the version of the consent information shown to
+        # the user.
         # Corresponds to the JSON property `consentContentVersion`
         # @return [String]
         attr_accessor :consent_content_version
@@ -774,15 +779,15 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::Signature]
         attr_accessor :guardian_signature
       
-        # Metadata associated with the consent artifact. For example, the consent locale
-        # or user agent version.
+        # Optional. Metadata associated with the Consent artifact. For example, the
+        # consent locale or user agent version.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
         # Resource name of the Consent artifact, of the form `projects/`project_id`/
         # locations/`location_id`/datasets/`dataset_id`/consentStores/`consent_store_id`/
-        # consentArtifacts/`consent_artifact_id``.
+        # consentArtifacts/`consent_artifact_id``. Cannot be changed after creation.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -859,36 +864,39 @@ module Google
         end
       end
       
-      # Represents a Consent store.
+      # Represents a consent store.
       class ConsentStore
         include Google::Apis::Core::Hashable
       
-        # Default time to live for consents in this store. Must be at least 24 hours.
-        # Updating this field will not affect the expiration time of existing consents.
+        # Optional. Default time to live for Consents created in this store. Must be at
+        # least 24 hours. Updating this field will not affect the expiration time of
+        # existing consents.
         # Corresponds to the JSON property `defaultConsentTtl`
         # @return [String]
         attr_accessor :default_consent_ttl
       
-        # If true, UpdateConsent creates the consent if it does not already exist.
+        # Optional. If `true`, UpdateConsent creates the Consent if it does not already
+        # exist. If unspecified, defaults to `false`.
         # Corresponds to the JSON property `enableConsentCreateOnUpdate`
         # @return [Boolean]
         attr_accessor :enable_consent_create_on_update
         alias_method :enable_consent_create_on_update?, :enable_consent_create_on_update
       
-        # User-supplied key-value pairs used to organize Consent stores. Label keys must
-        # be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-        # bytes, and must conform to the following PCRE regular expression: \p`Ll`\p`Lo``
-        # 0,62` Label values must be between 1 and 63 characters long, have a UTF-8
-        # encoding of maximum 128 bytes, and must conform to the following PCRE regular
-        # expression: [\p`Ll`\p`Lo`\p`N`_-]`0,63` No more than 64 labels can be
-        # associated with a given store.
+        # Optional. User-supplied key-value pairs used to organize consent stores. Label
+        # keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+        # maximum 128 bytes, and must conform to the following PCRE regular expression: \
+        # p`Ll`\p`Lo``0,62`. Label values must be between 1 and 63 characters long, have
+        # a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE
+        # regular expression: [\p`Ll`\p`Lo`\p`N`_-]`0,63`. No more than 64 labels can be
+        # associated with a given store. For more information: https://cloud.google.com/
+        # healthcare/docs/how-tos/labeling-resources
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Resource name of the Consent store, of the form `projects/`project_id`/
+        # Resource name of the consent store, of the form `projects/`project_id`/
         # locations/`location_id`/datasets/`dataset_id`/consentStores/`consent_store_id``
-        # .
+        # . Cannot be changed after creation.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1535,7 +1543,10 @@ module Google
         end
       end
       
-      # Evaluate an end user's Consents for all matching User data mappings.
+      # Evaluate a user's Consents for all matching User data mappings. Note: User
+      # data mappings are indexed asynchronously, causing slight delays between the
+      # time mappings are created or updated and when they are included in
+      # EvaluateUserConsents results.
       class EvaluateUserConsentsRequest
         include Google::Apis::Core::Hashable
       
@@ -1544,30 +1555,31 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::ConsentList]
         attr_accessor :consent_list
       
-        # Limit on the number of user data mappings to return in a single response. If
-        # not specified, 100 is used. May not be larger than 1000.
+        # Optional. Limit on the number of User data mappings to return in a single
+        # response. If not specified, 100 is used. May not be larger than 1000.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
       
-        # Token to retrieve the next page of results to get the first page.
+        # Optional. Token to retrieve the next page of results, or empty to get the
+        # first page.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token
       
-        # The values of request attributes associated with this access request.
+        # Required. The values of request attributes associated with this access request.
         # Corresponds to the JSON property `requestAttributes`
         # @return [Hash<String,String>]
         attr_accessor :request_attributes
       
-        # The values of resources attributes associated with the type of data being
-        # requested. If no values are specified, then all data types are queried.
+        # Optional. The values of resource attributes associated with the resources
+        # being requested. If no values are specified, then all resources are queried.
         # Corresponds to the JSON property `resourceAttributes`
         # @return [Hash<String,String>]
         attr_accessor :resource_attributes
       
-        # The view for EvaluateUserConsentsResponse. If unspecified, defaults to `BASIC`
-        # and returns `consented` as `TRUE` or `FALSE`.
+        # Optional. The view for EvaluateUserConsentsResponse. If unspecified, defaults
+        # to `BASIC` and returns `consented` as `TRUE` or `FALSE`.
         # Corresponds to the JSON property `responseView`
         # @return [String]
         attr_accessor :response_view
@@ -1593,11 +1605,11 @@ module Google
         end
       end
       
-      # Evaluate an end user's Consents for all matching User data mappings.
+      # 
       class EvaluateUserConsentsResponse
         include Google::Apis::Core::Hashable
       
-        # Token to retrieve the next page of results or empty if there are no more
+        # Token to retrieve the next page of results, or empty if there are no more
         # results in the list. This token is valid for 72 hours after it is created.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -2361,8 +2373,8 @@ module Google
         end
       end
       
-      # Represents an end user's consent in terms of the resources that can be
-      # accessed and under what conditions.
+      # Represents a user's consent in terms of the resources that can be accessed and
+      # under what conditions.
       class GoogleCloudHealthcareV1beta1ConsentPolicy
         include Google::Apis::Core::Hashable
       
@@ -2385,8 +2397,9 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::Expr]
         attr_accessor :authorization_rule
       
-        # The data resources that this policy applies to. A data resource is a match if
-        # it matches all the attributes listed here.
+        # The resources that this policy applies to. A resource is a match if it matches
+        # all the attributes listed here. If empty, this policy applies to all User data
+        # mappings for the given user.
         # Corresponds to the JSON property `resourceAttributes`
         # @return [Array<Google::Apis::HealthcareV1beta1::Attribute>]
         attr_accessor :resource_attributes
@@ -3384,17 +3397,17 @@ module Google
         end
       end
       
-      # Lists the Attribute definitions in the given Consent store.
+      # 
       class ListAttributeDefinitionsResponse
         include Google::Apis::Core::Hashable
       
-        # The returned attribute definitions. The maximum number of attributes returned
+        # The returned Attribute definitions. The maximum number of attributes returned
         # is determined by the value of page_size in the ListAttributeDefinitionsRequest.
         # Corresponds to the JSON property `attributeDefinitions`
         # @return [Array<Google::Apis::HealthcareV1beta1::AttributeDefinition>]
         attr_accessor :attribute_definitions
       
-        # Token to retrieve the next page of results or empty if there are no more
+        # Token to retrieve the next page of results, or empty if there are no more
         # results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -3411,17 +3424,17 @@ module Google
         end
       end
       
-      # Lists the Consent artifacts in the given Consent store.
+      # 
       class ListConsentArtifactsResponse
         include Google::Apis::Core::Hashable
       
-        # The returned consent artifacts. The maximum number of artifacts returned is
+        # The returned Consent artifacts. The maximum number of artifacts returned is
         # determined by the value of page_size in the ListConsentArtifactsRequest.
         # Corresponds to the JSON property `consentArtifacts`
         # @return [Array<Google::Apis::HealthcareV1beta1::ConsentArtifact>]
         attr_accessor :consent_artifacts
       
-        # Token to retrieve the next page of results or empty if there are no more
+        # Token to retrieve the next page of results, or empty if there are no more
         # results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -3438,17 +3451,17 @@ module Google
         end
       end
       
-      # Lists the revisions of the given Consent in reverse chronological order.
+      # 
       class ListConsentRevisionsResponse
         include Google::Apis::Core::Hashable
       
-        # The returned consent revisions. The maximum number of revisions returned is
+        # The returned Consent revisions. The maximum number of revisions returned is
         # determined by the value of `page_size` in the ListConsentRevisionsRequest.
         # Corresponds to the JSON property `consents`
         # @return [Array<Google::Apis::HealthcareV1beta1::Consent>]
         attr_accessor :consents
       
-        # Token to retrieve the next page of results or empty if there are no more
+        # Token to retrieve the next page of results, or empty if there are no more
         # results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -3465,17 +3478,17 @@ module Google
         end
       end
       
-      # Lists the Consent stores in the given dataset.
+      # 
       class ListConsentStoresResponse
         include Google::Apis::Core::Hashable
       
-        # The returned Consent stores. The maximum number of stores returned is
+        # The returned consent stores. The maximum number of stores returned is
         # determined by the value of page_size in the ListConsentStoresRequest.
         # Corresponds to the JSON property `consentStores`
         # @return [Array<Google::Apis::HealthcareV1beta1::ConsentStore>]
         attr_accessor :consent_stores
       
-        # Token to retrieve the next page of results or empty if there are no more
+        # Token to retrieve the next page of results, or empty if there are no more
         # results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -3492,17 +3505,17 @@ module Google
         end
       end
       
-      # Lists the Consents in the given Consent store.
+      # 
       class ListConsentsResponse
         include Google::Apis::Core::Hashable
       
-        # The returned consents. The maximum number of consents returned is determined
+        # The returned Consents. The maximum number of Consents returned is determined
         # by the value of page_size in the ListConsentsRequest.
         # Corresponds to the JSON property `consents`
         # @return [Array<Google::Apis::HealthcareV1beta1::Consent>]
         attr_accessor :consents
       
-        # Token to retrieve the next page of results or empty if there are no more
+        # Token to retrieve the next page of results, or empty if there are no more
         # results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -3703,17 +3716,17 @@ module Google
         end
       end
       
-      # Lists the User data mappings in the given Consent store.
+      # 
       class ListUserDataMappingsResponse
         include Google::Apis::Core::Hashable
       
-        # Token to retrieve the next page of results or empty if there are no more
+        # Token to retrieve the next page of results, or empty if there are no more
         # results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # The returned user data mappings. The maximum number of user data mappings
+        # The returned User data mappings. The maximum number of User data mappings
         # returned is determined by the value of page_size in the
         # ListUserDataMappingsRequest.
         # Corresponds to the JSON property `userDataMappings`
@@ -4217,7 +4230,7 @@ module Google
         end
       end
       
-      # Queries all data_ids that are consented for a given use in the given Consent
+      # Queries all data_ids that are consented for a given use in the given consent
       # store and writes them to a specified destination. The returned Operation
       # includes a progress counter for the number of User data mappings processed.
       # Errors are logged to Cloud Logging (see [Viewing logs] (/healthcare/docs/how-
@@ -4235,9 +4248,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :request_attributes
       
-        # The values of resources attributes associated with the type of data being
-        # requested. If no values are specified, then all data types are included in the
-        # output.
+        # Optional. The values of resource attributes associated with the type of
+        # resources being requested. If no values are specified, then all resource types
+        # are included in the output.
         # Corresponds to the JSON property `resourceAttributes`
         # @return [Hash<String,String>]
         attr_accessor :resource_attributes
@@ -4270,15 +4283,15 @@ module Google
       
       # Rejects the latest revision of the specified Consent by committing a new
       # revision with `state` updated to `REJECTED`. If the latest revision of the
-      # given consent is in the `REJECTED` state, no new revision is committed.
+      # given Consent is in the `REJECTED` state, no new revision is committed.
       class RejectConsentRequest
         include Google::Apis::Core::Hashable
       
-        # The resource name of the consent artifact that contains proof of the end user'
-        # s rejection of the draft consent, of the form `projects/`project_id`/locations/
-        # `location_id`/datasets/`dataset_id`/consentStores/`consent_store_id`/
-        # consentArtifacts/`consent_artifact_id``. If the draft consent had a consent
-        # artifact, this consent artifact overwrites it.
+        # Optional. The resource name of the Consent artifact that contains
+        # documentation of the user's rejection of the draft Consent, of the form `
+        # projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        # consentStores/`consent_store_id`/consentArtifacts/`consent_artifact_id``. If
+        # the draft Consent had a Consent artifact, this Consent artifact overwrites it.
         # Corresponds to the JSON property `consentArtifact`
         # @return [String]
         attr_accessor :consent_artifact
@@ -4355,13 +4368,13 @@ module Google
         # @return [Hash<String,Google::Apis::HealthcareV1beta1::ConsentEvaluation>]
         attr_accessor :consent_details
       
-        # Whether the requested data is consented for the given use.
+        # Whether the resource is consented for the given use.
         # Corresponds to the JSON property `consented`
         # @return [Boolean]
         attr_accessor :consented
         alias_method :consented?, :consented
       
-        # The unique identifier of the data the consents were checked for.
+        # The unique identifier of the evaluated resource.
         # Corresponds to the JSON property `dataId`
         # @return [String]
         attr_accessor :data_id
@@ -4380,13 +4393,13 @@ module Google
       
       # Revokes the latest revision of the specified Consent by committing a new
       # revision with `state` updated to `REVOKED`. If the latest revision of the
-      # given consent is in the `REVOKED` state, no new revision is committed.
+      # given Consent is in the `REVOKED` state, no new revision is committed.
       class RevokeConsentRequest
         include Google::Apis::Core::Hashable
       
-        # The resource name of the consent artifact that contains proof of the end user'
-        # s revocation of the consent, of the form `projects/`project_id`/locations/`
-        # location_id`/datasets/`dataset_id`/consentStores/`consent_store_id`/
+        # Optional. The resource name of the Consent artifact that contains proof of the
+        # user's revocation of the Consent, of the form `projects/`project_id`/locations/
+        # `location_id`/datasets/`dataset_id`/consentStores/`consent_store_id`/
         # consentArtifacts/`consent_artifact_id``.
         # Corresponds to the JSON property `consentArtifact`
         # @return [String]
@@ -4735,18 +4748,18 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::Image]
         attr_accessor :image
       
-        # Metadata associated with the user's signature. For example, the user's name or
-        # the user's title.
+        # Optional. Metadata associated with the user's signature. For example, the user'
+        # s name or the user's title.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
-        # Timestamp of the signature.
+        # Optional. Timestamp of the signature.
         # Corresponds to the JSON property `signatureTime`
         # @return [String]
         attr_accessor :signature_time
       
-        # User's UUID provided by the client.
+        # Required. User's UUID provided by the client.
         # Corresponds to the JSON property `userId`
         # @return [String]
         attr_accessor :user_id
@@ -4970,22 +4983,22 @@ module Google
         end
       end
       
-      # Maps a user data entry to its end user and Attributes.
+      # Maps a resource to the associated user and Attributes.
       class UserDataMapping
         include Google::Apis::Core::Hashable
       
-        # Output only. Indicates the time when this data mapping was archived.
+        # Output only. Indicates the time when this mapping was archived.
         # Corresponds to the JSON property `archiveTime`
         # @return [String]
         attr_accessor :archive_time
       
-        # Output only. Indicates whether this data mapping is archived.
+        # Output only. Indicates whether this mapping is archived.
         # Corresponds to the JSON property `archived`
         # @return [Boolean]
         attr_accessor :archived
         alias_method :archived?, :archived
       
-        # Required. A unique identifier for the mapped data.
+        # Required. A unique identifier for the mapped resource.
         # Corresponds to the JSON property `dataId`
         # @return [String]
         attr_accessor :data_id
@@ -4997,11 +5010,10 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Attributes of end user data. Each attribute can have exactly one value
-        # specified. Only explicitly set attributes are displayed here. Attribute
-        # definitions with defaults set implicitly apply to these User data mappings.
-        # Attributes listed here must be single valued, that is, exactly one value is
-        # specified for the field "values" in each Attribute.
+        # Attributes of the resource. Only explicitly set attributes are displayed here.
+        # Attribute definitions with defaults set implicitly apply to these User data
+        # mappings. Attributes listed here must be single valued, that is, exactly one
+        # value is specified for the field "values" in each Attribute.
         # Corresponds to the JSON property `resourceAttributes`
         # @return [Array<Google::Apis::HealthcareV1beta1::Attribute>]
         attr_accessor :resource_attributes
