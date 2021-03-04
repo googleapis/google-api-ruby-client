@@ -65,7 +65,7 @@ module Google
         attr_accessor :start_time
       
         # Status of the operation (output only). A status of "done" means that the
-        # request to update the authoritative servers has been sent but the servers
+        # request to update the authoritative servers has been sent, but the servers
         # might not be updated yet.
         # Corresponds to the JSON property `status`
         # @return [String]
@@ -167,14 +167,14 @@ module Google
         attr_accessor :id
       
         # Active keys are used to sign subsequent changes to the ManagedZone. Inactive
-        # keys will still be present as DNSKEY Resource Records for the use of resolvers
+        # keys are still present as DNSKEY Resource Records for the use of resolvers
         # validating existing signatures.
         # Corresponds to the JSON property `isActive`
         # @return [Boolean]
         attr_accessor :is_active
         alias_method :is_active?, :is_active
       
-        # Length of the key in bits. Specified at creation time, then immutable.
+        # Length of the key in bits. Specified at creation time, and then immutable.
         # Corresponds to the JSON property `keyLength`
         # @return [Fixnum]
         attr_accessor :key_length
@@ -201,7 +201,7 @@ module Google
       
         # One of "KEY_SIGNING" or "ZONE_SIGNING". Keys of type KEY_SIGNING have the
         # Secure Entry Point flag set and, when active, are used to sign only resource
-        # record sets of type DNSKEY. Otherwise, the Secure Entry Point flag is cleared
+        # record sets of type DNSKEY. Otherwise, the Secure Entry Point flag is cleared,
         # and this key is used to sign only resource record sets of other types.
         # Immutable after creation time.
         # Corresponds to the JSON property `type`
@@ -399,8 +399,8 @@ module Google
       
         # Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet
         # is a set of DNS name servers that all host the same ManagedZones. Most users
-        # will leave this field unset. If you need to use this field, please reach out
-        # to your account team.
+        # leave this field unset. If you need to use this field, contact your account
+        # team.
         # Corresponds to the JSON property `nameServerSet`
         # @return [String]
         attr_accessor :name_server_set
@@ -537,9 +537,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud
-        # DNS makes forwarding decisions based on address ranges; that is, RFC1918
-        # addresses go to the VPC, non-RFC1918 addresses go to the internet. When set to
-        # PRIVATE, Cloud DNS always sends queries through VPC for this target.
+        # DNS makes forwarding decisions based on IP address ranges; that is, RFC1918
+        # addresses go to the VPC network, non-RFC1918 addresses go to the internet.
+        # When set to PRIVATE, Cloud DNS always sends queries through the VPC network
+        # for this target.
         # Corresponds to the JSON property `forwardingPath`
         # @return [String]
         attr_accessor :forwarding_path
@@ -712,9 +713,9 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The fully qualified URL of the VPC network to bind to. This should be
-        # formatted like https://www.googleapis.com/compute/v1/projects/`project`/global/
-        # networks/`network`
+        # The fully qualified URL of the VPC network to bind to. Format this URL like
+        # https://www.googleapis.com/compute/v1/projects/`project`/global/networks/`
+        # network`
         # Corresponds to the JSON property `networkUrl`
         # @return [String]
         attr_accessor :network_url
@@ -778,8 +779,8 @@ module Google
       class ManagedZoneServiceDirectoryConfigNamespace
         include Google::Apis::Core::Hashable
       
-        # The time that the namespace backing this zone was deleted, empty string if it
-        # still exists. This is in RFC3339 text format. Output only.
+        # The time that the namespace backing this zone was deleted; an empty string if
+        # it still exists. This is in RFC3339 text format. Output only.
         # Corresponds to the JSON property `deletionTime`
         # @return [String]
         attr_accessor :deletion_time
@@ -1094,7 +1095,7 @@ module Google
       
         # Allows networks bound to this policy to receive DNS queries sent by VMs or
         # applications over VPN connections. When enabled, a virtual IP address is
-        # allocated from each of the sub-networks that are bound to this policy.
+        # allocated from each of the subnetworks that are bound to this policy.
         # Corresponds to the JSON property `enableInboundForwarding`
         # @return [Boolean]
         attr_accessor :enable_inbound_forwarding
@@ -1176,9 +1177,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud
-        # DNS makes forwarding decision based on address ranges; that is, RFC1918
-        # addresses go to the VPC, non-RFC1918 addresses go to the internet. When set to
-        # PRIVATE, Cloud DNS always sends queries through VPC for this target.
+        # DNS makes forwarding decisions based on address ranges; that is, RFC1918
+        # addresses go to the VPC network, non-RFC1918 addresses go to the internet.
+        # When set to PRIVATE, Cloud DNS always sends queries through the VPC network
+        # for this target.
         # Corresponds to the JSON property `forwardingPath`
         # @return [String]
         attr_accessor :forwarding_path
@@ -1390,7 +1392,7 @@ module Google
         end
       end
       
-      # A unit of data that will be returned by the DNS servers.
+      # A unit of data that is returned by the DNS servers.
       class ResourceRecordSet
         include Google::Apis::Core::Hashable
       
