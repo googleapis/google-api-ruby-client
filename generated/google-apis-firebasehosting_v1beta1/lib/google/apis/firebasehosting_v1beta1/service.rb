@@ -155,10 +155,11 @@ module Google
         
         # Creates a new channel in the specified site.
         # @param [String] parent
-        #   Required. The site in which this channel should be created.
+        #   Required. The site in which to create this channel, in the format: sites/
+        #   SITE_NAME
         # @param [Google::Apis::FirebasehostingV1beta1::Channel] channel_object
         # @param [String] channel_id
-        #   Required. Immutable. A unique id within the site to identify the channel.
+        #   Required. Immutable. A unique ID within the site that identifies the channel.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -189,9 +190,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a channel of a site. The `live` channel cannot be deleted.
+        # Deletes the specified channel of the specified site. The `live` channel cannot
+        # be deleted.
         # @param [String] name
-        #   Required. The fully-qualified identifier for the site.
+        #   Required. The fully-qualified identifier for the channel, in the format: sites/
+        #   SITE_NAME/channels/CHANNEL_ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -219,9 +222,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves information for the specified channel of a site.
+        # Retrieves information for the specified channel of the specified site.
         # @param [String] name
-        #   Required. The fully-qualified identifier for the channel.
+        #   Required. The fully-qualified identifier for the channel, in the format: sites/
+        #   SITE_NAME/channels/CHANNEL_ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -249,16 +253,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the channels for the specified site. All sites have a default "live"
+        # Lists the channels for the specified site. All sites have a default `live`
         # channel.
         # @param [String] parent
-        #   Required. The site from which to list channels.
+        #   Required. The site for which to list channels, in the format: sites/ SITE_NAME
         # @param [Fixnum] page_size
-        #   The maximum number of versions to return. The service may return fewer than
-        #   this value. If unspecified, at most 25 channels will be returned. The maximum
-        #   value is 100; valuupdateses above 100 will be coerced to 100
+        #   The maximum number of channels to return. The service may return a lower
+        #   number if fewer channels exist than this maximum number. If unspecified,
+        #   defaults to 10. The maximum value is 100; values above 100 will be coerced to
+        #   100.
         # @param [String] page_token
-        #   The next_page_token from a previous request, if provided.
+        #   A token from a previous call to `ListChannels` that tells the server where to
+        #   resume listing.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -288,10 +294,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates information for the specified channel of a site. This method will
-        # implicitly create a channel if it doesn't exist.
+        # Updates information for the specified channel of the specified site.
+        # Implicitly creates the channel if it doesn't already exist.
         # @param [String] name
-        #   The fully-qualified identifier of the Channel.
+        #   The fully-qualified identifier for the channel, in the format: sites/
+        #   SITE_NAME/channels/CHANNEL_ID
         # @param [Google::Apis::FirebasehostingV1beta1::Channel] channel_object
         # @param [String] update_mask
         #   A comma-separated list of fields to be updated in this request.
@@ -328,8 +335,8 @@ module Google
         # Creates a new release, which makes the content of the specified version
         # actively display on the appropriate URL(s).
         # @param [String] parent
-        #   Required. The site to which the release belongs, in the format: sites/
-        #   SITE_NAME
+        #   Required. The site or channel to which the release belongs, in either of the
+        #   following formats: - sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
         # @param [Google::Apis::FirebasehostingV1beta1::Release] release_object
         # @param [String] version_name
         #   The unique identifier for a version, in the format: sites/SITE_NAME /versions/
@@ -366,16 +373,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the releases that have been created on the specified site.
+        # Lists the releases that have been created for the specified site or channel.
+        # When used to list releases for a site, this list includes releases for both
+        # the default `live` channel and any active preview channels for the specified
+        # site.
         # @param [String] parent
-        #   Required. The site for which to list releases, in the format: sites/ SITE_NAME
+        #   Required. The site or channel for which to list releases, in either of the
+        #   following formats: - sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
         # @param [Fixnum] page_size
         #   The maximum number of releases to return. The service may return a lower
         #   number if fewer releases exist than this maximum number. If unspecified,
         #   defaults to 100.
         # @param [String] page_token
-        #   A token from a previous call to `ListReleases` that tells the server where to
-        #   resume listing.
+        #   A token from a previous call to `releases.list` or `channels.releases.list`
+        #   that tells the server where to resume listing.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -574,8 +585,8 @@ module Google
         # Creates a new release, which makes the content of the specified version
         # actively display on the appropriate URL(s).
         # @param [String] parent
-        #   Required. The site to which the release belongs, in the format: sites/
-        #   SITE_NAME
+        #   Required. The site or channel to which the release belongs, in either of the
+        #   following formats: - sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
         # @param [Google::Apis::FirebasehostingV1beta1::Release] release_object
         # @param [String] version_name
         #   The unique identifier for a version, in the format: sites/SITE_NAME /versions/
@@ -612,16 +623,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the releases that have been created on the specified site.
+        # Lists the releases that have been created for the specified site or channel.
+        # When used to list releases for a site, this list includes releases for both
+        # the default `live` channel and any active preview channels for the specified
+        # site.
         # @param [String] parent
-        #   Required. The site for which to list releases, in the format: sites/ SITE_NAME
+        #   Required. The site or channel for which to list releases, in either of the
+        #   following formats: - sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
         # @param [Fixnum] page_size
         #   The maximum number of releases to return. The service may return a lower
         #   number if fewer releases exist than this maximum number. If unspecified,
         #   defaults to 100.
         # @param [String] page_token
-        #   A token from a previous call to `ListReleases` that tells the server where to
-        #   resume listing.
+        #   A token from a previous call to `releases.list` or `channels.releases.list`
+        #   that tells the server where to resume listing.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -651,11 +666,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new version on the target site using the content of the specified
-        # version.
+        # Creates a new version on the specified target site using the content of the
+        # specified version.
         # @param [String] parent
-        #   Required. The target site where the cloned version will reside, in the format:
-        #   `sites/`site``
+        #   Required. The target site for the cloned version, in the format: sites/
+        #   SITE_NAME
         # @param [Google::Apis::FirebasehostingV1beta1::CloneVersionRequest] clone_version_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -730,7 +745,7 @@ module Google
         
         # Deletes the specified version.
         # @param [String] name
-        #   Required. The name of the version to be deleted, in the format: sites/
+        #   Required. The fully-qualified identifier for the version, in the format: sites/
         #   SITE_NAME/versions/VERSION_ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -759,20 +774,25 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the versions that have been created on the specified site. Will include
-        # filtering in the future.
+        # Lists the versions that have been created for the specified site. This list
+        # includes versions for both the default `live` channel and any active preview
+        # channels for the specified site.
         # @param [String] parent
-        #   Required. The parent for which to list files, in the format: sites/site-name
+        #   Required. The site or channel for which to list versions, in either of the
+        #   following formats: - sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
         # @param [String] filter
-        #   The filter string used to return a subset of versions in the response.
-        #   Currently supported fields for filtering are: name, status, and create_time.
-        #   Filter processing will be implemented in accordance with go/filtering.
+        #   A filter string used to return a subset of versions in the response. The
+        #   currently supported fields for filtering are: `name`, `status`, and `
+        #   create_time`. Learn more about filtering in Google's [AIP 160 standard](https:/
+        #   /google.aip.dev/160).
         # @param [Fixnum] page_size
-        #   The maximum number of versions to return. The service may return fewer than
-        #   this value. If unspecified, at most 25 versions will be returned. The maximum
-        #   value is 100; values above 100 will be coerced to 100
+        #   The maximum number of versions to return. The service may return a lower
+        #   number if fewer versions exist than this maximum number. If unspecified,
+        #   defaults to 25. The maximum value is 100; values above 100 will be coerced to
+        #   100.
         # @param [String] page_token
-        #   The next_page_token from a previous request, if provided.
+        #   A token from a previous call to `ListVersions` that tells the server where to
+        #   resume listing.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -805,13 +825,13 @@ module Google
         
         # Updates the specified metadata for the specified version. This method will
         # fail with `FAILED_PRECONDITION` in the event of an invalid state transition.
-        # The only valid transition for a version is currently from a `CREATED` status
-        # to a `FINALIZED` status. Use [`DeleteVersion`](delete) to set the status of a
-        # version to `DELETED`.
+        # The supported [state](../sites.versions#versionstatus) transitions for a
+        # version are from `CREATED` to `FINALIZED`. Use [`DeleteVersion`](delete) to
+        # set the status of a version to `DELETED`.
         # @param [String] name
-        #   The unique identifier for a version, in the format: sites/SITE_NAME /versions/
-        #   VERSION_ID This name is provided in the response body when you call [`
-        #   CreateVersion`](sites.versions/create).
+        #   The fully-qualified identifier for the version, in the format: sites/
+        #   SITE_NAME/versions/VERSION_ID This name is provided in the response body when
+        #   you call [`CreateVersion`](sites.versions/create).
         # @param [Google::Apis::FirebasehostingV1beta1::Version] version_object
         # @param [String] update_mask
         #   A set of field names from your [version](../sites.versions) that you want to
@@ -998,10 +1018,11 @@ module Google
         
         # Creates a new channel in the specified site.
         # @param [String] parent
-        #   Required. The site in which this channel should be created.
+        #   Required. The site in which to create this channel, in the format: sites/
+        #   SITE_NAME
         # @param [Google::Apis::FirebasehostingV1beta1::Channel] channel_object
         # @param [String] channel_id
-        #   Required. Immutable. A unique id within the site to identify the channel.
+        #   Required. Immutable. A unique ID within the site that identifies the channel.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1032,9 +1053,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a channel of a site. The `live` channel cannot be deleted.
+        # Deletes the specified channel of the specified site. The `live` channel cannot
+        # be deleted.
         # @param [String] name
-        #   Required. The fully-qualified identifier for the site.
+        #   Required. The fully-qualified identifier for the channel, in the format: sites/
+        #   SITE_NAME/channels/CHANNEL_ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1062,9 +1085,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves information for the specified channel of a site.
+        # Retrieves information for the specified channel of the specified site.
         # @param [String] name
-        #   Required. The fully-qualified identifier for the channel.
+        #   Required. The fully-qualified identifier for the channel, in the format: sites/
+        #   SITE_NAME/channels/CHANNEL_ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1092,16 +1116,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the channels for the specified site. All sites have a default "live"
+        # Lists the channels for the specified site. All sites have a default `live`
         # channel.
         # @param [String] parent
-        #   Required. The site from which to list channels.
+        #   Required. The site for which to list channels, in the format: sites/ SITE_NAME
         # @param [Fixnum] page_size
-        #   The maximum number of versions to return. The service may return fewer than
-        #   this value. If unspecified, at most 25 channels will be returned. The maximum
-        #   value is 100; valuupdateses above 100 will be coerced to 100
+        #   The maximum number of channels to return. The service may return a lower
+        #   number if fewer channels exist than this maximum number. If unspecified,
+        #   defaults to 10. The maximum value is 100; values above 100 will be coerced to
+        #   100.
         # @param [String] page_token
-        #   The next_page_token from a previous request, if provided.
+        #   A token from a previous call to `ListChannels` that tells the server where to
+        #   resume listing.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1131,10 +1157,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates information for the specified channel of a site. This method will
-        # implicitly create a channel if it doesn't exist.
+        # Updates information for the specified channel of the specified site.
+        # Implicitly creates the channel if it doesn't already exist.
         # @param [String] name
-        #   The fully-qualified identifier of the Channel.
+        #   The fully-qualified identifier for the channel, in the format: sites/
+        #   SITE_NAME/channels/CHANNEL_ID
         # @param [Google::Apis::FirebasehostingV1beta1::Channel] channel_object
         # @param [String] update_mask
         #   A comma-separated list of fields to be updated in this request.
@@ -1171,8 +1198,8 @@ module Google
         # Creates a new release, which makes the content of the specified version
         # actively display on the appropriate URL(s).
         # @param [String] parent
-        #   Required. The site to which the release belongs, in the format: sites/
-        #   SITE_NAME
+        #   Required. The site or channel to which the release belongs, in either of the
+        #   following formats: - sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
         # @param [Google::Apis::FirebasehostingV1beta1::Release] release_object
         # @param [String] version_name
         #   The unique identifier for a version, in the format: sites/SITE_NAME /versions/
@@ -1209,16 +1236,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the releases that have been created on the specified site.
+        # Lists the releases that have been created for the specified site or channel.
+        # When used to list releases for a site, this list includes releases for both
+        # the default `live` channel and any active preview channels for the specified
+        # site.
         # @param [String] parent
-        #   Required. The site for which to list releases, in the format: sites/ SITE_NAME
+        #   Required. The site or channel for which to list releases, in either of the
+        #   following formats: - sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
         # @param [Fixnum] page_size
         #   The maximum number of releases to return. The service may return a lower
         #   number if fewer releases exist than this maximum number. If unspecified,
         #   defaults to 100.
         # @param [String] page_token
-        #   A token from a previous call to `ListReleases` that tells the server where to
-        #   resume listing.
+        #   A token from a previous call to `releases.list` or `channels.releases.list`
+        #   that tells the server where to resume listing.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1417,8 +1448,8 @@ module Google
         # Creates a new release, which makes the content of the specified version
         # actively display on the appropriate URL(s).
         # @param [String] parent
-        #   Required. The site to which the release belongs, in the format: sites/
-        #   SITE_NAME
+        #   Required. The site or channel to which the release belongs, in either of the
+        #   following formats: - sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
         # @param [Google::Apis::FirebasehostingV1beta1::Release] release_object
         # @param [String] version_name
         #   The unique identifier for a version, in the format: sites/SITE_NAME /versions/
@@ -1455,16 +1486,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the releases that have been created on the specified site.
+        # Lists the releases that have been created for the specified site or channel.
+        # When used to list releases for a site, this list includes releases for both
+        # the default `live` channel and any active preview channels for the specified
+        # site.
         # @param [String] parent
-        #   Required. The site for which to list releases, in the format: sites/ SITE_NAME
+        #   Required. The site or channel for which to list releases, in either of the
+        #   following formats: - sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
         # @param [Fixnum] page_size
         #   The maximum number of releases to return. The service may return a lower
         #   number if fewer releases exist than this maximum number. If unspecified,
         #   defaults to 100.
         # @param [String] page_token
-        #   A token from a previous call to `ListReleases` that tells the server where to
-        #   resume listing.
+        #   A token from a previous call to `releases.list` or `channels.releases.list`
+        #   that tells the server where to resume listing.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1494,11 +1529,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new version on the target site using the content of the specified
-        # version.
+        # Creates a new version on the specified target site using the content of the
+        # specified version.
         # @param [String] parent
-        #   Required. The target site where the cloned version will reside, in the format:
-        #   `sites/`site``
+        #   Required. The target site for the cloned version, in the format: sites/
+        #   SITE_NAME
         # @param [Google::Apis::FirebasehostingV1beta1::CloneVersionRequest] clone_version_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1573,7 +1608,7 @@ module Google
         
         # Deletes the specified version.
         # @param [String] name
-        #   Required. The name of the version to be deleted, in the format: sites/
+        #   Required. The fully-qualified identifier for the version, in the format: sites/
         #   SITE_NAME/versions/VERSION_ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1602,20 +1637,25 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the versions that have been created on the specified site. Will include
-        # filtering in the future.
+        # Lists the versions that have been created for the specified site. This list
+        # includes versions for both the default `live` channel and any active preview
+        # channels for the specified site.
         # @param [String] parent
-        #   Required. The parent for which to list files, in the format: sites/site-name
+        #   Required. The site or channel for which to list versions, in either of the
+        #   following formats: - sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
         # @param [String] filter
-        #   The filter string used to return a subset of versions in the response.
-        #   Currently supported fields for filtering are: name, status, and create_time.
-        #   Filter processing will be implemented in accordance with go/filtering.
+        #   A filter string used to return a subset of versions in the response. The
+        #   currently supported fields for filtering are: `name`, `status`, and `
+        #   create_time`. Learn more about filtering in Google's [AIP 160 standard](https:/
+        #   /google.aip.dev/160).
         # @param [Fixnum] page_size
-        #   The maximum number of versions to return. The service may return fewer than
-        #   this value. If unspecified, at most 25 versions will be returned. The maximum
-        #   value is 100; values above 100 will be coerced to 100
+        #   The maximum number of versions to return. The service may return a lower
+        #   number if fewer versions exist than this maximum number. If unspecified,
+        #   defaults to 25. The maximum value is 100; values above 100 will be coerced to
+        #   100.
         # @param [String] page_token
-        #   The next_page_token from a previous request, if provided.
+        #   A token from a previous call to `ListVersions` that tells the server where to
+        #   resume listing.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1648,13 +1688,13 @@ module Google
         
         # Updates the specified metadata for the specified version. This method will
         # fail with `FAILED_PRECONDITION` in the event of an invalid state transition.
-        # The only valid transition for a version is currently from a `CREATED` status
-        # to a `FINALIZED` status. Use [`DeleteVersion`](delete) to set the status of a
-        # version to `DELETED`.
+        # The supported [state](../sites.versions#versionstatus) transitions for a
+        # version are from `CREATED` to `FINALIZED`. Use [`DeleteVersion`](delete) to
+        # set the status of a version to `DELETED`.
         # @param [String] name
-        #   The unique identifier for a version, in the format: sites/SITE_NAME /versions/
-        #   VERSION_ID This name is provided in the response body when you call [`
-        #   CreateVersion`](sites.versions/create).
+        #   The fully-qualified identifier for the version, in the format: sites/
+        #   SITE_NAME/versions/VERSION_ID This name is provided in the response body when
+        #   you call [`CreateVersion`](sites.versions/create).
         # @param [Google::Apis::FirebasehostingV1beta1::Version] version_object
         # @param [String] update_mask
         #   A set of field names from your [version](../sites.versions) that you want to
