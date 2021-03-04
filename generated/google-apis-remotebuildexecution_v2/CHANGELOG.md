@@ -1,5 +1,9 @@
 # Release history for google-apis-remotebuildexecution_v2
 
+### v0.5.0 (2021-03-04)
+
+* Regenerated from discovery document revision 20210302
+
 ### v0.4.0 (2021-02-26)
 
 * Regenerated from discovery document revision 20210224
