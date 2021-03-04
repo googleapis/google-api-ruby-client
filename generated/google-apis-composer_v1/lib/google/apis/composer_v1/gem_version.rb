@@ -16,7 +16,7 @@ module Google
   module Apis
     module ComposerV1
       # Version of the google-apis-composer_v1 gem
-      GEM_VERSION = "0.2.0"
+      GEM_VERSION = "0.3.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.1.2"
