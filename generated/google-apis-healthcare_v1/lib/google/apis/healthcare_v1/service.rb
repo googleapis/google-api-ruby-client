@@ -455,6 +455,177 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Checks if a particular data_id of a User data mapping in the specified consent
+        # store is consented for the specified use.
+        # @param [String] consent_store
+        #   Required. Name of the consent store where the requested data_id is stored, of
+        #   the form `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   consentStores/`consent_store_id``.
+        # @param [Google::Apis::HealthcareV1::CheckDataAccessRequest] check_data_access_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::CheckDataAccessResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::CheckDataAccessResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def check_consent_store_data_access(consent_store, check_data_access_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+consentStore}:checkDataAccess', options)
+          command.request_representation = Google::Apis::HealthcareV1::CheckDataAccessRequest::Representation
+          command.request_object = check_data_access_request_object
+          command.response_representation = Google::Apis::HealthcareV1::CheckDataAccessResponse::Representation
+          command.response_class = Google::Apis::HealthcareV1::CheckDataAccessResponse
+          command.params['consentStore'] = consent_store unless consent_store.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new consent store in the parent dataset. Attempting to create a
+        # consent store with the same ID as an existing store fails with an
+        # ALREADY_EXISTS error.
+        # @param [String] parent
+        #   Required. The name of the dataset this consent store belongs to.
+        # @param [Google::Apis::HealthcareV1::ConsentStore] consent_store_object
+        # @param [String] consent_store_id
+        #   Required. The ID of the consent store to create. The string must match the
+        #   following regex: `[\p`L`\p`N`_\-\.]`1,256``. Cannot be changed after creation.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::ConsentStore] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::ConsentStore]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_dataset_consent_store(parent, consent_store_object = nil, consent_store_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/consentStores', options)
+          command.request_representation = Google::Apis::HealthcareV1::ConsentStore::Representation
+          command.request_object = consent_store_object
+          command.response_representation = Google::Apis::HealthcareV1::ConsentStore::Representation
+          command.response_class = Google::Apis::HealthcareV1::ConsentStore
+          command.params['parent'] = parent unless parent.nil?
+          command.query['consentStoreId'] = consent_store_id unless consent_store_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified consent store and removes all the consent store's data.
+        # @param [String] name
+        #   Required. The resource name of the consent store to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_dataset_consent_store(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::HealthcareV1::Empty::Representation
+          command.response_class = Google::Apis::HealthcareV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Evaluates the user's Consents for all matching User data mappings. Note: User
+        # data mappings are indexed asynchronously, which can cause a slight delay
+        # between the time mappings are created or updated and when they are included in
+        # EvaluateUserConsents results.
+        # @param [String] consent_store
+        #   Required. Name of the consent store to retrieve User data mappings from.
+        # @param [Google::Apis::HealthcareV1::EvaluateUserConsentsRequest] evaluate_user_consents_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::EvaluateUserConsentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::EvaluateUserConsentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def evaluate_consent_store_user_consents(consent_store, evaluate_user_consents_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+consentStore}:evaluateUserConsents', options)
+          command.request_representation = Google::Apis::HealthcareV1::EvaluateUserConsentsRequest::Representation
+          command.request_object = evaluate_user_consents_request_object
+          command.response_representation = Google::Apis::HealthcareV1::EvaluateUserConsentsResponse::Representation
+          command.response_class = Google::Apis::HealthcareV1::EvaluateUserConsentsResponse
+          command.params['consentStore'] = consent_store unless consent_store.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the specified consent store.
+        # @param [String] name
+        #   Required. The resource name of the consent store to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::ConsentStore] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::ConsentStore]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_dataset_consent_store(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::HealthcareV1::ConsentStore::Representation
+          command.response_class = Google::Apis::HealthcareV1::ConsentStore
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -491,6 +662,141 @@ module Google
           command.response_class = Google::Apis::HealthcareV1::Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the consent stores in the specified dataset.
+        # @param [String] parent
+        #   Required. Name of the dataset.
+        # @param [String] filter
+        #   Optional. Restricts the stores returned to those matching a filter. Only
+        #   filtering on labels is supported. For example, `filter=labels.key=value`.
+        # @param [Fixnum] page_size
+        #   Optional. Limit on the number of consent stores to return in a single response.
+        #   If not specified, 100 is used. May not be larger than 1000.
+        # @param [String] page_token
+        #   Optional. Token to retrieve the next page of results, or empty to get the
+        #   first page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::ListConsentStoresResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::ListConsentStoresResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_dataset_consent_stores(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/consentStores', options)
+          command.response_representation = Google::Apis::HealthcareV1::ListConsentStoresResponse::Representation
+          command.response_class = Google::Apis::HealthcareV1::ListConsentStoresResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified consent store.
+        # @param [String] name
+        #   Resource name of the consent store, of the form `projects/`project_id`/
+        #   locations/`location_id`/datasets/`dataset_id`/consentStores/`consent_store_id``
+        #   . Cannot be changed after creation.
+        # @param [Google::Apis::HealthcareV1::ConsentStore] consent_store_object
+        # @param [String] update_mask
+        #   Required. The update mask that applies to the resource. For the `FieldMask`
+        #   definition, see https://developers.google.com/protocol-buffers/docs/reference/
+        #   google.protobuf#fieldmask. Only the `labels`, `default_consent_ttl`, and `
+        #   enable_consent_create_on_update` fields are allowed to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::ConsentStore] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::ConsentStore]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_dataset_consent_store(name, consent_store_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::HealthcareV1::ConsentStore::Representation
+          command.request_object = consent_store_object
+          command.response_representation = Google::Apis::HealthcareV1::ConsentStore::Representation
+          command.response_class = Google::Apis::HealthcareV1::ConsentStore
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Queries all data_ids that are consented for a specified use in the given
+        # consent store and writes them to a specified destination. The returned
+        # Operation includes a progress counter for the number of User data mappings
+        # processed. Errors are logged to Cloud Logging (see [Viewing logs] (cloud.
+        # google.com/healthcare/docs/how-tos/logging)). For example, the following
+        # sample log entry shows a `failed to evaluate consent policy` error that
+        # occurred during a QueryAccessibleData call to consent store `projects/`
+        # project_id`/locations/`location_id`/datasets/`dataset_id`/consentStores/`
+        # consent_store_id``. ```json jsonPayload: ` @type: "type.googleapis.com/google.
+        # cloud.healthcare.logging.QueryAccessibleDataLogEntry" error: ` code: 9 message:
+        # "failed to evaluate consent policy" ` resourceName: "projects/`project_id`/
+        # locations/`location_id`/datasets/`dataset_id`/consentStores/`consent_store_id`/
+        # consents/`consent_id`" ` logName: "projects/`project_id`/logs/healthcare.
+        # googleapis.com%2Fquery_accessible_data" operation: ` id: "projects/`project_id`
+        # /locations/`location_id`/datasets/`dataset_id`/operations/`operation_id`"
+        # producer: "healthcare.googleapis.com/QueryAccessibleData" ` receiveTimestamp: "
+        # TIMESTAMP" resource: ` labels: ` consent_store_id: "`consent_store_id`"
+        # dataset_id: "`dataset_id`" location: "`location_id`" project_id: "`project_id`"
+        # ` type: "healthcare_consent_store" ` severity: "ERROR" timestamp: "TIMESTAMP"
+        # ```
+        # @param [String] consent_store
+        #   Required. Name of the consent store to retrieve User data mappings from.
+        # @param [Google::Apis::HealthcareV1::QueryAccessibleDataRequest] query_accessible_data_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def query_consent_store_accessible_data(consent_store, query_accessible_data_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+consentStore}:queryAccessibleData', options)
+          command.request_representation = Google::Apis::HealthcareV1::QueryAccessibleDataRequest::Representation
+          command.request_object = query_accessible_data_request_object
+          command.response_representation = Google::Apis::HealthcareV1::Operation::Representation
+          command.response_class = Google::Apis::HealthcareV1::Operation
+          command.params['consentStore'] = consent_store unless consent_store.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -565,6 +871,1017 @@ module Google
           command.response_representation = Google::Apis::HealthcareV1::TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::HealthcareV1::TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new Attribute definition in the parent consent store.
+        # @param [String] parent
+        #   Required. The name of the consent store that this Attribute definition belongs
+        #   to.
+        # @param [Google::Apis::HealthcareV1::AttributeDefinition] attribute_definition_object
+        # @param [String] attribute_definition_id
+        #   Required. The ID of the Attribute definition to create. The string must match
+        #   the following regex: `_a-zA-Z`0,255`` and must not be a reserved keyword
+        #   within the Common Expression Language as listed on https://github.com/google/
+        #   cel-spec/blob/master/doc/langdef.md.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::AttributeDefinition] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::AttributeDefinition]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_dataset_consent_store_attribute_definition(parent, attribute_definition_object = nil, attribute_definition_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/attributeDefinitions', options)
+          command.request_representation = Google::Apis::HealthcareV1::AttributeDefinition::Representation
+          command.request_object = attribute_definition_object
+          command.response_representation = Google::Apis::HealthcareV1::AttributeDefinition::Representation
+          command.response_class = Google::Apis::HealthcareV1::AttributeDefinition
+          command.params['parent'] = parent unless parent.nil?
+          command.query['attributeDefinitionId'] = attribute_definition_id unless attribute_definition_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified Attribute definition. Fails if the Attribute definition
+        # is referenced by any User data mapping, or the latest revision of any Consent.
+        # @param [String] name
+        #   Required. The resource name of the Attribute definition to delete. To preserve
+        #   referential integrity, Attribute definitions referenced by a User data mapping
+        #   or the latest revision of a Consent cannot be deleted.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_dataset_consent_store_attribute_definition(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::HealthcareV1::Empty::Representation
+          command.response_class = Google::Apis::HealthcareV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the specified Attribute definition.
+        # @param [String] name
+        #   Required. The resource name of the Attribute definition to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::AttributeDefinition] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::AttributeDefinition]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_dataset_consent_store_attribute_definition(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::HealthcareV1::AttributeDefinition::Representation
+          command.response_class = Google::Apis::HealthcareV1::AttributeDefinition
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the Attribute definitions in the specified consent store.
+        # @param [String] parent
+        #   Required. Name of the consent store to retrieve Attribute definitions from.
+        # @param [String] filter
+        #   Optional. Restricts the attributes returned to those matching a filter. The
+        #   only field available for filtering is `category`. For example, `filter=
+        #   category=\"REQUEST\"`.
+        # @param [Fixnum] page_size
+        #   Optional. Limit on the number of Attribute definitions to return in a single
+        #   response. If not specified, 100 is used. May not be larger than 1000.
+        # @param [String] page_token
+        #   Optional. Token to retrieve the next page of results or empty to get the first
+        #   page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::ListAttributeDefinitionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::ListAttributeDefinitionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_dataset_consent_store_attribute_definitions(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/attributeDefinitions', options)
+          command.response_representation = Google::Apis::HealthcareV1::ListAttributeDefinitionsResponse::Representation
+          command.response_class = Google::Apis::HealthcareV1::ListAttributeDefinitionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified Attribute definition.
+        # @param [String] name
+        #   Resource name of the Attribute definition, of the form `projects/`project_id`/
+        #   locations/`location_id`/datasets/`dataset_id`/consentStores/`consent_store_id`/
+        #   attributeDefinitions/`attribute_definition_id``. Cannot be changed after
+        #   creation.
+        # @param [Google::Apis::HealthcareV1::AttributeDefinition] attribute_definition_object
+        # @param [String] update_mask
+        #   Required. The update mask that applies to the resource. For the `FieldMask`
+        #   definition, see https://developers.google.com/protocol-buffers/docs/reference/
+        #   google.protobuf#fieldmask. Only the `description`, `allowed_values`, `
+        #   consent_default_values` and `data_mapping_default_value` fields can be updated.
+        #   The updated `allowed_values` must contain all values from the previous `
+        #   allowed_values`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::AttributeDefinition] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::AttributeDefinition]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_dataset_consent_store_attribute_definition(name, attribute_definition_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::HealthcareV1::AttributeDefinition::Representation
+          command.request_object = attribute_definition_object
+          command.response_representation = Google::Apis::HealthcareV1::AttributeDefinition::Representation
+          command.response_class = Google::Apis::HealthcareV1::AttributeDefinition
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new Consent artifact in the parent consent store.
+        # @param [String] parent
+        #   Required. The name of the consent store this Consent artifact belongs to.
+        # @param [Google::Apis::HealthcareV1::ConsentArtifact] consent_artifact_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::ConsentArtifact] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::ConsentArtifact]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_dataset_consent_store_consent_artifact(parent, consent_artifact_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/consentArtifacts', options)
+          command.request_representation = Google::Apis::HealthcareV1::ConsentArtifact::Representation
+          command.request_object = consent_artifact_object
+          command.response_representation = Google::Apis::HealthcareV1::ConsentArtifact::Representation
+          command.response_class = Google::Apis::HealthcareV1::ConsentArtifact
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified Consent artifact. Fails if the artifact is referenced by
+        # the latest revision of any Consent.
+        # @param [String] name
+        #   Required. The resource name of the Consent artifact to delete. To preserve
+        #   referential integrity, Consent artifacts referenced by the latest revision of
+        #   a Consent cannot be deleted.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_dataset_consent_store_consent_artifact(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::HealthcareV1::Empty::Representation
+          command.response_class = Google::Apis::HealthcareV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the specified Consent artifact.
+        # @param [String] name
+        #   Required. The resource name of the Consent artifact to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::ConsentArtifact] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::ConsentArtifact]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_dataset_consent_store_consent_artifact(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::HealthcareV1::ConsentArtifact::Representation
+          command.response_class = Google::Apis::HealthcareV1::ConsentArtifact
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the Consent artifacts in the specified consent store.
+        # @param [String] parent
+        #   Required. Name of the consent store to retrieve consent artifacts from.
+        # @param [String] filter
+        #   Optional. Restricts the artifacts returned to those matching a filter. The
+        #   following syntax is available: * A string field value can be written as text
+        #   inside quotation marks, for example `"query text"`. The only valid relational
+        #   operation for text fields is equality (`=`), where text is searched within the
+        #   field, rather than having the field be equal to the text. For example, `"
+        #   Comment = great"` returns messages with `great` in the comment field. * A
+        #   number field value can be written as an integer, a decimal, or an exponential.
+        #   The valid relational operators for number fields are the equality operator (`=`
+        #   ), along with the less than/greater than operators (`<`, `<=`, `>`, `>=`).
+        #   Note that there is no inequality (`!=`) operator. You can prepend the `NOT`
+        #   operator to an expression to negate it. * A date field value must be written
+        #   in `yyyy-mm-dd` form. Fields with date and time use the RFC3339 time format.
+        #   Leading zeros are required for one-digit months and days. The valid relational
+        #   operators for date fields are the equality operator (`=`) , along with the
+        #   less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no
+        #   inequality (`!=`) operator. You can prepend the `NOT` operator to an
+        #   expression to negate it. * Multiple field query expressions can be combined in
+        #   one query by adding `AND` or `OR` operators between the expressions. If a
+        #   boolean operator appears within a quoted string, it is not treated as special,
+        #   it's just another part of the character string to be matched. You can prepend
+        #   the `NOT` operator to an expression to negate it. The fields available for
+        #   filtering are: - user_id. For example, `filter=user_id=\"user123\"`. -
+        #   consent_content_version - metadata. For example, `filter=Metadata(\"testkey\")=
+        #   \"value\"` or `filter=HasMetadata(\"testkey\")`.
+        # @param [Fixnum] page_size
+        #   Optional. Limit on the number of consent artifacts to return in a single
+        #   response. If not specified, 100 is used. May not be larger than 1000.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from the previous List request,
+        #   if any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::ListConsentArtifactsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::ListConsentArtifactsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_dataset_consent_store_consent_artifacts(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/consentArtifacts', options)
+          command.response_representation = Google::Apis::HealthcareV1::ListConsentArtifactsResponse::Representation
+          command.response_class = Google::Apis::HealthcareV1::ListConsentArtifactsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Activates the latest revision of the specified Consent by committing a new
+        # revision with `state` updated to `ACTIVE`. If the latest revision of the
+        # specified Consent is in the `ACTIVE` state, no new revision is committed. A
+        # FAILED_PRECONDITION error occurs if the latest revision of the specified
+        # Consent is in the `REJECTED` or `REVOKED` state.
+        # @param [String] name
+        #   Required. The resource name of the Consent to activate, of the form `projects/`
+        #   project_id`/locations/`location_id`/datasets/`dataset_id`/consentStores/`
+        #   consent_store_id`/consents/`consent_id``. An INVALID_ARGUMENT error occurs if `
+        #   revision_id` is specified in the name.
+        # @param [Google::Apis::HealthcareV1::ActivateConsentRequest] activate_consent_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::Consent] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::Consent]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def activate_consent(name, activate_consent_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:activate', options)
+          command.request_representation = Google::Apis::HealthcareV1::ActivateConsentRequest::Representation
+          command.request_object = activate_consent_request_object
+          command.response_representation = Google::Apis::HealthcareV1::Consent::Representation
+          command.response_class = Google::Apis::HealthcareV1::Consent
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new Consent in the parent consent store.
+        # @param [String] parent
+        #   Required. Name of the consent store.
+        # @param [Google::Apis::HealthcareV1::Consent] consent_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::Consent] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::Consent]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_dataset_consent_store_consent(parent, consent_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/consents', options)
+          command.request_representation = Google::Apis::HealthcareV1::Consent::Representation
+          command.request_object = consent_object
+          command.response_representation = Google::Apis::HealthcareV1::Consent::Representation
+          command.response_class = Google::Apis::HealthcareV1::Consent
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the Consent and its revisions. To keep a record of the Consent but
+        # mark it inactive, see [RevokeConsent]. To delete a revision of a Consent, see [
+        # DeleteConsentRevision]. This operation does not delete the related Consent
+        # artifact.
+        # @param [String] name
+        #   Required. The resource name of the Consent to delete, of the form `projects/`
+        #   project_id`/locations/`location_id`/datasets/`dataset_id`/consentStores/`
+        #   consent_store_id`/consents/`consent_id``. An INVALID_ARGUMENT error occurs if `
+        #   revision_id` is specified in the name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_dataset_consent_store_consent(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::HealthcareV1::Empty::Representation
+          command.response_class = Google::Apis::HealthcareV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified revision of a Consent. An INVALID_ARGUMENT error occurs
+        # if the specified revision is the latest revision.
+        # @param [String] name
+        #   Required. The resource name of the Consent revision to delete, of the form `
+        #   projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   consentStores/`consent_store_id`/consents/`consent_id`@`revision_id``. An
+        #   INVALID_ARGUMENT error occurs if `revision_id` is not specified in the name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_dataset_consent_store_consent_revision(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}:deleteRevision', options)
+          command.response_representation = Google::Apis::HealthcareV1::Empty::Representation
+          command.response_class = Google::Apis::HealthcareV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the specified revision of a Consent, or the latest revision if `
+        # revision_id` is not specified in the resource name.
+        # @param [String] name
+        #   Required. The resource name of the Consent to retrieve, of the form `projects/`
+        #   project_id`/locations/`location_id`/datasets/`dataset_id`/consentStores/`
+        #   consent_store_id`/consents/`consent_id``. In order to retrieve a previous
+        #   revision of the Consent, also provide the revision ID: `projects/`project_id`/
+        #   locations/`location_id`/datasets/`dataset_id`/consentStores/`consent_store_id`/
+        #   consents/`consent_id`@`revision_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::Consent] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::Consent]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_dataset_consent_store_consent(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::HealthcareV1::Consent::Representation
+          command.response_class = Google::Apis::HealthcareV1::Consent
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the Consent in the given consent store, returning each Consent's latest
+        # revision.
+        # @param [String] parent
+        #   Required. Name of the consent store to retrieve Consents from.
+        # @param [String] filter
+        #   Optional. Restricts the Consents returned to those matching a filter. The
+        #   following syntax is available: * A string field value can be written as text
+        #   inside quotation marks, for example `"query text"`. The only valid relational
+        #   operation for text fields is equality (`=`), where text is searched within the
+        #   field, rather than having the field be equal to the text. For example, `"
+        #   Comment = great"` returns messages with `great` in the comment field. * A
+        #   number field value can be written as an integer, a decimal, or an exponential.
+        #   The valid relational operators for number fields are the equality operator (`=`
+        #   ), along with the less than/greater than operators (`<`, `<=`, `>`, `>=`).
+        #   Note that there is no inequality (`!=`) operator. You can prepend the `NOT`
+        #   operator to an expression to negate it. * A date field value must be written
+        #   in `yyyy-mm-dd` form. Fields with date and time use the RFC3339 time format.
+        #   Leading zeros are required for one-digit months and days. The valid relational
+        #   operators for date fields are the equality operator (`=`) , along with the
+        #   less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no
+        #   inequality (`!=`) operator. You can prepend the `NOT` operator to an
+        #   expression to negate it. * Multiple field query expressions can be combined in
+        #   one query by adding `AND` or `OR` operators between the expressions. If a
+        #   boolean operator appears within a quoted string, it is not treated as special,
+        #   it's just another part of the character string to be matched. You can prepend
+        #   the `NOT` operator to an expression to negate it. The fields available for
+        #   filtering are: - user_id. For example, `filter='user_id="user123"'`. -
+        #   consent_artifact - state - revision_create_time - metadata. For example, `
+        #   filter=Metadata(\"testkey\")=\"value\"` or `filter=HasMetadata(\"testkey\")`.
+        # @param [Fixnum] page_size
+        #   Optional. Limit on the number of Consents to return in a single response. If
+        #   not specified, 100 is used. May not be larger than 1000.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from the previous List request,
+        #   if any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::ListConsentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::ListConsentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_dataset_consent_store_consents(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/consents', options)
+          command.response_representation = Google::Apis::HealthcareV1::ListConsentsResponse::Representation
+          command.response_class = Google::Apis::HealthcareV1::ListConsentsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the revisions of the specified Consent in reverse chronological order.
+        # @param [String] name
+        #   Required. The resource name of the Consent to retrieve revisions for.
+        # @param [String] filter
+        #   Optional. Restricts the revisions returned to those matching a filter. The
+        #   following syntax is available: * A string field value can be written as text
+        #   inside quotation marks, for example `"query text"`. The only valid relational
+        #   operation for text fields is equality (`=`), where text is searched within the
+        #   field, rather than having the field be equal to the text. For example, `"
+        #   Comment = great"` returns messages with `great` in the comment field. * A
+        #   number field value can be written as an integer, a decimal, or an exponential.
+        #   The valid relational operators for number fields are the equality operator (`=`
+        #   ), along with the less than/greater than operators (`<`, `<=`, `>`, `>=`).
+        #   Note that there is no inequality (`!=`) operator. You can prepend the `NOT`
+        #   operator to an expression to negate it. * A date field value must be written
+        #   in `yyyy-mm-dd` form. Fields with date and time use the RFC3339 time format.
+        #   Leading zeros are required for one-digit months and days. The valid relational
+        #   operators for date fields are the equality operator (`=`) , along with the
+        #   less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no
+        #   inequality (`!=`) operator. You can prepend the `NOT` operator to an
+        #   expression to negate it. * Multiple field query expressions can be combined in
+        #   one query by adding `AND` or `OR` operators between the expressions. If a
+        #   boolean operator appears within a quoted string, it is not treated as special,
+        #   it's just another part of the character string to be matched. You can prepend
+        #   the `NOT` operator to an expression to negate it. Fields available for
+        #   filtering are: - user_id. For example, `filter='user_id="user123"'`. -
+        #   consent_artifact - state - revision_create_time - metadata. For example, `
+        #   filter=Metadata(\"testkey\")=\"value\"` or `filter=HasMetadata(\"testkey\")`.
+        # @param [Fixnum] page_size
+        #   Optional. Limit on the number of revisions to return in a single response. If
+        #   not specified, 100 is used. May not be larger than 1000.
+        # @param [String] page_token
+        #   Optional. Token to retrieve the next page of results or empty if there are no
+        #   more results in the list.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::ListConsentRevisionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::ListConsentRevisionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_dataset_consent_store_consent_revisions(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:listRevisions', options)
+          command.response_representation = Google::Apis::HealthcareV1::ListConsentRevisionsResponse::Representation
+          command.response_class = Google::Apis::HealthcareV1::ListConsentRevisionsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the latest revision of the specified Consent by committing a new
+        # revision with the changes. A FAILED_PRECONDITION error occurs if the latest
+        # revision of the specified Consent is in the `REJECTED` or `REVOKED` state.
+        # @param [String] name
+        #   Resource name of the Consent, of the form `projects/`project_id`/locations/`
+        #   location_id`/datasets/`dataset_id`/consentStores/`consent_store_id`/consents/`
+        #   consent_id``. Cannot be changed after creation.
+        # @param [Google::Apis::HealthcareV1::Consent] consent_object
+        # @param [String] update_mask
+        #   Required. The update mask to apply to the resource. For the `FieldMask`
+        #   definition, see https://developers.google.com/protocol-buffers/docs/reference/
+        #   google.protobuf#fieldmask. Only the `user_id`, `policies`, `consent_artifact`,
+        #   and `metadata` fields can be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::Consent] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::Consent]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_dataset_consent_store_consent(name, consent_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::HealthcareV1::Consent::Representation
+          command.request_object = consent_object
+          command.response_representation = Google::Apis::HealthcareV1::Consent::Representation
+          command.response_class = Google::Apis::HealthcareV1::Consent
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Rejects the latest revision of the specified Consent by committing a new
+        # revision with `state` updated to `REJECTED`. If the latest revision of the
+        # specified Consent is in the `REJECTED` state, no new revision is committed. A
+        # FAILED_PRECONDITION error occurs if the latest revision of the specified
+        # Consent is in the `ACTIVE` or `REVOKED` state.
+        # @param [String] name
+        #   Required. The resource name of the Consent to reject, of the form `projects/`
+        #   project_id`/locations/`location_id`/datasets/`dataset_id`/consentStores/`
+        #   consent_store_id`/consents/`consent_id``. An INVALID_ARGUMENT error occurs if `
+        #   revision_id` is specified in the name.
+        # @param [Google::Apis::HealthcareV1::RejectConsentRequest] reject_consent_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::Consent] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::Consent]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def reject_consent(name, reject_consent_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:reject', options)
+          command.request_representation = Google::Apis::HealthcareV1::RejectConsentRequest::Representation
+          command.request_object = reject_consent_request_object
+          command.response_representation = Google::Apis::HealthcareV1::Consent::Representation
+          command.response_class = Google::Apis::HealthcareV1::Consent
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Revokes the latest revision of the specified Consent by committing a new
+        # revision with `state` updated to `REVOKED`. If the latest revision of the
+        # specified Consent is in the `REVOKED` state, no new revision is committed. A
+        # FAILED_PRECONDITION error occurs if the latest revision of the given consent
+        # is in `DRAFT` or `REJECTED` state.
+        # @param [String] name
+        #   Required. The resource name of the Consent to revoke, of the form `projects/`
+        #   project_id`/locations/`location_id`/datasets/`dataset_id`/consentStores/`
+        #   consent_store_id`/consents/`consent_id``. An INVALID_ARGUMENT error occurs if `
+        #   revision_id` is specified in the name.
+        # @param [Google::Apis::HealthcareV1::RevokeConsentRequest] revoke_consent_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::Consent] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::Consent]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def revoke_consent(name, revoke_consent_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:revoke', options)
+          command.request_representation = Google::Apis::HealthcareV1::RevokeConsentRequest::Representation
+          command.request_object = revoke_consent_request_object
+          command.response_representation = Google::Apis::HealthcareV1::Consent::Representation
+          command.response_class = Google::Apis::HealthcareV1::Consent
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Archives the specified User data mapping.
+        # @param [String] name
+        #   Required. The resource name of the User data mapping to archive.
+        # @param [Google::Apis::HealthcareV1::ArchiveUserDataMappingRequest] archive_user_data_mapping_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::ArchiveUserDataMappingResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::ArchiveUserDataMappingResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def archive_user_data_mapping(name, archive_user_data_mapping_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:archive', options)
+          command.request_representation = Google::Apis::HealthcareV1::ArchiveUserDataMappingRequest::Representation
+          command.request_object = archive_user_data_mapping_request_object
+          command.response_representation = Google::Apis::HealthcareV1::ArchiveUserDataMappingResponse::Representation
+          command.response_class = Google::Apis::HealthcareV1::ArchiveUserDataMappingResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new User data mapping in the parent consent store.
+        # @param [String] parent
+        #   Required. Name of the consent store.
+        # @param [Google::Apis::HealthcareV1::UserDataMapping] user_data_mapping_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::UserDataMapping] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::UserDataMapping]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_dataset_consent_store_user_data_mapping(parent, user_data_mapping_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/userDataMappings', options)
+          command.request_representation = Google::Apis::HealthcareV1::UserDataMapping::Representation
+          command.request_object = user_data_mapping_object
+          command.response_representation = Google::Apis::HealthcareV1::UserDataMapping::Representation
+          command.response_class = Google::Apis::HealthcareV1::UserDataMapping
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified User data mapping.
+        # @param [String] name
+        #   Required. The resource name of the User data mapping to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_dataset_consent_store_user_data_mapping(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::HealthcareV1::Empty::Representation
+          command.response_class = Google::Apis::HealthcareV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the specified User data mapping.
+        # @param [String] name
+        #   Required. The resource name of the User data mapping to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::UserDataMapping] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::UserDataMapping]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_dataset_consent_store_user_data_mapping(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::HealthcareV1::UserDataMapping::Representation
+          command.response_class = Google::Apis::HealthcareV1::UserDataMapping
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the User data mappings in the specified consent store.
+        # @param [String] parent
+        #   Required. Name of the consent store to retrieve User data mappings from.
+        # @param [String] filter
+        #   Optional. Restricts the User data mappings returned to those matching a filter.
+        #   The following syntax is available: * A string field value can be written as
+        #   text inside quotation marks, for example `"query text"`. The only valid
+        #   relational operation for text fields is equality (`=`), where text is searched
+        #   within the field, rather than having the field be equal to the text. For
+        #   example, `"Comment = great"` returns messages with `great` in the comment
+        #   field. * A number field value can be written as an integer, a decimal, or an
+        #   exponential. The valid relational operators for number fields are the equality
+        #   operator (`=`), along with the less than/greater than operators (`<`, `<=`, `>`
+        #   , `>=`). Note that there is no inequality (`!=`) operator. You can prepend the
+        #   `NOT` operator to an expression to negate it. * A date field value must be
+        #   written in `yyyy-mm-dd` form. Fields with date and time use the RFC3339 time
+        #   format. Leading zeros are required for one-digit months and days. The valid
+        #   relational operators for date fields are the equality operator (`=`) , along
+        #   with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that
+        #   there is no inequality (`!=`) operator. You can prepend the `NOT` operator to
+        #   an expression to negate it. * Multiple field query expressions can be combined
+        #   in one query by adding `AND` or `OR` operators between the expressions. If a
+        #   boolean operator appears within a quoted string, it is not treated as special,
+        #   it's just another part of the character string to be matched. You can prepend
+        #   the `NOT` operator to an expression to negate it. The fields available for
+        #   filtering are: - data_id - user_id. For example, `filter=user_id=\"user123\"`.
+        #   - archived - archive_time
+        # @param [Fixnum] page_size
+        #   Optional. Limit on the number of User data mappings to return in a single
+        #   response. If not specified, 100 is used. May not be larger than 1000.
+        # @param [String] page_token
+        #   Optional. Token to retrieve the next page of results, or empty to get the
+        #   first page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::ListUserDataMappingsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::ListUserDataMappingsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_dataset_consent_store_user_data_mappings(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/userDataMappings', options)
+          command.response_representation = Google::Apis::HealthcareV1::ListUserDataMappingsResponse::Representation
+          command.response_class = Google::Apis::HealthcareV1::ListUserDataMappingsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified User data mapping.
+        # @param [String] name
+        #   Resource name of the User data mapping, of the form `projects/`project_id`/
+        #   locations/`location_id`/datasets/`dataset_id`/consentStores/`consent_store_id`/
+        #   userDataMappings/`user_data_mapping_id``.
+        # @param [Google::Apis::HealthcareV1::UserDataMapping] user_data_mapping_object
+        # @param [String] update_mask
+        #   Required. The update mask that applies to the resource. For the `FieldMask`
+        #   definition, see https://developers.google.com/protocol-buffers/docs/reference/
+        #   google.protobuf#fieldmask. Only the `data_id`, `user_id` and `
+        #   resource_attributes` fields can be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::UserDataMapping] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::UserDataMapping]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_dataset_consent_store_user_data_mapping(name, user_data_mapping_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::HealthcareV1::UserDataMapping::Representation
+          command.request_object = user_data_mapping_object
+          command.response_representation = Google::Apis::HealthcareV1::UserDataMapping::Representation
+          command.response_class = Google::Apis::HealthcareV1::UserDataMapping
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
