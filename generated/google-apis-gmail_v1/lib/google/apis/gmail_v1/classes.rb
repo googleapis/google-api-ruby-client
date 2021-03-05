@@ -1280,7 +1280,7 @@ module Google
         attr_accessor :send_as_email
       
         # An optional HTML signature that is included in messages composed with this
-        # alias in the Gmail web UI.
+        # alias in the Gmail web UI. This signature is added to new emails only.
         # Corresponds to the JSON property `signature`
         # @return [String]
         attr_accessor :signature

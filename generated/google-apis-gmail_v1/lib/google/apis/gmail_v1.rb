@@ -48,10 +48,10 @@ module Google
       # Manage drafts and send emails
       AUTH_GMAIL_COMPOSE = 'https://www.googleapis.com/auth/gmail.compose'
 
-      # Insert mail into your mailbox
+      # Add emails into your Gmail mailbox
       AUTH_GMAIL_INSERT = 'https://www.googleapis.com/auth/gmail.insert'
 
-      # Manage mailbox labels
+      # See and edit your email labels
       AUTH_GMAIL_LABELS = 'https://www.googleapis.com/auth/gmail.labels'
 
       # View your email message metadata such as labels and headers, but not the email body
@@ -66,7 +66,7 @@ module Google
       # Send email on your behalf
       AUTH_GMAIL_SEND = 'https://www.googleapis.com/auth/gmail.send'
 
-      # Manage your basic mail settings
+      # See, edit, create, or change your email settings and filters in Gmail
       AUTH_GMAIL_SETTINGS_BASIC = 'https://www.googleapis.com/auth/gmail.settings.basic'
 
       # Manage your sensitive mail settings, including who can manage your mail
