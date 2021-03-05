@@ -94,6 +94,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaChangeHistoryChange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaChangeHistoryEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaCreateUserLinkRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -215,6 +233,18 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -352,6 +382,51 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :user_links, as: 'userLinks', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink::Representation
       
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaChangeHistoryChange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :resource, as: 'resource'
+          property :resource_after_change, as: 'resourceAfterChange', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource::Representation
+      
+          property :resource_before_change, as: 'resourceBeforeChange', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account, as: 'account', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccount, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccount::Representation
+      
+          property :android_app_data_stream, as: 'androidAppDataStream', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAndroidAppDataStream, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAndroidAppDataStream::Representation
+      
+          property :firebase_link, as: 'firebaseLink', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFirebaseLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFirebaseLink::Representation
+      
+          property :google_ads_link, as: 'googleAdsLink', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGoogleAdsLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGoogleAdsLink::Representation
+      
+          property :ios_app_data_stream, as: 'iosAppDataStream', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaIosAppDataStream, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaIosAppDataStream::Representation
+      
+          property :property, as: 'property', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty::Representation
+      
+          property :web_data_stream, as: 'webDataStream', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaWebDataStream, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaWebDataStream::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaChangeHistoryEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :actor_type, as: 'actorType'
+          property :change_time, as: 'changeTime'
+          collection :changes, as: 'changes', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChangeHistoryChange, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChangeHistoryChange::Representation
+      
+          property :changes_filtered, as: 'changesFiltered'
+          property :id, as: 'id'
+          property :user_actor_email, as: 'userActorEmail'
         end
       end
       
@@ -562,6 +637,29 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_ticket_id, as: 'accountTicketId'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :action, as: 'action'
+          collection :actor_email, as: 'actorEmail'
+          property :earliest_change_time, as: 'earliestChangeTime'
+          property :latest_change_time, as: 'latestChangeTime'
+          property :page_size, as: 'pageSize'
+          property :page_token, as: 'pageToken'
+          property :property, as: 'property'
+          collection :resource_type, as: 'resourceType'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :change_history_events, as: 'changeHistoryEvents', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChangeHistoryEvent, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChangeHistoryEvent::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

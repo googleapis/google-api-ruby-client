@@ -391,6 +391,158 @@ module Google
         end
       end
       
+      # A description of a change to a single Google Analytics resource.
+      class GoogleAnalyticsAdminV1alphaChangeHistoryChange
+        include Google::Apis::Core::Hashable
+      
+        # The type of action that changed this resource.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Resource name of the resource whose changes are described by this entry.
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        # A snapshot of a resource as before or after the result of a change in change
+        # history.
+        # Corresponds to the JSON property `resourceAfterChange`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource]
+        attr_accessor :resource_after_change
+      
+        # A snapshot of a resource as before or after the result of a change in change
+        # history.
+        # Corresponds to the JSON property `resourceBeforeChange`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource]
+        attr_accessor :resource_before_change
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @resource = args[:resource] if args.key?(:resource)
+          @resource_after_change = args[:resource_after_change] if args.key?(:resource_after_change)
+          @resource_before_change = args[:resource_before_change] if args.key?(:resource_before_change)
+        end
+      end
+      
+      # A snapshot of a resource as before or after the result of a change in change
+      # history.
+      class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource
+        include Google::Apis::Core::Hashable
+      
+        # A resource message representing a Google Analytics account.
+        # Corresponds to the JSON property `account`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccount]
+        attr_accessor :account
+      
+        # A resource message representing a Google Analytics Android app stream.
+        # Corresponds to the JSON property `androidAppDataStream`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAndroidAppDataStream]
+        attr_accessor :android_app_data_stream
+      
+        # A link between an GA4 property and a Firebase project.
+        # Corresponds to the JSON property `firebaseLink`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFirebaseLink]
+        attr_accessor :firebase_link
+      
+        # A link between an GA4 property and a Google Ads account.
+        # Corresponds to the JSON property `googleAdsLink`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGoogleAdsLink]
+        attr_accessor :google_ads_link
+      
+        # A resource message representing a Google Analytics IOS app stream.
+        # Corresponds to the JSON property `iosAppDataStream`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaIosAppDataStream]
+        attr_accessor :ios_app_data_stream
+      
+        # A resource message representing a Google Analytics GA4 property.
+        # Corresponds to the JSON property `property`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty]
+        attr_accessor :property
+      
+        # A resource message representing a Google Analytics web stream.
+        # Corresponds to the JSON property `webDataStream`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaWebDataStream]
+        attr_accessor :web_data_stream
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account = args[:account] if args.key?(:account)
+          @android_app_data_stream = args[:android_app_data_stream] if args.key?(:android_app_data_stream)
+          @firebase_link = args[:firebase_link] if args.key?(:firebase_link)
+          @google_ads_link = args[:google_ads_link] if args.key?(:google_ads_link)
+          @ios_app_data_stream = args[:ios_app_data_stream] if args.key?(:ios_app_data_stream)
+          @property = args[:property] if args.key?(:property)
+          @web_data_stream = args[:web_data_stream] if args.key?(:web_data_stream)
+        end
+      end
+      
+      # A set of changes within a Google Analytics account or its child properties
+      # that resulted from the same cause. Common causes would be updates made in the
+      # Google Analytics UI, changes from customer support, or automatic Google
+      # Analytics system changes.
+      class GoogleAnalyticsAdminV1alphaChangeHistoryEvent
+        include Google::Apis::Core::Hashable
+      
+        # The type of actor that made this change.
+        # Corresponds to the JSON property `actorType`
+        # @return [String]
+        attr_accessor :actor_type
+      
+        # Time when change was made.
+        # Corresponds to the JSON property `changeTime`
+        # @return [String]
+        attr_accessor :change_time
+      
+        # A list of changes made in this change history event that fit the filters
+        # specified in SearchChangeHistoryEventsRequest.
+        # Corresponds to the JSON property `changes`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChangeHistoryChange>]
+        attr_accessor :changes
+      
+        # If true, then the list of changes returned was filtered, and does not
+        # represent all changes that occurred in this event.
+        # Corresponds to the JSON property `changesFiltered`
+        # @return [Boolean]
+        attr_accessor :changes_filtered
+        alias_method :changes_filtered?, :changes_filtered
+      
+        # ID of this change history event. This ID is unique across Google Analytics.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Email address of the Google account that made the change. This will be a valid
+        # email address if the actor field is set to USER, and empty otherwise. Google
+        # accounts that have been deleted will cause an error.
+        # Corresponds to the JSON property `userActorEmail`
+        # @return [String]
+        attr_accessor :user_actor_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actor_type = args[:actor_type] if args.key?(:actor_type)
+          @change_time = args[:change_time] if args.key?(:change_time)
+          @changes = args[:changes] if args.key?(:changes)
+          @changes_filtered = args[:changes_filtered] if args.key?(:changes_filtered)
+          @id = args[:id] if args.key?(:id)
+          @user_actor_email = args[:user_actor_email] if args.key?(:user_actor_email)
+        end
+      end
+      
       # Request message for CreateUserLink RPC. Users can have multiple email
       # addresses associated with their Google account, and one of these email
       # addresses is the "primary" email address. Any of the email addresses
@@ -1182,6 +1334,102 @@ module Google
         # Update properties of this object
         def update!(**args)
           @account_ticket_id = args[:account_ticket_id] if args.key?(:account_ticket_id)
+        end
+      end
+      
+      # Request message for SearchChangeHistoryEvents RPC.
+      class GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set, only return changes that match one or more of these types of
+        # actions.
+        # Corresponds to the JSON property `action`
+        # @return [Array<String>]
+        attr_accessor :action
+      
+        # Optional. If set, only return changes if they are made by a user in this list.
+        # Corresponds to the JSON property `actorEmail`
+        # @return [Array<String>]
+        attr_accessor :actor_email
+      
+        # Optional. If set, only return changes made after this time (inclusive).
+        # Corresponds to the JSON property `earliestChangeTime`
+        # @return [String]
+        attr_accessor :earliest_change_time
+      
+        # Optional. If set, only return changes made before this time (inclusive).
+        # Corresponds to the JSON property `latestChangeTime`
+        # @return [String]
+        attr_accessor :latest_change_time
+      
+        # Optional. The maximum number of ChangeHistoryEvent items to return. The
+        # service may return fewer than this value, even if there are additional pages.
+        # If unspecified, at most 50 items will be returned. The maximum value is 200 (
+        # higher values will be coerced to the maximum).
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # Optional. A page token, received from a previous `SearchChangeHistoryEvents`
+        # call. Provide this to retrieve the subsequent page. When paginating, all other
+        # parameters provided to `SearchChangeHistoryEvents` must match the call that
+        # provided the page token.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # Optional. Resource name for a child property. If set, only return changes made
+        # to this property or its child resources.
+        # Corresponds to the JSON property `property`
+        # @return [String]
+        attr_accessor :property
+      
+        # Optional. If set, only return changes if they are for a resource that matches
+        # at least one of these types.
+        # Corresponds to the JSON property `resourceType`
+        # @return [Array<String>]
+        attr_accessor :resource_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @actor_email = args[:actor_email] if args.key?(:actor_email)
+          @earliest_change_time = args[:earliest_change_time] if args.key?(:earliest_change_time)
+          @latest_change_time = args[:latest_change_time] if args.key?(:latest_change_time)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @property = args[:property] if args.key?(:property)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+        end
+      end
+      
+      # Response message for SearchAccounts RPC.
+      class GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Results that were accessible to the caller.
+        # Corresponds to the JSON property `changeHistoryEvents`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaChangeHistoryEvent>]
+        attr_accessor :change_history_events
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @change_history_events = args[:change_history_events] if args.key?(:change_history_events)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
