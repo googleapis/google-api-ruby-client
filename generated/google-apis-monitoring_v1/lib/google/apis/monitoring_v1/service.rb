@@ -53,9 +53,10 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Creates a new custom dashboard.This method requires the monitoring.dashboards.
-        # create permission on the specified project. For more information, see Google
-        # Cloud IAM (https://cloud.google.com/iam).
+        # Creates a new custom dashboard. For examples on how you can use this API to
+        # create dashboards, see Managing dashboards by API. This method requires the
+        # monitoring.dashboards.create permission on the specified project. For more
+        # information about permissions, see Cloud Identity and Access Management.
         # @param [String] parent
         #   Required. The project on which to execute the request. The format is: projects/
         #   [PROJECT_ID_OR_NUMBER] The [PROJECT_ID_OR_NUMBER] must match the dashboard
