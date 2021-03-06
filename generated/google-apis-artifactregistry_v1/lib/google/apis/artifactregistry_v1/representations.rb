@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListDockerImagesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -79,6 +85,15 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ListDockerImagesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :docker_images, as: 'dockerImages', class: Google::Apis::ArtifactregistryV1::DockerImage, decorator: Google::Apis::ArtifactregistryV1::DockerImage::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
