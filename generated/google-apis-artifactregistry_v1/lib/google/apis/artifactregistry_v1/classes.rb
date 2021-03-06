@@ -51,9 +51,9 @@ module Google
         attr_accessor :media_type
       
         # Required. registry_location, project_id, repository_name and image id forms a
-        # unique image name:`projects//locations//repository//dockerimages/`. For
+        # unique image name:`projects//locations//repository//dockerImages/`. For
         # example, "projects/test-project/locations/us-west4/repositories/test-repo/
-        # dockerimages/ nginx@sha256:
+        # dockerImages/ nginx@sha256:
         # e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf", where "us-
         # west4" is the registry_location, "test-project" is the project_id, "test-repo"
         # is the repository_name and "nginx@sha256:
@@ -109,6 +109,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The response from listing docker images.
+      class ListDockerImagesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The docker images returned.
+        # Corresponds to the JSON property `dockerImages`
+        # @return [Array<Google::Apis::ArtifactregistryV1::DockerImage>]
+        attr_accessor :docker_images
+      
+        # The token to retrieve the next page of artifacts, or empty if there are no
+        # more artifacts to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @docker_images = args[:docker_images] if args.key?(:docker_images)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
