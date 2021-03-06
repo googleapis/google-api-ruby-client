@@ -635,8 +635,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :container_port
       
-        # (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-        # supported If specified, used to specify which protocol to use. Allowed values
+        # (Optional) If specified, used to specify which protocol to use. Allowed values
         # are "http1" and "h2c".
         # Corresponds to the JSON property `name`
         # @return [String]
