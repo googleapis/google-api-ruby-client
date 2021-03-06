@@ -1085,6 +1085,12 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::IntraNodeVisibilityConfig]
         attr_accessor :desired_intra_node_visibility_config
       
+        # ILBSubsettingConfig contains the desired config of L4 Internal LoadBalancer
+        # subsetting on this cluster.
+        # Corresponds to the JSON property `desiredL4ilbSubsettingConfig`
+        # @return [Google::Apis::ContainerV1beta1::IlbSubsettingConfig]
+        attr_accessor :desired_l4ilb_subsetting_config
+      
         # The desired list of Google Compute Engine [zones](https://cloud.google.com/
         # compute/docs/zones#available) in which the cluster's nodes should be located.
         # This list must always include the cluster's primary zone. Warning: changing
@@ -1235,6 +1241,7 @@ module Google
           @desired_default_snat_status = args[:desired_default_snat_status] if args.key?(:desired_default_snat_status)
           @desired_image_type = args[:desired_image_type] if args.key?(:desired_image_type)
           @desired_intra_node_visibility_config = args[:desired_intra_node_visibility_config] if args.key?(:desired_intra_node_visibility_config)
+          @desired_l4ilb_subsetting_config = args[:desired_l4ilb_subsetting_config] if args.key?(:desired_l4ilb_subsetting_config)
           @desired_locations = args[:desired_locations] if args.key?(:desired_locations)
           @desired_logging_service = args[:desired_logging_service] if args.key?(:desired_logging_service)
           @desired_master = args[:desired_master] if args.key?(:desired_master)
@@ -1771,6 +1778,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disabled = args[:disabled] if args.key?(:disabled)
+        end
+      end
+      
+      # ILBSubsettingConfig contains the desired config of L4 Internal LoadBalancer
+      # subsetting on this cluster.
+      class IlbSubsettingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Enables l4 ILB subsetting for this cluster
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
@@ -2533,6 +2561,12 @@ module Google
         attr_accessor :enable_intra_node_visibility
         alias_method :enable_intra_node_visibility?, :enable_intra_node_visibility
       
+        # Whether L4ILB Subsetting is enabled for this cluster.
+        # Corresponds to the JSON property `enableL4ilbSubsetting`
+        # @return [Boolean]
+        attr_accessor :enable_l4ilb_subsetting
+        alias_method :enable_l4ilb_subsetting?, :enable_l4ilb_subsetting
+      
         # Output only. The relative name of the Google Compute Engine network(https://
         # cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the
         # cluster is connected. Example: projects/my-project/global/networks/my-network
@@ -2562,6 +2596,7 @@ module Google
           @datapath_provider = args[:datapath_provider] if args.key?(:datapath_provider)
           @default_snat_status = args[:default_snat_status] if args.key?(:default_snat_status)
           @enable_intra_node_visibility = args[:enable_intra_node_visibility] if args.key?(:enable_intra_node_visibility)
+          @enable_l4ilb_subsetting = args[:enable_l4ilb_subsetting] if args.key?(:enable_l4ilb_subsetting)
           @network = args[:network] if args.key?(:network)
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
@@ -2614,6 +2649,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disabled = args[:disabled] if args.key?(:disabled)
+        end
+      end
+      
+      # Collection of Compute Engine network tags that can be applied to a node's
+      # underyling VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/
+      # docs/reference/rest/v1/NodeConfig)).
+      class NetworkTags
+        include Google::Apis::Core::Hashable
+      
+        # List of network tags.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
@@ -2873,6 +2929,26 @@ module Google
           @cpu_cfs_quota = args[:cpu_cfs_quota] if args.key?(:cpu_cfs_quota)
           @cpu_cfs_quota_period = args[:cpu_cfs_quota_period] if args.key?(:cpu_cfs_quota_period)
           @cpu_manager_policy = args[:cpu_manager_policy] if args.key?(:cpu_manager_policy)
+        end
+      end
+      
+      # Collection of node-level [Kubernetes labels](https://kubernetes.io/docs/
+      # concepts/overview/working-with-objects/labels).
+      class NodeLabels
+        include Google::Apis::Core::Hashable
+      
+        # Map of node label keys and node label values.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
       
@@ -3166,6 +3242,26 @@ module Google
           @effect = args[:effect] if args.key?(:effect)
           @key = args[:key] if args.key?(:key)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Collection of Kubernetes [node taints](https://kubernetes.io/docs/concepts/
+      # configuration/taint-and-toleration).
+      class NodeTaints
+        include Google::Apis::Core::Hashable
+      
+        # List of node taints.
+        # Corresponds to the JSON property `taints`
+        # @return [Array<Google::Apis::ContainerV1beta1::NodeTaint>]
+        attr_accessor :taints
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @taints = args[:taints] if args.key?(:taints)
         end
       end
       
@@ -4815,6 +4911,12 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::NodeKubeletConfig]
         attr_accessor :kubelet_config
       
+        # Collection of node-level [Kubernetes labels](https://kubernetes.io/docs/
+        # concepts/overview/working-with-objects/labels).
+        # Corresponds to the JSON property `labels`
+        # @return [Google::Apis::ContainerV1beta1::NodeLabels]
+        attr_accessor :labels
+      
         # Parameters that can be configured on Linux nodes.
         # Corresponds to the JSON property `linuxNodeConfig`
         # @return [Google::Apis::ContainerV1beta1::LinuxNodeConfig]
@@ -4859,6 +4961,19 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
+        # Collection of Compute Engine network tags that can be applied to a node's
+        # underyling VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/
+        # docs/reference/rest/v1/NodeConfig)).
+        # Corresponds to the JSON property `tags`
+        # @return [Google::Apis::ContainerV1beta1::NetworkTags]
+        attr_accessor :tags
+      
+        # Collection of Kubernetes [node taints](https://kubernetes.io/docs/concepts/
+        # configuration/taint-and-toleration).
+        # Corresponds to the JSON property `taints`
+        # @return [Google::Apis::ContainerV1beta1::NodeTaints]
+        attr_accessor :taints
+      
         # These upgrade settings control the level of parallelism and the level of
         # disruption caused by an upgrade. maxUnavailable controls the number of nodes
         # that can be simultaneously unavailable. maxSurge controls the number of
@@ -4899,12 +5014,15 @@ module Google
           @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
           @image_type = args[:image_type] if args.key?(:image_type)
           @kubelet_config = args[:kubelet_config] if args.key?(:kubelet_config)
+          @labels = args[:labels] if args.key?(:labels)
           @linux_node_config = args[:linux_node_config] if args.key?(:linux_node_config)
           @locations = args[:locations] if args.key?(:locations)
           @name = args[:name] if args.key?(:name)
           @node_pool_id = args[:node_pool_id] if args.key?(:node_pool_id)
           @node_version = args[:node_version] if args.key?(:node_version)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @tags = args[:tags] if args.key?(:tags)
+          @taints = args[:taints] if args.key?(:taints)
           @upgrade_settings = args[:upgrade_settings] if args.key?(:upgrade_settings)
           @workload_metadata_config = args[:workload_metadata_config] if args.key?(:workload_metadata_config)
           @zone = args[:zone] if args.key?(:zone)
