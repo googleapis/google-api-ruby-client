@@ -1533,9 +1533,8 @@ module Google
         # "vendor456"]`, "lengths_cm": `"numbers":[2.3, 15.4]`, "heights_cm": `"numbers"
         # :[8.1, 6.4]` ``. This field needs to pass all below criteria, otherwise an
         # INVALID_ARGUMENT error is returned: * Max entries count: 150 by default; 100
-        # for Type.VARIANT. * Max indexable entries count: 150 by default; 40 for Type.
-        # VARIANT. * Max searchable entries count: 30. * The key must be a UTF-8 encoded
-        # string with a length limit of 128 characters.
+        # for Type.VARIANT. * The key must be a UTF-8 encoded string with a length limit
+        # of 128 characters.
         # Corresponds to the JSON property `attributes`
         # @return [Hash<String,Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCustomAttribute>]
         attr_accessor :attributes
@@ -1642,7 +1641,7 @@ module Google
         attr_accessor :tags
       
         # Required. Product title. This field must be a UTF-8 encoded string with a
-        # length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is
+        # length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is
         # returned. Google Merchant Center property [title](https://support.google.com/
         # merchants/answer/6324415). Schema.org property [Product.name](https://schema.
         # org/name).
