@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceRecordSetsDeleteResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListResourceRecordSetsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -594,6 +600,12 @@ module Google
           collection :signature_rrdatas, as: 'signatureRrdatas'
           property :ttl, as: 'ttl'
           property :type, as: 'type'
+        end
+      end
+      
+      class ResourceRecordSetsDeleteResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
