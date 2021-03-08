@@ -1424,6 +1424,19 @@ module Google
       end
       
       # 
+      class ResourceRecordSetsDeleteResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # 
       class ListResourceRecordSetsResponse
         include Google::Apis::Core::Hashable
       
