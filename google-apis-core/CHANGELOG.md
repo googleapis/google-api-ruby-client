@@ -1,5 +1,12 @@
 # Release History
 
+## [0.3.0](https://www.github.com/googleapis/google-api-ruby-client/compare/google-apis-core/v0.2.1...v0.3.0) (2021-03-07)
+
+
+### Features
+
+* Drop support for Ruby 2.4 and add support for Ruby 3.0 ([d871146](https://www.github.com/googleapis/google-api-ruby-client/commit/d871146916f3dd19a12820c03068b3861a4bc879))
+
 ### [0.2.1](https://www.github.com/googleapis/google-api-ruby-client/compare/google-apis-core/v0.2.0...v0.2.1) (2021-01-25)
 
 
