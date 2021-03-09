@@ -22,6 +22,19 @@ module Google
   module Apis
     module CloudassetV1p7beta1
       
+      # A response message for AssetService.AnalyzeIamPolicyLongrunning.
+      class AnalyzeIamPolicyLongrunningResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
