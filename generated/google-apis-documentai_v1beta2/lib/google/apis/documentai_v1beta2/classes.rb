@@ -271,6 +271,25 @@ module Google
         end
       end
       
+      # The long running operation metadata for SampleDataset.
+      class GoogleCloudDocumentaiUiv1beta3SampleDatasetMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
       # The long running operation metadata for set default processor version method.
       class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata
         include Google::Apis::Core::Hashable
@@ -719,9 +738,9 @@ module Google
       class GoogleCloudDocumentaiV1beta1Document
         include Google::Apis::Core::Hashable
       
-        # Inline document content, represented as a stream of bytes. Note: As with all `
-        # bytes` fields, protobuffers use a pure binary representation, whereas JSON
-        # representations use base64.
+        # Optional. Inline document content, represented as a stream of bytes. Note: As
+        # with all `bytes` fields, protobuffers use a pure binary representation,
+        # whereas JSON representations use base64.
         # Corresponds to the JSON property `content`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -771,7 +790,7 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentShardInfo]
         attr_accessor :shard_info
       
-        # UTF-8 encoded text in reading order from the document.
+        # Optional. UTF-8 encoded text in reading order from the document.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
@@ -788,16 +807,10 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentStyle>]
         attr_accessor :text_styles
       
-        # A list of translations on Document.text. For document shards, translations in
-        # this list may cross shard boundaries.
-        # Corresponds to the JSON property `translations`
-        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentTranslation>]
-        attr_accessor :translations
-      
-        # Currently supports Google Cloud Storage URI of the form `gs://bucket_name/
-        # object_name`. Object versioning is not supported. See [Google Cloud Storage
-        # Request URIs](https://cloud.google.com/storage/docs/reference-uris) for more
-        # info.
+        # Optional. Currently supports Google Cloud Storage URI of the form `gs://
+        # bucket_name/object_name`. Object versioning is not supported. See [Google
+        # Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-
+        # uris) for more info.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -819,7 +832,6 @@ module Google
           @text = args[:text] if args.key?(:text)
           @text_changes = args[:text_changes] if args.key?(:text_changes)
           @text_styles = args[:text_styles] if args.key?(:text_styles)
-          @translations = args[:translations] if args.key?(:translations)
           @uri = args[:uri] if args.key?(:uri)
         end
       end
@@ -840,12 +852,12 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Deprecated. Use `id` field instead.
+        # Optional. Deprecated. Use `id` field instead.
         # Corresponds to the JSON property `mentionId`
         # @return [String]
         attr_accessor :mention_id
       
-        # Text value in the document e.g. `1600 Amphitheatre Pkwy`.
+        # Optional. Text value in the document e.g. `1600 Amphitheatre Pkwy`.
         # Corresponds to the JSON property `mentionText`
         # @return [String]
         attr_accessor :mention_text
@@ -2113,44 +2125,6 @@ module Google
         end
       end
       
-      # A translation of the text segment.
-      class GoogleCloudDocumentaiV1beta1DocumentTranslation
-        include Google::Apis::Core::Hashable
-      
-        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
-        # see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-        # Corresponds to the JSON property `languageCode`
-        # @return [String]
-        attr_accessor :language_code
-      
-        # The history of this annotation.
-        # Corresponds to the JSON property `provenance`
-        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentProvenance>]
-        attr_accessor :provenance
-      
-        # Text reference indexing into the Document.text.
-        # Corresponds to the JSON property `textAnchor`
-        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentTextAnchor]
-        attr_accessor :text_anchor
-      
-        # Text translated into the target language.
-        # Corresponds to the JSON property `translatedText`
-        # @return [String]
-        attr_accessor :translated_text
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @language_code = args[:language_code] if args.key?(:language_code)
-          @provenance = args[:provenance] if args.key?(:provenance)
-          @text_anchor = args[:text_anchor] if args.key?(:text_anchor)
-          @translated_text = args[:translated_text] if args.key?(:translated_text)
-        end
-      end
-      
       # The Google Cloud Storage location where the output file will be written to.
       class GoogleCloudDocumentaiV1beta1GcsDestination
         include Google::Apis::Core::Hashable
@@ -2456,9 +2430,9 @@ module Google
       class GoogleCloudDocumentaiV1beta2Document
         include Google::Apis::Core::Hashable
       
-        # Inline document content, represented as a stream of bytes. Note: As with all `
-        # bytes` fields, protobuffers use a pure binary representation, whereas JSON
-        # representations use base64.
+        # Optional. Inline document content, represented as a stream of bytes. Note: As
+        # with all `bytes` fields, protobuffers use a pure binary representation,
+        # whereas JSON representations use base64.
         # Corresponds to the JSON property `content`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2513,7 +2487,7 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentShardInfo]
         attr_accessor :shard_info
       
-        # UTF-8 encoded text in reading order from the document.
+        # Optional. UTF-8 encoded text in reading order from the document.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
@@ -2530,16 +2504,10 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentStyle>]
         attr_accessor :text_styles
       
-        # A list of translations on Document.text. For document shards, translations in
-        # this list may cross shard boundaries.
-        # Corresponds to the JSON property `translations`
-        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentTranslation>]
-        attr_accessor :translations
-      
-        # Currently supports Google Cloud Storage URI of the form `gs://bucket_name/
-        # object_name`. Object versioning is not supported. See [Google Cloud Storage
-        # Request URIs](https://cloud.google.com/storage/docs/reference-uris) for more
-        # info.
+        # Optional. Currently supports Google Cloud Storage URI of the form `gs://
+        # bucket_name/object_name`. Object versioning is not supported. See [Google
+        # Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-
+        # uris) for more info.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -2562,7 +2530,6 @@ module Google
           @text = args[:text] if args.key?(:text)
           @text_changes = args[:text_changes] if args.key?(:text_changes)
           @text_styles = args[:text_styles] if args.key?(:text_styles)
-          @translations = args[:translations] if args.key?(:translations)
           @uri = args[:uri] if args.key?(:uri)
         end
       end
@@ -2583,12 +2550,12 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Deprecated. Use `id` field instead.
+        # Optional. Deprecated. Use `id` field instead.
         # Corresponds to the JSON property `mentionId`
         # @return [String]
         attr_accessor :mention_id
       
-        # Text value in the document e.g. `1600 Amphitheatre Pkwy`.
+        # Optional. Text value in the document e.g. `1600 Amphitheatre Pkwy`.
         # Corresponds to the JSON property `mentionText`
         # @return [String]
         attr_accessor :mention_text
@@ -3890,44 +3857,6 @@ module Google
           @changed_text = args[:changed_text] if args.key?(:changed_text)
           @provenance = args[:provenance] if args.key?(:provenance)
           @text_anchor = args[:text_anchor] if args.key?(:text_anchor)
-        end
-      end
-      
-      # A translation of the text segment.
-      class GoogleCloudDocumentaiV1beta2DocumentTranslation
-        include Google::Apis::Core::Hashable
-      
-        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
-        # see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-        # Corresponds to the JSON property `languageCode`
-        # @return [String]
-        attr_accessor :language_code
-      
-        # The history of this annotation.
-        # Corresponds to the JSON property `provenance`
-        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentProvenance>]
-        attr_accessor :provenance
-      
-        # Text reference indexing into the Document.text.
-        # Corresponds to the JSON property `textAnchor`
-        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentTextAnchor]
-        attr_accessor :text_anchor
-      
-        # Text translated into the target language.
-        # Corresponds to the JSON property `translatedText`
-        # @return [String]
-        attr_accessor :translated_text
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @language_code = args[:language_code] if args.key?(:language_code)
-          @provenance = args[:provenance] if args.key?(:provenance)
-          @text_anchor = args[:text_anchor] if args.key?(:text_anchor)
-          @translated_text = args[:translated_text] if args.key?(:translated_text)
         end
       end
       
