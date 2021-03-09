@@ -22,6 +22,19 @@ module Google
   module Apis
     module CloudassetV1p5beta1
       
+      # A response message for AssetService.AnalyzeIamPolicyLongrunning.
+      class AnalyzeIamPolicyLongrunningResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # An asset in Google Cloud. An asset can be any resource in the Google Cloud [
       # resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-
       # platform-resource-hierarchy), a resource outside the Google Cloud resource

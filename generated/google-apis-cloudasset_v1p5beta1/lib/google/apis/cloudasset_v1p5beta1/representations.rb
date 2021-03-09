@@ -22,6 +22,12 @@ module Google
   module Apis
     module CloudassetV1p5beta1
       
+      class AnalyzeIamPolicyLongrunningResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Asset
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -236,6 +242,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnalyzeIamPolicyLongrunningResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
       end
       
       class Asset
