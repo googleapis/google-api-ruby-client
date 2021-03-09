@@ -368,7 +368,7 @@ module Google
         # @return [String]
         attr_accessor :service_account
       
-        # Workflow code to be executed. The size limit is 32KB.
+        # Workflow code to be executed. The size limit is 128KB.
         # Corresponds to the JSON property `sourceContents`
         # @return [String]
         attr_accessor :source_contents
