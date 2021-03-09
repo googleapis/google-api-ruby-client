@@ -156,7 +156,8 @@ module Google
         # @param [String] name
         #   Required. The resource name of Processor or ProcessorVersion. Format: projects/
         #   `project`/locations/`location`/processors/`processor`, or projects/`project`/
-        #   locations/`location`/processors/`processor`/processorVerions/`processorVersion`
+        #   locations/`location`/processors/`processor`/processorVersions/`
+        #   processorVersion`
         # @param [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchProcessRequest] google_cloud_documentai_v1beta3_batch_process_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -193,7 +194,7 @@ module Google
         #   processing. If a Processor is specified, the server will use its default
         #   version. Format: projects/`project`/locations/`location`/processors/`processor`
         #   , or projects/`project`/locations/`location`/processors/`processor`/
-        #   processorVerions/`processorVersion`
+        #   processorVersions/`processorVersion`
         # @param [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessRequest] google_cloud_documentai_v1beta3_process_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -264,7 +265,8 @@ module Google
         # @param [String] name
         #   Required. The resource name of Processor or ProcessorVersion. Format: projects/
         #   `project`/locations/`location`/processors/`processor`, or projects/`project`/
-        #   locations/`location`/processors/`processor`/processorVerions/`processorVersion`
+        #   locations/`location`/processors/`processor`/processorVersions/`
+        #   processorVersion`
         # @param [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchProcessRequest] google_cloud_documentai_v1beta3_batch_process_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -301,7 +303,7 @@ module Google
         #   processing. If a Processor is specified, the server will use its default
         #   version. Format: projects/`project`/locations/`location`/processors/`processor`
         #   , or projects/`project`/locations/`location`/processors/`processor`/
-        #   processorVerions/`processorVersion`
+        #   processorVersions/`processorVersion`
         # @param [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessRequest] google_cloud_documentai_v1beta3_process_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

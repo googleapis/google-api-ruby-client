@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiUiv1beta3SampleDatasetMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -400,12 +406,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDocumentaiV1beta1DocumentTranslation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDocumentaiV1beta1GcsDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -659,12 +659,6 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1beta2DocumentTextChange
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDocumentaiV1beta2DocumentTranslation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -976,12 +970,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDocumentaiV1beta3DocumentTranslation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDocumentaiV1beta3GcsDocument
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1219,6 +1207,14 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiUiv1beta3SampleDatasetMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata::Representation
+      
+        end
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1395,8 +1391,6 @@ module Google
           collection :text_changes, as: 'textChanges', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta1DocumentTextChange, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta1DocumentTextChange::Representation
       
           collection :text_styles, as: 'textStyles', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta1DocumentStyle, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta1DocumentStyle::Representation
-      
-          collection :translations, as: 'translations', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta1DocumentTranslation, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta1DocumentTranslation::Representation
       
           property :uri, as: 'uri'
         end
@@ -1767,18 +1761,6 @@ module Google
         end
       end
       
-      class GoogleCloudDocumentaiV1beta1DocumentTranslation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :language_code, as: 'languageCode'
-          collection :provenance, as: 'provenance', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta1DocumentProvenance, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta1DocumentProvenance::Representation
-      
-          property :text_anchor, as: 'textAnchor', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta1DocumentTextAnchor, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta1DocumentTextAnchor::Representation
-      
-          property :translated_text, as: 'translatedText'
-        end
-      end
-      
       class GoogleCloudDocumentaiV1beta1GcsDestination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1888,8 +1870,6 @@ module Google
           collection :text_changes, as: 'textChanges', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentTextChange, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentTextChange::Representation
       
           collection :text_styles, as: 'textStyles', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentStyle, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentStyle::Representation
-      
-          collection :translations, as: 'translations', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentTranslation, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentTranslation::Representation
       
           property :uri, as: 'uri'
         end
@@ -2269,18 +2249,6 @@ module Google
         end
       end
       
-      class GoogleCloudDocumentaiV1beta2DocumentTranslation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :language_code, as: 'languageCode'
-          collection :provenance, as: 'provenance', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentProvenance, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentProvenance::Representation
-      
-          property :text_anchor, as: 'textAnchor', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentTextAnchor, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentTextAnchor::Representation
-      
-          property :translated_text, as: 'translatedText'
-        end
-      end
-      
       class GoogleCloudDocumentaiV1beta2GcsDestination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2462,8 +2430,6 @@ module Google
           collection :text_changes, as: 'textChanges', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentTextChange, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentTextChange::Representation
       
           collection :text_styles, as: 'textStyles', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentStyle, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentStyle::Representation
-      
-          collection :translations, as: 'translations', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentTranslation, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentTranslation::Representation
       
           property :uri, as: 'uri'
         end
@@ -2846,18 +2812,6 @@ module Google
       
           property :text_anchor, as: 'textAnchor', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentTextAnchor, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentTextAnchor::Representation
       
-        end
-      end
-      
-      class GoogleCloudDocumentaiV1beta3DocumentTranslation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :language_code, as: 'languageCode'
-          collection :provenance, as: 'provenance', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentProvenance, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentProvenance::Representation
-      
-          property :text_anchor, as: 'textAnchor', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentTextAnchor, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentTextAnchor::Representation
-      
-          property :translated_text, as: 'translatedText'
         end
       end
       
