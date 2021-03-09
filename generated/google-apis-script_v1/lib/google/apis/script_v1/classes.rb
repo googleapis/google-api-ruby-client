@@ -49,7 +49,7 @@ module Google
         end
       end
       
-      # Request to create a script project.
+      # Request to create a script project. Request to create a script project.
       class CreateProjectRequest
         include Google::Apis::Core::Hashable
       
