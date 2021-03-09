@@ -16,13 +16,13 @@ module Google
   module Apis
     module CloudassetV1p5beta1
       # Version of the google-apis-cloudasset_v1p5beta1 gem
-      GEM_VERSION = "0.3.0"
+      GEM_VERSION = "0.4.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.1.2"
+      GENERATOR_VERSION = "0.2.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20210226"
+      REVISION = "20210305"
     end
   end
 end
