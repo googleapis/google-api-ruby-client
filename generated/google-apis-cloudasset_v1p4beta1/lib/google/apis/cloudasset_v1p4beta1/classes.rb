@@ -51,6 +51,19 @@ module Google
         end
       end
       
+      # A response message for AssetService.AnalyzeIamPolicyLongrunning.
+      class AnalyzeIamPolicyLongrunningResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A response message for AssetService.AnalyzeIamPolicy.
       class AnalyzeIamPolicyResponse
         include Google::Apis::Core::Hashable
