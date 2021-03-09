@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AnalyzeIamPolicyLongrunningResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AnalyzeIamPolicyResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -553,6 +559,12 @@ module Google
       
           property :output_config, as: 'outputConfig', class: Google::Apis::CloudassetV1::IamPolicyAnalysisOutputConfig, decorator: Google::Apis::CloudassetV1::IamPolicyAnalysisOutputConfig::Representation
       
+        end
+      end
+      
+      class AnalyzeIamPolicyLongrunningResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
