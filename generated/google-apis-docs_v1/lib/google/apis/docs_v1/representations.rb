@@ -532,6 +532,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Person
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PersonProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PositionedObject
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1796,6 +1808,8 @@ module Google
       
           property :page_break, as: 'pageBreak', class: Google::Apis::DocsV1::PageBreak, decorator: Google::Apis::DocsV1::PageBreak::Representation
       
+          property :person, as: 'person', class: Google::Apis::DocsV1::Person, decorator: Google::Apis::DocsV1::Person::Representation
+      
           property :start_index, as: 'startIndex'
           property :text_run, as: 'textRun', class: Google::Apis::DocsV1::TextRun, decorator: Google::Apis::DocsV1::TextRun::Representation
       
@@ -1865,6 +1879,29 @@ module Google
           property :space_above_suggested, as: 'spaceAboveSuggested'
           property :space_below_suggested, as: 'spaceBelowSuggested'
           property :spacing_mode_suggested, as: 'spacingModeSuggested'
+        end
+      end
+      
+      class Person
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :person_id, as: 'personId'
+          property :person_properties, as: 'personProperties', class: Google::Apis::DocsV1::PersonProperties, decorator: Google::Apis::DocsV1::PersonProperties::Representation
+      
+          collection :suggested_deletion_ids, as: 'suggestedDeletionIds'
+          collection :suggested_insertion_ids, as: 'suggestedInsertionIds'
+          hash :suggested_text_style_changes, as: 'suggestedTextStyleChanges', class: Google::Apis::DocsV1::SuggestedTextStyle, decorator: Google::Apis::DocsV1::SuggestedTextStyle::Representation
+      
+          property :text_style, as: 'textStyle', class: Google::Apis::DocsV1::TextStyle, decorator: Google::Apis::DocsV1::TextStyle::Representation
+      
+        end
+      end
+      
+      class PersonProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          property :name, as: 'name'
         end
       end
       

@@ -3163,6 +3163,12 @@ module Google
         # @return [Google::Apis::DocsV1::PageBreak]
         attr_accessor :page_break
       
+        # A person or email address mentioned in a document. These mentions behave as a
+        # single, immutable element containing the person's name or email address.
+        # Corresponds to the JSON property `person`
+        # @return [Google::Apis::DocsV1::Person]
+        attr_accessor :person
+      
         # The zero-based start index of this paragraph element, in UTF-16 code units.
         # Corresponds to the JSON property `startIndex`
         # @return [Fixnum]
@@ -3187,6 +3193,7 @@ module Google
           @horizontal_rule = args[:horizontal_rule] if args.key?(:horizontal_rule)
           @inline_object_element = args[:inline_object_element] if args.key?(:inline_object_element)
           @page_break = args[:page_break] if args.key?(:page_break)
+          @person = args[:person] if args.key?(:person)
           @start_index = args[:start_index] if args.key?(:start_index)
           @text_run = args[:text_run] if args.key?(:text_run)
         end
@@ -3507,6 +3514,97 @@ module Google
           @space_above_suggested = args[:space_above_suggested] if args.key?(:space_above_suggested)
           @space_below_suggested = args[:space_below_suggested] if args.key?(:space_below_suggested)
           @spacing_mode_suggested = args[:spacing_mode_suggested] if args.key?(:spacing_mode_suggested)
+        end
+      end
+      
+      # A person or email address mentioned in a document. These mentions behave as a
+      # single, immutable element containing the person's name or email address.
+      class Person
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The unique ID of this link.
+        # Corresponds to the JSON property `personId`
+        # @return [String]
+        attr_accessor :person_id
+      
+        # Properties specific to a linked Person.
+        # Corresponds to the JSON property `personProperties`
+        # @return [Google::Apis::DocsV1::PersonProperties]
+        attr_accessor :person_properties
+      
+        # IDs for suggestions that remove this person link from the document. A Person
+        # might have multiple deletion IDs if, for example, multiple users suggest to
+        # delete it. If empty, then this person link isn't suggested for deletion.
+        # Corresponds to the JSON property `suggestedDeletionIds`
+        # @return [Array<String>]
+        attr_accessor :suggested_deletion_ids
+      
+        # IDs for suggestions that insert this person link into the document. A Person
+        # might have multiple insertion IDs if it is a nested suggested change (a
+        # suggestion within a suggestion made by a different user, for example). If
+        # empty, then this person link isn't a suggested insertion.
+        # Corresponds to the JSON property `suggestedInsertionIds`
+        # @return [Array<String>]
+        attr_accessor :suggested_insertion_ids
+      
+        # The suggested text style changes to this Person, keyed by suggestion ID.
+        # Corresponds to the JSON property `suggestedTextStyleChanges`
+        # @return [Hash<String,Google::Apis::DocsV1::SuggestedTextStyle>]
+        attr_accessor :suggested_text_style_changes
+      
+        # Represents the styling that can be applied to text. Inherited text styles are
+        # represented as unset fields in this message. A text style's parent depends on
+        # where the text style is defined: * The TextStyle of text in a Paragraph
+        # inherits from the paragraph's corresponding named style type. * The TextStyle
+        # on a named style inherits from the normal text named style. * The TextStyle of
+        # the normal text named style inherits from the default text style in the Docs
+        # editor. * The TextStyle on a Paragraph element that is contained in a table
+        # may inherit its text style from the table style. If the text style does not
+        # inherit from a parent, unsetting fields will revert the style to a value
+        # matching the defaults in the Docs editor.
+        # Corresponds to the JSON property `textStyle`
+        # @return [Google::Apis::DocsV1::TextStyle]
+        attr_accessor :text_style
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @person_id = args[:person_id] if args.key?(:person_id)
+          @person_properties = args[:person_properties] if args.key?(:person_properties)
+          @suggested_deletion_ids = args[:suggested_deletion_ids] if args.key?(:suggested_deletion_ids)
+          @suggested_insertion_ids = args[:suggested_insertion_ids] if args.key?(:suggested_insertion_ids)
+          @suggested_text_style_changes = args[:suggested_text_style_changes] if args.key?(:suggested_text_style_changes)
+          @text_style = args[:text_style] if args.key?(:text_style)
+        end
+      end
+      
+      # Properties specific to a linked Person.
+      class PersonProperties
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The email address linked to this Person. This field is always
+        # present.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Output only. The name of the person if it is displayed in the link text
+        # instead of the person's email address.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
