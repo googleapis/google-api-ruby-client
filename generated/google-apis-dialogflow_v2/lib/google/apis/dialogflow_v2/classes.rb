@@ -4847,6 +4847,187 @@ module Google
         end
       end
       
+      # Detail feedback of Agent Assist result.
+      class GoogleCloudDialogflowV2AgentAssistantFeedback
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether or not the suggested answer is relevant. For example: *
+        # Query: "Can I change my mailing address?" * Suggested document says: "Items
+        # must be returned/exchanged within 60 days of the purchase date." *
+        # answer_relevance: AnswerRelevance.IRRELEVANT
+        # Corresponds to the JSON property `answerRelevance`
+        # @return [String]
+        attr_accessor :answer_relevance
+      
+        # Optional. Whether or not the information in the document is correct. For
+        # example: * Query: "Can I return the package in 2 days once received?" *
+        # Suggested document says: "Items must be returned/exchanged within 60 days of
+        # the purchase date." * Ground truth: "No return or exchange is allowed." * [
+        # document_correctness]: INCORRECT
+        # Corresponds to the JSON property `documentCorrectness`
+        # @return [String]
+        attr_accessor :document_correctness
+      
+        # Optional. Whether or not the suggested document is efficient. For example, if
+        # the document is poorly written, hard to understand, hard to use or too long to
+        # find useful information, document_efficiency is DocumentEfficiency.INEFFICIENT.
+        # Corresponds to the JSON property `documentEfficiency`
+        # @return [String]
+        attr_accessor :document_efficiency
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_relevance = args[:answer_relevance] if args.key?(:answer_relevance)
+          @document_correctness = args[:document_correctness] if args.key?(:document_correctness)
+          @document_efficiency = args[:document_efficiency] if args.key?(:document_efficiency)
+        end
+      end
+      
+      # Represents a record of a human agent assist answer.
+      class GoogleCloudDialogflowV2AgentAssistantRecord
+        include Google::Apis::Core::Hashable
+      
+        # Represents article answer.
+        # Corresponds to the JSON property `articleSuggestionAnswer`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ArticleAnswer]
+        attr_accessor :article_suggestion_answer
+      
+        # Represents answer from "frequently asked questions".
+        # Corresponds to the JSON property `faqAnswer`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2FaqAnswer]
+        attr_accessor :faq_answer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @article_suggestion_answer = args[:article_suggestion_answer] if args.key?(:article_suggestion_answer)
+          @faq_answer = args[:faq_answer] if args.key?(:faq_answer)
+        end
+      end
+      
+      # The request message for Participants.AnalyzeContent.
+      class GoogleCloudDialogflowV2AnalyzeContentRequest
+        include Google::Apis::Core::Hashable
+      
+        # Represents the natural language speech audio to be processed.
+        # Corresponds to the JSON property `audioInput`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AudioInput]
+        attr_accessor :audio_input
+      
+        # Events allow for matching intents by event name instead of the natural
+        # language input. For instance, input `` can trigger a personalized welcome
+        # response. The parameter `name` may be used by the agent in the response: `"
+        # Hello #welcome_event.name! What can I do for you today?"`.
+        # Corresponds to the JSON property `eventInput`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EventInput]
+        attr_accessor :event_input
+      
+        # Represents the parameters of the conversational query.
+        # Corresponds to the JSON property `queryParams`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2QueryParameters]
+        attr_accessor :query_params
+      
+        # Instructs the speech synthesizer on how to generate the output audio content.
+        # If this audio config is supplied in a request, it overrides all existing text-
+        # to-speech settings applied to the agent.
+        # Corresponds to the JSON property `replyAudioConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2OutputAudioConfig]
+        attr_accessor :reply_audio_config
+      
+        # A unique identifier for this request. Restricted to 36 ASCII characters. A
+        # random UUID is recommended. This request is only idempotent if a `request_id`
+        # is provided.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Represents the natural language text to be processed.
+        # Corresponds to the JSON property `textInput`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2TextInput]
+        attr_accessor :text_input
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio_input = args[:audio_input] if args.key?(:audio_input)
+          @event_input = args[:event_input] if args.key?(:event_input)
+          @query_params = args[:query_params] if args.key?(:query_params)
+          @reply_audio_config = args[:reply_audio_config] if args.key?(:reply_audio_config)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @text_input = args[:text_input] if args.key?(:text_input)
+        end
+      end
+      
+      # The response message for Participants.AnalyzeContent.
+      class GoogleCloudDialogflowV2AnalyzeContentResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents a response from an automated agent.
+        # Corresponds to the JSON property `automatedAgentReply`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AutomatedAgentReply]
+        attr_accessor :automated_agent_reply
+      
+        # The message in the response that indicates the parameters of DTMF.
+        # Corresponds to the JSON property `dtmfParameters`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2DtmfParameters]
+        attr_accessor :dtmf_parameters
+      
+        # The suggestions for end user. The order is the same as
+        # HumanAgentAssistantConfig.SuggestionConfig.feature_configs of
+        # HumanAgentAssistantConfig.end_user_suggestion_config.
+        # Corresponds to the JSON property `endUserSuggestionResults`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SuggestionResult>]
+        attr_accessor :end_user_suggestion_results
+      
+        # The suggestions for most recent human agent. The order is the same as
+        # HumanAgentAssistantConfig.SuggestionConfig.feature_configs of
+        # HumanAgentAssistantConfig.human_agent_suggestion_config.
+        # Corresponds to the JSON property `humanAgentSuggestionResults`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SuggestionResult>]
+        attr_accessor :human_agent_suggestion_results
+      
+        # Represents a message posted into a conversation.
+        # Corresponds to the JSON property `message`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Message]
+        attr_accessor :message
+      
+        # Represents the natural language speech audio to be played to the end user.
+        # Corresponds to the JSON property `replyAudio`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2OutputAudio]
+        attr_accessor :reply_audio
+      
+        # The output text content. This field is set if the automated agent responded
+        # with text to show to the user.
+        # Corresponds to the JSON property `replyText`
+        # @return [String]
+        attr_accessor :reply_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @automated_agent_reply = args[:automated_agent_reply] if args.key?(:automated_agent_reply)
+          @dtmf_parameters = args[:dtmf_parameters] if args.key?(:dtmf_parameters)
+          @end_user_suggestion_results = args[:end_user_suggestion_results] if args.key?(:end_user_suggestion_results)
+          @human_agent_suggestion_results = args[:human_agent_suggestion_results] if args.key?(:human_agent_suggestion_results)
+          @message = args[:message] if args.key?(:message)
+          @reply_audio = args[:reply_audio] if args.key?(:reply_audio)
+          @reply_text = args[:reply_text] if args.key?(:reply_text)
+        end
+      end
+      
       # Represents a part of a message possibly annotated with an entity. The part can
       # be an entity or purely a part of the message between two entities or message
       # start/end.
@@ -4882,6 +5063,229 @@ module Google
           @entity_type = args[:entity_type] if args.key?(:entity_type)
           @formatted_value = args[:formatted_value] if args.key?(:formatted_value)
           @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Represents feedback the customer has about the quality & correctness of a
+      # certain answer in a conversation.
+      class GoogleCloudDialogflowV2AnswerFeedback
+        include Google::Apis::Core::Hashable
+      
+        # Detail feedback of Agent Assist result.
+        # Corresponds to the JSON property `agentAssistantDetailFeedback`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AgentAssistantFeedback]
+        attr_accessor :agent_assistant_detail_feedback
+      
+        # Time when the answer/item was clicked.
+        # Corresponds to the JSON property `clickTime`
+        # @return [String]
+        attr_accessor :click_time
+      
+        # Indicates whether the answer/item was clicked by the human agent or not.
+        # Default to false.
+        # Corresponds to the JSON property `clicked`
+        # @return [Boolean]
+        attr_accessor :clicked
+        alias_method :clicked?, :clicked
+      
+        # The correctness level of the specific answer.
+        # Corresponds to the JSON property `correctnessLevel`
+        # @return [String]
+        attr_accessor :correctness_level
+      
+        # Time when the answer/item was displayed.
+        # Corresponds to the JSON property `displayTime`
+        # @return [String]
+        attr_accessor :display_time
+      
+        # Indicates whether the answer/item was displayed to the human agent in the
+        # agent desktop UI. Default to false.
+        # Corresponds to the JSON property `displayed`
+        # @return [Boolean]
+        attr_accessor :displayed
+        alias_method :displayed?, :displayed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_assistant_detail_feedback = args[:agent_assistant_detail_feedback] if args.key?(:agent_assistant_detail_feedback)
+          @click_time = args[:click_time] if args.key?(:click_time)
+          @clicked = args[:clicked] if args.key?(:clicked)
+          @correctness_level = args[:correctness_level] if args.key?(:correctness_level)
+          @display_time = args[:display_time] if args.key?(:display_time)
+          @displayed = args[:displayed] if args.key?(:displayed)
+        end
+      end
+      
+      # Answer records are records to manage answer history and feedbacks for
+      # Dialogflow. Currently, answer record includes: - human agent assistant article
+      # suggestion - human agent assistant faq article It doesn't include: - `
+      # DetectIntent` intent matching - `DetectIntent` knowledge Answer records are
+      # not related to the conversation history in the Dialogflow Console. A Record is
+      # generated even when the end-user disables conversation history in the console.
+      # Records are created when there's a human agent assistant suggestion generated.
+      # A typical workflow for customers provide feedback to an answer is: 1. For
+      # human agent assistant, customers get suggestion via ListSuggestions API.
+      # Together with the answers, AnswerRecord.name are returned to the customers. 2.
+      # The customer uses the AnswerRecord.name to call the UpdateAnswerRecord method
+      # to send feedback about a specific answer that they believe is wrong.
+      class GoogleCloudDialogflowV2AnswerRecord
+        include Google::Apis::Core::Hashable
+      
+        # Represents a record of a human agent assist answer.
+        # Corresponds to the JSON property `agentAssistantRecord`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AgentAssistantRecord]
+        attr_accessor :agent_assistant_record
+      
+        # Represents feedback the customer has about the quality & correctness of a
+        # certain answer in a conversation.
+        # Corresponds to the JSON property `answerFeedback`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AnswerFeedback]
+        attr_accessor :answer_feedback
+      
+        # The unique identifier of this answer record. Format: `projects//locations//
+        # answerRecords/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_assistant_record = args[:agent_assistant_record] if args.key?(:agent_assistant_record)
+          @answer_feedback = args[:answer_feedback] if args.key?(:answer_feedback)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Represents article answer.
+      class GoogleCloudDialogflowV2ArticleAnswer
+        include Google::Apis::Core::Hashable
+      
+        # The name of answer record, in the format of "projects//locations//
+        # answerRecords/"
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
+      
+        # Article match confidence. The system's confidence score that this article is a
+        # good match for this conversation, as a value from 0.0 (completely uncertain)
+        # to 1.0 (completely certain).
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # A map that contains metadata about the answer and the document from which it
+        # originates.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
+        # Article snippets.
+        # Corresponds to the JSON property `snippets`
+        # @return [Array<String>]
+        attr_accessor :snippets
+      
+        # The article title.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # The article URI.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @snippets = args[:snippets] if args.key?(:snippets)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Represents the natural language speech audio to be processed.
+      class GoogleCloudDialogflowV2AudioInput
+        include Google::Apis::Core::Hashable
+      
+        # Required. The natural language speech audio to be processed. A single request
+        # can contain up to 1 minute of speech audio data. The transcribed text cannot
+        # contain more than 256 bytes.
+        # Corresponds to the JSON property `audio`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :audio
+      
+        # Instructs the speech recognizer how to process the audio content.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2InputAudioConfig]
+        attr_accessor :config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio = args[:audio] if args.key?(:audio)
+          @config = args[:config] if args.key?(:config)
+        end
+      end
+      
+      # Defines the Automated Agent to connect to a conversation.
+      class GoogleCloudDialogflowV2AutomatedAgentConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. ID of the Dialogflow agent environment to use. This project needs to
+        # either be the same project as the conversation or you need to grant `service-@
+        # gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent`
+        # role in this project. Format: `projects//locations//agent/environments/`. If
+        # environment is not specified, the default `draft` environment is used. Refer
+        # to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.
+        # dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details.
+        # Corresponds to the JSON property `agent`
+        # @return [String]
+        attr_accessor :agent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent = args[:agent] if args.key?(:agent)
+        end
+      end
+      
+      # Represents a response from an automated agent.
+      class GoogleCloudDialogflowV2AutomatedAgentReply
+        include Google::Apis::Core::Hashable
+      
+        # The message returned from the DetectIntent method.
+        # Corresponds to the JSON property `detectIntentResponse`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2DetectIntentResponse]
+        attr_accessor :detect_intent_response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detect_intent_response = args[:detect_intent_response] if args.key?(:detect_intent_response)
         end
       end
       
@@ -5144,6 +5548,103 @@ module Google
         end
       end
       
+      # Represents a call matcher that describes criteria for matching incoming SIP
+      # calls to a conversation. When Dialogflow get a SIP call from a third-party
+      # carrier, Dialogflow matches the call to an existing conversation by either: *
+      # Extracting the conversation id from the [Call-Info header](https://tools.ietf.
+      # org/html/rfc3261#section-20.9), e.g. `Call-Info: ;purpose=Goog-ContactCenter-
+      # Conversation`. * Or, if that doesn't work, matching incoming [SIP headers](
+      # https://tools.ietf.org/html/rfc3261#section-7.3) against any CallMatcher for
+      # the conversation. If an incoming SIP call without valid `Call-Info` header
+      # matches to zero or multiple conversations with `CallMatcher`, we reject it. A
+      # call matcher contains equality conditions for SIP headers that all have to be
+      # fulfilled in order for a SIP call to match. The matched SIP headers consist of
+      # well-known headers (`To`, `From`, `Call-ID`) and custom headers. A CallMatcher
+      # is only valid if it specifies: * At least 1 custom header, * or at least 2
+      # well-known headers.
+      class GoogleCloudDialogflowV2CallMatcher
+        include Google::Apis::Core::Hashable
+      
+        # Value of the [`Call-ID` header](https://tools.ietf.org/html/rfc3261#section-8.
+        # 1.1.4) to match. If empty or unspecified, we don't match to the [`Call-ID`
+        # header](https://tools.ietf.org/html/rfc3261#section-8.1.1.4).
+        # Corresponds to the JSON property `callIdHeader`
+        # @return [String]
+        attr_accessor :call_id_header
+      
+        # Custom SIP headers. See the [description of headers in the RFC](https://tools.
+        # ietf.org/html/rfc3261#section-7.3).
+        # Corresponds to the JSON property `customHeaders`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2CallMatcherCustomHeaders]
+        attr_accessor :custom_headers
+      
+        # Value of the [`From` header](https://tools.ietf.org/html/rfc3261#section-8.1.1.
+        # 3) to match. If empty or unspecified, we don't match to the [`From` header](
+        # https://tools.ietf.org/html/rfc3261#section-8.1.1.3).
+        # Corresponds to the JSON property `fromHeader`
+        # @return [String]
+        attr_accessor :from_header
+      
+        # Output only. The unique identifier of this call matcher. Format: `projects//
+        # locations//conversations//callMatchers/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Value of the [`To` header](https://tools.ietf.org/html/rfc3261#section-8.1.1.2)
+        # to match. If empty or unspecified, we don't match to the [`To` header](https:/
+        # /tools.ietf.org/html/rfc3261#section-8.1.1.2).
+        # Corresponds to the JSON property `toHeader`
+        # @return [String]
+        attr_accessor :to_header
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @call_id_header = args[:call_id_header] if args.key?(:call_id_header)
+          @custom_headers = args[:custom_headers] if args.key?(:custom_headers)
+          @from_header = args[:from_header] if args.key?(:from_header)
+          @name = args[:name] if args.key?(:name)
+          @to_header = args[:to_header] if args.key?(:to_header)
+        end
+      end
+      
+      # Custom SIP headers. See the [description of headers in the RFC](https://tools.
+      # ietf.org/html/rfc3261#section-7.3).
+      class GoogleCloudDialogflowV2CallMatcherCustomHeaders
+        include Google::Apis::Core::Hashable
+      
+        # Cisco's proprietary `Cisco-Guid` header.
+        # Corresponds to the JSON property `ciscoGuid`
+        # @return [String]
+        attr_accessor :cisco_guid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cisco_guid = args[:cisco_guid] if args.key?(:cisco_guid)
+        end
+      end
+      
+      # The request message for Conversations.CompleteConversation.
+      class GoogleCloudDialogflowV2CompleteConversationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Dialogflow contexts are similar to natural language context. If a person says
       # to you "they are orange", you need context in order to understand what "they"
       # is referring to. Similarly, for Dialogflow to handle an end-user expression
@@ -5205,6 +5706,75 @@ module Google
         end
       end
       
+      # Represents a conversation. A conversation is an interaction between an agent,
+      # including live agents and Dialogflow agents, and a support customer.
+      # Conversations can include phone calls and text-based chat sessions.
+      class GoogleCloudDialogflowV2Conversation
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Conversation Profile to be used to configure this Conversation.
+        # This field cannot be updated. Format: `projects//locations//
+        # conversationProfiles/`.
+        # Corresponds to the JSON property `conversationProfile`
+        # @return [String]
+        attr_accessor :conversation_profile
+      
+        # The stage of a conversation. It indicates whether the virtual agent or a human
+        # agent is handling the conversation. If the conversation is created with the
+        # conversation profile that has Dialogflow config set, defaults to
+        # ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to
+        # ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with the
+        # conversation profile that has Dialogflow config set but explicitly sets
+        # conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it skips
+        # ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to
+        # ConversationStage.HUMAN_ASSIST_STAGE.
+        # Corresponds to the JSON property `conversationStage`
+        # @return [String]
+        attr_accessor :conversation_stage
+      
+        # Output only. The time the conversation was finished.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. The current state of the Conversation.
+        # Corresponds to the JSON property `lifecycleState`
+        # @return [String]
+        attr_accessor :lifecycle_state
+      
+        # Output only. The unique identifier of this conversation. Format: `projects//
+        # locations//conversations/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Represents a phone number for telephony integration. It allows for connecting
+        # a particular conversation over telephony.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConversationPhoneNumber]
+        attr_accessor :phone_number
+      
+        # Output only. The time the conversation was started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_profile = args[:conversation_profile] if args.key?(:conversation_profile)
+          @conversation_stage = args[:conversation_stage] if args.key?(:conversation_stage)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
+          @name = args[:name] if args.key?(:name)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # Represents a notification sent to Pub/Sub subscribers for conversation
       # lifecycle events.
       class GoogleCloudDialogflowV2ConversationEvent
@@ -5246,6 +5816,147 @@ module Google
           @error_status = args[:error_status] if args.key?(:error_status)
           @new_message_payload = args[:new_message_payload] if args.key?(:new_message_payload)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Represents a phone number for telephony integration. It allows for connecting
+      # a particular conversation over telephony.
+      class GoogleCloudDialogflowV2ConversationPhoneNumber
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The phone number to connect to this conversation.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+        end
+      end
+      
+      # Defines the services to connect to incoming Dialogflow conversations.
+      class GoogleCloudDialogflowV2ConversationProfile
+        include Google::Apis::Core::Hashable
+      
+        # Defines the Automated Agent to connect to a conversation.
+        # Corresponds to the JSON property `automatedAgentConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AutomatedAgentConfig]
+        attr_accessor :automated_agent_config
+      
+        # Output only. Create time of the conversation profile.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. Human readable name for this profile. Max length 1024 bytes.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Defines the Human Agent Assist to connect to a conversation.
+        # Corresponds to the JSON property `humanAgentAssistantConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfig]
+        attr_accessor :human_agent_assistant_config
+      
+        # Defines the hand off to a live agent, typically on which external agent
+        # service provider to connect to a conversation.
+        # Corresponds to the JSON property `humanAgentHandoffConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentHandoffConfig]
+        attr_accessor :human_agent_handoff_config
+      
+        # Language which represents the conversationProfile. If unspecified, the default
+        # language code en-us applies. Users need to create a ConversationProfile for
+        # each language they want to support.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Defines logging behavior for conversation lifecycle events.
+        # Corresponds to the JSON property `loggingConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2LoggingConfig]
+        attr_accessor :logging_config
+      
+        # Optional. The unique identifier of this conversation profile. Format: `
+        # projects//locations//conversationProfiles/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Defines notification behavior.
+        # Corresponds to the JSON property `newMessageEventNotificationConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2NotificationConfig]
+        attr_accessor :new_message_event_notification_config
+      
+        # Defines notification behavior.
+        # Corresponds to the JSON property `notificationConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2NotificationConfig]
+        attr_accessor :notification_config
+      
+        # Configures speech transcription for ConversationProfile.
+        # Corresponds to the JSON property `sttConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SpeechToTextConfig]
+        attr_accessor :stt_config
+      
+        # Output only. Update time of the conversation profile.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @automated_agent_config = args[:automated_agent_config] if args.key?(:automated_agent_config)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @human_agent_assistant_config = args[:human_agent_assistant_config] if args.key?(:human_agent_assistant_config)
+          @human_agent_handoff_config = args[:human_agent_handoff_config] if args.key?(:human_agent_handoff_config)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @logging_config = args[:logging_config] if args.key?(:logging_config)
+          @name = args[:name] if args.key?(:name)
+          @new_message_event_notification_config = args[:new_message_event_notification_config] if args.key?(:new_message_event_notification_config)
+          @notification_config = args[:notification_config] if args.key?(:notification_config)
+          @stt_config = args[:stt_config] if args.key?(:stt_config)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The request message for Conversations.CreateCallMatcher.
+      class GoogleCloudDialogflowV2CreateCallMatcherRequest
+        include Google::Apis::Core::Hashable
+      
+        # Represents a call matcher that describes criteria for matching incoming SIP
+        # calls to a conversation. When Dialogflow get a SIP call from a third-party
+        # carrier, Dialogflow matches the call to an existing conversation by either: *
+        # Extracting the conversation id from the [Call-Info header](https://tools.ietf.
+        # org/html/rfc3261#section-20.9), e.g. `Call-Info: ;purpose=Goog-ContactCenter-
+        # Conversation`. * Or, if that doesn't work, matching incoming [SIP headers](
+        # https://tools.ietf.org/html/rfc3261#section-7.3) against any CallMatcher for
+        # the conversation. If an incoming SIP call without valid `Call-Info` header
+        # matches to zero or multiple conversations with `CallMatcher`, we reject it. A
+        # call matcher contains equality conditions for SIP headers that all have to be
+        # fulfilled in order for a SIP call to match. The matched SIP headers consist of
+        # well-known headers (`To`, `From`, `Call-ID`) and custom headers. A CallMatcher
+        # is only valid if it specifies: * At least 1 custom header, * or at least 2
+        # well-known headers.
+        # Corresponds to the JSON property `callMatcher`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2CallMatcher]
+        attr_accessor :call_matcher
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @call_matcher = args[:call_matcher] if args.key?(:call_matcher)
         end
       end
       
@@ -5359,6 +6070,150 @@ module Google
           @query_result = args[:query_result] if args.key?(:query_result)
           @response_id = args[:response_id] if args.key?(:response_id)
           @webhook_status = args[:webhook_status] if args.key?(:webhook_status)
+        end
+      end
+      
+      # A knowledge document to be used by a KnowledgeBase. For more information, see
+      # the [knowledge base guide](https://cloud.google.com/dialogflow/docs/how/
+      # knowledge-bases). Note: The `projects.agent.knowledgeBases.documents` resource
+      # is deprecated; only use `projects.knowledgeBases.documents`.
+      class GoogleCloudDialogflowV2Document
+        include Google::Apis::Core::Hashable
+      
+        # The URI where the file content is located. For documents stored in Google
+        # Cloud Storage, these URIs must have the form `gs:///`. NOTE: External URLs
+        # must correspond to public webpages, i.e., they must be indexed by Google
+        # Search. In particular, URLs for showing documents in Google Cloud Storage (i.e.
+        # the URL in your browser) are not supported. Instead use the `gs://` format
+        # URI described above.
+        # Corresponds to the JSON property `contentUri`
+        # @return [String]
+        attr_accessor :content_uri
+      
+        # Required. The display name of the document. The name must be 1024 bytes or
+        # less; otherwise, the creation request fails.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. If true, we try to automatically reload the document every day (at a
+        # time picked by the system). If false or unspecified, we don't try to
+        # automatically reload the document. Currently you can only enable automatic
+        # reload for documents sourced from a public url, see `source` field for the
+        # source types. Reload status can be tracked in `latest_reload_status`. If a
+        # reload fails, we will keep the document unchanged. If a reload fails with
+        # internal errors, the system will try to reload the document on the next day.
+        # If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the
+        # system will not try to reload the document anymore. You need to manually
+        # reload the document successfully by calling `ReloadDocument` and clear the
+        # errors.
+        # Corresponds to the JSON property `enableAutoReload`
+        # @return [Boolean]
+        attr_accessor :enable_auto_reload
+        alias_method :enable_auto_reload?, :enable_auto_reload
+      
+        # Required. The knowledge type of document content.
+        # Corresponds to the JSON property `knowledgeTypes`
+        # @return [Array<String>]
+        attr_accessor :knowledge_types
+      
+        # The status of a reload attempt.
+        # Corresponds to the JSON property `latestReloadStatus`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2DocumentReloadStatus]
+        attr_accessor :latest_reload_status
+      
+        # Optional. Metadata for the document. The metadata supports arbitrary key-value
+        # pairs. Suggested use cases include storing a document's title, an external URL
+        # distinct from the document's content_uri, etc. The max size of a `key` or a `
+        # value` of the metadata is 1024 bytes.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
+        # Required. The MIME type of this document.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        # Optional. The document resource name. The name must be empty when creating a
+        # document. Format: `projects//locations//knowledgeBases//documents/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The raw content of the document. This field is only permitted for
+        # EXTRACTIVE_QA and FAQ knowledge types.
+        # Corresponds to the JSON property `rawContent`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :raw_content
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_uri = args[:content_uri] if args.key?(:content_uri)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @enable_auto_reload = args[:enable_auto_reload] if args.key?(:enable_auto_reload)
+          @knowledge_types = args[:knowledge_types] if args.key?(:knowledge_types)
+          @latest_reload_status = args[:latest_reload_status] if args.key?(:latest_reload_status)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @name = args[:name] if args.key?(:name)
+          @raw_content = args[:raw_content] if args.key?(:raw_content)
+        end
+      end
+      
+      # The status of a reload attempt.
+      class GoogleCloudDialogflowV2DocumentReloadStatus
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DialogflowV2::GoogleRpcStatus]
+        attr_accessor :status
+      
+        # The time of a reload attempt. This reload may have been triggered
+        # automatically or manually and may not have succeeded.
+        # Corresponds to the JSON property `time`
+        # @return [String]
+        attr_accessor :time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @status = args[:status] if args.key?(:status)
+          @time = args[:time] if args.key?(:time)
+        end
+      end
+      
+      # The message in the response that indicates the parameters of DTMF.
+      class GoogleCloudDialogflowV2DtmfParameters
+        include Google::Apis::Core::Hashable
+      
+        # Indicates whether DTMF input can be handled in the next request.
+        # Corresponds to the JSON property `acceptsDtmfInput`
+        # @return [Boolean]
+        attr_accessor :accepts_dtmf_input
+        alias_method :accepts_dtmf_input?, :accepts_dtmf_input
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accepts_dtmf_input = args[:accepts_dtmf_input] if args.key?(:accepts_dtmf_input)
         end
       end
       
@@ -5623,6 +6478,60 @@ module Google
         end
       end
       
+      # Represents answer from "frequently asked questions".
+      class GoogleCloudDialogflowV2FaqAnswer
+        include Google::Apis::Core::Hashable
+      
+        # The piece of text from the `source` knowledge base document.
+        # Corresponds to the JSON property `answer`
+        # @return [String]
+        attr_accessor :answer
+      
+        # The name of answer record, in the format of "projects//locations//
+        # answerRecords/"
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
+      
+        # The system's confidence score that this Knowledge answer is a good match for
+        # this conversational query, range from 0.0 (completely uncertain) to 1.0 (
+        # completely certain).
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # A map that contains metadata about the answer and the document from which it
+        # originates.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
+        # The corresponding FAQ question.
+        # Corresponds to the JSON property `question`
+        # @return [String]
+        attr_accessor :question
+      
+        # Indicates which Knowledge Document this answer was extracted from. Format: `
+        # projects//locations//agent/knowledgeBases//documents/`.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer = args[:answer] if args.key?(:answer)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @question = args[:question] if args.key?(:question)
+          @source = args[:source] if args.key?(:source)
+        end
+      end
+      
       # By default, your agent responds to a matched intent with a static response. As
       # an alternative, you can provide a more dynamic response by using fulfillment.
       # When you enable fulfillment for an intent, Dialogflow responds to that intent
@@ -5749,6 +6658,491 @@ module Google
         end
       end
       
+      # Defines the Human Agent Assist to connect to a conversation.
+      class GoogleCloudDialogflowV2HumanAgentAssistantConfig
+        include Google::Apis::Core::Hashable
+      
+        # Detail human agent assistant config.
+        # Corresponds to the JSON property `endUserSuggestionConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig]
+        attr_accessor :end_user_suggestion_config
+      
+        # Detail human agent assistant config.
+        # Corresponds to the JSON property `humanAgentSuggestionConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig]
+        attr_accessor :human_agent_suggestion_config
+      
+        # Configuration for analyses to run on each conversation message.
+        # Corresponds to the JSON property `messageAnalysisConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig]
+        attr_accessor :message_analysis_config
+      
+        # Defines notification behavior.
+        # Corresponds to the JSON property `notificationConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2NotificationConfig]
+        attr_accessor :notification_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_user_suggestion_config = args[:end_user_suggestion_config] if args.key?(:end_user_suggestion_config)
+          @human_agent_suggestion_config = args[:human_agent_suggestion_config] if args.key?(:human_agent_suggestion_config)
+          @message_analysis_config = args[:message_analysis_config] if args.key?(:message_analysis_config)
+          @notification_config = args[:notification_config] if args.key?(:notification_config)
+        end
+      end
+      
+      # Custom conversation models used in agent assist feature. Supported feature:
+      # ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
+      class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Conversation model resource name. Format: `projects//
+        # conversationModels/`.
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @model = args[:model] if args.key?(:model)
+        end
+      end
+      
+      # Configuration for analyses to run on each conversation message.
+      class GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig
+        include Google::Apis::Core::Hashable
+      
+        # Enable entity extraction in conversation messages on [agent assist stage](
+        # https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages).
+        # If unspecified, defaults to false.
+        # Corresponds to the JSON property `enableEntityExtraction`
+        # @return [Boolean]
+        attr_accessor :enable_entity_extraction
+        alias_method :enable_entity_extraction?, :enable_entity_extraction
+      
+        # Enable sentiment analysis in conversation messages on [agent assist stage](
+        # https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages).
+        # If unspecified, defaults to false. Sentiment analysis inspects user input and
+        # identifies the prevailing subjective opinion, especially to determine a user's
+        # attitude as positive, negative, or neutral: https://cloud.google.com/natural-
+        # language/docs/basics#sentiment_analysis For Participants.
+        # StreamingAnalyzeContent method, result will be in
+        # StreamingAnalyzeContentResponse.message.SentimentAnalysisResult. For
+        # Participants.AnalyzeContent method, result will be in AnalyzeContentResponse.
+        # message.SentimentAnalysisResult For Conversations.ListMessages method, result
+        # will be in ListMessagesResponse.messages.SentimentAnalysisResult If Pub/Sub
+        # notification is configured, result will be in ConversationEvent.
+        # new_message_payload.SentimentAnalysisResult.
+        # Corresponds to the JSON property `enableSentimentAnalysis`
+        # @return [Boolean]
+        attr_accessor :enable_sentiment_analysis
+        alias_method :enable_sentiment_analysis?, :enable_sentiment_analysis
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_entity_extraction = args[:enable_entity_extraction] if args.key?(:enable_entity_extraction)
+          @enable_sentiment_analysis = args[:enable_sentiment_analysis] if args.key?(:enable_sentiment_analysis)
+        end
+      end
+      
+      # Detail human agent assistant config.
+      class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration of different suggestion features. One feature can have only one
+        # config.
+        # Corresponds to the JSON property `featureConfigs`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig>]
+        attr_accessor :feature_configs
+      
+        # If `group_suggestion_responses` is false, and there are multiple `
+        # feature_configs` in `event based suggestion` or StreamingAnalyzeContent, we
+        # will try to deliver suggestions to customers as soon as we get new suggestion.
+        # Different type of suggestions based on the same context will be in separate
+        # Pub/Sub event or `StreamingAnalyzeContentResponse`. If `
+        # group_suggestion_responses` set to true. All the suggestions to the same
+        # participant based on the same context will be grouped into a single Pub/Sub
+        # event or StreamingAnalyzeContentResponse.
+        # Corresponds to the JSON property `groupSuggestionResponses`
+        # @return [Boolean]
+        attr_accessor :group_suggestion_responses
+        alias_method :group_suggestion_responses?, :group_suggestion_responses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @feature_configs = args[:feature_configs] if args.key?(:feature_configs)
+          @group_suggestion_responses = args[:group_suggestion_responses] if args.key?(:group_suggestion_responses)
+        end
+      end
+      
+      # Config for suggestion features.
+      class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig
+        include Google::Apis::Core::Hashable
+      
+        # Custom conversation models used in agent assist feature. Supported feature:
+        # ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
+        # Corresponds to the JSON property `conversationModelConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig]
+        attr_accessor :conversation_model_config
+      
+        # Automatically iterates all participants and tries to compile suggestions.
+        # Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST.
+        # Corresponds to the JSON property `enableEventBasedSuggestion`
+        # @return [Boolean]
+        attr_accessor :enable_event_based_suggestion
+        alias_method :enable_event_based_suggestion?, :enable_event_based_suggestion
+      
+        # Config for suggestion query.
+        # Corresponds to the JSON property `queryConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig]
+        attr_accessor :query_config
+      
+        # The type of Human Agent Assistant API suggestion to perform, and the maximum
+        # number of results to return for that type. Multiple `Feature` objects can be
+        # specified in the `features` list.
+        # Corresponds to the JSON property `suggestionFeature`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SuggestionFeature]
+        attr_accessor :suggestion_feature
+      
+        # Settings of suggestion trigger.
+        # Corresponds to the JSON property `suggestionTriggerSettings`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings]
+        attr_accessor :suggestion_trigger_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_model_config = args[:conversation_model_config] if args.key?(:conversation_model_config)
+          @enable_event_based_suggestion = args[:enable_event_based_suggestion] if args.key?(:enable_event_based_suggestion)
+          @query_config = args[:query_config] if args.key?(:query_config)
+          @suggestion_feature = args[:suggestion_feature] if args.key?(:suggestion_feature)
+          @suggestion_trigger_settings = args[:suggestion_trigger_settings] if args.key?(:suggestion_trigger_settings)
+        end
+      end
+      
+      # Config for suggestion query.
+      class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig
+        include Google::Apis::Core::Hashable
+      
+        # Confidence threshold of query result. Agent Assist gives each suggestion a
+        # score in the range [0.0, 1.0], based on the relevance between the suggestion
+        # and the current conversation context. A score of 0.0 has no relevance, while a
+        # score of 1.0 has high relevance. Only suggestions with a score greater than or
+        # equal to the value of this field are included in the results. For a baseline
+        # model (the default), the recommended value is in the range [0.05, 0.1]. For a
+        # custom model, there is no recommended value. Tune this value by starting from
+        # a very low value and slowly increasing until you have desired results. If this
+        # field is not set, it defaults to 0.0, which means that all suggestions are
+        # returned. Supported features: ARTICLE_SUGGESTION.
+        # Corresponds to the JSON property `confidenceThreshold`
+        # @return [Float]
+        attr_accessor :confidence_threshold
+      
+        # Settings that determine how to filter recent conversation context when
+        # generating suggestions.
+        # Corresponds to the JSON property `contextFilterSettings`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings]
+        attr_accessor :context_filter_settings
+      
+        # Dialogflow source setting. Supported feature: DIALOGFLOW_ASSIST.
+        # Corresponds to the JSON property `dialogflowQuerySource`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource]
+        attr_accessor :dialogflow_query_source
+      
+        # Document source settings. Supported features: SMART_REPLY, SMART_COMPOSE.
+        # Corresponds to the JSON property `documentQuerySource`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource]
+        attr_accessor :document_query_source
+      
+        # Knowledge base source settings. Supported features: ARTICLE_SUGGESTION, FAQ.
+        # Corresponds to the JSON property `knowledgeBaseQuerySource`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource]
+        attr_accessor :knowledge_base_query_source
+      
+        # Maximum number of results to return. Currently, if unset, defaults to 10. And
+        # the max number is 20.
+        # Corresponds to the JSON property `maxResults`
+        # @return [Fixnum]
+        attr_accessor :max_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence_threshold = args[:confidence_threshold] if args.key?(:confidence_threshold)
+          @context_filter_settings = args[:context_filter_settings] if args.key?(:context_filter_settings)
+          @dialogflow_query_source = args[:dialogflow_query_source] if args.key?(:dialogflow_query_source)
+          @document_query_source = args[:document_query_source] if args.key?(:document_query_source)
+          @knowledge_base_query_source = args[:knowledge_base_query_source] if args.key?(:knowledge_base_query_source)
+          @max_results = args[:max_results] if args.key?(:max_results)
+        end
+      end
+      
+      # Settings that determine how to filter recent conversation context when
+      # generating suggestions.
+      class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings
+        include Google::Apis::Core::Hashable
+      
+        # If set to true, the last message from virtual agent (hand off message) and the
+        # message before it (trigger message of hand off) are dropped.
+        # Corresponds to the JSON property `dropHandoffMessages`
+        # @return [Boolean]
+        attr_accessor :drop_handoff_messages
+        alias_method :drop_handoff_messages?, :drop_handoff_messages
+      
+        # If set to true, all messages from ivr stage are dropped.
+        # Corresponds to the JSON property `dropIvrMessages`
+        # @return [Boolean]
+        attr_accessor :drop_ivr_messages
+        alias_method :drop_ivr_messages?, :drop_ivr_messages
+      
+        # If set to true, all messages from virtual agent are dropped.
+        # Corresponds to the JSON property `dropVirtualAgentMessages`
+        # @return [Boolean]
+        attr_accessor :drop_virtual_agent_messages
+        alias_method :drop_virtual_agent_messages?, :drop_virtual_agent_messages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @drop_handoff_messages = args[:drop_handoff_messages] if args.key?(:drop_handoff_messages)
+          @drop_ivr_messages = args[:drop_ivr_messages] if args.key?(:drop_ivr_messages)
+          @drop_virtual_agent_messages = args[:drop_virtual_agent_messages] if args.key?(:drop_virtual_agent_messages)
+        end
+      end
+      
+      # Dialogflow source setting. Supported feature: DIALOGFLOW_ASSIST.
+      class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of a Dialogflow virtual agent used for end user side intent
+        # detection and suggestion. Format: `projects//locations//agent`. When multiple
+        # agents are allowed in the same Dialogflow project.
+        # Corresponds to the JSON property `agent`
+        # @return [String]
+        attr_accessor :agent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent = args[:agent] if args.key?(:agent)
+        end
+      end
+      
+      # Document source settings. Supported features: SMART_REPLY, SMART_COMPOSE.
+      class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource
+        include Google::Apis::Core::Hashable
+      
+        # Required. Knowledge documents to query from. Format: `projects//locations//
+        # knowledgeBases//documents/`. Currently, at most 5 documents are supported.
+        # Corresponds to the JSON property `documents`
+        # @return [Array<String>]
+        attr_accessor :documents
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @documents = args[:documents] if args.key?(:documents)
+        end
+      end
+      
+      # Knowledge base source settings. Supported features: ARTICLE_SUGGESTION, FAQ.
+      class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource
+        include Google::Apis::Core::Hashable
+      
+        # Required. Knowledge bases to query. Format: `projects//locations//
+        # knowledgeBases/`. Currently, at most 5 knowledge bases are supported.
+        # Corresponds to the JSON property `knowledgeBases`
+        # @return [Array<String>]
+        attr_accessor :knowledge_bases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @knowledge_bases = args[:knowledge_bases] if args.key?(:knowledge_bases)
+        end
+      end
+      
+      # Settings of suggestion trigger.
+      class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings
+        include Google::Apis::Core::Hashable
+      
+        # Do not trigger if last utterance is small talk.
+        # Corresponds to the JSON property `noSmalltalk`
+        # @return [Boolean]
+        attr_accessor :no_smalltalk
+        alias_method :no_smalltalk?, :no_smalltalk
+      
+        # Only trigger suggestion if participant role of last utterance is END_USER.
+        # Corresponds to the JSON property `onlyEndUser`
+        # @return [Boolean]
+        attr_accessor :only_end_user
+        alias_method :only_end_user?, :only_end_user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @no_smalltalk = args[:no_smalltalk] if args.key?(:no_smalltalk)
+          @only_end_user = args[:only_end_user] if args.key?(:only_end_user)
+        end
+      end
+      
+      # Represents a notification sent to Cloud Pub/Sub subscribers for human agent
+      # assistant events in a specific conversation.
+      class GoogleCloudDialogflowV2HumanAgentAssistantEvent
+        include Google::Apis::Core::Hashable
+      
+        # The conversation this notification refers to. Format: `projects//conversations/
+        # `.
+        # Corresponds to the JSON property `conversation`
+        # @return [String]
+        attr_accessor :conversation
+      
+        # The participant that the suggestion is compiled for. Format: `projects//
+        # conversations//participants/`. It will not be set in legacy workflow.
+        # Corresponds to the JSON property `participant`
+        # @return [String]
+        attr_accessor :participant
+      
+        # The suggestion results payload that this notification refers to.
+        # Corresponds to the JSON property `suggestionResults`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SuggestionResult>]
+        attr_accessor :suggestion_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation = args[:conversation] if args.key?(:conversation)
+          @participant = args[:participant] if args.key?(:participant)
+          @suggestion_results = args[:suggestion_results] if args.key?(:suggestion_results)
+        end
+      end
+      
+      # Defines the hand off to a live agent, typically on which external agent
+      # service provider to connect to a conversation.
+      class GoogleCloudDialogflowV2HumanAgentHandoffConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration specific to LivePerson (https://www.liveperson.com).
+        # Corresponds to the JSON property `livePersonConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig]
+        attr_accessor :live_person_config
+      
+        # Configuration specific to Salesforce Live Agent.
+        # Corresponds to the JSON property `salesforceLiveAgentConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig]
+        attr_accessor :salesforce_live_agent_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @live_person_config = args[:live_person_config] if args.key?(:live_person_config)
+          @salesforce_live_agent_config = args[:salesforce_live_agent_config] if args.key?(:salesforce_live_agent_config)
+        end
+      end
+      
+      # Configuration specific to LivePerson (https://www.liveperson.com).
+      class GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Account number of the LivePerson account to connect. This is the
+        # account number you input at the login page.
+        # Corresponds to the JSON property `accountNumber`
+        # @return [String]
+        attr_accessor :account_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_number = args[:account_number] if args.key?(:account_number)
+        end
+      end
+      
+      # Configuration specific to Salesforce Live Agent.
+      class GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Live Agent chat button ID.
+        # Corresponds to the JSON property `buttonId`
+        # @return [String]
+        attr_accessor :button_id
+      
+        # Required. Live Agent deployment ID.
+        # Corresponds to the JSON property `deploymentId`
+        # @return [String]
+        attr_accessor :deployment_id
+      
+        # Required. Domain of the Live Agent endpoint for this agent. You can find the
+        # endpoint URL in the `Live Agent settings` page. For example if URL has the
+        # form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.
+        # la4-c2-phx.salesforceliveagent.com.
+        # Corresponds to the JSON property `endpointDomain`
+        # @return [String]
+        attr_accessor :endpoint_domain
+      
+        # Required. The organization ID of the Salesforce account.
+        # Corresponds to the JSON property `organizationId`
+        # @return [String]
+        attr_accessor :organization_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @button_id = args[:button_id] if args.key?(:button_id)
+          @deployment_id = args[:deployment_id] if args.key?(:deployment_id)
+          @endpoint_domain = args[:endpoint_domain] if args.key?(:endpoint_domain)
+          @organization_id = args[:organization_id] if args.key?(:organization_id)
+        end
+      end
+      
       # The request message for Agents.ImportAgent.
       class GoogleCloudDialogflowV2ImportAgentRequest
         include Google::Apis::Core::Hashable
@@ -5784,6 +7178,14 @@ module Google
         # Corresponds to the JSON property `audioEncoding`
         # @return [String]
         attr_accessor :audio_encoding
+      
+        # Only used in Participants.AnalyzeContent and Participants.
+        # StreamingAnalyzeContent. If `false` and recognition doesn't return any result,
+        # trigger `NO_SPEECH_RECOGNIZED` event to Dialogflow agent.
+        # Corresponds to the JSON property `disableNoSpeechRecognizedEvent`
+        # @return [Boolean]
+        attr_accessor :disable_no_speech_recognized_event
+        alias_method :disable_no_speech_recognized_event?, :disable_no_speech_recognized_event
       
         # If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult
         # with information about the recognized speech words, e.g. start and end time
@@ -5864,6 +7266,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
+          @disable_no_speech_recognized_event = args[:disable_no_speech_recognized_event] if args.key?(:disable_no_speech_recognized_event)
           @enable_word_info = args[:enable_word_info] if args.key?(:enable_word_info)
           @language_code = args[:language_code] if args.key?(:language_code)
           @model = args[:model] if args.key?(:model)
@@ -5902,6 +7305,14 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Optional. Indicates that this intent ends an interaction. Some integrations (e.
+        # g., Actions on Google or Dialogflow phone gateway) use this information to
+        # close interaction with an end user. Default is false.
+        # Corresponds to the JSON property `endInteraction`
+        # @return [Boolean]
+        attr_accessor :end_interaction
+        alias_method :end_interaction?, :end_interaction
+      
         # Optional. The collection of event names that trigger the intent. If the
         # collection of input contexts is not empty, all of the contexts must be present
         # in the active user session for an event to trigger this intent. Event names
@@ -5927,6 +7338,14 @@ module Google
         # @return [Boolean]
         attr_accessor :is_fallback
         alias_method :is_fallback?, :is_fallback
+      
+        # Optional. Indicates that a live agent should be brought in to handle the
+        # interaction with the user. In most cases, when you set this flag to true, you
+        # would also want to set end_interaction to true as well. Default is false.
+        # Corresponds to the JSON property `liveAgentHandoff`
+        # @return [Boolean]
+        attr_accessor :live_agent_handoff
+        alias_method :live_agent_handoff?, :live_agent_handoff
       
         # Optional. The collection of rich messages corresponding to the `Response`
         # field in the Dialogflow console.
@@ -6014,10 +7433,12 @@ module Google
           @action = args[:action] if args.key?(:action)
           @default_response_platforms = args[:default_response_platforms] if args.key?(:default_response_platforms)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @end_interaction = args[:end_interaction] if args.key?(:end_interaction)
           @events = args[:events] if args.key?(:events)
           @followup_intent_info = args[:followup_intent_info] if args.key?(:followup_intent_info)
           @input_context_names = args[:input_context_names] if args.key?(:input_context_names)
           @is_fallback = args[:is_fallback] if args.key?(:is_fallback)
+          @live_agent_handoff = args[:live_agent_handoff] if args.key?(:live_agent_handoff)
           @messages = args[:messages] if args.key?(:messages)
           @ml_disabled = args[:ml_disabled] if args.key?(:ml_disabled)
           @name = args[:name] if args.key?(:name)
@@ -7125,6 +8546,121 @@ module Google
         end
       end
       
+      # A knowledge base represents a collection of knowledge documents that you
+      # provide to Dialogflow. Your knowledge documents contain information that may
+      # be useful during conversations with end-users. Some Dialogflow features use
+      # knowledge bases when looking for a response to an end-user input. For more
+      # information, see the [knowledge base guide](https://cloud.google.com/
+      # dialogflow/docs/how/knowledge-bases). Note: The `projects.agent.knowledgeBases`
+      # resource is deprecated; only use `projects.knowledgeBases`.
+      class GoogleCloudDialogflowV2KnowledgeBase
+        include Google::Apis::Core::Hashable
+      
+        # Required. The display name of the knowledge base. The name must be 1024 bytes
+        # or less; otherwise, the creation request fails.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Language which represents the KnowledgeBase. When the KnowledgeBase is created/
+        # updated, expect this to be present for non en-us languages. When unspecified,
+        # the default language code en-us applies.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # The knowledge base resource name. The name must be empty when creating a
+        # knowledge base. Format: `projects//locations//knowledgeBases/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Metadata in google::longrunning::Operation for Knowledge operations.
+      class GoogleCloudDialogflowV2KnowledgeOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The current state of this operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Response message for AnswerRecords.ListAnswerRecords.
+      class GoogleCloudDialogflowV2ListAnswerRecordsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of answer records.
+        # Corresponds to the JSON property `answerRecords`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AnswerRecord>]
+        attr_accessor :answer_records
+      
+        # A token to retrieve next page of results. Or empty if there are no more
+        # results. Pass this value in the ListAnswerRecordsRequest.page_token field in
+        # the subsequent call to `ListAnswerRecords` method to retrieve the next page of
+        # results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_records = args[:answer_records] if args.key?(:answer_records)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response message for Conversations.ListCallMatchers.
+      class GoogleCloudDialogflowV2ListCallMatchersResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of call matchers. There is a maximum number of items returned based
+        # on the page_size field in the request.
+        # Corresponds to the JSON property `callMatchers`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2CallMatcher>]
+        attr_accessor :call_matchers
+      
+        # Token to retrieve the next page of results or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @call_matchers = args[:call_matchers] if args.key?(:call_matchers)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response message for Contexts.ListContexts.
       class GoogleCloudDialogflowV2ListContextsResponse
         include Google::Apis::Core::Hashable
@@ -7148,6 +8684,86 @@ module Google
         # Update properties of this object
         def update!(**args)
           @contexts = args[:contexts] if args.key?(:contexts)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response message for ConversationProfiles.ListConversationProfiles.
+      class GoogleCloudDialogflowV2ListConversationProfilesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of project conversation profiles. There is a maximum number of items
+        # returned based on the page_size field in the request.
+        # Corresponds to the JSON property `conversationProfiles`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConversationProfile>]
+        attr_accessor :conversation_profiles
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_profiles = args[:conversation_profiles] if args.key?(:conversation_profiles)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response message for Conversations.ListConversations.
+      class GoogleCloudDialogflowV2ListConversationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of conversations. There will be a maximum number of items returned
+        # based on the page_size field in the request.
+        # Corresponds to the JSON property `conversations`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Conversation>]
+        attr_accessor :conversations
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversations = args[:conversations] if args.key?(:conversations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for Documents.ListDocuments.
+      class GoogleCloudDialogflowV2ListDocumentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of documents.
+        # Corresponds to the JSON property `documents`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Document>]
+        attr_accessor :documents
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @documents = args[:documents] if args.key?(:documents)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -7233,6 +8849,87 @@ module Google
         end
       end
       
+      # Response message for KnowledgeBases.ListKnowledgeBases.
+      class GoogleCloudDialogflowV2ListKnowledgeBasesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of knowledge bases.
+        # Corresponds to the JSON property `knowledgeBases`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2KnowledgeBase>]
+        attr_accessor :knowledge_bases
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @knowledge_bases = args[:knowledge_bases] if args.key?(:knowledge_bases)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response message for Conversations.ListMessages.
+      class GoogleCloudDialogflowV2ListMessagesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of messages. There will be a maximum number of items returned based
+        # on the page_size field in the request. `messages` is sorted by `create_time`
+        # in descending order.
+        # Corresponds to the JSON property `messages`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Message>]
+        attr_accessor :messages
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @messages = args[:messages] if args.key?(:messages)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response message for Participants.ListParticipants.
+      class GoogleCloudDialogflowV2ListParticipantsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of participants. There is a maximum number of items returned based on
+        # the page_size field in the request.
+        # Corresponds to the JSON property `participants`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Participant>]
+        attr_accessor :participants
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @participants = args[:participants] if args.key?(:participants)
+        end
+      end
+      
       # The response message for SessionEntityTypes.ListSessionEntityTypes.
       class GoogleCloudDialogflowV2ListSessionEntityTypesResponse
         include Google::Apis::Core::Hashable
@@ -7257,6 +8954,27 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @session_entity_types = args[:session_entity_types] if args.key?(:session_entity_types)
+        end
+      end
+      
+      # Defines logging behavior for conversation lifecycle events.
+      class GoogleCloudDialogflowV2LoggingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether to log conversation events like CONVERSATION_STARTED to Stackdriver in
+        # the conversation project as JSON format ConversationEvent protos.
+        # Corresponds to the JSON property `enableStackdriverLogging`
+        # @return [Boolean]
+        attr_accessor :enable_stackdriver_logging
+        alias_method :enable_stackdriver_logging?, :enable_stackdriver_logging
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_stackdriver_logging = args[:enable_stackdriver_logging] if args.key?(:enable_stackdriver_logging)
         end
       end
       
@@ -7345,6 +9063,36 @@ module Google
         end
       end
       
+      # Defines notification behavior.
+      class GoogleCloudDialogflowV2NotificationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Format of message.
+        # Corresponds to the JSON property `messageFormat`
+        # @return [String]
+        attr_accessor :message_format
+      
+        # Name of the Pub/Sub topic to publish conversation events like
+        # CONVERSATION_STARTED as serialized ConversationEvent protos. Notification
+        # works for phone calls, if this topic either is in the same project as the
+        # conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com`
+        # the `Dialogflow Service Agent` role in the topic project. Format: `projects//
+        # locations//topics/`.
+        # Corresponds to the JSON property `topic`
+        # @return [String]
+        attr_accessor :topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message_format = args[:message_format] if args.key?(:message_format)
+          @topic = args[:topic] if args.key?(:topic)
+        end
+      end
+      
       # Represents the contents of the original request that was passed to the `[
       # Streaming]DetectIntent` call.
       class GoogleCloudDialogflowV2OriginalDetectIntentRequest
@@ -7385,6 +9133,34 @@ module Google
         end
       end
       
+      # Represents the natural language speech audio to be played to the end user.
+      class GoogleCloudDialogflowV2OutputAudio
+        include Google::Apis::Core::Hashable
+      
+        # The natural language speech audio.
+        # Corresponds to the JSON property `audio`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :audio
+      
+        # Instructs the speech synthesizer on how to generate the output audio content.
+        # If this audio config is supplied in a request, it overrides all existing text-
+        # to-speech settings applied to the agent.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2OutputAudioConfig]
+        attr_accessor :config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio = args[:audio] if args.key?(:audio)
+          @config = args[:config] if args.key?(:config)
+        end
+      end
+      
       # Instructs the speech synthesizer on how to generate the output audio content.
       # If this audio config is supplied in a request, it overrides all existing text-
       # to-speech settings applied to the agent.
@@ -7419,6 +9195,41 @@ module Google
           @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
           @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
           @synthesize_speech_config = args[:synthesize_speech_config] if args.key?(:synthesize_speech_config)
+        end
+      end
+      
+      # Represents a conversation participant (human agent, virtual agent, end-user).
+      class GoogleCloudDialogflowV2Participant
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The unique identifier of this participant. Format: `projects//
+        # locations//conversations//participants/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Immutable. The role this participant plays in the conversation. This field
+        # must be set during participant creation and is then immutable.
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        # Optional. Label applied to streams representing this participant in SIPREC XML
+        # metadata and SDP. This is used to assign transcriptions from that media stream
+        # to this participant. This field can be updated.
+        # Corresponds to the JSON property `sipRecordingMediaLabel`
+        # @return [String]
+        attr_accessor :sip_recording_media_label
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @role = args[:role] if args.key?(:role)
+          @sip_recording_media_label = args[:sip_recording_media_label] if args.key?(:sip_recording_media_label)
         end
       end
       
@@ -7693,6 +9504,27 @@ module Google
         end
       end
       
+      # Request message for Documents.ReloadDocument.
+      class GoogleCloudDialogflowV2ReloadDocumentRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The path of gcs source file for reloading document content. For now,
+        # only gcs uri is supported. For documents stored in Google Cloud Storage, these
+        # URIs must have the form `gs:///`.
+        # Corresponds to the JSON property `contentUri`
+        # @return [String]
+        attr_accessor :content_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_uri = args[:content_uri] if args.key?(:content_uri)
+        end
+      end
+      
       # The request message for Agents.RestoreAgent.
       class GoogleCloudDialogflowV2RestoreAgentRequest
         include Google::Apis::Core::Hashable
@@ -7898,6 +9730,211 @@ module Google
         def update!(**args)
           @boost = args[:boost] if args.key?(:boost)
           @phrases = args[:phrases] if args.key?(:phrases)
+        end
+      end
+      
+      # Configures speech transcription for ConversationProfile.
+      class GoogleCloudDialogflowV2SpeechToTextConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The speech model used in speech to text. `
+        # SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `
+        # USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and
+        # StreamingAnalyzeContentRequest request.
+        # Corresponds to the JSON property `speechModelVariant`
+        # @return [String]
+        attr_accessor :speech_model_variant
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @speech_model_variant = args[:speech_model_variant] if args.key?(:speech_model_variant)
+        end
+      end
+      
+      # The request message for Participants.SuggestArticles.
+      class GoogleCloudDialogflowV2SuggestArticlesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Max number of messages prior to and including latest_message to use as context
+        # when compiling the suggestion. By default 20 and at most 50.
+        # Corresponds to the JSON property `contextSize`
+        # @return [Fixnum]
+        attr_accessor :context_size
+      
+        # The name of the latest conversation message to compile suggestion for. If
+        # empty, it will be the latest message of the conversation. Format: `projects//
+        # locations//conversations//messages/`.
+        # Corresponds to the JSON property `latestMessage`
+        # @return [String]
+        attr_accessor :latest_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_size = args[:context_size] if args.key?(:context_size)
+          @latest_message = args[:latest_message] if args.key?(:latest_message)
+        end
+      end
+      
+      # The response message for Participants.SuggestArticles.
+      class GoogleCloudDialogflowV2SuggestArticlesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Articles ordered by score in descending order.
+        # Corresponds to the JSON property `articleAnswers`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ArticleAnswer>]
+        attr_accessor :article_answers
+      
+        # Number of messages prior to and including latest_message to compile the
+        # suggestion. It may be smaller than the SuggestArticlesRequest.context_size
+        # field in the request if there aren't that many messages in the conversation.
+        # Corresponds to the JSON property `contextSize`
+        # @return [Fixnum]
+        attr_accessor :context_size
+      
+        # The name of the latest conversation message used to compile suggestion for.
+        # Format: `projects//locations//conversations//messages/`.
+        # Corresponds to the JSON property `latestMessage`
+        # @return [String]
+        attr_accessor :latest_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @article_answers = args[:article_answers] if args.key?(:article_answers)
+          @context_size = args[:context_size] if args.key?(:context_size)
+          @latest_message = args[:latest_message] if args.key?(:latest_message)
+        end
+      end
+      
+      # The request message for Participants.SuggestFaqAnswers.
+      class GoogleCloudDialogflowV2SuggestFaqAnswersRequest
+        include Google::Apis::Core::Hashable
+      
+        # Max number of messages prior to and including [latest_message] to use as
+        # context when compiling the suggestion. By default 20 and at most 50.
+        # Corresponds to the JSON property `contextSize`
+        # @return [Fixnum]
+        attr_accessor :context_size
+      
+        # The name of the latest conversation message to compile suggestion for. If
+        # empty, it will be the latest message of the conversation. Format: `projects//
+        # locations//conversations//messages/`.
+        # Corresponds to the JSON property `latestMessage`
+        # @return [String]
+        attr_accessor :latest_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_size = args[:context_size] if args.key?(:context_size)
+          @latest_message = args[:latest_message] if args.key?(:latest_message)
+        end
+      end
+      
+      # The request message for Participants.SuggestFaqAnswers.
+      class GoogleCloudDialogflowV2SuggestFaqAnswersResponse
+        include Google::Apis::Core::Hashable
+      
+        # Number of messages prior to and including latest_message to compile the
+        # suggestion. It may be smaller than the SuggestFaqAnswersRequest.context_size
+        # field in the request if there aren't that many messages in the conversation.
+        # Corresponds to the JSON property `contextSize`
+        # @return [Fixnum]
+        attr_accessor :context_size
+      
+        # Answers extracted from FAQ documents.
+        # Corresponds to the JSON property `faqAnswers`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2FaqAnswer>]
+        attr_accessor :faq_answers
+      
+        # The name of the latest conversation message used to compile suggestion for.
+        # Format: `projects//locations//conversations//messages/`.
+        # Corresponds to the JSON property `latestMessage`
+        # @return [String]
+        attr_accessor :latest_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_size = args[:context_size] if args.key?(:context_size)
+          @faq_answers = args[:faq_answers] if args.key?(:faq_answers)
+          @latest_message = args[:latest_message] if args.key?(:latest_message)
+        end
+      end
+      
+      # The type of Human Agent Assistant API suggestion to perform, and the maximum
+      # number of results to return for that type. Multiple `Feature` objects can be
+      # specified in the `features` list.
+      class GoogleCloudDialogflowV2SuggestionFeature
+        include Google::Apis::Core::Hashable
+      
+        # Type of Human Agent Assistant API feature to request.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # One response of different type of suggestion response which is used in the
+      # response of Participants.AnalyzeContent and Participants.AnalyzeContent, as
+      # well as HumanAgentAssistantEvent.
+      class GoogleCloudDialogflowV2SuggestionResult
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::DialogflowV2::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # The response message for Participants.SuggestArticles.
+        # Corresponds to the JSON property `suggestArticlesResponse`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SuggestArticlesResponse]
+        attr_accessor :suggest_articles_response
+      
+        # The request message for Participants.SuggestFaqAnswers.
+        # Corresponds to the JSON property `suggestFaqAnswersResponse`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SuggestFaqAnswersResponse]
+        attr_accessor :suggest_faq_answers_response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @suggest_articles_response = args[:suggest_articles_response] if args.key?(:suggest_articles_response)
+          @suggest_faq_answers_response = args[:suggest_faq_answers_response] if args.key?(:suggest_faq_answers_response)
         end
       end
       
@@ -8212,6 +10249,89 @@ module Google
         end
       end
       
+      # Represents a part of a message possibly annotated with an entity. The part can
+      # be an entity or purely a part of the message between two entities or message
+      # start/end.
+      class GoogleCloudDialogflowV2beta1AnnotatedMessagePart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The [Dialogflow system entity type](https://cloud.google.com/
+        # dialogflow/docs/reference/system-entities) of this message part. If this is
+        # empty, Dialogflow could not annotate the phrase part with a system entity.
+        # Corresponds to the JSON property `entityType`
+        # @return [String]
+        attr_accessor :entity_type
+      
+        # Optional. The [Dialogflow system entity formatted value ](https://cloud.google.
+        # com/dialogflow/docs/reference/system-entities) of this message part. For
+        # example for a system entity of type `@sys.unit-currency`, this may contain: ` "
+        # amount": 5, "currency": "USD" `
+        # Corresponds to the JSON property `formattedValue`
+        # @return [Object]
+        attr_accessor :formatted_value
+      
+        # Required. A part of a message possibly annotated with an entity.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_type = args[:entity_type] if args.key?(:entity_type)
+          @formatted_value = args[:formatted_value] if args.key?(:formatted_value)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Represents article answer.
+      class GoogleCloudDialogflowV2beta1ArticleAnswer
+        include Google::Apis::Core::Hashable
+      
+        # The name of answer record, in the format of "projects//locations//
+        # answerRecords/"
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
+      
+        # A map that contains metadata about the answer and the document from which it
+        # originates.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
+        # Output only. Article snippets.
+        # Corresponds to the JSON property `snippets`
+        # @return [Array<String>]
+        attr_accessor :snippets
+      
+        # The article title.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # The article URI.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @snippets = args[:snippets] if args.key?(:snippets)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # The response message for EntityTypes.BatchUpdateEntityTypes.
       class GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse
         include Google::Apis::Core::Hashable
@@ -8309,6 +10429,50 @@ module Google
           @lifespan_count = args[:lifespan_count] if args.key?(:lifespan_count)
           @name = args[:name] if args.key?(:name)
           @parameters = args[:parameters] if args.key?(:parameters)
+        end
+      end
+      
+      # Represents a notification sent to Pub/Sub subscribers for conversation
+      # lifecycle events.
+      class GoogleCloudDialogflowV2beta1ConversationEvent
+        include Google::Apis::Core::Hashable
+      
+        # Required. The unique identifier of the conversation this notification refers
+        # to. Format: `projects//conversations/`.
+        # Corresponds to the JSON property `conversation`
+        # @return [String]
+        attr_accessor :conversation
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `errorStatus`
+        # @return [Google::Apis::DialogflowV2::GoogleRpcStatus]
+        attr_accessor :error_status
+      
+        # Represents a message posted into a conversation.
+        # Corresponds to the JSON property `newMessagePayload`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1Message]
+        attr_accessor :new_message_payload
+      
+        # Required. The type of the event that this notification refers to.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation = args[:conversation] if args.key?(:conversation)
+          @error_status = args[:error_status] if args.key?(:error_status)
+          @new_message_payload = args[:new_message_payload] if args.key?(:new_message_payload)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -8477,6 +10641,117 @@ module Google
         end
       end
       
+      # Represents answer from "frequently asked questions".
+      class GoogleCloudDialogflowV2beta1FaqAnswer
+        include Google::Apis::Core::Hashable
+      
+        # The piece of text from the `source` knowledge base document.
+        # Corresponds to the JSON property `answer`
+        # @return [String]
+        attr_accessor :answer
+      
+        # The name of answer record, in the format of "projects//locations//
+        # answerRecords/"
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
+      
+        # The system's confidence score that this Knowledge answer is a good match for
+        # this conversational query, range from 0.0 (completely uncertain) to 1.0 (
+        # completely certain).
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # A map that contains metadata about the answer and the document from which it
+        # originates.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
+        # The corresponding FAQ question.
+        # Corresponds to the JSON property `question`
+        # @return [String]
+        attr_accessor :question
+      
+        # Indicates which Knowledge Document this answer was extracted from. Format: `
+        # projects//locations//agent/knowledgeBases//documents/`.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer = args[:answer] if args.key?(:answer)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @question = args[:question] if args.key?(:question)
+          @source = args[:source] if args.key?(:source)
+        end
+      end
+      
+      # Output only. Represents a notification sent to Pub/Sub subscribers for agent
+      # assistant events in a specific conversation.
+      class GoogleCloudDialogflowV2beta1HumanAgentAssistantEvent
+        include Google::Apis::Core::Hashable
+      
+        # The conversation this notification refers to. Format: `projects//conversations/
+        # `.
+        # Corresponds to the JSON property `conversation`
+        # @return [String]
+        attr_accessor :conversation
+      
+        # The participant that the suggestion is compiled for. And This field is used to
+        # call Participants.ListSuggestions API. Format: `projects//conversations//
+        # participants/`. It will not be set in legacy workflow.
+        # HumanAgentAssistantConfig.name for more information.
+        # Corresponds to the JSON property `participant`
+        # @return [String]
+        attr_accessor :participant
+      
+        # The suggestion results payload that this notification refers to. It will only
+        # be set when HumanAgentAssistantConfig.SuggestionConfig.
+        # group_suggestion_responses sets to true.
+        # Corresponds to the JSON property `suggestionResults`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1SuggestionResult>]
+        attr_accessor :suggestion_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation = args[:conversation] if args.key?(:conversation)
+          @participant = args[:participant] if args.key?(:participant)
+          @suggestion_results = args[:suggestion_results] if args.key?(:suggestion_results)
+        end
+      end
+      
+      # Response message for Documents.ImportDocuments.
+      class GoogleCloudDialogflowV2beta1ImportDocumentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Includes details about skipped documents or any other warnings.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleRpcStatus>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
       # An intent categorizes an end-user's intention for one conversation turn. For
       # each agent, you define many intents, where your combined intents can handle a
       # complete conversation. When an end-user writes or says something, referred to
@@ -8538,6 +10813,14 @@ module Google
         # @return [Boolean]
         attr_accessor :is_fallback
         alias_method :is_fallback?, :is_fallback
+      
+        # Optional. Indicates that a live agent should be brought in to handle the
+        # interaction with the user. In most cases, when you set this flag to true, you
+        # would also want to set end_interaction to true as well. Default is false.
+        # Corresponds to the JSON property `liveAgentHandoff`
+        # @return [Boolean]
+        attr_accessor :live_agent_handoff
+        alias_method :live_agent_handoff?, :live_agent_handoff
       
         # Optional. The collection of rich messages corresponding to the `Response`
         # field in the Dialogflow console.
@@ -8643,6 +10926,7 @@ module Google
           @followup_intent_info = args[:followup_intent_info] if args.key?(:followup_intent_info)
           @input_context_names = args[:input_context_names] if args.key?(:input_context_names)
           @is_fallback = args[:is_fallback] if args.key?(:is_fallback)
+          @live_agent_handoff = args[:live_agent_handoff] if args.key?(:live_agent_handoff)
           @messages = args[:messages] if args.key?(:messages)
           @ml_disabled = args[:ml_disabled] if args.key?(:ml_disabled)
           @ml_enabled = args[:ml_enabled] if args.key?(:ml_enabled)
@@ -10285,6 +12569,110 @@ module Google
         end
       end
       
+      # Represents a message posted into a conversation.
+      class GoogleCloudDialogflowV2beta1Message
+        include Google::Apis::Core::Hashable
+      
+        # Required. The message content.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # Output only. The time when the message was created in Contact Center AI.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The message language. This should be a [BCP-47](https://www.rfc-
+        # editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Represents the result of annotation for the message.
+        # Corresponds to the JSON property `messageAnnotation`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1MessageAnnotation]
+        attr_accessor :message_annotation
+      
+        # Optional. The unique identifier of the message. Format: `projects//locations//
+        # conversations//messages/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The participant that sends this message.
+        # Corresponds to the JSON property `participant`
+        # @return [String]
+        attr_accessor :participant
+      
+        # Output only. The role of the participant.
+        # Corresponds to the JSON property `participantRole`
+        # @return [String]
+        attr_accessor :participant_role
+      
+        # Optional. The time when the message was sent.
+        # Corresponds to the JSON property `sendTime`
+        # @return [String]
+        attr_accessor :send_time
+      
+        # The result of sentiment analysis. Sentiment analysis inspects user input and
+        # identifies the prevailing subjective opinion, especially to determine a user's
+        # attitude as positive, negative, or neutral. For Participants.DetectIntent, it
+        # needs to be configured in DetectIntentRequest.query_params. For Participants.
+        # StreamingDetectIntent, it needs to be configured in
+        # StreamingDetectIntentRequest.query_params. And for Participants.AnalyzeContent
+        # and Participants.StreamingAnalyzeContent, it needs to be configured in
+        # ConversationProfile.human_agent_assistant_config
+        # Corresponds to the JSON property `sentimentAnalysis`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1SentimentAnalysisResult]
+        attr_accessor :sentiment_analysis
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @message_annotation = args[:message_annotation] if args.key?(:message_annotation)
+          @name = args[:name] if args.key?(:name)
+          @participant = args[:participant] if args.key?(:participant)
+          @participant_role = args[:participant_role] if args.key?(:participant_role)
+          @send_time = args[:send_time] if args.key?(:send_time)
+          @sentiment_analysis = args[:sentiment_analysis] if args.key?(:sentiment_analysis)
+        end
+      end
+      
+      # Represents the result of annotation for the message.
+      class GoogleCloudDialogflowV2beta1MessageAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # Required. Indicates whether the text message contains entities.
+        # Corresponds to the JSON property `containEntities`
+        # @return [Boolean]
+        attr_accessor :contain_entities
+        alias_method :contain_entities?, :contain_entities
+      
+        # Optional. The collection of annotated message parts ordered by their position
+        # in the message. You can recover the annotated message by concatenating [
+        # AnnotatedMessagePart.text].
+        # Corresponds to the JSON property `parts`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1AnnotatedMessagePart>]
+        attr_accessor :parts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contain_entities = args[:contain_entities] if args.key?(:contain_entities)
+          @parts = args[:parts] if args.key?(:parts)
+        end
+      end
+      
       # Represents the contents of the original request that was passed to the `[
       # Streaming]DetectIntent` call.
       class GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest
@@ -10585,6 +12973,188 @@ module Google
         end
       end
       
+      # Represents a smart reply answer.
+      class GoogleCloudDialogflowV2beta1SmartReplyAnswer
+        include Google::Apis::Core::Hashable
+      
+        # The name of answer record, in the format of "projects//locations//
+        # answerRecords/"
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
+      
+        # Smart reply confidence. The system's confidence score that this reply is a
+        # good match for this conversation, as a value from 0.0 (completely uncertain)
+        # to 1.0 (completely certain).
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # The content of the reply.
+        # Corresponds to the JSON property `reply`
+        # @return [String]
+        attr_accessor :reply
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @reply = args[:reply] if args.key?(:reply)
+        end
+      end
+      
+      # The response message for Participants.SuggestArticles.
+      class GoogleCloudDialogflowV2beta1SuggestArticlesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Articles ordered by score in descending order.
+        # Corresponds to the JSON property `articleAnswers`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1ArticleAnswer>]
+        attr_accessor :article_answers
+      
+        # Number of messages prior to and including latest_message to compile the
+        # suggestion. It may be smaller than the SuggestArticlesResponse.context_size
+        # field in the request if there aren't that many messages in the conversation.
+        # Corresponds to the JSON property `contextSize`
+        # @return [Fixnum]
+        attr_accessor :context_size
+      
+        # The name of the latest conversation message used to compile suggestion for.
+        # Format: `projects//locations//conversations//messages/`.
+        # Corresponds to the JSON property `latestMessage`
+        # @return [String]
+        attr_accessor :latest_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @article_answers = args[:article_answers] if args.key?(:article_answers)
+          @context_size = args[:context_size] if args.key?(:context_size)
+          @latest_message = args[:latest_message] if args.key?(:latest_message)
+        end
+      end
+      
+      # The request message for Participants.SuggestFaqAnswers.
+      class GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse
+        include Google::Apis::Core::Hashable
+      
+        # Number of messages prior to and including latest_message to compile the
+        # suggestion. It may be smaller than the SuggestFaqAnswersRequest.context_size
+        # field in the request if there aren't that many messages in the conversation.
+        # Corresponds to the JSON property `contextSize`
+        # @return [Fixnum]
+        attr_accessor :context_size
+      
+        # Output only. Answers extracted from FAQ documents.
+        # Corresponds to the JSON property `faqAnswers`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1FaqAnswer>]
+        attr_accessor :faq_answers
+      
+        # The name of the latest conversation message used to compile suggestion for.
+        # Format: `projects//locations//conversations//messages/`.
+        # Corresponds to the JSON property `latestMessage`
+        # @return [String]
+        attr_accessor :latest_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_size = args[:context_size] if args.key?(:context_size)
+          @faq_answers = args[:faq_answers] if args.key?(:faq_answers)
+          @latest_message = args[:latest_message] if args.key?(:latest_message)
+        end
+      end
+      
+      # The response message for Participants.SuggestSmartReplies.
+      class GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Number of messages prior to and including latest_message to compile the
+        # suggestion. It may be smaller than the SuggestSmartRepliesRequest.context_size
+        # field in the request if there aren't that many messages in the conversation.
+        # Corresponds to the JSON property `contextSize`
+        # @return [Fixnum]
+        attr_accessor :context_size
+      
+        # The name of the latest conversation message used to compile suggestion for.
+        # Format: `projects//locations//conversations//messages/`.
+        # Corresponds to the JSON property `latestMessage`
+        # @return [String]
+        attr_accessor :latest_message
+      
+        # Output only. Multiple reply options provided by smart reply service. The order
+        # is based on the rank of the model prediction. The maximum number of the
+        # returned replies is set in SmartReplyConfig.
+        # Corresponds to the JSON property `smartReplyAnswers`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1SmartReplyAnswer>]
+        attr_accessor :smart_reply_answers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_size = args[:context_size] if args.key?(:context_size)
+          @latest_message = args[:latest_message] if args.key?(:latest_message)
+          @smart_reply_answers = args[:smart_reply_answers] if args.key?(:smart_reply_answers)
+        end
+      end
+      
+      # One response of different type of suggestion response which is used in the
+      # response of Participants.AnalyzeContent and Participants.AnalyzeContent, as
+      # well as HumanAgentAssistantEvent.
+      class GoogleCloudDialogflowV2beta1SuggestionResult
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::DialogflowV2::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # The response message for Participants.SuggestArticles.
+        # Corresponds to the JSON property `suggestArticlesResponse`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1SuggestArticlesResponse]
+        attr_accessor :suggest_articles_response
+      
+        # The request message for Participants.SuggestFaqAnswers.
+        # Corresponds to the JSON property `suggestFaqAnswersResponse`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse]
+        attr_accessor :suggest_faq_answers_response
+      
+        # The response message for Participants.SuggestSmartReplies.
+        # Corresponds to the JSON property `suggestSmartRepliesResponse`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse]
+        attr_accessor :suggest_smart_replies_response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @suggest_articles_response = args[:suggest_articles_response] if args.key?(:suggest_articles_response)
+          @suggest_faq_answers_response = args[:suggest_faq_answers_response] if args.key?(:suggest_faq_answers_response)
+          @suggest_smart_replies_response = args[:suggest_smart_replies_response] if args.key?(:suggest_smart_replies_response)
+        end
+      end
+      
       # The request message for a webhook call.
       class GoogleCloudDialogflowV2beta1WebhookRequest
         include Google::Apis::Core::Hashable
@@ -10675,6 +13245,14 @@ module Google
         # @return [String]
         attr_accessor :fulfillment_text
       
+        # Indicates that a live agent should be brought in to handle the interaction
+        # with the user. In most cases, when you set this flag to true, you would also
+        # want to set end_interaction to true as well. Default is false.
+        # Corresponds to the JSON property `liveAgentHandoff`
+        # @return [Boolean]
+        attr_accessor :live_agent_handoff
+        alias_method :live_agent_handoff?, :live_agent_handoff
+      
         # Optional. The collection of output contexts that will overwrite currently
         # active contexts for the session and reset their lifespans. When provided,
         # Dialogflow uses this field to populate QueryResult.output_contexts sent to the
@@ -10721,6 +13299,7 @@ module Google
           @followup_event_input = args[:followup_event_input] if args.key?(:followup_event_input)
           @fulfillment_messages = args[:fulfillment_messages] if args.key?(:fulfillment_messages)
           @fulfillment_text = args[:fulfillment_text] if args.key?(:fulfillment_text)
+          @live_agent_handoff = args[:live_agent_handoff] if args.key?(:live_agent_handoff)
           @output_contexts = args[:output_contexts] if args.key?(:output_contexts)
           @payload = args[:payload] if args.key?(:payload)
           @session_entity_types = args[:session_entity_types] if args.key?(:session_entity_types)
