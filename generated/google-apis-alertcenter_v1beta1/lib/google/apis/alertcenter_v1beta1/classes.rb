@@ -47,7 +47,21 @@ module Google
         end
       end
       
-      # Alerts from G Suite Security Center rules service configured by admin.
+      # Metadata related to the action.
+      class ActionInfo
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Alerts from Google Workspace Security Center rules service configured by an
+      # admin.
       class ActivityRule
         include Google::Apis::Core::Hashable
       
@@ -702,8 +716,8 @@ module Google
       class DlpRuleViolation
         include Google::Apis::Core::Hashable
       
-        # Common alert information about violated rules that are configured by G Suite
-        # administrators.
+        # Common alert information about violated rules that are configured by Google
+        # Workspace administrators.
         # Corresponds to the JSON property `ruleViolationInfo`
         # @return [Google::Apis::AlertcenterV1beta1::RuleViolationInfo]
         attr_accessor :rule_violation_info
@@ -841,7 +855,7 @@ module Google
         end
       end
       
-      # An incident reported by Google Operations for a G Suite application.
+      # An incident reported by Google Operations for a Google Workspace application.
       class GoogleOperations
         include Google::Apis::Core::Hashable
       
@@ -861,7 +875,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # A header to display above the incident message. Typcially used to attach a
+        # A header to display above the incident message. Typically used to attach a
         # localized notice on the timeline for followup comms translations.
         # Corresponds to the JSON property `header`
         # @return [String]
@@ -1227,8 +1241,8 @@ module Google
         end
       end
       
-      # Common alert information about violated rules that are configured by G Suite
-      # administrators.
+      # Common alert information about violated rules that are configured by Google
+      # Workspace administrators.
       class RuleViolationInfo
         include Google::Apis::Core::Hashable
       
@@ -1271,6 +1285,11 @@ module Google
         # @return [String]
         attr_accessor :trigger
       
+        # Metadata related to the triggered actions.
+        # Corresponds to the JSON property `triggeredActionInfo`
+        # @return [Array<Google::Apis::AlertcenterV1beta1::ActionInfo>]
+        attr_accessor :triggered_action_info
+      
         # Actions applied as a consequence of the rule being triggered.
         # Corresponds to the JSON property `triggeredActionTypes`
         # @return [Array<String>]
@@ -1295,6 +1314,7 @@ module Google
           @rule_info = args[:rule_info] if args.key?(:rule_info)
           @suppressed_action_types = args[:suppressed_action_types] if args.key?(:suppressed_action_types)
           @trigger = args[:trigger] if args.key?(:trigger)
+          @triggered_action_info = args[:triggered_action_info] if args.key?(:triggered_action_info)
           @triggered_action_types = args[:triggered_action_types] if args.key?(:triggered_action_types)
           @triggering_user_email = args[:triggering_user_email] if args.key?(:triggering_user_email)
         end

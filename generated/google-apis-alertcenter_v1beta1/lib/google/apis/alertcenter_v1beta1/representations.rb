@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ActionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ActivityRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -292,6 +298,12 @@ module Google
           property :email, as: 'email'
           property :login_details, as: 'loginDetails', class: Google::Apis::AlertcenterV1beta1::LoginDetails, decorator: Google::Apis::AlertcenterV1beta1::LoginDetails::Representation
       
+        end
+      end
+      
+      class ActionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -647,6 +659,8 @@ module Google
       
           collection :suppressed_action_types, as: 'suppressedActionTypes'
           property :trigger, as: 'trigger'
+          collection :triggered_action_info, as: 'triggeredActionInfo', class: Google::Apis::AlertcenterV1beta1::ActionInfo, decorator: Google::Apis::AlertcenterV1beta1::ActionInfo::Representation
+      
           collection :triggered_action_types, as: 'triggeredActionTypes'
           property :triggering_user_email, as: 'triggeringUserEmail'
         end
