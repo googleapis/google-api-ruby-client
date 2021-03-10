@@ -712,6 +712,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StandardSqlTableType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Streamingbuffer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1647,6 +1653,7 @@ module Google
           collection :connection_properties, as: 'connectionProperties', class: Google::Apis::BigqueryV2::ConnectionProperty, decorator: Google::Apis::BigqueryV2::ConnectionProperty::Representation
       
           property :create_disposition, as: 'createDisposition'
+          property :create_session, as: 'createSession'
           property :default_dataset, as: 'defaultDataset', class: Google::Apis::BigqueryV2::DatasetReference, decorator: Google::Apis::BigqueryV2::DatasetReference::Representation
       
           property :destination_encryption_configuration, as: 'destinationEncryptionConfiguration', class: Google::Apis::BigqueryV2::EncryptionConfiguration, decorator: Google::Apis::BigqueryV2::EncryptionConfiguration::Representation
@@ -1902,6 +1909,7 @@ module Google
       class Model
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :best_trial_id, :numeric_string => true, as: 'bestTrialId'
           property :creation_time, :numeric_string => true, as: 'creationTime'
           property :description, as: 'description'
           property :encryption_configuration, as: 'encryptionConfiguration', class: Google::Apis::BigqueryV2::EncryptionConfiguration, decorator: Google::Apis::BigqueryV2::EncryptionConfiguration::Representation
@@ -2071,6 +2079,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :connection_properties, as: 'connectionProperties', class: Google::Apis::BigqueryV2::ConnectionProperty, decorator: Google::Apis::BigqueryV2::ConnectionProperty::Representation
       
+          property :create_session, as: 'createSession'
           property :default_dataset, as: 'defaultDataset', class: Google::Apis::BigqueryV2::DatasetReference, decorator: Google::Apis::BigqueryV2::DatasetReference::Representation
       
           property :dry_run, as: 'dryRun'
@@ -2175,6 +2184,8 @@ module Google
           collection :imported_libraries, as: 'importedLibraries'
           property :language, as: 'language'
           property :last_modified_time, :numeric_string => true, as: 'lastModifiedTime'
+          property :return_table_type, as: 'returnTableType', class: Google::Apis::BigqueryV2::StandardSqlTableType, decorator: Google::Apis::BigqueryV2::StandardSqlTableType::Representation
+      
           property :return_type, as: 'returnType', class: Google::Apis::BigqueryV2::StandardSqlDataType, decorator: Google::Apis::BigqueryV2::StandardSqlDataType::Representation
       
           property :routine_reference, as: 'routineReference', class: Google::Apis::BigqueryV2::RoutineReference, decorator: Google::Apis::BigqueryV2::RoutineReference::Representation
@@ -2294,6 +2305,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :fields, as: 'fields', class: Google::Apis::BigqueryV2::StandardSqlField, decorator: Google::Apis::BigqueryV2::StandardSqlField::Representation
+      
+        end
+      end
+      
+      class StandardSqlTableType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :columns, as: 'columns', class: Google::Apis::BigqueryV2::StandardSqlField, decorator: Google::Apis::BigqueryV2::StandardSqlField::Representation
       
         end
       end

@@ -3323,6 +3323,14 @@ module Google
         # @return [String]
         attr_accessor :create_disposition
       
+        # If true, creates a new session, where session id will be a server generated
+        # random id. If false, runs query with an existing session_id passed in
+        # ConnectionProperty, otherwise runs query in non-session mode.
+        # Corresponds to the JSON property `createSession`
+        # @return [Boolean]
+        attr_accessor :create_session
+        alias_method :create_session?, :create_session
+      
         # [Optional] Specifies the default dataset to use for unqualified table names in
         # the query. Note that this does not alter behavior of unqualified dataset names.
         # Corresponds to the JSON property `defaultDataset`
@@ -3472,6 +3480,7 @@ module Google
           @clustering = args[:clustering] if args.key?(:clustering)
           @connection_properties = args[:connection_properties] if args.key?(:connection_properties)
           @create_disposition = args[:create_disposition] if args.key?(:create_disposition)
+          @create_session = args[:create_session] if args.key?(:create_session)
           @default_dataset = args[:default_dataset] if args.key?(:default_dataset)
           @destination_encryption_configuration = args[:destination_encryption_configuration] if args.key?(:destination_encryption_configuration)
           @destination_table = args[:destination_table] if args.key?(:destination_table)
@@ -4344,6 +4353,11 @@ module Google
       class Model
         include Google::Apis::Core::Hashable
       
+        # The best trial_id across all training runs.
+        # Corresponds to the JSON property `bestTrialId`
+        # @return [Fixnum]
+        attr_accessor :best_trial_id
+      
         # Output only. The time when this model was created, in millisecs since the
         # epoch.
         # Corresponds to the JSON property `creationTime`
@@ -4436,6 +4450,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @best_trial_id = args[:best_trial_id] if args.key?(:best_trial_id)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @description = args[:description] if args.key?(:description)
           @encryption_configuration = args[:encryption_configuration] if args.key?(:encryption_configuration)
@@ -4976,6 +4991,14 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::ConnectionProperty>]
         attr_accessor :connection_properties
       
+        # If true, creates a new session, where session id will be a server generated
+        # random id. If false, runs query with an existing session_id passed in
+        # ConnectionProperty, otherwise runs query in non-session mode.
+        # Corresponds to the JSON property `createSession`
+        # @return [Boolean]
+        attr_accessor :create_session
+        alias_method :create_session?, :create_session
+      
         # [Optional] Specifies the default datasetId and projectId to assume for any
         # unqualified table names in the query. If not set, all table names in the query
         # string must be qualified in the format 'datasetId.tableId'.
@@ -5110,6 +5133,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @connection_properties = args[:connection_properties] if args.key?(:connection_properties)
+          @create_session = args[:create_session] if args.key?(:create_session)
           @default_dataset = args[:default_dataset] if args.key?(:default_dataset)
           @dry_run = args[:dry_run] if args.key?(:dry_run)
           @kind = args[:kind] if args.key?(:kind)
@@ -5475,6 +5499,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :last_modified_time
       
+        # A table type
+        # Corresponds to the JSON property `returnTableType`
+        # @return [Google::Apis::BigqueryV2::StandardSqlTableType]
+        attr_accessor :return_table_type
+      
         # The type of a variable, e.g., a function argument. Examples: INT64: `type_kind=
         # "INT64"` ARRAY: `type_kind="ARRAY", array_element_type="STRING"` STRUCT>: `
         # type_kind="STRUCT", struct_type=`fields=[ `name="x", type=`type_kind="STRING"``
@@ -5508,6 +5537,7 @@ module Google
           @imported_libraries = args[:imported_libraries] if args.key?(:imported_libraries)
           @language = args[:language] if args.key?(:language)
           @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
+          @return_table_type = args[:return_table_type] if args.key?(:return_table_type)
           @return_type = args[:return_type] if args.key?(:return_type)
           @routine_reference = args[:routine_reference] if args.key?(:routine_reference)
           @routine_type = args[:routine_type] if args.key?(:routine_type)
@@ -5917,6 +5947,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @fields = args[:fields] if args.key?(:fields)
+        end
+      end
+      
+      # A table type
+      class StandardSqlTableType
+        include Google::Apis::Core::Hashable
+      
+        # The columns in this table type
+        # Corresponds to the JSON property `columns`
+        # @return [Array<Google::Apis::BigqueryV2::StandardSqlField>]
+        attr_accessor :columns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @columns = args[:columns] if args.key?(:columns)
         end
       end
       
