@@ -163,6 +163,28 @@ module Google
         end
       end
       
+      # Specifies how metastore metadata should be integrated with the Data Catalog
+      # service.
+      class DataCatalogConfig
+        include Google::Apis::Core::Hashable
+      
+        # Defines whether the metastore metadata should be synced to Data Catalog. The
+        # default value is to disable syncing metastore metadata to Data Catalog.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # A specification of the location of and metadata about a database dump from a
       # relational database management system.
       class DatabaseDump
@@ -717,12 +739,19 @@ module Google
       class MetadataIntegration
         include Google::Apis::Core::Hashable
       
+        # Specifies how metastore metadata should be integrated with the Data Catalog
+        # service.
+        # Corresponds to the JSON property `dataCatalogConfig`
+        # @return [Google::Apis::MetastoreV1beta::DataCatalogConfig]
+        attr_accessor :data_catalog_config
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @data_catalog_config = args[:data_catalog_config] if args.key?(:data_catalog_config)
         end
       end
       
