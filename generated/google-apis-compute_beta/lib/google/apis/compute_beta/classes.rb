@@ -636,7 +636,7 @@ module Google
         # @return [String]
         attr_accessor :network_tier
       
-        # The prefix length if the resource reprensents an IP range.
+        # The prefix length if the resource represents an IP range.
         # Corresponds to the JSON property `prefixLength`
         # @return [Fixnum]
         attr_accessor :prefix_length
@@ -649,7 +649,7 @@ module Google
         # - `NAT_AUTO` for addresses that are external IP addresses automatically
         # reserved for Cloud NAT.
         # - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are
-        # reserved for a VLAN attachment in an IPsec encrypted Interconnect
+        # reserved for a VLAN attachment in an IPsec-encrypted Cloud Interconnect
         # configuration. These addresses are regional resources.
         # Corresponds to the JSON property `purpose`
         # @return [String]
@@ -3304,6 +3304,11 @@ module Google
         # @return [String]
         attr_accessor :session_affinity
       
+        # Subsetting options to make L4 ILB support any number of backend instances
+        # Corresponds to the JSON property `subsetting`
+        # @return [Google::Apis::ComputeBeta::Subsetting]
+        attr_accessor :subsetting
+      
         # The backend service timeout has a different meaning depending on the type of
         # load balancer. For more information see,  Backend service settings The default
         # is 30 seconds. The full range of timeout values allowed is 1 - 2,147,483,647
@@ -3350,6 +3355,7 @@ module Google
           @security_settings = args[:security_settings] if args.key?(:security_settings)
           @self_link = args[:self_link] if args.key?(:self_link)
           @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
+          @subsetting = args[:subsetting] if args.key?(:subsetting)
           @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
         end
       end
@@ -8357,6 +8363,8 @@ module Google
         # ip_address_specifications).
         # Must be set to `0.0.0.0` when the target is targetGrpcProxy that has
         # validateForProxyless field set to true.
+        # For Private Service Connect forwarding rules that forward traffic to Google
+        # APIs, IP address must be provided.
         # Corresponds to the JSON property `IPAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -8529,6 +8537,8 @@ module Google
         # For Internal TCP/UDP Load Balancing, this field identifies the network that
         # the load balanced IP should belong to for this Forwarding Rule. If this field
         # is not specified, the default network will be used.
+        # For Private Service Connect forwarding rules that forward traffic to Google
+        # APIs, a network must be provided.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -8633,12 +8643,7 @@ module Google
         # @return [String]
         attr_accessor :subnetwork
       
-        # The URL of the target resource to receive the matched traffic. For regional
-        # forwarding rules, this target must be in the same region as the forwarding
-        # rule. For global forwarding rules, this target must be a global load balancing
-        # resource. The forwarded traffic must be of a type appropriate to the target
-        # object. For more information, see the "Target" column in [Port specifications](
-        # /load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+        # 
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -12470,6 +12475,11 @@ module Google
         # @return [Google::Apis::ComputeBeta::NetworkPerformanceConfig]
         attr_accessor :network_performance_config
       
+        # PostKeyRevocationActionType of the instance.
+        # Corresponds to the JSON property `postKeyRevocationActionType`
+        # @return [String]
+        attr_accessor :post_key_revocation_action_type
+      
         # The private IPv6 google access type for the VM. If not specified, use
         # INHERIT_FROM_SUBNETWORK as default.
         # Corresponds to the JSON property `privateIpv6GoogleAccess`
@@ -12538,7 +12548,8 @@ module Google
         # @return [String]
         attr_accessor :source_machine_image
       
-        # Source GMI encryption key when creating an instance from GMI.
+        # Source machine image encryption key when creating an instance from a machine
+        # image.
         # Corresponds to the JSON property `sourceMachineImageEncryptionKey`
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :source_machine_image_encryption_key
@@ -12607,6 +12618,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
           @network_performance_config = args[:network_performance_config] if args.key?(:network_performance_config)
+          @post_key_revocation_action_type = args[:post_key_revocation_action_type] if args.key?(:post_key_revocation_action_type)
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
@@ -20370,8 +20382,9 @@ module Google
       
         # Fingerprint hash of contents stored in this network interface. This field will
         # be ignored when inserting an Instance or adding a NetworkInterface. An up-to-
-        # date fingerprint must be provided in order to update the NetworkInterface,
-        # otherwise the request will fail with error 412 conditionNotMet.
+        # date fingerprint must be provided in order to update the NetworkInterface. The
+        # request will fail with error 400 Bad Request if the fingerprint is not
+        # provided, or 412 Precondition Failed if the fingerprint is out of date.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -34194,6 +34207,25 @@ module Google
         end
       end
       
+      # Subsetting options to make L4 ILB support any number of backend instances
+      class Subsetting
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
       # 
       class TcpHealthCheck
         include Google::Apis::Core::Hashable
@@ -35143,6 +35175,17 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Fingerprint of this resource. A hash of the contents stored in this object.
+        # This field is used in optimistic locking. This field will be ignored when
+        # inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in
+        # order to patch the TargetHttpsProxy; otherwise, the request will fail with
+        # error 412 conditionNotMet. To see the latest fingerprint, make a get() request
+        # to retrieve the TargetHttpsProxy.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
         # URLs to networkservices.HttpFilter resources enabled for xDS clients using
         # this configuration. For example, https://networkservices.googleapis.com/beta/
         # projects/project/locations/locationhttpFilters/httpFilter Only filters that
@@ -35262,6 +35305,7 @@ module Google
           @authorization_policy = args[:authorization_policy] if args.key?(:authorization_policy)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @http_filters = args[:http_filters] if args.key?(:http_filters)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
