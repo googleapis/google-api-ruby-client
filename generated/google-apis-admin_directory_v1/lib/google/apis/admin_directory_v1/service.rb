@@ -617,6 +617,301 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates printers under given Organization Unit.
+        # @param [String] parent
+        #   Required. The name of the customer. Format: customers/`customer_id`
+        # @param [Google::Apis::AdminDirectoryV1::BatchCreatePrintersRequest] batch_create_printers_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdminDirectoryV1::BatchCreatePrintersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdminDirectoryV1::BatchCreatePrintersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_create_printers(parent, batch_create_printers_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'admin/directory/v1/{+parent}/chrome/printers:batchCreatePrinters', options)
+          command.request_representation = Google::Apis::AdminDirectoryV1::BatchCreatePrintersRequest::Representation
+          command.request_object = batch_create_printers_request_object
+          command.response_representation = Google::Apis::AdminDirectoryV1::BatchCreatePrintersResponse::Representation
+          command.response_class = Google::Apis::AdminDirectoryV1::BatchCreatePrintersResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes printers in batch.
+        # @param [String] parent
+        #   Required. The name of the customer. Format: customers/`customer_id`
+        # @param [Google::Apis::AdminDirectoryV1::BatchDeletePrintersRequest] batch_delete_printers_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdminDirectoryV1::BatchDeletePrintersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdminDirectoryV1::BatchDeletePrintersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_delete_printers(parent, batch_delete_printers_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'admin/directory/v1/{+parent}/chrome/printers:batchDeletePrinters', options)
+          command.request_representation = Google::Apis::AdminDirectoryV1::BatchDeletePrintersRequest::Representation
+          command.request_object = batch_delete_printers_request_object
+          command.response_representation = Google::Apis::AdminDirectoryV1::BatchDeletePrintersResponse::Representation
+          command.response_class = Google::Apis::AdminDirectoryV1::BatchDeletePrintersResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a printer under given Organization Unit.
+        # @param [String] parent
+        #   Required. The name of the customer. Format: customers/`customer_id`
+        # @param [Google::Apis::AdminDirectoryV1::Printer] printer_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdminDirectoryV1::Printer] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdminDirectoryV1::Printer]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_customer_chrome_printer(parent, printer_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'admin/directory/v1/{+parent}/chrome/printers', options)
+          command.request_representation = Google::Apis::AdminDirectoryV1::Printer::Representation
+          command.request_object = printer_object
+          command.response_representation = Google::Apis::AdminDirectoryV1::Printer::Representation
+          command.response_class = Google::Apis::AdminDirectoryV1::Printer
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a `Printer`.
+        # @param [String] name
+        #   Required. The name of the printer to be updated. Format: customers/`
+        #   customer_id`/chrome/printers/`printer_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdminDirectoryV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdminDirectoryV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_customer_chrome_printer(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'admin/directory/v1/{+name}', options)
+          command.response_representation = Google::Apis::AdminDirectoryV1::Empty::Representation
+          command.response_class = Google::Apis::AdminDirectoryV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a `Printer` resource (printer's config).
+        # @param [String] name
+        #   Required. The name of the printer to retrieve. Format: customers/`customer_id`/
+        #   chrome/printers/`printer_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdminDirectoryV1::Printer] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdminDirectoryV1::Printer]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_customer_chrome_printer(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'admin/directory/v1/{+name}', options)
+          command.response_representation = Google::Apis::AdminDirectoryV1::Printer::Representation
+          command.response_class = Google::Apis::AdminDirectoryV1::Printer
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List printers configs.
+        # @param [String] parent
+        #   Required. The name of the customer who owns this collection of printers.
+        #   Format: customers/`customer_id`
+        # @param [String] filter
+        #   Search query. Search syntax is shared between this api and Admin Console
+        #   printers pages.
+        # @param [String] org_unit_id
+        #   Organization Unit that we want to list the printers for. When org_unit is not
+        #   present in the request then all printers of the customer are returned (or
+        #   filtered). When org_unit is present in the request then only printers
+        #   available to this OU will be returned (owned or inherited). You may see if
+        #   printer is owned or inherited for this OU by looking at Printer.org_unit_id.
+        # @param [Fixnum] page_size
+        #   The maximum number of objects to return. The service may return fewer than
+        #   this value.
+        # @param [String] page_token
+        #   A page token, received from a previous call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdminDirectoryV1::ListPrintersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdminDirectoryV1::ListPrintersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_customer_chrome_printers(parent, filter: nil, org_unit_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'admin/directory/v1/{+parent}/chrome/printers', options)
+          command.response_representation = Google::Apis::AdminDirectoryV1::ListPrintersResponse::Representation
+          command.response_class = Google::Apis::AdminDirectoryV1::ListPrintersResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orgUnitId'] = org_unit_id unless org_unit_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the supported printer models.
+        # @param [String] parent
+        #   Required. The name of the customer who owns this collection of printers.
+        #   Format: customers/`customer_id`
+        # @param [String] filter
+        #   Filer to list only models by a given manufacturer in format: "manufacturer:
+        #   Brother". Search syntax is shared between this api and Admin Console printers
+        #   pages.
+        # @param [Fixnum] page_size
+        #   The maximum number of objects to return. The service may return fewer than
+        #   this value.
+        # @param [String] page_token
+        #   A page token, received from a previous call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdminDirectoryV1::ListPrinterModelsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdminDirectoryV1::ListPrinterModelsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_customer_chrome_printer_printer_models(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'admin/directory/v1/{+parent}/chrome/printers:listPrinterModels', options)
+          command.response_representation = Google::Apis::AdminDirectoryV1::ListPrinterModelsResponse::Representation
+          command.response_class = Google::Apis::AdminDirectoryV1::ListPrinterModelsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a `Printer` resource.
+        # @param [String] name
+        #   The resource name of the Printer object, in the format customers/`customer-id`/
+        #   printers/`printer-id` (During printer creation leave empty)
+        # @param [Google::Apis::AdminDirectoryV1::Printer] printer_object
+        # @param [String] clear_mask
+        #   The list of fields to be cleared. Note, some of the fields are read only and
+        #   cannot be updated. Values for not specified fields will be patched.
+        # @param [String] update_mask
+        #   The list of fields to be updated. Note, some of the fields are read only and
+        #   cannot be updated. Values for not specified fields will be patched.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdminDirectoryV1::Printer] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdminDirectoryV1::Printer]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_customer_chrome_printer(name, printer_object = nil, clear_mask: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'admin/directory/v1/{+name}', options)
+          command.request_representation = Google::Apis::AdminDirectoryV1::Printer::Representation
+          command.request_object = printer_object
+          command.response_representation = Google::Apis::AdminDirectoryV1::Printer::Representation
+          command.response_class = Google::Apis::AdminDirectoryV1::Printer
+          command.params['name'] = name unless name.nil?
+          command.query['clearMask'] = clear_mask unless clear_mask.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes a domain Alias of the customer.
         # @param [String] customer
         #   Immutable ID of the Google Workspace account.

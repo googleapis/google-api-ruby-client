@@ -190,6 +190,129 @@ module Google
         end
       end
       
+      # Auxiliary message about issues with printers or settings. Example: `
+      # message_type:AUXILIARY_MESSAGE_WARNING, field_mask:make_and_model, message:"
+      # Given printer is invalid or no longer supported."`
+      class AuxiliaryMessage
+        include Google::Apis::Core::Hashable
+      
+        # Human readable message in English. Example: "Given printer is invalid or no
+        # longer supported."
+        # Corresponds to the JSON property `auxiliaryMessage`
+        # @return [String]
+        attr_accessor :auxiliary_message
+      
+        # Field that this message concerns.
+        # Corresponds to the JSON property `fieldMask`
+        # @return [String]
+        attr_accessor :field_mask
+      
+        # Message severity
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auxiliary_message = args[:auxiliary_message] if args.key?(:auxiliary_message)
+          @field_mask = args[:field_mask] if args.key?(:field_mask)
+          @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
+      # Request for adding new printers in batch.
+      class BatchCreatePrintersRequest
+        include Google::Apis::Core::Hashable
+      
+        # A list of Printers to be created. Max 50 at a time.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::AdminDirectoryV1::CreatePrinterRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Response for adding new printers in batch.
+      class BatchCreatePrintersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of create failures. Printer IDs are not populated, as printer were not
+        # created.
+        # Corresponds to the JSON property `failures`
+        # @return [Array<Google::Apis::AdminDirectoryV1::FailureInfo>]
+        attr_accessor :failures
+      
+        # A list of successfully created printers with their IDs populated.
+        # Corresponds to the JSON property `printers`
+        # @return [Array<Google::Apis::AdminDirectoryV1::Printer>]
+        attr_accessor :printers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failures = args[:failures] if args.key?(:failures)
+          @printers = args[:printers] if args.key?(:printers)
+        end
+      end
+      
+      # Request for deleting existing printers in batch.
+      class BatchDeletePrintersRequest
+        include Google::Apis::Core::Hashable
+      
+        # A list of Printer.id that should be deleted. Max 100 at a time.
+        # Corresponds to the JSON property `printerIds`
+        # @return [Array<String>]
+        attr_accessor :printer_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @printer_ids = args[:printer_ids] if args.key?(:printer_ids)
+        end
+      end
+      
+      # Response for deleting existing printers in batch.
+      class BatchDeletePrintersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of update failures.
+        # Corresponds to the JSON property `failedPrinters`
+        # @return [Array<Google::Apis::AdminDirectoryV1::FailureInfo>]
+        attr_accessor :failed_printers
+      
+        # A list of Printer.id that were successfully deleted.
+        # Corresponds to the JSON property `printerIds`
+        # @return [Array<String>]
+        attr_accessor :printer_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failed_printers = args[:failed_printers] if args.key?(:failed_printers)
+          @printer_ids = args[:printer_ids] if args.key?(:printer_ids)
+        end
+      end
+      
       # Public API: Resources.buildings
       class Building
         include Google::Apis::Core::Hashable
@@ -789,6 +912,12 @@ module Google
         # @return [Array<Google::Apis::AdminDirectoryV1::RecentUsers>]
         attr_accessor :recent_users
       
+        # List of screenshot files to download. Type is always "SCREENSHOT_FILE". (Read-
+        # only)
+        # Corresponds to the JSON property `screenshotFiles`
+        # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::ScreenshotFile>]
+        attr_accessor :screenshot_files
+      
         # The Chrome device serial number entered when the device was enabled. This
         # value is the same as the Admin console's *Serial Number* in the *Chrome OS
         # Devices* tab.
@@ -863,6 +992,7 @@ module Google
           @os_version = args[:os_version] if args.key?(:os_version)
           @platform_version = args[:platform_version] if args.key?(:platform_version)
           @recent_users = args[:recent_users] if args.key?(:recent_users)
+          @screenshot_files = args[:screenshot_files] if args.key?(:screenshot_files)
           @serial_number = args[:serial_number] if args.key?(:serial_number)
           @status = args[:status] if args.key?(:status)
           @support_end_date = args[:support_end_date] if args.key?(:support_end_date)
@@ -1066,6 +1196,43 @@ module Google
         end
         
         # 
+        class ScreenshotFile
+          include Google::Apis::Core::Hashable
+        
+          # Date and time the file was created
+          # Corresponds to the JSON property `createTime`
+          # @return [DateTime]
+          attr_accessor :create_time
+        
+          # File download URL
+          # Corresponds to the JSON property `downloadUrl`
+          # @return [String]
+          attr_accessor :download_url
+        
+          # File name
+          # Corresponds to the JSON property `name`
+          # @return [String]
+          attr_accessor :name
+        
+          # File type
+          # Corresponds to the JSON property `type`
+          # @return [String]
+          attr_accessor :type
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @create_time = args[:create_time] if args.key?(:create_time)
+            @download_url = args[:download_url] if args.key?(:download_url)
+            @name = args[:name] if args.key?(:name)
+            @type = args[:type] if args.key?(:type)
+          end
+        end
+        
+        # 
         class SystemRamFreeReport
           include Google::Apis::Core::Hashable
         
@@ -1223,6 +1390,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @device_ids = args[:device_ids] if args.key?(:device_ids)
+        end
+      end
+      
+      # Request for adding a new printer.
+      class CreatePrinterRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the customer. Format: customers/`customer_id`
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # Printer configuration.
+        # Corresponds to the JSON property `printer`
+        # @return [Google::Apis::AdminDirectoryV1::Printer]
+        attr_accessor :printer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parent = args[:parent] if args.key?(:parent)
+          @printer = args[:printer] if args.key?(:printer)
         end
       end
       
@@ -1678,6 +1870,60 @@ module Google
         end
       end
       
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Info about failures
+      class FailureInfo
+        include Google::Apis::Core::Hashable
+      
+        # Canonical code for why the update failed to apply.
+        # Corresponds to the JSON property `errorCode`
+        # @return [String]
+        attr_accessor :error_code
+      
+        # Failure reason message.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # Printer configuration.
+        # Corresponds to the JSON property `printer`
+        # @return [Google::Apis::AdminDirectoryV1::Printer]
+        attr_accessor :printer
+      
+        # Ids of failed printers.
+        # Corresponds to the JSON property `printerIds`
+        # @return [String]
+        attr_accessor :printer_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_code = args[:error_code] if args.key?(:error_code)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @printer = args[:printer] if args.key?(:printer)
+          @printer_ids = args[:printer_ids] if args.key?(:printer_ids)
+        end
+      end
+      
       # JSON template for Feature object in Directory API.
       class Feature
         include Google::Apis::Core::Hashable
@@ -1912,6 +2158,61 @@ module Google
           @groups = args[:groups] if args.key?(:groups)
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response for listing allowed printer models.
+      class ListPrinterModelsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Printer models that are currently allowed to be configured for ChromeOs. Some
+        # printers may be added or removed over time.
+        # Corresponds to the JSON property `printerModels`
+        # @return [Array<Google::Apis::AdminDirectoryV1::PrinterModel>]
+        attr_accessor :printer_models
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @printer_models = args[:printer_models] if args.key?(:printer_models)
+        end
+      end
+      
+      # Response for listing printers.
+      class ListPrintersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of printers. If `org_unit_id` was given in the request, then only
+        # printers visible for this OU will be returned. If `org_unit_id` was given in
+        # the request, then all printers will be returned.
+        # Corresponds to the JSON property `printers`
+        # @return [Array<Google::Apis::AdminDirectoryV1::Printer>]
+        attr_accessor :printers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @printers = args[:printers] if args.key?(:printers)
         end
       end
       
@@ -2558,6 +2859,117 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @kind = args[:kind] if args.key?(:kind)
           @organization_units = args[:organization_units] if args.key?(:organization_units)
+        end
+      end
+      
+      # Printer configuration.
+      class Printer
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Auxiliary messages about issues with the printer configuration if
+        # any.
+        # Corresponds to the JSON property `auxiliaryMessages`
+        # @return [Array<Google::Apis::AdminDirectoryV1::AuxiliaryMessage>]
+        attr_accessor :auxiliary_messages
+      
+        # Output only. Time when printer was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Editable. Description of printer.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Editable. Name of printer.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Id of the printer. (During printer creation leave empty)
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Editable. Make and model of printer. e.g. Lexmark MS610de Value must be in
+        # format as seen in ListPrinterModels response.
+        # Corresponds to the JSON property `makeAndModel`
+        # @return [String]
+        attr_accessor :make_and_model
+      
+        # The resource name of the Printer object, in the format customers/`customer-id`/
+        # printers/`printer-id` (During printer creation leave empty)
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Organization Unit that owns this printer (Only can be set during Printer
+        # creation)
+        # Corresponds to the JSON property `orgUnitId`
+        # @return [String]
+        attr_accessor :org_unit_id
+      
+        # Editable. Printer URI.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        # Editable. flag to use driverless configuration or not. If it's set to be true,
+        # make_and_model can be ignored
+        # Corresponds to the JSON property `useDriverlessConfig`
+        # @return [Boolean]
+        attr_accessor :use_driverless_config
+        alias_method :use_driverless_config?, :use_driverless_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auxiliary_messages = args[:auxiliary_messages] if args.key?(:auxiliary_messages)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+          @make_and_model = args[:make_and_model] if args.key?(:make_and_model)
+          @name = args[:name] if args.key?(:name)
+          @org_unit_id = args[:org_unit_id] if args.key?(:org_unit_id)
+          @uri = args[:uri] if args.key?(:uri)
+          @use_driverless_config = args[:use_driverless_config] if args.key?(:use_driverless_config)
+        end
+      end
+      
+      # Printer manufacturer and model
+      class PrinterModel
+        include Google::Apis::Core::Hashable
+      
+        # Display name. eq. "Brother MFC-8840D"
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Make and model as represented in "make_and_model" field in Printer object. eq.
+        # "brother mfc-8840d"
+        # Corresponds to the JSON property `makeAndModel`
+        # @return [String]
+        attr_accessor :make_and_model
+      
+        # Manufacturer. eq. "Brother"
+        # Corresponds to the JSON property `manufacturer`
+        # @return [String]
+        attr_accessor :manufacturer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @make_and_model = args[:make_and_model] if args.key?(:make_and_model)
+          @manufacturer = args[:manufacturer] if args.key?(:manufacturer)
         end
       end
       
