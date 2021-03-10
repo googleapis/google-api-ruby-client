@@ -1884,7 +1884,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the security policy for the specified backend service.
+        # Sets the Google Cloud Armor security policy for the specified backend service.
+        # For more information, see Google Cloud Armor Overview
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_service
