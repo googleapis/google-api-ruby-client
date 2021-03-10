@@ -2655,8 +2655,7 @@ module Google
         attr_accessor :install_apps_disabled
         alias_method :install_apps_disabled?, :install_apps_disabled
       
-        # Whether the user is allowed to enable the "Unknown Sources" setting, which
-        # allows installation of apps from unknown sources.
+        # This field has no effect.
         # Corresponds to the JSON property `installUnknownSourcesAllowed`
         # @return [Boolean]
         attr_accessor :install_unknown_sources_allowed
