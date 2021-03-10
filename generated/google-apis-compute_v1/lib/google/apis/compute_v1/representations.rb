@@ -7563,6 +7563,7 @@ module Google
           property :name, as: 'name'
           collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeV1::NetworkInterface, decorator: Google::Apis::ComputeV1::NetworkInterface::Representation
       
+          property :post_key_revocation_action_type, as: 'postKeyRevocationActionType'
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeV1::ReservationAffinity, decorator: Google::Apis::ComputeV1::ReservationAffinity::Representation
       
@@ -8252,6 +8253,7 @@ module Google
           property :min_cpu_platform, as: 'minCpuPlatform'
           collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeV1::NetworkInterface, decorator: Google::Apis::ComputeV1::NetworkInterface::Representation
       
+          property :post_key_revocation_action_type, as: 'postKeyRevocationActionType'
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeV1::ReservationAffinity, decorator: Google::Apis::ComputeV1::ReservationAffinity::Representation
       
@@ -12615,6 +12617,7 @@ module Google
           property :authorization_policy, as: 'authorizationPolicy'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
