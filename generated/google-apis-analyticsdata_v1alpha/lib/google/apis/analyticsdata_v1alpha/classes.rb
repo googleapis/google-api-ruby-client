@@ -1655,7 +1655,9 @@ module Google
       
         # The number of rows to return. If the `limit` parameter is unspecified, 10,000
         # rows are returned. The API returns a maximum of 100,000 rows per request, no
-        # matter how many you ask for.
+        # matter how many you ask for. To learn more about this pagination parameter,
+        # see [Pagination](https://developers.google.com/analytics/devguides/reporting/
+        # data/v1/basics#pagination).
         # Corresponds to the JSON property `limit`
         # @return [Fixnum]
         attr_accessor :limit
@@ -1677,7 +1679,9 @@ module Google
         # @return [Array<Google::Apis::AnalyticsdataV1alpha::Metric>]
         attr_accessor :metrics
       
-        # The row count of the start row. The first row is counted as row 0.
+        # The row count of the start row. The first row is counted as row 0. To learn
+        # more about this pagination parameter, see [Pagination](https://developers.
+        # google.com/analytics/devguides/reporting/data/v1/basics#pagination).
         # Corresponds to the JSON property `offset`
         # @return [Fixnum]
         attr_accessor :offset
