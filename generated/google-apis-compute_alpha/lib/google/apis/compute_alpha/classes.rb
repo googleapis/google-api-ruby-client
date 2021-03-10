@@ -671,7 +671,7 @@ module Google
         # @return [String]
         attr_accessor :network_tier
       
-        # The prefix length if the resource reprensents an IP range.
+        # The prefix length if the resource represents an IP range.
         # Corresponds to the JSON property `prefixLength`
         # @return [Fixnum]
         attr_accessor :prefix_length
@@ -684,7 +684,7 @@ module Google
         # - `NAT_AUTO` for addresses that are external IP addresses automatically
         # reserved for Cloud NAT.
         # - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are
-        # reserved for a VLAN attachment in an IPsec encrypted Interconnect
+        # reserved for a VLAN attachment in an IPsec-encrypted Cloud Interconnect
         # configuration. These addresses are regional resources.
         # Corresponds to the JSON property `purpose`
         # @return [String]
@@ -8996,6 +8996,8 @@ module Google
         # ip_address_specifications).
         # Must be set to `0.0.0.0` when the target is targetGrpcProxy that has
         # validateForProxyless field set to true.
+        # For Private Service Connect forwarding rules that forward traffic to Google
+        # APIs, IP address must be provided.
         # Corresponds to the JSON property `IPAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -9168,6 +9170,8 @@ module Google
         # For Internal TCP/UDP Load Balancing, this field identifies the network that
         # the load balanced IP should belong to for this Forwarding Rule. If this field
         # is not specified, the default network will be used.
+        # For Private Service Connect forwarding rules that forward traffic to Google
+        # APIs, a network must be provided.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -9277,12 +9281,7 @@ module Google
         # @return [String]
         attr_accessor :subnetwork
       
-        # The URL of the target resource to receive the matched traffic. For regional
-        # forwarding rules, this target must be in the same region as the forwarding
-        # rule. For global forwarding rules, this target must be a global load balancing
-        # resource. The forwarded traffic must be of a type appropriate to the target
-        # object. For more information, see the "Target" column in [Port specifications](
-        # /load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+        # 
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -13834,7 +13833,8 @@ module Google
         # @return [String]
         attr_accessor :source_machine_image
       
-        # Source GMI encryption key when creating an instance from GMI.
+        # Source machine image encryption key when creating an instance from a machine
+        # image.
         # Corresponds to the JSON property `sourceMachineImageEncryptionKey`
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :source_machine_image_encryption_key
@@ -18015,8 +18015,8 @@ module Google
         # type of attachment.
         # - IPSEC indicates that the attachment carries only traffic encrypted by an
         # IPsec device such as an HA VPN gateway. VMs cannot directly send traffic to,
-        # or receive traffic from, such an attachment. To use IPsec over Interconnect,
-        # create the attachment using this option.
+        # or receive traffic from, such an attachment. To use IPsec-encrypted Cloud
+        # Interconnect, create the attachment using this option.
         # Corresponds to the JSON property `encryption`
         # @return [String]
         attr_accessor :encryption
@@ -22696,8 +22696,9 @@ module Google
       
         # Fingerprint hash of contents stored in this network interface. This field will
         # be ignored when inserting an Instance or adding a NetworkInterface. An up-to-
-        # date fingerprint must be provided in order to update the NetworkInterface,
-        # otherwise the request will fail with error 412 conditionNotMet.
+        # date fingerprint must be provided in order to update the NetworkInterface. The
+        # request will fail with error 400 Bad Request if the fingerprint is not
+        # provided, or 412 Precondition Failed if the fingerprint is out of date.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -32413,7 +32414,7 @@ module Google
         attr_accessor :description
       
         # Field to indicate if a router is dedicated to use with encrypted Interconnect
-        # Attachment (Encrypted Interconnect feature).
+        # Attachment (IPsec-encrypted Cloud Interconnect feature).
         # Corresponds to the JSON property `encryptedInterconnectRouter`
         # @return [Boolean]
         attr_accessor :encrypted_interconnect_router
