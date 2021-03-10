@@ -70,22 +70,12 @@ module Google
       class ApproveDeviceUserRequest
         include Google::Apis::Core::Hashable
       
-        # Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        # of the customer. If you're using this API for your own organization, use `
-        # customers/my_customer` If you're using this API to manage another organization,
-        # use `customers/`customer_id``, where customer_id is the customer to whom the
-        # device belongs.
-        # Corresponds to the JSON property `customer`
-        # @return [String]
-        attr_accessor :customer
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @customer = args[:customer] if args.key?(:customer)
         end
       end
       
@@ -113,22 +103,12 @@ module Google
       class BlockDeviceUserRequest
         include Google::Apis::Core::Hashable
       
-        # Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        # of the customer. If you're using this API for your own organization, use `
-        # customers/my_customer` If you're using this API to manage another organization,
-        # use `customers/`customer_id``, where customer_id is the customer to whom the
-        # device belongs.
-        # Corresponds to the JSON property `customer`
-        # @return [String]
-        attr_accessor :customer
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @customer = args[:customer] if args.key?(:customer)
         end
       end
       
@@ -152,18 +132,9 @@ module Google
         end
       end
       
-      # Request message for cancelling an unfinished device wipe.
-      class CancelWipeDeviceRequest
+      # Request to cancel sent invitation for target email in UserInvitation.
+      class CancelUserInvitationRequest
         include Google::Apis::Core::Hashable
-      
-        # Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        # of the customer. If you're using this API for your own organization, use `
-        # customers/my_customer` If you're using this API to manage another organization,
-        # use `customers/`customer_id``, where customer_id is the customer to whom the
-        # device belongs.
-        # Corresponds to the JSON property `customer`
-        # @return [String]
-        attr_accessor :customer
       
         def initialize(**args)
            update!(**args)
@@ -171,7 +142,19 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @customer = args[:customer] if args.key?(:customer)
+        end
+      end
+      
+      # Request message for cancelling an unfinished device wipe.
+      class CancelWipeDeviceRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -200,22 +183,12 @@ module Google
       class CancelWipeDeviceUserRequest
         include Google::Apis::Core::Hashable
       
-        # Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        # of the customer. If you're using this API for your own organization, use `
-        # customers/my_customer` If you're using this API to manage another organization,
-        # use `customers/`customer_id``, where customer_id is the customer to whom the
-        # device belongs.
-        # Corresponds to the JSON property `customer`
-        # @return [String]
-        attr_accessor :customer
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @customer = args[:customer] if args.key?(:customer)
         end
       end
       
@@ -359,15 +332,6 @@ module Google
       class CreateDeviceRequest
         include Google::Apis::Core::Hashable
       
-        # Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        # of the customer. If you're using this API for your own organization, use `
-        # customers/my_customer` If you're using this API to manage another organization,
-        # use `customers/`customer_id``, where customer_id is the customer to whom the
-        # device belongs.
-        # Corresponds to the JSON property `customer`
-        # @return [String]
-        attr_accessor :customer
-      
         # A Device within the Cloud Identity Devices API. Represents a Device known to
         # Google Cloud, independent of the device ownership, type, and whether it is
         # assigned or in use by a user.
@@ -381,7 +345,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @customer = args[:customer] if args.key?(:customer)
           @device = args[:device] if args.key?(:device)
         end
       end
@@ -1569,6 +1532,26 @@ module Google
         end
       end
       
+      # Response for IsInvitableUser RPC.
+      class IsInvitableUserResponse
+        include Google::Apis::Core::Hashable
+      
+        # Returns true if the email address is invitable.
+        # Corresponds to the JSON property `isInvitableUser`
+        # @return [Boolean]
+        attr_accessor :is_invitable_user
+        alias_method :is_invitable_user?, :is_invitable_user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_invitable_user = args[:is_invitable_user] if args.key?(:is_invitable_user)
+        end
+      end
+      
       # Response message that is returned in LRO result of ListClientStates Operation.
       class ListClientStatesResponse
         include Google::Apis::Core::Hashable
@@ -1693,6 +1676,34 @@ module Google
         def update!(**args)
           @memberships = args[:memberships] if args.key?(:memberships)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for UserInvitation listing request.
+      class ListUserInvitationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The token for the next page. If not empty, indicates that there may be more `
+        # UserInvitation` resources that match the listing request; this value can be
+        # used in a subsequent ListUserInvitationsRequest to get continued results with
+        # the current list call.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of UserInvitation resources.
+        # Corresponds to the JSON property `userInvitations`
+        # @return [Array<Google::Apis::CloudidentityV1beta1::UserInvitation>]
+        attr_accessor :user_invitations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @user_invitations = args[:user_invitations] if args.key?(:user_invitations)
         end
       end
       
@@ -2132,6 +2143,20 @@ module Google
         end
       end
       
+      # A request to send email for inviting target user corresponding to the
+      # UserInvitation.
+      class SendUserInvitationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -2264,22 +2289,12 @@ module Google
       class WipeDeviceRequest
         include Google::Apis::Core::Hashable
       
-        # Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        # of the customer. If you're using this API for your own organization, use `
-        # customers/my_customer` If you're using this API to manage another organization,
-        # use `customers/`customer_id``, where customer_id is the customer to whom the
-        # device belongs.
-        # Corresponds to the JSON property `customer`
-        # @return [String]
-        attr_accessor :customer
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @customer = args[:customer] if args.key?(:customer)
         end
       end
       
@@ -2308,22 +2323,12 @@ module Google
       class WipeDeviceUserRequest
         include Google::Apis::Core::Hashable
       
-        # Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        # of the customer. If you're using this API for your own organization, use `
-        # customers/my_customer` If you're using this API to manage another organization,
-        # use `customers/`customer_id``, where customer_id is the customer to whom the
-        # device belongs.
-        # Corresponds to the JSON property `customer`
-        # @return [String]
-        attr_accessor :customer
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @customer = args[:customer] if args.key?(:customer)
         end
       end
       
