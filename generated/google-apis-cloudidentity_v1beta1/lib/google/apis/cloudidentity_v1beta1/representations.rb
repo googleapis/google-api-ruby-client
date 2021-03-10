@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CancelUserInvitationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelWipeDeviceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -226,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IsInvitableUserResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListClientStatesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -251,6 +263,12 @@ module Google
       end
       
       class ListMembershipsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListUserInvitationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -334,6 +352,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SendUserInvitationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -395,7 +419,6 @@ module Google
       class ApproveDeviceUserRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :customer, as: 'customer'
         end
       end
       
@@ -410,7 +433,6 @@ module Google
       class BlockDeviceUserRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :customer, as: 'customer'
         end
       end
       
@@ -422,10 +444,15 @@ module Google
         end
       end
       
+      class CancelUserInvitationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class CancelWipeDeviceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :customer, as: 'customer'
         end
       end
       
@@ -440,7 +467,6 @@ module Google
       class CancelWipeDeviceUserRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :customer, as: 'customer'
         end
       end
       
@@ -481,7 +507,6 @@ module Google
       class CreateDeviceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :customer, as: 'customer'
           property :device, as: 'device', class: Google::Apis::CloudidentityV1beta1::Device, decorator: Google::Apis::CloudidentityV1beta1::Device::Representation
       
         end
@@ -768,6 +793,13 @@ module Google
         end
       end
       
+      class IsInvitableUserResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_invitable_user, as: 'isInvitableUser'
+        end
+      end
+      
       class ListClientStatesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -810,6 +842,15 @@ module Google
           collection :memberships, as: 'memberships', class: Google::Apis::CloudidentityV1beta1::Membership, decorator: Google::Apis::CloudidentityV1beta1::Membership::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListUserInvitationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :user_invitations, as: 'userInvitations', class: Google::Apis::CloudidentityV1beta1::UserInvitation, decorator: Google::Apis::CloudidentityV1beta1::UserInvitation::Representation
+      
         end
       end
       
@@ -940,6 +981,12 @@ module Google
         end
       end
       
+      class SendUserInvitationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -978,7 +1025,6 @@ module Google
       class WipeDeviceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :customer, as: 'customer'
         end
       end
       
@@ -993,7 +1039,6 @@ module Google
       class WipeDeviceUserRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :customer, as: 'customer'
         end
       end
       
