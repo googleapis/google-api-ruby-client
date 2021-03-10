@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataCatalogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DatabaseDump
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -229,6 +235,13 @@ module Google
         end
       end
       
+      class DataCatalogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class DatabaseDump
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -384,6 +397,8 @@ module Google
       class MetadataIntegration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_catalog_config, as: 'dataCatalogConfig', class: Google::Apis::MetastoreV1beta::DataCatalogConfig, decorator: Google::Apis::MetastoreV1beta::DataCatalogConfig::Representation
+      
         end
       end
       
