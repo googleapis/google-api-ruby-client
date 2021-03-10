@@ -2246,7 +2246,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the security policy for the specified backend service.
+        # Sets the Google Cloud Armor security policy for the specified backend service.
+        # For more information, see Google Cloud Armor Overview
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_service
@@ -16700,6 +16701,17 @@ module Google
         # @param [String] firewall_policy
         #   Name of the firewall policy to update.
         # @param [Google::Apis::ComputeAlpha::FirewallPolicyRule] firewall_policy_rule_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16719,7 +16731,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_network_firewall_policy_rule(project, firewall_policy, firewall_policy_rule_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def add_network_firewall_policy_rule(project, firewall_policy, firewall_policy_rule_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'projects/{project}/global/firewallPolicies/{firewallPolicy}/addRule', options)
           command.request_representation = Google::Apis::ComputeAlpha::FirewallPolicyRule::Representation
           command.request_object = firewall_policy_rule_object
@@ -16727,6 +16739,7 @@ module Google
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
           command.params['firewallPolicy'] = firewall_policy unless firewall_policy.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -17169,6 +17182,17 @@ module Google
         # @param [Google::Apis::ComputeAlpha::FirewallPolicyRule] firewall_policy_rule_object
         # @param [Fixnum] priority
         #   The priority of the rule to patch.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -17188,7 +17212,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_network_firewall_policy_rule(project, firewall_policy, firewall_policy_rule_object = nil, priority: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_network_firewall_policy_rule(project, firewall_policy, firewall_policy_rule_object = nil, priority: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'projects/{project}/global/firewallPolicies/{firewallPolicy}/patchRule', options)
           command.request_representation = Google::Apis::ComputeAlpha::FirewallPolicyRule::Representation
           command.request_object = firewall_policy_rule_object
@@ -17197,6 +17221,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['firewallPolicy'] = firewall_policy unless firewall_policy.nil?
           command.query['priority'] = priority unless priority.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -17261,6 +17286,17 @@ module Google
         #   Name of the firewall policy to update.
         # @param [Fixnum] priority
         #   The priority of the rule to remove from the firewall policy.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -17280,13 +17316,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def remove_network_firewall_policy_rule(project, firewall_policy, priority: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def remove_network_firewall_policy_rule(project, firewall_policy, priority: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'projects/{project}/global/firewallPolicies/{firewallPolicy}/removeRule', options)
           command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
           command.response_class = Google::Apis::ComputeAlpha::Operation
           command.params['project'] = project unless project.nil?
           command.params['firewallPolicy'] = firewall_policy unless firewall_policy.nil?
           command.query['priority'] = priority unless priority.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
