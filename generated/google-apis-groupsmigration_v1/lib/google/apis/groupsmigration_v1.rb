@@ -30,7 +30,7 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1'
 
-      # Manage messages in groups on your domain
+      # Upload messages to any Google group in your domain
       AUTH_APPS_GROUPS_MIGRATION = 'https://www.googleapis.com/auth/apps.groups.migration'
     end
   end
