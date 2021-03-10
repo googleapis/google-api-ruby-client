@@ -4474,6 +4474,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Subsetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TcpHealthCheck
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6073,6 +6079,8 @@ module Google
       
           property :self_link, as: 'selfLink'
           property :session_affinity, as: 'sessionAffinity'
+          property :subsetting, as: 'subsetting', class: Google::Apis::ComputeBeta::Subsetting, decorator: Google::Apis::ComputeBeta::Subsetting::Representation
+      
           property :timeout_sec, as: 'timeoutSec'
         end
       end
@@ -8144,6 +8152,7 @@ module Google
       
           property :network_performance_config, as: 'networkPerformanceConfig', class: Google::Apis::ComputeBeta::NetworkPerformanceConfig, decorator: Google::Apis::ComputeBeta::NetworkPerformanceConfig::Representation
       
+          property :post_key_revocation_action_type, as: 'postKeyRevocationActionType'
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeBeta::ReservationAffinity, decorator: Google::Apis::ComputeBeta::ReservationAffinity::Representation
       
@@ -13667,6 +13676,13 @@ module Google
         end
       end
       
+      class Subsetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy'
+        end
+      end
+      
       class TcpHealthCheck
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -13895,6 +13911,7 @@ module Google
           property :authorization_policy, as: 'authorizationPolicy'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
           collection :http_filters, as: 'httpFilters'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
