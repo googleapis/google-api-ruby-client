@@ -22,6 +22,30 @@ module Google
   module Apis
     module PolicysimulatorV1beta1
       
+      class GoogleCloudPolicysimulatorV1Replay
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPolicysimulatorV1ReplayConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPolicysimulatorV1ReplayOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPolicysimulatorV1ReplayResultsSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudPolicysimulatorV1beta1AccessStateDiff
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -152,6 +176,48 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPolicysimulatorV1Replay
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config, as: 'config', class: Google::Apis::PolicysimulatorV1beta1::GoogleCloudPolicysimulatorV1ReplayConfig, decorator: Google::Apis::PolicysimulatorV1beta1::GoogleCloudPolicysimulatorV1ReplayConfig::Representation
+      
+          property :name, as: 'name'
+          property :results_summary, as: 'resultsSummary', class: Google::Apis::PolicysimulatorV1beta1::GoogleCloudPolicysimulatorV1ReplayResultsSummary, decorator: Google::Apis::PolicysimulatorV1beta1::GoogleCloudPolicysimulatorV1ReplayResultsSummary::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudPolicysimulatorV1ReplayConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :log_source, as: 'logSource'
+          hash :policy_overlay, as: 'policyOverlay', class: Google::Apis::PolicysimulatorV1beta1::GoogleIamV1Policy, decorator: Google::Apis::PolicysimulatorV1beta1::GoogleIamV1Policy::Representation
+      
+        end
+      end
+      
+      class GoogleCloudPolicysimulatorV1ReplayOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class GoogleCloudPolicysimulatorV1ReplayResultsSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :difference_count, as: 'differenceCount'
+          property :error_count, as: 'errorCount'
+          property :log_count, as: 'logCount'
+          property :newest_date, as: 'newestDate', class: Google::Apis::PolicysimulatorV1beta1::GoogleTypeDate, decorator: Google::Apis::PolicysimulatorV1beta1::GoogleTypeDate::Representation
+      
+          property :oldest_date, as: 'oldestDate', class: Google::Apis::PolicysimulatorV1beta1::GoogleTypeDate, decorator: Google::Apis::PolicysimulatorV1beta1::GoogleTypeDate::Representation
+      
+          property :unchanged_count, as: 'unchangedCount'
+        end
       end
       
       class GoogleCloudPolicysimulatorV1beta1AccessStateDiff
