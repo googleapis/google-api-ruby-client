@@ -29,7 +29,7 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1'
 
-      # New Service: https://www.googleapis.com/auth/homegraph
+      # Private Service: https://www.googleapis.com/auth/homegraph
       AUTH_HOMEGRAPH = 'https://www.googleapis.com/auth/homegraph'
     end
   end
