@@ -46,6 +46,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Position
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StackTrace
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StackTraceElement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelExecutionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -57,6 +75,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :context, as: 'context'
           property :payload, as: 'payload'
+          property :stack_trace, as: 'stackTrace', class: Google::Apis::WorkflowexecutionsV1::StackTrace, decorator: Google::Apis::WorkflowexecutionsV1::StackTrace::Representation
+      
         end
       end
       
@@ -81,6 +101,33 @@ module Google
           collection :executions, as: 'executions', class: Google::Apis::WorkflowexecutionsV1::Execution, decorator: Google::Apis::WorkflowexecutionsV1::Execution::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class Position
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, :numeric_string => true, as: 'column'
+          property :length, :numeric_string => true, as: 'length'
+          property :line, :numeric_string => true, as: 'line'
+        end
+      end
+      
+      class StackTrace
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :elements, as: 'elements', class: Google::Apis::WorkflowexecutionsV1::StackTraceElement, decorator: Google::Apis::WorkflowexecutionsV1::StackTraceElement::Representation
+      
+        end
+      end
+      
+      class StackTraceElement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :position, as: 'position', class: Google::Apis::WorkflowexecutionsV1::Position, decorator: Google::Apis::WorkflowexecutionsV1::Position::Representation
+      
+          property :routine, as: 'routine'
+          property :step, as: 'step'
         end
       end
     end

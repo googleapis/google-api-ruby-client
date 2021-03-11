@@ -39,15 +39,20 @@ module Google
       class Error
         include Google::Apis::Core::Hashable
       
-        # Human readable error context, helpful for debugging purposes.
+        # Human readable stack trace string.
         # Corresponds to the JSON property `context`
         # @return [String]
         attr_accessor :context
       
-        # Error payload returned by the execution, represented as a JSON string.
+        # Error message and data returned represented as a JSON string.
         # Corresponds to the JSON property `payload`
         # @return [String]
         attr_accessor :payload
+      
+        # A collection of stack elements (frames) where an error occurred.
+        # Corresponds to the JSON property `stackTrace`
+        # @return [Google::Apis::WorkflowexecutionsV1::StackTrace]
+        attr_accessor :stack_trace
       
         def initialize(**args)
            update!(**args)
@@ -57,6 +62,7 @@ module Google
         def update!(**args)
           @context = args[:context] if args.key?(:context)
           @payload = args[:payload] if args.key?(:payload)
+          @stack_trace = args[:stack_trace] if args.key?(:stack_trace)
         end
       end
       
@@ -150,6 +156,91 @@ module Google
         def update!(**args)
           @executions = args[:executions] if args.key?(:executions)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Position contains source position information about the stack trace element
+      # such as line number, column number and length of the code block in bytes.
+      class Position
+        include Google::Apis::Core::Hashable
+      
+        # The source code column position (of the line) the current instruction was
+        # generated from.
+        # Corresponds to the JSON property `column`
+        # @return [Fixnum]
+        attr_accessor :column
+      
+        # The length in bytes of text in this character group, e.g. digits of a number,
+        # string length, or AST (abstract syntax tree) node.
+        # Corresponds to the JSON property `length`
+        # @return [Fixnum]
+        attr_accessor :length
+      
+        # The source code line number the current instruction was generated from.
+        # Corresponds to the JSON property `line`
+        # @return [Fixnum]
+        attr_accessor :line
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+          @length = args[:length] if args.key?(:length)
+          @line = args[:line] if args.key?(:line)
+        end
+      end
+      
+      # A collection of stack elements (frames) where an error occurred.
+      class StackTrace
+        include Google::Apis::Core::Hashable
+      
+        # An array of Stack elements.
+        # Corresponds to the JSON property `elements`
+        # @return [Array<Google::Apis::WorkflowexecutionsV1::StackTraceElement>]
+        attr_accessor :elements
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @elements = args[:elements] if args.key?(:elements)
+        end
+      end
+      
+      # A single stack element (frame) where an error occurred.
+      class StackTraceElement
+        include Google::Apis::Core::Hashable
+      
+        # Position contains source position information about the stack trace element
+        # such as line number, column number and length of the code block in bytes.
+        # Corresponds to the JSON property `position`
+        # @return [Google::Apis::WorkflowexecutionsV1::Position]
+        attr_accessor :position
+      
+        # The routine where the error occurred.
+        # Corresponds to the JSON property `routine`
+        # @return [String]
+        attr_accessor :routine
+      
+        # The step the error occurred at.
+        # Corresponds to the JSON property `step`
+        # @return [String]
+        attr_accessor :step
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @position = args[:position] if args.key?(:position)
+          @routine = args[:routine] if args.key?(:routine)
+          @step = args[:step] if args.key?(:step)
         end
       end
     end
