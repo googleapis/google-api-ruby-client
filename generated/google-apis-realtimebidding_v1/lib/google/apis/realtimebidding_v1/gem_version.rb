@@ -16,13 +16,13 @@ module Google
   module Apis
     module RealtimebiddingV1
       # Version of the google-apis-realtimebidding_v1 gem
-      GEM_VERSION = "0.2.0"
+      GEM_VERSION = "0.3.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.1.2"
+      GENERATOR_VERSION = "0.2.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20201109"
+      REVISION = "20210310"
     end
   end
 end

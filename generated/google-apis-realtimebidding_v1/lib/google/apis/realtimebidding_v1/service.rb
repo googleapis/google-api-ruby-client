@@ -52,6 +52,73 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Gets a bidder account by its name.
+        # @param [String] name
+        #   Required. Name of the bidder to get. Format: `bidders/`bidderAccountId``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RealtimebiddingV1::Bidder] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RealtimebiddingV1::Bidder]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_bidder(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::RealtimebiddingV1::Bidder::Representation
+          command.response_class = Google::Apis::RealtimebiddingV1::Bidder
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the bidder accounts that belong to the caller.
+        # @param [Fixnum] page_size
+        #   The maximum number of bidders to return. If unspecified, at most 100 bidders
+        #   will be returned. The maximum value is 500; values above 500 will be coerced
+        #   to 500.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return. This value is
+        #   received from a previous `ListBidders` call in ListBiddersResponse.
+        #   nextPageToken.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RealtimebiddingV1::ListBiddersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RealtimebiddingV1::ListBiddersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_bidders(page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/bidders', options)
+          command.response_representation = Google::Apis::RealtimebiddingV1::ListBiddersResponse::Representation
+          command.response_class = Google::Apis::RealtimebiddingV1::ListBiddersResponse
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists creatives.
         # @param [String] parent
         #   Required. Name of the parent buyer that owns the creatives. The pattern for
@@ -149,6 +216,78 @@ module Google
           command.response_representation = Google::Apis::RealtimebiddingV1::WatchCreativesResponse::Representation
           command.response_class = Google::Apis::RealtimebiddingV1::WatchCreativesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a bidder endpoint by its name.
+        # @param [String] name
+        #   Required. Name of the bidder endpoint to get. Format: `bidders/`
+        #   bidderAccountId`/endpoints/`endpointId``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RealtimebiddingV1::Endpoint] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RealtimebiddingV1::Endpoint]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_bidder_endpoint(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::RealtimebiddingV1::Endpoint::Representation
+          command.response_class = Google::Apis::RealtimebiddingV1::Endpoint
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the bidder's endpoints.
+        # @param [String] parent
+        #   Required. Name of the bidder whose endpoints will be listed. Format: `bidders/`
+        #   bidderAccountId``
+        # @param [Fixnum] page_size
+        #   The maximum number of endpoints to return. If unspecified, at most 100
+        #   endpoints will be returned. The maximum value is 500; values above 500 will be
+        #   coerced to 500.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return. This value is
+        #   received from a previous `ListEndpoints` call in ListEndpointsResponse.
+        #   nextPageToken.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RealtimebiddingV1::ListEndpointsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RealtimebiddingV1::ListEndpointsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_bidder_endpoints(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/endpoints', options)
+          command.response_representation = Google::Apis::RealtimebiddingV1::ListEndpointsResponse::Representation
+          command.response_class = Google::Apis::RealtimebiddingV1::ListEndpointsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -604,6 +743,36 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets a buyer account by its name.
+        # @param [String] name
+        #   Required. Name of the buyer to get. Format: `buyers/`buyerId``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RealtimebiddingV1::Buyer] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RealtimebiddingV1::Buyer]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_buyer(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::RealtimebiddingV1::Buyer::Representation
+          command.response_class = Google::Apis::RealtimebiddingV1::Buyer
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets remarketing tag for a buyer. A remarketing tag is a piece of JavaScript
         # code that can be placed on a web page. When a user visits a page containing a
         # remarketing tag, Google adds the user to a user list.
@@ -636,6 +805,43 @@ module Google
           command.response_representation = Google::Apis::RealtimebiddingV1::GetRemarketingTagResponse::Representation
           command.response_class = Google::Apis::RealtimebiddingV1::GetRemarketingTagResponse
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all buyer account information the calling buyer user or service account
+        # is permissioned to manage.
+        # @param [Fixnum] page_size
+        #   The maximum number of buyers to return. If unspecified, at most 100 buyers
+        #   will be returned. The maximum value is 500; values above 500 will be coerced
+        #   to 500.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return. This value is
+        #   received from a previous `ListBuyers` call in ListBuyersResponse.nextPageToken.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RealtimebiddingV1::ListBuyersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RealtimebiddingV1::ListBuyersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_buyers(page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/buyers', options)
+          command.response_representation = Google::Apis::RealtimebiddingV1::ListBuyersResponse::Representation
+          command.response_class = Google::Apis::RealtimebiddingV1::ListBuyersResponse
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
