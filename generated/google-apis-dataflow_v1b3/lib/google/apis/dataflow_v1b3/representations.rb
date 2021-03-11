@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DebugOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeleteSnapshotResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1309,6 +1315,13 @@ module Google
         end
       end
       
+      class DebugOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_hot_key_logging, as: 'enableHotKeyLogging'
+        end
+      end
+      
       class DeleteSnapshotResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1389,6 +1402,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_manager_api_service, as: 'clusterManagerApiService'
           property :dataset, as: 'dataset'
+          property :debug_options, as: 'debugOptions', class: Google::Apis::DataflowV1b3::DebugOptions, decorator: Google::Apis::DataflowV1b3::DebugOptions::Representation
+      
           collection :experiments, as: 'experiments'
           property :flex_resource_scheduling_goal, as: 'flexResourceSchedulingGoal'
           hash :internal_experiments, as: 'internalExperiments'
