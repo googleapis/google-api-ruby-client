@@ -538,7 +538,7 @@ module Google
         end
       end
       
-      # A Cloud SQL instance resource. Next field: 36
+      # A Cloud SQL instance resource.
       class DatabaseInstance
         include Google::Apis::Core::Hashable
       
@@ -673,8 +673,7 @@ module Google
         # @return [String]
         attr_accessor :root_password
       
-        # The status indicating if instance satisfies physical zone separation. Reserved
-        # for future use.
+        # The status indicating if instance satisfiesPzs. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
         attr_accessor :satisfies_pzs
@@ -1052,7 +1051,9 @@ module Google
         # by using this property or by using the *csvExportOptions.selectQuery* property,
         # which takes precedence over this property. *PostgreSQL instances:* You must
         # specify one database to be exported. If *fileType* is *CSV*, this database
-        # must match the one specified in the *csvExportOptions.selectQuery* property.
+        # must match the one specified in the *csvExportOptions.selectQuery* property. *
+        # SQL Server instances:* You must specify one database to be exported, and the *
+        # fileType* must be *BAK*.
         # Corresponds to the JSON property `databases`
         # @return [Array<String>]
         attr_accessor :databases
@@ -2031,7 +2032,7 @@ module Google
       
       # An Operation resource. For successful operations that return an Operation
       # resource, only the fields relevant to the operation are populated in the
-      # resource. Next field: 18
+      # resource.
       class Operation
         include Google::Apis::Core::Hashable
       
@@ -2577,7 +2578,7 @@ module Google
         end
       end
       
-      # External primary instance migration setting error.
+      # External primary instance migration setting error/warning.
       class SqlExternalSyncSettingError
         include Google::Apis::Core::Hashable
       
@@ -2586,7 +2587,7 @@ module Google
         # @return [String]
         attr_accessor :detail
       
-        # This is always *sql#migrationSettingError*.
+        # Can be *sql#externalSyncSettingError* or *sql#externalSyncSettingWarning*.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2641,6 +2642,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # List of migration warnings.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::SqladminV1beta4::SqlExternalSyncSettingError>]
+        attr_accessor :warnings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2649,6 +2655,7 @@ module Google
         def update!(**args)
           @errors = args[:errors] if args.key?(:errors)
           @kind = args[:kind] if args.key?(:kind)
+          @warnings = args[:warnings] if args.key?(:warnings)
         end
       end
       
@@ -2892,7 +2899,7 @@ module Google
       
         # An Operation resource. For successful operations that return an Operation
         # resource, only the fields relevant to the operation are populated in the
-        # resource. Next field: 18
+        # resource.
         # Corresponds to the JSON property `operation`
         # @return [Google::Apis::SqladminV1beta4::Operation]
         attr_accessor :operation

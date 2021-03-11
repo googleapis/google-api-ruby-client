@@ -1161,6 +1161,8 @@ module Google
           collection :errors, as: 'errors', class: Google::Apis::SqladminV1beta4::SqlExternalSyncSettingError, decorator: Google::Apis::SqladminV1beta4::SqlExternalSyncSettingError::Representation
       
           property :kind, as: 'kind'
+          collection :warnings, as: 'warnings', class: Google::Apis::SqladminV1beta4::SqlExternalSyncSettingError, decorator: Google::Apis::SqladminV1beta4::SqlExternalSyncSettingError::Representation
+      
         end
       end
       

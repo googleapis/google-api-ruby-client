@@ -1137,7 +1137,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Truncate MySQL general and slow query log tables
+        # Truncate MySQL general and slow query log tables MySQL only.
         # @param [String] project
         #   Project ID of the Cloud SQL project.
         # @param [String] instance
