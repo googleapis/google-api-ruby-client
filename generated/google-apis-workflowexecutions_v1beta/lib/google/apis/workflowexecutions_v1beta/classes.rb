@@ -212,9 +212,7 @@ module Google
         end
       end
       
-      # A single stack element (frame) where an error occurred. This field currently
-      # only exists in v1Beta. We will need to roll this change out to V1 after the
-      # feature is thoroughly tested. TODO(b/178540475)
+      # A single stack element (frame) where an error occurred.
       class StackTraceElement
         include Google::Apis::Core::Hashable
       
