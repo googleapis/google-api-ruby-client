@@ -947,6 +947,27 @@ module Google
         end
       end
       
+      # Describes any options that have an effect on the debugging of pipelines.
+      class DebugOptions
+        include Google::Apis::Core::Hashable
+      
+        # When true, enables the logging of the literal hot key to the user's Cloud
+        # Logging.
+        # Corresponds to the JSON property `enableHotKeyLogging`
+        # @return [Boolean]
+        attr_accessor :enable_hot_key_logging
+        alias_method :enable_hot_key_logging?, :enable_hot_key_logging
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_hot_key_logging = args[:enable_hot_key_logging] if args.key?(:enable_hot_key_logging)
+        end
+      end
+      
       # Response from deleting a snapshot.
       class DeleteSnapshotResponse
         include Google::Apis::Core::Hashable
@@ -1247,6 +1268,11 @@ module Google
         # @return [String]
         attr_accessor :dataset
       
+        # Describes any options that have an effect on the debugging of pipelines.
+        # Corresponds to the JSON property `debugOptions`
+        # @return [Google::Apis::DataflowV1b3::DebugOptions]
+        attr_accessor :debug_options
+      
         # The list of experiments to enable. This field should be used for SDK related
         # experiments and not for service related experiments. The proper field for
         # service related experiments is service_options. For more details see the
@@ -1350,6 +1376,7 @@ module Google
         def update!(**args)
           @cluster_manager_api_service = args[:cluster_manager_api_service] if args.key?(:cluster_manager_api_service)
           @dataset = args[:dataset] if args.key?(:dataset)
+          @debug_options = args[:debug_options] if args.key?(:debug_options)
           @experiments = args[:experiments] if args.key?(:experiments)
           @flex_resource_scheduling_goal = args[:flex_resource_scheduling_goal] if args.key?(:flex_resource_scheduling_goal)
           @internal_experiments = args[:internal_experiments] if args.key?(:internal_experiments)
