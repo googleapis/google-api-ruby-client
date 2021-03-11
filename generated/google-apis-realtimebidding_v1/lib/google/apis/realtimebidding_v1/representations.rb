@@ -58,6 +58,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Bidder
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Buyer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloseUserListRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -130,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Endpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetRemarketingTagResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -160,7 +178,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListBiddersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListBuyersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListCreativesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListEndpointsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -348,6 +384,29 @@ module Google
         end
       end
       
+      class Bidder
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bypass_nonguaranteed_deals_pretargeting, as: 'bypassNonguaranteedDealsPretargeting'
+          property :cookie_matching_network_id, as: 'cookieMatchingNetworkId'
+          property :cookie_matching_url, as: 'cookieMatchingUrl'
+          property :deals_billing_id, as: 'dealsBillingId'
+          property :name, as: 'name'
+        end
+      end
+      
+      class Buyer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_creative_count, :numeric_string => true, as: 'activeCreativeCount'
+          property :bidder, as: 'bidder'
+          collection :billing_ids, as: 'billingIds'
+          property :display_name, as: 'displayName'
+          property :maximum_active_creative_count, :numeric_string => true, as: 'maximumActiveCreativeCount'
+          property :name, as: 'name'
+        end
+      end
+      
       class CloseUserListRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -489,6 +548,17 @@ module Google
         end
       end
       
+      class Endpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bid_protocol, as: 'bidProtocol'
+          property :maximum_qps, :numeric_string => true, as: 'maximumQps'
+          property :name, as: 'name'
+          property :trading_location, as: 'tradingLocation'
+          property :url, as: 'url'
+        end
+      end
+      
       class GetRemarketingTagResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -529,10 +599,37 @@ module Google
         end
       end
       
+      class ListBiddersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bidders, as: 'bidders', class: Google::Apis::RealtimebiddingV1::Bidder, decorator: Google::Apis::RealtimebiddingV1::Bidder::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListBuyersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :buyers, as: 'buyers', class: Google::Apis::RealtimebiddingV1::Buyer, decorator: Google::Apis::RealtimebiddingV1::Buyer::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListCreativesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :creatives, as: 'creatives', class: Google::Apis::RealtimebiddingV1::Creative, decorator: Google::Apis::RealtimebiddingV1::Creative::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListEndpointsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :endpoints, as: 'endpoints', class: Google::Apis::RealtimebiddingV1::Endpoint, decorator: Google::Apis::RealtimebiddingV1::Endpoint::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end

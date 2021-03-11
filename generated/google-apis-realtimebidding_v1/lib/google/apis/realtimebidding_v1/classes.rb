@@ -205,6 +205,131 @@ module Google
         end
       end
       
+      # Bidder settings.
+      class Bidder
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A flag to bypass pretargeting for private auctions and preferred
+        # deals. When true, bid requests from these nonguaranteed deals will always be
+        # sent. When false, bid requests will be subject to regular pretargeting
+        # configurations. Programmatic Guaranteed deals will always be sent to the
+        # bidder, regardless of the value for this flag. Auction packages are not
+        # impacted by this value and are subject to the regular pretargeting
+        # configurations.
+        # Corresponds to the JSON property `bypassNonguaranteedDealsPretargeting`
+        # @return [Boolean]
+        attr_accessor :bypass_nonguaranteed_deals_pretargeting
+        alias_method :bypass_nonguaranteed_deals_pretargeting?, :bypass_nonguaranteed_deals_pretargeting
+      
+        # Output only. The buyer's network ID used for cookie matching. This ID
+        # corresponds to the `google_nid` parameter in the URL used in cookie match
+        # requests. Refer to https://developers.google.com/authorized-buyers/rtb/cookie-
+        # guide for further information.
+        # Corresponds to the JSON property `cookieMatchingNetworkId`
+        # @return [String]
+        attr_accessor :cookie_matching_network_id
+      
+        # Output only. The base URL used in cookie match requests. Refer to https://
+        # developers.google.com/authorized-buyers/rtb/cookie-guide for further
+        # information.
+        # Corresponds to the JSON property `cookieMatchingUrl`
+        # @return [String]
+        attr_accessor :cookie_matching_url
+      
+        # Output only. The billing ID for the deals pretargeting config. This billing ID
+        # is sent on the bid request for guaranteed and nonguaranteed deals matched in
+        # pretargeting.
+        # Corresponds to the JSON property `dealsBillingId`
+        # @return [String]
+        attr_accessor :deals_billing_id
+      
+        # Output only. Name of the bidder resource that must follow the pattern `bidders/
+        # `bidderAccountId``, where ``bidderAccountId`` is the account ID of the bidder
+        # whose information is to be received. One can get their account ID on the
+        # Authorized Buyers or Open Bidding UI, or by contacting their Google account
+        # manager.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bypass_nonguaranteed_deals_pretargeting = args[:bypass_nonguaranteed_deals_pretargeting] if args.key?(:bypass_nonguaranteed_deals_pretargeting)
+          @cookie_matching_network_id = args[:cookie_matching_network_id] if args.key?(:cookie_matching_network_id)
+          @cookie_matching_url = args[:cookie_matching_url] if args.key?(:cookie_matching_url)
+          @deals_billing_id = args[:deals_billing_id] if args.key?(:deals_billing_id)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # RTB Buyer account information.
+      class Buyer
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The number of creatives that this buyer submitted via the API or
+        # bid with in the last 30 days. This is counted against the maximum number of
+        # active creatives.
+        # Corresponds to the JSON property `activeCreativeCount`
+        # @return [Fixnum]
+        attr_accessor :active_creative_count
+      
+        # Output only. The name of the bidder resource that is responsible for receiving
+        # bidding traffic for this account. The bidder name must follow the pattern `
+        # bidders/`bidderAccountId``, where ``bidderAccountId`` is the account ID of the
+        # bidder receiving traffic for this buyer.
+        # Corresponds to the JSON property `bidder`
+        # @return [String]
+        attr_accessor :bidder
+      
+        # Output only. A list of billing IDs associated with this account. These IDs
+        # appear on: 1. A bid request, to signal which buyers are eligible to bid on a
+        # given opportunity, and which pretargeting configurations were matched for each
+        # eligible buyer. 2. The bid response, to attribute a winning impression to a
+        # specific account for billing, reporting, policy and publisher block
+        # enforcement.
+        # Corresponds to the JSON property `billingIds`
+        # @return [Array<String>]
+        attr_accessor :billing_ids
+      
+        # Output only. The diplay name associated with this buyer account, as visible to
+        # sellers.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The maximum number of active creatives that this buyer can have.
+        # Corresponds to the JSON property `maximumActiveCreativeCount`
+        # @return [Fixnum]
+        attr_accessor :maximum_active_creative_count
+      
+        # Output only. Name of the buyer resource that must follow the pattern `buyers/`
+        # buyerAccountId``, where ``buyerAccountId`` is the account ID of the buyer
+        # account whose information is to be received. One can get their account ID on
+        # the Authorized Buyers or Open Bidding UI, or by contacting their Google
+        # account manager.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_creative_count = args[:active_creative_count] if args.key?(:active_creative_count)
+          @bidder = args[:bidder] if args.key?(:bidder)
+          @billing_ids = args[:billing_ids] if args.key?(:billing_ids)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @maximum_active_creative_count = args[:maximum_active_creative_count] if args.key?(:maximum_active_creative_count)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # A request to close a specified user list.
       class CloseUserListRequest
         include Google::Apis::Core::Hashable
@@ -765,6 +890,54 @@ module Google
         end
       end
       
+      # Bidder endpoint that receives bid requests.
+      class Endpoint
+        include Google::Apis::Core::Hashable
+      
+        # The protocol that the bidder endpoint is using.
+        # Corresponds to the JSON property `bidProtocol`
+        # @return [String]
+        attr_accessor :bid_protocol
+      
+        # The maximum number of queries per second allowed to be sent to this server.
+        # Corresponds to the JSON property `maximumQps`
+        # @return [Fixnum]
+        attr_accessor :maximum_qps
+      
+        # Output only. Name of the endpoint resource that must follow the pattern `
+        # bidders/`bidderAccountId`/endpoints/`endpointId``, where `bidderAccountId` is
+        # the account ID of the bidder who operates this endpoint, and `endpointId` is a
+        # unique ID assigned by the server.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The trading location that bid requests should be sent from. See https://
+        # developers.google.com/authorized-buyers/rtb/peer-guide#trading-locations for
+        # further information.
+        # Corresponds to the JSON property `tradingLocation`
+        # @return [String]
+        attr_accessor :trading_location
+      
+        # Output only. The URL that bid requests should be sent to.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bid_protocol = args[:bid_protocol] if args.key?(:bid_protocol)
+          @maximum_qps = args[:maximum_qps] if args.key?(:maximum_qps)
+          @name = args[:name] if args.key?(:name)
+          @trading_location = args[:trading_location] if args.key?(:trading_location)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
       # Response for a request to get remarketing tag.
       class GetRemarketingTagResponse
         include Google::Apis::Core::Hashable
@@ -902,6 +1075,58 @@ module Google
         end
       end
       
+      # A response containing bidders.
+      class ListBiddersResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of bidders.
+        # Corresponds to the JSON property `bidders`
+        # @return [Array<Google::Apis::RealtimebiddingV1::Bidder>]
+        attr_accessor :bidders
+      
+        # A token which can be passed to a subsequent call to the `ListBidders` method
+        # to retrieve the next page of results in ListBiddersRequest.pageToken.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bidders = args[:bidders] if args.key?(:bidders)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # A response containing buyer account information.
+      class ListBuyersResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of buyers.
+        # Corresponds to the JSON property `buyers`
+        # @return [Array<Google::Apis::RealtimebiddingV1::Buyer>]
+        attr_accessor :buyers
+      
+        # A token which can be passed to a subsequent call to the `ListBuyers` method to
+        # retrieve the next page of results in ListBuyersRequest.pageToken.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @buyers = args[:buyers] if args.key?(:buyers)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # A response for listing creatives.
       class ListCreativesResponse
         include Google::Apis::Core::Hashable
@@ -925,6 +1150,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @creatives = args[:creatives] if args.key?(:creatives)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # A response containing bidder endpoints.
+      class ListEndpointsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of bidder endpoints.
+        # Corresponds to the JSON property `endpoints`
+        # @return [Array<Google::Apis::RealtimebiddingV1::Endpoint>]
+        attr_accessor :endpoints
+      
+        # A token which can be passed to a subsequent call to the `ListEndpoints` method
+        # to retrieve the next page of results in ListEndpointsRequest.pageToken.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoints = args[:endpoints] if args.key?(:endpoints)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
