@@ -324,9 +324,9 @@ module Google
         # @param [String] parent
         #   Required. The parent table. Format: tables/`table`
         # @param [String] filter
-        #   Optional. Raw text query to search for in rows of the table. Special
-        #   characters must be escaped. Logical operators and field specific filtering not
-        #   supported.
+        #   Optional. Filter to only include resources matching the requirements. For more
+        #   information, see [Filtering list results](https://support.google.com/area120-
+        #   tables/answer/10503371).
         # @param [Fixnum] page_size
         #   The maximum number of rows to return. The service may return fewer than this
         #   value. If unspecified, at most 50 rows are returned. The maximum value is 1,
