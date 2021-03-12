@@ -50,6 +50,31 @@ module Google
         end
       end
       
+      # The channel with score.
+      class SasPortalChannelWithScore
+        include Google::Apis::Core::Hashable
+      
+        # Frequency range from `low_frequency` to `high_frequency`.
+        # Corresponds to the JSON property `frequencyRange`
+        # @return [Google::Apis::ProdTtSasportalV1alpha1::SasPortalFrequencyRange]
+        attr_accessor :frequency_range
+      
+        # The channel score, normalized to be in [0,100].
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @frequency_range = args[:frequency_range] if args.key?(:frequency_range)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
       # Request for CreateSignedDevice.
       class SasPortalCreateSignedDeviceRequest
         include Google::Apis::Core::Hashable
@@ -162,6 +187,11 @@ module Google
         # @return [Google::Apis::ProdTtSasportalV1alpha1::SasPortalDeviceConfig]
         attr_accessor :active_config
       
+        # Output only. Current channels with scores.
+        # Corresponds to the JSON property `currentChannels`
+        # @return [Array<Google::Apis::ProdTtSasportalV1alpha1::SasPortalChannelWithScore>]
+        attr_accessor :current_channels
+      
         # Device data overridable by both SAS Portal and registration requests.
         # Corresponds to the JSON property `deviceMetadata`
         # @return [Google::Apis::ProdTtSasportalV1alpha1::SasPortalDeviceMetadata]
@@ -214,6 +244,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @active_config = args[:active_config] if args.key?(:active_config)
+          @current_channels = args[:current_channels] if args.key?(:current_channels)
           @device_metadata = args[:device_metadata] if args.key?(:device_metadata)
           @display_name = args[:display_name] if args.key?(:display_name)
           @fcc_id = args[:fcc_id] if args.key?(:fcc_id)
