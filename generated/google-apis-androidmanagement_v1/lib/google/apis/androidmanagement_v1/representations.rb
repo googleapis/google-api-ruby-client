@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContentProviderEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Date
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -275,6 +281,12 @@ module Google
       end
       
       class NonComplianceDetailCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OncCertificateProvider
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -625,6 +637,15 @@ module Google
         end
       end
       
+      class ContentProviderEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :package_name, as: 'packageName'
+          collection :signing_certs_sha256, as: 'signingCertsSha256'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class Date
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -965,6 +986,15 @@ module Google
         end
       end
       
+      class OncCertificateProvider
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :certificate_references, as: 'certificateReferences'
+          property :content_provider_endpoint, as: 'contentProviderEndpoint', class: Google::Apis::AndroidmanagementV1::ContentProviderEndpoint, decorator: Google::Apis::AndroidmanagementV1::ContentProviderEndpoint::Representation
+      
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1097,6 +1127,8 @@ module Google
           property :name, as: 'name'
           property :network_escape_hatch_enabled, as: 'networkEscapeHatchEnabled'
           property :network_reset_disabled, as: 'networkResetDisabled'
+          collection :onc_certificate_providers, as: 'oncCertificateProviders', class: Google::Apis::AndroidmanagementV1::OncCertificateProvider, decorator: Google::Apis::AndroidmanagementV1::OncCertificateProvider::Representation
+      
           hash :open_network_configuration, as: 'openNetworkConfiguration'
           property :outgoing_beam_disabled, as: 'outgoingBeamDisabled'
           property :outgoing_calls_disabled, as: 'outgoingCallsDisabled'

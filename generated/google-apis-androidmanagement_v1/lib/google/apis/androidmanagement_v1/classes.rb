@@ -719,6 +719,37 @@ module Google
         end
       end
       
+      # This feature is not generally available.
+      class ContentProviderEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # This feature is not generally available.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Required. This feature is not generally available.
+        # Corresponds to the JSON property `signingCertsSha256`
+        # @return [Array<String>]
+        attr_accessor :signing_certs_sha256
+      
+        # This feature is not generally available.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @signing_certs_sha256 = args[:signing_certs_sha256] if args.key?(:signing_certs_sha256)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Represents a whole or partial calendar date, such as a birthday. The time of
       # day and time zone are either specified elsewhere or are insignificant. The
       # date is relative to the Gregorian Calendar. This can represent one of the
@@ -2125,6 +2156,31 @@ module Google
         end
       end
       
+      # This feature is not generally available.
+      class OncCertificateProvider
+        include Google::Apis::Core::Hashable
+      
+        # This feature is not generally available.
+        # Corresponds to the JSON property `certificateReferences`
+        # @return [Array<String>]
+        attr_accessor :certificate_references
+      
+        # This feature is not generally available.
+        # Corresponds to the JSON property `contentProviderEndpoint`
+        # @return [Google::Apis::AndroidmanagementV1::ContentProviderEndpoint]
+        attr_accessor :content_provider_endpoint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_references = args[:certificate_references] if args.key?(:certificate_references)
+          @content_provider_endpoint = args[:content_provider_endpoint] if args.key?(:content_provider_endpoint)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -2752,6 +2808,11 @@ module Google
         attr_accessor :network_reset_disabled
         alias_method :network_reset_disabled?, :network_reset_disabled
       
+        # This feature is not generally available.
+        # Corresponds to the JSON property `oncCertificateProviders`
+        # @return [Array<Google::Apis::AndroidmanagementV1::OncCertificateProvider>]
+        attr_accessor :onc_certificate_providers
+      
         # Network configuration for the device. See configure networks for more
         # information.
         # Corresponds to the JSON property `openNetworkConfiguration`
@@ -3026,6 +3087,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network_escape_hatch_enabled = args[:network_escape_hatch_enabled] if args.key?(:network_escape_hatch_enabled)
           @network_reset_disabled = args[:network_reset_disabled] if args.key?(:network_reset_disabled)
+          @onc_certificate_providers = args[:onc_certificate_providers] if args.key?(:onc_certificate_providers)
           @open_network_configuration = args[:open_network_configuration] if args.key?(:open_network_configuration)
           @outgoing_beam_disabled = args[:outgoing_beam_disabled] if args.key?(:outgoing_beam_disabled)
           @outgoing_calls_disabled = args[:outgoing_calls_disabled] if args.key?(:outgoing_calls_disabled)
