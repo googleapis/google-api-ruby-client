@@ -461,6 +461,7 @@ module Google
       class IsInstanceUpgradeableResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :upgrade_image, as: 'upgradeImage'
           property :upgrade_info, as: 'upgradeInfo'
           property :upgrade_version, as: 'upgradeVersion'
           property :upgradeable, as: 'upgradeable'

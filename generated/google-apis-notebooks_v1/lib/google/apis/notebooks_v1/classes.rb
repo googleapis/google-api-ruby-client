@@ -858,6 +858,13 @@ module Google
       class IsInstanceUpgradeableResponse
         include Google::Apis::Core::Hashable
       
+        # The new image self link this instance will be upgraded to if calling the
+        # upgrade endpoint. This field will only be populated if field upgradeable is
+        # true.
+        # Corresponds to the JSON property `upgradeImage`
+        # @return [String]
+        attr_accessor :upgrade_image
+      
         # Additional information about upgrade.
         # Corresponds to the JSON property `upgradeInfo`
         # @return [String]
@@ -881,6 +888,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @upgrade_image = args[:upgrade_image] if args.key?(:upgrade_image)
           @upgrade_info = args[:upgrade_info] if args.key?(:upgrade_info)
           @upgrade_version = args[:upgrade_version] if args.key?(:upgrade_version)
           @upgradeable = args[:upgradeable] if args.key?(:upgradeable)
