@@ -184,8 +184,7 @@ module Google
         end
       end
       
-      # Autopilot is the configuration for Autopilot settings on the cluster. It is
-      # the official product name of what is previously known as AutoGKE
+      # Autopilot is the configuration for Autopilot settings on the cluster.
       class Autopilot
         include Google::Apis::Core::Hashable
       
@@ -503,8 +502,7 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::AuthenticatorGroupsConfig]
         attr_accessor :authenticator_groups_config
       
-        # Autopilot is the configuration for Autopilot settings on the cluster. It is
-        # the official product name of what is previously known as AutoGKE
+        # Autopilot is the configuration for Autopilot settings on the cluster.
         # Corresponds to the JSON property `autopilot`
         # @return [Google::Apis::ContainerV1beta1::Autopilot]
         attr_accessor :autopilot
