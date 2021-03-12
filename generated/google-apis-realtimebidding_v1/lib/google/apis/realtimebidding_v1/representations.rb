@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdTechnologyProviders
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AddTargetedAppsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -340,6 +346,15 @@ module Google
         end
       end
       
+      class AdTechnologyProviders
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :detected_gvl_ids, as: 'detectedGvlIds'
+          collection :detected_provider_ids, as: 'detectedProviderIds'
+          collection :unidentified_provider_domains, as: 'unidentifiedProviderDomains'
+        end
+      end
+      
       class AddTargetedAppsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -454,6 +469,8 @@ module Google
       class CreativeServingDecision
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_technology_providers, as: 'adTechnologyProviders', class: Google::Apis::RealtimebiddingV1::AdTechnologyProviders, decorator: Google::Apis::RealtimebiddingV1::AdTechnologyProviders::Representation
+      
           property :china_policy_compliance, as: 'chinaPolicyCompliance', class: Google::Apis::RealtimebiddingV1::PolicyCompliance, decorator: Google::Apis::RealtimebiddingV1::PolicyCompliance::Representation
       
           property :deals_policy_compliance, as: 'dealsPolicyCompliance', class: Google::Apis::RealtimebiddingV1::PolicyCompliance, decorator: Google::Apis::RealtimebiddingV1::PolicyCompliance::Representation
