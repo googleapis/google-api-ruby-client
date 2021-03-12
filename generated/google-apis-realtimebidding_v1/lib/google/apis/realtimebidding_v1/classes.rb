@@ -36,6 +36,58 @@ module Google
         end
       end
       
+      # The list of detected Ad Technology Providers for this creative. Bids placed
+      # for inventory that will serve to EEA or UK users are expected to comply with
+      # GDPR requirements. You must ensure that the creatives used in such bids should
+      # contain only user consented ad technology providers as indicated in the bid
+      # request. Google reserves the right to filter non-compliant bids. User
+      # consented ad technology providers can be found in the [Google Protocol](https:/
+      # /developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto)
+      # with the `BidRequest.adslot.consented_providers_settings` field, and can be
+      # found as an [OpenRTB extension](https://developers.google.com/authorized-
+      # buyers/rtb/downloads/openrtb-adx-proto) with the `BidRequest.user.ext.
+      # consented_providers_settings` and `BidRequest.user.ext.consent` fields. See
+      # https://support.google.com/authorizedbuyers/answer/9789378 for additional
+      # information about the Google TCF v2 integration.
+      class AdTechnologyProviders
+        include Google::Apis::Core::Hashable
+      
+        # The detected IAB Global Vendor List (GVL) IDs for this creative. See the IAB
+        # Global Vendor List at https://vendorlist.consensu.org/v2/vendor-list.json for
+        # details about the vendors.
+        # Corresponds to the JSON property `detectedGvlIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :detected_gvl_ids
+      
+        # The detected [Google Ad Tech Providers (ATP)](https://support.google.com/
+        # admanager/answer/9012903) for this creative. See https://storage.googleapis.
+        # com/adx-rtb-dictionaries/providers.csv for mapping of provider ID to provided
+        # name, a privacy policy URL, and a list of domains which can be attributed to
+        # the provider.
+        # Corresponds to the JSON property `detectedProviderIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :detected_provider_ids
+      
+        # Domains of detected unidentified ad technology providers (if any). You must
+        # ensure that the creatives used in bids placed for inventory that will serve to
+        # EEA or UK users does not contain unidentified ad technology providers. Google
+        # reserves the right to filter non-compliant bids.
+        # Corresponds to the JSON property `unidentifiedProviderDomains`
+        # @return [Array<String>]
+        attr_accessor :unidentified_provider_domains
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detected_gvl_ids = args[:detected_gvl_ids] if args.key?(:detected_gvl_ids)
+          @detected_provider_ids = args[:detected_provider_ids] if args.key?(:detected_provider_ids)
+          @unidentified_provider_domains = args[:unidentified_provider_domains] if args.key?(:unidentified_provider_domains)
+        end
+      end
+      
       # A request to start targeting the provided app IDs in a specific pretargeting
       # configuration. The pretargeting configuration itself specifies how these apps
       # are targeted. in PretargetingConfig.appTargeting.mobileAppTargeting.
@@ -527,6 +579,23 @@ module Google
       class CreativeServingDecision
         include Google::Apis::Core::Hashable
       
+        # The list of detected Ad Technology Providers for this creative. Bids placed
+        # for inventory that will serve to EEA or UK users are expected to comply with
+        # GDPR requirements. You must ensure that the creatives used in such bids should
+        # contain only user consented ad technology providers as indicated in the bid
+        # request. Google reserves the right to filter non-compliant bids. User
+        # consented ad technology providers can be found in the [Google Protocol](https:/
+        # /developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto)
+        # with the `BidRequest.adslot.consented_providers_settings` field, and can be
+        # found as an [OpenRTB extension](https://developers.google.com/authorized-
+        # buyers/rtb/downloads/openrtb-adx-proto) with the `BidRequest.user.ext.
+        # consented_providers_settings` and `BidRequest.user.ext.consent` fields. See
+        # https://support.google.com/authorizedbuyers/answer/9789378 for additional
+        # information about the Google TCF v2 integration.
+        # Corresponds to the JSON property `adTechnologyProviders`
+        # @return [Google::Apis::RealtimebiddingV1::AdTechnologyProviders]
+        attr_accessor :ad_technology_providers
+      
         # Policy compliance of the creative for a transaction type or a region.
         # Corresponds to the JSON property `chinaPolicyCompliance`
         # @return [Google::Apis::RealtimebiddingV1::PolicyCompliance]
@@ -625,6 +694,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ad_technology_providers = args[:ad_technology_providers] if args.key?(:ad_technology_providers)
           @china_policy_compliance = args[:china_policy_compliance] if args.key?(:china_policy_compliance)
           @deals_policy_compliance = args[:deals_policy_compliance] if args.key?(:deals_policy_compliance)
           @detected_advertisers = args[:detected_advertisers] if args.key?(:detected_advertisers)
