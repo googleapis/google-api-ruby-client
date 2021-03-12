@@ -381,6 +381,7 @@ module Google
       class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
         end
       end
       
@@ -395,6 +396,7 @@ module Google
       class GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
         end
       end
       
@@ -409,6 +411,7 @@ module Google
       class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
         end
       end
       
@@ -423,6 +426,7 @@ module Google
       class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
         end
       end
       
@@ -552,6 +556,7 @@ module Google
       class GoogleAppsCloudidentityDevicesV1WipeDeviceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
         end
       end
       
@@ -566,6 +571,7 @@ module Google
       class GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
         end
       end
       

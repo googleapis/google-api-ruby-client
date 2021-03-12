@@ -94,6 +94,12 @@ module Google
         # Enterprise Standard, Enterprise Plus, Enterprise for Education, and Cloud
         # Identity Premium
         # @param [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1Device] google_apps_cloudidentity_devices_v1_device_object
+        # @param [String] customer
+        #   Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the customer. If you're using this API for your own organization, use `
+        #   customers/my_customer` If you're using this API to manage another organization,
+        #   use `customers/`customer_id``, where customer_id is the customer to whom the
+        #   device belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -111,12 +117,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_device(google_apps_cloudidentity_devices_v1_device_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_device(google_apps_cloudidentity_devices_v1_device_object = nil, customer: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/devices', options)
           command.request_representation = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1Device::Representation
           command.request_object = google_apps_cloudidentity_devices_v1_device_object
           command.response_representation = Google::Apis::CloudidentityV1::Operation::Representation
           command.response_class = Google::Apis::CloudidentityV1::Operation
+          command.query['customer'] = customer unless customer.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -127,6 +134,12 @@ module Google
         #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
         #   of the Device in format: `devices/`device_id``, where device_id is the unique
         #   ID assigned to the Device.
+        # @param [String] customer
+        #   Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the customer. If you're using this API for your own organization, use `
+        #   customers/my_customer` If you're using this API to manage another organization,
+        #   use `customers/`customer_id``, where customer_id is the customer to whom the
+        #   device belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -144,11 +157,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_device(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_device(name, customer: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::CloudidentityV1::Operation::Representation
           command.response_class = Google::Apis::CloudidentityV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['customer'] = customer unless customer.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -159,6 +173,13 @@ module Google
         #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
         #   of the Device in the format: `devices/`device_id``, where device_id is the
         #   unique ID assigned to the Device.
+        # @param [String] customer
+        #   Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the Customer in the format: `customers/`customer_id``, where customer_id is
+        #   the customer to whom the device belongs. If you're using this API for your own
+        #   organization, use `customers/my_customer`. If you're using this API to manage
+        #   another organization, use `customers/`customer_id``, where customer_id is the
+        #   customer to whom the device belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -176,17 +197,25 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_device(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_device(name, customer: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1Device::Representation
           command.response_class = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1Device
           command.params['name'] = name unless name.nil?
+          command.query['customer'] = customer unless customer.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Lists/Searches devices.
+        # @param [String] customer
+        #   Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the customer in the format: `customers/`customer_id``, where customer_id is
+        #   the customer to whom the device belongs. If you're using this API for your own
+        #   organization, use `customers/my_customer`. If you're using this API to manage
+        #   another organization, use `customers/`customer_id``, where customer_id is the
+        #   customer to whom the device belongs.
         # @param [String] filter
         #   Optional. Additional restrictions when fetching list of devices. For a list of
         #   search fields, refer to [Mobile device search fields](https://developers.
@@ -225,10 +254,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_devices(filter: nil, order_by: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_devices(customer: nil, filter: nil, order_by: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/devices', options)
           command.response_representation = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ListDevicesResponse::Representation
           command.response_class = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ListDevicesResponse
+          command.query['customer'] = customer unless customer.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -392,6 +422,12 @@ module Google
         #   of the Device in format: `devices/`device_id`/deviceUsers/`device_user_id``,
         #   where device_id is the unique ID assigned to the Device, and device_user_id is
         #   the unique ID assigned to the User.
+        # @param [String] customer
+        #   Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the customer. If you're using this API for your own organization, use `
+        #   customers/my_customer` If you're using this API to manage another organization,
+        #   use `customers/`customer_id``, where customer_id is the customer to whom the
+        #   device belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -409,11 +445,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_device_device_user(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_device_device_user(name, customer: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::CloudidentityV1::Operation::Representation
           command.response_class = Google::Apis::CloudidentityV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['customer'] = customer unless customer.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -425,6 +462,12 @@ module Google
         #   of the Device in format: `devices/`device_id`/deviceUsers/`device_user_id``,
         #   where device_id is the unique ID assigned to the Device, and device_user_id is
         #   the unique ID assigned to the User.
+        # @param [String] customer
+        #   Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the customer. If you're using this API for your own organization, use `
+        #   customers/my_customer` If you're using this API to manage another organization,
+        #   use `customers/`customer_id``, where customer_id is the customer to whom the
+        #   device belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -442,11 +485,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_device_device_user(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_device_device_user(name, customer: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1DeviceUser::Representation
           command.response_class = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1DeviceUser
           command.params['name'] = name unless name.nil?
+          command.query['customer'] = customer unless customer.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -457,6 +501,12 @@ module Google
         #   Required. To list all DeviceUsers, set this to "devices/-". To list all
         #   DeviceUsers owned by a device, set this to the resource name of the device.
         #   Format: devices/`device`
+        # @param [String] customer
+        #   Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the customer. If you're using this API for your own organization, use `
+        #   customers/my_customer` If you're using this API to manage another organization,
+        #   use `customers/`customer_id``, where customer_id is the customer to whom the
+        #   device belongs.
         # @param [String] filter
         #   Optional. Additional restrictions when fetching list of devices. For a list of
         #   search fields, refer to [Mobile device search fields](https://developers.
@@ -490,11 +540,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_device_device_users(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_device_device_users(parent, customer: nil, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/deviceUsers', options)
           command.response_representation = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse::Representation
           command.response_class = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['customer'] = customer unless customer.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
