@@ -545,6 +545,34 @@ module Google
         end
       end
       
+      # The response from ListSites.
+      class ListSitesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token returned when the list of results is too large to fit in a single
+        # response. If the string is empty, the response is the last or only page of
+        # results. Use the token in a follow-up call to `ListSites` to find the next
+        # group of Sites. Page tokens are short-lived and should not be stored.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of Site objects from the parent Firebase Project.
+        # Corresponds to the JSON property `sites`
+        # @return [Array<Google::Apis::FirebasehostingV1beta1::Site>]
+        attr_accessor :sites
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @sites = args[:sites] if args.key?(:sites)
+        end
+      end
+      
       # 
       class ListVersionFilesResponse
         include Google::Apis::Core::Hashable
@@ -982,6 +1010,52 @@ module Google
           @redirects = args[:redirects] if args.key?(:redirects)
           @rewrites = args[:rewrites] if args.key?(:rewrites)
           @trailing_slash_behavior = args[:trailing_slash_behavior] if args.key?(:trailing_slash_behavior)
+        end
+      end
+      
+      # A `Site` represents a Firebase Hosting Site.
+      class Site
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The ID of a Web App associated with the Site.
+        # Corresponds to the JSON property `appId`
+        # @return [String]
+        attr_accessor :app_id
+      
+        # Output only. The default URL for this Hosting Site.
+        # Corresponds to the JSON property `defaultUrl`
+        # @return [String]
+        attr_accessor :default_url
+      
+        # Optional. User-specified labels for the Hosting Site.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The fully qualified resource name of the Hosting Site, e.g.: `
+        # projects/`project-number`/sites/`site-id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The Hosting site type. There will always be a single DEFAULT_SITE,
+        # which is created when Hosting is provisioned. All additional sites are
+        # USER_SITE.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_id = args[:app_id] if args.key?(:app_id)
+          @default_url = args[:default_url] if args.key?(:default_url)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
