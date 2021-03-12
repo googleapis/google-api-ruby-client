@@ -85,7 +85,7 @@ module Google
         
         # Retrieves a UserInvitation resource. **Note:** New consumer accounts with the
         # customer’s verified domain created within the previous 48 hours will not
-        # appear in the result.
+        # appear in the result. This delay also applies to newly-verified domains.
         # @param [String] name
         #   Required. `UserInvitation` name in the format `customers/`customer`/
         #   userinvitations/`user_email_address``
@@ -155,7 +155,7 @@ module Google
         
         # Retrieves a list of UserInvitation resources. **Note:** New consumer accounts
         # with the customer’s verified domain created within the previous 48 hours will
-        # not appear in the results.
+        # not appear in the result. This delay also applies to newly-verified domains.
         # @param [String] parent
         #   Required. The customer ID of the Google Workspace or Cloud Identity account
         #   the UserInvitation resources are associated with.
@@ -212,7 +212,8 @@ module Google
         # this request and it is a valid request, the request creates a `UserInvitation`.
         # **Note:** The `get` and `list` methods have a 48-hour delay where newly-
         # created consumer accounts will not appear in the results. You can still send a
-        # `UserInvitation` to those accounts if you know the unmanaged email address.
+        # `UserInvitation` to those accounts if you know the unmanaged email address and
+        # IsInvitableUser==True.
         # @param [String] name
         #   Required. `UserInvitation` name in the format `customers/`customer`/
         #   userinvitations/`user_email_address``
