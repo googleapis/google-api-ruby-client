@@ -636,8 +636,6 @@ module Google
         
         # Updates a message.
         # @param [String] name
-        #   Resource name, in the form "spaces/*/messages/*". Example: spaces/AAAAMpdlehY/
-        #   messages/UMxbHmzDlr4.UMxbHmzDlr4
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] update_mask
         #   Required. The field paths to be updated, comma separated if there are multiple.

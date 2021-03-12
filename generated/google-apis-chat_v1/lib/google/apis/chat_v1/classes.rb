@@ -766,8 +766,7 @@ module Google
         # @return [String]
         attr_accessor :fallback_text
       
-        # Resource name, in the form "spaces/*/messages/*". Example: spaces/AAAAMpdlehY/
-        # messages/UMxbHmzDlr4.UMxbHmzDlr4
+        # 
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -784,7 +783,7 @@ module Google
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :sender
       
-        # A Slash Command in Hangouts Chat.
+        # A Slash Command in Chat.
         # Corresponds to the JSON property `slashCommand`
         # @return [Google::Apis::ChatV1::SlashCommand]
         attr_accessor :slash_command
@@ -899,7 +898,7 @@ module Google
         end
       end
       
-      # A Slash Command in Hangouts Chat.
+      # A Slash Command in Chat.
       class SlashCommand
         include Google::Apis::Core::Hashable
       
