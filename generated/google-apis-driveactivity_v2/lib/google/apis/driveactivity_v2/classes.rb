@@ -453,7 +453,7 @@ module Google
         # @return [String]
         attr_accessor :legacy_id
       
-        # The name of the domain, e.g. "google.com".
+        # The name of the domain, e.g. `google.com`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -473,7 +473,7 @@ module Google
       class Drive
         include Google::Apis::Core::Hashable
       
-        # The resource name of the shared drive. The format is "COLLECTION_ID/DRIVE_ID".
+        # The resource name of the shared drive. The format is `COLLECTION_ID/DRIVE_ID`.
         # Clients should not assume a specific collection ID for this resource name.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -618,7 +618,7 @@ module Google
         # @return [String]
         attr_accessor :mime_type
       
-        # The target Drive item. The format is "items/ITEM_ID".
+        # The target Drive item. The format is `items/ITEM_ID`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -674,7 +674,7 @@ module Google
         # @return [Google::Apis::DriveactivityV2::Folder]
         attr_accessor :folder
       
-        # The target Drive item. The format is "items/ITEM_ID".
+        # The target Drive item. The format is `items/ITEM_ID`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -703,7 +703,7 @@ module Google
       class DriveReference
         include Google::Apis::Core::Hashable
       
-        # The resource name of the shared drive. The format is "COLLECTION_ID/DRIVE_ID".
+        # The resource name of the shared drive. The format is `COLLECTION_ID/DRIVE_ID`.
         # Clients should not assume a specific collection ID for this resource name.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -770,8 +770,8 @@ module Google
         # @return [String]
         attr_accessor :legacy_discussion_id
       
-        # The link to the discussion thread containing this comment, for example, "https:
-        # //docs.google.com/DOCUMENT_ID/edit?disco=THREAD_ID".
+        # The link to the discussion thread containing this comment, for example, `https:
+        # //docs.google.com/DOCUMENT_ID/edit?disco=THREAD_ID`.
         # Corresponds to the JSON property `linkToDiscussion`
         # @return [String]
         attr_accessor :link_to_discussion
@@ -869,7 +869,7 @@ module Google
         alias_method :is_current_user?, :is_current_user
       
         # The identifier for this user that can be used with the People API to get more
-        # information. The format is "people/ACCOUNT_ID". See https://developers.google.
+        # information. The format is `people/ACCOUNT_ID`. See https://developers.google.
         # com/people/.
         # Corresponds to the JSON property `personName`
         # @return [String]
@@ -1017,8 +1017,9 @@ module Google
         # @return [Google::Apis::DriveactivityV2::Group]
         attr_accessor :group
       
-        # Indicates the Google Drive permissions role. The role determines a user's
-        # ability to read, write, and comment on items.
+        # Indicates the [Google Drive permissions role](https://developers.google.com/
+        # drive/web/manage-sharing#roles). The role determines a user's ability to read,
+        # write, and comment on items.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -1092,7 +1093,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Return activities for this Drive folder and all children and descendants. The
-        # format is "items/ITEM_ID".
+        # format is `items/ITEM_ID`.
         # Corresponds to the JSON property `ancestorName`
         # @return [String]
         attr_accessor :ancestor_name
@@ -1108,19 +1109,19 @@ module Google
       
         # The filtering for items returned from this query request. The format of the
         # filter string is a sequence of expressions, joined by an optional "AND", where
-        # each expression is of the form "field operator value". Supported fields: -
-        # time: Uses numerical operators on date values either in terms of milliseconds
-        # since Jan 1, 1970 or in RFC 3339 format. Examples: - time > 1452409200000 AND
-        # time <= 1492812924310 - time >= "2016-01-10T01:02:03-05:00" - detail.
-        # action_detail_case: Uses the "has" operator (:) and either a singular value or
-        # a list of allowed action types enclosed in parentheses. Examples: - detail.
-        # action_detail_case: RENAME - detail.action_detail_case:(CREATE EDIT) - -detail.
-        # action_detail_case:MOVE
+        # each expression is of the form "field operator value". Supported fields: - `
+        # time`: Uses numerical operators on date values either in terms of milliseconds
+        # since Jan 1, 1970 or in RFC 3339 format. Examples: - `time > 1452409200000 AND
+        # time <= 1492812924310` - `time >= "2016-01-10T01:02:03-05:00"` - `detail.
+        # action_detail_case`: Uses the "has" operator (:) and either a singular value
+        # or a list of allowed action types enclosed in parentheses. Examples: - `detail.
+        # action_detail_case: RENAME` - `detail.action_detail_case:(CREATE EDIT)` - `-
+        # detail.action_detail_case:MOVE`
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
       
-        # Return activities for this Drive item. The format is "items/ITEM_ID".
+        # Return activities for this Drive item. The format is `items/ITEM_ID`.
         # Corresponds to the JSON property `itemName`
         # @return [String]
         attr_accessor :item_name
