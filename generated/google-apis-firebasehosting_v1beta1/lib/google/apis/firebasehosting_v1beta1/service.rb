@@ -82,6 +82,108 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new Site. Sites take several minutes to propagate through Firebase
+        # systems.
+        # @param [String] parent
+        #   Required. The parent Project of a Site, e.g.: `projects/`project-number``.
+        # @param [Google::Apis::FirebasehostingV1beta1::Site] site_object
+        # @param [String] site_id
+        #   Required. Immutable. A globally unique ID to identify the Site. The ID must
+        #   also be a valid domain name label.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::Site] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::Site]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_site(parent, site_object = nil, site_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/sites', options)
+          command.request_representation = Google::Apis::FirebasehostingV1beta1::Site::Representation
+          command.request_object = site_object
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::Site::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::Site
+          command.params['parent'] = parent unless parent.nil?
+          command.query['siteId'] = site_id unless site_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a Site from the specified parent Project.
+        # @param [String] name
+        #   Required. The fully qualified resource name of the Site, e.g.: `projects/`
+        #   project-number`/sites/`site-id``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_site(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::Empty::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the Site identified by the specified resource name.
+        # @param [String] name
+        #   Required. The fully qualified resource name of the Site, e.g.: `projects/`
+        #   project-number`/sites/`site-id``. As a `site-id` is a globally unique
+        #   identifier, you can also use the unique sub-collection resource access pattern
+        #   as well: `projects/-/sites/`site-id``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::Site] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::Site]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_site(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::Site::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::Site
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the Hosting metadata for a specific site.
         # @param [String] name
         #   Required. The site for which to get the SiteConfig, in the format: sites/ site-
@@ -108,6 +210,86 @@ module Google
           command.response_representation = Google::Apis::FirebasehostingV1beta1::SiteConfig::Representation
           command.response_class = Google::Apis::FirebasehostingV1beta1::SiteConfig
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists each Site associated with the specified parent Project. Sites are
+        # returned in a consistent, but undefined, order to facilitate pagination. Site
+        # data might be out of sync by a few seconds. If you require up-to-date data,
+        # use GetSite.
+        # @param [String] parent
+        #   Required. The Project that owns the sites to list, e.g.: `projects/`project-
+        #   number``.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of sites to return in the response. The server
+        #   may return fewer Sites at its discretion. If you don't specify a value or
+        #   specify one that's too large, the server can select its own value.
+        # @param [String] page_token
+        #   Optional. A token from a previous call to `ListSites` that tells the server
+        #   where to resume listing.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::ListSitesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::ListSitesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_sites(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/sites', options)
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::ListSitesResponse::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::ListSitesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates attributes of the Site identified by the specified resource name.
+        # @param [String] name
+        #   Output only. The fully qualified resource name of the Hosting Site, e.g.: `
+        #   projects/`project-number`/sites/`site-id``.
+        # @param [Google::Apis::FirebasehostingV1beta1::Site] site_object
+        # @param [String] update_mask
+        #   A mask that specifies which Site fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasehostingV1beta1::Site] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasehostingV1beta1::Site]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_site(name, site_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::FirebasehostingV1beta1::Site::Representation
+          command.request_object = site_object
+          command.response_representation = Google::Apis::FirebasehostingV1beta1::Site::Representation
+          command.response_class = Google::Apis::FirebasehostingV1beta1::Site
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

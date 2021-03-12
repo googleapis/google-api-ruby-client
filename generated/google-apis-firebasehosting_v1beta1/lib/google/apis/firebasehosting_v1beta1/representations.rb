@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListSitesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListVersionFilesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,6 +179,12 @@ module Google
       end
       
       class ServingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Site
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -349,6 +361,15 @@ module Google
         end
       end
       
+      class ListSitesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :sites, as: 'sites', class: Google::Apis::FirebasehostingV1beta1::Site, decorator: Google::Apis::FirebasehostingV1beta1::Site::Representation
+      
+        end
+      end
+      
       class ListVersionFilesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -460,6 +481,17 @@ module Google
           collection :rewrites, as: 'rewrites', class: Google::Apis::FirebasehostingV1beta1::Rewrite, decorator: Google::Apis::FirebasehostingV1beta1::Rewrite::Representation
       
           property :trailing_slash_behavior, as: 'trailingSlashBehavior'
+        end
+      end
+      
+      class Site
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_id, as: 'appId'
+          property :default_url, as: 'defaultUrl'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :type, as: 'type'
         end
       end
       
