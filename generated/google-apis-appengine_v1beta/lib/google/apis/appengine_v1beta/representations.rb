@@ -1205,6 +1205,7 @@ module Google
           property :runtime_api_version, as: 'runtimeApiVersion'
           property :runtime_channel, as: 'runtimeChannel'
           property :runtime_main_executable_path, as: 'runtimeMainExecutablePath'
+          property :service_account, as: 'serviceAccount'
           property :serving_status, as: 'servingStatus'
           property :threadsafe, as: 'threadsafe'
           property :version_url, as: 'versionUrl'
