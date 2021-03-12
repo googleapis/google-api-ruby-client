@@ -2736,7 +2736,7 @@ module Google
         # @return [Google::Apis::AppengineV1beta::ApiConfigHandler]
         attr_accessor :api_config
       
-        # app_engine_apis allows Second Generation runtimes to access the App Engine
+        # app_engine_apis allows second generation runtimes to access the App Engine
         # APIs.
         # Corresponds to the JSON property `appEngineApis`
         # @return [Boolean]
@@ -2935,6 +2935,13 @@ module Google
         # @return [String]
         attr_accessor :runtime_main_executable_path
       
+        # The identity that the deployed version will run as. Admin API will use the App
+        # Engine Appspot service account as default if this field is neither provided in
+        # app.yaml file nor through CLI flag.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
         # Current serving status of this version. Only the versions with a SERVING
         # status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an
         # invalid value. Defaults to SERVING.
@@ -3010,6 +3017,7 @@ module Google
           @runtime_api_version = args[:runtime_api_version] if args.key?(:runtime_api_version)
           @runtime_channel = args[:runtime_channel] if args.key?(:runtime_channel)
           @runtime_main_executable_path = args[:runtime_main_executable_path] if args.key?(:runtime_main_executable_path)
+          @service_account = args[:service_account] if args.key?(:service_account)
           @serving_status = args[:serving_status] if args.key?(:serving_status)
           @threadsafe = args[:threadsafe] if args.key?(:threadsafe)
           @version_url = args[:version_url] if args.key?(:version_url)
