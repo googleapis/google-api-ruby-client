@@ -2493,18 +2493,33 @@ module Google
       class QueryOptions
         include Google::Apis::Core::Hashable
       
+        # Query optimizer statistics package to use. This parameter allows individual
+        # queries to use a different query optimizer statistics. Specifying `latest` as
+        # a value instructs Cloud Spanner to use the latest generated statistics package.
+        # If not specified, Cloud Spanner uses statistics package set at the database
+        # level options, or latest if the database option is not set. The statistics
+        # package requested by the query has to be exempt from garbage collection. This
+        # can be achieved with the following DDL statement: ``` ALTER STATISTICS SET
+        # OPTIONS (allow_gc=false) ``` The list of available statistics packages can be
+        # queried from `SPANNER_SYS.OPTIMIZER_STATISTICS_PACKAGES`. Executing a SQL
+        # statement with an invalid optimizer statistics package or with statistics
+        # package that allows garbage collection fails with an `INVALID_ARGUMENT` error.
+        # Corresponds to the JSON property `optimizerStatisticsPackage`
+        # @return [String]
+        attr_accessor :optimizer_statistics_package
+      
         # An option to control the selection of optimizer version. This parameter allows
-        # individual queries to pick different query optimizer versions. Specifying "
-        # latest" as a value instructs Cloud Spanner to use the latest supported query
-        # optimizer version. If not specified, Cloud Spanner uses optimizer version set
-        # at the database level options. Any other positive integer (from the list of
-        # supported optimizer versions) overrides the default optimizer version for
+        # individual queries to pick different query optimizer versions. Specifying `
+        # latest` as a value instructs Cloud Spanner to use the latest supported query
+        # optimizer version. If not specified, Cloud Spanner uses the optimizer version
+        # set at the database level options. Any other positive integer (from the list
+        # of supported optimizer versions) overrides the default optimizer version for
         # query execution. The list of supported optimizer versions can be queried from
         # SPANNER_SYS.SUPPORTED_OPTIMIZER_VERSIONS. Executing a SQL statement with an
-        # invalid optimizer version will fail with a syntax error (`INVALID_ARGUMENT`)
-        # status. See https://cloud.google.com/spanner/docs/query-optimizer/manage-query-
-        # optimizer for more information on managing the query optimizer. The `
-        # optimizer_version` statement hint has precedence over this setting.
+        # invalid optimizer version fails with an `INVALID_ARGUMENT` error. See https://
+        # cloud.google.com/spanner/docs/query-optimizer/manage-query-optimizer for more
+        # information on managing the query optimizer. The `optimizer_version` statement
+        # hint has precedence over this setting.
         # Corresponds to the JSON property `optimizerVersion`
         # @return [String]
         attr_accessor :optimizer_version
@@ -2515,6 +2530,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @optimizer_statistics_package = args[:optimizer_statistics_package] if args.key?(:optimizer_statistics_package)
           @optimizer_version = args[:optimizer_version] if args.key?(:optimizer_version)
         end
       end
