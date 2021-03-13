@@ -556,8 +556,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A pagination token returned from a previous call to `ListTagBindings` that
-        # indicates from where listing should continue. This is currently not used, but
-        # the server may at any point start supplying a valid token.
+        # indicates from where listing should continue.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -584,8 +583,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A pagination token returned from a previous call to `ListTagKeys` that
-        # indicates from where listing should continue. This is currently not used, but
-        # the server may at any point start supplying a valid token.
+        # indicates from where listing should continue.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token

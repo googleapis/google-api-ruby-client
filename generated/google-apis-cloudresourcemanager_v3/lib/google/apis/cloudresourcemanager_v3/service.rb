@@ -291,9 +291,9 @@ module Google
         # NOTE: The `parent` field is expected to be a full resource name: https://
         # cloud.google.com/apis/design/resource_names#full_resource_name
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of TagBindings to return in the response. This is
-        #   currently not used by the server and will return the full page even if a size
-        #   is specified.
+        #   Optional. The maximum number of TagBindings to return in the response. The
+        #   server allows a maximum of 300 TagBindings to return. If unspecified, the
+        #   server will use 100 as the default.
         # @param [String] page_token
         #   Optional. A pagination token returned from a previous call to `ListTagBindings`
         #   that indicates where this listing should continue from.
@@ -476,13 +476,12 @@ module Google
         
         # Lists all TagKeys for a parent resource.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of TagKeys to return in the response. This is
-        #   currently not used by the server and will return the full page even if a size
-        #   is specified currently.
+        #   Optional. The maximum number of TagKeys to return in the response. The server
+        #   allows a maximum of 300 TagKeys to return. If unspecified, the server will use
+        #   100 as the default.
         # @param [String] page_token
         #   Optional. A pagination token returned from a previous call to `ListTagKey`
-        #   that indicates where this listing should continue from. This is currently not
-        #   used by the server.
+        #   that indicates where this listing should continue from.
         # @param [String] parent
         #   Required. The resource name of the new TagKey's parent. Must be of the form `
         #   folders/`folder_id`` or `organizations/`org_id``.
@@ -778,13 +777,12 @@ module Google
         
         # Lists all TagValues for a specific TagKey.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of TagValues to return in the response. This is
-        #   currently not used by the server and will return the full page even if a size
-        #   is specified currently.
+        #   Optional. The maximum number of TagValues to return in the response. The
+        #   server allows a maximum of 300 TagValues to return. If unspecified, the server
+        #   will use 100 as the default.
         # @param [String] page_token
         #   Optional. A pagination token returned from a previous call to `ListTagValues`
-        #   that indicates where this listing should continue from. This is currently not
-        #   used by the server.
+        #   that indicates where this listing should continue from.
         # @param [String] parent
         #   Required. Resource name for TagKey, parent of the TagValues to be listed, in
         #   the format `tagKeys/123`.
