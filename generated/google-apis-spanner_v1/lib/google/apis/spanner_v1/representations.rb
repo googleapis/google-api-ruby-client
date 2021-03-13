@@ -1082,6 +1082,7 @@ module Google
       class QueryOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :optimizer_statistics_package, as: 'optimizerStatisticsPackage'
           property :optimizer_version, as: 'optimizerVersion'
         end
       end
