@@ -965,8 +965,8 @@ module Google
         end
       end
       
-      # A Pub/Sub topic which SM will publish to when control plane events occur on
-      # this secret.
+      # A Pub/Sub topic which Secret Manager will publish to when control plane events
+      # occur on this secret.
       class Topic
         include Google::Apis::Core::Hashable
       
