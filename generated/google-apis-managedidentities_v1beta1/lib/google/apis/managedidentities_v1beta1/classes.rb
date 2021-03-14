@@ -729,9 +729,8 @@ module Google
       class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule
         include Google::Apis::Core::Hashable
       
-        # Can this scheduled update be rescheduled? By default, it's true and API needs
-        # to do explicitly check whether it's set, if it's set as false explicitly, it's
-        # false
+        # This field will be deprecated, and will be always set to true since reschedule
+        # can happen multiple times now.
         # Corresponds to the JSON property `canReschedule`
         # @return [Boolean]
         attr_accessor :can_reschedule
@@ -1655,8 +1654,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The full resource name of an integrated sql instance Reference to: http://
-        # google3/google/cloud/sql/v1/cloud_sql_resources.proto?l=351&rcl=354416019
+        # The full resource name of an integrated sql instance
         # Corresponds to the JSON property `sqlInstance`
         # @return [String]
         attr_accessor :sql_instance
