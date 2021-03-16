@@ -34,7 +34,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchCreateContactsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchCreateContactsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchDeleteContactsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchGetContactGroupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchUpdateContactsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchUpdateContactsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -89,6 +119,12 @@ module Google
       end
       
       class ContactGroupResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContactToCreate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -446,10 +482,54 @@ module Google
         end
       end
       
+      class BatchCreateContactsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :contacts, as: 'contacts', class: Google::Apis::PeopleV1::ContactToCreate, decorator: Google::Apis::PeopleV1::ContactToCreate::Representation
+      
+          property :read_mask, as: 'readMask'
+          collection :sources, as: 'sources'
+        end
+      end
+      
+      class BatchCreateContactsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :created_people, as: 'createdPeople', class: Google::Apis::PeopleV1::PersonResponse, decorator: Google::Apis::PeopleV1::PersonResponse::Representation
+      
+        end
+      end
+      
+      class BatchDeleteContactsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resource_names, as: 'resourceNames'
+        end
+      end
+      
       class BatchGetContactGroupsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :responses, as: 'responses', class: Google::Apis::PeopleV1::ContactGroupResponse, decorator: Google::Apis::PeopleV1::ContactGroupResponse::Representation
+      
+        end
+      end
+      
+      class BatchUpdateContactsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :contacts, as: 'contacts', class: Google::Apis::PeopleV1::Person, decorator: Google::Apis::PeopleV1::Person::Representation
+      
+          property :read_mask, as: 'readMask'
+          collection :sources, as: 'sources'
+          property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class BatchUpdateContactsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :update_result, as: 'updateResult', class: Google::Apis::PeopleV1::PersonResponse, decorator: Google::Apis::PeopleV1::PersonResponse::Representation
       
         end
       end
@@ -545,6 +625,14 @@ module Google
       
           property :requested_resource_name, as: 'requestedResourceName'
           property :status, as: 'status', class: Google::Apis::PeopleV1::Status, decorator: Google::Apis::PeopleV1::Status::Representation
+      
+        end
+      end
+      
+      class ContactToCreate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contact_person, as: 'contactPerson', class: Google::Apis::PeopleV1::Person, decorator: Google::Apis::PeopleV1::Person::Representation
       
         end
       end

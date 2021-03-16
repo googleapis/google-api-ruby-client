@@ -445,6 +445,98 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create a batch of new contacts and return the PersonResponses for the newly
+        # created contacts.
+        # @param [Google::Apis::PeopleV1::BatchCreateContactsRequest] batch_create_contacts_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PeopleV1::BatchCreateContactsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PeopleV1::BatchCreateContactsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_person_create_contacts(batch_create_contacts_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/people:batchCreateContacts', options)
+          command.request_representation = Google::Apis::PeopleV1::BatchCreateContactsRequest::Representation
+          command.request_object = batch_create_contacts_request_object
+          command.response_representation = Google::Apis::PeopleV1::BatchCreateContactsResponse::Representation
+          command.response_class = Google::Apis::PeopleV1::BatchCreateContactsResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a batch of contacts. Any non-contact data will not be deleted.
+        # @param [Google::Apis::PeopleV1::BatchDeleteContactsRequest] batch_delete_contacts_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PeopleV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PeopleV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_person_delete_contacts(batch_delete_contacts_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/people:batchDeleteContacts', options)
+          command.request_representation = Google::Apis::PeopleV1::BatchDeleteContactsRequest::Representation
+          command.request_object = batch_delete_contacts_request_object
+          command.response_representation = Google::Apis::PeopleV1::Empty::Representation
+          command.response_class = Google::Apis::PeopleV1::Empty
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a batch of contacts and return a map of resource names to
+        # PersonResponses for the updated contacts.
+        # @param [Google::Apis::PeopleV1::BatchUpdateContactsRequest] batch_update_contacts_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PeopleV1::BatchUpdateContactsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PeopleV1::BatchUpdateContactsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_person_update_contacts(batch_update_contacts_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/people:batchUpdateContacts', options)
+          command.request_representation = Google::Apis::PeopleV1::BatchUpdateContactsRequest::Representation
+          command.request_object = batch_update_contacts_request_object
+          command.response_representation = Google::Apis::PeopleV1::BatchUpdateContactsResponse::Representation
+          command.response_class = Google::Apis::PeopleV1::BatchUpdateContactsResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Create a new contact and return the person resource for that contact. The
         # request returns a 400 error if more than one field is specified on a field
         # that is a singleton for contact sources: * biographies * birthdays * genders *

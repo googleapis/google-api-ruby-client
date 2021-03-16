@@ -137,6 +137,85 @@ module Google
         end
       end
       
+      # A request to create a batch of contacts.
+      class BatchCreateContactsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The contact to create. Allows up to 200 contacts in a single request.
+        # Corresponds to the JSON property `contacts`
+        # @return [Array<Google::Apis::PeopleV1::ContactToCreate>]
+        attr_accessor :contacts
+      
+        # Required. A field mask to restrict which fields on each person are returned in
+        # the response. Multiple fields can be specified by separating them with commas.
+        # If read mask is left empty, the post-mutate-get is skipped and no data will be
+        # returned in the response. Valid values are: * addresses * ageRanges *
+        # biographies * birthdays * calendarUrls * clientData * coverPhotos *
+        # emailAddresses * events * externalIds * genders * imClients * interests *
+        # locales * locations * memberships * metadata * miscKeywords * names *
+        # nicknames * occupations * organizations * phoneNumbers * photos * relations *
+        # sipAddresses * skills * urls * userDefined
+        # Corresponds to the JSON property `readMask`
+        # @return [String]
+        attr_accessor :read_mask
+      
+        # Optional. A mask of what source types to return in the post mutate read.
+        # Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set.
+        # Corresponds to the JSON property `sources`
+        # @return [Array<String>]
+        attr_accessor :sources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contacts = args[:contacts] if args.key?(:contacts)
+          @read_mask = args[:read_mask] if args.key?(:read_mask)
+          @sources = args[:sources] if args.key?(:sources)
+        end
+      end
+      
+      # The response to a request to create a batch of contacts.
+      class BatchCreateContactsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The contacts that were created, unless the request `read_mask` is empty.
+        # Corresponds to the JSON property `createdPeople`
+        # @return [Array<Google::Apis::PeopleV1::PersonResponse>]
+        attr_accessor :created_people
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @created_people = args[:created_people] if args.key?(:created_people)
+        end
+      end
+      
+      # A request to delete a batch of existing contacts.
+      class BatchDeleteContactsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource names of the contact to delete. It's repeatable. Allows
+        # up to 500 resource names in a single request.
+        # Corresponds to the JSON property `resourceNames`
+        # @return [Array<String>]
+        attr_accessor :resource_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_names = args[:resource_names] if args.key?(:resource_names)
+        end
+      end
+      
       # The response to a batch get contact groups request.
       class BatchGetContactGroupsResponse
         include Google::Apis::Core::Hashable
@@ -153,6 +232,80 @@ module Google
         # Update properties of this object
         def update!(**args)
           @responses = args[:responses] if args.key?(:responses)
+        end
+      end
+      
+      # A request to update a batch of contacts.
+      class BatchUpdateContactsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. A map of resource names to the person data to be updated. Allows up
+        # to 200 contacts in a single request.
+        # Corresponds to the JSON property `contacts`
+        # @return [Hash<String,Google::Apis::PeopleV1::Person>]
+        attr_accessor :contacts
+      
+        # Required. A field mask to restrict which fields on each person are returned.
+        # Multiple fields can be specified by separating them with commas. If read mask
+        # is left empty, the post-mutate-get is skipped and no data will be returned in
+        # the response. Valid values are: * addresses * ageRanges * biographies *
+        # birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events *
+        # externalIds * genders * imClients * interests * locales * locations *
+        # memberships * metadata * miscKeywords * names * nicknames * occupations *
+        # organizations * phoneNumbers * photos * relations * sipAddresses * skills *
+        # urls * userDefined
+        # Corresponds to the JSON property `readMask`
+        # @return [String]
+        attr_accessor :read_mask
+      
+        # Optional. A mask of what source types to return. Defaults to
+        # READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set.
+        # Corresponds to the JSON property `sources`
+        # @return [Array<String>]
+        attr_accessor :sources
+      
+        # Required. A field mask to restrict which fields on the person are updated.
+        # Multiple fields can be specified by separating them with commas. All specified
+        # fields will be replaced, or cleared if left empty for each person. Valid
+        # values are: * addresses * biographies * birthdays * calendarUrls * clientData *
+        # emailAddresses * events * externalIds * genders * imClients * interests *
+        # locales * locations * memberships * miscKeywords * names * nicknames *
+        # occupations * organizations * phoneNumbers * relations * sipAddresses * urls *
+        # userDefined
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contacts = args[:contacts] if args.key?(:contacts)
+          @read_mask = args[:read_mask] if args.key?(:read_mask)
+          @sources = args[:sources] if args.key?(:sources)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # The response to a request to create a batch of contacts.
+      class BatchUpdateContactsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A map of resource names to the contacts that were updated, unless the request `
+        # read_mask` is empty.
+        # Corresponds to the JSON property `updateResult`
+        # @return [Hash<String,Google::Apis::PeopleV1::PersonResponse>]
+        attr_accessor :update_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @update_result = args[:update_result] if args.key?(:update_result)
         end
       end
       
@@ -489,6 +642,28 @@ module Google
           @contact_group = args[:contact_group] if args.key?(:contact_group)
           @requested_resource_name = args[:requested_resource_name] if args.key?(:requested_resource_name)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # A wrapper that contains the person data to populate a newly created source.
+      class ContactToCreate
+        include Google::Apis::Core::Hashable
+      
+        # Information about a person merged from various data sources such as the
+        # authenticated user's contacts and profile data. Most fields can have multiple
+        # items. The items in a field have no guaranteed order, but each non-empty field
+        # is guaranteed to have exactly one field with `metadata.primary` set to true.
+        # Corresponds to the JSON property `contactPerson`
+        # @return [Google::Apis::PeopleV1::Person]
+        attr_accessor :contact_person
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contact_person = args[:contact_person] if args.key?(:contact_person)
         end
       end
       
