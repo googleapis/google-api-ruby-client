@@ -931,7 +931,7 @@ module Google
         #   for a field, a suffix " desc" should be added to the field name. Example: `
         #   urlOrAppId desc`.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   Requested page size. Must be between `1` and `10000`. If unspecified will
         #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
         #   specified.
         # @param [String] page_token
@@ -2982,7 +2982,7 @@ module Google
         #   for a field, a suffix " desc" should be added to the field name. Example: `
         #   keywordValue desc`.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   Requested page size. Must be between `1` and `1000`. If unspecified will
         #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
         #   specified.
         # @param [String] page_token
@@ -4738,7 +4738,7 @@ module Google
         #   for a field, a suffix " desc" should be added to the field name. Example: `
         #   urlOrAppId desc`.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   Requested page size. Must be between `1` and `10000`. If unspecified will
         #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
         #   specified.
         # @param [String] page_token
