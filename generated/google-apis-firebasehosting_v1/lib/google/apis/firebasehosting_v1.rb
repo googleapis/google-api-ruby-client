@@ -21,9 +21,10 @@ module Google
   module Apis
     # Firebase Hosting API
     #
-    # The Firebase Hosting REST API enables programmatic and customizable
-    # deployments to your Firebase-hosted sites. Use this REST API to deploy new or
-    # updated hosting configurations and content files.
+    # The Firebase Hosting REST API enables programmatic and customizable management
+    # and deployments to your Firebase-hosted sites. Use this REST API to create and
+    # manage channels and sites as well as to deploy new or updated hosting
+    # configurations and content files.
     #
     # @see https://firebase.google.com/docs/hosting/
     module FirebasehostingV1
