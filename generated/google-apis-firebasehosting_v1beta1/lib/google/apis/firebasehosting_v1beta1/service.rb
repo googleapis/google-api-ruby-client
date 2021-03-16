@@ -22,9 +22,10 @@ module Google
     module FirebasehostingV1beta1
       # Firebase Hosting API
       #
-      # The Firebase Hosting REST API enables programmatic and customizable
-      #  deployments to your Firebase-hosted sites. Use this REST API to deploy new or
-      #  updated hosting configurations and content files.
+      # The Firebase Hosting REST API enables programmatic and customizable management
+      #  and deployments to your Firebase-hosted sites. Use this REST API to create and
+      #  manage channels and sites as well as to deploy new or updated hosting
+      #  configurations and content files.
       #
       # @example
       #    require 'google/apis/firebasehosting_v1beta1'
@@ -82,14 +83,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new Site. Sites take several minutes to propagate through Firebase
-        # systems.
+        # Creates a new Hosting Site in the specified parent Firebase project. Note that
+        # Hosting sites can take several minutes to propagate through Firebase systems.
         # @param [String] parent
-        #   Required. The parent Project of a Site, e.g.: `projects/`project-number``.
+        #   Required. The Firebase project in which to create a Hosting site, in the
+        #   format: projects/PROJECT_IDENTIFIER Refer to the `Site` [`name`](../projects#
+        #   Site.FIELDS.name) field for details about PROJECT_IDENTIFIER values.
         # @param [Google::Apis::FirebasehostingV1beta1::Site] site_object
         # @param [String] site_id
-        #   Required. Immutable. A globally unique ID to identify the Site. The ID must
-        #   also be a valid domain name label.
+        #   Required. Immutable. A globally unique identifier for the Hosting site. This
+        #   identifier is used to construct the Firebase-provisioned subdomains for the
+        #   site, so it must also be a valid domain name label.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -120,10 +124,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a Site from the specified parent Project.
+        # Deletes the specified Hosting Site from the specified parent Firebase project.
         # @param [String] name
-        #   Required. The fully qualified resource name of the Site, e.g.: `projects/`
-        #   project-number`/sites/`site-id``.
+        #   Required. The fully-qualified resource name for the Hosting site, in the
+        #   format: projects/PROJECT_IDENTIFIER/sites/SITE_ID Refer to the `Site` [`name`](
+        #   ../projects#Site.FIELDS.name) field for details about PROJECT_IDENTIFIER
+        #   values.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -151,12 +157,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the Site identified by the specified resource name.
+        # Gets the specified Hosting Site.
         # @param [String] name
-        #   Required. The fully qualified resource name of the Site, e.g.: `projects/`
-        #   project-number`/sites/`site-id``. As a `site-id` is a globally unique
-        #   identifier, you can also use the unique sub-collection resource access pattern
-        #   as well: `projects/-/sites/`site-id``.
+        #   Required. The fully-qualified resource name for the Hosting site, in the
+        #   format: projects/PROJECT_IDENTIFIER/sites/SITE_ID Refer to the `Site` [`name`](
+        #   ../projects#Site.FIELDS.name) field for details about PROJECT_IDENTIFIER
+        #   values. Since a SITE_ID is a globally unique identifier, you can also use the
+        #   unique sub-collection resource access pattern, in the format: projects/-/sites/
+        #   SITE_ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -215,17 +223,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists each Site associated with the specified parent Project. Sites are
-        # returned in a consistent, but undefined, order to facilitate pagination. Site
-        # data might be out of sync by a few seconds. If you require up-to-date data,
-        # use GetSite.
+        # Lists each Hosting Site associated with the specified parent Firebase project.
         # @param [String] parent
-        #   Required. The Project that owns the sites to list, e.g.: `projects/`project-
-        #   number``.
+        #   Required. The Firebase project for which to list sites, in the format:
+        #   projects/PROJECT_IDENTIFIER Refer to the `Site` [`name`](../projects#Site.
+        #   FIELDS.name) field for details about PROJECT_IDENTIFIER values.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of sites to return in the response. The server
-        #   may return fewer Sites at its discretion. If you don't specify a value or
-        #   specify one that's too large, the server can select its own value.
+        #   Optional. The maximum number of sites to return. The service may return a
+        #   lower number if fewer sites exist than this maximum number. If unspecified,
+        #   defaults to 40.
         # @param [String] page_token
         #   Optional. A token from a previous call to `ListSites` that tells the server
         #   where to resume listing.
@@ -258,13 +264,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates attributes of the Site identified by the specified resource name.
+        # Updates attributes of the specified Hosting Site.
         # @param [String] name
-        #   Output only. The fully qualified resource name of the Hosting Site, e.g.: `
-        #   projects/`project-number`/sites/`site-id``.
+        #   Output only. The fully-qualified resource name of the Hosting site, in the
+        #   format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
+        #   Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/projects/
+        #   api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(
+        #   recommended)*** or its [`ProjectId`](https://firebase.google.com/docs/projects/
+        #   api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id). Learn
+        #   more about using project identifiers in Google's [AIP 2510 standard](https://
+        #   google.aip.dev/cloud/2510).
         # @param [Google::Apis::FirebasehostingV1beta1::Site] site_object
         # @param [String] update_mask
-        #   A mask that specifies which Site fields to update.
+        #   A set of field names from your Site that you want to update.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -338,7 +350,7 @@ module Google
         # Creates a new channel in the specified site.
         # @param [String] parent
         #   Required. The site in which to create this channel, in the format: sites/
-        #   SITE_NAME
+        #   SITE_ID
         # @param [Google::Apis::FirebasehostingV1beta1::Channel] channel_object
         # @param [String] channel_id
         #   Required. Immutable. A unique ID within the site that identifies the channel.
@@ -375,8 +387,8 @@ module Google
         # Deletes the specified channel of the specified site. The `live` channel cannot
         # be deleted.
         # @param [String] name
-        #   Required. The fully-qualified identifier for the channel, in the format: sites/
-        #   SITE_NAME/channels/CHANNEL_ID
+        #   Required. The fully-qualified resource name for the channel, in the format:
+        #   sites/SITE_ID/channels/CHANNEL_ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -406,8 +418,8 @@ module Google
         
         # Retrieves information for the specified channel of the specified site.
         # @param [String] name
-        #   Required. The fully-qualified identifier for the channel, in the format: sites/
-        #   SITE_NAME/channels/CHANNEL_ID
+        #   Required. The fully-qualified resource name for the channel, in the format:
+        #   sites/SITE_ID/channels/CHANNEL_ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -438,7 +450,7 @@ module Google
         # Lists the channels for the specified site. All sites have a default `live`
         # channel.
         # @param [String] parent
-        #   Required. The site for which to list channels, in the format: sites/ SITE_NAME
+        #   Required. The site for which to list channels, in the format: sites/SITE_ID
         # @param [Fixnum] page_size
         #   The maximum number of channels to return. The service may return a lower
         #   number if fewer channels exist than this maximum number. If unspecified,
@@ -479,8 +491,8 @@ module Google
         # Updates information for the specified channel of the specified site.
         # Implicitly creates the channel if it doesn't already exist.
         # @param [String] name
-        #   The fully-qualified identifier for the channel, in the format: sites/
-        #   SITE_NAME/channels/CHANNEL_ID
+        #   The fully-qualified resource name for the channel, in the format: sites/
+        #   SITE_ID/channels/CHANNEL_ID
         # @param [Google::Apis::FirebasehostingV1beta1::Channel] channel_object
         # @param [String] update_mask
         #   A comma-separated list of fields to be updated in this request.
@@ -518,13 +530,13 @@ module Google
         # actively display on the appropriate URL(s).
         # @param [String] parent
         #   Required. The site or channel to which the release belongs, in either of the
-        #   following formats: - sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+        #   following formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
         # @param [Google::Apis::FirebasehostingV1beta1::Release] release_object
         # @param [String] version_name
-        #   The unique identifier for a version, in the format: sites/SITE_NAME /versions/
-        #   VERSION_ID The SITE_NAME in this version identifier must match the SITE_NAME
-        #   in the `parent` parameter. This query parameter must be empty if the `type`
-        #   field in the request body is `SITE_DISABLE`.
+        #   The unique identifier for a version, in the format: sites/SITE_ID/versions/
+        #   VERSION_ID The SITE_ID in this version identifier must match the SITE_ID in
+        #   the `parent` parameter. This query parameter must be empty if the `type` field
+        #   in the request body is `SITE_DISABLE`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -561,7 +573,7 @@ module Google
         # site.
         # @param [String] parent
         #   Required. The site or channel for which to list releases, in either of the
-        #   following formats: - sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+        #   following formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
         # @param [Fixnum] page_size
         #   The maximum number of releases to return. The service may return a lower
         #   number if fewer releases exist than this maximum number. If unspecified,
@@ -768,13 +780,13 @@ module Google
         # actively display on the appropriate URL(s).
         # @param [String] parent
         #   Required. The site or channel to which the release belongs, in either of the
-        #   following formats: - sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+        #   following formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
         # @param [Google::Apis::FirebasehostingV1beta1::Release] release_object
         # @param [String] version_name
-        #   The unique identifier for a version, in the format: sites/SITE_NAME /versions/
-        #   VERSION_ID The SITE_NAME in this version identifier must match the SITE_NAME
-        #   in the `parent` parameter. This query parameter must be empty if the `type`
-        #   field in the request body is `SITE_DISABLE`.
+        #   The unique identifier for a version, in the format: sites/SITE_ID/versions/
+        #   VERSION_ID The SITE_ID in this version identifier must match the SITE_ID in
+        #   the `parent` parameter. This query parameter must be empty if the `type` field
+        #   in the request body is `SITE_DISABLE`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -811,7 +823,7 @@ module Google
         # site.
         # @param [String] parent
         #   Required. The site or channel for which to list releases, in either of the
-        #   following formats: - sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+        #   following formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
         # @param [Fixnum] page_size
         #   The maximum number of releases to return. The service may return a lower
         #   number if fewer releases exist than this maximum number. If unspecified,
@@ -852,7 +864,7 @@ module Google
         # specified version.
         # @param [String] parent
         #   Required. The target site for the cloned version, in the format: sites/
-        #   SITE_NAME
+        #   SITE_ID
         # @param [Google::Apis::FirebasehostingV1beta1::CloneVersionRequest] clone_version_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -886,7 +898,7 @@ module Google
         # Creates a new version for the specified site.
         # @param [String] parent
         #   Required. The site in which to create the version, in the format: sites/
-        #   SITE_NAME
+        #   SITE_ID
         # @param [Google::Apis::FirebasehostingV1beta1::Version] version_object
         # @param [Fixnum] size_bytes
         #   The self-reported size of the version. This value is used for a pre-emptive
@@ -927,8 +939,8 @@ module Google
         
         # Deletes the specified version.
         # @param [String] name
-        #   Required. The fully-qualified identifier for the version, in the format: sites/
-        #   SITE_NAME/versions/VERSION_ID
+        #   Required. The fully-qualified resource name for the version, in the format:
+        #   sites/SITE_ID/versions/VERSION_ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -961,7 +973,7 @@ module Google
         # channels for the specified site.
         # @param [String] parent
         #   Required. The site or channel for which to list versions, in either of the
-        #   following formats: - sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+        #   following formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
         # @param [String] filter
         #   A filter string used to return a subset of versions in the response. The
         #   currently supported fields for filtering are: `name`, `status`, and `
@@ -1011,8 +1023,8 @@ module Google
         # version are from `CREATED` to `FINALIZED`. Use [`DeleteVersion`](delete) to
         # set the status of a version to `DELETED`.
         # @param [String] name
-        #   The fully-qualified identifier for the version, in the format: sites/
-        #   SITE_NAME/versions/VERSION_ID This name is provided in the response body when
+        #   The fully-qualified resource name for the version, in the format: sites/
+        #   SITE_ID/versions/VERSION_ID This name is provided in the response body when
         #   you call [`CreateVersion`](sites.versions/create).
         # @param [Google::Apis::FirebasehostingV1beta1::Version] version_object
         # @param [String] update_mask
@@ -1052,7 +1064,7 @@ module Google
         
         # Adds content files to the specified version. Each file must be under 2 GB.
         # @param [String] parent
-        #   Required. The version to which to add files, in the format: sites/SITE_NAME /
+        #   Required. The version to which to add files, in the format: sites/SITE_ID /
         #   versions/VERSION_ID
         # @param [Google::Apis::FirebasehostingV1beta1::PopulateVersionFilesRequest] populate_version_files_request_object
         # @param [String] fields
@@ -1086,7 +1098,7 @@ module Google
         
         # Lists the remaining files to be uploaded for the specified version.
         # @param [String] parent
-        #   Required. The version for which to list files, in the format: sites/ SITE_NAME/
+        #   Required. The version for which to list files, in the format: sites/SITE_ID /
         #   versions/VERSION_ID
         # @param [Fixnum] page_size
         #   The maximum number of version files to return. The service may return a lower
@@ -1201,7 +1213,7 @@ module Google
         # Creates a new channel in the specified site.
         # @param [String] parent
         #   Required. The site in which to create this channel, in the format: sites/
-        #   SITE_NAME
+        #   SITE_ID
         # @param [Google::Apis::FirebasehostingV1beta1::Channel] channel_object
         # @param [String] channel_id
         #   Required. Immutable. A unique ID within the site that identifies the channel.
@@ -1238,8 +1250,8 @@ module Google
         # Deletes the specified channel of the specified site. The `live` channel cannot
         # be deleted.
         # @param [String] name
-        #   Required. The fully-qualified identifier for the channel, in the format: sites/
-        #   SITE_NAME/channels/CHANNEL_ID
+        #   Required. The fully-qualified resource name for the channel, in the format:
+        #   sites/SITE_ID/channels/CHANNEL_ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1269,8 +1281,8 @@ module Google
         
         # Retrieves information for the specified channel of the specified site.
         # @param [String] name
-        #   Required. The fully-qualified identifier for the channel, in the format: sites/
-        #   SITE_NAME/channels/CHANNEL_ID
+        #   Required. The fully-qualified resource name for the channel, in the format:
+        #   sites/SITE_ID/channels/CHANNEL_ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1301,7 +1313,7 @@ module Google
         # Lists the channels for the specified site. All sites have a default `live`
         # channel.
         # @param [String] parent
-        #   Required. The site for which to list channels, in the format: sites/ SITE_NAME
+        #   Required. The site for which to list channels, in the format: sites/SITE_ID
         # @param [Fixnum] page_size
         #   The maximum number of channels to return. The service may return a lower
         #   number if fewer channels exist than this maximum number. If unspecified,
@@ -1342,8 +1354,8 @@ module Google
         # Updates information for the specified channel of the specified site.
         # Implicitly creates the channel if it doesn't already exist.
         # @param [String] name
-        #   The fully-qualified identifier for the channel, in the format: sites/
-        #   SITE_NAME/channels/CHANNEL_ID
+        #   The fully-qualified resource name for the channel, in the format: sites/
+        #   SITE_ID/channels/CHANNEL_ID
         # @param [Google::Apis::FirebasehostingV1beta1::Channel] channel_object
         # @param [String] update_mask
         #   A comma-separated list of fields to be updated in this request.
@@ -1381,13 +1393,13 @@ module Google
         # actively display on the appropriate URL(s).
         # @param [String] parent
         #   Required. The site or channel to which the release belongs, in either of the
-        #   following formats: - sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+        #   following formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
         # @param [Google::Apis::FirebasehostingV1beta1::Release] release_object
         # @param [String] version_name
-        #   The unique identifier for a version, in the format: sites/SITE_NAME /versions/
-        #   VERSION_ID The SITE_NAME in this version identifier must match the SITE_NAME
-        #   in the `parent` parameter. This query parameter must be empty if the `type`
-        #   field in the request body is `SITE_DISABLE`.
+        #   The unique identifier for a version, in the format: sites/SITE_ID/versions/
+        #   VERSION_ID The SITE_ID in this version identifier must match the SITE_ID in
+        #   the `parent` parameter. This query parameter must be empty if the `type` field
+        #   in the request body is `SITE_DISABLE`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1424,7 +1436,7 @@ module Google
         # site.
         # @param [String] parent
         #   Required. The site or channel for which to list releases, in either of the
-        #   following formats: - sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+        #   following formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
         # @param [Fixnum] page_size
         #   The maximum number of releases to return. The service may return a lower
         #   number if fewer releases exist than this maximum number. If unspecified,
@@ -1631,13 +1643,13 @@ module Google
         # actively display on the appropriate URL(s).
         # @param [String] parent
         #   Required. The site or channel to which the release belongs, in either of the
-        #   following formats: - sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+        #   following formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
         # @param [Google::Apis::FirebasehostingV1beta1::Release] release_object
         # @param [String] version_name
-        #   The unique identifier for a version, in the format: sites/SITE_NAME /versions/
-        #   VERSION_ID The SITE_NAME in this version identifier must match the SITE_NAME
-        #   in the `parent` parameter. This query parameter must be empty if the `type`
-        #   field in the request body is `SITE_DISABLE`.
+        #   The unique identifier for a version, in the format: sites/SITE_ID/versions/
+        #   VERSION_ID The SITE_ID in this version identifier must match the SITE_ID in
+        #   the `parent` parameter. This query parameter must be empty if the `type` field
+        #   in the request body is `SITE_DISABLE`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1674,7 +1686,7 @@ module Google
         # site.
         # @param [String] parent
         #   Required. The site or channel for which to list releases, in either of the
-        #   following formats: - sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+        #   following formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
         # @param [Fixnum] page_size
         #   The maximum number of releases to return. The service may return a lower
         #   number if fewer releases exist than this maximum number. If unspecified,
@@ -1715,7 +1727,7 @@ module Google
         # specified version.
         # @param [String] parent
         #   Required. The target site for the cloned version, in the format: sites/
-        #   SITE_NAME
+        #   SITE_ID
         # @param [Google::Apis::FirebasehostingV1beta1::CloneVersionRequest] clone_version_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1749,7 +1761,7 @@ module Google
         # Creates a new version for the specified site.
         # @param [String] parent
         #   Required. The site in which to create the version, in the format: sites/
-        #   SITE_NAME
+        #   SITE_ID
         # @param [Google::Apis::FirebasehostingV1beta1::Version] version_object
         # @param [Fixnum] size_bytes
         #   The self-reported size of the version. This value is used for a pre-emptive
@@ -1790,8 +1802,8 @@ module Google
         
         # Deletes the specified version.
         # @param [String] name
-        #   Required. The fully-qualified identifier for the version, in the format: sites/
-        #   SITE_NAME/versions/VERSION_ID
+        #   Required. The fully-qualified resource name for the version, in the format:
+        #   sites/SITE_ID/versions/VERSION_ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1824,7 +1836,7 @@ module Google
         # channels for the specified site.
         # @param [String] parent
         #   Required. The site or channel for which to list versions, in either of the
-        #   following formats: - sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+        #   following formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
         # @param [String] filter
         #   A filter string used to return a subset of versions in the response. The
         #   currently supported fields for filtering are: `name`, `status`, and `
@@ -1874,8 +1886,8 @@ module Google
         # version are from `CREATED` to `FINALIZED`. Use [`DeleteVersion`](delete) to
         # set the status of a version to `DELETED`.
         # @param [String] name
-        #   The fully-qualified identifier for the version, in the format: sites/
-        #   SITE_NAME/versions/VERSION_ID This name is provided in the response body when
+        #   The fully-qualified resource name for the version, in the format: sites/
+        #   SITE_ID/versions/VERSION_ID This name is provided in the response body when
         #   you call [`CreateVersion`](sites.versions/create).
         # @param [Google::Apis::FirebasehostingV1beta1::Version] version_object
         # @param [String] update_mask
@@ -1915,7 +1927,7 @@ module Google
         
         # Adds content files to the specified version. Each file must be under 2 GB.
         # @param [String] parent
-        #   Required. The version to which to add files, in the format: sites/SITE_NAME /
+        #   Required. The version to which to add files, in the format: sites/SITE_ID /
         #   versions/VERSION_ID
         # @param [Google::Apis::FirebasehostingV1beta1::PopulateVersionFilesRequest] populate_version_files_request_object
         # @param [String] fields
@@ -1949,7 +1961,7 @@ module Google
         
         # Lists the remaining files to be uploaded for the specified version.
         # @param [String] parent
-        #   Required. The version for which to list files, in the format: sites/ SITE_NAME/
+        #   Required. The version for which to list files, in the format: sites/SITE_ID /
         #   versions/VERSION_ID
         # @param [Fixnum] page_size
         #   The maximum number of version files to return. The service may return a lower
