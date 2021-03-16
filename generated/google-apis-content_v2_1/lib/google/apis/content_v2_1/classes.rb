@@ -13250,7 +13250,8 @@ module Google
         # qualityNotExpected`" - "`receivedTooLate`" - "`storePackageMissing`" - "`
         # transitPackageMissing`" - "`unsuccessfulDeliveryUndeliverable`" - "`
         # wrongChargeInStore`" - "`wrongItem`" - "`returns`" - "`undeliverable`" - "`
-        # refundFromMerchant`" - "`returnLabelShippingFee`" - "`pspFee`"
+        # issueRelatedRefundAndReplacementAmountDescription`" - "`refundFromMerchant`" -
+        # "`returnLabelShippingFee`" - "`lumpSumCorrection`" - "`pspFee`"
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -13262,7 +13263,7 @@ module Google
       
         # The type of the amount. Acceptable values are: - "`itemPrice`" - "`orderPrice`"
         # - "`refund`" - "`earlyRefund`" - "`courtesyRefund`" - "`returnRefund`" - "`
-        # returnLabelShippingFeeAmount`"
+        # returnLabelShippingFeeAmount`" - "`lumpSumCorrectionAmount`"
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
