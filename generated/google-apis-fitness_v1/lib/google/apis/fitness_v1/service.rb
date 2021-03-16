@@ -310,10 +310,6 @@ module Google
         #   and maximum data point end time represented as nanoseconds from the epoch. The
         #   ID is formatted like: "startTime-endTime" where startTime and endTime are 64
         #   bit integers.
-        # @param [Fixnum] current_time_millis
-        #   The client's current time in milliseconds since epoch.
-        # @param [Fixnum] modified_time_millis
-        #   When the operation was performed on the client.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -331,13 +327,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_user_data_source_dataset(user_id, data_source_id, dataset_id, current_time_millis: nil, modified_time_millis: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_user_data_source_dataset(user_id, data_source_id, dataset_id, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, '{userId}/dataSources/{dataSourceId}/datasets/{datasetId}', options)
           command.params['userId'] = user_id unless user_id.nil?
           command.params['dataSourceId'] = data_source_id unless data_source_id.nil?
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
-          command.query['currentTimeMillis'] = current_time_millis unless current_time_millis.nil?
-          command.query['modifiedTimeMillis'] = modified_time_millis unless modified_time_millis.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -414,10 +408,6 @@ module Google
         # @param [String] dataset_id
         #   This field is not used, and can be safely omitted.
         # @param [Google::Apis::FitnessV1::Dataset] dataset_object
-        # @param [Fixnum] current_time_millis
-        #   The client's current time in milliseconds since epoch. Note that the
-        #   minStartTimeNs and maxEndTimeNs properties in the request body are in
-        #   nanoseconds instead of milliseconds.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -435,7 +425,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_user_data_source_dataset(user_id, data_source_id, dataset_id, dataset_object = nil, current_time_millis: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_user_data_source_dataset(user_id, data_source_id, dataset_id, dataset_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, '{userId}/dataSources/{dataSourceId}/datasets/{datasetId}', options)
           command.request_representation = Google::Apis::FitnessV1::Dataset::Representation
           command.request_object = dataset_object
@@ -444,7 +434,6 @@ module Google
           command.params['userId'] = user_id unless user_id.nil?
           command.params['dataSourceId'] = data_source_id unless data_source_id.nil?
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
-          command.query['currentTimeMillis'] = current_time_millis unless current_time_millis.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -492,8 +481,6 @@ module Google
         #   authenticated user. Only me is supported at this time.
         # @param [String] session_id
         #   The ID of the session to be deleted.
-        # @param [Fixnum] current_time_millis
-        #   The client's current time in milliseconds since epoch.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -511,11 +498,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_user_session(user_id, session_id, current_time_millis: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_user_session(user_id, session_id, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, '{userId}/sessions/{sessionId}', options)
           command.params['userId'] = user_id unless user_id.nil?
           command.params['sessionId'] = session_id unless session_id.nil?
-          command.query['currentTimeMillis'] = current_time_millis unless current_time_millis.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -583,8 +569,6 @@ module Google
         # @param [String] session_id
         #   The ID of the session to be created.
         # @param [Google::Apis::FitnessV1::Session] session_object
-        # @param [Fixnum] current_time_millis
-        #   The client's current time in milliseconds since epoch.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -602,7 +586,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_user_session(user_id, session_id, session_object = nil, current_time_millis: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_user_session(user_id, session_id, session_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, '{userId}/sessions/{sessionId}', options)
           command.request_representation = Google::Apis::FitnessV1::Session::Representation
           command.request_object = session_object
@@ -610,7 +594,6 @@ module Google
           command.response_class = Google::Apis::FitnessV1::Session
           command.params['userId'] = user_id unless user_id.nil?
           command.params['sessionId'] = session_id unless session_id.nil?
-          command.query['currentTimeMillis'] = current_time_millis unless current_time_millis.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
