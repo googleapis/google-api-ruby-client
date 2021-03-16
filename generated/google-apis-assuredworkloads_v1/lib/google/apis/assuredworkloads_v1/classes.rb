@@ -347,6 +347,13 @@ module Google
         # @return [String]
         attr_accessor :provisioned_resources_parent
       
+        # Input only. Resource properties that are used to customize workload resources.
+        # These properties (such as custom project id) will be used to create workload
+        # resources if possible. This field is optional.
+        # Corresponds to the JSON property `resourceSettings`
+        # @return [Array<Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings>]
+        attr_accessor :resource_settings
+      
         # Output only. The resources associated with this workload. These resources will
         # be created when creating the workload. If any of the projects already exist,
         # the workload creation will fail. Always read only.
@@ -373,6 +380,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @provisioned_resources_parent = args[:provisioned_resources_parent] if args.key?(:provisioned_resources_parent)
+          @resource_settings = args[:resource_settings] if args.key?(:resource_settings)
           @resources = args[:resources] if args.key?(:resources)
         end
       end
@@ -492,6 +500,33 @@ module Google
         attr_accessor :resource_id
       
         # Indicates the type of resource.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+        end
+      end
+      
+      # Represent the custom settings for the resources to be created.
+      class GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings
+        include Google::Apis::Core::Hashable
+      
+        # Resource identifier. For a project this represents project_id. If the project
+        # is already taken, the workload creation will fail.
+        # Corresponds to the JSON property `resourceId`
+        # @return [String]
+        attr_accessor :resource_id
+      
+        # Indicates the type of resource. This field should be specified to correspond
+        # the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
