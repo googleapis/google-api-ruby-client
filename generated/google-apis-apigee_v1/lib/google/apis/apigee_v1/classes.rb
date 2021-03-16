@@ -423,6 +423,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :environments
       
+        # List of graphQL operation configuration details associated with Apigee API
+        # proxies or remote services. Remote services are non-Apigee proxies, such as
+        # Istio-Envoy.
+        # Corresponds to the JSON property `graphqlOperationGroup`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1GraphQlOperationGroup]
+        attr_accessor :graphql_operation_group
+      
         # Response only. Modified time of this environment as milliseconds since epoch.
         # Corresponds to the JSON property `lastModifiedAt`
         # @return [Fixnum]
@@ -490,6 +497,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @environments = args[:environments] if args.key?(:environments)
+          @graphql_operation_group = args[:graphql_operation_group] if args.key?(:graphql_operation_group)
           @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
           @name = args[:name] if args.key?(:name)
           @operation_group = args[:operation_group] if args.key?(:operation_group)
@@ -3070,6 +3078,114 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # GraphQLOperation represents the pairing of graphQL operation types and the
+      # graphQL operation name.
+      class GoogleCloudApigeeV1GraphQlOperation
+        include Google::Apis::Core::Hashable
+      
+        # GraphQL operation name, along with operation type which will be used to
+        # associate quotas with. If no name is specified, the quota will be applied to
+        # all graphQL operations irrespective of their operation names in the payload.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # Required. `query`, `mutation` and `subscription` are the three operation types
+        # offered by graphQL. Currently we support only `query` and `mutation`.
+        # Corresponds to the JSON property `operationType`
+        # @return [Array<String>]
+        attr_accessor :operation_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation = args[:operation] if args.key?(:operation)
+          @operation_type = args[:operation_type] if args.key?(:operation_type)
+        end
+      end
+      
+      # GraphQLOperationConfig binds the resources in a proxy or remote service with
+      # the graphQL operation and its associated quota enforcement.
+      class GoogleCloudApigeeV1GraphQlOperationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. API proxy endpoint or remote service name with which the graphQL
+        # operation, and quota are associated.
+        # Corresponds to the JSON property `apiSource`
+        # @return [String]
+        attr_accessor :api_source
+      
+        # Custom attributes associated with the operation.
+        # Corresponds to the JSON property `attributes`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute>]
+        attr_accessor :attributes
+      
+        # Required. List of graphQL name/Operation type pairs for the proxy/remote
+        # service, upon which quota will applied. If GraphQLOperation operation has only
+        # the operation type(s), that would imply that quota will be applied on all
+        # graphQL requests irrespective of the graphQL name. **Note**: Currently, we can
+        # specify only a single GraphQLOperation. Specifying more than one will result
+        # in failure of the operation.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1GraphQlOperation>]
+        attr_accessor :operations
+      
+        # Quota contains the essential parameters needed that can be applied on a proxy/
+        # remote service, resources and methods combination associated with this API
+        # product. While setting of Quota is optional, setting it prevents requests from
+        # exceeding the provisioned parameters.
+        # Corresponds to the JSON property `quota`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Quota]
+        attr_accessor :quota
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_source = args[:api_source] if args.key?(:api_source)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @operations = args[:operations] if args.key?(:operations)
+          @quota = args[:quota] if args.key?(:quota)
+        end
+      end
+      
+      # List of graphQL operation configuration details associated with Apigee API
+      # proxies or remote services. Remote services are non-Apigee proxies, such as
+      # Istio-Envoy.
+      class GoogleCloudApigeeV1GraphQlOperationGroup
+        include Google::Apis::Core::Hashable
+      
+        # Flag that specifes whether the configuration is for Apigee API proxy or a
+        # remote service. Valid values are `proxy` or `remoteservice`. Defaults to `
+        # proxy`. Set to `proxy` when Apigee API proxies are associated with the API
+        # product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are
+        # associated with the API product.
+        # Corresponds to the JSON property `operationConfigType`
+        # @return [String]
+        attr_accessor :operation_config_type
+      
+        # Required. List of operation configurations for either Apigee API proxies or
+        # other remote services that are associated with this API product.
+        # Corresponds to the JSON property `operationConfigs`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1GraphQlOperationConfig>]
+        attr_accessor :operation_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation_config_type = args[:operation_config_type] if args.key?(:operation_config_type)
+          @operation_configs = args[:operation_configs] if args.key?(:operation_configs)
         end
       end
       

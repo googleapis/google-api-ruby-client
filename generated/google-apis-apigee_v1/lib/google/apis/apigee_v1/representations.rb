@@ -382,6 +382,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1GraphQlOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1GraphQlOperationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1GraphQlOperationGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1IngressConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1116,6 +1134,8 @@ module Google
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           collection :environments, as: 'environments'
+          property :graphql_operation_group, as: 'graphqlOperationGroup', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1GraphQlOperationGroup, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1GraphQlOperationGroup::Representation
+      
           property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
           property :name, as: 'name'
           property :operation_group, as: 'operationGroup', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1OperationGroup, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1OperationGroup::Representation
@@ -1761,6 +1781,36 @@ module Google
       class GoogleCloudApigeeV1GetSyncAuthorizationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudApigeeV1GraphQlOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation, as: 'operation'
+          collection :operation_type, as: 'operationType'
+        end
+      end
+      
+      class GoogleCloudApigeeV1GraphQlOperationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_source, as: 'apiSource'
+          collection :attributes, as: 'attributes', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute::Representation
+      
+          collection :operations, as: 'operations', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1GraphQlOperation, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1GraphQlOperation::Representation
+      
+          property :quota, as: 'quota', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Quota, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Quota::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1GraphQlOperationGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation_config_type, as: 'operationConfigType'
+          collection :operation_configs, as: 'operationConfigs', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1GraphQlOperationConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1GraphQlOperationConfig::Representation
+      
         end
       end
       
