@@ -125,8 +125,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The fully-qualified identifier for the channel, in the format: sites/
-        # SITE_NAME/channels/CHANNEL_ID
+        # The fully-qualified resource name for the channel, in the format: sites/
+        # SITE_ID/channels/CHANNEL_ID
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -206,7 +206,7 @@ module Google
         attr_accessor :include
       
         # Required. The unique identifier for the version to be cloned, in the format:
-        # sites/SITE_NAME/versions/VERSION_ID
+        # sites/SITE_ID/versions/VERSION_ID
         # Corresponds to the JSON property `sourceVersion`
         # @return [String]
         attr_accessor :source_version
@@ -545,19 +545,18 @@ module Google
         end
       end
       
-      # The response from ListSites.
+      # 
       class ListSitesResponse
         include Google::Apis::Core::Hashable
       
-        # A token returned when the list of results is too large to fit in a single
-        # response. If the string is empty, the response is the last or only page of
-        # results. Use the token in a follow-up call to `ListSites` to find the next
-        # group of Sites. Page tokens are short-lived and should not be stored.
+        # The pagination token, if more results exist beyond the ones in this response.
+        # Include this token in your next call to `ListSites`. Page tokens are short-
+        # lived and should not be stored.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # A list of Site objects from the parent Firebase Project.
+        # A list of Site objects associated with the specified Firebase project.
         # Corresponds to the JSON property `sites`
         # @return [Array<Google::Apis::FirebasehostingV1beta1::Site>]
         attr_accessor :sites
@@ -741,9 +740,9 @@ module Google
         attr_accessor :upload_required_hashes
       
         # The URL to which the files should be uploaded, in the format: "https://upload-
-        # firebasehosting.googleapis.com/upload/sites/SITE_NAME /versions/VERSION_ID/
-        # files" Perform a multipart `POST` of the Gzipped file contents to the URL
-        # using a forward slash and the hash of the file appended to the end.
+        # firebasehosting.googleapis.com/upload/sites/SITE_ID /versions/VERSION_ID/files"
+        # Perform a multipart `POST` of the Gzipped file contents to the URL using a
+        # forward slash and the hash of the file appended to the end.
         # Corresponds to the JSON property `uploadUrl`
         # @return [String]
         attr_accessor :upload_url
@@ -843,7 +842,7 @@ module Google
         attr_accessor :message
       
         # Output only. The unique identifier for the release, in either of the following
-        # formats: - sites/SITE_NAME/releases/RELEASE_ID - sites/SITE_NAME/channels/
+        # formats: - sites/SITE_ID/releases/RELEASE_ID - sites/SITE_ID/channels/
         # CHANNEL_ID/releases/RELEASE_ID This name is provided in the response body when
         # you call [`releases.create`](sites.releases/create) or [`channels.releases.
         # create`](sites.channels.releases/create).
@@ -1013,34 +1012,42 @@ module Google
         end
       end
       
-      # A `Site` represents a Firebase Hosting Site.
+      # A `Site` represents a Firebase Hosting site.
       class Site
         include Google::Apis::Core::Hashable
       
-        # Optional. The ID of a Web App associated with the Site.
+        # Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/
+        # reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id) associated with
+        # the Hosting site.
         # Corresponds to the JSON property `appId`
         # @return [String]
         attr_accessor :app_id
       
-        # Output only. The default URL for this Hosting Site.
+        # Output only. The default URL for the Hosting site.
         # Corresponds to the JSON property `defaultUrl`
         # @return [String]
         attr_accessor :default_url
       
-        # Optional. User-specified labels for the Hosting Site.
+        # Optional. User-specified labels for the Hosting site.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. The fully qualified resource name of the Hosting Site, e.g.: `
-        # projects/`project-number`/sites/`site-id``.
+        # Output only. The fully-qualified resource name of the Hosting site, in the
+        # format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
+        # Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/projects/
+        # api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(
+        # recommended)*** or its [`ProjectId`](https://firebase.google.com/docs/projects/
+        # api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id). Learn
+        # more about using project identifiers in Google's [AIP 2510 standard](https://
+        # google.aip.dev/cloud/2510).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. The Hosting site type. There will always be a single DEFAULT_SITE,
-        # which is created when Hosting is provisioned. All additional sites are
-        # USER_SITE.
+        # Output only. The type of Hosting site. Every Firebase project has a `
+        # DEFAULT_SITE`, which is created when Hosting is provisioned for the project.
+        # All additional sites are `USER_SITE`.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1187,8 +1194,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The fully-qualified identifier for the version, in the format: sites/
-        # SITE_NAME/versions/VERSION_ID This name is provided in the response body when
+        # The fully-qualified resource name for the version, in the format: sites/
+        # SITE_ID/versions/VERSION_ID This name is provided in the response body when
         # you call [`CreateVersion`](sites.versions/create).
         # Corresponds to the JSON property `name`
         # @return [String]
