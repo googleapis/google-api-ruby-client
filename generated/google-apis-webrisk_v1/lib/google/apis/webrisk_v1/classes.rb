@@ -328,6 +328,37 @@ module Google
         end
       end
       
+      # Metadata for the Submit URI long-running operation.
+      class GoogleCloudWebriskV1SubmitUriMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Creation time of the operation.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The state of the operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Latest update time of the operation.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Request to send a potentially malicious URI to WebRisk.
       class GoogleCloudWebriskV1SubmitUriRequest
         include Google::Apis::Core::Hashable
