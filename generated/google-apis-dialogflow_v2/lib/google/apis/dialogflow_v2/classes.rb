@@ -5881,8 +5881,8 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2LoggingConfig]
         attr_accessor :logging_config
       
-        # Optional. The unique identifier of this conversation profile. Format: `
-        # projects//locations//conversationProfiles/`.
+        # The unique identifier of this conversation profile. Format: `projects//
+        # locations//conversationProfiles/`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
