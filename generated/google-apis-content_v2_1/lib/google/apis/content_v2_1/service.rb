@@ -43,7 +43,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://shoppingcontent.googleapis.com/', '',
+          super('https://shoppingcontent.googleapis.com/', 'content/v2.1/',
                 client_name: 'google-apis-content_v2_1',
                 client_version: Google::Apis::ContentV2_1::GEM_VERSION)
           @batch_path = 'batch'
@@ -68,7 +68,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def authinfo_account(fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/accounts/authinfo', options)
+          command = make_simple_command(:get, 'accounts/authinfo', options)
           command.response_representation = Google::Apis::ContentV2_1::AccountsAuthInfoResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::AccountsAuthInfoResponse
           command.query['fields'] = fields unless fields.nil?
@@ -105,7 +105,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def claimwebsite_account(merchant_id, account_id, overwrite: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/accounts/{accountId}/claimwebsite', options)
+          command = make_simple_command(:post, '{merchantId}/accounts/{accountId}/claimwebsite', options)
           command.response_representation = Google::Apis::ContentV2_1::AccountsClaimWebsiteResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::AccountsClaimWebsiteResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -137,7 +137,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def custombatch_account(accounts_custom_batch_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/accounts/batch', options)
+          command = make_simple_command(:post, 'accounts/batch', options)
           command.request_representation = Google::Apis::ContentV2_1::AccountsCustomBatchRequest::Representation
           command.request_object = accounts_custom_batch_request_object
           command.response_representation = Google::Apis::ContentV2_1::AccountsCustomBatchResponse::Representation
@@ -173,7 +173,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_account(merchant_id, account_id, force: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'content/v2.1/{merchantId}/accounts/{accountId}', options)
+          command = make_simple_command(:delete, '{merchantId}/accounts/{accountId}', options)
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['force'] = force unless force.nil?
@@ -210,7 +210,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_account(merchant_id, account_id, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/accounts/{accountId}', options)
+          command = make_simple_command(:get, '{merchantId}/accounts/{accountId}', options)
           command.response_representation = Google::Apis::ContentV2_1::Account::Representation
           command.response_class = Google::Apis::ContentV2_1::Account
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -243,7 +243,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_account(merchant_id, account_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/accounts', options)
+          command = make_simple_command(:post, '{merchantId}/accounts', options)
           command.request_representation = Google::Apis::ContentV2_1::Account::Representation
           command.request_object = account_object
           command.response_representation = Google::Apis::ContentV2_1::Account::Representation
@@ -281,7 +281,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def link_account(merchant_id, account_id, accounts_link_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/accounts/{accountId}/link', options)
+          command = make_simple_command(:post, '{merchantId}/accounts/{accountId}/link', options)
           command.request_representation = Google::Apis::ContentV2_1::AccountsLinkRequest::Representation
           command.request_object = accounts_link_request_object
           command.response_representation = Google::Apis::ContentV2_1::AccountsLinkResponse::Representation
@@ -324,7 +324,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_accounts(merchant_id, label: nil, max_results: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/accounts', options)
+          command = make_simple_command(:get, '{merchantId}/accounts', options)
           command.response_representation = Google::Apis::ContentV2_1::AccountsListResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::AccountsListResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -366,7 +366,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def listlinks_account(merchant_id, account_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/accounts/{accountId}/listlinks', options)
+          command = make_simple_command(:get, '{merchantId}/accounts/{accountId}/listlinks', options)
           command.response_representation = Google::Apis::ContentV2_1::AccountsListLinksResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::AccountsListLinksResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -405,7 +405,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_account(merchant_id, account_id, account_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:put, 'content/v2.1/{merchantId}/accounts/{accountId}', options)
+          command = make_simple_command(:put, '{merchantId}/accounts/{accountId}', options)
           command.request_representation = Google::Apis::ContentV2_1::Account::Representation
           command.request_object = account_object
           command.response_representation = Google::Apis::ContentV2_1::Account::Representation
@@ -441,7 +441,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def updatelabels_account(merchant_id, account_id, accounts_update_labels_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/accounts/{accountId}/updatelabels', options)
+          command = make_simple_command(:post, '{merchantId}/accounts/{accountId}/updatelabels', options)
           command.request_representation = Google::Apis::ContentV2_1::AccountsUpdateLabelsRequest::Representation
           command.request_object = accounts_update_labels_request_object
           command.response_representation = Google::Apis::ContentV2_1::AccountsUpdateLabelsResponse::Representation
@@ -476,7 +476,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_account_credential(account_id, account_credentials_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/accounts/{accountId}/credentials', options)
+          command = make_simple_command(:post, 'accounts/{accountId}/credentials', options)
           command.request_representation = Google::Apis::ContentV2_1::AccountCredentials::Representation
           command.request_object = account_credentials_object
           command.response_representation = Google::Apis::ContentV2_1::AccountCredentials::Representation
@@ -509,7 +509,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_account_label(account_id, account_label_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/accounts/{accountId}/labels', options)
+          command = make_simple_command(:post, 'accounts/{accountId}/labels', options)
           command.request_representation = Google::Apis::ContentV2_1::AccountLabel::Representation
           command.request_object = account_label_object
           command.response_representation = Google::Apis::ContentV2_1::AccountLabel::Representation
@@ -543,7 +543,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_account_label(account_id, label_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'content/v2.1/accounts/{accountId}/labels/{labelId}', options)
+          command = make_simple_command(:delete, 'accounts/{accountId}/labels/{labelId}', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['labelId'] = label_id unless label_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -581,7 +581,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_account_labels(account_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/accounts/{accountId}/labels', options)
+          command = make_simple_command(:get, 'accounts/{accountId}/labels', options)
           command.response_representation = Google::Apis::ContentV2_1::ListAccountLabelsResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::ListAccountLabelsResponse
           command.params['accountId'] = account_id unless account_id.nil?
@@ -616,7 +616,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_account_label(account_id, label_id, account_label_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'content/v2.1/accounts/{accountId}/labels/{labelId}', options)
+          command = make_simple_command(:patch, 'accounts/{accountId}/labels/{labelId}', options)
           command.request_representation = Google::Apis::ContentV2_1::AccountLabel::Representation
           command.request_object = account_label_object
           command.response_representation = Google::Apis::ContentV2_1::AccountLabel::Representation
@@ -651,7 +651,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_account_returncarrier(account_id, account_return_carrier_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/accounts/{accountId}/returncarrier', options)
+          command = make_simple_command(:post, 'accounts/{accountId}/returncarrier', options)
           command.request_representation = Google::Apis::ContentV2_1::AccountReturnCarrier::Representation
           command.request_object = account_return_carrier_object
           command.response_representation = Google::Apis::ContentV2_1::AccountReturnCarrier::Representation
@@ -686,7 +686,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_account_returncarrier(account_id, carrier_account_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'content/v2.1/accounts/{accountId}/returncarrier/{carrierAccountId}', options)
+          command = make_simple_command(:delete, 'accounts/{accountId}/returncarrier/{carrierAccountId}', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['carrierAccountId'] = carrier_account_id unless carrier_account_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -716,7 +716,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_account_returncarriers(account_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/accounts/{accountId}/returncarrier', options)
+          command = make_simple_command(:get, 'accounts/{accountId}/returncarrier', options)
           command.response_representation = Google::Apis::ContentV2_1::ListAccountReturnCarrierResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::ListAccountReturnCarrierResponse
           command.params['accountId'] = account_id unless account_id.nil?
@@ -750,7 +750,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_account_returncarrier(account_id, carrier_account_id, account_return_carrier_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'content/v2.1/accounts/{accountId}/returncarrier/{carrierAccountId}', options)
+          command = make_simple_command(:patch, 'accounts/{accountId}/returncarrier/{carrierAccountId}', options)
           command.request_representation = Google::Apis::ContentV2_1::AccountReturnCarrier::Representation
           command.request_object = account_return_carrier_object
           command.response_representation = Google::Apis::ContentV2_1::AccountReturnCarrier::Representation
@@ -782,7 +782,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def custombatch_accountstatus(accountstatuses_custom_batch_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/accountstatuses/batch', options)
+          command = make_simple_command(:post, 'accountstatuses/batch', options)
           command.request_representation = Google::Apis::ContentV2_1::AccountstatusesCustomBatchRequest::Representation
           command.request_object = accountstatuses_custom_batch_request_object
           command.response_representation = Google::Apis::ContentV2_1::AccountstatusesCustomBatchResponse::Representation
@@ -821,7 +821,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_accountstatus(merchant_id, account_id, destinations: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/accountstatuses/{accountId}', options)
+          command = make_simple_command(:get, '{merchantId}/accountstatuses/{accountId}', options)
           command.response_representation = Google::Apis::ContentV2_1::AccountStatus::Representation
           command.response_class = Google::Apis::ContentV2_1::AccountStatus
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -861,7 +861,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_accountstatuses(merchant_id, destinations: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/accountstatuses', options)
+          command = make_simple_command(:get, '{merchantId}/accountstatuses', options)
           command.response_representation = Google::Apis::ContentV2_1::AccountstatusesListResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::AccountstatusesListResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -893,7 +893,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def custombatch_accounttax(accounttax_custom_batch_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/accounttax/batch', options)
+          command = make_simple_command(:post, 'accounttax/batch', options)
           command.request_representation = Google::Apis::ContentV2_1::AccounttaxCustomBatchRequest::Representation
           command.request_object = accounttax_custom_batch_request_object
           command.response_representation = Google::Apis::ContentV2_1::AccounttaxCustomBatchResponse::Representation
@@ -928,7 +928,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_accounttax(merchant_id, account_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/accounttax/{accountId}', options)
+          command = make_simple_command(:get, '{merchantId}/accounttax/{accountId}', options)
           command.response_representation = Google::Apis::ContentV2_1::AccountTax::Representation
           command.response_class = Google::Apis::ContentV2_1::AccountTax
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -963,7 +963,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_accounttaxes(merchant_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/accounttax', options)
+          command = make_simple_command(:get, '{merchantId}/accounttax', options)
           command.response_representation = Google::Apis::ContentV2_1::AccounttaxListResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::AccounttaxListResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -1001,7 +1001,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_accounttax(merchant_id, account_id, account_tax_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:put, 'content/v2.1/{merchantId}/accounttax/{accountId}', options)
+          command = make_simple_command(:put, '{merchantId}/accounttax/{accountId}', options)
           command.request_representation = Google::Apis::ContentV2_1::AccountTax::Representation
           command.request_object = account_tax_object
           command.response_representation = Google::Apis::ContentV2_1::AccountTax::Representation
@@ -1037,7 +1037,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_buyongoogleprogram(merchant_id, region_code, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/buyongoogleprograms/{regionCode}', options)
+          command = make_simple_command(:get, '{merchantId}/buyongoogleprograms/{regionCode}', options)
           command.response_representation = Google::Apis::ContentV2_1::BuyOnGoogleProgramStatus::Representation
           command.response_class = Google::Apis::ContentV2_1::BuyOnGoogleProgramStatus
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -1077,7 +1077,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def onboard_buyongoogleprogram_buy_on_google_program(merchant_id, region_code, onboard_buy_on_google_program_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/buyongoogleprograms/{regionCode}/onboard', options)
+          command = make_simple_command(:post, '{merchantId}/buyongoogleprograms/{regionCode}/onboard', options)
           command.request_representation = Google::Apis::ContentV2_1::OnboardBuyOnGoogleProgramRequest::Representation
           command.request_object = onboard_buy_on_google_program_request_object
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -1113,7 +1113,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_collection(merchant_id, collection_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/collections', options)
+          command = make_simple_command(:post, '{merchantId}/collections', options)
           command.request_representation = Google::Apis::ContentV2_1::Collection::Representation
           command.request_object = collection_object
           command.response_representation = Google::Apis::ContentV2_1::Collection::Representation
@@ -1149,7 +1149,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_collection(merchant_id, collection_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'content/v2.1/{merchantId}/collections/{collectionId}', options)
+          command = make_simple_command(:delete, '{merchantId}/collections/{collectionId}', options)
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['collectionId'] = collection_id unless collection_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1181,7 +1181,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_collection(merchant_id, collection_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/collections/{collectionId}', options)
+          command = make_simple_command(:get, '{merchantId}/collections/{collectionId}', options)
           command.response_representation = Google::Apis::ContentV2_1::Collection::Representation
           command.response_class = Google::Apis::ContentV2_1::Collection
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -1221,7 +1221,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_collections(merchant_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/collections', options)
+          command = make_simple_command(:get, '{merchantId}/collections', options)
           command.response_representation = Google::Apis::ContentV2_1::ListCollectionsResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::ListCollectionsResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -1257,7 +1257,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_collectionstatus(merchant_id, collection_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/collectionstatuses/{collectionId}', options)
+          command = make_simple_command(:get, '{merchantId}/collectionstatuses/{collectionId}', options)
           command.response_representation = Google::Apis::ContentV2_1::CollectionStatus::Representation
           command.response_class = Google::Apis::ContentV2_1::CollectionStatus
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -1295,7 +1295,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_collectionstatuses(merchant_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/collectionstatuses', options)
+          command = make_simple_command(:get, '{merchantId}/collectionstatuses', options)
           command.response_representation = Google::Apis::ContentV2_1::ListCollectionStatusesResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::ListCollectionStatusesResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -1331,7 +1331,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_css(css_group_id, css_domain_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{cssGroupId}/csses/{cssDomainId}', options)
+          command = make_simple_command(:get, '{cssGroupId}/csses/{cssDomainId}', options)
           command.response_representation = Google::Apis::ContentV2_1::Css::Representation
           command.response_class = Google::Apis::ContentV2_1::Css
           command.params['cssGroupId'] = css_group_id unless css_group_id.nil?
@@ -1370,7 +1370,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_csses(css_group_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{cssGroupId}/csses', options)
+          command = make_simple_command(:get, '{cssGroupId}/csses', options)
           command.response_representation = Google::Apis::ContentV2_1::ListCssesResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::ListCssesResponse
           command.params['cssGroupId'] = css_group_id unless css_group_id.nil?
@@ -1405,7 +1405,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def updatelabels_css(css_group_id, css_domain_id, label_ids_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{cssGroupId}/csses/{cssDomainId}/updatelabels', options)
+          command = make_simple_command(:post, '{cssGroupId}/csses/{cssDomainId}/updatelabels', options)
           command.request_representation = Google::Apis::ContentV2_1::LabelIds::Representation
           command.request_object = label_ids_object
           command.response_representation = Google::Apis::ContentV2_1::Css::Representation
@@ -1438,7 +1438,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def custombatch_datafeed(datafeeds_custom_batch_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/datafeeds/batch', options)
+          command = make_simple_command(:post, 'datafeeds/batch', options)
           command.request_representation = Google::Apis::ContentV2_1::DatafeedsCustomBatchRequest::Representation
           command.request_object = datafeeds_custom_batch_request_object
           command.response_representation = Google::Apis::ContentV2_1::DatafeedsCustomBatchResponse::Representation
@@ -1472,7 +1472,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_datafeed(merchant_id, datafeed_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'content/v2.1/{merchantId}/datafeeds/{datafeedId}', options)
+          command = make_simple_command(:delete, '{merchantId}/datafeeds/{datafeedId}', options)
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['datafeedId'] = datafeed_id unless datafeed_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1506,7 +1506,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def fetchnow_datafeed(merchant_id, datafeed_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/datafeeds/{datafeedId}/fetchNow', options)
+          command = make_simple_command(:post, '{merchantId}/datafeeds/{datafeedId}/fetchNow', options)
           command.response_representation = Google::Apis::ContentV2_1::DatafeedsFetchNowResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::DatafeedsFetchNowResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -1540,7 +1540,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_datafeed(merchant_id, datafeed_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/datafeeds/{datafeedId}', options)
+          command = make_simple_command(:get, '{merchantId}/datafeeds/{datafeedId}', options)
           command.response_representation = Google::Apis::ContentV2_1::Datafeed::Representation
           command.response_class = Google::Apis::ContentV2_1::Datafeed
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -1573,7 +1573,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_datafeed(merchant_id, datafeed_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/datafeeds', options)
+          command = make_simple_command(:post, '{merchantId}/datafeeds', options)
           command.request_representation = Google::Apis::ContentV2_1::Datafeed::Representation
           command.request_object = datafeed_object
           command.response_representation = Google::Apis::ContentV2_1::Datafeed::Representation
@@ -1610,7 +1610,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_datafeeds(merchant_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/datafeeds', options)
+          command = make_simple_command(:get, '{merchantId}/datafeeds', options)
           command.response_representation = Google::Apis::ContentV2_1::DatafeedsListResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::DatafeedsListResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -1647,7 +1647,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_datafeed(merchant_id, datafeed_id, datafeed_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:put, 'content/v2.1/{merchantId}/datafeeds/{datafeedId}', options)
+          command = make_simple_command(:put, '{merchantId}/datafeeds/{datafeedId}', options)
           command.request_representation = Google::Apis::ContentV2_1::Datafeed::Representation
           command.request_object = datafeed_object
           command.response_representation = Google::Apis::ContentV2_1::Datafeed::Representation
@@ -1679,7 +1679,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def custombatch_datafeedstatus(datafeedstatuses_custom_batch_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/datafeedstatuses/batch', options)
+          command = make_simple_command(:post, 'datafeedstatuses/batch', options)
           command.request_representation = Google::Apis::ContentV2_1::DatafeedstatusesCustomBatchRequest::Representation
           command.request_object = datafeedstatuses_custom_batch_request_object
           command.response_representation = Google::Apis::ContentV2_1::DatafeedstatusesCustomBatchResponse::Representation
@@ -1723,7 +1723,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_datafeedstatus(merchant_id, datafeed_id, country: nil, language: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/datafeedstatuses/{datafeedId}', options)
+          command = make_simple_command(:get, '{merchantId}/datafeedstatuses/{datafeedId}', options)
           command.response_representation = Google::Apis::ContentV2_1::DatafeedStatus::Representation
           command.response_class = Google::Apis::ContentV2_1::DatafeedStatus
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -1761,7 +1761,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_datafeedstatuses(merchant_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/datafeedstatuses', options)
+          command = make_simple_command(:get, '{merchantId}/datafeedstatuses', options)
           command.response_representation = Google::Apis::ContentV2_1::DatafeedstatusesListResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::DatafeedstatusesListResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -1793,7 +1793,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def custombatch_liasetting(liasettings_custom_batch_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/liasettings/batch', options)
+          command = make_simple_command(:post, 'liasettings/batch', options)
           command.request_representation = Google::Apis::ContentV2_1::LiasettingsCustomBatchRequest::Representation
           command.request_object = liasettings_custom_batch_request_object
           command.response_representation = Google::Apis::ContentV2_1::LiasettingsCustomBatchResponse::Representation
@@ -1828,7 +1828,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_liasetting(merchant_id, account_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/liasettings/{accountId}', options)
+          command = make_simple_command(:get, '{merchantId}/liasettings/{accountId}', options)
           command.response_representation = Google::Apis::ContentV2_1::LiaSettings::Representation
           command.response_class = Google::Apis::ContentV2_1::LiaSettings
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -1864,7 +1864,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def getaccessiblegmbaccounts_liasetting(merchant_id, account_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/liasettings/{accountId}/accessiblegmbaccounts', options)
+          command = make_simple_command(:get, '{merchantId}/liasettings/{accountId}/accessiblegmbaccounts', options)
           command.response_representation = Google::Apis::ContentV2_1::LiasettingsGetAccessibleGmbAccountsResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::LiasettingsGetAccessibleGmbAccountsResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -1899,7 +1899,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_liasettings(merchant_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/liasettings', options)
+          command = make_simple_command(:get, '{merchantId}/liasettings', options)
           command.response_representation = Google::Apis::ContentV2_1::LiasettingsListResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::LiasettingsListResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -1930,7 +1930,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def listposdataproviders_liasetting(fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/liasettings/posdataproviders', options)
+          command = make_simple_command(:get, 'liasettings/posdataproviders', options)
           command.response_representation = Google::Apis::ContentV2_1::LiasettingsListPosDataProvidersResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::LiasettingsListPosDataProvidersResponse
           command.query['fields'] = fields unless fields.nil?
@@ -1965,7 +1965,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def requestgmbaccess_liasetting(merchant_id, account_id, gmb_email, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/liasettings/{accountId}/requestgmbaccess', options)
+          command = make_simple_command(:post, '{merchantId}/liasettings/{accountId}/requestgmbaccess', options)
           command.response_representation = Google::Apis::ContentV2_1::LiasettingsRequestGmbAccessResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::LiasettingsRequestGmbAccessResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -2004,7 +2004,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def requestinventoryverification_liasetting(merchant_id, account_id, country, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/liasettings/{accountId}/requestinventoryverification/{country}', options)
+          command = make_simple_command(:post, '{merchantId}/liasettings/{accountId}/requestinventoryverification/{country}', options)
           command.response_representation = Google::Apis::ContentV2_1::LiasettingsRequestInventoryVerificationResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::LiasettingsRequestInventoryVerificationResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -2049,7 +2049,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def setinventoryverificationcontact_liasetting(merchant_id, account_id, country, language, contact_name, contact_email, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/liasettings/{accountId}/setinventoryverificationcontact', options)
+          command = make_simple_command(:post, '{merchantId}/liasettings/{accountId}/setinventoryverificationcontact', options)
           command.response_representation = Google::Apis::ContentV2_1::LiasettingsSetInventoryVerificationContactResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::LiasettingsSetInventoryVerificationContactResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -2095,7 +2095,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def setposdataprovider_liasetting(merchant_id, account_id, country, pos_data_provider_id: nil, pos_external_account_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/liasettings/{accountId}/setposdataprovider', options)
+          command = make_simple_command(:post, '{merchantId}/liasettings/{accountId}/setposdataprovider', options)
           command.response_representation = Google::Apis::ContentV2_1::LiasettingsSetPosDataProviderResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::LiasettingsSetPosDataProviderResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -2135,7 +2135,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_liasetting(merchant_id, account_id, lia_settings_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:put, 'content/v2.1/{merchantId}/liasettings/{accountId}', options)
+          command = make_simple_command(:put, '{merchantId}/liasettings/{accountId}', options)
           command.request_representation = Google::Apis::ContentV2_1::LiaSettings::Representation
           command.request_object = lia_settings_object
           command.response_representation = Google::Apis::ContentV2_1::LiaSettings::Representation
@@ -2167,7 +2167,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def custombatch_localinventory(localinventory_custom_batch_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/localinventory/batch', options)
+          command = make_simple_command(:post, 'localinventory/batch', options)
           command.request_representation = Google::Apis::ContentV2_1::LocalinventoryCustomBatchRequest::Representation
           command.request_object = localinventory_custom_batch_request_object
           command.response_representation = Google::Apis::ContentV2_1::LocalinventoryCustomBatchResponse::Representation
@@ -2202,7 +2202,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_localinventory(merchant_id, product_id, local_inventory_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/products/{productId}/localinventory', options)
+          command = make_simple_command(:post, '{merchantId}/products/{productId}/localinventory', options)
           command.request_representation = Google::Apis::ContentV2_1::LocalInventory::Representation
           command.request_object = local_inventory_object
           command.response_representation = Google::Apis::ContentV2_1::LocalInventory::Representation
@@ -2240,7 +2240,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def createchargeinvoice_orderinvoice(merchant_id, order_id, orderinvoices_create_charge_invoice_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/orderinvoices/{orderId}/createChargeInvoice', options)
+          command = make_simple_command(:post, '{merchantId}/orderinvoices/{orderId}/createChargeInvoice', options)
           command.request_representation = Google::Apis::ContentV2_1::OrderinvoicesCreateChargeInvoiceRequest::Representation
           command.request_object = orderinvoices_create_charge_invoice_request_object
           command.response_representation = Google::Apis::ContentV2_1::OrderinvoicesCreateChargeInvoiceResponse::Representation
@@ -2280,7 +2280,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def createrefundinvoice_orderinvoice(merchant_id, order_id, orderinvoices_create_refund_invoice_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/orderinvoices/{orderId}/createRefundInvoice', options)
+          command = make_simple_command(:post, '{merchantId}/orderinvoices/{orderId}/createRefundInvoice', options)
           command.request_representation = Google::Apis::ContentV2_1::OrderinvoicesCreateRefundInvoiceRequest::Representation
           command.request_object = orderinvoices_create_refund_invoice_request_object
           command.response_representation = Google::Apis::ContentV2_1::OrderinvoicesCreateRefundInvoiceResponse::Representation
@@ -2323,7 +2323,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def listdisbursements_orderreport(merchant_id, disbursement_end_date: nil, disbursement_start_date: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/orderreports/disbursements', options)
+          command = make_simple_command(:get, '{merchantId}/orderreports/disbursements', options)
           command.response_representation = Google::Apis::ContentV2_1::OrderreportsListDisbursementsResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::OrderreportsListDisbursementsResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -2370,7 +2370,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def listtransactions_orderreport(merchant_id, disbursement_id, max_results: nil, page_token: nil, transaction_end_date: nil, transaction_start_date: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/orderreports/disbursements/{disbursementId}/transactions', options)
+          command = make_simple_command(:get, '{merchantId}/orderreports/disbursements/{disbursementId}/transactions', options)
           command.response_representation = Google::Apis::ContentV2_1::OrderreportsListTransactionsResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::OrderreportsListTransactionsResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -2409,7 +2409,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def acknowledge_orderreturn(merchant_id, return_id, orderreturns_acknowledge_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/orderreturns/{returnId}/acknowledge', options)
+          command = make_simple_command(:post, '{merchantId}/orderreturns/{returnId}/acknowledge', options)
           command.request_representation = Google::Apis::ContentV2_1::OrderreturnsAcknowledgeRequest::Representation
           command.request_object = orderreturns_acknowledge_request_object
           command.response_representation = Google::Apis::ContentV2_1::OrderreturnsAcknowledgeResponse::Representation
@@ -2444,7 +2444,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def createorderreturn_orderreturn(merchant_id, orderreturns_create_order_return_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/orderreturns/createOrderReturn', options)
+          command = make_simple_command(:post, '{merchantId}/orderreturns/createOrderReturn', options)
           command.request_representation = Google::Apis::ContentV2_1::OrderreturnsCreateOrderReturnRequest::Representation
           command.request_object = orderreturns_create_order_return_request_object
           command.response_representation = Google::Apis::ContentV2_1::OrderreturnsCreateOrderReturnResponse::Representation
@@ -2479,7 +2479,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_orderreturn(merchant_id, return_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/orderreturns/{returnId}', options)
+          command = make_simple_command(:get, '{merchantId}/orderreturns/{returnId}', options)
           command.response_representation = Google::Apis::ContentV2_1::MerchantOrderReturn::Representation
           command.response_class = Google::Apis::ContentV2_1::MerchantOrderReturn
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -2558,7 +2558,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_orderreturns(merchant_id, acknowledged: nil, created_end_date: nil, created_start_date: nil, google_order_ids: nil, max_results: nil, order_by: nil, page_token: nil, shipment_states: nil, shipment_status: nil, shipment_tracking_numbers: nil, shipment_types: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/orderreturns', options)
+          command = make_simple_command(:get, '{merchantId}/orderreturns', options)
           command.response_representation = Google::Apis::ContentV2_1::OrderreturnsListResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::OrderreturnsListResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -2603,7 +2603,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def process_orderreturn(merchant_id, return_id, orderreturns_process_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/orderreturns/{returnId}/process', options)
+          command = make_simple_command(:post, '{merchantId}/orderreturns/{returnId}/process', options)
           command.request_representation = Google::Apis::ContentV2_1::OrderreturnsProcessRequest::Representation
           command.request_object = orderreturns_process_request_object
           command.response_representation = Google::Apis::ContentV2_1::OrderreturnsProcessResponse::Representation
@@ -2640,7 +2640,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def acknowledge_order(merchant_id, order_id, orders_acknowledge_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/orders/{orderId}/acknowledge', options)
+          command = make_simple_command(:post, '{merchantId}/orders/{orderId}/acknowledge', options)
           command.request_representation = Google::Apis::ContentV2_1::OrdersAcknowledgeRequest::Representation
           command.request_object = orders_acknowledge_request_object
           command.response_representation = Google::Apis::ContentV2_1::OrdersAcknowledgeResponse::Representation
@@ -2677,7 +2677,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def advancetestorder_order(merchant_id, order_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/testorders/{orderId}/advance', options)
+          command = make_simple_command(:post, '{merchantId}/testorders/{orderId}/advance', options)
           command.response_representation = Google::Apis::ContentV2_1::OrdersAdvanceTestOrderResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::OrdersAdvanceTestOrderResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -2712,7 +2712,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_order(merchant_id, order_id, orders_cancel_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/orders/{orderId}/cancel', options)
+          command = make_simple_command(:post, '{merchantId}/orders/{orderId}/cancel', options)
           command.request_representation = Google::Apis::ContentV2_1::OrdersCancelRequest::Representation
           command.request_object = orders_cancel_request_object
           command.response_representation = Google::Apis::ContentV2_1::OrdersCancelResponse::Representation
@@ -2749,7 +2749,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancellineitem_order(merchant_id, order_id, orders_cancel_line_item_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/orders/{orderId}/cancelLineItem', options)
+          command = make_simple_command(:post, '{merchantId}/orders/{orderId}/cancelLineItem', options)
           command.request_representation = Google::Apis::ContentV2_1::OrdersCancelLineItemRequest::Representation
           command.request_object = orders_cancel_line_item_request_object
           command.response_representation = Google::Apis::ContentV2_1::OrdersCancelLineItemResponse::Representation
@@ -2786,7 +2786,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def canceltestorderbycustomer_order(merchant_id, order_id, orders_cancel_test_order_by_customer_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/testorders/{orderId}/cancelByCustomer', options)
+          command = make_simple_command(:post, '{merchantId}/testorders/{orderId}/cancelByCustomer', options)
           command.request_representation = Google::Apis::ContentV2_1::OrdersCancelTestOrderByCustomerRequest::Representation
           command.request_object = orders_cancel_test_order_by_customer_request_object
           command.response_representation = Google::Apis::ContentV2_1::OrdersCancelTestOrderByCustomerResponse::Representation
@@ -2821,7 +2821,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def createtestorder_order(merchant_id, orders_create_test_order_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/testorders', options)
+          command = make_simple_command(:post, '{merchantId}/testorders', options)
           command.request_representation = Google::Apis::ContentV2_1::OrdersCreateTestOrderRequest::Representation
           command.request_object = orders_create_test_order_request_object
           command.response_representation = Google::Apis::ContentV2_1::OrdersCreateTestOrderResponse::Representation
@@ -2857,7 +2857,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def createtestreturn_order(merchant_id, order_id, orders_create_test_return_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/orders/{orderId}/testreturn', options)
+          command = make_simple_command(:post, '{merchantId}/orders/{orderId}/testreturn', options)
           command.request_representation = Google::Apis::ContentV2_1::OrdersCreateTestReturnRequest::Representation
           command.request_object = orders_create_test_return_request_object
           command.response_representation = Google::Apis::ContentV2_1::OrdersCreateTestReturnResponse::Representation
@@ -2893,7 +2893,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_order(merchant_id, order_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/orders/{orderId}', options)
+          command = make_simple_command(:get, '{merchantId}/orders/{orderId}', options)
           command.response_representation = Google::Apis::ContentV2_1::Order::Representation
           command.response_class = Google::Apis::ContentV2_1::Order
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -2927,7 +2927,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def getbymerchantorderid_order(merchant_id, merchant_order_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/ordersbymerchantid/{merchantOrderId}', options)
+          command = make_simple_command(:get, '{merchantId}/ordersbymerchantid/{merchantOrderId}', options)
           command.response_representation = Google::Apis::ContentV2_1::OrdersGetByMerchantOrderIdResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::OrdersGetByMerchantOrderIdResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -2964,7 +2964,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def gettestordertemplate_order(merchant_id, template_name, country: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/testordertemplates/{templateName}', options)
+          command = make_simple_command(:get, '{merchantId}/testordertemplates/{templateName}', options)
           command.response_representation = Google::Apis::ContentV2_1::OrdersGetTestOrderTemplateResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::OrdersGetTestOrderTemplateResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -3007,7 +3007,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def instorerefundlineitem_order(merchant_id, order_id, orders_in_store_refund_line_item_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/orders/{orderId}/inStoreRefundLineItem', options)
+          command = make_simple_command(:post, '{merchantId}/orders/{orderId}/inStoreRefundLineItem', options)
           command.request_representation = Google::Apis::ContentV2_1::OrdersInStoreRefundLineItemRequest::Representation
           command.request_object = orders_in_store_refund_line_item_request_object
           command.response_representation = Google::Apis::ContentV2_1::OrdersInStoreRefundLineItemResponse::Representation
@@ -3065,7 +3065,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_orders(merchant_id, acknowledged: nil, max_results: nil, order_by: nil, page_token: nil, placed_date_end: nil, placed_date_start: nil, statuses: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/orders', options)
+          command = make_simple_command(:get, '{merchantId}/orders', options)
           command.response_representation = Google::Apis::ContentV2_1::OrdersListResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::OrdersListResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -3106,7 +3106,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def refunditem_order(merchant_id, order_id, orders_refund_item_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/orders/{orderId}/refunditem', options)
+          command = make_simple_command(:post, '{merchantId}/orders/{orderId}/refunditem', options)
           command.request_representation = Google::Apis::ContentV2_1::OrdersRefundItemRequest::Representation
           command.request_object = orders_refund_item_request_object
           command.response_representation = Google::Apis::ContentV2_1::OrdersRefundItemResponse::Representation
@@ -3143,7 +3143,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def refundorder_order(merchant_id, order_id, orders_refund_order_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/orders/{orderId}/refundorder', options)
+          command = make_simple_command(:post, '{merchantId}/orders/{orderId}/refundorder', options)
           command.request_representation = Google::Apis::ContentV2_1::OrdersRefundOrderRequest::Representation
           command.request_object = orders_refund_order_request_object
           command.response_representation = Google::Apis::ContentV2_1::OrdersRefundOrderResponse::Representation
@@ -3180,7 +3180,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def rejectreturnlineitem_order(merchant_id, order_id, orders_reject_return_line_item_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/orders/{orderId}/rejectReturnLineItem', options)
+          command = make_simple_command(:post, '{merchantId}/orders/{orderId}/rejectReturnLineItem', options)
           command.request_representation = Google::Apis::ContentV2_1::OrdersRejectReturnLineItemRequest::Representation
           command.request_object = orders_reject_return_line_item_request_object
           command.response_representation = Google::Apis::ContentV2_1::OrdersRejectReturnLineItemResponse::Representation
@@ -3222,7 +3222,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def returnrefundlineitem_order(merchant_id, order_id, orders_return_refund_line_item_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/orders/{orderId}/returnRefundLineItem', options)
+          command = make_simple_command(:post, '{merchantId}/orders/{orderId}/returnRefundLineItem', options)
           command.request_representation = Google::Apis::ContentV2_1::OrdersReturnRefundLineItemRequest::Representation
           command.request_object = orders_return_refund_line_item_request_object
           command.response_representation = Google::Apis::ContentV2_1::OrdersReturnRefundLineItemResponse::Representation
@@ -3263,7 +3263,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def setlineitemmetadata_order(merchant_id, order_id, orders_set_line_item_metadata_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/orders/{orderId}/setLineItemMetadata', options)
+          command = make_simple_command(:post, '{merchantId}/orders/{orderId}/setLineItemMetadata', options)
           command.request_representation = Google::Apis::ContentV2_1::OrdersSetLineItemMetadataRequest::Representation
           command.request_object = orders_set_line_item_metadata_request_object
           command.response_representation = Google::Apis::ContentV2_1::OrdersSetLineItemMetadataResponse::Representation
@@ -3300,7 +3300,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def shiplineitems_order(merchant_id, order_id, orders_ship_line_items_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/orders/{orderId}/shipLineItems', options)
+          command = make_simple_command(:post, '{merchantId}/orders/{orderId}/shipLineItems', options)
           command.request_representation = Google::Apis::ContentV2_1::OrdersShipLineItemsRequest::Representation
           command.request_object = orders_ship_line_items_request_object
           command.response_representation = Google::Apis::ContentV2_1::OrdersShipLineItemsResponse::Representation
@@ -3337,7 +3337,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def updatelineitemshippingdetails_order(merchant_id, order_id, orders_update_line_item_shipping_details_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/orders/{orderId}/updateLineItemShippingDetails', options)
+          command = make_simple_command(:post, '{merchantId}/orders/{orderId}/updateLineItemShippingDetails', options)
           command.request_representation = Google::Apis::ContentV2_1::OrdersUpdateLineItemShippingDetailsRequest::Representation
           command.request_object = orders_update_line_item_shipping_details_request_object
           command.response_representation = Google::Apis::ContentV2_1::OrdersUpdateLineItemShippingDetailsResponse::Representation
@@ -3374,7 +3374,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def updatemerchantorderid_order(merchant_id, order_id, orders_update_merchant_order_id_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/orders/{orderId}/updateMerchantOrderId', options)
+          command = make_simple_command(:post, '{merchantId}/orders/{orderId}/updateMerchantOrderId', options)
           command.request_representation = Google::Apis::ContentV2_1::OrdersUpdateMerchantOrderIdRequest::Representation
           command.request_object = orders_update_merchant_order_id_request_object
           command.response_representation = Google::Apis::ContentV2_1::OrdersUpdateMerchantOrderIdResponse::Representation
@@ -3411,7 +3411,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def updateshipment_order(merchant_id, order_id, orders_update_shipment_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/orders/{orderId}/updateShipment', options)
+          command = make_simple_command(:post, '{merchantId}/orders/{orderId}/updateShipment', options)
           command.request_representation = Google::Apis::ContentV2_1::OrdersUpdateShipmentRequest::Representation
           command.request_object = orders_update_shipment_request_object
           command.response_representation = Google::Apis::ContentV2_1::OrdersUpdateShipmentResponse::Representation
@@ -3445,7 +3445,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_ordertrackingsignal(merchant_id, order_tracking_signal_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/ordertrackingsignals', options)
+          command = make_simple_command(:post, '{merchantId}/ordertrackingsignals', options)
           command.request_representation = Google::Apis::ContentV2_1::OrderTrackingSignal::Representation
           command.request_object = order_tracking_signal_object
           command.response_representation = Google::Apis::ContentV2_1::OrderTrackingSignal::Representation
@@ -3476,7 +3476,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def custombatch_po(pos_custom_batch_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/pos/batch', options)
+          command = make_simple_command(:post, 'pos/batch', options)
           command.request_representation = Google::Apis::ContentV2_1::PosCustomBatchRequest::Representation
           command.request_object = pos_custom_batch_request_object
           command.response_representation = Google::Apis::ContentV2_1::PosCustomBatchResponse::Representation
@@ -3511,7 +3511,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_po(merchant_id, target_merchant_id, store_code, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'content/v2.1/{merchantId}/pos/{targetMerchantId}/store/{storeCode}', options)
+          command = make_simple_command(:delete, '{merchantId}/pos/{targetMerchantId}/store/{storeCode}', options)
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['targetMerchantId'] = target_merchant_id unless target_merchant_id.nil?
           command.params['storeCode'] = store_code unless store_code.nil?
@@ -3545,7 +3545,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_po(merchant_id, target_merchant_id, store_code, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/pos/{targetMerchantId}/store/{storeCode}', options)
+          command = make_simple_command(:get, '{merchantId}/pos/{targetMerchantId}/store/{storeCode}', options)
           command.response_representation = Google::Apis::ContentV2_1::PosStore::Representation
           command.response_class = Google::Apis::ContentV2_1::PosStore
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -3580,7 +3580,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_po(merchant_id, target_merchant_id, pos_store_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/pos/{targetMerchantId}/store', options)
+          command = make_simple_command(:post, '{merchantId}/pos/{targetMerchantId}/store', options)
           command.request_representation = Google::Apis::ContentV2_1::PosStore::Representation
           command.request_object = pos_store_object
           command.response_representation = Google::Apis::ContentV2_1::PosStore::Representation
@@ -3616,7 +3616,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def inventory_po(merchant_id, target_merchant_id, pos_inventory_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/pos/{targetMerchantId}/inventory', options)
+          command = make_simple_command(:post, '{merchantId}/pos/{targetMerchantId}/inventory', options)
           command.request_representation = Google::Apis::ContentV2_1::PosInventoryRequest::Representation
           command.request_object = pos_inventory_request_object
           command.response_representation = Google::Apis::ContentV2_1::PosInventoryResponse::Representation
@@ -3651,7 +3651,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_pos(merchant_id, target_merchant_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/pos/{targetMerchantId}/store', options)
+          command = make_simple_command(:get, '{merchantId}/pos/{targetMerchantId}/store', options)
           command.response_representation = Google::Apis::ContentV2_1::PosListResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::PosListResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -3685,7 +3685,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def sale_po(merchant_id, target_merchant_id, pos_sale_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/pos/{targetMerchantId}/sale', options)
+          command = make_simple_command(:post, '{merchantId}/pos/{targetMerchantId}/sale', options)
           command.request_representation = Google::Apis::ContentV2_1::PosSaleRequest::Representation
           command.request_object = pos_sale_request_object
           command.response_representation = Google::Apis::ContentV2_1::PosSaleResponse::Representation
@@ -3717,7 +3717,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def custombatch_product(products_custom_batch_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/products/batch', options)
+          command = make_simple_command(:post, 'products/batch', options)
           command.request_representation = Google::Apis::ContentV2_1::ProductsCustomBatchRequest::Representation
           command.request_object = products_custom_batch_request_object
           command.response_representation = Google::Apis::ContentV2_1::ProductsCustomBatchResponse::Representation
@@ -3753,7 +3753,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_product(merchant_id, product_id, feed_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'content/v2.1/{merchantId}/products/{productId}', options)
+          command = make_simple_command(:delete, '{merchantId}/products/{productId}', options)
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['productId'] = product_id unless product_id.nil?
           command.query['feedId'] = feed_id unless feed_id.nil?
@@ -3786,7 +3786,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_product(merchant_id, product_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/products/{productId}', options)
+          command = make_simple_command(:get, '{merchantId}/products/{productId}', options)
           command.response_representation = Google::Apis::ContentV2_1::Product::Representation
           command.response_class = Google::Apis::ContentV2_1::Product
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -3823,7 +3823,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_product(merchant_id, product_object = nil, feed_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/products', options)
+          command = make_simple_command(:post, '{merchantId}/products', options)
           command.request_representation = Google::Apis::ContentV2_1::Product::Representation
           command.request_object = product_object
           command.response_representation = Google::Apis::ContentV2_1::Product::Representation
@@ -3863,7 +3863,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_products(merchant_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/products', options)
+          command = make_simple_command(:get, '{merchantId}/products', options)
           command.response_representation = Google::Apis::ContentV2_1::ProductsListResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::ProductsListResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -3894,7 +3894,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def custombatch_productstatus(productstatuses_custom_batch_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/productstatuses/batch', options)
+          command = make_simple_command(:post, 'productstatuses/batch', options)
           command.request_representation = Google::Apis::ContentV2_1::ProductstatusesCustomBatchRequest::Representation
           command.request_object = productstatuses_custom_batch_request_object
           command.response_representation = Google::Apis::ContentV2_1::ProductstatusesCustomBatchResponse::Representation
@@ -3931,7 +3931,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_productstatus(merchant_id, product_id, destinations: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/productstatuses/{productId}', options)
+          command = make_simple_command(:get, '{merchantId}/productstatuses/{productId}', options)
           command.response_representation = Google::Apis::ContentV2_1::ProductStatus::Representation
           command.response_class = Google::Apis::ContentV2_1::ProductStatus
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -3972,7 +3972,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_productstatuses(merchant_id, destinations: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/productstatuses', options)
+          command = make_simple_command(:get, '{merchantId}/productstatuses', options)
           command.response_representation = Google::Apis::ContentV2_1::ProductstatusesListResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::ProductstatusesListResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -4030,7 +4030,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_productstatus_repricingreports(merchant_id, product_id, end_date: nil, page_size: nil, page_token: nil, rule_id: nil, start_date: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/productstatuses/{productId}/repricingreports', options)
+          command = make_simple_command(:get, '{merchantId}/productstatuses/{productId}/repricingreports', options)
           command.response_representation = Google::Apis::ContentV2_1::ListRepricingProductReportsResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::ListRepricingProductReportsResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -4066,7 +4066,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_pubsubnotificationsetting(merchant_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/pubsubnotificationsettings', options)
+          command = make_simple_command(:get, '{merchantId}/pubsubnotificationsettings', options)
           command.response_representation = Google::Apis::ContentV2_1::PubsubNotificationSettings::Representation
           command.response_class = Google::Apis::ContentV2_1::PubsubNotificationSettings
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -4098,7 +4098,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_pubsubnotificationsetting(merchant_id, pubsub_notification_settings_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:put, 'content/v2.1/{merchantId}/pubsubnotificationsettings', options)
+          command = make_simple_command(:put, '{merchantId}/pubsubnotificationsettings', options)
           command.request_representation = Google::Apis::ContentV2_1::PubsubNotificationSettings::Representation
           command.request_object = pubsub_notification_settings_object
           command.response_representation = Google::Apis::ContentV2_1::PubsubNotificationSettings::Representation
@@ -4130,7 +4130,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def custombatch_regionalinventory(regionalinventory_custom_batch_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/regionalinventory/batch', options)
+          command = make_simple_command(:post, 'regionalinventory/batch', options)
           command.request_representation = Google::Apis::ContentV2_1::RegionalinventoryCustomBatchRequest::Representation
           command.request_object = regionalinventory_custom_batch_request_object
           command.response_representation = Google::Apis::ContentV2_1::RegionalinventoryCustomBatchResponse::Representation
@@ -4167,7 +4167,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_regionalinventory(merchant_id, product_id, regional_inventory_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/products/{productId}/regionalinventory', options)
+          command = make_simple_command(:post, '{merchantId}/products/{productId}/regionalinventory', options)
           command.request_representation = Google::Apis::ContentV2_1::RegionalInventory::Representation
           command.request_object = regional_inventory_object
           command.response_representation = Google::Apis::ContentV2_1::RegionalInventory::Representation
@@ -4203,7 +4203,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_region(merchant_id, region_object = nil, region_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/regions', options)
+          command = make_simple_command(:post, '{merchantId}/regions', options)
           command.request_representation = Google::Apis::ContentV2_1::Region::Representation
           command.request_object = region_object
           command.response_representation = Google::Apis::ContentV2_1::Region::Representation
@@ -4238,7 +4238,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_region(merchant_id, region_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'content/v2.1/{merchantId}/regions/{regionId}', options)
+          command = make_simple_command(:delete, '{merchantId}/regions/{regionId}', options)
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['regionId'] = region_id unless region_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -4269,7 +4269,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_region(merchant_id, region_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/regions/{regionId}', options)
+          command = make_simple_command(:get, '{merchantId}/regions/{regionId}', options)
           command.response_representation = Google::Apis::ContentV2_1::Region::Representation
           command.response_class = Google::Apis::ContentV2_1::Region
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -4308,7 +4308,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_regions(merchant_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/regions', options)
+          command = make_simple_command(:get, '{merchantId}/regions', options)
           command.response_representation = Google::Apis::ContentV2_1::ListRegionsResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::ListRegionsResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -4345,7 +4345,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_region(merchant_id, region_id, region_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'content/v2.1/{merchantId}/regions/{regionId}', options)
+          command = make_simple_command(:patch, '{merchantId}/regions/{regionId}', options)
           command.request_representation = Google::Apis::ContentV2_1::Region::Representation
           command.request_object = region_object
           command.response_representation = Google::Apis::ContentV2_1::Region::Representation
@@ -4382,7 +4382,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_report(merchant_id, search_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/reports/search', options)
+          command = make_simple_command(:post, '{merchantId}/reports/search', options)
           command.request_representation = Google::Apis::ContentV2_1::SearchRequest::Representation
           command.request_object = search_request_object
           command.response_representation = Google::Apis::ContentV2_1::SearchResponse::Representation
@@ -4417,7 +4417,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_repricingrule(merchant_id, repricing_rule_object = nil, rule_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/repricingrules', options)
+          command = make_simple_command(:post, '{merchantId}/repricingrules', options)
           command.request_representation = Google::Apis::ContentV2_1::RepricingRule::Representation
           command.request_object = repricing_rule_object
           command.response_representation = Google::Apis::ContentV2_1::RepricingRule::Representation
@@ -4452,7 +4452,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_repricingrule(merchant_id, rule_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'content/v2.1/{merchantId}/repricingrules/{ruleId}', options)
+          command = make_simple_command(:delete, '{merchantId}/repricingrules/{ruleId}', options)
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['ruleId'] = rule_id unless rule_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -4483,7 +4483,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_repricingrule(merchant_id, rule_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/repricingrules/{ruleId}', options)
+          command = make_simple_command(:get, '{merchantId}/repricingrules/{ruleId}', options)
           command.response_representation = Google::Apis::ContentV2_1::RepricingRule::Representation
           command.response_class = Google::Apis::ContentV2_1::RepricingRule
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -4529,7 +4529,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_repricingrules(merchant_id, country_code: nil, language_code: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/repricingrules', options)
+          command = make_simple_command(:get, '{merchantId}/repricingrules', options)
           command.response_representation = Google::Apis::ContentV2_1::ListRepricingRulesResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::ListRepricingRulesResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -4570,7 +4570,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_repricingrule(merchant_id, rule_id, repricing_rule_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'content/v2.1/{merchantId}/repricingrules/{ruleId}', options)
+          command = make_simple_command(:patch, '{merchantId}/repricingrules/{ruleId}', options)
           command.request_representation = Google::Apis::ContentV2_1::RepricingRule::Representation
           command.request_object = repricing_rule_object
           command.response_representation = Google::Apis::ContentV2_1::RepricingRule::Representation
@@ -4621,7 +4621,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_repricingrule_repricingreports(merchant_id, rule_id, end_date: nil, page_size: nil, page_token: nil, start_date: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/repricingrules/{ruleId}/repricingreports', options)
+          command = make_simple_command(:get, '{merchantId}/repricingrules/{ruleId}/repricingreports', options)
           command.response_representation = Google::Apis::ContentV2_1::ListRepricingRuleReportsResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::ListRepricingRuleReportsResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -4655,7 +4655,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def custombatch_returnaddress(returnaddress_custom_batch_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/returnaddress/batch', options)
+          command = make_simple_command(:post, 'returnaddress/batch', options)
           command.request_representation = Google::Apis::ContentV2_1::ReturnaddressCustomBatchRequest::Representation
           command.request_object = returnaddress_custom_batch_request_object
           command.response_representation = Google::Apis::ContentV2_1::ReturnaddressCustomBatchResponse::Representation
@@ -4688,7 +4688,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_returnaddress(merchant_id, return_address_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'content/v2.1/{merchantId}/returnaddress/{returnAddressId}', options)
+          command = make_simple_command(:delete, '{merchantId}/returnaddress/{returnAddressId}', options)
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['returnAddressId'] = return_address_id unless return_address_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -4719,7 +4719,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_returnaddress(merchant_id, return_address_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/returnaddress/{returnAddressId}', options)
+          command = make_simple_command(:get, '{merchantId}/returnaddress/{returnAddressId}', options)
           command.response_representation = Google::Apis::ContentV2_1::ReturnAddress::Representation
           command.response_class = Google::Apis::ContentV2_1::ReturnAddress
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -4751,7 +4751,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_returnaddress(merchant_id, return_address_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/returnaddress', options)
+          command = make_simple_command(:post, '{merchantId}/returnaddress', options)
           command.request_representation = Google::Apis::ContentV2_1::ReturnAddress::Representation
           command.request_object = return_address_object
           command.response_representation = Google::Apis::ContentV2_1::ReturnAddress::Representation
@@ -4790,7 +4790,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_returnaddresses(merchant_id, country: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/returnaddress', options)
+          command = make_simple_command(:get, '{merchantId}/returnaddress', options)
           command.response_representation = Google::Apis::ContentV2_1::ReturnaddressListResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::ReturnaddressListResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -4822,7 +4822,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def custombatch_returnpolicy(returnpolicy_custom_batch_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/returnpolicy/batch', options)
+          command = make_simple_command(:post, 'returnpolicy/batch', options)
           command.request_representation = Google::Apis::ContentV2_1::ReturnpolicyCustomBatchRequest::Representation
           command.request_object = returnpolicy_custom_batch_request_object
           command.response_representation = Google::Apis::ContentV2_1::ReturnpolicyCustomBatchResponse::Representation
@@ -4855,7 +4855,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_returnpolicy(merchant_id, return_policy_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'content/v2.1/{merchantId}/returnpolicy/{returnPolicyId}', options)
+          command = make_simple_command(:delete, '{merchantId}/returnpolicy/{returnPolicyId}', options)
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['returnPolicyId'] = return_policy_id unless return_policy_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -4886,7 +4886,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_returnpolicy(merchant_id, return_policy_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/returnpolicy/{returnPolicyId}', options)
+          command = make_simple_command(:get, '{merchantId}/returnpolicy/{returnPolicyId}', options)
           command.response_representation = Google::Apis::ContentV2_1::ReturnPolicy::Representation
           command.response_class = Google::Apis::ContentV2_1::ReturnPolicy
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -4918,7 +4918,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_returnpolicy(merchant_id, return_policy_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/returnpolicy', options)
+          command = make_simple_command(:post, '{merchantId}/returnpolicy', options)
           command.request_representation = Google::Apis::ContentV2_1::ReturnPolicy::Representation
           command.request_object = return_policy_object
           command.response_representation = Google::Apis::ContentV2_1::ReturnPolicy::Representation
@@ -4950,7 +4950,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_returnpolicies(merchant_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/returnpolicy', options)
+          command = make_simple_command(:get, '{merchantId}/returnpolicy', options)
           command.response_representation = Google::Apis::ContentV2_1::ReturnpolicyListResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::ReturnpolicyListResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -4982,7 +4982,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_returnpolicyonline(merchant_id, return_policy_online_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/{merchantId}/returnpolicyonline', options)
+          command = make_simple_command(:post, '{merchantId}/returnpolicyonline', options)
           command.request_representation = Google::Apis::ContentV2_1::ReturnPolicyOnline::Representation
           command.request_object = return_policy_online_object
           command.response_representation = Google::Apis::ContentV2_1::ReturnPolicyOnline::Representation
@@ -5017,7 +5017,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_returnpolicyonline(merchant_id, return_policy_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'content/v2.1/{merchantId}/returnpolicyonline/{returnPolicyId}', options)
+          command = make_simple_command(:delete, '{merchantId}/returnpolicyonline/{returnPolicyId}', options)
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['returnPolicyId'] = return_policy_id unless return_policy_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -5049,7 +5049,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_returnpolicyonline(merchant_id, return_policy_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/returnpolicyonline/{returnPolicyId}', options)
+          command = make_simple_command(:get, '{merchantId}/returnpolicyonline/{returnPolicyId}', options)
           command.response_representation = Google::Apis::ContentV2_1::ReturnPolicyOnline::Representation
           command.response_class = Google::Apis::ContentV2_1::ReturnPolicyOnline
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -5081,7 +5081,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_returnpolicyonlines(merchant_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/returnpolicyonline', options)
+          command = make_simple_command(:get, '{merchantId}/returnpolicyonline', options)
           command.response_representation = Google::Apis::ContentV2_1::ListReturnPolicyOnlineResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::ListReturnPolicyOnlineResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -5115,7 +5115,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_returnpolicyonline(merchant_id, return_policy_id, return_policy_online_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'content/v2.1/{merchantId}/returnpolicyonline/{returnPolicyId}', options)
+          command = make_simple_command(:patch, '{merchantId}/returnpolicyonline/{returnPolicyId}', options)
           command.request_representation = Google::Apis::ContentV2_1::ReturnPolicyOnline::Representation
           command.request_object = return_policy_online_object
           command.response_representation = Google::Apis::ContentV2_1::ReturnPolicyOnline::Representation
@@ -5150,7 +5150,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_settlementreport(merchant_id, settlement_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/settlementreports/{settlementId}', options)
+          command = make_simple_command(:get, '{merchantId}/settlementreports/{settlementId}', options)
           command.response_representation = Google::Apis::ContentV2_1::SettlementReport::Representation
           command.response_class = Google::Apis::ContentV2_1::SettlementReport
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -5193,7 +5193,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_settlementreports(merchant_id, max_results: nil, page_token: nil, transfer_end_date: nil, transfer_start_date: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/settlementreports', options)
+          command = make_simple_command(:get, '{merchantId}/settlementreports', options)
           command.response_representation = Google::Apis::ContentV2_1::SettlementreportsListResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::SettlementreportsListResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -5238,7 +5238,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_settlementtransactions(merchant_id, settlement_id, max_results: nil, page_token: nil, transaction_ids: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/settlementreports/{settlementId}/transactions', options)
+          command = make_simple_command(:get, '{merchantId}/settlementreports/{settlementId}/transactions', options)
           command.response_representation = Google::Apis::ContentV2_1::SettlementtransactionsListResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::SettlementtransactionsListResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -5272,7 +5272,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def custombatch_shippingsetting(shippingsettings_custom_batch_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'content/v2.1/shippingsettings/batch', options)
+          command = make_simple_command(:post, 'shippingsettings/batch', options)
           command.request_representation = Google::Apis::ContentV2_1::ShippingsettingsCustomBatchRequest::Representation
           command.request_object = shippingsettings_custom_batch_request_object
           command.response_representation = Google::Apis::ContentV2_1::ShippingsettingsCustomBatchResponse::Representation
@@ -5307,7 +5307,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_shippingsetting(merchant_id, account_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/shippingsettings/{accountId}', options)
+          command = make_simple_command(:get, '{merchantId}/shippingsettings/{accountId}', options)
           command.response_representation = Google::Apis::ContentV2_1::ShippingSettings::Representation
           command.response_class = Google::Apis::ContentV2_1::ShippingSettings
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -5338,7 +5338,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def getsupportedcarriers_shippingsetting(merchant_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/supportedCarriers', options)
+          command = make_simple_command(:get, '{merchantId}/supportedCarriers', options)
           command.response_representation = Google::Apis::ContentV2_1::ShippingsettingsGetSupportedCarriersResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::ShippingsettingsGetSupportedCarriersResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -5368,7 +5368,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def getsupportedholidays_shippingsetting(merchant_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/supportedHolidays', options)
+          command = make_simple_command(:get, '{merchantId}/supportedHolidays', options)
           command.response_representation = Google::Apis::ContentV2_1::ShippingsettingsGetSupportedHolidaysResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::ShippingsettingsGetSupportedHolidaysResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -5398,7 +5398,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def getsupportedpickupservices_shippingsetting(merchant_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/supportedPickupServices', options)
+          command = make_simple_command(:get, '{merchantId}/supportedPickupServices', options)
           command.response_representation = Google::Apis::ContentV2_1::ShippingsettingsGetSupportedPickupServicesResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::ShippingsettingsGetSupportedPickupServicesResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -5434,7 +5434,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_shippingsettings(merchant_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'content/v2.1/{merchantId}/shippingsettings', options)
+          command = make_simple_command(:get, '{merchantId}/shippingsettings', options)
           command.response_representation = Google::Apis::ContentV2_1::ShippingsettingsListResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::ShippingsettingsListResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
@@ -5472,7 +5472,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_shippingsetting(merchant_id, account_id, shipping_settings_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:put, 'content/v2.1/{merchantId}/shippingsettings/{accountId}', options)
+          command = make_simple_command(:put, '{merchantId}/shippingsettings/{accountId}', options)
           command.request_representation = Google::Apis::ContentV2_1::ShippingSettings::Representation
           command.request_object = shipping_settings_object
           command.response_representation = Google::Apis::ContentV2_1::ShippingSettings::Representation
