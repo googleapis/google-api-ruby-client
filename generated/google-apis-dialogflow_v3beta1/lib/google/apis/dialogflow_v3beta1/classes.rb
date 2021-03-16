@@ -5151,7 +5151,7 @@ module Google
         attr_accessor :text
       
         # If natural language speech audio was provided as input, this field will
-        # contain the trascript for the audio.
+        # contain the transcript for the audio.
         # Corresponds to the JSON property `transcript`
         # @return [String]
         attr_accessor :transcript
@@ -5163,7 +5163,7 @@ module Google
         attr_accessor :trigger_event
       
         # If an intent was provided as input, this field will contain a copy of the
-        # intent identifier.
+        # intent identifier. Format: `projects//locations//agents//intents/`.
         # Corresponds to the JSON property `triggerIntent`
         # @return [String]
         attr_accessor :trigger_intent
@@ -5683,7 +5683,7 @@ module Google
         attr_accessor :text
       
         # If natural language speech audio was provided as input, this field will
-        # contain the trascript for the audio.
+        # contain the transcript for the audio.
         # Corresponds to the JSON property `transcript`
         # @return [String]
         attr_accessor :transcript
@@ -5695,7 +5695,7 @@ module Google
         attr_accessor :trigger_event
       
         # If an intent was provided as input, this field will contain a copy of the
-        # intent identifier.
+        # intent identifier. Format: `projects//locations//agents//intents/`.
         # Corresponds to the JSON property `triggerIntent`
         # @return [String]
         attr_accessor :trigger_intent
