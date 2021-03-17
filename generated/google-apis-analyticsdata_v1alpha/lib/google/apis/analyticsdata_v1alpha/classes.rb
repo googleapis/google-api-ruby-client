@@ -52,6 +52,13 @@ module Google
       class BatchRunPivotReportsResponse
         include Google::Apis::Core::Hashable
       
+        # Identifies what kind of resource this message is. This `kind` is always the
+        # fixed string "analyticsData#batchRunPivotReports". Useful to distinguish
+        # between response types in JSON.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
         # Individual responses. Each response has a separate pivot report request.
         # Corresponds to the JSON property `pivotReports`
         # @return [Array<Google::Apis::AnalyticsdataV1alpha::RunPivotReportResponse>]
@@ -63,6 +70,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
           @pivot_reports = args[:pivot_reports] if args.key?(:pivot_reports)
         end
       end
@@ -97,6 +105,13 @@ module Google
       class BatchRunReportsResponse
         include Google::Apis::Core::Hashable
       
+        # Identifies what kind of resource this message is. This `kind` is always the
+        # fixed string "analyticsData#batchRunReports". Useful to distinguish between
+        # response types in JSON.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
         # Individual responses. Each response has a separate report request.
         # Corresponds to the JSON property `reports`
         # @return [Array<Google::Apis::AnalyticsdataV1alpha::RunReportResponse>]
@@ -108,6 +123,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
           @reports = args[:reports] if args.key?(:reports)
         end
       end
@@ -1014,11 +1030,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :field_names
       
-        # The number of rows to return in this pivot. If the `limit` parameter is
-        # unspecified, up to 10,000 rows are returned. The product of the `limit` for
-        # each `pivot` in a `RunPivotReportRequest` must not exceed 100,000. For example,
-        # a two pivot request with `limit: 1000` in each pivot will fail because the
-        # product is `1,000,000`.
+        # The number of rows to return in this pivot. The `limit` parameter is required.
+        # A `limit` of 10,000 is common for single pivot requests. The product of the `
+        # limit` for each `pivot` in a `RunPivotReportRequest` must not exceed 100,000.
+        # For example, a two pivot request with `limit: 1000` in each pivot will fail
+        # because the product is `1,000,000`.
         # Corresponds to the JSON property `limit`
         # @return [Fixnum]
         attr_accessor :limit
@@ -1177,6 +1193,11 @@ module Google
         attr_accessor :concurrent_requests
       
         # Current state for a particular quota group.
+        # Corresponds to the JSON property `potentiallyThresholdedRequestsPerHour`
+        # @return [Google::Apis::AnalyticsdataV1alpha::QuotaStatus]
+        attr_accessor :potentially_thresholded_requests_per_hour
+      
+        # Current state for a particular quota group.
         # Corresponds to the JSON property `serverErrorsPerProjectPerHour`
         # @return [Google::Apis::AnalyticsdataV1alpha::QuotaStatus]
         attr_accessor :server_errors_per_project_per_hour
@@ -1198,6 +1219,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @concurrent_requests = args[:concurrent_requests] if args.key?(:concurrent_requests)
+          @potentially_thresholded_requests_per_hour = args[:potentially_thresholded_requests_per_hour] if args.key?(:potentially_thresholded_requests_per_hour)
           @server_errors_per_project_per_hour = args[:server_errors_per_project_per_hour] if args.key?(:server_errors_per_project_per_hour)
           @tokens_per_day = args[:tokens_per_day] if args.key?(:tokens_per_day)
           @tokens_per_hour = args[:tokens_per_hour] if args.key?(:tokens_per_hour)
@@ -1407,6 +1429,13 @@ module Google
         # @return [Array<Google::Apis::AnalyticsdataV1alpha::DimensionHeader>]
         attr_accessor :dimension_headers
       
+        # Identifies what kind of resource this message is. This `kind` is always the
+        # fixed string "analyticsData#runPivotReport". Useful to distinguish between
+        # response types in JSON.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
         # Response's metadata carrying additional information about the report content.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::AnalyticsdataV1alpha::ResponseMetaData]
@@ -1450,6 +1479,7 @@ module Google
         def update!(**args)
           @aggregates = args[:aggregates] if args.key?(:aggregates)
           @dimension_headers = args[:dimension_headers] if args.key?(:dimension_headers)
+          @kind = args[:kind] if args.key?(:kind)
           @metadata = args[:metadata] if args.key?(:metadata)
           @metric_headers = args[:metric_headers] if args.key?(:metric_headers)
           @pivot_headers = args[:pivot_headers] if args.key?(:pivot_headers)
@@ -1536,6 +1566,13 @@ module Google
         # @return [Array<Google::Apis::AnalyticsdataV1alpha::DimensionHeader>]
         attr_accessor :dimension_headers
       
+        # Identifies what kind of resource this message is. This `kind` is always the
+        # fixed string "analyticsData#runRealtimeReport". Useful to distinguish between
+        # response types in JSON.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
         # If requested, the maximum values of metrics.
         # Corresponds to the JSON property `maximums`
         # @return [Array<Google::Apis::AnalyticsdataV1alpha::Row>]
@@ -1584,6 +1621,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dimension_headers = args[:dimension_headers] if args.key?(:dimension_headers)
+          @kind = args[:kind] if args.key?(:kind)
           @maximums = args[:maximums] if args.key?(:maximums)
           @metric_headers = args[:metric_headers] if args.key?(:metric_headers)
           @minimums = args[:minimums] if args.key?(:minimums)
@@ -1731,6 +1769,13 @@ module Google
         # @return [Array<Google::Apis::AnalyticsdataV1alpha::DimensionHeader>]
         attr_accessor :dimension_headers
       
+        # Identifies what kind of resource this message is. This `kind` is always the
+        # fixed string "analyticsData#runReport". Useful to distinguish between response
+        # types in JSON.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
         # If requested, the maximum values of metrics.
         # Corresponds to the JSON property `maximums`
         # @return [Array<Google::Apis::AnalyticsdataV1alpha::Row>]
@@ -1786,6 +1831,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dimension_headers = args[:dimension_headers] if args.key?(:dimension_headers)
+          @kind = args[:kind] if args.key?(:kind)
           @maximums = args[:maximums] if args.key?(:maximums)
           @metadata = args[:metadata] if args.key?(:metadata)
           @metric_headers = args[:metric_headers] if args.key?(:metric_headers)
