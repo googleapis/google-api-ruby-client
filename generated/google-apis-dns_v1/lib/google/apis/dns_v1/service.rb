@@ -180,7 +180,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Fetch the representation of an existing DnsKey.
+        # Fetches the representation of an existing DnsKey.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
@@ -226,7 +226,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Enumerate DnsKeys to a ResourceRecordSet collection.
+        # Enumerates DnsKeys to a ResourceRecordSet collection.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
@@ -357,7 +357,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a new ManagedZone.
+        # Creates a new ManagedZone.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [Google::Apis::DnsV1::ManagedZone] managed_zone_object
@@ -394,7 +394,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete a previously created ManagedZone.
+        # Deletes a previously created ManagedZone.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
@@ -430,7 +430,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Fetch the representation of an existing ManagedZone.
+        # Fetches the representation of an existing ManagedZone.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
@@ -468,7 +468,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Enumerate ManagedZones that have been created but not yet deleted.
+        # Enumerates ManagedZones that have been created but not yet deleted.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] dns_name
@@ -509,7 +509,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Apply a partial update to an existing ManagedZone.
+        # Applies a partial update to an existing ManagedZone.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
@@ -550,7 +550,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update an existing ManagedZone.
+        # Updates an existing ManagedZone.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
@@ -739,7 +739,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Apply a partial update to an existing Policy.
+        # Applies a partial update to an existing Policy.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] policy
@@ -779,7 +779,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update an existing Policy.
+        # Updates an existing Policy.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] policy
@@ -853,7 +853,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a new ResourceRecordSet.
+        # Creates a new ResourceRecordSet.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
@@ -894,7 +894,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete a previously created ResourceRecordSet.
+        # Deletes a previously created ResourceRecordSet.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
@@ -938,7 +938,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Fetch the representation of an existing ResourceRecordSet.
+        # Fetches the representation of an existing ResourceRecordSet.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
@@ -982,7 +982,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Apply a partial update to an existing ResourceRecordSet.
+        # Applies a partial update to an existing ResourceRecordSet.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
