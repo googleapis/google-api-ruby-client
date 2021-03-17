@@ -178,12 +178,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DisableServiceResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Documentation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -797,12 +791,6 @@ module Google
           property :kind, as: 'kind'
           property :location, as: 'location'
           property :message, as: 'message'
-        end
-      end
-      
-      class DisableServiceResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

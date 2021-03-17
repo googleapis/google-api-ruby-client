@@ -1020,19 +1020,6 @@ module Google
         end
       end
       
-      # Operation payload for DisableService method.
-      class DisableServiceResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # `Documentation` provides the information for describing a service. Example:
       # documentation: summary: > The Google Calendar API gives access to most
       # calendar features. pages: - name: Overview content: (== include google/foo/
