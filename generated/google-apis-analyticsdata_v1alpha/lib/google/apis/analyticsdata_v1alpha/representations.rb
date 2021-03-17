@@ -323,6 +323,7 @@ module Google
       class BatchRunPivotReportsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
           collection :pivot_reports, as: 'pivotReports', class: Google::Apis::AnalyticsdataV1alpha::RunPivotReportResponse, decorator: Google::Apis::AnalyticsdataV1alpha::RunPivotReportResponse::Representation
       
         end
@@ -341,6 +342,7 @@ module Google
       class BatchRunReportsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
           collection :reports, as: 'reports', class: Google::Apis::AnalyticsdataV1alpha::RunReportResponse, decorator: Google::Apis::AnalyticsdataV1alpha::RunReportResponse::Representation
       
         end
@@ -660,6 +662,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :concurrent_requests, as: 'concurrentRequests', class: Google::Apis::AnalyticsdataV1alpha::QuotaStatus, decorator: Google::Apis::AnalyticsdataV1alpha::QuotaStatus::Representation
       
+          property :potentially_thresholded_requests_per_hour, as: 'potentiallyThresholdedRequestsPerHour', class: Google::Apis::AnalyticsdataV1alpha::QuotaStatus, decorator: Google::Apis::AnalyticsdataV1alpha::QuotaStatus::Representation
+      
           property :server_errors_per_project_per_hour, as: 'serverErrorsPerProjectPerHour', class: Google::Apis::AnalyticsdataV1alpha::QuotaStatus, decorator: Google::Apis::AnalyticsdataV1alpha::QuotaStatus::Representation
       
           property :tokens_per_day, as: 'tokensPerDay', class: Google::Apis::AnalyticsdataV1alpha::QuotaStatus, decorator: Google::Apis::AnalyticsdataV1alpha::QuotaStatus::Representation
@@ -726,6 +730,7 @@ module Google
       
           collection :dimension_headers, as: 'dimensionHeaders', class: Google::Apis::AnalyticsdataV1alpha::DimensionHeader, decorator: Google::Apis::AnalyticsdataV1alpha::DimensionHeader::Representation
       
+          property :kind, as: 'kind'
           property :metadata, as: 'metadata', class: Google::Apis::AnalyticsdataV1alpha::ResponseMetaData, decorator: Google::Apis::AnalyticsdataV1alpha::ResponseMetaData::Representation
       
           collection :metric_headers, as: 'metricHeaders', class: Google::Apis::AnalyticsdataV1alpha::MetricHeader, decorator: Google::Apis::AnalyticsdataV1alpha::MetricHeader::Representation
@@ -763,6 +768,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :dimension_headers, as: 'dimensionHeaders', class: Google::Apis::AnalyticsdataV1alpha::DimensionHeader, decorator: Google::Apis::AnalyticsdataV1alpha::DimensionHeader::Representation
       
+          property :kind, as: 'kind'
           collection :maximums, as: 'maximums', class: Google::Apis::AnalyticsdataV1alpha::Row, decorator: Google::Apis::AnalyticsdataV1alpha::Row::Representation
       
           collection :metric_headers, as: 'metricHeaders', class: Google::Apis::AnalyticsdataV1alpha::MetricHeader, decorator: Google::Apis::AnalyticsdataV1alpha::MetricHeader::Representation
@@ -812,6 +818,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :dimension_headers, as: 'dimensionHeaders', class: Google::Apis::AnalyticsdataV1alpha::DimensionHeader, decorator: Google::Apis::AnalyticsdataV1alpha::DimensionHeader::Representation
       
+          property :kind, as: 'kind'
           collection :maximums, as: 'maximums', class: Google::Apis::AnalyticsdataV1alpha::Row, decorator: Google::Apis::AnalyticsdataV1alpha::Row::Representation
       
           property :metadata, as: 'metadata', class: Google::Apis::AnalyticsdataV1alpha::ResponseMetaData, decorator: Google::Apis::AnalyticsdataV1alpha::ResponseMetaData::Representation
