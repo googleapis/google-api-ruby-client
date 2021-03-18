@@ -1540,7 +1540,7 @@ module Google
       class BatchClearValuesRequest
         include Google::Apis::Core::Hashable
       
-        # The ranges to clear, in A1 notation.
+        # The ranges to clear, in A1 or R1C1 notation.
         # Corresponds to the JSON property `ranges`
         # @return [Array<String>]
         attr_accessor :ranges
@@ -7182,7 +7182,7 @@ module Google
       
         # True if the headings in this pivot group should be repeated. This is only
         # valid for row groupings and is ignored by columns. By default, we minimize
-        # repitition of headings by not showing higher level headings where they are the
+        # repetition of headings by not showing higher level headings where they are the
         # same. For example, even though the third row below corresponds to "Q1 Mar", "
         # Q1" is not shown because it is redundant with previous rows. Setting
         # repeat_headings to true would cause "Q1" to be repeated for "Feb" and "Mar". +-
