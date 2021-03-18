@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SasPortalChannelWithScore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SasPortalCreateSignedDeviceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -240,6 +246,15 @@ module Google
         end
       end
       
+      class SasPortalChannelWithScore
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :frequency_range, as: 'frequencyRange', class: Google::Apis::SasportalV1alpha1::SasPortalFrequencyRange, decorator: Google::Apis::SasportalV1alpha1::SasPortalFrequencyRange::Representation
+      
+          property :score, as: 'score'
+        end
+      end
+      
       class SasPortalCreateSignedDeviceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -272,6 +287,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :active_config, as: 'activeConfig', class: Google::Apis::SasportalV1alpha1::SasPortalDeviceConfig, decorator: Google::Apis::SasportalV1alpha1::SasPortalDeviceConfig::Representation
+      
+          collection :current_channels, as: 'currentChannels', class: Google::Apis::SasportalV1alpha1::SasPortalChannelWithScore, decorator: Google::Apis::SasportalV1alpha1::SasPortalChannelWithScore::Representation
       
           property :device_metadata, as: 'deviceMetadata', class: Google::Apis::SasportalV1alpha1::SasPortalDeviceMetadata, decorator: Google::Apis::SasportalV1alpha1::SasPortalDeviceMetadata::Representation
       
