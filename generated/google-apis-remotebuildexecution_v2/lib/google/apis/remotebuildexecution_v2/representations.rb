@@ -644,6 +644,7 @@ module Google
       
           collection :digest_function, as: 'digestFunction'
           property :max_batch_total_size_bytes, :numeric_string => true, as: 'maxBatchTotalSizeBytes'
+          collection :supported_compressor, as: 'supportedCompressor'
           property :symlink_absolute_path_strategy, as: 'symlinkAbsolutePathStrategy'
         end
       end
@@ -908,7 +909,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action_id, as: 'actionId'
+          property :action_mnemonic, as: 'actionMnemonic'
+          property :configuration_id, as: 'configurationId'
           property :correlated_invocations_id, as: 'correlatedInvocationsId'
+          property :target_id, as: 'targetId'
           property :tool_details, as: 'toolDetails', class: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2ToolDetails, decorator: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2ToolDetails::Representation
       
           property :tool_invocation_id, as: 'toolInvocationId'
