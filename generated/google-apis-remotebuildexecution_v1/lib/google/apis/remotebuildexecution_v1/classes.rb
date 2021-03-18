@@ -1298,11 +1298,32 @@ module Google
         # @return [String]
         attr_accessor :action_id
       
+        # A brief description of the kind of action, for example, CppCompile or GoLink.
+        # There is no standard agreed set of values for this, and they are expected to
+        # vary between different client tools.
+        # Corresponds to the JSON property `actionMnemonic`
+        # @return [String]
+        attr_accessor :action_mnemonic
+      
+        # An identifier for the configuration in which the target was built, e.g. for
+        # differentiating building host tools or different target platforms. There is no
+        # expectation that this value will have any particular structure, or equality
+        # across invocations, though some client tools may offer these guarantees.
+        # Corresponds to the JSON property `configurationId`
+        # @return [String]
+        attr_accessor :configuration_id
+      
         # An identifier to tie multiple tool invocations together. For example, runs of
         # foo_test, bar_test and baz_test on a post-submit of a given patch.
         # Corresponds to the JSON property `correlatedInvocationsId`
         # @return [String]
         attr_accessor :correlated_invocations_id
+      
+        # An identifier for the target which produced this action. No guarantees are
+        # made around how many actions may relate to a single target.
+        # Corresponds to the JSON property `targetId`
+        # @return [String]
+        attr_accessor :target_id
       
         # Details for the tool used to call the API.
         # Corresponds to the JSON property `toolDetails`
@@ -1322,7 +1343,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @action_id = args[:action_id] if args.key?(:action_id)
+          @action_mnemonic = args[:action_mnemonic] if args.key?(:action_mnemonic)
+          @configuration_id = args[:configuration_id] if args.key?(:configuration_id)
           @correlated_invocations_id = args[:correlated_invocations_id] if args.key?(:correlated_invocations_id)
+          @target_id = args[:target_id] if args.key?(:target_id)
           @tool_details = args[:tool_details] if args.key?(:tool_details)
           @tool_invocation_id = args[:tool_invocation_id] if args.key?(:tool_invocation_id)
         end

@@ -652,7 +652,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action_id, as: 'actionId'
+          property :action_mnemonic, as: 'actionMnemonic'
+          property :configuration_id, as: 'configurationId'
           property :correlated_invocations_id, as: 'correlatedInvocationsId'
+          property :target_id, as: 'targetId'
           property :tool_details, as: 'toolDetails', class: Google::Apis::RemotebuildexecutionV1::BuildBazelRemoteExecutionV2ToolDetails, decorator: Google::Apis::RemotebuildexecutionV1::BuildBazelRemoteExecutionV2ToolDetails::Representation
       
           property :tool_invocation_id, as: 'toolInvocationId'
