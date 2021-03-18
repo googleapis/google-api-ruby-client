@@ -682,6 +682,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SessionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1764,6 +1770,8 @@ module Google
       
           property :script_statistics, as: 'scriptStatistics', class: Google::Apis::BigqueryV2::ScriptStatistics, decorator: Google::Apis::BigqueryV2::ScriptStatistics::Representation
       
+          property :session_info_template, as: 'sessionInfoTemplate', class: Google::Apis::BigqueryV2::SessionInfo, decorator: Google::Apis::BigqueryV2::SessionInfo::Representation
+      
           property :start_time, :numeric_string => true, as: 'startTime'
           property :total_bytes_processed, :numeric_string => true, as: 'totalBytesProcessed'
           property :total_slot_ms, :numeric_string => true, as: 'totalSlotMs'
@@ -2116,6 +2124,8 @@ module Google
       
           property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
       
+          property :session_info_template, as: 'sessionInfoTemplate', class: Google::Apis::BigqueryV2::SessionInfo, decorator: Google::Apis::BigqueryV2::SessionInfo::Representation
+      
           property :total_bytes_processed, :numeric_string => true, as: 'totalBytesProcessed'
           property :total_rows, :numeric_string => true, as: 'totalRows'
         end
@@ -2259,6 +2269,13 @@ module Google
           property :evaluation_kind, as: 'evaluationKind'
           collection :stack_frames, as: 'stackFrames', class: Google::Apis::BigqueryV2::ScriptStackFrame, decorator: Google::Apis::BigqueryV2::ScriptStackFrame::Representation
       
+        end
+      end
+      
+      class SessionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :session_id, as: 'sessionId'
         end
       end
       
@@ -2438,10 +2455,13 @@ module Google
           property :description, as: 'description'
           collection :fields, as: 'fields', class: Google::Apis::BigqueryV2::TableFieldSchema, decorator: Google::Apis::BigqueryV2::TableFieldSchema::Representation
       
+          property :max_length, :numeric_string => true, as: 'maxLength'
           property :mode, as: 'mode'
           property :name, as: 'name'
           property :policy_tags, as: 'policyTags', class: Google::Apis::BigqueryV2::TableFieldSchema::PolicyTags, decorator: Google::Apis::BigqueryV2::TableFieldSchema::PolicyTags::Representation
       
+          property :precision, :numeric_string => true, as: 'precision'
+          property :scale, :numeric_string => true, as: 'scale'
           property :type, as: 'type'
         end
         

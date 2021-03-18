@@ -3792,6 +3792,11 @@ module Google
         # @return [Google::Apis::BigqueryV2::ScriptStatistics]
         attr_accessor :script_statistics
       
+        # [Output-only] [Preview] Information of the session if this job is part of one.
+        # Corresponds to the JSON property `sessionInfoTemplate`
+        # @return [Google::Apis::BigqueryV2::SessionInfo]
+        attr_accessor :session_info_template
+      
         # [Output-only] Start time of this job, in milliseconds since the epoch. This
         # field will be present when the job transitions from the PENDING state to
         # either RUNNING or DONE.
@@ -3835,6 +3840,7 @@ module Google
           @reservation_id = args[:reservation_id] if args.key?(:reservation_id)
           @row_level_security_statistics = args[:row_level_security_statistics] if args.key?(:row_level_security_statistics)
           @script_statistics = args[:script_statistics] if args.key?(:script_statistics)
+          @session_info_template = args[:session_info_template] if args.key?(:session_info_template)
           @start_time = args[:start_time] if args.key?(:start_time)
           @total_bytes_processed = args[:total_bytes_processed] if args.key?(:total_bytes_processed)
           @total_slot_ms = args[:total_slot_ms] if args.key?(:total_slot_ms)
@@ -5214,6 +5220,11 @@ module Google
         # @return [Google::Apis::BigqueryV2::TableSchema]
         attr_accessor :schema
       
+        # [Output-only] [Preview] Information of the session if this job is part of one.
+        # Corresponds to the JSON property `sessionInfoTemplate`
+        # @return [Google::Apis::BigqueryV2::SessionInfo]
+        attr_accessor :session_info_template
+      
         # The total number of bytes processed for this query. If this query was a dry
         # run, this is the number of bytes that would be processed if the query were run.
         # Corresponds to the JSON property `totalBytesProcessed`
@@ -5241,6 +5252,7 @@ module Google
           @page_token = args[:page_token] if args.key?(:page_token)
           @rows = args[:rows] if args.key?(:rows)
           @schema = args[:schema] if args.key?(:schema)
+          @session_info_template = args[:session_info_template] if args.key?(:session_info_template)
           @total_bytes_processed = args[:total_bytes_processed] if args.key?(:total_bytes_processed)
           @total_rows = args[:total_rows] if args.key?(:total_rows)
         end
@@ -5784,6 +5796,25 @@ module Google
         def update!(**args)
           @evaluation_kind = args[:evaluation_kind] if args.key?(:evaluation_kind)
           @stack_frames = args[:stack_frames] if args.key?(:stack_frames)
+        end
+      end
+      
+      # 
+      class SessionInfo
+        include Google::Apis::Core::Hashable
+      
+        # [Output-only] // [Preview] Id of the session.
+        # Corresponds to the JSON property `sessionId`
+        # @return [String]
+        attr_accessor :session_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @session_id = args[:session_id] if args.key?(:session_id)
         end
       end
       
@@ -6440,6 +6471,16 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::TableFieldSchema>]
         attr_accessor :fields
       
+        # [Optional] Maximum length of values of this field for STRINGS or BYTES. If
+        # max_length is not specified, no maximum length constraint is imposed on this
+        # field. If type = "STRING", then max_length represents the maximum UTF-8 length
+        # of strings in this field. If type = "BYTES", then max_length represents the
+        # maximum number of bytes in this field. It is invalid to set this field if type
+        # ≠ "STRING" and ≠ "BYTES".
+        # Corresponds to the JSON property `maxLength`
+        # @return [Fixnum]
+        attr_accessor :max_length
+      
         # [Optional] The field mode. Possible values include NULLABLE, REQUIRED and
         # REPEATED. The default value is NULLABLE.
         # Corresponds to the JSON property `mode`
@@ -6457,6 +6498,31 @@ module Google
         # Corresponds to the JSON property `policyTags`
         # @return [Google::Apis::BigqueryV2::TableFieldSchema::PolicyTags]
         attr_accessor :policy_tags
+      
+        # [Optional] Precision (maximum number of total digits in base 10) and scale (
+        # maximum number of digits in the fractional part in base 10) constraints for
+        # values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision
+        # or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are
+        # not specified, no value range constraint is imposed on this field insofar as
+        # values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field
+        # must be in this range when: - Precision (P) and scale (S) are specified: [-10P-
+        # S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus
+        # scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable
+        # values for precision and scale if both are specified: - If type = "NUMERIC": 1
+        # ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤
+        # precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if
+        # only precision is specified but not scale (and thus scale is interpreted to be
+        # equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "
+        # BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then
+        # it is invalid.
+        # Corresponds to the JSON property `precision`
+        # @return [Fixnum]
+        attr_accessor :precision
+      
+        # [Optional] See documentation for precision.
+        # Corresponds to the JSON property `scale`
+        # @return [Fixnum]
+        attr_accessor :scale
       
         # [Required] The field data type. Possible values include STRING, BYTES, INTEGER,
         # INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC,
@@ -6476,9 +6542,12 @@ module Google
           @categories = args[:categories] if args.key?(:categories)
           @description = args[:description] if args.key?(:description)
           @fields = args[:fields] if args.key?(:fields)
+          @max_length = args[:max_length] if args.key?(:max_length)
           @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
           @policy_tags = args[:policy_tags] if args.key?(:policy_tags)
+          @precision = args[:precision] if args.key?(:precision)
+          @scale = args[:scale] if args.key?(:scale)
           @type = args[:type] if args.key?(:type)
         end
         
