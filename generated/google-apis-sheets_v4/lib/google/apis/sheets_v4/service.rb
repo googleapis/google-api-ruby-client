@@ -472,7 +472,7 @@ module Google
         #   ROWS` returns `[[1,2],[3,4]]`, whereas requesting `range=A1:B2,majorDimension=
         #   COLUMNS` returns `[[1,3],[2,4]]`.
         # @param [Array<String>, String] ranges
-        #   The A1 notation of the values to retrieve.
+        #   The A1 notation or R1C1 notation of the range to retrieve values from.
         # @param [String] value_render_option
         #   How values should be represented in the output. The default render option is
         #   ValueRenderOption.FORMATTED_VALUE.
@@ -616,7 +616,7 @@ module Google
         # @param [String] spreadsheet_id
         #   The ID of the spreadsheet to update.
         # @param [String] range
-        #   The A1 notation of the values to clear.
+        #   The A1 notation or R1C1 notation of the values to clear.
         # @param [Google::Apis::SheetsV4::ClearValuesRequest] clear_values_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -653,7 +653,7 @@ module Google
         # @param [String] spreadsheet_id
         #   The ID of the spreadsheet to retrieve data from.
         # @param [String] range
-        #   The A1 notation of the values to retrieve.
+        #   The A1 notation or R1C1 notation of the range to retrieve values from.
         # @param [String] date_time_render_option
         #   How dates, times, and durations should be represented in the output. This is
         #   ignored if value_render_option is FORMATTED_VALUE. The default dateTime render
