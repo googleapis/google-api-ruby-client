@@ -302,7 +302,6 @@ module Google
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :binding_id, as: 'bindingId'
           property :condition, as: 'condition', class: Google::Apis::NetworkmanagementV1beta1::Expr, decorator: Google::Apis::NetworkmanagementV1beta1::Expr::Representation
       
           collection :members, as: 'members'
@@ -415,7 +414,9 @@ module Google
           property :action, as: 'action'
           property :direction, as: 'direction'
           property :display_name, as: 'displayName'
+          property :firewall_rule_type, as: 'firewallRuleType'
           property :network_uri, as: 'networkUri'
+          property :policy, as: 'policy'
           property :priority, as: 'priority'
           collection :target_service_accounts, as: 'targetServiceAccounts'
           collection :target_tags, as: 'targetTags'
