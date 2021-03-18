@@ -122,11 +122,6 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # 
-        # Corresponds to the JSON property `bindingId`
-        # @return [String]
-        attr_accessor :binding_id
-      
         # Represents a textual expression in the Common Expression Language (CEL) syntax.
         # CEL is a C-like expression language. The syntax and semantics of CEL are
         # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -188,7 +183,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @binding_id = args[:binding_id] if args.key?(:binding_id)
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
@@ -249,7 +243,7 @@ module Google
         # @return [String]
         attr_accessor :protocol
       
-        # The details of reachability state from the latest run.
+        # Results of the configuration analysis from the last run of the test.
         # Corresponds to the JSON property `reachabilityDetails`
         # @return [Google::Apis::NetworkmanagementV1::ReachabilityDetails]
         attr_accessor :reachability_details
@@ -527,7 +521,8 @@ module Google
         end
       end
       
-      # For display only. Metadata associated with a Compute Engine firewall rule.
+      # For display only. Metadata associated with a VPC firewall rule, an implied VPC
+      # firewall rule, or a hierarchical firewall policy rule.
       class FirewallInfo
         include Google::Apis::Core::Hashable
       
@@ -541,32 +536,47 @@ module Google
         # @return [String]
         attr_accessor :direction
       
-        # Name of a Compute Engine firewall rule.
+        # The display name of the VPC firewall rule. This field is not applicable to
+        # hierarchical firewall policy rules.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # URI of a Compute Engine network.
+        # The firewall rule's type.
+        # Corresponds to the JSON property `firewallRuleType`
+        # @return [String]
+        attr_accessor :firewall_rule_type
+      
+        # The URI of the VPC network that the firewall rule is associated with. This
+        # field is not applicable to hierarchical firewall policy rules.
         # Corresponds to the JSON property `networkUri`
         # @return [String]
         attr_accessor :network_uri
       
-        # Priority of the firewall rule.
+        # The hierarchical firewall policy that this rule is associated with. This field
+        # is not applicable to VPC firewall rules.
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
+        # The priority of the firewall rule.
         # Corresponds to the JSON property `priority`
         # @return [Fixnum]
         attr_accessor :priority
       
-        # Target service accounts of the firewall rule.
+        # The target service accounts specified by the firewall rule.
         # Corresponds to the JSON property `targetServiceAccounts`
         # @return [Array<String>]
         attr_accessor :target_service_accounts
       
-        # Target tags of the firewall rule.
+        # The target tags defined by the VPC firewall rule. This field is not applicable
+        # to hierarchical firewall policy rules.
         # Corresponds to the JSON property `targetTags`
         # @return [Array<String>]
         attr_accessor :target_tags
       
-        # URI of a Compute Engine firewall rule. Implied default rule does not have URI.
+        # The URI of the VPC firewall rule. This field is not applicable to implied
+        # firewall rules or hierarchical firewall policy rules.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -580,7 +590,9 @@ module Google
           @action = args[:action] if args.key?(:action)
           @direction = args[:direction] if args.key?(:direction)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @firewall_rule_type = args[:firewall_rule_type] if args.key?(:firewall_rule_type)
           @network_uri = args[:network_uri] if args.key?(:network_uri)
+          @policy = args[:policy] if args.key?(:policy)
           @priority = args[:priority] if args.key?(:priority)
           @target_service_accounts = args[:target_service_accounts] if args.key?(:target_service_accounts)
           @target_tags = args[:target_tags] if args.key?(:target_tags)
@@ -1183,7 +1195,7 @@ module Google
         end
       end
       
-      # The details of reachability state from the latest run.
+      # Results of the configuration analysis from the last run of the test.
       class ReachabilityDetails
         include Google::Apis::Core::Hashable
       
@@ -1197,7 +1209,7 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1::Status]
         attr_accessor :error
       
-        # The overall reachability result of the test.
+        # The overall result of the test's configuration analysis.
         # Corresponds to the JSON property `result`
         # @return [String]
         attr_accessor :result
@@ -1209,7 +1221,7 @@ module Google
         # @return [Array<Google::Apis::NetworkmanagementV1::Trace>]
         attr_accessor :traces
       
-        # The time the reachability state was verified.
+        # The time of the configuration analysis.
         # Corresponds to the JSON property `verifyTime`
         # @return [String]
         attr_accessor :verify_time
@@ -1439,7 +1451,8 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1::EndpointInfo]
         attr_accessor :endpoint
       
-        # For display only. Metadata associated with a Compute Engine firewall rule.
+        # For display only. Metadata associated with a VPC firewall rule, an implied VPC
+        # firewall rule, or a hierarchical firewall policy rule.
         # Corresponds to the JSON property `firewall`
         # @return [Google::Apis::NetworkmanagementV1::FirewallInfo]
         attr_accessor :firewall
@@ -1560,12 +1573,12 @@ module Google
         end
       end
       
-      # Trace represents one simulated packet forwarding path. - Each trace contains
-      # multiple ordered steps. - Each step is in a particular state and has an
-      # associated configuration. - State is categorized as a final or non-final state.
-      # - Each final state has a reason associated with it. - Each trace must end
-      # with a final state (the last step). |---------------------Trace----------------
-      # ------| Step1(State) Step2(State) --- StepN(State(final))
+      # Trace represents one simulated packet forwarding path. * Each trace contains
+      # multiple ordered Steps. * Each step is in a particular state with associated
+      # configuration. * State is categorized as final or non-final states. * Each
+      # final state has a reason associated. * Each trace must end with a final state (
+      # the last step). ``` |---------------------Trace----------------------| Step1(
+      # State) Step2(State) --- StepN(State(final)) ```
       class Trace
         include Google::Apis::Core::Hashable
       
