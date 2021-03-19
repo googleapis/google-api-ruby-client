@@ -93,7 +93,7 @@ module Google
         
         # Deletes an existing custom dashboard.This method requires the monitoring.
         # dashboards.delete permission on the specified dashboard. For more information,
-        # see Google Cloud IAM (https://cloud.google.com/iam).
+        # see Cloud Identity and Access Management (https://cloud.google.com/iam).
         # @param [String] name
         #   Required. The resource name of the Dashboard. The format is: projects/[
         #   PROJECT_ID_OR_NUMBER]/dashboards/[DASHBOARD_ID]
@@ -125,8 +125,8 @@ module Google
         end
         
         # Fetches a specific dashboard.This method requires the monitoring.dashboards.
-        # get permission on the specified dashboard. For more information, see Google
-        # Cloud IAM (https://cloud.google.com/iam).
+        # get permission on the specified dashboard. For more information, see Cloud
+        # Identity and Access Management (https://cloud.google.com/iam).
         # @param [String] name
         #   Required. The resource name of the Dashboard. The format is one of: dashboards/
         #   [DASHBOARD_ID] (for system dashboards) projects/[PROJECT_ID_OR_NUMBER]/
@@ -159,8 +159,8 @@ module Google
         end
         
         # Lists the existing dashboards.This method requires the monitoring.dashboards.
-        # list permission on the specified project. For more information, see Google
-        # Cloud IAM (https://cloud.google.com/iam).
+        # list permission on the specified project. For more information, see Cloud
+        # Identity and Access Management (https://cloud.google.com/iam).
         # @param [String] parent
         #   Required. The scope of the dashboards to list. The format is: projects/[
         #   PROJECT_ID_OR_NUMBER]
@@ -202,8 +202,8 @@ module Google
         
         # Replaces an existing custom dashboard with a new definition.This method
         # requires the monitoring.dashboards.update permission on the specified
-        # dashboard. For more information, see Google Cloud IAM (https://cloud.google.
-        # com/iam).
+        # dashboard. For more information, see Cloud Identity and Access Management (
+        # https://cloud.google.com/iam).
         # @param [String] name
         #   Immutable. The resource name of the dashboard.
         # @param [Google::Apis::MonitoringV1::Dashboard] dashboard_object
