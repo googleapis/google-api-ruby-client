@@ -1643,6 +1643,11 @@ module Google
         # @return [String]
         attr_accessor :region
       
+        # [Output Only] Status information of existing scaling schedules.
+        # Corresponds to the JSON property `scalingScheduleStatus`
+        # @return [Hash<String,Google::Apis::ComputeV1::ScalingScheduleStatus>]
+        attr_accessor :scaling_schedule_status
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -1693,6 +1698,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @recommended_size = args[:recommended_size] if args.key?(:recommended_size)
           @region = args[:region] if args.key?(:region)
+          @scaling_schedule_status = args[:scaling_schedule_status] if args.key?(:scaling_schedule_status)
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
           @status_details = args[:status_details] if args.key?(:status_details)
@@ -2153,6 +2159,14 @@ module Google
         # @return [Google::Apis::ComputeV1::AutoscalingPolicyScaleInControl]
         attr_accessor :scale_in_control
       
+        # Scaling schedules defined for an autoscaler. Multiple schedules can be set on
+        # an autoscaler, and they can overlap. During overlapping periods the greatest
+        # min_required_replicas of all scaling schedules is applied. Up to 128 scaling
+        # schedules are allowed.
+        # Corresponds to the JSON property `scalingSchedules`
+        # @return [Hash<String,Google::Apis::ComputeV1::AutoscalingPolicyScalingSchedule>]
+        attr_accessor :scaling_schedules
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2167,6 +2181,7 @@ module Google
           @min_num_replicas = args[:min_num_replicas] if args.key?(:min_num_replicas)
           @mode = args[:mode] if args.key?(:mode)
           @scale_in_control = args[:scale_in_control] if args.key?(:scale_in_control)
+          @scaling_schedules = args[:scaling_schedules] if args.key?(:scaling_schedules)
         end
       end
       
@@ -2329,6 +2344,70 @@ module Google
         def update!(**args)
           @max_scaled_in_replicas = args[:max_scaled_in_replicas] if args.key?(:max_scaled_in_replicas)
           @time_window_sec = args[:time_window_sec] if args.key?(:time_window_sec)
+        end
+      end
+      
+      # Scaling based on user-defined schedule. The message describes a single scaling
+      # schedule. A scaling schedule changes the minimum number of VM instances an
+      # autoscaler can recommend, which can trigger scaling out.
+      class AutoscalingPolicyScalingSchedule
+        include Google::Apis::Core::Hashable
+      
+        # A description of a scaling schedule.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # A boolean value that specifies whether a scaling schedule can influence
+        # autoscaler recommendations. If set to true, then a scaling schedule has no
+        # effect. This field is optional, and its value is false by default.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # The duration of time intervals, in seconds, for which this scaling schedule is
+        # to run. The minimum allowed value is 300. This field is required.
+        # Corresponds to the JSON property `durationSec`
+        # @return [Fixnum]
+        attr_accessor :duration_sec
+      
+        # The minimum number of VM instances that the autoscaler will recommend in time
+        # intervals starting according to schedule. This field is required.
+        # Corresponds to the JSON property `minRequiredReplicas`
+        # @return [Fixnum]
+        attr_accessor :min_required_replicas
+      
+        # The start timestamps of time intervals when this scaling schedule is to
+        # provide a scaling signal. This field uses the extended cron format (with an
+        # optional year field). The expression can describe a single timestamp if the
+        # optional year is set, in which case the scaling schedule runs once. The
+        # schedule is interpreted with respect to time_zone. This field is required.
+        # Note: These timestamps only describe when autoscaler starts providing the
+        # scaling signal. The VMs need additional time to become serving.
+        # Corresponds to the JSON property `schedule`
+        # @return [String]
+        attr_accessor :schedule
+      
+        # The time zone to use when interpreting the schedule. The value of this field
+        # must be a time zone name from the tz database: http://en.wikipedia.org/wiki/
+        # Tz_database. This field is assigned a default value of ?UTC? if left empty.
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @duration_sec = args[:duration_sec] if args.key?(:duration_sec)
+          @min_required_replicas = args[:min_required_replicas] if args.key?(:min_required_replicas)
+          @schedule = args[:schedule] if args.key?(:schedule)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
       end
       
@@ -2546,6 +2625,13 @@ module Google
       class BackendBucketCdnPolicy
         include Google::Apis::Core::Hashable
       
+        # Bypass the cache when the specified request headers are matched - e.g. Pragma
+        # or Authorization headers. Up to 5 headers can be specified. The cache is
+        # bypassed for all cdnPolicy.cacheMode settings.
+        # Corresponds to the JSON property `bypassCacheOnRequestHeaders`
+        # @return [Array<Google::Apis::ComputeV1::BackendBucketCdnPolicyBypassCacheOnRequestHeader>]
+        attr_accessor :bypass_cache_on_request_headers
+      
         # Specifies the cache setting for all responses from this backend. The possible
         # values are:
         # USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache
@@ -2600,6 +2686,46 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_ttl
       
+        # Negative caching allows per-status code TTLs to be set, in order to apply fine-
+        # grained caching for common errors or redirects. This can reduce the load on
+        # your origin and improve end-user experience by reducing response latency. When
+        # the cache mode is set to CACHE_ALL_STATIC or USE_ORIGIN_HEADERS, negative
+        # caching applies to responses with the specified response code that lack any
+        # Cache-Control, Expires, or Pragma: no-cache directives. When the cache mode is
+        # set to FORCE_CACHE_ALL, negative caching applies to all responses with the
+        # specified response code, and override any caching headers. By default, Cloud
+        # CDN will apply the following default TTLs to these status codes: HTTP 300 (
+        # Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found),
+        # 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not
+        # Found), 421 (Misdirected Request), 501 (Not Implemented): 60s. These defaults
+        # can be overridden in negative_caching_policy.
+        # Corresponds to the JSON property `negativeCaching`
+        # @return [Boolean]
+        attr_accessor :negative_caching
+        alias_method :negative_caching?, :negative_caching
+      
+        # Sets a cache TTL for the specified HTTP status code. negative_caching must be
+        # enabled to configure negative_caching_policy. Omitting the policy and leaving
+        # negative_caching enabled will use Cloud CDN's default cache TTLs. Note that
+        # when specifying an explicit negative_caching_policy, you should take care to
+        # specify a cache TTL for all response codes that you wish to cache. Cloud CDN
+        # will not apply any default negative caching when a policy exists.
+        # Corresponds to the JSON property `negativeCachingPolicy`
+        # @return [Array<Google::Apis::ComputeV1::BackendBucketCdnPolicyNegativeCachingPolicy>]
+        attr_accessor :negative_caching_policy
+      
+        # Serve existing content from the cache (if available) when revalidating content
+        # with the origin, or when an error is encountered when refreshing the cache.
+        # This setting defines the default "max-stale" duration for any cached responses
+        # that do not specify a max-stale directive. Stale responses that exceed the TTL
+        # configured here will not be served. The default limit (max-stale) is 86400s (1
+        # day), which will allow stale content to be served up to this limit beyond the
+        # max-age (or s-max-age) of a cached response. The maximum allowed value is
+        # 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
+        # Corresponds to the JSON property `serveWhileStale`
+        # @return [Fixnum]
+        attr_accessor :serve_while_stale
+      
         # Maximum number of seconds the response to a signed URL request will be
         # considered fresh. After this time period, the response will be revalidated
         # before being served. Defaults to 1hr (3600s). When serving responses to signed
@@ -2622,12 +2748,68 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bypass_cache_on_request_headers = args[:bypass_cache_on_request_headers] if args.key?(:bypass_cache_on_request_headers)
           @cache_mode = args[:cache_mode] if args.key?(:cache_mode)
           @client_ttl = args[:client_ttl] if args.key?(:client_ttl)
           @default_ttl = args[:default_ttl] if args.key?(:default_ttl)
           @max_ttl = args[:max_ttl] if args.key?(:max_ttl)
+          @negative_caching = args[:negative_caching] if args.key?(:negative_caching)
+          @negative_caching_policy = args[:negative_caching_policy] if args.key?(:negative_caching_policy)
+          @serve_while_stale = args[:serve_while_stale] if args.key?(:serve_while_stale)
           @signed_url_cache_max_age_sec = args[:signed_url_cache_max_age_sec] if args.key?(:signed_url_cache_max_age_sec)
           @signed_url_key_names = args[:signed_url_key_names] if args.key?(:signed_url_key_names)
+        end
+      end
+      
+      # Bypass the cache when the specified request headers are present, e.g. Pragma
+      # or Authorization headers. Values are case insensitive. The presence of such a
+      # header overrides the cache_mode setting.
+      class BackendBucketCdnPolicyBypassCacheOnRequestHeader
+        include Google::Apis::Core::Hashable
+      
+        # The header field name to match on when bypassing cache. Values are case-
+        # insensitive.
+        # Corresponds to the JSON property `headerName`
+        # @return [String]
+        attr_accessor :header_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header_name = args[:header_name] if args.key?(:header_name)
+        end
+      end
+      
+      # Specify CDN TTLs for response error codes.
+      class BackendBucketCdnPolicyNegativeCachingPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The HTTP status code to define a TTL against. Only HTTP status codes 300, 301,
+        # 302, 307, 308, 404, 405, 410, 421, 451 and 501 are can be specified as values,
+        # and you cannot specify a status code more than once.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # The TTL (in seconds) for which to cache responses with the corresponding
+        # status code. The maximum allowed value is 1800s (30 minutes), noting that
+        # infrequently accessed objects may be evicted from the cache before the defined
+        # TTL.
+        # Corresponds to the JSON property `ttl`
+        # @return [Fixnum]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @ttl = args[:ttl] if args.key?(:ttl)
         end
       end
       
@@ -2928,6 +3110,14 @@ module Google
         # @return [Google::Apis::ComputeV1::BackendServiceLogConfig]
         attr_accessor :log_config
       
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `maxStreamDuration`
+        # @return [Google::Apis::ComputeV1::Duration]
+        attr_accessor :max_stream_duration
+      
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
@@ -3056,6 +3246,7 @@ module Google
           @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
           @locality_lb_policy = args[:locality_lb_policy] if args.key?(:locality_lb_policy)
           @log_config = args[:log_config] if args.key?(:log_config)
+          @max_stream_duration = args[:max_stream_duration] if args.key?(:max_stream_duration)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @outlier_detection = args[:outlier_detection] if args.key?(:outlier_detection)
@@ -3198,6 +3389,13 @@ module Google
       class BackendServiceCdnPolicy
         include Google::Apis::Core::Hashable
       
+        # Bypass the cache when the specified request headers are matched - e.g. Pragma
+        # or Authorization headers. Up to 5 headers can be specified. The cache is
+        # bypassed for all cdnPolicy.cacheMode settings.
+        # Corresponds to the JSON property `bypassCacheOnRequestHeaders`
+        # @return [Array<Google::Apis::ComputeV1::BackendServiceCdnPolicyBypassCacheOnRequestHeader>]
+        attr_accessor :bypass_cache_on_request_headers
+      
         # Message containing what to include in the cache key for a request for Cloud
         # CDN.
         # Corresponds to the JSON property `cacheKeyPolicy`
@@ -3258,6 +3456,46 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_ttl
       
+        # Negative caching allows per-status code TTLs to be set, in order to apply fine-
+        # grained caching for common errors or redirects. This can reduce the load on
+        # your origin and improve end-user experience by reducing response latency. When
+        # the cache mode is set to CACHE_ALL_STATIC or USE_ORIGIN_HEADERS, negative
+        # caching applies to responses with the specified response code that lack any
+        # Cache-Control, Expires, or Pragma: no-cache directives. When the cache mode is
+        # set to FORCE_CACHE_ALL, negative caching applies to all responses with the
+        # specified response code, and override any caching headers. By default, Cloud
+        # CDN will apply the following default TTLs to these status codes: HTTP 300 (
+        # Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found),
+        # 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not
+        # Found), 421 (Misdirected Request), 501 (Not Implemented): 60s. These defaults
+        # can be overridden in negative_caching_policy.
+        # Corresponds to the JSON property `negativeCaching`
+        # @return [Boolean]
+        attr_accessor :negative_caching
+        alias_method :negative_caching?, :negative_caching
+      
+        # Sets a cache TTL for the specified HTTP status code. negative_caching must be
+        # enabled to configure negative_caching_policy. Omitting the policy and leaving
+        # negative_caching enabled will use Cloud CDN's default cache TTLs. Note that
+        # when specifying an explicit negative_caching_policy, you should take care to
+        # specify a cache TTL for all response codes that you wish to cache. Cloud CDN
+        # will not apply any default negative caching when a policy exists.
+        # Corresponds to the JSON property `negativeCachingPolicy`
+        # @return [Array<Google::Apis::ComputeV1::BackendServiceCdnPolicyNegativeCachingPolicy>]
+        attr_accessor :negative_caching_policy
+      
+        # Serve existing content from the cache (if available) when revalidating content
+        # with the origin, or when an error is encountered when refreshing the cache.
+        # This setting defines the default "max-stale" duration for any cached responses
+        # that do not specify a max-stale directive. Stale responses that exceed the TTL
+        # configured here will not be served. The default limit (max-stale) is 86400s (1
+        # day), which will allow stale content to be served up to this limit beyond the
+        # max-age (or s-max-age) of a cached response. The maximum allowed value is
+        # 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
+        # Corresponds to the JSON property `serveWhileStale`
+        # @return [Fixnum]
+        attr_accessor :serve_while_stale
+      
         # Maximum number of seconds the response to a signed URL request will be
         # considered fresh. After this time period, the response will be revalidated
         # before being served. Defaults to 1hr (3600s). When serving responses to signed
@@ -3280,13 +3518,69 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bypass_cache_on_request_headers = args[:bypass_cache_on_request_headers] if args.key?(:bypass_cache_on_request_headers)
           @cache_key_policy = args[:cache_key_policy] if args.key?(:cache_key_policy)
           @cache_mode = args[:cache_mode] if args.key?(:cache_mode)
           @client_ttl = args[:client_ttl] if args.key?(:client_ttl)
           @default_ttl = args[:default_ttl] if args.key?(:default_ttl)
           @max_ttl = args[:max_ttl] if args.key?(:max_ttl)
+          @negative_caching = args[:negative_caching] if args.key?(:negative_caching)
+          @negative_caching_policy = args[:negative_caching_policy] if args.key?(:negative_caching_policy)
+          @serve_while_stale = args[:serve_while_stale] if args.key?(:serve_while_stale)
           @signed_url_cache_max_age_sec = args[:signed_url_cache_max_age_sec] if args.key?(:signed_url_cache_max_age_sec)
           @signed_url_key_names = args[:signed_url_key_names] if args.key?(:signed_url_key_names)
+        end
+      end
+      
+      # Bypass the cache when the specified request headers are present, e.g. Pragma
+      # or Authorization headers. Values are case insensitive. The presence of such a
+      # header overrides the cache_mode setting.
+      class BackendServiceCdnPolicyBypassCacheOnRequestHeader
+        include Google::Apis::Core::Hashable
+      
+        # The header field name to match on when bypassing cache. Values are case-
+        # insensitive.
+        # Corresponds to the JSON property `headerName`
+        # @return [String]
+        attr_accessor :header_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header_name = args[:header_name] if args.key?(:header_name)
+        end
+      end
+      
+      # Specify CDN TTLs for response error codes.
+      class BackendServiceCdnPolicyNegativeCachingPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The HTTP status code to define a TTL against. Only HTTP status codes 300, 301,
+        # 302, 307, 308, 404, 405, 410, 421, 451 and 501 are can be specified as values,
+        # and you cannot specify a status code more than once.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # The TTL (in seconds) for which to cache responses with the corresponding
+        # status code. The maximum allowed value is 1800s (30 minutes), noting that
+        # infrequently accessed objects may be evicted from the cache before the defined
+        # TTL.
+        # Corresponds to the JSON property `ttl`
+        # @return [Fixnum]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @ttl = args[:ttl] if args.key?(:ttl)
         end
       end
       
@@ -7090,13 +7384,14 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # User-provided name of the Organization firewall plicy. The name should be
-        # unique in the organization in which the firewall policy is created. The name
-        # must be 1-63 characters long, and comply with RFC1035. Specifically, the name
-        # must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*
-        # [a-z0-9])?` which means the first character must be a lowercase letter, and
-        # all following characters must be a dash, lowercase letter, or digit, except
-        # the last character, which cannot be a dash.
+        # Depreacted, please use short name instead. User-provided name of the
+        # Organization firewall plicy. The name should be unique in the organization in
+        # which the firewall policy is created. The name must be 1-63 characters long,
+        # and comply with RFC1035. Specifically, the name must be 1-63 characters long
+        # and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the
+        # first character must be a lowercase letter, and all following characters must
+        # be a dash, lowercase letter, or digit, except the last character, which cannot
+        # be a dash.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -7160,6 +7455,17 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
+        # User-provided name of the Organization firewall plicy. The name should be
+        # unique in the organization in which the firewall policy is created. The name
+        # must be 1-63 characters long, and comply with RFC1035. Specifically, the name
+        # must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*
+        # [a-z0-9])?` which means the first character must be a lowercase letter, and
+        # all following characters must be a dash, lowercase letter, or digit, except
+        # the last character, which cannot be a dash.
+        # Corresponds to the JSON property `shortName`
+        # @return [String]
+        attr_accessor :short_name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7179,6 +7485,7 @@ module Google
           @rules = args[:rules] if args.key?(:rules)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @short_name = args[:short_name] if args.key?(:short_name)
         end
       end
       
@@ -7191,7 +7498,8 @@ module Google
         # @return [String]
         attr_accessor :attachment_target
       
-        # [Output Only] The display name of the firewall policy of the association.
+        # [Output Only] Deprecated, please use short name instead. The display name of
+        # the firewall policy of the association.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -7206,6 +7514,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] The short name of the firewall policy of the association.
+        # Corresponds to the JSON property `shortName`
+        # @return [String]
+        attr_accessor :short_name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7216,6 +7529,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @firewall_policy_id = args[:firewall_policy_id] if args.key?(:firewall_policy_id)
           @name = args[:name] if args.key?(:name)
+          @short_name = args[:short_name] if args.key?(:short_name)
         end
       end
       
@@ -10524,6 +10838,14 @@ module Google
         # @return [Google::Apis::ComputeV1::HttpFaultInjection]
         attr_accessor :fault_injection_policy
       
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `maxStreamDuration`
+        # @return [Google::Apis::ComputeV1::Duration]
+        attr_accessor :max_stream_duration
+      
         # A policy that specifies how requests intended for the route's backends are
         # shadowed to a separate mirrored backend service. Loadbalancer does not wait
         # for responses from the shadow service. Prior to sending traffic to the shadow
@@ -10572,6 +10894,7 @@ module Google
         def update!(**args)
           @cors_policy = args[:cors_policy] if args.key?(:cors_policy)
           @fault_injection_policy = args[:fault_injection_policy] if args.key?(:fault_injection_policy)
+          @max_stream_duration = args[:max_stream_duration] if args.key?(:max_stream_duration)
           @request_mirror_policy = args[:request_mirror_policy] if args.key?(:request_mirror_policy)
           @retry_policy = args[:retry_policy] if args.key?(:retry_policy)
           @timeout = args[:timeout] if args.key?(:timeout)
@@ -11639,7 +11962,7 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
-        # Sets the scheduling options for an Instance. NextID: 17
+        # Sets the scheduling options for an Instance. NextID: 20
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeV1::Scheduling]
         attr_accessor :scheduling
@@ -14266,7 +14589,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
-        # Sets the scheduling options for an Instance. NextID: 17
+        # Sets the scheduling options for an Instance. NextID: 20
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeV1::Scheduling]
         attr_accessor :scheduling
@@ -14618,7 +14941,8 @@ module Google
       class InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The display name of the firewall policy.
+        # [Output Only] Deprecated, please use short name instead. The display name of
+        # the firewall policy.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -14632,6 +14956,11 @@ module Google
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::ComputeV1::FirewallPolicyRule>]
         attr_accessor :rules
+      
+        # [Output Only] The short name of the firewall policy.
+        # Corresponds to the JSON property `shortName`
+        # @return [String]
+        attr_accessor :short_name
       
         # [Output Only] The type of the firewall policy.
         # Corresponds to the JSON property `type`
@@ -14647,6 +14976,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @rules = args[:rules] if args.key?(:rules)
+          @short_name = args[:short_name] if args.key?(:short_name)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -15204,6 +15534,18 @@ module Google
         # @return [String]
         attr_accessor :edge_availability_domain
       
+        # Indicates the user-supplied encryption option of this interconnect attachment:
+        # - NONE is the default value, which means that the attachment carries
+        # unencrypted traffic. VMs can send traffic to, or receive traffic from, this
+        # type of attachment.
+        # - IPSEC indicates that the attachment carries only traffic encrypted by an
+        # IPsec device such as an HA VPN gateway. VMs cannot directly send traffic to,
+        # or receive traffic from, such an attachment. To use IPsec-encrypted Cloud
+        # Interconnect, create the attachment using this option.
+        # Corresponds to the JSON property `encryption`
+        # @return [String]
+        attr_accessor :encryption
+      
         # [Output Only] Google reference ID, to be used when raising support tickets
         # with Google or otherwise to debug backend connectivity issues. [Deprecated]
         # This field is not used.
@@ -15222,6 +15564,22 @@ module Google
         # Corresponds to the JSON property `interconnect`
         # @return [String]
         attr_accessor :interconnect
+      
+        # URL of addresses that have been reserved for the interconnect attachment, Used
+        # only for interconnect attachment that has the encryption option as IPSEC. The
+        # addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway
+        # over the interconnect attachment, if the attachment is configured to use an
+        # RFC 1918 IP address, then the VPN gateway?s IP address will be allocated from
+        # the IP address range specified here. For example, if the HA VPN gateway?s
+        # interface 0 is paired to this interconnect attachment, then an RFC 1918 IP
+        # address for the VPN gateway interface 0 will be allocated from the IP address
+        # specified for this interconnect attachment. If this field is not specified for
+        # interconnect attachment that has encryption option as IPSEC, later on when
+        # creating HA VPN gateway on this interconnect attachment, the HA VPN gateway's
+        # IP address will be allocated from regional external IP address pool.
+        # Corresponds to the JSON property `ipsecInternalAddresses`
+        # @return [Array<String>]
+        attr_accessor :ipsec_internal_addresses
       
         # [Output Only] Type of the resource. Always compute#interconnectAttachment for
         # interconnect attachments.
@@ -15357,9 +15715,11 @@ module Google
           @dataplane_version = args[:dataplane_version] if args.key?(:dataplane_version)
           @description = args[:description] if args.key?(:description)
           @edge_availability_domain = args[:edge_availability_domain] if args.key?(:edge_availability_domain)
+          @encryption = args[:encryption] if args.key?(:encryption)
           @google_reference_id = args[:google_reference_id] if args.key?(:google_reference_id)
           @id = args[:id] if args.key?(:id)
           @interconnect = args[:interconnect] if args.key?(:interconnect)
+          @ipsec_internal_addresses = args[:ipsec_internal_addresses] if args.key?(:ipsec_internal_addresses)
           @kind = args[:kind] if args.key?(:kind)
           @mtu = args[:mtu] if args.key?(:mtu)
           @name = args[:name] if args.key?(:name)
@@ -19352,7 +19712,8 @@ module Google
       class NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The display name of the firewall policy.
+        # [Output Only] Deprecated, please use short name instead. The display name of
+        # the firewall policy.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -19366,6 +19727,11 @@ module Google
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::ComputeV1::FirewallPolicyRule>]
         attr_accessor :rules
+      
+        # [Output Only] The short name of the firewall policy.
+        # Corresponds to the JSON property `shortName`
+        # @return [String]
+        attr_accessor :short_name
       
         # [Output Only] The type of the firewall policy.
         # Corresponds to the JSON property `type`
@@ -19381,6 +19747,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @rules = args[:rules] if args.key?(:rules)
+          @short_name = args[:short_name] if args.key?(:short_name)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -23363,6 +23730,785 @@ module Google
         end
       end
       
+      # A public advertised prefix represents an aggregated IP prefix or netblock
+      # which customers bring to cloud. The IP prefix is a single unit of route
+      # advertisement and is announced globally to the internet.
+      class PublicAdvertisedPrefix
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The IPv4 address to be used for reverse DNS verification.
+        # Corresponds to the JSON property `dnsVerificationIp`
+        # @return [String]
+        attr_accessor :dns_verification_ip
+      
+        # Fingerprint of this resource. A hash of the contents stored in this object.
+        # This field is used in optimistic locking. This field will be ignored when
+        # inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be
+        # provided in order to update the PublicAdvertisedPrefix, otherwise the request
+        # will fail with error 412 conditionNotMet.
+        # To see the latest fingerprint, make a get() request to retrieve a
+        # PublicAdvertisedPrefix.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # [Output Only] The unique identifier for the resource type. The server
+        # generates this identifier.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # The IPv4 address range, in CIDR format, represented by this public advertised
+        # prefix.
+        # Corresponds to the JSON property `ipCidrRange`
+        # @return [String]
+        attr_accessor :ip_cidr_range
+      
+        # [Output Only] Type of the resource. Always compute#publicAdvertisedPrefix for
+        # public advertised prefixes.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Name of the resource. Provided by the client when the resource is created. The
+        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
+        # and all following characters must be a dash, lowercase letter, or digit,
+        # except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] The list of public delegated prefixes that exist for this public
+        # advertised prefix.
+        # Corresponds to the JSON property `publicDelegatedPrefixs`
+        # @return [Array<Google::Apis::ComputeV1::PublicAdvertisedPrefixPublicDelegatedPrefix>]
+        attr_accessor :public_delegated_prefixs
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] The shared secret to be used for reverse DNS verification.
+        # Corresponds to the JSON property `sharedSecret`
+        # @return [String]
+        attr_accessor :shared_secret
+      
+        # The status of the public advertised prefix.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @dns_verification_ip = args[:dns_verification_ip] if args.key?(:dns_verification_ip)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @id = args[:id] if args.key?(:id)
+          @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @public_delegated_prefixs = args[:public_delegated_prefixs] if args.key?(:public_delegated_prefixs)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @shared_secret = args[:shared_secret] if args.key?(:shared_secret)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class PublicAdvertisedPrefixList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of PublicAdvertisedPrefix resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::PublicAdvertisedPrefix>]
+        attr_accessor :items
+      
+        # [Output Only] Type of the resource. Always compute#publicAdvertisedPrefix for
+        # public advertised prefixes.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::PublicAdvertisedPrefixList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::PublicAdvertisedPrefixList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # Represents a CIDR range which can be used to assign addresses.
+      class PublicAdvertisedPrefixPublicDelegatedPrefix
+        include Google::Apis::Core::Hashable
+      
+        # The IP address range of the public delegated prefix
+        # Corresponds to the JSON property `ipRange`
+        # @return [String]
+        attr_accessor :ip_range
+      
+        # The name of the public delegated prefix
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The project number of the public delegated prefix
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
+        # The region of the public delegated prefix if it is regional. If absent, the
+        # prefix is global.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # The status of the public delegated prefix. Possible values are: INITIALIZING:
+        # The public delegated prefix is being initialized and addresses cannot be
+        # created yet. ANNOUNCED: The public delegated prefix is active.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_range = args[:ip_range] if args.key?(:ip_range)
+          @name = args[:name] if args.key?(:name)
+          @project = args[:project] if args.key?(:project)
+          @region = args[:region] if args.key?(:region)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # A PublicDelegatedPrefix resource represents an IP block within a
+      # PublicAdvertisedPrefix that is configured within a single cloud scope (global
+      # or region). IPs in the block can be allocated to resources within that scope.
+      # Public delegated prefixes may be further broken up into smaller IP blocks in
+      # the same scope as the parent block.
+      class PublicDelegatedPrefix
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Fingerprint of this resource. A hash of the contents stored in this object.
+        # This field is used in optimistic locking. This field will be ignored when
+        # inserting a new PublicDelegatedPrefix. An up-to-date fingerprint must be
+        # provided in order to update the PublicDelegatedPrefix, otherwise the request
+        # will fail with error 412 conditionNotMet.
+        # To see the latest fingerprint, make a get() request to retrieve a
+        # PublicDelegatedPrefix.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # [Output Only] The unique identifier for the resource type. The server
+        # generates this identifier.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # The IPv4 address range, in CIDR format, represented by this public delegated
+        # prefix.
+        # Corresponds to the JSON property `ipCidrRange`
+        # @return [String]
+        attr_accessor :ip_cidr_range
+      
+        # If true, the prefix will be live migrated.
+        # Corresponds to the JSON property `isLiveMigration`
+        # @return [Boolean]
+        attr_accessor :is_live_migration
+        alias_method :is_live_migration?, :is_live_migration
+      
+        # [Output Only] Type of the resource. Always compute#publicDelegatedPrefix for
+        # public delegated prefixes.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Name of the resource. Provided by the client when the resource is created. The
+        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
+        # and all following characters must be a dash, lowercase letter, or digit,
+        # except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The URL of parent prefix. Either PublicAdvertisedPrefix or
+        # PublicDelegatedPrefix.
+        # Corresponds to the JSON property `parentPrefix`
+        # @return [String]
+        attr_accessor :parent_prefix
+      
+        # The list of sub public delegated prefixes that exist for this public delegated
+        # prefix.
+        # Corresponds to the JSON property `publicDelegatedSubPrefixs`
+        # @return [Array<Google::Apis::ComputeV1::PublicDelegatedPrefixPublicDelegatedSubPrefix>]
+        attr_accessor :public_delegated_sub_prefixs
+      
+        # [Output Only] URL of the region where the public delegated prefix resides.
+        # This field applies only to the region resource. You must specify this field as
+        # part of the HTTP request URL. It is not settable as a field in the request
+        # body.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] The status of the public delegated prefix.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @id = args[:id] if args.key?(:id)
+          @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @is_live_migration = args[:is_live_migration] if args.key?(:is_live_migration)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @parent_prefix = args[:parent_prefix] if args.key?(:parent_prefix)
+          @public_delegated_sub_prefixs = args[:public_delegated_sub_prefixs] if args.key?(:public_delegated_sub_prefixs)
+          @region = args[:region] if args.key?(:region)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class PublicDelegatedPrefixAggregatedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of PublicDelegatedPrefixesScopedList resources.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,Google::Apis::ComputeV1::PublicDelegatedPrefixesScopedList>]
+        attr_accessor :items
+      
+        # [Output Only] Type of the resource. Always compute#
+        # publicDelegatedPrefixAggregatedList for aggregated lists of public delegated
+        # prefixes.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::PublicDelegatedPrefixAggregatedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::PublicDelegatedPrefixAggregatedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class PublicDelegatedPrefixList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of PublicDelegatedPrefix resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::PublicDelegatedPrefix>]
+        attr_accessor :items
+      
+        # [Output Only] Type of the resource. Always compute#publicDelegatedPrefixList
+        # for public delegated prefixes.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::PublicDelegatedPrefixList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::PublicDelegatedPrefixList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # Represents a sub PublicDelegatedPrefix.
+      class PublicDelegatedPrefixPublicDelegatedSubPrefix
+        include Google::Apis::Core::Hashable
+      
+        # Name of the project scoping this PublicDelegatedSubPrefix.
+        # Corresponds to the JSON property `delegateeProject`
+        # @return [String]
+        attr_accessor :delegatee_project
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The IPv4 address range, in CIDR format, represented by this sub public
+        # delegated prefix.
+        # Corresponds to the JSON property `ipCidrRange`
+        # @return [String]
+        attr_accessor :ip_cidr_range
+      
+        # Whether the sub prefix is delegated to create Address resources in the
+        # delegatee project.
+        # Corresponds to the JSON property `isAddress`
+        # @return [Boolean]
+        attr_accessor :is_address
+        alias_method :is_address?, :is_address
+      
+        # The name of the sub public delegated prefix.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] The region of the sub public delegated prefix if it is regional.
+        # If absent, the sub prefix is global.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # [Output Only] The status of the sub public delegated prefix.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delegatee_project = args[:delegatee_project] if args.key?(:delegatee_project)
+          @description = args[:description] if args.key?(:description)
+          @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @is_address = args[:is_address] if args.key?(:is_address)
+          @name = args[:name] if args.key?(:name)
+          @region = args[:region] if args.key?(:region)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class PublicDelegatedPrefixesScopedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] A list of PublicDelegatedPrefixes contained in this scope.
+        # Corresponds to the JSON property `publicDelegatedPrefixes`
+        # @return [Array<Google::Apis::ComputeV1::PublicDelegatedPrefix>]
+        attr_accessor :public_delegated_prefixes
+      
+        # [Output Only] Informational warning which replaces the list of public
+        # delegated prefixes when the list is empty.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::PublicDelegatedPrefixesScopedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @public_delegated_prefixes = args[:public_delegated_prefixes] if args.key?(:public_delegated_prefixes)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning which replaces the list of public
+        # delegated prefixes when the list is empty.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::PublicDelegatedPrefixesScopedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # A quotas entry.
       class Quota
         include Google::Apis::Core::Hashable
@@ -26674,6 +27820,13 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Field to indicate if a router is dedicated to use with encrypted Interconnect
+        # Attachment (IPsec-encrypted Cloud Interconnect feature).
+        # Corresponds to the JSON property `encryptedInterconnectRouter`
+        # @return [Boolean]
+        attr_accessor :encrypted_interconnect_router
+        alias_method :encrypted_interconnect_router?, :encrypted_interconnect_router
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -26734,6 +27887,7 @@ module Google
           @bgp_peers = args[:bgp_peers] if args.key?(:bgp_peers)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @encrypted_interconnect_router = args[:encrypted_interconnect_router] if args.key?(:encrypted_interconnect_router)
           @id = args[:id] if args.key?(:id)
           @interfaces = args[:interfaces] if args.key?(:interfaces)
           @kind = args[:kind] if args.key?(:kind)
@@ -26951,12 +28105,11 @@ module Google
         # User-specified list of prefix groups to advertise in custom mode, which can
         # take one of the following options:
         # - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets.
-        # - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets.
-        # - ALL_PEER_VPC_SUBNETS: Advertises peer subnets of the router's VPC network.
-        # Note that this field can only be populated if advertise_mode is CUSTOM and
-        # overrides the list defined for the router (in the "bgp" message). These groups
-        # are advertised in addition to any specified prefixes. Leave this field blank
-        # to advertise no custom groups.
+        # - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this
+        # field can only be populated if advertise_mode is CUSTOM and overrides the list
+        # defined for the router (in the "bgp" message). These groups are advertised in
+        # addition to any specified prefixes. Leave this field blank to advertise no
+        # custom groups.
         # Corresponds to the JSON property `advertisedGroups`
         # @return [Array<String>]
         attr_accessor :advertised_groups
@@ -27850,7 +29003,42 @@ module Google
         end
       end
       
-      # Sets the scheduling options for an Instance. NextID: 17
+      # 
+      class ScalingScheduleStatus
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The last time the scaling schedule became active. Note: this is
+        # a timestamp when a schedule actually became active, not when it was planned to
+        # do so. The timestamp is in RFC3339 text format.
+        # Corresponds to the JSON property `lastStartTime`
+        # @return [String]
+        attr_accessor :last_start_time
+      
+        # [Output Only] The next time the scaling schedule is to become active. Note:
+        # this is a timestamp when a schedule is planned to run, but the actual time
+        # might be slightly different. The timestamp is in RFC3339 text format.
+        # Corresponds to the JSON property `nextStartTime`
+        # @return [String]
+        attr_accessor :next_start_time
+      
+        # [Output Only] The current state of a scaling schedule.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_start_time = args[:last_start_time] if args.key?(:last_start_time)
+          @next_start_time = args[:next_start_time] if args.key?(:next_start_time)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Sets the scheduling options for an Instance. NextID: 20
       class Scheduling
         include Google::Apis::Core::Hashable
       
@@ -35468,6 +36656,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
+        # URL of the interconnect attachment resource. When the value of this field is
+        # present, the VPN Gateway will be used for IPsec-encrypted Cloud Interconnect;
+        # all Egress or Ingress traffic for this VPN Gateway interface will go through
+        # the specified interconnect attachment resource.
+        # Corresponds to the JSON property `interconnectAttachment`
+        # @return [String]
+        attr_accessor :interconnect_attachment
+      
         # [Output Only] The external IP address for this VPN gateway interface.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
@@ -35480,6 +36676,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
+          @interconnect_attachment = args[:interconnect_attachment] if args.key?(:interconnect_attachment)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
         end
       end

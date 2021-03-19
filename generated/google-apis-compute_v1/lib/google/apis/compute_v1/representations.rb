@@ -310,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoscalingPolicyScalingSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Backend
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -323,6 +329,18 @@ module Google
       end
       
       class BackendBucketCdnPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendBucketCdnPolicyBypassCacheOnRequestHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendBucketCdnPolicyNegativeCachingPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -371,6 +389,18 @@ module Google
       end
       
       class BackendServiceCdnPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceCdnPolicyBypassCacheOnRequestHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceCdnPolicyNegativeCachingPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3010,6 +3040,102 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PublicAdvertisedPrefix
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PublicAdvertisedPrefixList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PublicAdvertisedPrefixPublicDelegatedPrefix
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PublicDelegatedPrefix
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PublicDelegatedPrefixAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PublicDelegatedPrefixList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PublicDelegatedPrefixPublicDelegatedSubPrefix
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PublicDelegatedPrefixesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Quota
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3683,6 +3809,12 @@ module Google
       end
       
       class SslHealthCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ScalingScheduleStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5317,6 +5449,8 @@ module Google
           property :name, as: 'name'
           property :recommended_size, as: 'recommendedSize'
           property :region, as: 'region'
+          hash :scaling_schedule_status, as: 'scalingScheduleStatus', class: Google::Apis::ComputeV1::ScalingScheduleStatus, decorator: Google::Apis::ComputeV1::ScalingScheduleStatus::Representation
+      
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
           collection :status_details, as: 'statusDetails', class: Google::Apis::ComputeV1::AutoscalerStatusDetails, decorator: Google::Apis::ComputeV1::AutoscalerStatusDetails::Representation
@@ -5442,6 +5576,8 @@ module Google
           property :mode, as: 'mode'
           property :scale_in_control, as: 'scaleInControl', class: Google::Apis::ComputeV1::AutoscalingPolicyScaleInControl, decorator: Google::Apis::ComputeV1::AutoscalingPolicyScaleInControl::Representation
       
+          hash :scaling_schedules, as: 'scalingSchedules', class: Google::Apis::ComputeV1::AutoscalingPolicyScalingSchedule, decorator: Google::Apis::ComputeV1::AutoscalingPolicyScalingSchedule::Representation
+      
         end
       end
       
@@ -5476,6 +5612,18 @@ module Google
           property :max_scaled_in_replicas, as: 'maxScaledInReplicas', class: Google::Apis::ComputeV1::FixedOrPercent, decorator: Google::Apis::ComputeV1::FixedOrPercent::Representation
       
           property :time_window_sec, as: 'timeWindowSec'
+        end
+      end
+      
+      class AutoscalingPolicyScalingSchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :disabled, as: 'disabled'
+          property :duration_sec, as: 'durationSec'
+          property :min_required_replicas, as: 'minRequiredReplicas'
+          property :schedule, as: 'schedule'
+          property :time_zone, as: 'timeZone'
         end
       end
       
@@ -5517,12 +5665,33 @@ module Google
       class BackendBucketCdnPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bypass_cache_on_request_headers, as: 'bypassCacheOnRequestHeaders', class: Google::Apis::ComputeV1::BackendBucketCdnPolicyBypassCacheOnRequestHeader, decorator: Google::Apis::ComputeV1::BackendBucketCdnPolicyBypassCacheOnRequestHeader::Representation
+      
           property :cache_mode, as: 'cacheMode'
           property :client_ttl, as: 'clientTtl'
           property :default_ttl, as: 'defaultTtl'
           property :max_ttl, as: 'maxTtl'
+          property :negative_caching, as: 'negativeCaching'
+          collection :negative_caching_policy, as: 'negativeCachingPolicy', class: Google::Apis::ComputeV1::BackendBucketCdnPolicyNegativeCachingPolicy, decorator: Google::Apis::ComputeV1::BackendBucketCdnPolicyNegativeCachingPolicy::Representation
+      
+          property :serve_while_stale, as: 'serveWhileStale'
           property :signed_url_cache_max_age_sec, :numeric_string => true, as: 'signedUrlCacheMaxAgeSec'
           collection :signed_url_key_names, as: 'signedUrlKeyNames'
+        end
+      end
+      
+      class BackendBucketCdnPolicyBypassCacheOnRequestHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header_name, as: 'headerName'
+        end
+      end
+      
+      class BackendBucketCdnPolicyNegativeCachingPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :ttl, as: 'ttl'
         end
       end
       
@@ -5589,6 +5758,8 @@ module Google
           property :locality_lb_policy, as: 'localityLbPolicy'
           property :log_config, as: 'logConfig', class: Google::Apis::ComputeV1::BackendServiceLogConfig, decorator: Google::Apis::ComputeV1::BackendServiceLogConfig::Representation
       
+          property :max_stream_duration, as: 'maxStreamDuration', class: Google::Apis::ComputeV1::Duration, decorator: Google::Apis::ComputeV1::Duration::Representation
+      
           property :name, as: 'name'
           property :network, as: 'network'
           property :outlier_detection, as: 'outlierDetection', class: Google::Apis::ComputeV1::OutlierDetection, decorator: Google::Apis::ComputeV1::OutlierDetection::Representation
@@ -5642,14 +5813,35 @@ module Google
       class BackendServiceCdnPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bypass_cache_on_request_headers, as: 'bypassCacheOnRequestHeaders', class: Google::Apis::ComputeV1::BackendServiceCdnPolicyBypassCacheOnRequestHeader, decorator: Google::Apis::ComputeV1::BackendServiceCdnPolicyBypassCacheOnRequestHeader::Representation
+      
           property :cache_key_policy, as: 'cacheKeyPolicy', class: Google::Apis::ComputeV1::CacheKeyPolicy, decorator: Google::Apis::ComputeV1::CacheKeyPolicy::Representation
       
           property :cache_mode, as: 'cacheMode'
           property :client_ttl, as: 'clientTtl'
           property :default_ttl, as: 'defaultTtl'
           property :max_ttl, as: 'maxTtl'
+          property :negative_caching, as: 'negativeCaching'
+          collection :negative_caching_policy, as: 'negativeCachingPolicy', class: Google::Apis::ComputeV1::BackendServiceCdnPolicyNegativeCachingPolicy, decorator: Google::Apis::ComputeV1::BackendServiceCdnPolicyNegativeCachingPolicy::Representation
+      
+          property :serve_while_stale, as: 'serveWhileStale'
           property :signed_url_cache_max_age_sec, :numeric_string => true, as: 'signedUrlCacheMaxAgeSec'
           collection :signed_url_key_names, as: 'signedUrlKeyNames'
+        end
+      end
+      
+      class BackendServiceCdnPolicyBypassCacheOnRequestHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header_name, as: 'headerName'
+        end
+      end
+      
+      class BackendServiceCdnPolicyNegativeCachingPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :ttl, as: 'ttl'
         end
       end
       
@@ -6577,6 +6769,7 @@ module Google
       
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
+          property :short_name, as: 'shortName'
         end
       end
       
@@ -6587,6 +6780,7 @@ module Google
           property :display_name, as: 'displayName'
           property :firewall_policy_id, as: 'firewallPolicyId'
           property :name, as: 'name'
+          property :short_name, as: 'shortName'
         end
       end
       
@@ -7331,6 +7525,8 @@ module Google
           property :cors_policy, as: 'corsPolicy', class: Google::Apis::ComputeV1::CorsPolicy, decorator: Google::Apis::ComputeV1::CorsPolicy::Representation
       
           property :fault_injection_policy, as: 'faultInjectionPolicy', class: Google::Apis::ComputeV1::HttpFaultInjection, decorator: Google::Apis::ComputeV1::HttpFaultInjection::Representation
+      
+          property :max_stream_duration, as: 'maxStreamDuration', class: Google::Apis::ComputeV1::Duration, decorator: Google::Apis::ComputeV1::Duration::Representation
       
           property :request_mirror_policy, as: 'requestMirrorPolicy', class: Google::Apis::ComputeV1::RequestMirrorPolicy, decorator: Google::Apis::ComputeV1::RequestMirrorPolicy::Representation
       
@@ -8359,6 +8555,7 @@ module Google
           property :name, as: 'name'
           collection :rules, as: 'rules', class: Google::Apis::ComputeV1::FirewallPolicyRule, decorator: Google::Apis::ComputeV1::FirewallPolicyRule::Representation
       
+          property :short_name, as: 'shortName'
           property :type, as: 'type'
         end
       end
@@ -8494,9 +8691,11 @@ module Google
           property :dataplane_version, as: 'dataplaneVersion'
           property :description, as: 'description'
           property :edge_availability_domain, as: 'edgeAvailabilityDomain'
+          property :encryption, as: 'encryption'
           property :google_reference_id, as: 'googleReferenceId'
           property :id, :numeric_string => true, as: 'id'
           property :interconnect, as: 'interconnect'
+          collection :ipsec_internal_addresses, as: 'ipsecInternalAddresses'
           property :kind, as: 'kind'
           property :mtu, as: 'mtu'
           property :name, as: 'name'
@@ -9542,6 +9741,7 @@ module Google
           property :name, as: 'name'
           collection :rules, as: 'rules', class: Google::Apis::ComputeV1::FirewallPolicyRule, decorator: Google::Apis::ComputeV1::FirewallPolicyRule::Representation
       
+          property :short_name, as: 'shortName'
           property :type, as: 'type'
         end
       end
@@ -10558,6 +10758,194 @@ module Google
         end
       end
       
+      class PublicAdvertisedPrefix
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :dns_verification_ip, as: 'dnsVerificationIp'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :id, :numeric_string => true, as: 'id'
+          property :ip_cidr_range, as: 'ipCidrRange'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          collection :public_delegated_prefixs, as: 'publicDelegatedPrefixs', class: Google::Apis::ComputeV1::PublicAdvertisedPrefixPublicDelegatedPrefix, decorator: Google::Apis::ComputeV1::PublicAdvertisedPrefixPublicDelegatedPrefix::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :shared_secret, as: 'sharedSecret'
+          property :status, as: 'status'
+        end
+      end
+      
+      class PublicAdvertisedPrefixList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::PublicAdvertisedPrefix, decorator: Google::Apis::ComputeV1::PublicAdvertisedPrefix::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::PublicAdvertisedPrefixList::Warning, decorator: Google::Apis::ComputeV1::PublicAdvertisedPrefixList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::PublicAdvertisedPrefixList::Warning::Datum, decorator: Google::Apis::ComputeV1::PublicAdvertisedPrefixList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class PublicAdvertisedPrefixPublicDelegatedPrefix
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_range, as: 'ipRange'
+          property :name, as: 'name'
+          property :project, as: 'project'
+          property :region, as: 'region'
+          property :status, as: 'status'
+        end
+      end
+      
+      class PublicDelegatedPrefix
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :id, :numeric_string => true, as: 'id'
+          property :ip_cidr_range, as: 'ipCidrRange'
+          property :is_live_migration, as: 'isLiveMigration'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :parent_prefix, as: 'parentPrefix'
+          collection :public_delegated_sub_prefixs, as: 'publicDelegatedSubPrefixs', class: Google::Apis::ComputeV1::PublicDelegatedPrefixPublicDelegatedSubPrefix, decorator: Google::Apis::ComputeV1::PublicDelegatedPrefixPublicDelegatedSubPrefix::Representation
+      
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+          property :status, as: 'status'
+        end
+      end
+      
+      class PublicDelegatedPrefixAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::PublicDelegatedPrefixesScopedList, decorator: Google::Apis::ComputeV1::PublicDelegatedPrefixesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::PublicDelegatedPrefixAggregatedList::Warning, decorator: Google::Apis::ComputeV1::PublicDelegatedPrefixAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::PublicDelegatedPrefixAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeV1::PublicDelegatedPrefixAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class PublicDelegatedPrefixList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::PublicDelegatedPrefix, decorator: Google::Apis::ComputeV1::PublicDelegatedPrefix::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::PublicDelegatedPrefixList::Warning, decorator: Google::Apis::ComputeV1::PublicDelegatedPrefixList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::PublicDelegatedPrefixList::Warning::Datum, decorator: Google::Apis::ComputeV1::PublicDelegatedPrefixList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class PublicDelegatedPrefixPublicDelegatedSubPrefix
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delegatee_project, as: 'delegateeProject'
+          property :description, as: 'description'
+          property :ip_cidr_range, as: 'ipCidrRange'
+          property :is_address, as: 'isAddress'
+          property :name, as: 'name'
+          property :region, as: 'region'
+          property :status, as: 'status'
+        end
+      end
+      
+      class PublicDelegatedPrefixesScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :public_delegated_prefixes, as: 'publicDelegatedPrefixes', class: Google::Apis::ComputeV1::PublicDelegatedPrefix, decorator: Google::Apis::ComputeV1::PublicDelegatedPrefix::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::PublicDelegatedPrefixesScopedList::Warning, decorator: Google::Apis::ComputeV1::PublicDelegatedPrefixesScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::PublicDelegatedPrefixesScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::PublicDelegatedPrefixesScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class Quota
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -11459,6 +11847,7 @@ module Google
       
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :encrypted_interconnect_router, as: 'encryptedInterconnectRouter'
           property :id, :numeric_string => true, as: 'id'
           collection :interfaces, as: 'interfaces', class: Google::Apis::ComputeV1::RouterInterface, decorator: Google::Apis::ComputeV1::RouterInterface::Representation
       
@@ -11737,6 +12126,15 @@ module Google
           property :proxy_header, as: 'proxyHeader'
           property :request, as: 'request'
           property :response, as: 'response'
+        end
+      end
+      
+      class ScalingScheduleStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_start_time, as: 'lastStartTime'
+          property :next_start_time, as: 'nextStartTime'
+          property :state, as: 'state'
         end
       end
       
@@ -13654,6 +14052,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
+          property :interconnect_attachment, as: 'interconnectAttachment'
           property :ip_address, as: 'ipAddress'
         end
       end
