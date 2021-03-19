@@ -7316,16 +7316,6 @@ module Google
       class GoogleCloudDialogflowV2beta1AnalyzeContentRequest
         include Google::Apis::Core::Hashable
       
-        # Represents the natural language speech audio to be processed.
-        # Corresponds to the JSON property `audio`
-        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1InputAudio]
-        attr_accessor :audio
-      
-        # Represents the natural language speech audio to be processed.
-        # Corresponds to the JSON property `audioInput`
-        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1AudioInput]
-        attr_accessor :audio_input
-      
         # Events allow for matching intents by event name instead of the natural
         # language input. For instance, input `` can trigger a personalized welcome
         # response. The parameter `name` may be used by the agent in the response: `"
@@ -7367,11 +7357,6 @@ module Google
         attr_accessor :request_id
       
         # Represents the natural language text to be processed.
-        # Corresponds to the JSON property `text`
-        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1InputText]
-        attr_accessor :text
-      
-        # Represents the natural language text to be processed.
         # Corresponds to the JSON property `textInput`
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1TextInput]
         attr_accessor :text_input
@@ -7382,14 +7367,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @audio = args[:audio] if args.key?(:audio)
-          @audio_input = args[:audio_input] if args.key?(:audio_input)
           @event_input = args[:event_input] if args.key?(:event_input)
           @message_send_time = args[:message_send_time] if args.key?(:message_send_time)
           @query_params = args[:query_params] if args.key?(:query_params)
           @reply_audio_config = args[:reply_audio_config] if args.key?(:reply_audio_config)
           @request_id = args[:request_id] if args.key?(:request_id)
-          @text = args[:text] if args.key?(:text)
           @text_input = args[:text_input] if args.key?(:text_input)
         end
       end
@@ -7632,34 +7614,6 @@ module Google
           @snippets = args[:snippets] if args.key?(:snippets)
           @title = args[:title] if args.key?(:title)
           @uri = args[:uri] if args.key?(:uri)
-        end
-      end
-      
-      # Represents the natural language speech audio to be processed.
-      class GoogleCloudDialogflowV2beta1AudioInput
-        include Google::Apis::Core::Hashable
-      
-        # Required. The natural language speech audio to be processed. A single request
-        # can contain up to 1 minute of speech audio data. The transcribed text cannot
-        # contain more than 256 bytes.
-        # Corresponds to the JSON property `audio`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :audio
-      
-        # Instructs the speech recognizer on how to process the audio content.
-        # Corresponds to the JSON property `config`
-        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1InputAudioConfig]
-        attr_accessor :config
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @audio = args[:audio] if args.key?(:audio)
-          @config = args[:config] if args.key?(:config)
         end
       end
       
@@ -8036,90 +7990,6 @@ module Google
         end
       end
       
-      # Represents a call matcher that describes criteria for matching incoming SIP
-      # calls to a conversation. When Dialogflow get a SIP call from a third-party
-      # carrier, Dialogflow matches the call to an existing conversation by either: *
-      # Extracting the conversation id from the [Call-Info header](https://tools.ietf.
-      # org/html/rfc3261#section-20.9), e.g. `Call-Info: ;purpose=Goog-ContactCenter-
-      # Conversation`. * Or, if that doesn't work, matching incoming [SIP headers](
-      # https://tools.ietf.org/html/rfc3261#section-7.3) against any CallMatcher for
-      # the conversation. If an incoming SIP call without valid `Call-Info` header
-      # matches to zero or multiple conversations with `CallMatcher`, we reject it. A
-      # call matcher contains equality conditions for SIP headers that all have to be
-      # fulfilled in order for a SIP call to match. The matched SIP headers consist of
-      # well-known headers (`To`, `From`, `Call-ID`) and custom headers. A CallMatcher
-      # is only valid if it specifies: * At least 1 custom header, * or at least 2
-      # well-known headers.
-      class GoogleCloudDialogflowV2beta1CallMatcher
-        include Google::Apis::Core::Hashable
-      
-        # Value of the [`Call-ID` header](https://tools.ietf.org/html/rfc3261#section-8.
-        # 1.1.4) to match. If empty or unspecified, we don't match to the [`Call-ID`
-        # header](https://tools.ietf.org/html/rfc3261#section-8.1.1.4).
-        # Corresponds to the JSON property `callIdHeader`
-        # @return [String]
-        attr_accessor :call_id_header
-      
-        # Custom SIP headers. See the [description of headers in the RFC](https://tools.
-        # ietf.org/html/rfc3261#section-7.3).
-        # Corresponds to the JSON property `customHeaders`
-        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1CallMatcherCustomHeaders]
-        attr_accessor :custom_headers
-      
-        # Value of the [`From` header](https://tools.ietf.org/html/rfc3261#section-8.1.1.
-        # 3) to match. If empty or unspecified, we don't match to the [`From` header](
-        # https://tools.ietf.org/html/rfc3261#section-8.1.1.3).
-        # Corresponds to the JSON property `fromHeader`
-        # @return [String]
-        attr_accessor :from_header
-      
-        # Output only. The unique identifier of this call matcher. Format: `projects//
-        # locations//conversations//callMatchers/`.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Value of the [`To` header](https://tools.ietf.org/html/rfc3261#section-8.1.1.2)
-        # to match. If empty or unspecified, we don't match to the [`To` header](https:/
-        # /tools.ietf.org/html/rfc3261#section-8.1.1.2).
-        # Corresponds to the JSON property `toHeader`
-        # @return [String]
-        attr_accessor :to_header
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @call_id_header = args[:call_id_header] if args.key?(:call_id_header)
-          @custom_headers = args[:custom_headers] if args.key?(:custom_headers)
-          @from_header = args[:from_header] if args.key?(:from_header)
-          @name = args[:name] if args.key?(:name)
-          @to_header = args[:to_header] if args.key?(:to_header)
-        end
-      end
-      
-      # Custom SIP headers. See the [description of headers in the RFC](https://tools.
-      # ietf.org/html/rfc3261#section-7.3).
-      class GoogleCloudDialogflowV2beta1CallMatcherCustomHeaders
-        include Google::Apis::Core::Hashable
-      
-        # Cisco's proprietary `Cisco-Guid` header.
-        # Corresponds to the JSON property `ciscoGuid`
-        # @return [String]
-        attr_accessor :cisco_guid
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cisco_guid = args[:cisco_guid] if args.key?(:cisco_guid)
-        end
-      end
-      
       # The request message for Participants.CompileSuggestion.
       class GoogleCloudDialogflowV2beta1CompileSuggestionRequest
         include Google::Apis::Core::Hashable
@@ -8415,12 +8285,6 @@ module Google
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig]
         attr_accessor :human_agent_assistant_config
       
-        # Defines the hand off to a live agent, typically on which external agent
-        # service provider to connect to a conversation.
-        # Corresponds to the JSON property `humanAgentHandoffConfig`
-        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig]
-        attr_accessor :human_agent_handoff_config
-      
         # Language code for the conversation profile. If not specified, the language is
         # en-US. Language at ConversationProfile should be set for all non en-us
         # languages.
@@ -8469,7 +8333,6 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @human_agent_assistant_config = args[:human_agent_assistant_config] if args.key?(:human_agent_assistant_config)
-          @human_agent_handoff_config = args[:human_agent_handoff_config] if args.key?(:human_agent_handoff_config)
           @language_code = args[:language_code] if args.key?(:language_code)
           @logging_config = args[:logging_config] if args.key?(:logging_config)
           @name = args[:name] if args.key?(:name)
@@ -8477,38 +8340,6 @@ module Google
           @notification_config = args[:notification_config] if args.key?(:notification_config)
           @stt_config = args[:stt_config] if args.key?(:stt_config)
           @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
-      # The request message for Conversations.CreateCallMatcher.
-      class GoogleCloudDialogflowV2beta1CreateCallMatcherRequest
-        include Google::Apis::Core::Hashable
-      
-        # Represents a call matcher that describes criteria for matching incoming SIP
-        # calls to a conversation. When Dialogflow get a SIP call from a third-party
-        # carrier, Dialogflow matches the call to an existing conversation by either: *
-        # Extracting the conversation id from the [Call-Info header](https://tools.ietf.
-        # org/html/rfc3261#section-20.9), e.g. `Call-Info: ;purpose=Goog-ContactCenter-
-        # Conversation`. * Or, if that doesn't work, matching incoming [SIP headers](
-        # https://tools.ietf.org/html/rfc3261#section-7.3) against any CallMatcher for
-        # the conversation. If an incoming SIP call without valid `Call-Info` header
-        # matches to zero or multiple conversations with `CallMatcher`, we reject it. A
-        # call matcher contains equality conditions for SIP headers that all have to be
-        # fulfilled in order for a SIP call to match. The matched SIP headers consist of
-        # well-known headers (`To`, `From`, `Call-ID`) and custom headers. A CallMatcher
-        # is only valid if it specifies: * At least 1 custom header, * or at least 2
-        # well-known headers.
-        # Corresponds to the JSON property `callMatcher`
-        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1CallMatcher]
-        attr_accessor :call_matcher
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @call_matcher = args[:call_matcher] if args.key?(:call_matcher)
         end
       end
       
@@ -9304,11 +9135,6 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Detail human agent assistant config.
-        # Corresponds to the JSON property `endUserSuggestionConfig`
-        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig]
-        attr_accessor :end_user_suggestion_config
-      
-        # Detail human agent assistant config.
         # Corresponds to the JSON property `humanAgentSuggestionConfig`
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig]
         attr_accessor :human_agent_suggestion_config
@@ -9329,7 +9155,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @end_user_suggestion_config = args[:end_user_suggestion_config] if args.key?(:end_user_suggestion_config)
           @human_agent_suggestion_config = args[:human_agent_suggestion_config] if args.key?(:human_agent_suggestion_config)
           @message_analysis_config = args[:message_analysis_config] if args.key?(:message_analysis_config)
           @notification_config = args[:notification_config] if args.key?(:notification_config)
@@ -9361,14 +9186,6 @@ module Google
       class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig
         include Google::Apis::Core::Hashable
       
-        # Enable entity extraction in conversation messages on [agent assist stage](
-        # https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages).
-        # If unspecified, defaults to false.
-        # Corresponds to the JSON property `enableEntityExtraction`
-        # @return [Boolean]
-        attr_accessor :enable_entity_extraction
-        alias_method :enable_entity_extraction?, :enable_entity_extraction
-      
         # Enable sentiment analysis in conversation messages on [agent assist stage](
         # https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages).
         # If unspecified, defaults to false. Sentiment analysis inspects user input and
@@ -9393,7 +9210,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @enable_entity_extraction = args[:enable_entity_extraction] if args.key?(:enable_entity_extraction)
           @enable_sentiment_analysis = args[:enable_sentiment_analysis] if args.key?(:enable_sentiment_analysis)
         end
       end
@@ -9703,92 +9519,6 @@ module Google
         end
       end
       
-      # Defines the hand off to a live agent, typically on which external agent
-      # service provider to connect to a conversation.
-      class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig
-        include Google::Apis::Core::Hashable
-      
-        # Configuration specific to LivePerson (https://www.liveperson.com).
-        # Corresponds to the JSON property `livePersonConfig`
-        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfig]
-        attr_accessor :live_person_config
-      
-        # Configuration specific to Salesforce Live Agent.
-        # Corresponds to the JSON property `salesforceLiveAgentConfig`
-        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfig]
-        attr_accessor :salesforce_live_agent_config
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @live_person_config = args[:live_person_config] if args.key?(:live_person_config)
-          @salesforce_live_agent_config = args[:salesforce_live_agent_config] if args.key?(:salesforce_live_agent_config)
-        end
-      end
-      
-      # Configuration specific to LivePerson (https://www.liveperson.com).
-      class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfig
-        include Google::Apis::Core::Hashable
-      
-        # Required. Account number of the LivePerson account to connect. This is the
-        # account number you input at the login page.
-        # Corresponds to the JSON property `accountNumber`
-        # @return [String]
-        attr_accessor :account_number
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @account_number = args[:account_number] if args.key?(:account_number)
-        end
-      end
-      
-      # Configuration specific to Salesforce Live Agent.
-      class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfig
-        include Google::Apis::Core::Hashable
-      
-        # Required. Live Agent chat button ID.
-        # Corresponds to the JSON property `buttonId`
-        # @return [String]
-        attr_accessor :button_id
-      
-        # Required. Live Agent deployment ID.
-        # Corresponds to the JSON property `deploymentId`
-        # @return [String]
-        attr_accessor :deployment_id
-      
-        # Required. Domain of the Live Agent endpoint for this agent. You can find the
-        # endpoint URL in the `Live Agent settings` page. For example if URL has the
-        # form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.
-        # la4-c2-phx.salesforceliveagent.com.
-        # Corresponds to the JSON property `endpointDomain`
-        # @return [String]
-        attr_accessor :endpoint_domain
-      
-        # Required. The organization ID of the Salesforce account.
-        # Corresponds to the JSON property `organizationId`
-        # @return [String]
-        attr_accessor :organization_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @button_id = args[:button_id] if args.key?(:button_id)
-          @deployment_id = args[:deployment_id] if args.key?(:deployment_id)
-          @endpoint_domain = args[:endpoint_domain] if args.key?(:endpoint_domain)
-          @organization_id = args[:organization_id] if args.key?(:organization_id)
-        end
-      end
-      
       # The request message for Agents.ImportAgent.
       class GoogleCloudDialogflowV2beta1ImportAgentRequest
         include Google::Apis::Core::Hashable
@@ -9902,34 +9632,6 @@ module Google
         end
       end
       
-      # Represents the natural language speech audio to be processed.
-      class GoogleCloudDialogflowV2beta1InputAudio
-        include Google::Apis::Core::Hashable
-      
-        # Required. The natural language speech audio to be processed. A single request
-        # can contain up to 1 minute of speech audio data. The transcribed text cannot
-        # contain more than 256 bytes.
-        # Corresponds to the JSON property `audio`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :audio
-      
-        # Instructs the speech recognizer on how to process the audio content.
-        # Corresponds to the JSON property `config`
-        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1InputAudioConfig]
-        attr_accessor :config
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @audio = args[:audio] if args.key?(:audio)
-          @config = args[:config] if args.key?(:config)
-        end
-      end
-      
       # Instructs the speech recognizer on how to process the audio content.
       class GoogleCloudDialogflowV2beta1InputAudioConfig
         include Google::Apis::Core::Hashable
@@ -10035,34 +9737,6 @@ module Google
           @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
           @single_utterance = args[:single_utterance] if args.key?(:single_utterance)
           @speech_contexts = args[:speech_contexts] if args.key?(:speech_contexts)
-        end
-      end
-      
-      # Represents the natural language text to be processed.
-      class GoogleCloudDialogflowV2beta1InputText
-        include Google::Apis::Core::Hashable
-      
-        # Required. The language of this conversational query. See [Language Support](
-        # https://cloud.google.com/dialogflow/docs/reference/language) for a list of the
-        # currently supported language codes.
-        # Corresponds to the JSON property `languageCode`
-        # @return [String]
-        attr_accessor :language_code
-      
-        # Required. The UTF-8 encoded natural language text to be processed. Text length
-        # must not exceed 256 bytes.
-        # Corresponds to the JSON property `text`
-        # @return [String]
-        attr_accessor :text
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @language_code = args[:language_code] if args.key?(:language_code)
-          @text = args[:text] if args.key?(:text)
         end
       end
       
@@ -11967,33 +11641,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @answer_records = args[:answer_records] if args.key?(:answer_records)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # The response message for Conversations.ListCallMatchers.
-      class GoogleCloudDialogflowV2beta1ListCallMatchersResponse
-        include Google::Apis::Core::Hashable
-      
-        # The list of call matchers. There is a maximum number of items returned based
-        # on the page_size field in the request.
-        # Corresponds to the JSON property `callMatchers`
-        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1CallMatcher>]
-        attr_accessor :call_matchers
-      
-        # Token to retrieve the next page of results or empty if there are no more
-        # results in the list.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @call_matchers = args[:call_matchers] if args.key?(:call_matchers)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
