@@ -26,15 +26,14 @@ module Google
       class GoogleCloudChannelV1ActivateEntitlementRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. An optional request ID to identify requests. Specify a unique
-        # request ID so that if you must retry your request, the server will know to
-        # ignore the request if it has already been completed. For example, consider a
-        # situation where you make an initial request and the request times out. If you
-        # make the request again with the same request ID, the server can check if the
-        # original operation with the same request ID was received, and if so, will
-        # ignore the second request. The request ID must be a valid [UUID](https://tools.
-        # ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`
-        # 00000000-0000-0000-0000-000000000000`).
+        # Optional. You can specify an optional unique request ID, and if you need to
+        # retry your request, the server will know to ignore the request if it's
+        # complete. For example, you make an initial request and the request times out.
+        # If you make the request again with the same request ID, the server can check
+        # if it received the original operation with the same request ID. If it did, it
+        # will ignore the second request. The request ID must be a valid [UUID](https://
+        # tools.ietf.org/html/rfc4122) with the exception that zero UUID is not
+        # supported (`00000000-0000-0000-0000-000000000000`).
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
@@ -103,15 +102,14 @@ module Google
       class GoogleCloudChannelV1CancelEntitlementRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. An optional request ID to identify requests. Specify a unique
-        # request ID so that if you must retry your request, the server will know to
-        # ignore the request if it has already been completed. For example, consider a
-        # situation where you make an initial request and the request times out. If you
-        # make the request again with the same request ID, the server can check if the
-        # original operation with the same request ID was received, and if so, will
-        # ignore the second request. The request ID must be a valid [UUID](https://tools.
-        # ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`
-        # 00000000-0000-0000-0000-000000000000`).
+        # Optional. You can specify an optional unique request ID, and if you need to
+        # retry your request, the server will know to ignore the request if it's
+        # complete. For example, you make an initial request and the request times out.
+        # If you make the request again with the same request ID, the server can check
+        # if it received the original operation with the same request ID. If it did, it
+        # will ignore the second request. The request ID must be a valid [UUID](https://
+        # tools.ietf.org/html/rfc4122) with the exception that zero UUID is not
+        # supported (`00000000-0000-0000-0000-000000000000`).
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
@@ -145,15 +143,14 @@ module Google
         # @return [String]
         attr_accessor :purchase_order_id
       
-        # Optional. An optional request ID to identify requests. Specify a unique
-        # request ID so that if you must retry your request, the server will know to
-        # ignore the request if it has already been completed. For example, consider a
-        # situation where you make an initial request and the request times out. If you
-        # make the request again with the same request ID, the server can check if the
-        # original operation with the same request ID was received, and if so, will
-        # ignore the second request. The request ID must be a valid [UUID](https://tools.
-        # ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`
-        # 00000000-0000-0000-0000-000000000000`).
+        # Optional. You can specify an optional unique request ID, and if you need to
+        # retry your request, the server will know to ignore the request if it's
+        # complete. For example, you make an initial request and the request times out.
+        # If you make the request again with the same request ID, the server can check
+        # if it received the original operation with the same request ID. If it did, it
+        # will ignore the second request. The request ID must be a valid [UUID](https://
+        # tools.ietf.org/html/rfc4122) with the exception that zero UUID is not
+        # supported (`00000000-0000-0000-0000-000000000000`).
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
@@ -175,8 +172,8 @@ module Google
       class GoogleCloudChannelV1ChangeParametersRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Entitlement parameters to update. Only editable parameters are
-        # allowed to be changed.
+        # Required. Entitlement parameters to update. You can only change editable
+        # parameters.
         # Corresponds to the JSON property `parameters`
         # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1Parameter>]
         attr_accessor :parameters
@@ -186,15 +183,14 @@ module Google
         # @return [String]
         attr_accessor :purchase_order_id
       
-        # Optional. An optional request ID to identify requests. Specify a unique
-        # request ID so that if you must retry your request, the server will know to
-        # ignore the request if it has already been completed. For example, consider a
-        # situation where you make an initial request and the request times out. If you
-        # make the request again with the same request ID, the server can check if the
-        # original operation with the same request ID was received, and if so, will
-        # ignore the second request. The request ID must be a valid [UUID](https://tools.
-        # ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`
-        # 00000000-0000-0000-0000-000000000000`).
+        # Optional. You can specify an optional unique request ID, and if you need to
+        # retry your request, the server will know to ignore the request if it's
+        # complete. For example, you make an initial request and the request times out.
+        # If you make the request again with the same request ID, the server can check
+        # if it received the original operation with the same request ID. If it did, it
+        # will ignore the second request. The request ID must be a valid [UUID](https://
+        # tools.ietf.org/html/rfc4122) with the exception that zero UUID is not
+        # supported (`00000000-0000-0000-0000-000000000000`).
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
@@ -220,15 +216,14 @@ module Google
         # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1RenewalSettings]
         attr_accessor :renewal_settings
       
-        # Optional. A request ID to identify requests. Specify a unique request ID so
-        # that if you must retry your request, the server will know to ignore the
-        # request if it has already been completed. For example, consider a situation
-        # where you make an initial request and the request times out. If you make the
-        # request again with the same request ID, the server can check if the original
-        # operation with the same request ID was received, and if so, will ignore the
-        # second request. The request ID must be a valid [UUID](https://tools.ietf.org/
-        # html/rfc4122) with the exception that zero UUID is not supported (`00000000-
-        # 0000-0000-0000-000000000000`).
+        # Optional. You can specify an optional unique request ID, and if you need to
+        # retry your request, the server will know to ignore the request if it's
+        # complete. For example, you make an initial request and the request times out.
+        # If you make the request again with the same request ID, the server can check
+        # if it received the original operation with the same request ID. If it did, it
+        # will ignore the second request. The request ID must be a valid [UUID](https://
+        # tools.ietf.org/html/rfc4122) with the exception that zero UUID is not
+        # supported (`00000000-0000-0000-0000-000000000000`).
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
@@ -312,7 +307,7 @@ module Google
       class GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Domain for which the Cloud Identity account customer is fetched.
+        # Required. Domain to fetch for Cloud Identity account customer.
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
@@ -346,32 +341,30 @@ module Google
         end
       end
       
-      # Entity representing a Cloud Identity account which may or may not be
-      # associated with a Channel Services API partner.
+      # Entity representing a Cloud Identity account that may be associated with a
+      # Channel Services API partner.
       class GoogleCloudChannelV1CloudIdentityCustomerAccount
         include Google::Apis::Core::Hashable
       
-        # Cloud Identity ID of the customer. This field is populated ONLY if existing =
-        # true.
+        # If existing = true, the Cloud Identity ID of the customer.
         # Corresponds to the JSON property `customerCloudIdentityId`
         # @return [String]
         attr_accessor :customer_cloud_identity_id
       
-        # Name of the customer that owns the Cloud Identity account. This field is
-        # populated ONLY if owned = true. The customer_name takes the format: accounts/`
-        # account_id`/customers/`customer_id`
+        # If owned = true, the name of the customer that owns the Cloud Identity account.
+        # Customer_name uses the format: accounts/`account_id`/customers/`customer_id`
         # Corresponds to the JSON property `customerName`
         # @return [String]
         attr_accessor :customer_name
       
-        # True if a Cloud Identity account exists for a specific domain.
+        # Returns true if a Cloud Identity account exists for a specific domain.
         # Corresponds to the JSON property `existing`
         # @return [Boolean]
         attr_accessor :existing
         alias_method :existing?, :existing
       
-        # True if the Cloud Identity account is associated with a customer belonging to
-        # the Channel Services partner making the API call.
+        # Returns true if the Cloud Identity account is associated with a customer of
+        # the Channel Services partner.
         # Corresponds to the JSON property `owned`
         # @return [Boolean]
         attr_accessor :owned
@@ -563,15 +556,14 @@ module Google
         # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1Entitlement]
         attr_accessor :entitlement
       
-        # Optional. An optional request ID to identify requests. Specify a unique
-        # request ID so that if you must retry your request, the server will know to
-        # ignore the request if it has already been completed. For example, consider a
-        # situation where you make an initial request and the request times out. If you
-        # make the request again with the same request ID, the server can check if the
-        # original operation with the same request ID was received, and if so, will
-        # ignore the second request. The request ID must be a valid [UUID](https://tools.
-        # ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`
-        # 00000000-0000-0000-0000-000000000000`).
+        # Optional. You can specify an optional unique request ID, and if you need to
+        # retry your request, the server will know to ignore the request if it's
+        # complete. For example, you make an initial request and the request times out.
+        # If you make the request again with the same request ID, the server can check
+        # if it received the original operation with the same request ID. If it did, it
+        # will ignore the second request. The request ID must be a valid [UUID](https://
+        # tools.ietf.org/html/rfc4122) with the exception that zero UUID is not
+        # supported (`00000000-0000-0000-0000-000000000000`).
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
@@ -925,7 +917,7 @@ module Google
       class GoogleCloudChannelV1ListCustomersResponse
         include Google::Apis::Core::Hashable
       
-        # The customers belonging to the reseller or distributor.
+        # The customers belonging to a reseller or distributor.
         # Corresponds to the JSON property `customers`
         # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer>]
         attr_accessor :customers
@@ -951,12 +943,12 @@ module Google
       class GoogleCloudChannelV1ListEntitlementsResponse
         include Google::Apis::Core::Hashable
       
-        # The entitlements belonging to the reseller's customer.
+        # The reseller customer's entitlements.
         # Corresponds to the JSON property `entitlements`
         # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1Entitlement>]
         attr_accessor :entitlements
       
-        # A token to List next page of results. Pass to ListEntitlementsRequest.
+        # A token to list the next page of results. Pass to ListEntitlementsRequest.
         # page_token to obtain that page.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -1139,33 +1131,33 @@ module Google
         # @return [String]
         attr_accessor :cloud_identity_id
       
-        # A reseller should create a customer and use the resource name of the created
-        # customer here.
+        # A reseller should create a customer and use the resource name of that customer
+        # here.
         # Corresponds to the JSON property `customerName`
         # @return [String]
         attr_accessor :customer_name
       
-        # The BCP-47 language code, such as "en-US". If specified, the response will be
-        # localized to the corresponding language code. Default is "en-US".
+        # The BCP-47 language code. For example, "en-US". The response will localize in
+        # the corresponding language code, if specified. The default value is "en-US".
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
       
         # Requested page size. Server might return fewer results than requested. If
-        # unspecified, at most 100 Offers will be returned. The maximum value is 1000;
-        # values above 1000 will be coerced to 1000.
+        # unspecified, returns at most 100 offers. The maximum value is 1000; the server
+        # will coerce values above 1000.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
       
-        # A token identifying a page of results, if other than the first one. Typically
-        # obtained via ListTransferableOffersResponse.next_page_token of the previous
+        # A token for a page of results other than the first page. Obtained using
+        # ListTransferableOffersResponse.next_page_token of the previous
         # CloudChannelService.ListTransferableOffers call.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token
       
-        # Required. SKU for which the Offers are being looked up.
+        # Required. The SKU to look up Offers for.
         # Corresponds to the JSON property `sku`
         # @return [String]
         attr_accessor :sku
@@ -1215,10 +1207,10 @@ module Google
       class GoogleCloudChannelV1ListTransferableSkusRequest
         include Google::Apis::Core::Hashable
       
-        # This token is generated by the Super Admin of the resold customer to authorize
-        # a reseller to access their Cloud Identity and purchase entitlements on their
-        # behalf. This token can be omitted once the authorization is generated. See
-        # https://support.google.com/a/answer/7643790 for more details.
+        # The super admin of the resold customer generates this token to authorize a
+        # reseller to access their Cloud Identity and purchase entitlements on their
+        # behalf. You can omit this token after authorization. See https://support.
+        # google.com/a/answer/7643790 for more details.
         # Corresponds to the JSON property `authToken`
         # @return [String]
         attr_accessor :auth_token
@@ -1229,27 +1221,28 @@ module Google
         attr_accessor :cloud_identity_id
       
         # A reseller is required to create a customer and use the resource name of the
-        # created customer here. The customer_name takes the format: accounts/`
-        # account_id`/customers/`customer_id`
+        # created customer here. Customer_name uses the format: accounts/`account_id`/
+        # customers/`customer_id`
         # Corresponds to the JSON property `customerName`
         # @return [String]
         attr_accessor :customer_name
       
-        # The BCP-47 language code, such as "en-US". If specified, the response will be
-        # localized to the corresponding language code. Default is "en-US". Optional.
+        # The BCP-47 language code. For example, "en-US". The response will localize in
+        # the corresponding language code, if specified. The default value is "en-US".
+        # Optional.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
       
-        # Requested page size. Server might return fewer results than requested. If
-        # unspecified, at most 100 SKUs will be returned. The maximum value is 1000;
-        # values above 1000 will be coerced to 1000. Optional.
+        # The requested page size. Server might return fewer results than requested. If
+        # unspecified, returns at most 100 SKUs. The maximum value is 1000; the server
+        # will coerce values above 1000. Optional.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
       
-        # A token identifying a page of results, if other than the first one. Typically
-        # obtained via ListTransferableSkusResponse.next_page_token of the previous
+        # A token for a page of results other than the first page. Obtained using
+        # ListTransferableSkusResponse.next_page_token of the previous
         # CloudChannelService.ListTransferableSkus call. Optional.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
@@ -1280,8 +1273,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Information about existing SKUs for a customer that would need to be
-        # transferred.
+        # Information about existing SKUs for a customer that needs a transfer.
         # Corresponds to the JSON property `transferableSkus`
         # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1TransferableSku>]
         attr_accessor :transferable_skus
@@ -1794,8 +1786,7 @@ module Google
         # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1AdminUser]
         attr_accessor :user
       
-        # If set, validate the request and preview the review, but do not actually post
-        # it.
+        # Validate the request and preview the review, but do not post it.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
         attr_accessor :validate_only
@@ -1847,7 +1838,7 @@ module Google
         end
       end
       
-      # Offer that can be puchased for a customer. This is used in
+      # Offer that you can purchase for a customer. This is used in the
       # ListPurchasableOffer API response.
       class GoogleCloudChannelV1PurchasableOffer
         include Google::Apis::Core::Hashable
@@ -1869,8 +1860,7 @@ module Google
         end
       end
       
-      # SKU that can be used for a puchase. This is used in ListPurchasableSku API
-      # response.
+      # SKU that you can purchase. This is used in ListPurchasableSku API response.
       class GoogleCloudChannelV1PurchasableSku
         include Google::Apis::Core::Hashable
       
@@ -1896,8 +1886,8 @@ module Google
       class GoogleCloudChannelV1RegisterSubscriberRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Service account which will provide subscriber access to the
-        # registered topic.
+        # Required. Service account that provides subscriber access to the registered
+        # topic.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -1916,7 +1906,7 @@ module Google
       class GoogleCloudChannelV1RegisterSubscriberResponse
         include Google::Apis::Core::Hashable
       
-        # Name of the topic to which the subscriber will listen to.
+        # Name of the topic the subscriber will listen to.
         # Corresponds to the JSON property `topic`
         # @return [String]
         attr_accessor :topic
@@ -2010,15 +2000,14 @@ module Google
       class GoogleCloudChannelV1StartPaidServiceRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. An optional request ID to identify requests. Specify a unique
-        # request ID so that if you must retry your request, the server will know to
-        # ignore the request if it has already been completed. For example, consider a
-        # situation where you make an initial request and the request times out. If you
-        # make the request again with the same request ID, the server can check if the
-        # original operation with the same request ID was received, and if so, will
-        # ignore the second request. The request ID must be a valid [UUID](https://tools.
-        # ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`
-        # 00000000-0000-0000-0000-000000000000`).
+        # Optional. You can specify an optional unique request ID, and if you need to
+        # retry your request, the server will know to ignore the request if it's
+        # complete. For example, you make an initial request and the request times out.
+        # If you make the request again with the same request ID, the server can check
+        # if it received the original operation with the same request ID. If it did, it
+        # will ignore the second request. The request ID must be a valid [UUID](https://
+        # tools.ietf.org/html/rfc4122) with the exception that zero UUID is not
+        # supported (`00000000-0000-0000-0000-000000000000`).
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
@@ -2063,15 +2052,14 @@ module Google
       class GoogleCloudChannelV1SuspendEntitlementRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. An optional request ID to identify requests. Specify a unique
-        # request ID so that if you must retry your request, the server will know to
-        # ignore the request if it has already been completed. For example, consider a
-        # situation where you make an initial request and the request times out. If you
-        # make the request again with the same request ID, the server can check if the
-        # original operation with the same request ID was received, and if so, will
-        # ignore the second request. The request ID must be a valid [UUID](https://tools.
-        # ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`
-        # 00000000-0000-0000-0000-000000000000`).
+        # Optional. You can specify an optional unique request ID, and if you need to
+        # retry your request, the server will know to ignore the request if it's
+        # complete. For example, you make an initial request and the request times out.
+        # If you make the request again with the same request ID, the server can check
+        # if it received the original operation with the same request ID. If it did, it
+        # will ignore the second request. The request ID must be a valid [UUID](https://
+        # tools.ietf.org/html/rfc4122) with the exception that zero UUID is not
+        # supported (`00000000-0000-0000-0000-000000000000`).
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
@@ -2122,28 +2110,27 @@ module Google
       class GoogleCloudChannelV1TransferEntitlementsRequest
         include Google::Apis::Core::Hashable
       
-        # This token is generated by the Super Admin of the resold customer to authorize
-        # a reseller to access their Cloud Identity and purchase entitlements on their
-        # behalf. This token can be omitted once the authorization is generated. See
-        # https://support.google.com/a/answer/7643790 for more details.
+        # The super admin of the resold customer generates this token to authorize a
+        # reseller to access their Cloud Identity and purchase entitlements on their
+        # behalf. You can omit this token after authorization. See https://support.
+        # google.com/a/answer/7643790 for more details.
         # Corresponds to the JSON property `authToken`
         # @return [String]
         attr_accessor :auth_token
       
-        # Required. The new entitlements to be created or transferred.
+        # Required. The new entitlements to create or transfer.
         # Corresponds to the JSON property `entitlements`
         # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1Entitlement>]
         attr_accessor :entitlements
       
-        # Optional. An optional request ID to identify requests. Specify a unique
-        # request ID so that if you must retry your request, the server will know to
-        # ignore the request if it has already been completed. For example, consider a
-        # situation where you make an initial request and the request times out. If you
-        # make the request again with the same request ID, the server can check if the
-        # original operation with the same request ID was received, and if so, will
-        # ignore the second request. The request ID must be a valid [UUID](https://tools.
-        # ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`
-        # 00000000-0000-0000-0000-000000000000`).
+        # Optional. You can specify an optional unique request ID, and if you need to
+        # retry your request, the server will know to ignore the request if it's
+        # complete. For example, you make an initial request and the request times out.
+        # If you make the request again with the same request ID, the server can check
+        # if it received the original operation with the same request ID. If it did, it
+        # will ignore the second request. The request ID must be a valid [UUID](https://
+        # tools.ietf.org/html/rfc4122) with the exception that zero UUID is not
+        # supported (`00000000-0000-0000-0000-000000000000`).
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
@@ -2160,12 +2147,12 @@ module Google
         end
       end
       
-      # Response message for CloudChannelService.TransferEntitlements. This will be
-      # put into the response field of google.longrunning.Operation.
+      # Response message for CloudChannelService.TransferEntitlements. This is put in
+      # the response field of google.longrunning.Operation.
       class GoogleCloudChannelV1TransferEntitlementsResponse
         include Google::Apis::Core::Hashable
       
-        # The entitlements that have been transferred.
+        # The transferred entitlements.
         # Corresponds to the JSON property `entitlements`
         # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1Entitlement>]
         attr_accessor :entitlements
@@ -2184,20 +2171,19 @@ module Google
       class GoogleCloudChannelV1TransferEntitlementsToGoogleRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The entitlements to be transferred to Google.
+        # Required. The entitlements to transfer to Google.
         # Corresponds to the JSON property `entitlements`
         # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1Entitlement>]
         attr_accessor :entitlements
       
-        # Optional. An optional request ID to identify requests. Specify a unique
-        # request ID so that if you must retry your request, the server will know to
-        # ignore the request if it has already been completed. For example, consider a
-        # situation where you make an initial request and the request times out. If you
-        # make the request again with the same request ID, the server can check if the
-        # original operation with the same request ID was received, and if so, will
-        # ignore the second request. The request ID must be a valid [UUID](https://tools.
-        # ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`
-        # 00000000-0000-0000-0000-000000000000`).
+        # Optional. You can specify an optional unique request ID, and if you need to
+        # retry your request, the server will know to ignore the request if it's
+        # complete. For example, you make an initial request and the request times out.
+        # If you make the request again with the same request ID, the server can check
+        # if it received the original operation with the same request ID. If it did, it
+        # will ignore the second request. The request ID must be a valid [UUID](https://
+        # tools.ietf.org/html/rfc4122) with the exception that zero UUID is not
+        # supported (`00000000-0000-0000-0000-000000000000`).
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
@@ -2295,8 +2281,7 @@ module Google
       class GoogleCloudChannelV1UnregisterSubscriberRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Service account which will be unregistered from getting subscriber
-        # access to the topic.
+        # Required. Service account to unregister from subscriber access to the topic.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -2315,8 +2300,7 @@ module Google
       class GoogleCloudChannelV1UnregisterSubscriberResponse
         include Google::Apis::Core::Hashable
       
-        # Name of the topic from which the service account subscriber access has been
-        # removed.
+        # Name of the topic the service account subscriber access was removed from.
         # Corresponds to the JSON property `topic`
         # @return [String]
         attr_accessor :topic
@@ -2342,7 +2326,7 @@ module Google
         attr_accessor :channel_partner_link
       
         # Required. The update mask that applies to the resource. The only allowable
-        # value for update mask is channel_partner_link.link_state.
+        # value for an update mask is channel_partner_link.link_state.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -2816,12 +2800,12 @@ module Google
         end
       end
       
-      # Response message for CloudChannelService.TransferEntitlements. This will be
-      # put into the response field of google.longrunning.Operation.
+      # Response message for CloudChannelService.TransferEntitlements. This is put in
+      # the response field of google.longrunning.Operation.
       class GoogleCloudChannelV1alpha1TransferEntitlementsResponse
         include Google::Apis::Core::Hashable
       
-        # The entitlements that have been transferred.
+        # The transferred entitlements.
         # Corresponds to the JSON property `entitlements`
         # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1Entitlement>]
         attr_accessor :entitlements
