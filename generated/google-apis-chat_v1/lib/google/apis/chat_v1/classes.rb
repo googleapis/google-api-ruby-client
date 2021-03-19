@@ -390,7 +390,7 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # A user in Hangouts Chat.
+        # A user in Google Chat.
         # Corresponds to the JSON property `user`
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :user
@@ -696,7 +696,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # A user in Hangouts Chat.
+        # A user in Google Chat.
         # Corresponds to the JSON property `member`
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :member
@@ -778,7 +778,7 @@ module Google
         # @return [String]
         attr_accessor :preview_text
       
-        # A user in Hangouts Chat.
+        # A user in Google Chat.
         # Corresponds to the JSON property `sender`
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :sender
@@ -921,7 +921,7 @@ module Google
       class SlashCommandMetadata
         include Google::Apis::Core::Hashable
       
-        # A user in Hangouts Chat.
+        # A user in Google Chat.
         # Corresponds to the JSON property `bot`
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :bot
@@ -1073,7 +1073,7 @@ module Google
         end
       end
       
-      # A user in Hangouts Chat.
+      # A user in Google Chat.
       class User
         include Google::Apis::Core::Hashable
       
@@ -1087,7 +1087,7 @@ module Google
         # @return [String]
         attr_accessor :domain_id
       
-        # True when the user is deleted or the user's proifle is not visible.
+        # True when the user is deleted or the user's profile is not visible.
         # Corresponds to the JSON property `isAnonymous`
         # @return [Boolean]
         attr_accessor :is_anonymous
@@ -1126,7 +1126,7 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # A user in Hangouts Chat.
+        # A user in Google Chat.
         # Corresponds to the JSON property `user`
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :user
