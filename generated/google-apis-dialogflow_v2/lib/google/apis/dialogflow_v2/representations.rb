@@ -892,12 +892,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDialogflowV2AudioInput
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDialogflowV2AutomatedAgentConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -964,18 +958,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDialogflowV2CallMatcher
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowV2CallMatcherCustomHeaders
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDialogflowV2CompleteConversationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1007,12 +989,6 @@ module Google
       end
       
       class GoogleCloudDialogflowV2ConversationProfile
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowV2CreateCallMatcherRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1181,24 +1157,6 @@ module Google
       end
       
       class GoogleCloudDialogflowV2HumanAgentAssistantEvent
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowV2HumanAgentHandoffConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1433,12 +1391,6 @@ module Google
       end
       
       class GoogleCloudDialogflowV2ListAnswerRecordsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowV2ListCallMatchersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3616,8 +3568,6 @@ module Google
       class GoogleCloudDialogflowV2AnalyzeContentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :audio_input, as: 'audioInput', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AudioInput, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AudioInput::Representation
-      
           property :event_input, as: 'eventInput', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EventInput, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EventInput::Representation
       
           property :query_params, as: 'queryParams', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2QueryParameters, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2QueryParameters::Representation
@@ -3691,15 +3641,6 @@ module Google
           collection :snippets, as: 'snippets'
           property :title, as: 'title'
           property :uri, as: 'uri'
-        end
-      end
-      
-      class GoogleCloudDialogflowV2AudioInput
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :audio, :base64 => true, as: 'audio'
-          property :config, as: 'config', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2InputAudioConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2InputAudioConfig::Representation
-      
         end
       end
       
@@ -3799,25 +3740,6 @@ module Google
         end
       end
       
-      class GoogleCloudDialogflowV2CallMatcher
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :call_id_header, as: 'callIdHeader'
-          property :custom_headers, as: 'customHeaders', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2CallMatcherCustomHeaders, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2CallMatcherCustomHeaders::Representation
-      
-          property :from_header, as: 'fromHeader'
-          property :name, as: 'name'
-          property :to_header, as: 'toHeader'
-        end
-      end
-      
-      class GoogleCloudDialogflowV2CallMatcherCustomHeaders
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cisco_guid, as: 'ciscoGuid'
-        end
-      end
-      
       class GoogleCloudDialogflowV2CompleteConversationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3875,8 +3797,6 @@ module Google
           property :display_name, as: 'displayName'
           property :human_agent_assistant_config, as: 'humanAgentAssistantConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfig::Representation
       
-          property :human_agent_handoff_config, as: 'humanAgentHandoffConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentHandoffConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentHandoffConfig::Representation
-      
           property :language_code, as: 'languageCode'
           property :logging_config, as: 'loggingConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2LoggingConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2LoggingConfig::Representation
       
@@ -3888,14 +3808,6 @@ module Google
           property :stt_config, as: 'sttConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SpeechToTextConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SpeechToTextConfig::Representation
       
           property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class GoogleCloudDialogflowV2CreateCallMatcherRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :call_matcher, as: 'callMatcher', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2CallMatcher, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2CallMatcher::Representation
-      
         end
       end
       
@@ -4069,8 +3981,6 @@ module Google
       class GoogleCloudDialogflowV2HumanAgentAssistantConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_user_suggestion_config, as: 'endUserSuggestionConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig::Representation
-      
           property :human_agent_suggestion_config, as: 'humanAgentSuggestionConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig::Representation
       
           property :message_analysis_config, as: 'messageAnalysisConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig::Representation
@@ -4090,7 +4000,6 @@ module Google
       class GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :enable_entity_extraction, as: 'enableEntityExtraction'
           property :enable_sentiment_analysis, as: 'enableSentimentAnalysis'
         end
       end
@@ -4180,33 +4089,6 @@ module Google
           property :participant, as: 'participant'
           collection :suggestion_results, as: 'suggestionResults', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SuggestionResult, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SuggestionResult::Representation
       
-        end
-      end
-      
-      class GoogleCloudDialogflowV2HumanAgentHandoffConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :live_person_config, as: 'livePersonConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig::Representation
-      
-          property :salesforce_live_agent_config, as: 'salesforceLiveAgentConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig::Representation
-      
-        end
-      end
-      
-      class GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_number, as: 'accountNumber'
-        end
-      end
-      
-      class GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :button_id, as: 'buttonId'
-          property :deployment_id, as: 'deploymentId'
-          property :endpoint_domain, as: 'endpointDomain'
-          property :organization_id, as: 'organizationId'
         end
       end
       
@@ -4624,15 +4506,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :answer_records, as: 'answerRecords', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AnswerRecord, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AnswerRecord::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class GoogleCloudDialogflowV2ListCallMatchersResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :call_matchers, as: 'callMatchers', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2CallMatcher, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2CallMatcher::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
