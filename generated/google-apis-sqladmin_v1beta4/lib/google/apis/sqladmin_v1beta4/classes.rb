@@ -717,10 +717,9 @@ module Google
         # following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is
         # unknown. *RUNNABLE*: The instance is running, or has been stopped by owner. *
         # SUSPENDED*: The instance is not available, for example due to problems with
-        # billing. for example due to problems with billing. *PENDING_DELETE*: The
-        # instance is being deleted. *PENDING_CREATE*: The instance is being created. *
-        # MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance
-        # creation failed.
+        # billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*:
+        # The instance is being created. *MAINTENANCE*: The instance is down for
+        # maintenance. *FAILED*: The instance creation failed.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -1468,7 +1467,8 @@ module Google
       
         # Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-
         # 4500 bytes. Query length more than this field value will be truncated to this
-        # value. When unset, query length will be the default value.
+        # value. When unset, query length will be the default value. Changing query
+        # length will restart the database.
         # Corresponds to the JSON property `queryStringLength`
         # @return [Fixnum]
         attr_accessor :query_string_length
