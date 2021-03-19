@@ -49,18 +49,18 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Confirms the existence of Cloud Identity accounts, based on the domain and
-        # whether the Cloud Identity accounts are owned by the reseller. Possible Error
-        # Codes: * PERMISSION_DENIED: If the reseller account making the request and the
-        # reseller account being queried for are different. * INVALID_ARGUMENT: Missing
-        # or invalid required parameters in the request. * INVALID_VALUE: Invalid domain
-        # value in the request. Return Value: List of CloudIdentityCustomerAccount
-        # resources for the domain. List may be empty. Note: in the v1alpha1 version of
-        # the API, a NOT_FOUND error is returned if no CloudIdentityCustomerAccount
-        # resources match the domain.
+        # Confirms the existence of Cloud Identity accounts based on the domain and if
+        # the Cloud Identity accounts are owned by the reseller. Possible error codes: *
+        # PERMISSION_DENIED: The reseller account making the request is different from
+        # the reseller account in the API request. * INVALID_ARGUMENT: Required request
+        # parameters are missing or invalid. * INVALID_VALUE: Invalid domain value in
+        # the request. Return value: A list of CloudIdentityCustomerAccount resources
+        # for the domain (may be empty) Note: in the v1alpha1 version of the API, a
+        # NOT_FOUND error returns if no CloudIdentityCustomerAccount resources match the
+        # domain.
         # @param [String] parent
-        #   Required. The resource name of the reseller account. The parent takes the
-        #   format: accounts/`account_id`
+        #   Required. The reseller account's resource name. Parent uses the format:
+        #   accounts/`account_id`
         # @param [Google::Apis::CloudchannelV1::GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest] google_cloud_channel_v1_check_cloud_identity_accounts_exist_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -92,22 +92,20 @@ module Google
         end
         
         # Lists service accounts with subscriber privileges on the Cloud Pub/Sub topic
-        # created for this Channel Services account. Possible Error Codes: *
-        # PERMISSION_DENIED: If the reseller account making the request and the reseller
-        # account being provided are different, or if the account is not a super admin. *
-        # INVALID_ARGUMENT: Missing or invalid required parameters in the request. *
-        # NOT_FOUND: If the topic resource doesn't exist. * INTERNAL: Any non-user error
-        # related to a technical issue in the backend. In this case, contact Cloud
-        # Channel support. * UNKNOWN: Any non-user error related to a technical issue in
-        # the backend. In this case, contact Cloud Channel support. Return Value: List
-        # of service email addresses if successful, otherwise error is returned.
+        # created for this Channel Services account. Possible error codes: *
+        # PERMISSION_DENIED: The reseller account making the request and the provided
+        # reseller account are different, or the impersonated user is not a super admin.
+        # * INVALID_ARGUMENT: Required request parameters are missing or invalid. *
+        # NOT_FOUND: The topic resource doesn't exist. * INTERNAL: Any non-user error
+        # related to a technical issue in the backend. Contact Cloud Channel support. *
+        # UNKNOWN: Any non-user error related to a technical issue in the backend.
+        # Contact Cloud Channel support. Return value: A list of service email addresses.
         # @param [String] account
         #   Required. Resource name of the account.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of service accounts to return. The service may
-        #   return fewer than this value. If unspecified, at most 100 service accounts
-        #   will be returned. The maximum value is 1000; values above 1000 will be coerced
-        #   to 1000.
+        #   return fewer than this value. If unspecified, returns at most 100 service
+        #   accounts. The maximum value is 1000; the server will coerce values above 1000.
         # @param [String] page_token
         #   Optional. A page token, received from a previous `ListSubscribers` call.
         #   Provide this to retrieve the subsequent page. When paginating, all other
@@ -143,14 +141,13 @@ module Google
         end
         
         # List TransferableOffers of a customer based on Cloud Identity ID or Customer
-        # Name in the request. This method is used when a reseller gets the entitlement
-        # information of a customer that is not owned. The reseller should provide the
-        # customer's Cloud Identity ID or Customer Name. Possible Error Codes: *
-        # PERMISSION_DENIED: Appears because of one of the following: * If the customer
-        # doesn't belong to the reseller and no auth token or invalid auth token is
-        # supplied. * If the reseller account making the request and the reseller
-        # account being queried for are different. * INVALID_ARGUMENT: Missing or
-        # invalid required parameters in the request. Return Value: List of
+        # Name in the request. Use this method when a reseller gets the entitlement
+        # information of an unowned customer. The reseller should provide the customer's
+        # Cloud Identity ID or Customer Name. Possible error codes: * PERMISSION_DENIED:
+        # * The customer doesn't belong to the reseller and has no auth token. * The
+        # supplied auth token is invalid. * The reseller account making the request is
+        # different from the reseller account in the query. * INVALID_ARGUMENT: Required
+        # request parameters are missing or invalid. Return value: List of
         # TransferableOffer for the given customer and SKU.
         # @param [String] parent
         #   Required. The resource name of the reseller's account.
@@ -184,19 +181,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List TransferableSkus of a customer based on Cloud Identity ID or Customer
-        # Name in the request. This method is used when a reseller lists the
-        # entitlements information of a customer that is not owned. The reseller should
-        # provide the customer's Cloud Identity ID or Customer Name. Possible Error
-        # Codes: * PERMISSION_DENIED: Appears because of one of the following - * The
-        # customer doesn't belong to the reseller and no auth token. * The supplied auth
-        # token is invalid. * The reseller account making the request and the queries
-        # reseller account are different. * INVALID_ARGUMENT: Missing or invalid
-        # required parameters in the request. Return Value: List of TransferableSku for
-        # the given customer.
+        # List TransferableSkus of a customer based on the Cloud Identity ID or Customer
+        # Name in the request. Use this method to list the entitlements information of
+        # an unowned customer. You should provide the customer's Cloud Identity ID or
+        # Customer Name. Possible error codes: * PERMISSION_DENIED: * The customer doesn'
+        # t belong to the reseller and has no auth token. * The supplied auth token is
+        # invalid. * The reseller account making the request is different from the
+        # reseller account in the query. * INVALID_ARGUMENT: Required request parameters
+        # are missing or invalid. Return value: A list of the customer's TransferableSku.
         # @param [String] parent
-        #   Required. The resource name of the reseller's account. The parent takes the
-        #   format: accounts/`account_id`
+        #   Required. The reseller account's resource name. Parent uses the format:
+        #   accounts/`account_id`
         # @param [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListTransferableSkusRequest] google_cloud_channel_v1_list_transferable_skus_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -228,16 +223,15 @@ module Google
         end
         
         # Registers a service account with subscriber privileges on the Cloud Pub/Sub
-        # topic created for this Channel Services account. Once you create a subscriber,
-        # you will get the events as per SubscriberEvent Possible Error Codes: *
-        # PERMISSION_DENIED: If the reseller account making the request and the reseller
-        # account being provided are different, or if the impersonated user is not a
-        # super admin. * INVALID_ARGUMENT: Missing or invalid required parameters in the
-        # request. * INTERNAL: Any non-user error related to a technical issue in the
-        # backend. In this case, contact Cloud Channel support. * UNKNOWN: Any non-user
-        # error related to a technical issue in the backend. In this case, contact Cloud
-        # Channel support. Return Value: Topic name with service email address
-        # registered if successful, otherwise error is returned.
+        # topic for this Channel Services account. After you create a subscriber, you
+        # get the events through SubscriberEvent Possible error codes: *
+        # PERMISSION_DENIED: The reseller account making the request and the provided
+        # reseller account are different, or the impersonated user is not a super admin.
+        # * INVALID_ARGUMENT: Required request parameters are missing or invalid. *
+        # INTERNAL: Any non-user error related to a technical issue in the backend.
+        # Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a
+        # technical issue in the backend. Contact Cloud Channel support. Return value:
+        # The topic name with the registered service email address.
         # @param [String] account
         #   Required. Resource name of the account.
         # @param [Google::Apis::CloudchannelV1::GoogleCloudChannelV1RegisterSubscriberRequest] google_cloud_channel_v1_register_subscriber_request_object
@@ -271,19 +265,18 @@ module Google
         end
         
         # Unregisters a service account with subscriber privileges on the Cloud Pub/Sub
-        # topic created for this Channel Services account. If there are no more service
-        # account left with sunbscriber privileges, the topic will be deleted. You can
-        # check this by calling ListSubscribers api. Possible Error Codes: *
-        # PERMISSION_DENIED: If the reseller account making the request and the reseller
-        # account being provided are different, or if the impersonated user is not a
-        # super admin. * INVALID_ARGUMENT: Missing or invalid required parameters in the
-        # request. * NOT_FOUND: If the topic resource doesn't exist. * INTERNAL: Any non-
-        # user error related to a technical issue in the backend. In this case, contact
-        # Cloud Channel support. * UNKNOWN: Any non-user error related to a technical
-        # issue in the backend. In this case, contact Cloud Channel support. Return
-        # Value: Topic name from which service email address has been unregistered if
-        # successful, otherwise error is returned. If the service email was already not
-        # associated with the topic, the success response will be returned.
+        # topic created for this Channel Services account. If there are no service
+        # accounts left with subscriber privileges, this deletes the topic. You can call
+        # ListSubscribers to check for these accounts. Possible error codes: *
+        # PERMISSION_DENIED: The reseller account making the request and the provided
+        # reseller account are different, or the impersonated user is not a super admin.
+        # * INVALID_ARGUMENT: Required request parameters are missing or invalid. *
+        # NOT_FOUND: The topic resource doesn't exist. * INTERNAL: Any non-user error
+        # related to a technical issue in the backend. Contact Cloud Channel support. *
+        # UNKNOWN: Any non-user error related to a technical issue in the backend.
+        # Contact Cloud Channel support. Return value: The topic name that unregistered
+        # the service email address. Returns a success response if the service email
+        # address wasn't registered with the topic.
         # @param [String] account
         #   Required. Resource name of the account.
         # @param [Google::Apis::CloudchannelV1::GoogleCloudChannelV1UnregisterSubscriberRequest] google_cloud_channel_v1_unregister_subscriber_request_object
@@ -316,23 +309,22 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Initiates a channel partner link between a distributor and a reseller or
-        # between resellers in an n-tier reseller channel. To accept the invite, the
-        # invited partner should follow the invite_link_uri provided in the response. If
-        # the link creation is accepted, a valid link is set up between the two involved
-        # parties. To call this method, you must be a distributor. Possible Error Codes:
-        # * PERMISSION_DENIED: If the reseller account making the request and the
-        # reseller account being queried for are different. * INVALID_ARGUMENT: Missing
-        # or invalid required parameters in the request. * ALREADY_EXISTS: If the
-        # ChannelPartnerLink sent in the request already exists. * NOT_FOUND: If no
-        # Cloud Identity customer exists for domain provided. * INTERNAL: Any non-user
-        # error related to a technical issue in the backend. In this case, contact Cloud
-        # Channel support. * UNKNOWN: Any non-user error related to a technical issue in
-        # the backend. In this case, contact Cloud Channel support. Return Value: Newly
-        # created ChannelPartnerLink resource if successful, otherwise error is returned.
+        # Initiates a channel partner link between a distributor and a reseller, or
+        # between resellers in an n-tier reseller channel. Invited partners need to
+        # follow the invite_link_uri provided in the response to accept. After accepting
+        # the invitation, a link is set up between the two parties. You must be a
+        # distributor to call this method. Possible error codes: * PERMISSION_DENIED:
+        # The reseller account making the request is different from the reseller account
+        # in the API request. * INVALID_ARGUMENT: Required request parameters are
+        # missing or invalid. * ALREADY_EXISTS: The ChannelPartnerLink sent in the
+        # request already exists. * NOT_FOUND: No Cloud Identity customer exists for
+        # provided domain. * INTERNAL: Any non-user error related to a technical issue
+        # in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error
+        # related to a technical issue in the backend. Contact Cloud Channel support.
+        # Return value: The new ChannelPartnerLink resource.
         # @param [String] parent
-        #   Required. The resource name of reseller's account for which to create a
-        #   channel partner link. The parent takes the format: accounts/`account_id`
+        #   Required. Create a channel partner link for the provided reseller account's
+        #   resource name. Parent uses the format: accounts/`account_id`
         # @param [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ChannelPartnerLink] google_cloud_channel_v1_channel_partner_link_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -363,17 +355,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a requested ChannelPartnerLink resource. To call this method, you must
-        # be a distributor. Possible Error Codes: * PERMISSION_DENIED: If the reseller
-        # account making the request and the reseller account being queried for are
-        # different. * INVALID_ARGUMENT: Missing or invalid required parameters in the
-        # request. * NOT_FOUND: ChannelPartnerLink resource not found. Results due
-        # invalid channel partner link name. Return Value: ChannelPartnerLink resource
-        # if found, otherwise returns an error.
+        # Returns a requested ChannelPartnerLink resource. You must be a distributor to
+        # call this method. Possible error codes: * PERMISSION_DENIED: The reseller
+        # account making the request is different from the reseller account in the API
+        # request. * INVALID_ARGUMENT: Required request parameters are missing or
+        # invalid. * NOT_FOUND: ChannelPartnerLink resource not found because of an
+        # invalid channel partner link name. Return value: The ChannelPartnerLink
+        # resource.
         # @param [String] name
-        #   Required. The resource name of the channel partner link to retrieve. The name
-        #   takes the format: accounts/`account_id`/channelPartnerLinks/`id` where `id` is
-        #   the Cloud Identity ID of the partner.
+        #   Required. The resource name of the channel partner link to retrieve. Name uses
+        #   the format: accounts/`account_id`/channelPartnerLinks/`id` where `id` is the
+        #   Cloud Identity ID of the partner.
         # @param [String] view
         #   Optional. The level of granularity the ChannelPartnerLink will display.
         # @param [String] fields
@@ -404,24 +396,23 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List ChannelPartnerLinks belonging to a distributor. To call this method, you
-        # must be a distributor. Possible Error Codes: * PERMISSION_DENIED: If the
-        # reseller account making the request and the reseller account being queried for
-        # are different. * INVALID_ARGUMENT: Missing or invalid required parameters in
-        # the request. Return Value: If successful, returns the list of
-        # ChannelPartnerLink resources for the distributor account, otherwise returns an
-        # error.
+        # List ChannelPartnerLinks belonging to a distributor. You must be a distributor
+        # to call this method. Possible error codes: * PERMISSION_DENIED: The reseller
+        # account making the request is different from the reseller account in the API
+        # request. * INVALID_ARGUMENT: Required request parameters are missing or
+        # invalid. Return value: The list of the distributor account's
+        # ChannelPartnerLink resources.
         # @param [String] parent
         #   Required. The resource name of the reseller account for listing channel
-        #   partner links. The parent takes the format: accounts/`account_id`
+        #   partner links. Parent uses the format: accounts/`account_id`
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server might return fewer results than
         #   requested. If unspecified, server will pick a default size (25). The maximum
-        #   value is 200, values above 200 will be coerced to 200.
+        #   value is 200; the server will coerce values above 200.
         # @param [String] page_token
-        #   Optional. A token identifying a page of results, if other than the first one.
-        #   Typically obtained via ListChannelPartnerLinksResponse.next_page_token of the
-        #   previous CloudChannelService.ListChannelPartnerLinks call.
+        #   Optional. A token for a page of results other than the first page. Obtained
+        #   using ListChannelPartnerLinksResponse.next_page_token of the previous
+        #   CloudChannelService.ListChannelPartnerLinks call.
         # @param [String] view
         #   Optional. The level of granularity the ChannelPartnerLink will display.
         # @param [String] fields
@@ -454,23 +445,22 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a channel partner link. A distributor calls this method to change a
-        # link's status. For example, suspend a partner link. To call this method, you
-        # must be a distributor. Possible Error Codes: * PERMISSION_DENIED: If the
-        # reseller account making the request and the reseller account being queried for
-        # are different. * INVALID_ARGUMENT: It can happen in following scenarios - *
-        # Missing or invalid required parameters in the request. * Updating link state
-        # from invited to active or suspended. * Sending reseller_cloud_identity_id,
-        # invite_url or name in update mask. * NOT_FOUND: ChannelPartnerLink resource
-        # not found. * INTERNAL: Any non-user error related to a technical issue in the
-        # backend. In this case, contact Cloud Channel support. * UNKNOWN: Any non-user
-        # error related to a technical issue in the backend. In this case, contact Cloud
-        # Channel support. Return Value: If successful, the updated ChannelPartnerLink
-        # resource, otherwise returns an error.
+        # Updates a channel partner link. Distributors call this method to change a link'
+        # s status. For example, to suspend a partner link. You must be a distributor to
+        # call this method. Possible error codes: * PERMISSION_DENIED: The reseller
+        # account making the request is different from the reseller account in the API
+        # request. * INVALID_ARGUMENT: * Required request parameters are missing or
+        # invalid. * Link state cannot change from invited to active or suspended. *
+        # Cannot send reseller_cloud_identity_id, invite_url, or name in update mask. *
+        # NOT_FOUND: ChannelPartnerLink resource not found. * INTERNAL: Any non-user
+        # error related to a technical issue in the backend. Contact Cloud Channel
+        # support. * UNKNOWN: Any non-user error related to a technical issue in the
+        # backend. Contact Cloud Channel support. Return value: The updated
+        # ChannelPartnerLink resource.
         # @param [String] name
-        #   Required. The resource name of the channel partner link to cancel. The name
-        #   takes the format: accounts/`account_id`/channelPartnerLinks/`id` where `id` is
-        #   the Cloud Identity ID of the partner.
+        #   Required. The resource name of the channel partner link to cancel. Name uses
+        #   the format: accounts/`account_id`/channelPartnerLinks/`id` where `id` is the
+        #   Cloud Identity ID of the partner.
         # @param [Google::Apis::CloudchannelV1::GoogleCloudChannelV1UpdateChannelPartnerLinkRequest] google_cloud_channel_v1_update_channel_partner_link_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -502,15 +492,14 @@ module Google
         end
         
         # Creates a new Customer resource under the reseller or distributor account.
-        # Possible Error Codes: * PERMISSION_DENIED: If the reseller account making the
-        # request and the reseller account being queried for are different. *
-        # INVALID_ARGUMENT: It can happen in following scenarios - * Missing or invalid
-        # required parameters in the request. * Domain field value doesn't match the
-        # domain specified in primary email. Return Value: If successful, the newly
-        # created Customer resource, otherwise returns an error.
+        # Possible error codes: * PERMISSION_DENIED: The reseller account making the
+        # request is different from the reseller account in the API request. *
+        # INVALID_ARGUMENT: * Required request parameters are missing or invalid. *
+        # Domain field value doesn't match the primary email domain. Return value: The
+        # newly created Customer resource.
         # @param [String] parent
         #   Required. The resource name of reseller account in which to create the
-        #   customer. The parent takes the format: accounts/`account_id`
+        #   customer. Parent uses the format: accounts/`account_id`
         # @param [Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer] google_cloud_channel_v1_customer_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -541,11 +530,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the given Customer permanently and irreversibly. Possible Error Codes:
-        # * PERMISSION_DENIED: If the account making the request does not own this
-        # customer. * INVALID_ARGUMENT: Missing or invalid required parameters in the
-        # request. * FAILED_PRECONDITION: If the customer has existing entitlements. *
-        # NOT_FOUND: No Customer resource found for the name specified in the request.
+        # Deletes the given Customer permanently and irreversibly. Possible error codes:
+        # * PERMISSION_DENIED: The account making the request does not own this customer.
+        # * INVALID_ARGUMENT: Required request parameters are missing or invalid. *
+        # FAILED_PRECONDITION: The customer has existing entitlements. * NOT_FOUND: No
+        # Customer resource found for the name in the request.
         # @param [String] name
         #   Required. The resource name of the customer to delete.
         # @param [String] fields
@@ -575,15 +564,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a requested Customer resource. Possible Error Codes: *
-        # PERMISSION_DENIED: If the reseller account making the request and the reseller
-        # account being queried for are different. * INVALID_ARGUMENT: Missing or
-        # invalid required parameters in the request. * NOT_FOUND: If the customer
-        # resource doesn't exist. Usually the result of an invalid name parameter.
-        # Return Value: Customer resource if found, error otherwise.
+        # Returns a requested Customer resource. Possible error codes: *
+        # PERMISSION_DENIED: The reseller account making the request is different from
+        # the reseller account in the API request. * INVALID_ARGUMENT: Required request
+        # parameters are missing or invalid. * NOT_FOUND: The customer resource doesn't
+        # exist. Usually the result of an invalid name parameter. Return value: The
+        # Customer resource.
         # @param [String] name
-        #   Required. The resource name of the customer to retrieve. The name takes the
-        #   format: accounts/`account_id`/customers/`customer_id`
+        #   Required. The resource name of the customer to retrieve. Name uses the format:
+        #   accounts/`account_id`/customers/`customer_id`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -611,21 +600,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List downstream Customers. Possible Error Codes: * PERMISSION_DENIED: If the
-        # reseller account making the request and the reseller account being queried for
-        # are different. * INVALID_ARGUMENT: Missing or invalid required parameters in
-        # the request. Return Value: List of Customers pertaining to the reseller or
-        # empty list if there are none.
+        # List Customers. Possible error codes: * PERMISSION_DENIED: The reseller
+        # account making the request is different from the reseller account in the API
+        # request. * INVALID_ARGUMENT: Required request parameters are missing or
+        # invalid. Return value: List of Customers, or an empty list if there are no
+        # customers.
         # @param [String] parent
-        #   Required. The resource name of the reseller account from which to list
-        #   customers. The parent takes the format: accounts/`account_id`.
+        #   Required. The resource name of the reseller account to list customers from.
+        #   Parent uses the format: accounts/`account_id`.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of customers to return. The service may return
-        #   fewer than this value. If unspecified, at most 10 customers will be returned.
-        #   The maximum value is 50; values about 50 will be coerced to 50.
+        #   fewer than this value. If unspecified, returns at most 10 customers. The
+        #   maximum value is 50.
         # @param [String] page_token
-        #   Optional. A token identifying a page of results, if other than the first one.
-        #   Typically obtained via ListCustomersResponse.next_page_token of the previous
+        #   Optional. A token identifying a page of results other than the first page.
+        #   Obtained through ListCustomersResponse.next_page_token of the previous
         #   CloudChannelService.ListCustomers call.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -656,34 +645,32 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the Purchasable Offers for the following cases: * Offers that can be
-        # newly purchased for a customer * Offers that can be changed to, for an
-        # entitlement. Possible Error Codes: * PERMISSION_DENIED: If the customer doesn'
-        # t belong to the reseller * INVALID_ARGUMENT: Missing or invalid required
-        # parameters in the request.
+        # Lists the following: * Offers that you can purchase for a customer. * Offers
+        # that you can change for an entitlement. Possible error codes: *
+        # PERMISSION_DENIED: The customer doesn't belong to the reseller *
+        # INVALID_ARGUMENT: Required request parameters are missing or invalid.
         # @param [String] customer
-        #   Required. The resource name of the customer for which to list Offers. Format:
+        #   Required. The resource name of the customer to list Offers for. Format:
         #   accounts/`account_id`/customers/`customer_id`.
         # @param [String] change_offer_purchase_entitlement
         #   Required. Resource name of the entitlement. Format: accounts/`account_id`/
         #   customers/`customer_id`/entitlements/`entitlement_id`
         # @param [String] change_offer_purchase_new_sku
-        #   Optional. Resource name of the SKU that is being changed to. Should be
-        #   provided if upgrading or downgrading an entitlement. Format: products/`
-        #   product_id`/skus/`sku_id`
+        #   Optional. Resource name of the new target SKU. Provide this SKU when upgrading
+        #   or downgrading an entitlement. Format: products/`product_id`/skus/`sku_id`
         # @param [String] create_entitlement_purchase_sku
         #   Required. SKU that the result should be restricted to. Format: products/`
         #   product_id`/skus/`sku_id`.
         # @param [String] language_code
-        #   Optional. The BCP-47 language code, such as "en-US". If specified, the
-        #   response will be localized to the corresponding language code. Default is "en-
-        #   US".
+        #   Optional. The BCP-47 language code. For example, "en-US". The response will
+        #   localize in the corresponding language code, if specified. The default value
+        #   is "en-US".
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server might return fewer results than
-        #   requested. If unspecified, at most 100 Offers will be returned. The maximum
-        #   value is 1000; values above 1000 will be coerced to 1000.
+        #   requested. If unspecified, returns at most 100 Offers. The maximum value is
+        #   1000; the server will coerce values above 1000.
         # @param [String] page_token
-        #   Optional. A token identifying a page of results, if other than the first one.
+        #   Optional. A token for a page of results other than the first page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -717,14 +704,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the Purchasable SKUs for following cases: * SKUs that can be newly
-        # purchased for a customer * SKUs that can be upgraded/downgraded to, for an
-        # entitlement. Possible Error Codes: * PERMISSION_DENIED: If the customer doesn'
-        # t belong to the reseller * INVALID_ARGUMENT: Missing or invalid required
-        # parameters in the request.
+        # Lists the following: * SKUs that you can purchase for a customer * SKUs that
+        # you can upgrade or downgrade for an entitlement. Possible error codes: *
+        # PERMISSION_DENIED: The customer doesn't belong to the reseller. *
+        # INVALID_ARGUMENT: Required request parameters are missing or invalid.
         # @param [String] customer
-        #   Required. The resource name of the customer for which to list SKUs. Format:
-        #   accounts/`account_id`/customers/`customer_id`.
+        #   Required. The resource name of the customer to list SKUs for. Format: accounts/
+        #   `account_id`/customers/`customer_id`.
         # @param [String] change_offer_purchase_change_type
         #   Required. Change Type for the entitlement.
         # @param [String] change_offer_purchase_entitlement
@@ -734,15 +720,15 @@ module Google
         #   Required. List SKUs belonging to this Product. Format: products/`product_id`.
         #   Supports products/- to retrieve SKUs for all products.
         # @param [String] language_code
-        #   Optional. The BCP-47 language code, such as "en-US". If specified, the
-        #   response will be localized to the corresponding language code. Default is "en-
-        #   US".
+        #   Optional. The BCP-47 language code. For example, "en-US". The response will
+        #   localize in the corresponding language code, if specified. The default value
+        #   is "en-US".
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server might return fewer results than
-        #   requested. If unspecified, at most 100 SKUs will be returned. The maximum
-        #   value is 1000; values above 1000 will be coerced to 1000.
+        #   requested. If unspecified, returns at most 100 SKUs. The maximum value is 1000;
+        #   the server will coerce values above 1000.
         # @param [String] page_token
-        #   Optional. A token identifying a page of results, if other than the first one.
+        #   Optional. A token for a page of results other than the first page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -776,13 +762,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing Customer resource belonging to the reseller or distributor.
-        # Possible Error Codes: * PERMISSION_DENIED: If the reseller account making the
-        # request and the reseller account being queried for are different. *
-        # INVALID_ARGUMENT: Missing or invalid required parameters in the request. *
-        # NOT_FOUND: No Customer resource found for the name specified in the request.
-        # Return Value: If successful, the updated Customer resource, otherwise returns
-        # an error.
+        # Updates an existing Customer resource for the reseller or distributor.
+        # Possible error codes: * PERMISSION_DENIED: The reseller account making the
+        # request is different from the reseller account in the API request. *
+        # INVALID_ARGUMENT: Required request parameters are missing or invalid. *
+        # NOT_FOUND: No Customer resource found for the name in the request. Return
+        # value: The updated Customer resource.
         # @param [String] name
         #   Output only. Resource name of the customer. Format: accounts/`account_id`/
         #   customers/`customer_id`
@@ -820,18 +805,17 @@ module Google
         end
         
         # Creates a Cloud Identity for the given customer using the customer's
-        # information or the information provided here, if present. Possible Error Codes:
-        # * PERMISSION_DENIED: If the customer doesn't belong to the reseller. *
-        # INVALID_ARGUMENT: Missing or invalid required parameters in the request. *
-        # NOT_FOUND: If the customer is not found for the reseller. * ALREADY_EXISTS: If
-        # the customer's primary email already exists. In this case, retry after
-        # changing the customer's primary contact email. * INTERNAL: Any non-user error
-        # related to a technical issue in the backend. Contact Cloud Channel support in
-        # this case. * UNKNOWN: Any non-user error related to a technical issue in the
-        # backend. Contact Cloud Channel support in this case. Return Value: Long
-        # Running Operation ID. To get the results of the operation, call the
-        # GetOperation method of CloudChannelOperationsService. The Operation metadata
-        # will contain an instance of OperationMetadata.
+        # information, or the information provided here. Possible error codes: *
+        # PERMISSION_DENIED: The customer doesn't belong to the reseller. *
+        # INVALID_ARGUMENT: Required request parameters are missing or invalid. *
+        # NOT_FOUND: The customer was not found. * ALREADY_EXISTS: The customer's
+        # primary email already exists. Retry after changing the customer's primary
+        # contact email. * INTERNAL: Any non-user error related to a technical issue in
+        # the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error
+        # related to a technical issue in the backend. Contact Cloud Channel support.
+        # Return value: The ID of a long-running operation. To get the results of the
+        # operation, call the GetOperation method of CloudChannelOperationsService. The
+        # Operation metadata contains an instance of OperationMetadata.
         # @param [String] customer
         #   Required. Resource name of the customer. Format: accounts/`account_id`/
         #   customers/`customer_id`
@@ -865,29 +849,27 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Transfers customer entitlements to new reseller. Possible Error Codes: *
-        # PERMISSION_DENIED: If the customer doesn't belong to the reseller. *
-        # INVALID_ARGUMENT: Missing or invalid required parameters in the request. *
-        # NOT_FOUND: If the customer or offer resource is not found for the reseller. *
-        # ALREADY_EXISTS: If the SKU has been already transferred for the customer. *
-        # CONDITION_NOT_MET or FAILED_PRECONDITION: This failure can happen in the
-        # following cases: * Transferring a SKU that requires domain verification and
-        # the domain has not been verified. * Transferring an Add-On SKU like Vault or
-        # Drive without transferring the pre-requisite SKU, such as G Suite Basic. *
-        # Applicable only for developer accounts: reseller and resold domain must follow
-        # the domain naming convention as follows: * Domain names must start with goog-
-        # test. * Resold domain names must include the reseller domain. * All
-        # transferring entitlements must be specified. * INTERNAL: Any non-user error
-        # related to a technical issue in the backend. Please contact Cloud Channel
-        # Support in this case. * UNKNOWN: Any non-user error related to a technical
-        # issue in the backend. Please contact Cloud Channel Support in this case.
-        # Return Value: Long Running Operation ID. To get the results of the operation,
-        # call the GetOperation method of CloudChannelOperationsService. The Operation
-        # metadata will contain an instance of OperationMetadata.
+        # Transfers customer entitlements to new reseller. Possible error codes: *
+        # PERMISSION_DENIED: The customer doesn't belong to the reseller. *
+        # INVALID_ARGUMENT: Required request parameters are missing or invalid. *
+        # NOT_FOUND: The customer or offer resource was not found. * ALREADY_EXISTS: The
+        # SKU was already transferred for the customer. * CONDITION_NOT_MET or
+        # FAILED_PRECONDITION: * The SKU requires domain verification to transfer, but
+        # the domain is not verified. * An Add-On SKU (example, Vault or Drive) is
+        # missing the pre-requisite SKU (example, G Suite Basic). * (Developer accounts
+        # only) Reseller and resold domain must meet the following naming requirements: *
+        # Domain names must start with goog-test. * Domain names must include the
+        # reseller domain. * Specify all transferring entitlements. * INTERNAL: Any non-
+        # user error related to a technical issue in the backend. Contact Cloud Channel
+        # support. * UNKNOWN: Any non-user error related to a technical issue in the
+        # backend. Contact Cloud Channel support. Return value: The ID of a long-running
+        # operation. To get the results of the operation, call the GetOperation method
+        # of CloudChannelOperationsService. The Operation metadata will contain an
+        # instance of OperationMetadata.
         # @param [String] parent
-        #   Required. The resource name of reseller's customer account where the
-        #   entitlements transfer to. The parent takes the format: accounts/`account_id`/
-        #   customers/`customer_id`
+        #   Required. The resource name of the reseller's customer account that will
+        #   receive transferred entitlements. Parent uses the format: accounts/`account_id`
+        #   /customers/`customer_id`
         # @param [Google::Apis::CloudchannelV1::GoogleCloudChannelV1TransferEntitlementsRequest] google_cloud_channel_v1_transfer_entitlements_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -918,28 +900,27 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Transfers customer entitlements from current reseller to Google. Possible
-        # Error Codes: * PERMISSION_DENIED: If the customer doesn't belong to the
-        # reseller. * INVALID_ARGUMENT: Missing or invalid required parameters in the
-        # request. * NOT_FOUND: If the customer or offer resource is not found for the
-        # reseller. * ALREADY_EXISTS: If the SKU has been already transferred for the
-        # customer. * CONDITION_NOT_MET or FAILED_PRECONDITION: This failure can happen
-        # in the following cases: * Transferring a SKU that requires domain verification
-        # and the domain has not been verified. * Transferring an Add-On SKU like Vault
-        # or Drive without purchasing the pre-requisite SKU, such as G Suite Basic. *
-        # Applicable only for developer accounts: reseller and resold domain must follow
-        # the domain naming convention as follows: * Domain names must start with goog-
-        # test. * Resold domain names must include the reseller domain. * INTERNAL: Any
-        # non-user error related to a technical issue in the backend. Please contact
-        # Cloud Channel Support in this case. * UNKNOWN: Any non-user error related to a
-        # technical issue in the backend. Please contact Cloud Channel Support in this
-        # case. Return Value: Long Running Operation ID. To get the results of the
-        # operation, call the GetOperation method of CloudChannelOperationsService. The
-        # response will contain google.protobuf.Empty on success. The Operation metadata
-        # will contain an instance of OperationMetadata.
+        # Transfers customer entitlements from their current reseller to Google.
+        # Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the
+        # reseller. * INVALID_ARGUMENT: Required request parameters are missing or
+        # invalid. * NOT_FOUND: The customer or offer resource was not found. *
+        # ALREADY_EXISTS: The SKU was already transferred for the customer. *
+        # CONDITION_NOT_MET or FAILED_PRECONDITION: * The SKU requires domain
+        # verification to transfer, but the domain is not verified. * An Add-On SKU (
+        # example, Vault or Drive) is missing the pre-requisite SKU (example, G Suite
+        # Basic). * (Developer accounts only) Reseller and resold domain must meet the
+        # following naming requirements: * Domain names must start with goog-test. *
+        # Domain names must include the reseller domain. * INTERNAL: Any non-user error
+        # related to a technical issue in the backend. Contact Cloud Channel support. *
+        # UNKNOWN: Any non-user error related to a technical issue in the backend.
+        # Contact Cloud Channel support. Return value: The ID of a long-running
+        # operation. To get the results of the operation, call the GetOperation method
+        # of CloudChannelOperationsService. The response will contain google.protobuf.
+        # Empty on success. The Operation metadata will contain an instance of
+        # OperationMetadata.
         # @param [String] parent
-        #   Required. The resource name of reseller's customer account where the
-        #   entitlements transfer from. The parent takes the format: accounts/`account_id`/
+        #   Required. The resource name of the reseller's customer account where the
+        #   entitlements transfer from. Parent uses the format: accounts/`account_id`/
         #   customers/`customer_id`
         # @param [Google::Apis::CloudchannelV1::GoogleCloudChannelV1TransferEntitlementsToGoogleRequest] google_cloud_channel_v1_transfer_entitlements_to_google_request_object
         # @param [String] fields
@@ -971,27 +952,24 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Activates a previously suspended entitlement. The entitlement must be in a
-        # suspended state for it to be activated. Entitlements suspended for pending ToS
-        # acceptance can't be activated using this method. An entitlement activation is
-        # a long-running operation and can result in updates to the state of the
-        # customer entitlement. Possible Error Codes: * PERMISSION_DENIED: If the
-        # customer doesn't belong to the reseller or if the reseller account making the
-        # request and reseller account being queried for are different. *
-        # INVALID_ARGUMENT: Missing or invalid required parameters in the request. *
-        # NOT_FOUND: Entitlement resource not found. * SUSPENSION_NOT_RESELLER_INITIATED:
-        # Can't activate an entitlement that is pending TOS acceptance. Only reseller
-        # initiated suspensions can be activated. * NOT_SUSPENDED: Can't activate
-        # entitlements that are already in ACTIVE state. Can only activate suspended
-        # entitlements. * INTERNAL: Any non-user error related to a technical issue in
-        # the backend. In this case, contact Cloud Channel support. * UNKNOWN: Any non-
-        # user error related to a technical issue in the backend. In this case, contact
-        # Cloud Channel support. Return Value: Long Running Operation ID. To get the
-        # results of the operation, call the GetOperation method of
-        # CloudChannelOperationsService. The Operation metadata will contain an instance
-        # of OperationMetadata.
+        # Activates a previously suspended entitlement. Entitlements suspended for
+        # pending ToS acceptance can't be activated using this method. An entitlement
+        # activation is a long-running operation and it updates the state of the
+        # customer entitlement. Possible error codes: * PERMISSION_DENIED: The reseller
+        # account making the request is different from the reseller account in the API
+        # request. * INVALID_ARGUMENT: Required request parameters are missing or
+        # invalid. * NOT_FOUND: Entitlement resource not found. *
+        # SUSPENSION_NOT_RESELLER_INITIATED: Can only activate reseller-initiated
+        # suspensions and entitlements that have accepted the TOS. * NOT_SUSPENDED: Can
+        # only activate suspended entitlements not in an ACTIVE state. * INTERNAL: Any
+        # non-user error related to a technical issue in the backend. Contact Cloud
+        # Channel support. * UNKNOWN: Any non-user error related to a technical issue in
+        # the backend. Contact Cloud Channel support. Return value: The ID of a long-
+        # running operation. To get the results of the operation, call the GetOperation
+        # method of CloudChannelOperationsService. The Operation metadata will contain
+        # an instance of OperationMetadata.
         # @param [String] name
-        #   Required. The resource name of the entitlement to activate. The name takes the
+        #   Required. The resource name of the entitlement to activate. Name uses the
         #   format: accounts/`account_id`/customers/`customer_id`/entitlements/`
         #   entitlement_id`
         # @param [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ActivateEntitlementRequest] google_cloud_channel_v1_activate_entitlement_request_object
@@ -1025,26 +1003,23 @@ module Google
         end
         
         # Cancels a previously fulfilled entitlement. An entitlement cancellation is a
-        # long-running operation. Possible Error Codes: * PERMISSION_DENIED: If the
-        # customer doesn't belong to the reseller or if the reseller account making the
-        # request and reseller account being queried for are different. *
-        # FAILED_PRECONDITION: If there are any Google Cloud projects linked to the
-        # Google Cloud entitlement's Cloud Billing subaccount. * INVALID_ARGUMENT:
-        # Missing or invalid required parameters in the request. * NOT_FOUND:
-        # Entitlement resource not found. * DELETION_TYPE_NOT_ALLOWED: Cancel is only
-        # allowed for Google Workspace add-ons or entitlements for Google Cloud's
-        # development platform. * INTERNAL: Any non-user error related to a technical
-        # issue in the backend. In this case, contact Cloud Channel support. * UNKNOWN:
-        # Any non-user error related to a technical issue in the backend. In this case,
-        # contact Cloud Channel support. Return Value: Long Running Operation ID. To get
-        # the results of the operation, call the GetOperation method of
-        # CloudChannelOperationsService. The response will contain google.protobuf.Empty
-        # on success. The Operation metadata will contain an instance of
-        # OperationMetadata.
+        # long-running operation. Possible error codes: * PERMISSION_DENIED: The
+        # reseller account making the request is different from the reseller account in
+        # the API request. * FAILED_PRECONDITION: There are Google Cloud projects linked
+        # to the Google Cloud entitlement's Cloud Billing subaccount. * INVALID_ARGUMENT:
+        # Required request parameters are missing or invalid. * NOT_FOUND: Entitlement
+        # resource not found. * DELETION_TYPE_NOT_ALLOWED: Cancel is only allowed for
+        # Google Workspace add-ons, or entitlements for Google Cloud's development
+        # platform. * INTERNAL: Any non-user error related to a technical issue in the
+        # backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related
+        # to a technical issue in the backend. Contact Cloud Channel support. Return
+        # value: The ID of a long-running operation. To get the results of the operation,
+        # call the GetOperation method of CloudChannelOperationsService. The response
+        # will contain google.protobuf.Empty on success. The Operation metadata will
+        # contain an instance of OperationMetadata.
         # @param [String] name
-        #   Required. The resource name of the entitlement to cancel. The name takes the
-        #   format: accounts/`account_id`/customers/`customer_id`/entitlements/`
-        #   entitlement_id`
+        #   Required. The resource name of the entitlement to cancel. Name uses the format:
+        #   accounts/`account_id`/customers/`customer_id`/entitlements/`entitlement_id`
         # @param [Google::Apis::CloudchannelV1::GoogleCloudChannelV1CancelEntitlementRequest] google_cloud_channel_v1_cancel_entitlement_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1076,20 +1051,19 @@ module Google
         end
         
         # Updates the Offer for an existing customer entitlement. An entitlement update
-        # is a long-running operation and results in updates to the entitlement as a
-        # result of fulfillment. Possible Error Codes: * PERMISSION_DENIED: If the
-        # customer doesn't belong to the reseller. * INVALID_ARGUMENT: Missing or
-        # invalid required parameters in the request. * NOT_FOUND: Offer or Entitlement
-        # resource not found. * INTERNAL: Any non-user error related to a technical
-        # issue in the backend. In this case, contact Cloud Channel support. * UNKNOWN:
-        # Any non-user error related to a technical issue in the backend. In this case,
-        # contact Cloud Channel support. Return Value: Long Running Operation ID. To get
-        # the results of the operation, call the GetOperation method of
-        # CloudChannelOperationsService. The Operation metadata will contain an instance
-        # of OperationMetadata.
+        # is a long-running operation and it updates the entitlement as a result of
+        # fulfillment. Possible error codes: * PERMISSION_DENIED: The customer doesn't
+        # belong to the reseller. * INVALID_ARGUMENT: Required request parameters are
+        # missing or invalid. * NOT_FOUND: Offer or Entitlement resource not found. *
+        # INTERNAL: Any non-user error related to a technical issue in the backend.
+        # Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a
+        # technical issue in the backend. Contact Cloud Channel support. Return value:
+        # The ID of a long-running operation. To get the results of the operation, call
+        # the GetOperation method of CloudChannelOperationsService. The Operation
+        # metadata will contain an instance of OperationMetadata.
         # @param [String] name
-        #   Required. The name of the entitlement to update. Format: accounts/`account_id`/
-        #   customers/`customer_id`/entitlements/`entitlement_id`
+        #   Required. The resource name of the entitlement to update. Name uses the format:
+        #   accounts/`account_id`/customers/`customer_id`/entitlements/`entitlement_id`
         # @param [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ChangeOfferRequest] google_cloud_channel_v1_change_offer_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1120,22 +1094,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Change parameters of the entitlement An entitlement parameters update is a
-        # long-running operation and results in updates to the entitlement as a result
-        # of fulfillment. Possible Error Codes: * PERMISSION_DENIED: If the customer
-        # doesn't belong to the reseller. * INVALID_ARGUMENT: Missing or invalid
-        # required parameters in the request. For example, if the number of seats being
-        # changed to is greater than the allowed number of max seats for the resource.
-        # Or decreasing seats for a commitment based plan. * NOT_FOUND: Entitlement
-        # resource not found. * INTERNAL: Any non-user error related to a technical
-        # issue in the backend. In this case, contact Cloud Channel support. * UNKNOWN:
-        # Any non-user error related to a technical issue in the backend. In this case,
-        # contact Cloud Channel support. Return Value: Long Running Operation ID. To get
-        # the results of the operation, call the GetOperation method of
+        # Change parameters of the entitlement. An entitlement update is a long-running
+        # operation and it updates the entitlement as a result of fulfillment. Possible
+        # error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller.
+        # * INVALID_ARGUMENT: Required request parameters are missing or invalid. For
+        # example, the number of seats being changed is greater than the allowed number
+        # of max seats, or decreasing seats for a commitment based plan. * NOT_FOUND:
+        # Entitlement resource not found. * INTERNAL: Any non-user error related to a
+        # technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any
+        # non-user error related to a technical issue in the backend. Contact Cloud
+        # Channel support. Return value: The ID of a long-running operation. To get the
+        # results of the operation, call the GetOperation method of
         # CloudChannelOperationsService. The Operation metadata will contain an instance
         # of OperationMetadata.
         # @param [String] name
-        #   Required. The name of the entitlement to update. The name takes the format:
+        #   Required. The name of the entitlement to update. Name uses the format:
         #   accounts/`account_id`/customers/`customer_id`/entitlements/`entitlement_id`
         # @param [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ChangeParametersRequest] google_cloud_channel_v1_change_parameters_request_object
         # @param [String] fields
@@ -1168,21 +1141,20 @@ module Google
         end
         
         # Updates the renewal settings for an existing customer entitlement. An
-        # entitlement update is a long-running operation and results in updates to the
-        # entitlement as a result of fulfillment. Possible Error Codes: *
-        # PERMISSION_DENIED: If the customer doesn't belong to the reseller. *
-        # INVALID_ARGUMENT: Missing or invalid required parameters in the request. *
-        # NOT_FOUND: Entitlement resource not found. * NOT_COMMITMENT_PLAN: Renewal
-        # Settings are only applicable for a commitment plan. Can't enable or disable
-        # renewal for non-commitment plans. * INTERNAL: Any non user error related to a
-        # technical issue in the backend. In this case, contact Cloud Channel support. *
-        # UNKNOWN: Any non user error related to a technical issue in the backend. In
-        # this case, contact Cloud Channel support. Return Value: Long Running Operation
-        # ID. To get the results of the operation, call the GetOperation method of
-        # CloudChannelOperationsService. The Operation metadata will contain an instance
-        # of OperationMetadata.
+        # entitlement update is a long-running operation and it updates the entitlement
+        # as a result of fulfillment. Possible error codes: * PERMISSION_DENIED: The
+        # customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request
+        # parameters are missing or invalid. * NOT_FOUND: Entitlement resource not found.
+        # * NOT_COMMITMENT_PLAN: Renewal Settings are only applicable for a commitment
+        # plan. Can't enable or disable renewals for non-commitment plans. * INTERNAL:
+        # Any non-user error related to a technical issue in the backend. Contact Cloud
+        # Channel support. * UNKNOWN: Any non-user error related to a technical issue in
+        # the backend. Contact Cloud Channel support. Return value: The ID of a long-
+        # running operation. To get the results of the operation, call the GetOperation
+        # method of CloudChannelOperationsService. The Operation metadata will contain
+        # an instance of OperationMetadata.
         # @param [String] name
-        #   Required. The name of the entitlement to update. The name takes the format:
+        #   Required. The name of the entitlement to update. Name uses the format:
         #   accounts/`account_id`/customers/`customer_id`/entitlements/`entitlement_id`
         # @param [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ChangeRenewalSettingsRequest] google_cloud_channel_v1_change_renewal_settings_request_object
         # @param [String] fields
@@ -1214,35 +1186,31 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an entitlement for a customer. Possible Error Codes: *
-        # PERMISSION_DENIED: If the customer doesn't belong to the reseller. *
-        # INVALID_ARGUMENT: It can happen in below scenarios - * Missing or invalid
-        # required parameters in the request. * Cannot purchase an entitlement if there
-        # is already an entitlement for customer, for a SKU from the same product family.
-        # * INVALID_VALUE: Offer passed in isn't valid. Make sure OfferId is valid. If
-        # it is valid, then contact Google Channel support for further troubleshooting. *
-        # NOT_FOUND: If the customer or offer resource is not found for the reseller. *
-        # ALREADY_EXISTS: This failure can happen in the following cases: * If the SKU
-        # has been already purchased for the customer. * If the customer's primary email
-        # already exists. In this case retry after changing the customer's primary
-        # contact email. * CONDITION_NOT_MET or FAILED_PRECONDITION: This failure can
-        # happen in the following cases: * Purchasing a SKU that requires domain
-        # verification and the domain has not been verified. * Purchasing an Add-On SKU
-        # like Vault or Drive without purchasing the pre-requisite SKU, such as Google
-        # Workspace Business Starter. * Applicable only for developer accounts: reseller
-        # and resold domain. Must meet the following domain naming requirements: *
-        # Domain names must start with goog-test. * Resold domain names must include the
-        # reseller domain. * INTERNAL: Any non-user error related to a technical issue
-        # in the backend. Contact Cloud Channel Support in this case. * UNKNOWN: Any non-
-        # user error related to a technical issue in the backend. Contact Cloud Channel
-        # Support in this case. Return Value: Long Running Operation ID. To get the
-        # results of the operation, call the GetOperation method of
-        # CloudChannelOperationsService. The Operation metadata will contain an instance
-        # of OperationMetadata.
+        # Creates an entitlement for a customer. Possible error codes: *
+        # PERMISSION_DENIED: The customer doesn't belong to the reseller. *
+        # INVALID_ARGUMENT: * Required request parameters are missing or invalid. *
+        # There is already a customer entitlement for a SKU from the same product family.
+        # * INVALID_VALUE: Make sure the OfferId is valid. If it is, contact Google
+        # Channel support for further troubleshooting. * NOT_FOUND: The customer or
+        # offer resource was not found. * ALREADY_EXISTS: * The SKU was already
+        # purchased for the customer. * The customer's primary email already exists.
+        # Retry after changing the customer's primary contact email. * CONDITION_NOT_MET
+        # or FAILED_PRECONDITION: * The domain required for purchasing a SKU has not
+        # been verified. * A pre-requisite SKU required to purchase an Add-On SKU is
+        # missing. For example, Google Workspace Business Starter is required to
+        # purchase Vault or Drive. * (Developer accounts only) Reseller and resold
+        # domain must meet the following naming requirements: * Domain names must start
+        # with goog-test. * Domain names must include the reseller domain. * INTERNAL:
+        # Any non-user error related to a technical issue in the backend. Contact Cloud
+        # Channel support. * UNKNOWN: Any non-user error related to a technical issue in
+        # the backend. Contact Cloud Channel support. Return value: The ID of a long-
+        # running operation. To get the results of the operation, call the GetOperation
+        # method of CloudChannelOperationsService. The Operation metadata will contain
+        # an instance of OperationMetadata.
         # @param [String] parent
-        #   Required. The resource name of reseller's customer account in which to create
-        #   the entitlement. The parent takes the format: accounts/`account_id`/customers/`
-        #   customer_id`
+        #   Required. The resource name of the reseller's customer account in which to
+        #   create the entitlement. Parent uses the format: accounts/`account_id`/
+        #   customers/`customer_id`
         # @param [Google::Apis::CloudchannelV1::GoogleCloudChannelV1CreateEntitlementRequest] google_cloud_channel_v1_create_entitlement_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1273,14 +1241,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a requested Entitlement resource. Possible Error Codes: *
-        # PERMISSION_DENIED: If the customer doesn't belong to the reseller. *
-        # INVALID_ARGUMENT: Missing or invalid required parameters in the request. *
-        # NOT_FOUND: If the entitlement is not found for the customer. Return Value: If
-        # found, the requested Entitlement resource, otherwise returns an error.
+        # Returns a requested Entitlement resource. Possible error codes: *
+        # PERMISSION_DENIED: The customer doesn't belong to the reseller. *
+        # INVALID_ARGUMENT: Required request parameters are missing or invalid. *
+        # NOT_FOUND: The customer entitlement was not found. Return value: The requested
+        # Entitlement resource.
         # @param [String] name
-        #   Required. The resource name of the entitlement to retrieve. The name takes the
-        #   format: accounts/`account_id`/customers/`customer_id`/entitlements/`id`
+        #   Required. The resource name of the entitlement to retrieve. Name uses the
+        #   format: accounts/`account_id`/customers/`customer_id`/entitlements/`
+        #   entitlement_id`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1308,23 +1277,22 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List Entitlements belonging to a customer. Possible Error Codes: *
-        # PERMISSION_DENIED: If the customer doesn't belong to the reseller. *
-        # INVALID_ARGUMENT: Missing or invalid required parameters in the request.
-        # Return Value: List of Entitlements belonging to the customer, or empty list if
-        # there are none.
+        # Lists Entitlements belonging to a customer. Possible error codes: *
+        # PERMISSION_DENIED: The customer doesn't belong to the reseller. *
+        # INVALID_ARGUMENT: Required request parameters are missing or invalid. Return
+        # value: A list of the customer's Entitlements.
         # @param [String] parent
-        #   Required. The resource name of the reseller's customer account for which to
-        #   list entitlements. The parent takes the format: accounts/`account_id`/
-        #   customers/`customer_id`
+        #   Required. The resource name of the reseller's customer account to list
+        #   entitlements for. Parent uses the format: accounts/`account_id`/customers/`
+        #   customer_id`
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server might return fewer results than
-        #   requested. If unspecified, at most 50 entitlements will be returned. The
-        #   maximum value is 100; values above 100 will be coerced to 100.
+        #   requested. If unspecified, return at most 50 entitlements. The maximum value
+        #   is 100; the server will coerce values above 100.
         # @param [String] page_token
-        #   Optional. A token identifying a page of results, if other than the first one.
-        #   Typically obtained via ListEntitlementsResponse.next_page_token of the
-        #   previous CloudChannelService.ListEntitlements call.
+        #   Optional. A token for a page of results other than the first page. Obtained
+        #   using ListEntitlementsResponse.next_page_token of the previous
+        #   CloudChannelService.ListEntitlements call.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1355,23 +1323,22 @@ module Google
         end
         
         # Starts paid service for a trial entitlement. Starts paid service for a trial
-        # entitlement immediately. This method is only applicable if a plan has already
-        # been set up for a trial entitlement but has some trial days remaining.
-        # Possible Error Codes: * PERMISSION_DENIED: If the customer doesn't belong to
-        # the reseller. * INVALID_ARGUMENT: Missing or invalid required parameters in
-        # the request. * NOT_FOUND: Entitlement resource not found. *
-        # FAILED_PRECONDITION/NOT_IN_TRIAL: This method only works for entitlement on
-        # trial plans. * INTERNAL: Any non-user error related to a technical issue in
-        # the backend. In this case, contact Cloud Channel support. * UNKNOWN: Any non-
-        # user error related to a technical issue in the backend. In this case, contact
-        # Cloud Channel support. Return Value: Long Running Operation ID. To get the
-        # results of the operation, call the GetOperation method of
-        # CloudChannelOperationsService. The Operation metadata will contain an instance
-        # of OperationMetadata.
+        # entitlement immediately. This method is only applicable if a plan is set up
+        # for a trial entitlement but has some trial days remaining. Possible error
+        # codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. *
+        # INVALID_ARGUMENT: Required request parameters are missing or invalid. *
+        # NOT_FOUND: Entitlement resource not found. * FAILED_PRECONDITION/NOT_IN_TRIAL:
+        # This method only works for entitlement on trial plans. * INTERNAL: Any non-
+        # user error related to a technical issue in the backend. Contact Cloud Channel
+        # support. * UNKNOWN: Any non-user error related to a technical issue in the
+        # backend. Contact Cloud Channel support. Return value: The ID of a long-running
+        # operation. To get the results of the operation, call the GetOperation method
+        # of CloudChannelOperationsService. The Operation metadata will contain an
+        # instance of OperationMetadata.
         # @param [String] name
-        #   Required. The name of the entitlement for which paid service is being started.
-        #   The name takes the format: accounts/`account_id`/customers/`customer_id`/
-        #   entitlements/`entitlement_id`
+        #   Required. The name of the entitlement to start a paid service for. Name uses
+        #   the format: accounts/`account_id`/customers/`customer_id`/entitlements/`
+        #   entitlement_id`
         # @param [Google::Apis::CloudchannelV1::GoogleCloudChannelV1StartPaidServiceRequest] google_cloud_channel_v1_start_paid_service_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1403,18 +1370,18 @@ module Google
         end
         
         # Suspends a previously fulfilled entitlement. An entitlement suspension is a
-        # long-running operation. Possible Error Codes: * PERMISSION_DENIED: If the
-        # customer doesn't belong to the reseller. * INVALID_ARGUMENT: Missing or
-        # invalid required parameters in the request. * NOT_FOUND: Entitlement resource
-        # not found. * NOT_ACTIVE: Entitlement is not active. * INTERNAL: Any non-user
-        # error related to a technical issue in the backend. In this case, contact Cloud
-        # Channel support. * UNKNOWN: Any non-user error related to a technical issue in
-        # the backend. In this case, contact Cloud Channel support. Return Value: Long
-        # Running Operation ID. To get the results of the operation, call the
-        # GetOperation method of CloudChannelOperationsService. The Operation metadata
-        # will contain an instance of OperationMetadata.
+        # long-running operation. Possible error codes: * PERMISSION_DENIED: The
+        # customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request
+        # parameters are missing or invalid. * NOT_FOUND: Entitlement resource not found.
+        # * NOT_ACTIVE: Entitlement is not active. * INTERNAL: Any non-user error
+        # related to a technical issue in the backend. Contact Cloud Channel support. *
+        # UNKNOWN: Any non-user error related to a technical issue in the backend.
+        # Contact Cloud Channel support. Return value: The ID of a long-running
+        # operation. To get the results of the operation, call the GetOperation method
+        # of CloudChannelOperationsService. The Operation metadata will contain an
+        # instance of OperationMetadata.
         # @param [String] name
-        #   Required. The resource name of the entitlement to suspend. The name takes the
+        #   Required. The resource name of the entitlement to suspend. Name uses the
         #   format: accounts/`account_id`/customers/`customer_id`/entitlements/`
         #   entitlement_id`
         # @param [Google::Apis::CloudchannelV1::GoogleCloudChannelV1SuspendEntitlementRequest] google_cloud_channel_v1_suspend_entitlement_request_object
@@ -1447,26 +1414,26 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the Offers the reseller can sell. Possible Error Codes: *
-        # INVALID_ARGUMENT: Missing or invalid required parameters in the request.
+        # Lists the Offers the reseller can sell. Possible error codes: *
+        # INVALID_ARGUMENT: Required request parameters are missing or invalid.
         # @param [String] parent
         #   Required. The resource name of the reseller account from which to list Offers.
-        #   The parent takes the format: accounts/`account_id`.
+        #   Parent uses the format: accounts/`account_id`.
         # @param [String] filter
         #   Optional. The expression to filter results by name (name of the Offer), sku.
-        #   name (name of the SKU) or sku.product.name (name of the Product). Example 1:
+        #   name (name of the SKU), or sku.product.name (name of the Product). Example 1:
         #   sku.product.name=products/p1 AND sku.name!=products/p1/skus/s1 Example 2: name=
         #   accounts/a1/offers/o1
         # @param [String] language_code
-        #   Optional. The BCP-47 language code, such as "en-US". If specified, the
-        #   response will be localized to the corresponding language code. Default is "en-
-        #   US".
+        #   Optional. The BCP-47 language code. For example, "en-US". The response will
+        #   localize in the corresponding language code, if specified. The default value
+        #   is "en-US".
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server might return fewer results than
-        #   requested. If unspecified, at most 500 Offers will be returned. The maximum
-        #   value is 1000; values above 1000 will be coerced to 1000.
+        #   requested. If unspecified, returns at most 500 Offers. The maximum value is
+        #   1000; the server will coerce values above 1000.
         # @param [String] page_token
-        #   Optional. A token identifying a page of results, if other than the first one.
+        #   Optional. A token for a page of results other than the first page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1648,21 +1615,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the Products the reseller is authorized to sell. Possible Error Codes: *
-        # INVALID_ARGUMENT: Missing or invalid required parameters in the request.
+        # Lists the Products the reseller is authorized to sell. Possible error codes: *
+        # INVALID_ARGUMENT: Required request parameters are missing or invalid.
         # @param [String] account
         #   Required. The resource name of the reseller account. Format: accounts/`
         #   account_id`.
         # @param [String] language_code
-        #   Optional. The BCP-47 language code, such as "en-US". If specified, the
-        #   response will be localized to the corresponding language code. Default is "en-
-        #   US".
+        #   Optional. The BCP-47 language code. For example, "en-US". The response will
+        #   localize in the corresponding language code, if specified. The default value
+        #   is "en-US".
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server might return fewer results than
-        #   requested. If unspecified, at most 100 Products will be returned. The maximum
-        #   value is 1000; values above 1000 will be coerced to 1000.
+        #   requested. If unspecified, returns at most 100 Products. The maximum value is
+        #   1000; the server will coerce values above 1000.
         # @param [String] page_token
-        #   Optional. A token identifying a page of results, if other than the first one.
+        #   Optional. A token for a page of results other than the first page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1694,25 +1661,24 @@ module Google
         end
         
         # Lists the SKUs for a product the reseller is authorized to sell. Possible
-        # Error Codes: * INVALID_ARGUMENT: Missing or invalid required parameters in the
-        # request.
+        # error codes: * INVALID_ARGUMENT: Required request parameters are missing or
+        # invalid.
         # @param [String] parent
-        #   Required. The resource name of the Product for which to list SKUs. The parent
-        #   takes the format: products/`product_id`. Supports products/- to retrieve SKUs
-        #   for all products.
+        #   Required. The resource name of the Product to list SKUs for. Parent uses the
+        #   format: products/`product_id`. Supports products/- to retrieve SKUs for all
+        #   products.
         # @param [String] account
         #   Required. Resource name of the reseller. Format: accounts/`account_id`.
         # @param [String] language_code
-        #   Optional. The BCP-47 language code, such as "en-US". If specified, the
-        #   response will be localized to the corresponding language code. Default is "en-
-        #   US".
+        #   Optional. The BCP-47 language code. For example, "en-US". The response will
+        #   localize in the corresponding language code, if specified. The default value
+        #   is "en-US".
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server might return fewer results than
-        #   requested. If unspecified, at most 100 SKUs will be returned. The maximum
-        #   value is 1000; values above 1000 will be coerced to 1000.
+        #   requested. If unspecified, returns at most 100 SKUs. The maximum value is 1000;
+        #   the server will coerce values above 1000.
         # @param [String] page_token
-        #   Optional. A token identifying a page of results, if other than the first one.
-        #   Optional.
+        #   Optional. A token for a page of results other than the first page. Optional.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
