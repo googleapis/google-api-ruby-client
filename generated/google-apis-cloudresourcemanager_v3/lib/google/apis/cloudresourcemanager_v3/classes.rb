@@ -242,6 +242,68 @@ module Google
         end
       end
       
+      # Metadata pertaining to the Folder creation process.
+      class CreateFolderMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the folder.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The resource name of the folder or organization we are creating the folder
+        # under.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
+      # A status object which is used as the `metadata` field for the Operation
+      # returned by CreateProject. It provides insight for when significant phases of
+      # Project creation have completed.
+      class CreateProjectMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Creation time of the project creation workflow.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # True if the project can be retrieved using GetProject. No other operations on
+        # the project are guaranteed to work until the project creation is complete.
+        # Corresponds to the JSON property `gettable`
+        # @return [Boolean]
+        attr_accessor :gettable
+        alias_method :gettable?, :gettable
+      
+        # True if the project creation process is complete.
+        # Corresponds to the JSON property `ready`
+        # @return [Boolean]
+        attr_accessor :ready
+        alias_method :ready?, :ready
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @gettable = args[:gettable] if args.key?(:gettable)
+          @ready = args[:ready] if args.key?(:ready)
+        end
+      end
+      
       # Runtime operation information for creating a TagKey.
       class CreateTagKeyMetadata
         include Google::Apis::Core::Hashable
@@ -257,6 +319,48 @@ module Google
       
       # Runtime operation information for creating a TagValue.
       class CreateTagValueMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A status object which is used as the `metadata` field for the Operation
+      # returned by DeleteFolder.
+      class DeleteFolderMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A status object which is used as the `metadata` field for the Operation
+      # returned by DeleteOrganization.
+      class DeleteOrganizationMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A status object which is used as the `metadata` field for the Operation
+      # returned by DeleteProject.
+      class DeleteProjectMetadata
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -362,6 +466,78 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # A Folder in an Organization's resource hierarchy, used to organize that
+      # Organization's resources.
+      class Folder
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when the Folder was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Timestamp when the Folder was requested to be deleted.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # The folder's display name. A folder's display name must be unique amongst its
+        # siblings, e.g. no two folders with the same parent can share the same display
+        # name. The display name must start and end with a letter or digit, may contain
+        # letters, digits, spaces, hyphens and underscores and can be no longer than 30
+        # characters. This is captured by the regular expression: `[\p`L`\p`N`]([\p`L`\p`
+        # N`_- ]`0,28`[\p`L`\p`N`])?`.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. A checksum computed by the server based on the current value of
+        # the Folder resource. This may be sent on update and delete requests to ensure
+        # the client has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. The resource name of the Folder. Its format is `folders/`
+        # folder_id``, for example: "folders/1234".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The Folder's parent's resource name. Updates to the folder's parent
+        # must be performed via MoveFolder.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # Output only. The lifecycle state of the folder. Updates to the state must be
+        # performed via DeleteFolder and UndeleteFolder.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Timestamp when the Folder was last modified.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @parent = args[:parent] if args.key?(:parent)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -525,6 +701,33 @@ module Google
         end
       end
       
+      # The ListFolders response message.
+      class ListFoldersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A possibly paginated list of Folders that are direct descendants of the
+        # specified parent resource.
+        # Corresponds to the JSON property `folders`
+        # @return [Array<Google::Apis::CloudresourcemanagerV3::Folder>]
+        attr_accessor :folders
+      
+        # A pagination token returned from a previous call to `ListFolders` that
+        # indicates from where listing should continue.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @folders = args[:folders] if args.key?(:folders)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response message for Liens.ListLiens.
       class ListLiensResponse
         include Google::Apis::Core::Hashable
@@ -548,6 +751,40 @@ module Google
         def update!(**args)
           @liens = args[:liens] if args.key?(:liens)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # A page of the response received from the ListProjects method. A paginated
+      # response where more pages are available has `next_page_token` set. This token
+      # can be used in a subsequent request to retrieve the next request page. NOTE: A
+      # response may contain fewer elements than the request `page_size` and still
+      # have a `next_page_token`.
+      class ListProjectsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Pagination token. If the result set is too large to fit in a single response,
+        # this token is returned. It encodes the position of the current result cursor.
+        # Feeding this value into a new list request with the `page_token` parameter
+        # gives the next page of the results. When `next_page_token` is not filled in,
+        # there is no next page and the list returned is the last page in the result set.
+        # Pagination tokens have a limited lifetime.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of Projects under the parent. This list can be paginated.
+        # Corresponds to the JSON property `projects`
+        # @return [Array<Google::Apis::CloudresourcemanagerV3::Project>]
+        attr_accessor :projects
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @projects = args[:projects] if args.key?(:projects)
         end
       end
       
@@ -632,6 +869,91 @@ module Google
         end
       end
       
+      # Metadata pertaining to the Folder move process.
+      class MoveFolderMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the folder or organization to move the folder to.
+        # Corresponds to the JSON property `destinationParent`
+        # @return [String]
+        attr_accessor :destination_parent
+      
+        # The display name of the folder.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The resource name of the folder's parent.
+        # Corresponds to the JSON property `sourceParent`
+        # @return [String]
+        attr_accessor :source_parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_parent = args[:destination_parent] if args.key?(:destination_parent)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @source_parent = args[:source_parent] if args.key?(:source_parent)
+        end
+      end
+      
+      # The MoveFolder request message.
+      class MoveFolderRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name of the Folder or Organization to reparent the
+        # folder under. Must be of the form `folders/`folder_id`` or `organizations/`
+        # org_id``.
+        # Corresponds to the JSON property `destinationParent`
+        # @return [String]
+        attr_accessor :destination_parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_parent = args[:destination_parent] if args.key?(:destination_parent)
+        end
+      end
+      
+      # A status object which is used as the `metadata` field for the Operation
+      # returned by MoveProject.
+      class MoveProjectMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The request sent to MoveProject method.
+      class MoveProjectRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The new parent to move the Project under.
+        # Corresponds to the JSON property `destinationParent`
+        # @return [String]
+        attr_accessor :destination_parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_parent = args[:destination_parent] if args.key?(:destination_parent)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -691,6 +1013,75 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # The root node in the resource hierarchy to which a particular entity's (e.g.,
+      # company) resources belong.
+      class Organization
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when the Organization was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Timestamp when the Organization was requested for deletion.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Immutable. The G Suite / Workspace customer id used in the Directory API.
+        # Corresponds to the JSON property `directoryCustomerId`
+        # @return [String]
+        attr_accessor :directory_customer_id
+      
+        # Output only. A human-readable string that refers to the Organization in the
+        # GCP Console UI. This string is set by the server and cannot be changed. The
+        # string will be set to the primary domain (for example, "google.com") of the G
+        # Suite customer that owns the organization.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. A checksum computed by the server based on the current value of
+        # the Organization resource. This may be sent on update and delete requests to
+        # ensure the client has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. The resource name of the organization. This is the organization's
+        # relative path in the API. Its format is "organizations/[organization_id]". For
+        # example, "organizations/1234".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The organization's current lifecycle state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Timestamp when the Organization was last modified.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @directory_customer_id = args[:directory_customer_id] if args.key?(:directory_customer_id)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -784,6 +1175,96 @@ module Google
         end
       end
       
+      # A Project is a high-level Google Cloud Platform entity. It is a container for
+      # ACLs, APIs, App Engine Apps, VMs, and other Google Cloud Platform resources.
+      class Project
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Creation time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time at which this resource was requested for deletion.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Optional. A user-assigned display name of the Project. When present it must be
+        # between 4 to 30 characters. Allowed characters are: lowercase and uppercase
+        # letters, numbers, hyphen, single-quote, double-quote, space, and exclamation
+        # point. Example: `My Project`
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. A checksum computed by the server based on the current value of
+        # the Project resource. This may be sent on update and delete requests to ensure
+        # the client has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. The labels associated with this Project. Label keys must be between
+        # 1 and 63 characters long and must conform to the following regular expression:
+        # \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. Label values must be between 0 and 63
+        # characters long and must conform to the regular expression (\[a-z\](\[-a-z0-9\]
+        # *\[a-z0-9\])?)?. No more than 256 labels can be associated with a given
+        # resource. Clients should store labels in a representation such as JSON that
+        # does not depend on specific characters being disallowed. Example: `"
+        # myBusinessDimension" : "businessValue"`
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The unique resource name of the Project. It is an int64 generated
+        # number prefixed by "projects/". Example: `projects/415104041262`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. A reference to a parent Resource. eg., `organizations/123` or `
+        # folders/876`.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # Immutable. The unique, user-assigned id of the Project. It must be 6 to 30
+        # lowercase ASCII letters, digits, or hyphens. It must start with a letter.
+        # Trailing hyphens are prohibited. Example: `tokyo-rain-123`
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Output only. The Project lifecycle state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The most recent time this resource was modified.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @parent = args[:parent] if args.key?(:parent)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # A status object which is used as the `metadata` field for the Operation
       # returned by CreateProject. It provides insight for when significant phases of
       # Project creation have completed.
@@ -817,6 +1298,94 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @gettable = args[:gettable] if args.key?(:gettable)
           @ready = args[:ready] if args.key?(:ready)
+        end
+      end
+      
+      # The response message for searching folders.
+      class SearchFoldersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A possibly paginated folder search results. the specified parent resource.
+        # Corresponds to the JSON property `folders`
+        # @return [Array<Google::Apis::CloudresourcemanagerV3::Folder>]
+        attr_accessor :folders
+      
+        # A pagination token returned from a previous call to `SearchFolders` that
+        # indicates from where searching should continue.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @folders = args[:folders] if args.key?(:folders)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response returned from the `SearchOrganizations` method.
+      class SearchOrganizationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A pagination token to be used to retrieve the next page of results. If the
+        # result is too large to fit within the page size specified in the request, this
+        # field will be set with a token that can be used to fetch the next page of
+        # results. If this field is empty, it indicates that this response contains the
+        # last page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of Organizations that matched the search query, possibly paginated.
+        # Corresponds to the JSON property `organizations`
+        # @return [Array<Google::Apis::CloudresourcemanagerV3::Organization>]
+        attr_accessor :organizations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @organizations = args[:organizations] if args.key?(:organizations)
+        end
+      end
+      
+      # A page of the response received from the SearchProjects method. A paginated
+      # response where more pages are available has `next_page_token` set. This token
+      # can be used in a subsequent request to retrieve the next request page.
+      class SearchProjectsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Pagination token. If the result set is too large to fit in a single response,
+        # this token is returned. It encodes the position of the current result cursor.
+        # Feeding this value into a new list request with the `page_token` parameter
+        # gives the next page of the results. When `next_page_token` is not filled in,
+        # there is no next page and the list returned is the last page in the result set.
+        # Pagination tokens have a limited lifetime.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of Projects that matched the list filter query. This list can be
+        # paginated.
+        # Corresponds to the JSON property `projects`
+        # @return [Array<Google::Apis::CloudresourcemanagerV3::Project>]
+        attr_accessor :projects
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @projects = args[:projects] if args.key?(:projects)
         end
       end
       
@@ -1124,6 +1693,102 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # A status object which is used as the `metadata` field for the Operation
+      # returned by UndeleteFolder.
+      class UndeleteFolderMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The UndeleteFolder request message.
+      class UndeleteFolderRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A status object which is used as the `metadata` field for the Operation
+      # returned by UndeleteOrganization.
+      class UndeleteOrganizationMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A status object which is used as the `metadata` field for the Operation
+      # returned by UndeleteProject.
+      class UndeleteProjectMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The request sent to the UndeleteProject method.
+      class UndeleteProjectRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A status object which is used as the `metadata` field for the Operation
+      # returned by UpdateFolder.
+      class UpdateFolderMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A status object which is used as the `metadata` field for the Operation
+      # returned by UpdateProject.
+      class UpdateProjectMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

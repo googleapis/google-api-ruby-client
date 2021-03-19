@@ -52,6 +52,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateFolderMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateProjectMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateTagKeyMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -59,6 +71,24 @@ module Google
       end
       
       class CreateTagValueMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteFolderMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteOrganizationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteProjectMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -83,6 +113,12 @@ module Google
       end
       
       class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Folder
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -118,7 +154,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListFoldersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListLiensResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListProjectsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -142,7 +190,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MoveFolderMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MoveFolderRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MoveProjectMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MoveProjectRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Organization
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -154,7 +232,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Project
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProjectCreationStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchFoldersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchOrganizationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchProjectsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -197,6 +299,48 @@ module Google
       end
       
       class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UndeleteFolderMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UndeleteFolderRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UndeleteOrganizationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UndeleteProjectMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UndeleteProjectRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateFolderMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateProjectMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -261,6 +405,23 @@ module Google
         end
       end
       
+      class CreateFolderMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :parent, as: 'parent'
+        end
+      end
+      
+      class CreateProjectMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :gettable, as: 'gettable'
+          property :ready, as: 'ready'
+        end
+      end
+      
       class CreateTagKeyMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -268,6 +429,24 @@ module Google
       end
       
       class CreateTagValueMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DeleteFolderMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DeleteOrganizationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DeleteProjectMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -298,6 +477,20 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class Folder
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :parent, as: 'parent'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -345,12 +538,30 @@ module Google
         end
       end
       
+      class ListFoldersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :folders, as: 'folders', class: Google::Apis::CloudresourcemanagerV3::Folder, decorator: Google::Apis::CloudresourcemanagerV3::Folder::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListLiensResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :liens, as: 'liens', class: Google::Apis::CloudresourcemanagerV3::Lien, decorator: Google::Apis::CloudresourcemanagerV3::Lien::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListProjectsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :projects, as: 'projects', class: Google::Apis::CloudresourcemanagerV3::Project, decorator: Google::Apis::CloudresourcemanagerV3::Project::Representation
+      
         end
       end
       
@@ -381,6 +592,35 @@ module Google
         end
       end
       
+      class MoveFolderMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_parent, as: 'destinationParent'
+          property :display_name, as: 'displayName'
+          property :source_parent, as: 'sourceParent'
+        end
+      end
+      
+      class MoveFolderRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_parent, as: 'destinationParent'
+        end
+      end
+      
+      class MoveProjectMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class MoveProjectRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_parent, as: 'destinationParent'
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -390,6 +630,20 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+        end
+      end
+      
+      class Organization
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :directory_customer_id, as: 'directoryCustomerId'
+          property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -405,12 +659,55 @@ module Google
         end
       end
       
+      class Project
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :parent, as: 'parent'
+          property :project_id, as: 'projectId'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class ProjectCreationStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :gettable, as: 'gettable'
           property :ready, as: 'ready'
+        end
+      end
+      
+      class SearchFoldersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :folders, as: 'folders', class: Google::Apis::CloudresourcemanagerV3::Folder, decorator: Google::Apis::CloudresourcemanagerV3::Folder::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class SearchOrganizationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :organizations, as: 'organizations', class: Google::Apis::CloudresourcemanagerV3::Organization, decorator: Google::Apis::CloudresourcemanagerV3::Organization::Representation
+      
+        end
+      end
+      
+      class SearchProjectsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :projects, as: 'projects', class: Google::Apis::CloudresourcemanagerV3::Project, decorator: Google::Apis::CloudresourcemanagerV3::Project::Representation
+      
         end
       end
       
@@ -480,6 +777,48 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class UndeleteFolderMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UndeleteFolderRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UndeleteOrganizationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UndeleteProjectMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UndeleteProjectRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UpdateFolderMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UpdateProjectMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
