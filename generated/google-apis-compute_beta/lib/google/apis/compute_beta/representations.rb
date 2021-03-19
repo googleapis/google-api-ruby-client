@@ -6066,6 +6066,8 @@ module Google
           property :locality_lb_policy, as: 'localityLbPolicy'
           property :log_config, as: 'logConfig', class: Google::Apis::ComputeBeta::BackendServiceLogConfig, decorator: Google::Apis::ComputeBeta::BackendServiceLogConfig::Representation
       
+          property :max_stream_duration, as: 'maxStreamDuration', class: Google::Apis::ComputeBeta::Duration, decorator: Google::Apis::ComputeBeta::Duration::Representation
+      
           property :name, as: 'name'
           property :network, as: 'network'
           property :outlier_detection, as: 'outlierDetection', class: Google::Apis::ComputeBeta::OutlierDetection, decorator: Google::Apis::ComputeBeta::OutlierDetection::Representation
@@ -7149,6 +7151,7 @@ module Google
       
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
+          property :short_name, as: 'shortName'
         end
       end
       
@@ -7159,6 +7162,7 @@ module Google
           property :display_name, as: 'displayName'
           property :firewall_policy_id, as: 'firewallPolicyId'
           property :name, as: 'name'
+          property :short_name, as: 'shortName'
         end
       end
       
@@ -7913,6 +7917,8 @@ module Google
           property :cors_policy, as: 'corsPolicy', class: Google::Apis::ComputeBeta::CorsPolicy, decorator: Google::Apis::ComputeBeta::CorsPolicy::Representation
       
           property :fault_injection_policy, as: 'faultInjectionPolicy', class: Google::Apis::ComputeBeta::HttpFaultInjection, decorator: Google::Apis::ComputeBeta::HttpFaultInjection::Representation
+      
+          property :max_stream_duration, as: 'maxStreamDuration', class: Google::Apis::ComputeBeta::Duration, decorator: Google::Apis::ComputeBeta::Duration::Representation
       
           property :request_mirror_policy, as: 'requestMirrorPolicy', class: Google::Apis::ComputeBeta::RequestMirrorPolicy, decorator: Google::Apis::ComputeBeta::RequestMirrorPolicy::Representation
       
@@ -8983,6 +8989,7 @@ module Google
           property :name, as: 'name'
           collection :rules, as: 'rules', class: Google::Apis::ComputeBeta::FirewallPolicyRule, decorator: Google::Apis::ComputeBeta::FirewallPolicyRule::Representation
       
+          property :short_name, as: 'shortName'
           property :type, as: 'type'
         end
       end
@@ -9147,9 +9154,11 @@ module Google
           property :dataplane_version, as: 'dataplaneVersion'
           property :description, as: 'description'
           property :edge_availability_domain, as: 'edgeAvailabilityDomain'
+          property :encryption, as: 'encryption'
           property :google_reference_id, as: 'googleReferenceId'
           property :id, :numeric_string => true, as: 'id'
           property :interconnect, as: 'interconnect'
+          collection :ipsec_internal_addresses, as: 'ipsecInternalAddresses'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
@@ -10274,6 +10283,7 @@ module Google
           property :name, as: 'name'
           collection :rules, as: 'rules', class: Google::Apis::ComputeBeta::FirewallPolicyRule, decorator: Google::Apis::ComputeBeta::FirewallPolicyRule::Representation
       
+          property :short_name, as: 'shortName'
           property :type, as: 'type'
         end
       end
@@ -12426,6 +12436,7 @@ module Google
       
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :encrypted_interconnect_router, as: 'encryptedInterconnectRouter'
           property :id, :numeric_string => true, as: 'id'
           collection :interfaces, as: 'interfaces', class: Google::Apis::ComputeBeta::RouterInterface, decorator: Google::Apis::ComputeBeta::RouterInterface::Representation
       
@@ -12509,6 +12520,7 @@ module Google
           property :name, as: 'name'
           property :peer_asn, as: 'peerAsn'
           property :peer_ip_address, as: 'peerIpAddress'
+          property :router_appliance_instance, as: 'routerApplianceInstance'
         end
       end
       
@@ -12530,6 +12542,9 @@ module Google
           property :linked_vpn_tunnel, as: 'linkedVpnTunnel'
           property :management_type, as: 'managementType'
           property :name, as: 'name'
+          property :private_ip_address, as: 'privateIpAddress'
+          property :redundant_interface, as: 'redundantInterface'
+          property :subnetwork, as: 'subnetwork'
         end
       end
       
@@ -12630,6 +12645,7 @@ module Google
           property :name, as: 'name'
           property :num_learned_routes, as: 'numLearnedRoutes'
           property :peer_ip_address, as: 'peerIpAddress'
+          property :router_appliance_instance, as: 'routerApplianceInstance'
           property :state, as: 'state'
           property :status, as: 'status'
           property :uptime, as: 'uptime'
@@ -14952,6 +14968,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
+          property :interconnect_attachment, as: 'interconnectAttachment'
           property :ip_address, as: 'ipAddress'
         end
       end

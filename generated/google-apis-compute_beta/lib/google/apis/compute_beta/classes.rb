@@ -2883,8 +2883,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The HTTP status code to define a TTL against. Only HTTP status codes 300, 301,
-        # 308, 404, 405, 410, 421, 451 and 501 are can be specified as values, and you
-        # cannot specify a status code more than once.
+        # 302, 307, 308, 404, 405, 410, 421, 451 and 501 are can be specified as values,
+        # and you cannot specify a status code more than once.
         # Corresponds to the JSON property `code`
         # @return [Fixnum]
         attr_accessor :code
@@ -3210,6 +3210,14 @@ module Google
         # @return [Google::Apis::ComputeBeta::BackendServiceLogConfig]
         attr_accessor :log_config
       
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `maxStreamDuration`
+        # @return [Google::Apis::ComputeBeta::Duration]
+        attr_accessor :max_stream_duration
+      
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
@@ -3344,6 +3352,7 @@ module Google
           @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
           @locality_lb_policy = args[:locality_lb_policy] if args.key?(:locality_lb_policy)
           @log_config = args[:log_config] if args.key?(:log_config)
+          @max_stream_duration = args[:max_stream_duration] if args.key?(:max_stream_duration)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @outlier_detection = args[:outlier_detection] if args.key?(:outlier_detection)
@@ -3665,8 +3674,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The HTTP status code to define a TTL against. Only HTTP status codes 300, 301,
-        # 308, 404, 405, 410, 421, 451 and 501 are can be specified as values, and you
-        # cannot specify a status code more than once.
+        # 302, 307, 308, 404, 405, 410, 421, 451 and 501 are can be specified as values,
+        # and you cannot specify a status code more than once.
         # Corresponds to the JSON property `code`
         # @return [Fixnum]
         attr_accessor :code
@@ -7868,13 +7877,14 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # User-provided name of the Organization firewall plicy. The name should be
-        # unique in the organization in which the firewall policy is created. The name
-        # must be 1-63 characters long, and comply with RFC1035. Specifically, the name
-        # must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*
-        # [a-z0-9])?` which means the first character must be a lowercase letter, and
-        # all following characters must be a dash, lowercase letter, or digit, except
-        # the last character, which cannot be a dash.
+        # Depreacted, please use short name instead. User-provided name of the
+        # Organization firewall plicy. The name should be unique in the organization in
+        # which the firewall policy is created. The name must be 1-63 characters long,
+        # and comply with RFC1035. Specifically, the name must be 1-63 characters long
+        # and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the
+        # first character must be a lowercase letter, and all following characters must
+        # be a dash, lowercase letter, or digit, except the last character, which cannot
+        # be a dash.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -7938,6 +7948,17 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
+        # User-provided name of the Organization firewall plicy. The name should be
+        # unique in the organization in which the firewall policy is created. The name
+        # must be 1-63 characters long, and comply with RFC1035. Specifically, the name
+        # must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*
+        # [a-z0-9])?` which means the first character must be a lowercase letter, and
+        # all following characters must be a dash, lowercase letter, or digit, except
+        # the last character, which cannot be a dash.
+        # Corresponds to the JSON property `shortName`
+        # @return [String]
+        attr_accessor :short_name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7957,6 +7978,7 @@ module Google
           @rules = args[:rules] if args.key?(:rules)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @short_name = args[:short_name] if args.key?(:short_name)
         end
       end
       
@@ -7969,7 +7991,8 @@ module Google
         # @return [String]
         attr_accessor :attachment_target
       
-        # [Output Only] The display name of the firewall policy of the association.
+        # [Output Only] Deprecated, please use short name instead. The display name of
+        # the firewall policy of the association.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -7984,6 +8007,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] The short name of the firewall policy of the association.
+        # Corresponds to the JSON property `shortName`
+        # @return [String]
+        attr_accessor :short_name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7994,6 +8022,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @firewall_policy_id = args[:firewall_policy_id] if args.key?(:firewall_policy_id)
           @name = args[:name] if args.key?(:name)
+          @short_name = args[:short_name] if args.key?(:short_name)
         end
       end
       
@@ -11352,6 +11381,14 @@ module Google
         # @return [Google::Apis::ComputeBeta::HttpFaultInjection]
         attr_accessor :fault_injection_policy
       
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `maxStreamDuration`
+        # @return [Google::Apis::ComputeBeta::Duration]
+        attr_accessor :max_stream_duration
+      
         # A policy that specifies how requests intended for the route's backends are
         # shadowed to a separate mirrored backend service. Loadbalancer does not wait
         # for responses from the shadow service. Prior to sending traffic to the shadow
@@ -11400,6 +11437,7 @@ module Google
         def update!(**args)
           @cors_policy = args[:cors_policy] if args.key?(:cors_policy)
           @fault_injection_policy = args[:fault_injection_policy] if args.key?(:fault_injection_policy)
+          @max_stream_duration = args[:max_stream_duration] if args.key?(:max_stream_duration)
           @request_mirror_policy = args[:request_mirror_policy] if args.key?(:request_mirror_policy)
           @retry_policy = args[:retry_policy] if args.key?(:retry_policy)
           @timeout = args[:timeout] if args.key?(:timeout)
@@ -12502,7 +12540,7 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
-        # Sets the scheduling options for an Instance. NextID: 17
+        # Sets the scheduling options for an Instance. NextID: 20
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeBeta::Scheduling]
         attr_accessor :scheduling
@@ -15264,7 +15302,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
-        # Sets the scheduling options for an Instance. NextID: 17
+        # Sets the scheduling options for an Instance. NextID: 20
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeBeta::Scheduling]
         attr_accessor :scheduling
@@ -15630,7 +15668,8 @@ module Google
       class InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The display name of the firewall policy.
+        # [Output Only] Deprecated, please use short name instead. The display name of
+        # the firewall policy.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -15644,6 +15683,11 @@ module Google
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::ComputeBeta::FirewallPolicyRule>]
         attr_accessor :rules
+      
+        # [Output Only] The short name of the firewall policy.
+        # Corresponds to the JSON property `shortName`
+        # @return [String]
+        attr_accessor :short_name
       
         # [Output Only] The type of the firewall policy.
         # Corresponds to the JSON property `type`
@@ -15659,6 +15703,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @rules = args[:rules] if args.key?(:rules)
+          @short_name = args[:short_name] if args.key?(:short_name)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -16324,6 +16369,18 @@ module Google
         # @return [String]
         attr_accessor :edge_availability_domain
       
+        # Indicates the user-supplied encryption option of this interconnect attachment:
+        # - NONE is the default value, which means that the attachment carries
+        # unencrypted traffic. VMs can send traffic to, or receive traffic from, this
+        # type of attachment.
+        # - IPSEC indicates that the attachment carries only traffic encrypted by an
+        # IPsec device such as an HA VPN gateway. VMs cannot directly send traffic to,
+        # or receive traffic from, such an attachment. To use IPsec-encrypted Cloud
+        # Interconnect, create the attachment using this option.
+        # Corresponds to the JSON property `encryption`
+        # @return [String]
+        attr_accessor :encryption
+      
         # [Output Only] Google reference ID, to be used when raising support tickets
         # with Google or otherwise to debug backend connectivity issues. [Deprecated]
         # This field is not used.
@@ -16342,6 +16399,22 @@ module Google
         # Corresponds to the JSON property `interconnect`
         # @return [String]
         attr_accessor :interconnect
+      
+        # URL of addresses that have been reserved for the interconnect attachment, Used
+        # only for interconnect attachment that has the encryption option as IPSEC. The
+        # addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway
+        # over the interconnect attachment, if the attachment is configured to use an
+        # RFC 1918 IP address, then the VPN gateway?s IP address will be allocated from
+        # the IP address range specified here. For example, if the HA VPN gateway?s
+        # interface 0 is paired to this interconnect attachment, then an RFC 1918 IP
+        # address for the VPN gateway interface 0 will be allocated from the IP address
+        # specified for this interconnect attachment. If this field is not specified for
+        # interconnect attachment that has encryption option as IPSEC, later on when
+        # creating HA VPN gateway on this interconnect attachment, the HA VPN gateway's
+        # IP address will be allocated from regional external IP address pool.
+        # Corresponds to the JSON property `ipsecInternalAddresses`
+        # @return [Array<String>]
+        attr_accessor :ipsec_internal_addresses
       
         # [Output Only] Type of the resource. Always compute#interconnectAttachment for
         # interconnect attachments.
@@ -16497,9 +16570,11 @@ module Google
           @dataplane_version = args[:dataplane_version] if args.key?(:dataplane_version)
           @description = args[:description] if args.key?(:description)
           @edge_availability_domain = args[:edge_availability_domain] if args.key?(:edge_availability_domain)
+          @encryption = args[:encryption] if args.key?(:encryption)
           @google_reference_id = args[:google_reference_id] if args.key?(:google_reference_id)
           @id = args[:id] if args.key?(:id)
           @interconnect = args[:interconnect] if args.key?(:interconnect)
+          @ipsec_internal_addresses = args[:ipsec_internal_addresses] if args.key?(:ipsec_internal_addresses)
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
@@ -20817,7 +20892,8 @@ module Google
       class NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The display name of the firewall policy.
+        # [Output Only] Deprecated, please use short name instead. The display name of
+        # the firewall policy.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -20831,6 +20907,11 @@ module Google
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::ComputeBeta::FirewallPolicyRule>]
         attr_accessor :rules
+      
+        # [Output Only] The short name of the firewall policy.
+        # Corresponds to the JSON property `shortName`
+        # @return [String]
+        attr_accessor :short_name
       
         # [Output Only] The type of the firewall policy.
         # Corresponds to the JSON property `type`
@@ -20846,6 +20927,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @rules = args[:rules] if args.key?(:rules)
+          @short_name = args[:short_name] if args.key?(:short_name)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -29066,6 +29148,13 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Field to indicate if a router is dedicated to use with encrypted Interconnect
+        # Attachment (IPsec-encrypted Cloud Interconnect feature).
+        # Corresponds to the JSON property `encryptedInterconnectRouter`
+        # @return [Boolean]
+        attr_accessor :encrypted_interconnect_router
+        alias_method :encrypted_interconnect_router?, :encrypted_interconnect_router
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -29126,6 +29215,7 @@ module Google
           @bgp_peers = args[:bgp_peers] if args.key?(:bgp_peers)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @encrypted_interconnect_router = args[:encrypted_interconnect_router] if args.key?(:encrypted_interconnect_router)
           @id = args[:id] if args.key?(:id)
           @interfaces = args[:interfaces] if args.key?(:interfaces)
           @kind = args[:kind] if args.key?(:kind)
@@ -29326,7 +29416,7 @@ module Google
         # successive keepalive messages that BGP receives from a peer.
         # BGP will use the smaller of either the local hold time value or the peer's
         # hold time value as the hold time for the BGP connection between the two peers.
-        # If set, this value must be between 1 and 120. The default is 20.
+        # If set, this value must be between 20 and 60. The default is 20.
         # Corresponds to the JSON property `keepaliveInterval`
         # @return [Fixnum]
         attr_accessor :keepalive_interval
@@ -29357,12 +29447,11 @@ module Google
         # User-specified list of prefix groups to advertise in custom mode, which can
         # take one of the following options:
         # - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets.
-        # - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets.
-        # - ALL_PEER_VPC_SUBNETS: Advertises peer subnets of the router's VPC network.
-        # Note that this field can only be populated if advertise_mode is CUSTOM and
-        # overrides the list defined for the router (in the "bgp" message). These groups
-        # are advertised in addition to any specified prefixes. Leave this field blank
-        # to advertise no custom groups.
+        # - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this
+        # field can only be populated if advertise_mode is CUSTOM and overrides the list
+        # defined for the router (in the "bgp" message). These groups are advertised in
+        # addition to any specified prefixes. Leave this field blank to advertise no
+        # custom groups.
         # Corresponds to the JSON property `advertisedGroups`
         # @return [Array<String>]
         attr_accessor :advertised_groups
@@ -29442,6 +29531,14 @@ module Google
         # @return [String]
         attr_accessor :peer_ip_address
       
+        # URI of the VM instance that is used as third-party router appliances such as
+        # Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance
+        # must be located in zones contained in the same region as this Cloud Router.
+        # The VM instance is the peer side of the BGP session.
+        # Corresponds to the JSON property `routerApplianceInstance`
+        # @return [String]
+        attr_accessor :router_appliance_instance
+      
         def initialize(**args)
            update!(**args)
         end
@@ -29460,6 +29557,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @peer_asn = args[:peer_asn] if args.key?(:peer_asn)
           @peer_ip_address = args[:peer_ip_address] if args.key?(:peer_ip_address)
+          @router_appliance_instance = args[:router_appliance_instance] if args.key?(:router_appliance_instance)
         end
       end
       
@@ -29567,6 +29665,35 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The regional private internal IP address that is used to establish BGP
+        # sessions to a VM instance acting as a third-party Router Appliance, such as a
+        # Next Gen Firewall, a Virtual Router, or an SD-WAN VM.
+        # Corresponds to the JSON property `privateIpAddress`
+        # @return [String]
+        attr_accessor :private_ip_address
+      
+        # Name of the interface that will be redundant with the current interface you
+        # are creating. The redundantInterface must belong to the same Cloud Router as
+        # the interface here. To establish the BGP session to a Router Appliance VM, you
+        # must create two BGP peers. The two BGP peers must be attached to two separate
+        # interfaces that are redundant with each other. The redundant_interface must be
+        # 1-63 characters long, and comply with RFC1035. Specifically, the
+        # redundant_interface must be 1-63 characters long and match the regular
+        # expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must
+        # be a lowercase letter, and all following characters must be a dash, lowercase
+        # letter, or digit, except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `redundantInterface`
+        # @return [String]
+        attr_accessor :redundant_interface
+      
+        # The URL of the subnetwork resource that this interface belongs to, which must
+        # be in the same region as the Cloud Router. When you establish a BGP session to
+        # a VM instance using this interface, the VM instance must belong to the same
+        # subnetwork as the subnetwork specified here.
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
         def initialize(**args)
            update!(**args)
         end
@@ -29578,6 +29705,9 @@ module Google
           @linked_vpn_tunnel = args[:linked_vpn_tunnel] if args.key?(:linked_vpn_tunnel)
           @management_type = args[:management_type] if args.key?(:management_type)
           @name = args[:name] if args.key?(:name)
+          @private_ip_address = args[:private_ip_address] if args.key?(:private_ip_address)
+          @redundant_interface = args[:redundant_interface] if args.key?(:redundant_interface)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
         end
       end
       
@@ -29968,6 +30098,13 @@ module Google
         # @return [String]
         attr_accessor :peer_ip_address
       
+        # [Output only] URI of the VM instance that is used as third-party router
+        # appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+        # The VM instance is the peer side of the BGP session.
+        # Corresponds to the JSON property `routerApplianceInstance`
+        # @return [String]
+        attr_accessor :router_appliance_instance
+      
         # BGP state as specified in RFC1771.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -30002,6 +30139,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @num_learned_routes = args[:num_learned_routes] if args.key?(:num_learned_routes)
           @peer_ip_address = args[:peer_ip_address] if args.key?(:peer_ip_address)
+          @router_appliance_instance = args[:router_appliance_instance] if args.key?(:router_appliance_instance)
           @state = args[:state] if args.key?(:state)
           @status = args[:status] if args.key?(:status)
           @uptime = args[:uptime] if args.key?(:uptime)
@@ -30495,7 +30633,7 @@ module Google
         end
       end
       
-      # Sets the scheduling options for an Instance. NextID: 17
+      # Sets the scheduling options for an Instance. NextID: 20
       class Scheduling
         include Google::Apis::Core::Hashable
       
@@ -31400,7 +31538,7 @@ module Google
       # A service attachment represents a service that a producer has exposed. It
       # encapsulates the load balancer which fronts the service runs and a list of NAT
       # IP ranges that the producers uses to represent the consumers connecting to the
-      # service. next tag = 16
+      # service. next tag = 17
       class ServiceAttachment
         include Google::Apis::Core::Hashable
       
@@ -32577,7 +32715,7 @@ module Google
         # @return [String]
         attr_accessor :post_key_revocation_action_type
       
-        # Sets the scheduling options for an Instance. NextID: 17
+        # Sets the scheduling options for an Instance. NextID: 20
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeBeta::Scheduling]
         attr_accessor :scheduling
@@ -39279,6 +39417,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
+        # URL of the interconnect attachment resource. When the value of this field is
+        # present, the VPN Gateway will be used for IPsec-encrypted Cloud Interconnect;
+        # all Egress or Ingress traffic for this VPN Gateway interface will go through
+        # the specified interconnect attachment resource.
+        # Corresponds to the JSON property `interconnectAttachment`
+        # @return [String]
+        attr_accessor :interconnect_attachment
+      
         # [Output Only] The external IP address for this VPN gateway interface.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
@@ -39291,6 +39437,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
+          @interconnect_attachment = args[:interconnect_attachment] if args.key?(:interconnect_attachment)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
         end
       end
