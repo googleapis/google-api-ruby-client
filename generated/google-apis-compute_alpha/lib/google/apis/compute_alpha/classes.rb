@@ -1111,6 +1111,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :threads_per_core
       
+        # The number of physical cores to expose to an instance. Multiply by the number
+        # of threads per core to compute the total number of virtual CPUs to expose to
+        # the instance. If unset, the number of cores is inferred from the instance's
+        # nominal CPU count and the underlying platform's SMT width.
+        # Corresponds to the JSON property `visibleCoreCount`
+        # @return [Fixnum]
+        attr_accessor :visible_core_count
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1119,6 +1127,7 @@ module Google
         def update!(**args)
           @enable_nested_virtualization = args[:enable_nested_virtualization] if args.key?(:enable_nested_virtualization)
           @threads_per_core = args[:threads_per_core] if args.key?(:threads_per_core)
+          @visible_core_count = args[:visible_core_count] if args.key?(:visible_core_count)
         end
       end
       
@@ -3172,8 +3181,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The HTTP status code to define a TTL against. Only HTTP status codes 300, 301,
-        # 308, 404, 405, 410, 421, 451 and 501 are can be specified as values, and you
-        # cannot specify a status code more than once.
+        # 302, 307, 308, 404, 405, 410, 421, 451 and 501 are can be specified as values,
+        # and you cannot specify a status code more than once.
         # Corresponds to the JSON property `code`
         # @return [Fixnum]
         attr_accessor :code
@@ -3976,8 +3985,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The HTTP status code to define a TTL against. Only HTTP status codes 300, 301,
-        # 308, 404, 405, 410, 421, 451 and 501 are can be specified as values, and you
-        # cannot specify a status code more than once.
+        # 302, 307, 308, 404, 405, 410, 421, 451 and 501 are can be specified as values,
+        # and you cannot specify a status code more than once.
         # Corresponds to the JSON property `code`
         # @return [Fixnum]
         attr_accessor :code
@@ -8453,13 +8462,14 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # User-provided name of the Organization firewall plicy. The name should be
-        # unique in the organization in which the firewall policy is created. The name
-        # must be 1-63 characters long, and comply with RFC1035. Specifically, the name
-        # must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*
-        # [a-z0-9])?` which means the first character must be a lowercase letter, and
-        # all following characters must be a dash, lowercase letter, or digit, except
-        # the last character, which cannot be a dash.
+        # Depreacted, please use short name instead. User-provided name of the
+        # Organization firewall plicy. The name should be unique in the organization in
+        # which the firewall policy is created. The name must be 1-63 characters long,
+        # and comply with RFC1035. Specifically, the name must be 1-63 characters long
+        # and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the
+        # first character must be a lowercase letter, and all following characters must
+        # be a dash, lowercase letter, or digit, except the last character, which cannot
+        # be a dash.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -8499,6 +8509,14 @@ module Google
         # @return [String]
         attr_accessor :parent
       
+        # [Output Only] URL of the region where the regional firewall policy resides.
+        # This field is not applicable to global firewall policies. You must specify
+        # this field as part of the HTTP request URL. It is not settable as a field in
+        # the request body.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # [Output Only] Total count of all firewall policy rule tuples. A firewall
         # policy can not exceed a set number of tuples.
         # Corresponds to the JSON property `ruleTupleCount`
@@ -8523,6 +8541,17 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
+        # User-provided name of the Organization firewall plicy. The name should be
+        # unique in the organization in which the firewall policy is created. The name
+        # must be 1-63 characters long, and comply with RFC1035. Specifically, the name
+        # must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*
+        # [a-z0-9])?` which means the first character must be a lowercase letter, and
+        # all following characters must be a dash, lowercase letter, or digit, except
+        # the last character, which cannot be a dash.
+        # Corresponds to the JSON property `shortName`
+        # @return [String]
+        attr_accessor :short_name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8538,10 +8567,12 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @parent = args[:parent] if args.key?(:parent)
+          @region = args[:region] if args.key?(:region)
           @rule_tuple_count = args[:rule_tuple_count] if args.key?(:rule_tuple_count)
           @rules = args[:rules] if args.key?(:rules)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @short_name = args[:short_name] if args.key?(:short_name)
         end
       end
       
@@ -8554,7 +8585,8 @@ module Google
         # @return [String]
         attr_accessor :attachment_target
       
-        # [Output Only] The display name of the firewall policy of the association.
+        # [Output Only] Deprecated, please use short name instead. The display name of
+        # the firewall policy of the association.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -8569,6 +8601,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] The short name of the firewall policy of the association.
+        # Corresponds to the JSON property `shortName`
+        # @return [String]
+        attr_accessor :short_name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8579,6 +8616,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @firewall_policy_id = args[:firewall_policy_id] if args.key?(:firewall_policy_id)
           @name = args[:name] if args.key?(:name)
+          @short_name = args[:short_name] if args.key?(:short_name)
         end
       end
       
@@ -10195,6 +10233,11 @@ module Google
         # @return [String]
         attr_accessor :response
       
+        # Weight report mode. used for weighted Load Balancing.
+        # Corresponds to the JSON property `weightReportMode`
+        # @return [String]
+        attr_accessor :weight_report_mode
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10208,6 +10251,7 @@ module Google
           @proxy_header = args[:proxy_header] if args.key?(:proxy_header)
           @request_path = args[:request_path] if args.key?(:request_path)
           @response = args[:response] if args.key?(:response)
+          @weight_report_mode = args[:weight_report_mode] if args.key?(:weight_report_mode)
         end
       end
       
@@ -10265,6 +10309,11 @@ module Google
         # @return [String]
         attr_accessor :response
       
+        # Weight report mode. used for weighted Load Balancing.
+        # Corresponds to the JSON property `weightReportMode`
+        # @return [String]
+        attr_accessor :weight_report_mode
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10278,6 +10327,7 @@ module Google
           @proxy_header = args[:proxy_header] if args.key?(:proxy_header)
           @request_path = args[:request_path] if args.key?(:request_path)
           @response = args[:response] if args.key?(:response)
+          @weight_report_mode = args[:weight_report_mode] if args.key?(:weight_report_mode)
         end
       end
       
@@ -10335,6 +10385,11 @@ module Google
         # @return [String]
         attr_accessor :response
       
+        # Weight report mode. used for weighted Load Balancing.
+        # Corresponds to the JSON property `weightReportMode`
+        # @return [String]
+        attr_accessor :weight_report_mode
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10348,6 +10403,7 @@ module Google
           @proxy_header = args[:proxy_header] if args.key?(:proxy_header)
           @request_path = args[:request_path] if args.key?(:request_path)
           @response = args[:response] if args.key?(:response)
+          @weight_report_mode = args[:weight_report_mode] if args.key?(:weight_report_mode)
         end
       end
       
@@ -11402,6 +11458,16 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
+        # URL of the forwarding rule associated with the health status of the instance.
+        # Corresponds to the JSON property `forwardingRule`
+        # @return [String]
+        attr_accessor :forwarding_rule
+      
+        # A forwarding rule IP address assigned to this instance.
+        # Corresponds to the JSON property `forwardingRuleIp`
+        # @return [String]
+        attr_accessor :forwarding_rule_ip
+      
         # Health state of the instance.
         # Corresponds to the JSON property `healthState`
         # @return [String]
@@ -11442,6 +11508,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
+          @forwarding_rule_ip = args[:forwarding_rule_ip] if args.key?(:forwarding_rule_ip)
           @health_state = args[:health_state] if args.key?(:health_state)
           @instance = args[:instance] if args.key?(:instance)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
@@ -13770,7 +13838,7 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
-        # Sets the scheduling options for an Instance. NextID: 17
+        # Sets the scheduling options for an Instance. NextID: 20
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeAlpha::Scheduling]
         attr_accessor :scheduling
@@ -14506,6 +14574,11 @@ module Google
         # @return [String]
         attr_accessor :instance_group
       
+        # Instance lifecycle policy for this Instance Group Manager.
+        # Corresponds to the JSON property `instanceLifecyclePolicy`
+        # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceLifecyclePolicy]
+        attr_accessor :instance_lifecycle_policy
+      
         # The URL of the instance template that is specified for this managed instance
         # group. The group uses this template to create all new instances in the managed
         # instance group. The templates for existing instances in the group do not
@@ -14582,6 +14655,24 @@ module Google
         # @return [Fixnum]
         attr_accessor :target_size
       
+        # The target number of stopped instances for this managed instance group. This
+        # number changes when you:
+        # - Stop instance using the stopInstances method or start instances using the
+        # startInstances method.
+        # - Manually change the targetStoppedSize using the update method.
+        # Corresponds to the JSON property `targetStoppedSize`
+        # @return [Fixnum]
+        attr_accessor :target_stopped_size
+      
+        # The target number of suspended instances for this managed instance group. This
+        # number changes when you:
+        # - Suspend instance using the suspendInstances method or resume instances using
+        # the resumeInstances method.
+        # - Manually change the targetSuspendedSize using the update method.
+        # Corresponds to the JSON property `targetSuspendedSize`
+        # @return [Fixnum]
+        attr_accessor :target_suspended_size
+      
         # The update policy for this managed instance group.
         # Corresponds to the JSON property `updatePolicy`
         # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerUpdatePolicy]
@@ -14621,6 +14712,7 @@ module Google
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
           @instance_group = args[:instance_group] if args.key?(:instance_group)
+          @instance_lifecycle_policy = args[:instance_lifecycle_policy] if args.key?(:instance_lifecycle_policy)
           @instance_template = args[:instance_template] if args.key?(:instance_template)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
@@ -14633,6 +14725,8 @@ module Google
           @status = args[:status] if args.key?(:status)
           @target_pools = args[:target_pools] if args.key?(:target_pools)
           @target_size = args[:target_size] if args.key?(:target_size)
+          @target_stopped_size = args[:target_stopped_size] if args.key?(:target_stopped_size)
+          @target_suspended_size = args[:target_suspended_size] if args.key?(:target_suspended_size)
           @update_policy = args[:update_policy] if args.key?(:update_policy)
           @versions = args[:versions] if args.key?(:versions)
           @zone = args[:zone] if args.key?(:zone)
@@ -14702,6 +14796,30 @@ module Google
         attr_accessor :restarting
       
         # [Output Only] The number of instances in the managed instance group that are
+        # scheduled to be resumed or are currently being resumed.
+        # Corresponds to the JSON property `resuming`
+        # @return [Fixnum]
+        attr_accessor :resuming
+      
+        # [Output Only] The number of instances in the managed instance group that are
+        # scheduled to be started or are currently being started.
+        # Corresponds to the JSON property `starting`
+        # @return [Fixnum]
+        attr_accessor :starting
+      
+        # [Output Only] The number of instances in the managed instance group that are
+        # scheduled to be stopped or are currently being stopped.
+        # Corresponds to the JSON property `stopping`
+        # @return [Fixnum]
+        attr_accessor :stopping
+      
+        # [Output Only] The number of instances in the managed instance group that are
+        # scheduled to be suspended or are currently being suspended.
+        # Corresponds to the JSON property `suspending`
+        # @return [Fixnum]
+        attr_accessor :suspending
+      
+        # [Output Only] The number of instances in the managed instance group that are
         # being verified. See the managedInstances[].currentAction property in the
         # listManagedInstances method documentation.
         # Corresponds to the JSON property `verifying`
@@ -14722,6 +14840,10 @@ module Google
           @recreating = args[:recreating] if args.key?(:recreating)
           @refreshing = args[:refreshing] if args.key?(:refreshing)
           @restarting = args[:restarting] if args.key?(:restarting)
+          @resuming = args[:resuming] if args.key?(:resuming)
+          @starting = args[:starting] if args.key?(:starting)
+          @stopping = args[:stopping] if args.key?(:stopping)
+          @suspending = args[:suspending] if args.key?(:suspending)
           @verifying = args[:verifying] if args.key?(:verifying)
         end
       end
@@ -14884,6 +15006,55 @@ module Google
           @health_check = args[:health_check] if args.key?(:health_check)
           @initial_delay_sec = args[:initial_delay_sec] if args.key?(:initial_delay_sec)
           @max_unavailable = args[:max_unavailable] if args.key?(:max_unavailable)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerInstanceLifecyclePolicy
+        include Google::Apis::Core::Hashable
+      
+        # The configuration for metadata based readiness signal sent by the instance
+        # during initialization when stopping / suspending an instance. The Instance
+        # Group Manager will wait for a signal that indicates successful initialization
+        # before stopping / suspending an instance.
+        # If a successful readiness signal is not sent before timeout, the corresponding
+        # instance will not be stopped / suspended. Instead, an error will be visible in
+        # the lastAttempt.errors field of the managed instance in the
+        # listmanagedinstances method.
+        # If metadataBasedReadinessSignal.timeoutSec is unset, the Instance Group
+        # Manager will directly proceed to suspend / stop instances, skipping
+        # initialization on them.
+        # Corresponds to the JSON property `metadataBasedReadinessSignal`
+        # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal]
+        attr_accessor :metadata_based_readiness_signal
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata_based_readiness_signal = args[:metadata_based_readiness_signal] if args.key?(:metadata_based_readiness_signal)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal
+        include Google::Apis::Core::Hashable
+      
+        # The number of seconds to wait for a readiness signal during initialization
+        # before timing out.
+        # Corresponds to the JSON property `timeoutSec`
+        # @return [Fixnum]
+        attr_accessor :timeout_sec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
         end
       end
       
@@ -15645,6 +15816,26 @@ module Google
       end
       
       # 
+      class InstanceGroupManagersResumeInstancesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The URLs of one or more instances to resume. This can be a full URL or a
+        # partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
+        # Corresponds to the JSON property `instances`
+        # @return [Array<String>]
+        attr_accessor :instances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+        end
+      end
+      
+      # 
       class InstanceGroupManagersScopedList
         include Google::Apis::Core::Hashable
       
@@ -15808,6 +15999,82 @@ module Google
         def update!(**args)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @target_pools = args[:target_pools] if args.key?(:target_pools)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagersStartInstancesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The URLs of one or more instances to start. This can be a full URL or a
+        # partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
+        # Corresponds to the JSON property `instances`
+        # @return [Array<String>]
+        attr_accessor :instances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagersStopInstancesRequest
+        include Google::Apis::Core::Hashable
+      
+        # If this flag is set to true, the Instance Group Manager will proceed to stop
+        # the instances, skipping initialization on them.
+        # Corresponds to the JSON property `forceStop`
+        # @return [Boolean]
+        attr_accessor :force_stop
+        alias_method :force_stop?, :force_stop
+      
+        # The URLs of one or more instances to stop. This can be a full URL or a partial
+        # URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
+        # Corresponds to the JSON property `instances`
+        # @return [Array<String>]
+        attr_accessor :instances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @force_stop = args[:force_stop] if args.key?(:force_stop)
+          @instances = args[:instances] if args.key?(:instances)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagersSuspendInstancesRequest
+        include Google::Apis::Core::Hashable
+      
+        # If this flag is set to true, the Instance Group Manager will proceed to
+        # suspend the instances, skipping initialization on them.
+        # Corresponds to the JSON property `forceSuspend`
+        # @return [Boolean]
+        attr_accessor :force_suspend
+        alias_method :force_suspend?, :force_suspend
+      
+        # The URLs of one or more instances to suspend. This can be a full URL or a
+        # partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
+        # Corresponds to the JSON property `instances`
+        # @return [Array<String>]
+        attr_accessor :instances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @force_suspend = args[:force_suspend] if args.key?(:force_suspend)
+          @instances = args[:instances] if args.key?(:instances)
         end
       end
       
@@ -16605,7 +16872,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
-        # Sets the scheduling options for an Instance. NextID: 17
+        # Sets the scheduling options for an Instance. NextID: 20
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeAlpha::Scheduling]
         attr_accessor :scheduling
@@ -16977,7 +17244,8 @@ module Google
       class InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The display name of the firewall policy.
+        # [Output Only] Deprecated, please use short name instead. The display name of
+        # the firewall policy.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -16991,6 +17259,11 @@ module Google
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::ComputeAlpha::FirewallPolicyRule>]
         attr_accessor :rules
+      
+        # [Output Only] The short name of the firewall policy.
+        # Corresponds to the JSON property `shortName`
+        # @return [String]
+        attr_accessor :short_name
       
         # [Output Only] The type of the firewall policy.
         # Corresponds to the JSON property `type`
@@ -17006,6 +17279,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @rules = args[:rules] if args.key?(:rules)
+          @short_name = args[:short_name] if args.key?(:short_name)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -21807,6 +22081,12 @@ module Google
         # @return [String]
         attr_accessor :network_endpoint_type
       
+        # The target service url used to set up private service connection to a Google
+        # API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+        # Corresponds to the JSON property `pscTargetService`
+        # @return [String]
+        attr_accessor :psc_target_service
+      
         # [Output Only] The URL of the region where the network endpoint group is
         # located.
         # Corresponds to the JSON property `region`
@@ -21872,6 +22152,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @network_endpoint_type = args[:network_endpoint_type] if args.key?(:network_endpoint_type)
+          @psc_target_service = args[:psc_target_service] if args.key?(:psc_target_service)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
@@ -23247,7 +23528,8 @@ module Google
       class NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The display name of the firewall policy.
+        # [Output Only] Deprecated, please use short name instead. The display name of
+        # the firewall policy.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -23261,6 +23543,11 @@ module Google
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::ComputeAlpha::FirewallPolicyRule>]
         attr_accessor :rules
+      
+        # [Output Only] The short name of the firewall policy.
+        # Corresponds to the JSON property `shortName`
+        # @return [String]
+        attr_accessor :short_name
       
         # [Output Only] The type of the firewall policy.
         # Corresponds to the JSON property `type`
@@ -23276,6 +23563,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @rules = args[:rules] if args.key?(:rules)
+          @short_name = args[:short_name] if args.key?(:short_name)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -29896,6 +30184,26 @@ module Google
       end
       
       # 
+      class RegionInstanceGroupManagersResumeInstancesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The URLs of one or more instances to resume. This can be a full URL or a
+        # partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
+        # Corresponds to the JSON property `instances`
+        # @return [Array<String>]
+        attr_accessor :instances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+        end
+      end
+      
+      # 
       class RegionInstanceGroupManagersSetAutoHealingRequest
         include Google::Apis::Core::Hashable
       
@@ -29961,6 +30269,82 @@ module Google
         # Update properties of this object
         def update!(**args)
           @instance_template = args[:instance_template] if args.key?(:instance_template)
+        end
+      end
+      
+      # 
+      class RegionInstanceGroupManagersStartInstancesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The URLs of one or more instances to start. This can be a full URL or a
+        # partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
+        # Corresponds to the JSON property `instances`
+        # @return [Array<String>]
+        attr_accessor :instances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+        end
+      end
+      
+      # 
+      class RegionInstanceGroupManagersStopInstancesRequest
+        include Google::Apis::Core::Hashable
+      
+        # If this flag is set to true, the Instance Group Manager will proceed to stop
+        # the instances, skipping initialization on them.
+        # Corresponds to the JSON property `forceStop`
+        # @return [Boolean]
+        attr_accessor :force_stop
+        alias_method :force_stop?, :force_stop
+      
+        # The URLs of one or more instances to stop. This can be a full URL or a partial
+        # URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
+        # Corresponds to the JSON property `instances`
+        # @return [Array<String>]
+        attr_accessor :instances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @force_stop = args[:force_stop] if args.key?(:force_stop)
+          @instances = args[:instances] if args.key?(:instances)
+        end
+      end
+      
+      # 
+      class RegionInstanceGroupManagersSuspendInstancesRequest
+        include Google::Apis::Core::Hashable
+      
+        # If this flag is set to true, the Instance Group Manager will proceed to
+        # suspend the instances, skipping initialization on them.
+        # Corresponds to the JSON property `forceSuspend`
+        # @return [Boolean]
+        attr_accessor :force_suspend
+        alias_method :force_suspend?, :force_suspend
+      
+        # The URLs of one or more instances to suspend. This can be a full URL or a
+        # partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
+        # Corresponds to the JSON property `instances`
+        # @return [Array<String>]
+        attr_accessor :instances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @force_suspend = args[:force_suspend] if args.key?(:force_suspend)
+          @instances = args[:instances] if args.key?(:instances)
         end
       end
       
@@ -32048,6 +32432,14 @@ module Google
       class Route
         include Google::Apis::Core::Hashable
       
+        # Whether this route can conflict with existing subnetworks. Setting this to
+        # true allows this route to conflict with subnetworks that have already been
+        # configured on the corresponding network.
+        # Corresponds to the JSON property `allowConflictingSubnetworks`
+        # @return [Boolean]
+        attr_accessor :allow_conflicting_subnetworks
+        alias_method :allow_conflicting_subnetworks?, :allow_conflicting_subnetworks
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -32181,6 +32573,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allow_conflicting_subnetworks = args[:allow_conflicting_subnetworks] if args.key?(:allow_conflicting_subnetworks)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @dest_range = args[:dest_range] if args.key?(:dest_range)
@@ -32687,7 +33080,7 @@ module Google
         # successive keepalive messages that BGP receives from a peer.
         # BGP will use the smaller of either the local hold time value or the peer's
         # hold time value as the hold time for the BGP connection between the two peers.
-        # If set, this value must be between 1 and 120. The default is 20.
+        # If set, this value must be between 20 and 60. The default is 20.
         # Corresponds to the JSON property `keepaliveInterval`
         # @return [Fixnum]
         attr_accessor :keepalive_interval
@@ -32718,12 +33111,11 @@ module Google
         # User-specified list of prefix groups to advertise in custom mode, which can
         # take one of the following options:
         # - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets.
-        # - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets.
-        # - ALL_PEER_VPC_SUBNETS: Advertises peer subnets of the router's VPC network.
-        # Note that this field can only be populated if advertise_mode is CUSTOM and
-        # overrides the list defined for the router (in the "bgp" message). These groups
-        # are advertised in addition to any specified prefixes. Leave this field blank
-        # to advertise no custom groups.
+        # - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this
+        # field can only be populated if advertise_mode is CUSTOM and overrides the list
+        # defined for the router (in the "bgp" message). These groups are advertised in
+        # addition to any specified prefixes. Leave this field blank to advertise no
+        # custom groups.
         # Corresponds to the JSON property `advertisedGroups`
         # @return [Array<String>]
         attr_accessor :advertised_groups
@@ -33490,6 +33882,13 @@ module Google
         # @return [String]
         attr_accessor :peer_ip_address
       
+        # [Output only] URI of the VM instance that is used as third-party router
+        # appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+        # The VM instance is the peer side of the BGP session.
+        # Corresponds to the JSON property `routerApplianceInstance`
+        # @return [String]
+        attr_accessor :router_appliance_instance
+      
         # BGP state as specified in RFC1771.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -33524,6 +33923,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @num_learned_routes = args[:num_learned_routes] if args.key?(:num_learned_routes)
           @peer_ip_address = args[:peer_ip_address] if args.key?(:peer_ip_address)
+          @router_appliance_instance = args[:router_appliance_instance] if args.key?(:router_appliance_instance)
           @state = args[:state] if args.key?(:state)
           @status = args[:status] if args.key?(:status)
           @uptime = args[:uptime] if args.key?(:uptime)
@@ -34069,7 +34469,7 @@ module Google
         end
       end
       
-      # Sets the scheduling options for an Instance. NextID: 17
+      # Sets the scheduling options for an Instance. NextID: 20
       class Scheduling
         include Google::Apis::Core::Hashable
       
@@ -34713,6 +35113,11 @@ module Google
         attr_accessor :enable_logging
         alias_method :enable_logging?, :enable_logging
       
+        # Optional, additional actions that are performed on headers.
+        # Corresponds to the JSON property `headerAction`
+        # @return [Google::Apis::ComputeAlpha::SecurityPolicyRuleHttpHeaderAction]
+        attr_accessor :header_action
+      
         # [Output only] Type of the resource. Always compute#securityPolicyRule for
         # security policy rules
         # Corresponds to the JSON property `kind`
@@ -34788,6 +35193,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @direction = args[:direction] if args.key?(:direction)
           @enable_logging = args[:enable_logging] if args.key?(:enable_logging)
+          @header_action = args[:header_action] if args.key?(:header_action)
           @kind = args[:kind] if args.key?(:kind)
           @match = args[:match] if args.key?(:match)
           @preview = args[:preview] if args.key?(:preview)
@@ -34798,6 +35204,50 @@ module Google
           @rule_tuple_count = args[:rule_tuple_count] if args.key?(:rule_tuple_count)
           @target_resources = args[:target_resources] if args.key?(:target_resources)
           @target_service_accounts = args[:target_service_accounts] if args.key?(:target_service_accounts)
+        end
+      end
+      
+      # 
+      class SecurityPolicyRuleHttpHeaderAction
+        include Google::Apis::Core::Hashable
+      
+        # The list of request headers to add or overwrite if they?re already present.
+        # Corresponds to the JSON property `requestHeadersToAdds`
+        # @return [Array<Google::Apis::ComputeAlpha::SecurityPolicyRuleHttpHeaderActionHttpHeaderOption>]
+        attr_accessor :request_headers_to_adds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_headers_to_adds = args[:request_headers_to_adds] if args.key?(:request_headers_to_adds)
+        end
+      end
+      
+      # 
+      class SecurityPolicyRuleHttpHeaderActionHttpHeaderOption
+        include Google::Apis::Core::Hashable
+      
+        # The name of the header to set.
+        # Corresponds to the JSON property `headerName`
+        # @return [String]
+        attr_accessor :header_name
+      
+        # The value to set the named header to.
+        # Corresponds to the JSON property `headerValue`
+        # @return [String]
+        attr_accessor :header_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header_name = args[:header_name] if args.key?(:header_name)
+          @header_value = args[:header_value] if args.key?(:header_value)
         end
       end
       
@@ -34966,28 +35416,19 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Can only be specified if the action for the rule is "rate_based_ban". If
-        # specified, the key will be banned for the configured 'ban_duration' when the
-        # number of requests that exceed the 'rate_limit_threshold' also exceed this '
-        # ban_threshold'.
+        # specified, determines the time (in seconds) the traffic will continue to be
+        # banned by the rate limit after the rate falls below the threshold.
         # Corresponds to the JSON property `banDurationSec`
         # @return [Fixnum]
         attr_accessor :ban_duration_sec
       
         # Can only be specified if the action for the rule is "rate_based_ban". If
-        # specified, the key will be banned for the configured 'ban_duration' when the
-        # number of requests that exceed the 'rate_limit_threshold' also exceed this '
-        # ban_threshold'.
+        # specified, the key will be banned for the configured 'ban_duration_sec' when
+        # the number of requests that exceed the 'rate_limit_threshold' also exceed this
+        # 'ban_threshold'.
         # Corresponds to the JSON property `banThreshold`
         # @return [Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptionsThreshold]
         attr_accessor :ban_threshold
-      
-        # Can only be specified if the action for the rule is "rate_based_ban" If
-        # specified, determines the time (in seconds) the traffic will continue to be
-        # blocked by the rate limit after the rate falls below the threshold. The
-        # default value is 0 seconds. [Deprecated] This field is deprecated.
-        # Corresponds to the JSON property `blockDuration`
-        # @return [Fixnum]
-        attr_accessor :block_duration
       
         # Action to take when requests are under the given threshold. When requests are
         # throttled, this is also the action for all requests which are not dropped.
@@ -35014,12 +35455,6 @@ module Google
         # @return [Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptionsThreshold]
         attr_accessor :rate_limit_threshold
       
-        # Rate in requests per second at which to begin ratelimiting. [Deprecated] This
-        # field is deprecated.
-        # Corresponds to the JSON property `thresholdRps`
-        # @return [Fixnum]
-        attr_accessor :threshold_rps
-      
         def initialize(**args)
            update!(**args)
         end
@@ -35028,12 +35463,10 @@ module Google
         def update!(**args)
           @ban_duration_sec = args[:ban_duration_sec] if args.key?(:ban_duration_sec)
           @ban_threshold = args[:ban_threshold] if args.key?(:ban_threshold)
-          @block_duration = args[:block_duration] if args.key?(:block_duration)
           @conform_action = args[:conform_action] if args.key?(:conform_action)
           @enforce_on_key = args[:enforce_on_key] if args.key?(:enforce_on_key)
           @exceed_action = args[:exceed_action] if args.key?(:exceed_action)
           @rate_limit_threshold = args[:rate_limit_threshold] if args.key?(:rate_limit_threshold)
-          @threshold_rps = args[:threshold_rps] if args.key?(:threshold_rps)
         end
       end
       
@@ -35268,7 +35701,7 @@ module Google
       # A service attachment represents a service that a producer has exposed. It
       # encapsulates the load balancer which fronts the service runs and a list of NAT
       # IP ranges that the producers uses to represent the consumers connecting to the
-      # service. next tag = 16
+      # service. next tag = 17
       class ServiceAttachment
         include Google::Apis::Core::Hashable
       
@@ -36459,7 +36892,7 @@ module Google
         # @return [String]
         attr_accessor :post_key_revocation_action_type
       
-        # Sets the scheduling options for an Instance. NextID: 17
+        # Sets the scheduling options for an Instance. NextID: 20
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeAlpha::Scheduling]
         attr_accessor :scheduling

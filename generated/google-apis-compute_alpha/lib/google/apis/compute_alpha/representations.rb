@@ -1660,6 +1660,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerInstanceLifecyclePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -1792,6 +1804,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagersResumeInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagersScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -1823,6 +1841,24 @@ module Google
       end
       
       class InstanceGroupManagersSetTargetPoolsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagersStartInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagersStopInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagersSuspendInstancesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3790,6 +3826,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegionInstanceGroupManagersResumeInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RegionInstanceGroupManagersSetAutoHealingRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3803,6 +3845,24 @@ module Google
       end
       
       class RegionInstanceGroupManagersSetTemplateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupManagersStartInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupManagersStopInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupManagersSuspendInstancesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4457,6 +4517,18 @@ module Google
       end
       
       class SecurityPolicyRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRuleHttpHeaderAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRuleHttpHeaderActionHttpHeaderOption
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6131,6 +6203,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_nested_virtualization, as: 'enableNestedVirtualization'
           property :threads_per_core, as: 'threadsPerCore'
+          property :visible_core_count, as: 'visibleCoreCount'
         end
       end
       
@@ -7771,11 +7844,13 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :parent, as: 'parent'
+          property :region, as: 'region'
           property :rule_tuple_count, as: 'ruleTupleCount'
           collection :rules, as: 'rules', class: Google::Apis::ComputeAlpha::FirewallPolicyRule, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRule::Representation
       
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
+          property :short_name, as: 'shortName'
         end
       end
       
@@ -7786,6 +7861,7 @@ module Google
           property :display_name, as: 'displayName'
           property :firewall_policy_id, as: 'firewallPolicyId'
           property :name, as: 'name'
+          property :short_name, as: 'shortName'
         end
       end
       
@@ -8147,6 +8223,7 @@ module Google
           property :proxy_header, as: 'proxyHeader'
           property :request_path, as: 'requestPath'
           property :response, as: 'response'
+          property :weight_report_mode, as: 'weightReportMode'
         end
       end
       
@@ -8160,6 +8237,7 @@ module Google
           property :proxy_header, as: 'proxyHeader'
           property :request_path, as: 'requestPath'
           property :response, as: 'response'
+          property :weight_report_mode, as: 'weightReportMode'
         end
       end
       
@@ -8173,6 +8251,7 @@ module Google
           property :proxy_header, as: 'proxyHeader'
           property :request_path, as: 'requestPath'
           property :response, as: 'response'
+          property :weight_report_mode, as: 'weightReportMode'
         end
       end
       
@@ -8442,6 +8521,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :forwarding_rule, as: 'forwardingRule'
+          property :forwarding_rule_ip, as: 'forwardingRuleIp'
           property :health_state, as: 'healthState'
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'
@@ -9120,6 +9201,8 @@ module Google
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
           property :instance_group, as: 'instanceGroup'
+          property :instance_lifecycle_policy, as: 'instanceLifecyclePolicy', class: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceLifecyclePolicy, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceLifecyclePolicy::Representation
+      
           property :instance_template, as: 'instanceTemplate'
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -9135,6 +9218,8 @@ module Google
       
           collection :target_pools, as: 'targetPools'
           property :target_size, as: 'targetSize'
+          property :target_stopped_size, as: 'targetStoppedSize'
+          property :target_suspended_size, as: 'targetSuspendedSize'
           property :update_policy, as: 'updatePolicy', class: Google::Apis::ComputeAlpha::InstanceGroupManagerUpdatePolicy, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerUpdatePolicy::Representation
       
           collection :versions, as: 'versions', class: Google::Apis::ComputeAlpha::InstanceGroupManagerVersion, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerVersion::Representation
@@ -9154,6 +9239,10 @@ module Google
           property :recreating, as: 'recreating'
           property :refreshing, as: 'refreshing'
           property :restarting, as: 'restarting'
+          property :resuming, as: 'resuming'
+          property :starting, as: 'starting'
+          property :stopping, as: 'stopping'
+          property :suspending, as: 'suspending'
           property :verifying, as: 'verifying'
         end
       end
@@ -9198,6 +9287,21 @@ module Google
           property :initial_delay_sec, as: 'initialDelaySec'
           property :max_unavailable, as: 'maxUnavailable', class: Google::Apis::ComputeAlpha::FixedOrPercent, decorator: Google::Apis::ComputeAlpha::FixedOrPercent::Representation
       
+        end
+      end
+      
+      class InstanceGroupManagerInstanceLifecyclePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metadata_based_readiness_signal, as: 'metadataBasedReadinessSignal', class: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal::Representation
+      
+        end
+      end
+      
+      class InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :timeout_sec, as: 'timeoutSec'
         end
       end
       
@@ -9406,6 +9510,13 @@ module Google
         end
       end
       
+      class InstanceGroupManagersResumeInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances'
+        end
+      end
+      
       class InstanceGroupManagersScopedList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9454,6 +9565,29 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fingerprint, :base64 => true, as: 'fingerprint'
           collection :target_pools, as: 'targetPools'
+        end
+      end
+      
+      class InstanceGroupManagersStartInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances'
+        end
+      end
+      
+      class InstanceGroupManagersStopInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :force_stop, as: 'forceStop'
+          collection :instances, as: 'instances'
+        end
+      end
+      
+      class InstanceGroupManagersSuspendInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :force_suspend, as: 'forceSuspend'
+          collection :instances, as: 'instances'
         end
       end
       
@@ -9793,6 +9927,7 @@ module Google
           property :name, as: 'name'
           collection :rules, as: 'rules', class: Google::Apis::ComputeAlpha::FirewallPolicyRule, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRule::Representation
       
+          property :short_name, as: 'shortName'
           property :type, as: 'type'
         end
       end
@@ -10963,6 +11098,7 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :network_endpoint_type, as: 'networkEndpointType'
+          property :psc_target_service, as: 'pscTargetService'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
@@ -11320,6 +11456,7 @@ module Google
           property :name, as: 'name'
           collection :rules, as: 'rules', class: Google::Apis::ComputeAlpha::FirewallPolicyRule, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRule::Representation
       
+          property :short_name, as: 'shortName'
           property :type, as: 'type'
         end
       end
@@ -13036,6 +13173,13 @@ module Google
         end
       end
       
+      class RegionInstanceGroupManagersResumeInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances'
+        end
+      end
+      
       class RegionInstanceGroupManagersSetAutoHealingRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -13056,6 +13200,29 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :instance_template, as: 'instanceTemplate'
+        end
+      end
+      
+      class RegionInstanceGroupManagersStartInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances'
+        end
+      end
+      
+      class RegionInstanceGroupManagersStopInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :force_stop, as: 'forceStop'
+          collection :instances, as: 'instances'
+        end
+      end
+      
+      class RegionInstanceGroupManagersSuspendInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :force_suspend, as: 'forceSuspend'
+          collection :instances, as: 'instances'
         end
       end
       
@@ -13633,6 +13800,7 @@ module Google
       class Route
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_conflicting_subnetworks, as: 'allowConflictingSubnetworks'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :dest_range, as: 'destRange'
@@ -13951,6 +14119,7 @@ module Google
           property :name, as: 'name'
           property :num_learned_routes, as: 'numLearnedRoutes'
           property :peer_ip_address, as: 'peerIpAddress'
+          property :router_appliance_instance, as: 'routerApplianceInstance'
           property :state, as: 'state'
           property :status, as: 'status'
           property :uptime, as: 'uptime'
@@ -14254,6 +14423,8 @@ module Google
           property :description, as: 'description'
           property :direction, as: 'direction'
           property :enable_logging, as: 'enableLogging'
+          property :header_action, as: 'headerAction', class: Google::Apis::ComputeAlpha::SecurityPolicyRuleHttpHeaderAction, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRuleHttpHeaderAction::Representation
+      
           property :kind, as: 'kind'
           property :match, as: 'match', class: Google::Apis::ComputeAlpha::SecurityPolicyRuleMatcher, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRuleMatcher::Representation
       
@@ -14266,6 +14437,22 @@ module Google
           property :rule_tuple_count, as: 'ruleTupleCount'
           collection :target_resources, as: 'targetResources'
           collection :target_service_accounts, as: 'targetServiceAccounts'
+        end
+      end
+      
+      class SecurityPolicyRuleHttpHeaderAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :request_headers_to_adds, as: 'requestHeadersToAdds', class: Google::Apis::ComputeAlpha::SecurityPolicyRuleHttpHeaderActionHttpHeaderOption, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRuleHttpHeaderActionHttpHeaderOption::Representation
+      
+        end
+      end
+      
+      class SecurityPolicyRuleHttpHeaderActionHttpHeaderOption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header_name, as: 'headerName'
+          property :header_value, as: 'headerValue'
         end
       end
       
@@ -14314,13 +14501,11 @@ module Google
           property :ban_duration_sec, as: 'banDurationSec'
           property :ban_threshold, as: 'banThreshold', class: Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptionsThreshold, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptionsThreshold::Representation
       
-          property :block_duration, as: 'blockDuration'
           property :conform_action, as: 'conformAction'
           property :enforce_on_key, as: 'enforceOnKey'
           property :exceed_action, as: 'exceedAction'
           property :rate_limit_threshold, as: 'rateLimitThreshold', class: Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptionsThreshold, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptionsThreshold::Representation
       
-          property :threshold_rps, as: 'thresholdRps'
         end
       end
       
