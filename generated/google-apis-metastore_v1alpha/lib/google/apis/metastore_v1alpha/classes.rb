@@ -250,9 +250,8 @@ module Google
         # @return [String]
         attr_accessor :database_dump_type
       
-        # Required. A Cloud Storage URI of a folder that metadata are exported to, in
-        # the format gs:///. A sub-folder containing exported files will be created
-        # below it.
+        # A Cloud Storage URI of a folder, in the format gs:///. A sub-folder containing
+        # exported files will be created below it.
         # Corresponds to the JSON property `destinationGcsFolder`
         # @return [String]
         attr_accessor :destination_gcs_folder
@@ -413,7 +412,7 @@ module Google
         attr_accessor :krb5_config_gcs_uri
       
         # A Kerberos principal that exists in the both the keytab the KDC to
-        # authenticate as. A typical principal is of the form "primary/instance@REALM",
+        # authenticate as. A typical principal is of the form primary/instance@REALM,
         # but there is no exact format.
         # Corresponds to the JSON property `principal`
         # @return [String]
@@ -649,7 +648,7 @@ module Google
         attr_accessor :database_dump_type
       
         # Output only. A Cloud Storage URI of a folder that metadata are exported to, in
-        # the form of gs:////, where ` is automatically generated.
+        # the form of gs:////, where is automatically generated.
         # Corresponds to the JSON property `destinationGcsUri`
         # @return [String]
         attr_accessor :destination_gcs_uri
@@ -703,9 +702,9 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Immutable. The relative resource name of the metadata import, of the form:"
+        # Immutable. The relative resource name of the metadata import, of the form:
         # projects/`project_number`/locations/`location_id`/services/`service_id`/
-        # metadataImports/`metadata_import_id`".
+        # metadataImports/`metadata_import_id`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -936,7 +935,7 @@ module Google
       
         # Output only. The relative resource name of the metastore service backup to
         # restore from, in the following form:projects/`project_id`/locations/`
-        # location_id`/services/`service_id`/backups/`backup_id`
+        # location_id`/services/`service_id`/backups/`backup_id`.
         # Corresponds to the JSON property `backup`
         # @return [String]
         attr_accessor :backup
@@ -987,8 +986,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The relative resource name of a Secret Manager secret version, in the
-        # following form:"projects/`project_number`/secrets/`secret_id`/versions/`
-        # version_id`".
+        # following form:projects/`project_number`/secrets/`secret_id`/versions/`
+        # version_id`.
         # Corresponds to the JSON property `cloudSecret`
         # @return [String]
         attr_accessor :cloud_secret
@@ -1050,15 +1049,15 @@ module Google
         # @return [Google::Apis::MetastoreV1alpha::MetadataManagementActivity]
         attr_accessor :metadata_management_activity
       
-        # Immutable. The relative resource name of the metastore service, of the form:"
-        # projects/`project_number`/locations/`location_id`/services/`service_id`".
+        # Immutable. The relative resource name of the metastore service, of the form:
+        # projects/`project_number`/locations/`location_id`/services/`service_id`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # Immutable. The relative resource name of the VPC network on which the instance
-        # can be accessed. It is specified in the following form:"projects/`
-        # project_number`/global/networks/`network_id`".
+        # can be accessed. It is specified in the following form:projects/`
+        # project_number`/global/networks/`network_id`.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -1067,6 +1066,12 @@ module Google
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
+      
+        # Immutable. The release channel of the service. If unspecified, defaults to
+        # STABLE.
+        # Corresponds to the JSON property `releaseChannel`
+        # @return [String]
+        attr_accessor :release_channel
       
         # Output only. The current state of the metastore service.
         # Corresponds to the JSON property `state`
@@ -1111,6 +1116,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @port = args[:port] if args.key?(:port)
+          @release_channel = args[:release_channel] if args.key?(:release_channel)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
           @tier = args[:tier] if args.key?(:tier)
