@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListPatchDeploymentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,6 +161,12 @@ module Google
       end
       
       class OneTimeSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -209,6 +221,12 @@ module Google
       end
       
       class RecurringSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -451,6 +469,15 @@ module Google
         end
       end
       
+      class ListOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :operations, as: 'operations', class: Google::Apis::OsconfigV1::Operation, decorator: Google::Apis::OsconfigV1::Operation::Representation
+      
+        end
+      end
+      
       class ListPatchDeploymentsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -491,6 +518,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :execute_time, as: 'executeTime'
+        end
+      end
+      
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::OsconfigV1::Status, decorator: Google::Apis::OsconfigV1::Status::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
         end
       end
       
@@ -638,6 +677,15 @@ module Google
       
           property :weekly, as: 'weekly', class: Google::Apis::OsconfigV1::WeeklySchedule, decorator: Google::Apis::OsconfigV1::WeeklySchedule::Representation
       
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
       
