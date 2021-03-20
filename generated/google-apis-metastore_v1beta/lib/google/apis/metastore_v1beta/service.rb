@@ -84,11 +84,15 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [String] filter
-        #   The standard list filter.
+        #   A filter to narrow down results to a preferred subset. The filtering language
+        #   accepts strings like "displayName=tokyo", and is documented in more detail in
+        #   AIP-160 (https://google.aip.dev/160).
         # @param [Fixnum] page_size
-        #   The standard list page size.
+        #   The maximum number of results to return. If not set, the service will select a
+        #   default.
         # @param [String] page_token
-        #   The standard list page token.
+        #   A page token received from the next_page_token field in the response. Send
+        #   that page token to receive the subsequent page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -232,8 +236,8 @@ module Google
         # Creates a metastore service in a project and location.
         # @param [String] parent
         #   Required. The relative resource name of the location in which to create a
-        #   metastore service, in the following form:"projects/`project_number`/locations/`
-        #   location_id`".
+        #   metastore service, in the following form:projects/`project_number`/locations/`
+        #   location_id`.
         # @param [Google::Apis::MetastoreV1beta::Service] service_object
         # @param [String] request_id
         #   Optional. A request ID. Specify a unique request ID to allow the server to
@@ -283,8 +287,8 @@ module Google
         # Deletes a single service.
         # @param [String] name
         #   Required. The relative resource name of the metastore service to delete, in
-        #   the following form:"projects/`project_number`/locations/`location_id`/services/
-        #   `service_id`".
+        #   the following form:projects/`project_number`/locations/`location_id`/services/`
+        #   service_id`.
         # @param [String] request_id
         #   Optional. A request ID. Specify a unique request ID to allow the server to
         #   ignore the request if it has completed. The server will ignore subsequent
@@ -325,8 +329,8 @@ module Google
         # Exports metadata from a service.
         # @param [String] service
         #   Required. The relative resource name of the metastore service to run export,
-        #   in the following form:"projects/`project_id`/locations/`location_id`/services/`
-        #   service_id`
+        #   in the following form:projects/`project_id`/locations/`location_id`/services/`
+        #   service_id`.
         # @param [Google::Apis::MetastoreV1beta::ExportMetadataRequest] export_metadata_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -360,8 +364,8 @@ module Google
         # Gets the details of a single service.
         # @param [String] name
         #   Required. The relative resource name of the metastore service to retrieve, in
-        #   the following form:"projects/`project_number`/locations/`location_id`/services/
-        #   `service_id`".
+        #   the following form:projects/`project_number`/locations/`location_id`/services/`
+        #   service_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -432,13 +436,13 @@ module Google
         # Lists services in a project and location.
         # @param [String] parent
         #   Required. The relative resource name of the location of metastore services to
-        #   list, in the following form:"projects/`project_number`/locations/`location_id`"
-        #   .
+        #   list, in the following form:projects/`project_number`/locations/`location_id`.
         # @param [String] filter
         #   Optional. The filter to apply to list results.
         # @param [String] order_by
-        #   Optional. Specify the ordering of results as described in Sorting Order. If
-        #   not specified, the results will be sorted in the default order.
+        #   Optional. Specify the ordering of results as described in Sorting Order (https:
+        #   //cloud.google.com/apis/design/design_patterns#sorting_order). If not
+        #   specified, the results will be sorted in the default order.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of services to return. The response may contain
         #   less than the maximum number. If unspecified, no more than 500 services are
@@ -482,8 +486,8 @@ module Google
         
         # Updates the parameters of a single service.
         # @param [String] name
-        #   Immutable. The relative resource name of the metastore service, of the form:"
-        #   projects/`project_number`/locations/`location_id`/services/`service_id`".
+        #   Immutable. The relative resource name of the metastore service, of the form:
+        #   projects/`project_number`/locations/`location_id`/services/`service_id`.
         # @param [Google::Apis::MetastoreV1beta::Service] service_object
         # @param [String] request_id
         #   Optional. A request ID. Specify a unique request ID to allow the server to
@@ -607,8 +611,8 @@ module Google
         # Creates a new MetadataImport in a given project and location.
         # @param [String] parent
         #   Required. The relative resource name of the service in which to create a
-        #   metastore import, in the following form:"projects/`project_number`/locations/`
-        #   location_id`/services/`service_id`"
+        #   metastore import, in the following form:projects/`project_number`/locations/`
+        #   location_id`/services/`service_id`.
         # @param [Google::Apis::MetastoreV1beta::MetadataImport] metadata_import_object
         # @param [String] metadata_import_id
         #   Required. The ID of the metadata import, which is used as the final component
@@ -658,8 +662,8 @@ module Google
         # Gets details of a single import.
         # @param [String] name
         #   Required. The relative resource name of the metadata import to retrieve, in
-        #   the following form:"projects/`project_number`/locations/`location_id`/services/
-        #   `service_id`/metadataImports/`import_id`".
+        #   the following form:projects/`project_number`/locations/`location_id`/services/`
+        #   service_id`/metadataImports/`import_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -690,13 +694,14 @@ module Google
         # Lists imports in a service.
         # @param [String] parent
         #   Required. The relative resource name of the service whose metadata imports to
-        #   list, in the following form:"projects/`project_number`/locations/`location_id`/
-        #   services/`service_id`/metadataImports".
+        #   list, in the following form:projects/`project_number`/locations/`location_id`/
+        #   services/`service_id`/metadataImports.
         # @param [String] filter
         #   Optional. The filter to apply to list results.
         # @param [String] order_by
-        #   Optional. Specify the ordering of results as described in Sorting Order. If
-        #   not specified, the results will be sorted in the default order.
+        #   Optional. Specify the ordering of results as described in Sorting Order (https:
+        #   //cloud.google.com/apis/design/design_patterns#sorting_order). If not
+        #   specified, the results will be sorted in the default order.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of imports to return. The response may contain
         #   less than the maximum number. If unspecified, no more than 500 imports are
@@ -741,9 +746,9 @@ module Google
         # Updates a single import. Only the description field of MetadataImport is
         # supported to be updated.
         # @param [String] name
-        #   Immutable. The relative resource name of the metadata import, of the form:"
+        #   Immutable. The relative resource name of the metadata import, of the form:
         #   projects/`project_number`/locations/`location_id`/services/`service_id`/
-        #   metadataImports/`metadata_import_id`".
+        #   metadataImports/`metadata_import_id`.
         # @param [Google::Apis::MetastoreV1beta::MetadataImport] metadata_import_object
         # @param [String] request_id
         #   Optional. A request ID. Specify a unique request ID to allow the server to

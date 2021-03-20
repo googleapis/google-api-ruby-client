@@ -473,6 +473,7 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :port, as: 'port'
+          property :release_channel, as: 'releaseChannel'
           property :state, as: 'state'
           property :state_message, as: 'stateMessage'
           property :tier, as: 'tier'
