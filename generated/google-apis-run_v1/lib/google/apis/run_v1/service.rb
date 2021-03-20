@@ -179,6 +179,9 @@ module Google
         #   The namespace in which the domain mapping should be created. For Cloud Run (
         #   fully managed), replace `namespace_id` with the project ID or number.
         # @param [Google::Apis::RunV1::DomainMapping] domain_mapping_object
+        # @param [String] dry_run
+        #   DryRun is a query string parameter which indicates that the server should run
+        #   validation without persisting the request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -196,13 +199,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_namespace_domainmapping(parent, domain_mapping_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_namespace_domainmapping(parent, domain_mapping_object = nil, dry_run: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'apis/domains.cloudrun.com/v1/{+parent}/domainmappings', options)
           command.request_representation = Google::Apis::RunV1::DomainMapping::Representation
           command.request_object = domain_mapping_object
           command.response_representation = Google::Apis::RunV1::DomainMapping::Representation
           command.response_class = Google::Apis::RunV1::DomainMapping
           command.params['parent'] = parent unless parent.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -214,6 +218,9 @@ module Google
         #   replace `namespace_id` with the project ID or number.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
+        # @param [String] dry_run
+        #   DryRun is a query string parameter which indicates that the server should run
+        #   validation without persisting the request.
         # @param [String] kind
         #   Cloud Run currently ignores this parameter.
         # @param [String] propagation_policy
@@ -237,12 +244,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_namespace_domainmapping(name, api_version: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_namespace_domainmapping(name, api_version: nil, dry_run: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'apis/domains.cloudrun.com/v1/{+name}', options)
           command.response_representation = Google::Apis::RunV1::Status::Representation
           command.response_class = Google::Apis::RunV1::Status
           command.params['name'] = name unless name.nil?
           command.query['apiVersion'] = api_version unless api_version.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['kind'] = kind unless kind.nil?
           command.query['propagationPolicy'] = propagation_policy unless propagation_policy.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -344,6 +352,9 @@ module Google
         #   namespace_id` with the project ID or number.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
+        # @param [String] dry_run
+        #   DryRun is a query string parameter which indicates that the server should run
+        #   validation without persisting the request.
         # @param [String] kind
         #   Cloud Run currently ignores this parameter.
         # @param [String] propagation_policy
@@ -367,12 +378,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_namespace_revision(name, api_version: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_namespace_revision(name, api_version: nil, dry_run: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'apis/serving.knative.dev/v1/{+name}', options)
           command.response_representation = Google::Apis::RunV1::Status::Representation
           command.response_class = Google::Apis::RunV1::Status
           command.params['name'] = name unless name.nil?
           command.query['apiVersion'] = api_version unless api_version.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['kind'] = kind unless kind.nil?
           command.query['propagationPolicy'] = propagation_policy unless propagation_policy.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -561,6 +573,9 @@ module Google
         #   The namespace in which the service should be created. For Cloud Run (fully
         #   managed), replace `namespace_id` with the project ID or number.
         # @param [Google::Apis::RunV1::Service] service_object
+        # @param [String] dry_run
+        #   DryRun is a query string parameter which indicates that the server should run
+        #   validation without persisting the request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -578,13 +593,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_namespace_service(parent, service_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_namespace_service(parent, service_object = nil, dry_run: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'apis/serving.knative.dev/v1/{+parent}/services', options)
           command.request_representation = Google::Apis::RunV1::Service::Representation
           command.request_object = service_object
           command.response_representation = Google::Apis::RunV1::Service::Representation
           command.response_class = Google::Apis::RunV1::Service
           command.params['parent'] = parent unless parent.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -597,6 +613,9 @@ module Google
         #   namespace_id` with the project ID or number.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
+        # @param [String] dry_run
+        #   DryRun is a query string parameter which indicates that the server should run
+        #   validation without persisting the request.
         # @param [String] kind
         #   Cloud Run currently ignores this parameter.
         # @param [String] propagation_policy
@@ -620,12 +639,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_namespace_service(name, api_version: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_namespace_service(name, api_version: nil, dry_run: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'apis/serving.knative.dev/v1/{+name}', options)
           command.response_representation = Google::Apis::RunV1::Status::Representation
           command.response_class = Google::Apis::RunV1::Status
           command.params['name'] = name unless name.nil?
           command.query['apiVersion'] = api_version unless api_version.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['kind'] = kind unless kind.nil?
           command.query['propagationPolicy'] = propagation_policy unless propagation_policy.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -729,6 +749,9 @@ module Google
         #   The name of the service being replaced. For Cloud Run (fully managed), replace
         #   `namespace_id` with the project ID or number.
         # @param [Google::Apis::RunV1::Service] service_object
+        # @param [String] dry_run
+        #   DryRun is a query string parameter which indicates that the server should run
+        #   validation without persisting the request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -746,13 +769,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def replace_namespace_service_service(name, service_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def replace_namespace_service_service(name, service_object = nil, dry_run: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'apis/serving.knative.dev/v1/{+name}', options)
           command.request_representation = Google::Apis::RunV1::Service::Representation
           command.request_object = service_object
           command.response_representation = Google::Apis::RunV1::Service::Representation
           command.response_class = Google::Apis::RunV1::Service
           command.params['name'] = name unless name.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -798,11 +822,15 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [String] filter
-        #   The standard list filter.
+        #   A filter to narrow down results to a preferred subset. The filtering language
+        #   accepts strings like "displayName=tokyo", and is documented in more detail in [
+        #   AIP-160](https://google.aip.dev/160).
         # @param [Fixnum] page_size
-        #   The standard list page size.
+        #   The maximum number of results to return. If not set, the service will select a
+        #   default.
         # @param [String] page_token
-        #   The standard list page token.
+        #   A page token received from the `next_page_token` field in the response. Send
+        #   that page token to receive the subsequent page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -962,6 +990,9 @@ module Google
         #   The namespace in which the domain mapping should be created. For Cloud Run (
         #   fully managed), replace `namespace_id` with the project ID or number.
         # @param [Google::Apis::RunV1::DomainMapping] domain_mapping_object
+        # @param [String] dry_run
+        #   DryRun is a query string parameter which indicates that the server should run
+        #   validation without persisting the request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -979,13 +1010,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_domainmapping(parent, domain_mapping_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_domainmapping(parent, domain_mapping_object = nil, dry_run: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/domainmappings', options)
           command.request_representation = Google::Apis::RunV1::DomainMapping::Representation
           command.request_object = domain_mapping_object
           command.response_representation = Google::Apis::RunV1::DomainMapping::Representation
           command.response_class = Google::Apis::RunV1::DomainMapping
           command.params['parent'] = parent unless parent.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -997,6 +1029,9 @@ module Google
         #   replace `namespace_id` with the project ID or number.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
+        # @param [String] dry_run
+        #   DryRun is a query string parameter which indicates that the server should run
+        #   validation without persisting the request.
         # @param [String] kind
         #   Cloud Run currently ignores this parameter.
         # @param [String] propagation_policy
@@ -1020,12 +1055,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_domainmapping(name, api_version: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_domainmapping(name, api_version: nil, dry_run: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::RunV1::Status::Representation
           command.response_class = Google::Apis::RunV1::Status
           command.params['name'] = name unless name.nil?
           command.query['apiVersion'] = api_version unless api_version.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['kind'] = kind unless kind.nil?
           command.query['propagationPolicy'] = propagation_policy unless propagation_policy.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1127,6 +1163,9 @@ module Google
         #   namespace_id` with the project ID or number.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
+        # @param [String] dry_run
+        #   DryRun is a query string parameter which indicates that the server should run
+        #   validation without persisting the request.
         # @param [String] kind
         #   Cloud Run currently ignores this parameter.
         # @param [String] propagation_policy
@@ -1150,12 +1189,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_revision(name, api_version: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_revision(name, api_version: nil, dry_run: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::RunV1::Status::Representation
           command.response_class = Google::Apis::RunV1::Status
           command.params['name'] = name unless name.nil?
           command.query['apiVersion'] = api_version unless api_version.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['kind'] = kind unless kind.nil?
           command.query['propagationPolicy'] = propagation_policy unless propagation_policy.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1344,6 +1384,9 @@ module Google
         #   The namespace in which the service should be created. For Cloud Run (fully
         #   managed), replace `namespace_id` with the project ID or number.
         # @param [Google::Apis::RunV1::Service] service_object
+        # @param [String] dry_run
+        #   DryRun is a query string parameter which indicates that the server should run
+        #   validation without persisting the request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1361,13 +1404,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_service(parent, service_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_service(parent, service_object = nil, dry_run: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/services', options)
           command.request_representation = Google::Apis::RunV1::Service::Representation
           command.request_object = service_object
           command.response_representation = Google::Apis::RunV1::Service::Representation
           command.response_class = Google::Apis::RunV1::Service
           command.params['parent'] = parent unless parent.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1380,6 +1424,9 @@ module Google
         #   namespace_id` with the project ID or number.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
+        # @param [String] dry_run
+        #   DryRun is a query string parameter which indicates that the server should run
+        #   validation without persisting the request.
         # @param [String] kind
         #   Cloud Run currently ignores this parameter.
         # @param [String] propagation_policy
@@ -1403,12 +1450,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_service(name, api_version: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_service(name, api_version: nil, dry_run: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::RunV1::Status::Representation
           command.response_class = Google::Apis::RunV1::Status
           command.params['name'] = name unless name.nil?
           command.query['apiVersion'] = api_version unless api_version.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['kind'] = kind unless kind.nil?
           command.query['propagationPolicy'] = propagation_policy unless propagation_policy.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1553,6 +1601,9 @@ module Google
         #   The name of the service being replaced. For Cloud Run (fully managed), replace
         #   `namespace_id` with the project ID or number.
         # @param [Google::Apis::RunV1::Service] service_object
+        # @param [String] dry_run
+        #   DryRun is a query string parameter which indicates that the server should run
+        #   validation without persisting the request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1570,13 +1621,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def replace_project_location_service_service(name, service_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def replace_project_location_service_service(name, service_object = nil, dry_run: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'v1/{+name}', options)
           command.request_representation = Google::Apis::RunV1::Service::Representation
           command.request_object = service_object
           command.response_representation = Google::Apis::RunV1::Service::Representation
           command.response_class = Google::Apis::RunV1::Service
           command.params['name'] = name unless name.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
