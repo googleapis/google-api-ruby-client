@@ -54,6 +54,10 @@ module Google
         #   Required. The parent location in which to create the subscription. Structured
         #   like `projects/`project_number`/locations/`location``.
         # @param [Google::Apis::PubsubliteV1::Subscription] subscription_object
+        # @param [Boolean] skip_backlog
+        #   If true, the newly created subscription will only receive messages published
+        #   after the subscription was created. Otherwise, the entire message backlog will
+        #   be received on the subscription. Defaults to false.
         # @param [String] subscription_id
         #   Required. The ID to use for the subscription, which will become the final
         #   component of the subscription's name. This value is structured like: `my-sub-
@@ -75,13 +79,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_admin_project_location_subscription(parent, subscription_object = nil, subscription_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_admin_project_location_subscription(parent, subscription_object = nil, skip_backlog: nil, subscription_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/admin/{+parent}/subscriptions', options)
           command.request_representation = Google::Apis::PubsubliteV1::Subscription::Representation
           command.request_object = subscription_object
           command.response_representation = Google::Apis::PubsubliteV1::Subscription::Representation
           command.response_class = Google::Apis::PubsubliteV1::Subscription
           command.params['parent'] = parent unless parent.nil?
+          command.query['skipBacklog'] = skip_backlog unless skip_backlog.nil?
           command.query['subscriptionId'] = subscription_id unless subscription_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
