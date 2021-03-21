@@ -600,7 +600,7 @@ module Google
       
         # Optional. Annotations for the service. This data can be consumed by service
         # clients. Restrictions: * The entire annotations dictionary may contain up to
-        # 512 characters, spread accoss all key-value pairs. Annotations that go beyond
+        # 2000 characters, spread accoss all key-value pairs. Annotations that go beyond
         # this limit are rejected * Valid annotation keys have two segments: an optional
         # prefix and name, separated by a slash (/). The name segment is required and
         # must be 63 characters or less, beginning and ending with an alphanumeric
