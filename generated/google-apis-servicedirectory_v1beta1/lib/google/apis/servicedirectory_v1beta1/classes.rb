@@ -606,7 +606,7 @@ module Google
         attr_accessor :endpoints
       
         # Optional. Metadata for the service. This data can be consumed by service
-        # clients. Restrictions: * The entire metadata dictionary may contain up to 512
+        # clients. Restrictions: * The entire metadata dictionary may contain up to 2000
         # characters, spread accoss all key-value pairs. Metadata that goes beyond this
         # limit are rejected * Valid metadata keys have two segments: an optional prefix
         # and name, separated by a slash (/). The name segment is required and must be
