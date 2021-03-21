@@ -46,6 +46,168 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudAuditLoggingFeatureSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CommonFeatureSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CommonFeatureState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigManagementBinauthzConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigManagementBinauthzState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigManagementBinauthzVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigManagementConfigSync
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigManagementConfigSyncDeploymentState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigManagementConfigSyncState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigManagementConfigSyncVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigManagementErrorResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigManagementGatekeeperDeploymentState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigManagementGitConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigManagementGroupVersionKind
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigManagementHierarchyControllerConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigManagementHierarchyControllerDeploymentState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigManagementHierarchyControllerState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigManagementHierarchyControllerVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigManagementInstallError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigManagementMembershipSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigManagementMembershipState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigManagementOperatorState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigManagementPolicyController
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigManagementPolicyControllerState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigManagementPolicyControllerVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigManagementSyncError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigManagementSyncState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -58,7 +220,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Feature
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FeatureResourceState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FeatureState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleRpcStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListFeaturesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -82,6 +268,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MembershipFeatureSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MembershipFeatureState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MeteringMembershipState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MultiClusterIngressFeatureSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +305,36 @@ module Google
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceMeshAnalysisMessage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceMeshAnalysisMessageBase
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceMeshFeatureState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceMeshMembershipState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceMeshType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -151,6 +391,281 @@ module Google
         end
       end
       
+      class CloudAuditLoggingFeatureSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowlisted_service_accounts, as: 'allowlistedServiceAccounts'
+        end
+      end
+      
+      class CommonFeatureSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloudauditlogging, as: 'cloudauditlogging', class: Google::Apis::GkehubV1alpha::CloudAuditLoggingFeatureSpec, decorator: Google::Apis::GkehubV1alpha::CloudAuditLoggingFeatureSpec::Representation
+      
+          property :multiclusteringress, as: 'multiclusteringress', class: Google::Apis::GkehubV1alpha::MultiClusterIngressFeatureSpec, decorator: Google::Apis::GkehubV1alpha::MultiClusterIngressFeatureSpec::Representation
+      
+        end
+      end
+      
+      class CommonFeatureState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :servicemesh, as: 'servicemesh', class: Google::Apis::GkehubV1alpha::ServiceMeshFeatureState, decorator: Google::Apis::GkehubV1alpha::ServiceMeshFeatureState::Representation
+      
+          property :state, as: 'state', class: Google::Apis::GkehubV1alpha::FeatureState, decorator: Google::Apis::GkehubV1alpha::FeatureState::Representation
+      
+        end
+      end
+      
+      class ConfigManagementBinauthzConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
+      class ConfigManagementBinauthzState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :version, as: 'version', class: Google::Apis::GkehubV1alpha::ConfigManagementBinauthzVersion, decorator: Google::Apis::GkehubV1alpha::ConfigManagementBinauthzVersion::Representation
+      
+          property :webhook, as: 'webhook'
+        end
+      end
+      
+      class ConfigManagementBinauthzVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :webhook_version, as: 'webhookVersion'
+        end
+      end
+      
+      class ConfigManagementConfigSync
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :git, as: 'git', class: Google::Apis::GkehubV1alpha::ConfigManagementGitConfig, decorator: Google::Apis::GkehubV1alpha::ConfigManagementGitConfig::Representation
+      
+          property :source_format, as: 'sourceFormat'
+        end
+      end
+      
+      class ConfigManagementConfigSyncDeploymentState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :git_sync, as: 'gitSync'
+          property :importer, as: 'importer'
+          property :monitor, as: 'monitor'
+          property :reconciler_manager, as: 'reconcilerManager'
+          property :root_reconciler, as: 'rootReconciler'
+          property :syncer, as: 'syncer'
+        end
+      end
+      
+      class ConfigManagementConfigSyncState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deployment_state, as: 'deploymentState', class: Google::Apis::GkehubV1alpha::ConfigManagementConfigSyncDeploymentState, decorator: Google::Apis::GkehubV1alpha::ConfigManagementConfigSyncDeploymentState::Representation
+      
+          property :sync_state, as: 'syncState', class: Google::Apis::GkehubV1alpha::ConfigManagementSyncState, decorator: Google::Apis::GkehubV1alpha::ConfigManagementSyncState::Representation
+      
+          property :version, as: 'version', class: Google::Apis::GkehubV1alpha::ConfigManagementConfigSyncVersion, decorator: Google::Apis::GkehubV1alpha::ConfigManagementConfigSyncVersion::Representation
+      
+        end
+      end
+      
+      class ConfigManagementConfigSyncVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :git_sync, as: 'gitSync'
+          property :importer, as: 'importer'
+          property :monitor, as: 'monitor'
+          property :reconciler_manager, as: 'reconcilerManager'
+          property :root_reconciler, as: 'rootReconciler'
+          property :syncer, as: 'syncer'
+        end
+      end
+      
+      class ConfigManagementErrorResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_gvk, as: 'resourceGvk', class: Google::Apis::GkehubV1alpha::ConfigManagementGroupVersionKind, decorator: Google::Apis::GkehubV1alpha::ConfigManagementGroupVersionKind::Representation
+      
+          property :resource_name, as: 'resourceName'
+          property :resource_namespace, as: 'resourceNamespace'
+          property :source_path, as: 'sourcePath'
+        end
+      end
+      
+      class ConfigManagementGatekeeperDeploymentState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gatekeeper_audit, as: 'gatekeeperAudit'
+          property :gatekeeper_controller_manager_state, as: 'gatekeeperControllerManagerState'
+        end
+      end
+      
+      class ConfigManagementGitConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :https_proxy, as: 'httpsProxy'
+          property :policy_dir, as: 'policyDir'
+          property :secret_type, as: 'secretType'
+          property :sync_branch, as: 'syncBranch'
+          property :sync_repo, as: 'syncRepo'
+          property :sync_rev, as: 'syncRev'
+          property :sync_wait_secs, :numeric_string => true, as: 'syncWaitSecs'
+        end
+      end
+      
+      class ConfigManagementGroupVersionKind
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :group, as: 'group'
+          property :kind, as: 'kind'
+          property :version, as: 'version'
+        end
+      end
+      
+      class ConfigManagementHierarchyControllerConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_hierarchical_resource_quota, as: 'enableHierarchicalResourceQuota'
+          property :enable_pod_tree_labels, as: 'enablePodTreeLabels'
+          property :enabled, as: 'enabled'
+        end
+      end
+      
+      class ConfigManagementHierarchyControllerDeploymentState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :extension, as: 'extension'
+          property :hnc, as: 'hnc'
+        end
+      end
+      
+      class ConfigManagementHierarchyControllerState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state', class: Google::Apis::GkehubV1alpha::ConfigManagementHierarchyControllerDeploymentState, decorator: Google::Apis::GkehubV1alpha::ConfigManagementHierarchyControllerDeploymentState::Representation
+      
+          property :version, as: 'version', class: Google::Apis::GkehubV1alpha::ConfigManagementHierarchyControllerVersion, decorator: Google::Apis::GkehubV1alpha::ConfigManagementHierarchyControllerVersion::Representation
+      
+        end
+      end
+      
+      class ConfigManagementHierarchyControllerVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :extension, as: 'extension'
+          property :hnc, as: 'hnc'
+        end
+      end
+      
+      class ConfigManagementInstallError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_message, as: 'errorMessage'
+        end
+      end
+      
+      class ConfigManagementMembershipSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :binauthz, as: 'binauthz', class: Google::Apis::GkehubV1alpha::ConfigManagementBinauthzConfig, decorator: Google::Apis::GkehubV1alpha::ConfigManagementBinauthzConfig::Representation
+      
+          property :config_sync, as: 'configSync', class: Google::Apis::GkehubV1alpha::ConfigManagementConfigSync, decorator: Google::Apis::GkehubV1alpha::ConfigManagementConfigSync::Representation
+      
+          property :hierarchy_controller, as: 'hierarchyController', class: Google::Apis::GkehubV1alpha::ConfigManagementHierarchyControllerConfig, decorator: Google::Apis::GkehubV1alpha::ConfigManagementHierarchyControllerConfig::Representation
+      
+          property :policy_controller, as: 'policyController', class: Google::Apis::GkehubV1alpha::ConfigManagementPolicyController, decorator: Google::Apis::GkehubV1alpha::ConfigManagementPolicyController::Representation
+      
+          property :version, as: 'version'
+        end
+      end
+      
+      class ConfigManagementMembershipState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :binauthz_state, as: 'binauthzState', class: Google::Apis::GkehubV1alpha::ConfigManagementBinauthzState, decorator: Google::Apis::GkehubV1alpha::ConfigManagementBinauthzState::Representation
+      
+          property :cluster_name, as: 'clusterName'
+          property :config_sync_state, as: 'configSyncState', class: Google::Apis::GkehubV1alpha::ConfigManagementConfigSyncState, decorator: Google::Apis::GkehubV1alpha::ConfigManagementConfigSyncState::Representation
+      
+          property :hierarchy_controller_state, as: 'hierarchyControllerState', class: Google::Apis::GkehubV1alpha::ConfigManagementHierarchyControllerState, decorator: Google::Apis::GkehubV1alpha::ConfigManagementHierarchyControllerState::Representation
+      
+          property :membership_spec, as: 'membershipSpec', class: Google::Apis::GkehubV1alpha::ConfigManagementMembershipSpec, decorator: Google::Apis::GkehubV1alpha::ConfigManagementMembershipSpec::Representation
+      
+          property :operator_state, as: 'operatorState', class: Google::Apis::GkehubV1alpha::ConfigManagementOperatorState, decorator: Google::Apis::GkehubV1alpha::ConfigManagementOperatorState::Representation
+      
+          property :policy_controller_state, as: 'policyControllerState', class: Google::Apis::GkehubV1alpha::ConfigManagementPolicyControllerState, decorator: Google::Apis::GkehubV1alpha::ConfigManagementPolicyControllerState::Representation
+      
+        end
+      end
+      
+      class ConfigManagementOperatorState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deployment_state, as: 'deploymentState'
+          collection :errors, as: 'errors', class: Google::Apis::GkehubV1alpha::ConfigManagementInstallError, decorator: Google::Apis::GkehubV1alpha::ConfigManagementInstallError::Representation
+      
+          property :version, as: 'version'
+        end
+      end
+      
+      class ConfigManagementPolicyController
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audit_interval_seconds, :numeric_string => true, as: 'auditIntervalSeconds'
+          property :enabled, as: 'enabled'
+          collection :exemptable_namespaces, as: 'exemptableNamespaces'
+          property :log_denies_enabled, as: 'logDeniesEnabled'
+          property :referential_rules_enabled, as: 'referentialRulesEnabled'
+          property :template_library_installed, as: 'templateLibraryInstalled'
+        end
+      end
+      
+      class ConfigManagementPolicyControllerState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deployment_state, as: 'deploymentState', class: Google::Apis::GkehubV1alpha::ConfigManagementGatekeeperDeploymentState, decorator: Google::Apis::GkehubV1alpha::ConfigManagementGatekeeperDeploymentState::Representation
+      
+          property :version, as: 'version', class: Google::Apis::GkehubV1alpha::ConfigManagementPolicyControllerVersion, decorator: Google::Apis::GkehubV1alpha::ConfigManagementPolicyControllerVersion::Representation
+      
+        end
+      end
+      
+      class ConfigManagementPolicyControllerVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :version, as: 'version'
+        end
+      end
+      
+      class ConfigManagementSyncError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :error_message, as: 'errorMessage'
+          collection :error_resources, as: 'errorResources', class: Google::Apis::GkehubV1alpha::ConfigManagementErrorResource, decorator: Google::Apis::GkehubV1alpha::ConfigManagementErrorResource::Representation
+      
+        end
+      end
+      
+      class ConfigManagementSyncState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :errors, as: 'errors', class: Google::Apis::GkehubV1alpha::ConfigManagementSyncError, decorator: Google::Apis::GkehubV1alpha::ConfigManagementSyncError::Representation
+      
+          property :import_token, as: 'importToken'
+          property :last_sync, as: 'lastSync'
+          property :last_sync_time, as: 'lastSyncTime'
+          property :source_token, as: 'sourceToken'
+          property :sync_token, as: 'syncToken'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -167,12 +682,58 @@ module Google
         end
       end
       
+      class Feature
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          hash :labels, as: 'labels'
+          hash :membership_specs, as: 'membershipSpecs', class: Google::Apis::GkehubV1alpha::MembershipFeatureSpec, decorator: Google::Apis::GkehubV1alpha::MembershipFeatureSpec::Representation
+      
+          hash :membership_states, as: 'membershipStates', class: Google::Apis::GkehubV1alpha::MembershipFeatureState, decorator: Google::Apis::GkehubV1alpha::MembershipFeatureState::Representation
+      
+          property :name, as: 'name'
+          property :resource_state, as: 'resourceState', class: Google::Apis::GkehubV1alpha::FeatureResourceState, decorator: Google::Apis::GkehubV1alpha::FeatureResourceState::Representation
+      
+          property :spec, as: 'spec', class: Google::Apis::GkehubV1alpha::CommonFeatureSpec, decorator: Google::Apis::GkehubV1alpha::CommonFeatureSpec::Representation
+      
+          property :state, as: 'state', class: Google::Apis::GkehubV1alpha::CommonFeatureState, decorator: Google::Apis::GkehubV1alpha::CommonFeatureState::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class FeatureResourceState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
+        end
+      end
+      
+      class FeatureState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :description, as: 'description'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleRpcStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class ListFeaturesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :resources, as: 'resources', class: Google::Apis::GkehubV1alpha::Feature, decorator: Google::Apis::GkehubV1alpha::Feature::Representation
+      
         end
       end
       
@@ -202,6 +763,43 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class MembershipFeatureSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :configmanagement, as: 'configmanagement', class: Google::Apis::GkehubV1alpha::ConfigManagementMembershipSpec, decorator: Google::Apis::GkehubV1alpha::ConfigManagementMembershipSpec::Representation
+      
+        end
+      end
+      
+      class MembershipFeatureState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :configmanagement, as: 'configmanagement', class: Google::Apis::GkehubV1alpha::ConfigManagementMembershipState, decorator: Google::Apis::GkehubV1alpha::ConfigManagementMembershipState::Representation
+      
+          property :metering, as: 'metering', class: Google::Apis::GkehubV1alpha::MeteringMembershipState, decorator: Google::Apis::GkehubV1alpha::MeteringMembershipState::Representation
+      
+          property :servicemesh, as: 'servicemesh', class: Google::Apis::GkehubV1alpha::ServiceMeshMembershipState, decorator: Google::Apis::GkehubV1alpha::ServiceMeshMembershipState::Representation
+      
+          property :state, as: 'state', class: Google::Apis::GkehubV1alpha::FeatureState, decorator: Google::Apis::GkehubV1alpha::FeatureState::Representation
+      
+        end
+      end
+      
+      class MeteringMembershipState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_measurement_time, as: 'lastMeasurementTime'
+          property :precise_last_measured_cluster_vcpu_capacity, as: 'preciseLastMeasuredClusterVcpuCapacity'
+        end
+      end
+      
+      class MultiClusterIngressFeatureSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config_membership, as: 'configMembership'
         end
       end
       
@@ -239,6 +837,51 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class ServiceMeshAnalysisMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :args, as: 'args'
+          property :description, as: 'description'
+          property :message_base, as: 'messageBase', class: Google::Apis::GkehubV1alpha::ServiceMeshAnalysisMessageBase, decorator: Google::Apis::GkehubV1alpha::ServiceMeshAnalysisMessageBase::Representation
+      
+          collection :resource_paths, as: 'resourcePaths'
+        end
+      end
+      
+      class ServiceMeshAnalysisMessageBase
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :documentation_url, as: 'documentationUrl'
+          property :level, as: 'level'
+          property :type, as: 'type', class: Google::Apis::GkehubV1alpha::ServiceMeshType, decorator: Google::Apis::GkehubV1alpha::ServiceMeshType::Representation
+      
+        end
+      end
+      
+      class ServiceMeshFeatureState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :analysis_messages, as: 'analysisMessages', class: Google::Apis::GkehubV1alpha::ServiceMeshAnalysisMessage, decorator: Google::Apis::GkehubV1alpha::ServiceMeshAnalysisMessage::Representation
+      
+        end
+      end
+      
+      class ServiceMeshMembershipState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :analysis_messages, as: 'analysisMessages', class: Google::Apis::GkehubV1alpha::ServiceMeshAnalysisMessage, decorator: Google::Apis::GkehubV1alpha::ServiceMeshAnalysisMessage::Representation
+      
+        end
+      end
+      
+      class ServiceMeshType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :display_name, as: 'displayName'
         end
       end
       
