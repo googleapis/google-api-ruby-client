@@ -819,7 +819,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Fetch the representation of an existing Project.
+        # Fetches the representation of an existing Project.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] client_operation_id
