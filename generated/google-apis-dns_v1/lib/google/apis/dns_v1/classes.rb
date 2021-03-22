@@ -109,12 +109,12 @@ module Google
       
         # The presence of this field indicates that there exist more results following
         # your last page of results in pagination order. To fetch them, make another
-        # list request using this value as your pagination token. In this way you can
-        # retrieve the complete contents of even very large collections one page at a
-        # time. However, if the contents of the collection change between the first and
-        # last paginated list request, the set of all elements returned are an
-        # inconsistent view of the collection. There is no way to retrieve a "snapshot"
-        # of collections larger than the maximum page size.
+        # list request using this value as your pagination token. This lets you retrieve
+        # the complete contents of even very large collections one page at a time.
+        # However, if the contents of the collection change between the first and last
+        # paginated list request, the set of all elements returned are an inconsistent
+        # view of the collection. You cannot retrieve a "snapshot" of collections larger
+        # than the maximum page size.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -583,12 +583,12 @@ module Google
       
         # The presence of this field indicates that there exist more results following
         # your last page of results in pagination order. To fetch them, make another
-        # list request using this value as your page token. In this way you can retrieve
-        # the complete contents of even very large collections one page at a time.
-        # However, if the contents of the collection change between the first and last
-        # paginated list request, the set of all elements returned are an inconsistent
-        # view of the collection. There is no way to retrieve a consistent snapshot of a
-        # collection larger than the maximum page size.
+        # list request using this value as your page token. This lets you retrieve the
+        # complete contents of even very large collections one page at a time. However,
+        # if the contents of the collection change between the first and last paginated
+        # list request, the set of all elements returned are an inconsistent view of the
+        # collection. You cannot retrieve a consistent snapshot of a collection larger
+        # than the maximum page size.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -783,9 +783,9 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The fully qualified URL of the namespace associated with the zone. This should
-        # be formatted like https://servicedirectory.googleapis.com/v1/projects/`project`
-        # /locations/`location`/namespaces/`namespace`
+        # The fully qualified URL of the namespace associated with the zone. Format must
+        # be https://servicedirectory.googleapis.com/v1/projects/`project`/locations/`
+        # location`/namespaces/`namespace`
         # Corresponds to the JSON property `namespaceUrl`
         # @return [String]
         attr_accessor :namespace_url
@@ -823,12 +823,12 @@ module Google
       
         # The presence of this field indicates that there exist more results following
         # your last page of results in pagination order. To fetch them, make another
-        # list request using this value as your page token. In this way you can retrieve
-        # the complete contents of even very large collections one page at a time.
-        # However, if the contents of the collection change between the first and last
-        # paginated list request, the set of all elements returned are an inconsistent
-        # view of the collection. There is no way to retrieve a consistent snapshot of a
-        # collection larger than the maximum page size.
+        # list request using this value as your page token. This lets you the complete
+        # contents of even very large collections one page at a time. However, if the
+        # contents of the collection change between the first and last paginated list
+        # request, the set of all elements returned are an inconsistent view of the
+        # collection. You cannot retrieve a consistent snapshot of a collection larger
+        # than the maximum page size.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -988,12 +988,12 @@ module Google
       
         # The presence of this field indicates that there exist more results following
         # your last page of results in pagination order. To fetch them, make another
-        # list request using this value as your page token. In this way you can retrieve
-        # the complete contents of even very large collections one page at a time.
-        # However, if the contents of the collection change between the first and last
-        # paginated list request, the set of all elements returned are an inconsistent
-        # view of the collection. There is no way to retrieve a consistent snapshot of a
-        # collection larger than the maximum page size.
+        # list request using this value as your page token. This lets you the complete
+        # contents of even very large collections one page at a time. However, if the
+        # contents of the collection change between the first and last paginated list
+        # request, the set of all elements returned are an inconsistent view of the
+        # collection. You cannot retrieve a consistent snapshot of a collection larger
+        # than the maximum page size.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1229,7 +1229,7 @@ module Google
       
       # A project resource. The project is a top level container for resources
       # including Cloud DNS ManagedZones. Projects can be created only in the APIs
-      # console.
+      # console. Next tag: 7.
       class Project
         include Google::Apis::Core::Hashable
       
