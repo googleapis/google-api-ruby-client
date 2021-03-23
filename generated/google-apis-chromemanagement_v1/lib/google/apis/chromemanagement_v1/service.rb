@@ -161,8 +161,7 @@ module Google
         #   operations are not supported in this filter. Supported filter fields: *
         #   last_active_date
         # @param [String] order_by
-        #   Field used to order results. Supported order by fields: * machine_name *
-        #   device_id
+        #   Field used to order results. Supported order by fields: * machine * device_id
         # @param [String] org_unit_id
         #   The ID of the organizational unit.
         # @param [Fixnum] page_size
