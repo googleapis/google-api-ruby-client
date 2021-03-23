@@ -456,6 +456,13 @@ module Google
         # @return [String]
         attr_accessor :app_id
       
+        # Indicates the platform of the targeted app. If this field is not specified,
+        # the app platform will be assumed to be mobile (i.e., Android or iOS), and we
+        # will derive the appropriate mobile platform from the app ID.
+        # Corresponds to the JSON property `appPlatform`
+        # @return [String]
+        attr_accessor :app_platform
+      
         # Output only. The display name of the app.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -474,6 +481,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @app_id = args[:app_id] if args.key?(:app_id)
+          @app_platform = args[:app_platform] if args.key?(:app_platform)
           @display_name = args[:display_name] if args.key?(:display_name)
           @negative = args[:negative] if args.key?(:negative)
         end
@@ -1764,6 +1772,35 @@ module Google
         # A token identifying the next page of results. This value should be specified
         # as the pageToken in a subsequent
         # BulkListAdvertiserAssignedTargetingOptionsRequest to fetch the next page of
+        # results. This token will be absent if there are no more
+        # assigned_targeting_options to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assigned_targeting_options = args[:assigned_targeting_options] if args.key?(:assigned_targeting_options)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for BulkListCampaignAssignedTargetingOptions.
+      class BulkListCampaignAssignedTargetingOptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of assigned targeting options. This list will be absent if empty.
+        # Corresponds to the JSON property `assignedTargetingOptions`
+        # @return [Array<Google::Apis::DisplayvideoV1::AssignedTargetingOption>]
+        attr_accessor :assigned_targeting_options
+      
+        # A token identifying the next page of results. This value should be specified
+        # as the pageToken in a subsequent
+        # BulkListCampaignAssignedTargetingOptionsRequest to fetch the next page of
         # results. This token will be absent if there are no more
         # assigned_targeting_options to return.
         # Corresponds to the JSON property `nextPageToken`
@@ -4344,6 +4381,44 @@ module Google
         end
       end
       
+      # Request message for LineItemService.GenerateDefaultLineItem.
+      class GenerateDefaultLineItemRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The display name of the line item. Must be UTF-8 encoded with a
+        # maximum size of 240 bytes.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. The unique ID of the insertion order that the line item belongs to.
+        # Corresponds to the JSON property `insertionOrderId`
+        # @return [Fixnum]
+        attr_accessor :insertion_order_id
+      
+        # Required. The type of the line item.
+        # Corresponds to the JSON property `lineItemType`
+        # @return [String]
+        attr_accessor :line_item_type
+      
+        # A mobile app promoted by a mobile app install line item.
+        # Corresponds to the JSON property `mobileApp`
+        # @return [Google::Apis::DisplayvideoV1::MobileApp]
+        attr_accessor :mobile_app
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @insertion_order_id = args[:insertion_order_id] if args.key?(:insertion_order_id)
+          @line_item_type = args[:line_item_type] if args.key?(:line_item_type)
+          @mobile_app = args[:mobile_app] if args.key?(:mobile_app)
+        end
+      end
+      
       # Details for assigned geographic region targeting option. This will be
       # populated in the details field of an AssignedTargetingOption when
       # targeting_type is `TARGETING_TYPE_GEO_REGION`.
@@ -5691,6 +5766,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @assigned_locations = args[:assigned_locations] if args.key?(:assigned_locations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for ListCampaignAssignedTargetingOptions.
+      class ListCampaignAssignedTargetingOptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of assigned targeting options. This list will be absent if empty.
+        # Corresponds to the JSON property `assignedTargetingOptions`
+        # @return [Array<Google::Apis::DisplayvideoV1::AssignedTargetingOption>]
+        attr_accessor :assigned_targeting_options
+      
+        # A token identifying the next page of results. This value should be specified
+        # as the pageToken in a subsequent ListCampaignAssignedTargetingOptionsRequest
+        # to fetch the next page of results. This token will be absent if there are no
+        # more assigned_targeting_options to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assigned_targeting_options = args[:assigned_targeting_options] if args.key?(:assigned_targeting_options)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -7530,6 +7633,96 @@ module Google
         def update!(**args)
           @negative = args[:negative] if args.key?(:negative)
           @regional_location_list_id = args[:regional_location_list_id] if args.key?(:regional_location_list_id)
+        end
+      end
+      
+      # Request message for NegativeKeywordService.ReplaceNegativeKeywords.
+      class ReplaceNegativeKeywordsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The negative keywords that will replace the existing keywords in the negative
+        # keyword list, specified as a list of NegativeKeywords.
+        # Corresponds to the JSON property `newNegativeKeywords`
+        # @return [Array<Google::Apis::DisplayvideoV1::NegativeKeyword>]
+        attr_accessor :new_negative_keywords
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @new_negative_keywords = args[:new_negative_keywords] if args.key?(:new_negative_keywords)
+        end
+      end
+      
+      # Response message for NegativeKeywordService.ReplaceNegativeKeywords.
+      class ReplaceNegativeKeywordsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The full list of negative keywords now present in the negative keyword list.
+        # Corresponds to the JSON property `negativeKeywords`
+        # @return [Array<Google::Apis::DisplayvideoV1::NegativeKeyword>]
+        attr_accessor :negative_keywords
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @negative_keywords = args[:negative_keywords] if args.key?(:negative_keywords)
+        end
+      end
+      
+      # Request message for SiteService.ReplaceSites.
+      class ReplaceSitesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the advertiser that owns the parent channel.
+        # Corresponds to the JSON property `advertiserId`
+        # @return [Fixnum]
+        attr_accessor :advertiser_id
+      
+        # The sites that will replace the existing sites assigned to the channel,
+        # specified as a list of Sites.
+        # Corresponds to the JSON property `newSites`
+        # @return [Array<Google::Apis::DisplayvideoV1::Site>]
+        attr_accessor :new_sites
+      
+        # The ID of the partner that owns the parent channel.
+        # Corresponds to the JSON property `partnerId`
+        # @return [Fixnum]
+        attr_accessor :partner_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
+          @new_sites = args[:new_sites] if args.key?(:new_sites)
+          @partner_id = args[:partner_id] if args.key?(:partner_id)
+        end
+      end
+      
+      # Response message for SiteService.ReplaceSites.
+      class ReplaceSitesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of sites in the channel after replacing.
+        # Corresponds to the JSON property `sites`
+        # @return [Array<Google::Apis::DisplayvideoV1::Site>]
+        attr_accessor :sites
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sites = args[:sites] if args.key?(:sites)
         end
       end
       
