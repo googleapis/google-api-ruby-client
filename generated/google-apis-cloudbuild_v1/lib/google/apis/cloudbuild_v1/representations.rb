@@ -274,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageSourceManifest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TimeSpan
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -714,6 +720,8 @@ module Google
       
           property :storage_source, as: 'storageSource', class: Google::Apis::CloudbuildV1::StorageSource, decorator: Google::Apis::CloudbuildV1::StorageSource::Representation
       
+          property :storage_source_manifest, as: 'storageSourceManifest', class: Google::Apis::CloudbuildV1::StorageSourceManifest, decorator: Google::Apis::CloudbuildV1::StorageSourceManifest::Representation
+      
         end
       end
       
@@ -725,6 +733,8 @@ module Google
           property :resolved_repo_source, as: 'resolvedRepoSource', class: Google::Apis::CloudbuildV1::RepoSource, decorator: Google::Apis::CloudbuildV1::RepoSource::Representation
       
           property :resolved_storage_source, as: 'resolvedStorageSource', class: Google::Apis::CloudbuildV1::StorageSource, decorator: Google::Apis::CloudbuildV1::StorageSource::Representation
+      
+          property :resolved_storage_source_manifest, as: 'resolvedStorageSourceManifest', class: Google::Apis::CloudbuildV1::StorageSourceManifest, decorator: Google::Apis::CloudbuildV1::StorageSourceManifest::Representation
       
         end
       end
@@ -739,6 +749,15 @@ module Google
       end
       
       class StorageSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
+          property :generation, :numeric_string => true, as: 'generation'
+          property :object, as: 'object'
+        end
+      end
+      
+      class StorageSourceManifest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bucket, as: 'bucket'
