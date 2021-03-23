@@ -14,6 +14,14 @@
 
 require 'spec_helper'
 require 'google/apis/core/http_command'
+require 'opentelemetry-sdk'
+
+EXPORTER = OpenTelemetry::SDK::Trace::Export::InMemorySpanExporter.new
+SPAN_PROCESSOR = OpenTelemetry::SDK::Trace::Export::SimpleSpanProcessor.new(EXPORTER)
+
+OpenTelemetry::SDK.configure do |c|
+  c.add_span_processor SPAN_PROCESSOR
+end
 
 module Google
   module Apis
@@ -392,7 +400,82 @@ RSpec.describe Google::Apis::Core::HttpCommand do
         expect(spans.size).to eql 0
       end
     end
+
+    it 'should not attempt to create an opentelemetry span' do
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(status: [200, ''])
+      command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+
+      expect(Google::Apis::Core::OpenTelemetry.instance.tracer).not_to receive(:start_span)
+      command.execute(client)
+    end
   end if Google::Apis::Core::HttpCommand::OPENCENSUS_AVAILABLE
+
+  context('with opentelemetry integration installed') do
+    let(:instrumentation) { Google::Apis::Core::OpenTelemetry.instance }
+    let(:span) { EXPORTER.finished_spans.first }
+
+    before do
+      EXPORTER.reset
+      instrumentation.install
+    end
+
+    after { instrumentation.instance_variable_set(:@installed, false) }
+
+    it 'should not attempt to create an opencesus span' do
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(status: [200, ''], body: "Hello world")
+      command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+      command.execute(client)
+
+      expect(Google::Apis::Core::HttpCommand::OPENCENSUS_AVAILABLE).to be(true)
+      expect(OpenCensus::Trace).not_to receive(:start_span)
+      expect(OpenCensus::Trace).not_to receive(:end)
+      command.execute(client)
+    end
+
+    it 'should create an OpenTelemetry span for a successful call' do
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(status: [200, ''], body: "Hello world")
+      command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+      command.execute(client)
+
+      expect(span.name).to eq('www.googleapis.com')
+      expect(span.status).to be_ok
+      expect(span.instrumentation_library.name).to eq('Google::Apis::Core')
+      expect(span.instrumentation_library.version).to eq(Google::Apis::Core::VERSION)
+      expect(span.attributes).to include(
+        'http.host' => 'www.googleapis.com',
+        'http.method' => 'get',
+        'http.target' => '/zoo/animals',
+        'peer.service' => 'www.googleapis.com',
+        'http.status_code' => 200
+      )
+    end
+
+    it 'should create an OpenTelemetry span for a call failure' do
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(status: [403, ''])
+      command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+      expect { command.execute(client) }.to raise_error(Google::Apis::ClientError)
+
+      expect(span.name).to eq('www.googleapis.com')
+      expect(span.status).not_to be_ok
+      expect(span.attributes).to include(
+        'http.host' => 'www.googleapis.com',
+        'http.method' => 'get',
+        'http.target' => '/zoo/animals',
+        'peer.service' => 'www.googleapis.com',
+        'http.status_code' => 403
+      )
+    end
+
+    it 'should not create an OpenTelemetry span if not installed' do
+      instrumentation.instance_variable_set(:@installed, false)
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(status: [200, ''])
+      command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+
+      expect(instrumentation.tracer).not_to receive(:start_span)
+      command.execute(client)
+      expect(span).to be_nil
+    end
+  end
 
   it 'should send repeated query parameters' do
     stub_request(:get, 'https://www.googleapis.com/zoo/animals?a=1&a=2&a=3')
