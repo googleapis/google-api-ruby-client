@@ -298,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BulkListCampaignAssignedTargetingOptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BulkListInsertionOrderAssignedTargetingOptionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -700,6 +706,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GenerateDefaultLineItemRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GeoRegionAssignedTargetingOptionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -893,6 +905,12 @@ module Google
       end
       
       class ListAssignedLocationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListCampaignAssignedTargetingOptionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1228,6 +1246,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReplaceNegativeKeywordsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReplaceNegativeKeywordsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReplaceSitesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReplaceSitesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReviewStatusInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1528,6 +1570,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :app_id, as: 'appId'
+          property :app_platform, as: 'appPlatform'
           property :display_name, as: 'displayName'
           property :negative, as: 'negative'
         end
@@ -1905,6 +1948,15 @@ module Google
       end
       
       class BulkListAdvertiserAssignedTargetingOptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assigned_targeting_options, as: 'assignedTargetingOptions', class: Google::Apis::DisplayvideoV1::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV1::AssignedTargetingOption::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class BulkListCampaignAssignedTargetingOptionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :assigned_targeting_options, as: 'assignedTargetingOptions', class: Google::Apis::DisplayvideoV1::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV1::AssignedTargetingOption::Representation
@@ -2579,6 +2631,17 @@ module Google
         end
       end
       
+      class GenerateDefaultLineItemRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :insertion_order_id, :numeric_string => true, as: 'insertionOrderId'
+          property :line_item_type, as: 'lineItemType'
+          property :mobile_app, as: 'mobileApp', class: Google::Apis::DisplayvideoV1::MobileApp, decorator: Google::Apis::DisplayvideoV1::MobileApp::Representation
+      
+        end
+      end
+      
       class GeoRegionAssignedTargetingOptionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2934,6 +2997,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :assigned_locations, as: 'assignedLocations', class: Google::Apis::DisplayvideoV1::AssignedLocation, decorator: Google::Apis::DisplayvideoV1::AssignedLocation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListCampaignAssignedTargetingOptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assigned_targeting_options, as: 'assignedTargetingOptions', class: Google::Apis::DisplayvideoV1::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV1::AssignedTargetingOption::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -3447,6 +3519,40 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :negative, as: 'negative'
           property :regional_location_list_id, :numeric_string => true, as: 'regionalLocationListId'
+        end
+      end
+      
+      class ReplaceNegativeKeywordsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :new_negative_keywords, as: 'newNegativeKeywords', class: Google::Apis::DisplayvideoV1::NegativeKeyword, decorator: Google::Apis::DisplayvideoV1::NegativeKeyword::Representation
+      
+        end
+      end
+      
+      class ReplaceNegativeKeywordsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :negative_keywords, as: 'negativeKeywords', class: Google::Apis::DisplayvideoV1::NegativeKeyword, decorator: Google::Apis::DisplayvideoV1::NegativeKeyword::Representation
+      
+        end
+      end
+      
+      class ReplaceSitesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
+          collection :new_sites, as: 'newSites', class: Google::Apis::DisplayvideoV1::Site, decorator: Google::Apis::DisplayvideoV1::Site::Representation
+      
+          property :partner_id, :numeric_string => true, as: 'partnerId'
+        end
+      end
+      
+      class ReplaceSitesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :sites, as: 'sites', class: Google::Apis::DisplayvideoV1::Site, decorator: Google::Apis::DisplayvideoV1::Site::Representation
+      
         end
       end
       
