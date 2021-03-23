@@ -414,7 +414,8 @@ module Google
         # Updates the fulfillment.
         # @param [String] name
         #   Required. The unique identifier of the fulfillment. Supported formats: - `
-        #   projects//agent/fulfillment` - `projects//locations//agent/fulfillment`
+        #   projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This
+        #   field is not used for Fulfillment in an Environment.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Fulfillment] google_cloud_dialogflow_v2beta1_fulfillment_object
         # @param [String] update_mask
         #   Required. The mask to control which fields get updated. If the mask is not
@@ -3137,7 +3138,7 @@ module Google
         # Adds a text (chat, for example), or audio (phone recording, for example)
         # message from a participant into the conversation. Note: Always use agent
         # versions for production traffic sent to virtual agents. See [Versions and
-        # environments(https://cloud.google.com/dialogflow/es/docs/agents-versions).
+        # environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
         # @param [String] participant
         #   Required. The name of the participant this text comes from. Format: `projects//
         #   locations//conversations//participants/`.
@@ -4345,7 +4346,8 @@ module Google
         # Updates the fulfillment.
         # @param [String] name
         #   Required. The unique identifier of the fulfillment. Supported formats: - `
-        #   projects//agent/fulfillment` - `projects//locations//agent/fulfillment`
+        #   projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This
+        #   field is not used for Fulfillment in an Environment.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Fulfillment] google_cloud_dialogflow_v2beta1_fulfillment_object
         # @param [String] update_mask
         #   Required. The mask to control which fields get updated. If the mask is not
@@ -6586,7 +6588,7 @@ module Google
         # Adds a text (chat, for example), or audio (phone recording, for example)
         # message from a participant into the conversation. Note: Always use agent
         # versions for production traffic sent to virtual agents. See [Versions and
-        # environments(https://cloud.google.com/dialogflow/es/docs/agents-versions).
+        # environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
         # @param [String] participant
         #   Required. The name of the participant this text comes from. Format: `projects//
         #   locations//conversations//participants/`.
