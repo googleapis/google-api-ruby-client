@@ -34,7 +34,7 @@ module Google
       # Apply machine learning models to reveal the structure and meaning of text
       AUTH_CLOUD_LANGUAGE = 'https://www.googleapis.com/auth/cloud-language'
 
-      # View and manage your data across Google Cloud Platform services
+      # See, edit, configure, and delete your Google Cloud Platform data
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
     end
   end
