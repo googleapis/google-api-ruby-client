@@ -3095,9 +3095,9 @@ module Google
       
         # Required. `query`, `mutation` and `subscription` are the three operation types
         # offered by graphQL. Currently we support only `query` and `mutation`.
-        # Corresponds to the JSON property `operationType`
+        # Corresponds to the JSON property `operationTypes`
         # @return [Array<String>]
-        attr_accessor :operation_type
+        attr_accessor :operation_types
       
         def initialize(**args)
            update!(**args)
@@ -3106,7 +3106,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @operation = args[:operation] if args.key?(:operation)
-          @operation_type = args[:operation_type] if args.key?(:operation_type)
+          @operation_types = args[:operation_types] if args.key?(:operation_types)
         end
       end
       
@@ -4413,8 +4413,8 @@ module Google
         # @return [String]
         attr_accessor :authorized_network
       
-        # Output only. Billing type of the Apigee organization. See [Apigee pricing](
-        # https://cloud.google.com/apigee/pricing).
+        # Billing type of the Apigee organization. See [Apigee pricing](https://cloud.
+        # google.com/apigee/pricing).
         # Corresponds to the JSON property `billingType`
         # @return [String]
         attr_accessor :billing_type
@@ -5576,7 +5576,7 @@ module Google
       class GoogleCloudApigeeV1Schema
         include Google::Apis::Core::Hashable
       
-        # List of schema fiels grouped as dimensions.
+        # List of schema fields grouped as dimensions.
         # Corresponds to the JSON property `dimensions`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1SchemaSchemaElement>]
         attr_accessor :dimensions
@@ -5587,8 +5587,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :meta
       
-        # List of schema fields grouped as dimensions. These are fields that can be used
-        # with an aggregate function such as sum, avg, min, max.
+        # List of schema fields grouped as dimensions that can be used with an aggregate
+        # function such as `sum`, `avg`, `min`, and `max`.
         # Corresponds to the JSON property `metrics`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1SchemaSchemaElement>]
         attr_accessor :metrics
@@ -5609,12 +5609,12 @@ module Google
       class GoogleCloudApigeeV1SchemaSchemaElement
         include Google::Apis::Core::Hashable
       
-        # Name of the field
+        # Name of the field.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Message type for schema property
+        # Properties for the schema field.
         # Corresponds to the JSON property `properties`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SchemaSchemaProperty]
         attr_accessor :properties
@@ -5630,17 +5630,18 @@ module Google
         end
       end
       
-      # Message type for schema property
+      # Properties for the schema field.
       class GoogleCloudApigeeV1SchemaSchemaProperty
         include Google::Apis::Core::Hashable
       
-        # Creation time of the field
+        # Time the field was created in RFC3339 string form. For example: `2016-02-26T10:
+        # 23:09.592Z`.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Custom is a flag signifying if the field was provided as part of the standard
-        # dataset or a custom field created by the customer
+        # Flag that specifies whether the field is standard in the dataset or a custom
+        # field created by the customer. `true` indicates that it is a custom field.
         # Corresponds to the JSON property `custom`
         # @return [String]
         attr_accessor :custom

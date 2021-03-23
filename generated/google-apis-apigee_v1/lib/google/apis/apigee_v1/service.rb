@@ -3700,15 +3700,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get a list of metrics and dimensions which can be used for creating analytics
-        # queries and reports. Each schema element contains the name of the field with
-        # its associated type and if it is either custom field or standard field.
+        # Gets a list of metrics and dimensions that can be used to create analytics
+        # queries and reports. Each schema element contains the name of the field, its
+        # associated type, and a flag indicating whether it is a standard or custom
+        # field.
         # @param [String] name
-        #   Required. The parent organization and environment names. Must be of the form `
+        #   Required. Path to the schema. Use the following structure in your request: `
         #   organizations/`org`/environments/`env`/analytics/admin/schemav2`.
+        # @param [Boolean] disable_cache
+        #   Flag that specifies whether the schema is be read from the database or cache.
+        #   Set to `true` to read the schema from the database. Defaults to cache.
         # @param [String] type
-        #   Required. Type refers to the dataset name whose schema needs to be retrieved E.
-        #   g. type=fact or type=agg_cus1
+        #   Required. Name of the dataset for which you want to retrieve the schema. For
+        #   example: `fact` or `agg_cus1`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3726,11 +3730,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_organization_environment_analytic_admin_schemav2(name, type: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_organization_environment_analytic_admin_schemav2(name, disable_cache: nil, type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Schema::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Schema
           command.params['name'] = name unless name.nil?
+          command.query['disableCache'] = disable_cache unless disable_cache.nil?
           command.query['type'] = type unless type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
