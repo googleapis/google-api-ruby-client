@@ -2128,7 +2128,8 @@ module Google
         end
       end
       
-      # The request message for a webhook call.
+      # The request message for a webhook call. The request is sent as a JSON object
+      # and the field names will be presented in camel cases.
       class GoogleCloudDialogflowCxV3WebhookRequest
         include Google::Apis::Core::Hashable
       
@@ -4486,7 +4487,8 @@ module Google
         end
       end
       
-      # The request message for a webhook call.
+      # The request message for a webhook call. The request is sent as a JSON object
+      # and the field names will be presented in camel cases.
       class GoogleCloudDialogflowCxV3beta1WebhookRequest
         include Google::Apis::Core::Hashable
       

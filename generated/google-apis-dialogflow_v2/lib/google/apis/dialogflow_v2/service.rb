@@ -2960,7 +2960,7 @@ module Google
         # Adds a text (chat, for example), or audio (phone recording, for example)
         # message from a participant into the conversation. Note: Always use agent
         # versions for production traffic sent to virtual agents. See [Versions and
-        # environments(https://cloud.google.com/dialogflow/es/docs/agents-versions).
+        # environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
         # @param [String] participant
         #   Required. The name of the participant this text comes from. Format: `projects//
         #   locations//conversations//participants/`.
@@ -6068,7 +6068,7 @@ module Google
         # Adds a text (chat, for example), or audio (phone recording, for example)
         # message from a participant into the conversation. Note: Always use agent
         # versions for production traffic sent to virtual agents. See [Versions and
-        # environments(https://cloud.google.com/dialogflow/es/docs/agents-versions).
+        # environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
         # @param [String] participant
         #   Required. The name of the participant this text comes from. Format: `projects//
         #   locations//conversations//participants/`.
