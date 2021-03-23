@@ -518,6 +518,202 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_account_channel_partner_link_customer(parent, google_cloud_channel_v1_customer_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/customers', options)
+          command.request_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer::Representation
+          command.request_object = google_cloud_channel_v1_customer_object
+          command.response_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer::Representation
+          command.response_class = Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the given Customer permanently and irreversibly. Possible error codes:
+        # * PERMISSION_DENIED: The account making the request does not own this customer.
+        # * INVALID_ARGUMENT: Required request parameters are missing or invalid. *
+        # FAILED_PRECONDITION: The customer has existing entitlements. * NOT_FOUND: No
+        # Customer resource found for the name in the request.
+        # @param [String] name
+        #   Required. The resource name of the customer to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudchannelV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudchannelV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_account_channel_partner_link_customer(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudchannelV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::CloudchannelV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a requested Customer resource. Possible error codes: *
+        # PERMISSION_DENIED: The reseller account making the request is different from
+        # the reseller account in the API request. * INVALID_ARGUMENT: Required request
+        # parameters are missing or invalid. * NOT_FOUND: The customer resource doesn't
+        # exist. Usually the result of an invalid name parameter. Return value: The
+        # Customer resource.
+        # @param [String] name
+        #   Required. The resource name of the customer to retrieve. Name uses the format:
+        #   accounts/`account_id`/customers/`customer_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_account_channel_partner_link_customer(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer::Representation
+          command.response_class = Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List Customers. Possible error codes: * PERMISSION_DENIED: The reseller
+        # account making the request is different from the reseller account in the API
+        # request. * INVALID_ARGUMENT: Required request parameters are missing or
+        # invalid. Return value: List of Customers, or an empty list if there are no
+        # customers.
+        # @param [String] parent
+        #   Required. The resource name of the reseller account to list customers from.
+        #   Parent uses the format: accounts/`account_id`.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of customers to return. The service may return
+        #   fewer than this value. If unspecified, returns at most 10 customers. The
+        #   maximum value is 50.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results other than the first page.
+        #   Obtained through ListCustomersResponse.next_page_token of the previous
+        #   CloudChannelService.ListCustomers call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListCustomersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListCustomersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_channel_partner_link_customers(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/customers', options)
+          command.response_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListCustomersResponse::Representation
+          command.response_class = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListCustomersResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing Customer resource for the reseller or distributor.
+        # Possible error codes: * PERMISSION_DENIED: The reseller account making the
+        # request is different from the reseller account in the API request. *
+        # INVALID_ARGUMENT: Required request parameters are missing or invalid. *
+        # NOT_FOUND: No Customer resource found for the name in the request. Return
+        # value: The updated Customer resource.
+        # @param [String] name
+        #   Output only. Resource name of the customer. Format: accounts/`account_id`/
+        #   customers/`customer_id`
+        # @param [Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer] google_cloud_channel_v1_customer_object
+        # @param [String] update_mask
+        #   The update mask that applies to the resource. Optional.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_account_channel_partner_link_customer(name, google_cloud_channel_v1_customer_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer::Representation
+          command.request_object = google_cloud_channel_v1_customer_object
+          command.response_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer::Representation
+          command.response_class = Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new Customer resource under the reseller or distributor account.
+        # Possible error codes: * PERMISSION_DENIED: The reseller account making the
+        # request is different from the reseller account in the API request. *
+        # INVALID_ARGUMENT: * Required request parameters are missing or invalid. *
+        # Domain field value doesn't match the primary email domain. Return value: The
+        # newly created Customer resource.
+        # @param [String] parent
+        #   Required. The resource name of reseller account in which to create the
+        #   customer. Parent uses the format: accounts/`account_id`
+        # @param [Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer] google_cloud_channel_v1_customer_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_account_customer(parent, google_cloud_channel_v1_customer_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/customers', options)
           command.request_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer::Representation
