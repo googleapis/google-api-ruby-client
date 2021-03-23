@@ -2206,6 +2206,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1TelephonyDtmfEvents
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1TextInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5711,6 +5717,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio_config, as: 'audioConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1InputAudioConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1InputAudioConfig::Representation
       
+          property :dtmf, as: 'dtmf', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1TelephonyDtmfEvents, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1TelephonyDtmfEvents::Representation
+      
           property :event, as: 'event', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EventInput, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EventInput::Representation
       
           property :text, as: 'text', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1TextInput, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1TextInput::Representation
@@ -6012,6 +6020,13 @@ module Google
           property :voice, as: 'voice', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1VoiceSelectionParams, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1VoiceSelectionParams::Representation
       
           property :volume_gain_db, as: 'volumeGainDb'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1TelephonyDtmfEvents
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dtmf_events, as: 'dtmfEvents'
         end
       end
       

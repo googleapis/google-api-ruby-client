@@ -2128,7 +2128,8 @@ module Google
         end
       end
       
-      # The request message for a webhook call.
+      # The request message for a webhook call. The request is sent as a JSON object
+      # and the field names will be presented in camel cases.
       class GoogleCloudDialogflowCxV3WebhookRequest
         include Google::Apis::Core::Hashable
       
@@ -4486,7 +4487,8 @@ module Google
         end
       end
       
-      # The request message for a webhook call.
+      # The request message for a webhook call. The request is sent as a JSON object
+      # and the field names will be presented in camel cases.
       class GoogleCloudDialogflowCxV3beta1WebhookRequest
         include Google::Apis::Core::Hashable
       
@@ -8974,7 +8976,8 @@ module Google
       class GoogleCloudDialogflowV2beta1Fulfillment
         include Google::Apis::Core::Hashable
       
-        # The human-readable name of the fulfillment, unique within the agent.
+        # The human-readable name of the fulfillment, unique within the agent. This
+        # field is not used for Fulfillment in an Environment.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -9000,7 +9003,8 @@ module Google
         attr_accessor :generic_web_service
       
         # Required. The unique identifier of the fulfillment. Supported formats: - `
-        # projects//agent/fulfillment` - `projects//locations//agent/fulfillment`
+        # projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This
+        # field is not used for Fulfillment in an Environment.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -12287,6 +12291,11 @@ module Google
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1InputAudioConfig]
         attr_accessor :audio_config
       
+        # A wrapper of repeated TelephonyDtmf digits.
+        # Corresponds to the JSON property `dtmf`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1TelephonyDtmfEvents]
+        attr_accessor :dtmf
+      
         # Events allow for matching intents by event name instead of the natural
         # language input. For instance, input `` can trigger a personalized welcome
         # response. The parameter `name` may be used by the agent in the response: `"
@@ -12307,6 +12316,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audio_config = args[:audio_config] if args.key?(:audio_config)
+          @dtmf = args[:dtmf] if args.key?(:dtmf)
           @event = args[:event] if args.key?(:event)
           @text = args[:text] if args.key?(:text)
         end
@@ -13449,6 +13459,25 @@ module Google
           @speaking_rate = args[:speaking_rate] if args.key?(:speaking_rate)
           @voice = args[:voice] if args.key?(:voice)
           @volume_gain_db = args[:volume_gain_db] if args.key?(:volume_gain_db)
+        end
+      end
+      
+      # A wrapper of repeated TelephonyDtmf digits.
+      class GoogleCloudDialogflowV2beta1TelephonyDtmfEvents
+        include Google::Apis::Core::Hashable
+      
+        # A sequence of TelephonyDtmf digits.
+        # Corresponds to the JSON property `dtmfEvents`
+        # @return [Array<String>]
+        attr_accessor :dtmf_events
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dtmf_events = args[:dtmf_events] if args.key?(:dtmf_events)
         end
       end
       
