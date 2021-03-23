@@ -1138,28 +1138,6 @@ module Google
         end
       end
       
-      # Request message for EnableService method.
-      class EnableServiceRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. The identity of consumer resource which service enablement will be
-        # applied to. The Google Service Management implementation accepts the following
-        # forms: - "project:" Note: this is made compatible with google.api.
-        # servicecontrol.v1.Operation.consumer_id.
-        # Corresponds to the JSON property `consumerId`
-        # @return [String]
-        attr_accessor :consumer_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @consumer_id = args[:consumer_id] if args.key?(:consumer_id)
-        end
-      end
-      
       # Operation payload for EnableService method.
       class EnableServiceResponse
         include Google::Apis::Core::Hashable

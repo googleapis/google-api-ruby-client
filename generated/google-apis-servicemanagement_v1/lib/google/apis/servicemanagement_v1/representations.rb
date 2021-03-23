@@ -190,12 +190,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class EnableServiceRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class EnableServiceResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -814,13 +808,6 @@ module Google
           property :deprecation_description, as: 'deprecationDescription'
           property :description, as: 'description'
           property :selector, as: 'selector'
-        end
-      end
-      
-      class EnableServiceRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :consumer_id, as: 'consumerId'
         end
       end
       

@@ -200,42 +200,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Enables a service for a project, so it can be used for the project. See [Cloud
-        # Auth Guide](https://cloud.google.com/docs/authentication) for more information.
-        # Operation
-        # @param [String] service_name
-        #   Required. Name of the service to enable. Specifying an unknown service name
-        #   will cause the request to fail.
-        # @param [Google::Apis::ServicemanagementV1::EnableServiceRequest] enable_service_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ServicemanagementV1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ServicemanagementV1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def enable_service(service_name, enable_service_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/services/{serviceName}:enable', options)
-          command.request_representation = Google::Apis::ServicemanagementV1::EnableServiceRequest::Representation
-          command.request_object = enable_service_request_object
-          command.response_representation = Google::Apis::ServicemanagementV1::Operation::Representation
-          command.response_class = Google::Apis::ServicemanagementV1::Operation
-          command.params['serviceName'] = service_name unless service_name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Generates and returns a report (errors, warnings and changes from existing
         # configurations) associated with GenerateConfigReportRequest.new_value If
         # GenerateConfigReportRequest.old_value is specified,
