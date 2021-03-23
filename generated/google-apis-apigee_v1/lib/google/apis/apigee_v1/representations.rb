@@ -1788,7 +1788,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :operation, as: 'operation'
-          collection :operation_type, as: 'operationType'
+          collection :operation_types, as: 'operationTypes'
         end
       end
       
