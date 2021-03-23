@@ -1336,6 +1336,12 @@ module Google
         # @return [Google::Apis::CloudbuildV1beta1::StorageSource]
         attr_accessor :storage_source
       
+        # Location of the source manifest in Google Cloud Storage. This feature is in
+        # Preview.
+        # Corresponds to the JSON property `storageSourceManifest`
+        # @return [Google::Apis::CloudbuildV1beta1::StorageSourceManifest]
+        attr_accessor :storage_source_manifest
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1344,6 +1350,7 @@ module Google
         def update!(**args)
           @repo_source = args[:repo_source] if args.key?(:repo_source)
           @storage_source = args[:storage_source] if args.key?(:storage_source)
+          @storage_source_manifest = args[:storage_source_manifest] if args.key?(:storage_source_manifest)
         end
       end
       
@@ -1373,6 +1380,12 @@ module Google
         # @return [Google::Apis::CloudbuildV1beta1::StorageSource]
         attr_accessor :resolved_storage_source
       
+        # Location of the source manifest in Google Cloud Storage. This feature is in
+        # Preview.
+        # Corresponds to the JSON property `resolvedStorageSourceManifest`
+        # @return [Google::Apis::CloudbuildV1beta1::StorageSourceManifest]
+        attr_accessor :resolved_storage_source_manifest
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1382,6 +1395,7 @@ module Google
           @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
           @resolved_repo_source = args[:resolved_repo_source] if args.key?(:resolved_repo_source)
           @resolved_storage_source = args[:resolved_storage_source] if args.key?(:resolved_storage_source)
+          @resolved_storage_source_manifest = args[:resolved_storage_source_manifest] if args.key?(:resolved_storage_source_manifest)
         end
       end
       
@@ -1443,6 +1457,42 @@ module Google
       
         # Google Cloud Storage object containing the source. This object must be a
         # gzipped archive file (`.tar.gz`) containing source to build.
+        # Corresponds to the JSON property `object`
+        # @return [String]
+        attr_accessor :object
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @generation = args[:generation] if args.key?(:generation)
+          @object = args[:object] if args.key?(:object)
+        end
+      end
+      
+      # Location of the source manifest in Google Cloud Storage. This feature is in
+      # Preview.
+      class StorageSourceManifest
+        include Google::Apis::Core::Hashable
+      
+        # Google Cloud Storage bucket containing the source manifest (see [Bucket Name
+        # Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)
+        # ).
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        # Google Cloud Storage generation for the object. If the generation is omitted,
+        # the latest generation will be used.
+        # Corresponds to the JSON property `generation`
+        # @return [Fixnum]
+        attr_accessor :generation
+      
+        # Google Cloud Storage object containing the source manifest. This object must
+        # be a JSON file.
         # Corresponds to the JSON property `object`
         # @return [String]
         attr_accessor :object
