@@ -508,6 +508,7 @@ module Google
       class ConfigManagementGitConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcp_service_account_email, as: 'gcpServiceAccountEmail'
           property :https_proxy, as: 'httpsProxy'
           property :policy_dir, as: 'policyDir'
           property :secret_type, as: 'secretType'
