@@ -538,6 +538,12 @@ module Google
       class ConfigManagementGitConfig
         include Google::Apis::Core::Hashable
       
+        # The GCP Service Account Email used for auth when secret_type is
+        # gcpServiceAccount.
+        # Corresponds to the JSON property `gcpServiceAccountEmail`
+        # @return [String]
+        attr_accessor :gcp_service_account_email
+      
         # URL for the HTTPS proxy to be used when communicating with the Git repo.
         # Corresponds to the JSON property `httpsProxy`
         # @return [String]
@@ -580,6 +586,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @gcp_service_account_email = args[:gcp_service_account_email] if args.key?(:gcp_service_account_email)
           @https_proxy = args[:https_proxy] if args.key?(:https_proxy)
           @policy_dir = args[:policy_dir] if args.key?(:policy_dir)
           @secret_type = args[:secret_type] if args.key?(:secret_type)
