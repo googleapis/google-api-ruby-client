@@ -1234,11 +1234,11 @@ module Google
         # @return [String]
         attr_accessor :parent
       
-        # Reporting Time Zone, used as the day boundary for reports, regardless of where
-        # the data originates. If the time zone honors DST, Analytics will automatically
-        # adjust for the changes. NOTE: Changing the time zone only affects data going
-        # forward, and is not applied retroactively. Format: https://www.iana.org/time-
-        # zones Example: "America/Los_Angeles"
+        # Required. Reporting Time Zone, used as the day boundary for reports,
+        # regardless of where the data originates. If the time zone honors DST,
+        # Analytics will automatically adjust for the changes. NOTE: Changing the time
+        # zone only affects data going forward, and is not applied retroactively. Format:
+        # https://www.iana.org/time-zones Example: "America/Los_Angeles"
         # Corresponds to the JSON property `timeZone`
         # @return [String]
         attr_accessor :time_zone
