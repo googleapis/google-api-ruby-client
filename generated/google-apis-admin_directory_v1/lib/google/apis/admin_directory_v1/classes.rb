@@ -1906,10 +1906,10 @@ module Google
         # @return [Google::Apis::AdminDirectoryV1::Printer]
         attr_accessor :printer
       
-        # Ids of failed printers.
-        # Corresponds to the JSON property `printerIds`
+        # Id of a failed printer.
+        # Corresponds to the JSON property `printerId`
         # @return [String]
-        attr_accessor :printer_ids
+        attr_accessor :printer_id
       
         def initialize(**args)
            update!(**args)
@@ -1920,7 +1920,7 @@ module Google
           @error_code = args[:error_code] if args.key?(:error_code)
           @error_message = args[:error_message] if args.key?(:error_message)
           @printer = args[:printer] if args.key?(:printer)
-          @printer_ids = args[:printer_ids] if args.key?(:printer_ids)
+          @printer_id = args[:printer_id] if args.key?(:printer_id)
         end
       end
       

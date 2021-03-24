@@ -1113,7 +1113,7 @@ module Google
           property :error_message, as: 'errorMessage'
           property :printer, as: 'printer', class: Google::Apis::AdminDirectoryV1::Printer, decorator: Google::Apis::AdminDirectoryV1::Printer::Representation
       
-          property :printer_ids, as: 'printerIds'
+          property :printer_id, as: 'printerId'
         end
       end
       
