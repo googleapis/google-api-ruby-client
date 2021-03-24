@@ -77,7 +77,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Identifier of the ACL rule.
+        # Identifier of the Access Control List (ACL) rule. See Sharing calendars.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -101,7 +101,7 @@ module Google
         # @return [String]
         attr_accessor :role
       
-        # The scope of the rule.
+        # The extent to which calendar access is granted by this ACL rule.
         # Corresponds to the JSON property `scope`
         # @return [Google::Apis::CalendarV3::AclRule::Scope]
         attr_accessor :scope
@@ -119,7 +119,7 @@ module Google
           @scope = args[:scope] if args.key?(:scope)
         end
         
-        # The scope of the rule.
+        # The extent to which calendar access is granted by this ACL rule.
         class Scope
           include Google::Apis::Core::Hashable
         
