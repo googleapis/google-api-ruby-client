@@ -229,6 +229,7 @@ module Google
           property :dataproc_service_account, as: 'dataprocServiceAccount'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :enable_rbac, as: 'enableRbac'
           property :enable_stackdriver_logging, as: 'enableStackdriverLogging'
           property :enable_stackdriver_monitoring, as: 'enableStackdriverMonitoring'
           property :gcs_bucket, as: 'gcsBucket'
