@@ -271,7 +271,7 @@ module Google
         #   following values: * [not set]: Requests that are pending or have active
         #   approvals. * ALL: All requests. * PENDING: Only pending requests. * ACTIVE:
         #   Only active (i.e. currently approved) requests. * DISMISSED: Only requests
-        #   that have been dismissed, or requests that . are not approved and past
+        #   that have been dismissed, or requests that are not approved and past
         #   expiration. * EXPIRED: Only requests that have been approved, and the approval
         #   has expired. * HISTORY: Active, dismissed and expired requests.
         # @param [Fixnum] page_size
@@ -530,7 +530,7 @@ module Google
         #   following values: * [not set]: Requests that are pending or have active
         #   approvals. * ALL: All requests. * PENDING: Only pending requests. * ACTIVE:
         #   Only active (i.e. currently approved) requests. * DISMISSED: Only requests
-        #   that have been dismissed, or requests that . are not approved and past
+        #   that have been dismissed, or requests that are not approved and past
         #   expiration. * EXPIRED: Only requests that have been approved, and the approval
         #   has expired. * HISTORY: Active, dismissed and expired requests.
         # @param [Fixnum] page_size
@@ -789,7 +789,7 @@ module Google
         #   following values: * [not set]: Requests that are pending or have active
         #   approvals. * ALL: All requests. * PENDING: Only pending requests. * ACTIVE:
         #   Only active (i.e. currently approved) requests. * DISMISSED: Only requests
-        #   that have been dismissed, or requests that . are not approved and past
+        #   that have been dismissed, or requests that are not approved and past
         #   expiration. * EXPIRED: Only requests that have been approved, and the approval
         #   has expired. * HISTORY: Active, dismissed and expired requests.
         # @param [Fixnum] page_size
