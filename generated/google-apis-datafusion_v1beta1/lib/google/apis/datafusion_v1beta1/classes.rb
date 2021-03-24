@@ -309,6 +309,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Option to enable granular role-based access control.
+        # Corresponds to the JSON property `enableRbac`
+        # @return [Boolean]
+        attr_accessor :enable_rbac
+        alias_method :enable_rbac?, :enable_rbac
+      
         # Option to enable Stackdriver Logging.
         # Corresponds to the JSON property `enableStackdriverLogging`
         # @return [Boolean]
@@ -430,6 +436,7 @@ module Google
           @dataproc_service_account = args[:dataproc_service_account] if args.key?(:dataproc_service_account)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @enable_rbac = args[:enable_rbac] if args.key?(:enable_rbac)
           @enable_stackdriver_logging = args[:enable_stackdriver_logging] if args.key?(:enable_stackdriver_logging)
           @enable_stackdriver_monitoring = args[:enable_stackdriver_monitoring] if args.key?(:enable_stackdriver_monitoring)
           @gcs_bucket = args[:gcs_bucket] if args.key?(:gcs_bucket)
