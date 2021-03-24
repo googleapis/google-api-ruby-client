@@ -1495,12 +1495,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :row_count
       
-        # Required. The height of sprite in pixels. Must be an even integer.
+        # Required. The height of sprite in pixels. Must be an even integer. To preserve
+        # the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the
+        # SpriteSheet.sprite_width_pixels field, but not both (the API will
+        # automatically calculate the missing field).
         # Corresponds to the JSON property `spriteHeightPixels`
         # @return [Fixnum]
         attr_accessor :sprite_height_pixels
       
-        # Required. The width of sprite in pixels. Must be an even integer.
+        # Required. The width of sprite in pixels. Must be an even integer. To preserve
+        # the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the
+        # SpriteSheet.sprite_height_pixels field, but not both (the API will
+        # automatically calculate the missing field).
         # Corresponds to the JSON property `spriteWidthPixels`
         # @return [Fixnum]
         attr_accessor :sprite_width_pixels
