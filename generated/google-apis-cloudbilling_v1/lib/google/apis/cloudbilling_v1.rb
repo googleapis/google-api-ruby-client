@@ -36,7 +36,7 @@ module Google
       # View your Google Cloud Platform billing accounts
       AUTH_CLOUD_BILLING_READONLY = 'https://www.googleapis.com/auth/cloud-billing.readonly'
 
-      # View and manage your data across Google Cloud Platform services
+      # See, edit, configure, and delete your Google Cloud Platform data
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
     end
   end
