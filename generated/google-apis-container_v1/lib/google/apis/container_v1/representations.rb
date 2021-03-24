@@ -538,6 +538,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StatusCondition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1305,6 +1311,8 @@ module Google
       
           property :detail, as: 'detail'
           property :end_time, as: 'endTime'
+          property :error, as: 'error', class: Google::Apis::ContainerV1::Status, decorator: Google::Apis::ContainerV1::Status::Representation
+      
           property :location, as: 'location'
           property :name, as: 'name'
           collection :nodepool_conditions, as: 'nodepoolConditions', class: Google::Apis::ContainerV1::StatusCondition, decorator: Google::Apis::ContainerV1::StatusCondition::Representation
@@ -1616,9 +1624,19 @@ module Google
         end
       end
       
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
+        end
+      end
+      
       class StatusCondition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :canonical_code, as: 'canonicalCode'
           property :code, as: 'code'
           property :message, as: 'message'
         end
