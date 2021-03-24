@@ -2799,7 +2799,8 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
-        # Which conditions caused the current cluster state.
+        # Which conditions caused the current cluster state. Deprecated. Use field error
+        # instead.
         # Corresponds to the JSON property `clusterConditions`
         # @return [Array<Google::Apis::ContainerV1::StatusCondition>]
         attr_accessor :cluster_conditions
@@ -2815,6 +2816,16 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ContainerV1::Status]
+        attr_accessor :error
+      
         # [Output only] The name of the Google Compute Engine [zone](https://cloud.
         # google.com/compute/docs/regions-zones/regions-zones#available) or [region](
         # https://cloud.google.com/compute/docs/regions-zones/regions-zones#available)
@@ -2828,7 +2839,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Which conditions caused the current node pool state.
+        # Which conditions caused the current node pool state. Deprecated. Use field
+        # error instead.
         # Corresponds to the JSON property `nodepoolConditions`
         # @return [Array<Google::Apis::ContainerV1::StatusCondition>]
         attr_accessor :nodepool_conditions
@@ -2860,6 +2872,7 @@ module Google
         attr_accessor :status
       
         # Output only. If an error has occurred, a textual description of the error.
+        # Deprecated. Use the field error instead.
         # Corresponds to the JSON property `statusMessage`
         # @return [String]
         attr_accessor :status_message
@@ -2885,6 +2898,7 @@ module Google
           @cluster_conditions = args[:cluster_conditions] if args.key?(:cluster_conditions)
           @detail = args[:detail] if args.key?(:detail)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @error = args[:error] if args.key?(:error)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @nodepool_conditions = args[:nodepool_conditions] if args.key?(:nodepool_conditions)
@@ -4117,12 +4131,57 @@ module Google
         end
       end
       
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
+      class Status
+        include Google::Apis::Core::Hashable
+      
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # A list of messages that carry the error details. There is a common set of
+        # message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @details = args[:details] if args.key?(:details)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
       # StatusCondition describes why a cluster or a node pool has a certain status (e.
       # g., ERROR or DEGRADED).
       class StatusCondition
         include Google::Apis::Core::Hashable
       
-        # Machine-friendly representation of the condition
+        # Canonical code of the condition.
+        # Corresponds to the JSON property `canonicalCode`
+        # @return [String]
+        attr_accessor :canonical_code
+      
+        # Machine-friendly representation of the condition Deprecated. Use
+        # canonical_code instead.
         # Corresponds to the JSON property `code`
         # @return [String]
         attr_accessor :code
@@ -4138,6 +4197,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @canonical_code = args[:canonical_code] if args.key?(:canonical_code)
           @code = args[:code] if args.key?(:code)
           @message = args[:message] if args.key?(:message)
         end
