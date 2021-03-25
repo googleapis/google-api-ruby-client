@@ -598,6 +598,13 @@ module Google
         class TransferInfo
           include Google::Apis::Core::Hashable
         
+          # Sku id of the current resold subscription. This is populated only when
+          # customer has subscription with legacy sku and the subscription resource is
+          # populated with recommeded sku for transfer in.
+          # Corresponds to the JSON property `currentLegacySkuId`
+          # @return [String]
+          attr_accessor :current_legacy_sku_id
+        
           # When inserting a subscription, this is the minimum number of seats listed in
           # the transfer order for this product. For example, if the customer has 20 users,
           # the reseller cannot place a transfer order of 15 seats. The minimum is 20
@@ -618,6 +625,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
+            @current_legacy_sku_id = args[:current_legacy_sku_id] if args.key?(:current_legacy_sku_id)
             @minimum_transferable_seats = args[:minimum_transferable_seats] if args.key?(:minimum_transferable_seats)
             @transferability_expiration_time = args[:transferability_expiration_time] if args.key?(:transferability_expiration_time)
           end
