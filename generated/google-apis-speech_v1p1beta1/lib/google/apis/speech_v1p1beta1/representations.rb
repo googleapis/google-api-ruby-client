@@ -256,6 +256,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :last_update_time, as: 'lastUpdateTime'
+          property :output_config, as: 'outputConfig', class: Google::Apis::SpeechV1p1beta1::TranscriptOutputConfig, decorator: Google::Apis::SpeechV1p1beta1::TranscriptOutputConfig::Representation
+      
           property :progress_percent, as: 'progressPercent'
           property :start_time, as: 'startTime'
           property :uri, as: 'uri'
@@ -277,6 +279,10 @@ module Google
       class LongRunningRecognizeResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_config, as: 'outputConfig', class: Google::Apis::SpeechV1p1beta1::TranscriptOutputConfig, decorator: Google::Apis::SpeechV1p1beta1::TranscriptOutputConfig::Representation
+      
+          property :output_error, as: 'outputError', class: Google::Apis::SpeechV1p1beta1::Status, decorator: Google::Apis::SpeechV1p1beta1::Status::Representation
+      
           collection :results, as: 'results', class: Google::Apis::SpeechV1p1beta1::SpeechRecognitionResult, decorator: Google::Apis::SpeechV1p1beta1::SpeechRecognitionResult::Representation
       
         end

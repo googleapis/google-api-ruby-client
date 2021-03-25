@@ -237,6 +237,11 @@ module Google
         # @return [String]
         attr_accessor :last_update_time
       
+        # Specifies an optional destination for the recognition results.
+        # Corresponds to the JSON property `outputConfig`
+        # @return [Google::Apis::SpeechV1p1beta1::TranscriptOutputConfig]
+        attr_accessor :output_config
+      
         # Approximate percentage of audio processed thus far. Guaranteed to be 100 when
         # the audio is fully processed and the results are available.
         # Corresponds to the JSON property `progressPercent`
@@ -261,6 +266,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
+          @output_config = args[:output_config] if args.key?(:output_config)
           @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
           @start_time = args[:start_time] if args.key?(:start_time)
           @uri = args[:uri] if args.key?(:uri)
@@ -310,6 +316,21 @@ module Google
       class LongRunningRecognizeResponse
         include Google::Apis::Core::Hashable
       
+        # Specifies an optional destination for the recognition results.
+        # Corresponds to the JSON property `outputConfig`
+        # @return [Google::Apis::SpeechV1p1beta1::TranscriptOutputConfig]
+        attr_accessor :output_config
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `outputError`
+        # @return [Google::Apis::SpeechV1p1beta1::Status]
+        attr_accessor :output_error
+      
         # Sequential list of transcription results corresponding to sequential portions
         # of audio.
         # Corresponds to the JSON property `results`
@@ -322,6 +343,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @output_config = args[:output_config] if args.key?(:output_config)
+          @output_error = args[:output_error] if args.key?(:output_error)
           @results = args[:results] if args.key?(:results)
         end
       end
