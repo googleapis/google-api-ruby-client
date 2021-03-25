@@ -225,6 +225,7 @@ module Google
         class TransferInfo
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
+            property :current_legacy_sku_id, as: 'currentLegacySkuId'
             property :minimum_transferable_seats, as: 'minimumTransferableSeats'
             property :transferability_expiration_time, :numeric_string => true, as: 'transferabilityExpirationTime'
           end
