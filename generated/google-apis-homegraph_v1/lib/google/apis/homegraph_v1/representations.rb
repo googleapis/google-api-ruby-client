@@ -112,18 +112,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RequestLinkRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RequestLinkRequestPayload
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class RequestSyncDevicesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -296,23 +284,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :request_id, as: 'requestId'
-        end
-      end
-      
-      class RequestLinkRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :payload, as: 'payload', class: Google::Apis::HomegraphV1::RequestLinkRequestPayload, decorator: Google::Apis::HomegraphV1::RequestLinkRequestPayload::Representation
-      
-          property :request_id, as: 'requestId'
-        end
-      end
-      
-      class RequestLinkRequestPayload
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :detection_time, as: 'detectionTime'
-          collection :potential_cast_device_ids, as: 'potentialCastDeviceIds'
         end
       end
       
