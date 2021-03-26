@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GkeClusterConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HadoopJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,6 +185,12 @@ module Google
       end
       
       class HiveJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IdentityConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -311,6 +323,12 @@ module Google
       end
       
       class MetastoreConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NamespacedGkeDeploymentTarget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -609,6 +627,8 @@ module Google
       
           property :gce_cluster_config, as: 'gceClusterConfig', class: Google::Apis::DataprocV1::GceClusterConfig, decorator: Google::Apis::DataprocV1::GceClusterConfig::Representation
       
+          property :gke_cluster_config, as: 'gkeClusterConfig', class: Google::Apis::DataprocV1::GkeClusterConfig, decorator: Google::Apis::DataprocV1::GkeClusterConfig::Representation
+      
           collection :initialization_actions, as: 'initializationActions', class: Google::Apis::DataprocV1::NodeInitializationAction, decorator: Google::Apis::DataprocV1::NodeInitializationAction::Representation
       
           property :lifecycle_config, as: 'lifecycleConfig', class: Google::Apis::DataprocV1::LifecycleConfig, decorator: Google::Apis::DataprocV1::LifecycleConfig::Representation
@@ -779,6 +799,14 @@ module Google
         end
       end
       
+      class GkeClusterConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :namespaced_gke_deployment_target, as: 'namespacedGkeDeploymentTarget', class: Google::Apis::DataprocV1::NamespacedGkeDeploymentTarget, decorator: Google::Apis::DataprocV1::NamespacedGkeDeploymentTarget::Representation
+      
+        end
+      end
+      
       class HadoopJob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -804,6 +832,13 @@ module Google
           property :query_list, as: 'queryList', class: Google::Apis::DataprocV1::QueryList, decorator: Google::Apis::DataprocV1::QueryList::Representation
       
           hash :script_variables, as: 'scriptVariables'
+        end
+      end
+      
+      class IdentityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :user_service_account_mapping, as: 'userServiceAccountMapping'
         end
       end
       
@@ -1056,6 +1091,14 @@ module Google
         end
       end
       
+      class NamespacedGkeDeploymentTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_namespace, as: 'clusterNamespace'
+          property :target_gke_cluster, as: 'targetGkeCluster'
+        end
+      end
+      
       class NodeGroupAffinity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1201,6 +1244,8 @@ module Google
       class SecurityConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :identity_config, as: 'identityConfig', class: Google::Apis::DataprocV1::IdentityConfig, decorator: Google::Apis::DataprocV1::IdentityConfig::Representation
+      
           property :kerberos_config, as: 'kerberosConfig', class: Google::Apis::DataprocV1::KerberosConfig, decorator: Google::Apis::DataprocV1::KerberosConfig::Representation
       
         end
