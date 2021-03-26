@@ -364,6 +364,11 @@ module Google
         # @return [Google::Apis::SpannerV1::TransactionOptions]
         attr_accessor :options
       
+        # Common request options for various APIs.
+        # Corresponds to the JSON property `requestOptions`
+        # @return [Google::Apis::SpannerV1::RequestOptions]
+        attr_accessor :request_options
+      
         def initialize(**args)
            update!(**args)
         end
@@ -371,6 +376,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @options = args[:options] if args.key?(:options)
+          @request_options = args[:request_options] if args.key?(:request_options)
         end
       end
       
@@ -493,6 +499,11 @@ module Google
         # Corresponds to the JSON property `mutations`
         # @return [Array<Google::Apis::SpannerV1::Mutation>]
         attr_accessor :mutations
+      
+        # Common request options for various APIs.
+        # Corresponds to the JSON property `requestOptions`
+        # @return [Google::Apis::SpannerV1::RequestOptions]
+        attr_accessor :request_options
       
         # If `true`, then statistics related to the transaction will be included in the
         # CommitResponse. Default value is `false`.
@@ -677,6 +688,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @mutations = args[:mutations] if args.key?(:mutations)
+          @request_options = args[:request_options] if args.key?(:request_options)
           @return_commit_stats = args[:return_commit_stats] if args.key?(:return_commit_stats)
           @single_use_transaction = args[:single_use_transaction] if args.key?(:single_use_transaction)
           @transaction_id = args[:transaction_id] if args.key?(:transaction_id)
@@ -1102,6 +1114,11 @@ module Google
       class ExecuteBatchDmlRequest
         include Google::Apis::Core::Hashable
       
+        # Common request options for various APIs.
+        # Corresponds to the JSON property `requestOptions`
+        # @return [Google::Apis::SpannerV1::RequestOptions]
+        attr_accessor :request_options
+      
         # Required. A per-transaction sequence number used to identify this request.
         # This field makes each request idempotent such that if the request is received
         # multiple times, at most one will succeed. The sequence number must be
@@ -1134,6 +1151,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @request_options = args[:request_options] if args.key?(:request_options)
           @seqno = args[:seqno] if args.key?(:seqno)
           @statements = args[:statements] if args.key?(:statements)
           @transaction = args[:transaction] if args.key?(:transaction)
@@ -1232,6 +1250,11 @@ module Google
         # @return [Google::Apis::SpannerV1::QueryOptions]
         attr_accessor :query_options
       
+        # Common request options for various APIs.
+        # Corresponds to the JSON property `requestOptions`
+        # @return [Google::Apis::SpannerV1::RequestOptions]
+        attr_accessor :request_options
+      
         # If this request is resuming a previously interrupted SQL statement execution, `
         # resume_token` should be copied from the last PartialResultSet yielded before
         # the interruption. Doing this enables the new SQL statement execution to resume
@@ -1275,6 +1298,7 @@ module Google
           @partition_token = args[:partition_token] if args.key?(:partition_token)
           @query_mode = args[:query_mode] if args.key?(:query_mode)
           @query_options = args[:query_options] if args.key?(:query_options)
+          @request_options = args[:request_options] if args.key?(:request_options)
           @resume_token = args[:resume_token] if args.key?(:resume_token)
           @seqno = args[:seqno] if args.key?(:seqno)
           @sql = args[:sql] if args.key?(:sql)
@@ -2493,17 +2517,18 @@ module Google
       class QueryOptions
         include Google::Apis::Core::Hashable
       
-        # Query optimizer statistics package to use. This parameter allows individual
-        # queries to use a different query optimizer statistics. Specifying `latest` as
-        # a value instructs Cloud Spanner to use the latest generated statistics package.
-        # If not specified, Cloud Spanner uses statistics package set at the database
-        # level options, or latest if the database option is not set. The statistics
-        # package requested by the query has to be exempt from garbage collection. This
-        # can be achieved with the following DDL statement: ``` ALTER STATISTICS SET
-        # OPTIONS (allow_gc=false) ``` The list of available statistics packages can be
-        # queried from `SPANNER_SYS.OPTIMIZER_STATISTICS_PACKAGES`. Executing a SQL
-        # statement with an invalid optimizer statistics package or with statistics
-        # package that allows garbage collection fails with an `INVALID_ARGUMENT` error.
+        # An option to control the selection of optimizer statistics package. This
+        # parameter allows individual queries to use a different query optimizer
+        # statistics package. Specifying `latest` as a value instructs Cloud Spanner to
+        # use the latest generated statistics package. If not specified, Cloud Spanner
+        # uses the statistics package set at the database level options, or the latest
+        # package if the database option is not set. The statistics package requested by
+        # the query has to be exempt from garbage collection. This can be achieved with
+        # the following DDL statement: ``` ALTER STATISTICS SET OPTIONS (allow_gc=false)
+        # ``` The list of available statistics packages can be queried from `
+        # INFORMATION_SCHEMA.SPANNER_STATISTICS`. Executing a SQL statement with an
+        # invalid optimizer statistics package or with a statistics package that allows
+        # garbage collection fails with an `INVALID_ARGUMENT` error.
         # Corresponds to the JSON property `optimizerStatisticsPackage`
         # @return [String]
         attr_accessor :optimizer_statistics_package
@@ -2673,6 +2698,11 @@ module Google
         # @return [String]
         attr_accessor :partition_token
       
+        # Common request options for various APIs.
+        # Corresponds to the JSON property `requestOptions`
+        # @return [Google::Apis::SpannerV1::RequestOptions]
+        attr_accessor :request_options
+      
         # If this request is resuming a previously interrupted read, `resume_token`
         # should be copied from the last PartialResultSet yielded before the
         # interruption. Doing this enables the new read to resume where the last read
@@ -2705,6 +2735,7 @@ module Google
           @key_set = args[:key_set] if args.key?(:key_set)
           @limit = args[:limit] if args.key?(:limit)
           @partition_token = args[:partition_token] if args.key?(:partition_token)
+          @request_options = args[:request_options] if args.key?(:request_options)
           @resume_token = args[:resume_token] if args.key?(:resume_token)
           @table = args[:table] if args.key?(:table)
           @transaction = args[:transaction] if args.key?(:transaction)
@@ -2756,6 +2787,25 @@ module Google
           @default_leader_location = args[:default_leader_location] if args.key?(:default_leader_location)
           @location = args[:location] if args.key?(:location)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Common request options for various APIs.
+      class RequestOptions
+        include Google::Apis::Core::Hashable
+      
+        # Priority for the request.
+        # Corresponds to the JSON property `priority`
+        # @return [String]
+        attr_accessor :priority
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @priority = args[:priority] if args.key?(:priority)
         end
       end
       
