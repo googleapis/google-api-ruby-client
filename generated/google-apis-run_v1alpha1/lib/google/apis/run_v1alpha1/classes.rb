@@ -2436,7 +2436,7 @@ module Google
         alias_method :controller?, :controller
       
         # Kind of the referent. More info: https://git.k8s.io/community/contributors/
-        # devel/api-conventions.md#types-kinds
+        # devel/sig-architecture/api-conventions.md#types-kinds
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
