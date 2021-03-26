@@ -1345,8 +1345,8 @@ module Google
         # resource return errors. It is strongly advised not to include or encode any
         # sensitive data such as patient identifiers in client-specified resource IDs.
         # Those IDs are part of the FHIR resource path recorded in Cloud audit logs and
-        # Cloud Pub/Sub notifications. Those IDs can also be contained in reference
-        # fields within other resources.
+        # Pub/Sub notifications. Those IDs can also be contained in reference fields
+        # within other resources.
         # Corresponds to the JSON property `enableUpdateCreate`
         # @return [Boolean]
         attr_accessor :enable_update_create
@@ -1667,14 +1667,15 @@ module Google
         # Points to a Cloud Storage URI containing file(s) with content only. The URI
         # must be in the following format: `gs://`bucket_id`/`object_id``. The URI can
         # include wildcards in `object_id` and thus identify multiple files. Supported
-        # wildcards: '*' to match 0 or more non-separator characters '**' to match 0 or
-        # more characters (including separators). Must be used at the end of a path and
-        # with no other wildcards in the path. Can also be used with a file extension (
-        # such as .dcm), which imports all files with the extension in the specified
-        # directory and its sub-directories. For example, `gs://my-bucket/my-directory/**
-        # .dcm` imports all files with .dcm extensions in `my-directory/` and its sub-
-        # directories. '?' to match 1 character All other URI formats are invalid. Files
-        # matching the wildcard are expected to contain content only, no metadata.
+        # wildcards: * '*' to match 0 or more non-separator characters * '**' to match 0
+        # or more characters (including separators). Must be used at the end of a path
+        # and with no other wildcards in the path. Can also be used with a file
+        # extension (such as .dcm), which imports all files with the extension in the
+        # specified directory and its sub-directories. For example, `gs://my-bucket/my-
+        # directory/**.dcm` imports all files with .dcm extensions in `my-directory/`
+        # and its sub-directories. * '?' to match 1 character. All other URI formats are
+        # invalid. Files matching the wildcard are expected to contain content only, no
+        # metadata.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -1914,20 +1915,20 @@ module Google
         # @return [String]
         attr_accessor :filter
       
-        # The [Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that
-        # notifications of changes are published on. Supplied by the client. The
-        # notification is a `PubsubMessage` with the following fields: * `PubsubMessage.
-        # Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of
-        # this notification. It's guaranteed to be unique within the topic. * `
-        # PubsubMessage.PublishTime` is the time when the message was published. Note
-        # that notifications are only sent if the topic is non-empty. [Topic names](
-        # https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a
-        # project. The Cloud Healthcare API service account, service-PROJECT_NUMBER@gcp-
-        # sa-healthcare.iam.gserviceaccount.com, must have publisher permissions on the
-        # given Pub/Sub topic. Not having adequate permissions causes the calls that
-        # send notifications to fail. If a notification cannot be published to Cloud Pub/
-        # Sub, errors are logged to Cloud Logging. For more information, see [Viewing
-        # error logs in Cloud Logging](/healthcare/docs/how-tos/logging)).
+        # The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications
+        # of changes are published on. Supplied by the client. The notification is a `
+        # PubsubMessage` with the following fields: * `PubsubMessage.Data` contains the
+        # resource name. * `PubsubMessage.MessageId` is the ID of this notification. It'
+        # s guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is
+        # the time when the message was published. Note that notifications are only sent
+        # if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/
+        # overview#names) must be scoped to a project. The Cloud Healthcare API service
+        # account, service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com,
+        # must have publisher permissions on the given Pub/Sub topic. Not having
+        # adequate permissions causes the calls that send notifications to fail. If a
+        # notification cannot be published to Pub/Sub, errors are logged to Cloud
+        # Logging. For more information, see [Viewing error logs in Cloud Logging](https:
+        # //cloud.google.com/healthcare/docs/how-tos/logging)).
         # Corresponds to the JSON property `pubsubTopic`
         # @return [String]
         attr_accessor :pubsub_topic
@@ -2767,17 +2768,17 @@ module Google
       class NotificationConfig
         include Google::Apis::Core::Hashable
       
-        # The [Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that
-        # notifications of changes are published on. Supplied by the client.
-        # PubsubMessage.Data contains the resource name. PubsubMessage.MessageId is the
-        # ID of this message. It is guaranteed to be unique within the topic.
-        # PubsubMessage.PublishTime is the time at which the message was published.
-        # Notifications are only sent if the topic is non-empty. [Topic names](https://
-        # cloud.google.com/pubsub/docs/overview#names) must be scoped to a project.
-        # Cloud Healthcare API service account must have publisher permissions on the
-        # given Cloud Pub/Sub topic. Not having adequate permissions causes the calls
-        # that send notifications to fail. If a notification can't be published to Cloud
-        # Pub/Sub, errors are logged to Cloud Logging (see [Viewing logs](/healthcare/
+        # The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications
+        # of changes are published on. Supplied by the client. PubsubMessage.Data
+        # contains the resource name. PubsubMessage.MessageId is the ID of this message.
+        # It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is
+        # the time at which the message was published. Notifications are only sent if
+        # the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/
+        # overview#names) must be scoped to a project. Cloud Healthcare API service
+        # account must have publisher permissions on the given Pub/Sub topic. Not having
+        # adequate permissions causes the calls that send notifications to fail. If a
+        # notification can't be published to Pub/Sub, errors are logged to Cloud Logging
+        # (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/
         # docs/how-tos/logging)). If the number of errors exceeds a certain rate, some
         # aren't submitted. Note that not all operations trigger notifications, see [
         # Configuring Pub/Sub notifications](https://cloud.google.com/healthcare/docs/
@@ -2890,8 +2891,8 @@ module Google
         attr_accessor :end_time
       
         # A link to audit and error logs in the log viewer. Error logs are generated
-        # only by some operations, listed at [Viewing logs](/healthcare/docs/how-tos/
-        # logging).
+        # only by some operations, listed at [Viewing error logs in Cloud Logging](https:
+        # //cloud.google.com/healthcare/docs/how-tos/logging).
         # Corresponds to the JSON property `logsUrl`
         # @return [String]
         attr_accessor :logs_url
@@ -3114,8 +3115,9 @@ module Google
       # Queries all data_ids that are consented for a given use in the given consent
       # store and writes them to a specified destination. The returned Operation
       # includes a progress counter for the number of User data mappings processed.
-      # Errors are logged to Cloud Logging (see [Viewing logs] (/healthcare/docs/how-
-      # tos/logging) and [QueryAccessibleData] for a sample log entry).
+      # Errors are logged to Cloud Logging (see [Viewing error logs in Cloud Logging] (
+      # https://cloud.google.com/healthcare/docs/how-tos/logging) and [
+      # QueryAccessibleData] for a sample log entry).
       class QueryAccessibleDataRequest
         include Google::Apis::Core::Hashable
       
