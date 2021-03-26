@@ -418,6 +418,11 @@ module Google
         # @return [Google::Apis::DataprocV1::GceClusterConfig]
         attr_accessor :gce_cluster_config
       
+        # The GKE config for this cluster.
+        # Corresponds to the JSON property `gkeClusterConfig`
+        # @return [Google::Apis::DataprocV1::GkeClusterConfig]
+        attr_accessor :gke_cluster_config
+      
         # Optional. Commands to execute on each node after config is completed. By
         # default, executables are run on master and all worker nodes. You can test a
         # node's role metadata to run an executable on a master or worker node, as shown
@@ -490,6 +495,7 @@ module Google
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @endpoint_config = args[:endpoint_config] if args.key?(:endpoint_config)
           @gce_cluster_config = args[:gce_cluster_config] if args.key?(:gce_cluster_config)
+          @gke_cluster_config = args[:gke_cluster_config] if args.key?(:gke_cluster_config)
           @initialization_actions = args[:initialization_actions] if args.key?(:initialization_actions)
           @lifecycle_config = args[:lifecycle_config] if args.key?(:lifecycle_config)
           @master_config = args[:master_config] if args.key?(:master_config)
@@ -1085,6 +1091,25 @@ module Google
         end
       end
       
+      # The GKE config for this cluster.
+      class GkeClusterConfig
+        include Google::Apis::Core::Hashable
+      
+        # A full, namespace-isolated deployment target for an existing GKE cluster.
+        # Corresponds to the JSON property `namespacedGkeDeploymentTarget`
+        # @return [Google::Apis::DataprocV1::NamespacedGkeDeploymentTarget]
+        attr_accessor :namespaced_gke_deployment_target
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @namespaced_gke_deployment_target = args[:namespaced_gke_deployment_target] if args.key?(:namespaced_gke_deployment_target)
+        end
+      end
+      
       # A Dataproc job for running Apache Hadoop MapReduce (https://hadoop.apache.org/
       # docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/
       # MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/
@@ -1218,6 +1243,26 @@ module Google
           @query_file_uri = args[:query_file_uri] if args.key?(:query_file_uri)
           @query_list = args[:query_list] if args.key?(:query_list)
           @script_variables = args[:script_variables] if args.key?(:script_variables)
+        end
+      end
+      
+      # Identity related configuration, including service account based secure multi-
+      # tenancy user mappings.
+      class IdentityConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Map of user to service account.
+        # Corresponds to the JSON property `userServiceAccountMapping`
+        # @return [Hash<String,String>]
+        attr_accessor :user_service_account_mapping
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @user_service_account_mapping = args[:user_service_account_mapping] if args.key?(:user_service_account_mapping)
         end
       end
       
@@ -2200,6 +2245,32 @@ module Google
         end
       end
       
+      # A full, namespace-isolated deployment target for an existing GKE cluster.
+      class NamespacedGkeDeploymentTarget
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A namespace within the GKE cluster to deploy into.
+        # Corresponds to the JSON property `clusterNamespace`
+        # @return [String]
+        attr_accessor :cluster_namespace
+      
+        # Optional. The target GKE cluster to deploy to. Format: 'projects/`project`/
+        # locations/`location`/clusters/`cluster_id`'
+        # Corresponds to the JSON property `targetGkeCluster`
+        # @return [String]
+        attr_accessor :target_gke_cluster
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_namespace = args[:cluster_namespace] if args.key?(:cluster_namespace)
+          @target_gke_cluster = args[:target_gke_cluster] if args.key?(:target_gke_cluster)
+        end
+      end
+      
       # Node Group Affinity for clusters using sole-tenant node groups.
       class NodeGroupAffinity
         include Google::Apis::Core::Hashable
@@ -2810,6 +2881,12 @@ module Google
       class SecurityConfig
         include Google::Apis::Core::Hashable
       
+        # Identity related configuration, including service account based secure multi-
+        # tenancy user mappings.
+        # Corresponds to the JSON property `identityConfig`
+        # @return [Google::Apis::DataprocV1::IdentityConfig]
+        attr_accessor :identity_config
+      
         # Specifies Kerberos related configuration.
         # Corresponds to the JSON property `kerberosConfig`
         # @return [Google::Apis::DataprocV1::KerberosConfig]
@@ -2821,6 +2898,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @identity_config = args[:identity_config] if args.key?(:identity_config)
           @kerberos_config = args[:kerberos_config] if args.key?(:kerberos_config)
         end
       end
