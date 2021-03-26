@@ -1735,7 +1735,7 @@ module Google
         alias_method :controller?, :controller
       
         # Kind of the referent. More info: https://git.k8s.io/community/contributors/
-        # devel/api-conventions.md#types-kinds
+        # devel/sig-architecture/api-conventions.md#types-kinds
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2735,8 +2735,8 @@ module Google
         attr_accessor :reason
       
         # Status of the operation. One of: "Success" or "Failure". More info: https://
-        # git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +
-        # optional
+        # git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#
+        # spec-and-status +optional
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -2817,8 +2817,8 @@ module Google
       
         # The kind attribute of the resource associated with the status StatusReason. On
         # some operations may differ from the requested resource Kind. More info: https:/
-        # /git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds +
-        # optional
+        # /git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#
+        # types-kinds +optional
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
