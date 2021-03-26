@@ -33,7 +33,7 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V3'
 
-      # View and manage your data across Google Cloud Platform services
+      # See, edit, configure, and delete your Google Cloud Platform data
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
 
       # View and write monitoring data for all of your Google and third-party Cloud and API projects
