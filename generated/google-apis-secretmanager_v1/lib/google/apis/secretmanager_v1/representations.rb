@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Rotation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Secret
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -412,6 +418,14 @@ module Google
         end
       end
       
+      class Rotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_rotation_time, as: 'nextRotationTime'
+          property :rotation_period, as: 'rotationPeriod'
+        end
+      end
+      
       class Secret
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -420,6 +434,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :replication, as: 'replication', class: Google::Apis::SecretmanagerV1::Replication, decorator: Google::Apis::SecretmanagerV1::Replication::Representation
+      
+          property :rotation, as: 'rotation', class: Google::Apis::SecretmanagerV1::Rotation, decorator: Google::Apis::SecretmanagerV1::Rotation::Representation
       
           collection :topics, as: 'topics', class: Google::Apis::SecretmanagerV1::Topic, decorator: Google::Apis::SecretmanagerV1::Topic::Representation
       

@@ -740,6 +740,38 @@ module Google
         end
       end
       
+      # The rotation time and period for a Secret. At next_rotation_time, Secret
+      # Manager will send a Pub/Sub notification to the topics configured on the
+      # Secret. Secret.topics must be set to configure rotation.
+      class Rotation
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Timestamp in UTC at which the Secret is scheduled to rotate.
+        # next_rotation_time MUST be set if rotation_period is set.
+        # Corresponds to the JSON property `nextRotationTime`
+        # @return [String]
+        attr_accessor :next_rotation_time
+      
+        # Input only. The Duration between rotation notifications. Must be in seconds
+        # and at least 3600s (1h) and at most 3153600000s (100 years). If
+        # rotation_period is set, next_rotation_time must be set. next_rotation_time
+        # will be advanced by this period when the service automatically sends rotation
+        # notifications.
+        # Corresponds to the JSON property `rotationPeriod`
+        # @return [String]
+        attr_accessor :rotation_period
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_rotation_time = args[:next_rotation_time] if args.key?(:next_rotation_time)
+          @rotation_period = args[:rotation_period] if args.key?(:rotation_period)
+        end
+      end
+      
       # A Secret is a logical secret whose value and versions can be accessed. A
       # Secret is made up of zero or more SecretVersions that represent the secret
       # data.
@@ -778,6 +810,13 @@ module Google
         # @return [Google::Apis::SecretmanagerV1::Replication]
         attr_accessor :replication
       
+        # The rotation time and period for a Secret. At next_rotation_time, Secret
+        # Manager will send a Pub/Sub notification to the topics configured on the
+        # Secret. Secret.topics must be set to configure rotation.
+        # Corresponds to the JSON property `rotation`
+        # @return [Google::Apis::SecretmanagerV1::Rotation]
+        attr_accessor :rotation
+      
         # Optional. A list of up to 10 Pub/Sub topics to which messages are published
         # when control plane operations are called on the secret or its versions.
         # Corresponds to the JSON property `topics`
@@ -800,6 +839,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @replication = args[:replication] if args.key?(:replication)
+          @rotation = args[:rotation] if args.key?(:rotation)
           @topics = args[:topics] if args.key?(:topics)
           @ttl = args[:ttl] if args.key?(:ttl)
         end
