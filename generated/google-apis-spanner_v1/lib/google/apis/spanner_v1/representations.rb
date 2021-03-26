@@ -382,6 +382,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RequestOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RestoreDatabaseEncryptionConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -580,6 +586,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :options, as: 'options', class: Google::Apis::SpannerV1::TransactionOptions, decorator: Google::Apis::SpannerV1::TransactionOptions::Representation
       
+          property :request_options, as: 'requestOptions', class: Google::Apis::SpannerV1::RequestOptions, decorator: Google::Apis::SpannerV1::RequestOptions::Representation
+      
         end
       end
       
@@ -606,6 +614,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :mutations, as: 'mutations', class: Google::Apis::SpannerV1::Mutation, decorator: Google::Apis::SpannerV1::Mutation::Representation
+      
+          property :request_options, as: 'requestOptions', class: Google::Apis::SpannerV1::RequestOptions, decorator: Google::Apis::SpannerV1::RequestOptions::Representation
       
           property :return_commit_stats, as: 'returnCommitStats'
           property :single_use_transaction, as: 'singleUseTransaction', class: Google::Apis::SpannerV1::TransactionOptions, decorator: Google::Apis::SpannerV1::TransactionOptions::Representation
@@ -738,6 +748,8 @@ module Google
       class ExecuteBatchDmlRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_options, as: 'requestOptions', class: Google::Apis::SpannerV1::RequestOptions, decorator: Google::Apis::SpannerV1::RequestOptions::Representation
+      
           property :seqno, :numeric_string => true, as: 'seqno'
           collection :statements, as: 'statements', class: Google::Apis::SpannerV1::Statement, decorator: Google::Apis::SpannerV1::Statement::Representation
       
@@ -765,6 +777,8 @@ module Google
           property :partition_token, :base64 => true, as: 'partitionToken'
           property :query_mode, as: 'queryMode'
           property :query_options, as: 'queryOptions', class: Google::Apis::SpannerV1::QueryOptions, decorator: Google::Apis::SpannerV1::QueryOptions::Representation
+      
+          property :request_options, as: 'requestOptions', class: Google::Apis::SpannerV1::RequestOptions, decorator: Google::Apis::SpannerV1::RequestOptions::Representation
       
           property :resume_token, :base64 => true, as: 'resumeToken'
           property :seqno, :numeric_string => true, as: 'seqno'
@@ -1116,6 +1130,8 @@ module Google
       
           property :limit, :numeric_string => true, as: 'limit'
           property :partition_token, :base64 => true, as: 'partitionToken'
+          property :request_options, as: 'requestOptions', class: Google::Apis::SpannerV1::RequestOptions, decorator: Google::Apis::SpannerV1::RequestOptions::Representation
+      
           property :resume_token, :base64 => true, as: 'resumeToken'
           property :table, as: 'table'
           property :transaction, as: 'transaction', class: Google::Apis::SpannerV1::TransactionSelector, decorator: Google::Apis::SpannerV1::TransactionSelector::Representation
@@ -1135,6 +1151,13 @@ module Google
           property :default_leader_location, as: 'defaultLeaderLocation'
           property :location, as: 'location'
           property :type, as: 'type'
+        end
+      end
+      
+      class RequestOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :priority, as: 'priority'
         end
       end
       
