@@ -1255,6 +1255,7 @@ module Google
       class GoogleCloudChannelV1Value
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bool_value, as: 'boolValue'
           property :double_value, as: 'doubleValue'
           property :int64_value, :numeric_string => true, as: 'int64Value'
           hash :proto_value, as: 'protoValue'
@@ -1398,6 +1399,7 @@ module Google
       class GoogleCloudChannelV1alpha1Value
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bool_value, as: 'boolValue'
           property :double_value, as: 'doubleValue'
           property :int64_value, :numeric_string => true, as: 'int64Value'
           hash :proto_value, as: 'protoValue'

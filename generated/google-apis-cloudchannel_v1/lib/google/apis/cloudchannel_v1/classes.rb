@@ -407,7 +407,11 @@ module Google
         # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1EduData]
         attr_accessor :edu_data
       
-        # Whether the domain is verified.
+        # Output only. Whether the domain is verified. This field is not returned for a
+        # Customer's cloud_identity_info resource. Partners can use the domains.get()
+        # method of the Workspace SDK's Directory API, or listen to the
+        # PRIMARY_DOMAIN_VERIFIED Pub/Sub event in to track domain verification of their
+        # resolve Workspace customers.
         # Corresponds to the JSON property `isDomainVerified`
         # @return [Boolean]
         attr_accessor :is_domain_verified
@@ -2346,6 +2350,12 @@ module Google
       class GoogleCloudChannelV1Value
         include Google::Apis::Core::Hashable
       
+        # Represents a boolean value.
+        # Corresponds to the JSON property `boolValue`
+        # @return [Boolean]
+        attr_accessor :bool_value
+        alias_method :bool_value?, :bool_value
+      
         # Represents a double value.
         # Corresponds to the JSON property `doubleValue`
         # @return [Float]
@@ -2372,6 +2382,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bool_value = args[:bool_value] if args.key?(:bool_value)
           @double_value = args[:double_value] if args.key?(:double_value)
           @int64_value = args[:int64_value] if args.key?(:int64_value)
           @proto_value = args[:proto_value] if args.key?(:proto_value)
@@ -2852,6 +2863,12 @@ module Google
       class GoogleCloudChannelV1alpha1Value
         include Google::Apis::Core::Hashable
       
+        # Represents a boolean value.
+        # Corresponds to the JSON property `boolValue`
+        # @return [Boolean]
+        attr_accessor :bool_value
+        alias_method :bool_value?, :bool_value
+      
         # Represents a double value.
         # Corresponds to the JSON property `doubleValue`
         # @return [Float]
@@ -2878,6 +2895,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bool_value = args[:bool_value] if args.key?(:bool_value)
           @double_value = args[:double_value] if args.key?(:double_value)
           @int64_value = args[:int64_value] if args.key?(:int64_value)
           @proto_value = args[:proto_value] if args.key?(:proto_value)
