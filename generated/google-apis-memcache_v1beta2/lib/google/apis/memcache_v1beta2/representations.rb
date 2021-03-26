@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudMemcacheV1beta2ZoneMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSaasacceleratorManagementProvidersV1Instance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +101,12 @@ module Google
       end
       
       class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -155,6 +167,12 @@ module Google
       end
       
       class Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LocationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -305,7 +323,7 @@ module Google
       class GoogleCloudMemcacheV1beta2LocationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          hash :available_zones, as: 'availableZones', class: Google::Apis::MemcacheV1beta2::ZoneMetadata, decorator: Google::Apis::MemcacheV1beta2::ZoneMetadata::Representation
+          hash :available_zones, as: 'availableZones', class: Google::Apis::MemcacheV1beta2::GoogleCloudMemcacheV1beta2ZoneMetadata, decorator: Google::Apis::MemcacheV1beta2::GoogleCloudMemcacheV1beta2ZoneMetadata::Representation
       
         end
       end
@@ -320,6 +338,12 @@ module Google
           property :status_detail, as: 'statusDetail'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class GoogleCloudMemcacheV1beta2ZoneMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -379,6 +403,14 @@ module Google
         end
       end
       
+      class GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :eligibilities, as: 'eligibilities', class: Google::Apis::MemcacheV1beta2::GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility, decorator: Google::Apis::MemcacheV1beta2::GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility::Representation
+      
+        end
+      end
+      
       class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -413,6 +445,8 @@ module Google
           collection :exclusions, as: 'exclusions', class: Google::Apis::MemcacheV1beta2::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion, decorator: Google::Apis::MemcacheV1beta2::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion::Representation
       
           collection :nodes, as: 'nodes', class: Google::Apis::MemcacheV1beta2::GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata, decorator: Google::Apis::MemcacheV1beta2::GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata::Representation
+      
+          property :per_sli_eligibility, as: 'perSliEligibility', class: Google::Apis::MemcacheV1beta2::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility, decorator: Google::Apis::MemcacheV1beta2::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility::Representation
       
           property :tier, as: 'tier'
         end
@@ -489,6 +523,14 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class LocationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :available_zones, as: 'availableZones', class: Google::Apis::MemcacheV1beta2::ZoneMetadata, decorator: Google::Apis::MemcacheV1beta2::ZoneMetadata::Representation
+      
         end
       end
       
