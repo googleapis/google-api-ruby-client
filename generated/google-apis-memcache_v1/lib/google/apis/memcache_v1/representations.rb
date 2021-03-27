@@ -58,7 +58,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudMemcacheV1LocationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudMemcacheV1OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMemcacheV1ZoneMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -83,6 +95,12 @@ module Google
       end
       
       class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -288,6 +306,14 @@ module Google
         end
       end
       
+      class GoogleCloudMemcacheV1LocationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :available_zones, as: 'availableZones', class: Google::Apis::MemcacheV1::GoogleCloudMemcacheV1ZoneMetadata, decorator: Google::Apis::MemcacheV1::GoogleCloudMemcacheV1ZoneMetadata::Representation
+      
+        end
+      end
+      
       class GoogleCloudMemcacheV1OperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -298,6 +324,12 @@ module Google
           property :status_detail, as: 'statusDetail'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class GoogleCloudMemcacheV1ZoneMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -357,6 +389,14 @@ module Google
         end
       end
       
+      class GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :eligibilities, as: 'eligibilities', class: Google::Apis::MemcacheV1::GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility, decorator: Google::Apis::MemcacheV1::GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility::Representation
+      
+        end
+      end
+      
       class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -391,6 +431,8 @@ module Google
           collection :exclusions, as: 'exclusions', class: Google::Apis::MemcacheV1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion, decorator: Google::Apis::MemcacheV1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion::Representation
       
           collection :nodes, as: 'nodes', class: Google::Apis::MemcacheV1::GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata, decorator: Google::Apis::MemcacheV1::GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata::Representation
+      
+          property :per_sli_eligibility, as: 'perSliEligibility', class: Google::Apis::MemcacheV1::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility, decorator: Google::Apis::MemcacheV1::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility::Representation
       
           property :tier, as: 'tier'
         end
