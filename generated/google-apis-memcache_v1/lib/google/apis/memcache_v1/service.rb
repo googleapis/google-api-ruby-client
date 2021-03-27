@@ -84,11 +84,15 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [String] filter
-        #   The standard list filter.
+        #   A filter to narrow down results to a preferred subset. The filtering language
+        #   accepts strings like "displayName=tokyo", and is documented in more detail in [
+        #   AIP-160](https://google.aip.dev/160).
         # @param [Fixnum] page_size
-        #   The standard list page size.
+        #   The maximum number of results to return. If not set, the service will select a
+        #   default.
         # @param [String] page_token
-        #   The standard list page token.
+        #   A page token received from the `next_page_token` field in the response. Send
+        #   that page token to receive the subsequent page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -119,8 +123,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ApplyParameters will restart the set of specified nodes in order to update
-        # them to the current set of parameters for the Memcached Instance.
+        # `ApplyParameters` restarts the set of specified nodes in order to update them
+        # to the current set of parameters for the Memcached Instance.
         # @param [String] name
         #   Required. Resource name of the Memcached instance for which parameter group
         #   updates should be applied.
@@ -165,7 +169,8 @@ module Google
         #   the following restrictions: * Must contain only lowercase letters, numbers,
         #   and hyphens. * Must start with a letter. * Must be between 1-40 characters. *
         #   Must end with a number or a letter. * Must be unique within the user project /
-        #   location If any of the above are not met, will raise an invalid argument error.
+        #   location. If any of the above are not met, the API raises an invalid argument
+        #   error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -267,16 +272,17 @@ module Google
         #   region
         # @param [String] filter
         #   List filter. For example, exclude all Memcached instances with name as my-
-        #   instance by specifying "name != my-instance".
+        #   instance by specifying `"name != my-instance"`.
         # @param [String] order_by
         #   Sort results. Supported values are "name", "name desc" or "" (unsorted).
         # @param [Fixnum] page_size
         #   The maximum number of items to return. If not specified, a default value of
-        #   1000 will be used by the service. Regardless of the page_size value, the
+        #   1000 will be used by the service. Regardless of the `page_size` value, the
         #   response may include a partial list and a caller should only rely on response'
-        #   s next_page_token to determine if there are more instances left to be queried.
+        #   s `next_page_token` to determine if there are more instances left to be
+        #   queried.
         # @param [String] page_token
-        #   The next_page_token value returned from a previous List request, if any.
+        #   The `next_page_token` value returned from a previous List request, if any.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -313,9 +319,9 @@ module Google
         #   Required. Unique name of the resource in this scope including project and
         #   location using the form: `projects/`project_id`/locations/`location_id`/
         #   instances/`instance_id`` Note: Memcached instances are managed and addressed
-        #   at regional level so location_id here refers to a GCP region; however, users
-        #   may choose which zones Memcached nodes within an instances should be
-        #   provisioned in. Refer to [zones] field for more details.
+        #   at the regional level so `location_id` here refers to a Google Cloud region;
+        #   however, users may choose which zones Memcached nodes should be provisioned in
+        #   within an instance. Refer to zones field for more details.
         # @param [Google::Apis::MemcacheV1::Instance] instance_object
         # @param [String] update_mask
         #   Required. Mask of fields to update. * `displayName`
@@ -349,9 +355,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the defined Memcached Parameters for an existing Instance. This method
-        # only stages the parameters, it must be followed by ApplyParameters to apply
-        # the parameters to nodes of the Memcached Instance.
+        # Updates the defined Memcached parameters for an existing instance. This method
+        # only stages the parameters, it must be followed by `ApplyParameters` to apply
+        # the parameters to nodes of the Memcached instance.
         # @param [String] name
         #   Required. Resource name of the Memcached instance for which the parameters
         #   should be updated.

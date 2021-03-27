@@ -27,14 +27,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Whether to apply instance-level parameter group to all nodes. If set to true,
-        # will explicitly restrict users from specifying any nodes, and apply parameter
-        # group updates to all nodes within the instance.
+        # users are restricted from specifying individual nodes, and `ApplyParameters`
+        # updates all nodes within the instance.
         # Corresponds to the JSON property `applyAll`
         # @return [Boolean]
         attr_accessor :apply_all
         alias_method :apply_all?, :apply_all
       
-        # Nodes to which we should apply the instance-level parameter group.
+        # Nodes to which the instance-level parameter group is applied.
         # Corresponds to the JSON property `nodeIds`
         # @return [Array<String>]
         attr_accessor :node_ids
@@ -196,6 +196,27 @@ module Google
         end
       end
       
+      # Metadata for the given google.cloud.location.Location.
+      class GoogleCloudMemcacheV1LocationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The set of available zones in the location. The map is keyed by
+        # the lowercase ID of each zone, as defined by GCE. These keys can be specified
+        # in the `zones` field when creating a Memcached instance.
+        # Corresponds to the JSON property `availableZones`
+        # @return [Hash<String,Google::Apis::MemcacheV1::GoogleCloudMemcacheV1ZoneMetadata>]
+        attr_accessor :available_zones
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @available_zones = args[:available_zones] if args.key?(:available_zones)
+        end
+      end
+      
       # Represents the metadata of a long-running operation.
       class GoogleCloudMemcacheV1OperationMetadata
         include Google::Apis::Core::Hashable
@@ -252,6 +273,19 @@ module Google
           @status_detail = args[:status_detail] if args.key?(:status_detail)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # 
+      class GoogleCloudMemcacheV1ZoneMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -383,9 +417,8 @@ module Google
       class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule
         include Google::Apis::Core::Hashable
       
-        # Can this scheduled update be rescheduled? By default, it's true and API needs
-        # to do explicitly check whether it's set, if it's set as false explicitly, it's
-        # false
+        # This field will be deprecated, and will be always set to true since reschedule
+        # can happen multiple times now.
         # Corresponds to the JSON property `canReschedule`
         # @return [Boolean]
         attr_accessor :can_reschedule
@@ -405,9 +438,8 @@ module Google
       
         # schedule_deadline_time is the time deadline any schedule start time cannot go
         # beyond, including reschedule. It's normally the initial schedule start time
-        # plus a week. If the reschedule type is next window, simply take this value as
-        # start time. If reschedule type is IMMEDIATELY or BY_TIME, current or selected
-        # time cannot go beyond this deadline.
+        # plus maintenance window length (1 day or 1 week). Maintenance cannot be
+        # scheduled to start beyond this deadline.
         # Corresponds to the JSON property `scheduleDeadlineTime`
         # @return [String]
         attr_accessor :schedule_deadline_time
@@ -509,6 +541,35 @@ module Google
         end
       end
       
+      # PerSliSloEligibility is a mapping from an SLI name to eligibility.
+      class GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility
+        include Google::Apis::Core::Hashable
+      
+        # An entry in the eligibilities map specifies an eligibility for a particular
+        # SLI for the given instance. The SLI key in the name must be a valid SLI name
+        # specified in the Eligibility Exporter binary flags otherwise an error will be
+        # emitted by Eligibility Exporter and the oncaller will be alerted. If an SLI
+        # has been defined in the binary flags but the eligibilities map does not
+        # contain it, the corresponding SLI time series will not be emitted by the
+        # Eligibility Exporter. This ensures a smooth rollout and compatibility between
+        # the data produced by different versions of the Eligibility Exporters. If
+        # eligibilities map contains a key for an SLI which has not been declared in the
+        # binary flags, there will be an error message emitted in the Eligibility
+        # Exporter log and the metric for the SLI in question will not be emitted.
+        # Corresponds to the JSON property `eligibilities`
+        # @return [Hash<String,Google::Apis::MemcacheV1::GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility>]
+        attr_accessor :eligibilities
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @eligibilities = args[:eligibilities] if args.key?(:eligibilities)
+        end
+      end
+      
       # Describes provisioned dataplane resources.
       class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
         include Google::Apis::Core::Hashable
@@ -591,8 +652,7 @@ module Google
         attr_accessor :reason
       
         # Name of an SLI that this exclusion applies to. Can be left empty, signaling
-        # that the instance should be excluded from all SLIs defined in the service SLO
-        # configuration.
+        # that the instance should be excluded from all SLIs.
         # Corresponds to the JSON property `sliName`
         # @return [String]
         attr_accessor :sli_name
@@ -649,6 +709,11 @@ module Google
         # @return [Array<Google::Apis::MemcacheV1::GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>]
         attr_accessor :nodes
       
+        # PerSliSloEligibility is a mapping from an SLI name to eligibility.
+        # Corresponds to the JSON property `perSliEligibility`
+        # @return [Google::Apis::MemcacheV1::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility]
+        attr_accessor :per_sli_eligibility
+      
         # Name of the SLO tier the Instance belongs to. This name will be expected to
         # match the tiers specified in the service SLO configuration. Field is mandatory
         # and must not be empty.
@@ -665,11 +730,12 @@ module Google
           @eligibility = args[:eligibility] if args.key?(:eligibility)
           @exclusions = args[:exclusions] if args.key?(:exclusions)
           @nodes = args[:nodes] if args.key?(:nodes)
+          @per_sli_eligibility = args[:per_sli_eligibility] if args.key?(:per_sli_eligibility)
           @tier = args[:tier] if args.key?(:tier)
         end
       end
       
-      # 
+      # A Memorystore for Memcached instance
       class Instance
         include Google::Apis::Core::Hashable
       
@@ -685,18 +751,18 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Output only. Endpoint for Discovery API
+        # Output only. Endpoint for the Discovery API.
         # Corresponds to the JSON property `discoveryEndpoint`
         # @return [String]
         attr_accessor :discovery_endpoint
       
-        # User provided name for the instance only used for display purposes. Cannot be
-        # more than 80 characters.
+        # User provided name for the instance, which is only used for display purposes.
+        # Cannot be more than 80 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # List of messages that describe current statuses of memcached instance.
+        # List of messages that describe the current state of the Memcached instance.
         # Corresponds to the JSON property `instanceMessages`
         # @return [Array<Google::Apis::MemcacheV1::InstanceMessage>]
         attr_accessor :instance_messages
@@ -716,15 +782,15 @@ module Google
         # @return [String]
         attr_accessor :memcache_full_version
       
-        # Output only. List of Memcached nodes. Refer to [Node] message for more details.
+        # Output only. List of Memcached nodes. Refer to Node message for more details.
         # Corresponds to the JSON property `memcacheNodes`
         # @return [Array<Google::Apis::MemcacheV1::Node>]
         attr_accessor :memcache_nodes
       
         # The major version of Memcached software. If not provided, latest supported
-        # version will be used. Currently the latest supported major version is
-        # MEMCACHE_1_5. The minor version will be automatically determined by our system
-        # based on the latest supported minor version.
+        # version will be used. Currently the latest supported major version is `
+        # MEMCACHE_1_5`. The minor version will be automatically determined by our
+        # system based on the latest supported minor version.
         # Corresponds to the JSON property `memcacheVersion`
         # @return [String]
         attr_accessor :memcache_version
@@ -732,9 +798,9 @@ module Google
         # Required. Unique name of the resource in this scope including project and
         # location using the form: `projects/`project_id`/locations/`location_id`/
         # instances/`instance_id`` Note: Memcached instances are managed and addressed
-        # at regional level so location_id here refers to a GCP region; however, users
-        # may choose which zones Memcached nodes within an instances should be
-        # provisioned in. Refer to [zones] field for more details.
+        # at the regional level so `location_id` here refers to a Google Cloud region;
+        # however, users may choose which zones Memcached nodes should be provisioned in
+        # within an instance. Refer to zones field for more details.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -749,8 +815,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :node_count
       
-        # Optional: User defined parameters to apply to the memcached process on each
-        # node.
+        # The unique ID associated with this set of parameters. Users can use this id to
+        # determine if the parameters associated with the instance differ from the
+        # parameters associated with the nodes. A discrepancy between parameter ids can
+        # inform users that they may need to take action to apply parameters on nodes.
         # Corresponds to the JSON property `parameters`
         # @return [Google::Apis::MemcacheV1::MemcacheParameters]
         attr_accessor :parameters
@@ -765,7 +833,7 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Zones where Memcached nodes should be provisioned in. Memcached nodes will be
+        # Zones in which Memcached nodes should be provisioned. Memcached nodes will be
         # equally distributed across these zones. If not provided, the service will by
         # default create nodes in all zones in the region for the instance.
         # Corresponds to the JSON property `zones`
@@ -1062,14 +1130,14 @@ module Google
         end
       end
       
-      # 
+      # The unique ID associated with this set of parameters. Users can use this id to
+      # determine if the parameters associated with the instance differ from the
+      # parameters associated with the nodes. A discrepancy between parameter ids can
+      # inform users that they may need to take action to apply parameters on nodes.
       class MemcacheParameters
         include Google::Apis::Core::Hashable
       
-        # Output only. The unique ID associated with this set of parameters. Users can
-        # use this id to determine if the parameters associated with the instance differ
-        # from the parameters associated with the nodes and any action needs to be taken
-        # to apply parameters on nodes.
+        # Output only.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -1106,7 +1174,10 @@ module Google
         # @return [String]
         attr_accessor :node_id
       
-        # User defined parameters currently applied to the node.
+        # The unique ID associated with this set of parameters. Users can use this id to
+        # determine if the parameters associated with the instance differ from the
+        # parameters associated with the nodes. A discrepancy between parameter ids can
+        # inform users that they may need to take action to apply parameters on nodes.
         # Corresponds to the JSON property `parameters`
         # @return [Google::Apis::MemcacheV1::MemcacheParameters]
         attr_accessor :parameters
@@ -1404,7 +1475,10 @@ module Google
       class UpdateParametersRequest
         include Google::Apis::Core::Hashable
       
-        # The parameters to apply to the instance.
+        # The unique ID associated with this set of parameters. Users can use this id to
+        # determine if the parameters associated with the instance differ from the
+        # parameters associated with the nodes. A discrepancy between parameter ids can
+        # inform users that they may need to take action to apply parameters on nodes.
         # Corresponds to the JSON property `parameters`
         # @return [Google::Apis::MemcacheV1::MemcacheParameters]
         attr_accessor :parameters
