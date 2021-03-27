@@ -1166,10 +1166,10 @@ module Google
         #   in the query, the it will return results that match any of the fields. Some
         #   eligible fields are: | Field | Description | |-------------------------|-------
         #   ---------------------------------------| | displayName, name | Filters by
-        #   displayName. | | parent.type | Parent's type: `folder` or `organization`. | |
-        #   parent.id | Parent's id number (e.g. 123) | | parent | Project's parent. (e.g.
-        #   folders/123, organizations/*) Prefer parent field over parent.id and parent.
-        #   type. | | id, projectId | Filters by projectId. | | state, lifecycleState |
+        #   displayName. | | parent | Project's parent. (e.g. folders/123, organizations/*)
+        #   Prefer parent field over parent.type and parent.id. | | parent.type | Parent'
+        #   s type: `folder` or `organization`. | | parent.id | Parent's id number (e.g.
+        #   123) | | id, projectId | Filters by projectId. | | state, lifecycleState |
         #   Filters by state. | | labels | Filters by label name or value. | | labels. (
         #   where *key* is the name of a label) | Filters by label name. | Search
         #   expressions are case insensitive. Some examples queries: | Query | Description
