@@ -534,6 +534,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Restores a service from a backup.
+        # @param [String] service
+        #   Required. The relative resource name of the metastore service to run restore,
+        #   in the following form:projects/`project_id`/locations/`location_id`/services/`
+        #   service_id`.
+        # @param [Google::Apis::MetastoreV1alpha::RestoreServiceRequest] restore_service_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MetastoreV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MetastoreV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def restore_service(service, restore_service_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+service}:restore', options)
+          command.request_representation = Google::Apis::MetastoreV1alpha::RestoreServiceRequest::Representation
+          command.request_object = restore_service_request_object
+          command.response_representation = Google::Apis::MetastoreV1alpha::Operation::Representation
+          command.response_class = Google::Apis::MetastoreV1alpha::Operation
+          command.params['service'] = service unless service.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED
         # errors.
@@ -603,6 +638,182 @@ module Google
           command.response_representation = Google::Apis::MetastoreV1alpha::TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::MetastoreV1alpha::TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new Backup in a given project and location.
+        # @param [String] parent
+        #   Required. The relative resource name of the service in which to create a
+        #   backup of the following form:projects/`project_number`/locations/`location_id`/
+        #   services/`service_id`.
+        # @param [Google::Apis::MetastoreV1alpha::Backup] backup_object
+        # @param [String] backup_id
+        #   Required. The ID of the backup, which is used as the final component of the
+        #   backup's name.This value must be between 1 and 64 characters long, begin with
+        #   a letter, end with a letter or number, and consist of alpha-numeric ASCII
+        #   characters or hyphens.
+        # @param [String] request_id
+        #   Optional. A request ID. Specify a unique request ID to allow the server to
+        #   ignore the request if it has completed. The server will ignore subsequent
+        #   requests that provide a duplicate request ID for at least 60 minutes after the
+        #   first request.For example, if an initial request times out, followed by
+        #   another request with the same request ID, the server ignores the second
+        #   request to prevent the creation of duplicate commitments.The request ID must
+        #   be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#
+        #   Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MetastoreV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MetastoreV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_service_backup(parent, backup_object = nil, backup_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/backups', options)
+          command.request_representation = Google::Apis::MetastoreV1alpha::Backup::Representation
+          command.request_object = backup_object
+          command.response_representation = Google::Apis::MetastoreV1alpha::Operation::Representation
+          command.response_class = Google::Apis::MetastoreV1alpha::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['backupId'] = backup_id unless backup_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single backup.
+        # @param [String] name
+        #   Required. The relative resource name of the backup to delete, in the following
+        #   form:projects/`project_number`/locations/`location_id`/services/`service_id`/
+        #   backups/`backup_id`.
+        # @param [String] request_id
+        #   Optional. A request ID. Specify a unique request ID to allow the server to
+        #   ignore the request if it has completed. The server will ignore subsequent
+        #   requests that provide a duplicate request ID for at least 60 minutes after the
+        #   first request.For example, if an initial request times out, followed by
+        #   another request with the same request ID, the server ignores the second
+        #   request to prevent the creation of duplicate commitments.The request ID must
+        #   be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#
+        #   Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MetastoreV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MetastoreV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_service_backup(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::MetastoreV1alpha::Operation::Representation
+          command.response_class = Google::Apis::MetastoreV1alpha::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single backup.
+        # @param [String] name
+        #   Required. The relative resource name of the backup to retrieve, in the
+        #   following form:projects/`project_number`/locations/`location_id`/services/`
+        #   service_id`/backups/`backup_id`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MetastoreV1alpha::Backup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MetastoreV1alpha::Backup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_service_backup(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::MetastoreV1alpha::Backup::Representation
+          command.response_class = Google::Apis::MetastoreV1alpha::Backup
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists backups in a service.
+        # @param [String] parent
+        #   Required. The relative resource name of the service whose backups to list, in
+        #   the following form:projects/`project_number`/locations/`location_id`/services/`
+        #   service_id`/backups.
+        # @param [String] filter
+        #   Optional. The filter to apply to list results.
+        # @param [String] order_by
+        #   Optional. Specify the ordering of results as described in Sorting Order (https:
+        #   //cloud.google.com/apis/design/design_patterns#sorting_order). If not
+        #   specified, the results will be sorted in the default order.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of backups to return. The response may contain
+        #   less than the maximum number. If unspecified, no more than 500 backups are
+        #   returned. The maximum value is 1000; values above 1000 are changed to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous DataprocMetastore.ListBackups
+        #   call. Provide this token to retrieve the subsequent page.To retrieve the first
+        #   page, supply an empty page token.When paginating, other parameters provided to
+        #   DataprocMetastore.ListBackups must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MetastoreV1alpha::ListBackupsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MetastoreV1alpha::ListBackupsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_service_backups(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/backups', options)
+          command.response_representation = Google::Apis::MetastoreV1alpha::ListBackupsResponse::Representation
+          command.response_class = Google::Apis::MetastoreV1alpha::ListBackupsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
