@@ -93,6 +93,57 @@ module Google
         end
       end
       
+      # The details of a backup resource.
+      class Backup
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the backup was started.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The description of the backup.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The time when the backup finished creating.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Immutable. The relative resource name of the backup, in the following form:
+        # projects/`project_number`/locations/`location_id`/services/`service_id`/
+        # backups/`backup_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A managed metastore service that serves metadata queries.
+        # Corresponds to the JSON property `serviceRevision`
+        # @return [Google::Apis::MetastoreV1alpha::Service]
+        attr_accessor :service_revision
+      
+        # Output only. The current state of the backup.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @name = args[:name] if args.key?(:name)
+          @service_revision = args[:service_revision] if args.key?(:service_revision)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Associates members with a role.
       class Binding
         include Google::Apis::Core::Hashable
@@ -427,6 +478,38 @@ module Google
           @keytab = args[:keytab] if args.key?(:keytab)
           @krb5_config_gcs_uri = args[:krb5_config_gcs_uri] if args.key?(:krb5_config_gcs_uri)
           @principal = args[:principal] if args.key?(:principal)
+        end
+      end
+      
+      # Response message for DataprocMetastore.ListBackups.
+      class ListBackupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The backups of the specified service.
+        # Corresponds to the JSON property `backups`
+        # @return [Array<Google::Apis::MetastoreV1alpha::Backup>]
+        attr_accessor :backups
+      
+        # A token that can be sent as page_token to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backups = args[:backups] if args.key?(:backups)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -841,6 +924,65 @@ module Google
         end
       end
       
+      # Represents the metadata of a long-running operation.
+      class OperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. API version used to start the operation.
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Identifies whether the caller has requested cancellation of the
+        # operation. Operations that have successfully been cancelled have Operation.
+        # error value with a google.rpc.Status.code of 1, corresponding to Code.
+        # CANCELLED.
+        # Corresponds to the JSON property `requestedCancellation`
+        # @return [Boolean]
+        attr_accessor :requested_cancellation
+        alias_method :requested_cancellation?, :requested_cancellation
+      
+        # Output only. Human-readable status of the operation, if any.
+        # Corresponds to the JSON property `statusMessage`
+        # @return [String]
+        attr_accessor :status_message
+      
+        # Output only. Server-defined resource path for the target of the operation.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Output only. Name of the verb executed by the operation.
+        # Corresponds to the JSON property `verb`
+        # @return [String]
+        attr_accessor :verb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
+          @status_message = args[:status_message] if args.key?(:status_message)
+          @target = args[:target] if args.key?(:target)
+          @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
       # An Identity and Access Management (IAM) policy, which specifies access
       # controls for Google Cloud resources.A Policy is a collection of bindings. A
       # binding binds one or more members to a single role. Members can be user
@@ -978,6 +1120,46 @@ module Google
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Request message for DataprocMetastore.Restore.
+      class RestoreServiceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The relative resource name of the metastore service backup to
+        # restore from, in the following form:projects/`project_id`/locations/`
+        # location_id`/services/`service_id`/backups/`backup_id`.
+        # Corresponds to the JSON property `backup`
+        # @return [String]
+        attr_accessor :backup
+      
+        # Optional. A request ID. Specify a unique request ID to allow the server to
+        # ignore the request if it has completed. The server will ignore subsequent
+        # requests that provide a duplicate request ID for at least 60 minutes after the
+        # first request.For example, if an initial request times out, followed by
+        # another request with the same request ID, the server ignores the second
+        # request to prevent the creation of duplicate commitments.The request ID must
+        # be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#
+        # Format). A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Optional. The type of restore. If unspecified, defaults to METADATA_ONLY.
+        # Corresponds to the JSON property `restoreType`
+        # @return [String]
+        attr_accessor :restore_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup = args[:backup] if args.key?(:backup)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @restore_type = args[:restore_type] if args.key?(:restore_type)
         end
       end
       
