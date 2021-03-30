@@ -181,6 +181,15 @@ module Google
       class Finding
         include Google::Apis::Core::Hashable
       
+        # The canonical name of the finding. It's either "organizations/`organization_id`
+        # /sources/`source_id`/findings/`finding_id`", "folders/`folder_id`/sources/`
+        # source_id`/findings/`finding_id`" or "projects/`project_number`/sources/`
+        # source_id`/findings/`finding_id`", depending on the closest CRM ancestor of
+        # the resource associated with the finding.
+        # Corresponds to the JSON property `canonicalName`
+        # @return [String]
+        attr_accessor :canonical_name
+      
         # The additional taxonomy group within findings from a given source. This field
         # is immutable after creation time. Example: "XSS_FLASH_INJECTION"
         # Corresponds to the JSON property `category`
@@ -196,7 +205,8 @@ module Google
         # occurred. For example, if the finding represents an open firewall it would
         # capture the time the detector believes the firewall became open. The accuracy
         # is determined by the detector. If the finding were to be resolved afterward,
-        # this time would reflect when the finding was resolved.
+        # this time would reflect when the finding was resolved. Must not be set to a
+        # value greater than the current timestamp.
         # Corresponds to the JSON property `eventTime`
         # @return [String]
         attr_accessor :event_time
@@ -265,6 +275,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @canonical_name = args[:canonical_name] if args.key?(:canonical_name)
           @category = args[:category] if args.key?(:category)
           @create_time = args[:create_time] if args.key?(:create_time)
           @event_time = args[:event_time] if args.key?(:event_time)
@@ -449,6 +460,15 @@ module Google
       class GoogleCloudSecuritycenterV1p1beta1Finding
         include Google::Apis::Core::Hashable
       
+        # The canonical name of the finding. It's either "organizations/`organization_id`
+        # /sources/`source_id`/findings/`finding_id`", "folders/`folder_id`/sources/`
+        # source_id`/findings/`finding_id`" or "projects/`project_number`/sources/`
+        # source_id`/findings/`finding_id`", depending on the closest CRM ancestor of
+        # the resource associated with the finding.
+        # Corresponds to the JSON property `canonicalName`
+        # @return [String]
+        attr_accessor :canonical_name
+      
         # The additional taxonomy group within findings from a given source. This field
         # is immutable after creation time. Example: "XSS_FLASH_INJECTION"
         # Corresponds to the JSON property `category`
@@ -464,7 +484,8 @@ module Google
         # occurred. For example, if the finding represents an open firewall it would
         # capture the time the detector believes the firewall became open. The accuracy
         # is determined by the detector. If the finding were to be resolved afterward,
-        # this time would reflect when the finding was resolved.
+        # this time would reflect when the finding was resolved. Must not be set to a
+        # value greater than the current timestamp.
         # Corresponds to the JSON property `eventTime`
         # @return [String]
         attr_accessor :event_time
@@ -533,6 +554,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @canonical_name = args[:canonical_name] if args.key?(:canonical_name)
           @category = args[:category] if args.key?(:category)
           @create_time = args[:create_time] if args.key?(:create_time)
           @event_time = args[:event_time] if args.key?(:event_time)
@@ -691,6 +713,17 @@ module Google
       class GoogleCloudSecuritycenterV1p1beta1SecurityMarks
         include Google::Apis::Core::Hashable
       
+        # The canonical name of the marks. Examples: "organizations/`organization_id`/
+        # assets/`asset_id`/securityMarks" "folders/`folder_id`/assets/`asset_id`/
+        # securityMarks" "projects/`project_number`/assets/`asset_id`/securityMarks" "
+        # organizations/`organization_id`/sources/`source_id`/findings/`finding_id`/
+        # securityMarks" "folders/`folder_id`/sources/`source_id`/findings/`finding_id`/
+        # securityMarks" "projects/`project_number`/sources/`source_id`/findings/`
+        # finding_id`/securityMarks"
+        # Corresponds to the JSON property `canonicalName`
+        # @return [String]
+        attr_accessor :canonical_name
+      
         # Mutable user specified security marks belonging to the parent resource.
         # Constraints are as follows: * Keys and values are treated as case insensitive *
         # Keys must be between 1 - 256 characters (inclusive) * Keys must be letters,
@@ -714,6 +747,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @canonical_name = args[:canonical_name] if args.key?(:canonical_name)
           @marks = args[:marks] if args.key?(:marks)
           @name = args[:name] if args.key?(:name)
         end
@@ -812,6 +846,17 @@ module Google
       class SecurityMarks
         include Google::Apis::Core::Hashable
       
+        # The canonical name of the marks. Examples: "organizations/`organization_id`/
+        # assets/`asset_id`/securityMarks" "folders/`folder_id`/assets/`asset_id`/
+        # securityMarks" "projects/`project_number`/assets/`asset_id`/securityMarks" "
+        # organizations/`organization_id`/sources/`source_id`/findings/`finding_id`/
+        # securityMarks" "folders/`folder_id`/sources/`source_id`/findings/`finding_id`/
+        # securityMarks" "projects/`project_number`/sources/`source_id`/findings/`
+        # finding_id`/securityMarks"
+        # Corresponds to the JSON property `canonicalName`
+        # @return [String]
+        attr_accessor :canonical_name
+      
         # Mutable user specified security marks belonging to the parent resource.
         # Constraints are as follows: * Keys and values are treated as case insensitive *
         # Keys must be between 1 - 256 characters (inclusive) * Keys must be letters,
@@ -835,6 +880,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @canonical_name = args[:canonical_name] if args.key?(:canonical_name)
           @marks = args[:marks] if args.key?(:marks)
           @name = args[:name] if args.key?(:name)
         end
