@@ -26,6 +26,13 @@ module Google
       class Backup
         include Google::Apis::Core::Hashable
       
+        # Encryption information for a given resource. If this resource is protected
+        # with customer managed encryption, the in-use Cloud Key Management Service (
+        # Cloud KMS) key version is specified along with its status.
+        # Corresponds to the JSON property `encryptionInfo`
+        # @return [Google::Apis::BigtableadminV1::EncryptionInfo]
+        attr_accessor :encryption_info
+      
         # Output only. `end_time` is the time that the backup was finished. The row data
         # in the backup will be no newer than this timestamp.
         # Corresponds to the JSON property `endTime`
@@ -80,6 +87,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @encryption_info = args[:encryption_info] if args.key?(:encryption_info)
           @end_time = args[:end_time] if args.key?(:end_time)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @name = args[:name] if args.key?(:name)
@@ -140,6 +148,11 @@ module Google
         # @return [String]
         attr_accessor :default_storage_type
       
+        # Cloud Key Management Service (Cloud KMS) settings for a CMEK-protected cluster.
+        # Corresponds to the JSON property `encryptionConfig`
+        # @return [Google::Apis::BigtableadminV1::EncryptionConfig]
+        attr_accessor :encryption_config
+      
         # Immutable. The location where this cluster's nodes and storage reside. For
         # best performance, clients should be located as close as possible to this
         # cluster. Currently only zones are supported, so values should be of the form `
@@ -172,6 +185,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @default_storage_type = args[:default_storage_type] if args.key?(:default_storage_type)
+          @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @serve_nodes = args[:serve_nodes] if args.key?(:serve_nodes)
@@ -364,6 +378,71 @@ module Google
           @instance = args[:instance] if args.key?(:instance)
           @instance_id = args[:instance_id] if args.key?(:instance_id)
           @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
+      # Cloud Key Management Service (Cloud KMS) settings for a CMEK-protected cluster.
+      class EncryptionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Describes the Cloud KMS encryption key that will be used to protect the
+        # destination Bigtable cluster. The requirements for this key are: 1) The Cloud
+        # Bigtable service account associated with the project that contains this
+        # cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the
+        # CMEK key. 2) Only regional keys can be used and the region of the CMEK key
+        # must match the region of the cluster. 3) All clusters within an instance must
+        # use the same CMEK key. Values are of the form `projects/`project`/locations/`
+        # location`/keyRings/`keyring`/cryptoKeys/`key``
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+        end
+      end
+      
+      # Encryption information for a given resource. If this resource is protected
+      # with customer managed encryption, the in-use Cloud Key Management Service (
+      # Cloud KMS) key version is specified along with its status.
+      class EncryptionInfo
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `encryptionStatus`
+        # @return [Google::Apis::BigtableadminV1::Status]
+        attr_accessor :encryption_status
+      
+        # Output only. The type of encryption used to protect this resource.
+        # Corresponds to the JSON property `encryptionType`
+        # @return [String]
+        attr_accessor :encryption_type
+      
+        # Output only. The version of the Cloud KMS key specified in the parent cluster
+        # that is in use for the data underlying this table.
+        # Corresponds to the JSON property `kmsKeyVersion`
+        # @return [String]
+        attr_accessor :kms_key_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encryption_status = args[:encryption_status] if args.key?(:encryption_status)
+          @encryption_type = args[:encryption_type] if args.key?(:encryption_type)
+          @kms_key_version = args[:kms_key_version] if args.key?(:kms_key_version)
         end
       end
       
@@ -606,6 +685,45 @@ module Google
           @optimize_table_operation_name = args[:optimize_table_operation_name] if args.key?(:optimize_table_operation_name)
           @progress = args[:progress] if args.key?(:progress)
           @source_type = args[:source_type] if args.key?(:source_type)
+        end
+      end
+      
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
+      class Status
+        include Google::Apis::Core::Hashable
+      
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # A list of messages that carry the error details. There is a common set of
+        # message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @details = args[:details] if args.key?(:details)
+          @message = args[:message] if args.key?(:message)
         end
       end
       
