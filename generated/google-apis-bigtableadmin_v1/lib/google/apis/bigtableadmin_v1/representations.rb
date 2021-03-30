@@ -70,6 +70,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EncryptionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EncryptionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FailureTrace
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -112,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TableProgress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -139,6 +157,8 @@ module Google
       class Backup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_info, as: 'encryptionInfo', class: Google::Apis::BigtableadminV1::EncryptionInfo, decorator: Google::Apis::BigtableadminV1::EncryptionInfo::Representation
+      
           property :end_time, as: 'endTime'
           property :expire_time, as: 'expireTime'
           property :name, as: 'name'
@@ -163,6 +183,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :default_storage_type, as: 'defaultStorageType'
+          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::BigtableadminV1::EncryptionConfig, decorator: Google::Apis::BigtableadminV1::EncryptionConfig::Representation
+      
           property :location, as: 'location'
           property :name, as: 'name'
           property :serve_nodes, as: 'serveNodes'
@@ -221,6 +243,23 @@ module Google
       
           property :instance_id, as: 'instanceId'
           property :parent, as: 'parent'
+        end
+      end
+      
+      class EncryptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
+        end
+      end
+      
+      class EncryptionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_status, as: 'encryptionStatus', class: Google::Apis::BigtableadminV1::Status, decorator: Google::Apis::BigtableadminV1::Status::Representation
+      
+          property :encryption_type, as: 'encryptionType'
+          property :kms_key_version, as: 'kmsKeyVersion'
         end
       end
       
@@ -289,6 +328,15 @@ module Google
           property :progress, as: 'progress', class: Google::Apis::BigtableadminV1::OperationProgress, decorator: Google::Apis::BigtableadminV1::OperationProgress::Representation
       
           property :source_type, as: 'sourceType'
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
       
