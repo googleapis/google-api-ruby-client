@@ -6488,6 +6488,25 @@ module Google
         end
       end
       
+      # An external or local reference.
+      class Link
+        include Google::Apis::Core::Hashable
+      
+        # The link identifier.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Allows you to manually organize the values in a source data column into
       # buckets with names of your choosing. For example, a pivot table that
       # aggregates population by state: +-------+-------------------+ | State | SUM of
@@ -9490,6 +9509,11 @@ module Google
         attr_accessor :italic
         alias_method :italic?, :italic
       
+        # An external or local reference.
+        # Corresponds to the JSON property `link`
+        # @return [Google::Apis::SheetsV4::Link]
+        attr_accessor :link
+      
         # True if the text has a strikethrough.
         # Corresponds to the JSON property `strikethrough`
         # @return [Boolean]
@@ -9514,6 +9538,7 @@ module Google
           @foreground_color = args[:foreground_color] if args.key?(:foreground_color)
           @foreground_color_style = args[:foreground_color_style] if args.key?(:foreground_color_style)
           @italic = args[:italic] if args.key?(:italic)
+          @link = args[:link] if args.key?(:link)
           @strikethrough = args[:strikethrough] if args.key?(:strikethrough)
           @underline = args[:underline] if args.key?(:underline)
         end
