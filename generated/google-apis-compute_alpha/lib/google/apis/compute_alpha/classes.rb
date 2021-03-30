@@ -3606,7 +3606,7 @@ module Google
       
         # Type of session affinity to use. The default is NONE.
         # When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing, the
-        # possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.
+        # possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or  CLIENT_IP_PORT_PROTO.
         # * For all other load balancers that use loadBalancingScheme=EXTERNAL, the
         # possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. * You can use
         # GENERATED_COOKIE if the protocol is HTTP, HTTP2, or HTTPS.
@@ -18291,6 +18291,7 @@ module Google
         # IPsec device such as an HA VPN gateway. VMs cannot directly send traffic to,
         # or receive traffic from, such an attachment. To use IPsec-encrypted Cloud
         # Interconnect, create the attachment using this option.
+        # Not currently available in all Interconnect locations.
         # Corresponds to the JSON property `encryption`
         # @return [String]
         attr_accessor :encryption
@@ -18326,6 +18327,7 @@ module Google
         # interconnect attachment that has encryption option as IPSEC, later on when
         # creating HA VPN gateway on this interconnect attachment, the HA VPN gateway's
         # IP address will be allocated from regional external IP address pool.
+        # Not currently available in all Interconnect locations.
         # Corresponds to the JSON property `ipsecInternalAddresses`
         # @return [Array<String>]
         attr_accessor :ipsec_internal_addresses
@@ -29946,7 +29948,8 @@ module Google
       
         # Skip instances which cannot be deleted (instances not belonging to this
         # managed group, already being deleted or being abandoned). If `false`, fail
-        # whole flow, if such instance is passed.
+        # whole flow, if such instance is passed. DEPRECATED: Use
+        # skip_instances_on_validation_error instead.
         # Corresponds to the JSON property `skipInapplicableInstances`
         # @return [Boolean]
         attr_accessor :skip_inapplicable_instances
@@ -32808,6 +32811,7 @@ module Google
       
         # Field to indicate if a router is dedicated to use with encrypted Interconnect
         # Attachment (IPsec-encrypted Cloud Interconnect feature).
+        # Not currently available in all Interconnect locations.
         # Corresponds to the JSON property `encryptedInterconnectRouter`
         # @return [Boolean]
         attr_accessor :encrypted_interconnect_router
@@ -35084,7 +35088,7 @@ module Google
       class SecurityPolicyRule
         include Google::Apis::Core::Hashable
       
-        # The Action to preform when the client connection triggers the rule. Can
+        # The Action to perform when the client connection triggers the rule. Can
         # currently be either "allow" or "deny()" where valid values for status are 403,
         # 404, and 502.
         # Corresponds to the JSON property `action`
@@ -38046,7 +38050,7 @@ module Google
         # Can only be specified if VPC flow logging for this subnetwork is enabled.
         # Configures whether metadata fields should be added to the reported VPC flow
         # logs. Options are INCLUDE_ALL_METADATA, EXCLUDE_ALL_METADATA, and
-        # CUSTOM_METADATA. Default is INCLUDE_ALL_METADATA.
+        # CUSTOM_METADATA. Default is EXCLUDE_ALL_METADATA.
         # Corresponds to the JSON property `metadata`
         # @return [String]
         attr_accessor :metadata
@@ -38486,7 +38490,7 @@ module Google
       
         # Can only be specified if VPC flow logs for this subnetwork is enabled.
         # Configures whether all, none or a subset of metadata fields should be added to
-        # the reported VPC flow logs. Default is INCLUDE_ALL_METADATA.
+        # the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
         # Corresponds to the JSON property `metadata`
         # @return [String]
         attr_accessor :metadata
@@ -44129,6 +44133,7 @@ module Google
         # present, the VPN Gateway will be used for IPsec-encrypted Cloud Interconnect;
         # all Egress or Ingress traffic for this VPN Gateway interface will go through
         # the specified interconnect attachment resource.
+        # Not currently available in all Interconnect locations.
         # Corresponds to the JSON property `interconnectAttachment`
         # @return [String]
         attr_accessor :interconnect_attachment
@@ -44411,8 +44416,8 @@ module Google
         # - DEPROVISIONING: Resources are being deallocated for the VPN tunnel.
         # - FAILED: Tunnel creation has failed and the tunnel is not ready to be used.
         # - NO_INCOMING_PACKETS: No incoming packets from peer.
-        # - REJECTED: Tunnel configuration was rejected, can be result of being
-        # blacklisted.
+        # - REJECTED: Tunnel configuration was rejected, can be result of being denied
+        # access.
         # - ALLOCATING_RESOURCES: Cloud VPN is in the process of allocating all required
         # resources.
         # - STOPPED: Tunnel is stopped due to its Forwarding Rules being deleted for
