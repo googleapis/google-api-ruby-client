@@ -1214,6 +1214,8 @@ module Google
       class GoogleCloudChannelV1TransferableSku
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :legacy_sku, as: 'legacySku', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Sku, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Sku::Representation
+      
           property :sku, as: 'sku', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Sku, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Sku::Representation
       
           property :transfer_eligibility, as: 'transferEligibility', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1TransferEligibility, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1TransferEligibility::Representation

@@ -2233,6 +2233,14 @@ module Google
         # the different variations of the product. For example, Google Workspace
         # Business Standard and Google Workspace Business Plus are Google Workspace
         # product SKUs.
+        # Corresponds to the JSON property `legacySku`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1Sku]
+        attr_accessor :legacy_sku
+      
+        # Represents a product's purchasable Stock Keeping Unit (SKU). SKUs represent
+        # the different variations of the product. For example, Google Workspace
+        # Business Standard and Google Workspace Business Plus are Google Workspace
+        # product SKUs.
         # Corresponds to the JSON property `sku`
         # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1Sku]
         attr_accessor :sku
@@ -2248,6 +2256,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @legacy_sku = args[:legacy_sku] if args.key?(:legacy_sku)
           @sku = args[:sku] if args.key?(:sku)
           @transfer_eligibility = args[:transfer_eligibility] if args.key?(:transfer_eligibility)
         end
