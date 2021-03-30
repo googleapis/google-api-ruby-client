@@ -153,6 +153,13 @@ module Google
       class Backup
         include Google::Apis::Core::Hashable
       
+        # Encryption information for a given resource. If this resource is protected
+        # with customer managed encryption, the in-use Cloud Key Management Service (
+        # Cloud KMS) key version is specified along with its status.
+        # Corresponds to the JSON property `encryptionInfo`
+        # @return [Google::Apis::BigtableadminV2::EncryptionInfo]
+        attr_accessor :encryption_info
+      
         # Output only. `end_time` is the time that the backup was finished. The row data
         # in the backup will be no newer than this timestamp.
         # Corresponds to the JSON property `endTime`
@@ -207,6 +214,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @encryption_info = args[:encryption_info] if args.key?(:encryption_info)
           @end_time = args[:end_time] if args.key?(:end_time)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @name = args[:name] if args.key?(:name)
@@ -380,6 +388,11 @@ module Google
         # @return [String]
         attr_accessor :default_storage_type
       
+        # Cloud Key Management Service (Cloud KMS) settings for a CMEK-protected cluster.
+        # Corresponds to the JSON property `encryptionConfig`
+        # @return [Google::Apis::BigtableadminV2::EncryptionConfig]
+        attr_accessor :encryption_config
+      
         # Immutable. The location where this cluster's nodes and storage reside. For
         # best performance, clients should be located as close as possible to this
         # cluster. Currently only zones are supported, so values should be of the form `
@@ -412,6 +425,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @default_storage_type = args[:default_storage_type] if args.key?(:default_storage_type)
+          @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @serve_nodes = args[:serve_nodes] if args.key?(:serve_nodes)
@@ -422,6 +436,15 @@ module Google
       # The state of a table's data in a particular cluster.
       class ClusterState
         include Google::Apis::Core::Hashable
+      
+        # Output only. The encryption information for the table in this cluster. If the
+        # encryption key protecting this resource is customer managed, then its version
+        # can be rotated in Cloud Key Management Service (Cloud KMS). The primary
+        # version of the key and its status will be reflected here when changes
+        # propagate from Cloud KMS.
+        # Corresponds to the JSON property `encryptionInfo`
+        # @return [Array<Google::Apis::BigtableadminV2::EncryptionInfo>]
+        attr_accessor :encryption_info
       
         # Output only. The state of replication for the table in this cluster.
         # Corresponds to the JSON property `replicationState`
@@ -434,6 +457,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @encryption_info = args[:encryption_info] if args.key?(:encryption_info)
           @replication_state = args[:replication_state] if args.key?(:replication_state)
         end
       end
@@ -729,6 +753,71 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Cloud Key Management Service (Cloud KMS) settings for a CMEK-protected cluster.
+      class EncryptionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Describes the Cloud KMS encryption key that will be used to protect the
+        # destination Bigtable cluster. The requirements for this key are: 1) The Cloud
+        # Bigtable service account associated with the project that contains this
+        # cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the
+        # CMEK key. 2) Only regional keys can be used and the region of the CMEK key
+        # must match the region of the cluster. 3) All clusters within an instance must
+        # use the same CMEK key. Values are of the form `projects/`project`/locations/`
+        # location`/keyRings/`keyring`/cryptoKeys/`key``
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+        end
+      end
+      
+      # Encryption information for a given resource. If this resource is protected
+      # with customer managed encryption, the in-use Cloud Key Management Service (
+      # Cloud KMS) key version is specified along with its status.
+      class EncryptionInfo
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `encryptionStatus`
+        # @return [Google::Apis::BigtableadminV2::Status]
+        attr_accessor :encryption_status
+      
+        # Output only. The type of encryption used to protect this resource.
+        # Corresponds to the JSON property `encryptionType`
+        # @return [String]
+        attr_accessor :encryption_type
+      
+        # Output only. The version of the Cloud KMS key specified in the parent cluster
+        # that is in use for the data underlying this table.
+        # Corresponds to the JSON property `kmsKeyVersion`
+        # @return [String]
+        attr_accessor :kms_key_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encryption_status = args[:encryption_status] if args.key?(:encryption_status)
+          @encryption_type = args[:encryption_type] if args.key?(:encryption_type)
+          @kms_key_version = args[:kms_key_version] if args.key?(:kms_key_version)
         end
       end
       
@@ -1849,7 +1938,8 @@ module Google
         # Output only. Map from cluster ID to per-cluster table state. If it could not
         # be determined whether or not the table has data in a particular cluster (for
         # example, if its zone is unavailable), then there will be an entry for the
-        # cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `FULL`
+        # cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `
+        # ENCRYPTION_VIEW`, `FULL`
         # Corresponds to the JSON property `clusterStates`
         # @return [Hash<String,Google::Apis::BigtableadminV2::ClusterState>]
         attr_accessor :cluster_states
