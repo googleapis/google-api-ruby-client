@@ -1402,6 +1402,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImageFamilyView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImageList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -7723,6 +7729,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :forwarding_rule, as: 'forwardingRule'
+          property :forwarding_rule_ip, as: 'forwardingRuleIp'
           property :health_state, as: 'healthState'
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'
@@ -8072,6 +8080,14 @@ module Google
             property :sha1_checksum, as: 'sha1Checksum'
             property :source, as: 'source'
           end
+        end
+      end
+      
+      class ImageFamilyView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image, as: 'image', class: Google::Apis::ComputeBeta::Image, decorator: Google::Apis::ComputeBeta::Image::Representation
+      
         end
       end
       

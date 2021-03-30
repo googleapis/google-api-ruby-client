@@ -8074,6 +8074,46 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns the latest image that is part of an image family, is not deprecated
+        # and is rolled out in the specified zone.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] family
+        #   Name of the image family to search for.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::ImageFamilyView] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::ImageFamilyView]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_image_family_view(project, zone, family, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/zones/{zone}/imageFamilyViews/{family}', options)
+          command.response_representation = Google::Apis::ComputeBeta::ImageFamilyView::Representation
+          command.response_class = Google::Apis::ComputeBeta::ImageFamilyView
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['family'] = family unless family.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes the specified image.
         # @param [String] project
         #   Project ID for this request.
@@ -9548,12 +9588,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Flags the specified instances in the managed instance group to be immediately
-        # recreated. The instances are deleted and recreated using the current instance
-        # template for the managed instance group. This operation is marked as DONE when
-        # the flag is set even if the instances have not yet been recreated. You must
-        # separately verify the status of the recreating action with the
-        # listmanagedinstances method.
+        # Flags the specified VM instances in the managed instance group to be
+        # immediately recreated. Each instance is recreated using the group's current
+        # configuration. This operation is marked as DONE when the flag is set even if
+        # the instances have not yet been recreated. You must separately verify the
+        # status of each instance by checking its currentAction field; for more
+        # information, see Checking the status of managed instances.
         # If the group is part of a backend service that has enabled connection draining,
         # it can take up to 60 seconds after the connection draining duration has
         # elapsed before the VM instance is removed or deleted.
@@ -11326,8 +11366,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified Instance resource. For more information, see Stopping or
-        # Deleting an Instance.
+        # Deletes the specified Instance resource. For more information, see Deleting an
+        # instance.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -23919,12 +23959,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Flags the specified instances in the managed instance group to be immediately
-        # recreated. The instances are deleted and recreated using the current instance
-        # template for the managed instance group. This operation is marked as DONE when
-        # the flag is set even if the instances have not yet been recreated. You must
-        # separately verify the status of the recreating action with the
-        # listmanagedinstances method.
+        # Flags the specified VM instances in the managed instance group to be
+        # immediately recreated. Each instance is recreated using the group's current
+        # configuration. This operation is marked as DONE when the flag is set even if
+        # the instances have not yet been recreated. You must separately verify the
+        # status of each instance by checking its currentAction field; for more
+        # information, see Checking the status of managed instances.
         # If the group is part of a backend service that has enabled connection draining,
         # it can take up to 60 seconds after the connection draining duration has
         # elapsed before the VM instance is removed or deleted.
