@@ -73,6 +73,32 @@ module Google
         end
       end
       
+      # AnalyzePackagesMetadata contains metadata for an active scan of a container
+      # image.
+      class AnalyzePackagesMetadataV1
+        include Google::Apis::Core::Hashable
+      
+        # When the scan was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The resource URI of the container image being scanned.
+        # Corresponds to the JSON property `resourceUri`
+        # @return [String]
+        attr_accessor :resource_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
+        end
+      end
+      
       # AnalyzePackagesRequest is the request to analyze a list of packages and create
       # Vulnerability Occurrences for it.
       class AnalyzePackagesRequest
@@ -102,6 +128,26 @@ module Google
       # AnalyzePackagesResponse contains the information necessary to find results for
       # the given scan.
       class AnalyzePackagesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The name of the scan resource created by this successful scan.
+        # Corresponds to the JSON property `scan`
+        # @return [String]
+        attr_accessor :scan
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scan = args[:scan] if args.key?(:scan)
+        end
+      end
+      
+      # AnalyzePackagesResponse contains the information necessary to find results for
+      # the given scan.
+      class AnalyzePackagesResponseV1
         include Google::Apis::Core::Hashable
       
         # The name of the scan resource created by this successful scan.
