@@ -191,6 +191,7 @@ module Google
       class Finding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :canonical_name, as: 'canonicalName'
           property :category, as: 'category'
           property :create_time, as: 'createTime'
           property :event_time, as: 'eventTime'
@@ -257,6 +258,7 @@ module Google
       class GoogleCloudSecuritycenterV1p1beta1Finding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :canonical_name, as: 'canonicalName'
           property :category, as: 'category'
           property :create_time, as: 'createTime'
           property :event_time, as: 'eventTime'
@@ -315,6 +317,7 @@ module Google
       class GoogleCloudSecuritycenterV1p1beta1SecurityMarks
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :canonical_name, as: 'canonicalName'
           hash :marks, as: 'marks'
           property :name, as: 'name'
         end
@@ -344,6 +347,7 @@ module Google
       class SecurityMarks
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :canonical_name, as: 'canonicalName'
           hash :marks, as: 'marks'
           property :name, as: 'name'
         end
