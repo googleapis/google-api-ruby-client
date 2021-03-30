@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AnalyzePackagesMetadataV1
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AnalyzePackagesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -41,6 +47,12 @@ module Google
       end
       
       class AnalyzePackagesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnalyzePackagesResponseV1
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -296,6 +308,14 @@ module Google
         end
       end
       
+      class AnalyzePackagesMetadataV1
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :resource_uri, as: 'resourceUri'
+        end
+      end
+      
       class AnalyzePackagesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -306,6 +326,13 @@ module Google
       end
       
       class AnalyzePackagesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scan, as: 'scan'
+        end
+      end
+      
+      class AnalyzePackagesResponseV1
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :scan, as: 'scan'
