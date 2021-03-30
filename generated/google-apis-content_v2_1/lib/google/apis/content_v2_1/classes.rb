@@ -1134,8 +1134,7 @@ module Google
         attr_accessor :linked_account_id
       
         # Acceptable values are: - "`shoppingAdsProductManagement`" - "`
-        # shoppingAdsOther`" - "`shoppingActionsProductManagement`" - "`
-        # shoppingActionsOrderManagement`" - "`shoppingActionsOther`"
+        # shoppingActionsProductManagement`" - "`shoppingActionsOrderManagement`"
         # Corresponds to the JSON property `services`
         # @return [Array<String>]
         attr_accessor :services
@@ -9634,6 +9633,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :additional_image_links
       
+        # Additional cut of the item. Used together with size_type to represent combined
+        # size types for apparel items.
+        # Corresponds to the JSON property `additionalSizeType`
+        # @return [String]
+        attr_accessor :additional_size_type
+      
         # Used to group items in an arbitrary way. Only for CPA%, discouraged otherwise.
         # Corresponds to the JSON property `adsGrouping`
         # @return [String]
@@ -10075,6 +10080,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @additional_image_links = args[:additional_image_links] if args.key?(:additional_image_links)
+          @additional_size_type = args[:additional_size_type] if args.key?(:additional_size_type)
           @ads_grouping = args[:ads_grouping] if args.key?(:ads_grouping)
           @ads_labels = args[:ads_labels] if args.key?(:ads_labels)
           @ads_redirect = args[:ads_redirect] if args.key?(:ads_redirect)

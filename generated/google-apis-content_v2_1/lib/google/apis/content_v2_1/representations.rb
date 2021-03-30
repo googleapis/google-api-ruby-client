@@ -4818,6 +4818,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additional_image_links, as: 'additionalImageLinks'
+          property :additional_size_type, as: 'additionalSizeType'
           property :ads_grouping, as: 'adsGrouping'
           collection :ads_labels, as: 'adsLabels'
           property :ads_redirect, as: 'adsRedirect'
