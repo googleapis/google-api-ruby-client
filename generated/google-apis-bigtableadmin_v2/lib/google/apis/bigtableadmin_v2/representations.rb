@@ -136,6 +136,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EncryptionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EncryptionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -415,6 +427,8 @@ module Google
       class Backup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_info, as: 'encryptionInfo', class: Google::Apis::BigtableadminV2::EncryptionInfo, decorator: Google::Apis::BigtableadminV2::EncryptionInfo::Representation
+      
           property :end_time, as: 'endTime'
           property :expire_time, as: 'expireTime'
           property :name, as: 'name'
@@ -463,6 +477,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :default_storage_type, as: 'defaultStorageType'
+          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::BigtableadminV2::EncryptionConfig, decorator: Google::Apis::BigtableadminV2::EncryptionConfig::Representation
+      
           property :location, as: 'location'
           property :name, as: 'name'
           property :serve_nodes, as: 'serveNodes'
@@ -473,6 +489,8 @@ module Google
       class ClusterState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :encryption_info, as: 'encryptionInfo', class: Google::Apis::BigtableadminV2::EncryptionInfo, decorator: Google::Apis::BigtableadminV2::EncryptionInfo::Representation
+      
           property :replication_state, as: 'replicationState'
         end
       end
@@ -561,6 +579,23 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EncryptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
+        end
+      end
+      
+      class EncryptionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_status, as: 'encryptionStatus', class: Google::Apis::BigtableadminV2::Status, decorator: Google::Apis::BigtableadminV2::Status::Representation
+      
+          property :encryption_type, as: 'encryptionType'
+          property :kms_key_version, as: 'kmsKeyVersion'
         end
       end
       
