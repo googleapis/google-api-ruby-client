@@ -5584,6 +5584,7 @@ module Google
       class AutoscalingPolicyCpuUtilization
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :predictive_method, as: 'predictiveMethod'
           property :utilization_target, as: 'utilizationTarget'
         end
       end
@@ -5674,6 +5675,7 @@ module Google
           property :negative_caching, as: 'negativeCaching'
           collection :negative_caching_policy, as: 'negativeCachingPolicy', class: Google::Apis::ComputeV1::BackendBucketCdnPolicyNegativeCachingPolicy, decorator: Google::Apis::ComputeV1::BackendBucketCdnPolicyNegativeCachingPolicy::Representation
       
+          property :request_coalescing, as: 'requestCoalescing'
           property :serve_while_stale, as: 'serveWhileStale'
           property :signed_url_cache_max_age_sec, :numeric_string => true, as: 'signedUrlCacheMaxAgeSec'
           collection :signed_url_key_names, as: 'signedUrlKeyNames'
@@ -5824,6 +5826,7 @@ module Google
           property :negative_caching, as: 'negativeCaching'
           collection :negative_caching_policy, as: 'negativeCachingPolicy', class: Google::Apis::ComputeV1::BackendServiceCdnPolicyNegativeCachingPolicy, decorator: Google::Apis::ComputeV1::BackendServiceCdnPolicyNegativeCachingPolicy::Representation
       
+          property :request_coalescing, as: 'requestCoalescing'
           property :serve_while_stale, as: 'serveWhileStale'
           property :signed_url_cache_max_age_sec, :numeric_string => true, as: 'signedUrlCacheMaxAgeSec'
           collection :signed_url_key_names, as: 'signedUrlKeyNames'
@@ -6519,6 +6522,7 @@ module Google
       class DistributionPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_shape, as: 'targetShape'
           collection :zones, as: 'zones', class: Google::Apis::ComputeV1::DistributionPolicyZoneConfiguration, decorator: Google::Apis::ComputeV1::DistributionPolicyZoneConfiguration::Representation
       
         end
@@ -7340,6 +7344,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :forwarding_rule, as: 'forwardingRule'
+          property :forwarding_rule_ip, as: 'forwardingRuleIp'
           property :health_state, as: 'healthState'
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'

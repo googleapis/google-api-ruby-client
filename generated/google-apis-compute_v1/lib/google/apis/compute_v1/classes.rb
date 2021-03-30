@@ -2189,6 +2189,17 @@ module Google
       class AutoscalingPolicyCpuUtilization
         include Google::Apis::Core::Hashable
       
+        # Indicates whether predictive autoscaling based on CPU metric is enabled. Valid
+        # values are:
+        # * NONE (default). No predictive method is used. The autoscaler scales the
+        # group to meet current demand based on real-time metrics. *
+        # OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by
+        # monitoring daily and weekly load patterns and scaling out ahead of anticipated
+        # demand.
+        # Corresponds to the JSON property `predictiveMethod`
+        # @return [String]
+        attr_accessor :predictive_method
+      
         # The target CPU utilization that the autoscaler maintains. Must be a float
         # value in the range (0, 1]. If not specified, the default is 0.6.
         # If the CPU level is below the target utilization, the autoscaler scales in the
@@ -2208,6 +2219,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @predictive_method = args[:predictive_method] if args.key?(:predictive_method)
           @utilization_target = args[:utilization_target] if args.key?(:utilization_target)
         end
       end
@@ -2714,6 +2726,13 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::BackendBucketCdnPolicyNegativeCachingPolicy>]
         attr_accessor :negative_caching_policy
       
+        # If true then Cloud CDN will combine multiple concurrent cache fill requests
+        # into a small number of requests to the origin.
+        # Corresponds to the JSON property `requestCoalescing`
+        # @return [Boolean]
+        attr_accessor :request_coalescing
+        alias_method :request_coalescing?, :request_coalescing
+      
         # Serve existing content from the cache (if available) when revalidating content
         # with the origin, or when an error is encountered when refreshing the cache.
         # This setting defines the default "max-stale" duration for any cached responses
@@ -2755,6 +2774,7 @@ module Google
           @max_ttl = args[:max_ttl] if args.key?(:max_ttl)
           @negative_caching = args[:negative_caching] if args.key?(:negative_caching)
           @negative_caching_policy = args[:negative_caching_policy] if args.key?(:negative_caching_policy)
+          @request_coalescing = args[:request_coalescing] if args.key?(:request_coalescing)
           @serve_while_stale = args[:serve_while_stale] if args.key?(:serve_while_stale)
           @signed_url_cache_max_age_sec = args[:signed_url_cache_max_age_sec] if args.key?(:signed_url_cache_max_age_sec)
           @signed_url_key_names = args[:signed_url_key_names] if args.key?(:signed_url_key_names)
@@ -3197,7 +3217,7 @@ module Google
       
         # Type of session affinity to use. The default is NONE.
         # When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing, the
-        # possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.
+        # possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or  CLIENT_IP_PORT_PROTO.
         # * For all other load balancers that use loadBalancingScheme=EXTERNAL, the
         # possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. * You can use
         # GENERATED_COOKIE if the protocol is HTTP, HTTP2, or HTTPS.
@@ -3484,6 +3504,13 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::BackendServiceCdnPolicyNegativeCachingPolicy>]
         attr_accessor :negative_caching_policy
       
+        # If true then Cloud CDN will combine multiple concurrent cache fill requests
+        # into a small number of requests to the origin.
+        # Corresponds to the JSON property `requestCoalescing`
+        # @return [Boolean]
+        attr_accessor :request_coalescing
+        alias_method :request_coalescing?, :request_coalescing
+      
         # Serve existing content from the cache (if available) when revalidating content
         # with the origin, or when an error is encountered when refreshing the cache.
         # This setting defines the default "max-stale" duration for any cached responses
@@ -3526,6 +3553,7 @@ module Google
           @max_ttl = args[:max_ttl] if args.key?(:max_ttl)
           @negative_caching = args[:negative_caching] if args.key?(:negative_caching)
           @negative_caching_policy = args[:negative_caching_policy] if args.key?(:negative_caching_policy)
+          @request_coalescing = args[:request_coalescing] if args.key?(:request_coalescing)
           @serve_while_stale = args[:serve_while_stale] if args.key?(:serve_while_stale)
           @signed_url_cache_max_age_sec = args[:signed_url_cache_max_age_sec] if args.key?(:signed_url_cache_max_age_sec)
           @signed_url_key_names = args[:signed_url_key_names] if args.key?(:signed_url_key_names)
@@ -6362,6 +6390,13 @@ module Google
       class DistributionPolicy
         include Google::Apis::Core::Hashable
       
+        # The distribution shape to which the group converges either proactively or on
+        # resize events (depending on the value set in updatePolicy.
+        # instanceRedistributionType).
+        # Corresponds to the JSON property `targetShape`
+        # @return [String]
+        attr_accessor :target_shape
+      
         # Zones where the regional managed instance group will create and manage its
         # instances.
         # Corresponds to the JSON property `zones`
@@ -6374,6 +6409,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @target_shape = args[:target_shape] if args.key?(:target_shape)
           @zones = args[:zones] if args.key?(:zones)
         end
       end
@@ -10001,6 +10037,16 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
+        # URL of the forwarding rule associated with the health status of the instance.
+        # Corresponds to the JSON property `forwardingRule`
+        # @return [String]
+        attr_accessor :forwarding_rule
+      
+        # A forwarding rule IP address assigned to this instance.
+        # Corresponds to the JSON property `forwardingRuleIp`
+        # @return [String]
+        attr_accessor :forwarding_rule_ip
+      
         # Health state of the instance.
         # Corresponds to the JSON property `healthState`
         # @return [String]
@@ -10041,6 +10087,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
+          @forwarding_rule_ip = args[:forwarding_rule_ip] if args.key?(:forwarding_rule_ip)
           @health_state = args[:health_state] if args.key?(:health_state)
           @instance = args[:instance] if args.key?(:instance)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
@@ -15542,6 +15590,7 @@ module Google
         # IPsec device such as an HA VPN gateway. VMs cannot directly send traffic to,
         # or receive traffic from, such an attachment. To use IPsec-encrypted Cloud
         # Interconnect, create the attachment using this option.
+        # Not currently available in all Interconnect locations.
         # Corresponds to the JSON property `encryption`
         # @return [String]
         attr_accessor :encryption
@@ -15577,6 +15626,7 @@ module Google
         # interconnect attachment that has encryption option as IPSEC, later on when
         # creating HA VPN gateway on this interconnect attachment, the HA VPN gateway's
         # IP address will be allocated from regional external IP address pool.
+        # Not currently available in all Interconnect locations.
         # Corresponds to the JSON property `ipsecInternalAddresses`
         # @return [Array<String>]
         attr_accessor :ipsec_internal_addresses
@@ -27822,6 +27872,7 @@ module Google
       
         # Field to indicate if a router is dedicated to use with encrypted Interconnect
         # Attachment (IPsec-encrypted Cloud Interconnect feature).
+        # Not currently available in all Interconnect locations.
         # Corresponds to the JSON property `encryptedInterconnectRouter`
         # @return [Boolean]
         attr_accessor :encrypted_interconnect_router
@@ -29418,7 +29469,7 @@ module Google
       class SecurityPolicyRule
         include Google::Apis::Core::Hashable
       
-        # The Action to preform when the client connection triggers the rule. Can
+        # The Action to perform when the client connection triggers the rule. Can
         # currently be either "allow" or "deny()" where valid values for status are 403,
         # 404, and 502.
         # Corresponds to the JSON property `action`
@@ -31559,7 +31610,7 @@ module Google
       
         # Can only be specified if VPC flow logs for this subnetwork is enabled.
         # Configures whether all, none or a subset of metadata fields should be added to
-        # the reported VPC flow logs. Default is INCLUDE_ALL_METADATA.
+        # the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
         # Corresponds to the JSON property `metadata`
         # @return [String]
         attr_accessor :metadata
@@ -36660,6 +36711,7 @@ module Google
         # present, the VPN Gateway will be used for IPsec-encrypted Cloud Interconnect;
         # all Egress or Ingress traffic for this VPN Gateway interface will go through
         # the specified interconnect attachment resource.
+        # Not currently available in all Interconnect locations.
         # Corresponds to the JSON property `interconnectAttachment`
         # @return [String]
         attr_accessor :interconnect_attachment
@@ -36923,8 +36975,8 @@ module Google
         # - DEPROVISIONING: Resources are being deallocated for the VPN tunnel.
         # - FAILED: Tunnel creation has failed and the tunnel is not ready to be used.
         # - NO_INCOMING_PACKETS: No incoming packets from peer.
-        # - REJECTED: Tunnel configuration was rejected, can be result of being
-        # blacklisted.
+        # - REJECTED: Tunnel configuration was rejected, can be result of being denied
+        # access.
         # - ALLOCATING_RESOURCES: Cloud VPN is in the process of allocating all required
         # resources.
         # - STOPPED: Tunnel is stopped due to its Forwarding Rules being deleted for
