@@ -319,6 +319,7 @@ module Google
       class Asset
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :canonical_name, as: 'canonicalName'
           property :create_time, as: 'createTime'
           property :iam_policy, as: 'iamPolicy', class: Google::Apis::SecuritycenterV1::IamPolicy, decorator: Google::Apis::SecuritycenterV1::IamPolicy::Representation
       
@@ -387,6 +388,7 @@ module Google
       class Finding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :canonical_name, as: 'canonicalName'
           property :category, as: 'category'
           property :create_time, as: 'createTime'
           property :event_time, as: 'eventTime'
@@ -468,6 +470,7 @@ module Google
       class GoogleCloudSecuritycenterV1p1beta1Finding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :canonical_name, as: 'canonicalName'
           property :category, as: 'category'
           property :create_time, as: 'createTime'
           property :event_time, as: 'eventTime'
@@ -526,6 +529,7 @@ module Google
       class GoogleCloudSecuritycenterV1p1beta1SecurityMarks
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :canonical_name, as: 'canonicalName'
           hash :marks, as: 'marks'
           property :name, as: 'name'
         end
@@ -745,6 +749,7 @@ module Google
       class SecurityMarks
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :canonical_name, as: 'canonicalName'
           hash :marks, as: 'marks'
           property :name, as: 'name'
         end
@@ -770,6 +775,7 @@ module Google
       class Source
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :canonical_name, as: 'canonicalName'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
