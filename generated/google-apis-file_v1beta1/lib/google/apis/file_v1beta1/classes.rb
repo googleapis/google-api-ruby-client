@@ -421,9 +421,9 @@ module Google
       class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule
         include Google::Apis::Core::Hashable
       
-        # Can this scheduled update be rescheduled? By default, it's true and API needs
-        # to do explicitly check whether it's set, if it's set as false explicitly, it's
-        # false
+        # This field is deprecated, and will be always set to true since reschedule can
+        # happen multiple times now. This field should not be removed until all service
+        # producers remove this for their customers.
         # Corresponds to the JSON property `canReschedule`
         # @return [Boolean]
         attr_accessor :can_reschedule
