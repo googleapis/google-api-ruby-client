@@ -40,12 +40,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CreateSlotPoolMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -64,12 +58,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListOperationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListReservationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,12 +71,6 @@ module Google
       end
       
       class MoveAssignmentRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -164,13 +146,6 @@ module Google
         end
       end
       
-      class CreateSlotPoolMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :slot_pool, as: 'slotPool'
-        end
-      end
-      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -195,15 +170,6 @@ module Google
         end
       end
       
-      class ListOperationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :operations, as: 'operations', class: Google::Apis::BigqueryreservationV1::Operation, decorator: Google::Apis::BigqueryreservationV1::Operation::Representation
-      
-        end
-      end
-      
       class ListReservationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -224,18 +190,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :destination_id, as: 'destinationId'
-        end
-      end
-      
-      class Operation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :done, as: 'done'
-          property :error, as: 'error', class: Google::Apis::BigqueryreservationV1::Status, decorator: Google::Apis::BigqueryreservationV1::Status::Representation
-      
-          hash :metadata, as: 'metadata'
-          property :name, as: 'name'
-          hash :response, as: 'response'
         end
       end
       

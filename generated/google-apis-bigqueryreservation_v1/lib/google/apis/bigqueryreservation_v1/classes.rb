@@ -170,26 +170,6 @@ module Google
         end
       end
       
-      # The metadata for operation returned from ReservationService.CreateSlotPool.
-      class CreateSlotPoolMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Resource name of the slot pool that is being created. E.g., projects/myproject/
-        # locations/us-central1/reservations/foo/slotPools/123
-        # Corresponds to the JSON property `slotPool`
-        # @return [String]
-        attr_accessor :slot_pool
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @slot_pool = args[:slot_pool] if args.key?(:slot_pool)
-        end
-      end
-      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -256,31 +236,6 @@ module Google
         def update!(**args)
           @capacity_commitments = args[:capacity_commitments] if args.key?(:capacity_commitments)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # The response message for Operations.ListOperations.
-      class ListOperationsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The standard List next-page token.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # A list of operations that matches the specified filter in the request.
-        # Corresponds to the JSON property `operations`
-        # @return [Array<Google::Apis::BigqueryreservationV1::Operation>]
-        attr_accessor :operations
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @operations = args[:operations] if args.key?(:operations)
         end
       end
       
@@ -352,68 +307,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @destination_id = args[:destination_id] if args.key?(:destination_id)
-        end
-      end
-      
-      # This resource represents a long-running operation that is the result of a
-      # network API call.
-      class Operation
-        include Google::Apis::Core::Hashable
-      
-        # If the value is `false`, it means the operation is still in progress. If `true`
-        # , the operation is completed, and either `error` or `response` is available.
-        # Corresponds to the JSON property `done`
-        # @return [Boolean]
-        attr_accessor :done
-        alias_method :done?, :done
-      
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by [
-        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
-        # data: error code, error message, and error details. You can find out more
-        # about this error model and how to work with it in the [API Design Guide](https:
-        # //cloud.google.com/apis/design/errors).
-        # Corresponds to the JSON property `error`
-        # @return [Google::Apis::BigqueryreservationV1::Status]
-        attr_accessor :error
-      
-        # Service-specific metadata associated with the operation. It typically contains
-        # progress information and common metadata such as create time. Some services
-        # might not provide such metadata. Any method that returns a long-running
-        # operation should document the metadata type, if any.
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,Object>]
-        attr_accessor :metadata
-      
-        # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the `name` should
-        # be a resource name ending with `operations/`unique_id``.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as `Delete`, the response is `google.
-        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
-        # the response should be the resource. For other methods, the response should
-        # have the type `XxxResponse`, where `Xxx` is the original method name. For
-        # example, if the original method name is `TakeSnapshot()`, the inferred
-        # response type is `TakeSnapshotResponse`.
-        # Corresponds to the JSON property `response`
-        # @return [Hash<String,Object>]
-        attr_accessor :response
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @done = args[:done] if args.key?(:done)
-          @error = args[:error] if args.key?(:error)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @name = args[:name] if args.key?(:name)
-          @response = args[:response] if args.key?(:response)
         end
       end
       
