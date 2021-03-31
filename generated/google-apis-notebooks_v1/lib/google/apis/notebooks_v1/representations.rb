@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EncryptionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Environment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -136,7 +142,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListRuntimesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSchedulesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LocalDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LocalDiskInitializeParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -179,6 +203,54 @@ module Google
       end
       
       class ResetInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResetRuntimeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Runtime
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RuntimeAcceleratorConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RuntimeAccessConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RuntimeGuestOsFeature
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RuntimeMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RuntimeShieldedInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RuntimeSoftwareConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -232,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StartRuntimeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -239,6 +317,18 @@ module Google
       end
       
       class StopInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StopRuntimeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SwitchRuntimeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -262,6 +352,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateShieldedInstanceConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpgradeHistoryEntry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -275,6 +371,18 @@ module Google
       end
       
       class UpgradeInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VirtualMachine
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VirtualMachineConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -340,6 +448,13 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EncryptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key, as: 'kmsKey'
         end
       end
       
@@ -516,6 +631,16 @@ module Google
         end
       end
       
+      class ListRuntimesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :runtimes, as: 'runtimes', class: Google::Apis::NotebooksV1::Runtime, decorator: Google::Apis::NotebooksV1::Runtime::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListSchedulesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -523,6 +648,37 @@ module Google
           collection :schedules, as: 'schedules', class: Google::Apis::NotebooksV1::Schedule, decorator: Google::Apis::NotebooksV1::Schedule::Representation
       
           collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class LocalDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_delete, as: 'autoDelete'
+          property :boot, as: 'boot'
+          property :device_name, as: 'deviceName'
+          collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::NotebooksV1::RuntimeGuestOsFeature, decorator: Google::Apis::NotebooksV1::RuntimeGuestOsFeature::Representation
+      
+          property :index, as: 'index'
+          property :initialize_params, as: 'initializeParams', class: Google::Apis::NotebooksV1::LocalDiskInitializeParams, decorator: Google::Apis::NotebooksV1::LocalDiskInitializeParams::Representation
+      
+          property :interface, as: 'interface'
+          property :kind, as: 'kind'
+          collection :licenses, as: 'licenses'
+          property :mode, as: 'mode'
+          property :source, as: 'source'
+          property :type, as: 'type'
+        end
+      end
+      
+      class LocalDiskInitializeParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :disk_name, as: 'diskName'
+          property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          property :disk_type, as: 'diskType'
+          hash :labels, as: 'labels'
         end
       end
       
@@ -591,6 +747,84 @@ module Google
       class ResetInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ResetRuntimeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Runtime
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_config, as: 'accessConfig', class: Google::Apis::NotebooksV1::RuntimeAccessConfig, decorator: Google::Apis::NotebooksV1::RuntimeAccessConfig::Representation
+      
+          property :create_time, as: 'createTime'
+          property :health_state, as: 'healthState'
+          property :metrics, as: 'metrics', class: Google::Apis::NotebooksV1::RuntimeMetrics, decorator: Google::Apis::NotebooksV1::RuntimeMetrics::Representation
+      
+          property :name, as: 'name'
+          property :software_config, as: 'softwareConfig', class: Google::Apis::NotebooksV1::RuntimeSoftwareConfig, decorator: Google::Apis::NotebooksV1::RuntimeSoftwareConfig::Representation
+      
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+          property :virtual_machine, as: 'virtualMachine', class: Google::Apis::NotebooksV1::VirtualMachine, decorator: Google::Apis::NotebooksV1::VirtualMachine::Representation
+      
+        end
+      end
+      
+      class RuntimeAcceleratorConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :core_count, :numeric_string => true, as: 'coreCount'
+          property :type, as: 'type'
+        end
+      end
+      
+      class RuntimeAccessConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_type, as: 'accessType'
+          property :proxy_uri, as: 'proxyUri'
+          property :runtime_owner, as: 'runtimeOwner'
+        end
+      end
+      
+      class RuntimeGuestOsFeature
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+        end
+      end
+      
+      class RuntimeMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :system_metrics, as: 'systemMetrics'
+        end
+      end
+      
+      class RuntimeShieldedInstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_integrity_monitoring, as: 'enableIntegrityMonitoring'
+          property :enable_secure_boot, as: 'enableSecureBoot'
+          property :enable_vtpm, as: 'enableVtpm'
+        end
+      end
+      
+      class RuntimeSoftwareConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_gpu_driver_path, as: 'customGpuDriverPath'
+          property :enable_health_monitoring, as: 'enableHealthMonitoring'
+          property :idle_shutdown, as: 'idleShutdown'
+          property :idle_shutdown_timeout, as: 'idleShutdownTimeout'
+          property :install_gpu_driver, as: 'installGpuDriver'
+          property :notebook_upgrade_schedule, as: 'notebookUpgradeSchedule'
+          property :post_startup_script, as: 'postStartupScript'
         end
       end
       
@@ -665,6 +899,12 @@ module Google
         end
       end
       
+      class StartRuntimeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -677,6 +917,21 @@ module Google
       class StopInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class StopRuntimeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SwitchRuntimeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_config, as: 'acceleratorConfig', class: Google::Apis::NotebooksV1::RuntimeAcceleratorConfig, decorator: Google::Apis::NotebooksV1::RuntimeAcceleratorConfig::Representation
+      
+          property :machine_type, as: 'machineType'
         end
       end
       
@@ -697,6 +952,14 @@ module Google
       class TriggerScheduleRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UpdateShieldedInstanceConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::NotebooksV1::ShieldedInstanceConfig, decorator: Google::Apis::NotebooksV1::ShieldedInstanceConfig::Representation
+      
         end
       end
       
@@ -726,6 +989,41 @@ module Google
       class UpgradeInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class VirtualMachine
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_id, as: 'instanceId'
+          property :instance_name, as: 'instanceName'
+          property :virtual_machine_config, as: 'virtualMachineConfig', class: Google::Apis::NotebooksV1::VirtualMachineConfig, decorator: Google::Apis::NotebooksV1::VirtualMachineConfig::Representation
+      
+        end
+      end
+      
+      class VirtualMachineConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_config, as: 'acceleratorConfig', class: Google::Apis::NotebooksV1::RuntimeAcceleratorConfig, decorator: Google::Apis::NotebooksV1::RuntimeAcceleratorConfig::Representation
+      
+          collection :container_images, as: 'containerImages', class: Google::Apis::NotebooksV1::ContainerImage, decorator: Google::Apis::NotebooksV1::ContainerImage::Representation
+      
+          property :data_disk, as: 'dataDisk', class: Google::Apis::NotebooksV1::LocalDisk, decorator: Google::Apis::NotebooksV1::LocalDisk::Representation
+      
+          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::NotebooksV1::EncryptionConfig, decorator: Google::Apis::NotebooksV1::EncryptionConfig::Representation
+      
+          hash :guest_attributes, as: 'guestAttributes'
+          property :internal_ip_only, as: 'internalIpOnly'
+          hash :labels, as: 'labels'
+          property :machine_type, as: 'machineType'
+          hash :metadata, as: 'metadata'
+          property :network, as: 'network'
+          property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::NotebooksV1::RuntimeShieldedInstanceConfig, decorator: Google::Apis::NotebooksV1::RuntimeShieldedInstanceConfig::Representation
+      
+          property :subnet, as: 'subnet'
+          collection :tags, as: 'tags'
+          property :zone, as: 'zone'
         end
       end
       

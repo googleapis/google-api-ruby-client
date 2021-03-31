@@ -286,6 +286,28 @@ module Google
         end
       end
       
+      # Represents a custom encryption key configuration that can be applied to a
+      # resource. This will encrypt all disks in Virtual Machine.
+      class EncryptionConfig
+        include Google::Apis::Core::Hashable
+      
+        # The Cloud KMS resource identifier of the customer-managed encryption key used
+        # to protect a resource, such as a disks. It has the following format: `projects/
+        # `PROJECT_ID`/locations/`REGION`/keyRings/`KEY_RING_NAME`/cryptoKeys/`KEY_NAME``
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
+        end
+      end
+      
       # Definition of a software environment that is used to start a notebook instance.
       class Environment
         include Google::Apis::Core::Hashable
@@ -1045,6 +1067,39 @@ module Google
         end
       end
       
+      # Response for listing Managed Notebook Runtimes.
+      class ListRuntimesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Page token that can be used to continue listing from the last result in the
+        # next list call.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of returned Runtimes.
+        # Corresponds to the JSON property `runtimes`
+        # @return [Array<Google::Apis::NotebooksV1::Runtime>]
+        attr_accessor :runtimes
+      
+        # Locations that could not be reached. For example, ['us-west1', 'us-central1'].
+        # A ListRuntimesResponse will only contain either runtimes or unreachables,
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @runtimes = args[:runtimes] if args.key?(:runtimes)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response for listing scheduled notebook job.
       class ListSchedulesResponse
         include Google::Apis::Core::Hashable
@@ -1076,6 +1131,169 @@ module Google
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @schedules = args[:schedules] if args.key?(:schedules)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # An Local attached disk resource.
+      class LocalDisk
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Specifies whether the disk will be auto-deleted when the instance
+        # is deleted (but not when the disk is detached from the instance).
+        # Corresponds to the JSON property `autoDelete`
+        # @return [Boolean]
+        attr_accessor :auto_delete
+        alias_method :auto_delete?, :auto_delete
+      
+        # Output only. Indicates that this is a boot disk. The virtual machine will use
+        # the first partition of the disk for its root filesystem.
+        # Corresponds to the JSON property `boot`
+        # @return [Boolean]
+        attr_accessor :boot
+        alias_method :boot?, :boot
+      
+        # Output only. Specifies a unique device name of your choice that is reflected
+        # into the /dev/disk/by-id/google-* tree of a Linux operating system running
+        # within the instance. This name can be used to reference the device for
+        # mounting, resizing, and so on, from within the instance. If not specified, the
+        # server chooses a default device name to apply to this disk, in the form
+        # persistent-disk-x, where x is a number assigned by Google Compute Engine. This
+        # field is only applicable for persistent disks.
+        # Corresponds to the JSON property `deviceName`
+        # @return [String]
+        attr_accessor :device_name
+      
+        # Output only. Indicates a list of features to enable on the guest operating
+        # system. Applicable only for bootable images. Read Enabling guest operating
+        # system features to see a list of available options.
+        # Corresponds to the JSON property `guestOsFeatures`
+        # @return [Array<Google::Apis::NotebooksV1::RuntimeGuestOsFeature>]
+        attr_accessor :guest_os_features
+      
+        # Output only. [Output Only] A zero-based index to this disk, where 0 is
+        # reserved for the boot disk. If you have many disks attached to an instance,
+        # each disk would have a unique index number.
+        # Corresponds to the JSON property `index`
+        # @return [Fixnum]
+        attr_accessor :index
+      
+        # [Input Only] Specifies the parameters for a new disk that will be created
+        # alongside the new instance. Use initialization parameters to create boot disks
+        # or local SSDs attached to the new runtime. This property is mutually exclusive
+        # with the source property; you can only define one or the other, but not both.
+        # Corresponds to the JSON property `initializeParams`
+        # @return [Google::Apis::NotebooksV1::LocalDiskInitializeParams]
+        attr_accessor :initialize_params
+      
+        # Specifies the disk interface to use for attaching this disk, which is either
+        # SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and
+        # the request will fail if you attempt to attach a persistent disk in any other
+        # format than SCSI. Local SSDs can use either NVME or SCSI. For performance
+        # characteristics of SCSI over NVMe, see Local SSD performance. Valid values:
+        # NVME SCSI
+        # Corresponds to the JSON property `interface`
+        # @return [String]
+        attr_accessor :interface
+      
+        # Output only. Type of the resource. Always compute#attachedDisk for attached
+        # disks.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Output only. [Output Only] Any valid publicly visible licenses.
+        # Corresponds to the JSON property `licenses`
+        # @return [Array<String>]
+        attr_accessor :licenses
+      
+        # The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not
+        # specified, the default is to attach the disk in READ_WRITE mode. Valid values:
+        # READ_ONLY READ_WRITE
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        # Specifies a valid partial or full URL to an existing Persistent Disk resource.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified,
+        # the default is PERSISTENT. Valid values: PERSISTENT SCRATCH
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_delete = args[:auto_delete] if args.key?(:auto_delete)
+          @boot = args[:boot] if args.key?(:boot)
+          @device_name = args[:device_name] if args.key?(:device_name)
+          @guest_os_features = args[:guest_os_features] if args.key?(:guest_os_features)
+          @index = args[:index] if args.key?(:index)
+          @initialize_params = args[:initialize_params] if args.key?(:initialize_params)
+          @interface = args[:interface] if args.key?(:interface)
+          @kind = args[:kind] if args.key?(:kind)
+          @licenses = args[:licenses] if args.key?(:licenses)
+          @mode = args[:mode] if args.key?(:mode)
+          @source = args[:source] if args.key?(:source)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # [Input Only] Specifies the parameters for a new disk that will be created
+      # alongside the new instance. Use initialization parameters to create boot disks
+      # or local SSDs attached to the new runtime. This property is mutually exclusive
+      # with the source property; you can only define one or the other, but not both.
+      class LocalDiskInitializeParams
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Provide this property when creating the disk.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Specifies the disk name. If not specified, the default is to use the
+        # name of the instance. If the disk with the instance name exists already in the
+        # given zone/region, a new name will be automatically generated.
+        # Corresponds to the JSON property `diskName`
+        # @return [String]
+        attr_accessor :disk_name
+      
+        # Optional. Specifies the size of the disk in base-2 GB. If not specified, the
+        # disk will be the same size as the image (usually 10GB). If specified, the size
+        # must be equal to or larger than 10GB. Default 100 GB.
+        # Corresponds to the JSON property `diskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :disk_size_gb
+      
+        # Input only. The type of the boot disk attached to this instance, defaults to
+        # standard persistent disk (`PD_STANDARD`).
+        # Corresponds to the JSON property `diskType`
+        # @return [String]
+        attr_accessor :disk_type
+      
+        # Optional. Labels to apply to this disk. These can be later modified by the
+        # disks.setLabels method. This field is only applicable for persistent disks.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @disk_name = args[:disk_name] if args.key?(:disk_name)
+          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
       
@@ -1398,6 +1616,303 @@ module Google
         end
       end
       
+      # Request for reseting a Managed Notebook Runtime.
+      class ResetRuntimeRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The definition of a Runtime for a managed notebook instance.
+      class Runtime
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the login configuration for Runtime
+        # Corresponds to the JSON property `accessConfig`
+        # @return [Google::Apis::NotebooksV1::RuntimeAccessConfig]
+        attr_accessor :access_config
+      
+        # Output only. Runtime creation time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Runtime health_state.
+        # Corresponds to the JSON property `healthState`
+        # @return [String]
+        attr_accessor :health_state
+      
+        # Contains runtime daemon metrics, such as OS and kernels and sessions stats.
+        # Corresponds to the JSON property `metrics`
+        # @return [Google::Apis::NotebooksV1::RuntimeMetrics]
+        attr_accessor :metrics
+      
+        # Output only. The resource name of the runtime. Format: `projects/`project`/
+        # locations/`location`/runtimes/`runtime``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Specifies the selection and config of software inside the runtime. / The
+        # properties to set on runtime. Properties keys are specified in `key:value`
+        # format, for example: * idle_shutdown: idle_shutdown=true *
+        # idle_shutdown_timeout: idle_shutdown_timeout=180 * report-system-health:
+        # report-system-health=true
+        # Corresponds to the JSON property `softwareConfig`
+        # @return [Google::Apis::NotebooksV1::RuntimeSoftwareConfig]
+        attr_accessor :software_config
+      
+        # Output only. Runtime state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Runtime update time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Runtime using Virtual Machine for computing.
+        # Corresponds to the JSON property `virtualMachine`
+        # @return [Google::Apis::NotebooksV1::VirtualMachine]
+        attr_accessor :virtual_machine
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_config = args[:access_config] if args.key?(:access_config)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @health_state = args[:health_state] if args.key?(:health_state)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @name = args[:name] if args.key?(:name)
+          @software_config = args[:software_config] if args.key?(:software_config)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @virtual_machine = args[:virtual_machine] if args.key?(:virtual_machine)
+        end
+      end
+      
+      # Definition of the types of hardware accelerators that can be used. Definition
+      # of the types of hardware accelerators that can be used. See [Compute Engine
+      # AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/
+      # acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `
+      # nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-
+      # a100`
+      class RuntimeAcceleratorConfig
+        include Google::Apis::Core::Hashable
+      
+        # Count of cores of this accelerator.
+        # Corresponds to the JSON property `coreCount`
+        # @return [Fixnum]
+        attr_accessor :core_count
+      
+        # Accelerator model.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @core_count = args[:core_count] if args.key?(:core_count)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Specifies the login configuration for Runtime
+      class RuntimeAccessConfig
+        include Google::Apis::Core::Hashable
+      
+        # The type of access mode this instance.
+        # Corresponds to the JSON property `accessType`
+        # @return [String]
+        attr_accessor :access_type
+      
+        # Output only. The proxy endpoint that is used to access the runtime.
+        # Corresponds to the JSON property `proxyUri`
+        # @return [String]
+        attr_accessor :proxy_uri
+      
+        # The owner of this runtime after creation. Format: `alias@example.com`
+        # Currently supports one owner only.
+        # Corresponds to the JSON property `runtimeOwner`
+        # @return [String]
+        attr_accessor :runtime_owner
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_type = args[:access_type] if args.key?(:access_type)
+          @proxy_uri = args[:proxy_uri] if args.key?(:proxy_uri)
+          @runtime_owner = args[:runtime_owner] if args.key?(:runtime_owner)
+        end
+      end
+      
+      # A list of features to enable on the guest operating system. Applicable only
+      # for bootable images. Read Enabling guest operating system features to see a
+      # list of available options. Guest OS features for boot disk.
+      class RuntimeGuestOsFeature
+        include Google::Apis::Core::Hashable
+      
+        # The ID of a supported feature. Read Enabling guest operating system features
+        # to see a list of available options. Valid values: FEATURE_TYPE_UNSPECIFIED
+        # MULTI_IP_SUBNET SECURE_BOOT UEFI_COMPATIBLE VIRTIO_SCSI_MULTIQUEUE WINDOWS
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Contains runtime daemon metrics, such as OS and kernels and sessions stats.
+      class RuntimeMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The system metrics.
+        # Corresponds to the JSON property `systemMetrics`
+        # @return [Hash<String,String>]
+        attr_accessor :system_metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @system_metrics = args[:system_metrics] if args.key?(:system_metrics)
+        end
+      end
+      
+      # A set of Shielded Instance options. Check [Images using supported Shielded VM
+      # features] Not all combinations are valid.
+      class RuntimeShieldedInstanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Defines whether the instance has integrity monitoring enabled. Enables
+        # monitoring and attestation of the boot integrity of the instance. The
+        # attestation is performed against the integrity policy baseline. This baseline
+        # is initially derived from the implicitly trusted boot image when the instance
+        # is created. Enabled by default.
+        # Corresponds to the JSON property `enableIntegrityMonitoring`
+        # @return [Boolean]
+        attr_accessor :enable_integrity_monitoring
+        alias_method :enable_integrity_monitoring?, :enable_integrity_monitoring
+      
+        # Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure
+        # that the system only runs authentic software by verifying the digital
+        # signature of all boot components, and halting the boot process if signature
+        # verification fails. Disabled by default.
+        # Corresponds to the JSON property `enableSecureBoot`
+        # @return [Boolean]
+        attr_accessor :enable_secure_boot
+        alias_method :enable_secure_boot?, :enable_secure_boot
+      
+        # Defines whether the instance has the vTPM enabled. Enabled by default.
+        # Corresponds to the JSON property `enableVtpm`
+        # @return [Boolean]
+        attr_accessor :enable_vtpm
+        alias_method :enable_vtpm?, :enable_vtpm
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_integrity_monitoring = args[:enable_integrity_monitoring] if args.key?(:enable_integrity_monitoring)
+          @enable_secure_boot = args[:enable_secure_boot] if args.key?(:enable_secure_boot)
+          @enable_vtpm = args[:enable_vtpm] if args.key?(:enable_vtpm)
+        end
+      end
+      
+      # Specifies the selection and config of software inside the runtime. / The
+      # properties to set on runtime. Properties keys are specified in `key:value`
+      # format, for example: * idle_shutdown: idle_shutdown=true *
+      # idle_shutdown_timeout: idle_shutdown_timeout=180 * report-system-health:
+      # report-system-health=true
+      class RuntimeSoftwareConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specify a custom Cloud Storage path where the GPU driver is stored. If not
+        # specified, we'll automatically choose from official GPU drivers.
+        # Corresponds to the JSON property `customGpuDriverPath`
+        # @return [String]
+        attr_accessor :custom_gpu_driver_path
+      
+        # Verifies core internal services are running. Default: True
+        # Corresponds to the JSON property `enableHealthMonitoring`
+        # @return [Boolean]
+        attr_accessor :enable_health_monitoring
+        alias_method :enable_health_monitoring?, :enable_health_monitoring
+      
+        # Runtime will automatically shutdown after idle_shutdown_time. Default: False
+        # Corresponds to the JSON property `idleShutdown`
+        # @return [Boolean]
+        attr_accessor :idle_shutdown
+        alias_method :idle_shutdown?, :idle_shutdown
+      
+        # Time in minutes to wait before shuting down runtime. Default: 90 minutes
+        # Corresponds to the JSON property `idleShutdownTimeout`
+        # @return [Fixnum]
+        attr_accessor :idle_shutdown_timeout
+      
+        # Install Nvidia Driver automatically.
+        # Corresponds to the JSON property `installGpuDriver`
+        # @return [Boolean]
+        attr_accessor :install_gpu_driver
+        alias_method :install_gpu_driver?, :install_gpu_driver
+      
+        # Cron expression in UTC timezone, used to schedule instance auto upgrade.
+        # Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
+        # Corresponds to the JSON property `notebookUpgradeSchedule`
+        # @return [String]
+        attr_accessor :notebook_upgrade_schedule
+      
+        # Path to a Bash script that automatically runs after a notebook instance fully
+        # boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-
+        # name).
+        # Corresponds to the JSON property `postStartupScript`
+        # @return [String]
+        attr_accessor :post_startup_script
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_gpu_driver_path = args[:custom_gpu_driver_path] if args.key?(:custom_gpu_driver_path)
+          @enable_health_monitoring = args[:enable_health_monitoring] if args.key?(:enable_health_monitoring)
+          @idle_shutdown = args[:idle_shutdown] if args.key?(:idle_shutdown)
+          @idle_shutdown_timeout = args[:idle_shutdown_timeout] if args.key?(:idle_shutdown_timeout)
+          @install_gpu_driver = args[:install_gpu_driver] if args.key?(:install_gpu_driver)
+          @notebook_upgrade_schedule = args[:notebook_upgrade_schedule] if args.key?(:notebook_upgrade_schedule)
+          @post_startup_script = args[:post_startup_script] if args.key?(:post_startup_script)
+        end
+      end
+      
       # The definition of a schedule.
       class Schedule
         include Google::Apis::Core::Hashable
@@ -1676,6 +2191,19 @@ module Google
         end
       end
       
+      # Request for starting a Managed Notebook Runtime.
+      class StartRuntimeRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -1725,6 +2253,49 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Request for stopping a Managed Notebook Runtime.
+      class StopRuntimeRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request for switching a Managed Notebook Runtime.
+      class SwitchRuntimeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Definition of the types of hardware accelerators that can be used. Definition
+        # of the types of hardware accelerators that can be used. See [Compute Engine
+        # AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/
+        # acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `
+        # nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-
+        # a100`
+        # Corresponds to the JSON property `acceleratorConfig`
+        # @return [Google::Apis::NotebooksV1::RuntimeAcceleratorConfig]
+        attr_accessor :accelerator_config
+      
+        # machine type.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accelerator_config = args[:accelerator_config] if args.key?(:accelerator_config)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
         end
       end
       
@@ -1778,6 +2349,27 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Request for updating the Shielded Instance config for a notebook instance. You
+      # can only use this method on a stopped instance
+      class UpdateShieldedInstanceConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # A set of Shielded Instance options. Check [Images using supported Shielded VM
+        # features] Not all combinations are valid.
+        # Corresponds to the JSON property `shieldedInstanceConfig`
+        # @return [Google::Apis::NotebooksV1::ShieldedInstanceConfig]
+        attr_accessor :shielded_instance_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
         end
       end
       
@@ -1884,6 +2476,172 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Runtime using Virtual Machine for computing.
+      class VirtualMachine
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The unique identifier of the Managed Compute Engine instance.
+        # Corresponds to the JSON property `instanceId`
+        # @return [String]
+        attr_accessor :instance_id
+      
+        # Output only. The user-friendly name of the Managed Compute Engine instance.
+        # Corresponds to the JSON property `instanceName`
+        # @return [String]
+        attr_accessor :instance_name
+      
+        # The config settings for virtual machine.
+        # Corresponds to the JSON property `virtualMachineConfig`
+        # @return [Google::Apis::NotebooksV1::VirtualMachineConfig]
+        attr_accessor :virtual_machine_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @instance_name = args[:instance_name] if args.key?(:instance_name)
+          @virtual_machine_config = args[:virtual_machine_config] if args.key?(:virtual_machine_config)
+        end
+      end
+      
+      # The config settings for virtual machine.
+      class VirtualMachineConfig
+        include Google::Apis::Core::Hashable
+      
+        # Definition of the types of hardware accelerators that can be used. Definition
+        # of the types of hardware accelerators that can be used. See [Compute Engine
+        # AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/
+        # acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `
+        # nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-
+        # a100`
+        # Corresponds to the JSON property `acceleratorConfig`
+        # @return [Google::Apis::NotebooksV1::RuntimeAcceleratorConfig]
+        attr_accessor :accelerator_config
+      
+        # Optional. Use a list of container images to start the notebook instance.
+        # Corresponds to the JSON property `containerImages`
+        # @return [Array<Google::Apis::NotebooksV1::ContainerImage>]
+        attr_accessor :container_images
+      
+        # An Local attached disk resource.
+        # Corresponds to the JSON property `dataDisk`
+        # @return [Google::Apis::NotebooksV1::LocalDisk]
+        attr_accessor :data_disk
+      
+        # Represents a custom encryption key configuration that can be applied to a
+        # resource. This will encrypt all disks in Virtual Machine.
+        # Corresponds to the JSON property `encryptionConfig`
+        # @return [Google::Apis::NotebooksV1::EncryptionConfig]
+        attr_accessor :encryption_config
+      
+        # Output only. The Compute Engine guest attributes. (see [Project and instance
+        # guest attributes](https://cloud.google.com/compute/docs/storing-retrieving-
+        # metadata#guest_attributes)).
+        # Corresponds to the JSON property `guestAttributes`
+        # @return [Hash<String,String>]
+        attr_accessor :guest_attributes
+      
+        # Optional. If true, runtime will only have internal IP addresses. By default,
+        # runtimes are not restricted to internal IP addresses, and will have ephemeral
+        # external IP addresses assigned to each vm. This `internal_ip_only` restriction
+        # can only be enabled for subnetwork enabled networks, and all dependencies must
+        # be configured to be accessible without external IP addresses.
+        # Corresponds to the JSON property `internalIpOnly`
+        # @return [Boolean]
+        attr_accessor :internal_ip_only
+        alias_method :internal_ip_only?, :internal_ip_only
+      
+        # Optional. The labels to associate with this runtime. Label **keys** must
+        # contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.
+        # org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must
+        # contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.
+        # org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. The Compute Engine machine type used for runtimes. Short name is
+        # valid. Examples: * `n1-standard-2` * `e2-standard-8`
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        # Optional. The Compute Engine metadata entries to add to virtual machine. (see [
+        # Project and instance metadata](https://cloud.google.com/compute/docs/storing-
+        # retrieving-metadata#project_and_instance_metadata)).
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
+        # Optional. The Compute Engine network to be used for machine communications.
+        # Cannot be specified with subnetwork. If neither `network` nor `subnet` is
+        # specified, the "default" network of the project is used, if it exists. A full
+        # URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/
+        # projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/
+        # global/default` Runtimes are managed resources inside Google Infrastructure.
+        # Runtimes support the following network configurations: * Google Managed
+        # Network (Network & subnet are empty) * Consumer Project VPC (network & subnet
+        # are required). Requires configuring Private Service Access. * Shared VPC (
+        # network & subnet are required). Requires configuring Private Service Access.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # A set of Shielded Instance options. Check [Images using supported Shielded VM
+        # features] Not all combinations are valid.
+        # Corresponds to the JSON property `shieldedInstanceConfig`
+        # @return [Google::Apis::NotebooksV1::RuntimeShieldedInstanceConfig]
+        attr_accessor :shielded_instance_config
+      
+        # Optional. The Compute Engine subnetwork to be used for machine communications.
+        # Cannot be specified with network. A full URL or partial URI are valid.
+        # Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/
+        # regions/us-east1/subnetworks/sub0` * `projects/[project_id]/regions/us-east1/
+        # subnetworks/sub0`
+        # Corresponds to the JSON property `subnet`
+        # @return [String]
+        attr_accessor :subnet
+      
+        # Optional. The Compute Engine tags to add to runtime (see [Tagging instances](
+        # https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        # Output only. The zone where the virtual machine is located. If using regional
+        # request, the notebooks service will pick a location in the corresponding
+        # runtime region. On a get request, zone will always be present. Example: * `us-
+        # central1-b`
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accelerator_config = args[:accelerator_config] if args.key?(:accelerator_config)
+          @container_images = args[:container_images] if args.key?(:container_images)
+          @data_disk = args[:data_disk] if args.key?(:data_disk)
+          @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
+          @guest_attributes = args[:guest_attributes] if args.key?(:guest_attributes)
+          @internal_ip_only = args[:internal_ip_only] if args.key?(:internal_ip_only)
+          @labels = args[:labels] if args.key?(:labels)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @network = args[:network] if args.key?(:network)
+          @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
+          @subnet = args[:subnet] if args.key?(:subnet)
+          @tags = args[:tags] if args.key?(:tags)
+          @zone = args[:zone] if args.key?(:zone)
         end
       end
       
