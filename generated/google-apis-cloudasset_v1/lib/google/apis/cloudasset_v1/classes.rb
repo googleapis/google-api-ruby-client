@@ -3479,7 +3479,10 @@ module Google
         # @return [String]
         attr_accessor :parent_asset_type
       
-        # The full resource name of this resource's parent, if it has one.
+        # The full resource name of this resource's parent, if it has one. To search
+        # against the `parent_full_resource_name`: * use a field query. Example: `
+        # parentFullResourceName:"project-name"` * use a free text query. Example: `
+        # project-name`
         # Corresponds to the JSON property `parentFullResourceName`
         # @return [String]
         attr_accessor :parent_full_resource_name
