@@ -83,11 +83,15 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [String] filter
-        #   The standard list filter.
+        #   A filter to narrow down results to a preferred subset. The filtering language
+        #   accepts strings like "displayName=tokyo", and is documented in more detail in [
+        #   AIP-160](https://google.aip.dev/160).
         # @param [Fixnum] page_size
-        #   The standard list page size.
+        #   The maximum number of results to return. If not set, the service will select a
+        #   default.
         # @param [String] page_token
-        #   The standard list page token.
+        #   A page token received from the `next_page_token` field in the response. Send
+        #   that page token to receive the subsequent page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -985,6 +989,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates the Shielded instance configuration of a single Instance.
+        # @param [String] name
+        #   Required. Format: `projects/`project_id`/locations/`location`/instances/`
+        #   instance_id``
+        # @param [Google::Apis::NotebooksV1::UpdateShieldedInstanceConfigRequest] update_shielded_instance_config_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NotebooksV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NotebooksV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_shielded_instance_config(name, update_shielded_instance_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}:updateShieldedInstanceConfig', options)
+          command.request_representation = Google::Apis::NotebooksV1::UpdateShieldedInstanceConfigRequest::Representation
+          command.request_object = update_shielded_instance_config_request_object
+          command.response_representation = Google::Apis::NotebooksV1::Operation::Representation
+          command.response_class = Google::Apis::NotebooksV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Upgrades a notebook instance to the latest version.
         # @param [String] name
         #   Required. Format: `projects/`project_id`/locations/`location`/instances/`
@@ -1199,6 +1237,284 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new Runtime in a given project and location.
+        # @param [String] parent
+        #   Required. Format: `parent=projects/`project_id`/locations/`location``
+        # @param [Google::Apis::NotebooksV1::Runtime] runtime_object
+        # @param [String] runtime_id
+        #   Required. User-defined unique ID of this Runtime.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NotebooksV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NotebooksV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_runtime(parent, runtime_object = nil, runtime_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/runtimes', options)
+          command.request_representation = Google::Apis::NotebooksV1::Runtime::Representation
+          command.request_object = runtime_object
+          command.response_representation = Google::Apis::NotebooksV1::Operation::Representation
+          command.response_class = Google::Apis::NotebooksV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['runtimeId'] = runtime_id unless runtime_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single Runtime.
+        # @param [String] name
+        #   Required. Format: `projects/`project_id`/locations/`location`/runtimes/`
+        #   runtime_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NotebooksV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NotebooksV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_runtime(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NotebooksV1::Operation::Representation
+          command.response_class = Google::Apis::NotebooksV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single Runtime. The location must be a regional endpoint
+        # rather than zonal.
+        # @param [String] name
+        #   Required. Format: `projects/`project_id`/locations/`location`/runtimes/`
+        #   runtime_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NotebooksV1::Runtime] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NotebooksV1::Runtime]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_runtime(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NotebooksV1::Runtime::Representation
+          command.response_class = Google::Apis::NotebooksV1::Runtime
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Runtimes in a given project and location.
+        # @param [String] parent
+        #   Required. Format: `parent=projects/`project_id`/locations/`location``
+        # @param [Fixnum] page_size
+        #   Maximum return size of the list call.
+        # @param [String] page_token
+        #   A previous returned page token that can be used to continue listing from the
+        #   last result.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NotebooksV1::ListRuntimesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NotebooksV1::ListRuntimesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_runtimes(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/runtimes', options)
+          command.response_representation = Google::Apis::NotebooksV1::ListRuntimesResponse::Representation
+          command.response_class = Google::Apis::NotebooksV1::ListRuntimesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Resets a Managed Notebook Runtime.
+        # @param [String] name
+        #   Required. Format: `projects/`project_id`/locations/`location`/runtimes/`
+        #   runtime_id``
+        # @param [Google::Apis::NotebooksV1::ResetRuntimeRequest] reset_runtime_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NotebooksV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NotebooksV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def reset_runtime(name, reset_runtime_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:reset', options)
+          command.request_representation = Google::Apis::NotebooksV1::ResetRuntimeRequest::Representation
+          command.request_object = reset_runtime_request_object
+          command.response_representation = Google::Apis::NotebooksV1::Operation::Representation
+          command.response_class = Google::Apis::NotebooksV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Starts a Managed Notebook Runtime. Perform "Start" on GPU instances; "Resume"
+        # on CPU instances See: https://cloud.google.com/compute/docs/instances/stop-
+        # start-instance https://cloud.google.com/compute/docs/instances/suspend-resume-
+        # instance
+        # @param [String] name
+        #   Required. Format: `projects/`project_id`/locations/`location`/runtimes/`
+        #   runtime_id``
+        # @param [Google::Apis::NotebooksV1::StartRuntimeRequest] start_runtime_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NotebooksV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NotebooksV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def start_runtime(name, start_runtime_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:start', options)
+          command.request_representation = Google::Apis::NotebooksV1::StartRuntimeRequest::Representation
+          command.request_object = start_runtime_request_object
+          command.response_representation = Google::Apis::NotebooksV1::Operation::Representation
+          command.response_class = Google::Apis::NotebooksV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Stops a Managed Notebook Runtime. Perform "Stop" on GPU instances; "Suspend"
+        # on CPU instances See: https://cloud.google.com/compute/docs/instances/stop-
+        # start-instance https://cloud.google.com/compute/docs/instances/suspend-resume-
+        # instance
+        # @param [String] name
+        #   Required. Format: `projects/`project_id`/locations/`location`/runtimes/`
+        #   runtime_id``
+        # @param [Google::Apis::NotebooksV1::StopRuntimeRequest] stop_runtime_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NotebooksV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NotebooksV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stop_runtime(name, stop_runtime_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:stop', options)
+          command.request_representation = Google::Apis::NotebooksV1::StopRuntimeRequest::Representation
+          command.request_object = stop_runtime_request_object
+          command.response_representation = Google::Apis::NotebooksV1::Operation::Representation
+          command.response_class = Google::Apis::NotebooksV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Switch a Managed Notebook Runtime.
+        # @param [String] name
+        #   Required. Format: `projects/`project_id`/locations/`location`/runtimes/`
+        #   runtime_id``
+        # @param [Google::Apis::NotebooksV1::SwitchRuntimeRequest] switch_runtime_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NotebooksV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NotebooksV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def switch_runtime(name, switch_runtime_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:switch', options)
+          command.request_representation = Google::Apis::NotebooksV1::SwitchRuntimeRequest::Representation
+          command.request_object = switch_runtime_request_object
+          command.response_representation = Google::Apis::NotebooksV1::Operation::Representation
+          command.response_class = Google::Apis::NotebooksV1::Operation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
