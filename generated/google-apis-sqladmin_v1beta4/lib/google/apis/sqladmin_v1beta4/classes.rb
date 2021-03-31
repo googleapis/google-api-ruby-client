@@ -564,8 +564,8 @@ module Google
         # The database engine type and version. The *databaseVersion* field cannot be
         # changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (
         # default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*,
-        # *POSTGRES_11* or *POSTGRES_12* (default). SQL Server instances: *
-        # SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *
+        # *POSTGRES_11*, *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances:
+        # *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *
         # SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
         # Corresponds to the JSON property `databaseVersion`
         # @return [String]
@@ -2508,8 +2508,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :storage_auto_resize_limit
       
-        # The tier (or machine type) for this instance, for example *db-n1-standard-1* (
-        # MySQL instances) or *db-custom-1-3840* (PostgreSQL instances).
+        # The tier (or machine type) for this instance, for example *db-custom-1-3840* .
         # Corresponds to the JSON property `tier`
         # @return [String]
         attr_accessor :tier
@@ -2971,7 +2970,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :region
       
-        # An identifier for the machine type, for example, db-n1-standard-1. For related
+        # An identifier for the machine type, for example, db-custom-1-3840. For related
         # information, see Pricing.
         # Corresponds to the JSON property `tier`
         # @return [String]
