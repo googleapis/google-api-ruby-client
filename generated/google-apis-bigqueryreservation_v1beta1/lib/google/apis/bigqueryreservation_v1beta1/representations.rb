@@ -40,12 +40,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CreateSlotPoolMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -143,13 +137,6 @@ module Google
           property :renewal_plan, as: 'renewalPlan'
           property :slot_count, :numeric_string => true, as: 'slotCount'
           property :state, as: 'state'
-        end
-      end
-      
-      class CreateSlotPoolMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :slot_pool, as: 'slotPool'
         end
       end
       

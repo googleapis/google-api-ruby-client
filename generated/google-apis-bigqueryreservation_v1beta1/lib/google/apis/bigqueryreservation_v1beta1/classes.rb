@@ -170,26 +170,6 @@ module Google
         end
       end
       
-      # The metadata for operation returned from ReservationService.CreateSlotPool.
-      class CreateSlotPoolMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Resource name of the slot pool that is being created. E.g., projects/myproject/
-        # locations/us-central1/reservations/foo/slotPools/123
-        # Corresponds to the JSON property `slotPool`
-        # @return [String]
-        attr_accessor :slot_pool
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @slot_pool = args[:slot_pool] if args.key?(:slot_pool)
-        end
-      end
-      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
