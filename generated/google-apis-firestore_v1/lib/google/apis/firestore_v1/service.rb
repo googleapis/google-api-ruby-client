@@ -56,7 +56,9 @@ module Google
         # background and its progress can be monitored and managed via the Operation
         # resource that is created. The output of an export may only be used once the
         # associated operation is done. If an export operation is cancelled before
-        # completion it may leave partial data behind in Google Cloud Storage.
+        # completion it may leave partial data behind in Google Cloud Storage. For more
+        # details on export behavior and output format, refer to: https://cloud.google.
+        # com/firestore/docs/manage-data/export-import
         # @param [String] name
         #   Required. Database to export. Should be of the form: `projects/`project_id`/
         #   databases/`database_id``.
@@ -1185,11 +1187,15 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [String] filter
-        #   The standard list filter.
+        #   A filter to narrow down results to a preferred subset. The filtering language
+        #   accepts strings like "displayName=tokyo", and is documented in more detail in [
+        #   AIP-160](https://google.aip.dev/160).
         # @param [Fixnum] page_size
-        #   The standard list page size.
+        #   The maximum number of results to return. If not set, the service will select a
+        #   default.
         # @param [String] page_token
-        #   The standard list page token.
+        #   A page token received from the `next_page_token` field in the response. Send
+        #   that page token to receive the subsequent page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
