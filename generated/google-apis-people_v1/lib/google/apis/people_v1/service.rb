@@ -403,7 +403,9 @@ module Google
         end
         
         # Provides a list of contacts in the authenticated user's other contacts that
-        # matches the search query.
+        # matches the search query. The query matches on a contact's `names`, `
+        # emailAddresses`, and `phoneNumbers` fields that are from the OTHER_CONTACT
+        # source.
         # @param [Fixnum] page_size
         #   Optional. The number of results to return. Defaults to 10 if field is not set,
         #   or set to 0.
@@ -446,7 +448,7 @@ module Google
         end
         
         # Create a batch of new contacts and return the PersonResponses for the newly
-        # created contacts.
+        # created contacts. Limited to 10 parallel requests per user.
         # @param [Google::Apis::PeopleV1::BatchCreateContactsRequest] batch_create_contacts_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -476,7 +478,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete a batch of contacts. Any non-contact data will not be deleted.
+        # Delete a batch of contacts. Any non-contact data will not be deleted. Limited
+        # to 10 parallel requests per user.
         # @param [Google::Apis::PeopleV1::BatchDeleteContactsRequest] batch_delete_contacts_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -507,7 +510,8 @@ module Google
         end
         
         # Update a batch of contacts and return a map of resource names to
-        # PersonResponses for the updated contacts.
+        # PersonResponses for the updated contacts. Limited to 10 parallel requests per
+        # user.
         # @param [Google::Apis::PeopleV1::BatchUpdateContactsRequest] batch_update_contacts_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -836,7 +840,9 @@ module Google
         end
         
         # Provides a list of contacts in the authenticated user's grouped contacts that
-        # matches the search query.
+        # matches the search query. The query matches on a contact's `names`, `nickNames`
+        # , `emailAddresses`, `phoneNumbers`, and `organizations` fields that are from
+        # the CONTACT" source.
         # @param [Fixnum] page_size
         #   Optional. The number of results to return.
         # @param [String] query
