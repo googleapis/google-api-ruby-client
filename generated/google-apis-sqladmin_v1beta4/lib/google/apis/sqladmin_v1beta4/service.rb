@@ -1582,8 +1582,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all available machine types (tiers) for Cloud SQL, for example, db-n1-
-        # standard-1. For related information, see Pricing.
+        # Lists all available machine types (tiers) for Cloud SQL, for example, db-
+        # custom-1-3840. For related information, see Pricing.
         # @param [String] project
         #   Project ID of the project for which to list tiers.
         # @param [String] fields
