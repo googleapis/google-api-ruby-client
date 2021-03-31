@@ -132,37 +132,6 @@ module Google
         end
       end
       
-      # Job information for templates.
-      class Artifact
-        include Google::Apis::Core::Hashable
-      
-        # Container Spec.
-        # Corresponds to the JSON property `containerSpec`
-        # @return [Google::Apis::DataflowV1b3::ContainerSpec]
-        attr_accessor :container_spec
-      
-        # job_graph_gcs_path set for legacy Template.
-        # Corresponds to the JSON property `jobGraphGcsPath`
-        # @return [String]
-        attr_accessor :job_graph_gcs_path
-      
-        # Metadata describing a template.
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::DataflowV1b3::TemplateMetadata]
-        attr_accessor :metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @container_spec = args[:container_spec] if args.key?(:container_spec)
-          @job_graph_gcs_path = args[:job_graph_gcs_path] if args.key?(:job_graph_gcs_path)
-          @metadata = args[:metadata] if args.key?(:metadata)
-        end
-      end
-      
       # A structured message reporting an autoscaling decision made by the Dataflow
       # service.
       class AutoscalingEvent
@@ -339,32 +308,6 @@ module Google
           @rate = args[:rate] if args.key?(:rate)
           @timestamp = args[:timestamp] if args.key?(:timestamp)
           @total_ms = args[:total_ms] if args.key?(:total_ms)
-        end
-      end
-      
-      # Commit will add a new TemplateVersion to an existing template.
-      class CommitTemplateVersionRequest
-        include Google::Apis::Core::Hashable
-      
-        # ///////////////////////////////////////////////////////////////////////////// /
-        # /// Template Catalog is used to organize user TemplateVersions. ////
-        # TemplateVersions that have the same project_id and display_name are ////
-        # belong to the same Template. //// Templates with the same project_id belong to
-        # the same Project. //// TemplateVersion may have labels and multiple labels are
-        # allowed. //// Duplicated labels in the same `TemplateVersion` are not allowed.
-        # //// TemplateVersion may have tags and multiple tags are allowed. Duplicated //
-        # // tags in the same `Template` are not allowed!
-        # Corresponds to the JSON property `templateVersion`
-        # @return [Google::Apis::DataflowV1b3::TemplateVersion]
-        attr_accessor :template_version
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @template_version = args[:template_version] if args.key?(:template_version)
         end
       end
       
@@ -847,32 +790,6 @@ module Google
         end
       end
       
-      # Creates a new Template with TemplateVersions.
-      class CreateTemplateVersionRequest
-        include Google::Apis::Core::Hashable
-      
-        # ///////////////////////////////////////////////////////////////////////////// /
-        # /// Template Catalog is used to organize user TemplateVersions. ////
-        # TemplateVersions that have the same project_id and display_name are ////
-        # belong to the same Template. //// Templates with the same project_id belong to
-        # the same Project. //// TemplateVersion may have labels and multiple labels are
-        # allowed. //// Duplicated labels in the same `TemplateVersion` are not allowed.
-        # //// TemplateVersion may have tags and multiple tags are allowed. Duplicated //
-        # // tags in the same `Template` are not allowed!
-        # Corresponds to the JSON property `templateVersion`
-        # @return [Google::Apis::DataflowV1b3::TemplateVersion]
-        attr_accessor :template_version
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @template_version = args[:template_version] if args.key?(:template_version)
-        end
-      end
-      
       # Identifies the location of a custom souce.
       class CustomSourceLocation
         include Google::Apis::Core::Hashable
@@ -1230,23 +1147,6 @@ module Google
         def update!(**args)
           @primary = args[:primary] if args.key?(:primary)
           @residual = args[:residual] if args.key?(:residual)
-        end
-      end
-      
-      # A generic empty message that you can re-use to avoid defining duplicated empty
-      # messages in your APIs. A typical example is to use it as the request or the
-      # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
-      class Empty
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -2866,32 +2766,6 @@ module Google
         end
       end
       
-      # Respond a list of TemplateVersions.
-      class ListTemplateVersionsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A token that can be sent as `page_token` to retrieve the next page. If this
-        # field is omitted, there are no subsequent pages.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # A list of TemplateVersions.
-        # Corresponds to the JSON property `templateVersions`
-        # @return [Array<Google::Apis::DataflowV1b3::TemplateVersion>]
-        attr_accessor :template_versions
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @template_versions = args[:template_versions] if args.key?(:template_versions)
-        end
-      end
-      
       # MapTask consists of an ordered set of instructions, each of which describes
       # one particular low-level operation for the worker to perform in order to
       # accomplish the MapTask's WorkItem. Each instruction must appear in the list
@@ -3128,105 +3002,6 @@ module Google
           @scalar = args[:scalar] if args.key?(:scalar)
           @set = args[:set] if args.key?(:set)
           @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
-      # Either add the label to TemplateVersion or remove it from the TemplateVersion.
-      class ModifyTemplateVersionLabelRequest
-        include Google::Apis::Core::Hashable
-      
-        # The label key for update.
-        # Corresponds to the JSON property `key`
-        # @return [String]
-        attr_accessor :key
-      
-        # Requests for add label to TemplateVersion or remove label from TemplateVersion.
-        # Corresponds to the JSON property `op`
-        # @return [String]
-        attr_accessor :op
-      
-        # The label value for update.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @key = args[:key] if args.key?(:key)
-          @op = args[:op] if args.key?(:op)
-          @value = args[:value] if args.key?(:value)
-        end
-      end
-      
-      # Respond the labels in the TemplateVersion.
-      class ModifyTemplateVersionLabelResponse
-        include Google::Apis::Core::Hashable
-      
-        # All the label in the TemplateVersion.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @labels = args[:labels] if args.key?(:labels)
-        end
-      end
-      
-      # Add a tag to the current TemplateVersion. If tag exist in another
-      # TemplateVersion in the Template, remove the tag before add it to the current
-      # TemplateVersion. If remove_only set, remove the tag from the current
-      # TemplateVersion.
-      class ModifyTemplateVersionTagRequest
-        include Google::Apis::Core::Hashable
-      
-        # The flag that indicates if the request is only for remove tag from
-        # TemplateVersion.
-        # Corresponds to the JSON property `removeOnly`
-        # @return [Boolean]
-        attr_accessor :remove_only
-        alias_method :remove_only?, :remove_only
-      
-        # The tag for update.
-        # Corresponds to the JSON property `tag`
-        # @return [String]
-        attr_accessor :tag
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @remove_only = args[:remove_only] if args.key?(:remove_only)
-          @tag = args[:tag] if args.key?(:tag)
-        end
-      end
-      
-      # Respond the current tags in the TemplateVersion.
-      class ModifyTemplateVersionTagResponse
-        include Google::Apis::Core::Hashable
-      
-        # All the tags in the TemplateVersion.
-        # Corresponds to the JSON property `tags`
-        # @return [Array<String>]
-        attr_accessor :tags
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
@@ -5835,80 +5610,6 @@ module Google
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
           @parameters = args[:parameters] if args.key?(:parameters)
-        end
-      end
-      
-      # ///////////////////////////////////////////////////////////////////////////// /
-      # /// Template Catalog is used to organize user TemplateVersions. ////
-      # TemplateVersions that have the same project_id and display_name are ////
-      # belong to the same Template. //// Templates with the same project_id belong to
-      # the same Project. //// TemplateVersion may have labels and multiple labels are
-      # allowed. //// Duplicated labels in the same `TemplateVersion` are not allowed.
-      # //// TemplateVersion may have tags and multiple tags are allowed. Duplicated //
-      # // tags in the same `Template` are not allowed!
-      class TemplateVersion
-        include Google::Apis::Core::Hashable
-      
-        # Job information for templates.
-        # Corresponds to the JSON property `artifact`
-        # @return [Google::Apis::DataflowV1b3::Artifact]
-        attr_accessor :artifact
-      
-        # Creation time of this TemplateVersion.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Template description from the user.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # A customized name for Template. Multiple TemplateVersions per Template.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Labels for the Template Version. Labels can be duplicate within Template.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # A unique project_id. Multiple Templates per Project.
-        # Corresponds to the JSON property `projectId`
-        # @return [String]
-        attr_accessor :project_id
-      
-        # Alias for version_id, helps locate a TemplateVersion.
-        # Corresponds to the JSON property `tags`
-        # @return [Array<String>]
-        attr_accessor :tags
-      
-        # Either LEGACY or FLEX. This should match with the type of artifact.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        # An auto generated version_id for TemplateVersion.
-        # Corresponds to the JSON property `versionId`
-        # @return [String]
-        attr_accessor :version_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @artifact = args[:artifact] if args.key?(:artifact)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @description = args[:description] if args.key?(:description)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @labels = args[:labels] if args.key?(:labels)
-          @project_id = args[:project_id] if args.key?(:project_id)
-          @tags = args[:tags] if args.key?(:tags)
-          @type = args[:type] if args.key?(:type)
-          @version_id = args[:version_id] if args.key?(:version_id)
         end
       end
       
