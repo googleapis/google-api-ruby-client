@@ -32,7 +32,7 @@ module Google
       # View and manage your applications deployed on Google App Engine
       AUTH_APPENGINE_ADMIN = 'https://www.googleapis.com/auth/appengine.admin'
 
-      # View and manage your data across Google Cloud Platform services
+      # See, edit, configure, and delete your Google Cloud Platform data
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
 
       # View your data across Google Cloud Platform services
