@@ -449,6 +449,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Moves a location from an account that the user owns to another account that
+        # the same user administers. The user must be an owner of the account the
+        # location is currently associated with and must also be at least a manager of
+        # the destination account.
+        # @param [String] locations_id
+        # @param [Google::Apis::MybusinessaccountmanagementV1::TransferLocationRequest] transfer_location_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MybusinessaccountmanagementV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MybusinessaccountmanagementV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def transfer_location(locations_id, transfer_location_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/locations/{locationsId}:transferLocation', options)
+          command.request_representation = Google::Apis::MybusinessaccountmanagementV1::TransferLocationRequest::Representation
+          command.request_object = transfer_location_request_object
+          command.response_representation = Google::Apis::MybusinessaccountmanagementV1::Empty::Representation
+          command.response_class = Google::Apis::MybusinessaccountmanagementV1::Empty
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Invites the specified user to become an administrator for the specified
         # location. The invitee must accept the invitation in order to be granted access
         # to the location. See AcceptInvitation to programmatically accept an invitation.
