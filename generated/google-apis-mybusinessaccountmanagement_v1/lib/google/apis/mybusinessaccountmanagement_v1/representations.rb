@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TransferLocationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AcceptInvitationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -223,6 +229,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address, as: 'address'
           property :location_name, as: 'locationName'
+        end
+      end
+      
+      class TransferLocationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_account, as: 'destinationAccount'
+          property :name, as: 'name'
         end
       end
     end

@@ -529,6 +529,32 @@ module Google
           @location_name = args[:location_name] if args.key?(:location_name)
         end
       end
+      
+      # Request message for AccessControl.TransferLocation.
+      class TransferLocationRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the account resource to transfer the location to (for
+        # example, "accounts/`account`").
+        # Corresponds to the JSON property `destinationAccount`
+        # @return [String]
+        attr_accessor :destination_account
+      
+        # Required. The name of the location to transfer. `locations/`location_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_account = args[:destination_account] if args.key?(:destination_account)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
     end
   end
 end
