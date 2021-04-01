@@ -203,6 +203,57 @@ module Google
         end
       end
       
+      # Add-on configurations for the Apigee organization.
+      class GoogleCloudApigeeV1AddonsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for the Advanced API Ops add-on.
+        # Corresponds to the JSON property `advancedApiOpsConfig`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AdvancedApiOpsConfig]
+        attr_accessor :advanced_api_ops_config
+      
+        # Configuration for the Integration add-on.
+        # Corresponds to the JSON property `integrationConfig`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1IntegrationConfig]
+        attr_accessor :integration_config
+      
+        # Configuration for the Monetization add-on.
+        # Corresponds to the JSON property `monetizationConfig`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1MonetizationConfig]
+        attr_accessor :monetization_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @advanced_api_ops_config = args[:advanced_api_ops_config] if args.key?(:advanced_api_ops_config)
+          @integration_config = args[:integration_config] if args.key?(:integration_config)
+          @monetization_config = args[:monetization_config] if args.key?(:monetization_config)
+        end
+      end
+      
+      # Configuration for the Advanced API Ops add-on.
+      class GoogleCloudApigeeV1AdvancedApiOpsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Flag that specifies whether the Advanced API Ops add-on is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # Reference to a certificate or key/certificate pair.
       class GoogleCloudApigeeV1Alias
         include Google::Apis::Core::Hashable
@@ -3447,6 +3498,26 @@ module Google
         end
       end
       
+      # Configuration for the Integration add-on.
+      class GoogleCloudApigeeV1IntegrationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Flag that specifies whether the Integration add-on is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # 
       class GoogleCloudApigeeV1KeyAliasReference
         include Google::Apis::Core::Hashable
@@ -4126,6 +4197,26 @@ module Google
         end
       end
       
+      # Configuration for the Monetization add-on.
+      class GoogleCloudApigeeV1MonetizationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Flag that specifies whether the Monetization add-on is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # Apigee NAT(network address translation) address. A NAT address is a static
       # external IP address used for Internet egress traffic.
       class GoogleCloudApigeeV1NatAddress
@@ -4385,6 +4476,11 @@ module Google
       class GoogleCloudApigeeV1Organization
         include Google::Apis::Core::Hashable
       
+        # Add-on configurations for the Apigee organization.
+        # Corresponds to the JSON property `addonsConfig`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AddonsConfig]
+        attr_accessor :addons_config
+      
         # Required. Primary GCP region for analytics data storage. For valid values, see
         # [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-
         # platform/get-started/create-org).
@@ -4521,6 +4617,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @addons_config = args[:addons_config] if args.key?(:addons_config)
           @analytics_region = args[:analytics_region] if args.key?(:analytics_region)
           @attributes = args[:attributes] if args.key?(:attributes)
           @authorized_network = args[:authorized_network] if args.key?(:authorized_network)
@@ -5710,6 +5807,25 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @timestamp_ms = args[:timestamp_ms] if args.key?(:timestamp_ms)
+        end
+      end
+      
+      # Request for SetAddons.
+      class GoogleCloudApigeeV1SetAddonsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Add-on configurations for the Apigee organization.
+        # Corresponds to the JSON property `addonsConfig`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AddonsConfig]
+        attr_accessor :addons_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @addons_config = args[:addons_config] if args.key?(:addons_config)
         end
       end
       
