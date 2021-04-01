@@ -1158,6 +1158,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :priority, as: 'priority'
+          property :request_tag, as: 'requestTag'
+          property :transaction_tag, as: 'transactionTag'
         end
       end
       
@@ -1359,6 +1361,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :commit_timestamps, as: 'commitTimestamps'
           property :database, as: 'database'
+          collection :progress, as: 'progress', class: Google::Apis::SpannerV1::OperationProgress, decorator: Google::Apis::SpannerV1::OperationProgress::Representation
+      
           collection :statements, as: 'statements'
           property :throttled, as: 'throttled'
         end

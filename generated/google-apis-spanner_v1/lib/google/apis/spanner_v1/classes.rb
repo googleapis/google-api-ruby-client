@@ -2799,6 +2799,25 @@ module Google
         # @return [String]
         attr_accessor :priority
       
+        # A per-request tag which can be applied to queries or reads, used for
+        # statistics collection. Both request_tag and transaction_tag can be specified
+        # for a read or query that belongs to a transaction. This field is ignored for
+        # requests where it's not applicable (e.g. CommitRequest). `request_tag` must be
+        # a valid identifier of the form: `a-zA-Z` between 2 and 64 characters in length
+        # Corresponds to the JSON property `requestTag`
+        # @return [String]
+        attr_accessor :request_tag
+      
+        # A tag used for statistics collection about this transaction. Both request_tag
+        # and transaction_tag can be specified for a read or query that belongs to a
+        # transaction. The value of transaction_tag should be the same for all requests
+        # belonging to the same transaction. If this request doesn’t belong to any
+        # transaction, transaction_tag will be ignored. `transaction_tag` must be a
+        # valid identifier of the format: `a-zA-Z`0,49``
+        # Corresponds to the JSON property `transactionTag`
+        # @return [String]
+        attr_accessor :transaction_tag
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2806,6 +2825,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @priority = args[:priority] if args.key?(:priority)
+          @request_tag = args[:request_tag] if args.key?(:request_tag)
+          @transaction_tag = args[:transaction_tag] if args.key?(:transaction_tag)
         end
       end
       
@@ -3957,6 +3978,16 @@ module Google
         # @return [String]
         attr_accessor :database
       
+        # The progress of the UpdateDatabaseDdl operations. Currently, only index
+        # creation statements will have a continuously updating progress. For non-index
+        # creation statements, `progress[i]` will have start time and end time populated
+        # with commit timestamp of operation, as well as a progress of 100% once the
+        # operation has completed. `progress[i]` is the operation progress for `
+        # statements[i]`.
+        # Corresponds to the JSON property `progress`
+        # @return [Array<Google::Apis::SpannerV1::OperationProgress>]
+        attr_accessor :progress
+      
         # For an update this list contains all the statements. For an individual
         # statement, this list contains only that statement.
         # Corresponds to the JSON property `statements`
@@ -3979,6 +4010,7 @@ module Google
         def update!(**args)
           @commit_timestamps = args[:commit_timestamps] if args.key?(:commit_timestamps)
           @database = args[:database] if args.key?(:database)
+          @progress = args[:progress] if args.key?(:progress)
           @statements = args[:statements] if args.key?(:statements)
           @throttled = args[:throttled] if args.key?(:throttled)
         end
