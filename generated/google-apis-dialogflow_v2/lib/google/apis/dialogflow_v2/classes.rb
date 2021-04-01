@@ -2175,6 +2175,30 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3SessionInfo]
         attr_accessor :session_info
       
+        # If natural language text was provided as input, this field will contain a copy
+        # of the text.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # If natural language speech audio was provided as input, this field will
+        # contain the transcript for the audio.
+        # Corresponds to the JSON property `transcript`
+        # @return [String]
+        attr_accessor :transcript
+      
+        # If an event was provided as input, this field will contain the name of the
+        # event.
+        # Corresponds to the JSON property `triggerEvent`
+        # @return [String]
+        attr_accessor :trigger_event
+      
+        # If an intent was provided as input, this field will contain a copy of the
+        # intent identifier. Format: `projects//locations//agents//intents/`.
+        # Corresponds to the JSON property `triggerIntent`
+        # @return [String]
+        attr_accessor :trigger_intent
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2189,6 +2213,10 @@ module Google
           @payload = args[:payload] if args.key?(:payload)
           @sentiment_analysis_result = args[:sentiment_analysis_result] if args.key?(:sentiment_analysis_result)
           @session_info = args[:session_info] if args.key?(:session_info)
+          @text = args[:text] if args.key?(:text)
+          @transcript = args[:transcript] if args.key?(:transcript)
+          @trigger_event = args[:trigger_event] if args.key?(:trigger_event)
+          @trigger_intent = args[:trigger_intent] if args.key?(:trigger_intent)
         end
       end
       
@@ -4534,6 +4562,30 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1SessionInfo]
         attr_accessor :session_info
       
+        # If natural language text was provided as input, this field will contain a copy
+        # of the text.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # If natural language speech audio was provided as input, this field will
+        # contain the transcript for the audio.
+        # Corresponds to the JSON property `transcript`
+        # @return [String]
+        attr_accessor :transcript
+      
+        # If an event was provided as input, this field will contain the name of the
+        # event.
+        # Corresponds to the JSON property `triggerEvent`
+        # @return [String]
+        attr_accessor :trigger_event
+      
+        # If an intent was provided as input, this field will contain a copy of the
+        # intent identifier. Format: `projects//locations//agents//intents/`.
+        # Corresponds to the JSON property `triggerIntent`
+        # @return [String]
+        attr_accessor :trigger_intent
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4548,6 +4600,10 @@ module Google
           @payload = args[:payload] if args.key?(:payload)
           @sentiment_analysis_result = args[:sentiment_analysis_result] if args.key?(:sentiment_analysis_result)
           @session_info = args[:session_info] if args.key?(:session_info)
+          @text = args[:text] if args.key?(:text)
+          @transcript = args[:transcript] if args.key?(:transcript)
+          @trigger_event = args[:trigger_event] if args.key?(:trigger_event)
+          @trigger_intent = args[:trigger_intent] if args.key?(:trigger_intent)
         end
       end
       
@@ -5747,6 +5803,13 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfig]
         attr_accessor :human_agent_assistant_config
       
+        # Defines the hand off to a live agent, typically on which external agent
+        # service provider to connect to a conversation. Currently, this feature is not
+        # general available, please contact Google to get access.
+        # Corresponds to the JSON property `humanAgentHandoffConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentHandoffConfig]
+        attr_accessor :human_agent_handoff_config
+      
         # Language which represents the conversationProfile. If unspecified, the default
         # language code en-us applies. Users need to create a ConversationProfile for
         # each language they want to support.
@@ -5795,6 +5858,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @human_agent_assistant_config = args[:human_agent_assistant_config] if args.key?(:human_agent_assistant_config)
+          @human_agent_handoff_config = args[:human_agent_handoff_config] if args.key?(:human_agent_handoff_config)
           @language_code = args[:language_code] if args.key?(:language_code)
           @logging_config = args[:logging_config] if args.key?(:logging_config)
           @name = args[:name] if args.key?(:name)
@@ -6508,6 +6572,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Detail human agent assistant config.
+        # Corresponds to the JSON property `endUserSuggestionConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig]
+        attr_accessor :end_user_suggestion_config
+      
+        # Detail human agent assistant config.
         # Corresponds to the JSON property `humanAgentSuggestionConfig`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig]
         attr_accessor :human_agent_suggestion_config
@@ -6528,6 +6597,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @end_user_suggestion_config = args[:end_user_suggestion_config] if args.key?(:end_user_suggestion_config)
           @human_agent_suggestion_config = args[:human_agent_suggestion_config] if args.key?(:human_agent_suggestion_config)
           @message_analysis_config = args[:message_analysis_config] if args.key?(:message_analysis_config)
           @notification_config = args[:notification_config] if args.key?(:notification_config)
@@ -6559,6 +6629,15 @@ module Google
       class GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig
         include Google::Apis::Core::Hashable
       
+        # Enable entity extraction in conversation messages on [agent assist stage](
+        # https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages).
+        # If unspecified, defaults to false. Currently, this feature is not general
+        # available, please contact Google to get access.
+        # Corresponds to the JSON property `enableEntityExtraction`
+        # @return [Boolean]
+        attr_accessor :enable_entity_extraction
+        alias_method :enable_entity_extraction?, :enable_entity_extraction
+      
         # Enable sentiment analysis in conversation messages on [agent assist stage](
         # https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages).
         # If unspecified, defaults to false. Sentiment analysis inspects user input and
@@ -6583,6 +6662,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enable_entity_extraction = args[:enable_entity_extraction] if args.key?(:enable_entity_extraction)
           @enable_sentiment_analysis = args[:enable_sentiment_analysis] if args.key?(:enable_sentiment_analysis)
         end
       end
@@ -6884,6 +6964,93 @@ module Google
           @conversation = args[:conversation] if args.key?(:conversation)
           @participant = args[:participant] if args.key?(:participant)
           @suggestion_results = args[:suggestion_results] if args.key?(:suggestion_results)
+        end
+      end
+      
+      # Defines the hand off to a live agent, typically on which external agent
+      # service provider to connect to a conversation. Currently, this feature is not
+      # general available, please contact Google to get access.
+      class GoogleCloudDialogflowV2HumanAgentHandoffConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration specific to LivePerson (https://www.liveperson.com).
+        # Corresponds to the JSON property `livePersonConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig]
+        attr_accessor :live_person_config
+      
+        # Configuration specific to Salesforce Live Agent.
+        # Corresponds to the JSON property `salesforceLiveAgentConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig]
+        attr_accessor :salesforce_live_agent_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @live_person_config = args[:live_person_config] if args.key?(:live_person_config)
+          @salesforce_live_agent_config = args[:salesforce_live_agent_config] if args.key?(:salesforce_live_agent_config)
+        end
+      end
+      
+      # Configuration specific to LivePerson (https://www.liveperson.com).
+      class GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Account number of the LivePerson account to connect. This is the
+        # account number you input at the login page.
+        # Corresponds to the JSON property `accountNumber`
+        # @return [String]
+        attr_accessor :account_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_number = args[:account_number] if args.key?(:account_number)
+        end
+      end
+      
+      # Configuration specific to Salesforce Live Agent.
+      class GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Live Agent chat button ID.
+        # Corresponds to the JSON property `buttonId`
+        # @return [String]
+        attr_accessor :button_id
+      
+        # Required. Live Agent deployment ID.
+        # Corresponds to the JSON property `deploymentId`
+        # @return [String]
+        attr_accessor :deployment_id
+      
+        # Required. Domain of the Live Agent endpoint for this agent. You can find the
+        # endpoint URL in the `Live Agent settings` page. For example if URL has the
+        # form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.
+        # la4-c2-phx.salesforceliveagent.com.
+        # Corresponds to the JSON property `endpointDomain`
+        # @return [String]
+        attr_accessor :endpoint_domain
+      
+        # Required. The organization ID of the Salesforce account.
+        # Corresponds to the JSON property `organizationId`
+        # @return [String]
+        attr_accessor :organization_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @button_id = args[:button_id] if args.key?(:button_id)
+          @deployment_id = args[:deployment_id] if args.key?(:deployment_id)
+          @endpoint_domain = args[:endpoint_domain] if args.key?(:endpoint_domain)
+          @organization_id = args[:organization_id] if args.key?(:organization_id)
         end
       end
       
