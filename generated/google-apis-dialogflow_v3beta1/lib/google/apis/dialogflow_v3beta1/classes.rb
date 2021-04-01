@@ -2175,6 +2175,30 @@ module Google
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3SessionInfo]
         attr_accessor :session_info
       
+        # If natural language text was provided as input, this field will contain a copy
+        # of the text.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # If natural language speech audio was provided as input, this field will
+        # contain the transcript for the audio.
+        # Corresponds to the JSON property `transcript`
+        # @return [String]
+        attr_accessor :transcript
+      
+        # If an event was provided as input, this field will contain the name of the
+        # event.
+        # Corresponds to the JSON property `triggerEvent`
+        # @return [String]
+        attr_accessor :trigger_event
+      
+        # If an intent was provided as input, this field will contain a copy of the
+        # intent identifier. Format: `projects//locations//agents//intents/`.
+        # Corresponds to the JSON property `triggerIntent`
+        # @return [String]
+        attr_accessor :trigger_intent
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2189,6 +2213,10 @@ module Google
           @payload = args[:payload] if args.key?(:payload)
           @sentiment_analysis_result = args[:sentiment_analysis_result] if args.key?(:sentiment_analysis_result)
           @session_info = args[:session_info] if args.key?(:session_info)
+          @text = args[:text] if args.key?(:text)
+          @transcript = args[:transcript] if args.key?(:transcript)
+          @trigger_event = args[:trigger_event] if args.key?(:trigger_event)
+          @trigger_intent = args[:trigger_intent] if args.key?(:trigger_intent)
         end
       end
       
@@ -3686,6 +3714,15 @@ module Google
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1NluSettings]
         attr_accessor :nlu_settings
       
+        # A flow's transition route group serve two purposes: * They are responsible for
+        # matching the user's first utterances in the flow. * They are inherited by
+        # every page's transition route groups. Transition route groups defined in the
+        # page have higher priority than those defined in the flow. Format:`projects//
+        # locations//agents//flows//transitionRouteGroups/`.
+        # Corresponds to the JSON property `transitionRouteGroups`
+        # @return [Array<String>]
+        attr_accessor :transition_route_groups
+      
         # A flow's transition routes serve two purposes: * They are responsible for
         # matching the user's first utterances in the flow. * They are inherited by
         # every page's transition routes and can support use cases such as the user
@@ -3710,6 +3747,7 @@ module Google
           @event_handlers = args[:event_handlers] if args.key?(:event_handlers)
           @name = args[:name] if args.key?(:name)
           @nlu_settings = args[:nlu_settings] if args.key?(:nlu_settings)
+          @transition_route_groups = args[:transition_route_groups] if args.key?(:transition_route_groups)
           @transition_routes = args[:transition_routes] if args.key?(:transition_routes)
         end
       end
@@ -5517,6 +5555,16 @@ module Google
         attr_accessor :analyze_query_text_sentiment
         alias_method :analyze_query_text_sentiment?, :analyze_query_text_sentiment
       
+        # The unique identifier of the page to override the current page in the session.
+        # Format: `projects//locations//agents//pages/`. If `current_page` is specified,
+        # the previous state of the session will be ignored by Dialogflow, including the
+        # previous page and the previous session parameters. In most cases, current_page
+        # and parameters should be configured together to direct a session to a specific
+        # state.
+        # Corresponds to the JSON property `currentPage`
+        # @return [String]
+        attr_accessor :current_page
+      
         # Whether to disable webhook calls for this request.
         # Corresponds to the JSON property `disableWebhook`
         # @return [Boolean]
@@ -5584,6 +5632,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @analyze_query_text_sentiment = args[:analyze_query_text_sentiment] if args.key?(:analyze_query_text_sentiment)
+          @current_page = args[:current_page] if args.key?(:current_page)
           @disable_webhook = args[:disable_webhook] if args.key?(:disable_webhook)
           @geo_location = args[:geo_location] if args.key?(:geo_location)
           @parameters = args[:parameters] if args.key?(:parameters)
@@ -7441,6 +7490,30 @@ module Google
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SessionInfo]
         attr_accessor :session_info
       
+        # If natural language text was provided as input, this field will contain a copy
+        # of the text.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # If natural language speech audio was provided as input, this field will
+        # contain the transcript for the audio.
+        # Corresponds to the JSON property `transcript`
+        # @return [String]
+        attr_accessor :transcript
+      
+        # If an event was provided as input, this field will contain the name of the
+        # event.
+        # Corresponds to the JSON property `triggerEvent`
+        # @return [String]
+        attr_accessor :trigger_event
+      
+        # If an intent was provided as input, this field will contain a copy of the
+        # intent identifier. Format: `projects//locations//agents//intents/`.
+        # Corresponds to the JSON property `triggerIntent`
+        # @return [String]
+        attr_accessor :trigger_intent
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7455,6 +7528,10 @@ module Google
           @payload = args[:payload] if args.key?(:payload)
           @sentiment_analysis_result = args[:sentiment_analysis_result] if args.key?(:sentiment_analysis_result)
           @session_info = args[:session_info] if args.key?(:session_info)
+          @text = args[:text] if args.key?(:text)
+          @transcript = args[:transcript] if args.key?(:transcript)
+          @trigger_event = args[:trigger_event] if args.key?(:trigger_event)
+          @trigger_intent = args[:trigger_intent] if args.key?(:trigger_intent)
         end
       end
       

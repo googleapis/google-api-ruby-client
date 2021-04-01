@@ -2791,6 +2791,10 @@ module Google
       
           property :session_info, as: 'sessionInfo', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3SessionInfo, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3SessionInfo::Representation
       
+          property :text, as: 'text'
+          property :transcript, as: 'transcript'
+          property :trigger_event, as: 'triggerEvent'
+          property :trigger_intent, as: 'triggerIntent'
         end
       end
       
@@ -3213,6 +3217,7 @@ module Google
           property :name, as: 'name'
           property :nlu_settings, as: 'nluSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1NluSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1NluSettings::Representation
       
+          collection :transition_route_groups, as: 'transitionRouteGroups'
           collection :transition_routes, as: 'transitionRoutes', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionRoute, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TransitionRoute::Representation
       
         end
@@ -3724,6 +3729,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :analyze_query_text_sentiment, as: 'analyzeQueryTextSentiment'
+          property :current_page, as: 'currentPage'
           property :disable_webhook, as: 'disableWebhook'
           property :geo_location, as: 'geoLocation', class: Google::Apis::DialogflowV3beta1::GoogleTypeLatLng, decorator: Google::Apis::DialogflowV3beta1::GoogleTypeLatLng::Representation
       
@@ -4247,6 +4253,10 @@ module Google
       
           property :session_info, as: 'sessionInfo', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SessionInfo, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SessionInfo::Representation
       
+          property :text, as: 'text'
+          property :transcript, as: 'transcript'
+          property :trigger_event, as: 'triggerEvent'
+          property :trigger_intent, as: 'triggerIntent'
         end
       end
       
