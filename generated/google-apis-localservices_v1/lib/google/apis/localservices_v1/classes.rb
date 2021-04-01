@@ -23,7 +23,7 @@ module Google
     module LocalservicesV1
       
       # An Account Report of a GLS account identified by their account id containing
-      # aggregate data gathered from a particular date range.
+      # aggregate data gathered from a particular date range. Next ID: 18
       class GoogleAdsHomeservicesLocalservicesV1AccountReport
         include Google::Apis::Core::Hashable
       
@@ -81,6 +81,11 @@ module Google
         # @return [Float]
         attr_accessor :current_period_total_cost
       
+        # Number of impressions that customers have had in the past 2 days.
+        # Corresponds to the JSON property `impressionsLastTwoDays`
+        # @return [Fixnum]
+        attr_accessor :impressions_last_two_days
+      
         # Phone lead responsiveness of the account for the past 90 days from current
         # date. This is computed by taking the total number of connected calls from
         # charged phone leads and dividing by the total number of calls received.
@@ -132,6 +137,7 @@ module Google
           @current_period_connected_phone_calls = args[:current_period_connected_phone_calls] if args.key?(:current_period_connected_phone_calls)
           @current_period_phone_calls = args[:current_period_phone_calls] if args.key?(:current_period_phone_calls)
           @current_period_total_cost = args[:current_period_total_cost] if args.key?(:current_period_total_cost)
+          @impressions_last_two_days = args[:impressions_last_two_days] if args.key?(:impressions_last_two_days)
           @phone_lead_responsiveness = args[:phone_lead_responsiveness] if args.key?(:phone_lead_responsiveness)
           @previous_period_charged_leads = args[:previous_period_charged_leads] if args.key?(:previous_period_charged_leads)
           @previous_period_connected_phone_calls = args[:previous_period_connected_phone_calls] if args.key?(:previous_period_connected_phone_calls)

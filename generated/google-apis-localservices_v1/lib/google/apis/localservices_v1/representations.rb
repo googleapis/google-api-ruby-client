@@ -84,6 +84,7 @@ module Google
           property :current_period_connected_phone_calls, :numeric_string => true, as: 'currentPeriodConnectedPhoneCalls'
           property :current_period_phone_calls, :numeric_string => true, as: 'currentPeriodPhoneCalls'
           property :current_period_total_cost, as: 'currentPeriodTotalCost'
+          property :impressions_last_two_days, :numeric_string => true, as: 'impressionsLastTwoDays'
           property :phone_lead_responsiveness, as: 'phoneLeadResponsiveness'
           property :previous_period_charged_leads, :numeric_string => true, as: 'previousPeriodChargedLeads'
           property :previous_period_connected_phone_calls, :numeric_string => true, as: 'previousPeriodConnectedPhoneCalls'
