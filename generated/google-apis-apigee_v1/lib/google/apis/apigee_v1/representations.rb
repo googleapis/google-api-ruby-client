@@ -58,6 +58,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1AddonsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1AdvancedApiOpsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1Alias
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -436,6 +448,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1IntegrationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1KeyAliasReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -605,6 +623,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1Metric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1MonetizationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -839,6 +863,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1Session
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SetAddonsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1079,6 +1109,25 @@ module Google
       class GoogleCloudApigeeV1ActivateNatAddressRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudApigeeV1AddonsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_api_ops_config, as: 'advancedApiOpsConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AdvancedApiOpsConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AdvancedApiOpsConfig::Representation
+      
+          property :integration_config, as: 'integrationConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1IntegrationConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1IntegrationConfig::Representation
+      
+          property :monetization_config, as: 'monetizationConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1MonetizationConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1MonetizationConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1AdvancedApiOpsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
@@ -1881,6 +1930,13 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1IntegrationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class GoogleCloudApigeeV1KeyAliasReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2126,6 +2182,13 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1MonetizationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class GoogleCloudApigeeV1NatAddress
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2204,6 +2267,8 @@ module Google
       class GoogleCloudApigeeV1Organization
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :addons_config, as: 'addonsConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AddonsConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AddonsConfig::Representation
+      
           property :analytics_region, as: 'analyticsRegion'
           collection :attributes, as: 'attributes'
           property :authorized_network, as: 'authorizedNetwork'
@@ -2532,6 +2597,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :timestamp_ms, :numeric_string => true, as: 'timestampMs'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SetAddonsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :addons_config, as: 'addonsConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AddonsConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AddonsConfig::Representation
+      
         end
       end
       
