@@ -906,6 +906,11 @@ module Google
         # @return [String]
         attr_accessor :source_update_time
       
+        # The name of the vendor of the product.
+        # Corresponds to the JSON property `vendor`
+        # @return [String]
+        attr_accessor :vendor
+      
         def initialize(**args)
            update!(**args)
         end
@@ -923,6 +928,7 @@ module Google
           @severity_name = args[:severity_name] if args.key?(:severity_name)
           @source = args[:source] if args.key?(:source)
           @source_update_time = args[:source_update_time] if args.key?(:source_update_time)
+          @vendor = args[:vendor] if args.key?(:vendor)
         end
       end
       

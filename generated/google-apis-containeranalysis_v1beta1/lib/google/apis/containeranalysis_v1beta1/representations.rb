@@ -763,6 +763,7 @@ module Google
           property :severity_name, as: 'severityName'
           property :source, as: 'source'
           property :source_update_time, as: 'sourceUpdateTime'
+          property :vendor, as: 'vendor'
         end
       end
       
