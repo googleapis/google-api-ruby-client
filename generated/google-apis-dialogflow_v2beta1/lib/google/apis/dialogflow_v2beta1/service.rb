@@ -3098,7 +3098,7 @@ module Google
         #   Optional. Filter on message fields. Currently predicates on `create_time` and `
         #   create_time_epoch_microseconds` are supported. `create_time` only support
         #   milliseconds accuracy. E.g., `create_time_epoch_microseconds >
-        #   1551790877964485` or `create_time > 2017-01-15T01:30:15.01Z`. For more
+        #   1551790877964485` or `create_time > "2017-01-15T01:30:15.01Z"`. For more
         #   information about filtering, see [API Filtering](https://aip.dev/160).
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. By default
@@ -3369,7 +3369,7 @@ module Google
         #   Optional. Filter on suggestions fields. Currently predicates on `create_time`
         #   and `create_time_epoch_microseconds` are supported. `create_time` only support
         #   milliseconds accuracy. E.g., `create_time_epoch_microseconds >
-        #   1551790877964485` or `create_time > 2017-01-15T01:30:15.01Z` For more
+        #   1551790877964485` or `create_time > "2017-01-15T01:30:15.01Z"` For more
         #   information about filtering, see [API Filtering](https://aip.dev/160).
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. The default
@@ -6548,7 +6548,7 @@ module Google
         #   Optional. Filter on message fields. Currently predicates on `create_time` and `
         #   create_time_epoch_microseconds` are supported. `create_time` only support
         #   milliseconds accuracy. E.g., `create_time_epoch_microseconds >
-        #   1551790877964485` or `create_time > 2017-01-15T01:30:15.01Z`. For more
+        #   1551790877964485` or `create_time > "2017-01-15T01:30:15.01Z"`. For more
         #   information about filtering, see [API Filtering](https://aip.dev/160).
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. By default

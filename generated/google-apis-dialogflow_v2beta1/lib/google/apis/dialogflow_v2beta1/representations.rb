@@ -1558,6 +1558,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1ImportAgentRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2929,6 +2947,10 @@ module Google
       
           property :session_info, as: 'sessionInfo', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3SessionInfo, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3SessionInfo::Representation
       
+          property :text, as: 'text'
+          property :transcript, as: 'transcript'
+          property :trigger_event, as: 'triggerEvent'
+          property :trigger_intent, as: 'triggerIntent'
         end
       end
       
@@ -3593,6 +3615,10 @@ module Google
       
           property :session_info, as: 'sessionInfo', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1SessionInfo, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1SessionInfo::Representation
       
+          property :text, as: 'text'
+          property :transcript, as: 'transcript'
+          property :trigger_event, as: 'triggerEvent'
+          property :trigger_intent, as: 'triggerIntent'
         end
       end
       
@@ -4603,6 +4629,8 @@ module Google
           property :display_name, as: 'displayName'
           property :human_agent_assistant_config, as: 'humanAgentAssistantConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig::Representation
       
+          property :human_agent_handoff_config, as: 'humanAgentHandoffConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig::Representation
+      
           property :language_code, as: 'languageCode'
           property :logging_config, as: 'loggingConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1LoggingConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1LoggingConfig::Representation
       
@@ -4813,6 +4841,8 @@ module Google
       class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_user_suggestion_config, as: 'endUserSuggestionConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig::Representation
+      
           property :human_agent_suggestion_config, as: 'humanAgentSuggestionConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig::Representation
       
           property :message_analysis_config, as: 'messageAnalysisConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig::Representation
@@ -4832,6 +4862,7 @@ module Google
       class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_entity_extraction, as: 'enableEntityExtraction'
           property :enable_sentiment_analysis, as: 'enableSentimentAnalysis'
         end
       end
@@ -4921,6 +4952,33 @@ module Google
           property :participant, as: 'participant'
           collection :suggestion_results, as: 'suggestionResults', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestionResult, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestionResult::Representation
       
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :live_person_config, as: 'livePersonConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfig::Representation
+      
+          property :salesforce_live_agent_config, as: 'salesforceLiveAgentConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_number, as: 'accountNumber'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :button_id, as: 'buttonId'
+          property :deployment_id, as: 'deploymentId'
+          property :endpoint_domain, as: 'endpointDomain'
+          property :organization_id, as: 'organizationId'
         end
       end
       
