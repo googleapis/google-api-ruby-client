@@ -691,7 +691,7 @@ module Google
       
         # Array of SpeechContext. A means to provide context to assist the speech
         # recognition. For more information, see [speech adaptation](https://cloud.
-        # google.com/speech-to-text/docs/context-strength).
+        # google.com/speech-to-text/docs/adaptation).
         # Corresponds to the JSON property `speechContexts`
         # @return [Array<Google::Apis::SpeechV1p1beta1::SpeechContext>]
         attr_accessor :speech_contexts
