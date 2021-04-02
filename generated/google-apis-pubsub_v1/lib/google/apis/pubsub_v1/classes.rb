@@ -1221,8 +1221,9 @@ module Google
         # Indicates whether to retain acknowledged messages. If true, then messages are
         # not expunged from the subscription's backlog, even if they are acknowledged,
         # until they fall out of the `message_retention_duration` window. This must be
-        # true if you would like to [Seek to a timestamp] (https://cloud.google.com/
-        # pubsub/docs/replay-overview#seek_to_a_time).
+        # true if you would like to [`Seek` to a timestamp] (https://cloud.google.com/
+        # pubsub/docs/replay-overview#seek_to_a_time) in the past to replay previously-
+        # acknowledged messages.
         # Corresponds to the JSON property `retainAckedMessages`
         # @return [Boolean]
         attr_accessor :retain_acked_messages
