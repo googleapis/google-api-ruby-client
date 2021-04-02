@@ -6526,9 +6526,9 @@ module Google
       
         # [Required] The field data type. Possible values include STRING, BYTES, INTEGER,
         # INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC,
-        # BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, RECORD (
-        # where RECORD indicates that the field contains a nested schema) or STRUCT (
-        # same as RECORD).
+        # BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, INTERVAL,
+        # RECORD (where RECORD indicates that the field contains a nested schema) or
+        # STRUCT (same as RECORD).
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
