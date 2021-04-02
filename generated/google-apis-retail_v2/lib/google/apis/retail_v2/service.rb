@@ -100,10 +100,8 @@ module Google
         #   Required. Immutable. The fully qualified resource name of the catalog.
         # @param [Google::Apis::RetailV2::GoogleCloudRetailV2Catalog] google_cloud_retail_v2_catalog_object
         # @param [String] update_mask
-        #   Indicates which fields in the provided Catalog to update. If not set, will
-        #   only update the Catalog.product_level_config field, which is also the only
-        #   currently supported field to update. If an unsupported or unknown field is
-        #   provided, an INVALID_ARGUMENT error is returned.
+        #   Indicates which fields in the provided Catalog to update. If an unsupported or
+        #   unknown field is provided, an INVALID_ARGUMENT error is returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
