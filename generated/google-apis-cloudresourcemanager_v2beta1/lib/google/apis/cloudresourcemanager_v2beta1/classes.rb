@@ -279,8 +279,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # True if the project can be retrieved using GetProject. No other operations on
-        # the project are guaranteed to work until the project creation is complete.
+        # True if the project can be retrieved using `GetProject`. No other operations
+        # on the project are guaranteed to work until the project creation is complete.
         # Corresponds to the JSON property `gettable`
         # @return [Boolean]
         attr_accessor :gettable
@@ -330,8 +330,8 @@ module Google
         end
       end
       
-      # A status object which is used as the `metadata` field for the Operation
-      # returned by DeleteFolder.
+      # A status object which is used as the `metadata` field for the `Operation`
+      # returned by `DeleteFolder`.
       class DeleteFolderMetadata
         include Google::Apis::Core::Hashable
       
@@ -344,7 +344,7 @@ module Google
         end
       end
       
-      # A status object which is used as the `metadata` field for the Operation
+      # A status object which is used as the `metadata` field for the operation
       # returned by DeleteOrganization.
       class DeleteOrganizationMetadata
         include Google::Apis::Core::Hashable
@@ -359,7 +359,7 @@ module Google
       end
       
       # A status object which is used as the `metadata` field for the Operation
-      # returned by DeleteProject.
+      # returned by `DeleteProject`.
       class DeleteProjectMetadata
         include Google::Apis::Core::Hashable
       
@@ -633,7 +633,7 @@ module Google
         end
       end
       
-      # Metadata pertaining to the Folder move process.
+      # Metadata pertaining to the folder move process.
       class MoveFolderMetadata
         include Google::Apis::Core::Hashable
       
@@ -1090,8 +1090,8 @@ module Google
         end
       end
       
-      # A status object which is used as the `metadata` field for the Operation
-      # returned by UndeleteFolder.
+      # A status object which is used as the `metadata` field for the `Operation`
+      # returned by `UndeleteFolder`.
       class UndeleteFolderMetadata
         include Google::Apis::Core::Hashable
       
@@ -1132,7 +1132,7 @@ module Google
       end
       
       # A status object which is used as the `metadata` field for the Operation
-      # returned by UndeleteProject.
+      # returned by `UndeleteProject`.
       class UndeleteProjectMetadata
         include Google::Apis::Core::Hashable
       
