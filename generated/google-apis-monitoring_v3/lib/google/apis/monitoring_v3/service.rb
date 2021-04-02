@@ -56,9 +56,10 @@ module Google
         # Lists time series that match a filter. This method does not require a
         # Workspace.
         # @param [String] name
-        #   Required. The project, organization or folder on which to execute the request.
-        #   The format is: projects/[PROJECT_ID_OR_NUMBER] organizations/[ORGANIZATION_ID]
-        #   folders/[FOLDER_ID]
+        #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
+        #   , organization or folder on which to execute the request. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER] organizations/[ORGANIZATION_ID] folders/[
+        #   FOLDER_ID]
         # @param [String] aggregation_alignment_period
         #   The alignment_period specifies a time interval, in seconds, that is used to
         #   divide the data in all the time series into consistent blocks of time. This
@@ -220,9 +221,10 @@ module Google
         # Lists time series that match a filter. This method does not require a
         # Workspace.
         # @param [String] name
-        #   Required. The project, organization or folder on which to execute the request.
-        #   The format is: projects/[PROJECT_ID_OR_NUMBER] organizations/[ORGANIZATION_ID]
-        #   folders/[FOLDER_ID]
+        #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
+        #   , organization or folder on which to execute the request. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER] organizations/[ORGANIZATION_ID] folders/[
+        #   FOLDER_ID]
         # @param [String] aggregation_alignment_period
         #   The alignment_period specifies a time interval, in seconds, that is used to
         #   divide the data in all the time series into consistent blocks of time. This
@@ -383,14 +385,14 @@ module Google
         
         # Creates a new alerting policy.
         # @param [String] name
-        #   Required. The project in which to create the alerting policy. The format is:
-        #   projects/[PROJECT_ID_OR_NUMBER] Note that this field names the parent
-        #   container in which the alerting policy will be written, not the name of the
-        #   created policy. |name| must be a host project of a workspace, otherwise
-        #   INVALID_ARGUMENT error will return. The alerting policy that is returned will
-        #   have a name that contains a normalized representation of this name as a prefix
-        #   but adds a suffix of the form /alertPolicies/[ALERT_POLICY_ID], identifying
-        #   the policy in the container.
+        #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
+        #   in which to create the alerting policy. The format is: projects/[
+        #   PROJECT_ID_OR_NUMBER] Note that this field names the parent container in which
+        #   the alerting policy will be written, not the name of the created policy. |name|
+        #   must be a host project of a workspace, otherwise INVALID_ARGUMENT error will
+        #   return. The alerting policy that is returned will have a name that contains a
+        #   normalized representation of this name as a prefix but adds a suffix of the
+        #   form /alertPolicies/[ALERT_POLICY_ID], identifying the policy in the container.
         # @param [Google::Apis::MonitoringV3::AlertPolicy] alert_policy_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -486,10 +488,11 @@ module Google
         
         # Lists the existing alerting policies for the workspace.
         # @param [String] name
-        #   Required. The project whose alert policies are to be listed. The format is:
-        #   projects/[PROJECT_ID_OR_NUMBER] Note that this field names the parent
-        #   container in which the alerting policies to be listed are stored. To retrieve
-        #   a single alerting policy by name, use the GetAlertPolicy operation, instead.
+        #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
+        #   whose alert policies are to be listed. The format is: projects/[
+        #   PROJECT_ID_OR_NUMBER] Note that this field names the parent container in which
+        #   the alerting policies to be listed are stored. To retrieve a single alerting
+        #   policy by name, use the GetAlertPolicy operation, instead.
         # @param [String] filter
         #   If provided, this field specifies the criteria that must be met by alert
         #   policies to be included in the response.For more details, see sorting and
@@ -598,8 +601,8 @@ module Google
         # only for use by the Stackdriver Monitoring Agent. Use projects.timeSeries.
         # create instead.
         # @param [String] name
-        #   The project in which to create the time series. The format is: projects/[
-        #   PROJECT_ID_OR_NUMBER]
+        #   The project (https://cloud.google.com/monitoring/api/v3#project_name) in which
+        #   to create the time series. The format is: projects/[PROJECT_ID_OR_NUMBER]
         # @param [Google::Apis::MonitoringV3::CreateCollectdTimeSeriesRequest] create_collectd_time_series_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -632,8 +635,8 @@ module Google
         
         # Creates a new group.
         # @param [String] name
-        #   Required. The project in which to create the group. The format is: projects/[
-        #   PROJECT_ID_OR_NUMBER]
+        #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
+        #   in which to create the group. The format is: projects/[PROJECT_ID_OR_NUMBER]
         # @param [Google::Apis::MonitoringV3::Group] group_object
         # @param [Boolean] validate_only
         #   If true, validate this request but do not create the group.
@@ -736,8 +739,8 @@ module Google
         
         # Lists the existing groups.
         # @param [String] name
-        #   Required. The project whose groups are to be listed. The format is: projects/[
-        #   PROJECT_ID_OR_NUMBER]
+        #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
+        #   whose groups are to be listed. The format is: projects/[PROJECT_ID_OR_NUMBER]
         # @param [String] ancestors_of_group
         #   A group name. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
         #   Returns groups that are ancestors of the specified group. The groups are
@@ -886,8 +889,9 @@ module Google
         # Creates a new metric descriptor. User-created metric descriptors define custom
         # metrics (https://cloud.google.com/monitoring/custom-metrics).
         # @param [String] name
-        #   Required. The project on which to execute the request. The format is: projects/
-        #   [PROJECT_ID_OR_NUMBER]
+        #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
+        #   on which to execute the request. The format is: 4 projects/
+        #   PROJECT_ID_OR_NUMBER
         # @param [Google::Apis::MonitoringV3::MetricDescriptor] metric_descriptor_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -987,8 +991,9 @@ module Google
         # Lists metric descriptors that match a filter. This method does not require a
         # Workspace.
         # @param [String] name
-        #   Required. The project on which to execute the request. The format is: projects/
-        #   [PROJECT_ID_OR_NUMBER]
+        #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
+        #   on which to execute the request. The format is: projects/[
+        #   PROJECT_ID_OR_NUMBER]
         # @param [String] filter
         #   If this field is empty, all custom and system-defined metric descriptors are
         #   returned. Otherwise, the filter (https://cloud.google.com/monitoring/api/v3/
@@ -1068,8 +1073,9 @@ module Google
         # Lists monitored resource descriptors that match a filter. This method does not
         # require a Workspace.
         # @param [String] name
-        #   Required. The project on which to execute the request. The format is: projects/
-        #   [PROJECT_ID_OR_NUMBER]
+        #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
+        #   on which to execute the request. The format is: projects/[
+        #   PROJECT_ID_OR_NUMBER]
         # @param [String] filter
         #   An optional filter (https://cloud.google.com/monitoring/api/v3/filters)
         #   describing the descriptors to be returned. The filter can reference the
@@ -1149,8 +1155,9 @@ module Google
         # @param [String] name
         #   Required. The REST resource name of the parent from which to retrieve the
         #   notification channel descriptors. The expected syntax is: projects/[
-        #   PROJECT_ID_OR_NUMBER] Note that this names the parent container in which to
-        #   look for the descriptors; to retrieve a single descriptor by name, use the
+        #   PROJECT_ID_OR_NUMBER] Note that this names (https://cloud.google.com/
+        #   monitoring/api/v3#project_name) the parent container in which to look for the
+        #   descriptors; to retrieve a single descriptor by name, use the
         #   GetNotificationChannelDescriptor operation, instead.
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. If not set to a
@@ -1190,8 +1197,9 @@ module Google
         # Creates a new notification channel, representing a single notification
         # endpoint such as an email address, SMS number, or PagerDuty service.
         # @param [String] name
-        #   Required. The project on which to execute the request. The format is: projects/
-        #   [PROJECT_ID_OR_NUMBER] This names the container into which the channel will be
+        #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
+        #   on which to execute the request. The format is: projects/[
+        #   PROJECT_ID_OR_NUMBER] This names the container into which the channel will be
         #   written, this does not name the newly created channel. The resulting channel's
         #   name will have a normalized version of this field as a prefix, but will add /
         #   notificationChannels/[CHANNEL_ID] to identify the channel.
@@ -1351,8 +1359,9 @@ module Google
         
         # Lists the notification channels that have been created for the project.
         # @param [String] name
-        #   Required. The project on which to execute the request. The format is: projects/
-        #   [PROJECT_ID_OR_NUMBER] This names the container in which to look for the
+        #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
+        #   on which to execute the request. The format is: projects/[
+        #   PROJECT_ID_OR_NUMBER] This names the container in which to look for the
         #   notification channels; it does not name a specific channel. To query a
         #   specific channel by REST resource name, use the GetNotificationChannel
         #   operation.
@@ -1515,8 +1524,9 @@ module Google
         # time series in the request were written. If any time series could not be
         # written, a corresponding failure message is included in the error response.
         # @param [String] name
-        #   Required. The project on which to execute the request. The format is: projects/
-        #   [PROJECT_ID_OR_NUMBER]
+        #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
+        #   on which to execute the request. The format is: projects/[
+        #   PROJECT_ID_OR_NUMBER]
         # @param [Google::Apis::MonitoringV3::CreateTimeSeriesRequest] create_time_series_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1550,9 +1560,10 @@ module Google
         # Lists time series that match a filter. This method does not require a
         # Workspace.
         # @param [String] name
-        #   Required. The project, organization or folder on which to execute the request.
-        #   The format is: projects/[PROJECT_ID_OR_NUMBER] organizations/[ORGANIZATION_ID]
-        #   folders/[FOLDER_ID]
+        #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
+        #   , organization or folder on which to execute the request. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER] organizations/[ORGANIZATION_ID] folders/[
+        #   FOLDER_ID]
         # @param [String] aggregation_alignment_period
         #   The alignment_period specifies a time interval, in seconds, that is used to
         #   divide the data in all the time series into consistent blocks of time. This
@@ -1714,8 +1725,9 @@ module Google
         # Queries time series using Monitoring Query Language. This method does not
         # require a Workspace.
         # @param [String] name
-        #   Required. The project on which to execute the request. The format is: projects/
-        #   [PROJECT_ID_OR_NUMBER]
+        #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
+        #   on which to execute the request. The format is: projects/[
+        #   PROJECT_ID_OR_NUMBER]
         # @param [Google::Apis::MonitoringV3::QueryTimeSeriesRequest] query_time_series_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1748,8 +1760,9 @@ module Google
         
         # Creates a new Uptime check configuration.
         # @param [String] parent
-        #   Required. The project in which to create the Uptime check. The format is:
-        #   projects/[PROJECT_ID_OR_NUMBER]
+        #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
+        #   in which to create the Uptime check. The format is: projects/[
+        #   PROJECT_ID_OR_NUMBER]
         # @param [Google::Apis::MonitoringV3::UptimeCheckConfig] uptime_check_config_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1847,8 +1860,9 @@ module Google
         # Lists the existing valid Uptime check configurations for the project (leaving
         # out any invalid configurations).
         # @param [String] parent
-        #   Required. The project whose Uptime check configurations are listed. The format
-        #   is: projects/[PROJECT_ID_OR_NUMBER]
+        #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
+        #   whose Uptime check configurations are listed. The format is: projects/[
+        #   PROJECT_ID_OR_NUMBER]
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. The server may
         #   further constrain the maximum number of results returned in a single page. If
@@ -1936,7 +1950,8 @@ module Google
         
         # Create a Service.
         # @param [String] parent
-        #   Required. Resource name of the parent workspace. The format is: projects/[
+        #   Required. Resource name (https://cloud.google.com/monitoring/api/v3#
+        #   project_name) of the parent workspace. The format is: projects/[
         #   PROJECT_ID_OR_NUMBER]
         # @param [Google::Apis::MonitoringV3::Service] service_object
         # @param [String] service_id
@@ -2037,8 +2052,9 @@ module Google
         # List Services for this workspace.
         # @param [String] parent
         #   Required. Resource name of the parent containing the listed services, either a
-        #   project or a Monitoring Workspace. The formats are: projects/[
-        #   PROJECT_ID_OR_NUMBER] workspaces/[HOST_PROJECT_ID_OR_NUMBER]
+        #   project (https://cloud.google.com/monitoring/api/v3#project_name) or a
+        #   Monitoring Workspace. The formats are: projects/[PROJECT_ID_OR_NUMBER]
+        #   workspaces/[HOST_PROJECT_ID_OR_NUMBER]
         # @param [String] filter
         #   A filter specifying what Services to return. The filter currently supports the
         #   following fields: - `identifier_case` - `app_engine.module_id` - `
