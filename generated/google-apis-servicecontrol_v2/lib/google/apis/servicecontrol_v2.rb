@@ -30,7 +30,7 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V2'
 
-      # View and manage your data across Google Cloud Platform services
+      # See, edit, configure, and delete your Google Cloud Platform data
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
 
       # Manage your Google Service Control data
