@@ -279,8 +279,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # True if the project can be retrieved using GetProject. No other operations on
-        # the project are guaranteed to work until the project creation is complete.
+        # True if the project can be retrieved using `GetProject`. No other operations
+        # on the project are guaranteed to work until the project creation is complete.
         # Corresponds to the JSON property `gettable`
         # @return [Boolean]
         attr_accessor :gettable
@@ -330,8 +330,8 @@ module Google
         end
       end
       
-      # A status object which is used as the `metadata` field for the Operation
-      # returned by DeleteFolder.
+      # A status object which is used as the `metadata` field for the `Operation`
+      # returned by `DeleteFolder`.
       class DeleteFolderMetadata
         include Google::Apis::Core::Hashable
       
@@ -344,7 +344,7 @@ module Google
         end
       end
       
-      # A status object which is used as the `metadata` field for the Operation
+      # A status object which is used as the `metadata` field for the operation
       # returned by DeleteOrganization.
       class DeleteOrganizationMetadata
         include Google::Apis::Core::Hashable
@@ -359,7 +359,7 @@ module Google
       end
       
       # A status object which is used as the `metadata` field for the Operation
-      # returned by DeleteProject.
+      # returned by `DeleteProject`.
       class DeleteProjectMetadata
         include Google::Apis::Core::Hashable
       
@@ -469,57 +469,57 @@ module Google
         end
       end
       
-      # A Folder in an Organization's resource hierarchy, used to organize that
-      # Organization's resources.
+      # A folder in an organization's resource hierarchy, used to organize that
+      # organization's resources.
       class Folder
         include Google::Apis::Core::Hashable
       
-        # Output only. Timestamp when the Folder was created.
+        # Output only. Timestamp when the folder was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Output only. Timestamp when the Folder was requested to be deleted.
+        # Output only. Timestamp when the folder was requested to be deleted.
         # Corresponds to the JSON property `deleteTime`
         # @return [String]
         attr_accessor :delete_time
       
         # The folder's display name. A folder's display name must be unique amongst its
-        # siblings, e.g. no two folders with the same parent can share the same display
-        # name. The display name must start and end with a letter or digit, may contain
-        # letters, digits, spaces, hyphens and underscores and can be no longer than 30
-        # characters. This is captured by the regular expression: `[\p`L`\p`N`]([\p`L`\p`
-        # N`_- ]`0,28`[\p`L`\p`N`])?`.
+        # siblings. For example, no two folders with the same parent can share the same
+        # display name. The display name must start and end with a letter or digit, may
+        # contain letters, digits, spaces, hyphens and underscores and can be no longer
+        # than 30 characters. This is captured by the regular expression: `[\p`L`\p`N`]([
+        # \p`L`\p`N`_- ]`0,28`[\p`L`\p`N`])?`.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
         # Output only. A checksum computed by the server based on the current value of
-        # the Folder resource. This may be sent on update and delete requests to ensure
+        # the folder resource. This may be sent on update and delete requests to ensure
         # the client has an up-to-date value before proceeding.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
-        # Output only. The resource name of the Folder. Its format is `folders/`
+        # Output only. The resource name of the folder. Its format is `folders/`
         # folder_id``, for example: "folders/1234".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Required. The Folder's parent's resource name. Updates to the folder's parent
-        # must be performed via MoveFolder.
+        # Required. The folder's parent's resource name. Updates to the folder's parent
+        # must be performed using MoveFolder.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
       
         # Output only. The lifecycle state of the folder. Updates to the state must be
-        # performed via DeleteFolder and UndeleteFolder.
+        # performed using DeleteFolder and UndeleteFolder.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Output only. Timestamp when the Folder was last modified.
+        # Output only. Timestamp when the folder was last modified.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -705,7 +705,7 @@ module Google
       class ListFoldersResponse
         include Google::Apis::Core::Hashable
       
-        # A possibly paginated list of Folders that are direct descendants of the
+        # A possibly paginated list of folders that are direct descendants of the
         # specified parent resource.
         # Corresponds to the JSON property `folders`
         # @return [Array<Google::Apis::CloudresourcemanagerV3::Folder>]
@@ -873,7 +873,7 @@ module Google
         end
       end
       
-      # Metadata pertaining to the Folder move process.
+      # Metadata pertaining to the folder move process.
       class MoveFolderMetadata
         include Google::Apis::Core::Hashable
       
@@ -908,9 +908,9 @@ module Google
       class MoveFolderRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The resource name of the Folder or Organization to reparent the
-        # folder under. Must be of the form `folders/`folder_id`` or `organizations/`
-        # org_id``.
+        # Required. The resource name of the folder or organization which should be the
+        # folder's new parent. Must be of the form `folders/`folder_id`` or `
+        # organizations/`org_id``.
         # Corresponds to the JSON property `destinationParent`
         # @return [String]
         attr_accessor :destination_parent
@@ -1020,8 +1020,8 @@ module Google
         end
       end
       
-      # The root node in the resource hierarchy to which a particular entity's (e.g.,
-      # company) resources belong.
+      # The root node in the resource hierarchy to which a particular entity's (a
+      # company, for example) resources belong.
       class Organization
         include Google::Apis::Core::Hashable
       
@@ -1040,10 +1040,10 @@ module Google
         # @return [String]
         attr_accessor :directory_customer_id
       
-        # Output only. A human-readable string that refers to the Organization in the
-        # GCP Console UI. This string is set by the server and cannot be changed. The
-        # string will be set to the primary domain (for example, "google.com") of the G
-        # Suite customer that owns the organization.
+        # Output only. A human-readable string that refers to the organization in the
+        # Google Cloud Console. This string is set by the server and cannot be changed.
+        # The string will be set to the primary domain (for example, "google.com") of
+        # the Google Workspace customer that owns the organization.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -1179,8 +1179,8 @@ module Google
         end
       end
       
-      # A Project is a high-level Google Cloud Platform entity. It is a container for
-      # ACLs, APIs, App Engine Apps, VMs, and other Google Cloud Platform resources.
+      # A project is a high-level Google Cloud entity. It is a container for ACLs,
+      # APIs, App Engine Apps, VMs, and other Google Cloud Platform resources.
       class Project
         include Google::Apis::Core::Hashable
       
@@ -1194,7 +1194,7 @@ module Google
         # @return [String]
         attr_accessor :delete_time
       
-        # Optional. A user-assigned display name of the Project. When present it must be
+        # Optional. A user-assigned display name of the project. When present it must be
         # between 4 to 30 characters. Allowed characters are: lowercase and uppercase
         # letters, numbers, hyphen, single-quote, double-quote, space, and exclamation
         # point. Example: `My Project`
@@ -1209,7 +1209,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Optional. The labels associated with this Project. Label keys must be between
+        # Optional. The labels associated with this project. Label keys must be between
         # 1 and 63 characters long and must conform to the following regular expression:
         # \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. Label values must be between 0 and 63
         # characters long and must conform to the regular expression (\[a-z\](\[-a-z0-9\]
@@ -1221,7 +1221,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. The unique resource name of the Project. It is an int64 generated
+        # Output only. The unique resource name of the project. It is an int64 generated
         # number prefixed by "projects/". Example: `projects/415104041262`
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1233,14 +1233,14 @@ module Google
         # @return [String]
         attr_accessor :parent
       
-        # Immutable. The unique, user-assigned id of the Project. It must be 6 to 30
+        # Immutable. The unique, user-assigned id of the project. It must be 6 to 30
         # lowercase ASCII letters, digits, or hyphens. It must start with a letter.
         # Trailing hyphens are prohibited. Example: `tokyo-rain-123`
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Output only. The Project lifecycle state.
+        # Output only. The project lifecycle state.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -1700,8 +1700,8 @@ module Google
         end
       end
       
-      # A status object which is used as the `metadata` field for the Operation
-      # returned by UndeleteFolder.
+      # A status object which is used as the `metadata` field for the `Operation`
+      # returned by `UndeleteFolder`.
       class UndeleteFolderMetadata
         include Google::Apis::Core::Hashable
       
@@ -1742,7 +1742,7 @@ module Google
       end
       
       # A status object which is used as the `metadata` field for the Operation
-      # returned by UndeleteProject.
+      # returned by `UndeleteProject`.
       class UndeleteProjectMetadata
         include Google::Apis::Core::Hashable
       
