@@ -202,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeleteConnectionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeletePeeredDnsDomainMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -903,6 +909,13 @@ module Google
       class DeleteConnectionMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DeleteConnectionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumer_network, as: 'consumerNetwork'
         end
       end
       
