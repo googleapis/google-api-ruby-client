@@ -88,7 +88,7 @@ def find_base_sha
   when "pull_request"
     payload = JSON.load File.read github_event_payload
     payload["pull_request"]["base"]["sha"]
-  when ""
+  when "push"
     payload = JSON.load File.read github_event_payload
     payload["before"]
   else
