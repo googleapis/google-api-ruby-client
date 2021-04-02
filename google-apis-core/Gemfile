@@ -4,7 +4,7 @@ gemspec
 
 group :development do
   gem 'bundler', '>= 1.7'
-  gem 'rake', '~> 11.2'
+  gem 'rake', '~> 13.0'
   gem 'rspec', '~> 3.1'
   gem 'json_spec', '~> 1.1'
   gem 'webmock', '~> 2.1'
