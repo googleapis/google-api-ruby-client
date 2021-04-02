@@ -50,23 +50,23 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Creates a Folder in the resource hierarchy. Returns an Operation which can be
-        # used to track the progress of the folder creation workflow. Upon success the
-        # Operation.response field will be populated with the created Folder. In order
-        # to succeed, the addition of this new Folder must not violate the Folder naming,
-        # height or fanout constraints. + The Folder's display_name must be distinct
-        # from all other Folders that share its parent. + The addition of the Folder
-        # must not cause the active Folder hierarchy to exceed a height of 10. Note, the
-        # full active + deleted Folder hierarchy is allowed to reach a height of 20;
-        # this provides additional headroom when moving folders that contain deleted
-        # folders. + The addition of the Folder must not cause the total number of
-        # Folders under its parent to exceed 300. If the operation fails due to a folder
-        # constraint violation, some errors may be returned by the CreateFolder request,
-        # with status code FAILED_PRECONDITION and an error description. Other folder
-        # constraint violations will be communicated in the Operation, with the specific
-        # PreconditionFailure returned via the details list in the Operation.error field.
-        # The caller must have `resourcemanager.folders.create` permission on the
-        # identified parent.
+        # Creates a folder in the resource hierarchy. Returns an `Operation` which can
+        # be used to track the progress of the folder creation workflow. Upon success,
+        # the `Operation.response` field will be populated with the created Folder. In
+        # order to succeed, the addition of this new folder must not violate the folder
+        # naming, height, or fanout constraints. + The folder's `display_name` must be
+        # distinct from all other folders that share its parent. + The addition of the
+        # folder must not cause the active folder hierarchy to exceed a height of 10.
+        # Note, the full active + deleted folder hierarchy is allowed to reach a height
+        # of 20; this provides additional headroom when moving folders that contain
+        # deleted folders. + The addition of the folder must not cause the total number
+        # of folders under its parent to exceed 300. If the operation fails due to a
+        # folder constraint violation, some errors may be returned by the `CreateFolder`
+        # request, with status code `FAILED_PRECONDITION` and an error description.
+        # Other folder constraint violations will be communicated in the `Operation`,
+        # with the specific `PreconditionFailure` returned in the details list in the `
+        # Operation.error` field. The caller must have `resourcemanager.folders.create`
+        # permission on the identified parent.
         # @param [Google::Apis::CloudresourcemanagerV3::Folder] folder_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -96,14 +96,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Requests deletion of a Folder. The Folder is moved into the DELETE_REQUESTED
+        # Requests deletion of a folder. The folder is moved into the DELETE_REQUESTED
         # state immediately, and is deleted approximately 30 days later. This method may
-        # only be called on an empty Folder, where a Folder is empty if it doesn't
-        # contain any Folders or Projects in the ACTIVE state. If called on a folder in
-        # DELETE_REQUESTED state the result will be a no-op success. The caller must
-        # have `resourcemanager.folders.delete` permission on the identified folder.
+        # only be called on an empty folder, where a folder is empty if it doesn't
+        # contain any folders or projects in the ACTIVE state. If called on a folder in
+        # DELETE_REQUESTED state the operation will result in a no-op success. The
+        # caller must have `resourcemanager.folders.delete` permission on the identified
+        # folder.
         # @param [String] name
-        #   Required. The resource name of the Folder to be deleted. Must be of the form `
+        #   Required. The resource name of the folder to be deleted. Must be of the form `
         #   folders/`folder_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -132,12 +133,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a Folder identified by the supplied resource name. Valid Folder
+        # Retrieves a folder identified by the supplied resource name. Valid folder
         # resource names have the format `folders/`folder_id`` (for example, `folders/
         # 1234`). The caller must have `resourcemanager.folders.get` permission on the
         # identified folder.
         # @param [String] name
-        #   Required. The resource name of the Folder to retrieve. Must be of the form `
+        #   Required. The resource name of the folder to retrieve. Must be of the form `
         #   folders/`folder_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -166,9 +167,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a Folder. The returned policy may be empty
+        # Gets the access control policy for a folder. The returned policy may be empty
         # if no such policy or resource exists. The `resource` field should be the
-        # Folder's resource name, e.g. "folders/1234". The caller must have `
+        # folder's resource name, for example: "folders/1234". The caller must have `
         # resourcemanager.folders.getIamPolicy` permission on the identified folder.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested. See the
@@ -203,24 +204,24 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the Folders that are direct descendants of supplied parent resource.
-        # List provides a strongly consistent view of the Folders underneath the
-        # specified parent resource. List returns Folders sorted based upon the (
+        # Lists the folders that are direct descendants of supplied parent resource. `
+        # list()` provides a strongly consistent view of the folders underneath the
+        # specified parent resource. `list()` returns folders sorted based upon the (
         # ascending) lexical ordering of their display_name. The caller must have `
         # resourcemanager.folders.list` permission on the identified parent.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of Folders to return in the response. If
+        #   Optional. The maximum number of folders to return in the response. If
         #   unspecified, server picks an appropriate default.
         # @param [String] page_token
         #   Optional. A pagination token returned from a previous call to `ListFolders`
         #   that indicates where this listing should continue from.
         # @param [String] parent
-        #   Required. The resource name of the Organization or Folder whose Folders are
+        #   Required. The resource name of the organization or folder whose folders are
         #   being listed. Must be of the form `folders/`folder_id`` or `organizations/`
         #   org_id``. Access to this method is controlled by checking the `resourcemanager.
         #   folders.list` permission on the `parent`.
         # @param [Boolean] show_deleted
-        #   Optional. Controls whether Folders in the DELETE_REQUESTED state should be
+        #   Optional. Controls whether folders in the DELETE_REQUESTED state should be
         #   returned. Defaults to false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -252,18 +253,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Moves a Folder under a new resource parent. Returns an Operation which can be
-        # used to track the progress of the folder move workflow. Upon success the
-        # Operation.response field will be populated with the moved Folder. Upon failure,
-        # a FolderOperationError categorizing the failure cause will be returned - if
-        # the failure occurs synchronously then the FolderOperationError will be
-        # returned via the Status.details field and if it occurs asynchronously then the
-        # FolderOperation will be returned via the Operation.error field. In addition,
-        # the Operation.metadata field will be populated with a FolderOperation message
-        # as an aid to stateless clients. Folder moves will be rejected if they violate
-        # either the naming, height or fanout constraints described in the CreateFolder
-        # documentation. The caller must have `resourcemanager.folders.move` permission
-        # on the folder's current and proposed new parent.
+        # Moves a folder under a new resource parent. Returns an `Operation` which can
+        # be used to track the progress of the folder move workflow. Upon success, the `
+        # Operation.response` field will be populated with the moved folder. Upon
+        # failure, a `FolderOperationError` categorizing the failure cause will be
+        # returned - if the failure occurs synchronously then the `FolderOperationError`
+        # will be returned in the `Status.details` field. If it occurs asynchronously,
+        # then the FolderOperation will be returned in the `Operation.error` field. In
+        # addition, the `Operation.metadata` field will be populated with a `
+        # FolderOperation` message as an aid to stateless clients. Folder moves will be
+        # rejected if they violate either the naming, height, or fanout constraints
+        # described in the CreateFolder documentation. The caller must have `
+        # resourcemanager.folders.move` permission on the folder's current and proposed
+        # new parent.
         # @param [String] name
         #   Required. The resource name of the Folder to move. Must be of the form folders/
         #   `folder_id`
@@ -297,18 +299,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a Folder, changing its display_name. Changes to the folder
-        # display_name will be rejected if they violate either the display_name
-        # formatting rules or naming constraints described in the CreateFolder
-        # documentation. The Folder's display_name must start and end with a letter or
+        # Updates a folder, changing its `display_name`. Changes to the folder `
+        # display_name` will be rejected if they violate either the `display_name`
+        # formatting rules or the naming constraints described in the CreateFolder
+        # documentation. The folder's `display_name` must start and end with a letter or
         # digit, may contain letters, digits, spaces, hyphens and underscores and can be
         # between 3 and 30 characters. This is captured by the regular expression: `\p`L`
         # \p`N``1,28`[\p`L`\p`N`]`. The caller must have `resourcemanager.folders.update`
         # permission on the identified folder. If the update fails due to the unique
-        # name constraint then a PreconditionFailure explaining this violation will be
+        # name constraint then a `PreconditionFailure` explaining this violation will be
         # returned in the Status.details field.
         # @param [String] name
-        #   Output only. The resource name of the Folder. Its format is `folders/`
+        #   Output only. The resource name of the folder. Its format is `folders/`
         #   folder_id``, for example: "folders/1234".
         # @param [Google::Apis::CloudresourcemanagerV3::Folder] folder_object
         # @param [String] update_mask
@@ -343,7 +345,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Search for folders that match specific filter criteria. Search provides an
+        # Search for folders that match specific filter criteria. `search()` provides an
         # eventually consistent view of the folders a user has access to which meet the
         # specified filter criteria. This will only return folders on which the caller
         # has the permission `resourcemanager.folders.get`.
@@ -354,16 +356,16 @@ module Google
         #   Optional. A pagination token returned from a previous call to `SearchFolders`
         #   that indicates from where search should continue.
         # @param [String] query
-        #   Optional. Search criteria used to select the Folders to return. If no search
+        #   Optional. Search criteria used to select the folders to return. If no search
         #   criteria is specified then all accessible folders will be returned. Query
         #   expressions can be used to restrict results based upon displayName, state and
         #   parent, where the operators `=` (`:`) `NOT`, `AND` and `OR` can be used along
-        #   with the suffix wildcard symbol `*`. The displayName field in a query
+        #   with the suffix wildcard symbol `*`. The `displayName` field in a query
         #   expression should use escaped quotes for values that include whitespace to
         #   prevent unexpected behavior. | Field | Description | |-------------------------
         #   |----------------------------------------| | displayName | Filters by
-        #   displayName. | | parent | Filters by parent (e.g. folders/123). | | state,
-        #   lifecycleState | Filters by state. | Some example queries are: * Query `
+        #   displayName. | | parent | Filters by parent (for example: folders/123). | |
+        #   state, lifecycleState | Filters by state. | Some example queries are: * Query `
         #   displayName=Test*` returns Folder resources whose display name starts with "
         #   Test". * Query `state=ACTIVE` returns Folder resources with `state` set to `
         #   ACTIVE`. * Query `parent=folders/123` returns Folder resources that have `
@@ -400,10 +402,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the access control policy on a Folder, replacing any existing policy. The
-        # `resource` field should be the Folder's resource name, e.g. "folders/1234".
-        # The caller must have `resourcemanager.folders.setIamPolicy` permission on the
-        # identified folder.
+        # Sets the access control policy on a folder, replacing any existing policy. The
+        # `resource` field should be the folder's resource name, for example: "folders/
+        # 1234". The caller must have `resourcemanager.folders.setIamPolicy` permission
+        # on the identified folder.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified. See the
         #   operation documentation for the appropriate value for this field.
@@ -437,9 +439,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified Folder. The `resource`
-        # field should be the Folder's resource name, e.g. "folders/1234". There are no
-        # permissions required for making this API call.
+        # Returns permissions that a caller has on the specified folder. The `resource`
+        # field should be the folder's resource name, for example: "folders/1234". There
+        # are no permissions required for making this API call.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy detail is being requested. See the
         #   operation documentation for the appropriate value for this field.
@@ -473,15 +475,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Cancels the deletion request for a Folder. This method may be called on a
-        # Folder in any state. If Folder is in ACTIVE state the result will be a no-op
-        # success. In order to succeed, the Folder's parent must be in the ACTIVE state.
-        # In addition, reintroducing the folder into the tree must not violate folder
-        # naming, height and fanout constraints described in the CreateFolder
+        # Cancels the deletion request for a folder. This method may be called on a
+        # folder in any state. If the folder is in the ACTIVE state the result will be a
+        # no-op success. In order to succeed, the folder's parent must be in the ACTIVE
+        # state. In addition, reintroducing the folder into the tree must not violate
+        # folder naming, height, and fanout constraints described in the CreateFolder
         # documentation. The caller must have `resourcemanager.folders.undelete`
         # permission on the identified folder.
         # @param [String] name
-        #   Required. The resource name of the Folder to undelete. Must be of the form `
+        #   Required. The resource name of the folder to undelete. Must be of the form `
         #   folders/`folder_id``.
         # @param [Google::Apis::CloudresourcemanagerV3::UndeleteFolderRequest] undelete_folder_request_object
         # @param [String] fields
@@ -683,7 +685,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Fetches an Organization resource identified by the specified resource name.
+        # Fetches an organization resource identified by the specified resource name.
         # @param [String] name
         #   Required. The resource name of the Organization to fetch. This is the
         #   organization's relative path in the API, formatted as "organizations/[
@@ -715,11 +717,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for an Organization resource. May be empty if
-        # no such policy or resource exists. The `resource` field should be the
-        # organization's resource name, e.g. "organizations/123". Authorization requires
-        # the Google IAM permission `resourcemanager.organizations.getIamPolicy` on the
-        # specified organization
+        # Gets the access control policy for an organization resource. The policy may be
+        # empty if no such policy or resource exists. The `resource` field should be the
+        # organization's resource name, for example: "organizations/123". Authorization
+        # requires the IAM permission `resourcemanager.organizations.getIamPolicy` on
+        # the specified organization.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested. See the
         #   operation documentation for the appropriate value for this field.
@@ -753,13 +755,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Searches Organization resources that are visible to the user and satisfy the
-        # specified filter. This method returns Organizations in an unspecified order.
-        # New Organizations do not necessarily appear at the end of the results, and may
+        # Searches organization resources that are visible to the user and satisfy the
+        # specified filter. This method returns organizations in an unspecified order.
+        # New organizations do not necessarily appear at the end of the results, and may
         # take a small amount of time to appear. Search will only return organizations
         # on which the user has the permission `resourcemanager.organizations.get`
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of Organizations to return in the response. If
+        #   Optional. The maximum number of organizations to return in the response. If
         #   unspecified, server picks an appropriate default.
         # @param [String] page_token
         #   Optional. A pagination token returned from a previous call to `
@@ -804,11 +806,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the access control policy on an Organization resource. Replaces any
+        # Sets the access control policy on an organization resource. Replaces any
         # existing policy. The `resource` field should be the organization's resource
-        # name, e.g. "organizations/123". Authorization requires the Google IAM
+        # name, for example: "organizations/123". Authorization requires the IAM
         # permission `resourcemanager.organizations.setIamPolicy` on the specified
-        # organization
+        # organization.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified. See the
         #   operation documentation for the appropriate value for this field.
@@ -842,8 +844,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified Organization. The `
-        # resource` field should be the organization's resource name, e.g. "
+        # Returns the permissions that a caller has on the specified organization. The `
+        # resource` field should be the organization's resource name, for example: "
         # organizations/123". There are no permissions required for making this API call.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy detail is being requested. See the
@@ -878,10 +880,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Request that a new Project be created. The result is an Operation which can be
-        # used to track the creation process. This process usually takes a few seconds,
-        # but can sometimes take much longer. The tracking Operation is automatically
-        # deleted after a few hours, so there is no need to call DeleteOperation.
+        # Request that a new project be created. The result is an `Operation` which can
+        # be used to track the creation process. This process usually takes a few
+        # seconds, but can sometimes take much longer. The tracking `Operation` is
+        # automatically deleted after a few hours, so there is no need to call `
+        # DeleteOperation`.
         # @param [Google::Apis::CloudresourcemanagerV3::Project] project_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -911,18 +914,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Marks the Project identified by the specified `name` (for example, `projects/
-        # 415104041262`) for deletion. This method will only affect the Project if it
+        # Marks the project identified by the specified `name` (for example, `projects/
+        # 415104041262`) for deletion. This method will only affect the project if it
         # has a lifecycle state of ACTIVE. This method changes the Project's lifecycle
         # state from ACTIVE to DELETE_REQUESTED. The deletion starts at an unspecified
         # time, at which point the Project is no longer accessible. Until the deletion
-        # completes, you can check the lifecycle state checked by retrieving the Project
-        # with GetProject, and the Project remains visible to ListProjects. However, you
-        # cannot update the project. After the deletion completes, the Project is not
+        # completes, you can check the lifecycle state checked by retrieving the project
+        # with GetProject, and the project remains visible to ListProjects. However, you
+        # cannot update the project. After the deletion completes, the project is not
         # retrievable by the GetProject, ListProjects, and SearchProjects methods. This
-        # method behaves idempotently (eg., deleting a `DELETE_REQUESTED` project will
-        # not be an error, but also won't do anything). The caller must have delete
-        # permissions for this Project.
+        # method behaves idempotently, such that deleting a `DELETE_REQUESTED` project
+        # will not cause an error, but also won't do anything. The caller must have `
+        # resourcemanager.projects.delete` permissions for this project.
         # @param [String] name
         #   Required. The name of the Project (for example, `projects/415104041262`).
         # @param [String] fields
@@ -952,9 +955,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the Project identified by the specified `name` (for example, `
-        # projects/415104041262`). The caller must have read permissions for this
-        # Project.
+        # Retrieves the project identified by the specified `name` (for example, `
+        # projects/415104041262`). The caller must have `resourcemanager.projects.get`
+        # permission for this project.
         # @param [String] name
         #   Required. The name of the project (for example, `projects/415104041262`).
         # @param [String] fields
@@ -984,8 +987,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the IAM access control policy for the specified Project. Permission is
-        # denied if the policy or the resource does not exist.
+        # Returns the IAM access control policy for the specified project. Permission is
+        # denied if the policy or the resource do not exist.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested. See the
         #   operation documentation for the appropriate value for this field.
@@ -1019,15 +1022,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists Projects that are direct children of the specified folder or
-        # organization resource. List provides a strongly consistent view of the
-        # Projects underneath the specified parent resource. List returns Projects
+        # Lists projects that are direct children of the specified folder or
+        # organization resource. `list()` provides a strongly consistent view of the
+        # projects underneath the specified parent resource. `list()` returns projects
         # sorted based upon the (ascending) lexical ordering of their `display_name`.
         # The caller must have `resourcemanager.projects.list` permission on the
         # identified parent.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of Projects to return in the response. The server
-        #   can return fewer Projects than requested. If unspecified, server picks an
+        #   Optional. The maximum number of projects to return in the response. The server
+        #   can return fewer projects than requested. If unspecified, server picks an
         #   appropriate default.
         # @param [String] page_token
         #   Optional. A pagination token returned from a previous call to ListProjects
@@ -1037,7 +1040,7 @@ module Google
         #   setting this field to 'folders/1234' would list all projects directly under
         #   that folder.
         # @param [Boolean] show_deleted
-        #   Optional. Indicate that Projects in the `DELETE_REQUESTED` state should also
+        #   Optional. Indicate that projects in the `DELETE_REQUESTED` state should also
         #   be returned. Normally only `ACTIVE` projects are returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1069,11 +1072,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Move a Project under a new resource parent. Returns an operation which can be
-        # used to track the process of the Project move workflow. Upon success, the
-        # Operation.response field will be populated with the moved Project. The caller
-        # must have `resourcemanager.projects.update` permission on the Project and have
-        # `resourcemanager.projects.move` permission on the Project's current and
+        # Move a project to another place in your resource hierarchy, under a new
+        # resource parent. Returns an operation which can be used to track the process
+        # of the project move workflow. Upon success, the `Operation.response` field
+        # will be populated with the moved project. The caller must have `
+        # resourcemanager.projects.update` permission on the project and have `
+        # resourcemanager.projects.move` permission on the project's current and
         # proposed new parent.
         # @param [String] name
         #   Required. The name of the project to move.
@@ -1107,12 +1111,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the attributes of the Project identified by the specified `name` (for
-        # example, `projects/415104041262`). At present this is only useful for updating
-        # the display_name and labels. Deleting all labels requires an update mask for
-        # labels field. The caller must have modify permissions for this Project.
+        # Updates the `display_name` and labels of the project identified by the
+        # specified `name` (for example, `projects/415104041262`). Deleting all labels
+        # requires an update mask for labels field. The caller must have `
+        # resourcemanager.projects.update` permission for this project.
         # @param [String] name
-        #   Output only. The unique resource name of the Project. It is an int64 generated
+        #   Output only. The unique resource name of the project. It is an int64 generated
         #   number prefixed by "projects/". Example: `projects/415104041262`
         # @param [Google::Apis::CloudresourcemanagerV3::Project] project_object
         # @param [String] update_mask
@@ -1147,15 +1151,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Search for Projects that the caller has the `resourcemanager.projects.get`
-        # permission on and satisfy the specified query. This method returns Projects in
-        # an unspecified order. This method is eventually consistent with project
-        # mutations; this means that a newly created project may not appear in the
-        # results or recent updates to an existing project may not be reflected in the
-        # results. To retrieve the latest state of a project, use the GetProject method.
+        # Search for projects that the caller has both `resourcemanager.projects.get`
+        # permission on, and also satisfy the specified query. This method returns
+        # projects in an unspecified order. This method is eventually consistent with
+        # project mutations; this means that a newly created project may not appear in
+        # the results or recent updates to an existing project may not be reflected in
+        # the results. To retrieve the latest state of a project, use the GetProject
+        # method.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of Projects to return in the response. The server
-        #   can return fewer Projects than requested. If unspecified, server picks an
+        #   Optional. The maximum number of projects to return in the response. The server
+        #   can return fewer projects than requested. If unspecified, server picks an
         #   appropriate default.
         # @param [String] page_token
         #   Optional. A pagination token returned from a previous call to ListProjects
@@ -1166,22 +1171,22 @@ module Google
         #   in the query, the it will return results that match any of the fields. Some
         #   eligible fields are: | Field | Description | |-------------------------|-------
         #   ---------------------------------------| | displayName, name | Filters by
-        #   displayName. | | parent | Project's parent. (e.g. folders/123, organizations/*)
-        #   Prefer parent field over parent.type and parent.id. | | parent.type | Parent'
-        #   s type: `folder` or `organization`. | | parent.id | Parent's id number (e.g.
-        #   123) | | id, projectId | Filters by projectId. | | state, lifecycleState |
-        #   Filters by state. | | labels | Filters by label name or value. | | labels. (
-        #   where *key* is the name of a label) | Filters by label name. | Search
-        #   expressions are case insensitive. Some examples queries: | Query | Description
-        #   | |------------------|-----------------------------------------------------| |
-        #   name:how* | The project's name starts with "how". | | name:Howl | The project'
-        #   s name is `Howl` or `howl`. | | name:HOWL | Equivalent to above. | | NAME:howl
-        #   | Equivalent to above. | | labels.color:* | The project has the label `color`.
-        #   | | labels.color:red | The project's label `color` has the value `red`. | |
-        #   labels.color:red labels.size:big | The project's label `color` has the value `
-        #   red` and its label `size` has the value `big`. | If no query is specified, the
-        #   call will return projects for which the user has the `resourcemanager.projects.
-        #   get` permission.
+        #   displayName. | | parent | Project's parent. (for example: folders/123,
+        #   organizations/*) Prefer parent field over parent.type and parent.id. | |
+        #   parent.type | Parent's type: `folder` or `organization`. | | parent.id |
+        #   Parent's id number (for example: 123) | | id, projectId | Filters by projectId.
+        #   | | state, lifecycleState | Filters by state. | | labels | Filters by label
+        #   name or value. | | labels. (where *key* is the name of a label) | Filters by
+        #   label name. | Search expressions are case insensitive. Some examples queries: |
+        #   Query | Description | |------------------|------------------------------------
+        #   -----------------| | name:how* | The project's name starts with "how". | |
+        #   name:Howl | The project's name is `Howl` or `howl`. | | name:HOWL | Equivalent
+        #   to above. | | NAME:howl | Equivalent to above. | | labels.color:* | The
+        #   project has the label `color`. | | labels.color:red | The project's label `
+        #   color` has the value `red`. | | labels.color:red labels.size:big | The project'
+        #   s label `color` has the value `red` and its label `size` has the value `big`. |
+        #   If no query is specified, the call will return projects for which the user
+        #   has the `resourcemanager.projects.get` permission.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1211,9 +1216,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the IAM access control policy for the specified Project. CAUTION: This
+        # Sets the IAM access control policy for the specified project. CAUTION: This
         # method will replace the existing policy, and cannot be used to append
-        # additional IAM settings. NOTE: Removing service accounts from policies or
+        # additional IAM settings. Note: Removing service accounts from policies or
         # changing their roles can render services completely inoperable. It is
         # important to understand how the service account is being used before removing
         # or updating its roles. The following constraints apply when using `
@@ -1224,11 +1229,11 @@ module Google
         # an owner to a project in the myownpersonaldomain.com organization, but not the
         # examplepetstore.com organization. + Service accounts can be made owners of a
         # project directly without any restrictions. However, to be added as an owner, a
-        # user must be invited via Cloud Platform console and must accept the invitation.
-        # + A user cannot be granted the owner role using `setIamPolicy()`. The user
-        # must be granted the owner role using the Cloud Platform Console and must
-        # explicitly accept the invitation. + Invitations to grant the owner role cannot
-        # be sent using `setIamPolicy()`; they must be sent only using the Cloud
+        # user must be invited using the Cloud Platform console and must accept the
+        # invitation. + A user cannot be granted the owner role using `setIamPolicy()`.
+        # The user must be granted the owner role using the Cloud Platform Console and
+        # must explicitly accept the invitation. + Invitations to grant the owner role
+        # cannot be sent using `setIamPolicy()`; they must be sent only using the Cloud
         # Platform Console. + Membership changes that leave the project without any
         # owners that have accepted the Terms of Service (ToS) will be rejected. + If
         # the project is not part of an organization, there must be at least one owner
@@ -1271,7 +1276,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified Project.
+        # Returns permissions that a caller has on the specified project.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy detail is being requested. See the
         #   operation documentation for the appropriate value for this field.
@@ -1305,12 +1310,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Restores the Project identified by the specified `name` (for example, `
-        # projects/415104041262`). You can only use this method for a Project that has a
-        # lifecycle state of DELETE_REQUESTED. After deletion starts, the Project cannot
-        # be restored. The caller must have undelete permissions for this Project.
+        # Restores the project identified by the specified `name` (for example, `
+        # projects/415104041262`). You can only use this method for a project that has a
+        # lifecycle state of DELETE_REQUESTED. After deletion starts, the project cannot
+        # be restored. The caller must have `resourcemanager.projects.undelete`
+        # permission for this project.
         # @param [String] name
-        #   Required. The name of the Project (for example, `projects/415104041262`).
+        #   Required. The name of the project (for example, `projects/415104041262`).
         #   Required.
         # @param [Google::Apis::CloudresourcemanagerV3::UndeleteProjectRequest] undelete_project_request_object
         # @param [String] fields
