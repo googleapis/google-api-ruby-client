@@ -1650,7 +1650,8 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # Immutable. The type of the product. This field is output-only.
+        # Immutable. The type of the product. This field is output-only. Default to
+        # Catalog.product_level_config.ingestion_product_type if unset.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1783,8 +1784,8 @@ module Google
         # this field is set to an invalid value other than these, an INVALID_ARGUMENT
         # error is returned. If this field is `variant` and
         # merchant_center_product_id_field is `itemGroupId`, an INVALID_ARGUMENT error
-        # is returned. See [Using catalog levels](/retail/recommendations-ai/docs/
-        # catalog#catalog-levels) for more details.
+        # is returned. See [Using product levels](https://cloud.google.com/retail/
+        # recommendations-ai/docs/catalog#product-levels) for more details.
         # Corresponds to the JSON property `ingestionProductType`
         # @return [String]
         attr_accessor :ingestion_product_type
@@ -1797,8 +1798,8 @@ module Google
         # the item group. If this field is set to an invalid value other than these, an
         # INVALID_ARGUMENT error is returned. If this field is `itemGroupId` and
         # ingestion_product_type is `variant`, an INVALID_ARGUMENT error is returned.
-        # See [Using catalog levels](/retail/recommendations-ai/docs/catalog#catalog-
-        # levels) for more details.
+        # See [Using product levels](https://cloud.google.com/retail/recommendations-ai/
+        # docs/catalog#product-levels) for more details.
         # Corresponds to the JSON property `merchantCenterProductIdField`
         # @return [String]
         attr_accessor :merchant_center_product_id_field
