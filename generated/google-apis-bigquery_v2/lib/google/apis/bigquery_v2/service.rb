@@ -340,6 +340,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Requests that a job is deleted. This call will return when the job is deleted.
+        # This method is available in limited preview.
+        # @param [String] project_id
+        #   Required. Project ID of the job to be deleted.
+        # @param [String] job_id
+        #   Required. Job ID of the job to be deleted. If this is a parent job which has
+        #   child jobs, all child jobs will be deleted as well. Deletion of child jobs
+        #   directly is not allowed.
+        # @param [String] location
+        #   The geographic location of the job. Required. See details at: https://cloud.
+        #   google.com/bigquery/docs/locations#specifying_your_location.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_job(project_id, job_id, location: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'projects/{+projectId}/jobs/{+jobId}/delete', options)
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['jobId'] = job_id unless job_id.nil?
+          command.query['location'] = location unless location.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns information about a specific job. Job information is available for a
         # six month period after creation. Requires that you're the person who ran the
         # job, or have the Is Owner project role.
