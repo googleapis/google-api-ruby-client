@@ -1,0 +1,46 @@
+name: CI
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+jobs:
+  CI:
+    if: ${{ github.repository == 'googleapis/google-api-ruby-client' }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            ruby: "2.5"
+            task: "--include-spec"
+          - os: ubuntu-latest
+            ruby: "2.6"
+            task: "--include-spec"
+          - os: ubuntu-latest
+            ruby: "2.7"
+            task: "--include-spec --include-yardoc --include-build"
+          - os: ubuntu-latest
+            ruby: "3.0"
+            task: "--include-spec"
+          - os: macos-latest
+            ruby: "2.7"
+            task: "--include-spec"
+          - os: windows-latest
+            ruby: "2.7"
+            task: "--include-spec"
+      fail-fast: false
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+    - name: Install Ruby ${{ matrix.ruby }}
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: "${{ matrix.ruby }}"
+    - name: Install tools
+      run: "gem install --no-document toys"
+    - name: Test ${{ matrix.task }}
+      run: toys ci -v --only ${{ matrix.task }} --github-event-name=${{ github.event_name }} --github-event-payload=${{ github.event_path }}
