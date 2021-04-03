@@ -288,6 +288,11 @@ module Google
         # @return [String]
         attr_accessor :accelerator_type
       
+        # Output only. The API version that created this Node.
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
         # The CIDR block that the TPU node will use when selecting an IP address. This
         # CIDR block must be a /29 block; the Compute Engine networks API forbids a
         # smaller block, and using a larger block would be wasteful (a node can only
@@ -401,6 +406,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
+          @api_version = args[:api_version] if args.key?(:api_version)
           @cidr_block = args[:cidr_block] if args.key?(:cidr_block)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)

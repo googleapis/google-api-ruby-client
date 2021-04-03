@@ -221,6 +221,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accelerator_type, as: 'acceleratorType'
+          property :api_version, as: 'apiVersion'
           property :cidr_block, as: 'cidrBlock'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
