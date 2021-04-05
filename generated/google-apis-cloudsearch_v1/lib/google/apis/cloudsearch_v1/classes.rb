@@ -203,6 +203,26 @@ module Google
         end
       end
       
+      # Represents settings at a customer level.
+      class CustomerSettings
+        include Google::Apis::Core::Hashable
+      
+        # VPC SC settings for the customer. If update_mask is empty then this field will
+        # be updated based on UpdateCustomerSettings request.
+        # Corresponds to the JSON property `vpcSettings`
+        # @return [Google::Apis::CloudsearchV1::VpcSettings]
+        attr_accessor :vpc_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @vpc_settings = args[:vpc_settings] if args.key?(:vpc_settings)
+        end
+      end
+      
       # 
       class CustomerUserStats
         include Google::Apis::Core::Hashable
@@ -4924,6 +4944,28 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # 
+      class VpcSettings
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the GCP Project to be used for VPC SC policy check. VPC
+        # security settings on this project will be honored for Cloud Search APIs after
+        # project_name has been updated through CustomerService. Format: projects/`
+        # project_id`
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project = args[:project] if args.key?(:project)
         end
       end
       
