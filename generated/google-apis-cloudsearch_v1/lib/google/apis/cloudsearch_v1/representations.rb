@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomerSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomerUserStats
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -922,6 +928,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VpcSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Value
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -991,6 +1003,14 @@ module Google
           property :date, as: 'date', class: Google::Apis::CloudsearchV1::Date, decorator: Google::Apis::CloudsearchV1::Date::Representation
       
           property :search_sessions_count, :numeric_string => true, as: 'searchSessionsCount'
+        end
+      end
+      
+      class CustomerSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :vpc_settings, as: 'vpcSettings', class: Google::Apis::CloudsearchV1::VpcSettings, decorator: Google::Apis::CloudsearchV1::VpcSettings::Representation
+      
         end
       end
       
@@ -2394,6 +2414,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+        end
+      end
+      
+      class VpcSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project, as: 'project'
         end
       end
       
