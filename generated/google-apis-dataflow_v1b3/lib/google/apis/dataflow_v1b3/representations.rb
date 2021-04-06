@@ -40,12 +40,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Artifact
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AutoscalingEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,12 +65,6 @@ module Google
       end
       
       class CpuTime
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CommitTemplateVersionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -142,12 +130,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CreateTemplateVersionRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CustomSourceLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -203,12 +185,6 @@ module Google
       end
       
       class DynamicSourceSplit
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -442,12 +418,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListTemplateVersionsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class MapTask
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -473,30 +443,6 @@ module Google
       end
       
       class MetricUpdate
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ModifyTemplateVersionLabelRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ModifyTemplateVersionLabelResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ModifyTemplateVersionTagRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ModifyTemplateVersionTagResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -928,12 +874,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TemplateVersion
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class TopologyConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1081,17 +1021,6 @@ module Google
         end
       end
       
-      class Artifact
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :container_spec, as: 'containerSpec', class: Google::Apis::DataflowV1b3::ContainerSpec, decorator: Google::Apis::DataflowV1b3::ContainerSpec::Representation
-      
-          property :job_graph_gcs_path, as: 'jobGraphGcsPath'
-          property :metadata, as: 'metadata', class: Google::Apis::DataflowV1b3::TemplateMetadata, decorator: Google::Apis::DataflowV1b3::TemplateMetadata::Representation
-      
-        end
-      end
-      
       class AutoscalingEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1138,14 +1067,6 @@ module Google
           property :rate, as: 'rate'
           property :timestamp, as: 'timestamp'
           property :total_ms, :numeric_string => true, as: 'totalMs'
-        end
-      end
-      
-      class CommitTemplateVersionRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :template_version, as: 'templateVersion', class: Google::Apis::DataflowV1b3::TemplateVersion, decorator: Google::Apis::DataflowV1b3::TemplateVersion::Representation
-      
         end
       end
       
@@ -1284,14 +1205,6 @@ module Google
         end
       end
       
-      class CreateTemplateVersionRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :template_version, as: 'templateVersion', class: Google::Apis::DataflowV1b3::TemplateVersion, decorator: Google::Apis::DataflowV1b3::TemplateVersion::Representation
-      
-        end
-      end
-      
       class CustomSourceLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1388,12 +1301,6 @@ module Google
       
           property :residual, as: 'residual', class: Google::Apis::DataflowV1b3::DerivedSource, decorator: Google::Apis::DataflowV1b3::DerivedSource::Representation
       
-        end
-      end
-      
-      class Empty
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1827,15 +1734,6 @@ module Google
         end
       end
       
-      class ListTemplateVersionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :template_versions, as: 'templateVersions', class: Google::Apis::DataflowV1b3::TemplateVersion, decorator: Google::Apis::DataflowV1b3::TemplateVersion::Representation
-      
-        end
-      end
-      
       class MapTask
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1889,37 +1787,6 @@ module Google
           property :scalar, as: 'scalar'
           property :set, as: 'set'
           property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class ModifyTemplateVersionLabelRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :key, as: 'key'
-          property :op, as: 'op'
-          property :value, as: 'value'
-        end
-      end
-      
-      class ModifyTemplateVersionLabelResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :labels, as: 'labels'
-        end
-      end
-      
-      class ModifyTemplateVersionTagRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :remove_only, as: 'removeOnly'
-          property :tag, as: 'tag'
-        end
-      end
-      
-      class ModifyTemplateVersionTagResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :tags, as: 'tags'
         end
       end
       
@@ -2660,22 +2527,6 @@ module Google
         end
       end
       
-      class TemplateVersion
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :artifact, as: 'artifact', class: Google::Apis::DataflowV1b3::Artifact, decorator: Google::Apis::DataflowV1b3::Artifact::Representation
-      
-          property :create_time, as: 'createTime'
-          property :description, as: 'description'
-          property :display_name, as: 'displayName'
-          hash :labels, as: 'labels'
-          property :project_id, as: 'projectId'
-          collection :tags, as: 'tags'
-          property :type, as: 'type'
-          property :version_id, as: 'versionId'
-        end
-      end
-      
       class TopologyConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2821,6 +2672,7 @@ module Google
           property :msg, as: 'msg'
           collection :pods, as: 'pods'
           property :report_interval, as: 'reportInterval'
+          property :vm_broken_code, as: 'vmBrokenCode'
           property :vm_is_broken, as: 'vmIsBroken'
           property :vm_is_healthy, as: 'vmIsHealthy'
           property :vm_startup_time, as: 'vmStartupTime'
