@@ -664,7 +664,9 @@ module Google
         # @return [String]
         attr_accessor :iam_service_name
       
-        # Policy name to be checked
+        # An internal name for an IAM policy, based on the resource to which the policy
+        # applies. Not to be confused with a resource's external full resource name. For
+        # more information on this distinction, see go/iam-full-resource-names.
         # Corresponds to the JSON property `policyName`
         # @return [Google::Apis::IapV1::PolicyName]
         attr_accessor :policy_name
@@ -687,11 +689,15 @@ module Google
         end
       end
       
-      # 
+      # An internal name for an IAM policy, based on the resource to which the policy
+      # applies. Not to be confused with a resource's external full resource name. For
+      # more information on this distinction, see go/iam-full-resource-names.
       class PolicyName
         include Google::Apis::Core::Hashable
       
-        # 
+        # Identifies an instance of the type. ID format varies by type. The ID format is
+        # defined in the IAM .service file that defines the type, either in path_mapping
+        # or in a comment.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -704,7 +710,8 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # Valid values for type might be 'gce', 'gcs', 'project', 'account' etc.
+        # Resource type. Types are defined in IAM's .service files. Valid values for
+        # type might be 'gce', 'gcs', 'project', 'account' etc.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
