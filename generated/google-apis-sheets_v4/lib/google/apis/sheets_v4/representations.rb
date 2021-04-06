@@ -958,6 +958,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Link
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ManualRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3146,6 +3152,13 @@ module Google
         end
       end
       
+      class Link
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
+        end
+      end
+      
       class ManualRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3902,6 +3915,8 @@ module Google
           property :foreground_color_style, as: 'foregroundColorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
       
           property :italic, as: 'italic'
+          property :link, as: 'link', class: Google::Apis::SheetsV4::Link, decorator: Google::Apis::SheetsV4::Link::Representation
+      
           property :strikethrough, as: 'strikethrough'
           property :underline, as: 'underline'
         end
