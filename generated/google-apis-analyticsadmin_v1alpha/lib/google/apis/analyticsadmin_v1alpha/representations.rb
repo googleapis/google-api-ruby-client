@@ -606,8 +606,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :currency_code, as: 'currencyCode'
-          property :deleted, as: 'deleted'
+          property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
+          property :expire_time, as: 'expireTime'
           property :industry_category, as: 'industryCategory'
           property :name, as: 'name'
           property :parent, as: 'parent'

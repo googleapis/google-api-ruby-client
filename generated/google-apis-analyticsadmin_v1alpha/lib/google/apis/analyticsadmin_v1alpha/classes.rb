@@ -1203,18 +1203,24 @@ module Google
         # @return [String]
         attr_accessor :currency_code
       
-        # Output only. Indicates whether this Property is soft-deleted or not. Deleted
-        # properties are excluded from List results unless specifically requested.
-        # Corresponds to the JSON property `deleted`
-        # @return [Boolean]
-        attr_accessor :deleted
-        alias_method :deleted?, :deleted
+        # Output only. If set, the time at which this property was trashed. If not set,
+        # then this property is not currently in the trash can.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
       
         # Required. Human-readable display name for this property. The max allowed
         # display name length is 100 UTF-16 code units.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
+      
+        # Output only. If set, the time at which this trashed property will be
+        # permanently deleted. If not set, then this property is not currently in the
+        # trash can and is not slated to be deleted.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
       
         # Industry associated with this property Example: AUTOMOTIVE, FOOD_AND_DRINK
         # Corresponds to the JSON property `industryCategory`
@@ -1256,8 +1262,9 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @currency_code = args[:currency_code] if args.key?(:currency_code)
-          @deleted = args[:deleted] if args.key?(:deleted)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
           @industry_category = args[:industry_category] if args.key?(:industry_category)
           @name = args[:name] if args.key?(:name)
           @parent = args[:parent] if args.key?(:parent)
