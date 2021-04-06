@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConfidentialNodes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConfigConnectorConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -750,6 +756,8 @@ module Google
           property :cluster_ipv4_cidr, as: 'clusterIpv4Cidr'
           collection :conditions, as: 'conditions', class: Google::Apis::ContainerV1::StatusCondition, decorator: Google::Apis::ContainerV1::StatusCondition::Representation
       
+          property :confidential_nodes, as: 'confidentialNodes', class: Google::Apis::ContainerV1::ConfidentialNodes, decorator: Google::Apis::ContainerV1::ConfidentialNodes::Representation
+      
           property :create_time, as: 'createTime'
           property :current_master_version, as: 'currentMasterVersion'
           property :current_node_count, as: 'currentNodeCount'
@@ -880,6 +888,13 @@ module Google
           property :name, as: 'name'
           property :project_id, as: 'projectId'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class ConfidentialNodes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
