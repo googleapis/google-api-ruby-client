@@ -508,6 +508,13 @@ module Google
         # @return [String]
         attr_accessor :scale_tier
       
+        # The email address of a service account to use when running the execution. You
+        # must have the `iam.serviceAccounts.actAs` permission for the specified service
+        # account.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
         def initialize(**args)
            update!(**args)
         end
@@ -523,6 +530,7 @@ module Google
           @parameters = args[:parameters] if args.key?(:parameters)
           @params_yaml_file = args[:params_yaml_file] if args.key?(:params_yaml_file)
           @scale_tier = args[:scale_tier] if args.key?(:scale_tier)
+          @service_account = args[:service_account] if args.key?(:service_account)
         end
       end
       
@@ -746,6 +754,12 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Optional. The type of vNIC to be used on this interface. This may be gVNIC or
+        # VirtioNet.
+        # Corresponds to the JSON property `nicType`
+        # @return [String]
+        attr_accessor :nic_type
+      
         # If true, the notebook instance will not register with the proxy.
         # Corresponds to the JSON property `noProxyAccess`
         # @return [Boolean]
@@ -859,6 +873,7 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @nic_type = args[:nic_type] if args.key?(:nic_type)
           @no_proxy_access = args[:no_proxy_access] if args.key?(:no_proxy_access)
           @no_public_ip = args[:no_public_ip] if args.key?(:no_public_ip)
           @no_remove_data_disk = args[:no_remove_data_disk] if args.key?(:no_remove_data_disk)
@@ -1626,6 +1641,26 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Request for rollbacking a notebook instance
+      class RollbackInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The snapshot for rollback. Example: "projects/test-project/global/
+        # snapshots/krwlzipynril".
+        # Corresponds to the JSON property `targetSnapshot`
+        # @return [String]
+        attr_accessor :target_snapshot
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_snapshot = args[:target_snapshot] if args.key?(:target_snapshot)
         end
       end
       
@@ -2593,6 +2628,12 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Optional. The type of vNIC to be used on this interface. This may be gVNIC or
+        # VirtioNet.
+        # Corresponds to the JSON property `nicType`
+        # @return [String]
+        attr_accessor :nic_type
+      
         # A set of Shielded Instance options. Check [Images using supported Shielded VM
         # features] Not all combinations are valid.
         # Corresponds to the JSON property `shieldedInstanceConfig`
@@ -2638,6 +2679,7 @@ module Google
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
           @network = args[:network] if args.key?(:network)
+          @nic_type = args[:nic_type] if args.key?(:nic_type)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @subnet = args[:subnet] if args.key?(:subnet)
           @tags = args[:tags] if args.key?(:tags)

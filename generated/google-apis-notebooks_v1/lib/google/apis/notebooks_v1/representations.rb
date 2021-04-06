@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RollbackInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Runtime
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -501,6 +507,7 @@ module Google
           property :parameters, as: 'parameters'
           property :params_yaml_file, as: 'paramsYamlFile'
           property :scale_tier, as: 'scaleTier'
+          property :service_account, as: 'serviceAccount'
         end
       end
       
@@ -553,6 +560,7 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :nic_type, as: 'nicType'
           property :no_proxy_access, as: 'noProxyAccess'
           property :no_public_ip, as: 'noPublicIp'
           property :no_remove_data_disk, as: 'noRemoveDataDisk'
@@ -753,6 +761,13 @@ module Google
       class ResetRuntimeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RollbackInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_snapshot, as: 'targetSnapshot'
         end
       end
       
@@ -1019,6 +1034,7 @@ module Google
           property :machine_type, as: 'machineType'
           hash :metadata, as: 'metadata'
           property :network, as: 'network'
+          property :nic_type, as: 'nicType'
           property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::NotebooksV1::RuntimeShieldedInstanceConfig, decorator: Google::Apis::NotebooksV1::RuntimeShieldedInstanceConfig::Representation
       
           property :subnet, as: 'subnet'
