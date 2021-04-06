@@ -223,7 +223,7 @@ module Google
       
         # IAM service account whose credentials will be used at build runtime. Must be
         # of the format `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``. ACCOUNT can
-        # be email address or uniqueId of the service account. This field is in beta.
+        # be email address or uniqueId of the service account.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
