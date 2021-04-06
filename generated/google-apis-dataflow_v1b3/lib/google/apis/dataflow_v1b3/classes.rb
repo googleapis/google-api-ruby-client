@@ -132,37 +132,6 @@ module Google
         end
       end
       
-      # Job information for templates.
-      class Artifact
-        include Google::Apis::Core::Hashable
-      
-        # Container Spec.
-        # Corresponds to the JSON property `containerSpec`
-        # @return [Google::Apis::DataflowV1b3::ContainerSpec]
-        attr_accessor :container_spec
-      
-        # job_graph_gcs_path set for legacy Template.
-        # Corresponds to the JSON property `jobGraphGcsPath`
-        # @return [String]
-        attr_accessor :job_graph_gcs_path
-      
-        # Metadata describing a template.
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::DataflowV1b3::TemplateMetadata]
-        attr_accessor :metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @container_spec = args[:container_spec] if args.key?(:container_spec)
-          @job_graph_gcs_path = args[:job_graph_gcs_path] if args.key?(:job_graph_gcs_path)
-          @metadata = args[:metadata] if args.key?(:metadata)
-        end
-      end
-      
       # A structured message reporting an autoscaling decision made by the Dataflow
       # service.
       class AutoscalingEvent
@@ -279,7 +248,7 @@ module Google
         end
       end
       
-      # Metadata for a BigTable connector used by the job.
+      # Metadata for a Cloud BigTable connector used by the job.
       class BigTableIoDetails
         include Google::Apis::Core::Hashable
       
@@ -339,32 +308,6 @@ module Google
           @rate = args[:rate] if args.key?(:rate)
           @timestamp = args[:timestamp] if args.key?(:timestamp)
           @total_ms = args[:total_ms] if args.key?(:total_ms)
-        end
-      end
-      
-      # Commit will add a new TemplateVersion to an existing template.
-      class CommitTemplateVersionRequest
-        include Google::Apis::Core::Hashable
-      
-        # ///////////////////////////////////////////////////////////////////////////// /
-        # /// Template Catalog is used to organize user TemplateVersions. ////
-        # TemplateVersions that have the same project_id and display_name are ////
-        # belong to the same Template. //// Templates with the same project_id belong to
-        # the same Project. //// TemplateVersion may have labels and multiple labels are
-        # allowed. //// Duplicated labels in the same `TemplateVersion` are not allowed.
-        # //// TemplateVersion may have tags and multiple tags are allowed. Duplicated //
-        # // tags in the same `Template` are not allowed!
-        # Corresponds to the JSON property `templateVersion`
-        # @return [Google::Apis::DataflowV1b3::TemplateVersion]
-        attr_accessor :template_version
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @template_version = args[:template_version] if args.key?(:template_version)
         end
       end
       
@@ -847,32 +790,6 @@ module Google
         end
       end
       
-      # Creates a new Template with TemplateVersions.
-      class CreateTemplateVersionRequest
-        include Google::Apis::Core::Hashable
-      
-        # ///////////////////////////////////////////////////////////////////////////// /
-        # /// Template Catalog is used to organize user TemplateVersions. ////
-        # TemplateVersions that have the same project_id and display_name are ////
-        # belong to the same Template. //// Templates with the same project_id belong to
-        # the same Project. //// TemplateVersion may have labels and multiple labels are
-        # allowed. //// Duplicated labels in the same `TemplateVersion` are not allowed.
-        # //// TemplateVersion may have tags and multiple tags are allowed. Duplicated //
-        # // tags in the same `Template` are not allowed!
-        # Corresponds to the JSON property `templateVersion`
-        # @return [Google::Apis::DataflowV1b3::TemplateVersion]
-        attr_accessor :template_version
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @template_version = args[:template_version] if args.key?(:template_version)
-        end
-      end
-      
       # Identifies the location of a custom souce.
       class CustomSourceLocation
         include Google::Apis::Core::Hashable
@@ -1233,23 +1150,6 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated empty
-      # messages in your APIs. A typical example is to use it as the request or the
-      # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
-      class Empty
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Describes the environment in which a Dataflow Job runs.
       class Environment
         include Google::Apis::Core::Hashable
@@ -1451,7 +1351,7 @@ module Google
         # @return [Array<Google::Apis::DataflowV1b3::StageSource>]
         attr_accessor :input_source
       
-        # Type of tranform this stage is executing.
+        # Type of transform this stage is executing.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2190,7 +2090,7 @@ module Google
         # @return [Array<Google::Apis::DataflowV1b3::Step>]
         attr_accessor :steps
       
-        # The GCS location where the steps are stored.
+        # The Cloud Storage location where the steps are stored.
         # Corresponds to the JSON property `stepsLocation`
         # @return [String]
         attr_accessor :steps_location
@@ -2358,7 +2258,7 @@ module Google
       class JobMetadata
         include Google::Apis::Core::Hashable
       
-        # Identification of a BigTable source used in the Dataflow job.
+        # Identification of a Cloud BigTable source used in the Dataflow job.
         # Corresponds to the JSON property `bigTableDetails`
         # @return [Array<Google::Apis::DataflowV1b3::BigTableIoDetails>]
         attr_accessor :big_table_details
@@ -2531,7 +2431,7 @@ module Google
         # @return [Google::Apis::DataflowV1b3::ContainerSpec]
         attr_accessor :container_spec
       
-        # Gcs path to a file with json serialized ContainerSpec as content.
+        # Cloud Storage path to a file with json serialized ContainerSpec as content.
         # Corresponds to the JSON property `containerSpecGcsPath`
         # @return [String]
         attr_accessor :container_spec_gcs_path
@@ -2866,32 +2766,6 @@ module Google
         end
       end
       
-      # Respond a list of TemplateVersions.
-      class ListTemplateVersionsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A token that can be sent as `page_token` to retrieve the next page. If this
-        # field is omitted, there are no subsequent pages.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # A list of TemplateVersions.
-        # Corresponds to the JSON property `templateVersions`
-        # @return [Array<Google::Apis::DataflowV1b3::TemplateVersion>]
-        attr_accessor :template_versions
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @template_versions = args[:template_versions] if args.key?(:template_versions)
-        end
-      end
-      
       # MapTask consists of an ordered set of instructions, each of which describes
       # one particular low-level operation for the worker to perform in order to
       # accomplish the MapTask's WorkItem. Each instruction must appear in the list
@@ -3128,105 +3002,6 @@ module Google
           @scalar = args[:scalar] if args.key?(:scalar)
           @set = args[:set] if args.key?(:set)
           @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
-      # Either add the label to TemplateVersion or remove it from the TemplateVersion.
-      class ModifyTemplateVersionLabelRequest
-        include Google::Apis::Core::Hashable
-      
-        # The label key for update.
-        # Corresponds to the JSON property `key`
-        # @return [String]
-        attr_accessor :key
-      
-        # Requests for add label to TemplateVersion or remove label from TemplateVersion.
-        # Corresponds to the JSON property `op`
-        # @return [String]
-        attr_accessor :op
-      
-        # The label value for update.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @key = args[:key] if args.key?(:key)
-          @op = args[:op] if args.key?(:op)
-          @value = args[:value] if args.key?(:value)
-        end
-      end
-      
-      # Respond the labels in the TemplateVersion.
-      class ModifyTemplateVersionLabelResponse
-        include Google::Apis::Core::Hashable
-      
-        # All the label in the TemplateVersion.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @labels = args[:labels] if args.key?(:labels)
-        end
-      end
-      
-      # Add a tag to the current TemplateVersion. If tag exist in another
-      # TemplateVersion in the Template, remove the tag before add it to the current
-      # TemplateVersion. If remove_only set, remove the tag from the current
-      # TemplateVersion.
-      class ModifyTemplateVersionTagRequest
-        include Google::Apis::Core::Hashable
-      
-        # The flag that indicates if the request is only for remove tag from
-        # TemplateVersion.
-        # Corresponds to the JSON property `removeOnly`
-        # @return [Boolean]
-        attr_accessor :remove_only
-        alias_method :remove_only?, :remove_only
-      
-        # The tag for update.
-        # Corresponds to the JSON property `tag`
-        # @return [String]
-        attr_accessor :tag
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @remove_only = args[:remove_only] if args.key?(:remove_only)
-          @tag = args[:tag] if args.key?(:tag)
-        end
-      end
-      
-      # Respond the current tags in the TemplateVersion.
-      class ModifyTemplateVersionTagResponse
-        include Google::Apis::Core::Hashable
-      
-        # All the tags in the TemplateVersion.
-        # Corresponds to the JSON property `tags`
-        # @return [Array<String>]
-        attr_accessor :tags
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
@@ -3705,7 +3480,7 @@ module Google
         end
       end
       
-      # Metadata for a PubSub connector used by the job.
+      # Metadata for a Pub/Sub connector used by the job.
       class PubSubIoDetails
         include Google::Apis::Core::Hashable
       
@@ -5838,80 +5613,6 @@ module Google
         end
       end
       
-      # ///////////////////////////////////////////////////////////////////////////// /
-      # /// Template Catalog is used to organize user TemplateVersions. ////
-      # TemplateVersions that have the same project_id and display_name are ////
-      # belong to the same Template. //// Templates with the same project_id belong to
-      # the same Project. //// TemplateVersion may have labels and multiple labels are
-      # allowed. //// Duplicated labels in the same `TemplateVersion` are not allowed.
-      # //// TemplateVersion may have tags and multiple tags are allowed. Duplicated //
-      # // tags in the same `Template` are not allowed!
-      class TemplateVersion
-        include Google::Apis::Core::Hashable
-      
-        # Job information for templates.
-        # Corresponds to the JSON property `artifact`
-        # @return [Google::Apis::DataflowV1b3::Artifact]
-        attr_accessor :artifact
-      
-        # Creation time of this TemplateVersion.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Template description from the user.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # A customized name for Template. Multiple TemplateVersions per Template.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Labels for the Template Version. Labels can be duplicate within Template.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # A unique project_id. Multiple Templates per Project.
-        # Corresponds to the JSON property `projectId`
-        # @return [String]
-        attr_accessor :project_id
-      
-        # Alias for version_id, helps locate a TemplateVersion.
-        # Corresponds to the JSON property `tags`
-        # @return [Array<String>]
-        attr_accessor :tags
-      
-        # Either LEGACY or FLEX. This should match with the type of artifact.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        # An auto generated version_id for TemplateVersion.
-        # Corresponds to the JSON property `versionId`
-        # @return [String]
-        attr_accessor :version_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @artifact = args[:artifact] if args.key?(:artifact)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @description = args[:description] if args.key?(:description)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @labels = args[:labels] if args.key?(:labels)
-          @project_id = args[:project_id] if args.key?(:project_id)
-          @tags = args[:tags] if args.key?(:tags)
-          @type = args[:type] if args.key?(:type)
-          @version_id = args[:version_id] if args.key?(:version_id)
-        end
-      end
-      
       # Global topology of the streaming Dataflow job, including all computations and
       # their sharded locations.
       class TopologyConfig
@@ -6426,7 +6127,7 @@ module Google
       class WorkerHealthReport
         include Google::Apis::Core::Hashable
       
-        # A message describing any unusual health reports.
+        # Message describing any unusual health reports.
         # Corresponds to the JSON property `msg`
         # @return [String]
         attr_accessor :msg
@@ -6444,6 +6145,12 @@ module Google
         # Corresponds to the JSON property `reportInterval`
         # @return [String]
         attr_accessor :report_interval
+      
+        # Code to describe a specific reason, if known, that a VM has reported broken
+        # state.
+        # Corresponds to the JSON property `vmBrokenCode`
+        # @return [String]
+        attr_accessor :vm_broken_code
       
         # Whether the VM is in a permanently broken state. Broken VMs should be
         # abandoned or deleted ASAP to avoid assigning or completing any work.
@@ -6472,6 +6179,7 @@ module Google
           @msg = args[:msg] if args.key?(:msg)
           @pods = args[:pods] if args.key?(:pods)
           @report_interval = args[:report_interval] if args.key?(:report_interval)
+          @vm_broken_code = args[:vm_broken_code] if args.key?(:vm_broken_code)
           @vm_is_broken = args[:vm_is_broken] if args.key?(:vm_is_broken)
           @vm_is_healthy = args[:vm_is_healthy] if args.key?(:vm_is_healthy)
           @vm_startup_time = args[:vm_startup_time] if args.key?(:vm_startup_time)
@@ -6620,9 +6328,9 @@ module Google
         # The code is a string intended for consumption by a machine that identifies the
         # type of message being sent. Examples: 1. "HARNESS_STARTED" might be used to
         # indicate the worker harness has started. 2. "GCS_DOWNLOAD_ERROR" might be used
-        # to indicate an error downloading a GCS file as part of the boot process of one
-        # of the worker containers. This is a string and not an enum to make it easy to
-        # add new codes without waiting for an API change.
+        # to indicate an error downloading a Cloud Storage file as part of the boot
+        # process of one of the worker containers. This is a string and not an enum to
+        # make it easy to add new codes without waiting for an API change.
         # Corresponds to the JSON property `code`
         # @return [String]
         attr_accessor :code
@@ -6631,13 +6339,14 @@ module Google
         # allow parameters of different types. Examples: 1. For a "HARNESS_STARTED"
         # message parameters might provide the name of the worker and additional data
         # like timing information. 2. For a "GCS_DOWNLOAD_ERROR" parameters might
-        # contain fields listing the GCS objects being downloaded and fields containing
-        # errors. In general complex data structures should be avoided. If a worker
-        # needs to send a specific and complicated data structure then please consider
-        # defining a new proto and adding it to the data oneof in WorkerMessageResponse.
-        # Conventions: Parameters should only be used for information that isn't
-        # typically passed as a label. hostname and other worker identifiers should
-        # almost always be passed as labels since they will be included on most messages.
+        # contain fields listing the Cloud Storage objects being downloaded and fields
+        # containing errors. In general complex data structures should be avoided. If a
+        # worker needs to send a specific and complicated data structure then please
+        # consider defining a new proto and adding it to the data oneof in
+        # WorkerMessageResponse. Conventions: Parameters should only be used for
+        # information that isn't typically passed as a label. hostname and other worker
+        # identifiers should almost always be passed as labels since they will be
+        # included on most messages.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
         attr_accessor :parameters

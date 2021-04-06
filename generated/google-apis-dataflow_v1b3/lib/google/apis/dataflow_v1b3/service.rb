@@ -118,221 +118,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new TemplateVersion (Important: not new Template) entry in the
-        # spanner table. Requires project_id and display_name (template).
-        # @param [String] name
-        #   The location of the template, name includes project_id and display_name.
-        #   Commit using project_id(pid1) and display_name(tid1). Format: projects/`pid1`/
-        #   catalogTemplates/`tid1`
-        # @param [Google::Apis::DataflowV1b3::CommitTemplateVersionRequest] commit_template_version_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataflowV1b3::TemplateVersion] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DataflowV1b3::TemplateVersion]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def commit_catalog_template_template_version(name, commit_template_version_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1b3/{+name}:commit', options)
-          command.request_representation = Google::Apis::DataflowV1b3::CommitTemplateVersionRequest::Representation
-          command.request_object = commit_template_version_request_object
-          command.response_representation = Google::Apis::DataflowV1b3::TemplateVersion::Representation
-          command.response_class = Google::Apis::DataflowV1b3::TemplateVersion
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deletes an existing Template. Do nothing if Template does not exist.
-        # @param [String] name
-        #   name includes project_id and display_name. Delete by project_id(pid1) and
-        #   display_name(tid1). Format: projects/`pid1`/catalogTemplates/`tid1`
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataflowV1b3::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DataflowV1b3::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_catalog_template(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'v1b3/{+name}', options)
-          command.response_representation = Google::Apis::DataflowV1b3::Empty::Representation
-          command.response_class = Google::Apis::DataflowV1b3::Empty
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Get TemplateVersion using project_id and display_name with an optional
-        # version_id field. Get latest (has tag "latest") TemplateVersion if version_id
-        # not set.
-        # @param [String] name
-        #   Resource name includes project_id and display_name. version_id is optional.
-        #   Get the latest TemplateVersion if version_id not set. Get by project_id(pid1)
-        #   and display_name(tid1): Format: projects/`pid1`/catalogTemplates/`tid1` Get by
-        #   project_id(pid1), display_name(tid1), and version_id(vid1): Format: projects/`
-        #   pid1`/catalogTemplates/`tid1@vid`
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataflowV1b3::TemplateVersion] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DataflowV1b3::TemplateVersion]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_catalog_template(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1b3/{+name}', options)
-          command.response_representation = Google::Apis::DataflowV1b3::TemplateVersion::Representation
-          command.response_class = Google::Apis::DataflowV1b3::TemplateVersion
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates the label of the TemplateVersion. Label can be duplicated in Template,
-        # so either add or remove the label in the TemplateVersion.
-        # @param [String] name
-        #   Resource name includes project_id, display_name, and version_id. Updates by
-        #   project_id(pid1), display_name(tid1), and version_id(vid1): Format: projects/`
-        #   pid1`/catalogTemplates/`tid1@vid`
-        # @param [Google::Apis::DataflowV1b3::ModifyTemplateVersionLabelRequest] modify_template_version_label_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataflowV1b3::ModifyTemplateVersionLabelResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DataflowV1b3::ModifyTemplateVersionLabelResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def label_project_catalog_template(name, modify_template_version_label_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1b3/{+name}:label', options)
-          command.request_representation = Google::Apis::DataflowV1b3::ModifyTemplateVersionLabelRequest::Representation
-          command.request_object = modify_template_version_label_request_object
-          command.response_representation = Google::Apis::DataflowV1b3::ModifyTemplateVersionLabelResponse::Representation
-          command.response_class = Google::Apis::DataflowV1b3::ModifyTemplateVersionLabelResponse
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates the tag of the TemplateVersion, and tag is unique in Template. If tag
-        # exists in another TemplateVersion in the Template, updates the tag to this
-        # TemplateVersion will remove it from the old TemplateVersion and add it to this
-        # TemplateVersion. If request is remove_only (remove_only = true), remove the
-        # tag from this TemplateVersion.
-        # @param [String] name
-        #   Resource name includes project_id, display_name, and version_id. Updates by
-        #   project_id(pid1), display_name(tid1), and version_id(vid1): Format: projects/`
-        #   pid1`/catalogTemplates/`tid1@vid`
-        # @param [Google::Apis::DataflowV1b3::ModifyTemplateVersionTagRequest] modify_template_version_tag_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataflowV1b3::ModifyTemplateVersionTagResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DataflowV1b3::ModifyTemplateVersionTagResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def tag_project_catalog_template(name, modify_template_version_tag_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1b3/{+name}:tag', options)
-          command.request_representation = Google::Apis::DataflowV1b3::ModifyTemplateVersionTagRequest::Representation
-          command.request_object = modify_template_version_tag_request_object
-          command.response_representation = Google::Apis::DataflowV1b3::ModifyTemplateVersionTagResponse::Representation
-          command.response_class = Google::Apis::DataflowV1b3::ModifyTemplateVersionTagResponse
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Creates a new Template with TemplateVersion. Requires project_id(projects) and
-        # template display_name(catalogTemplates). The template display_name is set by
-        # the user.
-        # @param [String] parent
-        #   The parent project and template that the TemplateVersion will be created under.
-        #   Create using project_id(pid1) and display_name(tid1). Format: projects/`pid1`/
-        #   catalogTemplates/`tid1`
-        # @param [Google::Apis::DataflowV1b3::CreateTemplateVersionRequest] create_template_version_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataflowV1b3::TemplateVersion] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DataflowV1b3::TemplateVersion]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_template_version(parent, create_template_version_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1b3/{+parent}/templateVersions', options)
-          command.request_representation = Google::Apis::DataflowV1b3::CreateTemplateVersionRequest::Representation
-          command.request_object = create_template_version_request_object
-          command.response_representation = Google::Apis::DataflowV1b3::TemplateVersion::Representation
-          command.response_class = Google::Apis::DataflowV1b3::TemplateVersion
-          command.params['parent'] = parent unless parent.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # List the jobs of a project across all regions.
         # @param [String] project_id
         #   The project which owns the jobs.
@@ -1799,8 +1584,8 @@ module Google
         #   regional-endpoints) to which to direct the request.
         # @param [Google::Apis::DataflowV1b3::LaunchTemplateParameters] launch_template_parameters_object
         # @param [String] dynamic_template_gcs_path
-        #   Path to dynamic template spec file on GCS. The file must be a Json serialized
-        #   DynamicTemplateFieSpec object.
+        #   Path to dynamic template spec file on Cloud Storage. The file must be a Json
+        #   serialized DynamicTemplateFieSpec object.
         # @param [String] dynamic_template_staging_location
         #   Cloud Storage path for staging dependencies. Must be a valid Cloud Storage URL,
         #   beginning with `gs://`.
@@ -1915,47 +1700,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List TemplateVersions using project_id and an optional display_name field.
-        # List all the TemplateVersions in the Template if display set. List all the
-        # TemplateVersions in the Project if display_name not set.
-        # @param [String] parent
-        #   parent includes project_id, and display_name is optional. List by project_id(
-        #   pid1) and display_name(tid1). Format: projects/`pid1`/catalogTemplates/`tid1`
-        #   List by project_id(pid1). Format: projects/`pid1`
-        # @param [Fixnum] page_size
-        #   The maximum number of TemplateVersions to return per page.
-        # @param [String] page_token
-        #   The page token, received from a previous ListTemplateVersions call. Provide
-        #   this to retrieve the subsequent page.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataflowV1b3::ListTemplateVersionsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DataflowV1b3::ListTemplateVersionsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_template_versions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1b3/{+parent}/templateVersions', options)
-          command.response_representation = Google::Apis::DataflowV1b3::ListTemplateVersionsResponse::Representation
-          command.response_class = Google::Apis::DataflowV1b3::ListTemplateVersionsResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Creates a Cloud Dataflow job from a template.
         # @param [String] project_id
         #   Required. The ID of the Cloud Platform project that the job belongs to.
@@ -2035,8 +1779,8 @@ module Google
         #   Required. The ID of the Cloud Platform project that the job belongs to.
         # @param [Google::Apis::DataflowV1b3::LaunchTemplateParameters] launch_template_parameters_object
         # @param [String] dynamic_template_gcs_path
-        #   Path to dynamic template spec file on GCS. The file must be a Json serialized
-        #   DynamicTemplateFieSpec object.
+        #   Path to dynamic template spec file on Cloud Storage. The file must be a Json
+        #   serialized DynamicTemplateFieSpec object.
         # @param [String] dynamic_template_staging_location
         #   Cloud Storage path for staging dependencies. Must be a valid Cloud Storage URL,
         #   beginning with `gs://`.
