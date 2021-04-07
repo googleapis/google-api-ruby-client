@@ -858,6 +858,9 @@ module Google
         #   imClients * interests * locales * locations * memberships * metadata *
         #   miscKeywords * names * nicknames * occupations * organizations * phoneNumbers *
         #   photos * relations * sipAddresses * skills * urls * userDefined
+        # @param [Array<String>, String] sources
+        #   Optional. A mask of what source types to return. Defaults to
+        #   READ_SOURCE_TYPE_CONTACT if not set.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -875,13 +878,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_person_contacts(page_size: nil, query: nil, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def search_person_contacts(page_size: nil, query: nil, read_mask: nil, sources: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/people:searchContacts', options)
           command.response_representation = Google::Apis::PeopleV1::SearchResponse::Representation
           command.response_class = Google::Apis::PeopleV1::SearchResponse
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['query'] = query unless query.nil?
           command.query['readMask'] = read_mask unless read_mask.nil?
+          command.query['sources'] = sources unless sources.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
