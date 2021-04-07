@@ -4492,16 +4492,17 @@ module Google
       
         # The minimum number of instances to create. If no min_count is specified then
         # count is used as the default value. If min_count instances cannot be created,
-        # then no instances will be created.
+        # then no instances will be created and instances already created will be
+        # deleted.
         # Corresponds to the JSON property `minCount`
         # @return [Fixnum]
         attr_accessor :min_count
       
         # The string pattern used for the names of the VMs. Either name_pattern or
-        # predefined_names must be set. The pattern should contain one consecutive
+        # per_instance_properties must be set. The pattern should contain one continuous
         # sequence of placeholder hash characters (#) with each character corresponding
         # to one digit of the generated instance name. Example: name_pattern of inst-####
-        # will generate instance names like inst-0001, inst-0002, ... . If there
+        # will generate instance names such as inst-0001, inst-0002, ... . If there
         # already exist instance(s) whose names match the name pattern in the same
         # project and zone, then the generated instance numbers will start after the
         # biggest existing number. For example, if there exists an instance with name
@@ -13932,6 +13933,17 @@ module Google
         # @return [String]
         attr_accessor :minimal_action
       
+        # Most disruptive action that is allowed to be taken on an instance. You can
+        # specify either NONE to forbid any actions, REFRESH to allow actions that do
+        # not need instance restart, RESTART to allow actions that can be applied
+        # without instance replacing or REPLACE to allow all possible actions. If the
+        # Updater determines that the minimal update action needed is more disruptive
+        # than most disruptive allowed action you specify it will not perform the update
+        # at all.
+        # Corresponds to the JSON property `mostDisruptiveAllowedAction`
+        # @return [String]
+        attr_accessor :most_disruptive_allowed_action
+      
         # What action should be used to replace instances. See minimal_action.REPLACE
         # Corresponds to the JSON property `replacementMethod`
         # @return [String]
@@ -13957,6 +13969,7 @@ module Google
           @max_unavailable = args[:max_unavailable] if args.key?(:max_unavailable)
           @min_ready_sec = args[:min_ready_sec] if args.key?(:min_ready_sec)
           @minimal_action = args[:minimal_action] if args.key?(:minimal_action)
+          @most_disruptive_allowed_action = args[:most_disruptive_allowed_action] if args.key?(:most_disruptive_allowed_action)
           @replacement_method = args[:replacement_method] if args.key?(:replacement_method)
           @type = args[:type] if args.key?(:type)
         end
@@ -18121,7 +18134,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Location configurations mapped by location name. Currently only zone names are
-        # supported and must be represented as valid internal URLs, like: zones/us-
+        # supported and must be represented as valid internal URLs, such as zones/us-
         # central1-a.
         # Corresponds to the JSON property `locations`
         # @return [Hash<String,Google::Apis::ComputeBeta::LocationPolicyLocation>]
@@ -18141,7 +18154,7 @@ module Google
       class LocationPolicyLocation
         include Google::Apis::Core::Hashable
       
-        # 
+        # Preference for a given locaction: ALLOW or DENY.
         # Corresponds to the JSON property `preference`
         # @return [String]
         attr_accessor :preference
@@ -31574,7 +31587,7 @@ module Google
       # A service attachment represents a service that a producer has exposed. It
       # encapsulates the load balancer which fronts the service runs and a list of NAT
       # IP ranges that the producers uses to represent the consumers connecting to the
-      # service. next tag = 17
+      # service. next tag = 19
       class ServiceAttachment
         include Google::Apis::Core::Hashable
       
@@ -31656,6 +31669,12 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # The URL of a service serving the endpoint identified by this service
+        # attachment.
+        # Corresponds to the JSON property `targetService`
+        # @return [String]
+        attr_accessor :target_service
+      
         def initialize(**args)
            update!(**args)
         end
@@ -31674,6 +31693,7 @@ module Google
           @producer_forwarding_rule = args[:producer_forwarding_rule] if args.key?(:producer_forwarding_rule)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @target_service = args[:target_service] if args.key?(:target_service)
         end
       end
       
@@ -31801,6 +31821,7 @@ module Google
       end
       
       # [Output Only] A consumer forwarding rule connected to this service attachment.
+      # [Deprecated] Do not use.
       class ServiceAttachmentConsumerForwardingRule
         include Google::Apis::Core::Hashable
       

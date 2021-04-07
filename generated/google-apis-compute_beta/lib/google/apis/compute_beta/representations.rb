@@ -8495,6 +8495,7 @@ module Google
       
           property :min_ready_sec, as: 'minReadySec'
           property :minimal_action, as: 'minimalAction'
+          property :most_disruptive_allowed_action, as: 'mostDisruptiveAllowedAction'
           property :replacement_method, as: 'replacementMethod'
           property :type, as: 'type'
         end
@@ -13023,6 +13024,7 @@ module Google
           property :producer_forwarding_rule, as: 'producerForwardingRule'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :target_service, as: 'targetService'
         end
       end
       
