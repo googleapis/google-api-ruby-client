@@ -2550,6 +2550,57 @@ module Google
         end
       end
       
+      # Structure of a DeveloperSubscription.
+      class GoogleCloudApigeeV1DeveloperSubscription
+        include Google::Apis::Core::Hashable
+      
+        # Name of the API product for which the developer is purchasing a subscription.
+        # Corresponds to the JSON property `apiproduct`
+        # @return [String]
+        attr_accessor :apiproduct
+      
+        # Output only. Time when the API product subscription was created in
+        # milliseconds since epoch.
+        # Corresponds to the JSON property `createdAt`
+        # @return [Fixnum]
+        attr_accessor :created_at
+      
+        # Time when the API product subscription ends in milliseconds since epoch.
+        # Corresponds to the JSON property `endTime`
+        # @return [Fixnum]
+        attr_accessor :end_time
+      
+        # Output only. Time when the API product subscription was last modified in
+        # milliseconds since epoch.
+        # Corresponds to the JSON property `lastModifiedAt`
+        # @return [Fixnum]
+        attr_accessor :last_modified_at
+      
+        # Output only. Name of the API product subscription.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Time when the API product subscription starts in milliseconds since epoch.
+        # Corresponds to the JSON property `startTime`
+        # @return [Fixnum]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apiproduct = args[:apiproduct] if args.key?(:apiproduct)
+          @created_at = args[:created_at] if args.key?(:created_at)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
+          @name = args[:name] if args.key?(:name)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # This message type encapsulates a metric grouped by dimension.
       class GoogleCloudApigeeV1DimensionMetric
         include Google::Apis::Core::Hashable
@@ -2912,6 +2963,19 @@ module Google
           @revision_id = args[:revision_id] if args.key?(:revision_id)
           @routing_rules = args[:routing_rules] if args.key?(:routing_rules)
           @uid = args[:uid] if args.key?(:uid)
+        end
+      end
+      
+      # Request for ExpireDeveloperSubscription.
+      class GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -3870,6 +3934,32 @@ module Google
         end
       end
       
+      # Response for ListDeveloperSubscriptions.
+      class GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of all subscriptions.
+        # Corresponds to the JSON property `developerSubscriptions`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperSubscription>]
+        attr_accessor :developer_subscriptions
+      
+        # Value that can be sent as `startKey` to retrieve the next page of content. If
+        # this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextStartKey`
+        # @return [String]
+        attr_accessor :next_start_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @developer_subscriptions = args[:developer_subscriptions] if args.key?(:developer_subscriptions)
+          @next_start_key = args[:next_start_key] if args.key?(:next_start_key)
+        end
+      end
+      
       # Response for ListEnvironmentGroupAttachments.
       class GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse
         include Google::Apis::Core::Hashable
@@ -4092,6 +4182,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @organizations = args[:organizations] if args.key?(:organizations)
+        end
+      end
+      
+      # Response for ListRatePlans.
+      class GoogleCloudApigeeV1ListRatePlansResponse
+        include Google::Apis::Core::Hashable
+      
+        # Value that can be sent as `startKey` to retrieve the next page of content. If
+        # this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextStartKey`
+        # @return [String]
+        attr_accessor :next_start_key
+      
+        # List of rate plans in an organization.
+        # Corresponds to the JSON property `ratePlans`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1RatePlan>]
+        attr_accessor :rate_plans
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_start_key = args[:next_start_key] if args.key?(:next_start_key)
+          @rate_plans = args[:rate_plans] if args.key?(:rate_plans)
         end
       end
       
@@ -4362,6 +4478,11 @@ module Google
         # @return [String]
         attr_accessor :operation_type
       
+        # Information about operation progress.
+        # Corresponds to the JSON property `progress`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1OperationMetadataProgress]
+        attr_accessor :progress
+      
         # 
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -4379,8 +4500,46 @@ module Google
         # Update properties of this object
         def update!(**args)
           @operation_type = args[:operation_type] if args.key?(:operation_type)
+          @progress = args[:progress] if args.key?(:progress)
           @state = args[:state] if args.key?(:state)
           @target_resource_name = args[:target_resource_name] if args.key?(:target_resource_name)
+        end
+      end
+      
+      # Information about operation progress.
+      class GoogleCloudApigeeV1OperationMetadataProgress
+        include Google::Apis::Core::Hashable
+      
+        # Description of the operation's progress.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The additional details of the progress.
+        # Corresponds to the JSON property `details`
+        # @return [Hash<String,Object>]
+        attr_accessor :details
+      
+        # The percentage of the operation progress.
+        # Corresponds to the JSON property `percentDone`
+        # @return [Fixnum]
+        attr_accessor :percent_done
+      
+        # State of the operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @details = args[:details] if args.key?(:details)
+          @percent_done = args[:percent_done] if args.key?(:percent_done)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -5082,6 +5241,175 @@ module Google
         end
       end
       
+      # Rate plan details.
+      class GoogleCloudApigeeV1RatePlan
+        include Google::Apis::Core::Hashable
+      
+        # Name of the API product that the rate plan is associated with.
+        # Corresponds to the JSON property `apiproduct`
+        # @return [String]
+        attr_accessor :apiproduct
+      
+        # Frequency at which the customer will be billed.
+        # Corresponds to the JSON property `billingPeriod`
+        # @return [String]
+        attr_accessor :billing_period
+      
+        # API call volume ranges and the fees charged when the total number of API calls
+        # is within a given range. The method used to calculate the final fee depends on
+        # the selected pricing model. For example, if the pricing model is `STAIRSTEP`
+        # and the ranges are defined as follows: ``` ` "start": 1, "end": 100, "fee": 75
+        # `, ` "start": 101, "end": 200, "fee": 100 `, ` ``` Then the following fees
+        # would be charged based on the total number of API calls (assuming the currency
+        # selected is `USD`): * 1 call costs $75 * 50 calls cost $75 * 150 calls cost $
+        # 100 The number of API calls cannot exceed 200.
+        # Corresponds to the JSON property `consumptionPricingRates`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1RateRange>]
+        attr_accessor :consumption_pricing_rates
+      
+        # Pricing model used for consumption-based charges.
+        # Corresponds to the JSON property `consumptionPricingType`
+        # @return [String]
+        attr_accessor :consumption_pricing_type
+      
+        # Output only. Time that the rate plan was created in milliseconds since epoch.
+        # Corresponds to the JSON property `createdAt`
+        # @return [Fixnum]
+        attr_accessor :created_at
+      
+        # Currency to be used for billing. Consists of a three-letter code as defined by
+        # the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) standard.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
+        # Description of the rate plan.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Display name of the rate plan.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Time when the rate plan will expire in milliseconds since epoch. Set to 0 or `
+        # null` to indicate that the rate plan should never expire.
+        # Corresponds to the JSON property `endTime`
+        # @return [Fixnum]
+        attr_accessor :end_time
+      
+        # Frequency at which the fixed fee is charged.
+        # Corresponds to the JSON property `fixedFeeFrequency`
+        # @return [Fixnum]
+        attr_accessor :fixed_fee_frequency
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `fixedRecurringFee`
+        # @return [Google::Apis::ApigeeV1::GoogleTypeMoney]
+        attr_accessor :fixed_recurring_fee
+      
+        # Output only. Time the rate plan was last modified in milliseconds since epoch.
+        # Corresponds to the JSON property `lastModifiedAt`
+        # @return [Fixnum]
+        attr_accessor :last_modified_at
+      
+        # Output only. Name of the rate plan.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Flag that specifies the billing account type, prepaid or postpaid.
+        # Corresponds to the JSON property `paymentFundingModel`
+        # @return [String]
+        attr_accessor :payment_funding_model
+      
+        # Details of the revenue sharing model.
+        # Corresponds to the JSON property `revenueShareRates`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1RevenueShareRange>]
+        attr_accessor :revenue_share_rates
+      
+        # Method used to calculate the revenue that is shared with developers.
+        # Corresponds to the JSON property `revenueShareType`
+        # @return [String]
+        attr_accessor :revenue_share_type
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `setupFee`
+        # @return [Google::Apis::ApigeeV1::GoogleTypeMoney]
+        attr_accessor :setup_fee
+      
+        # Time when the rate plan becomes active in milliseconds since epoch.
+        # Corresponds to the JSON property `startTime`
+        # @return [Fixnum]
+        attr_accessor :start_time
+      
+        # Current state of the rate plan (draft or published).
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apiproduct = args[:apiproduct] if args.key?(:apiproduct)
+          @billing_period = args[:billing_period] if args.key?(:billing_period)
+          @consumption_pricing_rates = args[:consumption_pricing_rates] if args.key?(:consumption_pricing_rates)
+          @consumption_pricing_type = args[:consumption_pricing_type] if args.key?(:consumption_pricing_type)
+          @created_at = args[:created_at] if args.key?(:created_at)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @fixed_fee_frequency = args[:fixed_fee_frequency] if args.key?(:fixed_fee_frequency)
+          @fixed_recurring_fee = args[:fixed_recurring_fee] if args.key?(:fixed_recurring_fee)
+          @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
+          @name = args[:name] if args.key?(:name)
+          @payment_funding_model = args[:payment_funding_model] if args.key?(:payment_funding_model)
+          @revenue_share_rates = args[:revenue_share_rates] if args.key?(:revenue_share_rates)
+          @revenue_share_type = args[:revenue_share_type] if args.key?(:revenue_share_type)
+          @setup_fee = args[:setup_fee] if args.key?(:setup_fee)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # API call volume range and the fees charged when the total number of API calls
+      # is within the range.
+      class GoogleCloudApigeeV1RateRange
+        include Google::Apis::Core::Hashable
+      
+        # Ending value of the range. Set to 0 or `null` for the last range of values.
+        # Corresponds to the JSON property `end`
+        # @return [Fixnum]
+        attr_accessor :end
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `fee`
+        # @return [Google::Apis::ApigeeV1::GoogleTypeMoney]
+        attr_accessor :fee
+      
+        # Starting value of the range. Set to 0 or `null` for the initial range of
+        # values.
+        # Corresponds to the JSON property `start`
+        # @return [Fixnum]
+        attr_accessor :start
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end = args[:end] if args.key?(:end)
+          @fee = args[:fee] if args.key?(:fee)
+          @start = args[:start] if args.key?(:start)
+        end
+      end
+      
       # A Reference configuration. References must refer to a keystore that also
       # exists in the parent environment.
       class GoogleCloudApigeeV1Reference
@@ -5425,6 +5753,42 @@ module Google
           @timestamp = args[:timestamp] if args.key?(:timestamp)
           @u_ri = args[:u_ri] if args.key?(:u_ri)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # API call volume range and the percentage of revenue to share with the
+      # developer when the total number of API calls is within the range.
+      class GoogleCloudApigeeV1RevenueShareRange
+        include Google::Apis::Core::Hashable
+      
+        # Ending value of the range. Set to 0 or `null` for the last range of values.
+        # Corresponds to the JSON property `end`
+        # @return [Fixnum]
+        attr_accessor :end
+      
+        # Percentage of the revenue to be shared with the developer. For example, to
+        # share 21 percent of the total revenue with the developer, set this value to 21.
+        # Specify a decimal number with a maximum of two digits following the decimal
+        # point.
+        # Corresponds to the JSON property `sharePercentage`
+        # @return [Float]
+        attr_accessor :share_percentage
+      
+        # Starting value of the range. Set to 0 or `null` for the initial range of
+        # values.
+        # Corresponds to the JSON property `start`
+        # @return [Fixnum]
+        attr_accessor :start
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end = args[:end] if args.key?(:end)
+          @share_percentage = args[:share_percentage] if args.key?(:share_percentage)
+          @start = args[:start] if args.key?(:start)
         end
       end
       
@@ -7156,6 +7520,42 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Represents an amount of money with its currency type.
+      class GoogleTypeMoney
+        include Google::Apis::Core::Hashable
+      
+        # The three-letter currency code defined in ISO 4217.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
+        # Number of nano (10^-9) units of the amount. The value must be between -999,999,
+        # 999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be
+        # positive or zero. If `units` is zero, `nanos` can be positive, zero, or
+        # negative. If `units` is negative, `nanos` must be negative or zero. For
+        # example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # The whole units of the amount. For example if `currencyCode` is `"USD"`, then
+        # 1 unit is one US dollar.
+        # Corresponds to the JSON property `units`
+        # @return [Fixnum]
+        attr_accessor :units
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @units = args[:units] if args.key?(:units)
         end
       end
     end
