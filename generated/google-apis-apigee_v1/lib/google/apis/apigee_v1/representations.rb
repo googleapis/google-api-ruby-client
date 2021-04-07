@@ -322,6 +322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1DeveloperSubscription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1DimensionMetric
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -359,6 +365,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1EnvironmentGroupConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -544,6 +556,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -604,6 +622,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ListRatePlansResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ListSharedFlowsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -659,6 +683,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1OperationMetadataProgress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -748,6 +778,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1RatePlan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1RateRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1Reference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -803,6 +845,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1Result
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1RevenueShareRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1055,6 +1103,12 @@ module Google
       end
       
       class GoogleTypeExpr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleTypeMoney
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1684,6 +1738,18 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1DeveloperSubscription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :apiproduct, as: 'apiproduct'
+          property :created_at, :numeric_string => true, as: 'createdAt'
+          property :end_time, :numeric_string => true, as: 'endTime'
+          property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
+          property :name, as: 'name'
+          property :start_time, :numeric_string => true, as: 'startTime'
+        end
+      end
+      
       class GoogleCloudApigeeV1DimensionMetric
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1777,6 +1843,12 @@ module Google
           collection :routing_rules, as: 'routingRules', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RoutingRule, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RoutingRule::Representation
       
           property :uid, as: 'uid'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -2064,6 +2136,15 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :developer_subscriptions, as: 'developerSubscriptions', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperSubscription, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperSubscription::Representation
+      
+          property :next_start_key, as: 'nextStartKey'
+        end
+      end
+      
       class GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2145,6 +2226,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :organizations, as: 'organizations', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1OrganizationProjectMapping, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1OrganizationProjectMapping::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1ListRatePlansResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_start_key, as: 'nextStartKey'
+          collection :rate_plans, as: 'ratePlans', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RatePlan, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RatePlan::Representation
       
         end
       end
@@ -2232,8 +2322,20 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :operation_type, as: 'operationType'
+          property :progress, as: 'progress', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1OperationMetadataProgress, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1OperationMetadataProgress::Representation
+      
           property :state, as: 'state'
           property :target_resource_name, as: 'targetResourceName'
+        end
+      end
+      
+      class GoogleCloudApigeeV1OperationMetadataProgress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          hash :details, as: 'details'
+          property :percent_done, as: 'percentDone'
+          property :state, as: 'state'
         end
       end
       
@@ -2400,6 +2502,45 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1RatePlan
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :apiproduct, as: 'apiproduct'
+          property :billing_period, as: 'billingPeriod'
+          collection :consumption_pricing_rates, as: 'consumptionPricingRates', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RateRange, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RateRange::Representation
+      
+          property :consumption_pricing_type, as: 'consumptionPricingType'
+          property :created_at, :numeric_string => true, as: 'createdAt'
+          property :currency_code, as: 'currencyCode'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :end_time, :numeric_string => true, as: 'endTime'
+          property :fixed_fee_frequency, as: 'fixedFeeFrequency'
+          property :fixed_recurring_fee, as: 'fixedRecurringFee', class: Google::Apis::ApigeeV1::GoogleTypeMoney, decorator: Google::Apis::ApigeeV1::GoogleTypeMoney::Representation
+      
+          property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
+          property :name, as: 'name'
+          property :payment_funding_model, as: 'paymentFundingModel'
+          collection :revenue_share_rates, as: 'revenueShareRates', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RevenueShareRange, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RevenueShareRange::Representation
+      
+          property :revenue_share_type, as: 'revenueShareType'
+          property :setup_fee, as: 'setupFee', class: Google::Apis::ApigeeV1::GoogleTypeMoney, decorator: Google::Apis::ApigeeV1::GoogleTypeMoney::Representation
+      
+          property :start_time, :numeric_string => true, as: 'startTime'
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudApigeeV1RateRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end, :numeric_string => true, as: 'end'
+          property :fee, as: 'fee', class: Google::Apis::ApigeeV1::GoogleTypeMoney, decorator: Google::Apis::ApigeeV1::GoogleTypeMoney::Representation
+      
+          property :start, :numeric_string => true, as: 'start'
+        end
+      end
+      
       class GoogleCloudApigeeV1Reference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2494,6 +2635,15 @@ module Google
           property :timestamp, as: 'timestamp'
           property :u_ri, as: 'uRI'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class GoogleCloudApigeeV1RevenueShareRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end, :numeric_string => true, as: 'end'
+          property :share_percentage, as: 'sharePercentage'
+          property :start, :numeric_string => true, as: 'start'
         end
       end
       
@@ -2923,6 +3073,15 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class GoogleTypeMoney
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :currency_code, as: 'currencyCode'
+          property :nanos, as: 'nanos'
+          property :units, :numeric_string => true, as: 'units'
         end
       end
     end
