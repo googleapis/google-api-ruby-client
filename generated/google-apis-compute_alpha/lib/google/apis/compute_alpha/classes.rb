@@ -4875,16 +4875,17 @@ module Google
       
         # The minimum number of instances to create. If no min_count is specified then
         # count is used as the default value. If min_count instances cannot be created,
-        # then no instances will be created.
+        # then no instances will be created and instances already created will be
+        # deleted.
         # Corresponds to the JSON property `minCount`
         # @return [Fixnum]
         attr_accessor :min_count
       
         # The string pattern used for the names of the VMs. Either name_pattern or
-        # predefined_names must be set. The pattern should contain one consecutive
+        # per_instance_properties must be set. The pattern should contain one continuous
         # sequence of placeholder hash characters (#) with each character corresponding
         # to one digit of the generated instance name. Example: name_pattern of inst-####
-        # will generate instance names like inst-0001, inst-0002, ... . If there
+        # will generate instance names such as inst-0001, inst-0002, ... . If there
         # already exist instance(s) whose names match the name pattern in the same
         # project and zone, then the generated instance numbers will start after the
         # biggest existing number. For example, if there exists an instance with name
@@ -4901,7 +4902,7 @@ module Google
         # @return [Hash<String,Google::Apis::ComputeAlpha::BulkInsertInstanceResourcePerInstanceProperties>]
         attr_accessor :per_instance_properties
       
-        # List of predefined names. The number of names provided must be equal to count.
+        # DEPRECATED: Please use per_instance_properties instead.
         # Corresponds to the JSON property `predefinedNames`
         # @return [Array<String>]
         attr_accessor :predefined_names
@@ -9264,6 +9265,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :psc_connection_id
       
+        # 
+        # Corresponds to the JSON property `pscConnectionStatus`
+        # @return [String]
+        attr_accessor :psc_connection_status
+      
         # [Output Only] URL of the region where the regional forwarding rule resides.
         # This field is not applicable to global forwarding rules. You must specify this
         # field as part of the HTTP request URL. It is not settable as a field in the
@@ -9352,6 +9358,7 @@ module Google
           @port_range = args[:port_range] if args.key?(:port_range)
           @ports = args[:ports] if args.key?(:ports)
           @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
+          @psc_connection_status = args[:psc_connection_status] if args.key?(:psc_connection_status)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
@@ -20418,7 +20425,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Location configurations mapped by location name. Currently only zone names are
-        # supported and must be represented as valid internal URLs, like: zones/us-
+        # supported and must be represented as valid internal URLs, such as zones/us-
         # central1-a.
         # Corresponds to the JSON property `locations`
         # @return [Hash<String,Google::Apis::ComputeAlpha::LocationPolicyLocation>]
@@ -20438,7 +20445,7 @@ module Google
       class LocationPolicyLocation
         include Google::Apis::Core::Hashable
       
-        # 
+        # Preference for a given locaction: ALLOW or DENY.
         # Corresponds to the JSON property `preference`
         # @return [String]
         attr_accessor :preference
@@ -35705,7 +35712,7 @@ module Google
       # A service attachment represents a service that a producer has exposed. It
       # encapsulates the load balancer which fronts the service runs and a list of NAT
       # IP ranges that the producers uses to represent the consumers connecting to the
-      # service. next tag = 17
+      # service. next tag = 19
       class ServiceAttachment
         include Google::Apis::Core::Hashable
       
@@ -35716,11 +35723,22 @@ module Google
         # @return [String]
         attr_accessor :connection_preference
       
+        # Projects that are allowed to connect to this service attachment.
+        # Corresponds to the JSON property `consumerAcceptLists`
+        # @return [Array<Google::Apis::ComputeAlpha::ServiceAttachmentConsumerProjectLimit>]
+        attr_accessor :consumer_accept_lists
+      
         # [Output Only] An array of forwarding rules for all the consumers connected to
         # this service attachment.
         # Corresponds to the JSON property `consumerForwardingRules`
         # @return [Array<Google::Apis::ComputeAlpha::ServiceAttachmentConsumerForwardingRule>]
         attr_accessor :consumer_forwarding_rules
+      
+        # Projects that are not allowed to connect to this service attachment. The
+        # project can be specified using its id or number.
+        # Corresponds to the JSON property `consumerRejectLists`
+        # @return [Array<String>]
+        attr_accessor :consumer_reject_lists
       
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
@@ -35740,6 +35758,17 @@ module Google
         # @return [Boolean]
         attr_accessor :enable_proxy_protocol
         alias_method :enable_proxy_protocol?, :enable_proxy_protocol
+      
+        # Fingerprint of this resource. A hash of the contents stored in this object.
+        # This field is used in optimistic locking. This field will be ignored when
+        # inserting a ServiceAttachment. An up-to-date fingerprint must be provided in
+        # order to patch/update the ServiceAttachment; otherwise, the request will fail
+        # with error 412 conditionNotMet. To see the latest fingerprint, make a get()
+        # request to retrieve the ServiceAttachment.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
       
         # [Output Only] The unique identifier for the resource type. The server
         # generates this identifier.
@@ -35787,6 +35816,12 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # The URL of a service serving the endpoint identified by this service
+        # attachment.
+        # Corresponds to the JSON property `targetService`
+        # @return [String]
+        attr_accessor :target_service
+      
         def initialize(**args)
            update!(**args)
         end
@@ -35794,10 +35829,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @connection_preference = args[:connection_preference] if args.key?(:connection_preference)
+          @consumer_accept_lists = args[:consumer_accept_lists] if args.key?(:consumer_accept_lists)
           @consumer_forwarding_rules = args[:consumer_forwarding_rules] if args.key?(:consumer_forwarding_rules)
+          @consumer_reject_lists = args[:consumer_reject_lists] if args.key?(:consumer_reject_lists)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @enable_proxy_protocol = args[:enable_proxy_protocol] if args.key?(:enable_proxy_protocol)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
@@ -35805,6 +35843,7 @@ module Google
           @producer_forwarding_rule = args[:producer_forwarding_rule] if args.key?(:producer_forwarding_rule)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @target_service = args[:target_service] if args.key?(:target_service)
         end
       end
       
@@ -35932,6 +35971,7 @@ module Google
       end
       
       # [Output Only] A consumer forwarding rule connected to this service attachment.
+      # [Deprecated] Do not use.
       class ServiceAttachmentConsumerForwardingRule
         include Google::Apis::Core::Hashable
       
@@ -35953,6 +35993,31 @@ module Google
         def update!(**args)
           @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class ServiceAttachmentConsumerProjectLimit
+        include Google::Apis::Core::Hashable
+      
+        # The value of the limit to set.
+        # Corresponds to the JSON property `connectionLimit`
+        # @return [Fixnum]
+        attr_accessor :connection_limit
+      
+        # The project id or number for the project to set the limit for.
+        # Corresponds to the JSON property `projectIdOrNum`
+        # @return [String]
+        attr_accessor :project_id_or_num
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_limit = args[:connection_limit] if args.key?(:connection_limit)
+          @project_id_or_num = args[:project_id_or_num] if args.key?(:project_id_or_num)
         end
       end
       
