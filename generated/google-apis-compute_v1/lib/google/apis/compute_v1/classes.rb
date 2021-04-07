@@ -4104,16 +4104,17 @@ module Google
       
         # The minimum number of instances to create. If no min_count is specified then
         # count is used as the default value. If min_count instances cannot be created,
-        # then no instances will be created.
+        # then no instances will be created and instances already created will be
+        # deleted.
         # Corresponds to the JSON property `minCount`
         # @return [Fixnum]
         attr_accessor :min_count
       
         # The string pattern used for the names of the VMs. Either name_pattern or
-        # predefined_names must be set. The pattern should contain one consecutive
+        # per_instance_properties must be set. The pattern should contain one continuous
         # sequence of placeholder hash characters (#) with each character corresponding
         # to one digit of the generated instance name. Example: name_pattern of inst-####
-        # will generate instance names like inst-0001, inst-0002, ... . If there
+        # will generate instance names such as inst-0001, inst-0002, ... . If there
         # already exist instance(s) whose names match the name pattern in the same
         # project and zone, then the generated instance numbers will start after the
         # biggest existing number. For example, if there exists an instance with name
@@ -17279,7 +17280,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Location configurations mapped by location name. Currently only zone names are
-        # supported and must be represented as valid internal URLs, like: zones/us-
+        # supported and must be represented as valid internal URLs, such as zones/us-
         # central1-a.
         # Corresponds to the JSON property `locations`
         # @return [Hash<String,Google::Apis::ComputeV1::LocationPolicyLocation>]
@@ -17299,7 +17300,7 @@ module Google
       class LocationPolicyLocation
         include Google::Apis::Core::Hashable
       
-        # 
+        # Preference for a given locaction: ALLOW or DENY.
         # Corresponds to the JSON property `preference`
         # @return [String]
         attr_accessor :preference
