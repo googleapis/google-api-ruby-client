@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssuredworkloadsV1WorkloadResourceSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -162,6 +168,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :provisioned_resources_parent, as: 'provisionedResourcesParent'
+          collection :resource_settings, as: 'resourceSettings', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadResourceSettings, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadResourceSettings::Representation
+      
           collection :resources, as: 'resources', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadResourceInfo, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadResourceInfo::Representation
       
         end
@@ -179,6 +187,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_id, :numeric_string => true, as: 'resourceId'
+          property :resource_type, as: 'resourceType'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1WorkloadResourceSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_id, as: 'resourceId'
           property :resource_type, as: 'resourceType'
         end
       end
