@@ -266,6 +266,10 @@ module Google
         #   Optional. The permissions to appear in result.
         # @param [Array<String>, String] analysis_query_access_selector_roles
         #   Optional. The roles to appear in result.
+        # @param [String] analysis_query_condition_context_access_time
+        #   The hypothetical access timestamp to evaluate IAM conditions. Note that this
+        #   value must not be earlier than the current time; otherwise, an
+        #   INVALID_ARGUMENT error will be returned.
         # @param [String] analysis_query_identity_selector_identity
         #   Required. The identity appear in the form of members in [IAM policy binding](
         #   https://cloud.google.com/iam/reference/rest/v1/Binding). The examples of
@@ -352,13 +356,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def analyze_iam_policy(scope, analysis_query_access_selector_permissions: nil, analysis_query_access_selector_roles: nil, analysis_query_identity_selector_identity: nil, analysis_query_options_analyze_service_account_impersonation: nil, analysis_query_options_expand_groups: nil, analysis_query_options_expand_resources: nil, analysis_query_options_expand_roles: nil, analysis_query_options_output_group_edges: nil, analysis_query_options_output_resource_edges: nil, analysis_query_resource_selector_full_resource_name: nil, execution_timeout: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def analyze_iam_policy(scope, analysis_query_access_selector_permissions: nil, analysis_query_access_selector_roles: nil, analysis_query_condition_context_access_time: nil, analysis_query_identity_selector_identity: nil, analysis_query_options_analyze_service_account_impersonation: nil, analysis_query_options_expand_groups: nil, analysis_query_options_expand_resources: nil, analysis_query_options_expand_roles: nil, analysis_query_options_output_group_edges: nil, analysis_query_options_output_resource_edges: nil, analysis_query_resource_selector_full_resource_name: nil, execution_timeout: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+scope}:analyzeIamPolicy', options)
           command.response_representation = Google::Apis::CloudassetV1::AnalyzeIamPolicyResponse::Representation
           command.response_class = Google::Apis::CloudassetV1::AnalyzeIamPolicyResponse
           command.params['scope'] = scope unless scope.nil?
           command.query['analysisQuery.accessSelector.permissions'] = analysis_query_access_selector_permissions unless analysis_query_access_selector_permissions.nil?
           command.query['analysisQuery.accessSelector.roles'] = analysis_query_access_selector_roles unless analysis_query_access_selector_roles.nil?
+          command.query['analysisQuery.conditionContext.accessTime'] = analysis_query_condition_context_access_time unless analysis_query_condition_context_access_time.nil?
           command.query['analysisQuery.identitySelector.identity'] = analysis_query_identity_selector_identity unless analysis_query_identity_selector_identity.nil?
           command.query['analysisQuery.options.analyzeServiceAccountImpersonation'] = analysis_query_options_analyze_service_account_impersonation unless analysis_query_options_analyze_service_account_impersonation.nil?
           command.query['analysisQuery.options.expandGroups'] = analysis_query_options_expand_groups unless analysis_query_options_expand_groups.nil?

@@ -82,6 +82,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConditionContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConditionEvaluation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateFeedRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -650,6 +662,20 @@ module Google
         end
       end
       
+      class ConditionContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_time, as: 'accessTime'
+        end
+      end
+      
+      class ConditionEvaluation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :evaluation_value, as: 'evaluationValue'
+        end
+      end
+      
       class CreateFeedRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -738,6 +764,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :accesses, as: 'accesses', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1Access, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1Access::Representation
+      
+          property :condition_evaluation, as: 'conditionEvaluation', class: Google::Apis::CloudassetV1::ConditionEvaluation, decorator: Google::Apis::CloudassetV1::ConditionEvaluation::Representation
       
           collection :resource_edges, as: 'resourceEdges', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1Edge, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1Edge::Representation
       
@@ -1126,6 +1154,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_selector, as: 'accessSelector', class: Google::Apis::CloudassetV1::AccessSelector, decorator: Google::Apis::CloudassetV1::AccessSelector::Representation
+      
+          property :condition_context, as: 'conditionContext', class: Google::Apis::CloudassetV1::ConditionContext, decorator: Google::Apis::CloudassetV1::ConditionContext::Representation
       
           property :identity_selector, as: 'identitySelector', class: Google::Apis::CloudassetV1::IdentitySelector, decorator: Google::Apis::CloudassetV1::IdentitySelector::Representation
       
