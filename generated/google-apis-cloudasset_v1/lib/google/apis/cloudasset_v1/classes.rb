@@ -493,6 +493,46 @@ module Google
         end
       end
       
+      # The IAM conditions context.
+      class ConditionContext
+        include Google::Apis::Core::Hashable
+      
+        # The hypothetical access timestamp to evaluate IAM conditions. Note that this
+        # value must not be earlier than the current time; otherwise, an
+        # INVALID_ARGUMENT error will be returned.
+        # Corresponds to the JSON property `accessTime`
+        # @return [String]
+        attr_accessor :access_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_time = args[:access_time] if args.key?(:access_time)
+        end
+      end
+      
+      # The Condition evaluation.
+      class ConditionEvaluation
+        include Google::Apis::Core::Hashable
+      
+        # The evaluation result.
+        # Corresponds to the JSON property `evaluationValue`
+        # @return [String]
+        attr_accessor :evaluation_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @evaluation_value = args[:evaluation_value] if args.key?(:evaluation_value)
+        end
+      end
+      
       # Create asset feed request.
       class CreateFeedRequest
         include Google::Apis::Core::Hashable
@@ -857,6 +897,11 @@ module Google
         # @return [Array<Google::Apis::CloudassetV1::GoogleCloudAssetV1Access>]
         attr_accessor :accesses
       
+        # The Condition evaluation.
+        # Corresponds to the JSON property `conditionEvaluation`
+        # @return [Google::Apis::CloudassetV1::ConditionEvaluation]
+        attr_accessor :condition_evaluation
+      
         # Resource edges of the graph starting from the policy attached resource to any
         # descendant resources. The Edge.source_node contains the full resource name of
         # a parent resource and Edge.target_node contains the full resource name of a
@@ -880,6 +925,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accesses = args[:accesses] if args.key?(:accesses)
+          @condition_evaluation = args[:condition_evaluation] if args.key?(:condition_evaluation)
           @resource_edges = args[:resource_edges] if args.key?(:resource_edges)
           @resources = args[:resources] if args.key?(:resources)
         end
@@ -2565,6 +2611,11 @@ module Google
         # @return [Google::Apis::CloudassetV1::AccessSelector]
         attr_accessor :access_selector
       
+        # The IAM conditions context.
+        # Corresponds to the JSON property `conditionContext`
+        # @return [Google::Apis::CloudassetV1::ConditionContext]
+        attr_accessor :condition_context
+      
         # Specifies an identity for which to determine resource access, based on roles
         # assigned either directly to them or to the groups they belong to, directly or
         # indirectly.
@@ -2604,6 +2655,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_selector = args[:access_selector] if args.key?(:access_selector)
+          @condition_context = args[:condition_context] if args.key?(:condition_context)
           @identity_selector = args[:identity_selector] if args.key?(:identity_selector)
           @options = args[:options] if args.key?(:options)
           @resource_selector = args[:resource_selector] if args.key?(:resource_selector)
