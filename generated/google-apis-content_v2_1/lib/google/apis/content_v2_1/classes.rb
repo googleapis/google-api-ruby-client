@@ -4793,8 +4793,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :clicks
       
-        # Number of clicks merchant's products receive (clicks) divided by the number of
-        # times the products are shown (impressions).
+        # Click-through rate - the number of clicks merchant's products receive (clicks)
+        # divided by the number of times the products are shown (impressions).
         # Corresponds to the JSON property `ctr`
         # @return [Float]
         attr_accessor :ctr
@@ -11470,7 +11470,7 @@ module Google
         # of the corresponding event, e.g., impression or order. Segment fields cannot
         # be selected in queries without also selecting at least one metric field.
         # Values are only set for dimensions requested explicitly in the request's
-        # search query.
+        # search query. Next id: 22
         # Corresponds to the JSON property `segments`
         # @return [Google::Apis::ContentV2_1::Segments]
         attr_accessor :segments
@@ -12998,7 +12998,7 @@ module Google
       # of the corresponding event, e.g., impression or order. Segment fields cannot
       # be selected in queries without also selecting at least one metric field.
       # Values are only set for dimensions requested explicitly in the request's
-      # search query.
+      # search query. Next id: 22
       class Segments
         include Google::Apis::Core::Hashable
       
