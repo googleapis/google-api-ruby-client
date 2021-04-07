@@ -4630,6 +4630,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceAttachmentConsumerProjectLimit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceAttachmentList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -7981,6 +7987,7 @@ module Google
           property :port_range, as: 'portRange'
           collection :ports, as: 'ports'
           property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
+          property :psc_connection_status, as: 'pscConnectionStatus'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
@@ -14572,11 +14579,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connection_preference, as: 'connectionPreference'
+          collection :consumer_accept_lists, as: 'consumerAcceptLists', class: Google::Apis::ComputeAlpha::ServiceAttachmentConsumerProjectLimit, decorator: Google::Apis::ComputeAlpha::ServiceAttachmentConsumerProjectLimit::Representation
+      
           collection :consumer_forwarding_rules, as: 'consumerForwardingRules', class: Google::Apis::ComputeAlpha::ServiceAttachmentConsumerForwardingRule, decorator: Google::Apis::ComputeAlpha::ServiceAttachmentConsumerForwardingRule::Representation
       
+          collection :consumer_reject_lists, as: 'consumerRejectLists'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :enable_proxy_protocol, as: 'enableProxyProtocol'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -14584,6 +14595,7 @@ module Google
           property :producer_forwarding_rule, as: 'producerForwardingRule'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :target_service, as: 'targetService'
         end
       end
       
@@ -14625,6 +14637,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :forwarding_rule, as: 'forwardingRule'
           property :status, as: 'status'
+        end
+      end
+      
+      class ServiceAttachmentConsumerProjectLimit
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_limit, as: 'connectionLimit'
+          property :project_id_or_num, as: 'projectIdOrNum'
         end
       end
       
