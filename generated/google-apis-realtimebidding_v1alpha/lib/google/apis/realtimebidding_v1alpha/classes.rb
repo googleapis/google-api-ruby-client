@@ -27,17 +27,7 @@ module Google
       class BiddingFunction
         include Google::Apis::Core::Hashable
       
-        # The raw Javascript source code of the bidding function. The function takes in
-        # a Javascript object, `inputs`, that contains the following named fields: `
-        # openrtbContextualBidRequest` OR `googleContextualBidRequest`, `
-        # customContextualSignal`, `interestBasedBidData`, `interestGroupData`, `
-        # recentImpressionAges`, and returns the bid price CPM (double). Example: ``` /*
-        # Returns a bid price CPM (double). * * @param `Object` inputs an object with
-        # the * following named fields: * - openrtbContextualBidRequest * OR
-        # googleContextualBidRequest * - customContextualSignal * - interestBasedBidData
-        # * - interestGroupData * - recentImpressionAges */ function biddingFunction(
-        # inputs) ` ... return inputs.interestBasedBidData.cpm * inputs.
-        # customContextualSignals.placementMultiplier; ` ```
+        # The raw Javascript source code of the bidding function.
         # Corresponds to the JSON property `biddingFunction`
         # @return [String]
         attr_accessor :bidding_function
