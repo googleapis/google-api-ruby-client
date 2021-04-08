@@ -680,6 +680,12 @@ module Google
         attr_accessor :etag_required
         alias_method :etag_required?, :etag_required
       
+        # The URI path of this REST method in (RFC 6570) format without level 2 features
+        # (`+var`). Supplementary to the path property.
+        # Corresponds to the JSON property `flatPath`
+        # @return [String]
+        attr_accessor :flat_path
+      
         # HTTP method used by this method.
         # Corresponds to the JSON property `httpMethod`
         # @return [String]
@@ -762,6 +768,7 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @etag_required = args[:etag_required] if args.key?(:etag_required)
+          @flat_path = args[:flat_path] if args.key?(:flat_path)
           @http_method = args[:http_method] if args.key?(:http_method)
           @id = args[:id] if args.key?(:id)
           @media_upload = args[:media_upload] if args.key?(:media_upload)
