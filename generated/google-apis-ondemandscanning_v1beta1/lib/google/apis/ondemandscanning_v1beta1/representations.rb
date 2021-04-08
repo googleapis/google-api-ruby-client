@@ -607,6 +607,7 @@ module Google
           property :os, as: 'os'
           property :os_version, as: 'osVersion'
           property :package, as: 'package'
+          property :project_id, as: 'projectId'
           property :version, as: 'version'
         end
       end
