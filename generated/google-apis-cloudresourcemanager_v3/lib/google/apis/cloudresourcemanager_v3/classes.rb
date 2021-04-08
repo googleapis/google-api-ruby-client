@@ -304,6 +304,19 @@ module Google
         end
       end
       
+      # Runtime operation information for creating a TagValue.
+      class CreateTagBindingMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Runtime operation information for creating a TagKey.
       class CreateTagKeyMetadata
         include Google::Apis::Core::Hashable
@@ -361,6 +374,19 @@ module Google
       # A status object which is used as the `metadata` field for the Operation
       # returned by `DeleteProject`.
       class DeleteProjectMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Runtime operation information for deleting a TagBinding.
+      class DeleteTagBindingMetadata
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
