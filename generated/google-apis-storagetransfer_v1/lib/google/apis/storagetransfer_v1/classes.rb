@@ -974,8 +974,10 @@ module Google
         # name for this job. If the specified name is in use by a job, the creation
         # request fails with an ALREADY_EXISTS error. This name must start with `"
         # transferJobs/"` prefix and end with a letter or a number, and should be no
-        # more than 128 characters. Example: `"transferJobs/[A-Za-z0-9-._~]*[A-Za-z0-9]$"
-        # ` Invalid job names will fail with an INVALID_ARGUMENT error.
+        # more than 128 characters. This name must not start with 'transferJobs/OPI'. '
+        # transferJobs/OPI' is a reserved prefix. Example: `"transferJobs/^(?!OPI)[A-Za-
+        # z0-9-._~]*[A-Za-z0-9]$"` Invalid job names will fail with an INVALID_ARGUMENT
+        # error.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
