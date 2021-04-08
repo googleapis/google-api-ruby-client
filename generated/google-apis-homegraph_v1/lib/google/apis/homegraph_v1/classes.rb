@@ -100,14 +100,6 @@ module Google
         # @return [Google::Apis::HomegraphV1::DeviceNames]
         attr_accessor :name
       
-        # See description for "traits". For Smart Home Entertainment Devices (SHED)
-        # devices, some traits can only be executed on 3P cloud, e.g. "non_local_traits":
-        # [ ` "trait": "action.devices.traits.MediaInitiation" `, ` "trait": "action.
-        # devices.traits.Channel" ` ] go/shed-per-trait-routing.
-        # Corresponds to the JSON property `nonLocalTraits`
-        # @return [Array<Google::Apis::HomegraphV1::NonLocalTrait>]
-        attr_accessor :non_local_traits
-      
         # Indicates whether your smart home Action will report notifications to Google
         # for this device via ReportStateAndNotification. If your smart home Action
         # enables users to control device notifications, you should update this field
@@ -166,7 +158,6 @@ module Google
           @device_info = args[:device_info] if args.key?(:device_info)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
-          @non_local_traits = args[:non_local_traits] if args.key?(:non_local_traits)
           @notification_supported_by_agent = args[:notification_supported_by_agent] if args.key?(:notification_supported_by_agent)
           @other_device_ids = args[:other_device_ids] if args.key?(:other_device_ids)
           @room_hint = args[:room_hint] if args.key?(:room_hint)
@@ -260,27 +251,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # LINT.IfChange go/shed-per-trait-routing. Making it object to allow for
-      # extendible design, where we can add attributes in future.
-      class NonLocalTrait
-        include Google::Apis::Core::Hashable
-      
-        # Trait name, e.g., "action.devices.traits.MediaInitiation". See [device traits](
-        # https://developers.google.com/assistant/smarthome/traits).
-        # Corresponds to the JSON property `trait`
-        # @return [String]
-        attr_accessor :trait
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @trait = args[:trait] if args.key?(:trait)
         end
       end
       
