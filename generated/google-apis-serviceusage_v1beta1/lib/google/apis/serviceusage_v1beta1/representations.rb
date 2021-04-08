@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateAdminQuotaPolicyMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -149,6 +155,12 @@ module Google
       end
       
       class CustomHttpPattern
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteAdminQuotaPolicyMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -226,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetServiceIdentityMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetServiceIdentityResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -280,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImportAdminOverridesMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImportAdminOverridesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -292,7 +316,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImportAdminQuotaPoliciesMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImportAdminQuotaPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportConsumerOverridesMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -538,6 +574,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateAdminQuotaPolicyMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Usage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -747,6 +789,12 @@ module Google
         end
       end
       
+      class CreateAdminQuotaPolicyMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class CustomError
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -769,6 +817,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :path, as: 'path'
+        end
+      end
+      
+      class DeleteAdminQuotaPolicyMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -885,6 +939,12 @@ module Google
       
           property :packed, as: 'packed'
           property :type_url, as: 'typeUrl'
+        end
+      end
+      
+      class GetServiceIdentityMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1038,6 +1098,12 @@ module Google
         end
       end
       
+      class ImportAdminOverridesMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class ImportAdminOverridesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1056,11 +1122,23 @@ module Google
         end
       end
       
+      class ImportAdminQuotaPoliciesMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class ImportAdminQuotaPoliciesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :policies, as: 'policies', class: Google::Apis::ServiceusageV1beta1::AdminQuotaPolicy, decorator: Google::Apis::ServiceusageV1beta1::AdminQuotaPolicy::Representation
       
+        end
+      end
+      
+      class ImportConsumerOverridesMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1472,6 +1550,12 @@ module Google
           property :source_context, as: 'sourceContext', class: Google::Apis::ServiceusageV1beta1::SourceContext, decorator: Google::Apis::ServiceusageV1beta1::SourceContext::Representation
       
           property :syntax, as: 'syntax'
+        end
+      end
+      
+      class UpdateAdminQuotaPolicyMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
