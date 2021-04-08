@@ -312,6 +312,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :etag_required, as: 'etagRequired'
+          property :flat_path, as: 'flatPath'
           property :http_method, as: 'httpMethod'
           property :id, as: 'id'
           property :media_upload, as: 'mediaUpload', class: Google::Apis::DiscoveryV1::RestMethod::MediaUpload, decorator: Google::Apis::DiscoveryV1::RestMethod::MediaUpload::Representation
