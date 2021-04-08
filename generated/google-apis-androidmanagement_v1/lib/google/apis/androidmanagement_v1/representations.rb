@@ -470,6 +470,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common_criteria_mode, as: 'commonCriteriaMode'
+          property :developer_settings, as: 'developerSettings'
+          property :google_play_protect_verify_apps, as: 'googlePlayProtectVerifyApps'
           property :untrusted_apps_policy, as: 'untrustedAppsPolicy'
         end
       end

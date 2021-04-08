@@ -40,6 +40,19 @@ module Google
         # @return [String]
         attr_accessor :common_criteria_mode
       
+        # Controls access to developer settings: developer options and safe boot.
+        # Replaces safeBootDisabled (deprecated) and debuggingFeaturesAllowed (
+        # deprecated).
+        # Corresponds to the JSON property `developerSettings`
+        # @return [String]
+        attr_accessor :developer_settings
+      
+        # Whether Google Play Protect verification (https://support.google.com/accounts/
+        # answer/2812853) is enforced. Replaces ensureVerifyAppsEnabled (deprecated).
+        # Corresponds to the JSON property `googlePlayProtectVerifyApps`
+        # @return [String]
+        attr_accessor :google_play_protect_verify_apps
+      
         # The policy for untrusted apps (apps from unknown sources) enforced on the
         # device. Replaces install_unknown_sources_allowed (deprecated).
         # Corresponds to the JSON property `untrustedAppsPolicy`
@@ -53,6 +66,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common_criteria_mode = args[:common_criteria_mode] if args.key?(:common_criteria_mode)
+          @developer_settings = args[:developer_settings] if args.key?(:developer_settings)
+          @google_play_protect_verify_apps = args[:google_play_protect_verify_apps] if args.key?(:google_play_protect_verify_apps)
           @untrusted_apps_policy = args[:untrusted_apps_policy] if args.key?(:untrusted_apps_policy)
         end
       end
@@ -1101,8 +1116,8 @@ module Google
         attr_accessor :unknown_sources_enabled
         alias_method :unknown_sources_enabled?, :unknown_sources_enabled
       
-        # Whether Verify Apps (Google Play Protect (https://support.google.com/
-        # googleplay/answer/2812853)) is enabled on the device.
+        # Whether Google Play Protect verification (https://support.google.com/accounts/
+        # answer/2812853) is enforced on the device.
         # Corresponds to the JSON property `verifyAppsEnabled`
         # @return [Boolean]
         attr_accessor :verify_apps_enabled
