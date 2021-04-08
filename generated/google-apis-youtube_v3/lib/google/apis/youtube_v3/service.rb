@@ -3393,18 +3393,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeV3::VideoRatingListResponse] parsed result object
+        # @yieldparam result [Google::Apis::YoutubeV3::GetVideoRatingResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::YoutubeV3::VideoRatingListResponse]
+        # @return [Google::Apis::YoutubeV3::GetVideoRatingResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_video_rating(id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'youtube/v3/videos/getRating', options)
-          command.response_representation = Google::Apis::YoutubeV3::VideoRatingListResponse::Representation
-          command.response_class = Google::Apis::YoutubeV3::VideoRatingListResponse
+          command.response_representation = Google::Apis::YoutubeV3::GetVideoRatingResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::GetVideoRatingResponse
           command.query['id'] = id unless id.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['fields'] = fields unless fields.nil?

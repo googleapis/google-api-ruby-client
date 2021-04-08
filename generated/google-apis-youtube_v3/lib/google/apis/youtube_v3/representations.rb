@@ -1000,6 +1000,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetVideoRatingResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListVideosResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1049,12 +1055,6 @@ module Google
       end
       
       class VideoRating
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class VideoRatingListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3175,6 +3175,18 @@ module Google
         end
       end
       
+      class GetVideoRatingResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :event_id, as: 'eventId'
+          collection :items, as: 'items', class: Google::Apis::YoutubeV3::VideoRating, decorator: Google::Apis::YoutubeV3::VideoRating::Representation
+      
+          property :kind, as: 'kind'
+          property :visitor_id, as: 'visitorId'
+        end
+      end
+      
       class ListVideosResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3269,18 +3281,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :rating, as: 'rating'
           property :video_id, as: 'videoId'
-        end
-      end
-      
-      class VideoRatingListResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :etag, as: 'etag'
-          property :event_id, as: 'eventId'
-          collection :items, as: 'items', class: Google::Apis::YoutubeV3::VideoRating, decorator: Google::Apis::YoutubeV3::VideoRating::Representation
-      
-          property :kind, as: 'kind'
-          property :visitor_id, as: 'visitorId'
         end
       end
       
