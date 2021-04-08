@@ -843,6 +843,21 @@ module Google
         end
       end
       
+      # Metadata message that provides information such as progress, partial failures,
+      # and similar information on each GetOperation call of LRO returned by
+      # CreateAdminQuotaPolicy.
+      class CreateAdminQuotaPolicyMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Customize service error responses. For example, list any service specific
       # protobuf types that can appear in error detail lists of error responses.
       # Example: custom_error: types: - google.foo.v1.CustomError - google.foo.v1.
@@ -922,6 +937,21 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @path = args[:path] if args.key?(:path)
+        end
+      end
+      
+      # Metadata message that provides information such as progress, partial failures,
+      # and similar information on each GetOperation call of LRO returned by
+      # DeleteAdminQuotaPolicy.
+      class DeleteAdminQuotaPolicyMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1357,6 +1387,19 @@ module Google
           @options = args[:options] if args.key?(:options)
           @packed = args[:packed] if args.key?(:packed)
           @type_url = args[:type_url] if args.key?(:type_url)
+        end
+      end
+      
+      # Metadata for the `GetServiceIdentity` method.
+      class GetServiceIdentityMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2205,6 +2248,21 @@ module Google
         end
       end
       
+      # Metadata message that provides information such as progress, partial failures,
+      # and similar information on each GetOperation call of LRO returned by
+      # ImportAdminOverrides.
+      class ImportAdminOverridesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for ImportAdminOverrides
       class ImportAdminOverridesRequest
         include Google::Apis::Core::Hashable
@@ -2261,6 +2319,21 @@ module Google
         end
       end
       
+      # Metadata message that provides information such as progress, partial failures,
+      # and similar information on each GetOperation call of LRO returned by
+      # ImportAdminQuotaPolicies.
+      class ImportAdminQuotaPoliciesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Response message for ImportAdminQuotaPolicies
       class ImportAdminQuotaPoliciesResponse
         include Google::Apis::Core::Hashable
@@ -2277,6 +2350,21 @@ module Google
         # Update properties of this object
         def update!(**args)
           @policies = args[:policies] if args.key?(:policies)
+        end
+      end
+      
+      # Metadata message that provides information such as progress, partial failures,
+      # and similar information on each GetOperation call of LRO returned by
+      # ImportConsumerOverrides.
+      class ImportConsumerOverridesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -4033,6 +4121,21 @@ module Google
           @options = args[:options] if args.key?(:options)
           @source_context = args[:source_context] if args.key?(:source_context)
           @syntax = args[:syntax] if args.key?(:syntax)
+        end
+      end
+      
+      # Metadata message that provides information such as progress, partial failures,
+      # and similar information on each GetOperation call of LRO returned by
+      # UpdateAdminQuotaPolicy.
+      class UpdateAdminQuotaPolicyMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
