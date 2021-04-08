@@ -7824,6 +7824,50 @@ module Google
       end
       
       # 
+      class GetVideoRatingResponse
+        include Google::Apis::Core::Hashable
+      
+        # Etag of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Serialized EventId of the request which produced this response.
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        # A list of ratings that match the request criteria.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::YoutubeV3::VideoRating>]
+        attr_accessor :items
+      
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # videoGetRatingResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The visitorId identifies the visitor.
+        # Corresponds to the JSON property `visitorId`
+        # @return [String]
+        attr_accessor :visitor_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
+        end
+      end
+      
+      # 
       class ListVideosResponse
         include Google::Apis::Core::Hashable
       
@@ -8191,50 +8235,6 @@ module Google
         def update!(**args)
           @rating = args[:rating] if args.key?(:rating)
           @video_id = args[:video_id] if args.key?(:video_id)
-        end
-      end
-      
-      # 
-      class VideoRatingListResponse
-        include Google::Apis::Core::Hashable
-      
-        # Etag of this resource.
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
-      
-        # Serialized EventId of the request which produced this response.
-        # Corresponds to the JSON property `eventId`
-        # @return [String]
-        attr_accessor :event_id
-      
-        # A list of ratings that match the request criteria.
-        # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::YoutubeV3::VideoRating>]
-        attr_accessor :items
-      
-        # Identifies what kind of resource this is. Value: the fixed string "youtube#
-        # videoGetRatingResponse".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The visitorId identifies the visitor.
-        # Corresponds to the JSON property `visitorId`
-        # @return [String]
-        attr_accessor :visitor_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @etag = args[:etag] if args.key?(:etag)
-          @event_id = args[:event_id] if args.key?(:event_id)
-          @items = args[:items] if args.key?(:items)
-          @kind = args[:kind] if args.key?(:kind)
-          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end
       end
       
