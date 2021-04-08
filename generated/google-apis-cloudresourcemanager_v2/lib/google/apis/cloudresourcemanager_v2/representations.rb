@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateTagBindingMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateTagKeyMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -89,6 +95,12 @@ module Google
       end
       
       class DeleteProjectMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteTagBindingMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -332,6 +344,12 @@ module Google
         end
       end
       
+      class CreateTagBindingMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class CreateTagKeyMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -357,6 +375,12 @@ module Google
       end
       
       class DeleteProjectMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DeleteTagBindingMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
