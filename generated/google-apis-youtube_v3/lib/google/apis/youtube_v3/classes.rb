@@ -3821,12 +3821,12 @@ module Google
         # @return [DateTime]
         attr_accessor :published_at
       
-        # The date and time that the broadcast is scheduled to start.
+        # The date and time that the broadcast is scheduled to end.
         # Corresponds to the JSON property `scheduledEndTime`
         # @return [DateTime]
         attr_accessor :scheduled_end_time
       
-        # The date and time that the broadcast is scheduled to end.
+        # The date and time that the broadcast is scheduled to start.
         # Corresponds to the JSON property `scheduledStartTime`
         # @return [DateTime]
         attr_accessor :scheduled_start_time
