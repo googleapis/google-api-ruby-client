@@ -256,12 +256,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DimensionalityReductionMetrics
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class EncryptionConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -539,12 +533,6 @@ module Google
       end
       
       class Policy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PrincipalComponentInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -939,10 +927,14 @@ module Google
           property :arima_fitting_metrics, as: 'arimaFittingMetrics', class: Google::Apis::BigqueryV2::ArimaFittingMetrics, decorator: Google::Apis::BigqueryV2::ArimaFittingMetrics::Representation
       
           property :has_drift, as: 'hasDrift'
+          property :has_holiday_effect, as: 'hasHolidayEffect'
+          property :has_spikes_and_dips, as: 'hasSpikesAndDips'
+          property :has_step_changes, as: 'hasStepChanges'
           property :non_seasonal_order, as: 'nonSeasonalOrder', class: Google::Apis::BigqueryV2::ArimaOrder, decorator: Google::Apis::BigqueryV2::ArimaOrder::Representation
       
           collection :seasonal_periods, as: 'seasonalPeriods'
           property :time_series_id, as: 'timeSeriesId'
+          collection :time_series_ids, as: 'timeSeriesIds'
         end
       end
       
@@ -970,10 +962,14 @@ module Google
           property :arima_fitting_metrics, as: 'arimaFittingMetrics', class: Google::Apis::BigqueryV2::ArimaFittingMetrics, decorator: Google::Apis::BigqueryV2::ArimaFittingMetrics::Representation
       
           property :has_drift, as: 'hasDrift'
+          property :has_holiday_effect, as: 'hasHolidayEffect'
+          property :has_spikes_and_dips, as: 'hasSpikesAndDips'
+          property :has_step_changes, as: 'hasStepChanges'
           property :non_seasonal_order, as: 'nonSeasonalOrder', class: Google::Apis::BigqueryV2::ArimaOrder, decorator: Google::Apis::BigqueryV2::ArimaOrder::Representation
       
           collection :seasonal_periods, as: 'seasonalPeriods'
           property :time_series_id, as: 'timeSeriesId'
+          collection :time_series_ids, as: 'timeSeriesIds'
         end
       end
       
@@ -1304,13 +1300,6 @@ module Google
         end
       end
       
-      class DimensionalityReductionMetrics
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :total_explained_variance_ratio, as: 'totalExplainedVarianceRatio'
-        end
-      end
-      
       class EncryptionConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1344,8 +1333,6 @@ module Google
           property :binary_classification_metrics, as: 'binaryClassificationMetrics', class: Google::Apis::BigqueryV2::BinaryClassificationMetrics, decorator: Google::Apis::BigqueryV2::BinaryClassificationMetrics::Representation
       
           property :clustering_metrics, as: 'clusteringMetrics', class: Google::Apis::BigqueryV2::ClusteringMetrics, decorator: Google::Apis::BigqueryV2::ClusteringMetrics::Representation
-      
-          property :dimensionality_reduction_metrics, as: 'dimensionalityReductionMetrics', class: Google::Apis::BigqueryV2::DimensionalityReductionMetrics, decorator: Google::Apis::BigqueryV2::DimensionalityReductionMetrics::Representation
       
           property :multi_class_classification_metrics, as: 'multiClassClassificationMetrics', class: Google::Apis::BigqueryV2::MultiClassClassificationMetrics, decorator: Google::Apis::BigqueryV2::MultiClassClassificationMetrics::Representation
       
@@ -1536,8 +1523,6 @@ module Google
           property :eval_loss, as: 'evalLoss'
           property :index, as: 'index'
           property :learn_rate, as: 'learnRate'
-          collection :principal_component_infos, as: 'principalComponentInfos', class: Google::Apis::BigqueryV2::PrincipalComponentInfo, decorator: Google::Apis::BigqueryV2::PrincipalComponentInfo::Representation
-      
           property :training_loss, as: 'trainingLoss'
         end
       end
@@ -1995,16 +1980,6 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
-        end
-      end
-      
-      class PrincipalComponentInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cumulative_explained_variance_ratio, as: 'cumulativeExplainedVarianceRatio'
-          property :explained_variance, as: 'explainedVariance'
-          property :explained_variance_ratio, as: 'explainedVarianceRatio'
-          property :principal_component_id, :numeric_string => true, as: 'principalComponentId'
         end
       end
       
@@ -2574,13 +2549,16 @@ module Google
       class TrainingOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :adjust_step_changes, as: 'adjustStepChanges'
           property :auto_arima, as: 'autoArima'
           property :auto_arima_max_order, :numeric_string => true, as: 'autoArimaMaxOrder'
           property :batch_size, :numeric_string => true, as: 'batchSize'
+          property :clean_spikes_and_dips, as: 'cleanSpikesAndDips'
           property :data_frequency, as: 'dataFrequency'
           property :data_split_column, as: 'dataSplitColumn'
           property :data_split_eval_fraction, as: 'dataSplitEvalFraction'
           property :data_split_method, as: 'dataSplitMethod'
+          property :decompose_time_series, as: 'decomposeTimeSeries'
           property :distance_type, as: 'distanceType'
           property :dropout, as: 'dropout'
           property :early_stop, as: 'earlyStop'
@@ -2614,6 +2592,7 @@ module Google
           property :subsample, as: 'subsample'
           property :time_series_data_column, as: 'timeSeriesDataColumn'
           property :time_series_id_column, as: 'timeSeriesIdColumn'
+          collection :time_series_id_columns, as: 'timeSeriesIdColumns'
           property :time_series_timestamp_column, as: 'timeSeriesTimestampColumn'
           property :user_column, as: 'userColumn'
           property :wals_alpha, as: 'walsAlpha'

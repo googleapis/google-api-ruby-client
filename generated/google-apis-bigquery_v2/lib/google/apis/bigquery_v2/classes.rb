@@ -265,6 +265,24 @@ module Google
         attr_accessor :has_drift
         alias_method :has_drift?, :has_drift
       
+        # If true, holiday_effect is a part of time series decomposition result.
+        # Corresponds to the JSON property `hasHolidayEffect`
+        # @return [Boolean]
+        attr_accessor :has_holiday_effect
+        alias_method :has_holiday_effect?, :has_holiday_effect
+      
+        # If true, spikes_and_dips is a part of time series decomposition result.
+        # Corresponds to the JSON property `hasSpikesAndDips`
+        # @return [Boolean]
+        attr_accessor :has_spikes_and_dips
+        alias_method :has_spikes_and_dips?, :has_spikes_and_dips
+      
+        # If true, step_changes is a part of time series decomposition result.
+        # Corresponds to the JSON property `hasStepChanges`
+        # @return [Boolean]
+        attr_accessor :has_step_changes
+        alias_method :has_step_changes?, :has_step_changes
+      
         # Arima order, can be used for both non-seasonal and seasonal parts.
         # Corresponds to the JSON property `nonSeasonalOrder`
         # @return [Google::Apis::BigqueryV2::ArimaOrder]
@@ -283,6 +301,15 @@ module Google
         # @return [String]
         attr_accessor :time_series_id
       
+        # The tuple of time_series_ids identifying this time series. It will be one of
+        # the unique tuples of values present in the time_series_id_columns specified
+        # during ARIMA model training. Only present when time_series_id_columns training
+        # option was used and the order of values here are same as the order of
+        # time_series_id_columns.
+        # Corresponds to the JSON property `timeSeriesIds`
+        # @return [Array<String>]
+        attr_accessor :time_series_ids
+      
         def initialize(**args)
            update!(**args)
         end
@@ -292,9 +319,13 @@ module Google
           @arima_coefficients = args[:arima_coefficients] if args.key?(:arima_coefficients)
           @arima_fitting_metrics = args[:arima_fitting_metrics] if args.key?(:arima_fitting_metrics)
           @has_drift = args[:has_drift] if args.key?(:has_drift)
+          @has_holiday_effect = args[:has_holiday_effect] if args.key?(:has_holiday_effect)
+          @has_spikes_and_dips = args[:has_spikes_and_dips] if args.key?(:has_spikes_and_dips)
+          @has_step_changes = args[:has_step_changes] if args.key?(:has_step_changes)
           @non_seasonal_order = args[:non_seasonal_order] if args.key?(:non_seasonal_order)
           @seasonal_periods = args[:seasonal_periods] if args.key?(:seasonal_periods)
           @time_series_id = args[:time_series_id] if args.key?(:time_series_id)
+          @time_series_ids = args[:time_series_ids] if args.key?(:time_series_ids)
         end
       end
       
@@ -372,6 +403,24 @@ module Google
         attr_accessor :has_drift
         alias_method :has_drift?, :has_drift
       
+        # If true, holiday_effect is a part of time series decomposition result.
+        # Corresponds to the JSON property `hasHolidayEffect`
+        # @return [Boolean]
+        attr_accessor :has_holiday_effect
+        alias_method :has_holiday_effect?, :has_holiday_effect
+      
+        # If true, spikes_and_dips is a part of time series decomposition result.
+        # Corresponds to the JSON property `hasSpikesAndDips`
+        # @return [Boolean]
+        attr_accessor :has_spikes_and_dips
+        alias_method :has_spikes_and_dips?, :has_spikes_and_dips
+      
+        # If true, step_changes is a part of time series decomposition result.
+        # Corresponds to the JSON property `hasStepChanges`
+        # @return [Boolean]
+        attr_accessor :has_step_changes
+        alias_method :has_step_changes?, :has_step_changes
+      
         # Arima order, can be used for both non-seasonal and seasonal parts.
         # Corresponds to the JSON property `nonSeasonalOrder`
         # @return [Google::Apis::BigqueryV2::ArimaOrder]
@@ -390,6 +439,15 @@ module Google
         # @return [String]
         attr_accessor :time_series_id
       
+        # The tuple of time_series_ids identifying this time series. It will be one of
+        # the unique tuples of values present in the time_series_id_columns specified
+        # during ARIMA model training. Only present when time_series_id_columns training
+        # option was used and the order of values here are same as the order of
+        # time_series_id_columns.
+        # Corresponds to the JSON property `timeSeriesIds`
+        # @return [Array<String>]
+        attr_accessor :time_series_ids
+      
         def initialize(**args)
            update!(**args)
         end
@@ -398,9 +456,13 @@ module Google
         def update!(**args)
           @arima_fitting_metrics = args[:arima_fitting_metrics] if args.key?(:arima_fitting_metrics)
           @has_drift = args[:has_drift] if args.key?(:has_drift)
+          @has_holiday_effect = args[:has_holiday_effect] if args.key?(:has_holiday_effect)
+          @has_spikes_and_dips = args[:has_spikes_and_dips] if args.key?(:has_spikes_and_dips)
+          @has_step_changes = args[:has_step_changes] if args.key?(:has_step_changes)
           @non_seasonal_order = args[:non_seasonal_order] if args.key?(:non_seasonal_order)
           @seasonal_periods = args[:seasonal_periods] if args.key?(:seasonal_periods)
           @time_series_id = args[:time_series_id] if args.key?(:time_series_id)
+          @time_series_ids = args[:time_series_ids] if args.key?(:time_series_ids)
         end
       end
       
@@ -1781,25 +1843,6 @@ module Google
         end
       end
       
-      # Model evaluation metrics for dimensionality reduction models.
-      class DimensionalityReductionMetrics
-        include Google::Apis::Core::Hashable
-      
-        # Total percentage of variance explained by the selected principal components.
-        # Corresponds to the JSON property `totalExplainedVarianceRatio`
-        # @return [Float]
-        attr_accessor :total_explained_variance_ratio
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @total_explained_variance_ratio = args[:total_explained_variance_ratio] if args.key?(:total_explained_variance_ratio)
-        end
-      end
-      
       # 
       class EncryptionConfiguration
         include Google::Apis::Core::Hashable
@@ -1906,11 +1949,6 @@ module Google
         # @return [Google::Apis::BigqueryV2::ClusteringMetrics]
         attr_accessor :clustering_metrics
       
-        # Model evaluation metrics for dimensionality reduction models.
-        # Corresponds to the JSON property `dimensionalityReductionMetrics`
-        # @return [Google::Apis::BigqueryV2::DimensionalityReductionMetrics]
-        attr_accessor :dimensionality_reduction_metrics
-      
         # Evaluation metrics for multi-class classification/classifier models.
         # Corresponds to the JSON property `multiClassClassificationMetrics`
         # @return [Google::Apis::BigqueryV2::MultiClassClassificationMetrics]
@@ -1937,7 +1975,6 @@ module Google
           @arima_forecasting_metrics = args[:arima_forecasting_metrics] if args.key?(:arima_forecasting_metrics)
           @binary_classification_metrics = args[:binary_classification_metrics] if args.key?(:binary_classification_metrics)
           @clustering_metrics = args[:clustering_metrics] if args.key?(:clustering_metrics)
-          @dimensionality_reduction_metrics = args[:dimensionality_reduction_metrics] if args.key?(:dimensionality_reduction_metrics)
           @multi_class_classification_metrics = args[:multi_class_classification_metrics] if args.key?(:multi_class_classification_metrics)
           @ranking_metrics = args[:ranking_metrics] if args.key?(:ranking_metrics)
           @regression_metrics = args[:regression_metrics] if args.key?(:regression_metrics)
@@ -2715,11 +2752,6 @@ module Google
         # @return [Float]
         attr_accessor :learn_rate
       
-        # The information of the principal components.
-        # Corresponds to the JSON property `principalComponentInfos`
-        # @return [Array<Google::Apis::BigqueryV2::PrincipalComponentInfo>]
-        attr_accessor :principal_component_infos
-      
         # Loss computed on the training data at the end of iteration.
         # Corresponds to the JSON property `trainingLoss`
         # @return [Float]
@@ -2737,7 +2769,6 @@ module Google
           @eval_loss = args[:eval_loss] if args.key?(:eval_loss)
           @index = args[:index] if args.key?(:index)
           @learn_rate = args[:learn_rate] if args.key?(:learn_rate)
-          @principal_component_infos = args[:principal_component_infos] if args.key?(:principal_component_infos)
           @training_loss = args[:training_loss] if args.key?(:training_loss)
         end
       end
@@ -4714,45 +4745,6 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
-        end
-      end
-      
-      # Principal component infos, used only for eigen decomposition based models, e.g.
-      # , PCA. Ordered by explained_variance in the descending order.
-      class PrincipalComponentInfo
-        include Google::Apis::Core::Hashable
-      
-        # The explained_variance is pre-ordered in the descending order to compute the
-        # cumulative explained variance ratio.
-        # Corresponds to the JSON property `cumulativeExplainedVarianceRatio`
-        # @return [Float]
-        attr_accessor :cumulative_explained_variance_ratio
-      
-        # Explained variance by this principal component, which is simply the eigenvalue.
-        # Corresponds to the JSON property `explainedVariance`
-        # @return [Float]
-        attr_accessor :explained_variance
-      
-        # Explained_variance over the total explained variance.
-        # Corresponds to the JSON property `explainedVarianceRatio`
-        # @return [Float]
-        attr_accessor :explained_variance_ratio
-      
-        # Id of the principal component.
-        # Corresponds to the JSON property `principalComponentId`
-        # @return [Fixnum]
-        attr_accessor :principal_component_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cumulative_explained_variance_ratio = args[:cumulative_explained_variance_ratio] if args.key?(:cumulative_explained_variance_ratio)
-          @explained_variance = args[:explained_variance] if args.key?(:explained_variance)
-          @explained_variance_ratio = args[:explained_variance_ratio] if args.key?(:explained_variance_ratio)
-          @principal_component_id = args[:principal_component_id] if args.key?(:principal_component_id)
         end
       end
       
@@ -6904,6 +6896,12 @@ module Google
       class TrainingOptions
         include Google::Apis::Core::Hashable
       
+        # If true, detect step changes and make data adjustment in the input time series.
+        # Corresponds to the JSON property `adjustStepChanges`
+        # @return [Boolean]
+        attr_accessor :adjust_step_changes
+        alias_method :adjust_step_changes?, :adjust_step_changes
+      
         # Whether to enable auto ARIMA or not.
         # Corresponds to the JSON property `autoArima`
         # @return [Boolean]
@@ -6919,6 +6917,12 @@ module Google
         # Corresponds to the JSON property `batchSize`
         # @return [Fixnum]
         attr_accessor :batch_size
+      
+        # If true, clean spikes and dips in the input time series.
+        # Corresponds to the JSON property `cleanSpikesAndDips`
+        # @return [Boolean]
+        attr_accessor :clean_spikes_and_dips
+        alias_method :clean_spikes_and_dips?, :clean_spikes_and_dips
       
         # The data frequency of a time series.
         # Corresponds to the JSON property `dataFrequency`
@@ -6948,6 +6952,12 @@ module Google
         # Corresponds to the JSON property `dataSplitMethod`
         # @return [String]
         attr_accessor :data_split_method
+      
+        # If true, perform decompose time series and save the results.
+        # Corresponds to the JSON property `decomposeTimeSeries`
+        # @return [Boolean]
+        attr_accessor :decompose_time_series
+        alias_method :decompose_time_series?, :decompose_time_series
       
         # Distance type for clustering models.
         # Corresponds to the JSON property `distanceType`
@@ -7124,6 +7134,11 @@ module Google
         # @return [String]
         attr_accessor :time_series_id_column
       
+        # The time series id columns that were used during ARIMA model training.
+        # Corresponds to the JSON property `timeSeriesIdColumns`
+        # @return [Array<String>]
+        attr_accessor :time_series_id_columns
+      
         # Column to be designated as time series timestamp for ARIMA model.
         # Corresponds to the JSON property `timeSeriesTimestampColumn`
         # @return [String]
@@ -7151,13 +7166,16 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @adjust_step_changes = args[:adjust_step_changes] if args.key?(:adjust_step_changes)
           @auto_arima = args[:auto_arima] if args.key?(:auto_arima)
           @auto_arima_max_order = args[:auto_arima_max_order] if args.key?(:auto_arima_max_order)
           @batch_size = args[:batch_size] if args.key?(:batch_size)
+          @clean_spikes_and_dips = args[:clean_spikes_and_dips] if args.key?(:clean_spikes_and_dips)
           @data_frequency = args[:data_frequency] if args.key?(:data_frequency)
           @data_split_column = args[:data_split_column] if args.key?(:data_split_column)
           @data_split_eval_fraction = args[:data_split_eval_fraction] if args.key?(:data_split_eval_fraction)
           @data_split_method = args[:data_split_method] if args.key?(:data_split_method)
+          @decompose_time_series = args[:decompose_time_series] if args.key?(:decompose_time_series)
           @distance_type = args[:distance_type] if args.key?(:distance_type)
           @dropout = args[:dropout] if args.key?(:dropout)
           @early_stop = args[:early_stop] if args.key?(:early_stop)
@@ -7190,6 +7208,7 @@ module Google
           @subsample = args[:subsample] if args.key?(:subsample)
           @time_series_data_column = args[:time_series_data_column] if args.key?(:time_series_data_column)
           @time_series_id_column = args[:time_series_id_column] if args.key?(:time_series_id_column)
+          @time_series_id_columns = args[:time_series_id_columns] if args.key?(:time_series_id_columns)
           @time_series_timestamp_column = args[:time_series_timestamp_column] if args.key?(:time_series_timestamp_column)
           @user_column = args[:user_column] if args.key?(:user_column)
           @wals_alpha = args[:wals_alpha] if args.key?(:wals_alpha)

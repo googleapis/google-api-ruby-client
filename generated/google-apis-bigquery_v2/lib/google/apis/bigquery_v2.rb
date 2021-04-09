@@ -35,9 +35,6 @@ module Google
       # Insert data into Google BigQuery
       AUTH_BIGQUERY_INSERTDATA = 'https://www.googleapis.com/auth/bigquery.insertdata'
 
-      # View your data in Google BigQuery
-      AUTH_BIGQUERY_READONLY = 'https://www.googleapis.com/auth/bigquery.readonly'
-
       # See, edit, configure, and delete your Google Cloud Platform data
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
 
