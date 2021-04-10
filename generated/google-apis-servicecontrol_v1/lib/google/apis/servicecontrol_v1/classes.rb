@@ -1876,7 +1876,7 @@ module Google
         # @return [String]
         attr_accessor :method_prop
       
-        # The HTTP URL path.
+        # The HTTP URL path, excluding the query parameters.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
