@@ -690,7 +690,7 @@ module Google
         # @return [String]
         attr_accessor :method_prop
       
-        # The HTTP URL path.
+        # The HTTP URL path, excluding the query parameters.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
@@ -1002,7 +1002,7 @@ module Google
       class Response
         include Google::Apis::Core::Hashable
       
-        # The length of time it takes the backend service to fully respond to a request.
+        # The amount of time it takes the backend service to fully respond to a request.
         # Measured from when the destination service starts to send the request to the
         # backend until when the destination service receives the complete response from
         # the backend.
