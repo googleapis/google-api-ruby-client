@@ -370,6 +370,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          hash :metadata, as: 'metadata'
           property :name, as: 'name'
           collection :related_tags, as: 'relatedTags', class: Google::Apis::ArtifactregistryV1beta2::Tag, decorator: Google::Apis::ArtifactregistryV1beta2::Tag::Representation
       
