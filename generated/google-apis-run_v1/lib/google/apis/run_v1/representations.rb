@@ -541,6 +541,8 @@ module Google
       
           property :security_context, as: 'securityContext', class: Google::Apis::RunV1::SecurityContext, decorator: Google::Apis::RunV1::SecurityContext::Representation
       
+          property :startup_probe, as: 'startupProbe', class: Google::Apis::RunV1::Probe, decorator: Google::Apis::RunV1::Probe::Representation
+      
           property :termination_message_path, as: 'terminationMessagePath'
           property :termination_message_policy, as: 'terminationMessagePolicy'
           collection :volume_mounts, as: 'volumeMounts', class: Google::Apis::RunV1::VolumeMount, decorator: Google::Apis::RunV1::VolumeMount::Representation
