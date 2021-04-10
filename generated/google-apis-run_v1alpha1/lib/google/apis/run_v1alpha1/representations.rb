@@ -22,36 +22,6 @@ module Google
   module Apis
     module RunV1alpha1
       
-      class Addressable
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AuditConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AuditLogConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AuthorizedDomain
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Binding
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Capabilities
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -76,30 +46,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Configuration
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ConfigurationCondition
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ConfigurationSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ConfigurationStatus
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Container
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,30 +53,6 @@ module Google
       end
       
       class ContainerPort
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DomainMapping
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DomainMappingCondition
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DomainMappingSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DomainMappingStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -161,12 +83,6 @@ module Google
       end
       
       class ExecAction
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -250,31 +166,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListAuthorizedDomainsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListConfigurationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListDomainMappingsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListJobsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListLocationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -286,31 +178,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListRevisionsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListRoutesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListServicesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class LocalObjectReference
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -328,12 +196,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Policy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Probe
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -346,67 +208,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ResourceRecord
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ResourceRequirements
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Revision
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RevisionCondition
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RevisionSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RevisionStatus
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RevisionTemplate
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Route
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RouteCondition
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RouteSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RouteStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -442,79 +244,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Service
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ServiceCondition
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ServiceSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ServiceSpecManualType
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ServiceSpecPinnedType
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ServiceSpecReleaseType
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ServiceSpecRunLatest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ServiceStatus
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SetIamPolicyRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class TcpSocketAction
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TestIamPermissionsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TestIamPermissionsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TrafficTarget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -536,49 +266,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Addressable
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :hostname, as: 'hostname'
-          property :url, as: 'url'
-        end
-      end
-      
-      class AuditConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::RunV1alpha1::AuditLogConfig, decorator: Google::Apis::RunV1alpha1::AuditLogConfig::Representation
-      
-          property :service, as: 'service'
-        end
-      end
-      
-      class AuditLogConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :exempted_members, as: 'exemptedMembers'
-          property :log_type, as: 'logType'
-        end
-      end
-      
-      class AuthorizedDomain
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
-          property :name, as: 'name'
-        end
-      end
-      
-      class Binding
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :condition, as: 'condition', class: Google::Apis::RunV1alpha1::Expr, decorator: Google::Apis::RunV1alpha1::Expr::Representation
-      
-          collection :members, as: 'members'
-          property :role, as: 'role'
-        end
       end
       
       class Capabilities
@@ -618,54 +305,6 @@ module Google
       
           property :name, as: 'name'
           property :optional, as: 'optional'
-        end
-      end
-      
-      class Configuration
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ObjectMeta, decorator: Google::Apis::RunV1alpha1::ObjectMeta::Representation
-      
-          property :spec, as: 'spec', class: Google::Apis::RunV1alpha1::ConfigurationSpec, decorator: Google::Apis::RunV1alpha1::ConfigurationSpec::Representation
-      
-          property :status, as: 'status', class: Google::Apis::RunV1alpha1::ConfigurationStatus, decorator: Google::Apis::RunV1alpha1::ConfigurationStatus::Representation
-      
-        end
-      end
-      
-      class ConfigurationCondition
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :last_transition_time, as: 'lastTransitionTime'
-          property :message, as: 'message'
-          property :reason, as: 'reason'
-          property :severity, as: 'severity'
-          property :status, as: 'status'
-          property :type, as: 'type'
-        end
-      end
-      
-      class ConfigurationSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :generation, as: 'generation'
-          property :revision_template, as: 'revisionTemplate', class: Google::Apis::RunV1alpha1::RevisionTemplate, decorator: Google::Apis::RunV1alpha1::RevisionTemplate::Representation
-      
-          property :template, as: 'template', class: Google::Apis::RunV1alpha1::RevisionTemplate, decorator: Google::Apis::RunV1alpha1::RevisionTemplate::Representation
-      
-        end
-      end
-      
-      class ConfigurationStatus
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :conditions, as: 'conditions', class: Google::Apis::RunV1alpha1::ConfigurationCondition, decorator: Google::Apis::RunV1alpha1::ConfigurationCondition::Representation
-      
-          property :latest_created_revision_name, as: 'latestCreatedRevisionName'
-          property :latest_ready_revision_name, as: 'latestReadyRevisionName'
-          property :observed_generation, as: 'observedGeneration'
         end
       end
       
@@ -717,54 +356,6 @@ module Google
         end
       end
       
-      class DomainMapping
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ObjectMeta, decorator: Google::Apis::RunV1alpha1::ObjectMeta::Representation
-      
-          property :spec, as: 'spec', class: Google::Apis::RunV1alpha1::DomainMappingSpec, decorator: Google::Apis::RunV1alpha1::DomainMappingSpec::Representation
-      
-          property :status, as: 'status', class: Google::Apis::RunV1alpha1::DomainMappingStatus, decorator: Google::Apis::RunV1alpha1::DomainMappingStatus::Representation
-      
-        end
-      end
-      
-      class DomainMappingCondition
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :last_transition_time, as: 'lastTransitionTime'
-          property :message, as: 'message'
-          property :reason, as: 'reason'
-          property :severity, as: 'severity'
-          property :status, as: 'status'
-          property :type, as: 'type'
-        end
-      end
-      
-      class DomainMappingSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :certificate_mode, as: 'certificateMode'
-          property :force_override, as: 'forceOverride'
-          property :route_name, as: 'routeName'
-        end
-      end
-      
-      class DomainMappingStatus
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :conditions, as: 'conditions', class: Google::Apis::RunV1alpha1::DomainMappingCondition, decorator: Google::Apis::RunV1alpha1::DomainMappingCondition::Representation
-      
-          property :mapped_route_name, as: 'mappedRouteName'
-          property :observed_generation, as: 'observedGeneration'
-          collection :resource_records, as: 'resourceRecords', class: Google::Apis::RunV1alpha1::ResourceRecord, decorator: Google::Apis::RunV1alpha1::ResourceRecord::Representation
-      
-          property :url, as: 'url'
-        end
-      end
-      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -806,16 +397,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :command, as: 'command'
-        end
-      end
-      
-      class Expr
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :expression, as: 'expression'
-          property :location, as: 'location'
-          property :title, as: 'title'
         end
       end
       
@@ -971,41 +552,6 @@ module Google
         end
       end
       
-      class ListAuthorizedDomainsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :domains, as: 'domains', class: Google::Apis::RunV1alpha1::AuthorizedDomain, decorator: Google::Apis::RunV1alpha1::AuthorizedDomain::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class ListConfigurationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          collection :items, as: 'items', class: Google::Apis::RunV1alpha1::Configuration, decorator: Google::Apis::RunV1alpha1::Configuration::Representation
-      
-          property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ListMeta, decorator: Google::Apis::RunV1alpha1::ListMeta::Representation
-      
-          collection :unreachable, as: 'unreachable'
-        end
-      end
-      
-      class ListDomainMappingsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          collection :items, as: 'items', class: Google::Apis::RunV1alpha1::DomainMapping, decorator: Google::Apis::RunV1alpha1::DomainMapping::Representation
-      
-          property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ListMeta, decorator: Google::Apis::RunV1alpha1::ListMeta::Representation
-      
-          collection :unreachable, as: 'unreachable'
-        end
-      end
-      
       class ListJobsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1020,15 +566,6 @@ module Google
         end
       end
       
-      class ListLocationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :locations, as: 'locations', class: Google::Apis::RunV1alpha1::Location, decorator: Google::Apis::RunV1alpha1::Location::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
       class ListMeta
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1038,59 +575,9 @@ module Google
         end
       end
       
-      class ListRevisionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          collection :items, as: 'items', class: Google::Apis::RunV1alpha1::Revision, decorator: Google::Apis::RunV1alpha1::Revision::Representation
-      
-          property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ListMeta, decorator: Google::Apis::RunV1alpha1::ListMeta::Representation
-      
-          collection :unreachable, as: 'unreachable'
-        end
-      end
-      
-      class ListRoutesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          collection :items, as: 'items', class: Google::Apis::RunV1alpha1::Route, decorator: Google::Apis::RunV1alpha1::Route::Representation
-      
-          property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ListMeta, decorator: Google::Apis::RunV1alpha1::ListMeta::Representation
-      
-          collection :unreachable, as: 'unreachable'
-        end
-      end
-      
-      class ListServicesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          collection :items, as: 'items', class: Google::Apis::RunV1alpha1::Service, decorator: Google::Apis::RunV1alpha1::Service::Representation
-      
-          property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ListMeta, decorator: Google::Apis::RunV1alpha1::ListMeta::Representation
-      
-          collection :unreachable, as: 'unreachable'
-        end
-      end
-      
       class LocalObjectReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-        end
-      end
-      
-      class Location
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :display_name, as: 'displayName'
-          hash :labels, as: 'labels'
-          property :location_id, as: 'locationId'
-          hash :metadata, as: 'metadata'
           property :name, as: 'name'
         end
       end
@@ -1129,18 +616,6 @@ module Google
         end
       end
       
-      class Policy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::RunV1alpha1::AuditConfig, decorator: Google::Apis::RunV1alpha1::AuditConfig::Representation
-      
-          collection :bindings, as: 'bindings', class: Google::Apis::RunV1alpha1::Binding, decorator: Google::Apis::RunV1alpha1::Binding::Representation
-      
-          property :etag, :base64 => true, as: 'etag'
-          property :version, as: 'version'
-        end
-      end
-      
       class Probe
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1161,15 +636,6 @@ module Google
         end
       end
       
-      class ResourceRecord
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :rrdata, as: 'rrdata'
-          property :type, as: 'type'
-        end
-      end
-      
       class ResourceRequirements
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1179,123 +645,6 @@ module Google
           hash :requests, as: 'requests'
           hash :requests_in_map, as: 'requestsInMap', class: Google::Apis::RunV1alpha1::Quantity, decorator: Google::Apis::RunV1alpha1::Quantity::Representation
       
-        end
-      end
-      
-      class Revision
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ObjectMeta, decorator: Google::Apis::RunV1alpha1::ObjectMeta::Representation
-      
-          property :spec, as: 'spec', class: Google::Apis::RunV1alpha1::RevisionSpec, decorator: Google::Apis::RunV1alpha1::RevisionSpec::Representation
-      
-          property :status, as: 'status', class: Google::Apis::RunV1alpha1::RevisionStatus, decorator: Google::Apis::RunV1alpha1::RevisionStatus::Representation
-      
-        end
-      end
-      
-      class RevisionCondition
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :last_transition_time, as: 'lastTransitionTime'
-          property :message, as: 'message'
-          property :reason, as: 'reason'
-          property :severity, as: 'severity'
-          property :status, as: 'status'
-          property :type, as: 'type'
-        end
-      end
-      
-      class RevisionSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :concurrency_model, as: 'concurrencyModel'
-          property :container, as: 'container', class: Google::Apis::RunV1alpha1::Container, decorator: Google::Apis::RunV1alpha1::Container::Representation
-      
-          property :container_concurrency, as: 'containerConcurrency'
-          collection :containers, as: 'containers', class: Google::Apis::RunV1alpha1::Container, decorator: Google::Apis::RunV1alpha1::Container::Representation
-      
-          property :generation, as: 'generation'
-          property :service_account_name, as: 'serviceAccountName'
-          property :serving_state, as: 'servingState'
-          property :timeout_seconds, as: 'timeoutSeconds'
-          collection :volumes, as: 'volumes', class: Google::Apis::RunV1alpha1::Volume, decorator: Google::Apis::RunV1alpha1::Volume::Representation
-      
-        end
-      end
-      
-      class RevisionStatus
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :conditions, as: 'conditions', class: Google::Apis::RunV1alpha1::RevisionCondition, decorator: Google::Apis::RunV1alpha1::RevisionCondition::Representation
-      
-          property :image_digest, as: 'imageDigest'
-          property :log_url, as: 'logUrl'
-          property :observed_generation, as: 'observedGeneration'
-          property :service_name, as: 'serviceName'
-        end
-      end
-      
-      class RevisionTemplate
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ObjectMeta, decorator: Google::Apis::RunV1alpha1::ObjectMeta::Representation
-      
-          property :spec, as: 'spec', class: Google::Apis::RunV1alpha1::RevisionSpec, decorator: Google::Apis::RunV1alpha1::RevisionSpec::Representation
-      
-        end
-      end
-      
-      class Route
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ObjectMeta, decorator: Google::Apis::RunV1alpha1::ObjectMeta::Representation
-      
-          property :spec, as: 'spec', class: Google::Apis::RunV1alpha1::RouteSpec, decorator: Google::Apis::RunV1alpha1::RouteSpec::Representation
-      
-          property :status, as: 'status', class: Google::Apis::RunV1alpha1::RouteStatus, decorator: Google::Apis::RunV1alpha1::RouteStatus::Representation
-      
-        end
-      end
-      
-      class RouteCondition
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :last_transition_time, as: 'lastTransitionTime'
-          property :message, as: 'message'
-          property :reason, as: 'reason'
-          property :severity, as: 'severity'
-          property :status, as: 'status'
-          property :type, as: 'type'
-        end
-      end
-      
-      class RouteSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :generation, as: 'generation'
-          collection :traffic, as: 'traffic', class: Google::Apis::RunV1alpha1::TrafficTarget, decorator: Google::Apis::RunV1alpha1::TrafficTarget::Representation
-      
-        end
-      end
-      
-      class RouteStatus
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :address, as: 'address', class: Google::Apis::RunV1alpha1::Addressable, decorator: Google::Apis::RunV1alpha1::Addressable::Representation
-      
-          collection :conditions, as: 'conditions', class: Google::Apis::RunV1alpha1::RouteCondition, decorator: Google::Apis::RunV1alpha1::RouteCondition::Representation
-      
-          property :domain, as: 'domain'
-          property :domain_internal, as: 'domainInternal'
-          property :observed_generation, as: 'observedGeneration'
-          collection :traffic, as: 'traffic', class: Google::Apis::RunV1alpha1::TrafficTarget, decorator: Google::Apis::RunV1alpha1::TrafficTarget::Representation
-      
-          property :url, as: 'url'
         end
       end
       
@@ -1357,143 +706,12 @@ module Google
         end
       end
       
-      class Service
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ObjectMeta, decorator: Google::Apis::RunV1alpha1::ObjectMeta::Representation
-      
-          property :spec, as: 'spec', class: Google::Apis::RunV1alpha1::ServiceSpec, decorator: Google::Apis::RunV1alpha1::ServiceSpec::Representation
-      
-          property :status, as: 'status', class: Google::Apis::RunV1alpha1::ServiceStatus, decorator: Google::Apis::RunV1alpha1::ServiceStatus::Representation
-      
-        end
-      end
-      
-      class ServiceCondition
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :last_transition_time, as: 'lastTransitionTime'
-          property :message, as: 'message'
-          property :reason, as: 'reason'
-          property :severity, as: 'severity'
-          property :status, as: 'status'
-          property :type, as: 'type'
-        end
-      end
-      
-      class ServiceSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :generation, as: 'generation'
-          property :manual, as: 'manual', class: Google::Apis::RunV1alpha1::ServiceSpecManualType, decorator: Google::Apis::RunV1alpha1::ServiceSpecManualType::Representation
-      
-          property :pinned, as: 'pinned', class: Google::Apis::RunV1alpha1::ServiceSpecPinnedType, decorator: Google::Apis::RunV1alpha1::ServiceSpecPinnedType::Representation
-      
-          property :release, as: 'release', class: Google::Apis::RunV1alpha1::ServiceSpecReleaseType, decorator: Google::Apis::RunV1alpha1::ServiceSpecReleaseType::Representation
-      
-          property :run_latest, as: 'runLatest', class: Google::Apis::RunV1alpha1::ServiceSpecRunLatest, decorator: Google::Apis::RunV1alpha1::ServiceSpecRunLatest::Representation
-      
-          property :template, as: 'template', class: Google::Apis::RunV1alpha1::RevisionTemplate, decorator: Google::Apis::RunV1alpha1::RevisionTemplate::Representation
-      
-          collection :traffic, as: 'traffic', class: Google::Apis::RunV1alpha1::TrafficTarget, decorator: Google::Apis::RunV1alpha1::TrafficTarget::Representation
-      
-        end
-      end
-      
-      class ServiceSpecManualType
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class ServiceSpecPinnedType
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :configuration, as: 'configuration', class: Google::Apis::RunV1alpha1::ConfigurationSpec, decorator: Google::Apis::RunV1alpha1::ConfigurationSpec::Representation
-      
-          property :revision_name, as: 'revisionName'
-        end
-      end
-      
-      class ServiceSpecReleaseType
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :configuration, as: 'configuration', class: Google::Apis::RunV1alpha1::ConfigurationSpec, decorator: Google::Apis::RunV1alpha1::ConfigurationSpec::Representation
-      
-          collection :revisions, as: 'revisions'
-          property :rollout_percent, as: 'rolloutPercent'
-        end
-      end
-      
-      class ServiceSpecRunLatest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :configuration, as: 'configuration', class: Google::Apis::RunV1alpha1::ConfigurationSpec, decorator: Google::Apis::RunV1alpha1::ConfigurationSpec::Representation
-      
-        end
-      end
-      
-      class ServiceStatus
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :address, as: 'address', class: Google::Apis::RunV1alpha1::Addressable, decorator: Google::Apis::RunV1alpha1::Addressable::Representation
-      
-          collection :conditions, as: 'conditions', class: Google::Apis::RunV1alpha1::ServiceCondition, decorator: Google::Apis::RunV1alpha1::ServiceCondition::Representation
-      
-          property :domain, as: 'domain'
-          property :latest_created_revision_name, as: 'latestCreatedRevisionName'
-          property :latest_ready_revision_name, as: 'latestReadyRevisionName'
-          property :observed_generation, as: 'observedGeneration'
-          collection :traffic, as: 'traffic', class: Google::Apis::RunV1alpha1::TrafficTarget, decorator: Google::Apis::RunV1alpha1::TrafficTarget::Representation
-      
-          property :url, as: 'url'
-        end
-      end
-      
-      class SetIamPolicyRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :policy, as: 'policy', class: Google::Apis::RunV1alpha1::Policy, decorator: Google::Apis::RunV1alpha1::Policy::Representation
-      
-          property :update_mask, as: 'updateMask'
-        end
-      end
-      
       class TcpSocketAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :host, as: 'host'
           property :port, as: 'port', class: Google::Apis::RunV1alpha1::IntOrString, decorator: Google::Apis::RunV1alpha1::IntOrString::Representation
       
-        end
-      end
-      
-      class TestIamPermissionsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :permissions, as: 'permissions'
-        end
-      end
-      
-      class TestIamPermissionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :permissions, as: 'permissions'
-        end
-      end
-      
-      class TrafficTarget
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :configuration_name, as: 'configurationName'
-          property :latest_revision, as: 'latestRevision'
-          property :name, as: 'name'
-          property :percent, as: 'percent'
-          property :revision_name, as: 'revisionName'
-          property :tag, as: 'tag'
-          property :url, as: 'url'
         end
       end
       
