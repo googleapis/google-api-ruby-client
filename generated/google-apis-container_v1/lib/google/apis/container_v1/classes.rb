@@ -562,6 +562,11 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
+        # Output only. Unique id for the cluster.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
         # The initial Kubernetes version for this cluster. Valid versions are those
         # found in validMasterVersions returned by getServerConfig. The version can be
         # upgraded over time; such upgrades are reflected in currentMasterVersion and
@@ -828,6 +833,7 @@ module Google
           @enable_tpu = args[:enable_tpu] if args.key?(:enable_tpu)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @id = args[:id] if args.key?(:id)
           @initial_cluster_version = args[:initial_cluster_version] if args.key?(:initial_cluster_version)
           @initial_node_count = args[:initial_node_count] if args.key?(:initial_node_count)
           @instance_group_urls = args[:instance_group_urls] if args.key?(:instance_group_urls)
