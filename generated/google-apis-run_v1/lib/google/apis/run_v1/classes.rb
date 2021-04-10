@@ -566,6 +566,13 @@ module Google
         # @return [Google::Apis::RunV1::SecurityContext]
         attr_accessor :security_context
       
+        # Cloud Run fully managed: not supported Cloud Run for Anthos: supported Probe
+        # describes a health check to be performed against a container to determine
+        # whether it is alive or ready to receive traffic.
+        # Corresponds to the JSON property `startupProbe`
+        # @return [Google::Apis::RunV1::Probe]
+        attr_accessor :startup_probe
+      
         # (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
         # supported Path at which the file to which the container's termination message
         # will be written is mounted into the container's filesystem. Message written is
@@ -621,6 +628,7 @@ module Google
           @readiness_probe = args[:readiness_probe] if args.key?(:readiness_probe)
           @resources = args[:resources] if args.key?(:resources)
           @security_context = args[:security_context] if args.key?(:security_context)
+          @startup_probe = args[:startup_probe] if args.key?(:startup_probe)
           @termination_message_path = args[:termination_message_path] if args.key?(:termination_message_path)
           @termination_message_policy = args[:termination_message_policy] if args.key?(:termination_message_policy)
           @volume_mounts = args[:volume_mounts] if args.key?(:volume_mounts)
