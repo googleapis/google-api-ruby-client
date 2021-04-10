@@ -771,6 +771,7 @@ module Google
           property :enable_tpu, as: 'enableTpu'
           property :endpoint, as: 'endpoint'
           property :expire_time, as: 'expireTime'
+          property :id, as: 'id'
           property :initial_cluster_version, as: 'initialClusterVersion'
           property :initial_node_count, as: 'initialNodeCount'
           collection :instance_group_urls, as: 'instanceGroupUrls'
