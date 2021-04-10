@@ -615,6 +615,11 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
+        # Output only. Unique id for the cluster.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
         # The initial Kubernetes version for this cluster. Valid versions are those
         # found in validMasterVersions returned by getServerConfig. The version can be
         # upgraded over time; such upgrades are reflected in currentMasterVersion and
@@ -878,6 +883,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::VerticalPodAutoscaling]
         attr_accessor :vertical_pod_autoscaling
       
+        # Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+        # Corresponds to the JSON property `workloadCertificates`
+        # @return [Google::Apis::ContainerV1beta1::WorkloadCertificates]
+        attr_accessor :workload_certificates
+      
         # Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
         # Corresponds to the JSON property `workloadIdentityConfig`
         # @return [Google::Apis::ContainerV1beta1::WorkloadIdentityConfig]
@@ -916,6 +926,7 @@ module Google
           @enable_tpu = args[:enable_tpu] if args.key?(:enable_tpu)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @id = args[:id] if args.key?(:id)
           @initial_cluster_version = args[:initial_cluster_version] if args.key?(:initial_cluster_version)
           @initial_node_count = args[:initial_node_count] if args.key?(:initial_node_count)
           @instance_group_urls = args[:instance_group_urls] if args.key?(:instance_group_urls)
@@ -954,6 +965,7 @@ module Google
           @tpu_config = args[:tpu_config] if args.key?(:tpu_config)
           @tpu_ipv4_cidr_block = args[:tpu_ipv4_cidr_block] if args.key?(:tpu_ipv4_cidr_block)
           @vertical_pod_autoscaling = args[:vertical_pod_autoscaling] if args.key?(:vertical_pod_autoscaling)
+          @workload_certificates = args[:workload_certificates] if args.key?(:workload_certificates)
           @workload_identity_config = args[:workload_identity_config] if args.key?(:workload_identity_config)
           @zone = args[:zone] if args.key?(:zone)
         end
@@ -1219,6 +1231,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::VerticalPodAutoscaling]
         attr_accessor :desired_vertical_pod_autoscaling
       
+        # Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+        # Corresponds to the JSON property `desiredWorkloadCertificates`
+        # @return [Google::Apis::ContainerV1beta1::WorkloadCertificates]
+        attr_accessor :desired_workload_certificates
+      
         # Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
         # Corresponds to the JSON property `desiredWorkloadIdentityConfig`
         # @return [Google::Apis::ContainerV1beta1::WorkloadIdentityConfig]
@@ -1258,6 +1275,7 @@ module Google
           @desired_shielded_nodes = args[:desired_shielded_nodes] if args.key?(:desired_shielded_nodes)
           @desired_tpu_config = args[:desired_tpu_config] if args.key?(:desired_tpu_config)
           @desired_vertical_pod_autoscaling = args[:desired_vertical_pod_autoscaling] if args.key?(:desired_vertical_pod_autoscaling)
+          @desired_workload_certificates = args[:desired_workload_certificates] if args.key?(:desired_workload_certificates)
           @desired_workload_identity_config = args[:desired_workload_identity_config] if args.key?(:desired_workload_identity_config)
         end
       end
@@ -2651,7 +2669,7 @@ module Google
       end
       
       # Collection of Compute Engine network tags that can be applied to a node's
-      # underyling VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/
+      # underlying VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/
       # docs/reference/rest/v1/NodeConfig)).
       class NetworkTags
         include Google::Apis::Core::Hashable
@@ -4961,7 +4979,7 @@ module Google
         attr_accessor :project_id
       
         # Collection of Compute Engine network tags that can be applied to a node's
-        # underyling VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/
+        # underlying VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/
         # docs/reference/rest/v1/NodeConfig)).
         # Corresponds to the JSON property `tags`
         # @return [Google::Apis::ContainerV1beta1::NetworkTags]
@@ -5260,6 +5278,30 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+      class WorkloadCertificates
+        include Google::Apis::Core::Hashable
+      
+        # enable_certificates controls issuance of workload mTLS certificates. If set,
+        # the GKE Workload Identity Certificates controller and node agent will be
+        # deployed in the cluster, which can then be configured by creating a
+        # WorkloadCertificateConfig Custom Resource. Requires Workload Identity (
+        # workload_pool must be non-empty).
+        # Corresponds to the JSON property `enableCertificates`
+        # @return [Boolean]
+        attr_accessor :enable_certificates
+        alias_method :enable_certificates?, :enable_certificates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_certificates = args[:enable_certificates] if args.key?(:enable_certificates)
         end
       end
       
