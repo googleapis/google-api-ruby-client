@@ -882,6 +882,13 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Output only. Repository-specific Metadata stored against this version. The
+        # fields returned are defined by the underlying repository-specific resource.
+        # Currently, the only resource in use is DockerImage
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
         # The name of the version, for example: "projects/p1/locations/us-central1/
         # repositories/repo1/packages/pkg1/versions/art1".
         # Corresponds to the JSON property `name`
@@ -907,6 +914,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @related_tags = args[:related_tags] if args.key?(:related_tags)
           @update_time = args[:update_time] if args.key?(:update_time)
