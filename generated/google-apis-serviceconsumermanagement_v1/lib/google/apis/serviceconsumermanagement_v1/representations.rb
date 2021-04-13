@@ -798,7 +798,6 @@ module Google
       class Endpoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :aliases, as: 'aliases'
           property :allow_cors, as: 'allowCors'
           property :name, as: 'name'
           property :target, as: 'target'
