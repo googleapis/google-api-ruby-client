@@ -415,7 +415,32 @@ module Google
         end
       end
       
-      # A single table.
+      # A saved view of a table. NextId: 3
+      class SavedView
+        include Google::Apis::Core::Hashable
+      
+        # Internal id associated with the saved view.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Display name of the saved view.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A single table. NextId: 7
       class Table
         include Google::Apis::Core::Hashable
       
@@ -439,6 +464,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Saved views for this table.
+        # Corresponds to the JSON property `savedViews`
+        # @return [Array<Google::Apis::Area120tablesV1alpha1::SavedView>]
+        attr_accessor :saved_views
+      
         # Time when the table was last updated excluding updates to individual rows
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -454,6 +484,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @saved_views = args[:saved_views] if args.key?(:saved_views)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
