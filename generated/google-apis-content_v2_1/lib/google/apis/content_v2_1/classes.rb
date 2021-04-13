@@ -1586,6 +1586,19 @@ module Google
         end
       end
       
+      # Request message for the ActivateProgram method.
+      class ActivateBuyOnGoogleProgramRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # 
       class Amount
         include Google::Apis::Core::Hashable
@@ -8756,6 +8769,19 @@ module Google
         end
       end
       
+      # Request message for the PauseProgram method.
+      class PauseBuyOnGoogleProgramRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # 
       class PickupCarrierService
         include Google::Apis::Core::Hashable
@@ -10246,6 +10272,39 @@ module Google
         # @return [Fixnum]
         attr_accessor :location_id
       
+        # Maximum handling time (inclusive) between when the order is received and
+        # shipped in business days. 0 means that the order is shipped on the same day as
+        # it is received if it happens before the cut-off time. Both maxHandlingTime and
+        # maxTransitTime are required if providing shipping speeds.
+        # Corresponds to the JSON property `maxHandlingTime`
+        # @return [Fixnum]
+        attr_accessor :max_handling_time
+      
+        # Maximum transit time (inclusive) between when the order has shipped and when
+        # it is delivered in business days. 0 means that the order is delivered on the
+        # same day as it ships. Both maxHandlingTime and maxTransitTime are required if
+        # providing shipping speeds.
+        # Corresponds to the JSON property `maxTransitTime`
+        # @return [Fixnum]
+        attr_accessor :max_transit_time
+      
+        # Minimum handling time (inclusive) between when the order is received and
+        # shipped in business days. 0 means that the order is shipped on the same day as
+        # it is received if it happens before the cut-off time. minHandlingTime can only
+        # be present together with maxHandlingTime; but it is not required if
+        # maxHandlingTime is present.
+        # Corresponds to the JSON property `minHandlingTime`
+        # @return [Fixnum]
+        attr_accessor :min_handling_time
+      
+        # Minimum transit time (inclusive) between when the order has shipped and when
+        # it is delivered in business days. 0 means that the order is delivered on the
+        # same day as it ships. minTransitTime can only be present together with
+        # maxTransitTime; but it is not required if maxTransitTime is present.
+        # Corresponds to the JSON property `minTransitTime`
+        # @return [Fixnum]
+        attr_accessor :min_transit_time
+      
         # The postal code range that the shipping rate applies to, represented by a
         # postal code, a postal code prefix followed by a * wildcard, a range between
         # two postal codes or two postal code prefixes of equal length.
@@ -10277,6 +10336,10 @@ module Google
           @country = args[:country] if args.key?(:country)
           @location_group_name = args[:location_group_name] if args.key?(:location_group_name)
           @location_id = args[:location_id] if args.key?(:location_id)
+          @max_handling_time = args[:max_handling_time] if args.key?(:max_handling_time)
+          @max_transit_time = args[:max_transit_time] if args.key?(:max_transit_time)
+          @min_handling_time = args[:min_handling_time] if args.key?(:min_handling_time)
+          @min_transit_time = args[:min_transit_time] if args.key?(:min_transit_time)
           @postal_code = args[:postal_code] if args.key?(:postal_code)
           @price = args[:price] if args.key?(:price)
           @region = args[:region] if args.key?(:region)
@@ -11470,7 +11533,7 @@ module Google
         # of the corresponding event, e.g., impression or order. Segment fields cannot
         # be selected in queries without also selecting at least one metric field.
         # Values are only set for dimensions requested explicitly in the request's
-        # search query. Next id: 22
+        # search query.
         # Corresponds to the JSON property `segments`
         # @return [Google::Apis::ContentV2_1::Segments]
         attr_accessor :segments
@@ -12038,6 +12101,19 @@ module Google
         def update!(**args)
           @percentage_delta = args[:percentage_delta] if args.key?(:percentage_delta)
           @price_delta = args[:price_delta] if args.key?(:price_delta)
+        end
+      end
+      
+      # Request message for the RequestReviewProgram method.
+      class RequestReviewBuyOnGoogleProgramRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -12998,7 +13074,7 @@ module Google
       # of the corresponding event, e.g., impression or order. Segment fields cannot
       # be selected in queries without also selecting at least one metric field.
       # Values are only set for dimensions requested explicitly in the request's
-      # search query. Next id: 22
+      # search query.
       class Segments
         include Google::Apis::Core::Hashable
       
