@@ -2827,7 +2827,9 @@ module Google
         # temporary network will be forgotten and the device will continue booting. This
         # prevents being unable to connect to a network if there is no suitable network
         # in the last policy and the device boots into an app in lock task mode, or the
-        # user is otherwise unable to reach device settings.
+        # user is otherwise unable to reach device settings.Note: Setting
+        # wifiConfigDisabled to true will override this setting under specific
+        # circumstances. Please see wifiConfigDisabled for further details.
         # Corresponds to the JSON property `networkEscapeHatchEnabled`
         # @return [Boolean]
         attr_accessor :network_escape_hatch_enabled
@@ -3055,7 +3057,10 @@ module Google
         attr_accessor :vpn_config_disabled
         alias_method :vpn_config_disabled?, :vpn_config_disabled
       
-        # Whether configuring Wi-Fi access points is disabled.
+        # Whether configuring Wi-Fi access points is disabled.Note: If a network
+        # connection can't be made at boot time and configuring Wi-Fi is disabled then
+        # network escape hatch will be shown in order to refresh the device policy (see
+        # networkEscapeHatchEnabled).
         # Corresponds to the JSON property `wifiConfigDisabled`
         # @return [Boolean]
         attr_accessor :wifi_config_disabled
