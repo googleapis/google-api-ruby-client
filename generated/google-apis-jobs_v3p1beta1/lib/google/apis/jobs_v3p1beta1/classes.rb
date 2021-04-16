@@ -1043,8 +1043,8 @@ module Google
         # expressions: * count(admin1) * count(base_compensation, [bucket(1000, 10000),
         # bucket(10000, 100000), bucket(100000, MAX)]) * count(string_custom_attribute["
         # some-string-custom-attribute"]) * count(numeric_custom_attribute["some-numeric-
-        # custom-attribute"], [bucket(MIN, 0, "negative"), bucket(0, MAX, "non-negative"]
-        # )
+        # custom-attribute"], [bucket(MIN, 0, "negative"), bucket(0, MAX, "non-negative")
+        # ])
         # Corresponds to the JSON property `histogramQuery`
         # @return [String]
         attr_accessor :histogram_query
@@ -1169,7 +1169,14 @@ module Google
         # and requisition_id are not allowed. If the original requisition_id must be
         # preserved, a custom field should be used for storage. It is also suggested to
         # group the locations that close to each other in the same job for better search
-        # experience. The maximum number of allowed characters is 500.
+        # experience. Jobs with multiple addresses must have their addresses with the
+        # same LocationType to allow location filtering to work properly. (For example,
+        # a Job with addresses "1600 Amphitheatre Parkway, Mountain View, CA, USA" and "
+        # London, UK" may not have location filters applied correctly at search time
+        # since the first is a LocationType.STREET_ADDRESS and the second is a
+        # LocationType.LOCALITY.) If a job needs to have multiple addresses, it is
+        # suggested to split it into multiple jobs with same LocationTypes. The maximum
+        # number of allowed characters is 500.
         # Corresponds to the JSON property `addresses`
         # @return [Array<String>]
         attr_accessor :addresses
