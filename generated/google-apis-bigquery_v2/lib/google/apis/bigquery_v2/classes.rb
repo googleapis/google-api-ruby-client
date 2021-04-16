@@ -6481,7 +6481,7 @@ module Google
       
         # [Required] The field name. The name must contain only letters (a-z, A-Z),
         # numbers (0-9), or underscores (_), and must start with a letter or underscore.
-        # The maximum length is 128 characters.
+        # The maximum length is 300 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
