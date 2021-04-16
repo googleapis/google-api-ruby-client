@@ -22,6 +22,30 @@ module Google
   module Apis
     module AdmobV1
       
+      class AdUnit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class App
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppLinkedAppInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppManualAppInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Date
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,6 +77,18 @@ module Google
       end
       
       class GenerateNetworkReportResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAdUnitsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAppsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -154,6 +190,46 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdUnit
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_format, as: 'adFormat'
+          collection :ad_types, as: 'adTypes'
+          property :ad_unit_id, as: 'adUnitId'
+          property :app_id, as: 'appId'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+        end
+      end
+      
+      class App
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_id, as: 'appId'
+          property :linked_app_info, as: 'linkedAppInfo', class: Google::Apis::AdmobV1::AppLinkedAppInfo, decorator: Google::Apis::AdmobV1::AppLinkedAppInfo::Representation
+      
+          property :manual_app_info, as: 'manualAppInfo', class: Google::Apis::AdmobV1::AppManualAppInfo, decorator: Google::Apis::AdmobV1::AppManualAppInfo::Representation
+      
+          property :name, as: 'name'
+          property :platform, as: 'platform'
+        end
+      end
+      
+      class AppLinkedAppInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_store_id, as: 'appStoreId'
+          property :display_name, as: 'displayName'
+        end
+      end
+      
+      class AppManualAppInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+        end
+      end
+      
       class Date
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -210,6 +286,24 @@ module Google
       
           property :row, as: 'row', class: Google::Apis::AdmobV1::ReportRow, decorator: Google::Apis::AdmobV1::ReportRow::Representation
       
+        end
+      end
+      
+      class ListAdUnitsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ad_units, as: 'adUnits', class: Google::Apis::AdmobV1::AdUnit, decorator: Google::Apis::AdmobV1::AdUnit::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListAppsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :apps, as: 'apps', class: Google::Apis::AdmobV1::App, decorator: Google::Apis::AdmobV1::App::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
