@@ -87,7 +87,7 @@ module Google
         #   accepts strings like "displayName=tokyo", and is documented in more detail in [
         #   AIP-160](https://google.aip.dev/160).
         # @param [Fixnum] page_size
-        #   The maximum number of results to return. If not set, the service will select a
+        #   The maximum number of results to return. If not set, the service selects a
         #   default.
         # @param [String] page_token
         #   A page token received from the `next_page_token` field in the response. Send
@@ -133,6 +133,17 @@ module Google
         #   consist of lower case alphanumeric characters or `-` 3. It must start and end
         #   with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([
         #   -a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
+        # @param [String] request_id
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. The server will guarantee that for
+        #   at least 60 minutes after the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -150,7 +161,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_membership(parent, membership_object = nil, membership_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_membership(parent, membership_object = nil, membership_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1beta1/{+parent}/memberships', options)
           command.request_representation = Google::Apis::GkehubV1beta1::Membership::Representation
           command.request_object = membership_object
@@ -158,6 +169,7 @@ module Google
           command.response_class = Google::Apis::GkehubV1beta1::Operation
           command.params['parent'] = parent unless parent.nil?
           command.query['membershipId'] = membership_id unless membership_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -167,6 +179,17 @@ module Google
         # @param [String] name
         #   Required. The Membership resource name in the format `projects/*/locations/*/
         #   memberships/*`.
+        # @param [String] request_id
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. The server will guarantee that for
+        #   at least 60 minutes after the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -184,11 +207,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_membership(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_membership(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::GkehubV1beta1::Operation::Representation
           command.response_class = Google::Apis::GkehubV1beta1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -433,6 +457,17 @@ module Google
         #   Required. The membership resource name in the format: `projects/[project_id]/
         #   locations/global/memberships/[membership_id]`
         # @param [Google::Apis::GkehubV1beta1::Membership] membership_object
+        # @param [String] request_id
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. The server will guarantee that for
+        #   at least 60 minutes after the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
         #   Required. Mask of fields to update. At least one field path must be specified
         #   in this mask.
@@ -453,13 +488,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_membership(name, membership_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_membership(name, membership_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::GkehubV1beta1::Membership::Representation
           command.request_object = membership_object
           command.response_representation = Google::Apis::GkehubV1beta1::Operation::Representation
           command.response_class = Google::Apis::GkehubV1beta1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
