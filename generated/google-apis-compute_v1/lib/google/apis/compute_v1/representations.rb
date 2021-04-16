@@ -5324,6 +5324,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_nested_virtualization, as: 'enableNestedVirtualization'
+          property :threads_per_core, as: 'threadsPerCore'
         end
       end
       
