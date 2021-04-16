@@ -4120,6 +4120,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceAttachmentConnectedEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceAttachmentConsumerForwardingRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4966,6 +4972,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Uint128
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UrlMap
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5620,6 +5632,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_nested_virtualization, as: 'enableNestedVirtualization'
+          property :threads_per_core, as: 'threadsPerCore'
         end
       end
       
@@ -13011,6 +13024,8 @@ module Google
       class ServiceAttachment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :connected_endpoints, as: 'connectedEndpoints', class: Google::Apis::ComputeBeta::ServiceAttachmentConnectedEndpoint, decorator: Google::Apis::ComputeBeta::ServiceAttachmentConnectedEndpoint::Representation
+      
           property :connection_preference, as: 'connectionPreference'
           collection :consumer_forwarding_rules, as: 'consumerForwardingRules', class: Google::Apis::ComputeBeta::ServiceAttachmentConsumerForwardingRule, decorator: Google::Apis::ComputeBeta::ServiceAttachmentConsumerForwardingRule::Representation
       
@@ -13022,6 +13037,8 @@ module Google
           property :name, as: 'name'
           collection :nat_subnets, as: 'natSubnets'
           property :producer_forwarding_rule, as: 'producerForwardingRule'
+          property :psc_service_attachment_id, as: 'pscServiceAttachmentId', class: Google::Apis::ComputeBeta::Uint128, decorator: Google::Apis::ComputeBeta::Uint128::Representation
+      
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :target_service, as: 'targetService'
@@ -13061,10 +13078,21 @@ module Google
         end
       end
       
+      class ServiceAttachmentConnectedEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :endpoint, as: 'endpoint'
+          property :forwarding_rule, as: 'forwardingRule'
+          property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
+          property :status, as: 'status'
+        end
+      end
+      
       class ServiceAttachmentConsumerForwardingRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :forwarding_rule, as: 'forwardingRule'
+          property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
           property :status, as: 'status'
         end
       end
@@ -14563,6 +14591,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class Uint128
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :high, :numeric_string => true, as: 'high'
+          property :low, :numeric_string => true, as: 'low'
         end
       end
       
