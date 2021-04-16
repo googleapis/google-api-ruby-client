@@ -1159,13 +1159,10 @@ module Google
         # @return [String]
         attr_accessor :package
       
-        # The projectId of the package to which this data belongs. Most of Drydock's
-        # code does not set or use this field. This is added specifically so we can
-        # group packages by projects and decide whether or not to apply NVD data to the
-        # packages belonging to a specific project.
-        # Corresponds to the JSON property `projectId`
+        # 
+        # Corresponds to the JSON property `unused`
         # @return [String]
-        attr_accessor :project_id
+        attr_accessor :unused
       
         # The version of the package being analysed
         # Corresponds to the JSON property `version`
@@ -1182,7 +1179,7 @@ module Google
           @os = args[:os] if args.key?(:os)
           @os_version = args[:os_version] if args.key?(:os_version)
           @package = args[:package] if args.key?(:package)
-          @project_id = args[:project_id] if args.key?(:project_id)
+          @unused = args[:unused] if args.key?(:unused)
           @version = args[:version] if args.key?(:version)
         end
       end
