@@ -1230,8 +1230,10 @@ module Google
       class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_error_count, as: 'datasetErrorCount'
           collection :dataset_errors, as: 'datasetErrors', class: Google::Apis::DocumentaiV1beta3::GoogleRpcStatus, decorator: Google::Apis::DocumentaiV1beta3::GoogleRpcStatus::Representation
       
+          property :document_error_count, as: 'documentErrorCount'
           collection :document_errors, as: 'documentErrors', class: Google::Apis::DocumentaiV1beta3::GoogleRpcStatus, decorator: Google::Apis::DocumentaiV1beta3::GoogleRpcStatus::Representation
       
         end
