@@ -2782,6 +2782,7 @@ module Google
       
           property :intent_info, as: 'intentInfo', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3WebhookRequestIntentInfo, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3WebhookRequestIntentInfo::Representation
       
+          property :language_code, as: 'languageCode'
           collection :messages, as: 'messages', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ResponseMessage, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ResponseMessage::Representation
       
           property :page_info, as: 'pageInfo', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3PageInfo, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3PageInfo::Representation
@@ -4244,6 +4245,7 @@ module Google
       
           property :intent_info, as: 'intentInfo', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo::Representation
       
+          property :language_code, as: 'languageCode'
           collection :messages, as: 'messages', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessage, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessage::Representation
       
           property :page_info, as: 'pageInfo', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PageInfo, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PageInfo::Representation

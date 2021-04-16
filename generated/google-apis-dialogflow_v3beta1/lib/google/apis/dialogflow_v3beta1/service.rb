@@ -2208,10 +2208,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Loads a specified version to draft version.
+        # Loads resources in the specified version to the draft flow.
         # @param [String] name
-        #   Required. The Version to be loaded to draft version. Format: `projects//
-        #   locations//agents//flows//versions/`.
+        #   Required. The Version to be loaded to draft flow. Format: `projects//locations/
+        #   /agents//flows//versions/`.
         # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1LoadVersionRequest] google_cloud_dialogflow_cx_v3beta1_load_version_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
