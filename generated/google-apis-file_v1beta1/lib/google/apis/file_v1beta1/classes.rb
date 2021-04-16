@@ -337,8 +337,10 @@ module Google
         # @return [Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings]
         attr_accessor :maintenance_settings
       
-        # Unique name of the resource. It uses the form: `projects/`project_id`/
-        # locations/`location_id`/instances/`instance_id``
+        # Unique name of the resource. It uses the form: `projects/`project_id|
+        # project_number`/locations/`location_id`/instances/`instance_id`` Note: Either
+        # project_id or project_number and be used, but keep it consistent with other
+        # APIs (e.g. RescheduleUpdate)
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
