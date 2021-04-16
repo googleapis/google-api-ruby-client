@@ -91,7 +91,7 @@ module Google
         #   LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` LOCATION here refers to GCP
         #   Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to
         #   supported insight types: https://cloud.google.com/recommender/docs/insights/
-        #   insight-types.)
+        #   insight-types.
         # @param [String] filter
         #   Optional. Filter expression to restrict the insights returned. Supported
         #   filter fields: state Eg: `state:"DISMISSED" or state:"ACTIVE"
@@ -415,7 +415,7 @@ module Google
         #   LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` LOCATION here refers to GCP
         #   Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to
         #   supported insight types: https://cloud.google.com/recommender/docs/insights/
-        #   insight-types.)
+        #   insight-types.
         # @param [String] filter
         #   Optional. Filter expression to restrict the insights returned. Supported
         #   filter fields: state Eg: `state:"DISMISSED" or state:"ACTIVE"
@@ -739,7 +739,7 @@ module Google
         #   LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` LOCATION here refers to GCP
         #   Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to
         #   supported insight types: https://cloud.google.com/recommender/docs/insights/
-        #   insight-types.)
+        #   insight-types.
         # @param [String] filter
         #   Optional. Filter expression to restrict the insights returned. Supported
         #   filter fields: state Eg: `state:"DISMISSED" or state:"ACTIVE"
@@ -1063,7 +1063,7 @@ module Google
         #   LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` LOCATION here refers to GCP
         #   Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to
         #   supported insight types: https://cloud.google.com/recommender/docs/insights/
-        #   insight-types.)
+        #   insight-types.
         # @param [String] filter
         #   Optional. Filter expression to restrict the insights returned. Supported
         #   filter fields: state Eg: `state:"DISMISSED" or state:"ACTIVE"
