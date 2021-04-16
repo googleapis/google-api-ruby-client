@@ -1042,6 +1042,13 @@ module Google
         attr_accessor :enable_nested_virtualization
         alias_method :enable_nested_virtualization?, :enable_nested_virtualization
       
+        # The number of threads per physical core. To disable simultaneous
+        # multithreading (SMT) set this to 1. If unset, the maximum number of threads
+        # supported per core by the underlying processor is assumed.
+        # Corresponds to the JSON property `threadsPerCore`
+        # @return [Fixnum]
+        attr_accessor :threads_per_core
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1049,6 +1056,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable_nested_virtualization = args[:enable_nested_virtualization] if args.key?(:enable_nested_virtualization)
+          @threads_per_core = args[:threads_per_core] if args.key?(:threads_per_core)
         end
       end
       
