@@ -202,6 +202,56 @@ module Google
         end
       end
       
+      # For display only. Metadata associated with a Cloud SQL instance.
+      class CloudSqlInstanceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Name of a Cloud SQL instance.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # External IP address of Cloud SQL instance.
+        # Corresponds to the JSON property `externalIp`
+        # @return [String]
+        attr_accessor :external_ip
+      
+        # Internal IP address of Cloud SQL instance.
+        # Corresponds to the JSON property `internalIp`
+        # @return [String]
+        attr_accessor :internal_ip
+      
+        # URI of a Cloud SQL instance network or empty string if instance does not have
+        # one.
+        # Corresponds to the JSON property `networkUri`
+        # @return [String]
+        attr_accessor :network_uri
+      
+        # Region in which the Cloud SQL instance is running.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # URI of a Cloud SQL instance.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @external_ip = args[:external_ip] if args.key?(:external_ip)
+          @internal_ip = args[:internal_ip] if args.key?(:internal_ip)
+          @network_uri = args[:network_uri] if args.key?(:network_uri)
+          @region = args[:region] if args.key?(:region)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # A Connectivity Test for a network reachability analysis.
       class ConnectivityTest
         include Google::Apis::Core::Hashable
@@ -677,6 +727,44 @@ module Google
           @target = args[:target] if args.key?(:target)
           @uri = args[:uri] if args.key?(:uri)
           @vip = args[:vip] if args.key?(:vip)
+        end
+      end
+      
+      # For display only. Metadata associated with a Google Kubernetes Engine cluster
+      # master.
+      class GkeMasterInfo
+        include Google::Apis::Core::Hashable
+      
+        # URI of a Google Kubernetes Engine cluster network.
+        # Corresponds to the JSON property `clusterNetworkUri`
+        # @return [String]
+        attr_accessor :cluster_network_uri
+      
+        # URI of a Google Kubernetes Engine cluster.
+        # Corresponds to the JSON property `clusterUri`
+        # @return [String]
+        attr_accessor :cluster_uri
+      
+        # External IP address of a Google Kubernetes Engine cluster master.
+        # Corresponds to the JSON property `externalIp`
+        # @return [String]
+        attr_accessor :external_ip
+      
+        # Internal IP address of a Google Kubernetes Engine cluster master.
+        # Corresponds to the JSON property `internalIp`
+        # @return [String]
+        attr_accessor :internal_ip
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_network_uri = args[:cluster_network_uri] if args.key?(:cluster_network_uri)
+          @cluster_uri = args[:cluster_uri] if args.key?(:cluster_uri)
+          @external_ip = args[:external_ip] if args.key?(:external_ip)
+          @internal_ip = args[:internal_ip] if args.key?(:internal_ip)
         end
       end
       
@@ -1429,6 +1517,11 @@ module Google
         attr_accessor :causes_drop
         alias_method :causes_drop?, :causes_drop
       
+        # For display only. Metadata associated with a Cloud SQL instance.
+        # Corresponds to the JSON property `cloudSqlInstance`
+        # @return [Google::Apis::NetworkmanagementV1::CloudSqlInstanceInfo]
+        attr_accessor :cloud_sql_instance
+      
         # Details of the final state "deliver" and associated resource.
         # Corresponds to the JSON property `deliver`
         # @return [Google::Apis::NetworkmanagementV1::DeliverInfo]
@@ -1466,6 +1559,12 @@ module Google
         # Corresponds to the JSON property `forwardingRule`
         # @return [Google::Apis::NetworkmanagementV1::ForwardingRuleInfo]
         attr_accessor :forwarding_rule
+      
+        # For display only. Metadata associated with a Google Kubernetes Engine cluster
+        # master.
+        # Corresponds to the JSON property `gkeMaster`
+        # @return [Google::Apis::NetworkmanagementV1::GkeMasterInfo]
+        attr_accessor :gke_master
       
         # For display only. Metadata associated with a Compute Engine instance.
         # Corresponds to the JSON property `instance`
@@ -1515,6 +1614,7 @@ module Google
         def update!(**args)
           @abort = args[:abort] if args.key?(:abort)
           @causes_drop = args[:causes_drop] if args.key?(:causes_drop)
+          @cloud_sql_instance = args[:cloud_sql_instance] if args.key?(:cloud_sql_instance)
           @deliver = args[:deliver] if args.key?(:deliver)
           @description = args[:description] if args.key?(:description)
           @drop = args[:drop] if args.key?(:drop)
@@ -1522,6 +1622,7 @@ module Google
           @firewall = args[:firewall] if args.key?(:firewall)
           @forward = args[:forward] if args.key?(:forward)
           @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
+          @gke_master = args[:gke_master] if args.key?(:gke_master)
           @instance = args[:instance] if args.key?(:instance)
           @load_balancer = args[:load_balancer] if args.key?(:load_balancer)
           @network = args[:network] if args.key?(:network)
@@ -1574,7 +1675,7 @@ module Google
       end
       
       # Trace represents one simulated packet forwarding path. * Each trace contains
-      # multiple ordered Steps. * Each step is in a particular state with associated
+      # multiple ordered steps. * Each step is in a particular state with associated
       # configuration. * State is categorized as final or non-final states. * Each
       # final state has a reason associated. * Each trace must end with a final state (
       # the last step). ``` |---------------------Trace----------------------| Step1(

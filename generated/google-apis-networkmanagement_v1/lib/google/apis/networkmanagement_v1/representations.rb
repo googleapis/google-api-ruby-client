@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudSqlInstanceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConnectivityTest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,6 +113,12 @@ module Google
       end
       
       class ForwardingRuleInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GkeMasterInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -285,6 +297,18 @@ module Google
         end
       end
       
+      class CloudSqlInstanceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :external_ip, as: 'externalIp'
+          property :internal_ip, as: 'internalIp'
+          property :network_uri, as: 'networkUri'
+          property :region, as: 'region'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class ConnectivityTest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -396,6 +420,16 @@ module Google
           property :target, as: 'target'
           property :uri, as: 'uri'
           property :vip, as: 'vip'
+        end
+      end
+      
+      class GkeMasterInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_network_uri, as: 'clusterNetworkUri'
+          property :cluster_uri, as: 'clusterUri'
+          property :external_ip, as: 'externalIp'
+          property :internal_ip, as: 'internalIp'
         end
       end
       
@@ -578,6 +612,8 @@ module Google
           property :abort, as: 'abort', class: Google::Apis::NetworkmanagementV1::AbortInfo, decorator: Google::Apis::NetworkmanagementV1::AbortInfo::Representation
       
           property :causes_drop, as: 'causesDrop'
+          property :cloud_sql_instance, as: 'cloudSqlInstance', class: Google::Apis::NetworkmanagementV1::CloudSqlInstanceInfo, decorator: Google::Apis::NetworkmanagementV1::CloudSqlInstanceInfo::Representation
+      
           property :deliver, as: 'deliver', class: Google::Apis::NetworkmanagementV1::DeliverInfo, decorator: Google::Apis::NetworkmanagementV1::DeliverInfo::Representation
       
           property :description, as: 'description'
@@ -590,6 +626,8 @@ module Google
           property :forward, as: 'forward', class: Google::Apis::NetworkmanagementV1::ForwardInfo, decorator: Google::Apis::NetworkmanagementV1::ForwardInfo::Representation
       
           property :forwarding_rule, as: 'forwardingRule', class: Google::Apis::NetworkmanagementV1::ForwardingRuleInfo, decorator: Google::Apis::NetworkmanagementV1::ForwardingRuleInfo::Representation
+      
+          property :gke_master, as: 'gkeMaster', class: Google::Apis::NetworkmanagementV1::GkeMasterInfo, decorator: Google::Apis::NetworkmanagementV1::GkeMasterInfo::Representation
       
           property :instance, as: 'instance', class: Google::Apis::NetworkmanagementV1::InstanceInfo, decorator: Google::Apis::NetworkmanagementV1::InstanceInfo::Representation
       
