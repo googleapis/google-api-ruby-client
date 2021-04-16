@@ -731,6 +731,28 @@ module Google
         end
       end
       
+      # Confidential Instance Config for clusters using Confidential VMs (https://
+      # cloud.google.com/compute/confidential-vm/docs) NEXT ID: 2
+      class ConfidentialInstanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Defines whether the instance should have confidential compute
+        # enabled.
+        # Corresponds to the JSON property `enableConfidentialCompute`
+        # @return [Boolean]
+        attr_accessor :enable_confidential_compute
+        alias_method :enable_confidential_compute?, :enable_confidential_compute
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_confidential_compute = args[:enable_confidential_compute] if args.key?(:enable_confidential_compute)
+        end
+      end
+      
       # A request to collect cluster diagnostic information.
       class DiagnoseClusterRequest
         include Google::Apis::Core::Hashable
@@ -926,6 +948,12 @@ module Google
       class GceClusterConfig
         include Google::Apis::Core::Hashable
       
+        # Confidential Instance Config for clusters using Confidential VMs (https://
+        # cloud.google.com/compute/confidential-vm/docs) NEXT ID: 2
+        # Corresponds to the JSON property `confidentialInstanceConfig`
+        # @return [Google::Apis::DataprocV1::ConfidentialInstanceConfig]
+        attr_accessor :confidential_instance_config
+      
         # Optional. If true, all instances in the cluster will only have internal IP
         # addresses. By default, clusters are not restricted to internal IP addresses,
         # and will have ephemeral external IP addresses assigned to each instance. This
@@ -1033,6 +1061,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @confidential_instance_config = args[:confidential_instance_config] if args.key?(:confidential_instance_config)
           @internal_ip_only = args[:internal_ip_only] if args.key?(:internal_ip_only)
           @metadata = args[:metadata] if args.key?(:metadata)
           @network_uri = args[:network_uri] if args.key?(:network_uri)

@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConfidentialInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DiagnoseClusterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -710,6 +716,13 @@ module Google
         end
       end
       
+      class ConfidentialInstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_confidential_compute, as: 'enableConfidentialCompute'
+        end
+      end
+      
       class DiagnoseClusterRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -766,6 +779,8 @@ module Google
       class GceClusterConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidential_instance_config, as: 'confidentialInstanceConfig', class: Google::Apis::DataprocV1::ConfidentialInstanceConfig, decorator: Google::Apis::DataprocV1::ConfidentialInstanceConfig::Representation
+      
           property :internal_ip_only, as: 'internalIpOnly'
           hash :metadata, as: 'metadata'
           property :network_uri, as: 'networkUri'
