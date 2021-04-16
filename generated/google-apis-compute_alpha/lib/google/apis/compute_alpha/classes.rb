@@ -1307,80 +1307,6 @@ module Google
         end
       end
       
-      # `Any` contains an arbitrary serialized protocol buffer message along with a
-      # URL that describes the type of the serialized message.
-      # Protobuf library provides support to pack/unpack Any values in the form of
-      # utility functions or additional generated methods of the Any type.
-      # Example 1: Pack and unpack a message in C++.
-      # Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) ` ... `
-      # Example 2: Pack and unpack a message in Java.
-      # Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) ` foo = any.
-      # unpack(Foo.class); `
-      # Example 3: Pack and unpack a message in Python.
-      # foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.
-      # Unpack(foo) ...
-      # Example 4: Pack and unpack a message in Go
-      # foo := &pb.Foo`...` any, err := anypb.New(foo) if err != nil ` ... ` ... foo :=
-      # &pb.Foo`` if err := any.UnmarshalTo(foo); err != nil ` ... `
-      # The pack methods provided by protobuf library will by default use 'type.
-      # googleapis.com/full.type.name' as the type URL and the unpack methods only use
-      # the fully qualified type name after the last '/' in the type URL, for example "
-      # foo.bar.com/x/y.z" will yield type name "y.z".
-      # JSON ==== The JSON representation of an `Any` value uses the regular
-      # representation of the deserialized, embedded message, with an additional field
-      # `@type` which contains the type URL. Example:
-      # package google.profile; message Person ` string first_name = 1; string
-      # last_name = 2; `
-      # ` "@type": "type.googleapis.com/google.profile.Person", "firstName": , "
-      # lastName":  `
-      # If the embedded message type is well-known and has a custom JSON
-      # representation, that representation will be embedded adding a field `value`
-      # which holds the custom JSON in addition to the `@type` field. Example (for
-      # message [google.protobuf.Duration][]):
-      # ` "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" `
-      class Any
-        include Google::Apis::Core::Hashable
-      
-        # A URL/resource name that uniquely identifies the type of the serialized
-        # protocol buffer message. This string must contain at least one "/" character.
-        # The last segment of the URL's path must represent the fully qualified name of
-        # the type (as in `path/google.protobuf.Duration`). The name should be in a
-        # canonical form (e.g., leading "." is not accepted).
-        # In practice, teams usually precompile into the binary all types that they
-        # expect it to use in the context of Any. However, for URLs which use the scheme
-        # `http`, `https`, or no scheme, one can optionally set up a type server that
-        # maps type URLs to message definitions as follows:
-        # * If no scheme is provided, `https` is assumed. * An HTTP GET on the URL must
-        # yield a [google.protobuf.Type][] value in binary format, or produce an error. *
-        # Applications are allowed to cache lookup results based on the URL, or have
-        # them precompiled into a binary to avoid any lookup. Therefore, binary
-        # compatibility needs to be preserved on changes to types. (Use versioned type
-        # names to manage breaking changes.)
-        # Note: this functionality is not currently available in the official protobuf
-        # release, and it is not used for type URLs beginning with type.googleapis.com.
-        # Schemes other than `http`, `https` (or the empty scheme) might be used with
-        # implementation specific semantics.
-        # Corresponds to the JSON property `typeUrl`
-        # @return [String]
-        attr_accessor :type_url
-      
-        # Must be a valid serialized protocol buffer of the above specified type.
-        # Corresponds to the JSON property `value`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @type_url = args[:type_url] if args.key?(:type_url)
-          @value = args[:value] if args.key?(:value)
-        end
-      end
-      
       # An instance-attached disk resource.
       class AttachedDisk
         include Google::Apis::Core::Hashable
@@ -21431,6 +21357,13 @@ module Google
         # @return [String]
         attr_accessor :tag
       
+        # [Output Only] The eventual status of the instance. The instance group manager
+        # will not be identified as stable till each managed instance reaches its
+        # targetStatus.
+        # Corresponds to the JSON property `targetStatus`
+        # @return [String]
+        attr_accessor :target_status
+      
         # [Output Only] Intended version of this instance.
         # Corresponds to the JSON property `version`
         # @return [Google::Apis::ComputeAlpha::ManagedInstanceVersion]
@@ -21452,6 +21385,7 @@ module Google
           @preserved_state_from_config = args[:preserved_state_from_config] if args.key?(:preserved_state_from_config)
           @preserved_state_from_policy = args[:preserved_state_from_policy] if args.key?(:preserved_state_from_policy)
           @tag = args[:tag] if args.key?(:tag)
+          @target_status = args[:target_status] if args.key?(:target_status)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -25902,41 +25836,6 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # `Any` contains an arbitrary serialized protocol buffer message along with a
-        # URL that describes the type of the serialized message.
-        # Protobuf library provides support to pack/unpack Any values in the form of
-        # utility functions or additional generated methods of the Any type.
-        # Example 1: Pack and unpack a message in C++.
-        # Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) ` ... `
-        # Example 2: Pack and unpack a message in Java.
-        # Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) ` foo = any.
-        # unpack(Foo.class); `
-        # Example 3: Pack and unpack a message in Python.
-        # foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.
-        # Unpack(foo) ...
-        # Example 4: Pack and unpack a message in Go
-        # foo := &pb.Foo`...` any, err := anypb.New(foo) if err != nil ` ... ` ... foo :=
-        # &pb.Foo`` if err := any.UnmarshalTo(foo); err != nil ` ... `
-        # The pack methods provided by protobuf library will by default use 'type.
-        # googleapis.com/full.type.name' as the type URL and the unpack methods only use
-        # the fully qualified type name after the last '/' in the type URL, for example "
-        # foo.bar.com/x/y.z" will yield type name "y.z".
-        # JSON ==== The JSON representation of an `Any` value uses the regular
-        # representation of the deserialized, embedded message, with an additional field
-        # `@type` which contains the type URL. Example:
-        # package google.profile; message Person ` string first_name = 1; string
-        # last_name = 2; `
-        # ` "@type": "type.googleapis.com/google.profile.Person", "firstName": , "
-        # lastName":  `
-        # If the embedded message type is well-known and has a custom JSON
-        # representation, that representation will be embedded adding a field `value`
-        # which holds the custom JSON in addition to the `@type` field. Example (for
-        # message [google.protobuf.Duration][]):
-        # ` "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" `
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::ComputeAlpha::Any]
-        attr_accessor :metadata
-      
         # [Output Only] Name of the operation.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -26043,7 +25942,6 @@ module Google
           @id = args[:id] if args.key?(:id)
           @insert_time = args[:insert_time] if args.key?(:insert_time)
           @kind = args[:kind] if args.key?(:kind)
-          @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @operation_group_id = args[:operation_group_id] if args.key?(:operation_group_id)
           @operation_type = args[:operation_type] if args.key?(:operation_type)
@@ -35716,6 +35614,12 @@ module Google
       class ServiceAttachment
         include Google::Apis::Core::Hashable
       
+        # [Output Only] An array of connections for all the consumers connected to this
+        # service attachment.
+        # Corresponds to the JSON property `connectedEndpoints`
+        # @return [Array<Google::Apis::ComputeAlpha::ServiceAttachmentConnectedEndpoint>]
+        attr_accessor :connected_endpoints
+      
         # The connection preference of service attachment. The value can be set to
         # ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always
         # accepts the connection from consumer forwarding rules.
@@ -35804,6 +35708,11 @@ module Google
         # @return [String]
         attr_accessor :producer_forwarding_rule
       
+        # [Output Only] An 128-bit global unique ID of the PSC service attachment.
+        # Corresponds to the JSON property `pscServiceAttachmentId`
+        # @return [Google::Apis::ComputeAlpha::Uint128]
+        attr_accessor :psc_service_attachment_id
+      
         # [Output Only] URL of the region where the service attachment resides. This
         # field applies only to the region resource. You must specify this field as part
         # of the HTTP request URL. It is not settable as a field in the request body.
@@ -35828,6 +35737,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @connected_endpoints = args[:connected_endpoints] if args.key?(:connected_endpoints)
           @connection_preference = args[:connection_preference] if args.key?(:connection_preference)
           @consumer_accept_lists = args[:consumer_accept_lists] if args.key?(:consumer_accept_lists)
           @consumer_forwarding_rules = args[:consumer_forwarding_rules] if args.key?(:consumer_forwarding_rules)
@@ -35841,6 +35751,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @nat_subnets = args[:nat_subnets] if args.key?(:nat_subnets)
           @producer_forwarding_rule = args[:producer_forwarding_rule] if args.key?(:producer_forwarding_rule)
+          @psc_service_attachment_id = args[:psc_service_attachment_id] if args.key?(:psc_service_attachment_id)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @target_service = args[:target_service] if args.key?(:target_service)
@@ -35970,6 +35881,43 @@ module Google
         end
       end
       
+      # [Output Only] A connection connected to this service attachment.
+      class ServiceAttachmentConnectedEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # The url of a connected endpoint.
+        # Corresponds to the JSON property `endpoint`
+        # @return [String]
+        attr_accessor :endpoint
+      
+        # The url of a consumer forwarding rule. [Deprecated] Do not use.
+        # Corresponds to the JSON property `forwardingRule`
+        # @return [String]
+        attr_accessor :forwarding_rule
+      
+        # The PSC connection id of the connected endpoint.
+        # Corresponds to the JSON property `pscConnectionId`
+        # @return [Fixnum]
+        attr_accessor :psc_connection_id
+      
+        # The status of a connected endpoint to this service attachment.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
+          @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
       # [Output Only] A consumer forwarding rule connected to this service attachment.
       # [Deprecated] Do not use.
       class ServiceAttachmentConsumerForwardingRule
@@ -35979,6 +35927,11 @@ module Google
         # Corresponds to the JSON property `forwardingRule`
         # @return [String]
         attr_accessor :forwarding_rule
+      
+        # The PSC connection id of the PSC Forwarding Rule.
+        # Corresponds to the JSON property `pscConnectionId`
+        # @return [Fixnum]
+        attr_accessor :psc_connection_id
       
         # The status of the forwarding rule.
         # Corresponds to the JSON property `status`
@@ -35992,6 +35945,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
+          @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
           @status = args[:status] if args.key?(:status)
         end
       end
@@ -42429,6 +42383,31 @@ module Google
           @port_name = args[:port_name] if args.key?(:port_name)
           @request = args[:request] if args.key?(:request)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # 
+      class Uint128
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `high`
+        # @return [Fixnum]
+        attr_accessor :high
+      
+        # 
+        # Corresponds to the JSON property `low`
+        # @return [Fixnum]
+        attr_accessor :low
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @high = args[:high] if args.key?(:high)
+          @low = args[:low] if args.key?(:low)
         end
       end
       

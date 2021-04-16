@@ -190,12 +190,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Any
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AttachedDisk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4624,6 +4618,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceAttachmentConnectedEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceAttachmentConsumerForwardingRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5524,6 +5524,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Uint128
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpcomingMaintenance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6259,14 +6265,6 @@ module Google
           property :in_use_count, :numeric_string => true, as: 'inUseCount'
           property :instance_properties, as: 'instanceProperties', class: Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationReservedInstanceProperties, decorator: Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationReservedInstanceProperties::Representation
       
-        end
-      end
-      
-      class Any
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :type_url, as: 'typeUrl'
-          property :value, :base64 => true, as: 'value'
         end
       end
       
@@ -10946,6 +10944,7 @@ module Google
           property :preserved_state_from_policy, as: 'preservedStateFromPolicy', class: Google::Apis::ComputeAlpha::PreservedState, decorator: Google::Apis::ComputeAlpha::PreservedState::Representation
       
           property :tag, as: 'tag'
+          property :target_status, as: 'targetStatus'
           property :version, as: 'version', class: Google::Apis::ComputeAlpha::ManagedInstanceVersion, decorator: Google::Apis::ComputeAlpha::ManagedInstanceVersion::Representation
       
         end
@@ -12076,8 +12075,6 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :insert_time, as: 'insertTime'
           property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::ComputeAlpha::Any, decorator: Google::Apis::ComputeAlpha::Any::Representation
-      
           property :name, as: 'name'
           property :operation_group_id, as: 'operationGroupId'
           property :operation_type, as: 'operationType'
@@ -14578,6 +14575,8 @@ module Google
       class ServiceAttachment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :connected_endpoints, as: 'connectedEndpoints', class: Google::Apis::ComputeAlpha::ServiceAttachmentConnectedEndpoint, decorator: Google::Apis::ComputeAlpha::ServiceAttachmentConnectedEndpoint::Representation
+      
           property :connection_preference, as: 'connectionPreference'
           collection :consumer_accept_lists, as: 'consumerAcceptLists', class: Google::Apis::ComputeAlpha::ServiceAttachmentConsumerProjectLimit, decorator: Google::Apis::ComputeAlpha::ServiceAttachmentConsumerProjectLimit::Representation
       
@@ -14593,6 +14592,8 @@ module Google
           property :name, as: 'name'
           collection :nat_subnets, as: 'natSubnets'
           property :producer_forwarding_rule, as: 'producerForwardingRule'
+          property :psc_service_attachment_id, as: 'pscServiceAttachmentId', class: Google::Apis::ComputeAlpha::Uint128, decorator: Google::Apis::ComputeAlpha::Uint128::Representation
+      
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :target_service, as: 'targetService'
@@ -14632,10 +14633,21 @@ module Google
         end
       end
       
+      class ServiceAttachmentConnectedEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :endpoint, as: 'endpoint'
+          property :forwarding_rule, as: 'forwardingRule'
+          property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
+          property :status, as: 'status'
+        end
+      end
+      
       class ServiceAttachmentConsumerForwardingRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :forwarding_rule, as: 'forwardingRule'
+          property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
           property :status, as: 'status'
         end
       end
@@ -16240,6 +16252,14 @@ module Google
           property :port_name, as: 'portName'
           property :request, as: 'request'
           property :response, as: 'response'
+        end
+      end
+      
+      class Uint128
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :high, :numeric_string => true, as: 'high'
+          property :low, :numeric_string => true, as: 'low'
         end
       end
       
