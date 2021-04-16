@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAppengineV1betaLocationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListAuthorizedCertificatesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -229,6 +235,15 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleAppengineV1betaLocationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :flexible_environment_available, as: 'flexibleEnvironmentAvailable'
+          property :search_api_available, as: 'searchApiAvailable'
+          property :standard_environment_available, as: 'standardEnvironmentAvailable'
         end
       end
       
