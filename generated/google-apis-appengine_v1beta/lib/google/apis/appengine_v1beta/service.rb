@@ -867,7 +867,7 @@ module Google
         #   accepts strings like "displayName=tokyo", and is documented in more detail in
         #   AIP-160 (https://google.aip.dev/160).
         # @param [Fixnum] page_size
-        #   The maximum number of results to return. If not set, the service will select a
+        #   The maximum number of results to return. If not set, the service selects a
         #   default.
         # @param [String] page_token
         #   A page token received from the next_page_token field in the response. Send

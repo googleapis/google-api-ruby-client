@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAppengineV1betaLocationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HealthCheck
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -741,6 +747,15 @@ module Google
           property :description, as: 'description'
           property :priority, as: 'priority'
           property :source_range, as: 'sourceRange'
+        end
+      end
+      
+      class GoogleAppengineV1betaLocationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :flexible_environment_available, as: 'flexibleEnvironmentAvailable'
+          property :search_api_available, as: 'searchApiAvailable'
+          property :standard_environment_available, as: 'standardEnvironmentAvailable'
         end
       end
       

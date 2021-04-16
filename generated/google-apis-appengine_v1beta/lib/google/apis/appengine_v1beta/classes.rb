@@ -1111,6 +1111,41 @@ module Google
         end
       end
       
+      # Metadata for the given google.cloud.location.Location.
+      class GoogleAppengineV1betaLocationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # App Engine flexible environment is available in the given location.@OutputOnly
+        # Corresponds to the JSON property `flexibleEnvironmentAvailable`
+        # @return [Boolean]
+        attr_accessor :flexible_environment_available
+        alias_method :flexible_environment_available?, :flexible_environment_available
+      
+        # Output only. Search API (https://cloud.google.com/appengine/docs/standard/
+        # python/search) is available in the given location.
+        # Corresponds to the JSON property `searchApiAvailable`
+        # @return [Boolean]
+        attr_accessor :search_api_available
+        alias_method :search_api_available?, :search_api_available
+      
+        # App Engine standard environment is available in the given location.@OutputOnly
+        # Corresponds to the JSON property `standardEnvironmentAvailable`
+        # @return [Boolean]
+        attr_accessor :standard_environment_available
+        alias_method :standard_environment_available?, :standard_environment_available
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @flexible_environment_available = args[:flexible_environment_available] if args.key?(:flexible_environment_available)
+          @search_api_available = args[:search_api_available] if args.key?(:search_api_available)
+          @standard_environment_available = args[:standard_environment_available] if args.key?(:standard_environment_available)
+        end
+      end
+      
       # Health checking configuration for VM instances. Unhealthy instances are killed
       # and replaced with new instances. Only applicable for instances in App Engine
       # flexible environment.
