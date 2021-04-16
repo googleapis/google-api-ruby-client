@@ -241,21 +241,21 @@ module Google
       class GoogleCloudBillingBudgetsV1beta1Filter
         include Google::Apis::Core::Hashable
       
-        # Optional. Specifies to track usage for recurring calendar period. E.g. Assume
-        # that CalendarPeriod.QUARTER is set. The budget will track usage from April 1
-        # to June 30, when current calendar month is April, May, June. After that, it
-        # will track usage from July 1 to September 30 when current calendar month is
-        # July, August, September, and so on.
+        # Optional. Specifies to track usage for recurring calendar period. For example,
+        # assume that CalendarPeriod.QUARTER is set. The budget will track usage from
+        # April 1 to June 30, when the current calendar month is April, May, June. After
+        # that, it will track usage from July 1 to September 30 when the current
+        # calendar month is July, August, September, so on.
         # Corresponds to the JSON property `calendarPeriod`
         # @return [String]
         attr_accessor :calendar_period
       
         # Optional. If Filter.credit_types_treatment is INCLUDE_SPECIFIED_CREDITS, this
         # is a list of credit types to be subtracted from gross cost to determine the
-        # spend for threshold calculations. If Filter.credit_types_treatment is **not**
-        # INCLUDE_SPECIFIED_CREDITS, this field must be empty. See [a list of acceptable
-        # credit type values](https://cloud.google.com/billing/docs/how-to/export-data-
-        # bigquery-tables#credits-type).
+        # spend for threshold calculations. See [a list of acceptable credit type values]
+        # (https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#
+        # credits-type). If Filter.credit_types_treatment is **not**
+        # INCLUDE_SPECIFIED_CREDITS, this field must be empty.
         # Corresponds to the JSON property `creditTypes`
         # @return [Array<String>]
         attr_accessor :credit_types
