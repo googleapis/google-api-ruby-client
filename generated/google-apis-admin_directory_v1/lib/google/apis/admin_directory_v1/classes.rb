@@ -3178,7 +3178,7 @@ module Google
         end
       end
       
-      # 
+      # Defines an assignment of a role.
       class RoleAssignment
         include Google::Apis::Core::Hashable
       
