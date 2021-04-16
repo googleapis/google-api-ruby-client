@@ -22,6 +22,51 @@ module Google
   module Apis
     module CloudsearchV1
       
+      # Represents the settings for Cloud audit logging
+      class AuditLoggingSettings
+        include Google::Apis::Core::Hashable
+      
+        # Indicates whether audit logging is on/off for admin activity read APIs i.e.
+        # Get/List DataSources, Get/List SearchApplications etc.
+        # Corresponds to the JSON property `logAdminReadActions`
+        # @return [Boolean]
+        attr_accessor :log_admin_read_actions
+        alias_method :log_admin_read_actions?, :log_admin_read_actions
+      
+        # Indicates whether audit logging is on/off for data access read APIs i.e.
+        # ListItems, GetItem etc.
+        # Corresponds to the JSON property `logDataReadActions`
+        # @return [Boolean]
+        attr_accessor :log_data_read_actions
+        alias_method :log_data_read_actions?, :log_data_read_actions
+      
+        # Indicates whether audit logging is on/off for data access write APIs i.e.
+        # IndexItem etc.
+        # Corresponds to the JSON property `logDataWriteActions`
+        # @return [Boolean]
+        attr_accessor :log_data_write_actions
+        alias_method :log_data_write_actions?, :log_data_write_actions
+      
+        # The resource name of the GCP Project to store audit logs. Cloud audit logging
+        # will be enabled after project_name has been updated through CustomerService.
+        # Format: projects/`project_id`
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @log_admin_read_actions = args[:log_admin_read_actions] if args.key?(:log_admin_read_actions)
+          @log_data_read_actions = args[:log_data_read_actions] if args.key?(:log_data_read_actions)
+          @log_data_write_actions = args[:log_data_write_actions] if args.key?(:log_data_write_actions)
+          @project = args[:project] if args.key?(:project)
+        end
+      end
+      
       # Used to provide a search operator for boolean properties. This is optional.
       # Search operators let users restrict the query to specific fields relevant to
       # the type of item being searched.
@@ -116,6 +161,37 @@ module Google
         end
       end
       
+      # A named attribute associated with an item which can be used for influencing
+      # the ranking of the item based on the context in the request.
+      class ContextAttribute
+        include Google::Apis::Core::Hashable
+      
+        # The name of the attribute. It should not be empty. The maximum length is 32
+        # characters. The name must start with a letter and can only contain letters (A-
+        # Z, a-z) or numbers (0-9). The name will be normalized (lower-cased) before
+        # being matched.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Text values of the attribute. The maximum number of elements is 10. The
+        # maximum length of an element in the array is 32 characters. The value will be
+        # normalized (lower-cased) before being matched.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
       # Aggregation of items by status code as of the specified date.
       class CustomerIndexStats
         include Google::Apis::Core::Hashable
@@ -207,6 +283,11 @@ module Google
       class CustomerSettings
         include Google::Apis::Core::Hashable
       
+        # Represents the settings for Cloud audit logging
+        # Corresponds to the JSON property `auditLoggingSettings`
+        # @return [Google::Apis::CloudsearchV1::AuditLoggingSettings]
+        attr_accessor :audit_logging_settings
+      
         # VPC SC settings for the customer. If update_mask is empty then this field will
         # be updated based on UpdateCustomerSettings request.
         # Corresponds to the JSON property `vpcSettings`
@@ -219,6 +300,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @audit_logging_settings = args[:audit_logging_settings] if args.key?(:audit_logging_settings)
           @vpc_settings = args[:vpc_settings] if args.key?(:vpc_settings)
         end
       end
@@ -1908,6 +1990,13 @@ module Google
         # @return [String]
         attr_accessor :content_language
       
+        # A set of named attributes associated with the item. This can be used for
+        # influencing the ranking of the item based on the context in the request. The
+        # maximum number of elements is 10.
+        # Corresponds to the JSON property `contextAttributes`
+        # @return [Array<Google::Apis::CloudsearchV1::ContextAttribute>]
+        attr_accessor :context_attributes
+      
         # The time when the item was created in the source repository.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -1980,6 +2069,7 @@ module Google
         def update!(**args)
           @container_name = args[:container_name] if args.key?(:container_name)
           @content_language = args[:content_language] if args.key?(:content_language)
+          @context_attributes = args[:context_attributes] if args.key?(:context_attributes)
           @create_time = args[:create_time] if args.key?(:create_time)
           @hash_prop = args[:hash_prop] if args.key?(:hash_prop)
           @interactions = args[:interactions] if args.key?(:interactions)
@@ -3795,6 +3885,13 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Indicates whether audit logging is on/off for requests made for the search
+        # application in query APIs.
+        # Corresponds to the JSON property `enableAuditLog`
+        # @return [Boolean]
+        attr_accessor :enable_audit_log
+        alias_method :enable_audit_log?, :enable_audit_log
+      
         # Name of the Search Application. Format: searchapplications/`application_id`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -3827,6 +3924,7 @@ module Google
           @default_facet_options = args[:default_facet_options] if args.key?(:default_facet_options)
           @default_sort_options = args[:default_sort_options] if args.key?(:default_sort_options)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @enable_audit_log = args[:enable_audit_log] if args.key?(:enable_audit_log)
           @name = args[:name] if args.key?(:name)
           @operation_ids = args[:operation_ids] if args.key?(:operation_ids)
           @scoring_config = args[:scoring_config] if args.key?(:scoring_config)
@@ -4016,6 +4114,12 @@ module Google
       class SearchRequest
         include Google::Apis::Core::Hashable
       
+        # Context attributes for the request which will be used to adjust ranking of
+        # search results. The maximum number of elements is 10.
+        # Corresponds to the JSON property `contextAttributes`
+        # @return [Array<Google::Apis::CloudsearchV1::ContextAttribute>]
+        attr_accessor :context_attributes
+      
         # The sources to use for querying. If not specified, all data sources from the
         # current search application are used.
         # Corresponds to the JSON property `dataSourceRestrictions`
@@ -4066,6 +4170,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @context_attributes = args[:context_attributes] if args.key?(:context_attributes)
           @data_source_restrictions = args[:data_source_restrictions] if args.key?(:data_source_restrictions)
           @facet_options = args[:facet_options] if args.key?(:facet_options)
           @page_size = args[:page_size] if args.key?(:page_size)

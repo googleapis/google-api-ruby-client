@@ -22,6 +22,12 @@ module Google
   module Apis
     module CloudsearchV1
       
+      class AuditLoggingSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BooleanOperatorOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -41,6 +47,12 @@ module Google
       end
       
       class CompositeFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContextAttribute
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -946,6 +958,16 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuditLoggingSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :log_admin_read_actions, as: 'logAdminReadActions'
+          property :log_data_read_actions, as: 'logDataReadActions'
+          property :log_data_write_actions, as: 'logDataWriteActions'
+          property :project, as: 'project'
+        end
+      end
+      
       class BooleanOperatorOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -974,6 +996,14 @@ module Google
           property :logic_operator, as: 'logicOperator'
           collection :sub_filters, as: 'subFilters', class: Google::Apis::CloudsearchV1::Filter, decorator: Google::Apis::CloudsearchV1::Filter::Representation
       
+        end
+      end
+      
+      class ContextAttribute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          collection :values, as: 'values'
         end
       end
       
@@ -1009,6 +1039,8 @@ module Google
       class CustomerSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :audit_logging_settings, as: 'auditLoggingSettings', class: Google::Apis::CloudsearchV1::AuditLoggingSettings, decorator: Google::Apis::CloudsearchV1::AuditLoggingSettings::Representation
+      
           property :vpc_settings, as: 'vpcSettings', class: Google::Apis::CloudsearchV1::VpcSettings, decorator: Google::Apis::CloudsearchV1::VpcSettings::Representation
       
         end
@@ -1505,6 +1537,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :container_name, as: 'containerName'
           property :content_language, as: 'contentLanguage'
+          collection :context_attributes, as: 'contextAttributes', class: Google::Apis::CloudsearchV1::ContextAttribute, decorator: Google::Apis::CloudsearchV1::ContextAttribute::Representation
+      
           property :create_time, as: 'createTime'
           property :hash_prop, as: 'hash'
           collection :interactions, as: 'interactions', class: Google::Apis::CloudsearchV1::Interaction, decorator: Google::Apis::CloudsearchV1::Interaction::Representation
@@ -2060,6 +2094,7 @@ module Google
           property :default_sort_options, as: 'defaultSortOptions', class: Google::Apis::CloudsearchV1::SortOptions, decorator: Google::Apis::CloudsearchV1::SortOptions::Representation
       
           property :display_name, as: 'displayName'
+          property :enable_audit_log, as: 'enableAuditLog'
           property :name, as: 'name'
           collection :operation_ids, as: 'operationIds'
           property :scoring_config, as: 'scoringConfig', class: Google::Apis::CloudsearchV1::ScoringConfig, decorator: Google::Apis::CloudsearchV1::ScoringConfig::Representation
@@ -2128,6 +2163,8 @@ module Google
       class SearchRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :context_attributes, as: 'contextAttributes', class: Google::Apis::CloudsearchV1::ContextAttribute, decorator: Google::Apis::CloudsearchV1::ContextAttribute::Representation
+      
           collection :data_source_restrictions, as: 'dataSourceRestrictions', class: Google::Apis::CloudsearchV1::DataSourceRestriction, decorator: Google::Apis::CloudsearchV1::DataSourceRestriction::Representation
       
           collection :facet_options, as: 'facetOptions', class: Google::Apis::CloudsearchV1::FacetOptions, decorator: Google::Apis::CloudsearchV1::FacetOptions::Representation
