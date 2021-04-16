@@ -1012,8 +1012,8 @@ module Google
         attr_accessor :byte_item
       
         # Structured content to inspect. Up to 50,000 `Value`s per request allowed. See
-        # https://cloud.google.com/dlp/docs/inspecting-text#inspecting_a_table to learn
-        # more.
+        # https://cloud.google.com/dlp/docs/inspecting-structured-text#
+        # inspecting_a_table to learn more.
         # Corresponds to the JSON property `table`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Table]
         attr_accessor :table
@@ -5824,8 +5824,8 @@ module Google
       end
       
       # Structured content to inspect. Up to 50,000 `Value`s per request allowed. See
-      # https://cloud.google.com/dlp/docs/inspecting-text#inspecting_a_table to learn
-      # more.
+      # https://cloud.google.com/dlp/docs/inspecting-structured-text#
+      # inspecting_a_table to learn more.
       class GooglePrivacyDlpV2Table
         include Google::Apis::Core::Hashable
       
