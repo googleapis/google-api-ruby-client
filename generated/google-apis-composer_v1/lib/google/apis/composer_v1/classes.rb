@@ -876,7 +876,7 @@ module Google
       
         # Optional. The major version of Python used to run the Apache Airflow scheduler,
         # worker, and webserver processes. Can be set to '2' or '3'. If not specified,
-        # the default is '2'. Cannot be updated.
+        # the default is '3'. Cannot be updated.
         # Corresponds to the JSON property `pythonVersion`
         # @return [String]
         attr_accessor :python_version
