@@ -341,11 +341,21 @@ module Google
       class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation
         include Google::Apis::Core::Hashable
       
+        # The total number of dataset errors.
+        # Corresponds to the JSON property `datasetErrorCount`
+        # @return [Fixnum]
+        attr_accessor :dataset_error_count
+      
         # Error information for the dataset as a whole. A maximum of 10 dataset errors
         # will be returned. A single dataset error is terminal for training.
         # Corresponds to the JSON property `datasetErrors`
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleRpcStatus>]
         attr_accessor :dataset_errors
+      
+        # The total number of document errors.
+        # Corresponds to the JSON property `documentErrorCount`
+        # @return [Fixnum]
+        attr_accessor :document_error_count
       
         # Error information pertaining to specific documents. A maximum of 10 document
         # errors will be returned. Any document with errors will not be used throughout
@@ -360,7 +370,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dataset_error_count = args[:dataset_error_count] if args.key?(:dataset_error_count)
           @dataset_errors = args[:dataset_errors] if args.key?(:dataset_errors)
+          @document_error_count = args[:document_error_count] if args.key?(:document_error_count)
           @document_errors = args[:document_errors] if args.key?(:document_errors)
         end
       end
