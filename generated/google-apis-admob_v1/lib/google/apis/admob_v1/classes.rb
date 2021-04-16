@@ -22,6 +22,168 @@ module Google
   module Apis
     module AdmobV1
       
+      # Describes an AdMob ad unit.
+      class AdUnit
+        include Google::Apis::Core::Hashable
+      
+        # AdFormat of the ad unit. Possible values are as follows: "BANNER" - Banner ad
+        # format. "BANNER_INTERSTITIAL" - Legacy format that can be used as either
+        # banner or interstitial. This format can no longer be created but can be
+        # targeted by mediation groups. "INTERSTITIAL" - A full screen ad. Supported ad
+        # types are "RICH_MEDIA" and "VIDEO". "NATIVE" - Native ad format. "REWARDED" -
+        # An ad that, once viewed, gets a callback verifying the view so that a reward
+        # can be given to the user. Supported ad types are "RICH_MEDIA" (interactive)
+        # and video where video can not be excluded.
+        # Corresponds to the JSON property `adFormat`
+        # @return [String]
+        attr_accessor :ad_format
+      
+        # Ad media type supported by this ad unit. Possible values as follows: "
+        # RICH_MEDIA" - Text, image, and other non-video media. "VIDEO" - Video media.
+        # Corresponds to the JSON property `adTypes`
+        # @return [Array<String>]
+        attr_accessor :ad_types
+      
+        # The externally visible ID of the ad unit which can be used to integrate with
+        # the AdMob SDK. This is a read only property. Example: ca-app-pub-
+        # 9876543210987654/0123456789
+        # Corresponds to the JSON property `adUnitId`
+        # @return [String]
+        attr_accessor :ad_unit_id
+      
+        # The externally visible ID of the app this ad unit is associated with. Example:
+        # ca-app-pub-9876543210987654~0123456789
+        # Corresponds to the JSON property `appId`
+        # @return [String]
+        attr_accessor :app_id
+      
+        # The display name of the ad unit as shown in the AdMob UI, which is provided by
+        # the user. The maximum length allowed is 80 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Resource name for this ad unit. Format is accounts/`publisher_id`/adUnits/`
+        # ad_unit_id_fragment` Example: accounts/pub-9876543210987654/adUnits/0123456789
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_format = args[:ad_format] if args.key?(:ad_format)
+          @ad_types = args[:ad_types] if args.key?(:ad_types)
+          @ad_unit_id = args[:ad_unit_id] if args.key?(:ad_unit_id)
+          @app_id = args[:app_id] if args.key?(:app_id)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Describes an AdMob app for a specific platform (For example: Android or iOS).
+      class App
+        include Google::Apis::Core::Hashable
+      
+        # The externally visible ID of the app which can be used to integrate with the
+        # AdMob SDK. This is a read only property. Example: ca-app-pub-9876543210987654~
+        # 0123456789
+        # Corresponds to the JSON property `appId`
+        # @return [String]
+        attr_accessor :app_id
+      
+        # Information from the app store if the app is linked to an app store.
+        # Corresponds to the JSON property `linkedAppInfo`
+        # @return [Google::Apis::AdmobV1::AppLinkedAppInfo]
+        attr_accessor :linked_app_info
+      
+        # Information provided for manual apps which are not linked to an application
+        # store (Example: Google Play, App Store).
+        # Corresponds to the JSON property `manualAppInfo`
+        # @return [Google::Apis::AdmobV1::AppManualAppInfo]
+        attr_accessor :manual_app_info
+      
+        # Resource name for this app. Format is accounts/`publisher_id`/apps/`
+        # app_id_fragment` Example: accounts/pub-9876543210987654/apps/0123456789
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Describes the platform of the app. Limited to "IOS" and "ANDROID".
+        # Corresponds to the JSON property `platform`
+        # @return [String]
+        attr_accessor :platform
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_id = args[:app_id] if args.key?(:app_id)
+          @linked_app_info = args[:linked_app_info] if args.key?(:linked_app_info)
+          @manual_app_info = args[:manual_app_info] if args.key?(:manual_app_info)
+          @name = args[:name] if args.key?(:name)
+          @platform = args[:platform] if args.key?(:platform)
+        end
+      end
+      
+      # Information from the app store if the app is linked to an app store.
+      class AppLinkedAppInfo
+        include Google::Apis::Core::Hashable
+      
+        # The app store ID of the app; present if and only if the app is linked to an
+        # app store. If the app is added to the Google Play store, it will be the
+        # application ID of the app. For example: "com.example.myapp". See https://
+        # developer.android.com/studio/build/application-id. If the app is added to the
+        # Apple App Store, it will be app store ID. For example "105169111". Note that
+        # setting the app store id is considered an irreversible action. Once an app is
+        # linked, it cannot be unlinked.
+        # Corresponds to the JSON property `appStoreId`
+        # @return [String]
+        attr_accessor :app_store_id
+      
+        # Output only. Display name of the app as it appears in the app store. This is
+        # an output-only field, and may be empty if the app cannot be found in the store.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_store_id = args[:app_store_id] if args.key?(:app_store_id)
+          @display_name = args[:display_name] if args.key?(:display_name)
+        end
+      end
+      
+      # Information provided for manual apps which are not linked to an application
+      # store (Example: Google Play, App Store).
+      class AppManualAppInfo
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the app as shown in the AdMob UI, which is provided by the
+        # user. The maximum length allowed is 80 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+        end
+      end
+      
       # Represents a whole or partial calendar date, such as a birthday. The time of
       # day and time zone are either specified elsewhere or are insignificant. The
       # date is relative to the Gregorian Calendar. This can represent one of the
@@ -245,6 +407,58 @@ module Google
           @footer = args[:footer] if args.key?(:footer)
           @header = args[:header] if args.key?(:header)
           @row = args[:row] if args.key?(:row)
+        end
+      end
+      
+      # Response for the ad units list request.
+      class ListAdUnitsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The resulting ad units for the requested account.
+        # Corresponds to the JSON property `adUnits`
+        # @return [Array<Google::Apis::AdmobV1::AdUnit>]
+        attr_accessor :ad_units
+      
+        # If not empty, indicates that there may be more ad units for the request; this
+        # value should be passed in a new `ListAdUnitsRequest`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_units = args[:ad_units] if args.key?(:ad_units)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response for the apps list request.
+      class ListAppsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The resulting apps for the requested account.
+        # Corresponds to the JSON property `apps`
+        # @return [Array<Google::Apis::AdmobV1::App>]
+        attr_accessor :apps
+      
+        # If not empty, indicates that there may be more apps for the request; this
+        # value should be passed in a new `ListAppsRequest`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apps = args[:apps] if args.key?(:apps)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
