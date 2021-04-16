@@ -1063,6 +1063,13 @@ module Google
         attr_accessor :enable_nested_virtualization
         alias_method :enable_nested_virtualization?, :enable_nested_virtualization
       
+        # The number of threads per physical core. To disable simultaneous
+        # multithreading (SMT) set this to 1. If unset, the maximum number of threads
+        # supported per core by the underlying processor is assumed.
+        # Corresponds to the JSON property `threadsPerCore`
+        # @return [Fixnum]
+        attr_accessor :threads_per_core
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1070,6 +1077,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable_nested_virtualization = args[:enable_nested_virtualization] if args.key?(:enable_nested_virtualization)
+          @threads_per_core = args[:threads_per_core] if args.key?(:threads_per_core)
         end
       end
       
@@ -31591,6 +31599,12 @@ module Google
       class ServiceAttachment
         include Google::Apis::Core::Hashable
       
+        # [Output Only] An array of connections for all the consumers connected to this
+        # service attachment.
+        # Corresponds to the JSON property `connectedEndpoints`
+        # @return [Array<Google::Apis::ComputeBeta::ServiceAttachmentConnectedEndpoint>]
+        attr_accessor :connected_endpoints
+      
         # The connection preference of service attachment. The value can be set to
         # ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always
         # accepts the connection from consumer forwarding rules.
@@ -31657,6 +31671,11 @@ module Google
         # @return [String]
         attr_accessor :producer_forwarding_rule
       
+        # [Output Only] An 128-bit global unique ID of the PSC service attachment.
+        # Corresponds to the JSON property `pscServiceAttachmentId`
+        # @return [Google::Apis::ComputeBeta::Uint128]
+        attr_accessor :psc_service_attachment_id
+      
         # [Output Only] URL of the region where the service attachment resides. This
         # field applies only to the region resource. You must specify this field as part
         # of the HTTP request URL. It is not settable as a field in the request body.
@@ -31681,6 +31700,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @connected_endpoints = args[:connected_endpoints] if args.key?(:connected_endpoints)
           @connection_preference = args[:connection_preference] if args.key?(:connection_preference)
           @consumer_forwarding_rules = args[:consumer_forwarding_rules] if args.key?(:consumer_forwarding_rules)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
@@ -31691,6 +31711,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @nat_subnets = args[:nat_subnets] if args.key?(:nat_subnets)
           @producer_forwarding_rule = args[:producer_forwarding_rule] if args.key?(:producer_forwarding_rule)
+          @psc_service_attachment_id = args[:psc_service_attachment_id] if args.key?(:psc_service_attachment_id)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @target_service = args[:target_service] if args.key?(:target_service)
@@ -31820,6 +31841,43 @@ module Google
         end
       end
       
+      # [Output Only] A connection connected to this service attachment.
+      class ServiceAttachmentConnectedEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # The url of a connected endpoint.
+        # Corresponds to the JSON property `endpoint`
+        # @return [String]
+        attr_accessor :endpoint
+      
+        # The url of a consumer forwarding rule. [Deprecated] Do not use.
+        # Corresponds to the JSON property `forwardingRule`
+        # @return [String]
+        attr_accessor :forwarding_rule
+      
+        # The PSC connection id of the connected endpoint.
+        # Corresponds to the JSON property `pscConnectionId`
+        # @return [Fixnum]
+        attr_accessor :psc_connection_id
+      
+        # The status of a connected endpoint to this service attachment.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
+          @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
       # [Output Only] A consumer forwarding rule connected to this service attachment.
       # [Deprecated] Do not use.
       class ServiceAttachmentConsumerForwardingRule
@@ -31829,6 +31887,11 @@ module Google
         # Corresponds to the JSON property `forwardingRule`
         # @return [String]
         attr_accessor :forwarding_rule
+      
+        # The PSC connection id of the PSC Forwarding Rule.
+        # Corresponds to the JSON property `pscConnectionId`
+        # @return [Fixnum]
+        attr_accessor :psc_connection_id
       
         # The status of the forwarding rule.
         # Corresponds to the JSON property `status`
@@ -31842,6 +31905,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
+          @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
           @status = args[:status] if args.key?(:status)
         end
       end
@@ -37845,6 +37909,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # 
+      class Uint128
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `high`
+        # @return [Fixnum]
+        attr_accessor :high
+      
+        # 
+        # Corresponds to the JSON property `low`
+        # @return [Fixnum]
+        attr_accessor :low
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @high = args[:high] if args.key?(:high)
+          @low = args[:low] if args.key?(:low)
         end
       end
       
