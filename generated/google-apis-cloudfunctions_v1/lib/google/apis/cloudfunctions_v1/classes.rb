@@ -867,6 +867,12 @@ module Google
         # @return [String]
         attr_accessor :build_id
       
+        # The Cloud Build Name of the function deployment. This field is only populated
+        # for Create and Update operations. projects//locations//builds/.
+        # Corresponds to the JSON property `buildName`
+        # @return [String]
+        attr_accessor :build_name
+      
         # The original request that started the operation.
         # Corresponds to the JSON property `request`
         # @return [Hash<String,Object>]
@@ -907,6 +913,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @build_id = args[:build_id] if args.key?(:build_id)
+          @build_name = args[:build_name] if args.key?(:build_name)
           @request = args[:request] if args.key?(:request)
           @source_token = args[:source_token] if args.key?(:source_token)
           @target = args[:target] if args.key?(:target)
