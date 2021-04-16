@@ -601,6 +601,7 @@ module Google
           property :package_type, as: 'packageType'
           property :severity_name, as: 'severityName'
           property :source, as: 'source'
+          property :vendor, as: 'vendor'
         end
       end
       

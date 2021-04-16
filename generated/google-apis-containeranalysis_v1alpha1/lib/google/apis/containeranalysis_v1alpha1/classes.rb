@@ -720,6 +720,11 @@ module Google
         # @return [String]
         attr_accessor :source
       
+        # The vendor of the product. e.g. "google"
+        # Corresponds to the JSON property `vendor`
+        # @return [String]
+        attr_accessor :vendor
+      
         def initialize(**args)
            update!(**args)
         end
@@ -736,6 +741,7 @@ module Google
           @package_type = args[:package_type] if args.key?(:package_type)
           @severity_name = args[:severity_name] if args.key?(:severity_name)
           @source = args[:source] if args.key?(:source)
+          @vendor = args[:vendor] if args.key?(:vendor)
         end
       end
       
