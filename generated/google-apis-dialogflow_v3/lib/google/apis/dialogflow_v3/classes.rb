@@ -1982,8 +1982,8 @@ module Google
       class GoogleCloudDialogflowCxV3Intent
         include Google::Apis::Core::Hashable
       
-        # Optional. Human readable description for better understanding an intent like
-        # its scope, content, result etc. Maximum character limit: 140 characters.
+        # Human readable description for better understanding an intent like its scope,
+        # content, result etc. Maximum character limit: 140 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -2003,14 +2003,14 @@ module Google
         attr_accessor :is_fallback
         alias_method :is_fallback?, :is_fallback
       
-        # Optional. The key/value metadata to label an intent. Labels can contain
-        # lowercase letters, digits and the symbols '-' and '_'. International
-        # characters are allowed, including letters from unicase alphabets. Keys must
-        # start with a letter. Keys and values can be no longer than 63 characters and
-        # no more than 128 bytes. Prefix "sys." is reserved for Dialogflow defined
-        # labels. Currently allowed Dialogflow defined labels include: * sys.head * sys.
-        # contextual The above labels do not require value. "sys.head" means the intent
-        # is a head intent. "sys.contextual" means the intent is a contextual intent.
+        # The key/value metadata to label an intent. Labels can contain lowercase
+        # letters, digits and the symbols '-' and '_'. International characters are
+        # allowed, including letters from unicase alphabets. Keys must start with a
+        # letter. Keys and values can be no longer than 63 characters and no more than
+        # 128 bytes. Prefix "sys." is reserved for Dialogflow defined labels. Currently
+        # allowed Dialogflow defined labels include: * sys.head * sys.contextual The
+        # above labels do not require value. "sys.head" means the intent is a head
+        # intent. "sys.contextual" means the intent is a contextual intent.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -2630,8 +2630,8 @@ module Google
       class GoogleCloudDialogflowCxV3LoadVersionRequest
         include Google::Apis::Core::Hashable
       
-        # This field is used to prevent accidental overwrite of other agent resources in
-        # the draft version, which can potentially impact other flow's behavior. If `
+        # This field is used to prevent accidental overwrite of other agent resources,
+        # which can potentially impact other flow's behavior. If `
         # allow_override_agent_resources` is false, conflicted agent-level resources
         # will not be overridden (i.e. intents, entities, webhooks).
         # Corresponds to the JSON property `allowOverrideAgentResources`
@@ -5077,6 +5077,11 @@ module Google
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3WebhookRequestIntentInfo]
         attr_accessor :intent_info
       
+        # The language code specified in the original request.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
         # The list of rich message responses to present to the user. Webhook can choose
         # to append or replace this list in WebhookResponse.fulfillment_response;
         # Corresponds to the JSON property `messages`
@@ -5136,6 +5141,7 @@ module Google
           @detect_intent_response_id = args[:detect_intent_response_id] if args.key?(:detect_intent_response_id)
           @fulfillment_info = args[:fulfillment_info] if args.key?(:fulfillment_info)
           @intent_info = args[:intent_info] if args.key?(:intent_info)
+          @language_code = args[:language_code] if args.key?(:language_code)
           @messages = args[:messages] if args.key?(:messages)
           @page_info = args[:page_info] if args.key?(:page_info)
           @payload = args[:payload] if args.key?(:payload)
@@ -6251,8 +6257,8 @@ module Google
       class GoogleCloudDialogflowCxV3beta1Intent
         include Google::Apis::Core::Hashable
       
-        # Optional. Human readable description for better understanding an intent like
-        # its scope, content, result etc. Maximum character limit: 140 characters.
+        # Human readable description for better understanding an intent like its scope,
+        # content, result etc. Maximum character limit: 140 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -6272,14 +6278,14 @@ module Google
         attr_accessor :is_fallback
         alias_method :is_fallback?, :is_fallback
       
-        # Optional. The key/value metadata to label an intent. Labels can contain
-        # lowercase letters, digits and the symbols '-' and '_'. International
-        # characters are allowed, including letters from unicase alphabets. Keys must
-        # start with a letter. Keys and values can be no longer than 63 characters and
-        # no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined
-        # labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-
-        # contextual The above labels do not require value. "sys-head" means the intent
-        # is a head intent. "sys-contextual" means the intent is a contextual intent.
+        # The key/value metadata to label an intent. Labels can contain lowercase
+        # letters, digits and the symbols '-' and '_'. International characters are
+        # allowed, including letters from unicase alphabets. Keys must start with a
+        # letter. Keys and values can be no longer than 63 characters and no more than
+        # 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently
+        # allowed Dialogflow defined labels include: * sys-head * sys-contextual The
+        # above labels do not require value. "sys-head" means the intent is a head
+        # intent. "sys-contextual" means the intent is a contextual intent.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -7464,6 +7470,11 @@ module Google
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo]
         attr_accessor :intent_info
       
+        # The language code specified in the original request.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
         # The list of rich message responses to present to the user. Webhook can choose
         # to append or replace this list in WebhookResponse.fulfillment_response;
         # Corresponds to the JSON property `messages`
@@ -7523,6 +7534,7 @@ module Google
           @detect_intent_response_id = args[:detect_intent_response_id] if args.key?(:detect_intent_response_id)
           @fulfillment_info = args[:fulfillment_info] if args.key?(:fulfillment_info)
           @intent_info = args[:intent_info] if args.key?(:intent_info)
+          @language_code = args[:language_code] if args.key?(:language_code)
           @messages = args[:messages] if args.key?(:messages)
           @page_info = args[:page_info] if args.key?(:page_info)
           @payload = args[:payload] if args.key?(:payload)
