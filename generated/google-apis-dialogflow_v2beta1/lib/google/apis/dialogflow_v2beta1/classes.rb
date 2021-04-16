@@ -936,8 +936,8 @@ module Google
       class GoogleCloudDialogflowCxV3Intent
         include Google::Apis::Core::Hashable
       
-        # Optional. Human readable description for better understanding an intent like
-        # its scope, content, result etc. Maximum character limit: 140 characters.
+        # Human readable description for better understanding an intent like its scope,
+        # content, result etc. Maximum character limit: 140 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -957,14 +957,14 @@ module Google
         attr_accessor :is_fallback
         alias_method :is_fallback?, :is_fallback
       
-        # Optional. The key/value metadata to label an intent. Labels can contain
-        # lowercase letters, digits and the symbols '-' and '_'. International
-        # characters are allowed, including letters from unicase alphabets. Keys must
-        # start with a letter. Keys and values can be no longer than 63 characters and
-        # no more than 128 bytes. Prefix "sys." is reserved for Dialogflow defined
-        # labels. Currently allowed Dialogflow defined labels include: * sys.head * sys.
-        # contextual The above labels do not require value. "sys.head" means the intent
-        # is a head intent. "sys.contextual" means the intent is a contextual intent.
+        # The key/value metadata to label an intent. Labels can contain lowercase
+        # letters, digits and the symbols '-' and '_'. International characters are
+        # allowed, including letters from unicase alphabets. Keys must start with a
+        # letter. Keys and values can be no longer than 63 characters and no more than
+        # 128 bytes. Prefix "sys." is reserved for Dialogflow defined labels. Currently
+        # allowed Dialogflow defined labels include: * sys.head * sys.contextual The
+        # above labels do not require value. "sys.head" means the intent is a head
+        # intent. "sys.contextual" means the intent is a contextual intent.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -2149,6 +2149,11 @@ module Google
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3WebhookRequestIntentInfo]
         attr_accessor :intent_info
       
+        # The language code specified in the original request.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
         # The list of rich message responses to present to the user. Webhook can choose
         # to append or replace this list in WebhookResponse.fulfillment_response;
         # Corresponds to the JSON property `messages`
@@ -2208,6 +2213,7 @@ module Google
           @detect_intent_response_id = args[:detect_intent_response_id] if args.key?(:detect_intent_response_id)
           @fulfillment_info = args[:fulfillment_info] if args.key?(:fulfillment_info)
           @intent_info = args[:intent_info] if args.key?(:intent_info)
+          @language_code = args[:language_code] if args.key?(:language_code)
           @messages = args[:messages] if args.key?(:messages)
           @page_info = args[:page_info] if args.key?(:page_info)
           @payload = args[:payload] if args.key?(:payload)
@@ -3323,8 +3329,8 @@ module Google
       class GoogleCloudDialogflowCxV3beta1Intent
         include Google::Apis::Core::Hashable
       
-        # Optional. Human readable description for better understanding an intent like
-        # its scope, content, result etc. Maximum character limit: 140 characters.
+        # Human readable description for better understanding an intent like its scope,
+        # content, result etc. Maximum character limit: 140 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -3344,14 +3350,14 @@ module Google
         attr_accessor :is_fallback
         alias_method :is_fallback?, :is_fallback
       
-        # Optional. The key/value metadata to label an intent. Labels can contain
-        # lowercase letters, digits and the symbols '-' and '_'. International
-        # characters are allowed, including letters from unicase alphabets. Keys must
-        # start with a letter. Keys and values can be no longer than 63 characters and
-        # no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined
-        # labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-
-        # contextual The above labels do not require value. "sys-head" means the intent
-        # is a head intent. "sys-contextual" means the intent is a contextual intent.
+        # The key/value metadata to label an intent. Labels can contain lowercase
+        # letters, digits and the symbols '-' and '_'. International characters are
+        # allowed, including letters from unicase alphabets. Keys must start with a
+        # letter. Keys and values can be no longer than 63 characters and no more than
+        # 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently
+        # allowed Dialogflow defined labels include: * sys-head * sys-contextual The
+        # above labels do not require value. "sys-head" means the intent is a head
+        # intent. "sys-contextual" means the intent is a contextual intent.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -4536,6 +4542,11 @@ module Google
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo]
         attr_accessor :intent_info
       
+        # The language code specified in the original request.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
         # The list of rich message responses to present to the user. Webhook can choose
         # to append or replace this list in WebhookResponse.fulfillment_response;
         # Corresponds to the JSON property `messages`
@@ -4595,6 +4606,7 @@ module Google
           @detect_intent_response_id = args[:detect_intent_response_id] if args.key?(:detect_intent_response_id)
           @fulfillment_info = args[:fulfillment_info] if args.key?(:fulfillment_info)
           @intent_info = args[:intent_info] if args.key?(:intent_info)
+          @language_code = args[:language_code] if args.key?(:language_code)
           @messages = args[:messages] if args.key?(:messages)
           @page_info = args[:page_info] if args.key?(:page_info)
           @payload = args[:payload] if args.key?(:payload)
@@ -8849,6 +8861,18 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # By default, your agent responds to a matched intent with a static response. As
+        # an alternative, you can provide a more dynamic response by using fulfillment.
+        # When you enable fulfillment for an intent, Dialogflow responds to that intent
+        # by calling a service that you define. For example, if an end-user wants to
+        # schedule a haircut on Friday, your service can check your database and respond
+        # to the end-user with availability information for Friday. For more information,
+        # see the [fulfillment guide](https://cloud.google.com/dialogflow/docs/
+        # fulfillment-overview).
+        # Corresponds to the JSON property `fulfillment`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Fulfillment]
+        attr_accessor :fulfillment
+      
         # Output only. The unique identifier of this agent environment. Supported
         # formats: - `projects//agent/environments/` - `projects//locations//agent/
         # environments/`
@@ -8861,6 +8885,11 @@ module Google
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
+      
+        # Instructs the speech synthesizer on how to generate the output audio content.
+        # Corresponds to the JSON property `textToSpeechSettings`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1TextToSpeechSettings]
+        attr_accessor :text_to_speech_settings
       
         # Output only. The last update time of this environment. This field is read-only,
         # i.e., it cannot be set by create and update methods.
@@ -8876,9 +8905,77 @@ module Google
         def update!(**args)
           @agent_version = args[:agent_version] if args.key?(:agent_version)
           @description = args[:description] if args.key?(:description)
+          @fulfillment = args[:fulfillment] if args.key?(:fulfillment)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
+          @text_to_speech_settings = args[:text_to_speech_settings] if args.key?(:text_to_speech_settings)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The response message for Environments.GetEnvironmentHistory.
+      class GoogleCloudDialogflowV2beta1EnvironmentHistory
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The list of agent environments. There will be a maximum number of
+        # items returned based on the page_size field in the request.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EnvironmentHistoryEntry>]
+        attr_accessor :entries
+      
+        # Output only. Token to retrieve the next page of results, or empty if there are
+        # no more results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. The name of the environment this history is for. Supported
+        # formats: - `projects//agent/environments/` - `projects//locations//agent/
+        # environments/`
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
+      # Represents an environment history entry.
+      class GoogleCloudDialogflowV2beta1EnvironmentHistoryEntry
+        include Google::Apis::Core::Hashable
+      
+        # The agent version loaded into this environment history entry.
+        # Corresponds to the JSON property `agentVersion`
+        # @return [String]
+        attr_accessor :agent_version
+      
+        # The creation time of this environment history entry.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The developer-provided description for this environment history entry.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_version = args[:agent_version] if args.key?(:agent_version)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
         end
       end
       
@@ -12140,6 +12237,33 @@ module Google
         end
       end
       
+      # The response message for Versions.ListVersions.
+      class GoogleCloudDialogflowV2beta1ListVersionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of agent versions. There will be a maximum number of items returned
+        # based on the page_size field in the request.
+        # Corresponds to the JSON property `versions`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Version>]
+        attr_accessor :versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @versions = args[:versions] if args.key?(:versions)
+        end
+      end
+      
       # Defines logging behavior for conversation lifecycle events.
       class GoogleCloudDialogflowV2beta1LoggingConfig
         include Google::Apis::Core::Hashable
@@ -13677,6 +13801,51 @@ module Google
         end
       end
       
+      # Instructs the speech synthesizer on how to generate the output audio content.
+      class GoogleCloudDialogflowV2beta1TextToSpeechSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Indicates whether text to speech is enabled. Even when this field is
+        # false, other settings in this proto are still retained.
+        # Corresponds to the JSON property `enableTextToSpeech`
+        # @return [Boolean]
+        attr_accessor :enable_text_to_speech
+        alias_method :enable_text_to_speech?, :enable_text_to_speech
+      
+        # Required. Audio encoding of the synthesized audio content.
+        # Corresponds to the JSON property `outputAudioEncoding`
+        # @return [String]
+        attr_accessor :output_audio_encoding
+      
+        # Optional. The synthesis sample rate (in hertz) for this audio. If not provided,
+        # then the synthesizer will use the default sample rate based on the audio
+        # encoding. If this is different from the voice's natural sample rate, then the
+        # synthesizer will honor this request by converting to the desired sample rate (
+        # which might result in worse audio quality).
+        # Corresponds to the JSON property `sampleRateHertz`
+        # @return [Fixnum]
+        attr_accessor :sample_rate_hertz
+      
+        # Optional. Configuration of how speech should be synthesized, mapping from
+        # language (https://cloud.google.com/dialogflow/docs/reference/language) to
+        # SynthesizeSpeechConfig.
+        # Corresponds to the JSON property `synthesizeSpeechConfigs`
+        # @return [Hash<String,Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig>]
+        attr_accessor :synthesize_speech_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_text_to_speech = args[:enable_text_to_speech] if args.key?(:enable_text_to_speech)
+          @output_audio_encoding = args[:output_audio_encoding] if args.key?(:output_audio_encoding)
+          @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
+          @synthesize_speech_configs = args[:synthesize_speech_configs] if args.key?(:synthesize_speech_configs)
+        end
+      end
+      
       # The request message for Agents.TrainAgent.
       class GoogleCloudDialogflowV2beta1TrainAgentRequest
         include Google::Apis::Core::Hashable
@@ -13743,6 +13912,61 @@ module Google
         # Update properties of this object
         def update!(**args)
           @validation_errors = args[:validation_errors] if args.key?(:validation_errors)
+        end
+      end
+      
+      # You can create multiple versions of your agent and publish them to separate
+      # environments. When you edit an agent, you are editing the draft agent. At any
+      # point, you can save the draft agent as an agent version, which is an immutable
+      # snapshot of your agent. When you save the draft agent, it is published to the
+      # default environment. When you create agent versions, you can publish them to
+      # custom environments. You can create a variety of custom environments for: -
+      # testing - development - production - etc. For more information, see the [
+      # versions and environments guide](https://cloud.google.com/dialogflow/docs/
+      # agents-versions).
+      class GoogleCloudDialogflowV2beta1Version
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The creation time of this version. This field is read-only, i.e.,
+        # it cannot be set by create and update methods.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The developer-provided description of this version.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The unique identifier of this agent version. Supported formats: -
+        # `projects//agent/versions/` - `projects//locations//agent/versions/`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The status of this version. This field is read-only and cannot be
+        # set by create and update methods.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Output only. The sequential number of this version. This field is read-only
+        # which means it cannot be set by create and update methods.
+        # Corresponds to the JSON property `versionNumber`
+        # @return [Fixnum]
+        attr_accessor :version_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @name = args[:name] if args.key?(:name)
+          @status = args[:status] if args.key?(:status)
+          @version_number = args[:version_number] if args.key?(:version_number)
         end
       end
       
