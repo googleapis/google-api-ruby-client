@@ -88,7 +88,7 @@ module Google
         #   accepts strings like "displayName=tokyo", and is documented in more detail in
         #   AIP-160 (https://google.aip.dev/160).
         # @param [Fixnum] page_size
-        #   The maximum number of results to return. If not set, the service will select a
+        #   The maximum number of results to return. If not set, the service selects a
         #   default.
         # @param [String] page_token
         #   A page token received from the next_page_token field in the response. Send
@@ -643,7 +643,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new Backup in a given project and location.
+        # Creates a new backup in a given project and location.
         # @param [String] parent
         #   Required. The relative resource name of the service in which to create a
         #   backup of the following form:projects/`project_number`/locations/`location_id`/
