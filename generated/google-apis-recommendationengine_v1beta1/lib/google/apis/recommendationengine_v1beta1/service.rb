@@ -132,8 +132,8 @@ module Google
         
         # Creates a catalog item.
         # @param [String] parent
-        #   Required. The parent catalog resource name, such as "projects/*/locations/
-        #   global/catalogs/default_catalog".
+        #   Required. The parent catalog resource name, such as `projects/*/locations/
+        #   global/catalogs/default_catalog`.
         # @param [Google::Apis::RecommendationengineV1beta1::GoogleCloudRecommendationengineV1beta1CatalogItem] google_cloud_recommendationengine_v1beta1_catalog_item_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -166,8 +166,8 @@ module Google
         
         # Deletes a catalog item.
         # @param [String] name
-        #   Required. Full resource name of catalog item, such as "projects/*/locations/
-        #   global/catalogs/default_catalog/catalogItems/some_catalog_item_id".
+        #   Required. Full resource name of catalog item, such as `projects/*/locations/
+        #   global/catalogs/default_catalog/catalogItems/some_catalog_item_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -197,8 +197,8 @@ module Google
         
         # Gets a specific catalog item.
         # @param [String] name
-        #   Required. Full resource name of catalog item, such as "projects/*/locations/
-        #   global/catalogs/default_catalog/catalogitems/some_catalog_item_id".
+        #   Required. Full resource name of catalog item, such as `projects/*/locations/
+        #   global/catalogs/default_catalog/catalogitems/some_catalog_item_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -231,7 +231,7 @@ module Google
         # response is of type ImportResponse. Note that it is possible for a subset of
         # the items to be successfully updated.
         # @param [String] parent
-        #   Required. "projects/1234/locations/global/catalogs/default_catalog" If no
+        #   Required. `projects/1234/locations/global/catalogs/default_catalog` If no
         #   updateMask is specified, requires catalogItems.create permission. If
         #   updateMask is specified, requires catalogItems.update permission.
         # @param [Google::Apis::RecommendationengineV1beta1::GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest] google_cloud_recommendationengine_v1beta1_import_catalog_items_request_object
@@ -266,8 +266,8 @@ module Google
         
         # Gets a list of catalog items.
         # @param [String] parent
-        #   Required. The parent catalog resource name, such as "projects/*/locations/
-        #   global/catalogs/default_catalog".
+        #   Required. The parent catalog resource name, such as `projects/*/locations/
+        #   global/catalogs/default_catalog`.
         # @param [String] filter
         #   Optional. A filter to apply on the list results.
         # @param [Fixnum] page_size
@@ -308,8 +308,8 @@ module Google
         # Updates a catalog item. Partial updating is supported. Non-existing items will
         # be created.
         # @param [String] name
-        #   Required. Full resource name of catalog item, such as "projects/*/locations/
-        #   global/catalogs/default_catalog/catalogItems/some_catalog_item_id".
+        #   Required. Full resource name of catalog item, such as `projects/*/locations/
+        #   global/catalogs/default_catalog/catalogItems/some_catalog_item_id`.
         # @param [Google::Apis::RecommendationengineV1beta1::GoogleCloudRecommendationengineV1beta1CatalogItem] google_cloud_recommendationengine_v1beta1_catalog_item_object
         # @param [String] update_mask
         #   Optional. Indicates which fields in the provided 'item' to update. If not set,
@@ -426,8 +426,8 @@ module Google
         # more](https://cloud.google.com/recommendations-ai/docs/setting-up#register-key)
         # .
         # @param [String] name
-        #   Required. Full resource name of the format: `name=projects/*/locations/global/
-        #   catalogs/default_catalog/eventStores/default_event_store/placements/*` The id
+        #   Required. Full resource name of the format: ``name=projects/*/locations/global/
+        #   catalogs/default_catalog/eventStores/default_event_store/placements/*`` The id
         #   of the recommendation engine placement. This id is used to identify the set of
         #   models that will be used to make the prediction. We currently support three
         #   placements with the following IDs by default: * `shopping_cart`: Predicts
@@ -478,8 +478,8 @@ module Google
         
         # Register an API key for use with predict method.
         # @param [String] parent
-        #   Required. The parent resource path. "projects/*/locations/global/catalogs/
-        #   default_catalog/eventStores/default_event_store".
+        #   Required. The parent resource path. `projects/*/locations/global/catalogs/
+        #   default_catalog/eventStores/default_event_store`.
         # @param [Google::Apis::RecommendationengineV1beta1::GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest] google_cloud_recommendationengine_v1beta1_create_prediction_api_key_registration_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -512,9 +512,9 @@ module Google
         
         # Unregister an apiKey from using for predict method.
         # @param [String] name
-        #   Required. The API key to unregister including full resource path. "projects/*/
+        #   Required. The API key to unregister including full resource path. `projects/*/
         #   locations/global/catalogs/default_catalog/eventStores/default_event_store/
-        #   predictionApiKeyRegistrations/"
+        #   predictionApiKeyRegistrations/`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -544,8 +544,8 @@ module Google
         
         # List the registered apiKeys for use with predict method.
         # @param [String] parent
-        #   Required. The parent placement resource name such as "projects/1234/locations/
-        #   global/catalogs/default_catalog/eventStores/default_event_store"
+        #   Required. The parent placement resource name such as `projects/1234/locations/
+        #   global/catalogs/default_catalog/eventStores/default_event_store`
         # @param [Fixnum] page_size
         #   Optional. Maximum number of results to return per page. If unset, the service
         #   will choose a reasonable default.
@@ -585,8 +585,8 @@ module Google
         # only by the Recommendations AI JavaScript pixel. Users should not call this
         # method directly.
         # @param [String] parent
-        #   Required. The parent eventStore name, such as "projects/1234/locations/global/
-        #   catalogs/default_catalog/eventStores/default_event_store".
+        #   Required. The parent eventStore name, such as `projects/1234/locations/global/
+        #   catalogs/default_catalog/eventStores/default_event_store`.
         # @param [Fixnum] ets
         #   Optional. The event timestamp in milliseconds. This prevents browser caching
         #   of otherwise identical get requests. The name is abbreviated to reduce the
@@ -634,8 +634,8 @@ module Google
         # possible for a subset of the items to be successfully inserted. Operation.
         # metadata is of type ImportMetadata.
         # @param [String] parent
-        #   Required. "projects/1234/locations/global/catalogs/default_catalog/eventStores/
-        #   default_event_store"
+        #   Required. `projects/1234/locations/global/catalogs/default_catalog/eventStores/
+        #   default_event_store`
         # @param [Google::Apis::RecommendationengineV1beta1::GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest] google_cloud_recommendationengine_v1beta1_import_user_events_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -673,8 +673,8 @@ module Google
         # If a catalog item of the ingested event is not in the current catalog, it
         # could lead to degraded model quality. This is called an unjoined event.
         # @param [String] parent
-        #   Required. The parent eventStore resource name, such as "projects/*/locations/*/
-        #   catalogs/default_catalog/eventStores/default_event_store".
+        #   Required. The parent eventStore resource name, such as `projects/*/locations/*/
+        #   catalogs/default_catalog/eventStores/default_event_store`.
         # @param [String] filter
         #   Optional. Filtering expression to specify restrictions over returned events.
         #   This is a sequence of terms, where each term applies some kind of a
@@ -735,8 +735,8 @@ module Google
         # first.
         # @param [String] parent
         #   Required. The resource name of the event_store under which the events are
-        #   created. The format is "projects/$`projectId`/locations/global/catalogs/$`
-        #   catalogId`/eventStores/$`eventStoreId`"
+        #   created. The format is `projects/$`projectId`/locations/global/catalogs/$`
+        #   catalogId`/eventStores/$`eventStoreId``
         # @param [Google::Apis::RecommendationengineV1beta1::GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest] google_cloud_recommendationengine_v1beta1_purge_user_events_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -775,8 +775,8 @@ module Google
         # catalog items. It can also be used to correct events joined with wrong catalog
         # items.
         # @param [String] parent
-        #   Required. Full resource name of user event, such as "projects/*/locations/*/
-        #   catalogs/default_catalog/eventStores/default_event_store".
+        #   Required. Full resource name of user event, such as `projects/*/locations/*/
+        #   catalogs/default_catalog/eventStores/default_event_store`.
         # @param [Google::Apis::RecommendationengineV1beta1::GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest] google_cloud_recommendationengine_v1beta1_rejoin_user_events_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
