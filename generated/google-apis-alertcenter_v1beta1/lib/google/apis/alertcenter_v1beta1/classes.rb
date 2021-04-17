@@ -23,7 +23,7 @@ module Google
     module AlertcenterV1beta1
       
       # Alerts for user account warning events.
-      class AccountWarning
+      class GoogleAppsAlertcenterTypeAccountWarning
         include Google::Apis::Core::Hashable
       
         # Required. The email of the user that this event belongs to.
@@ -33,7 +33,7 @@ module Google
       
         # The details of the login action.
         # Corresponds to the JSON property `loginDetails`
-        # @return [Google::Apis::AlertcenterV1beta1::LoginDetails]
+        # @return [Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeAccountWarningLoginDetails]
         attr_accessor :login_details
       
         def initialize(**args)
@@ -47,9 +47,21 @@ module Google
         end
       end
       
-      # Metadata related to the action.
-      class ActionInfo
+      # The details of the login action.
+      class GoogleAppsAlertcenterTypeAccountWarningLoginDetails
         include Google::Apis::Core::Hashable
+      
+        # Optional. The human-readable IP address (for example, `11.22.33.44`) that is
+        # associated with the warning event.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # Optional. The successful login time that is associated with the warning event.
+        # This isn't present for blocked login attempts.
+        # Corresponds to the JSON property `loginTime`
+        # @return [String]
+        attr_accessor :login_time
       
         def initialize(**args)
            update!(**args)
@@ -57,12 +69,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @login_time = args[:login_time] if args.key?(:login_time)
         end
       end
       
       # Alerts from Google Workspace Security Center rules service configured by an
       # admin.
-      class ActivityRule
+      class GoogleAppsAlertcenterTypeActivityRule
         include Google::Apis::Core::Hashable
       
         # List of action names associated with the rule threshold.
@@ -151,238 +165,13 @@ module Google
         end
       end
       
-      # An alert affecting a customer.
-      class Alert
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The unique identifier for the alert.
-        # Corresponds to the JSON property `alertId`
-        # @return [String]
-        attr_accessor :alert_id
-      
-        # Output only. The time this alert was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Output only. The unique identifier of the Google account of the customer.
-        # Corresponds to the JSON property `customerId`
-        # @return [String]
-        attr_accessor :customer_id
-      
-        # Optional. The data associated with this alert, for example google.apps.
-        # alertcenter.type.DeviceCompromised.
-        # Corresponds to the JSON property `data`
-        # @return [Hash<String,Object>]
-        attr_accessor :data
-      
-        # Output only. `True` if this alert is marked for deletion.
-        # Corresponds to the JSON property `deleted`
-        # @return [Boolean]
-        attr_accessor :deleted
-        alias_method :deleted?, :deleted
-      
-        # Optional. The time the event that caused this alert ceased being active. If
-        # provided, the end time must not be earlier than the start time. If not
-        # provided, it indicates an ongoing alert.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # Optional. `etag` is used for optimistic concurrency control as a way to help
-        # prevent simultaneous updates of an alert from overwriting each other. It is
-        # strongly suggested that systems make use of the `etag` in the read-modify-
-        # write cycle to perform alert updates in order to avoid race conditions: An `
-        # etag` is returned in the response which contains alerts, and systems are
-        # expected to put that etag in the request to update alert to ensure that their
-        # change will be applied to the same version of the alert. If no `etag` is
-        # provided in the call to update alert, then the existing alert is overwritten
-        # blindly.
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
-      
-        # An alert metadata.
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::AlertcenterV1beta1::AlertMetadata]
-        attr_accessor :metadata
-      
-        # Output only. An optional [Security Investigation Tool](https://support.google.
-        # com/a/answer/7575955) query for this alert.
-        # Corresponds to the JSON property `securityInvestigationToolLink`
-        # @return [String]
-        attr_accessor :security_investigation_tool_link
-      
-        # Required. A unique identifier for the system that reported the alert. This is
-        # output only after alert is created. Supported sources are any of the following:
-        # * Google Operations * Mobile device management * Gmail phishing * Domain wide
-        # takeout * State sponsored attack * Google identity
-        # Corresponds to the JSON property `source`
-        # @return [String]
-        attr_accessor :source
-      
-        # Required. The time the event that caused this alert was started or detected.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
-        # Required. The type of the alert. This is output only after alert is created.
-        # For a list of available alert types see [Google Workspace Alert types](/admin-
-        # sdk/alertcenter/reference/alert-types).
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        # Output only. The time this alert was last updated.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @alert_id = args[:alert_id] if args.key?(:alert_id)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @customer_id = args[:customer_id] if args.key?(:customer_id)
-          @data = args[:data] if args.key?(:data)
-          @deleted = args[:deleted] if args.key?(:deleted)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @etag = args[:etag] if args.key?(:etag)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @security_investigation_tool_link = args[:security_investigation_tool_link] if args.key?(:security_investigation_tool_link)
-          @source = args[:source] if args.key?(:source)
-          @start_time = args[:start_time] if args.key?(:start_time)
-          @type = args[:type] if args.key?(:type)
-          @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
-      # A customer feedback about an alert.
-      class AlertFeedback
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The alert identifier.
-        # Corresponds to the JSON property `alertId`
-        # @return [String]
-        attr_accessor :alert_id
-      
-        # Output only. The time this feedback was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Output only. The unique identifier of the Google account of the customer.
-        # Corresponds to the JSON property `customerId`
-        # @return [String]
-        attr_accessor :customer_id
-      
-        # Output only. The email of the user that provided the feedback.
-        # Corresponds to the JSON property `email`
-        # @return [String]
-        attr_accessor :email
-      
-        # Output only. The unique identifier for the feedback.
-        # Corresponds to the JSON property `feedbackId`
-        # @return [String]
-        attr_accessor :feedback_id
-      
-        # Required. The type of the feedback.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @alert_id = args[:alert_id] if args.key?(:alert_id)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @customer_id = args[:customer_id] if args.key?(:customer_id)
-          @email = args[:email] if args.key?(:email)
-          @feedback_id = args[:feedback_id] if args.key?(:feedback_id)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # An alert metadata.
-      class AlertMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The alert identifier.
-        # Corresponds to the JSON property `alertId`
-        # @return [String]
-        attr_accessor :alert_id
-      
-        # The email address of the user assigned to the alert.
-        # Corresponds to the JSON property `assignee`
-        # @return [String]
-        attr_accessor :assignee
-      
-        # Output only. The unique identifier of the Google account of the customer.
-        # Corresponds to the JSON property `customerId`
-        # @return [String]
-        attr_accessor :customer_id
-      
-        # Optional. `etag` is used for optimistic concurrency control as a way to help
-        # prevent simultaneous updates of an alert metadata from overwriting each other.
-        # It is strongly suggested that systems make use of the `etag` in the read-
-        # modify-write cycle to perform metatdata updates in order to avoid race
-        # conditions: An `etag` is returned in the response which contains alert
-        # metadata, and systems are expected to put that etag in the request to update
-        # alert metadata to ensure that their change will be applied to the same version
-        # of the alert metadata. If no `etag` is provided in the call to update alert
-        # metadata, then the existing alert metadata is overwritten blindly.
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
-      
-        # The severity value of the alert. Alert Center will set this field at alert
-        # creation time, default's to an empty string when it could not be determined.
-        # The supported values for update actions on this field are the following: *
-        # HIGH * MEDIUM * LOW
-        # Corresponds to the JSON property `severity`
-        # @return [String]
-        attr_accessor :severity
-      
-        # The current status of the alert. The supported values are the following: *
-        # NOT_STARTED * IN_PROGRESS * CLOSED
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
-        # Output only. The time this metadata was last updated.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @alert_id = args[:alert_id] if args.key?(:alert_id)
-          @assignee = args[:assignee] if args.key?(:assignee)
-          @customer_id = args[:customer_id] if args.key?(:customer_id)
-          @etag = args[:etag] if args.key?(:etag)
-          @severity = args[:severity] if args.key?(:severity)
-          @status = args[:status] if args.key?(:status)
-          @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
       # Alerts from App Maker to notify admins to set up default SQL instance.
-      class AppMakerSqlSetupNotification
+      class GoogleAppsAlertcenterTypeAppMakerSqlSetupNotification
         include Google::Apis::Core::Hashable
       
         # List of applications with requests for default SQL set up.
         # Corresponds to the JSON property `requestInfo`
-        # @return [Array<Google::Apis::AlertcenterV1beta1::RequestInfo>]
+        # @return [Array<Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeAppMakerSqlSetupNotificationRequestInfo>]
         attr_accessor :request_info
       
         def initialize(**args)
@@ -395,14 +184,46 @@ module Google
         end
       end
       
+      # Requests for one application that needs default SQL setup.
+      class GoogleAppsAlertcenterTypeAppMakerSqlSetupNotificationRequestInfo
+        include Google::Apis::Core::Hashable
+      
+        # List of app developers who triggered notifications for above application.
+        # Corresponds to the JSON property `appDeveloperEmail`
+        # @return [Array<String>]
+        attr_accessor :app_developer_email
+      
+        # Required. The application that requires the SQL setup.
+        # Corresponds to the JSON property `appKey`
+        # @return [String]
+        attr_accessor :app_key
+      
+        # Required. Number of requests sent for this application to set up default SQL
+        # instance.
+        # Corresponds to the JSON property `numberOfRequests`
+        # @return [Fixnum]
+        attr_accessor :number_of_requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_developer_email = args[:app_developer_email] if args.key?(:app_developer_email)
+          @app_key = args[:app_key] if args.key?(:app_key)
+          @number_of_requests = args[:number_of_requests] if args.key?(:number_of_requests)
+        end
+      end
+      
       # Attachment with application-specific information about an alert.
-      class Attachment
+      class GoogleAppsAlertcenterTypeAttachment
         include Google::Apis::Core::Hashable
       
         # A representation of a CSV file attachment, as a list of column headers and a
         # list of data rows.
         # Corresponds to the JSON property `csv`
-        # @return [Google::Apis::AlertcenterV1beta1::Csv]
+        # @return [Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeAttachmentCsv]
         attr_accessor :csv
       
         def initialize(**args)
@@ -415,24 +236,71 @@ module Google
         end
       end
       
+      # A representation of a CSV file attachment, as a list of column headers and a
+      # list of data rows.
+      class GoogleAppsAlertcenterTypeAttachmentCsv
+        include Google::Apis::Core::Hashable
+      
+        # The list of data rows in a CSV file, as string arrays rather than as a single
+        # comma-separated string.
+        # Corresponds to the JSON property `dataRows`
+        # @return [Array<Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeAttachmentCsvCsvRow>]
+        attr_accessor :data_rows
+      
+        # The list of headers for data columns in a CSV file.
+        # Corresponds to the JSON property `headers`
+        # @return [Array<String>]
+        attr_accessor :headers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_rows = args[:data_rows] if args.key?(:data_rows)
+          @headers = args[:headers] if args.key?(:headers)
+        end
+      end
+      
+      # A representation of a single data row in a CSV file.
+      class GoogleAppsAlertcenterTypeAttachmentCsvCsvRow
+        include Google::Apis::Core::Hashable
+      
+        # The data entries in a CSV file row, as a string array rather than a single
+        # comma-separated string.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<String>]
+        attr_accessor :entries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
+        end
+      end
+      
       # Alert for setting the domain or IP that malicious email comes from as
       # whitelisted domain or IP in Gmail advanced settings.
-      class BadWhitelist
+      class GoogleAppsAlertcenterTypeBadWhitelist
         include Google::Apis::Core::Hashable
       
         # Domain ID of Gmail phishing alerts.
         # Corresponds to the JSON property `domainId`
-        # @return [Google::Apis::AlertcenterV1beta1::DomainId]
+        # @return [Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeDomainId]
         attr_accessor :domain_id
       
         # Entity whose actions triggered a Gmail phishing alert.
         # Corresponds to the JSON property `maliciousEntity`
-        # @return [Google::Apis::AlertcenterV1beta1::MaliciousEntity]
+        # @return [Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeMaliciousEntity]
         attr_accessor :malicious_entity
       
         # The list of messages contained by this alert.
         # Corresponds to the JSON property `messages`
-        # @return [Array<Google::Apis::AlertcenterV1beta1::GmailMessageInfo>]
+        # @return [Array<Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeGmailMessageInfo>]
         attr_accessor :messages
       
         # The source IP address of the malicious email, for example, `127.0.0.1`.
@@ -453,186 +321,8 @@ module Google
         end
       end
       
-      # A request to perform batch delete on alerts.
-      class BatchDeleteAlertsRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. list of alert IDs.
-        # Corresponds to the JSON property `alertId`
-        # @return [Array<String>]
-        attr_accessor :alert_id
-      
-        # Optional. The unique identifier of the Google Workspace organization account
-        # of the customer the alerts are associated with.
-        # Corresponds to the JSON property `customerId`
-        # @return [String]
-        attr_accessor :customer_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @alert_id = args[:alert_id] if args.key?(:alert_id)
-          @customer_id = args[:customer_id] if args.key?(:customer_id)
-        end
-      end
-      
-      # Response to batch delete operation on alerts.
-      class BatchDeleteAlertsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The status details for each failed alert_id.
-        # Corresponds to the JSON property `failedAlertStatus`
-        # @return [Hash<String,Google::Apis::AlertcenterV1beta1::Status>]
-        attr_accessor :failed_alert_status
-      
-        # The successful list of alert IDs.
-        # Corresponds to the JSON property `successAlertIds`
-        # @return [Array<String>]
-        attr_accessor :success_alert_ids
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @failed_alert_status = args[:failed_alert_status] if args.key?(:failed_alert_status)
-          @success_alert_ids = args[:success_alert_ids] if args.key?(:success_alert_ids)
-        end
-      end
-      
-      # A request to perform batch undelete on alerts.
-      class BatchUndeleteAlertsRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. list of alert IDs.
-        # Corresponds to the JSON property `alertId`
-        # @return [Array<String>]
-        attr_accessor :alert_id
-      
-        # Optional. The unique identifier of the Google Workspace organization account
-        # of the customer the alerts are associated with.
-        # Corresponds to the JSON property `customerId`
-        # @return [String]
-        attr_accessor :customer_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @alert_id = args[:alert_id] if args.key?(:alert_id)
-          @customer_id = args[:customer_id] if args.key?(:customer_id)
-        end
-      end
-      
-      # Response to batch undelete operation on alerts.
-      class BatchUndeleteAlertsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The status details for each failed alert_id.
-        # Corresponds to the JSON property `failedAlertStatus`
-        # @return [Hash<String,Google::Apis::AlertcenterV1beta1::Status>]
-        attr_accessor :failed_alert_status
-      
-        # The successful list of alert IDs.
-        # Corresponds to the JSON property `successAlertIds`
-        # @return [Array<String>]
-        attr_accessor :success_alert_ids
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @failed_alert_status = args[:failed_alert_status] if args.key?(:failed_alert_status)
-          @success_alert_ids = args[:success_alert_ids] if args.key?(:success_alert_ids)
-        end
-      end
-      
-      # A reference to a Cloud Pubsub topic. To register for notifications, the owner
-      # of the topic must grant `alerts-api-push-notifications@system.gserviceaccount.
-      # com` the `projects.topics.publish` permission.
-      class CloudPubsubTopic
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The format of the payload that would be sent. If not specified the
-        # format will be JSON.
-        # Corresponds to the JSON property `payloadFormat`
-        # @return [String]
-        attr_accessor :payload_format
-      
-        # The `name` field of a Cloud Pubsub [Topic] (https://cloud.google.com/pubsub/
-        # docs/reference/rest/v1/projects.topics#Topic).
-        # Corresponds to the JSON property `topicName`
-        # @return [String]
-        attr_accessor :topic_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @payload_format = args[:payload_format] if args.key?(:payload_format)
-          @topic_name = args[:topic_name] if args.key?(:topic_name)
-        end
-      end
-      
-      # A representation of a CSV file attachment, as a list of column headers and a
-      # list of data rows.
-      class Csv
-        include Google::Apis::Core::Hashable
-      
-        # The list of data rows in a CSV file, as string arrays rather than as a single
-        # comma-separated string.
-        # Corresponds to the JSON property `dataRows`
-        # @return [Array<Google::Apis::AlertcenterV1beta1::CsvRow>]
-        attr_accessor :data_rows
-      
-        # The list of headers for data columns in a CSV file.
-        # Corresponds to the JSON property `headers`
-        # @return [Array<String>]
-        attr_accessor :headers
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @data_rows = args[:data_rows] if args.key?(:data_rows)
-          @headers = args[:headers] if args.key?(:headers)
-        end
-      end
-      
-      # A representation of a single data row in a CSV file.
-      class CsvRow
-        include Google::Apis::Core::Hashable
-      
-        # The data entries in a CSV file row, as a string array rather than a single
-        # comma-separated string.
-        # Corresponds to the JSON property `entries`
-        # @return [Array<String>]
-        attr_accessor :entries
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @entries = args[:entries] if args.key?(:entries)
-        end
-      end
-      
       # A mobile device compromised alert. Derived from audit logs.
-      class DeviceCompromised
+      class GoogleAppsAlertcenterTypeDeviceCompromised
         include Google::Apis::Core::Hashable
       
         # The email of the user this alert was created for.
@@ -642,7 +332,7 @@ module Google
       
         # Required. The list of security events.
         # Corresponds to the JSON property `events`
-        # @return [Array<Google::Apis::AlertcenterV1beta1::DeviceCompromisedSecurityDetail>]
+        # @return [Array<Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeDeviceCompromisedDeviceCompromisedSecurityDetail>]
         attr_accessor :events
       
         def initialize(**args)
@@ -657,7 +347,7 @@ module Google
       end
       
       # Detailed information of a single MDM device compromised event.
-      class DeviceCompromisedSecurityDetail
+      class GoogleAppsAlertcenterTypeDeviceCompromisedDeviceCompromisedSecurityDetail
         include Google::Apis::Core::Hashable
       
         # The device compromised state. Possible values are "`Compromised`" or "`Not
@@ -713,13 +403,13 @@ module Google
       end
       
       # Alerts that get triggered on violations of Data Loss Prevention (DLP) rules.
-      class DlpRuleViolation
+      class GoogleAppsAlertcenterTypeDlpRuleViolation
         include Google::Apis::Core::Hashable
       
         # Common alert information about violated rules that are configured by Google
         # Workspace administrators.
         # Corresponds to the JSON property `ruleViolationInfo`
-        # @return [Google::Apis::AlertcenterV1beta1::RuleViolationInfo]
+        # @return [Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeRuleViolationInfo]
         attr_accessor :rule_violation_info
       
         def initialize(**args)
@@ -733,7 +423,7 @@ module Google
       end
       
       # Domain ID of Gmail phishing alerts.
-      class DomainId
+      class GoogleAppsAlertcenterTypeDomainId
         include Google::Apis::Core::Hashable
       
         # The primary domain for the customer.
@@ -753,7 +443,7 @@ module Google
       
       # A takeout operation for the entire domain was initiated by an admin. Derived
       # from audit logs.
-      class DomainWideTakeoutInitiated
+      class GoogleAppsAlertcenterTypeDomainWideTakeoutInitiated
         include Google::Apis::Core::Hashable
       
         # The email of the admin who initiated the takeout.
@@ -777,25 +467,8 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated empty
-      # messages in your APIs. A typical example is to use it as the request or the
-      # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
-      class Empty
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Details of a message in phishing spike alert.
-      class GmailMessageInfo
+      class GoogleAppsAlertcenterTypeGmailMessageInfo
         include Google::Apis::Core::Hashable
       
         # The `SHA256` hash of email's attachment and all MIME parts.
@@ -856,7 +529,7 @@ module Google
       end
       
       # An incident reported by Google Operations for a Google Workspace application.
-      class GoogleOperations
+      class GoogleAppsAlertcenterTypeGoogleOperations
         include Google::Apis::Core::Hashable
       
         # The list of emails which correspond to the users directly affected by the
@@ -867,7 +540,7 @@ module Google
       
         # Attachment with application-specific information about an alert.
         # Corresponds to the JSON property `attachmentData`
-        # @return [Google::Apis::AlertcenterV1beta1::Attachment]
+        # @return [Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeAttachment]
         attr_accessor :attachment_data
       
         # A detailed, freeform incident description.
@@ -900,91 +573,16 @@ module Google
         end
       end
       
-      # Response message for an alert feedback listing request.
-      class ListAlertFeedbackResponse
-        include Google::Apis::Core::Hashable
-      
-        # The list of alert feedback. Feedback entries for each alert are ordered by
-        # creation time descending.
-        # Corresponds to the JSON property `feedback`
-        # @return [Array<Google::Apis::AlertcenterV1beta1::AlertFeedback>]
-        attr_accessor :feedback
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @feedback = args[:feedback] if args.key?(:feedback)
-        end
-      end
-      
-      # Response message for an alert listing request.
-      class ListAlertsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The list of alerts.
-        # Corresponds to the JSON property `alerts`
-        # @return [Array<Google::Apis::AlertcenterV1beta1::Alert>]
-        attr_accessor :alerts
-      
-        # The token for the next page. If not empty, indicates that there may be more
-        # alerts that match the listing request; this value can be used in a subsequent
-        # ListAlertsRequest to get alerts continuing from last result of the current
-        # list call.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @alerts = args[:alerts] if args.key?(:alerts)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # The details of the login action.
-      class LoginDetails
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The human-readable IP address (for example, `11.22.33.44`) that is
-        # associated with the warning event.
-        # Corresponds to the JSON property `ipAddress`
-        # @return [String]
-        attr_accessor :ip_address
-      
-        # Optional. The successful login time that is associated with the warning event.
-        # This isn't present for blocked login attempts.
-        # Corresponds to the JSON property `loginTime`
-        # @return [String]
-        attr_accessor :login_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @ip_address = args[:ip_address] if args.key?(:ip_address)
-          @login_time = args[:login_time] if args.key?(:login_time)
-        end
-      end
-      
       # Proto for all phishing alerts with common payload. Supported types are any of
       # the following: * User reported phishing * User reported spam spike *
       # Suspicious message reported * Phishing reclassification * Malware
       # reclassification * Gmail potential employee spoofing
-      class MailPhishing
+      class GoogleAppsAlertcenterTypeMailPhishing
         include Google::Apis::Core::Hashable
       
         # Domain ID of Gmail phishing alerts.
         # Corresponds to the JSON property `domainId`
-        # @return [Google::Apis::AlertcenterV1beta1::DomainId]
+        # @return [Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeDomainId]
         attr_accessor :domain_id
       
         # If `true`, the email originated from within the organization.
@@ -995,12 +593,12 @@ module Google
       
         # Entity whose actions triggered a Gmail phishing alert.
         # Corresponds to the JSON property `maliciousEntity`
-        # @return [Google::Apis::AlertcenterV1beta1::MaliciousEntity]
+        # @return [Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeMaliciousEntity]
         attr_accessor :malicious_entity
       
         # The list of messages contained by this alert.
         # Corresponds to the JSON property `messages`
-        # @return [Array<Google::Apis::AlertcenterV1beta1::GmailMessageInfo>]
+        # @return [Array<Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeGmailMessageInfo>]
         attr_accessor :messages
       
         # System actions on the messages.
@@ -1023,7 +621,7 @@ module Google
       end
       
       # Entity whose actions triggered a Gmail phishing alert.
-      class MaliciousEntity
+      class GoogleAppsAlertcenterTypeMaliciousEntity
         include Google::Apis::Core::Hashable
       
         # The header from display name.
@@ -1033,7 +631,7 @@ module Google
       
         # A user.
         # Corresponds to the JSON property `entity`
-        # @return [Google::Apis::AlertcenterV1beta1::User]
+        # @return [Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeUser]
         attr_accessor :entity
       
         # The sender email address.
@@ -1053,62 +651,15 @@ module Google
         end
       end
       
-      # Proto that contains match information from the condition part of the rule.
-      class MatchInfo
-        include Google::Apis::Core::Hashable
-      
-        # Detector provided by Google.
-        # Corresponds to the JSON property `predefinedDetector`
-        # @return [Google::Apis::AlertcenterV1beta1::PredefinedDetectorInfo]
-        attr_accessor :predefined_detector
-      
-        # Detector defined by administrators.
-        # Corresponds to the JSON property `userDefinedDetector`
-        # @return [Google::Apis::AlertcenterV1beta1::UserDefinedDetectorInfo]
-        attr_accessor :user_defined_detector
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @predefined_detector = args[:predefined_detector] if args.key?(:predefined_detector)
-          @user_defined_detector = args[:user_defined_detector] if args.key?(:user_defined_detector)
-        end
-      end
-      
-      # Settings for callback notifications. For more details see [Google Workspace
-      # Alert Notification](/admin-sdk/alertcenter/guides/notifications).
-      class Notification
-        include Google::Apis::Core::Hashable
-      
-        # A reference to a Cloud Pubsub topic. To register for notifications, the owner
-        # of the topic must grant `alerts-api-push-notifications@system.gserviceaccount.
-        # com` the `projects.topics.publish` permission.
-        # Corresponds to the JSON property `cloudPubsubTopic`
-        # @return [Google::Apis::AlertcenterV1beta1::CloudPubsubTopic]
-        attr_accessor :cloud_pubsub_topic
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cloud_pubsub_topic = args[:cloud_pubsub_topic] if args.key?(:cloud_pubsub_topic)
-        end
-      end
-      
       # Alert for a spike in user reported phishing. *Warning*: This type has been
       # deprecated. Use [MailPhishing](/admin-sdk/alertcenter/reference/rest/v1beta1/
       # MailPhishing) instead.
-      class PhishingSpike
+      class GoogleAppsAlertcenterTypePhishingSpike
         include Google::Apis::Core::Hashable
       
         # Domain ID of Gmail phishing alerts.
         # Corresponds to the JSON property `domainId`
-        # @return [Google::Apis::AlertcenterV1beta1::DomainId]
+        # @return [Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeDomainId]
         attr_accessor :domain_id
       
         # If `true`, the email originated from within the organization.
@@ -1119,12 +670,12 @@ module Google
       
         # Entity whose actions triggered a Gmail phishing alert.
         # Corresponds to the JSON property `maliciousEntity`
-        # @return [Google::Apis::AlertcenterV1beta1::MaliciousEntity]
+        # @return [Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeMaliciousEntity]
         attr_accessor :malicious_entity
       
         # The list of messages contained by this alert.
         # Corresponds to the JSON property `messages`
-        # @return [Array<Google::Apis::AlertcenterV1beta1::GmailMessageInfo>]
+        # @return [Array<Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeGmailMessageInfo>]
         attr_accessor :messages
       
         def initialize(**args)
@@ -1140,110 +691,9 @@ module Google
         end
       end
       
-      # Detector provided by Google.
-      class PredefinedDetectorInfo
-        include Google::Apis::Core::Hashable
-      
-        # Name that uniquely identifies the detector.
-        # Corresponds to the JSON property `detectorName`
-        # @return [String]
-        attr_accessor :detector_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @detector_name = args[:detector_name] if args.key?(:detector_name)
-        end
-      end
-      
-      # Requests for one application that needs default SQL setup.
-      class RequestInfo
-        include Google::Apis::Core::Hashable
-      
-        # List of app developers who triggered notifications for above application.
-        # Corresponds to the JSON property `appDeveloperEmail`
-        # @return [Array<String>]
-        attr_accessor :app_developer_email
-      
-        # Required. The application that requires the SQL setup.
-        # Corresponds to the JSON property `appKey`
-        # @return [String]
-        attr_accessor :app_key
-      
-        # Required. Number of requests sent for this application to set up default SQL
-        # instance.
-        # Corresponds to the JSON property `numberOfRequests`
-        # @return [Fixnum]
-        attr_accessor :number_of_requests
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @app_developer_email = args[:app_developer_email] if args.key?(:app_developer_email)
-          @app_key = args[:app_key] if args.key?(:app_key)
-          @number_of_requests = args[:number_of_requests] if args.key?(:number_of_requests)
-        end
-      end
-      
-      # Proto that contains resource information.
-      class ResourceInfo
-        include Google::Apis::Core::Hashable
-      
-        # Drive file ID.
-        # Corresponds to the JSON property `documentId`
-        # @return [String]
-        attr_accessor :document_id
-      
-        # Title of the resource, for example email subject, or document title.
-        # Corresponds to the JSON property `resourceTitle`
-        # @return [String]
-        attr_accessor :resource_title
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @document_id = args[:document_id] if args.key?(:document_id)
-          @resource_title = args[:resource_title] if args.key?(:resource_title)
-        end
-      end
-      
-      # Proto that contains rule information.
-      class RuleInfo
-        include Google::Apis::Core::Hashable
-      
-        # User provided name of the rule.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Resource name that uniquely identifies the rule.
-        # Corresponds to the JSON property `resourceName`
-        # @return [String]
-        attr_accessor :resource_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @resource_name = args[:resource_name] if args.key?(:resource_name)
-        end
-      end
-      
       # Common alert information about violated rules that are configured by Google
       # Workspace administrators.
-      class RuleViolationInfo
+      class GoogleAppsAlertcenterTypeRuleViolationInfo
         include Google::Apis::Core::Hashable
       
         # Source of the data.
@@ -1253,7 +703,7 @@ module Google
       
         # List of matches that were found in the resource content.
         # Corresponds to the JSON property `matchInfo`
-        # @return [Array<Google::Apis::AlertcenterV1beta1::MatchInfo>]
+        # @return [Array<Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeRuleViolationInfoMatchInfo>]
         attr_accessor :match_info
       
         # Resource recipients. For Drive, they are grantees that the Drive file was
@@ -1267,12 +717,12 @@ module Google
       
         # Proto that contains resource information.
         # Corresponds to the JSON property `resourceInfo`
-        # @return [Google::Apis::AlertcenterV1beta1::ResourceInfo]
+        # @return [Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeRuleViolationInfoResourceInfo]
         attr_accessor :resource_info
       
         # Proto that contains rule information.
         # Corresponds to the JSON property `ruleInfo`
-        # @return [Google::Apis::AlertcenterV1beta1::RuleInfo]
+        # @return [Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeRuleViolationInfoRuleInfo]
         attr_accessor :rule_info
       
         # Actions suppressed due to other actions with higher priority.
@@ -1287,7 +737,7 @@ module Google
       
         # Metadata related to the triggered actions.
         # Corresponds to the JSON property `triggeredActionInfo`
-        # @return [Array<Google::Apis::AlertcenterV1beta1::ActionInfo>]
+        # @return [Array<Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeRuleViolationInfoActionInfo>]
         attr_accessor :triggered_action_info
       
         # Actions applied as a consequence of the rule being triggered.
@@ -1320,14 +770,9 @@ module Google
         end
       end
       
-      # Customer-level settings.
-      class Settings
+      # Metadata related to the action.
+      class GoogleAppsAlertcenterTypeRuleViolationInfoActionInfo
         include Google::Apis::Core::Hashable
-      
-        # The list of notifications.
-        # Corresponds to the JSON property `notifications`
-        # @return [Array<Google::Apis::AlertcenterV1beta1::Notification>]
-        attr_accessor :notifications
       
         def initialize(**args)
            update!(**args)
@@ -1335,12 +780,130 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @notifications = args[:notifications] if args.key?(:notifications)
+        end
+      end
+      
+      # Proto that contains match information from the condition part of the rule.
+      class GoogleAppsAlertcenterTypeRuleViolationInfoMatchInfo
+        include Google::Apis::Core::Hashable
+      
+        # Detector provided by Google.
+        # Corresponds to the JSON property `predefinedDetector`
+        # @return [Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeRuleViolationInfoMatchInfoPredefinedDetectorInfo]
+        attr_accessor :predefined_detector
+      
+        # Detector defined by administrators.
+        # Corresponds to the JSON property `userDefinedDetector`
+        # @return [Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeRuleViolationInfoMatchInfoUserDefinedDetectorInfo]
+        attr_accessor :user_defined_detector
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @predefined_detector = args[:predefined_detector] if args.key?(:predefined_detector)
+          @user_defined_detector = args[:user_defined_detector] if args.key?(:user_defined_detector)
+        end
+      end
+      
+      # Detector provided by Google.
+      class GoogleAppsAlertcenterTypeRuleViolationInfoMatchInfoPredefinedDetectorInfo
+        include Google::Apis::Core::Hashable
+      
+        # Name that uniquely identifies the detector.
+        # Corresponds to the JSON property `detectorName`
+        # @return [String]
+        attr_accessor :detector_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detector_name = args[:detector_name] if args.key?(:detector_name)
+        end
+      end
+      
+      # Detector defined by administrators.
+      class GoogleAppsAlertcenterTypeRuleViolationInfoMatchInfoUserDefinedDetectorInfo
+        include Google::Apis::Core::Hashable
+      
+        # Display name of the detector.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Resource name that uniquely identifies the detector.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # Proto that contains resource information.
+      class GoogleAppsAlertcenterTypeRuleViolationInfoResourceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Drive file ID.
+        # Corresponds to the JSON property `documentId`
+        # @return [String]
+        attr_accessor :document_id
+      
+        # Title of the resource, for example email subject, or document title.
+        # Corresponds to the JSON property `resourceTitle`
+        # @return [String]
+        attr_accessor :resource_title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_id = args[:document_id] if args.key?(:document_id)
+          @resource_title = args[:resource_title] if args.key?(:resource_title)
+        end
+      end
+      
+      # Proto that contains rule information.
+      class GoogleAppsAlertcenterTypeRuleViolationInfoRuleInfo
+        include Google::Apis::Core::Hashable
+      
+        # User provided name of the rule.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Resource name that uniquely identifies the rule.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
         end
       end
       
       # A state-sponsored attack alert. Derived from audit logs.
-      class StateSponsoredAttack
+      class GoogleAppsAlertcenterTypeStateSponsoredAttack
         include Google::Apis::Core::Hashable
       
         # The email of the user this incident was created for.
@@ -1358,47 +921,8 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for different
-      # programming environments, including REST APIs and RPC APIs. It is used by [
-      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
-      # data: error code, error message, and error details. You can find out more
-      # about this error model and how to work with it in the [API Design Guide](https:
-      # //cloud.google.com/apis/design/errors).
-      class Status
-        include Google::Apis::Core::Hashable
-      
-        # The status code, which should be an enum value of google.rpc.Code.
-        # Corresponds to the JSON property `code`
-        # @return [Fixnum]
-        attr_accessor :code
-      
-        # A list of messages that carry the error details. There is a common set of
-        # message types for APIs to use.
-        # Corresponds to the JSON property `details`
-        # @return [Array<Hash<String,Object>>]
-        attr_accessor :details
-      
-        # A developer-facing error message, which should be in English. Any user-facing
-        # error message should be localized and sent in the google.rpc.Status.details
-        # field, or localized by the client.
-        # Corresponds to the JSON property `message`
-        # @return [String]
-        attr_accessor :message
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @code = args[:code] if args.key?(:code)
-          @details = args[:details] if args.key?(:details)
-          @message = args[:message] if args.key?(:message)
-        end
-      end
-      
       # A mobile suspicious activity alert. Derived from audit logs.
-      class SuspiciousActivity
+      class GoogleAppsAlertcenterTypeSuspiciousActivity
         include Google::Apis::Core::Hashable
       
         # The email of the user this alert was created for.
@@ -1408,7 +932,7 @@ module Google
       
         # Required. The list of security events.
         # Corresponds to the JSON property `events`
-        # @return [Array<Google::Apis::AlertcenterV1beta1::SuspiciousActivitySecurityDetail>]
+        # @return [Array<Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeSuspiciousActivitySuspiciousActivitySecurityDetail>]
         attr_accessor :events
       
         def initialize(**args)
@@ -1423,7 +947,7 @@ module Google
       end
       
       # Detailed information of a single MDM suspicious activity event.
-      class SuspiciousActivitySecurityDetail
+      class GoogleAppsAlertcenterTypeSuspiciousActivitySuspiciousActivitySecurityDetail
         include Google::Apis::Core::Hashable
       
         # Required. The device ID.
@@ -1489,29 +1013,8 @@ module Google
         end
       end
       
-      # A request to undelete a specific alert that was marked for deletion.
-      class UndeleteAlertRequest
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The unique identifier of the Google Workspace organization account
-        # of the customer the alert is associated with. Inferred from the caller
-        # identity if not provided.
-        # Corresponds to the JSON property `customerId`
-        # @return [String]
-        attr_accessor :customer_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @customer_id = args[:customer_id] if args.key?(:customer_id)
-        end
-      end
-      
       # A user.
-      class User
+      class GoogleAppsAlertcenterTypeUser
         include Google::Apis::Core::Hashable
       
         # Display name of the user.
@@ -1535,19 +1038,92 @@ module Google
         end
       end
       
-      # Detector defined by administrators.
-      class UserDefinedDetectorInfo
+      # An alert affecting a customer.
+      class GoogleAppsAlertcenterV1beta1Alert
         include Google::Apis::Core::Hashable
       
-        # Display name of the detector.
-        # Corresponds to the JSON property `displayName`
+        # Output only. The unique identifier for the alert.
+        # Corresponds to the JSON property `alertId`
         # @return [String]
-        attr_accessor :display_name
+        attr_accessor :alert_id
       
-        # Resource name that uniquely identifies the detector.
-        # Corresponds to the JSON property `resourceName`
+        # Output only. The time this alert was created.
+        # Corresponds to the JSON property `createTime`
         # @return [String]
-        attr_accessor :resource_name
+        attr_accessor :create_time
+      
+        # Output only. The unique identifier of the Google account of the customer.
+        # Corresponds to the JSON property `customerId`
+        # @return [String]
+        attr_accessor :customer_id
+      
+        # Optional. The data associated with this alert, for example google.apps.
+        # alertcenter.type.DeviceCompromised.
+        # Corresponds to the JSON property `data`
+        # @return [Hash<String,Object>]
+        attr_accessor :data
+      
+        # Output only. `True` if this alert is marked for deletion.
+        # Corresponds to the JSON property `deleted`
+        # @return [Boolean]
+        attr_accessor :deleted
+        alias_method :deleted?, :deleted
+      
+        # Optional. The time the event that caused this alert ceased being active. If
+        # provided, the end time must not be earlier than the start time. If not
+        # provided, it indicates an ongoing alert.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Optional. `etag` is used for optimistic concurrency control as a way to help
+        # prevent simultaneous updates of an alert from overwriting each other. It is
+        # strongly suggested that systems make use of the `etag` in the read-modify-
+        # write cycle to perform alert updates in order to avoid race conditions: An `
+        # etag` is returned in the response which contains alerts, and systems are
+        # expected to put that etag in the request to update alert to ensure that their
+        # change will be applied to the same version of the alert. If no `etag` is
+        # provided in the call to update alert, then the existing alert is overwritten
+        # blindly.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # An alert metadata.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterV1beta1AlertMetadata]
+        attr_accessor :metadata
+      
+        # Output only. An optional [Security Investigation Tool](https://support.google.
+        # com/a/answer/7575955) query for this alert.
+        # Corresponds to the JSON property `securityInvestigationToolLink`
+        # @return [String]
+        attr_accessor :security_investigation_tool_link
+      
+        # Required. A unique identifier for the system that reported the alert. This is
+        # output only after alert is created. Supported sources are any of the following:
+        # * Google Operations * Mobile device management * Gmail phishing * Domain wide
+        # takeout * State sponsored attack * Google identity
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Required. The time the event that caused this alert was started or detected.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Required. The type of the alert. This is output only after alert is created.
+        # For a list of available alert types see [Google Workspace Alert types](/admin-
+        # sdk/alertcenter/reference/alert-types).
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. The time this alert was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
       
         def initialize(**args)
            update!(**args)
@@ -1555,8 +1131,432 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @alert_id = args[:alert_id] if args.key?(:alert_id)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @customer_id = args[:customer_id] if args.key?(:customer_id)
+          @data = args[:data] if args.key?(:data)
+          @deleted = args[:deleted] if args.key?(:deleted)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @etag = args[:etag] if args.key?(:etag)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @security_investigation_tool_link = args[:security_investigation_tool_link] if args.key?(:security_investigation_tool_link)
+          @source = args[:source] if args.key?(:source)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A customer feedback about an alert.
+      class GoogleAppsAlertcenterV1beta1AlertFeedback
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The alert identifier.
+        # Corresponds to the JSON property `alertId`
+        # @return [String]
+        attr_accessor :alert_id
+      
+        # Output only. The time this feedback was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The unique identifier of the Google account of the customer.
+        # Corresponds to the JSON property `customerId`
+        # @return [String]
+        attr_accessor :customer_id
+      
+        # Output only. The email of the user that provided the feedback.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Output only. The unique identifier for the feedback.
+        # Corresponds to the JSON property `feedbackId`
+        # @return [String]
+        attr_accessor :feedback_id
+      
+        # Required. The type of the feedback.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_id = args[:alert_id] if args.key?(:alert_id)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @customer_id = args[:customer_id] if args.key?(:customer_id)
+          @email = args[:email] if args.key?(:email)
+          @feedback_id = args[:feedback_id] if args.key?(:feedback_id)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # An alert metadata.
+      class GoogleAppsAlertcenterV1beta1AlertMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The alert identifier.
+        # Corresponds to the JSON property `alertId`
+        # @return [String]
+        attr_accessor :alert_id
+      
+        # The email address of the user assigned to the alert.
+        # Corresponds to the JSON property `assignee`
+        # @return [String]
+        attr_accessor :assignee
+      
+        # Output only. The unique identifier of the Google account of the customer.
+        # Corresponds to the JSON property `customerId`
+        # @return [String]
+        attr_accessor :customer_id
+      
+        # Optional. `etag` is used for optimistic concurrency control as a way to help
+        # prevent simultaneous updates of an alert metadata from overwriting each other.
+        # It is strongly suggested that systems make use of the `etag` in the read-
+        # modify-write cycle to perform metatdata updates in order to avoid race
+        # conditions: An `etag` is returned in the response which contains alert
+        # metadata, and systems are expected to put that etag in the request to update
+        # alert metadata to ensure that their change will be applied to the same version
+        # of the alert metadata. If no `etag` is provided in the call to update alert
+        # metadata, then the existing alert metadata is overwritten blindly.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # The severity value of the alert. Alert Center will set this field at alert
+        # creation time, default's to an empty string when it could not be determined.
+        # The supported values for update actions on this field are the following: *
+        # HIGH * MEDIUM * LOW
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # The current status of the alert. The supported values are the following: *
+        # NOT_STARTED * IN_PROGRESS * CLOSED
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Output only. The time this metadata was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_id = args[:alert_id] if args.key?(:alert_id)
+          @assignee = args[:assignee] if args.key?(:assignee)
+          @customer_id = args[:customer_id] if args.key?(:customer_id)
+          @etag = args[:etag] if args.key?(:etag)
+          @severity = args[:severity] if args.key?(:severity)
+          @status = args[:status] if args.key?(:status)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A request to perform batch delete on alerts.
+      class GoogleAppsAlertcenterV1beta1BatchDeleteAlertsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. list of alert IDs.
+        # Corresponds to the JSON property `alertId`
+        # @return [Array<String>]
+        attr_accessor :alert_id
+      
+        # Optional. The unique identifier of the Google Workspace organization account
+        # of the customer the alerts are associated with.
+        # Corresponds to the JSON property `customerId`
+        # @return [String]
+        attr_accessor :customer_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_id = args[:alert_id] if args.key?(:alert_id)
+          @customer_id = args[:customer_id] if args.key?(:customer_id)
+        end
+      end
+      
+      # Response to batch delete operation on alerts.
+      class GoogleAppsAlertcenterV1beta1BatchDeleteAlertsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status details for each failed alert_id.
+        # Corresponds to the JSON property `failedAlertStatus`
+        # @return [Hash<String,Google::Apis::AlertcenterV1beta1::GoogleRpcStatus>]
+        attr_accessor :failed_alert_status
+      
+        # The successful list of alert IDs.
+        # Corresponds to the JSON property `successAlertIds`
+        # @return [Array<String>]
+        attr_accessor :success_alert_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failed_alert_status = args[:failed_alert_status] if args.key?(:failed_alert_status)
+          @success_alert_ids = args[:success_alert_ids] if args.key?(:success_alert_ids)
+        end
+      end
+      
+      # A request to perform batch undelete on alerts.
+      class GoogleAppsAlertcenterV1beta1BatchUndeleteAlertsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. list of alert IDs.
+        # Corresponds to the JSON property `alertId`
+        # @return [Array<String>]
+        attr_accessor :alert_id
+      
+        # Optional. The unique identifier of the Google Workspace organization account
+        # of the customer the alerts are associated with.
+        # Corresponds to the JSON property `customerId`
+        # @return [String]
+        attr_accessor :customer_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_id = args[:alert_id] if args.key?(:alert_id)
+          @customer_id = args[:customer_id] if args.key?(:customer_id)
+        end
+      end
+      
+      # Response to batch undelete operation on alerts.
+      class GoogleAppsAlertcenterV1beta1BatchUndeleteAlertsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status details for each failed alert_id.
+        # Corresponds to the JSON property `failedAlertStatus`
+        # @return [Hash<String,Google::Apis::AlertcenterV1beta1::GoogleRpcStatus>]
+        attr_accessor :failed_alert_status
+      
+        # The successful list of alert IDs.
+        # Corresponds to the JSON property `successAlertIds`
+        # @return [Array<String>]
+        attr_accessor :success_alert_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failed_alert_status = args[:failed_alert_status] if args.key?(:failed_alert_status)
+          @success_alert_ids = args[:success_alert_ids] if args.key?(:success_alert_ids)
+        end
+      end
+      
+      # Response message for an alert feedback listing request.
+      class GoogleAppsAlertcenterV1beta1ListAlertFeedbackResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of alert feedback. Feedback entries for each alert are ordered by
+        # creation time descending.
+        # Corresponds to the JSON property `feedback`
+        # @return [Array<Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterV1beta1AlertFeedback>]
+        attr_accessor :feedback
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @feedback = args[:feedback] if args.key?(:feedback)
+        end
+      end
+      
+      # Response message for an alert listing request.
+      class GoogleAppsAlertcenterV1beta1ListAlertsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of alerts.
+        # Corresponds to the JSON property `alerts`
+        # @return [Array<Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterV1beta1Alert>]
+        attr_accessor :alerts
+      
+        # The token for the next page. If not empty, indicates that there may be more
+        # alerts that match the listing request; this value can be used in a subsequent
+        # ListAlertsRequest to get alerts continuing from last result of the current
+        # list call.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alerts = args[:alerts] if args.key?(:alerts)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Customer-level settings.
+      class GoogleAppsAlertcenterV1beta1Settings
+        include Google::Apis::Core::Hashable
+      
+        # The list of notifications.
+        # Corresponds to the JSON property `notifications`
+        # @return [Array<Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterV1beta1SettingsNotification>]
+        attr_accessor :notifications
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @notifications = args[:notifications] if args.key?(:notifications)
+        end
+      end
+      
+      # Settings for callback notifications. For more details see [Google Workspace
+      # Alert Notification](/admin-sdk/alertcenter/guides/notifications).
+      class GoogleAppsAlertcenterV1beta1SettingsNotification
+        include Google::Apis::Core::Hashable
+      
+        # A reference to a Cloud Pubsub topic. To register for notifications, the owner
+        # of the topic must grant `alerts-api-push-notifications@system.gserviceaccount.
+        # com` the `projects.topics.publish` permission.
+        # Corresponds to the JSON property `cloudPubsubTopic`
+        # @return [Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterV1beta1SettingsNotificationCloudPubsubTopic]
+        attr_accessor :cloud_pubsub_topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_pubsub_topic = args[:cloud_pubsub_topic] if args.key?(:cloud_pubsub_topic)
+        end
+      end
+      
+      # A reference to a Cloud Pubsub topic. To register for notifications, the owner
+      # of the topic must grant `alerts-api-push-notifications@system.gserviceaccount.
+      # com` the `projects.topics.publish` permission.
+      class GoogleAppsAlertcenterV1beta1SettingsNotificationCloudPubsubTopic
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The format of the payload that would be sent. If not specified the
+        # format will be JSON.
+        # Corresponds to the JSON property `payloadFormat`
+        # @return [String]
+        attr_accessor :payload_format
+      
+        # The `name` field of a Cloud Pubsub [Topic] (https://cloud.google.com/pubsub/
+        # docs/reference/rest/v1/projects.topics#Topic).
+        # Corresponds to the JSON property `topicName`
+        # @return [String]
+        attr_accessor :topic_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @payload_format = args[:payload_format] if args.key?(:payload_format)
+          @topic_name = args[:topic_name] if args.key?(:topic_name)
+        end
+      end
+      
+      # A request to undelete a specific alert that was marked for deletion.
+      class GoogleAppsAlertcenterV1beta1UndeleteAlertRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The unique identifier of the Google Workspace organization account
+        # of the customer the alert is associated with. Inferred from the caller
+        # identity if not provided.
+        # Corresponds to the JSON property `customerId`
+        # @return [String]
+        attr_accessor :customer_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer_id = args[:customer_id] if args.key?(:customer_id)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
+      class GoogleProtobufEmpty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
+      class GoogleRpcStatus
+        include Google::Apis::Core::Hashable
+      
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # A list of messages that carry the error details. There is a common set of
+        # message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @details = args[:details] if args.key?(:details)
+          @message = args[:message] if args.key?(:message)
         end
       end
     end
