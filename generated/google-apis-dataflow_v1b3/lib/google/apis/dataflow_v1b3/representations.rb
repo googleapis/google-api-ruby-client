@@ -1392,6 +1392,7 @@ module Google
           property :network, as: 'network'
           property :num_workers, as: 'numWorkers'
           property :service_account_email, as: 'serviceAccountEmail'
+          property :staging_location, as: 'stagingLocation'
           property :subnetwork, as: 'subnetwork'
           property :temp_location, as: 'tempLocation'
           property :worker_region, as: 'workerRegion'

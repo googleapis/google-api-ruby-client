@@ -1516,6 +1516,12 @@ module Google
         # @return [String]
         attr_accessor :service_account_email
       
+        # The Cloud Storage path for staging local files. Must be a valid Cloud Storage
+        # URL, beginning with `gs://`.
+        # Corresponds to the JSON property `stagingLocation`
+        # @return [String]
+        attr_accessor :staging_location
+      
         # Subnetwork to which VMs will be assigned, if desired. You can specify a
         # subnetwork using either a complete URL or an abbreviated path. Expected to be
         # of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/
@@ -1574,6 +1580,7 @@ module Google
           @network = args[:network] if args.key?(:network)
           @num_workers = args[:num_workers] if args.key?(:num_workers)
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+          @staging_location = args[:staging_location] if args.key?(:staging_location)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @temp_location = args[:temp_location] if args.key?(:temp_location)
           @worker_region = args[:worker_region] if args.key?(:worker_region)
