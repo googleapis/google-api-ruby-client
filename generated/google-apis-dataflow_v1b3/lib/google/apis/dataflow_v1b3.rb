@@ -38,7 +38,7 @@ module Google
       # View your Google Compute Engine resources
       AUTH_COMPUTE_READONLY = 'https://www.googleapis.com/auth/compute.readonly'
 
-      # View your email address
+      # See your primary Google Account email address
       AUTH_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email'
     end
   end
