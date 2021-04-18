@@ -80,6 +80,8 @@ module Google
         end
         
         # Lists tables for the user.
+        # @param [String] order_by
+        #   Optional. Sorting order for the list of tables on createTime/updateTime.
         # @param [Fixnum] page_size
         #   The maximum number of tables to return. The service may return fewer than this
         #   value. If unspecified, at most 20 tables are returned. The maximum value is
@@ -105,10 +107,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_tables(page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_tables(order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha1/tables', options)
           command.response_representation = Google::Apis::Area120tablesV1alpha1::ListTablesResponse::Representation
           command.response_class = Google::Apis::Area120tablesV1alpha1::ListTablesResponse
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -327,6 +330,8 @@ module Google
         #   Optional. Filter to only include resources matching the requirements. For more
         #   information, see [Filtering list results](https://support.google.com/area120-
         #   tables/answer/10503371).
+        # @param [String] order_by
+        #   Optional. Sorting order for the list of rows on createTime/updateTime.
         # @param [Fixnum] page_size
         #   The maximum number of rows to return. The service may return fewer than this
         #   value. If unspecified, at most 50 rows are returned. The maximum value is 1,
@@ -355,12 +360,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_table_rows(parent, filter: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_table_rows(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha1/{+parent}/rows', options)
           command.response_representation = Google::Apis::Area120tablesV1alpha1::ListRowsResponse::Representation
           command.response_class = Google::Apis::Area120tablesV1alpha1::ListRowsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['view'] = view unless view.nil?

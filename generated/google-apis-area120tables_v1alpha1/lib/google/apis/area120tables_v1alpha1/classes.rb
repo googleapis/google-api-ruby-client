@@ -152,6 +152,13 @@ module Google
         # @return [Google::Apis::Area120tablesV1alpha1::LookupDetails]
         attr_accessor :lookup_details
       
+        # Optional. Indicates whether or not multiple values are allowed for array types
+        # where such a restriction is possible.
+        # Corresponds to the JSON property `multipleValuesDisallowed`
+        # @return [Boolean]
+        attr_accessor :multiple_values_disallowed
+        alias_method :multiple_values_disallowed?, :multiple_values_disallowed
+      
         # column name
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -172,6 +179,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @labels = args[:labels] if args.key?(:labels)
           @lookup_details = args[:lookup_details] if args.key?(:lookup_details)
+          @multiple_values_disallowed = args[:multiple_values_disallowed] if args.key?(:multiple_values_disallowed)
           @name = args[:name] if args.key?(:name)
           @relationship_details = args[:relationship_details] if args.key?(:relationship_details)
         end
@@ -415,7 +423,32 @@ module Google
         end
       end
       
-      # A single table.
+      # A saved view of a table. NextId: 3
+      class SavedView
+        include Google::Apis::Core::Hashable
+      
+        # Internal id associated with the saved view.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Display name of the saved view.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A single table. NextId: 7
       class Table
         include Google::Apis::Core::Hashable
       
@@ -439,6 +472,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Saved views for this table.
+        # Corresponds to the JSON property `savedViews`
+        # @return [Array<Google::Apis::Area120tablesV1alpha1::SavedView>]
+        attr_accessor :saved_views
+      
         # Time when the table was last updated excluding updates to individual rows
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -454,6 +492,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @saved_views = args[:saved_views] if args.key?(:saved_views)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end

@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SavedView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Table
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -178,6 +184,7 @@ module Google
       
           property :lookup_details, as: 'lookupDetails', class: Google::Apis::Area120tablesV1alpha1::LookupDetails, decorator: Google::Apis::Area120tablesV1alpha1::LookupDetails::Representation
       
+          property :multiple_values_disallowed, as: 'multipleValuesDisallowed'
           property :name, as: 'name'
           property :relationship_details, as: 'relationshipDetails', class: Google::Apis::Area120tablesV1alpha1::RelationshipDetails, decorator: Google::Apis::Area120tablesV1alpha1::RelationshipDetails::Representation
       
@@ -260,6 +267,14 @@ module Google
         end
       end
       
+      class SavedView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :name, as: 'name'
+        end
+      end
+      
       class Table
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -268,6 +283,8 @@ module Google
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          collection :saved_views, as: 'savedViews', class: Google::Apis::Area120tablesV1alpha1::SavedView, decorator: Google::Apis::Area120tablesV1alpha1::SavedView::Representation
+      
           property :update_time, as: 'updateTime'
         end
       end
