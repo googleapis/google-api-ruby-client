@@ -1013,7 +1013,44 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a status of BoG program for your Merchant Center account.
+        # Reactivates the BoG program in your Merchant Center account. Moves the program
+        # to the active state when allowed, e.g. when paused. Important: This method is
+        # only whitelisted for selected merchants.
+        # @param [Fixnum] merchant_id
+        #   Required. The ID of the account.
+        # @param [String] region_code
+        #   The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/
+        #   ISO_3166-1_alpha-2). Currently only US is available.
+        # @param [Google::Apis::ContentV2_1::ActivateBuyOnGoogleProgramRequest] activate_buy_on_google_program_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def activate_buyongoogleprogram_buy_on_google_program(merchant_id, region_code, activate_buy_on_google_program_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, '{merchantId}/buyongoogleprograms/{regionCode}/activate', options)
+          command.request_representation = Google::Apis::ContentV2_1::ActivateBuyOnGoogleProgramRequest::Representation
+          command.request_object = activate_buy_on_google_program_request_object
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['regionCode'] = region_code unless region_code.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a status of the BoG program for your Merchant Center account.
         # @param [Fixnum] merchant_id
         #   Required. The ID of the account.
         # @param [String] region_code
@@ -1047,12 +1084,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Onboards BoG in your Merchant Center account. By using this method, you agree
-        # to the [Terms of Service](https://merchants.google.com/mc/termsofservice/
-        # transactions/US/latest). Calling this method is only possible if the
-        # authenticated account is the same as the merchant id in the request. Calling
-        # this method multiple times will only accept Terms of Service if the latest
-        # version is not currently signed.
+        # Onboards the BoG program in your Merchant Center account. By using this method,
+        # you agree to the [Terms of Service](https://merchants.google.com/mc/
+        # termsofservice/transactions/US/latest). Calling this method is only possible
+        # if the authenticated account is the same as the merchant id in the request.
+        # Calling this method multiple times will only accept Terms of Service if the
+        # latest version is not currently signed.
         # @param [Fixnum] merchant_id
         #   Required. The ID of the account.
         # @param [String] region_code
@@ -1080,6 +1117,79 @@ module Google
           command = make_simple_command(:post, '{merchantId}/buyongoogleprograms/{regionCode}/onboard', options)
           command.request_representation = Google::Apis::ContentV2_1::OnboardBuyOnGoogleProgramRequest::Representation
           command.request_object = onboard_buy_on_google_program_request_object
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['regionCode'] = region_code unless region_code.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Pauses the BoG program in your Merchant Center account. Important: This method
+        # is only whitelisted for selected merchants.
+        # @param [Fixnum] merchant_id
+        #   Required. The ID of the account.
+        # @param [String] region_code
+        #   The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/
+        #   ISO_3166-1_alpha-2). Currently only US is available.
+        # @param [Google::Apis::ContentV2_1::PauseBuyOnGoogleProgramRequest] pause_buy_on_google_program_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def pause_buyongoogleprogram_buy_on_google_program(merchant_id, region_code, pause_buy_on_google_program_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, '{merchantId}/buyongoogleprograms/{regionCode}/pause', options)
+          command.request_representation = Google::Apis::ContentV2_1::PauseBuyOnGoogleProgramRequest::Representation
+          command.request_object = pause_buy_on_google_program_request_object
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['regionCode'] = region_code unless region_code.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Requests review and then activates the BoG program in your Merchant Center
+        # account for the first time. Moves the program to the REVIEW_PENDING state.
+        # Important: This method is only whitelisted for selected merchants.
+        # @param [Fixnum] merchant_id
+        #   Required. The ID of the account.
+        # @param [String] region_code
+        #   The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/
+        #   ISO_3166-1_alpha-2). Currently only US is available.
+        # @param [Google::Apis::ContentV2_1::RequestReviewBuyOnGoogleProgramRequest] request_review_buy_on_google_program_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def requestreview_buyongoogleprogram(merchant_id, region_code, request_review_buy_on_google_program_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, '{merchantId}/buyongoogleprograms/{regionCode}/requestreview', options)
+          command.request_representation = Google::Apis::ContentV2_1::RequestReviewBuyOnGoogleProgramRequest::Representation
+          command.request_object = request_review_buy_on_google_program_request_object
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['regionCode'] = region_code unless region_code.nil?
           command.query['fields'] = fields unless fields.nil?

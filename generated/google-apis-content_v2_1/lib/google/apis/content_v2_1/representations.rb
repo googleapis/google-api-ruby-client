@@ -274,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ActivateBuyOnGoogleProgramRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Amount
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1378,6 +1384,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PauseBuyOnGoogleProgramRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PickupCarrierService
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1787,6 +1799,12 @@ module Google
       end
       
       class RepricingRuleStatsBasedRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RequestReviewBuyOnGoogleProgramRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2611,6 +2629,12 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :resources, as: 'resources', class: Google::Apis::ContentV2_1::AccountTax, decorator: Google::Apis::ContentV2_1::AccountTax::Representation
       
+        end
+      end
+      
+      class ActivateBuyOnGoogleProgramRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -4580,6 +4604,12 @@ module Google
         end
       end
       
+      class PauseBuyOnGoogleProgramRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class PickupCarrierService
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4944,6 +4974,10 @@ module Google
           property :country, as: 'country'
           property :location_group_name, as: 'locationGroupName'
           property :location_id, :numeric_string => true, as: 'locationId'
+          property :max_handling_time, :numeric_string => true, as: 'maxHandlingTime'
+          property :max_transit_time, :numeric_string => true, as: 'maxTransitTime'
+          property :min_handling_time, :numeric_string => true, as: 'minHandlingTime'
+          property :min_transit_time, :numeric_string => true, as: 'minTransitTime'
           property :postal_code, as: 'postalCode'
           property :price, as: 'price', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
       
@@ -5436,6 +5470,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :percentage_delta, as: 'percentageDelta'
           property :price_delta, as: 'priceDelta'
+        end
+      end
+      
+      class RequestReviewBuyOnGoogleProgramRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
