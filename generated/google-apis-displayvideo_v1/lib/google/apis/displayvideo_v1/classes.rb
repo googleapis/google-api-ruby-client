@@ -137,8 +137,9 @@ module Google
       
         # Required. Controls whether or not insertion orders and line items of the
         # advertiser can spend their budgets and bid on inventory. * Accepted values are
-        # `ENTITY_STATUS_ACTIVE` and `ENTITY_STATUS_SCHEDULED_FOR_DELETION`. * If set to
-        # `ENTITY_STATUS_SCHEDULED_FOR_DELETION`, the advertiser will be deleted 30 days
+        # `ENTITY_STATUS_ACTIVE`, `ENTITY_STATUS_PAUSED` and `
+        # ENTITY_STATUS_SCHEDULED_FOR_DELETION`. * If set to `
+        # ENTITY_STATUS_SCHEDULED_FOR_DELETION`, the advertiser will be deleted 30 days
         # from when it was first scheduled for deletion.
         # Corresponds to the JSON property `entityStatus`
         # @return [String]
