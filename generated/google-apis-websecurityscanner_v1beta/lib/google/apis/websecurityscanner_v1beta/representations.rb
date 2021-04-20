@@ -369,6 +369,7 @@ module Google
           collection :blacklist_patterns, as: 'blacklistPatterns'
           property :display_name, as: 'displayName'
           property :export_to_security_command_center, as: 'exportToSecurityCommandCenter'
+          property :ignore_http_status_errors, as: 'ignoreHttpStatusErrors'
           property :latest_run, as: 'latestRun', class: Google::Apis::WebsecurityscannerV1beta::ScanRun, decorator: Google::Apis::WebsecurityscannerV1beta::ScanRun::Representation
       
           property :managed_scan, as: 'managedScan'

@@ -582,6 +582,12 @@ module Google
         # @return [String]
         attr_accessor :export_to_security_command_center
       
+        # Whether to keep scanning even if most requests return HTTP error codes.
+        # Corresponds to the JSON property `ignoreHttpStatusErrors`
+        # @return [Boolean]
+        attr_accessor :ignore_http_status_errors
+        alias_method :ignore_http_status_errors?, :ignore_http_status_errors
+      
         # A ScanRun is a output-only resource representing an actual run of the scan.
         # Next id: 12
         # Corresponds to the JSON property `latestRun`
@@ -652,6 +658,7 @@ module Google
           @blacklist_patterns = args[:blacklist_patterns] if args.key?(:blacklist_patterns)
           @display_name = args[:display_name] if args.key?(:display_name)
           @export_to_security_command_center = args[:export_to_security_command_center] if args.key?(:export_to_security_command_center)
+          @ignore_http_status_errors = args[:ignore_http_status_errors] if args.key?(:ignore_http_status_errors)
           @latest_run = args[:latest_run] if args.key?(:latest_run)
           @managed_scan = args[:managed_scan] if args.key?(:managed_scan)
           @max_qps = args[:max_qps] if args.key?(:max_qps)
