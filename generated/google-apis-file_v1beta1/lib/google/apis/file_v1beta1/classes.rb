@@ -785,6 +785,12 @@ module Google
         # @return [Array<Google::Apis::FileV1beta1::NetworkConfig>]
         attr_accessor :networks
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. The instance state.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -813,6 +819,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @networks = args[:networks] if args.key?(:networks)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
           @status_message = args[:status_message] if args.key?(:status_message)
           @tier = args[:tier] if args.key?(:tier)
