@@ -1078,7 +1078,9 @@ module Google
         # will be populated with the moved project. The caller must have `
         # resourcemanager.projects.update` permission on the project and have `
         # resourcemanager.projects.move` permission on the project's current and
-        # proposed new parent.
+        # proposed new parent. If project has no current parent, or it currently does
+        # not have an associated organization resource, you will also need the `
+        # resourcemanager.projects.setIamPolicy` permission in the project.
         # @param [String] name
         #   Required. The name of the project to move.
         # @param [Google::Apis::CloudresourcemanagerV3::MoveProjectRequest] move_project_request_object
