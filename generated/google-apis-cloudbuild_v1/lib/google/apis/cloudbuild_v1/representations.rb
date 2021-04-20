@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PubsubConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PullRequestFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -419,12 +425,15 @@ module Google
           property :description, as: 'description'
           property :disabled, as: 'disabled'
           property :filename, as: 'filename'
+          property :filter, as: 'filter'
           property :github, as: 'github', class: Google::Apis::CloudbuildV1::GitHubEventsConfig, decorator: Google::Apis::CloudbuildV1::GitHubEventsConfig::Representation
       
           property :id, as: 'id'
           collection :ignored_files, as: 'ignoredFiles'
           collection :included_files, as: 'includedFiles'
           property :name, as: 'name'
+          property :pubsub_config, as: 'pubsubConfig', class: Google::Apis::CloudbuildV1::PubsubConfig, decorator: Google::Apis::CloudbuildV1::PubsubConfig::Representation
+      
           hash :substitutions, as: 'substitutions'
           collection :tags, as: 'tags'
           property :trigger_template, as: 'triggerTemplate', class: Google::Apis::CloudbuildV1::RepoSource, decorator: Google::Apis::CloudbuildV1::RepoSource::Representation
@@ -602,6 +611,16 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+        end
+      end
+      
+      class PubsubConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_account_email, as: 'serviceAccountEmail'
+          property :state, as: 'state'
+          property :subscription, as: 'subscription'
+          property :topic, as: 'topic'
         end
       end
       

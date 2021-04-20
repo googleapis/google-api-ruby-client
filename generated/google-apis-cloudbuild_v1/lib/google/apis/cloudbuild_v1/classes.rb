@@ -627,6 +627,11 @@ module Google
         # @return [String]
         attr_accessor :filename
       
+        # Optional. A Common Expression Language string.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
         # GitHubEventsConfig describes the configuration of a trigger that creates a
         # build whenever a GitHub event is received. This message is experimental.
         # Corresponds to the JSON property `github`
@@ -666,6 +671,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # PubsubConfig describes the configuration of a trigger that creates a build
+        # whenever a Pub/Sub message is published.
+        # Corresponds to the JSON property `pubsubConfig`
+        # @return [Google::Apis::CloudbuildV1::PubsubConfig]
+        attr_accessor :pubsub_config
+      
         # Substitutions for Build resource. The keys must match the following regular
         # expression: `^_[A-Z0-9_]+$`.
         # Corresponds to the JSON property `substitutions`
@@ -693,11 +704,13 @@ module Google
           @description = args[:description] if args.key?(:description)
           @disabled = args[:disabled] if args.key?(:disabled)
           @filename = args[:filename] if args.key?(:filename)
+          @filter = args[:filter] if args.key?(:filter)
           @github = args[:github] if args.key?(:github)
           @id = args[:id] if args.key?(:id)
           @ignored_files = args[:ignored_files] if args.key?(:ignored_files)
           @included_files = args[:included_files] if args.key?(:included_files)
           @name = args[:name] if args.key?(:name)
+          @pubsub_config = args[:pubsub_config] if args.key?(:pubsub_config)
           @substitutions = args[:substitutions] if args.key?(:substitutions)
           @tags = args[:tags] if args.key?(:tags)
           @trigger_template = args[:trigger_template] if args.key?(:trigger_template)
@@ -1289,6 +1302,47 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # PubsubConfig describes the configuration of a trigger that creates a build
+      # whenever a Pub/Sub message is published.
+      class PubsubConfig
+        include Google::Apis::Core::Hashable
+      
+        # Service account that will make the push request.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
+        # Potential issues with the underlying Pub/Sub subscription configuration. Only
+        # populated on get requests.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Name of the subscription. Format is `projects/`project`/
+        # subscriptions/`subscription``.
+        # Corresponds to the JSON property `subscription`
+        # @return [String]
+        attr_accessor :subscription
+      
+        # The name of the topic from which this subscription is receiving messages.
+        # Format is `projects/`project`/topics/`topic``.
+        # Corresponds to the JSON property `topic`
+        # @return [String]
+        attr_accessor :topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+          @state = args[:state] if args.key?(:state)
+          @subscription = args[:subscription] if args.key?(:subscription)
+          @topic = args[:topic] if args.key?(:topic)
         end
       end
       
