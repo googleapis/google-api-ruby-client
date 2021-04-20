@@ -369,6 +369,7 @@ module Google
           collection :blacklist_patterns, as: 'blacklistPatterns'
           property :display_name, as: 'displayName'
           property :export_to_security_command_center, as: 'exportToSecurityCommandCenter'
+          property :ignore_http_status_errors, as: 'ignoreHttpStatusErrors'
           property :managed_scan, as: 'managedScan'
           property :max_qps, as: 'maxQps'
           property :name, as: 'name'

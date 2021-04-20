@@ -585,6 +585,12 @@ module Google
         # @return [String]
         attr_accessor :export_to_security_command_center
       
+        # Whether to keep scanning even if most requests return HTTP error codes.
+        # Corresponds to the JSON property `ignoreHttpStatusErrors`
+        # @return [Boolean]
+        attr_accessor :ignore_http_status_errors
+        alias_method :ignore_http_status_errors?, :ignore_http_status_errors
+      
         # Whether the scan config is managed by Web Security Scanner, output only.
         # Corresponds to the JSON property `managedScan`
         # @return [Boolean]
@@ -643,6 +649,7 @@ module Google
           @blacklist_patterns = args[:blacklist_patterns] if args.key?(:blacklist_patterns)
           @display_name = args[:display_name] if args.key?(:display_name)
           @export_to_security_command_center = args[:export_to_security_command_center] if args.key?(:export_to_security_command_center)
+          @ignore_http_status_errors = args[:ignore_http_status_errors] if args.key?(:ignore_http_status_errors)
           @managed_scan = args[:managed_scan] if args.key?(:managed_scan)
           @max_qps = args[:max_qps] if args.key?(:max_qps)
           @name = args[:name] if args.key?(:name)
