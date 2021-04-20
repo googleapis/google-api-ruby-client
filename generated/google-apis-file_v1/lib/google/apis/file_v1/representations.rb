@@ -413,6 +413,7 @@ module Google
           property :name, as: 'name'
           collection :networks, as: 'networks', class: Google::Apis::FileV1::NetworkConfig, decorator: Google::Apis::FileV1::NetworkConfig::Representation
       
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :status_message, as: 'statusMessage'
           property :tier, as: 'tier'
