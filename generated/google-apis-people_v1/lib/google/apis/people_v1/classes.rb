@@ -1364,6 +1364,11 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::Person>]
         attr_accessor :other_contacts
       
+        # The total number of other contacts in the list without pagination.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1373,6 +1378,7 @@ module Google
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @next_sync_token = args[:next_sync_token] if args.key?(:next_sync_token)
           @other_contacts = args[:other_contacts] if args.key?(:other_contacts)
+          @total_size = args[:total_size] if args.key?(:total_size)
         end
       end
       

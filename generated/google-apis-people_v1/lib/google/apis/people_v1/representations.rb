@@ -838,6 +838,7 @@ module Google
           property :next_sync_token, as: 'nextSyncToken'
           collection :other_contacts, as: 'otherContacts', class: Google::Apis::PeopleV1::Person, decorator: Google::Apis::PeopleV1::Person::Representation
       
+          property :total_size, as: 'totalSize'
         end
       end
       

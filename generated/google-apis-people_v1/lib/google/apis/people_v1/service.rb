@@ -408,7 +408,7 @@ module Google
         # source.
         # @param [Fixnum] page_size
         #   Optional. The number of results to return. Defaults to 10 if field is not set,
-        #   or set to 0.
+        #   or set to 0. Values greater than 10 will be capped to 10.
         # @param [String] query
         #   Required. The plain-text query for the request. The query is used to match
         #   prefix phrases of the fields on a person. For example, a person with name "foo
@@ -844,7 +844,8 @@ module Google
         # , `emailAddresses`, `phoneNumbers`, and `organizations` fields that are from
         # the CONTACT" source.
         # @param [Fixnum] page_size
-        #   Optional. The number of results to return.
+        #   Optional. The number of results to return. Defaults to 10 if field is not set,
+        #   or set to 0. Values greater than 10 will be capped to 10.
         # @param [String] query
         #   Required. The plain-text query for the request. The query is used to match
         #   prefix phrases of the fields on a person. For example, a person with name "foo
