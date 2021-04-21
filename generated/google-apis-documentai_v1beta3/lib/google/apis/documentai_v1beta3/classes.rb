@@ -4327,6 +4327,19 @@ module Google
         end
       end
       
+      # Request message for the disable processor method.
+      class GoogleCloudDocumentaiV1beta3DisableProcessorRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Document represents the canonical document resource in Document Understanding
       # AI. It is an interchange format that provides insights into documents and
       # allows for collaboration between users and Document Understanding AI to
@@ -5760,6 +5773,19 @@ module Google
         end
       end
       
+      # Request message for the enable processor method.
+      class GoogleCloudDocumentaiV1beta3EnableProcessorRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Specifies a document stored on Cloud Storage.
       class GoogleCloudDocumentaiV1beta3GcsDocument
         include Google::Apis::Core::Hashable
@@ -5854,6 +5880,31 @@ module Google
           @human_review_operation = args[:human_review_operation] if args.key?(:human_review_operation)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
+        end
+      end
+      
+      # Response message for list processors.
+      class GoogleCloudDocumentaiV1beta3ListProcessorsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Points to the next processor, otherwise empty.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of processors.
+        # Corresponds to the JSON property `processors`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Processor>]
+        attr_accessor :processors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @processors = args[:processors] if args.key?(:processors)
         end
       end
       
@@ -5962,6 +6013,71 @@ module Google
           @document = args[:document] if args.key?(:document)
           @human_review_operation = args[:human_review_operation] if args.key?(:human_review_operation)
           @human_review_status = args[:human_review_status] if args.key?(:human_review_status)
+        end
+      end
+      
+      # The first-class citizen for DAI. Each processor defines how to extract
+      # structural information from a document.
+      class GoogleCloudDocumentaiV1beta3Processor
+        include Google::Apis::Core::Hashable
+      
+        # The time the processor was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The default processor version.
+        # Corresponds to the JSON property `defaultProcessorVersion`
+        # @return [String]
+        attr_accessor :default_processor_version
+      
+        # The display name of the processor.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The KMS key used for encryption/decryption in CMEK scenarios. See https://
+        # cloud.google.com/security-key-management.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        # Output only. Immutable. The resource name of the processor. Format: projects/`
+        # project`/locations/`location`/processors/`processor`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Immutable. The http endpoint that can be called to invoke
+        # processing.
+        # Corresponds to the JSON property `processEndpoint`
+        # @return [String]
+        attr_accessor :process_endpoint
+      
+        # Output only. The state of the processor.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The processor type, e.g., INVOICE_PARSING, W2_PARSING, etc.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @default_processor_version = args[:default_processor_version] if args.key?(:default_processor_version)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+          @name = args[:name] if args.key?(:name)
+          @process_endpoint = args[:process_endpoint] if args.key?(:process_endpoint)
+          @state = args[:state] if args.key?(:state)
+          @type = args[:type] if args.key?(:type)
         end
       end
       

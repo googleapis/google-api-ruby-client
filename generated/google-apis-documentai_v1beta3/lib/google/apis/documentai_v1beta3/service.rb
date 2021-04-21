@@ -192,6 +192,178 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a processor from the type processor that the user chose. The processor
+        # will be at "ENABLED" state by default after its creation.
+        # @param [String] parent
+        #   Required. The parent (project and location) under which to create the
+        #   processor. Format: projects/`project`/locations/`location`
+        # @param [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Processor] google_cloud_documentai_v1beta3_processor_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Processor] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Processor]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_processor(parent, google_cloud_documentai_v1beta3_processor_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta3/{+parent}/processors', options)
+          command.request_representation = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Processor::Representation
+          command.request_object = google_cloud_documentai_v1beta3_processor_object
+          command.response_representation = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Processor::Representation
+          command.response_class = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Processor
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the processor, unloads all deployed model artifacts if it was enabled
+        # and then deletes all artifacts associated with this processor.
+        # @param [String] name
+        #   Required. The processor resource name to be deleted.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_processor(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta3/{+name}', options)
+          command.response_representation = Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Disables a processor
+        # @param [String] name
+        #   Required. The processor resource name to be disabled.
+        # @param [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DisableProcessorRequest] google_cloud_documentai_v1beta3_disable_processor_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def disable_project_location_processor(name, google_cloud_documentai_v1beta3_disable_processor_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta3/{+name}:disable', options)
+          command.request_representation = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DisableProcessorRequest::Representation
+          command.request_object = google_cloud_documentai_v1beta3_disable_processor_request_object
+          command.response_representation = Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Enables a processor
+        # @param [String] name
+        #   Required. The processor resource name to be enabled.
+        # @param [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EnableProcessorRequest] google_cloud_documentai_v1beta3_enable_processor_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def enable_project_location_processor(name, google_cloud_documentai_v1beta3_enable_processor_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta3/{+name}:enable', options)
+          command.request_representation = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EnableProcessorRequest::Representation
+          command.request_object = google_cloud_documentai_v1beta3_enable_processor_request_object
+          command.response_representation = Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all processors which belong to this project.
+        # @param [String] parent
+        #   Required. The parent (project and location) which owns this collection of
+        #   Processors. Format: projects/`project`/locations/`location`
+        # @param [Fixnum] page_size
+        #   The maximum number of processors to return. If unspecified, at most 50
+        #   processors will be returned. The maximum value is 100; values above 100 will
+        #   be coerced to 100.
+        # @param [String] page_token
+        #   We will return the processors sorted by creation time. The page token will
+        #   point to the next processor.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ListProcessorsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ListProcessorsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_processors(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta3/{+parent}/processors', options)
+          command.response_representation = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ListProcessorsResponse::Representation
+          command.response_class = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ListProcessorsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Processes a single document.
         # @param [String] name
         #   Required. The resource name of the Processor or ProcessorVersion to use for
