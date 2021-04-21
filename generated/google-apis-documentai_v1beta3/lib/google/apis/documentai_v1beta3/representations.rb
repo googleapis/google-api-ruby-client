@@ -760,6 +760,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta3DisableProcessorRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta3Document
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -964,6 +970,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta3EnableProcessorRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta3GcsDocument
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -988,6 +1000,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta3ListProcessorsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta3NormalizedVertex
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1001,6 +1019,12 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1beta3ProcessResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3Processor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2397,6 +2421,12 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1beta3DisableProcessorRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudDocumentaiV1beta3Document
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2803,6 +2833,12 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1beta3EnableProcessorRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudDocumentaiV1beta3GcsDocument
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2835,6 +2871,15 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1beta3ListProcessorsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :processors, as: 'processors', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Processor, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Processor::Representation
+      
+        end
+      end
+      
       class GoogleCloudDocumentaiV1beta3NormalizedVertex
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2864,6 +2909,20 @@ module Google
           property :human_review_operation, as: 'humanReviewOperation'
           property :human_review_status, as: 'humanReviewStatus', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3HumanReviewStatus, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3HumanReviewStatus::Representation
       
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3Processor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :default_processor_version, as: 'defaultProcessorVersion'
+          property :display_name, as: 'displayName'
+          property :kms_key_name, as: 'kmsKeyName'
+          property :name, as: 'name'
+          property :process_endpoint, as: 'processEndpoint'
+          property :state, as: 'state'
+          property :type, as: 'type'
         end
       end
       
