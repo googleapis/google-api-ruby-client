@@ -27,19 +27,19 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The cloud resource container at which the quota policy is created. The format
-        # is `container_type`/`container_number`
+        # is ``container_type`/`container_number``
         # Corresponds to the JSON property `container`
         # @return [String]
         attr_accessor :container
       
         # If this map is nonempty, then this policy applies only to specific values for
         # dimensions defined in the limit unit. For example, an policy on a limit with
-        # the unit 1/`project`/`region` could contain an entry with the key "region" and
-        # the value "us-east-1"; the policy is only applied to quota consumed in that
-        # region. This map has the following restrictions: * If "region" appears as a
-        # key, its value must be a valid Cloud region. * If "zone" appears as a key, its
-        # value must be a valid Cloud zone. * Keys other than "region" or "zone" are not
-        # valid.
+        # the unit `1/`project`/`region`` could contain an entry with the key `region`
+        # and the value `us-east-1`; the policy is only applied to quota consumed in
+        # that region. This map has the following restrictions: * If `region` appears as
+        # a key, its value must be a valid Cloud region. * If `zone` appears as a key,
+        # its value must be a valid Cloud zone. * Keys other than `region` or `zone` are
+        # not valid.
         # Corresponds to the JSON property `dimensions`
         # @return [Hash<String,String>]
         attr_accessor :dimensions
@@ -273,11 +273,13 @@ module Google
         end
       end
       
-      # `Authentication` defines the authentication configuration for an API. Example
-      # for an API targeted for external use: name: calendar.googleapis.com
+      # `Authentication` defines the authentication configuration for API methods
+      # provided by an API service. Example: name: calendar.googleapis.com
       # authentication: providers: - id: google_calendar_auth jwks_uri: https://www.
       # googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: -
-      # selector: "*" requirements: provider_id: google_calendar_auth
+      # selector: "*" requirements: provider_id: google_calendar_auth - selector:
+      # google.calendar.Delegate oauth: canonical_scopes: https://www.googleapis.com/
+      # auth/calendar.read
       class Authentication
         include Google::Apis::Core::Hashable
       
@@ -703,7 +705,7 @@ module Google
         # @return [Array<Google::Apis::ServiceusageV1beta1::ConsumerQuotaLimit>]
         attr_accessor :descendant_consumer_quota_limits
       
-        # The display name of the metric. An example name would be: "CPUs"
+        # The display name of the metric. An example name would be: `CPUs`
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -715,7 +717,7 @@ module Google
       
         # The resource name of the quota settings on this metric for this consumer. An
         # example name would be: `projects/123/services/compute.googleapis.com/
-        # consumerQuotaMetrics/compute.googleapis.com%2Fcpus The resource name is
+        # consumerQuotaMetrics/compute.googleapis.com%2Fcpus` The resource name is
         # intended to be opaque and should not be parsed for its component strings,
         # since its representation could change in the future.
         # Corresponds to the JSON property `name`
@@ -1443,11 +1445,13 @@ module Google
         # @return [Array<Google::Apis::ServiceusageV1beta1::Api>]
         attr_accessor :apis
       
-        # `Authentication` defines the authentication configuration for an API. Example
-        # for an API targeted for external use: name: calendar.googleapis.com
+        # `Authentication` defines the authentication configuration for API methods
+        # provided by an API service. Example: name: calendar.googleapis.com
         # authentication: providers: - id: google_calendar_auth jwks_uri: https://www.
         # googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: -
-        # selector: "*" requirements: provider_id: google_calendar_auth
+        # selector: "*" requirements: provider_id: google_calendar_auth - selector:
+        # google.calendar.Delegate oauth: canonical_scopes: https://www.googleapis.com/
+        # auth/calendar.read
         # Corresponds to the JSON property `authentication`
         # @return [Google::Apis::ServiceusageV1beta1::Authentication]
         attr_accessor :authentication
@@ -1809,11 +1813,13 @@ module Google
         # @return [Array<Google::Apis::ServiceusageV1beta1::Api>]
         attr_accessor :apis
       
-        # `Authentication` defines the authentication configuration for an API. Example
-        # for an API targeted for external use: name: calendar.googleapis.com
+        # `Authentication` defines the authentication configuration for API methods
+        # provided by an API service. Example: name: calendar.googleapis.com
         # authentication: providers: - id: google_calendar_auth jwks_uri: https://www.
         # googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: -
-        # selector: "*" requirements: provider_id: google_calendar_auth
+        # selector: "*" requirements: provider_id: google_calendar_auth - selector:
+        # google.calendar.Delegate oauth: canonical_scopes: https://www.googleapis.com/
+        # auth/calendar.read
         # Corresponds to the JSON property `authentication`
         # @return [Google::Apis::ServiceusageV1beta1::Authentication]
         attr_accessor :authentication
@@ -3467,8 +3473,8 @@ module Google
         # bucket, which is the default quota value applied to all requests that do not
         # have a more specific override. If this map is nonempty, the default limit,
         # effective limit, and quota overrides apply only to requests that have the
-        # dimensions given in the map. For example, if the map has key "region" and
-        # value "us-east-1", then the specified effective limit is only effective in
+        # dimensions given in the map. For example, if the map has key `region` and
+        # value `us-east-1`, then the specified effective limit is only effective in
         # that region, and the specified overrides apply only in that region.
         # Corresponds to the JSON property `dimensions`
         # @return [Hash<String,String>]
@@ -3611,25 +3617,25 @@ module Google
       class QuotaOverride
         include Google::Apis::Core::Hashable
       
-        # The resource name of the ancestor that requested the override. For example: "
-        # organizations/12345" or "folders/67890". Used by admin overrides only.
+        # The resource name of the ancestor that requested the override. For example: `
+        # organizations/12345` or `folders/67890`. Used by admin overrides only.
         # Corresponds to the JSON property `adminOverrideAncestor`
         # @return [String]
         attr_accessor :admin_override_ancestor
       
         # If this map is nonempty, then this override applies only to specific values
         # for dimensions defined in the limit unit. For example, an override on a limit
-        # with the unit 1/`project`/`region` could contain an entry with the key "region"
-        # and the value "us-east-1"; the override is only applied to quota consumed in
-        # that region. This map has the following restrictions: * Keys that are not
-        # defined in the limit's unit are not valid keys. Any string appearing in `
-        # brackets` in the unit (besides `project` or `user`) is a defined key. * "
-        # project" is not a valid key; the project is already specified in the parent
-        # resource name. * "user" is not a valid key; the API does not support quota
-        # overrides that apply only to a specific user. * If "region" appears as a key,
-        # its value must be a valid Cloud region. * If "zone" appears as a key, its
-        # value must be a valid Cloud zone. * If any valid key other than "region" or "
-        # zone" appears in the map, then all valid keys other than "region" or "zone"
+        # with the unit `1/`project`/`region`` could contain an entry with the key `
+        # region` and the value `us-east-1`; the override is only applied to quota
+        # consumed in that region. This map has the following restrictions: * Keys that
+        # are not defined in the limit's unit are not valid keys. Any string appearing
+        # in ``brackets`` in the unit (besides ``project`` or ``user``) is a defined key.
+        # * `project` is not a valid key; the project is already specified in the
+        # parent resource name. * `user` is not a valid key; the API does not support
+        # quota overrides that apply only to a specific user. * If `region` appears as a
+        # key, its value must be a valid Cloud region. * If `zone` appears as a key, its
+        # value must be a valid Cloud zone. * If any valid key other than `region` or `
+        # zone` appears in the map, then all valid keys other than `region` or `zone`
         # must also appear in the map.
         # Corresponds to the JSON property `dimensions`
         # @return [Hash<String,String>]
@@ -3691,13 +3697,13 @@ module Google
         # @return [Google::Apis::ServiceusageV1beta1::ServiceConfig]
         attr_accessor :config
       
-        # The resource name of the consumer and service. A valid name would be: -
-        # projects/123/services/serviceusage.googleapis.com
+        # The resource name of the consumer and service. A valid name would be: - `
+        # projects/123/services/serviceusage.googleapis.com`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The resource name of the consumer. A valid name would be: - projects/123
+        # The resource name of the consumer. A valid name would be: - `projects/123`
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -3730,11 +3736,13 @@ module Google
         # @return [Array<Google::Apis::ServiceusageV1beta1::Api>]
         attr_accessor :apis
       
-        # `Authentication` defines the authentication configuration for an API. Example
-        # for an API targeted for external use: name: calendar.googleapis.com
+        # `Authentication` defines the authentication configuration for API methods
+        # provided by an API service. Example: name: calendar.googleapis.com
         # authentication: providers: - id: google_calendar_auth jwks_uri: https://www.
         # googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: -
-        # selector: "*" requirements: provider_id: google_calendar_auth
+        # selector: "*" requirements: provider_id: google_calendar_auth - selector:
+        # google.calendar.Delegate oauth: canonical_scopes: https://www.googleapis.com/
+        # auth/calendar.read
         # Corresponds to the JSON property `authentication`
         # @return [Google::Apis::ServiceusageV1beta1::Authentication]
         attr_accessor :authentication
