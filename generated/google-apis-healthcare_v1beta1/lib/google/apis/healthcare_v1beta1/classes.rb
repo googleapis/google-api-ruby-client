@@ -2278,9 +2278,9 @@ module Google
         # @return [String]
         attr_accessor :table_uri
       
-        # Determines whether existing tables in the destination dataset are overwritten
-        # or appended to. If a write_disposition is specified, the `force` parameter is
-        # ignored.
+        # Determines if existing data in the destination dataset is overwritten,
+        # appended to, or not written if the tables contain data. If a write_disposition
+        # is specified, the `force` parameter is ignored.
         # Corresponds to the JSON property `writeDisposition`
         # @return [String]
         attr_accessor :write_disposition
@@ -2598,9 +2598,9 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::SchemaConfig]
         attr_accessor :schema_config
       
-        # Determines whether existing tables in the destination dataset are overwritten
-        # or appended to. If a write_disposition is specified, the `force` parameter is
-        # ignored.
+        # Determines if existing data in the destination dataset is overwritten,
+        # appended to, or not written if the tables contain data. If a write_disposition
+        # is specified, the `force` parameter is ignored.
         # Corresponds to the JSON property `writeDisposition`
         # @return [String]
         attr_accessor :write_disposition
