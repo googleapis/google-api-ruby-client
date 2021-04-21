@@ -128,9 +128,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Enable multiple services on a project. The operation is atomic: if enabling
+        # Enables multiple services on a project. The operation is atomic: if enabling
         # any service fails, then the entire batch fails, and no state changes occur.
-        # Operation
+        # Operation response type: `google.protobuf.Empty`
         # @param [String] parent
         #   Parent to enable services on. An example name would be: `projects/123` where `
         #   123` is the project number (not project ID). The `BatchEnableServices` method
@@ -165,11 +165,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Disable a service so that it can no longer be used with a project. This
+        # Disables a service so that it can no longer be used with a project. This
         # prevents unintended usage that may cause unexpected billing charges or
         # security leaks. It is not valid to call the disable method on a service that
         # is not currently enabled. Callers will receive a `FAILED_PRECONDITION` status
-        # if the target service is not currently enabled. Operation
+        # if the target service is not currently enabled. Operation response type: `
+        # google.protobuf.Empty`
         # @param [String] name
         #   Name of the consumer and service to disable the service on. The enable and
         #   disable methods currently only support projects. An example name would be: `
@@ -205,7 +206,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Enable a service so that it can be used with a project. Operation
+        # Enables a service so that it can be used with a project. Operation response
+        # type: `google.protobuf.Empty`
         # @param [String] name
         #   Name of the consumer and service to enable the service on. The `EnableService`
         #   and `DisableService` methods currently only support projects. Enabling a
@@ -243,7 +245,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Generate service identity for service.
+        # Generates service identity for service.
         # @param [String] parent
         #   Name of the consumer and service to generate an identity for. The `
         #   GenerateServiceIdentity` methods currently only support projects. An example
@@ -308,8 +310,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all services available to the specified project, and the current state of
-        # those services with respect to the project. The list includes all public
+        # Lists all services available to the specified project, and the current state
+        # of those services with respect to the project. The list includes all public
         # services, all services for which the calling user has the `servicemanagement.
         # services.bind` permission, and all services that have already been enabled on
         # the project. The list can be filtered to only include services in a specific
@@ -358,9 +360,9 @@ module Google
         
         # Retrieves a summary of quota information for a specific quota metric
         # @param [String] name
-        #   The resource name of the quota limit. An example name would be: projects/123/
+        #   The resource name of the quota limit. An example name would be: `projects/123/
         #   services/serviceusage.googleapis.com/quotas/metrics/serviceusage.googleapis.
-        #   com%2Fmutate_requests
+        #   com%2Fmutate_requests`
         # @param [String] view
         #   Specifies the level of detail for quota information in the response.
         # @param [String] fields
@@ -391,9 +393,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create or update multiple admin overrides atomically, all on the same consumer,
-        # but on many different metrics or limits. The name field in the quota override
-        # message should not be set.
+        # Creates or updates multiple admin overrides atomically, all on the same
+        # consumer, but on many different metrics or limits. The name field in the quota
+        # override message should not be set.
         # @param [String] parent
         #   The resource name of the consumer. An example name would be: `projects/123/
         #   services/compute.googleapis.com`
@@ -427,7 +429,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create or update multiple consumer overrides atomically, all on the same
+        # Creates or updates multiple consumer overrides atomically, all on the same
         # consumer, but on many different metrics or limits. The name field in the quota
         # override message should not be set.
         # @param [String] parent
@@ -469,10 +471,10 @@ module Google
         # preciseness, default value), the current effective limit value, and all of the
         # overrides applied to the limit.
         # @param [String] parent
-        #   Parent of the quotas resource. Some example names would be: projects/123/
-        #   services/serviceconsumermanagement.googleapis.com folders/345/services/
-        #   serviceconsumermanagement.googleapis.com organizations/456/services/
-        #   serviceconsumermanagement.googleapis.com
+        #   Parent of the quotas resource. Some example names would be: `projects/123/
+        #   services/serviceconsumermanagement.googleapis.com` `folders/345/services/
+        #   serviceconsumermanagement.googleapis.com` `organizations/456/services/
+        #   serviceconsumermanagement.googleapis.com`
         # @param [Fixnum] page_size
         #   Requested size of the next page of data.
         # @param [String] page_token
