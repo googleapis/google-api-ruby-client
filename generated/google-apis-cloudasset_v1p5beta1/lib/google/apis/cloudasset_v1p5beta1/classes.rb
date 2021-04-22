@@ -1281,9 +1281,9 @@ module Google
       
       # Defines the conditions under which an EgressPolicy matches a request.
       # Conditions based on information about the source of the request. Note that if
-      # the destination of the request is protected by a ServicePerimeter, then that
-      # ServicePerimeter must have an IngressPolicy which allows access in order for
-      # this request to succeed.
+      # the destination of the request is also protected by a ServicePerimeter, then
+      # that ServicePerimeter must have an IngressPolicy which allows access in order
+      # for this request to succeed.
       class GoogleIdentityAccesscontextmanagerV1EgressFrom
         include Google::Apis::Core::Hashable
       
@@ -1329,9 +1329,9 @@ module Google
       
         # Defines the conditions under which an EgressPolicy matches a request.
         # Conditions based on information about the source of the request. Note that if
-        # the destination of the request is protected by a ServicePerimeter, then that
-        # ServicePerimeter must have an IngressPolicy which allows access in order for
-        # this request to succeed.
+        # the destination of the request is also protected by a ServicePerimeter, then
+        # that ServicePerimeter must have an IngressPolicy which allows access in order
+        # for this request to succeed.
         # Corresponds to the JSON property `egressFrom`
         # @return [Google::Apis::CloudassetV1p5beta1::GoogleIdentityAccesscontextmanagerV1EgressFrom]
         attr_accessor :egress_from
@@ -1339,8 +1339,10 @@ module Google
         # Defines the conditions under which an EgressPolicy matches a request.
         # Conditions are based on information about the ApiOperation intended to be
         # performed on the `resources` specified. Note that if the destination of the
-        # request is protected by a ServicePerimeter, then that ServicePerimeter must
-        # have an IngressPolicy which allows access in order for this request to succeed.
+        # request is also protected by a ServicePerimeter, then that ServicePerimeter
+        # must have an IngressPolicy which allows access in order for this request to
+        # succeed. The request must match `operations` AND `resources` fields in order
+        # to be allowed egress out of the perimeter.
         # Corresponds to the JSON property `egressTo`
         # @return [Google::Apis::CloudassetV1p5beta1::GoogleIdentityAccesscontextmanagerV1EgressTo]
         attr_accessor :egress_to
@@ -1359,21 +1361,25 @@ module Google
       # Defines the conditions under which an EgressPolicy matches a request.
       # Conditions are based on information about the ApiOperation intended to be
       # performed on the `resources` specified. Note that if the destination of the
-      # request is protected by a ServicePerimeter, then that ServicePerimeter must
-      # have an IngressPolicy which allows access in order for this request to succeed.
+      # request is also protected by a ServicePerimeter, then that ServicePerimeter
+      # must have an IngressPolicy which allows access in order for this request to
+      # succeed. The request must match `operations` AND `resources` fields in order
+      # to be allowed egress out of the perimeter.
       class GoogleIdentityAccesscontextmanagerV1EgressTo
         include Google::Apis::Core::Hashable
       
-        # A list of ApiOperations that this egress rule applies to. A request matches if
-        # it contains an operation/service in this list.
+        # A list of ApiOperations allowed to be performed by the sources specified in
+        # the corresponding EgressFrom. A request matches if it uses an operation/
+        # service in this list.
         # Corresponds to the JSON property `operations`
         # @return [Array<Google::Apis::CloudassetV1p5beta1::GoogleIdentityAccesscontextmanagerV1ApiOperation>]
         attr_accessor :operations
       
-        # A list of resources, currently only projects in the form `projects/`, that
-        # match this to stanza. A request matches if it contains a resource in this list.
-        # If `*` is specified for resources, then this EgressTo rule will authorize
-        # access to all resources outside the perimeter.
+        # A list of resources, currently only projects in the form `projects/`, that are
+        # allowed to be accessed by sources defined in the corresponding EgressFrom. A
+        # request matches if it contains a resource in this list. If `*` is specified
+        # for `resources`, then this EgressTo rule will authorize access to all
+        # resources outside the perimeter.
         # Corresponds to the JSON property `resources`
         # @return [Array<String>]
         attr_accessor :resources
@@ -1390,7 +1396,9 @@ module Google
       end
       
       # Defines the conditions under which an IngressPolicy matches a request.
-      # Conditions are based on information about the source of the request.
+      # Conditions are based on information about the source of the request. The
+      # request must satisfy what is defined in `sources` AND identity related fields
+      # in order to match.
       class GoogleIdentityAccesscontextmanagerV1IngressFrom
         include Google::Apis::Core::Hashable
       
@@ -1439,14 +1447,17 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Defines the conditions under which an IngressPolicy matches a request.
-        # Conditions are based on information about the source of the request.
+        # Conditions are based on information about the source of the request. The
+        # request must satisfy what is defined in `sources` AND identity related fields
+        # in order to match.
         # Corresponds to the JSON property `ingressFrom`
         # @return [Google::Apis::CloudassetV1p5beta1::GoogleIdentityAccesscontextmanagerV1IngressFrom]
         attr_accessor :ingress_from
       
         # Defines the conditions under which an IngressPolicy matches a request.
         # Conditions are based on information about the ApiOperation intended to be
-        # performed on the destination of the request.
+        # performed on the target resource of the request. The request must satisfy what
+        # is defined in `operations` AND `resources` in order to match.
         # Corresponds to the JSON property `ingressTo`
         # @return [Google::Apis::CloudassetV1p5beta1::GoogleIdentityAccesscontextmanagerV1IngressTo]
         attr_accessor :ingress_to
@@ -1472,7 +1483,8 @@ module Google
         # cause an error. If no AccessLevel names are listed, resources within the
         # perimeter can only be accessed via Google Cloud calls with request origins
         # within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`
-        # . If `*` is specified, then all IngressSources will be allowed.
+        # . If a single `*` is specified for `access_level`, then all IngressSources
+        # will be allowed.
         # Corresponds to the JSON property `accessLevel`
         # @return [String]
         attr_accessor :access_level
@@ -1500,22 +1512,21 @@ module Google
       
       # Defines the conditions under which an IngressPolicy matches a request.
       # Conditions are based on information about the ApiOperation intended to be
-      # performed on the destination of the request.
+      # performed on the target resource of the request. The request must satisfy what
+      # is defined in `operations` AND `resources` in order to match.
       class GoogleIdentityAccesscontextmanagerV1IngressTo
         include Google::Apis::Core::Hashable
       
-        # A list of ApiOperations the sources specified in corresponding IngressFrom are
-        # allowed to perform in this ServicePerimeter.
+        # A list of ApiOperations allowed to be performed by the sources specified in
+        # corresponding IngressFrom in this ServicePerimeter.
         # Corresponds to the JSON property `operations`
         # @return [Array<Google::Apis::CloudassetV1p5beta1::GoogleIdentityAccesscontextmanagerV1ApiOperation>]
         attr_accessor :operations
       
         # A list of resources, currently only projects in the form `projects/`,
         # protected by this ServicePerimeter that are allowed to be accessed by sources
-        # defined in the corresponding IngressFrom. A request matches if it contains a
-        # resource in this list. If `*` is specified for resources, then this IngressTo
-        # rule will authorize access to all resources inside the perimeter, provided
-        # that the request also matches the `operations` field.
+        # defined in the corresponding IngressFrom. If a single `*` is specified, then
+        # access to all resources inside the perimeter are allowed.
         # Corresponds to the JSON property `resources`
         # @return [Array<String>]
         attr_accessor :resources
