@@ -37,6 +37,13 @@ module Google
         # @return [String]
         attr_accessor :accelerator_type
       
+        # Size of partitions to create on the GPU. Valid values are described in the
+        # NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-
+        # guide/#partitioning).
+        # Corresponds to the JSON property `gpuPartitionSize`
+        # @return [String]
+        attr_accessor :gpu_partition_size
+      
         def initialize(**args)
            update!(**args)
         end
@@ -45,6 +52,7 @@ module Google
         def update!(**args)
           @accelerator_count = args[:accelerator_count] if args.key?(:accelerator_count)
           @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
+          @gpu_partition_size = args[:gpu_partition_size] if args.key?(:gpu_partition_size)
         end
       end
       

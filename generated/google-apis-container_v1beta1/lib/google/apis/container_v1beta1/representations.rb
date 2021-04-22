@@ -729,6 +729,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accelerator_count, :numeric_string => true, as: 'acceleratorCount'
           property :accelerator_type, as: 'acceleratorType'
+          property :gpu_partition_size, as: 'gpuPartitionSize'
         end
       end
       
