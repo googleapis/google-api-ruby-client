@@ -1361,7 +1361,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a file's metadata by ID.
+        # Gets a file's metadata or content by ID.
         # @param [String] file_id
         #   The ID for the file in question.
         # @param [Boolean] acknowledge_abuse
