@@ -305,8 +305,8 @@ module Google
       
         # An object that represents a latitude/longitude pair. This is expressed as a
         # pair of doubles to represent degrees latitude and degrees longitude. Unless
-        # specified otherwise, this must conform to the WGS84 standard. Values must be
-        # within normalized ranges.
+        # specified otherwise, this object must conform to the WGS84 standard. Values
+        # must be within normalized ranges.
         # Corresponds to the JSON property `centerPoint`
         # @return [Google::Apis::PlayablelocationsV3::GoogleTypeLatLng]
         attr_accessor :center_point
@@ -328,8 +328,8 @@ module Google
       
         # An object that represents a latitude/longitude pair. This is expressed as a
         # pair of doubles to represent degrees latitude and degrees longitude. Unless
-        # specified otherwise, this must conform to the WGS84 standard. Values must be
-        # within normalized ranges.
+        # specified otherwise, this object must conform to the WGS84 standard. Values
+        # must be within normalized ranges.
         # Corresponds to the JSON property `snappedPoint`
         # @return [Google::Apis::PlayablelocationsV3::GoogleTypeLatLng]
         attr_accessor :snapped_point
@@ -556,8 +556,8 @@ module Google
       
       # An object that represents a latitude/longitude pair. This is expressed as a
       # pair of doubles to represent degrees latitude and degrees longitude. Unless
-      # specified otherwise, this must conform to the WGS84 standard. Values must be
-      # within normalized ranges.
+      # specified otherwise, this object must conform to the WGS84 standard. Values
+      # must be within normalized ranges.
       class GoogleTypeLatLng
         include Google::Apis::Core::Hashable
       
