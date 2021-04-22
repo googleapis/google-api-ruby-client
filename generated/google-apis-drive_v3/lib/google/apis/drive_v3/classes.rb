@@ -426,8 +426,8 @@ module Google
       class Comment
         include Google::Apis::Core::Hashable
       
-        # A region of the document represented as a JSON string. See anchor
-        # documentation for details on how to define and interpret anchor properties.
+        # A region of the document represented as a JSON string. For details on defining
+        # anchor properties, refer to  Add comments and replies.
         # Corresponds to the JSON property `anchor`
         # @return [String]
         attr_accessor :anchor
