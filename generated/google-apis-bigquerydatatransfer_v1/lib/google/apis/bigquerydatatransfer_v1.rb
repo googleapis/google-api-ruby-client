@@ -33,9 +33,6 @@ module Google
       # View and manage your data in Google BigQuery
       AUTH_BIGQUERY = 'https://www.googleapis.com/auth/bigquery'
 
-      # View your data in Google BigQuery
-      AUTH_BIGQUERY_READONLY = 'https://www.googleapis.com/auth/bigquery.readonly'
-
       # See, edit, configure, and delete your Google Cloud Platform data
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
 
