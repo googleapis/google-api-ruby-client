@@ -288,6 +288,8 @@ module Google
           collection :commands, as: 'commands'
           property :credentials, as: 'credentials', class: Google::Apis::GenomicsV2alpha1::Secret, decorator: Google::Apis::GenomicsV2alpha1::Secret::Representation
       
+          property :encrypted_environment, as: 'encryptedEnvironment', class: Google::Apis::GenomicsV2alpha1::Secret, decorator: Google::Apis::GenomicsV2alpha1::Secret::Representation
+      
           property :entrypoint, as: 'entrypoint'
           hash :environment, as: 'environment'
           collection :flags, as: 'flags'
@@ -522,6 +524,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :actions, as: 'actions', class: Google::Apis::GenomicsV2alpha1::Action, decorator: Google::Apis::GenomicsV2alpha1::Action::Representation
+      
+          property :encrypted_environment, as: 'encryptedEnvironment', class: Google::Apis::GenomicsV2alpha1::Secret, decorator: Google::Apis::GenomicsV2alpha1::Secret::Representation
       
           hash :environment, as: 'environment'
           property :resources, as: 'resources', class: Google::Apis::GenomicsV2alpha1::Resources, decorator: Google::Apis::GenomicsV2alpha1::Resources::Representation

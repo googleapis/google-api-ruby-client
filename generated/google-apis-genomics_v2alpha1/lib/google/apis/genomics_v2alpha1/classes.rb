@@ -70,6 +70,12 @@ module Google
         # @return [Google::Apis::GenomicsV2alpha1::Secret]
         attr_accessor :credentials
       
+        # Holds encrypted information that is only decrypted and stored in RAM by the
+        # worker VM when running the pipeline.
+        # Corresponds to the JSON property `encryptedEnvironment`
+        # @return [Google::Apis::GenomicsV2alpha1::Secret]
+        attr_accessor :encrypted_environment
+      
         # If specified, overrides the `ENTRYPOINT` specified in the container.
         # Corresponds to the JSON property `entrypoint`
         # @return [String]
@@ -170,6 +176,7 @@ module Google
         def update!(**args)
           @commands = args[:commands] if args.key?(:commands)
           @credentials = args[:credentials] if args.key?(:credentials)
+          @encrypted_environment = args[:encrypted_environment] if args.key?(:encrypted_environment)
           @entrypoint = args[:entrypoint] if args.key?(:entrypoint)
           @environment = args[:environment] if args.key?(:environment)
           @flags = args[:flags] if args.key?(:flags)
@@ -998,6 +1005,12 @@ module Google
         # @return [Array<Google::Apis::GenomicsV2alpha1::Action>]
         attr_accessor :actions
       
+        # Holds encrypted information that is only decrypted and stored in RAM by the
+        # worker VM when running the pipeline.
+        # Corresponds to the JSON property `encryptedEnvironment`
+        # @return [Google::Apis::GenomicsV2alpha1::Secret]
+        attr_accessor :encrypted_environment
+      
         # The environment to pass into every action. Each action can also specify
         # additional environment variables but cannot delete an entry from this map (
         # though they can overwrite it with a different value).
@@ -1026,6 +1039,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @actions = args[:actions] if args.key?(:actions)
+          @encrypted_environment = args[:encrypted_environment] if args.key?(:encrypted_environment)
           @environment = args[:environment] if args.key?(:environment)
           @resources = args[:resources] if args.key?(:resources)
           @timeout = args[:timeout] if args.key?(:timeout)
