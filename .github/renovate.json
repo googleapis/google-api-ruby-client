@@ -1,0 +1,7 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "ignorePaths": ["generated/**/*"],
+  "rangeStrategy": "widen"
+}
