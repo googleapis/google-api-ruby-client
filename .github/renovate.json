@@ -2,6 +2,13 @@
   "extends": [
     "config:base"
   ],
-  "ignorePaths": ["generated/**/*"],
+  "includePaths": [
+    "*",
+    "samples/**/*",
+    "google-apis-core/**/*",
+    "google-apis-generator/**/*",
+    "google-api-client/**/*",
+    "generated/google-apis-discovery_v1/**/*"
+  ],
   "rangeStrategy": "widen"
 }
