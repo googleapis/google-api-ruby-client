@@ -2059,7 +2059,9 @@ module Google
           property :channel_id, :numeric_string => true, as: 'channelId'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :negatively_targeted_line_item_count, :numeric_string => true, as: 'negativelyTargetedLineItemCount'
           property :partner_id, :numeric_string => true, as: 'partnerId'
+          property :positively_targeted_line_item_count, :numeric_string => true, as: 'positivelyTargetedLineItemCount'
         end
       end
       
@@ -3301,6 +3303,7 @@ module Google
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           property :negative_keyword_list_id, :numeric_string => true, as: 'negativeKeywordListId'
+          property :targeted_line_item_count, :numeric_string => true, as: 'targetedLineItemCount'
         end
       end
       
