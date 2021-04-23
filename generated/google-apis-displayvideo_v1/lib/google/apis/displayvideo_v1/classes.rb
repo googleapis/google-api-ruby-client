@@ -2147,10 +2147,22 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Number of line items that are directly targeting this channel
+        # negatively.
+        # Corresponds to the JSON property `negativelyTargetedLineItemCount`
+        # @return [Fixnum]
+        attr_accessor :negatively_targeted_line_item_count
+      
         # The ID of the partner that owns the channel.
         # Corresponds to the JSON property `partnerId`
         # @return [Fixnum]
         attr_accessor :partner_id
+      
+        # Output only. Number of line items that are directly targeting this channel
+        # positively.
+        # Corresponds to the JSON property `positivelyTargetedLineItemCount`
+        # @return [Fixnum]
+        attr_accessor :positively_targeted_line_item_count
       
         def initialize(**args)
            update!(**args)
@@ -2162,7 +2174,9 @@ module Google
           @channel_id = args[:channel_id] if args.key?(:channel_id)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @negatively_targeted_line_item_count = args[:negatively_targeted_line_item_count] if args.key?(:negatively_targeted_line_item_count)
           @partner_id = args[:partner_id] if args.key?(:partner_id)
+          @positively_targeted_line_item_count = args[:positively_targeted_line_item_count] if args.key?(:positively_targeted_line_item_count)
         end
       end
       
@@ -6761,6 +6775,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :negative_keyword_list_id
       
+        # Output only. Number of line items that are directly targeting this negative
+        # keyword list.
+        # Corresponds to the JSON property `targetedLineItemCount`
+        # @return [Fixnum]
+        attr_accessor :targeted_line_item_count
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6771,6 +6791,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @negative_keyword_list_id = args[:negative_keyword_list_id] if args.key?(:negative_keyword_list_id)
+          @targeted_line_item_count = args[:targeted_line_item_count] if args.key?(:targeted_line_item_count)
         end
       end
       
