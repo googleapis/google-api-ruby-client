@@ -27,7 +27,7 @@ jobs:
       - name: ReleaseLabel
         id: release-label
         if: ${{ steps.release-please.outputs.pr }}
-        uses: actions/github-script@v2
+        uses: actions/github-script@v4
         with:
           github-token: ${{secrets.YOSHI_APPROVER_TOKEN}}
           script: |
