@@ -1136,7 +1136,10 @@ module Google
       
           property :guaranteed_impressions, :numeric_string => true, as: 'guaranteedImpressions'
           property :guaranteed_looks, :numeric_string => true, as: 'guaranteedLooks'
+          property :impression_cap, :numeric_string => true, as: 'impressionCap'
           property :minimum_daily_looks, :numeric_string => true, as: 'minimumDailyLooks'
+          property :percent_share_of_voice, :numeric_string => true, as: 'percentShareOfVoice'
+          property :reservation_type, as: 'reservationType'
         end
       end
       

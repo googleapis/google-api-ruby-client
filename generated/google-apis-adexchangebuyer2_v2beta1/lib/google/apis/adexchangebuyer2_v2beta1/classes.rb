@@ -1843,10 +1843,29 @@ module Google
         # @return [Fixnum]
         attr_accessor :guaranteed_looks
       
+        # The lifetime impression cap for CPM sponsorship deals. The deal will stop
+        # serving when the cap is reached.
+        # Corresponds to the JSON property `impressionCap`
+        # @return [Fixnum]
+        attr_accessor :impression_cap
+      
         # Daily minimum looks for CPD deal types.
         # Corresponds to the JSON property `minimumDailyLooks`
         # @return [Fixnum]
         attr_accessor :minimum_daily_looks
+      
+        # For sponsorship deals, this is the percentage of the seller's eligible
+        # impressions that the deal will serve until the cap is reached.
+        # Corresponds to the JSON property `percentShareOfVoice`
+        # @return [Fixnum]
+        attr_accessor :percent_share_of_voice
+      
+        # The reservation type for a Programmatic Guaranteed deal. This indicates
+        # whether the number of impressions is fixed, or a percent of available
+        # impressions. If not specified, the default reservation type is STANDARD.
+        # Corresponds to the JSON property `reservationType`
+        # @return [String]
+        attr_accessor :reservation_type
       
         def initialize(**args)
            update!(**args)
@@ -1857,7 +1876,10 @@ module Google
           @fixed_prices = args[:fixed_prices] if args.key?(:fixed_prices)
           @guaranteed_impressions = args[:guaranteed_impressions] if args.key?(:guaranteed_impressions)
           @guaranteed_looks = args[:guaranteed_looks] if args.key?(:guaranteed_looks)
+          @impression_cap = args[:impression_cap] if args.key?(:impression_cap)
           @minimum_daily_looks = args[:minimum_daily_looks] if args.key?(:minimum_daily_looks)
+          @percent_share_of_voice = args[:percent_share_of_voice] if args.key?(:percent_share_of_voice)
+          @reservation_type = args[:reservation_type] if args.key?(:reservation_type)
         end
       end
       
