@@ -841,6 +841,15 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Log entry field paths that are denied access in this bucket. The following
+        # fields and their children are eligible: textPayload, jsonPayload, protoPayload,
+        # httpRequest, labels, sourceLocation. Restricting a repeated field will
+        # restrict all values. Adding a parent will block all child fields e.g. foo.bar
+        # will block foo.bar.baz.
+        # Corresponds to the JSON property `restrictedFields`
+        # @return [Array<String>]
+        attr_accessor :restricted_fields
+      
         # Logs will be retained by default for this amount of time, after which they
         # will automatically be deleted. The minimum retention period is 1 day. If this
         # value is set to zero at bucket creation time, the default time of 30 days will
@@ -865,6 +874,7 @@ module Google
           @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
           @locked = args[:locked] if args.key?(:locked)
           @name = args[:name] if args.key?(:name)
+          @restricted_fields = args[:restricted_fields] if args.key?(:restricted_fields)
           @retention_days = args[:retention_days] if args.key?(:retention_days)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
