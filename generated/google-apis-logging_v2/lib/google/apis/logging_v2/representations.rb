@@ -481,6 +481,7 @@ module Google
           property :lifecycle_state, as: 'lifecycleState'
           property :locked, as: 'locked'
           property :name, as: 'name'
+          collection :restricted_fields, as: 'restrictedFields'
           property :retention_days, as: 'retentionDays'
           property :update_time, as: 'updateTime'
         end
