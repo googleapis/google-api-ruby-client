@@ -452,10 +452,12 @@ module Google
         end
         
         # Accesses a SecretVersion. This call returns the secret data. `projects/*/
-        # secrets/*/versions/latest` is an alias to the `latest` SecretVersion.
+        # secrets/*/versions/latest` is an alias to the most recently created
+        # SecretVersion.
         # @param [String] name
         #   Required. The resource name of the SecretVersion in the format `projects/*/
-        #   secrets/*/versions/*`.
+        #   secrets/*/versions/*`. `projects/*/secrets/*/versions/latest` is an alias to
+        #   the most recently created SecretVersion.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -587,11 +589,11 @@ module Google
         end
         
         # Gets metadata for a SecretVersion. `projects/*/secrets/*/versions/latest` is
-        # an alias to the `latest` SecretVersion.
+        # an alias to the most recently created SecretVersion.
         # @param [String] name
         #   Required. The resource name of the SecretVersion in the format `projects/*/
         #   secrets/*/versions/*`. `projects/*/secrets/*/versions/latest` is an alias to
-        #   the `latest` SecretVersion.
+        #   the most recently created SecretVersion.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
