@@ -24,7 +24,7 @@ module Google
     # OS management tools that can be used for patch management, patch compliance,
     # and configuration management on VM instances.
     #
-    # @see https://cloud.google.com/compute/docs/manage-os
+    # @see https://cloud.google.com/compute/docs/osconfig/rest
     module OsconfigV1
       # Version of the OS Config API this client connects to.
       # This is NOT the gem version.
