@@ -31,7 +31,7 @@ module Google
       #    Osconfig = Google::Apis::OsconfigV1 # Alias the module
       #    service = Osconfig::OSConfigService.new
       #
-      # @see https://cloud.google.com/compute/docs/manage-os
+      # @see https://cloud.google.com/compute/docs/osconfig/rest
       class OSConfigService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
