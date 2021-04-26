@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OsPolicyAssignmentOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OneTimeSchedule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -608,6 +614,17 @@ module Google
           property :month_day, as: 'monthDay'
           property :week_day_of_month, as: 'weekDayOfMonth', class: Google::Apis::OsconfigV1beta::WeekDayOfMonth, decorator: Google::Apis::OsconfigV1beta::WeekDayOfMonth::Representation
       
+        end
+      end
+      
+      class OsPolicyAssignmentOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_method, as: 'apiMethod'
+          property :os_policy_assignment, as: 'osPolicyAssignment'
+          property :rollout_start_time, as: 'rolloutStartTime'
+          property :rollout_state, as: 'rolloutState'
+          property :rollout_update_time, as: 'rolloutUpdateTime'
         end
       end
       
