@@ -843,8 +843,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :desired_addons_config, as: 'desiredAddonsConfig', class: Google::Apis::ContainerV1::AddonsConfig, decorator: Google::Apis::ContainerV1::AddonsConfig::Representation
       
-          property :desired_autopilot, as: 'desiredAutopilot', class: Google::Apis::ContainerV1::Autopilot, decorator: Google::Apis::ContainerV1::Autopilot::Representation
-      
           property :desired_binary_authorization, as: 'desiredBinaryAuthorization', class: Google::Apis::ContainerV1::BinaryAuthorization, decorator: Google::Apis::ContainerV1::BinaryAuthorization::Representation
       
           property :desired_cluster_autoscaling, as: 'desiredClusterAutoscaling', class: Google::Apis::ContainerV1::ClusterAutoscaling, decorator: Google::Apis::ContainerV1::ClusterAutoscaling::Representation
