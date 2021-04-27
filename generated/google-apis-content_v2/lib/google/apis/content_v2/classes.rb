@@ -1606,13 +1606,20 @@ module Google
         # @return [String]
         attr_accessor :country
       
+        # A list of services supported for EDD (Estimated Delivery Date) calculation.
+        # This is the list of valid values for WarehouseBasedDeliveryTime.carrierService.
+        # Corresponds to the JSON property `eddServices`
+        # @return [Array<String>]
+        attr_accessor :edd_services
+      
         # The name of the carrier (e.g., `"UPS"`). Always present.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # A list of supported services (e.g., `"ground"`) for that carrier. Contains at
-        # least one service.
+        # least one service. This is the list of valid values for CarrierRate.
+        # carrierService.
         # Corresponds to the JSON property `services`
         # @return [Array<String>]
         attr_accessor :services
@@ -1624,6 +1631,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @country = args[:country] if args.key?(:country)
+          @edd_services = args[:edd_services] if args.key?(:edd_services)
           @name = args[:name] if args.key?(:name)
           @services = args[:services] if args.key?(:services)
         end
@@ -2557,6 +2565,13 @@ module Google
         # @return [Google::Apis::ContentV2::TransitTable]
         attr_accessor :transit_time_table
       
+        # Indicates that the delivery time should be calculated per warehouse (shipping
+        # origin location) based on the settings of the selected carrier. When set, no
+        # other transit time related field in DeliveryTime should be set.
+        # Corresponds to the JSON property `warehouseBasedDeliveryTimes`
+        # @return [Array<Google::Apis::ContentV2::WarehouseBasedDeliveryTime>]
+        attr_accessor :warehouse_based_delivery_times
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2572,6 +2587,7 @@ module Google
           @min_transit_time_in_days = args[:min_transit_time_in_days] if args.key?(:min_transit_time_in_days)
           @transit_business_day_config = args[:transit_business_day_config] if args.key?(:transit_business_day_config)
           @transit_time_table = args[:transit_time_table] if args.key?(:transit_time_table)
+          @warehouse_based_delivery_times = args[:warehouse_based_delivery_times] if args.key?(:warehouse_based_delivery_times)
         end
       end
       
@@ -11506,6 +11522,66 @@ module Google
           @no_shipping = args[:no_shipping] if args.key?(:no_shipping)
           @price_percentage = args[:price_percentage] if args.key?(:price_percentage)
           @subtable_name = args[:subtable_name] if args.key?(:subtable_name)
+        end
+      end
+      
+      # 
+      class WarehouseBasedDeliveryTime
+        include Google::Apis::Core::Hashable
+      
+        # Required. Carrier, such as `"UPS"` or `"Fedex"`. The list of supported
+        # carriers can be retrieved via the `listSupportedCarriers` method.
+        # Corresponds to the JSON property `carrier`
+        # @return [String]
+        attr_accessor :carrier
+      
+        # Required. Carrier service, such as `"ground"` or `"2 days"`. The list of
+        # supported services for a carrier can be retrieved via the `
+        # listSupportedCarriers` method. The name of the service must be in the
+        # eddSupportedServices list.
+        # Corresponds to the JSON property `carrierService`
+        # @return [String]
+        attr_accessor :carrier_service
+      
+        # Required. Shipping origin's state.
+        # Corresponds to the JSON property `originAdministrativeArea`
+        # @return [String]
+        attr_accessor :origin_administrative_area
+      
+        # Required. Shipping origin's city.
+        # Corresponds to the JSON property `originCity`
+        # @return [String]
+        attr_accessor :origin_city
+      
+        # Required. Shipping origin's country represented as a [CLDR territory code](
+        # http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml).
+        # Corresponds to the JSON property `originCountry`
+        # @return [String]
+        attr_accessor :origin_country
+      
+        # Required. Shipping origin.
+        # Corresponds to the JSON property `originPostalCode`
+        # @return [String]
+        attr_accessor :origin_postal_code
+      
+        # Shipping origin's street address
+        # Corresponds to the JSON property `originStreetAddress`
+        # @return [String]
+        attr_accessor :origin_street_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @carrier = args[:carrier] if args.key?(:carrier)
+          @carrier_service = args[:carrier_service] if args.key?(:carrier_service)
+          @origin_administrative_area = args[:origin_administrative_area] if args.key?(:origin_administrative_area)
+          @origin_city = args[:origin_city] if args.key?(:origin_city)
+          @origin_country = args[:origin_country] if args.key?(:origin_country)
+          @origin_postal_code = args[:origin_postal_code] if args.key?(:origin_postal_code)
+          @origin_street_address = args[:origin_street_address] if args.key?(:origin_street_address)
         end
       end
       
