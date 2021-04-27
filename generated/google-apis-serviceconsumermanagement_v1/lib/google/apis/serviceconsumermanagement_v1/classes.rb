@@ -971,6 +971,13 @@ module Google
       class Endpoint
         include Google::Apis::Core::Hashable
       
+        # Unimplemented. Dot not use. DEPRECATED: This field is no longer supported.
+        # Instead of using aliases, please specify multiple google.api.Endpoint for each
+        # of the intended aliases. Additional names that this endpoint will be hosted on.
+        # Corresponds to the JSON property `aliases`
+        # @return [Array<String>]
+        attr_accessor :aliases
+      
         # Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing),
         # aka cross-domain traffic, would allow the backends served from this endpoint
         # to receive and respond to HTTP OPTIONS requests. The response will be used by
@@ -1000,6 +1007,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @aliases = args[:aliases] if args.key?(:aliases)
           @allow_cors = args[:allow_cors] if args.key?(:allow_cors)
           @name = args[:name] if args.key?(:name)
           @target = args[:target] if args.key?(:target)
