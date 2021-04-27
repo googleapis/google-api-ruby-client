@@ -6695,9 +6695,6 @@ module Google
         #   Required. Name of the organization. Use the following structure in your
         #   request: `organizations/`org``.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Instance] google_cloud_apigee_v1_instance_object
-        # @param [Array<String>, String] environments
-        #   Optional. List of environments that will be attached to the instance during
-        #   creation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6715,14 +6712,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_organization_instance(parent, google_cloud_apigee_v1_instance_object = nil, environments: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_organization_instance(parent, google_cloud_apigee_v1_instance_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/instances', options)
           command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Instance::Representation
           command.request_object = google_cloud_apigee_v1_instance_object
           command.response_representation = Google::Apis::ApigeeV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
-          command.query['environments'] = environments unless environments.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
