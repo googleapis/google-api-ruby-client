@@ -38,6 +38,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The type of the bidding function to be created.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -46,6 +51,7 @@ module Google
         def update!(**args)
           @bidding_function = args[:bidding_function] if args.key?(:bidding_function)
           @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       

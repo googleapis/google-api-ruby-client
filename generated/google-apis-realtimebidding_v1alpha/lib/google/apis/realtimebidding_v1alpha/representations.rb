@@ -39,6 +39,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bidding_function, as: 'biddingFunction'
           property :name, as: 'name'
+          property :type, as: 'type'
         end
       end
       
