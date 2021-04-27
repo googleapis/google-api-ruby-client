@@ -976,6 +976,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta3FetchProcessorTypesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta3GcsDocument
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1030,6 +1036,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta3ProcessorType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ProcessorTypeLocationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta3RawDocument
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1049,6 +1067,18 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1beta3ReviewDocumentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3Schema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3SchemaEntityType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2839,6 +2869,14 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1beta3FetchProcessorTypesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :processor_types, as: 'processorTypes', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessorType, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessorType::Representation
+      
+        end
+      end
+      
       class GoogleCloudDocumentaiV1beta3GcsDocument
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2926,6 +2964,27 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1beta3ProcessorType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_creation, as: 'allowCreation'
+          collection :available_locations, as: 'availableLocations', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessorTypeLocationInfo, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessorTypeLocationInfo::Representation
+      
+          property :category, as: 'category'
+          property :name, as: 'name'
+          property :schema, as: 'schema', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Schema, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Schema::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ProcessorTypeLocationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location_id, as: 'locationId'
+        end
+      end
+      
       class GoogleCloudDocumentaiV1beta3RawDocument
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2960,6 +3019,30 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_destination, as: 'gcsDestination'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3Schema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          collection :entity_types, as: 'entityTypes', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaEntityType, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaEntityType::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3SchemaEntityType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_type, as: 'baseType'
+          property :description, as: 'description'
+          collection :enum_values, as: 'enumValues'
+          property :occurrence_type, as: 'occurrenceType'
+          collection :properties, as: 'properties', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaEntityType, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaEntityType::Representation
+      
+          property :source, as: 'source'
+          property :type, as: 'type'
         end
       end
       
