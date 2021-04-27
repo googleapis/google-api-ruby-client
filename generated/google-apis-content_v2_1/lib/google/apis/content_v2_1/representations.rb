@@ -1390,6 +1390,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PaymentServiceProviderLinkInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PickupCarrierService
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2188,6 +2194,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WarehouseBasedDeliveryTime
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Weight
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2487,6 +2499,8 @@ module Google
           property :action, as: 'action'
           property :link_type, as: 'linkType'
           property :linked_account_id, as: 'linkedAccountId'
+          property :payment_service_provider_link_info, as: 'paymentServiceProviderLinkInfo', class: Google::Apis::ContentV2_1::PaymentServiceProviderLinkInfo, decorator: Google::Apis::ContentV2_1::PaymentServiceProviderLinkInfo::Representation
+      
           collection :services, as: 'services'
         end
       end
@@ -2681,6 +2695,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :country, as: 'country'
+          collection :edd_services, as: 'eddServices'
           property :name, as: 'name'
           collection :services, as: 'services'
         end
@@ -3027,6 +3042,8 @@ module Google
           property :transit_business_day_config, as: 'transitBusinessDayConfig', class: Google::Apis::ContentV2_1::BusinessDayConfig, decorator: Google::Apis::ContentV2_1::BusinessDayConfig::Representation
       
           property :transit_time_table, as: 'transitTimeTable', class: Google::Apis::ContentV2_1::TransitTable, decorator: Google::Apis::ContentV2_1::TransitTable::Representation
+      
+          collection :warehouse_based_delivery_times, as: 'warehouseBasedDeliveryTimes', class: Google::Apis::ContentV2_1::WarehouseBasedDeliveryTime, decorator: Google::Apis::ContentV2_1::WarehouseBasedDeliveryTime::Representation
       
         end
       end
@@ -4610,6 +4627,14 @@ module Google
         end
       end
       
+      class PaymentServiceProviderLinkInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_account_business_country, as: 'externalAccountBusinessCountry'
+          property :external_account_id, as: 'externalAccountId'
+        end
+      end
+      
       class PickupCarrierService
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6183,6 +6208,19 @@ module Google
           property :no_shipping, as: 'noShipping'
           property :price_percentage, as: 'pricePercentage'
           property :subtable_name, as: 'subtableName'
+        end
+      end
+      
+      class WarehouseBasedDeliveryTime
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :carrier, as: 'carrier'
+          property :carrier_service, as: 'carrierService'
+          property :origin_administrative_area, as: 'originAdministrativeArea'
+          property :origin_city, as: 'originCity'
+          property :origin_country, as: 'originCountry'
+          property :origin_postal_code, as: 'originPostalCode'
+          property :origin_street_address, as: 'originStreetAddress'
         end
       end
       
