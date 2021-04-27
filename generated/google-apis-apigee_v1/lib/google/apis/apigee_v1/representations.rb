@@ -2848,6 +2848,7 @@ module Google
           property :is_enabled, as: 'isEnabled'
           property :name, as: 'name'
           property :port, as: 'port'
+          property :protocol, as: 'protocol'
           property :s_sl_info, as: 'sSLInfo', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TlsInfo, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TlsInfo::Representation
       
         end
@@ -2859,6 +2860,7 @@ module Google
           property :host, as: 'host'
           property :name, as: 'name'
           property :port, as: 'port'
+          property :protocol, as: 'protocol'
           property :tls_info, as: 'tlsInfo', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TlsInfoConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TlsInfoConfig::Representation
       
         end

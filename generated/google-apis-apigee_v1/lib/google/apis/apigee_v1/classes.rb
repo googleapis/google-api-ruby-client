@@ -4991,7 +4991,9 @@ module Google
         # @return [String]
         attr_accessor :authorized_network
       
-        # Cloud Platform location for the runtime instance. Defaults to `us-west1-a`.
+        # Cloud Platform location for the runtime instance. Defaults to zone `us-west1-a`
+        # . If a region is provided, `EVAL` organizations will use the region for
+        # automatically selecting a zone for the runtime instance.
         # Corresponds to the JSON property `runtimeLocation`
         # @return [String]
         attr_accessor :runtime_location
@@ -6542,6 +6544,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :port
       
+        # Immutable. The protocol used by this TargetServer.
+        # Corresponds to the JSON property `protocol`
+        # @return [String]
+        attr_accessor :protocol
+      
         # TLS configuration information for VirtualHosts and TargetServers.
         # Corresponds to the JSON property `sSLInfo`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1TlsInfo]
@@ -6558,6 +6565,7 @@ module Google
           @is_enabled = args[:is_enabled] if args.key?(:is_enabled)
           @name = args[:name] if args.key?(:name)
           @port = args[:port] if args.key?(:port)
+          @protocol = args[:protocol] if args.key?(:protocol)
           @s_sl_info = args[:s_sl_info] if args.key?(:s_sl_info)
         end
       end
@@ -6582,6 +6590,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :port
       
+        # The protocol used by this target server.
+        # Corresponds to the JSON property `protocol`
+        # @return [String]
+        attr_accessor :protocol
+      
         # TLS settings for the target server.
         # Corresponds to the JSON property `tlsInfo`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1TlsInfoConfig]
@@ -6596,6 +6609,7 @@ module Google
           @host = args[:host] if args.key?(:host)
           @name = args[:name] if args.key?(:name)
           @port = args[:port] if args.key?(:port)
+          @protocol = args[:protocol] if args.key?(:protocol)
           @tls_info = args[:tls_info] if args.key?(:tls_info)
         end
       end
