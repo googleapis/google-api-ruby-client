@@ -1636,6 +1636,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WarehouseBasedDeliveryTime
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Weight
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2086,6 +2092,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :country, as: 'country'
+          collection :edd_services, as: 'eddServices'
           property :name, as: 'name'
           collection :services, as: 'services'
         end
@@ -2343,6 +2350,8 @@ module Google
           property :transit_business_day_config, as: 'transitBusinessDayConfig', class: Google::Apis::ContentV2::BusinessDayConfig, decorator: Google::Apis::ContentV2::BusinessDayConfig::Representation
       
           property :transit_time_table, as: 'transitTimeTable', class: Google::Apis::ContentV2::TransitTable, decorator: Google::Apis::ContentV2::TransitTable::Representation
+      
+          collection :warehouse_based_delivery_times, as: 'warehouseBasedDeliveryTimes', class: Google::Apis::ContentV2::WarehouseBasedDeliveryTime, decorator: Google::Apis::ContentV2::WarehouseBasedDeliveryTime::Representation
       
         end
       end
@@ -4750,6 +4759,19 @@ module Google
           property :no_shipping, as: 'noShipping'
           property :price_percentage, as: 'pricePercentage'
           property :subtable_name, as: 'subtableName'
+        end
+      end
+      
+      class WarehouseBasedDeliveryTime
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :carrier, as: 'carrier'
+          property :carrier_service, as: 'carrierService'
+          property :origin_administrative_area, as: 'originAdministrativeArea'
+          property :origin_city, as: 'originCity'
+          property :origin_country, as: 'originCountry'
+          property :origin_postal_code, as: 'originPostalCode'
+          property :origin_street_address, as: 'originStreetAddress'
         end
       end
       
