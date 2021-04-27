@@ -1058,11 +1058,6 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::AddonsConfig]
         attr_accessor :desired_addons_config
       
-        # Autopilot is the configuration for Autopilot settings on the cluster.
-        # Corresponds to the JSON property `desiredAutopilot`
-        # @return [Google::Apis::ContainerV1beta1::Autopilot]
-        attr_accessor :desired_autopilot
-      
         # Configuration for Binary Authorization.
         # Corresponds to the JSON property `desiredBinaryAuthorization`
         # @return [Google::Apis::ContainerV1beta1::BinaryAuthorization]
@@ -1261,7 +1256,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @desired_addons_config = args[:desired_addons_config] if args.key?(:desired_addons_config)
-          @desired_autopilot = args[:desired_autopilot] if args.key?(:desired_autopilot)
           @desired_binary_authorization = args[:desired_binary_authorization] if args.key?(:desired_binary_authorization)
           @desired_cluster_autoscaling = args[:desired_cluster_autoscaling] if args.key?(:desired_cluster_autoscaling)
           @desired_cluster_telemetry = args[:desired_cluster_telemetry] if args.key?(:desired_cluster_telemetry)
