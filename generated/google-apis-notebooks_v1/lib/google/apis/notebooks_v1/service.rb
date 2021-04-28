@@ -362,7 +362,8 @@ module Google
         # @param [String] parent
         #   Required. Format: `parent=projects/`project_id`/locations/`location``
         # @param [String] filter
-        #   Filter applied to resulting executions.
+        #   Filter applied to resulting executions. Currently only supports filtering
+        #   executions by a specified schedule_id. Format: "schedule_id="
         # @param [String] order_by
         #   Sort by field.
         # @param [Fixnum] page_size
