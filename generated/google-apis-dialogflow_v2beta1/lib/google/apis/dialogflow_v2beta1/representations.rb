@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3ExportFlowResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3ExportTestCasesMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,6 +179,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3ImportDocumentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3ImportFlowResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -508,6 +520,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1ExportFlowResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -581,6 +599,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1ImportDocumentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ImportFlowResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2495,6 +2519,14 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3ExportFlowResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :flow_content, :base64 => true, as: 'flowContent'
+          property :flow_uri, as: 'flowUri'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3ExportTestCasesMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2610,6 +2642,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :warnings, as: 'warnings', class: Google::Apis::DialogflowV2beta1::GoogleRpcStatus, decorator: Google::Apis::DialogflowV2beta1::GoogleRpcStatus::Representation
       
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ImportFlowResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :flow, as: 'flow'
         end
       end
       
@@ -3164,6 +3203,14 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3beta1ExportFlowResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :flow_content, :base64 => true, as: 'flowContent'
+          property :flow_uri, as: 'flowUri'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3279,6 +3326,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :warnings, as: 'warnings', class: Google::Apis::DialogflowV2beta1::GoogleRpcStatus, decorator: Google::Apis::DialogflowV2beta1::GoogleRpcStatus::Representation
       
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ImportFlowResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :flow, as: 'flow'
         end
       end
       
