@@ -1313,6 +1313,17 @@ module Google
       class FhirStore
         include Google::Apis::Core::Hashable
       
+        # If true, overrides the default search behavior for this FHIR store to `
+        # handling=strict` which returns an error for unrecognized search parameters. If
+        # false, uses the FHIR specification default `handling=lenient` which ignores
+        # unrecognized search parameters. The handling can always be changed from the
+        # default on an individual API call by setting the HTTP header `Prefer: handling=
+        # strict` or `Prefer: handling=lenient`.
+        # Corresponds to the JSON property `defaultSearchHandlingStrict`
+        # @return [Boolean]
+        attr_accessor :default_search_handling_strict
+        alias_method :default_search_handling_strict?, :default_search_handling_strict
+      
         # Immutable. Whether to disable referential integrity in this FHIR store. This
         # field is immutable after FHIR store creation. The default value is false,
         # meaning that the API enforces referential integrity and fails the requests
@@ -1403,6 +1414,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @default_search_handling_strict = args[:default_search_handling_strict] if args.key?(:default_search_handling_strict)
           @disable_referential_integrity = args[:disable_referential_integrity] if args.key?(:disable_referential_integrity)
           @disable_resource_versioning = args[:disable_resource_versioning] if args.key?(:disable_resource_versioning)
           @enable_update_create = args[:enable_update_create] if args.key?(:enable_update_create)
