@@ -800,6 +800,7 @@ module Google
       class MultiClusterIngressFeatureSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :billing, as: 'billing'
           property :config_membership, as: 'configMembership'
         end
       end
