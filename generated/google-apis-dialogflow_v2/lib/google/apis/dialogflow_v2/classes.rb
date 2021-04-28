@@ -415,6 +415,33 @@ module Google
         end
       end
       
+      # The response message for Flows.ExportFlow.
+      class GoogleCloudDialogflowCxV3ExportFlowResponse
+        include Google::Apis::Core::Hashable
+      
+        # Uncompressed raw byte content for flow.
+        # Corresponds to the JSON property `flowContent`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :flow_content
+      
+        # The URI to a file containing the exported flow. This field is populated only
+        # if `flow_uri` is specified in ExportFlowRequest.
+        # Corresponds to the JSON property `flowUri`
+        # @return [String]
+        attr_accessor :flow_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @flow_content = args[:flow_content] if args.key?(:flow_content)
+          @flow_uri = args[:flow_uri] if args.key?(:flow_uri)
+        end
+      end
+      
       # Metadata returned for the TestCases.ExportTestCases long running operation.
       class GoogleCloudDialogflowCxV3ExportTestCasesMetadata
         include Google::Apis::Core::Hashable
@@ -810,6 +837,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
+      # The response message for Flows.ImportFlow.
+      class GoogleCloudDialogflowCxV3ImportFlowResponse
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifier of the new flow. Format: `projects//locations//agents//
+        # flows/`.
+        # Corresponds to the JSON property `flow`
+        # @return [String]
+        attr_accessor :flow
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @flow = args[:flow] if args.key?(:flow)
         end
       end
       
@@ -2808,6 +2855,33 @@ module Google
         end
       end
       
+      # The response message for Flows.ExportFlow.
+      class GoogleCloudDialogflowCxV3beta1ExportFlowResponse
+        include Google::Apis::Core::Hashable
+      
+        # Uncompressed raw byte content for flow.
+        # Corresponds to the JSON property `flowContent`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :flow_content
+      
+        # The URI to a file containing the exported flow. This field is populated only
+        # if `flow_uri` is specified in ExportFlowRequest.
+        # Corresponds to the JSON property `flowUri`
+        # @return [String]
+        attr_accessor :flow_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @flow_content = args[:flow_content] if args.key?(:flow_content)
+          @flow_uri = args[:flow_uri] if args.key?(:flow_uri)
+        end
+      end
+      
       # Metadata returned for the TestCases.ExportTestCases long running operation.
       class GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata
         include Google::Apis::Core::Hashable
@@ -3203,6 +3277,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
+      # The response message for Flows.ImportFlow.
+      class GoogleCloudDialogflowCxV3beta1ImportFlowResponse
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifier of the new flow. Format: `projects//locations//agents//
+        # flows/`.
+        # Corresponds to the JSON property `flow`
+        # @return [String]
+        attr_accessor :flow
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @flow = args[:flow] if args.key?(:flow)
         end
       end
       
@@ -6709,8 +6803,7 @@ module Google
       class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Conversation model resource name. Format: `projects//
-        # conversationModels/`.
+        # Conversation model resource name. Format: `projects//conversationModels/`.
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
@@ -9292,8 +9385,8 @@ module Google
       
         # An object that represents a latitude/longitude pair. This is expressed as a
         # pair of doubles to represent degrees latitude and degrees longitude. Unless
-        # specified otherwise, this must conform to the WGS84 standard. Values must be
-        # within normalized ranges.
+        # specified otherwise, this object must conform to the WGS84 standard. Values
+        # must be within normalized ranges.
         # Corresponds to the JSON property `geoLocation`
         # @return [Google::Apis::DialogflowV2::GoogleTypeLatLng]
         attr_accessor :geo_location
@@ -13696,8 +13789,8 @@ module Google
       
       # An object that represents a latitude/longitude pair. This is expressed as a
       # pair of doubles to represent degrees latitude and degrees longitude. Unless
-      # specified otherwise, this must conform to the WGS84 standard. Values must be
-      # within normalized ranges.
+      # specified otherwise, this object must conform to the WGS84 standard. Values
+      # must be within normalized ranges.
       class GoogleTypeLatLng
         include Google::Apis::Core::Hashable
       
