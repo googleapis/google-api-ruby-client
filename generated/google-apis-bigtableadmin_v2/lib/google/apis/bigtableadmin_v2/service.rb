@@ -834,7 +834,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a cluster within an instance.
+        # Partially updates a cluster within a project. This method is the preferred way
+        # to update a Cluster.
+        # @param [String] name
+        #   The unique name of the cluster. Values are of the form `projects/`project`/
+        #   instances/`instance`/clusters/a-z*`.
+        # @param [Google::Apis::BigtableadminV2::Cluster] cluster_object
+        # @param [String] update_mask
+        #   Required. The subset of Cluster fields which should be replaced. Must be
+        #   explicitly set.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigtableadminV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigtableadminV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def partial_project_instance_cluster_update_cluster(name, cluster_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::BigtableadminV2::Cluster::Representation
+          command.request_object = cluster_object
+          command.response_representation = Google::Apis::BigtableadminV2::Operation::Representation
+          command.response_class = Google::Apis::BigtableadminV2::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a cluster within an instance. UpdateCluster is deprecated. Please use
+        # PartialUpdateCluster instead.
         # @param [String] name
         #   The unique name of the cluster. Values are of the form `projects/`project`/
         #   instances/`instance`/clusters/a-z*`.
