@@ -131,7 +131,7 @@ module Google
         end
       end
       
-      # The encryption options for the Composer environment and its dependencies.
+      # The encryption options for the Cloud Composer environment and its dependencies.
       class EncryptionConfig
         include Google::Apis::Core::Hashable
       
@@ -240,7 +240,7 @@ module Google
         # @return [Google::Apis::ComposerV1beta1::DatabaseConfig]
         attr_accessor :database_config
       
-        # The encryption options for the Composer environment and its dependencies.
+        # The encryption options for the Cloud Composer environment and its dependencies.
         # Corresponds to the JSON property `encryptionConfig`
         # @return [Google::Apis::ComposerV1beta1::EncryptionConfig]
         attr_accessor :encryption_config
@@ -634,9 +634,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :oauth_scopes
       
-        # Optional. The Google Cloud Platform Service Account to be used by the node VMs.
-        # If a service account is not specified, the "default" Compute Engine service
-        # account is used. Cannot be updated.
+        # Optional. The Google Cloud Platform Service Account to be used by the
+        # workloads. If a service account is not specified, the "default" Compute Engine
+        # service account is used. Cannot be updated .
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -843,7 +843,7 @@ module Google
       
         # Optional. If `true`, a Private IP Cloud Composer environment is created. If
         # this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to
-        # true.
+        # true .
         # Corresponds to the JSON property `enablePrivateEnvironment`
         # @return [Boolean]
         attr_accessor :enable_private_environment
