@@ -345,9 +345,7 @@ module Google
         
         # Lists managed services. Returns all public services. For authenticated users,
         # also returns all services the calling user has "servicemanagement.services.get"
-        # permission for. **BETA:** If the caller specifies the `consumer_id`, it
-        # returns only the services enabled on the consumer. The `consumer_id` must have
-        # the format of "project:`PROJECT-ID`".
+        # permission for.
         # @param [String] consumer_id
         #   Include services consumed by the specified consumer. The Google Service
         #   Management implementation accepts the following forms: - project:
