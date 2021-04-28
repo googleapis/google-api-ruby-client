@@ -22,8 +22,8 @@ module Google
     module WorkflowsV1
       # Workflows API
       #
-      # Orchestrate Workflows consisting of Google Cloud APIs, SaaS APIs or private
-      #  API endpoints.
+      # Manage workflow definitions. To execute workflows and manage executions, see
+      #  the Workflows Executions API.
       #
       # @example
       #    require 'google/apis/workflows_v1'
