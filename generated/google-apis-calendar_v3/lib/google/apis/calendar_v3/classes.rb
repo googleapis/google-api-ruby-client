@@ -580,14 +580,14 @@ module Google
       
         # A global palette of calendar colors, mapping from the color ID to its
         # definition. A calendarListEntry resource refers to one of these color IDs in
-        # its color field. Read-only.
+        # its colorId field. Read-only.
         # Corresponds to the JSON property `calendar`
         # @return [Hash<String,Google::Apis::CalendarV3::ColorDefinition>]
         attr_accessor :calendar
       
         # A global palette of event colors, mapping from the color ID to its definition.
-        # An event resource may refer to one of these color IDs in its color field. Read-
-        # only.
+        # An event resource may refer to one of these color IDs in its colorId field.
+        # Read-only.
         # Corresponds to the JSON property `event`
         # @return [Hash<String,Google::Apis::CalendarV3::ColorDefinition>]
         attr_accessor :event
