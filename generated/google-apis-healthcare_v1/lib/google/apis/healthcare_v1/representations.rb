@@ -1072,6 +1072,7 @@ module Google
       class FhirStore
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_search_handling_strict, as: 'defaultSearchHandlingStrict'
           property :disable_referential_integrity, as: 'disableReferentialIntegrity'
           property :disable_resource_versioning, as: 'disableResourceVersioning'
           property :enable_update_create, as: 'enableUpdateCreate'
