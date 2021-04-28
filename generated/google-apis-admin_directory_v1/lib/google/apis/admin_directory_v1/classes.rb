@@ -909,7 +909,7 @@ module Google
       
         # List of recent device users, in descending order, by last login time.
         # Corresponds to the JSON property `recentUsers`
-        # @return [Array<Google::Apis::AdminDirectoryV1::RecentUsers>]
+        # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::RecentUser>]
         attr_accessor :recent_users
       
         # List of screenshot files to download. Type is always "SCREENSHOT_FILE". (Read-
@@ -1192,6 +1192,32 @@ module Google
           def update!(**args)
             @ip_address = args[:ip_address] if args.key?(:ip_address)
             @wan_ip_address = args[:wan_ip_address] if args.key?(:wan_ip_address)
+          end
+        end
+        
+        # List of recent device users, in descending order, by last login time.
+        class RecentUser
+          include Google::Apis::Core::Hashable
+        
+          # The user's email address. This is only present if the user type is `
+          # USER_TYPE_MANAGED`.
+          # Corresponds to the JSON property `email`
+          # @return [String]
+          attr_accessor :email
+        
+          # The type of the user.
+          # Corresponds to the JSON property `type`
+          # @return [String]
+          attr_accessor :type
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @email = args[:email] if args.key?(:email)
+            @type = args[:type] if args.key?(:type)
           end
         end
         
@@ -3060,32 +3086,6 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
-        end
-      end
-      
-      # List of recent device users, in descending order, by last login time.
-      class RecentUsers
-        include Google::Apis::Core::Hashable
-      
-        # The user's email address. This is only present if the user type is `
-        # USER_TYPE_MANAGED`.
-        # Corresponds to the JSON property `email`
-        # @return [String]
-        attr_accessor :email
-      
-        # The type of the user.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @email = args[:email] if args.key?(:email)
-          @type = args[:type] if args.key?(:type)
         end
       end
       
