@@ -1198,7 +1198,7 @@ module Google
         attr_accessor :membership_states
       
         # Output only. The full, unique name of this Feature resource in the format `
-        # projects/*/locations/global/features/*`.
+        # projects/*/locations/*/features/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1553,6 +1553,11 @@ module Google
       class MultiClusterIngressFeatureSpec
         include Google::Apis::Core::Hashable
       
+        # Customer's billing structure
+        # Corresponds to the JSON property `billing`
+        # @return [String]
+        attr_accessor :billing
+      
         # Fully-qualified Membership name which hosts the MultiClusterIngress CRD.
         # Example: `projects/foo-proj/locations/global/memberships/bar`
         # Corresponds to the JSON property `configMembership`
@@ -1565,6 +1570,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @billing = args[:billing] if args.key?(:billing)
           @config_membership = args[:config_membership] if args.key?(:config_membership)
         end
       end

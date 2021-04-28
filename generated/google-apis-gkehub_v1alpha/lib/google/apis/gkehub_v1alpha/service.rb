@@ -122,6 +122,132 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Adds a new Feature.
+        # @param [String] parent
+        #   The parent (project and location) where the Feature will be created. Specified
+        #   in the format `projects/*/locations/*`.
+        # @param [Google::Apis::GkehubV1alpha::Feature] feature_object
+        # @param [String] feature_id
+        #   The ID of the feature to create.
+        # @param [String] request_id
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. The server will guarantee that for
+        #   at least 60 minutes after the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_feature(parent, feature_object = nil, feature_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/features', options)
+          command.request_representation = Google::Apis::GkehubV1alpha::Feature::Representation
+          command.request_object = feature_object
+          command.response_representation = Google::Apis::GkehubV1alpha::Operation::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['featureId'] = feature_id unless feature_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes a Feature.
+        # @param [String] name
+        #   The Feature resource name in the format `projects/*/locations/*/features/*`.
+        # @param [Boolean] force
+        #   If set to true, the delete will ignore any outstanding resources for this
+        #   Feature (that is, `FeatureState.has_resources` is set to true). These
+        #   resources will NOT be cleaned up or modified in any way.
+        # @param [String] request_id
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. The server will guarantee that for
+        #   at least 60 minutes after the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_feature(name, force: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::GkehubV1alpha::Operation::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single Feature.
+        # @param [String] name
+        #   The Feature resource name in the format `projects/*/locations/*/features/*`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::Feature] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::Feature]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_feature(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::GkehubV1alpha::Feature::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::Feature
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -158,6 +284,105 @@ module Google
           command.response_class = Google::Apis::GkehubV1alpha::Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Features in a given project and location.
+        # @param [String] parent
+        #   The parent (project and location) where the Features will be listed. Specified
+        #   in the format `projects/*/locations/*`.
+        # @param [String] filter
+        #   Lists Features that match the filter expression, following the syntax outlined
+        #   in https://google.aip.dev/160. Examples: - Feature with the name "servicemesh"
+        #   in project "foo-proj": name = "projects/foo-proj/locations/global/features/
+        #   servicemesh" - Features that have a label called `foo`: labels.foo:* -
+        #   Features that have a label called `foo` whose value is `bar`: labels.foo = bar
+        # @param [String] order_by
+        #   One or more fields to compare and use to sort the output. See https://google.
+        #   aip.dev/132#ordering.
+        # @param [Fixnum] page_size
+        #   When requesting a 'page' of resources, `page_size` specifies number of
+        #   resources to return. If unspecified or set to 0, all resources will be
+        #   returned.
+        # @param [String] page_token
+        #   Token returned by previous call to `ListFeatures` which specifies the position
+        #   in the list from where to continue listing the resources.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::ListFeaturesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::ListFeaturesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_features(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/features', options)
+          command.response_representation = Google::Apis::GkehubV1alpha::ListFeaturesResponse::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::ListFeaturesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing Feature.
+        # @param [String] name
+        #   The Feature resource name in the format `projects/*/locations/*/features/*`.
+        # @param [Google::Apis::GkehubV1alpha::Feature] feature_object
+        # @param [String] request_id
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. The server will guarantee that for
+        #   at least 60 minutes after the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Mask of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_feature(name, feature_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::GkehubV1alpha::Feature::Representation
+          command.request_object = feature_object
+          command.response_representation = Google::Apis::GkehubV1alpha::Operation::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -232,234 +457,6 @@ module Google
           command.response_representation = Google::Apis::GkehubV1alpha::TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::GkehubV1alpha::TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Adds a new Feature.
-        # @param [String] parent
-        #   The parent (project and location) where the Feature will be created. Specified
-        #   in the format `projects/*/locations/global`.
-        # @param [Google::Apis::GkehubV1alpha::Feature] feature_object
-        # @param [String] feature_id
-        #   The ID of the feature to create.
-        # @param [String] request_id
-        #   Optional. A request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed. The server will guarantee that for
-        #   at least 60 minutes after the first request. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, will ignore the
-        #   second request. This prevents clients from accidentally creating duplicate
-        #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GkehubV1alpha::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::GkehubV1alpha::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_global_feature(parent, feature_object = nil, feature_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha/{+parent}/features', options)
-          command.request_representation = Google::Apis::GkehubV1alpha::Feature::Representation
-          command.request_object = feature_object
-          command.response_representation = Google::Apis::GkehubV1alpha::Operation::Representation
-          command.response_class = Google::Apis::GkehubV1alpha::Operation
-          command.params['parent'] = parent unless parent.nil?
-          command.query['featureId'] = feature_id unless feature_id.nil?
-          command.query['requestId'] = request_id unless request_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Removes a Feature.
-        # @param [String] name
-        #   The Feature resource name in the format `projects/*/locations/global/features/*
-        #   `.
-        # @param [Boolean] force
-        #   If set to true, the delete will ignore any outstanding resources for this
-        #   Feature (that is, `FeatureState.has_resources` is set to true). These
-        #   resources will NOT be cleaned up or modified in any way.
-        # @param [String] request_id
-        #   Optional. A request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed. The server will guarantee that for
-        #   at least 60 minutes after the first request. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, will ignore the
-        #   second request. This prevents clients from accidentally creating duplicate
-        #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GkehubV1alpha::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::GkehubV1alpha::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_global_feature(name, force: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
-          command.response_representation = Google::Apis::GkehubV1alpha::Operation::Representation
-          command.response_class = Google::Apis::GkehubV1alpha::Operation
-          command.params['name'] = name unless name.nil?
-          command.query['force'] = force unless force.nil?
-          command.query['requestId'] = request_id unless request_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets details of a single Feature.
-        # @param [String] name
-        #   The Feature resource name in the format `projects/*/locations/global/features/*
-        #   `
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GkehubV1alpha::Feature] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::GkehubV1alpha::Feature]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_global_feature(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1alpha/{+name}', options)
-          command.response_representation = Google::Apis::GkehubV1alpha::Feature::Representation
-          command.response_class = Google::Apis::GkehubV1alpha::Feature
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Lists Features in a given project and location.
-        # @param [String] parent
-        #   The parent (project and location) where the Features will be listed. Specified
-        #   in the format `projects/*/locations/global`.
-        # @param [String] filter
-        #   Lists Features that match the filter expression, following the syntax outlined
-        #   in https://google.aip.dev/160. Examples: - Feature with the name "servicemesh"
-        #   in project "foo-proj": name = "projects/foo-proj/locations/global/features/
-        #   servicemesh" - Features that have a label called `foo`: labels.foo:* -
-        #   Features that have a label called `foo` whose value is `bar`: labels.foo = bar
-        # @param [String] order_by
-        #   One or more fields to compare and use to sort the output. See https://google.
-        #   aip.dev/132#ordering.
-        # @param [Fixnum] page_size
-        #   When requesting a 'page' of resources, `page_size` specifies number of
-        #   resources to return. If unspecified or set to 0, all resources will be
-        #   returned.
-        # @param [String] page_token
-        #   Token returned by previous call to `ListFeatures` which specifies the position
-        #   in the list from where to continue listing the resources.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GkehubV1alpha::ListFeaturesResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::GkehubV1alpha::ListFeaturesResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_global_features(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1alpha/{+parent}/features', options)
-          command.response_representation = Google::Apis::GkehubV1alpha::ListFeaturesResponse::Representation
-          command.response_class = Google::Apis::GkehubV1alpha::ListFeaturesResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['filter'] = filter unless filter.nil?
-          command.query['orderBy'] = order_by unless order_by.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates an existing Feature.
-        # @param [String] name
-        #   The Feature resource name in the format `projects/*/locations/global/features/*
-        #   `.
-        # @param [Google::Apis::GkehubV1alpha::Feature] feature_object
-        # @param [String] request_id
-        #   Optional. A request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed. The server will guarantee that for
-        #   at least 60 minutes after the first request. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, will ignore the
-        #   second request. This prevents clients from accidentally creating duplicate
-        #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
-        # @param [String] update_mask
-        #   Mask of fields to update.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GkehubV1alpha::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::GkehubV1alpha::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_global_feature(name, feature_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
-          command.request_representation = Google::Apis::GkehubV1alpha::Feature::Representation
-          command.request_object = feature_object
-          command.response_representation = Google::Apis::GkehubV1alpha::Operation::Representation
-          command.response_class = Google::Apis::GkehubV1alpha::Operation
-          command.params['name'] = name unless name.nil?
-          command.query['requestId'] = request_id unless request_id.nil?
-          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
