@@ -1,8 +1,8 @@
 # Release history for google-apis-accessapproval_v1
 
-### v0.4.0 (2021-04-21)
+### v0.4.0 (2021-04-28)
 
-* Regenerated from discovery document revision 20210416
+* Regenerated from discovery document revision 20210423
 
 ### v0.3.0 (2021-03-24)
 
