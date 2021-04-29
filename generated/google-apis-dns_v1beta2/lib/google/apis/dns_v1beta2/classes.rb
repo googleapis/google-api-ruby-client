@@ -583,7 +583,7 @@ module Google
         # @return [Google::Apis::DnsV1beta2::ResponseHeader]
         attr_accessor :header
       
-        # 
+        # Type of resource.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -683,6 +683,11 @@ module Google
       class ManagedZonePrivateVisibilityConfig
         include Google::Apis::Core::Hashable
       
+        # The list of Google Kubernetes Engine clusters that can see this zone.
+        # Corresponds to the JSON property `gkeClusters`
+        # @return [Array<Google::Apis::DnsV1beta2::ManagedZonePrivateVisibilityConfigGkeCluster>]
+        attr_accessor :gke_clusters
+      
         # 
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -699,8 +704,37 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @gke_clusters = args[:gke_clusters] if args.key?(:gke_clusters)
           @kind = args[:kind] if args.key?(:kind)
           @networks = args[:networks] if args.key?(:networks)
+        end
+      end
+      
+      # 
+      class ManagedZonePrivateVisibilityConfigGkeCluster
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the cluster to bind this ManagedZone to. This should be
+        # specified in the format like: projects/*/locations/*/clusters/*. This is
+        # referenced from GKE projects.locations.clusters.get API: https://cloud.google.
+        # com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+        # Corresponds to the JSON property `gkeClusterName`
+        # @return [String]
+        attr_accessor :gke_cluster_name
+      
+        # 
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gke_cluster_name = args[:gke_cluster_name] if args.key?(:gke_cluster_name)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -1290,6 +1324,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :dns_keys_per_managed_zone
       
+        # Maximum allowed number of GKE clusters to which a privately scoped zone can be
+        # attached.
+        # Corresponds to the JSON property `gkeClustersPerManagedZone`
+        # @return [Fixnum]
+        attr_accessor :gke_clusters_per_managed_zone
+      
         # 
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -1299,6 +1339,11 @@ module Google
         # Corresponds to the JSON property `managedZones`
         # @return [Fixnum]
         attr_accessor :managed_zones
+      
+        # Maximum allowed number of managed zones which can be attached to a GKE cluster.
+        # Corresponds to the JSON property `managedZonesPerGkeCluster`
+        # @return [Fixnum]
+        attr_accessor :managed_zones_per_gke_cluster
       
         # Maximum allowed number of managed zones which can be attached to a network.
         # Corresponds to the JSON property `managedZonesPerNetwork`
@@ -1374,8 +1419,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dns_keys_per_managed_zone = args[:dns_keys_per_managed_zone] if args.key?(:dns_keys_per_managed_zone)
+          @gke_clusters_per_managed_zone = args[:gke_clusters_per_managed_zone] if args.key?(:gke_clusters_per_managed_zone)
           @kind = args[:kind] if args.key?(:kind)
           @managed_zones = args[:managed_zones] if args.key?(:managed_zones)
+          @managed_zones_per_gke_cluster = args[:managed_zones_per_gke_cluster] if args.key?(:managed_zones_per_gke_cluster)
           @managed_zones_per_network = args[:managed_zones_per_network] if args.key?(:managed_zones_per_network)
           @networks_per_managed_zone = args[:networks_per_managed_zone] if args.key?(:networks_per_managed_zone)
           @networks_per_policy = args[:networks_per_policy] if args.key?(:networks_per_policy)
@@ -1608,6 +1655,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # The list of Google Kubernetes Engine clusters to which this response policy is
+        # applied.
+        # Corresponds to the JSON property `gkeClusters`
+        # @return [Array<Google::Apis::DnsV1beta2::ResponsePolicyGkeCluster>]
+        attr_accessor :gke_clusters
+      
         # Unique identifier for the resource; defined by the server (output only).
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
@@ -1635,10 +1688,39 @@ module Google
         # Update properties of this object
         def update!(**args)
           @description = args[:description] if args.key?(:description)
+          @gke_clusters = args[:gke_clusters] if args.key?(:gke_clusters)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @networks = args[:networks] if args.key?(:networks)
           @response_policy_name = args[:response_policy_name] if args.key?(:response_policy_name)
+        end
+      end
+      
+      # 
+      class ResponsePolicyGkeCluster
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the cluster to bind this response policy to. This should
+        # be specified in the format like: projects/*/locations/*/clusters/*. This is
+        # referenced from GKE projects.locations.clusters.get API: https://cloud.google.
+        # com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+        # Corresponds to the JSON property `gkeClusterName`
+        # @return [String]
+        attr_accessor :gke_cluster_name
+      
+        # 
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gke_cluster_name = args[:gke_cluster_name] if args.key?(:gke_cluster_name)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       

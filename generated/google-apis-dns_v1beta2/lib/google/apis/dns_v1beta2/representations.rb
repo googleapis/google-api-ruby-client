@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedZonePrivateVisibilityConfigGkeCluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ManagedZonePrivateVisibilityConfigNetwork
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -245,6 +251,12 @@ module Google
       end
       
       class ResponsePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResponsePolicyGkeCluster
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -452,9 +464,19 @@ module Google
       class ManagedZonePrivateVisibilityConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :gke_clusters, as: 'gkeClusters', class: Google::Apis::DnsV1beta2::ManagedZonePrivateVisibilityConfigGkeCluster, decorator: Google::Apis::DnsV1beta2::ManagedZonePrivateVisibilityConfigGkeCluster::Representation
+      
           property :kind, as: 'kind'
           collection :networks, as: 'networks', class: Google::Apis::DnsV1beta2::ManagedZonePrivateVisibilityConfigNetwork, decorator: Google::Apis::DnsV1beta2::ManagedZonePrivateVisibilityConfigNetwork::Representation
       
+        end
+      end
+      
+      class ManagedZonePrivateVisibilityConfigGkeCluster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gke_cluster_name, as: 'gkeClusterName'
+          property :kind, as: 'kind'
         end
       end
       
@@ -629,8 +651,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dns_keys_per_managed_zone, as: 'dnsKeysPerManagedZone'
+          property :gke_clusters_per_managed_zone, as: 'gkeClustersPerManagedZone'
           property :kind, as: 'kind'
           property :managed_zones, as: 'managedZones'
+          property :managed_zones_per_gke_cluster, as: 'managedZonesPerGkeCluster'
           property :managed_zones_per_network, as: 'managedZonesPerNetwork'
           property :networks_per_managed_zone, as: 'networksPerManagedZone'
           property :networks_per_policy, as: 'networksPerPolicy'
@@ -714,11 +738,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
+          collection :gke_clusters, as: 'gkeClusters', class: Google::Apis::DnsV1beta2::ResponsePolicyGkeCluster, decorator: Google::Apis::DnsV1beta2::ResponsePolicyGkeCluster::Representation
+      
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           collection :networks, as: 'networks', class: Google::Apis::DnsV1beta2::ResponsePolicyNetwork, decorator: Google::Apis::DnsV1beta2::ResponsePolicyNetwork::Representation
       
           property :response_policy_name, as: 'responsePolicyName'
+        end
+      end
+      
+      class ResponsePolicyGkeCluster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gke_cluster_name, as: 'gkeClusterName'
+          property :kind, as: 'kind'
         end
       end
       
