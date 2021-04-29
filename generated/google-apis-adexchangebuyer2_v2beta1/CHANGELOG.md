@@ -1,8 +1,8 @@
 # Release history for google-apis-adexchangebuyer2_v2beta1
 
-### v0.3.0 (2021-04-23)
+### v0.3.0 (2021-04-29)
 
-* Regenerated from discovery document revision 20210422
+* Regenerated from discovery document revision 20210428
 * Regenerated using generator version 0.2.0
 
 ### v0.2.0 (2021-03-04)
