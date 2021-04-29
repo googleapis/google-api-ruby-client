@@ -29,9 +29,6 @@ module Google
       # Version of the DoubleClick Bid Manager API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1'
-
-      # View and manage your reports in DoubleClick Bid Manager
-      AUTH_DOUBLECLICKBIDMANAGER = 'https://www.googleapis.com/auth/doubleclickbidmanager'
     end
   end
 end
