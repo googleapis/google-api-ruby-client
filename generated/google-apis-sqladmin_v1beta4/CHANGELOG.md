@@ -1,5 +1,9 @@
 # Release history for google-apis-sqladmin_v1beta4
 
+### v0.7.0 (2021-04-29)
+
+* Regenerated from discovery document revision 20210420
+
 ### v0.6.0 (2021-03-31)
 
 * Regenerated from discovery document revision 20210321

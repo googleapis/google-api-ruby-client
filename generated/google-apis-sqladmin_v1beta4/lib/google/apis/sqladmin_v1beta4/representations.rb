@@ -388,6 +388,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlOutOfDiskReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SqlScheduledMaintenance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -627,6 +633,8 @@ module Google
           property :max_disk_size, :numeric_string => true, as: 'maxDiskSize'
           property :name, as: 'name'
           property :on_premises_configuration, as: 'onPremisesConfiguration', class: Google::Apis::SqladminV1beta4::OnPremisesConfiguration, decorator: Google::Apis::SqladminV1beta4::OnPremisesConfiguration::Representation
+      
+          property :out_of_disk_report, as: 'outOfDiskReport', class: Google::Apis::SqladminV1beta4::SqlOutOfDiskReport, decorator: Google::Apis::SqladminV1beta4::SqlOutOfDiskReport::Representation
       
           property :project, as: 'project'
           property :region, as: 'region'
@@ -1163,6 +1171,14 @@ module Google
           property :kind, as: 'kind'
           collection :warnings, as: 'warnings', class: Google::Apis::SqladminV1beta4::SqlExternalSyncSettingError, decorator: Google::Apis::SqladminV1beta4::SqlExternalSyncSettingError::Representation
       
+        end
+      end
+      
+      class SqlOutOfDiskReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sql_min_recommended_increase_size_gb, as: 'sqlMinRecommendedIncreaseSizeGb'
+          property :sql_out_of_disk_state, as: 'sqlOutOfDiskState'
         end
       end
       
