@@ -50,68 +50,6 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Retrieves line items in CSV format. YouTube & partners line items are not
-        # supported.
-        # @param [Google::Apis::DoubleclickbidmanagerV1_1::DownloadLineItemsRequest] download_line_items_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DoubleclickbidmanagerV1_1::DownloadLineItemsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DoubleclickbidmanagerV1_1::DownloadLineItemsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def downloadlineitems_lineitem(download_line_items_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'lineitems/downloadlineitems', options)
-          command.request_representation = Google::Apis::DoubleclickbidmanagerV1_1::DownloadLineItemsRequest::Representation
-          command.request_object = download_line_items_request_object
-          command.response_representation = Google::Apis::DoubleclickbidmanagerV1_1::DownloadLineItemsResponse::Representation
-          command.response_class = Google::Apis::DoubleclickbidmanagerV1_1::DownloadLineItemsResponse
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Uploads line items in CSV format. YouTube & partners line items are not
-        # supported.
-        # @param [Google::Apis::DoubleclickbidmanagerV1_1::UploadLineItemsRequest] upload_line_items_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DoubleclickbidmanagerV1_1::UploadLineItemsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DoubleclickbidmanagerV1_1::UploadLineItemsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def uploadlineitems_lineitem(upload_line_items_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'lineitems/uploadlineitems', options)
-          command.request_representation = Google::Apis::DoubleclickbidmanagerV1_1::UploadLineItemsRequest::Representation
-          command.request_object = upload_line_items_request_object
-          command.response_representation = Google::Apis::DoubleclickbidmanagerV1_1::UploadLineItemsResponse::Representation
-          command.response_class = Google::Apis::DoubleclickbidmanagerV1_1::UploadLineItemsResponse
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Creates a query.
         # @param [Google::Apis::DoubleclickbidmanagerV1_1::Query] query_object
         # @param [Boolean] asynchronous
@@ -304,36 +242,6 @@ module Google
           command.params['queryId'] = query_id unless query_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Retrieves entities in SDF format.
-        # @param [Google::Apis::DoubleclickbidmanagerV1_1::DownloadRequest] download_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DoubleclickbidmanagerV1_1::DownloadResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DoubleclickbidmanagerV1_1::DownloadResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def download_sdf(download_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'sdf/download', options)
-          command.request_representation = Google::Apis::DoubleclickbidmanagerV1_1::DownloadRequest::Representation
-          command.request_object = download_request_object
-          command.response_representation = Google::Apis::DoubleclickbidmanagerV1_1::DownloadResponse::Representation
-          command.response_class = Google::Apis::DoubleclickbidmanagerV1_1::DownloadResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

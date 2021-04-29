@@ -34,30 +34,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DownloadLineItemsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DownloadLineItemsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DownloadRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DownloadResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class EventFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -160,12 +136,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RowStatus
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Rule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,24 +143,6 @@ module Google
       end
       
       class RunQueryRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class UploadLineItemsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class UploadLineItemsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class UploadStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -211,45 +163,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :event_filters, as: 'eventFilters', class: Google::Apis::DoubleclickbidmanagerV1_1::EventFilter, decorator: Google::Apis::DoubleclickbidmanagerV1_1::EventFilter::Representation
       
-        end
-      end
-      
-      class DownloadLineItemsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :file_spec, as: 'fileSpec'
-          collection :filter_ids, as: 'filterIds'
-          property :filter_type, as: 'filterType'
-          property :format, as: 'format'
-        end
-      end
-      
-      class DownloadLineItemsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :line_items, as: 'lineItems'
-        end
-      end
-      
-      class DownloadRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :file_types, as: 'fileTypes'
-          collection :filter_ids, as: 'filterIds'
-          property :filter_type, as: 'filterType'
-          property :version, as: 'version'
-        end
-      end
-      
-      class DownloadResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :ad_groups, as: 'adGroups'
-          property :ads, as: 'ads'
-          property :campaigns, as: 'campaigns'
-          property :insertion_orders, as: 'insertionOrders'
-          property :inventory_sources, as: 'inventorySources'
-          property :line_items, as: 'lineItems'
         end
       end
       
@@ -434,18 +347,6 @@ module Google
         end
       end
       
-      class RowStatus
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :changed, as: 'changed'
-          property :entity_id, :numeric_string => true, as: 'entityId'
-          property :entity_name, as: 'entityName'
-          collection :errors, as: 'errors'
-          property :persisted, as: 'persisted'
-          property :row_number, as: 'rowNumber'
-        end
-      end
-      
       class Rule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -462,32 +363,6 @@ module Google
           property :report_data_end_time_ms, :numeric_string => true, as: 'reportDataEndTimeMs'
           property :report_data_start_time_ms, :numeric_string => true, as: 'reportDataStartTimeMs'
           property :timezone_code, as: 'timezoneCode'
-        end
-      end
-      
-      class UploadLineItemsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :dry_run, as: 'dryRun'
-          property :format, as: 'format'
-          property :line_items, as: 'lineItems'
-        end
-      end
-      
-      class UploadLineItemsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :upload_status, as: 'uploadStatus', class: Google::Apis::DoubleclickbidmanagerV1_1::UploadStatus, decorator: Google::Apis::DoubleclickbidmanagerV1_1::UploadStatus::Representation
-      
-        end
-      end
-      
-      class UploadStatus
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :errors, as: 'errors'
-          collection :row_status, as: 'rowStatus', class: Google::Apis::DoubleclickbidmanagerV1_1::RowStatus, decorator: Google::Apis::DoubleclickbidmanagerV1_1::RowStatus::Representation
-      
         end
       end
     end
