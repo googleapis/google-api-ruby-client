@@ -3251,6 +3251,11 @@ module Google
       class ParameterMetadata
         include Google::Apis::Core::Hashable
       
+        # Optional. Additional metadata for describing this parameter.
+        # Corresponds to the JSON property `customMetadata`
+        # @return [Hash<String,String>]
+        attr_accessor :custom_metadata
+      
         # Required. The help text to display for the parameter.
         # Corresponds to the JSON property `helpText`
         # @return [String]
@@ -3288,6 +3293,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_metadata = args[:custom_metadata] if args.key?(:custom_metadata)
           @help_text = args[:help_text] if args.key?(:help_text)
           @is_optional = args[:is_optional] if args.key?(:is_optional)
           @label = args[:label] if args.key?(:label)
@@ -4337,6 +4343,11 @@ module Google
         # @return [Array<Google::Apis::DataflowV1b3::PubsubSnapshotMetadata>]
         attr_accessor :pubsub_metadata
       
+        # Cloud region where this snapshot lives in, e.g., "us-central1".
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # The job this snapshot was created from.
         # Corresponds to the JSON property `sourceJobId`
         # @return [String]
@@ -4364,6 +4375,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @project_id = args[:project_id] if args.key?(:project_id)
           @pubsub_metadata = args[:pubsub_metadata] if args.key?(:pubsub_metadata)
+          @region = args[:region] if args.key?(:region)
           @source_job_id = args[:source_job_id] if args.key?(:source_job_id)
           @state = args[:state] if args.key?(:state)
           @ttl = args[:ttl] if args.key?(:ttl)
