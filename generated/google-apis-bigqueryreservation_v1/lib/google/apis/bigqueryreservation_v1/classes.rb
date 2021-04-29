@@ -319,9 +319,10 @@ module Google
         # @return [String]
         attr_accessor :creation_time
       
-        # If false, any query using this reservation will use idle slots from other
-        # reservations within the same admin project. If true, a query using this
-        # reservation will execute with the slot capacity specified above at most.
+        # If false, any query or pipeline job using this reservation will use idle slots
+        # from other reservations within the same admin project. If true, a query or
+        # pipeline job using this reservation will execute with the slot capacity
+        # specified above at most.
         # Corresponds to the JSON property `ignoreIdleSlots`
         # @return [Boolean]
         attr_accessor :ignore_idle_slots
