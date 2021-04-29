@@ -962,8 +962,7 @@ module Google
         attr_accessor :last_modification_time
       
         # The name of the most recently started TransferOperation of this JobConfig.
-        # Present if and only if at least one TransferOperation has been created for
-        # this JobConfig.
+        # Present if a TransferOperation has been created for this JobConfig.
         # Corresponds to the JSON property `latestOperationName`
         # @return [String]
         attr_accessor :latest_operation_name
