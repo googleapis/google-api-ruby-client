@@ -1867,6 +1867,7 @@ module Google
       class ParameterMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :custom_metadata, as: 'customMetadata'
           property :help_text, as: 'helpText'
           property :is_optional, as: 'isOptional'
           property :label, as: 'label'
@@ -2174,6 +2175,7 @@ module Google
           property :project_id, as: 'projectId'
           collection :pubsub_metadata, as: 'pubsubMetadata', class: Google::Apis::DataflowV1b3::PubsubSnapshotMetadata, decorator: Google::Apis::DataflowV1b3::PubsubSnapshotMetadata::Representation
       
+          property :region, as: 'region'
           property :source_job_id, as: 'sourceJobId'
           property :state, as: 'state'
           property :ttl, as: 'ttl'
