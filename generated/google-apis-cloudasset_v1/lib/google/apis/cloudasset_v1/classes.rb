@@ -127,8 +127,9 @@ module Google
       # resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-
       # platform-resource-hierarchy), a resource outside the Google Cloud resource
       # hierarchy (such as Google Kubernetes Engine clusters and objects), or a policy
-      # (e.g. Cloud IAM policy). See [Supported asset types](https://cloud.google.com/
-      # asset-inventory/docs/supported-asset-types) for more information.
+      # (e.g. Cloud IAM policy), or a relationship (e.g. an INSTANCE_TO_INSTANCEGROUP
+      # relationship). See [Supported asset types](https://cloud.google.com/asset-
+      # inventory/docs/supported-asset-types) for more information.
       class Asset
         include Google::Apis::Core::Hashable
       
@@ -3810,8 +3811,9 @@ module Google
         # resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-
         # platform-resource-hierarchy), a resource outside the Google Cloud resource
         # hierarchy (such as Google Kubernetes Engine clusters and objects), or a policy
-        # (e.g. Cloud IAM policy). See [Supported asset types](https://cloud.google.com/
-        # asset-inventory/docs/supported-asset-types) for more information.
+        # (e.g. Cloud IAM policy), or a relationship (e.g. an INSTANCE_TO_INSTANCEGROUP
+        # relationship). See [Supported asset types](https://cloud.google.com/asset-
+        # inventory/docs/supported-asset-types) for more information.
         # Corresponds to the JSON property `asset`
         # @return [Google::Apis::CloudassetV1::Asset]
         attr_accessor :asset
@@ -3826,8 +3828,9 @@ module Google
         # resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-
         # platform-resource-hierarchy), a resource outside the Google Cloud resource
         # hierarchy (such as Google Kubernetes Engine clusters and objects), or a policy
-        # (e.g. Cloud IAM policy). See [Supported asset types](https://cloud.google.com/
-        # asset-inventory/docs/supported-asset-types) for more information.
+        # (e.g. Cloud IAM policy), or a relationship (e.g. an INSTANCE_TO_INSTANCEGROUP
+        # relationship). See [Supported asset types](https://cloud.google.com/asset-
+        # inventory/docs/supported-asset-types) for more information.
         # Corresponds to the JSON property `priorAsset`
         # @return [Google::Apis::CloudassetV1::Asset]
         attr_accessor :prior_asset
