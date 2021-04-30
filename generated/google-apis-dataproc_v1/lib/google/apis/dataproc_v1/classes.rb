@@ -228,6 +228,67 @@ module Google
         end
       end
       
+      # Metadata describing the Batch operation.
+      class BatchOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Name of the batch for the operation.
+        # Corresponds to the JSON property `batch`
+        # @return [String]
+        attr_accessor :batch
+      
+        # Batch UUID for the operation.
+        # Corresponds to the JSON property `batchUuid`
+        # @return [String]
+        attr_accessor :batch_uuid
+      
+        # The time when the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Short description of the operation.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The time when the operation was finished.
+        # Corresponds to the JSON property `doneTime`
+        # @return [String]
+        attr_accessor :done_time
+      
+        # Labels associated with the operation.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The operation type.
+        # Corresponds to the JSON property `operationType`
+        # @return [String]
+        attr_accessor :operation_type
+      
+        # Warnings encountered during operation execution.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<String>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @batch = args[:batch] if args.key?(:batch)
+          @batch_uuid = args[:batch_uuid] if args.key?(:batch_uuid)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @done_time = args[:done_time] if args.key?(:done_time)
+          @labels = args[:labels] if args.key?(:labels)
+          @operation_type = args[:operation_type] if args.key?(:operation_type)
+          @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
       # Associates members with a role.
       class Binding
         include Google::Apis::Core::Hashable
