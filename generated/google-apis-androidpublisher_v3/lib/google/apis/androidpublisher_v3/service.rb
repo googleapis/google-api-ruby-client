@@ -54,6 +54,10 @@ module Google
         #   Package name of the app.
         # @param [String] edit_id
         #   Identifier of the edit.
+        # @param [Boolean] changes_not_sent_for_review
+        #   Indicates that the changes in this edit will not be reviewed until they are
+        #   explicitly sent for review from the Google Play Console UI. These changes will
+        #   be added to any other changes that are not yet sent for review.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -71,12 +75,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def commit_edit(package_name, edit_id, fields: nil, quota_user: nil, options: nil, &block)
+        def commit_edit(package_name, edit_id, changes_not_sent_for_review: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/edits/{editId}:commit', options)
           command.response_representation = Google::Apis::AndroidpublisherV3::AppEdit::Representation
           command.response_class = Google::Apis::AndroidpublisherV3::AppEdit
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['editId'] = edit_id unless edit_id.nil?
+          command.query['changesNotSentForReview'] = changes_not_sent_for_review unless changes_not_sent_for_review.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
