@@ -1518,6 +1518,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns the requested Offer resource. Possible error codes: *
+        # PERMISSION_DENIED: The entitlement doesn't belong to the reseller. *
+        # INVALID_ARGUMENT: Required request parameters are missing or invalid. *
+        # NOT_FOUND: Entitlement or offer was not found. Return value: The Offer
+        # resource.
+        # @param [String] entitlement
+        #   Required. The resource name of the entitlement to retrieve the Offer.
+        #   Entitlement uses the format: accounts/`account_id`/customers/`customer_id`/
+        #   entitlements/`entitlement_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudchannelV1::GoogleCloudChannelV1Offer] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1Offer]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def lookup_account_customer_entitlement_offer(entitlement, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+entitlement}:lookupOffer', options)
+          command.response_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1Offer::Representation
+          command.response_class = Google::Apis::CloudchannelV1::GoogleCloudChannelV1Offer
+          command.params['entitlement'] = entitlement unless entitlement.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts paid service for a trial entitlement. Starts paid service for a trial
         # entitlement immediately. This method is only applicable if a plan is set up
         # for a trial entitlement but has some trial days remaining. Possible error
