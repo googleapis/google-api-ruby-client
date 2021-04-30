@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -584,6 +590,20 @@ module Google
           property :scale_down_min_worker_fraction, as: 'scaleDownMinWorkerFraction'
           property :scale_up_factor, as: 'scaleUpFactor'
           property :scale_up_min_worker_fraction, as: 'scaleUpMinWorkerFraction'
+        end
+      end
+      
+      class BatchOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :batch, as: 'batch'
+          property :batch_uuid, as: 'batchUuid'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :done_time, as: 'doneTime'
+          hash :labels, as: 'labels'
+          property :operation_type, as: 'operationType'
+          collection :warnings, as: 'warnings'
         end
       end
       
