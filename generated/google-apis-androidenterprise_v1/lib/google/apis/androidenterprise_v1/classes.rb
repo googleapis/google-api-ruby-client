@@ -104,6 +104,11 @@ module Google
         # @return [Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecWebApps]
         attr_accessor :web_apps
       
+        # Options for displaying the Zero Touch page.
+        # Corresponds to the JSON property `zeroTouch`
+        # @return [Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecZeroTouch]
+        attr_accessor :zero_touch
+      
         def initialize(**args)
            update!(**args)
         end
@@ -117,6 +122,7 @@ module Google
           @private_apps = args[:private_apps] if args.key?(:private_apps)
           @store_builder = args[:store_builder] if args.key?(:store_builder)
           @web_apps = args[:web_apps] if args.key?(:web_apps)
+          @zero_touch = args[:zero_touch] if args.key?(:zero_touch)
         end
       end
       
@@ -212,6 +218,27 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Whether the Web Apps page is displayed. Default is true.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # 
+      class AdministratorWebTokenSpecZeroTouch
+        include Google::Apis::Core::Hashable
+      
+        # Whether zero-touch embedded UI is usable with this token. If enabled, the
+        # admin can link zero-touch customers to this enterprise.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
