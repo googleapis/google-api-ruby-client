@@ -58,6 +58,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Name of the file share in the source Cloud Filestore instance that the backup
         # is created from.
         # Corresponds to the JSON property `sourceFileShare`
@@ -100,6 +106,7 @@ module Google
           @download_bytes = args[:download_bytes] if args.key?(:download_bytes)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @source_file_share = args[:source_file_share] if args.key?(:source_file_share)
           @source_instance = args[:source_instance] if args.key?(:source_instance)
           @source_instance_tier = args[:source_instance_tier] if args.key?(:source_instance_tier)
@@ -339,7 +346,7 @@ module Google
       
         # Unique name of the resource. It uses the form: `projects/`project_id|
         # project_number`/locations/`location_id`/instances/`instance_id`` Note: Either
-        # project_id or project_number and be used, but keep it consistent with other
+        # project_id or project_number can be used, but keep it consistent with other
         # APIs (e.g. RescheduleUpdate)
         # Corresponds to the JSON property `name`
         # @return [String]
