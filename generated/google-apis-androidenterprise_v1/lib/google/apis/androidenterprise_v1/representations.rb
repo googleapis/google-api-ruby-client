@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdministratorWebTokenSpecZeroTouch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppRestrictionsSchema
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -549,6 +555,8 @@ module Google
       
           property :web_apps, as: 'webApps', class: Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecWebApps, decorator: Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecWebApps::Representation
       
+          property :zero_touch, as: 'zeroTouch', class: Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecZeroTouch, decorator: Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecZeroTouch::Representation
+      
         end
       end
       
@@ -582,6 +590,13 @@ module Google
       end
       
       class AdministratorWebTokenSpecWebApps
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
+      class AdministratorWebTokenSpecZeroTouch
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
