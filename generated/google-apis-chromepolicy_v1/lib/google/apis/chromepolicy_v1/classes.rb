@@ -527,6 +527,46 @@ module Google
         end
       end
       
+      # Request message for uploading a file for a policy. Next ID: 5
+      class GoogleChromePolicyV1UploadPolicyFileRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The fully qualified policy schema and field name this file is
+        # uploaded for. This information will be used to validate the content type of
+        # the file.
+        # Corresponds to the JSON property `policyField`
+        # @return [String]
+        attr_accessor :policy_field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy_field = args[:policy_field] if args.key?(:policy_field)
+        end
+      end
+      
+      # Response message for downloading an uploaded file. Next ID: 2
+      class GoogleChromePolicyV1UploadPolicyFileResponse
+        include Google::Apis::Core::Hashable
+      
+        # The uri for end user to download the file.
+        # Corresponds to the JSON property `downloadUri`
+        # @return [String]
+        attr_accessor :download_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @download_uri = args[:download_uri] if args.key?(:download_uri)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
