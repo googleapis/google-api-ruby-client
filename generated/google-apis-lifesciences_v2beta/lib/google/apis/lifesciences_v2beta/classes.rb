@@ -120,6 +120,12 @@ module Google
         attr_accessor :enable_fuse
         alias_method :enable_fuse?, :enable_fuse
       
+        # Holds encrypted information that is only decrypted and stored in RAM by the
+        # worker VM when running the pipeline.
+        # Corresponds to the JSON property `encryptedEnvironment`
+        # @return [Google::Apis::LifesciencesV2beta::Secret]
+        attr_accessor :encrypted_environment
+      
         # If specified, overrides the `ENTRYPOINT` specified in the container.
         # Corresponds to the JSON property `entrypoint`
         # @return [String]
@@ -236,6 +242,7 @@ module Google
           @disable_image_prefetch = args[:disable_image_prefetch] if args.key?(:disable_image_prefetch)
           @disable_standard_error_capture = args[:disable_standard_error_capture] if args.key?(:disable_standard_error_capture)
           @enable_fuse = args[:enable_fuse] if args.key?(:enable_fuse)
+          @encrypted_environment = args[:encrypted_environment] if args.key?(:encrypted_environment)
           @entrypoint = args[:entrypoint] if args.key?(:entrypoint)
           @environment = args[:environment] if args.key?(:environment)
           @ignore_exit_status = args[:ignore_exit_status] if args.key?(:ignore_exit_status)
@@ -945,6 +952,12 @@ module Google
         # @return [Array<Google::Apis::LifesciencesV2beta::Action>]
         attr_accessor :actions
       
+        # Holds encrypted information that is only decrypted and stored in RAM by the
+        # worker VM when running the pipeline.
+        # Corresponds to the JSON property `encryptedEnvironment`
+        # @return [Google::Apis::LifesciencesV2beta::Secret]
+        attr_accessor :encrypted_environment
+      
         # The environment to pass into every action. Each action can also specify
         # additional environment variables but cannot delete an entry from this map (
         # though they can overwrite it with a different value).
@@ -973,6 +986,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @actions = args[:actions] if args.key?(:actions)
+          @encrypted_environment = args[:encrypted_environment] if args.key?(:encrypted_environment)
           @environment = args[:environment] if args.key?(:environment)
           @resources = args[:resources] if args.key?(:resources)
           @timeout = args[:timeout] if args.key?(:timeout)

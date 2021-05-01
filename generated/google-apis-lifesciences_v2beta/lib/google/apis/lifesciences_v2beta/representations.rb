@@ -252,6 +252,8 @@ module Google
           property :disable_image_prefetch, as: 'disableImagePrefetch'
           property :disable_standard_error_capture, as: 'disableStandardErrorCapture'
           property :enable_fuse, as: 'enableFuse'
+          property :encrypted_environment, as: 'encryptedEnvironment', class: Google::Apis::LifesciencesV2beta::Secret, decorator: Google::Apis::LifesciencesV2beta::Secret::Representation
+      
           property :entrypoint, as: 'entrypoint'
           hash :environment, as: 'environment'
           property :ignore_exit_status, as: 'ignoreExitStatus'
@@ -459,6 +461,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :actions, as: 'actions', class: Google::Apis::LifesciencesV2beta::Action, decorator: Google::Apis::LifesciencesV2beta::Action::Representation
+      
+          property :encrypted_environment, as: 'encryptedEnvironment', class: Google::Apis::LifesciencesV2beta::Secret, decorator: Google::Apis::LifesciencesV2beta::Secret::Representation
       
           hash :environment, as: 'environment'
           property :resources, as: 'resources', class: Google::Apis::LifesciencesV2beta::Resources, decorator: Google::Apis::LifesciencesV2beta::Resources::Representation
