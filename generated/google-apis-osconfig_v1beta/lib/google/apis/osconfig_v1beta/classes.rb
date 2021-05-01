@@ -852,9 +852,9 @@ module Google
         # @return [String]
         attr_accessor :api_method
       
-        # Reference to the `OSPolicyAssignment` API resource. Format: projects/`
+        # Reference to the `OSPolicyAssignment` API resource. Format: `projects/`
         # project_number`/locations/`location`/osPolicyAssignments/`
-        # os_policy_assignment_id@revision_id`
+        # os_policy_assignment_id@revision_id``
         # Corresponds to the JSON property `osPolicyAssignment`
         # @return [String]
         attr_accessor :os_policy_assignment
