@@ -235,6 +235,7 @@ module Google
           property :download_bytes, :numeric_string => true, as: 'downloadBytes'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :source_file_share, as: 'sourceFileShare'
           property :source_instance, as: 'sourceInstance'
           property :source_instance_tier, as: 'sourceInstanceTier'
