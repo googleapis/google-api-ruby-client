@@ -163,6 +163,32 @@ module Google
         end
       end
       
+      # The response from listing repositories.
+      class ListRepositoriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The token to retrieve the next page of repositories, or empty if there are no
+        # more repositories to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The repositories returned.
+        # Corresponds to the JSON property `repositories`
+        # @return [Array<Google::Apis::ArtifactregistryV1::Repository>]
+        attr_accessor :repositories
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @repositories = args[:repositories] if args.key?(:repositories)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -222,6 +248,68 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # A Repository for storing artifacts with a specific format.
+      class Repository
+        include Google::Apis::Core::Hashable
+      
+        # The time when the repository was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The user-provided description of the repository.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The format of packages that are stored in the repository.
+        # Corresponds to the JSON property `format`
+        # @return [String]
+        attr_accessor :format
+      
+        # The Cloud KMS resource name of the customer managed encryption key that’s used
+        # to encrypt the contents of the Repository. Has the form: `projects/my-project/
+        # locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be
+        # changed after the Repository has been created.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        # Labels with user-defined metadata. This field may contain up to 64 entries.
+        # Label keys and values may be no longer than 63 characters. Label keys must
+        # begin with a lowercase letter and may only contain lowercase letters, numeric
+        # characters, underscores, and dashes.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The name of the repository, for example: "projects/p1/locations/us-central1/
+        # repositories/repo1".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The time when the repository was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @format = args[:format] if args.key?(:format)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
