@@ -365,7 +365,7 @@ module Google
         end
         
         # Used by partners to revoke the pending cancellation of a subscription, which
-        # is currently in `STATE_WAITING_TO_CANCEL` state. If the subscription is
+        # is currently in `STATE_CANCEL_AT_END_OF_CYCLE` state. If the subscription is
         # already cancelled, the request will fail. It should be called directly by the
         # partner using service accounts.
         # @param [String] name
