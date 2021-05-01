@@ -112,6 +112,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromePolicyV1UploadPolicyFileRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyV1UploadPolicyFileResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleProtobufEmpty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -302,6 +314,20 @@ module Google
       
           property :value, as: 'value', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyValue, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyValue::Representation
       
+        end
+      end
+      
+      class GoogleChromePolicyV1UploadPolicyFileRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy_field, as: 'policyField'
+        end
+      end
+      
+      class GoogleChromePolicyV1UploadPolicyFileResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :download_uri, as: 'downloadUri'
         end
       end
       
