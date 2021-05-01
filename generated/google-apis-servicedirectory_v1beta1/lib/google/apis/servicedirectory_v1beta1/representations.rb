@@ -158,6 +158,7 @@ module Google
           property :address, as: 'address'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+          property :network, as: 'network'
           property :port, as: 'port'
         end
       end
