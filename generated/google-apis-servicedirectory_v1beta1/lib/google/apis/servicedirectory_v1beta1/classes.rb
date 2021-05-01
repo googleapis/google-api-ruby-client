@@ -148,6 +148,15 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Immutable. The Google Compute Engine network (VPC) of the endpoint in the
+        # format `projects//locations/global/networks/*`. The project must be specified
+        # by project number (project id is rejected). Incorrectly formatted networks are
+        # rejected, but no other validation is performed on this field (ex. network or
+        # project existence, reachability, or permissions).
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
         # Optional. Service Directory rejects values outside of `[0, 65535]`.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
@@ -162,6 +171,7 @@ module Google
           @address = args[:address] if args.key?(:address)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
           @port = args[:port] if args.key?(:port)
         end
       end
