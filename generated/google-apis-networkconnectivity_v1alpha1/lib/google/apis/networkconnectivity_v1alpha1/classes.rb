@@ -796,7 +796,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. A list of the URIs of all attached spokes
+        # Output only. A list of the URIs of all attached spokes. This field is
+        # deprecated and will not be included in future API versions. Call ListSpokes on
+        # each region instead.
         # Corresponds to the JSON property `spokes`
         # @return [Array<String>]
         attr_accessor :spokes
