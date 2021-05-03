@@ -908,6 +908,7 @@ module Google
       
           property :referrer_uri, as: 'referrerUri'
           property :search_query, as: 'searchQuery'
+          property :session_id, as: 'sessionId'
           property :uri, as: 'uri'
           property :user_info, as: 'userInfo', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaUserInfo, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaUserInfo::Representation
       
