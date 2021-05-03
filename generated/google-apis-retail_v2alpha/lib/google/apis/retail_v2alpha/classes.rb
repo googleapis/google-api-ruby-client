@@ -1063,7 +1063,7 @@ module Google
         attr_accessor :params
       
         # UserEvent captures all metadata information Retail API needs to know about how
-        # end users interact with customers' website.
+        # end users interact with customers' website. Next tag: 22
         # Corresponds to the JSON property `userEvent`
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaUserEvent]
         attr_accessor :user_event
@@ -1678,7 +1678,7 @@ module Google
       end
       
       # UserEvent captures all metadata information Retail API needs to know about how
-      # end users interact with customers' website.
+      # end users interact with customers' website. Next tag: 22
       class GoogleCloudRetailV2alphaUserEvent
         include Google::Apis::Core::Hashable
       
@@ -1796,6 +1796,12 @@ module Google
         # @return [String]
         attr_accessor :search_query
       
+        # Represents the user sessions to aggregate user behavior within a time period.
+        # If not set, heuristics will be used to autogenerate one.
+        # Corresponds to the JSON property `sessionId`
+        # @return [String]
+        attr_accessor :session_id
+      
         # Complete URL (window.location.href) of the user's current page. When using the
         # client side event reporting with JavaScript pixel and Google Tag Manager, this
         # value is filled in automatically. Maximum length 5,000 characters.
@@ -1838,6 +1844,7 @@ module Google
           @purchase_transaction = args[:purchase_transaction] if args.key?(:purchase_transaction)
           @referrer_uri = args[:referrer_uri] if args.key?(:referrer_uri)
           @search_query = args[:search_query] if args.key?(:search_query)
+          @session_id = args[:session_id] if args.key?(:session_id)
           @uri = args[:uri] if args.key?(:uri)
           @user_info = args[:user_info] if args.key?(:user_info)
           @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
