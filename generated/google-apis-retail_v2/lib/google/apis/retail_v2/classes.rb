@@ -746,7 +746,7 @@ module Google
         attr_accessor :params
       
         # UserEvent captures all metadata information Retail API needs to know about how
-        # end users interact with customers' website.
+        # end users interact with customers' website. Next tag: 22
         # Corresponds to the JSON property `userEvent`
         # @return [Google::Apis::RetailV2::GoogleCloudRetailV2UserEvent]
         attr_accessor :user_event
@@ -1361,7 +1361,7 @@ module Google
       end
       
       # UserEvent captures all metadata information Retail API needs to know about how
-      # end users interact with customers' website.
+      # end users interact with customers' website. Next tag: 22
       class GoogleCloudRetailV2UserEvent
         include Google::Apis::Core::Hashable
       
