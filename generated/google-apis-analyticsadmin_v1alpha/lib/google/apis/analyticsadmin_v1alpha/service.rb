@@ -658,7 +658,7 @@ module Google
         
         # Updates a user link on an account or property.
         # @param [String] name
-        #   Example format: properties/1234/userLinks/5678
+        #   Output only. Example format: properties/1234/userLinks/5678
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink] google_analytics_admin_v1alpha_user_link_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1787,7 +1787,7 @@ module Google
         
         # Updates a user link on an account or property.
         # @param [String] name
-        #   Example format: properties/1234/userLinks/5678
+        #   Output only. Example format: properties/1234/userLinks/5678
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink] google_analytics_admin_v1alpha_user_link_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
