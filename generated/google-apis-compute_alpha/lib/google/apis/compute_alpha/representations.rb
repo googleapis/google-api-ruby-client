@@ -364,6 +364,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendBucketCdnPolicyCacheKeyPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendBucketCdnPolicyNegativeCachingPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6612,6 +6618,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :bypass_cache_on_request_headers, as: 'bypassCacheOnRequestHeaders', class: Google::Apis::ComputeAlpha::BackendBucketCdnPolicyBypassCacheOnRequestHeader, decorator: Google::Apis::ComputeAlpha::BackendBucketCdnPolicyBypassCacheOnRequestHeader::Representation
       
+          property :cache_key_policy, as: 'cacheKeyPolicy', class: Google::Apis::ComputeAlpha::BackendBucketCdnPolicyCacheKeyPolicy, decorator: Google::Apis::ComputeAlpha::BackendBucketCdnPolicyCacheKeyPolicy::Representation
+      
           property :cache_mode, as: 'cacheMode'
           property :client_ttl, as: 'clientTtl'
           property :default_ttl, as: 'defaultTtl'
@@ -6630,6 +6638,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :header_name, as: 'headerName'
+        end
+      end
+      
+      class BackendBucketCdnPolicyCacheKeyPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :include_http_headers, as: 'includeHttpHeaders'
+          collection :query_string_whitelist, as: 'queryStringWhitelist'
         end
       end
       
@@ -7006,6 +7022,7 @@ module Google
           hash :per_instance_properties, as: 'perInstanceProperties', class: Google::Apis::ComputeAlpha::BulkInsertInstanceResourcePerInstanceProperties, decorator: Google::Apis::ComputeAlpha::BulkInsertInstanceResourcePerInstanceProperties::Representation
       
           collection :predefined_names, as: 'predefinedNames'
+          collection :secure_tags, as: 'secureTags'
           property :source_instance_template, as: 'sourceInstanceTemplate'
         end
       end
@@ -7029,6 +7046,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :include_host, as: 'includeHost'
+          collection :include_http_headers, as: 'includeHttpHeaders'
+          collection :include_named_cookies, as: 'includeNamedCookies'
           property :include_protocol, as: 'includeProtocol'
           property :include_query_string, as: 'includeQueryString'
           collection :query_string_blacklist, as: 'queryStringBlacklist'
@@ -7914,7 +7933,6 @@ module Google
           property :priority, as: 'priority'
           property :rule_tuple_count, as: 'ruleTupleCount'
           collection :target_resources, as: 'targetResources'
-          collection :target_secure_labels, as: 'targetSecureLabels'
           collection :target_secure_tags, as: 'targetSecureTags', class: Google::Apis::ComputeAlpha::FirewallPolicyRuleSecureTag, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRuleSecureTag::Representation
       
           collection :target_service_accounts, as: 'targetServiceAccounts'
@@ -7928,7 +7946,6 @@ module Google
           collection :layer4_configs, as: 'layer4Configs', class: Google::Apis::ComputeAlpha::FirewallPolicyRuleMatcherLayer4Config, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRuleMatcherLayer4Config::Representation
       
           collection :src_ip_ranges, as: 'srcIpRanges'
-          collection :src_secure_labels, as: 'srcSecureLabels'
           collection :src_secure_tags, as: 'srcSecureTags', class: Google::Apis::ComputeAlpha::FirewallPolicyRuleSecureTag, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRuleSecureTag::Representation
       
         end
@@ -9043,7 +9060,6 @@ module Google
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeAlpha::Scheduling, decorator: Google::Apis::ComputeAlpha::Scheduling::Representation
       
-          collection :secure_labels, as: 'secureLabels'
           collection :secure_tags, as: 'secureTags'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
@@ -10160,10 +10176,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :admin_enabled, as: 'adminEnabled'
           property :bandwidth, as: 'bandwidth'
+          collection :candidate_ipv6_subnets, as: 'candidateIpv6Subnets'
           collection :candidate_subnets, as: 'candidateSubnets'
           property :cloud_router_ip_address, as: 'cloudRouterIpAddress'
+          property :cloud_router_ipv6_address, as: 'cloudRouterIpv6Address'
+          property :cloud_router_ipv6_interface_id, as: 'cloudRouterIpv6InterfaceId'
           property :creation_timestamp, as: 'creationTimestamp'
           property :customer_router_ip_address, as: 'customerRouterIpAddress'
+          property :customer_router_ipv6_address, as: 'customerRouterIpv6Address'
+          property :customer_router_ipv6_interface_id, as: 'customerRouterIpv6InterfaceId'
           property :dataplane_version, as: 'dataplaneVersion'
           property :description, as: 'description'
           property :edge_availability_domain, as: 'edgeAvailabilityDomain'
@@ -10188,6 +10209,7 @@ module Google
           property :router, as: 'router'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
+          property :stack_type, as: 'stackType'
           property :state, as: 'state'
           property :type, as: 'type'
           property :vlan_tag8021q, as: 'vlanTag8021q'
@@ -13809,6 +13831,7 @@ module Google
           property :description, as: 'description'
           property :dest_range, as: 'destRange'
           property :id, :numeric_string => true, as: 'id'
+          property :ilb_route_behavior_on_unhealthy, as: 'ilbRouteBehaviorOnUnhealthy'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :network, as: 'network'
@@ -13967,12 +13990,15 @@ module Google
           property :bfd, as: 'bfd', class: Google::Apis::ComputeAlpha::RouterBgpPeerBfd, decorator: Google::Apis::ComputeAlpha::RouterBgpPeerBfd::Representation
       
           property :enable, as: 'enable'
+          property :enable_ipv6, as: 'enableIpv6'
           property :interface_name, as: 'interfaceName'
           property :ip_address, as: 'ipAddress'
+          property :ipv6_nexthop_address, as: 'ipv6NexthopAddress'
           property :management_type, as: 'managementType'
           property :name, as: 'name'
           property :peer_asn, as: 'peerAsn'
           property :peer_ip_address, as: 'peerIpAddress'
+          property :peer_ipv6_nexthop_address, as: 'peerIpv6NexthopAddress'
           property :router_appliance_instance, as: 'routerApplianceInstance'
         end
       end
@@ -14040,10 +14066,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :drain_nat_ips, as: 'drainNatIps'
+          property :enable_dynamic_port_allocation, as: 'enableDynamicPortAllocation'
           property :enable_endpoint_independent_mapping, as: 'enableEndpointIndependentMapping'
           property :icmp_idle_timeout_sec, as: 'icmpIdleTimeoutSec'
           property :log_config, as: 'logConfig', class: Google::Apis::ComputeAlpha::RouterNatLogConfig, decorator: Google::Apis::ComputeAlpha::RouterNatLogConfig::Representation
       
+          property :max_ports_per_vm, as: 'maxPortsPerVm'
           property :min_ports_per_vm, as: 'minPortsPerVm'
           property :name, as: 'name'
           property :nat_ip_allocate_option, as: 'natIpAllocateOption'
@@ -14118,11 +14146,14 @@ module Google
       
           property :bfd_status, as: 'bfdStatus', class: Google::Apis::ComputeAlpha::BfdStatus, decorator: Google::Apis::ComputeAlpha::BfdStatus::Representation
       
+          property :enable_ipv6, as: 'enableIpv6'
           property :ip_address, as: 'ipAddress'
+          property :ipv6_nexthop_address, as: 'ipv6NexthopAddress'
           property :linked_vpn_tunnel, as: 'linkedVpnTunnel'
           property :name, as: 'name'
           property :num_learned_routes, as: 'numLearnedRoutes'
           property :peer_ip_address, as: 'peerIpAddress'
+          property :peer_ipv6_nexthop_address, as: 'peerIpv6NexthopAddress'
           property :router_appliance_instance, as: 'routerApplianceInstance'
           property :state, as: 'state'
           property :status, as: 'status'

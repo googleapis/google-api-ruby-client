@@ -1248,9 +1248,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :maintenance_freeze_duration_hours
       
-        # Specifies whether this VM may be a stable fleet VM. Setting this to "Periodic"
-        # designates this VM as a Stable Fleet VM.
-        # See go/stable-fleet-ug for more details.
+        # For more information about maintenance intervals, see Setting maintenance
+        # intervals.
         # Corresponds to the JSON property `maintenanceInterval`
         # @return [String]
         attr_accessor :maintenance_interval
@@ -2943,6 +2942,12 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::BackendBucketCdnPolicyBypassCacheOnRequestHeader>]
         attr_accessor :bypass_cache_on_request_headers
       
+        # Message containing what to include in the cache key for a request for Cloud
+        # CDN.
+        # Corresponds to the JSON property `cacheKeyPolicy`
+        # @return [Google::Apis::ComputeAlpha::BackendBucketCdnPolicyCacheKeyPolicy]
+        attr_accessor :cache_key_policy
+      
         # Specifies the cache setting for all responses from this backend. The possible
         # values are:
         # USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache
@@ -3067,6 +3072,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bypass_cache_on_request_headers = args[:bypass_cache_on_request_headers] if args.key?(:bypass_cache_on_request_headers)
+          @cache_key_policy = args[:cache_key_policy] if args.key?(:cache_key_policy)
           @cache_mode = args[:cache_mode] if args.key?(:cache_mode)
           @client_ttl = args[:client_ttl] if args.key?(:client_ttl)
           @default_ttl = args[:default_ttl] if args.key?(:default_ttl)
@@ -3099,6 +3105,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @header_name = args[:header_name] if args.key?(:header_name)
+        end
+      end
+      
+      # Message containing what to include in the cache key for a request for Cloud
+      # CDN.
+      class BackendBucketCdnPolicyCacheKeyPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Allows HTTP request headers (by name) to be used in the cache key.
+        # Corresponds to the JSON property `includeHttpHeaders`
+        # @return [Array<String>]
+        attr_accessor :include_http_headers
+      
+        # Names of query string parameters to include in cache keys. All other
+        # parameters will be excluded. '&' and '=' will be percent encoded and not
+        # treated as delimiters.
+        # Corresponds to the JSON property `queryStringWhitelist`
+        # @return [Array<String>]
+        attr_accessor :query_string_whitelist
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @include_http_headers = args[:include_http_headers] if args.key?(:include_http_headers)
+          @query_string_whitelist = args[:query_string_whitelist] if args.key?(:query_string_whitelist)
         end
       end
       
@@ -3547,7 +3581,8 @@ module Google
         # @return [String]
         attr_accessor :session_affinity
       
-        # Subsetting options to make L4 ILB support any number of backend instances
+        # Subsetting configuration for this BackendService. Currently this is applicable
+        # only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
         # Corresponds to the JSON property `subsetting`
         # @return [Google::Apis::ComputeAlpha::Subsetting]
         attr_accessor :subsetting
@@ -4833,6 +4868,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :predefined_names
       
+        # Secure tags to apply to this instance. These can be later modified by the
+        # update method. Maximum number of secure tags allowed is 300.
+        # Corresponds to the JSON property `secureTags`
+        # @return [Array<String>]
+        attr_accessor :secure_tags
+      
         # Specifies the instance template from which to create instances. You may
         # combine sourceInstanceTemplate with instanceProperties to override specific
         # values from an existing instance template. Bulk API follows the semantics of
@@ -4862,6 +4903,7 @@ module Google
           @name_pattern = args[:name_pattern] if args.key?(:name_pattern)
           @per_instance_properties = args[:per_instance_properties] if args.key?(:per_instance_properties)
           @predefined_names = args[:predefined_names] if args.key?(:predefined_names)
+          @secure_tags = args[:secure_tags] if args.key?(:secure_tags)
           @source_instance_template = args[:source_instance_template] if args.key?(:source_instance_template)
         end
       end
@@ -4923,6 +4965,17 @@ module Google
         attr_accessor :include_host
         alias_method :include_host?, :include_host
       
+        # Allows HTTP request headers (by name) to be used in the cache key.
+        # Corresponds to the JSON property `includeHttpHeaders`
+        # @return [Array<String>]
+        attr_accessor :include_http_headers
+      
+        # Allows HTTP cookies (by name) to be used in the cache key. The name=value pair
+        # will be used in the cache key Cloud CDN generates.
+        # Corresponds to the JSON property `includeNamedCookies`
+        # @return [Array<String>]
+        attr_accessor :include_named_cookies
+      
         # If true, http and https requests will be cached separately.
         # Corresponds to the JSON property `includeProtocol`
         # @return [Boolean]
@@ -4961,6 +5014,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @include_host = args[:include_host] if args.key?(:include_host)
+          @include_http_headers = args[:include_http_headers] if args.key?(:include_http_headers)
+          @include_named_cookies = args[:include_named_cookies] if args.key?(:include_named_cookies)
           @include_protocol = args[:include_protocol] if args.key?(:include_protocol)
           @include_query_string = args[:include_query_string] if args.key?(:include_query_string)
           @query_string_blacklist = args[:query_string_blacklist] if args.key?(:query_string_blacklist)
@@ -8730,17 +8785,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :target_resources
       
-        # A list of secure labels that controls which instances the firewall rule
-        # applies to. If targetSecureLabel are specified, then the firewall rule applies
-        # only to instances in the VPC network that have one of those secure labels.
-        # targetSecureLabel may not be set at the same time as targetServiceAccounts. If
-        # neither targetServiceAccounts nor targetSecureLabel are specified, the
-        # firewall rule applies to all instances on the specified network. Maximum
-        # number of target label values allowed is 256.
-        # Corresponds to the JSON property `targetSecureLabels`
-        # @return [Array<String>]
-        attr_accessor :target_secure_labels
-      
         # A list of secure tags that controls which instances the firewall rule applies
         # to. If targetSecureTag are specified, then the firewall rule applies only to
         # instances in the VPC network that have one of those EFFECTIVE secure tags, if
@@ -8775,7 +8819,6 @@ module Google
           @priority = args[:priority] if args.key?(:priority)
           @rule_tuple_count = args[:rule_tuple_count] if args.key?(:rule_tuple_count)
           @target_resources = args[:target_resources] if args.key?(:target_resources)
-          @target_secure_labels = args[:target_secure_labels] if args.key?(:target_secure_labels)
           @target_secure_tags = args[:target_secure_tags] if args.key?(:target_secure_tags)
           @target_service_accounts = args[:target_service_accounts] if args.key?(:target_service_accounts)
         end
@@ -8802,12 +8845,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :src_ip_ranges
       
-        # List of firewall label values, which should be matched at the source of the
-        # traffic. Maximum number of source label values allowed is 256.
-        # Corresponds to the JSON property `srcSecureLabels`
-        # @return [Array<String>]
-        attr_accessor :src_secure_labels
-      
         # List of secure tag values, which should be matched at the source of the
         # traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there
         # is no srcIpRange, this rule will be ignored. Maximum number of source tag
@@ -8825,7 +8862,6 @@ module Google
           @dest_ip_ranges = args[:dest_ip_ranges] if args.key?(:dest_ip_ranges)
           @layer4_configs = args[:layer4_configs] if args.key?(:layer4_configs)
           @src_ip_ranges = args[:src_ip_ranges] if args.key?(:src_ip_ranges)
-          @src_secure_labels = args[:src_secure_labels] if args.key?(:src_secure_labels)
           @src_secure_tags = args[:src_secure_tags] if args.key?(:src_secure_tags)
         end
       end
@@ -13776,12 +13812,6 @@ module Google
         # @return [Google::Apis::ComputeAlpha::Scheduling]
         attr_accessor :scheduling
       
-        # Secure labels to apply to this instance. These can be later modified by the
-        # update method. Maximum number of secure labels allowed is 300.
-        # Corresponds to the JSON property `secureLabels`
-        # @return [Array<String>]
-        attr_accessor :secure_labels
-      
         # Secure tags to apply to this instance. These can be later modified by the
         # update method. Maximum number of secure tags allowed is 300.
         # Corresponds to the JSON property `secureTags`
@@ -13918,7 +13948,6 @@ module Google
           @resource_status = args[:resource_status] if args.key?(:resource_status)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
-          @secure_labels = args[:secure_labels] if args.key?(:secure_labels)
           @secure_tags = args[:secure_tags] if args.key?(:secure_tags)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
@@ -18165,6 +18194,17 @@ module Google
         # @return [String]
         attr_accessor :bandwidth
       
+        # Up to 16 candidate prefixes that control the allocation of
+        # cloudRouterIpv6Address and customerRouterIpv6Address for this attachment. Each
+        # prefix must be in the Global Unique Address (GUA) space. It is highly
+        # recommended that it be in a range owned by the requestor. A GUA in a range
+        # owned by Google will cause the request to fail. Google will select an
+        # available prefix from the supplied candidates or fail the request. If not
+        # supplied, a /125 from a Google-owned GUA block will be selected.
+        # Corresponds to the JSON property `candidateIpv6Subnets`
+        # @return [Array<String>]
+        attr_accessor :candidate_ipv6_subnets
+      
         # Up to 16 candidate prefixes that can be used to restrict the allocation of
         # cloudRouterIpAddress and customerRouterIpAddress for this attachment. All
         # prefixes must be within link-local address space (169.254.0.0/16) and must be /
@@ -18182,6 +18222,20 @@ module Google
         # @return [String]
         attr_accessor :cloud_router_ip_address
       
+        # [Output Only] IPv6 address + prefix length to be configured on Cloud Router
+        # Interface for this interconnect attachment.
+        # Corresponds to the JSON property `cloudRouterIpv6Address`
+        # @return [String]
+        attr_accessor :cloud_router_ipv6_address
+      
+        # If supplied, the interface id (index within the subnet) to be used for the
+        # cloud router address. The id must be in the range of 1 to 6. If a subnet mask
+        # is supplied, it must be /125, and the subnet should either be 0 or match the
+        # selected subnet.
+        # Corresponds to the JSON property `cloudRouterIpv6InterfaceId`
+        # @return [String]
+        attr_accessor :cloud_router_ipv6_interface_id
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -18192,6 +18246,20 @@ module Google
         # Corresponds to the JSON property `customerRouterIpAddress`
         # @return [String]
         attr_accessor :customer_router_ip_address
+      
+        # [Output Only] IPv6 address + prefix length to be configured on the customer
+        # router subinterface for this interconnect attachment.
+        # Corresponds to the JSON property `customerRouterIpv6Address`
+        # @return [String]
+        attr_accessor :customer_router_ipv6_address
+      
+        # If supplied, the interface id (index within the subnet) to be used for the
+        # customer router address. The id must be in the range of 1 to 6. If a subnet
+        # mask is supplied, it must be /125, and the subnet should either be 0 or match
+        # the selected subnet.
+        # Corresponds to the JSON property `customerRouterIpv6InterfaceId`
+        # @return [String]
+        attr_accessor :customer_router_ipv6_interface_id
       
         # [Output Only] Dataplane version for this InterconnectAttachment.
         # Corresponds to the JSON property `dataplaneVersion`
@@ -18252,8 +18320,8 @@ module Google
         # only for interconnect attachment that has the encryption option as IPSEC. The
         # addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway
         # over the interconnect attachment, if the attachment is configured to use an
-        # RFC 1918 IP address, then the VPN gateway?s IP address will be allocated from
-        # the IP address range specified here. For example, if the HA VPN gateway?s
+        # RFC 1918 IP address, then the VPN gateway's IP address will be allocated from
+        # the IP address range specified here. For example, if the HA VPN gateway's
         # interface 0 is paired to this interconnect attachment, then an RFC 1918 IP
         # address for the VPN gateway interface 0 will be allocated from the IP address
         # specified for this interconnect attachment. If this field is not specified for
@@ -18370,6 +18438,14 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
+        # The stack type for this interconnect attachment to identify whether the IPv6
+        # feature is enabled or not. If not specified, IPV4_ONLY will be used.
+        # This field can be both set at interconnect attachments creation and update
+        # interconnect attachment operations.
+        # Corresponds to the JSON property `stackType`
+        # @return [String]
+        attr_accessor :stack_type
+      
         # [Output Only] The current state of this attachment's functionality. Enum
         # values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and
         # PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER,
@@ -18417,10 +18493,15 @@ module Google
         def update!(**args)
           @admin_enabled = args[:admin_enabled] if args.key?(:admin_enabled)
           @bandwidth = args[:bandwidth] if args.key?(:bandwidth)
+          @candidate_ipv6_subnets = args[:candidate_ipv6_subnets] if args.key?(:candidate_ipv6_subnets)
           @candidate_subnets = args[:candidate_subnets] if args.key?(:candidate_subnets)
           @cloud_router_ip_address = args[:cloud_router_ip_address] if args.key?(:cloud_router_ip_address)
+          @cloud_router_ipv6_address = args[:cloud_router_ipv6_address] if args.key?(:cloud_router_ipv6_address)
+          @cloud_router_ipv6_interface_id = args[:cloud_router_ipv6_interface_id] if args.key?(:cloud_router_ipv6_interface_id)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @customer_router_ip_address = args[:customer_router_ip_address] if args.key?(:customer_router_ip_address)
+          @customer_router_ipv6_address = args[:customer_router_ipv6_address] if args.key?(:customer_router_ipv6_address)
+          @customer_router_ipv6_interface_id = args[:customer_router_ipv6_interface_id] if args.key?(:customer_router_ipv6_interface_id)
           @dataplane_version = args[:dataplane_version] if args.key?(:dataplane_version)
           @description = args[:description] if args.key?(:description)
           @edge_availability_domain = args[:edge_availability_domain] if args.key?(:edge_availability_domain)
@@ -18443,6 +18524,7 @@ module Google
           @router = args[:router] if args.key?(:router)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @stack_type = args[:stack_type] if args.key?(:stack_type)
           @state = args[:state] if args.key?(:state)
           @type = args[:type] if args.key?(:type)
           @vlan_tag8021q = args[:vlan_tag8021q] if args.key?(:vlan_tag8021q)
@@ -22046,8 +22128,8 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
-        # Configuration for a Serverless Deployment network endpoint group (NEG). The
-        # platform must be provided.
+        # Configuration for a serverless network endpoint group (NEG). The platform must
+        # be provided.
         # Note: The target backend service must be in the same project and located in
         # the same region as the Serverless NEG.
         # Corresponds to the JSON property `serverlessDeployment`
@@ -22519,8 +22601,8 @@ module Google
         end
       end
       
-      # Configuration for a Serverless Deployment network endpoint group (NEG). The
-      # platform must be provided.
+      # Configuration for a serverless network endpoint group (NEG). The platform must
+      # be provided.
       # Note: The target backend service must be in the same project and located in
       # the same region as the Serverless NEG.
       class NetworkEndpointGroupServerlessDeployment
@@ -22528,10 +22610,10 @@ module Google
       
         # The platform of the backend target(s) of this NEG. Possible values include:
         # 
-        # - apigateway.googleapis.com
-        # - appengine.googleapies.com
-        # - cloudfunctions.googleapis.com
-        # - run.googleapis.com
+        # - API Gateway: apigateway.googleapis.com
+        # - App Engine: appengine.googleapis.com
+        # - Cloud Functions: cloudfunctions.googleapis.com
+        # - Cloud Run: run.googleapis.com
         # Corresponds to the JSON property `platform`
         # @return [String]
         attr_accessor :platform
@@ -22540,8 +22622,8 @@ module Google
         # explicitly or in the urlMask. The resource identified by this value is
         # platform-specific and is as follows:
         # 
-        # - API Gateway: The gateway id
-        # - AppEngine: The service name
+        # - API Gateway: The gateway ID
+        # - App Engine: The service name
         # - Cloud Functions: The function name
         # - Cloud Run: The service name
         # Corresponds to the JSON property `resource`
@@ -22549,23 +22631,24 @@ module Google
         attr_accessor :resource
       
         # A template to parse platform-specific fields from a request URL. URL mask
-        # allows for routing to multiple services on the same serverless platform
-        # without having to create multiple Network Endpoint Groups and backend services.
-        # The fields parsed by this template is platform-specific and are as follows:
+        # allows for routing to multiple resources on the same serverless platform
+        # without having to create multiple Network Endpoint Groups and backend
+        # resources. The fields parsed by this template are platform-specific and are as
+        # follows:
         # 
-        # - API Gateway: The gateway id
-        # - AppEngine: The service and version
-        # - Cloud Functions: The function
+        # - API Gateway: The gateway ID
+        # - App Engine: The service and version
+        # - Cloud Functions: The function name
         # - Cloud Run: The service and tag
         # Corresponds to the JSON property `urlMask`
         # @return [String]
         attr_accessor :url_mask
       
-        # The optional resource version. The version identified by this value is as
+        # The optional resource version. The version identified by this value is
         # platform-specific and is follows:
         # 
         # - API Gateway: Unused
-        # - AppEngine: The service version
+        # - App Engine: The service version
         # - Cloud Functions: Unused
         # - Cloud Run: The service tag
         # Corresponds to the JSON property `version`
@@ -32371,6 +32454,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
+        # ILB route behavior when ILB is deemed unhealthy based on user specified
+        # threshold on the Backend Service of the internal load balancing.
+        # Corresponds to the JSON property `ilbRouteBehaviorOnUnhealthy`
+        # @return [String]
+        attr_accessor :ilb_route_behavior_on_unhealthy
+      
         # [Output Only] Type of this resource. Always compute#routes for Route resources.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -32486,6 +32575,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @dest_range = args[:dest_range] if args.key?(:dest_range)
           @id = args[:id] if args.key?(:id)
+          @ilb_route_behavior_on_unhealthy = args[:ilb_route_behavior_on_unhealthy] if args.key?(:ilb_route_behavior_on_unhealthy)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
@@ -33060,6 +33150,12 @@ module Google
         # @return [String]
         attr_accessor :enable
       
+        # Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+        # Corresponds to the JSON property `enableIpv6`
+        # @return [Boolean]
+        attr_accessor :enable_ipv6
+        alias_method :enable_ipv6?, :enable_ipv6
+      
         # Name of the interface the BGP peer is associated with.
         # Corresponds to the JSON property `interfaceName`
         # @return [String]
@@ -33070,6 +33166,11 @@ module Google
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
+      
+        # IPv6 address of the interface inside Google Cloud Platform.
+        # Corresponds to the JSON property `ipv6NexthopAddress`
+        # @return [String]
+        attr_accessor :ipv6_nexthop_address
       
         # [Output Only] The resource that configures and manages this BGP peer.
         # - MANAGED_BY_USER is the default value and can be managed by you or other
@@ -33104,6 +33205,11 @@ module Google
         # @return [String]
         attr_accessor :peer_ip_address
       
+        # IPv6 address of the BGP interface outside Google Cloud Platform.
+        # Corresponds to the JSON property `peerIpv6NexthopAddress`
+        # @return [String]
+        attr_accessor :peer_ipv6_nexthop_address
+      
         # URI of the VM instance that is used as third-party router appliances such as
         # Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance
         # must be located in zones contained in the same region as this Cloud Router.
@@ -33124,12 +33230,15 @@ module Google
           @advertised_route_priority = args[:advertised_route_priority] if args.key?(:advertised_route_priority)
           @bfd = args[:bfd] if args.key?(:bfd)
           @enable = args[:enable] if args.key?(:enable)
+          @enable_ipv6 = args[:enable_ipv6] if args.key?(:enable_ipv6)
           @interface_name = args[:interface_name] if args.key?(:interface_name)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ipv6_nexthop_address = args[:ipv6_nexthop_address] if args.key?(:ipv6_nexthop_address)
           @management_type = args[:management_type] if args.key?(:management_type)
           @name = args[:name] if args.key?(:name)
           @peer_asn = args[:peer_asn] if args.key?(:peer_asn)
           @peer_ip_address = args[:peer_ip_address] if args.key?(:peer_ip_address)
+          @peer_ipv6_nexthop_address = args[:peer_ipv6_nexthop_address] if args.key?(:peer_ipv6_nexthop_address)
           @router_appliance_instance = args[:router_appliance_instance] if args.key?(:router_appliance_instance)
         end
       end
@@ -33450,6 +33559,19 @@ module Google
         # @return [Array<String>]
         attr_accessor :drain_nat_ips
       
+        # Enable Dynamic Port Allocation.
+        # If not specified, it is disabled by default.
+        # If set to true,
+        # - Dynamic Port Allocation will be enabled on this NAT config.
+        # - enableEndpointIndependentMapping cannot be set to true.
+        # - If minPorts is set, minPortsPerVm must be set to a power of two greater than
+        # or equal to 32. If minPortsPerVm is not set, a minimum of 32 ports will be
+        # allocated to a VM from this NAT config.
+        # Corresponds to the JSON property `enableDynamicPortAllocation`
+        # @return [Boolean]
+        attr_accessor :enable_dynamic_port_allocation
+        alias_method :enable_dynamic_port_allocation?, :enable_dynamic_port_allocation
+      
         # 
         # Corresponds to the JSON property `enableEndpointIndependentMapping`
         # @return [Boolean]
@@ -33465,6 +33587,18 @@ module Google
         # Corresponds to the JSON property `logConfig`
         # @return [Google::Apis::ComputeAlpha::RouterNatLogConfig]
         attr_accessor :log_config
+      
+        # Maximum number of ports allocated to a VM from this NAT config when Dynamic
+        # Port Allocation is enabled.
+        # If Dynamic Port Allocation is not enabled, this field has no effect.
+        # If Dynamic Port Allocation is enabled, and this field is set, it must be set
+        # to a power of two greater than minPortsPerVm, or 64 if minPortsPerVm is not
+        # set.
+        # If Dynamic Port Allocation is enabled and this field is not set, a maximum of
+        # 65536 ports will be allocated to a VM from this NAT config.
+        # Corresponds to the JSON property `maxPortsPerVm`
+        # @return [Fixnum]
+        attr_accessor :max_ports_per_vm
       
         # Minimum number of ports allocated to a VM from this NAT config. If not set, a
         # default number of ports is allocated to a VM. This is rounded up to the
@@ -33552,9 +33686,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @drain_nat_ips = args[:drain_nat_ips] if args.key?(:drain_nat_ips)
+          @enable_dynamic_port_allocation = args[:enable_dynamic_port_allocation] if args.key?(:enable_dynamic_port_allocation)
           @enable_endpoint_independent_mapping = args[:enable_endpoint_independent_mapping] if args.key?(:enable_endpoint_independent_mapping)
           @icmp_idle_timeout_sec = args[:icmp_idle_timeout_sec] if args.key?(:icmp_idle_timeout_sec)
           @log_config = args[:log_config] if args.key?(:log_config)
+          @max_ports_per_vm = args[:max_ports_per_vm] if args.key?(:max_ports_per_vm)
           @min_ports_per_vm = args[:min_ports_per_vm] if args.key?(:min_ports_per_vm)
           @name = args[:name] if args.key?(:name)
           @nat_ip_allocate_option = args[:nat_ip_allocate_option] if args.key?(:nat_ip_allocate_option)
@@ -33615,7 +33751,7 @@ module Google
         attr_accessor :description
       
         # CEL expression that specifies the match condition that egress traffic from a
-        # VM is evaluated against. If it evaluates to true, the corresponding ?action?
+        # VM is evaluated against. If it evaluates to true, the corresponding `action`
         # is enforced.
         # The following examples are valid match expressions:
         # "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/
@@ -33766,10 +33902,21 @@ module Google
         # @return [Google::Apis::ComputeAlpha::BfdStatus]
         attr_accessor :bfd_status
       
+        # Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+        # Corresponds to the JSON property `enableIpv6`
+        # @return [Boolean]
+        attr_accessor :enable_ipv6
+        alias_method :enable_ipv6?, :enable_ipv6
+      
         # IP address of the local BGP interface.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
+      
+        # IPv6 address of the local BGP interface.
+        # Corresponds to the JSON property `ipv6NexthopAddress`
+        # @return [String]
+        attr_accessor :ipv6_nexthop_address
       
         # URL of the VPN tunnel that this BGP peer controls.
         # Corresponds to the JSON property `linkedVpnTunnel`
@@ -33790,6 +33937,11 @@ module Google
         # Corresponds to the JSON property `peerIpAddress`
         # @return [String]
         attr_accessor :peer_ip_address
+      
+        # IPv6 address of the remote BGP interface.
+        # Corresponds to the JSON property `peerIpv6NexthopAddress`
+        # @return [String]
+        attr_accessor :peer_ipv6_nexthop_address
       
         # [Output only] URI of the VM instance that is used as third-party router
         # appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
@@ -33827,11 +33979,14 @@ module Google
         def update!(**args)
           @advertised_routes = args[:advertised_routes] if args.key?(:advertised_routes)
           @bfd_status = args[:bfd_status] if args.key?(:bfd_status)
+          @enable_ipv6 = args[:enable_ipv6] if args.key?(:enable_ipv6)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ipv6_nexthop_address = args[:ipv6_nexthop_address] if args.key?(:ipv6_nexthop_address)
           @linked_vpn_tunnel = args[:linked_vpn_tunnel] if args.key?(:linked_vpn_tunnel)
           @name = args[:name] if args.key?(:name)
           @num_learned_routes = args[:num_learned_routes] if args.key?(:num_learned_routes)
           @peer_ip_address = args[:peer_ip_address] if args.key?(:peer_ip_address)
+          @peer_ipv6_nexthop_address = args[:peer_ipv6_nexthop_address] if args.key?(:peer_ipv6_nexthop_address)
           @router_appliance_instance = args[:router_appliance_instance] if args.key?(:router_appliance_instance)
           @state = args[:state] if args.key?(:state)
           @status = args[:status] if args.key?(:status)
@@ -34416,15 +34571,14 @@ module Google
         # @return [String]
         attr_accessor :location_hint
       
-        # Specifies the number of hours after instance creation where the instance won't
-        # be scheduled for maintenance.
+        # Specifies the number of hours after VM instance creation where the VM won't be
+        # scheduled for maintenance.
         # Corresponds to the JSON property `maintenanceFreezeDurationHours`
         # @return [Fixnum]
         attr_accessor :maintenance_freeze_duration_hours
       
-        # Specifies whether this VM may be a stable fleet VM. Setting this to "Periodic"
-        # designates this VM as a Stable Fleet VM.
-        # See go/stable-fleet-ug for more details.
+        # For more information about maintenance intervals, see Setting maintenance
+        # intervals.
         # Corresponds to the JSON property `maintenanceInterval`
         # @return [String]
         attr_accessor :maintenance_interval
@@ -35120,7 +35274,7 @@ module Google
       class SecurityPolicyRuleHttpHeaderAction
         include Google::Apis::Core::Hashable
       
-        # The list of request headers to add or overwrite if they?re already present.
+        # The list of request headers to add or overwrite if they're already present.
         # Corresponds to the JSON property `requestHeadersToAdds`
         # @return [Array<Google::Apis::ComputeAlpha::SecurityPolicyRuleHttpHeaderActionHttpHeaderOption>]
         attr_accessor :request_headers_to_adds
@@ -38174,9 +38328,7 @@ module Google
         # applicable to subnetworks that have the purpose set to
         # INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load
         # balancer are being drained. A subnetwork that is draining cannot be used or
-        # modified until it reaches a status of READY CREATING: Subnetwork is
-        # provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is
-        # being updated
+        # modified until it reaches a status of READY
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -38697,7 +38849,8 @@ module Google
         end
       end
       
-      # Subsetting options to make L4 ILB support any number of backend instances
+      # Subsetting configuration for this BackendService. Currently this is applicable
+      # only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
       class Subsetting
         include Google::Apis::Core::Hashable
       

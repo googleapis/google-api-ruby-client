@@ -12375,6 +12375,9 @@ module Google
         #   accidentally creating duplicate commitments.
         #   The request ID must be a valid UUID with the exception that zero UUID is not
         #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [Array<String>, String] secure_tags
+        #   Secure tags to apply to this instance. These can be later modified by the
+        #   update method. Maximum number of secure tags allowed is 300.
         # @param [String] source_instance_template
         #   Specifies instance template to create the instance.
         #   This field is optional. It can be a full or partial URL. For example, the
@@ -12410,7 +12413,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_instance(project, zone, instance_object = nil, request_id: nil, source_instance_template: nil, source_machine_image: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_instance(project, zone, instance_object = nil, request_id: nil, secure_tags: nil, source_instance_template: nil, source_machine_image: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'projects/{project}/zones/{zone}/instances', options)
           command.request_representation = Google::Apis::ComputeAlpha::Instance::Representation
           command.request_object = instance_object
@@ -12419,6 +12422,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['secureTags'] = secure_tags unless secure_tags.nil?
           command.query['sourceInstanceTemplate'] = source_instance_template unless source_instance_template.nil?
           command.query['sourceMachineImage'] = source_machine_image unless source_machine_image.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -13867,6 +13871,10 @@ module Google
         # @param [String] instance
         #   Name of the instance resource to update.
         # @param [Google::Apis::ComputeAlpha::Instance] instance_object
+        # @param [Boolean] clear_secure_tag
+        #   Whether to clear secure tags from the instance.
+        #   This property is mutually exclusive with the secure_tag property; you can only
+        #   specify one or the other, but not both.
         # @param [String] minimal_action
         #   Specifies the action to take when updating an instance even if the updated
         #   properties do not require it. If not specified, then Compute Engine acts based
@@ -13887,6 +13895,9 @@ module Google
         #   accidentally creating duplicate commitments.
         #   The request ID must be a valid UUID with the exception that zero UUID is not
         #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [Array<String>, String] secure_tags
+        #   Secure tags to apply to this instance. Maximum number of secure tags allowed
+        #   is 300.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13906,7 +13917,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_instance(project, zone, instance, instance_object = nil, minimal_action: nil, most_disruptive_allowed_action: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_instance(project, zone, instance, instance_object = nil, clear_secure_tag: nil, minimal_action: nil, most_disruptive_allowed_action: nil, request_id: nil, secure_tags: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:put, 'projects/{project}/zones/{zone}/instances/{instance}', options)
           command.request_representation = Google::Apis::ComputeAlpha::Instance::Representation
           command.request_object = instance_object
@@ -13915,9 +13926,11 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['clearSecureTag'] = clear_secure_tag unless clear_secure_tag.nil?
           command.query['minimalAction'] = minimal_action unless minimal_action.nil?
           command.query['mostDisruptiveAllowedAction'] = most_disruptive_allowed_action unless most_disruptive_allowed_action.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['secureTags'] = secure_tags unless secure_tags.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -27469,7 +27482,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Export the changed blocks between two instant snapshots to a customer?s bucket
+        # Export the changed blocks between two instant snapshots to a customer's bucket
         # in the user specified format.
         # @param [String] project
         #   Project ID for this request.
@@ -41090,7 +41103,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Export the changed blocks between two instant snapshots to a customer?s bucket
+        # Export the changed blocks between two instant snapshots to a customer's bucket
         # in the user specified format.
         # @param [String] project
         #   Project ID for this request.
