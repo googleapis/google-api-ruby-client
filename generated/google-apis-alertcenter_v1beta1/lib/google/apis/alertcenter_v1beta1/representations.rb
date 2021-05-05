@@ -22,294 +22,310 @@ module Google
   module Apis
     module AlertcenterV1beta1
       
-      class GoogleAppsAlertcenterTypeAccountWarning
+      class AccountWarning
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeAccountWarningLoginDetails
+      class ActionInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeActivityRule
+      class ActivityRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeAppMakerSqlSetupNotification
+      class Alert
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeAppMakerSqlSetupNotificationRequestInfo
+      class AlertFeedback
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeAttachment
+      class AlertMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeAttachmentCsv
+      class AppMakerSqlSetupNotification
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeAttachmentCsvCsvRow
+      class AppSettingsChanged
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeBadWhitelist
+      class Attachment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeDeviceCompromised
+      class BadWhitelist
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeDeviceCompromisedDeviceCompromisedSecurityDetail
+      class BatchDeleteAlertsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeDlpRuleViolation
+      class BatchDeleteAlertsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeDomainId
+      class BatchUndeleteAlertsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeDomainWideTakeoutInitiated
+      class BatchUndeleteAlertsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeGmailMessageInfo
+      class CloudPubsubTopic
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeGoogleOperations
+      class Csv
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeMailPhishing
+      class CsvRow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeMaliciousEntity
+      class DeviceCompromised
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypePhishingSpike
+      class DeviceCompromisedSecurityDetail
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeRuleViolationInfo
+      class DlpRuleViolation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeRuleViolationInfoActionInfo
+      class DomainId
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeRuleViolationInfoMatchInfo
+      class DomainWideTakeoutInitiated
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeRuleViolationInfoMatchInfoPredefinedDetectorInfo
+      class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeRuleViolationInfoMatchInfoUserDefinedDetectorInfo
+      class GmailMessageInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeRuleViolationInfoResourceInfo
+      class GoogleOperations
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeRuleViolationInfoRuleInfo
+      class ListAlertFeedbackResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeStateSponsoredAttack
+      class ListAlertsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeSuspiciousActivity
+      class LoginDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeSuspiciousActivitySuspiciousActivitySecurityDetail
+      class MailPhishing
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeUser
+      class MaliciousEntity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterV1beta1Alert
+      class MatchInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterV1beta1AlertFeedback
+      class Notification
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterV1beta1AlertMetadata
+      class PhishingSpike
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterV1beta1BatchDeleteAlertsRequest
+      class PredefinedDetectorInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterV1beta1BatchDeleteAlertsResponse
+      class ReportingRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterV1beta1BatchUndeleteAlertsRequest
+      class RequestInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterV1beta1BatchUndeleteAlertsResponse
+      class ResourceInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterV1beta1ListAlertFeedbackResponse
+      class RuleInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterV1beta1ListAlertsResponse
+      class RuleViolationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterV1beta1Settings
+      class Settings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterV1beta1SettingsNotification
+      class StateSponsoredAttack
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterV1beta1SettingsNotificationCloudPubsubTopic
+      class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterV1beta1UndeleteAlertRequest
+      class SuspiciousActivity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleProtobufEmpty
+      class SuspiciousActivitySecurityDetail
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleRpcStatus
+      class UndeleteAlertRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppsAlertcenterTypeAccountWarning
+      class User
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserChanges
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserDefinedDetectorInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccountWarning
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
-          property :login_details, as: 'loginDetails', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeAccountWarningLoginDetails, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeAccountWarningLoginDetails::Representation
+          property :login_details, as: 'loginDetails', class: Google::Apis::AlertcenterV1beta1::LoginDetails, decorator: Google::Apis::AlertcenterV1beta1::LoginDetails::Representation
       
         end
       end
       
-      class GoogleAppsAlertcenterTypeAccountWarningLoginDetails
+      class ActionInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :ip_address, as: 'ipAddress'
-          property :login_time, as: 'loginTime'
         end
       end
       
-      class GoogleAppsAlertcenterTypeActivityRule
+      class ActivityRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :action_names, as: 'actionNames'
@@ -327,70 +343,156 @@ module Google
         end
       end
       
-      class GoogleAppsAlertcenterTypeAppMakerSqlSetupNotification
+      class Alert
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :request_info, as: 'requestInfo', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeAppMakerSqlSetupNotificationRequestInfo, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeAppMakerSqlSetupNotificationRequestInfo::Representation
+          property :alert_id, as: 'alertId'
+          property :create_time, as: 'createTime'
+          property :customer_id, as: 'customerId'
+          hash :data, as: 'data'
+          property :deleted, as: 'deleted'
+          property :end_time, as: 'endTime'
+          property :etag, as: 'etag'
+          property :metadata, as: 'metadata', class: Google::Apis::AlertcenterV1beta1::AlertMetadata, decorator: Google::Apis::AlertcenterV1beta1::AlertMetadata::Representation
+      
+          property :security_investigation_tool_link, as: 'securityInvestigationToolLink'
+          property :source, as: 'source'
+          property :start_time, as: 'startTime'
+          property :type, as: 'type'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class AlertFeedback
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alert_id, as: 'alertId'
+          property :create_time, as: 'createTime'
+          property :customer_id, as: 'customerId'
+          property :email, as: 'email'
+          property :feedback_id, as: 'feedbackId'
+          property :type, as: 'type'
+        end
+      end
+      
+      class AlertMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alert_id, as: 'alertId'
+          property :assignee, as: 'assignee'
+          property :customer_id, as: 'customerId'
+          property :etag, as: 'etag'
+          property :severity, as: 'severity'
+          property :status, as: 'status'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class AppMakerSqlSetupNotification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :request_info, as: 'requestInfo', class: Google::Apis::AlertcenterV1beta1::RequestInfo, decorator: Google::Apis::AlertcenterV1beta1::RequestInfo::Representation
       
         end
       end
       
-      class GoogleAppsAlertcenterTypeAppMakerSqlSetupNotificationRequestInfo
+      class AppSettingsChanged
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :app_developer_email, as: 'appDeveloperEmail'
-          property :app_key, as: 'appKey'
-          property :number_of_requests, :numeric_string => true, as: 'numberOfRequests'
+          property :alert_details, :base64 => true, as: 'alertDetails'
+          property :name, as: 'name'
         end
       end
       
-      class GoogleAppsAlertcenterTypeAttachment
+      class Attachment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :csv, as: 'csv', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeAttachmentCsv, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeAttachmentCsv::Representation
+          property :csv, as: 'csv', class: Google::Apis::AlertcenterV1beta1::Csv, decorator: Google::Apis::AlertcenterV1beta1::Csv::Representation
       
         end
       end
       
-      class GoogleAppsAlertcenterTypeAttachmentCsv
+      class BadWhitelist
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :data_rows, as: 'dataRows', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeAttachmentCsvCsvRow, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeAttachmentCsvCsvRow::Representation
+          property :domain_id, as: 'domainId', class: Google::Apis::AlertcenterV1beta1::DomainId, decorator: Google::Apis::AlertcenterV1beta1::DomainId::Representation
+      
+          property :malicious_entity, as: 'maliciousEntity', class: Google::Apis::AlertcenterV1beta1::MaliciousEntity, decorator: Google::Apis::AlertcenterV1beta1::MaliciousEntity::Representation
+      
+          collection :messages, as: 'messages', class: Google::Apis::AlertcenterV1beta1::GmailMessageInfo, decorator: Google::Apis::AlertcenterV1beta1::GmailMessageInfo::Representation
+      
+          property :source_ip, as: 'sourceIp'
+        end
+      end
+      
+      class BatchDeleteAlertsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alert_id, as: 'alertId'
+          property :customer_id, as: 'customerId'
+        end
+      end
+      
+      class BatchDeleteAlertsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :failed_alert_status, as: 'failedAlertStatus', class: Google::Apis::AlertcenterV1beta1::Status, decorator: Google::Apis::AlertcenterV1beta1::Status::Representation
+      
+          collection :success_alert_ids, as: 'successAlertIds'
+        end
+      end
+      
+      class BatchUndeleteAlertsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alert_id, as: 'alertId'
+          property :customer_id, as: 'customerId'
+        end
+      end
+      
+      class BatchUndeleteAlertsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :failed_alert_status, as: 'failedAlertStatus', class: Google::Apis::AlertcenterV1beta1::Status, decorator: Google::Apis::AlertcenterV1beta1::Status::Representation
+      
+          collection :success_alert_ids, as: 'successAlertIds'
+        end
+      end
+      
+      class CloudPubsubTopic
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :payload_format, as: 'payloadFormat'
+          property :topic_name, as: 'topicName'
+        end
+      end
+      
+      class Csv
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_rows, as: 'dataRows', class: Google::Apis::AlertcenterV1beta1::CsvRow, decorator: Google::Apis::AlertcenterV1beta1::CsvRow::Representation
       
           collection :headers, as: 'headers'
         end
       end
       
-      class GoogleAppsAlertcenterTypeAttachmentCsvCsvRow
+      class CsvRow
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :entries, as: 'entries'
         end
       end
       
-      class GoogleAppsAlertcenterTypeBadWhitelist
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :domain_id, as: 'domainId', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeDomainId, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeDomainId::Representation
-      
-          property :malicious_entity, as: 'maliciousEntity', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeMaliciousEntity, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeMaliciousEntity::Representation
-      
-          collection :messages, as: 'messages', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeGmailMessageInfo, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeGmailMessageInfo::Representation
-      
-          property :source_ip, as: 'sourceIp'
-        end
-      end
-      
-      class GoogleAppsAlertcenterTypeDeviceCompromised
+      class DeviceCompromised
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
-          collection :events, as: 'events', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeDeviceCompromisedDeviceCompromisedSecurityDetail, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeDeviceCompromisedDeviceCompromisedSecurityDetail::Representation
+          collection :events, as: 'events', class: Google::Apis::AlertcenterV1beta1::DeviceCompromisedSecurityDetail, decorator: Google::Apis::AlertcenterV1beta1::DeviceCompromisedSecurityDetail::Representation
       
         end
       end
       
-      class GoogleAppsAlertcenterTypeDeviceCompromisedDeviceCompromisedSecurityDetail
+      class DeviceCompromisedSecurityDetail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :device_compromised_state, as: 'deviceCompromisedState'
@@ -403,22 +505,22 @@ module Google
         end
       end
       
-      class GoogleAppsAlertcenterTypeDlpRuleViolation
+      class DlpRuleViolation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :rule_violation_info, as: 'ruleViolationInfo', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeRuleViolationInfo, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeRuleViolationInfo::Representation
+          property :rule_violation_info, as: 'ruleViolationInfo', class: Google::Apis::AlertcenterV1beta1::RuleViolationInfo, decorator: Google::Apis::AlertcenterV1beta1::RuleViolationInfo::Representation
       
         end
       end
       
-      class GoogleAppsAlertcenterTypeDomainId
+      class DomainId
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :customer_primary_domain, as: 'customerPrimaryDomain'
         end
       end
       
-      class GoogleAppsAlertcenterTypeDomainWideTakeoutInitiated
+      class DomainWideTakeoutInitiated
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
@@ -426,7 +528,13 @@ module Google
         end
       end
       
-      class GoogleAppsAlertcenterTypeGmailMessageInfo
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GmailMessageInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :attachments_sha256_hash, as: 'attachmentsSha256Hash'
@@ -440,11 +548,11 @@ module Google
         end
       end
       
-      class GoogleAppsAlertcenterTypeGoogleOperations
+      class GoogleOperations
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :affected_user_emails, as: 'affectedUserEmails'
-          property :attachment_data, as: 'attachmentData', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeAttachment, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeAttachment::Representation
+          property :attachment_data, as: 'attachmentData', class: Google::Apis::AlertcenterV1beta1::Attachment, decorator: Google::Apis::AlertcenterV1beta1::Attachment::Representation
       
           property :description, as: 'description'
           property :header, as: 'header'
@@ -452,95 +560,112 @@ module Google
         end
       end
       
-      class GoogleAppsAlertcenterTypeMailPhishing
+      class ListAlertFeedbackResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :domain_id, as: 'domainId', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeDomainId, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeDomainId::Representation
+          collection :feedback, as: 'feedback', class: Google::Apis::AlertcenterV1beta1::AlertFeedback, decorator: Google::Apis::AlertcenterV1beta1::AlertFeedback::Representation
+      
+        end
+      end
+      
+      class ListAlertsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alerts, as: 'alerts', class: Google::Apis::AlertcenterV1beta1::Alert, decorator: Google::Apis::AlertcenterV1beta1::Alert::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class LoginDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_address, as: 'ipAddress'
+          property :login_time, as: 'loginTime'
+        end
+      end
+      
+      class MailPhishing
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain_id, as: 'domainId', class: Google::Apis::AlertcenterV1beta1::DomainId, decorator: Google::Apis::AlertcenterV1beta1::DomainId::Representation
       
           property :is_internal, as: 'isInternal'
-          property :malicious_entity, as: 'maliciousEntity', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeMaliciousEntity, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeMaliciousEntity::Representation
+          property :malicious_entity, as: 'maliciousEntity', class: Google::Apis::AlertcenterV1beta1::MaliciousEntity, decorator: Google::Apis::AlertcenterV1beta1::MaliciousEntity::Representation
       
-          collection :messages, as: 'messages', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeGmailMessageInfo, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeGmailMessageInfo::Representation
+          collection :messages, as: 'messages', class: Google::Apis::AlertcenterV1beta1::GmailMessageInfo, decorator: Google::Apis::AlertcenterV1beta1::GmailMessageInfo::Representation
       
           property :system_action_type, as: 'systemActionType'
         end
       end
       
-      class GoogleAppsAlertcenterTypeMaliciousEntity
+      class MaliciousEntity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
-          property :entity, as: 'entity', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeUser, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeUser::Representation
+          property :entity, as: 'entity', class: Google::Apis::AlertcenterV1beta1::User, decorator: Google::Apis::AlertcenterV1beta1::User::Representation
       
           property :from_header, as: 'fromHeader'
         end
       end
       
-      class GoogleAppsAlertcenterTypePhishingSpike
+      class MatchInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :domain_id, as: 'domainId', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeDomainId, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeDomainId::Representation
+          property :predefined_detector, as: 'predefinedDetector', class: Google::Apis::AlertcenterV1beta1::PredefinedDetectorInfo, decorator: Google::Apis::AlertcenterV1beta1::PredefinedDetectorInfo::Representation
+      
+          property :user_defined_detector, as: 'userDefinedDetector', class: Google::Apis::AlertcenterV1beta1::UserDefinedDetectorInfo, decorator: Google::Apis::AlertcenterV1beta1::UserDefinedDetectorInfo::Representation
+      
+        end
+      end
+      
+      class Notification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_pubsub_topic, as: 'cloudPubsubTopic', class: Google::Apis::AlertcenterV1beta1::CloudPubsubTopic, decorator: Google::Apis::AlertcenterV1beta1::CloudPubsubTopic::Representation
+      
+        end
+      end
+      
+      class PhishingSpike
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain_id, as: 'domainId', class: Google::Apis::AlertcenterV1beta1::DomainId, decorator: Google::Apis::AlertcenterV1beta1::DomainId::Representation
       
           property :is_internal, as: 'isInternal'
-          property :malicious_entity, as: 'maliciousEntity', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeMaliciousEntity, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeMaliciousEntity::Representation
+          property :malicious_entity, as: 'maliciousEntity', class: Google::Apis::AlertcenterV1beta1::MaliciousEntity, decorator: Google::Apis::AlertcenterV1beta1::MaliciousEntity::Representation
       
-          collection :messages, as: 'messages', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeGmailMessageInfo, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeGmailMessageInfo::Representation
-      
-        end
-      end
-      
-      class GoogleAppsAlertcenterTypeRuleViolationInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :data_source, as: 'dataSource'
-          collection :match_info, as: 'matchInfo', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeRuleViolationInfoMatchInfo, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeRuleViolationInfoMatchInfo::Representation
-      
-          collection :recipients, as: 'recipients'
-          property :resource_info, as: 'resourceInfo', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeRuleViolationInfoResourceInfo, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeRuleViolationInfoResourceInfo::Representation
-      
-          property :rule_info, as: 'ruleInfo', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeRuleViolationInfoRuleInfo, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeRuleViolationInfoRuleInfo::Representation
-      
-          collection :suppressed_action_types, as: 'suppressedActionTypes'
-          property :trigger, as: 'trigger'
-          collection :triggered_action_info, as: 'triggeredActionInfo', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeRuleViolationInfoActionInfo, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeRuleViolationInfoActionInfo::Representation
-      
-          collection :triggered_action_types, as: 'triggeredActionTypes'
-          property :triggering_user_email, as: 'triggeringUserEmail'
-        end
-      end
-      
-      class GoogleAppsAlertcenterTypeRuleViolationInfoActionInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleAppsAlertcenterTypeRuleViolationInfoMatchInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :predefined_detector, as: 'predefinedDetector', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeRuleViolationInfoMatchInfoPredefinedDetectorInfo, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeRuleViolationInfoMatchInfoPredefinedDetectorInfo::Representation
-      
-          property :user_defined_detector, as: 'userDefinedDetector', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeRuleViolationInfoMatchInfoUserDefinedDetectorInfo, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeRuleViolationInfoMatchInfoUserDefinedDetectorInfo::Representation
+          collection :messages, as: 'messages', class: Google::Apis::AlertcenterV1beta1::GmailMessageInfo, decorator: Google::Apis::AlertcenterV1beta1::GmailMessageInfo::Representation
       
         end
       end
       
-      class GoogleAppsAlertcenterTypeRuleViolationInfoMatchInfoPredefinedDetectorInfo
+      class PredefinedDetectorInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :detector_name, as: 'detectorName'
         end
       end
       
-      class GoogleAppsAlertcenterTypeRuleViolationInfoMatchInfoUserDefinedDetectorInfo
+      class ReportingRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :display_name, as: 'displayName'
-          property :resource_name, as: 'resourceName'
+          property :alert_details, :base64 => true, as: 'alertDetails'
+          property :name, as: 'name'
+          property :query, :base64 => true, as: 'query'
         end
       end
       
-      class GoogleAppsAlertcenterTypeRuleViolationInfoResourceInfo
+      class RequestInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :app_developer_email, as: 'appDeveloperEmail'
+          property :app_key, as: 'appKey'
+          property :number_of_requests, :numeric_string => true, as: 'numberOfRequests'
+        end
+      end
+      
+      class ResourceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :document_id, as: 'documentId'
@@ -548,7 +673,7 @@ module Google
         end
       end
       
-      class GoogleAppsAlertcenterTypeRuleViolationInfoRuleInfo
+      class RuleInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
@@ -556,23 +681,60 @@ module Google
         end
       end
       
-      class GoogleAppsAlertcenterTypeStateSponsoredAttack
+      class RuleViolationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source, as: 'dataSource'
+          collection :match_info, as: 'matchInfo', class: Google::Apis::AlertcenterV1beta1::MatchInfo, decorator: Google::Apis::AlertcenterV1beta1::MatchInfo::Representation
+      
+          collection :recipients, as: 'recipients'
+          property :resource_info, as: 'resourceInfo', class: Google::Apis::AlertcenterV1beta1::ResourceInfo, decorator: Google::Apis::AlertcenterV1beta1::ResourceInfo::Representation
+      
+          property :rule_info, as: 'ruleInfo', class: Google::Apis::AlertcenterV1beta1::RuleInfo, decorator: Google::Apis::AlertcenterV1beta1::RuleInfo::Representation
+      
+          collection :suppressed_action_types, as: 'suppressedActionTypes'
+          property :trigger, as: 'trigger'
+          collection :triggered_action_info, as: 'triggeredActionInfo', class: Google::Apis::AlertcenterV1beta1::ActionInfo, decorator: Google::Apis::AlertcenterV1beta1::ActionInfo::Representation
+      
+          collection :triggered_action_types, as: 'triggeredActionTypes'
+          property :triggering_user_email, as: 'triggeringUserEmail'
+        end
+      end
+      
+      class Settings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :notifications, as: 'notifications', class: Google::Apis::AlertcenterV1beta1::Notification, decorator: Google::Apis::AlertcenterV1beta1::Notification::Representation
+      
+        end
+      end
+      
+      class StateSponsoredAttack
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
         end
       end
       
-      class GoogleAppsAlertcenterTypeSuspiciousActivity
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
+        end
+      end
+      
+      class SuspiciousActivity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
-          collection :events, as: 'events', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeSuspiciousActivitySuspiciousActivitySecurityDetail, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterTypeSuspiciousActivitySuspiciousActivitySecurityDetail::Representation
+          collection :events, as: 'events', class: Google::Apis::AlertcenterV1beta1::SuspiciousActivitySecurityDetail, decorator: Google::Apis::AlertcenterV1beta1::SuspiciousActivitySecurityDetail::Representation
       
         end
       end
       
-      class GoogleAppsAlertcenterTypeSuspiciousActivitySuspiciousActivitySecurityDetail
+      class SuspiciousActivitySecurityDetail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :device_id, as: 'deviceId'
@@ -587,7 +749,14 @@ module Google
         end
       end
       
-      class GoogleAppsAlertcenterTypeUser
+      class UndeleteAlertRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_id, as: 'customerId'
+        end
+      end
+      
+      class User
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
@@ -595,145 +764,18 @@ module Google
         end
       end
       
-      class GoogleAppsAlertcenterV1beta1Alert
+      class UserChanges
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :alert_id, as: 'alertId'
-          property :create_time, as: 'createTime'
-          property :customer_id, as: 'customerId'
-          hash :data, as: 'data'
-          property :deleted, as: 'deleted'
-          property :end_time, as: 'endTime'
-          property :etag, as: 'etag'
-          property :metadata, as: 'metadata', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterV1beta1AlertMetadata, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterV1beta1AlertMetadata::Representation
-      
-          property :security_investigation_tool_link, as: 'securityInvestigationToolLink'
-          property :source, as: 'source'
-          property :start_time, as: 'startTime'
-          property :type, as: 'type'
-          property :update_time, as: 'updateTime'
+          property :name, as: 'name'
         end
       end
       
-      class GoogleAppsAlertcenterV1beta1AlertFeedback
+      class UserDefinedDetectorInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :alert_id, as: 'alertId'
-          property :create_time, as: 'createTime'
-          property :customer_id, as: 'customerId'
-          property :email, as: 'email'
-          property :feedback_id, as: 'feedbackId'
-          property :type, as: 'type'
-        end
-      end
-      
-      class GoogleAppsAlertcenterV1beta1AlertMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :alert_id, as: 'alertId'
-          property :assignee, as: 'assignee'
-          property :customer_id, as: 'customerId'
-          property :etag, as: 'etag'
-          property :severity, as: 'severity'
-          property :status, as: 'status'
-          property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class GoogleAppsAlertcenterV1beta1BatchDeleteAlertsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :alert_id, as: 'alertId'
-          property :customer_id, as: 'customerId'
-        end
-      end
-      
-      class GoogleAppsAlertcenterV1beta1BatchDeleteAlertsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :failed_alert_status, as: 'failedAlertStatus', class: Google::Apis::AlertcenterV1beta1::GoogleRpcStatus, decorator: Google::Apis::AlertcenterV1beta1::GoogleRpcStatus::Representation
-      
-          collection :success_alert_ids, as: 'successAlertIds'
-        end
-      end
-      
-      class GoogleAppsAlertcenterV1beta1BatchUndeleteAlertsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :alert_id, as: 'alertId'
-          property :customer_id, as: 'customerId'
-        end
-      end
-      
-      class GoogleAppsAlertcenterV1beta1BatchUndeleteAlertsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :failed_alert_status, as: 'failedAlertStatus', class: Google::Apis::AlertcenterV1beta1::GoogleRpcStatus, decorator: Google::Apis::AlertcenterV1beta1::GoogleRpcStatus::Representation
-      
-          collection :success_alert_ids, as: 'successAlertIds'
-        end
-      end
-      
-      class GoogleAppsAlertcenterV1beta1ListAlertFeedbackResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :feedback, as: 'feedback', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterV1beta1AlertFeedback, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterV1beta1AlertFeedback::Representation
-      
-        end
-      end
-      
-      class GoogleAppsAlertcenterV1beta1ListAlertsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :alerts, as: 'alerts', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterV1beta1Alert, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterV1beta1Alert::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class GoogleAppsAlertcenterV1beta1Settings
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :notifications, as: 'notifications', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterV1beta1SettingsNotification, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterV1beta1SettingsNotification::Representation
-      
-        end
-      end
-      
-      class GoogleAppsAlertcenterV1beta1SettingsNotification
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cloud_pubsub_topic, as: 'cloudPubsubTopic', class: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterV1beta1SettingsNotificationCloudPubsubTopic, decorator: Google::Apis::AlertcenterV1beta1::GoogleAppsAlertcenterV1beta1SettingsNotificationCloudPubsubTopic::Representation
-      
-        end
-      end
-      
-      class GoogleAppsAlertcenterV1beta1SettingsNotificationCloudPubsubTopic
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :payload_format, as: 'payloadFormat'
-          property :topic_name, as: 'topicName'
-        end
-      end
-      
-      class GoogleAppsAlertcenterV1beta1UndeleteAlertRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :customer_id, as: 'customerId'
-        end
-      end
-      
-      class GoogleProtobufEmpty
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleRpcStatus
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :code, as: 'code'
-          collection :details, as: 'details'
-          property :message, as: 'message'
+          property :display_name, as: 'displayName'
+          property :resource_name, as: 'resourceName'
         end
       end
     end
