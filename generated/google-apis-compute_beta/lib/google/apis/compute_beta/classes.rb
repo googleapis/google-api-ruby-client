@@ -1166,6 +1166,18 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
+        # Specifies the number of hours after reservation creation where instances using
+        # the reservation won't be scheduled for maintenance.
+        # Corresponds to the JSON property `maintenanceFreezeDurationHours`
+        # @return [Fixnum]
+        attr_accessor :maintenance_freeze_duration_hours
+      
+        # For more information about maintenance intervals, see Setting maintenance
+        # intervals.
+        # Corresponds to the JSON property `maintenanceInterval`
+        # @return [String]
+        attr_accessor :maintenance_interval
+      
         # Minimum cpu platform the reservation.
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
@@ -1181,6 +1193,8 @@ module Google
           @local_ssds = args[:local_ssds] if args.key?(:local_ssds)
           @location_hint = args[:location_hint] if args.key?(:location_hint)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @maintenance_freeze_duration_hours = args[:maintenance_freeze_duration_hours] if args.key?(:maintenance_freeze_duration_hours)
+          @maintenance_interval = args[:maintenance_interval] if args.key?(:maintenance_interval)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
         end
       end
@@ -2727,6 +2741,12 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::BackendBucketCdnPolicyBypassCacheOnRequestHeader>]
         attr_accessor :bypass_cache_on_request_headers
       
+        # Message containing what to include in the cache key for a request for Cloud
+        # CDN.
+        # Corresponds to the JSON property `cacheKeyPolicy`
+        # @return [Google::Apis::ComputeBeta::BackendBucketCdnPolicyCacheKeyPolicy]
+        attr_accessor :cache_key_policy
+      
         # Specifies the cache setting for all responses from this backend. The possible
         # values are:
         # USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache
@@ -2851,6 +2871,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bypass_cache_on_request_headers = args[:bypass_cache_on_request_headers] if args.key?(:bypass_cache_on_request_headers)
+          @cache_key_policy = args[:cache_key_policy] if args.key?(:cache_key_policy)
           @cache_mode = args[:cache_mode] if args.key?(:cache_mode)
           @client_ttl = args[:client_ttl] if args.key?(:client_ttl)
           @default_ttl = args[:default_ttl] if args.key?(:default_ttl)
@@ -2883,6 +2904,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @header_name = args[:header_name] if args.key?(:header_name)
+        end
+      end
+      
+      # Message containing what to include in the cache key for a request for Cloud
+      # CDN.
+      class BackendBucketCdnPolicyCacheKeyPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Allows HTTP request headers (by name) to be used in the cache key.
+        # Corresponds to the JSON property `includeHttpHeaders`
+        # @return [Array<String>]
+        attr_accessor :include_http_headers
+      
+        # Names of query string parameters to include in cache keys. All other
+        # parameters will be excluded. '&' and '=' will be percent encoded and not
+        # treated as delimiters.
+        # Corresponds to the JSON property `queryStringWhitelist`
+        # @return [Array<String>]
+        attr_accessor :query_string_whitelist
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @include_http_headers = args[:include_http_headers] if args.key?(:include_http_headers)
+          @query_string_whitelist = args[:query_string_whitelist] if args.key?(:query_string_whitelist)
         end
       end
       
@@ -3320,7 +3369,8 @@ module Google
         # @return [String]
         attr_accessor :session_affinity
       
-        # Subsetting options to make L4 ILB support any number of backend instances
+        # Subsetting configuration for this BackendService. Currently this is applicable
+        # only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
         # Corresponds to the JSON property `subsetting`
         # @return [Google::Apis::ComputeBeta::Subsetting]
         attr_accessor :subsetting
@@ -4615,6 +4665,17 @@ module Google
         attr_accessor :include_host
         alias_method :include_host?, :include_host
       
+        # Allows HTTP request headers (by name) to be used in the cache key.
+        # Corresponds to the JSON property `includeHttpHeaders`
+        # @return [Array<String>]
+        attr_accessor :include_http_headers
+      
+        # Allows HTTP cookies (by name) to be used in the cache key. The name=value pair
+        # will be used in the cache key Cloud CDN generates.
+        # Corresponds to the JSON property `includeNamedCookies`
+        # @return [Array<String>]
+        attr_accessor :include_named_cookies
+      
         # If true, http and https requests will be cached separately.
         # Corresponds to the JSON property `includeProtocol`
         # @return [Boolean]
@@ -4653,6 +4714,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @include_host = args[:include_host] if args.key?(:include_host)
+          @include_http_headers = args[:include_http_headers] if args.key?(:include_http_headers)
+          @include_named_cookies = args[:include_named_cookies] if args.key?(:include_named_cookies)
           @include_protocol = args[:include_protocol] if args.key?(:include_protocol)
           @include_query_string = args[:include_query_string] if args.key?(:include_query_string)
           @query_string_blacklist = args[:query_string_blacklist] if args.key?(:query_string_blacklist)
@@ -8218,17 +8281,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :target_resources
       
-        # A list of secure labels that controls which instances the firewall rule
-        # applies to. If targetSecureLabel are specified, then the firewall rule applies
-        # only to instances in the VPC network that have one of those secure labels.
-        # targetSecureLabel may not be set at the same time as targetServiceAccounts. If
-        # neither targetServiceAccounts nor targetSecureLabel are specified, the
-        # firewall rule applies to all instances on the specified network. Maximum
-        # number of target label values allowed is 256.
-        # Corresponds to the JSON property `targetSecureLabels`
-        # @return [Array<String>]
-        attr_accessor :target_secure_labels
-      
         # A list of service accounts indicating the sets of instances that are applied
         # with this rule.
         # Corresponds to the JSON property `targetServiceAccounts`
@@ -8251,7 +8303,6 @@ module Google
           @priority = args[:priority] if args.key?(:priority)
           @rule_tuple_count = args[:rule_tuple_count] if args.key?(:rule_tuple_count)
           @target_resources = args[:target_resources] if args.key?(:target_resources)
-          @target_secure_labels = args[:target_secure_labels] if args.key?(:target_secure_labels)
           @target_service_accounts = args[:target_service_accounts] if args.key?(:target_service_accounts)
         end
       end
@@ -8277,12 +8328,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :src_ip_ranges
       
-        # List of firewall label values, which should be matched at the source of the
-        # traffic. Maximum number of source label values allowed is 256.
-        # Corresponds to the JSON property `srcSecureLabels`
-        # @return [Array<String>]
-        attr_accessor :src_secure_labels
-      
         def initialize(**args)
            update!(**args)
         end
@@ -8292,7 +8337,6 @@ module Google
           @dest_ip_ranges = args[:dest_ip_ranges] if args.key?(:dest_ip_ranges)
           @layer4_configs = args[:layer4_configs] if args.key?(:layer4_configs)
           @src_ip_ranges = args[:src_ip_ranges] if args.key?(:src_ip_ranges)
-          @src_secure_labels = args[:src_secure_labels] if args.key?(:src_secure_labels)
         end
       end
       
@@ -16459,8 +16503,8 @@ module Google
         # only for interconnect attachment that has the encryption option as IPSEC. The
         # addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway
         # over the interconnect attachment, if the attachment is configured to use an
-        # RFC 1918 IP address, then the VPN gateway?s IP address will be allocated from
-        # the IP address range specified here. For example, if the HA VPN gateway?s
+        # RFC 1918 IP address, then the VPN gateway's IP address will be allocated from
+        # the IP address range specified here. For example, if the HA VPN gateway's
         # interface 0 is paired to this interconnect attachment, then an RFC 1918 IP
         # address for the VPN gateway interface 0 will be allocated from the IP address
         # specified for this interconnect attachment. If this field is not specified for
@@ -30711,6 +30755,18 @@ module Google
         # @return [String]
         attr_accessor :location_hint
       
+        # Specifies the number of hours after VM instance creation where the VM won't be
+        # scheduled for maintenance.
+        # Corresponds to the JSON property `maintenanceFreezeDurationHours`
+        # @return [Fixnum]
+        attr_accessor :maintenance_freeze_duration_hours
+      
+        # For more information about maintenance intervals, see Setting maintenance
+        # intervals.
+        # Corresponds to the JSON property `maintenanceInterval`
+        # @return [String]
+        attr_accessor :maintenance_interval
+      
         # The minimum number of virtual CPUs this instance will consume when running on
         # a sole-tenant node.
         # Corresponds to the JSON property `minNodeCpus`
@@ -30748,6 +30804,8 @@ module Google
         def update!(**args)
           @automatic_restart = args[:automatic_restart] if args.key?(:automatic_restart)
           @location_hint = args[:location_hint] if args.key?(:location_hint)
+          @maintenance_freeze_duration_hours = args[:maintenance_freeze_duration_hours] if args.key?(:maintenance_freeze_duration_hours)
+          @maintenance_interval = args[:maintenance_interval] if args.key?(:maintenance_interval)
           @min_node_cpus = args[:min_node_cpus] if args.key?(:min_node_cpus)
           @node_affinities = args[:node_affinities] if args.key?(:node_affinities)
           @on_host_maintenance = args[:on_host_maintenance] if args.key?(:on_host_maintenance)
@@ -31612,11 +31670,22 @@ module Google
         # @return [String]
         attr_accessor :connection_preference
       
+        # Projects that are allowed to connect to this service attachment.
+        # Corresponds to the JSON property `consumerAcceptLists`
+        # @return [Array<Google::Apis::ComputeBeta::ServiceAttachmentConsumerProjectLimit>]
+        attr_accessor :consumer_accept_lists
+      
         # [Output Only] An array of forwarding rules for all the consumers connected to
         # this service attachment.
         # Corresponds to the JSON property `consumerForwardingRules`
         # @return [Array<Google::Apis::ComputeBeta::ServiceAttachmentConsumerForwardingRule>]
         attr_accessor :consumer_forwarding_rules
+      
+        # Projects that are not allowed to connect to this service attachment. The
+        # project can be specified using its id or number.
+        # Corresponds to the JSON property `consumerRejectLists`
+        # @return [Array<String>]
+        attr_accessor :consumer_reject_lists
       
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
@@ -31636,6 +31705,17 @@ module Google
         # @return [Boolean]
         attr_accessor :enable_proxy_protocol
         alias_method :enable_proxy_protocol?, :enable_proxy_protocol
+      
+        # Fingerprint of this resource. A hash of the contents stored in this object.
+        # This field is used in optimistic locking. This field will be ignored when
+        # inserting a ServiceAttachment. An up-to-date fingerprint must be provided in
+        # order to patch/update the ServiceAttachment; otherwise, the request will fail
+        # with error 412 conditionNotMet. To see the latest fingerprint, make a get()
+        # request to retrieve the ServiceAttachment.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
       
         # [Output Only] The unique identifier for the resource type. The server
         # generates this identifier.
@@ -31702,10 +31782,13 @@ module Google
         def update!(**args)
           @connected_endpoints = args[:connected_endpoints] if args.key?(:connected_endpoints)
           @connection_preference = args[:connection_preference] if args.key?(:connection_preference)
+          @consumer_accept_lists = args[:consumer_accept_lists] if args.key?(:consumer_accept_lists)
           @consumer_forwarding_rules = args[:consumer_forwarding_rules] if args.key?(:consumer_forwarding_rules)
+          @consumer_reject_lists = args[:consumer_reject_lists] if args.key?(:consumer_reject_lists)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @enable_proxy_protocol = args[:enable_proxy_protocol] if args.key?(:enable_proxy_protocol)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
@@ -31907,6 +31990,31 @@ module Google
           @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
           @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class ServiceAttachmentConsumerProjectLimit
+        include Google::Apis::Core::Hashable
+      
+        # The value of the limit to set.
+        # Corresponds to the JSON property `connectionLimit`
+        # @return [Fixnum]
+        attr_accessor :connection_limit
+      
+        # The project id or number for the project to set the limit for.
+        # Corresponds to the JSON property `projectIdOrNum`
+        # @return [String]
+        attr_accessor :project_id_or_num
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_limit = args[:connection_limit] if args.key?(:connection_limit)
+          @project_id_or_num = args[:project_id_or_num] if args.key?(:project_id_or_num)
         end
       end
       
@@ -33962,9 +34070,7 @@ module Google
         # applicable to subnetworks that have the purpose set to
         # INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load
         # balancer are being drained. A subnetwork that is draining cannot be used or
-        # modified until it reaches a status of READY CREATING: Subnetwork is
-        # provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is
-        # being updated
+        # modified until it reaches a status of READY
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -34466,7 +34572,8 @@ module Google
         end
       end
       
-      # Subsetting options to make L4 ILB support any number of backend instances
+      # Subsetting configuration for this BackendService. Currently this is applicable
+      # only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
       class Subsetting
         include Google::Apis::Core::Hashable
       

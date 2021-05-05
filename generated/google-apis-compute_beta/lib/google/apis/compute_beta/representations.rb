@@ -346,6 +346,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendBucketCdnPolicyCacheKeyPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendBucketCdnPolicyNegativeCachingPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4132,6 +4138,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceAttachmentConsumerProjectLimit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceAttachmentList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -5661,6 +5673,8 @@ module Google
       
           property :location_hint, as: 'locationHint'
           property :machine_type, as: 'machineType'
+          property :maintenance_freeze_duration_hours, as: 'maintenanceFreezeDurationHours'
+          property :maintenance_interval, as: 'maintenanceInterval'
           property :min_cpu_platform, as: 'minCpuPlatform'
         end
       end
@@ -5991,6 +6005,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :bypass_cache_on_request_headers, as: 'bypassCacheOnRequestHeaders', class: Google::Apis::ComputeBeta::BackendBucketCdnPolicyBypassCacheOnRequestHeader, decorator: Google::Apis::ComputeBeta::BackendBucketCdnPolicyBypassCacheOnRequestHeader::Representation
       
+          property :cache_key_policy, as: 'cacheKeyPolicy', class: Google::Apis::ComputeBeta::BackendBucketCdnPolicyCacheKeyPolicy, decorator: Google::Apis::ComputeBeta::BackendBucketCdnPolicyCacheKeyPolicy::Representation
+      
           property :cache_mode, as: 'cacheMode'
           property :client_ttl, as: 'clientTtl'
           property :default_ttl, as: 'defaultTtl'
@@ -6009,6 +6025,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :header_name, as: 'headerName'
+        end
+      end
+      
+      class BackendBucketCdnPolicyCacheKeyPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :include_http_headers, as: 'includeHttpHeaders'
+          collection :query_string_whitelist, as: 'queryStringWhitelist'
         end
       end
       
@@ -6386,6 +6410,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :include_host, as: 'includeHost'
+          collection :include_http_headers, as: 'includeHttpHeaders'
+          collection :include_named_cookies, as: 'includeNamedCookies'
           property :include_protocol, as: 'includeProtocol'
           property :include_query_string, as: 'includeQueryString'
           collection :query_string_blacklist, as: 'queryStringBlacklist'
@@ -7230,7 +7256,6 @@ module Google
           property :priority, as: 'priority'
           property :rule_tuple_count, as: 'ruleTupleCount'
           collection :target_resources, as: 'targetResources'
-          collection :target_secure_labels, as: 'targetSecureLabels'
           collection :target_service_accounts, as: 'targetServiceAccounts'
         end
       end
@@ -7242,7 +7267,6 @@ module Google
           collection :layer4_configs, as: 'layer4Configs', class: Google::Apis::ComputeBeta::FirewallPolicyRuleMatcherLayer4Config, decorator: Google::Apis::ComputeBeta::FirewallPolicyRuleMatcherLayer4Config::Representation
       
           collection :src_ip_ranges, as: 'srcIpRanges'
-          collection :src_secure_labels, as: 'srcSecureLabels'
         end
       end
       
@@ -12807,6 +12831,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :automatic_restart, as: 'automaticRestart'
           property :location_hint, as: 'locationHint'
+          property :maintenance_freeze_duration_hours, as: 'maintenanceFreezeDurationHours'
+          property :maintenance_interval, as: 'maintenanceInterval'
           property :min_node_cpus, as: 'minNodeCpus'
           collection :node_affinities, as: 'nodeAffinities', class: Google::Apis::ComputeBeta::SchedulingNodeAffinity, decorator: Google::Apis::ComputeBeta::SchedulingNodeAffinity::Representation
       
@@ -13027,11 +13053,15 @@ module Google
           collection :connected_endpoints, as: 'connectedEndpoints', class: Google::Apis::ComputeBeta::ServiceAttachmentConnectedEndpoint, decorator: Google::Apis::ComputeBeta::ServiceAttachmentConnectedEndpoint::Representation
       
           property :connection_preference, as: 'connectionPreference'
+          collection :consumer_accept_lists, as: 'consumerAcceptLists', class: Google::Apis::ComputeBeta::ServiceAttachmentConsumerProjectLimit, decorator: Google::Apis::ComputeBeta::ServiceAttachmentConsumerProjectLimit::Representation
+      
           collection :consumer_forwarding_rules, as: 'consumerForwardingRules', class: Google::Apis::ComputeBeta::ServiceAttachmentConsumerForwardingRule, decorator: Google::Apis::ComputeBeta::ServiceAttachmentConsumerForwardingRule::Representation
       
+          collection :consumer_reject_lists, as: 'consumerRejectLists'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :enable_proxy_protocol, as: 'enableProxyProtocol'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -13094,6 +13124,14 @@ module Google
           property :forwarding_rule, as: 'forwardingRule'
           property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
           property :status, as: 'status'
+        end
+      end
+      
+      class ServiceAttachmentConsumerProjectLimit
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_limit, as: 'connectionLimit'
+          property :project_id_or_num, as: 'projectIdOrNum'
         end
       end
       
