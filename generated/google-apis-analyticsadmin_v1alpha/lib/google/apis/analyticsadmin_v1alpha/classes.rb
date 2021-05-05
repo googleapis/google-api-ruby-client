@@ -1474,12 +1474,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :direct_roles
       
-        # Email address of the user to link
+        # Immutable. Email address of the user to link
         # Corresponds to the JSON property `emailAddress`
         # @return [String]
         attr_accessor :email_address
       
-        # Example format: properties/1234/userLinks/5678
+        # Output only. Example format: properties/1234/userLinks/5678
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
