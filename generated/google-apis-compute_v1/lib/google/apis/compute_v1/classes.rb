@@ -7761,17 +7761,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :target_resources
       
-        # A list of secure labels that controls which instances the firewall rule
-        # applies to. If targetSecureLabel are specified, then the firewall rule applies
-        # only to instances in the VPC network that have one of those secure labels.
-        # targetSecureLabel may not be set at the same time as targetServiceAccounts. If
-        # neither targetServiceAccounts nor targetSecureLabel are specified, the
-        # firewall rule applies to all instances on the specified network. Maximum
-        # number of target label values allowed is 256.
-        # Corresponds to the JSON property `targetSecureLabels`
-        # @return [Array<String>]
-        attr_accessor :target_secure_labels
-      
         # A list of service accounts indicating the sets of instances that are applied
         # with this rule.
         # Corresponds to the JSON property `targetServiceAccounts`
@@ -7794,7 +7783,6 @@ module Google
           @priority = args[:priority] if args.key?(:priority)
           @rule_tuple_count = args[:rule_tuple_count] if args.key?(:rule_tuple_count)
           @target_resources = args[:target_resources] if args.key?(:target_resources)
-          @target_secure_labels = args[:target_secure_labels] if args.key?(:target_secure_labels)
           @target_service_accounts = args[:target_service_accounts] if args.key?(:target_service_accounts)
         end
       end
@@ -7820,12 +7808,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :src_ip_ranges
       
-        # List of firewall label values, which should be matched at the source of the
-        # traffic. Maximum number of source label values allowed is 256.
-        # Corresponds to the JSON property `srcSecureLabels`
-        # @return [Array<String>]
-        attr_accessor :src_secure_labels
-      
         def initialize(**args)
            update!(**args)
         end
@@ -7835,7 +7817,6 @@ module Google
           @dest_ip_ranges = args[:dest_ip_ranges] if args.key?(:dest_ip_ranges)
           @layer4_configs = args[:layer4_configs] if args.key?(:layer4_configs)
           @src_ip_ranges = args[:src_ip_ranges] if args.key?(:src_ip_ranges)
-          @src_secure_labels = args[:src_secure_labels] if args.key?(:src_secure_labels)
         end
       end
       
@@ -11992,11 +11973,6 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::NetworkInterface>]
         attr_accessor :network_interfaces
       
-        # PostKeyRevocationActionType of the instance.
-        # Corresponds to the JSON property `postKeyRevocationActionType`
-        # @return [String]
-        attr_accessor :post_key_revocation_action_type
-      
         # The private IPv6 google access type for the VM. If not specified, use
         # INHERIT_FROM_SUBNETWORK as default.
         # Corresponds to the JSON property `privateIpv6GoogleAccess`
@@ -12111,7 +12087,6 @@ module Google
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @name = args[:name] if args.key?(:name)
           @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
-          @post_key_revocation_action_type = args[:post_key_revocation_action_type] if args.key?(:post_key_revocation_action_type)
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
@@ -14624,11 +14599,6 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::NetworkInterface>]
         attr_accessor :network_interfaces
       
-        # PostKeyRevocationActionType of the instance.
-        # Corresponds to the JSON property `postKeyRevocationActionType`
-        # @return [String]
-        attr_accessor :post_key_revocation_action_type
-      
         # The private IPv6 google access type for VMs. If not specified, use
         # INHERIT_FROM_SUBNETWORK as default.
         # Corresponds to the JSON property `privateIpv6GoogleAccess`
@@ -14686,7 +14656,6 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
-          @post_key_revocation_action_type = args[:post_key_revocation_action_type] if args.key?(:post_key_revocation_action_type)
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
@@ -15627,8 +15596,8 @@ module Google
         # only for interconnect attachment that has the encryption option as IPSEC. The
         # addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway
         # over the interconnect attachment, if the attachment is configured to use an
-        # RFC 1918 IP address, then the VPN gateway?s IP address will be allocated from
-        # the IP address range specified here. For example, if the HA VPN gateway?s
+        # RFC 1918 IP address, then the VPN gateway's IP address will be allocated from
+        # the IP address range specified here. For example, if the HA VPN gateway's
         # interface 0 is paired to this interconnect attachment, then an RFC 1918 IP
         # address for the VPN gateway interface 0 will be allocated from the IP address
         # specified for this interconnect attachment. If this field is not specified for
@@ -31304,9 +31273,7 @@ module Google
         # applicable to subnetworks that have the purpose set to
         # INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load
         # balancer are being drained. A subnetwork that is draining cannot be used or
-        # modified until it reaches a status of READY CREATING: Subnetwork is
-        # provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is
-        # being updated
+        # modified until it reaches a status of READY
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
