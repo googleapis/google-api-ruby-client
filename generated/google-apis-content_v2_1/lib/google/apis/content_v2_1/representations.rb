@@ -1888,6 +1888,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReturnShippingLabel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReturnaddressCustomBatchRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5648,6 +5654,15 @@ module Google
       
           property :shipping_date, as: 'shippingDate'
           property :state, as: 'state'
+        end
+      end
+      
+      class ReturnShippingLabel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :carrier, as: 'carrier'
+          property :label_uri, as: 'labelUri'
+          property :tracking_id, as: 'trackingId'
         end
       end
       

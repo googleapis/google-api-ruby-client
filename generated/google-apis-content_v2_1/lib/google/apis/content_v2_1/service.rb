@@ -2725,6 +2725,46 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Links a return shipping label to a return id. You can only create one return
+        # label per return id. Since the label is sent to the buyer, the linked return
+        # label cannot be updated or deleted. If you try to create multiple return
+        # shipping labels for a single return id, every create request except the first
+        # will fail.
+        # @param [Fixnum] merchant_id
+        #   Required. The merchant the Return Shipping Label belongs to.
+        # @param [String] return_id
+        #   Required. Provide the Google-generated merchant order return ID.
+        # @param [Google::Apis::ContentV2_1::ReturnShippingLabel] return_shipping_label_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::ReturnShippingLabel] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::ReturnShippingLabel]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_orderreturn_label(merchant_id, return_id, return_shipping_label_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, '{merchantId}/orderreturns/{returnId}/labels', options)
+          command.request_representation = Google::Apis::ContentV2_1::ReturnShippingLabel::Representation
+          command.request_object = return_shipping_label_object
+          command.response_representation = Google::Apis::ContentV2_1::ReturnShippingLabel::Representation
+          command.response_class = Google::Apis::ContentV2_1::ReturnShippingLabel
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['returnId'] = return_id unless return_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Marks an order as acknowledged.
         # @param [Fixnum] merchant_id
         #   The ID of the account that manages the order. This cannot be a multi-client

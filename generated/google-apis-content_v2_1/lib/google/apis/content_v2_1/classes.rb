@@ -12722,6 +12722,37 @@ module Google
         end
       end
       
+      # Return shipping label for a Buy on Google merchant-managed return.
+      class ReturnShippingLabel
+        include Google::Apis::Core::Hashable
+      
+        # Name of the carrier.
+        # Corresponds to the JSON property `carrier`
+        # @return [String]
+        attr_accessor :carrier
+      
+        # The URL for the return shipping label in PDF format
+        # Corresponds to the JSON property `labelUri`
+        # @return [String]
+        attr_accessor :label_uri
+      
+        # The tracking id of this return label.
+        # Corresponds to the JSON property `trackingId`
+        # @return [String]
+        attr_accessor :tracking_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @carrier = args[:carrier] if args.key?(:carrier)
+          @label_uri = args[:label_uri] if args.key?(:label_uri)
+          @tracking_id = args[:tracking_id] if args.key?(:tracking_id)
+        end
+      end
+      
       # 
       class ReturnaddressCustomBatchRequest
         include Google::Apis::Core::Hashable
