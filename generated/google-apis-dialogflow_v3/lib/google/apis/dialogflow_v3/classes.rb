@@ -3332,7 +3332,7 @@ module Google
         # the agent. Arbitrary JSON objects are supported. Some integrations that query
         # a Dialogflow agent may provide additional information in the payload. In
         # particular, for the Dialogflow Phone Gateway integration, this field has the
-        # form: ` "telephony": ` "caller_id": "+18558363987" ` `
+        # form: ``` ` "telephony": ` "caller_id": "+18558363987" ` ` ```
         # Corresponds to the JSON property `payload`
         # @return [Hash<String,Object>]
         attr_accessor :payload
