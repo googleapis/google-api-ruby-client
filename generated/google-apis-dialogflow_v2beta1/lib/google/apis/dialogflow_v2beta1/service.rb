@@ -4179,7 +4179,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create documents by importing data from external sources.
+        # Create documents by importing data from external sources. Dialogflow supports
+        # up to 350 documents in each request. If you try to import more, Dialogflow
+        # will return an error.
         # @param [String] parent
         #   Required. The knowledge base to import documents into. Format: `projects//
         #   locations//knowledgeBases/`.
@@ -7900,7 +7902,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create documents by importing data from external sources.
+        # Create documents by importing data from external sources. Dialogflow supports
+        # up to 350 documents in each request. If you try to import more, Dialogflow
+        # will return an error.
         # @param [String] parent
         #   Required. The knowledge base to import documents into. Format: `projects//
         #   locations//knowledgeBases/`.
