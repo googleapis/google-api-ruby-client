@@ -117,7 +117,7 @@ module Google
         # Updates the specified Application resource. You can update the following
         # fields: auth_domain - Google authentication domain for controlling user access
         # to the application. default_cookie_expiration - Cookie expiration policy for
-        # the application.
+        # the application. iap - Identity-Aware Proxy properties for the application.
         # @param [String] apps_id
         #   Part of `name`. Name of the Application resource to update. Example: apps/
         #   myapp.
