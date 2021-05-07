@@ -3925,6 +3925,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :ddl_affected_row_access_policy_count
       
+        # [Output-only] The DDL destination table. Present only for ALTER TABLE RENAME
+        # TO queries. Note that ddl_target_table is used just for its type information.
+        # Corresponds to the JSON property `ddlDestinationTable`
+        # @return [Google::Apis::BigqueryV2::TableReference]
+        attr_accessor :ddl_destination_table
+      
         # The DDL operation performed, possibly dependent on the pre-existence of the
         # DDL target. Possible values (new values might be added in the future): "CREATE"
         # : The query created the DDL target. "SKIP": No-op. Example cases: the query is
@@ -4084,6 +4090,7 @@ module Google
           @billing_tier = args[:billing_tier] if args.key?(:billing_tier)
           @cache_hit = args[:cache_hit] if args.key?(:cache_hit)
           @ddl_affected_row_access_policy_count = args[:ddl_affected_row_access_policy_count] if args.key?(:ddl_affected_row_access_policy_count)
+          @ddl_destination_table = args[:ddl_destination_table] if args.key?(:ddl_destination_table)
           @ddl_operation_performed = args[:ddl_operation_performed] if args.key?(:ddl_operation_performed)
           @ddl_target_dataset = args[:ddl_target_dataset] if args.key?(:ddl_target_dataset)
           @ddl_target_routine = args[:ddl_target_routine] if args.key?(:ddl_target_routine)
