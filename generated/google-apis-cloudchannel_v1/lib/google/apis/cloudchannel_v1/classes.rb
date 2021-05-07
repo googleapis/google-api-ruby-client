@@ -503,35 +503,35 @@ module Google
       class GoogleCloudChannelV1ContactInfo
         include Google::Apis::Core::Hashable
       
-        # Output only. Display name of the contact in the customer account. Populated by
-        # combining customer first name and last name.
+        # Output only. The customer account contact's display name, formatted as a
+        # combination of the customer's first and last name.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Email of the contact in the customer account. Email is required for
-        # entitlements that need creation of admin.google.com accounts. The email will
-        # be the username used in credentials to access the admin.google.com account.
+        # The customer account's contact email. Required for entitlements that create
+        # admin.google.com accounts, and serves as the customer's username for those
+        # accounts.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
       
-        # First name of the contact in the customer account.
+        # The customer account contact's first name.
         # Corresponds to the JSON property `firstName`
         # @return [String]
         attr_accessor :first_name
       
-        # Last name of the contact in the customer account.
+        # The customer account contact's last name.
         # Corresponds to the JSON property `lastName`
         # @return [String]
         attr_accessor :last_name
       
-        # Phone number of the contact in the customer account.
+        # The customer account's contact phone number.
         # Corresponds to the JSON property `phone`
         # @return [String]
         attr_accessor :phone
       
-        # Optional. Job title of the contact in the customer account.
+        # Optional. The customer account contact's job title.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -587,10 +587,10 @@ module Google
       class GoogleCloudChannelV1Customer
         include Google::Apis::Core::Hashable
       
-        # Secondary contact email. Alternate email and primary contact email are
-        # required to have different domains if primary contact email is present. When
-        # creating admin.google.com accounts, users get notified credentials at this
-        # email. This email address is also used as a recovery email.
+        # Secondary contact email. You need to provide an alternate email to create
+        # different domains if a primary contact email already exists. Users will
+        # receive a notification with credentials when you create an admin.google.com
+        # account. Secondary emails are also recovery email addresses.
         # Corresponds to the JSON property `alternateEmail`
         # @return [String]
         attr_accessor :alternate_email
@@ -601,8 +601,8 @@ module Google
         # @return [String]
         attr_accessor :channel_partner_id
       
-        # Output only. Customer's cloud_identity_id. Populated only if a Cloud Identity
-        # resource exists for this customer.
+        # Output only. The customer's Cloud Identity ID if the customer has a Cloud
+        # Identity resource.
         # Corresponds to the JSON property `cloudIdentityId`
         # @return [String]
         attr_accessor :cloud_identity_id
@@ -612,13 +612,13 @@ module Google
         # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1CloudIdentityInfo]
         attr_accessor :cloud_identity_info
       
-        # Output only. The time at which the customer is created.
+        # Output only. Time when the customer was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Required. Primary domain used by the customer. Domain of primary contact email
-        # is required to be same as the provided domain.
+        # Required. The customer's primary domain. Must match the primary contact email'
+        # s domain.
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
@@ -660,7 +660,7 @@ module Google
         # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ContactInfo]
         attr_accessor :primary_contact_info
       
-        # Output only. The time at which the customer is updated.
+        # Output only. Time when the customer was updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time

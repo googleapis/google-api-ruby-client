@@ -355,8 +355,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a requested ChannelPartnerLink resource. You must be a distributor to
-        # call this method. Possible error codes: * PERMISSION_DENIED: The reseller
+        # Returns the requested ChannelPartnerLink resource. You must be a distributor
+        # to call this method. Possible error codes: * PERMISSION_DENIED: The reseller
         # account making the request is different from the reseller account in the API
         # request. * INVALID_ARGUMENT: Required request parameters are missing or
         # invalid. * NOT_FOUND: ChannelPartnerLink resource not found because of an
@@ -530,9 +530,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the given Customer permanently and irreversibly. Possible error codes:
-        # * PERMISSION_DENIED: The account making the request does not own this customer.
-        # * INVALID_ARGUMENT: Required request parameters are missing or invalid. *
+        # Deletes the given Customer permanently. Possible error codes: *
+        # PERMISSION_DENIED: The account making the request does not own this customer. *
+        # INVALID_ARGUMENT: Required request parameters are missing or invalid. *
         # FAILED_PRECONDITION: The customer has existing entitlements. * NOT_FOUND: No
         # Customer resource found for the name in the request.
         # @param [String] name
@@ -564,7 +564,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a requested Customer resource. Possible error codes: *
+        # Returns the requested Customer resource. Possible error codes: *
         # PERMISSION_DENIED: The reseller account making the request is different from
         # the reseller account in the API request. * INVALID_ARGUMENT: Required request
         # parameters are missing or invalid. * NOT_FOUND: The customer resource doesn't
@@ -726,9 +726,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the given Customer permanently and irreversibly. Possible error codes:
-        # * PERMISSION_DENIED: The account making the request does not own this customer.
-        # * INVALID_ARGUMENT: Required request parameters are missing or invalid. *
+        # Deletes the given Customer permanently. Possible error codes: *
+        # PERMISSION_DENIED: The account making the request does not own this customer. *
+        # INVALID_ARGUMENT: Required request parameters are missing or invalid. *
         # FAILED_PRECONDITION: The customer has existing entitlements. * NOT_FOUND: No
         # Customer resource found for the name in the request.
         # @param [String] name
@@ -760,7 +760,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a requested Customer resource. Possible error codes: *
+        # Returns the requested Customer resource. Possible error codes: *
         # PERMISSION_DENIED: The reseller account making the request is different from
         # the reseller account in the API request. * INVALID_ARGUMENT: Required request
         # parameters are missing or invalid. * NOT_FOUND: The customer resource doesn't
@@ -1437,7 +1437,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a requested Entitlement resource. Possible error codes: *
+        # Returns the requested Entitlement resource. Possible error codes: *
         # PERMISSION_DENIED: The customer doesn't belong to the reseller. *
         # INVALID_ARGUMENT: Required request parameters are missing or invalid. *
         # NOT_FOUND: The customer entitlement was not found. Return value: The requested
