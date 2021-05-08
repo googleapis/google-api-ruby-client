@@ -57,6 +57,8 @@ module Google
         #   The project ID of the Google Cloud Platform project.
         # @param [String] system_id
         #   A system ID for filtering the results of the request.
+        # @param [String] view
+        #   The view configures whether to retrieve security keys information.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -74,13 +76,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_user_login_profile(name, project_id: nil, system_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_user_login_profile(name, project_id: nil, system_id: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta/{+name}/loginProfile', options)
           command.response_representation = Google::Apis::OsloginV1beta::LoginProfile::Representation
           command.response_class = Google::Apis::OsloginV1beta::LoginProfile
           command.params['name'] = name unless name.nil?
           command.query['projectId'] = project_id unless project_id.nil?
           command.query['systemId'] = system_id unless system_id.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -94,6 +97,8 @@ module Google
         # @param [Google::Apis::OsloginV1beta::SshPublicKey] ssh_public_key_object
         # @param [String] project_id
         #   The project ID of the Google Cloud Platform project.
+        # @param [String] view
+        #   The view configures whether to retrieve security keys information.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -111,7 +116,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def import_user_ssh_public_key(parent, ssh_public_key_object = nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def import_user_ssh_public_key(parent, ssh_public_key_object = nil, project_id: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1beta/{+parent}:importSshPublicKey', options)
           command.request_representation = Google::Apis::OsloginV1beta::SshPublicKey::Representation
           command.request_object = ssh_public_key_object
@@ -119,6 +124,7 @@ module Google
           command.response_class = Google::Apis::OsloginV1beta::ImportSshPublicKeyResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['projectId'] = project_id unless project_id.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
