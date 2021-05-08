@@ -769,7 +769,7 @@ module Google
       class MetadataImport
         include Google::Apis::Core::Hashable
       
-        # Output only. The time when the metadata import was created.
+        # Output only. The time when the metadata import was started.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
