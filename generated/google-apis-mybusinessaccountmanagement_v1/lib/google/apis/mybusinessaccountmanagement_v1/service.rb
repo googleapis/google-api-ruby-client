@@ -453,7 +453,8 @@ module Google
         # the same user administers. The user must be an owner of the account the
         # location is currently associated with and must also be at least a manager of
         # the destination account.
-        # @param [String] locations_id
+        # @param [String] name
+        #   Required. The name of the location to transfer. `locations/`location_id``.
         # @param [Google::Apis::MybusinessaccountmanagementV1::TransferLocationRequest] transfer_location_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -472,13 +473,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def transfer_location(locations_id, transfer_location_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/locations/{locationsId}:transferLocation', options)
+        def transfer_location(name, transfer_location_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:transfer', options)
           command.request_representation = Google::Apis::MybusinessaccountmanagementV1::TransferLocationRequest::Representation
           command.request_object = transfer_location_request_object
           command.response_representation = Google::Apis::MybusinessaccountmanagementV1::Empty::Representation
           command.response_class = Google::Apis::MybusinessaccountmanagementV1::Empty
-          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

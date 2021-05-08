@@ -236,7 +236,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :destination_account, as: 'destinationAccount'
-          property :name, as: 'name'
         end
       end
     end
