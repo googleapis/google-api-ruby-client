@@ -126,6 +126,11 @@ module Google
         # @return [String]
         attr_accessor :observation_period
       
+        # Insight's severity.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
         # Information related to insight state.
         # Corresponds to the JSON property `stateInfo`
         # @return [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1InsightStateInfo]
@@ -151,6 +156,7 @@ module Google
           @last_refresh_time = args[:last_refresh_time] if args.key?(:last_refresh_time)
           @name = args[:name] if args.key?(:name)
           @observation_period = args[:observation_period] if args.key?(:observation_period)
+          @severity = args[:severity] if args.key?(:severity)
           @state_info = args[:state_info] if args.key?(:state_info)
           @target_resources = args[:target_resources] if args.key?(:target_resources)
         end
@@ -530,6 +536,11 @@ module Google
         # @return [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1Impact]
         attr_accessor :primary_impact
       
+        # Recommendation's priority.
+        # Corresponds to the JSON property `priority`
+        # @return [String]
+        attr_accessor :priority
+      
         # Contains an identifier for a subtype of recommendations produced for the same
         # recommender. Subtype is a function of content and impact, meaning a new
         # subtype might be added when significant changes to `content` or `
@@ -560,6 +571,7 @@ module Google
           @last_refresh_time = args[:last_refresh_time] if args.key?(:last_refresh_time)
           @name = args[:name] if args.key?(:name)
           @primary_impact = args[:primary_impact] if args.key?(:primary_impact)
+          @priority = args[:priority] if args.key?(:priority)
           @recommender_subtype = args[:recommender_subtype] if args.key?(:recommender_subtype)
           @state_info = args[:state_info] if args.key?(:state_info)
         end
