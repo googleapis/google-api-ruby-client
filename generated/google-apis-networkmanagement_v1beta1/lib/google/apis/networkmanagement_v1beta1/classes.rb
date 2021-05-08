@@ -211,18 +211,18 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # External IP address of Cloud SQL instance.
+        # External IP address of a Cloud SQL instance.
         # Corresponds to the JSON property `externalIp`
         # @return [String]
         attr_accessor :external_ip
       
-        # Internal IP address of Cloud SQL instance.
+        # Internal IP address of a Cloud SQL instance.
         # Corresponds to the JSON property `internalIp`
         # @return [String]
         attr_accessor :internal_ip
       
-        # URI of a Cloud SQL instance network or empty string if instance does not have
-        # one.
+        # URI of a Cloud SQL instance network or empty string if the instance does not
+        # have one.
         # Corresponds to the JSON property `networkUri`
         # @return [String]
         attr_accessor :network_uri
@@ -750,27 +750,27 @@ module Google
         end
       end
       
-      # For display only. Metadata associated with a Google Kubernetes Engine cluster
-      # master.
+      # For display only. Metadata associated with a Google Kubernetes Engine (GKE)
+      # cluster master.
       class GkeMasterInfo
         include Google::Apis::Core::Hashable
       
-        # URI of a Google Kubernetes Engine cluster network.
+        # URI of a GKE cluster network.
         # Corresponds to the JSON property `clusterNetworkUri`
         # @return [String]
         attr_accessor :cluster_network_uri
       
-        # URI of a Google Kubernetes Engine cluster.
+        # URI of a GKE cluster.
         # Corresponds to the JSON property `clusterUri`
         # @return [String]
         attr_accessor :cluster_uri
       
-        # External IP address of a Google Kubernetes Engine cluster master.
+        # External IP address of a GKE cluster master.
         # Corresponds to the JSON property `externalIp`
         # @return [String]
         attr_accessor :external_ip
       
-        # Internal IP address of a Google Kubernetes Engine cluster master.
+        # Internal IP address of a GKE cluster master.
         # Corresponds to the JSON property `internalIp`
         # @return [String]
         attr_accessor :internal_ip
@@ -1693,8 +1693,8 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1beta1::ForwardingRuleInfo]
         attr_accessor :forwarding_rule
       
-        # For display only. Metadata associated with a Google Kubernetes Engine cluster
-        # master.
+        # For display only. Metadata associated with a Google Kubernetes Engine (GKE)
+        # cluster master.
         # Corresponds to the JSON property `gkeMaster`
         # @return [Google::Apis::NetworkmanagementV1beta1::GkeMasterInfo]
         attr_accessor :gke_master
@@ -1862,7 +1862,7 @@ module Google
         # @return [String]
         attr_accessor :network_uri
       
-        # Name of a GCP region where this VPN gateway is configured.
+        # Name of a Google Cloud region where this VPN gateway is configured.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -1908,7 +1908,7 @@ module Google
         # @return [String]
         attr_accessor :network_uri
       
-        # Name of a GCP region where this VPN tunnel is configured.
+        # Name of a Google Cloud region where this VPN tunnel is configured.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
