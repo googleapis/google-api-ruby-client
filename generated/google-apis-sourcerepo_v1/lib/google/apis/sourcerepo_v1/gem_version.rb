@@ -16,13 +16,13 @@ module Google
   module Apis
     module SourcerepoV1
       # Version of the google-apis-sourcerepo_v1 gem
-      GEM_VERSION = "0.2.0"
+      GEM_VERSION = "0.3.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.1.2"
+      GENERATOR_VERSION = "0.2.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20200914"
+      REVISION = "20210428"
     end
   end
 end
