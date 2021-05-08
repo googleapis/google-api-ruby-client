@@ -183,9 +183,10 @@ module Google
         #   will have the format of "partners/`partner_id`".
         # @param [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription] google_cloud_payments_reseller_subscription_v1_subscription_object
         # @param [String] subscription_id
-        #   Required. Identifies the subscription resource on the Partner side. If a
-        #   subscription was previously created with the same subscription_id, we will
-        #   directly return that one.
+        #   Required. Identifies the subscription resource on the Partner side. The value
+        #   is restricted to 63 ASCII characters at the maximum. If a subscription was
+        #   previously created with the same subscription_id, we will directly return that
+        #   one.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -331,9 +332,10 @@ module Google
         #   will have the format of "partners/`partner_id`".
         # @param [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription] google_cloud_payments_reseller_subscription_v1_subscription_object
         # @param [String] subscription_id
-        #   Required. Identifies the subscription resource on the Partner side. If a
-        #   subscription was previously created with the same subscription_id, we will
-        #   directly return that one.
+        #   Required. Identifies the subscription resource on the Partner side. The value
+        #   is restricted to 63 ASCII characters at the maximum. If a subscription was
+        #   previously created with the same subscription_id, we will directly return that
+        #   one.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
