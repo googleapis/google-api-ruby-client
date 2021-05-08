@@ -428,7 +428,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. Identifier of the end-user in partner’s system.
+        # Required. Identifier of the end-user in partner’s system. The value is
+        # restricted to 63 ASCII characters at the maximum.
         # Corresponds to the JSON property `partnerUserToken`
         # @return [String]
         attr_accessor :partner_user_token
