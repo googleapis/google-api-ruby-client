@@ -610,8 +610,8 @@ module Google
       
         # Output only. [Resource name](https://cloud.google.com/apis/design/
         # resource_names) of the DeviceUser in format: `devices/`device_id`/deviceUsers/`
-        # user_id``, where user_id is the ID of the user associated with the user
-        # session.
+        # device_user_id``, where `device_user_id` uniquely identifies a user's use of a
+        # device.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1306,8 +1306,8 @@ module Google
       
         # Output only. [Resource name](https://cloud.google.com/apis/design/
         # resource_names) of the DeviceUser in format: `devices/`device_id`/deviceUsers/`
-        # user_id``, where user_id is the ID of the user associated with the user
-        # session.
+        # device_user_id``, where `device_user_id` uniquely identifies a user's use of a
+        # device.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1436,8 +1436,7 @@ module Google
         # the security label cannot be removed once added.** Dynamic groups have a label
         # with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped
         # groups for Cloud Search have a label with a key of `system/groups/external`
-        # and an empty value. Examples: `"cloudidentity.googleapis.com/groups.
-        # discussion_forum": ""` or `"system/groups/external": ""`.
+        # and an empty value.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1451,7 +1450,8 @@ module Google
         # Required. Immutable. The resource name of the entity under which this `Group`
         # resides in the Cloud Identity resource hierarchy. Must be of the form `
         # identitysources/`identity_source_id`` for external- identity-mapped groups or `
-        # customers/`customer_id`` for Google Groups.
+        # customers/`customer_id`` for Google Groups. The `customer_id` must begin with "
+        # C" (for example, 'C046psxkn').
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -1631,7 +1631,7 @@ module Google
       class ListGroupsResponse
         include Google::Apis::Core::Hashable
       
-        # The `Group`s under the specified `parent`.
+        # The `Group` resources under the specified `parent`.
         # Corresponds to the JSON property `groups`
         # @return [Array<Google::Apis::CloudidentityV1beta1::Group>]
         attr_accessor :groups
@@ -1788,7 +1788,7 @@ module Google
       class MemberRelation
         include Google::Apis::Core::Hashable
       
-        # Resource name for this member if member is a GROUP, otherwise it is empty.
+        # Resource name for this member.
         # Corresponds to the JSON property `member`
         # @return [String]
         attr_accessor :member
@@ -2069,7 +2069,7 @@ module Google
       class SearchGroupsResponse
         include Google::Apis::Core::Hashable
       
-        # The `Group`s that match the search query.
+        # The `Group` resources that match the search query.
         # Corresponds to the JSON property `groups`
         # @return [Array<Google::Apis::CloudidentityV1beta1::Group>]
         attr_accessor :groups
@@ -2221,7 +2221,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The fully-qualified names of fields to update. May only contain the field `
-        # expiry_detail`.
+        # expiry_detail.expire_time`.
         # Corresponds to the JSON property `fieldMask`
         # @return [String]
         attr_accessor :field_mask

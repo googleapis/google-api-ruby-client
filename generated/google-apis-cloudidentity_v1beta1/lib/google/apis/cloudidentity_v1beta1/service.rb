@@ -84,7 +84,7 @@ module Google
         end
         
         # Retrieves a UserInvitation resource. **Note:** New consumer accounts with the
-        # customer’s verified domain created within the previous 48 hours will not
+        # customer's verified domain created within the previous 48 hours will not
         # appear in the result. This delay also applies to newly-verified domains.
         # @param [String] name
         #   Required. `UserInvitation` name in the format `customers/`customer`/
@@ -118,7 +118,7 @@ module Google
         
         # Verifies whether a user account is eligible to receive a UserInvitation (is an
         # unmanaged account). Eligibility is based on the following criteria: * the
-        # email address is a consumer account and it’s the primary email address of the
+        # email address is a consumer account and it's the primary email address of the
         # account, and * the domain of the email address matches an existing verified
         # Google Workspace or Cloud Identity domain If both conditions are met, the user
         # is eligible. **Note:** This method is not supported for Workspace Essentials
@@ -154,7 +154,7 @@ module Google
         end
         
         # Retrieves a list of UserInvitation resources. **Note:** New consumer accounts
-        # with the customer’s verified domain created within the previous 48 hours will
+        # with the customer's verified domain created within the previous 48 hours will
         # not appear in the result. This delay also applies to newly-verified domains.
         # @param [String] parent
         #   Required. The customer ID of the Google Workspace or Cloud Identity account
@@ -999,7 +999,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the `Group`s under a customer or namespace.
+        # Lists the `Group` resources under a customer or namespace.
         # @param [Fixnum] page_size
         #   The maximum number of results to return. Note that the number of results
         #   returned may be less than this value even if there are more available results.
@@ -1010,9 +1010,10 @@ module Google
         # @param [String] page_token
         #   The `next_page_token` value returned from a previous list request, if any.
         # @param [String] parent
-        #   Required. The parent resource under which to list all `Group`s. Must be of the
-        #   form `identitysources/`identity_source_id`` for external- identity-mapped
-        #   groups or `customers/`customer_id`` for Google Groups.
+        #   Required. The parent resource under which to list all `Group` resources. Must
+        #   be of the form `identitysources/`identity_source_id`` for external- identity-
+        #   mapped groups or `customers/`customer_id`` for Google Groups. The `customer_id`
+        #   must begin with "C" (for example, 'C046psxkn').
         # @param [String] view
         #   The level of detail to be returned. If unspecified, defaults to `View.BASIC`.
         # @param [String] fields
@@ -1124,7 +1125,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Searches for `Group`s matching a specified query.
+        # Searches for `Group` resources matching a specified query.
         # @param [Fixnum] page_size
         #   The maximum number of results to return. Note that the number of results
         #   returned may be less than this value even if there are more available results.
@@ -1139,7 +1140,7 @@ module Google
         #   https://opensource.google/projects/cel). May only contain equality operators
         #   on the parent and inclusion operators on labels (e.g., `parent == 'customers/`
         #   customer_id`' && 'cloudidentity.googleapis.com/groups.discussion_forum' in
-        #   labels`).
+        #   labels`). The `customer_id` must begin with "C" (for example, 'C046psxkn').
         # @param [String] view
         #   The level of detail to be returned. If unspecified, defaults to `View.BASIC`.
         # @param [String] fields
@@ -1507,10 +1508,10 @@ module Google
         # @param [String] query
         #   Required. A CEL expression that MUST include member specification AND label(s).
         #   This is a `required` field. Users can search on label attributes of groups.
-        #   CONTAINS match ('in') is supported on labels. Certain groups are uniquely
-        #   identified by both a 'member_key_id' and a 'member_key_namespace', which
-        #   requires an additional query input: 'member_key_namespace'. Example query: `
-        #   member_key_id == 'member_key_id_value' && in labels`
+        #   CONTAINS match ('in') is supported on labels. Identity-mapped groups are
+        #   uniquely identified by both a `member_key_id` and a `member_key_namespace`,
+        #   which requires an additional query input: `member_key_namespace`. Example
+        #   query: `member_key_id == 'member_key_id_value' && in labels`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
