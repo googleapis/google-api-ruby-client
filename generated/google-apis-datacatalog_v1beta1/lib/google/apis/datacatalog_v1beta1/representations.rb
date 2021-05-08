@@ -274,6 +274,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogV1beta1UsageSignal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1beta1UsageStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogV1beta1ViewSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -396,6 +408,8 @@ module Google
           property :source_system_timestamps, as: 'sourceSystemTimestamps', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SystemTimestamps, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SystemTimestamps::Representation
       
           property :type, as: 'type'
+          property :usage_signal, as: 'usageSignal', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1UsageSignal, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1UsageSignal::Representation
+      
           property :user_specified_system, as: 'userSpecifiedSystem'
           property :user_specified_type, as: 'userSpecifiedType'
         end
@@ -712,6 +726,25 @@ module Google
           property :policy_tag_count, as: 'policyTagCount'
           property :taxonomy_timestamps, as: 'taxonomyTimestamps', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SystemTimestamps, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SystemTimestamps::Representation
       
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1beta1UsageSignal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :update_time, as: 'updateTime'
+          hash :usage_within_time_range, as: 'usageWithinTimeRange', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1UsageStats, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1UsageStats::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1beta1UsageStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :total_cancellations, as: 'totalCancellations'
+          property :total_completions, as: 'totalCompletions'
+          property :total_execution_time_for_completions_millis, as: 'totalExecutionTimeForCompletionsMillis'
+          property :total_failures, as: 'totalFailures'
         end
       end
       
