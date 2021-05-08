@@ -62,6 +62,9 @@ module Google
         #   [PROJECT_ID_OR_NUMBER] The [PROJECT_ID_OR_NUMBER] must match the dashboard
         #   resource name.
         # @param [Google::Apis::MonitoringV1::Dashboard] dashboard_object
+        # @param [Boolean] validate_only
+        #   If set, validate the request and preview the review, but do not actually save
+        #   it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -79,13 +82,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_dashboard(parent, dashboard_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_dashboard(parent, dashboard_object = nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/dashboards', options)
           command.request_representation = Google::Apis::MonitoringV1::Dashboard::Representation
           command.request_object = dashboard_object
           command.response_representation = Google::Apis::MonitoringV1::Dashboard::Representation
           command.response_class = Google::Apis::MonitoringV1::Dashboard
           command.params['parent'] = parent unless parent.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -207,6 +211,9 @@ module Google
         # @param [String] name
         #   Immutable. The resource name of the dashboard.
         # @param [Google::Apis::MonitoringV1::Dashboard] dashboard_object
+        # @param [Boolean] validate_only
+        #   If set, validate the request and preview the review, but do not actually save
+        #   it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -224,13 +231,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_dashboard(name, dashboard_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_dashboard(name, dashboard_object = nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::MonitoringV1::Dashboard::Representation
           command.request_object = dashboard_object
           command.response_representation = Google::Apis::MonitoringV1::Dashboard::Representation
           command.response_class = Google::Apis::MonitoringV1::Dashboard
           command.params['name'] = name unless name.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
