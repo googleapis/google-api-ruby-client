@@ -28,6 +28,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CommitCursorRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CommitCursorResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ComputeHeadCursorRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -135,6 +147,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :publish_mib_per_sec, as: 'publishMibPerSec'
           property :subscribe_mib_per_sec, as: 'subscribeMibPerSec'
+        end
+      end
+      
+      class CommitCursorRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cursor, as: 'cursor', class: Google::Apis::PubsubliteV1::Cursor, decorator: Google::Apis::PubsubliteV1::Cursor::Representation
+      
+          property :partition, :numeric_string => true, as: 'partition'
+        end
+      end
+      
+      class CommitCursorResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

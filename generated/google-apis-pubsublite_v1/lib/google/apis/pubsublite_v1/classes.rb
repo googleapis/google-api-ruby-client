@@ -47,6 +47,45 @@ module Google
         end
       end
       
+      # Request for CommitCursor.
+      class CommitCursorRequest
+        include Google::Apis::Core::Hashable
+      
+        # A cursor that describes the position of a message within a topic partition.
+        # Corresponds to the JSON property `cursor`
+        # @return [Google::Apis::PubsubliteV1::Cursor]
+        attr_accessor :cursor
+      
+        # The partition for which to update the cursor. Partitions are zero indexed, so `
+        # partition` must be in the range [0, topic.num_partitions).
+        # Corresponds to the JSON property `partition`
+        # @return [Fixnum]
+        attr_accessor :partition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cursor = args[:cursor] if args.key?(:cursor)
+          @partition = args[:partition] if args.key?(:partition)
+        end
+      end
+      
+      # Response for CommitCursor.
+      class CommitCursorResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Compute the current head cursor for a partition.
       class ComputeHeadCursorRequest
         include Google::Apis::Core::Hashable
