@@ -22,6 +22,24 @@ module Google
   module Apis
     module TranslateV3beta1
       
+      class BatchDocumentInputConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchDocumentOutputConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchTranslateDocumentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchTranslateTextRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -47,6 +65,24 @@ module Google
       end
       
       class DetectedLanguage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DocumentInputConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DocumentOutputConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DocumentTranslation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -154,6 +190,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TranslateDocumentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TranslateDocumentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TranslateTextGlossaryConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -182,6 +230,37 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchDocumentInputConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::TranslateV3beta1::GcsSource, decorator: Google::Apis::TranslateV3beta1::GcsSource::Representation
+      
+        end
+      end
+      
+      class BatchDocumentOutputConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::TranslateV3beta1::GcsDestination, decorator: Google::Apis::TranslateV3beta1::GcsDestination::Representation
+      
+        end
+      end
+      
+      class BatchTranslateDocumentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :glossaries, as: 'glossaries', class: Google::Apis::TranslateV3beta1::TranslateTextGlossaryConfig, decorator: Google::Apis::TranslateV3beta1::TranslateTextGlossaryConfig::Representation
+      
+          collection :input_configs, as: 'inputConfigs', class: Google::Apis::TranslateV3beta1::BatchDocumentInputConfig, decorator: Google::Apis::TranslateV3beta1::BatchDocumentInputConfig::Representation
+      
+          hash :models, as: 'models'
+          property :output_config, as: 'outputConfig', class: Google::Apis::TranslateV3beta1::BatchDocumentOutputConfig, decorator: Google::Apis::TranslateV3beta1::BatchDocumentOutputConfig::Representation
+      
+          property :source_language_code, as: 'sourceLanguageCode'
+          collection :target_language_codes, as: 'targetLanguageCodes'
+        end
       end
       
       class BatchTranslateTextRequest
@@ -229,6 +308,34 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
           property :language_code, as: 'languageCode'
+        end
+      end
+      
+      class DocumentInputConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, :base64 => true, as: 'content'
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::TranslateV3beta1::GcsSource, decorator: Google::Apis::TranslateV3beta1::GcsSource::Representation
+      
+          property :mime_type, as: 'mimeType'
+        end
+      end
+      
+      class DocumentOutputConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::TranslateV3beta1::GcsDestination, decorator: Google::Apis::TranslateV3beta1::GcsDestination::Representation
+      
+          property :mime_type, as: 'mimeType'
+        end
+      end
+      
+      class DocumentTranslation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :byte_stream_outputs, as: 'byteStreamOutputs'
+          property :detected_language_code, as: 'detectedLanguageCode'
+          property :mime_type, as: 'mimeType'
         end
       end
       
@@ -382,6 +489,35 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :languages, as: 'languages', class: Google::Apis::TranslateV3beta1::SupportedLanguage, decorator: Google::Apis::TranslateV3beta1::SupportedLanguage::Representation
       
+        end
+      end
+      
+      class TranslateDocumentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_input_config, as: 'documentInputConfig', class: Google::Apis::TranslateV3beta1::DocumentInputConfig, decorator: Google::Apis::TranslateV3beta1::DocumentInputConfig::Representation
+      
+          property :document_output_config, as: 'documentOutputConfig', class: Google::Apis::TranslateV3beta1::DocumentOutputConfig, decorator: Google::Apis::TranslateV3beta1::DocumentOutputConfig::Representation
+      
+          property :glossary_config, as: 'glossaryConfig', class: Google::Apis::TranslateV3beta1::TranslateTextGlossaryConfig, decorator: Google::Apis::TranslateV3beta1::TranslateTextGlossaryConfig::Representation
+      
+          hash :labels, as: 'labels'
+          property :model, as: 'model'
+          property :source_language_code, as: 'sourceLanguageCode'
+          property :target_language_code, as: 'targetLanguageCode'
+        end
+      end
+      
+      class TranslateDocumentResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_translation, as: 'documentTranslation', class: Google::Apis::TranslateV3beta1::DocumentTranslation, decorator: Google::Apis::TranslateV3beta1::DocumentTranslation::Representation
+      
+          property :glossary_config, as: 'glossaryConfig', class: Google::Apis::TranslateV3beta1::TranslateTextGlossaryConfig, decorator: Google::Apis::TranslateV3beta1::TranslateTextGlossaryConfig::Representation
+      
+          property :glossary_document_translation, as: 'glossaryDocumentTranslation', class: Google::Apis::TranslateV3beta1::DocumentTranslation, decorator: Google::Apis::TranslateV3beta1::DocumentTranslation::Representation
+      
+          property :model, as: 'model'
         end
       end
       
