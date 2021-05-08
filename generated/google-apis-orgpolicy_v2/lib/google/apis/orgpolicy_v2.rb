@@ -24,7 +24,7 @@ module Google
     # The Org Policy API allows users to configure governance ruleson their GCP
     # resources across the Cloud Resource Hierarchy.
     #
-    # @see https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints
+    # @see https://cloud.google.com/orgpolicy/docs/reference/rest/index.html
     module OrgpolicyV2
       # Version of the Organization Policy API this client connects to.
       # This is NOT the gem version.

@@ -31,7 +31,7 @@ module Google
       #    Orgpolicy = Google::Apis::OrgpolicyV2 # Alias the module
       #    service = Orgpolicy::OrgPolicyAPIService.new
       #
-      # @see https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints
+      # @see https://cloud.google.com/orgpolicy/docs/reference/rest/index.html
       class OrgPolicyAPIService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
