@@ -1479,6 +1479,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bounding_poly, as: 'boundingPoly', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1BoundingPoly, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1BoundingPoly::Representation
       
+          property :confidence, as: 'confidence'
           property :layout_id, as: 'layoutId'
           property :layout_type, as: 'layoutType'
           property :page, :numeric_string => true, as: 'page'
@@ -1988,6 +1989,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bounding_poly, as: 'boundingPoly', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1BoundingPoly, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1BoundingPoly::Representation
       
+          property :confidence, as: 'confidence'
           property :layout_id, as: 'layoutId'
           property :layout_type, as: 'layoutType'
           property :page, :numeric_string => true, as: 'page'
@@ -2476,6 +2478,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bounding_poly, as: 'boundingPoly', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2BoundingPoly, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2BoundingPoly::Representation
       
+          property :confidence, as: 'confidence'
           property :layout_id, as: 'layoutId'
           property :layout_type, as: 'layoutType'
           property :page, :numeric_string => true, as: 'page'

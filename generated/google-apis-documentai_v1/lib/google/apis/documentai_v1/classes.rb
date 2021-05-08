@@ -1164,6 +1164,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1BoundingPoly]
         attr_accessor :bounding_poly
       
+        # Optional. Confidence of detected page element, if applicable. Range [0, 1].
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
         # Optional. Deprecated. Use PageRef.bounding_poly instead.
         # Corresponds to the JSON property `layoutId`
         # @return [String]
@@ -1187,6 +1192,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bounding_poly = args[:bounding_poly] if args.key?(:bounding_poly)
+          @confidence = args[:confidence] if args.key?(:confidence)
           @layout_id = args[:layout_id] if args.key?(:layout_id)
           @layout_type = args[:layout_type] if args.key?(:layout_type)
           @page = args[:page] if args.key?(:page)
@@ -2902,6 +2908,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1BoundingPoly]
         attr_accessor :bounding_poly
       
+        # Optional. Confidence of detected page element, if applicable. Range [0, 1].
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
         # Optional. Deprecated. Use PageRef.bounding_poly instead.
         # Corresponds to the JSON property `layoutId`
         # @return [String]
@@ -2925,6 +2936,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bounding_poly = args[:bounding_poly] if args.key?(:bounding_poly)
+          @confidence = args[:confidence] if args.key?(:confidence)
           @layout_id = args[:layout_id] if args.key?(:layout_id)
           @layout_type = args[:layout_type] if args.key?(:layout_type)
           @page = args[:page] if args.key?(:page)
@@ -4597,6 +4609,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2BoundingPoly]
         attr_accessor :bounding_poly
       
+        # Optional. Confidence of detected page element, if applicable. Range [0, 1].
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
         # Optional. Deprecated. Use PageRef.bounding_poly instead.
         # Corresponds to the JSON property `layoutId`
         # @return [String]
@@ -4620,6 +4637,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bounding_poly = args[:bounding_poly] if args.key?(:bounding_poly)
+          @confidence = args[:confidence] if args.key?(:confidence)
           @layout_id = args[:layout_id] if args.key?(:layout_id)
           @layout_type = args[:layout_type] if args.key?(:layout_type)
           @page = args[:page] if args.key?(:page)
