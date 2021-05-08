@@ -354,6 +354,8 @@ module Google
       class Endpoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_sql_instance, as: 'cloudSqlInstance'
+          property :gke_master_cluster, as: 'gkeMasterCluster'
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'
           property :network, as: 'network'

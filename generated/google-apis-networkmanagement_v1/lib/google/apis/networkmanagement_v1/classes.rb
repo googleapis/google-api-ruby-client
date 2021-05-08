@@ -211,18 +211,18 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # External IP address of Cloud SQL instance.
+        # External IP address of a Cloud SQL instance.
         # Corresponds to the JSON property `externalIp`
         # @return [String]
         attr_accessor :external_ip
       
-        # Internal IP address of Cloud SQL instance.
+        # Internal IP address of a Cloud SQL instance.
         # Corresponds to the JSON property `internalIp`
         # @return [String]
         attr_accessor :internal_ip
       
-        # URI of a Cloud SQL instance network or empty string if instance does not have
-        # one.
+        # URI of a Cloud SQL instance network or empty string if the instance does not
+        # have one.
         # Corresponds to the JSON property `networkUri`
         # @return [String]
         attr_accessor :network_uri
@@ -405,6 +405,17 @@ module Google
       class Endpoint
         include Google::Apis::Core::Hashable
       
+        # A [Cloud SQL](https://cloud.google.com/sql) instance URI.
+        # Corresponds to the JSON property `cloudSqlInstance`
+        # @return [String]
+        attr_accessor :cloud_sql_instance
+      
+        # A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/
+        # kubernetes-engine/docs/concepts/cluster-architecture).
+        # Corresponds to the JSON property `gkeMasterCluster`
+        # @return [String]
+        attr_accessor :gke_master_cluster
+      
         # A Compute Engine instance URI.
         # Corresponds to the JSON property `instance`
         # @return [String]
@@ -451,6 +462,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloud_sql_instance = args[:cloud_sql_instance] if args.key?(:cloud_sql_instance)
+          @gke_master_cluster = args[:gke_master_cluster] if args.key?(:gke_master_cluster)
           @instance = args[:instance] if args.key?(:instance)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @network = args[:network] if args.key?(:network)
@@ -730,27 +743,27 @@ module Google
         end
       end
       
-      # For display only. Metadata associated with a Google Kubernetes Engine cluster
-      # master.
+      # For display only. Metadata associated with a Google Kubernetes Engine (GKE)
+      # cluster master.
       class GkeMasterInfo
         include Google::Apis::Core::Hashable
       
-        # URI of a Google Kubernetes Engine cluster network.
+        # URI of a GKE cluster network.
         # Corresponds to the JSON property `clusterNetworkUri`
         # @return [String]
         attr_accessor :cluster_network_uri
       
-        # URI of a Google Kubernetes Engine cluster.
+        # URI of a GKE cluster.
         # Corresponds to the JSON property `clusterUri`
         # @return [String]
         attr_accessor :cluster_uri
       
-        # External IP address of a Google Kubernetes Engine cluster master.
+        # External IP address of a GKE cluster master.
         # Corresponds to the JSON property `externalIp`
         # @return [String]
         attr_accessor :external_ip
       
-        # Internal IP address of a Google Kubernetes Engine cluster master.
+        # Internal IP address of a GKE cluster master.
         # Corresponds to the JSON property `internalIp`
         # @return [String]
         attr_accessor :internal_ip
@@ -1560,8 +1573,8 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1::ForwardingRuleInfo]
         attr_accessor :forwarding_rule
       
-        # For display only. Metadata associated with a Google Kubernetes Engine cluster
-        # master.
+        # For display only. Metadata associated with a Google Kubernetes Engine (GKE)
+        # cluster master.
         # Corresponds to the JSON property `gkeMaster`
         # @return [Google::Apis::NetworkmanagementV1::GkeMasterInfo]
         attr_accessor :gke_master
@@ -1729,7 +1742,7 @@ module Google
         # @return [String]
         attr_accessor :network_uri
       
-        # Name of a GCP region where this VPN gateway is configured.
+        # Name of a Google Cloud region where this VPN gateway is configured.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -1775,7 +1788,7 @@ module Google
         # @return [String]
         attr_accessor :network_uri
       
-        # Name of a GCP region where this VPN tunnel is configured.
+        # Name of a Google Cloud region where this VPN tunnel is configured.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
