@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class KubernetesClusterState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LabelSelector
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -570,6 +576,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allocation_priority, as: 'allocationPriority'
+          property :cluster_state, as: 'clusterState', class: Google::Apis::GameservicesV1beta::KubernetesClusterState, decorator: Google::Apis::GameservicesV1beta::KubernetesClusterState::Representation
+      
           property :connection_info, as: 'connectionInfo', class: Google::Apis::GameservicesV1beta::GameServerClusterConnectionInfo, decorator: Google::Apis::GameservicesV1beta::GameServerClusterConnectionInfo::Representation
       
           property :create_time, as: 'createTime'
@@ -652,6 +660,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :membership, as: 'membership'
+        end
+      end
+      
+      class KubernetesClusterState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agones_version_installed, as: 'agonesVersionInstalled'
+          property :agones_version_targeted, as: 'agonesVersionTargeted'
+          property :installation_state, as: 'installationState'
+          property :kubernetes_version_installed, as: 'kubernetesVersionInstalled'
+          property :provider, as: 'provider'
+          property :version_installed_error_message, as: 'versionInstalledErrorMessage'
         end
       end
       
@@ -798,6 +818,8 @@ module Google
       class PreviewCreateGameServerClusterResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_state, as: 'clusterState', class: Google::Apis::GameservicesV1beta::KubernetesClusterState, decorator: Google::Apis::GameservicesV1beta::KubernetesClusterState::Representation
+      
           property :etag, as: 'etag'
           property :target_state, as: 'targetState', class: Google::Apis::GameservicesV1beta::TargetState, decorator: Google::Apis::GameservicesV1beta::TargetState::Representation
       
