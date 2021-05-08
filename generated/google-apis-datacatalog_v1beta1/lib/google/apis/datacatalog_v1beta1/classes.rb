@@ -401,6 +401,11 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # The set of all usage signals that we store in Data Catalog.
+        # Corresponds to the JSON property `usageSignal`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1UsageSignal]
+        attr_accessor :usage_signal
+      
         # This field indicates the entry's source system that Data Catalog does not
         # integrate with. `user_specified_system` strings must begin with a letter or
         # underscore and can only contain letters, numbers, and underscores; are case
@@ -438,6 +443,7 @@ module Google
           @schema = args[:schema] if args.key?(:schema)
           @source_system_timestamps = args[:source_system_timestamps] if args.key?(:source_system_timestamps)
           @type = args[:type] if args.key?(:type)
+          @usage_signal = args[:usage_signal] if args.key?(:usage_signal)
           @user_specified_system = args[:user_specified_system] if args.key?(:user_specified_system)
           @user_specified_type = args[:user_specified_type] if args.key?(:user_specified_type)
         end
@@ -1569,6 +1575,75 @@ module Google
           @name = args[:name] if args.key?(:name)
           @policy_tag_count = args[:policy_tag_count] if args.key?(:policy_tag_count)
           @taxonomy_timestamps = args[:taxonomy_timestamps] if args.key?(:taxonomy_timestamps)
+        end
+      end
+      
+      # The set of all usage signals that we store in Data Catalog.
+      class GoogleCloudDatacatalogV1beta1UsageSignal
+        include Google::Apis::Core::Hashable
+      
+        # The timestamp of the end of the usage statistics duration.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Usage statistics over each of the pre-defined time ranges, supported strings
+        # for time ranges are `"24H", "7D", "30D"`.
+        # Corresponds to the JSON property `usageWithinTimeRange`
+        # @return [Hash<String,Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1UsageStats>]
+        attr_accessor :usage_within_time_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @usage_within_time_range = args[:usage_within_time_range] if args.key?(:usage_within_time_range)
+        end
+      end
+      
+      # Detailed counts on the entry's usage. Caveats: - Only BigQuery tables have
+      # usage stats - The usage stats only inlude BigQuery query jobs - The usage
+      # stats might be underestimated, e.g. wildcard table references are not yet
+      # counted in usage computation https://cloud.google.com/bigquery/docs/querying-
+      # wildcard-tables
+      class GoogleCloudDatacatalogV1beta1UsageStats
+        include Google::Apis::Core::Hashable
+      
+        # The number of times that the underlying entry was attempted to be used but was
+        # cancelled by the user.
+        # Corresponds to the JSON property `totalCancellations`
+        # @return [Float]
+        attr_accessor :total_cancellations
+      
+        # The number of times that the underlying entry was successfully used.
+        # Corresponds to the JSON property `totalCompletions`
+        # @return [Float]
+        attr_accessor :total_completions
+      
+        # Total time spent (in milliseconds) during uses the resulted in completions.
+        # Corresponds to the JSON property `totalExecutionTimeForCompletionsMillis`
+        # @return [Float]
+        attr_accessor :total_execution_time_for_completions_millis
+      
+        # The number of times that the underlying entry was attempted to be used but
+        # failed.
+        # Corresponds to the JSON property `totalFailures`
+        # @return [Float]
+        attr_accessor :total_failures
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @total_cancellations = args[:total_cancellations] if args.key?(:total_cancellations)
+          @total_completions = args[:total_completions] if args.key?(:total_completions)
+          @total_execution_time_for_completions_millis = args[:total_execution_time_for_completions_millis] if args.key?(:total_execution_time_for_completions_millis)
+          @total_failures = args[:total_failures] if args.key?(:total_failures)
         end
       end
       
