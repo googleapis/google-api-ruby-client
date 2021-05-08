@@ -167,6 +167,7 @@ module Google
           property :last_refresh_time, as: 'lastRefreshTime'
           property :name, as: 'name'
           property :observation_period, as: 'observationPeriod'
+          property :severity, as: 'severity'
           property :state_info, as: 'stateInfo', class: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightStateInfo, decorator: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightStateInfo::Representation
       
           collection :target_resources, as: 'targetResources'
@@ -279,6 +280,7 @@ module Google
           property :name, as: 'name'
           property :primary_impact, as: 'primaryImpact', class: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1Impact, decorator: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1Impact::Representation
       
+          property :priority, as: 'priority'
           property :recommender_subtype, as: 'recommenderSubtype'
           property :state_info, as: 'stateInfo', class: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommendationStateInfo, decorator: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommendationStateInfo::Representation
       

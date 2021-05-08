@@ -1,5 +1,9 @@
 # Release history for google-apis-recommender_v1beta1
 
+### v0.6.0 (2021-05-08)
+
+* Regenerated from discovery document revision 20210501
+
 ### v0.5.0 (2021-03-31)
 
 * Regenerated from discovery document revision 20210319
