@@ -74,7 +74,7 @@ module Google
         # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BrowserVersion>]
         attr_accessor :browser_versions
       
-        # Token to specify the next page in the list.
+        # Token to specify the next page of the request.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -105,7 +105,7 @@ module Google
         # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1InstalledApp>]
         attr_accessor :installed_apps
       
-        # Token to specify next page in the list.
+        # Token to specify the next page of the request.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -163,7 +163,7 @@ module Google
         # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1Device>]
         attr_accessor :devices
       
-        # Token to specify the next page in the list.
+        # Token to specify the next page of the request.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
