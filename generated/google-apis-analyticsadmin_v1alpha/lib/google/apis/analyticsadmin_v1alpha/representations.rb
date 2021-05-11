@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaAuditUserLink
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -112,7 +124,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaConversionEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaCreateUserLinkRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaCustomDimension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaCustomMetric
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -173,6 +203,24 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListConversionEventsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListCustomMetricsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -309,6 +357,18 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaAuditUserLink
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -404,6 +464,12 @@ module Google
       
           property :android_app_data_stream, as: 'androidAppDataStream', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAndroidAppDataStream, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAndroidAppDataStream::Representation
       
+          property :conversion_event, as: 'conversionEvent', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConversionEvent, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConversionEvent::Representation
+      
+          property :custom_dimension, as: 'customDimension', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomDimension, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomDimension::Representation
+      
+          property :custom_metric, as: 'customMetric', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomMetric, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomMetric::Representation
+      
           property :firebase_link, as: 'firebaseLink', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFirebaseLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFirebaseLink::Representation
       
           property :google_ads_link, as: 'googleAdsLink', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGoogleAdsLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGoogleAdsLink::Representation
@@ -430,6 +496,16 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaConversionEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :event_name, as: 'eventName'
+          property :is_deletable, as: 'isDeletable'
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaCreateUserLinkRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -437,6 +513,30 @@ module Google
           property :parent, as: 'parent'
           property :user_link, as: 'userLink', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink::Representation
       
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaCustomDimension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :disallow_ads_personalization, as: 'disallowAdsPersonalization'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :parameter_name, as: 'parameterName'
+          property :scope, as: 'scope'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaCustomMetric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :measurement_unit, as: 'measurementUnit'
+          property :name, as: 'name'
+          property :parameter_name, as: 'parameterName'
+          property :scope, as: 'scope'
         end
       end
       
@@ -542,6 +642,33 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :android_app_data_streams, as: 'androidAppDataStreams', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAndroidAppDataStream, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAndroidAppDataStream::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListConversionEventsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conversion_events, as: 'conversionEvents', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConversionEvent, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConversionEvent::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :custom_dimensions, as: 'customDimensions', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomDimension, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomDimension::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListCustomMetricsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :custom_metrics, as: 'customMetrics', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomMetric, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomMetric::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end

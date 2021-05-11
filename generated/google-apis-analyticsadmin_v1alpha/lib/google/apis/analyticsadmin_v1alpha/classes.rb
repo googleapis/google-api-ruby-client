@@ -168,6 +168,32 @@ module Google
         end
       end
       
+      # Request message for ArchiveCustomDimension RPC.
+      class GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for ArchiveCustomMetric RPC.
+      class GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Read-only resource used to summarize a principal's effective roles.
       class GoogleAnalyticsAdminV1alphaAuditUserLink
         include Google::Apis::Core::Hashable
@@ -445,6 +471,21 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAndroidAppDataStream]
         attr_accessor :android_app_data_stream
       
+        # A conversion event in a Google Analytics property.
+        # Corresponds to the JSON property `conversionEvent`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConversionEvent]
+        attr_accessor :conversion_event
+      
+        # A definition for a CustomDimension.
+        # Corresponds to the JSON property `customDimension`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomDimension]
+        attr_accessor :custom_dimension
+      
+        # A definition for a custom metric.
+        # Corresponds to the JSON property `customMetric`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomMetric]
+        attr_accessor :custom_metric
+      
         # A link between an GA4 property and a Firebase project.
         # Corresponds to the JSON property `firebaseLink`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFirebaseLink]
@@ -478,6 +519,9 @@ module Google
         def update!(**args)
           @account = args[:account] if args.key?(:account)
           @android_app_data_stream = args[:android_app_data_stream] if args.key?(:android_app_data_stream)
+          @conversion_event = args[:conversion_event] if args.key?(:conversion_event)
+          @custom_dimension = args[:custom_dimension] if args.key?(:custom_dimension)
+          @custom_metric = args[:custom_metric] if args.key?(:custom_metric)
           @firebase_link = args[:firebase_link] if args.key?(:firebase_link)
           @google_ads_link = args[:google_ads_link] if args.key?(:google_ads_link)
           @ios_app_data_stream = args[:ios_app_data_stream] if args.key?(:ios_app_data_stream)
@@ -543,6 +587,47 @@ module Google
         end
       end
       
+      # A conversion event in a Google Analytics property.
+      class GoogleAnalyticsAdminV1alphaConversionEvent
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time when this conversion event was created in the property.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Immutable. The event name for this conversion event. Examples: 'click', '
+        # purchase'
+        # Corresponds to the JSON property `eventName`
+        # @return [String]
+        attr_accessor :event_name
+      
+        # Output only. If set, this event can currently be deleted via
+        # DeleteConversionEvent.
+        # Corresponds to the JSON property `isDeletable`
+        # @return [Boolean]
+        attr_accessor :is_deletable
+        alias_method :is_deletable?, :is_deletable
+      
+        # Output only. Resource name of this conversion event. Format: properties/`
+        # property`/conversionEvents/`conversion_event`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @event_name = args[:event_name] if args.key?(:event_name)
+          @is_deletable = args[:is_deletable] if args.key?(:is_deletable)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Request message for CreateUserLink RPC. Users can have multiple email
       # addresses associated with their Google account, and one of these email
       # addresses is the "primary" email address. Any of the email addresses
@@ -579,6 +664,123 @@ module Google
           @notify_new_user = args[:notify_new_user] if args.key?(:notify_new_user)
           @parent = args[:parent] if args.key?(:parent)
           @user_link = args[:user_link] if args.key?(:user_link)
+        end
+      end
+      
+      # A definition for a CustomDimension.
+      class GoogleAnalyticsAdminV1alphaCustomDimension
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Description for this custom dimension. Max length of 150 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. If set to true, sets this dimension as NPA and excludes it from ads
+        # personalization. This is currently only supported by user-scoped custom
+        # dimensions.
+        # Corresponds to the JSON property `disallowAdsPersonalization`
+        # @return [Boolean]
+        attr_accessor :disallow_ads_personalization
+        alias_method :disallow_ads_personalization?, :disallow_ads_personalization
+      
+        # Required. Display name for this custom dimension as shown in the Analytics UI.
+        # Max length of 82 characters, alphanumeric plus space and underscore starting
+        # with a letter. Legacy system-generated display names may contain square
+        # brackets, but updates to this field will never permit square brackets.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Resource name for this CustomDimension resource. Format:
+        # properties/`property`/customDimensions/`customDimension`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Immutable. Tagging parameter name for this custom dimension. If this
+        # is a user-scoped dimension, then this is the user property name. If this is an
+        # event-scoped dimension, then this is the event parameter name. May only
+        # contain alphanumeric and underscore characters, starting with a letter. Max
+        # length of 24 characters for user-scoped dimensions, 40 characters for event-
+        # scoped dimensions.
+        # Corresponds to the JSON property `parameterName`
+        # @return [String]
+        attr_accessor :parameter_name
+      
+        # Required. Immutable. The scope of this dimension.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @disallow_ads_personalization = args[:disallow_ads_personalization] if args.key?(:disallow_ads_personalization)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @parameter_name = args[:parameter_name] if args.key?(:parameter_name)
+          @scope = args[:scope] if args.key?(:scope)
+        end
+      end
+      
+      # A definition for a custom metric.
+      class GoogleAnalyticsAdminV1alphaCustomMetric
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Description for this custom dimension. Max length of 150 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Display name for this custom metric as shown in the Analytics UI.
+        # Max length of 82 characters, alphanumeric plus space and underscore starting
+        # with a letter. Legacy system-generated display names may contain square
+        # brackets, but updates to this field will never permit square brackets.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. Immutable. The type for the custom metric's value.
+        # Corresponds to the JSON property `measurementUnit`
+        # @return [String]
+        attr_accessor :measurement_unit
+      
+        # Output only. Resource name for this CustomMetric resource. Format: properties/`
+        # property`/customMetrics/`customMetric`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Immutable. Tagging name for this custom metric. If this is an event-
+        # scoped metric, then this is the event parameter name. May only contain
+        # alphanumeric and underscore charactes, starting with a letter. Max length of
+        # 40 characters for event-scoped metrics.
+        # Corresponds to the JSON property `parameterName`
+        # @return [String]
+        attr_accessor :parameter_name
+      
+        # Required. Immutable. The scope of this custom metric.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @measurement_unit = args[:measurement_unit] if args.key?(:measurement_unit)
+          @name = args[:name] if args.key?(:name)
+          @parameter_name = args[:parameter_name] if args.key?(:parameter_name)
+          @scope = args[:scope] if args.key?(:scope)
         end
       end
       
@@ -1027,6 +1229,84 @@ module Google
         # Update properties of this object
         def update!(**args)
           @android_app_data_streams = args[:android_app_data_streams] if args.key?(:android_app_data_streams)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for ListConversionEvents RPC.
+      class GoogleAnalyticsAdminV1alphaListConversionEventsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The requested conversion events
+        # Corresponds to the JSON property `conversionEvents`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConversionEvent>]
+        attr_accessor :conversion_events
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversion_events = args[:conversion_events] if args.key?(:conversion_events)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for ListCustomDimensions RPC.
+      class GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of CustomDimensions.
+        # Corresponds to the JSON property `customDimensions`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomDimension>]
+        attr_accessor :custom_dimensions
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_dimensions = args[:custom_dimensions] if args.key?(:custom_dimensions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for ListCustomMetrics RPC.
+      class GoogleAnalyticsAdminV1alphaListCustomMetricsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of CustomMetrics.
+        # Corresponds to the JSON property `customMetrics`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomMetric>]
+        attr_accessor :custom_metrics
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_metrics = args[:custom_metrics] if args.key?(:custom_metrics)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
