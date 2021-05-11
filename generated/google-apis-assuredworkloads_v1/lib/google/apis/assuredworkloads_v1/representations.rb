@@ -194,6 +194,7 @@ module Google
       class GoogleCloudAssuredworkloadsV1WorkloadResourceSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
           property :resource_id, as: 'resourceId'
           property :resource_type, as: 'resourceType'
         end
@@ -206,6 +207,8 @@ module Google
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :parent, as: 'parent'
+          collection :resource_settings, as: 'resourceSettings', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings::Representation
+      
         end
       end
       
@@ -288,6 +291,7 @@ module Google
       class GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
           property :resource_id, as: 'resourceId'
           property :resource_type, as: 'resourceType'
         end

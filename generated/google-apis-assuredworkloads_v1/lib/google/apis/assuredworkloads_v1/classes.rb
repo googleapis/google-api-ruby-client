@@ -239,6 +239,12 @@ module Google
       class GoogleCloudAssuredworkloadsV1WorkloadResourceSettings
         include Google::Apis::Core::Hashable
       
+        # User-assigned resource display name. If not empty it will be used to create a
+        # resource with the specified name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # Resource identifier. For a project this represents project_id. If the project
         # is already taken, the workload creation will fail.
         # Corresponds to the JSON property `resourceId`
@@ -257,6 +263,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
         end
@@ -287,6 +294,12 @@ module Google
         # @return [String]
         attr_accessor :parent
       
+        # Optional. Resource properties in the input that are used for creating/
+        # customizing workload resources.
+        # Corresponds to the JSON property `resourceSettings`
+        # @return [Array<Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings>]
+        attr_accessor :resource_settings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -297,6 +310,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @parent = args[:parent] if args.key?(:parent)
+          @resource_settings = args[:resource_settings] if args.key?(:resource_settings)
         end
       end
       
@@ -554,6 +568,12 @@ module Google
       class GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings
         include Google::Apis::Core::Hashable
       
+        # User-assigned resource display name. If not empty it will be used to create a
+        # resource with the specified name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # Resource identifier. For a project this represents project_id. If the project
         # is already taken, the workload creation will fail.
         # Corresponds to the JSON property `resourceId`
@@ -572,6 +592,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
         end
