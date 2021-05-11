@@ -197,7 +197,8 @@ module Google
         # @return [String]
         attr_accessor :catalog_item
       
-        # GCS file path of the import source. Can be set for batch operation error.
+        # Cloud Storage file path of the import source. Can be set for batch operation
+        # error.
         # Corresponds to the JSON property `gcsPath`
         # @return [String]
         attr_accessor :gcs_path
@@ -746,7 +747,7 @@ module Google
         attr_accessor :params
       
         # UserEvent captures all metadata information Retail API needs to know about how
-        # end users interact with customers' website. Next tag: 22
+        # end users interact with customers' website.
         # Corresponds to the JSON property `userEvent`
         # @return [Google::Apis::RetailV2::GoogleCloudRetailV2UserEvent]
         attr_accessor :user_event
@@ -1361,7 +1362,7 @@ module Google
       end
       
       # UserEvent captures all metadata information Retail API needs to know about how
-      # end users interact with customers' website. Next tag: 22
+      # end users interact with customers' website.
       class GoogleCloudRetailV2UserEvent
         include Google::Apis::Core::Hashable
       
