@@ -13413,7 +13413,13 @@ module Google
         # transitPackageMissing`" - "`unsuccessfulDeliveryUndeliverable`" - "`
         # wrongChargeInStore`" - "`wrongItem`" - "`returns`" - "`undeliverable`" - "`
         # issueRelatedRefundAndReplacementAmountDescription`" - "`refundFromMerchant`" -
-        # "`returnLabelShippingFee`" - "`lumpSumCorrection`" - "`pspFee`"
+        # "`returnLabelShippingFee`" - "`lumpSumCorrection`" - "`pspFee`" - "`
+        # principalRefundDoesNotFit`" - "`principalRefundOrderedWrongItem`" - "`
+        # principalRefundQualityNotExpected`" - "`principalRefundBetterPriceFound`" - "`
+        # principalRefundNoLongerNeeded`" - "`principalRefundChangedMind`" - "`
+        # principalRefundReceivedTooLate`" - "`principalRefundIncorrectItemReceived`" - "
+        # `principalRefundDamagedOrDefectiveItem`" - "`
+        # principalRefundDidNotMatchDescription`" - "`principalRefundExpiredItem`"
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
