@@ -531,7 +531,7 @@ module Google
         # @return [Google::Apis::RunV1alpha1::ConfigMapKeySelector]
         attr_accessor :config_map_key_ref
       
-        # Cloud Run fully managed: not supported Cloud Run on GKE: supported
+        # Cloud Run fully managed: supported Cloud Run on GKE: supported
         # SecretKeySelector selects a key of a Secret.
         # Corresponds to the JSON property `secretKeyRef`
         # @return [Google::Apis::RunV1alpha1::SecretKeySelector]
@@ -1113,7 +1113,9 @@ module Google
       class KeyToPath
         include Google::Apis::Core::Hashable
       
-        # The key to project.
+        # Cloud Run fully managed: supported The Cloud Secret Manager secret version.
+        # Can be 'latest' for the latest value or an integer for a specific version.
+        # Cloud Run for Anthos: supported The key to project.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -1126,8 +1128,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :mode
       
-        # The relative path of the file to map the key to. May not be an absolute path.
-        # May not contain the path element '..'. May not start with the string '..'.
+        # Cloud Run fully managed: supported Cloud Run for Anthos: supported The
+        # relative path of the file to map the key to. May not be an absolute path. May
+        # not contain the path element '..'. May not start with the string '..'.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
@@ -1736,13 +1739,15 @@ module Google
         end
       end
       
-      # Cloud Run fully managed: not supported Cloud Run on GKE: supported
+      # Cloud Run fully managed: supported Cloud Run on GKE: supported
       # SecretKeySelector selects a key of a Secret.
       class SecretKeySelector
         include Google::Apis::Core::Hashable
       
-        # Cloud Run fully managed: not supported Cloud Run on GKE: supported The key of
-        # the secret to select from. Must be a valid secret key.
+        # Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must
+        # be 'latest' for the latest version or an integer for a specific version. Cloud
+        # Run for Anthos: supported The key of the secret to select from. Must be a
+        # valid secret key.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -1753,7 +1758,12 @@ module Google
         # @return [Google::Apis::RunV1alpha1::LocalObjectReference]
         attr_accessor :local_object_reference
       
-        # Cloud Run fully managed: not supported Cloud Run on GKE: supported The name of
+        # Cloud Run fully managed: supported The name of the secret in Cloud Secret
+        # Manager. By default, the secret is assumed to be in the same project. If the
+        # secret is in another project, you must define an alias. An alias definition
+        # has the form: :projects//secrets/. If multiple alias definitions are needed,
+        # they must be separated by commas. The alias definitions must be set on the run.
+        # googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of
         # the secret in the pod's namespace to select from.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1792,12 +1802,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :default_mode
       
-        # If unspecified, each key-value pair in the Data field of the referenced Secret
-        # will be projected into the volume as a file whose name is the key and content
-        # is the value. If specified, the listed keys will be projected into the
-        # specified paths, and unlisted keys will not be present. If a key is specified
-        # which is not present in the Secret, the volume setup will error unless it is
-        # marked optional.
+        # Cloud Run fully managed: supported If unspecified, the volume will expose a
+        # file whose name is the secret_name. If specified, the key will be used as the
+        # version to fetch from Cloud Secret Manager and the path will be the name of
+        # the file exposed in the volume. When items are defined, they must specify a
+        # key and a path. Cloud Run for Anthos: supported If unspecified, each key-value
+        # pair in the Data field of the referenced Secret will be projected into the
+        # volume as a file whose name is the key and content is the value. If specified,
+        # the listed keys will be projected into the specified paths, and unlisted keys
+        # will not be present. If a key is specified which is not present in the Secret,
+        # the volume setup will error unless it is marked optional.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::RunV1alpha1::KeyToPath>]
         attr_accessor :items
@@ -1808,7 +1822,13 @@ module Google
         attr_accessor :optional
         alias_method :optional?, :optional
       
-        # Name of the secret in the container's namespace to use.
+        # Cloud Run fully managed: supported The name of the secret in Cloud Secret
+        # Manager. By default, the secret is assumed to be in the same project. If the
+        # secret is in another project, you must define an alias. An alias definition
+        # has the form: :projects//secrets/. If multiple alias definitions are needed,
+        # they must be separated by commas. The alias definitions must be set on the run.
+        # googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the
+        # secret in the container's namespace to use.
         # Corresponds to the JSON property `secretName`
         # @return [String]
         attr_accessor :secret_name
