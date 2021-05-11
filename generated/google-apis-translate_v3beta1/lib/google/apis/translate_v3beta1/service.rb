@@ -425,10 +425,10 @@ module Google
         # @param [String] parent
         #   Required. Location to make a regional call. Format: `projects/`project-number-
         #   or-id`/locations/`location-id``. For global calls, use `projects/`project-
-        #   number-or-id`/locations/global` or `projects/`project-number-or-id``. Non-
-        #   global location is required for requests using AutoML models or custom
-        #   glossaries. Models and glossaries must be within the same region (have the
-        #   same location-id), otherwise an INVALID_ARGUMENT (400) error is returned.
+        #   number-or-id`/locations/global`. Non-global location is required for requests
+        #   using AutoML models or custom glossaries. Models and glossaries must be within
+        #   the same region (have the same location-id), otherwise an INVALID_ARGUMENT (
+        #   400) error is returned.
         # @param [Google::Apis::TranslateV3beta1::TranslateDocumentRequest] translate_document_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
