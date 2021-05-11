@@ -64,7 +64,7 @@ module Google
         # @param [Fixnum] page_size
         #   Maximum number of results to return. Maximum and default are 100.
         # @param [String] page_token
-        #   Token to specify the next page in the list.
+        #   Token to specify the page of the request to be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -113,7 +113,7 @@ module Google
         # @param [Fixnum] page_size
         #   Maximum number of results to return. Maximum and default are 100.
         # @param [String] page_token
-        #   Token to specify next page in the list.
+        #   Token to specify the page of the request to be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -167,7 +167,7 @@ module Google
         # @param [Fixnum] page_size
         #   Maximum number of results to return. Maximum and default are 100.
         # @param [String] page_token
-        #   Token to specify the next page in the list.
+        #   Token to specify the page of the request to be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
