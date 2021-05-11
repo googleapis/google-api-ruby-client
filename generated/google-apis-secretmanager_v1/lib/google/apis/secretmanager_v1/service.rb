@@ -201,6 +201,10 @@ module Google
         # @param [String] name
         #   Required. The resource name of the Secret to delete in the format `projects/*/
         #   secrets/*`.
+        # @param [String] etag
+        #   Optional. Etag of the Secret. The request succeeds if it matches the etag of
+        #   the currently stored secret object. If the etag is omitted, the request
+        #   succeeds.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -218,11 +222,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_secret(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_secret(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SecretmanagerV1::Empty::Representation
           command.response_class = Google::Apis::SecretmanagerV1::Empty
           command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

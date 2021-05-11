@@ -297,12 +297,14 @@ module Google
       class DestroySecretVersionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
         end
       end
       
       class DisableSecretVersionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
         end
       end
       
@@ -315,6 +317,7 @@ module Google
       class EnableSecretVersionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
         end
       end
       
@@ -430,6 +433,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :etag, as: 'etag'
           property :expire_time, as: 'expireTime'
           hash :labels, as: 'labels'
           property :name, as: 'name'
@@ -455,6 +459,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :destroy_time, as: 'destroyTime'
+          property :etag, as: 'etag'
           property :name, as: 'name'
           property :replication_status, as: 'replicationStatus', class: Google::Apis::SecretmanagerV1::ReplicationStatus, decorator: Google::Apis::SecretmanagerV1::ReplicationStatus::Representation
       

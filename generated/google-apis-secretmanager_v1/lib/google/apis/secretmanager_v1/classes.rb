@@ -302,12 +302,20 @@ module Google
       class DestroySecretVersionRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Etag of the SecretVersion. The request succeeds if it matches the
+        # etag of the currently stored secret version object. If the etag is omitted,
+        # the request succeeds.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
         end
       end
       
@@ -315,12 +323,20 @@ module Google
       class DisableSecretVersionRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Etag of the SecretVersion. The request succeeds if it matches the
+        # etag of the currently stored secret version object. If the etag is omitted,
+        # the request succeeds.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
         end
       end
       
@@ -345,12 +361,20 @@ module Google
       class EnableSecretVersionRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Etag of the SecretVersion. The request succeeds if it matches the
+        # etag of the currently stored secret version object. If the etag is omitted,
+        # the request succeeds.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
         end
       end
       
@@ -783,6 +807,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. Etag of the currently stored Secret.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # Optional. Timestamp in UTC when the Secret is scheduled to expire. This is
         # always provided on output, regardless of what was sent on input.
         # Corresponds to the JSON property `expireTime`
@@ -835,6 +864,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @etag = args[:etag] if args.key?(:etag)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
@@ -881,6 +911,11 @@ module Google
         # @return [String]
         attr_accessor :destroy_time
       
+        # Output only. Etag of the currently stored SecretVersion.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # Output only. The resource name of the SecretVersion in the format `projects/*/
         # secrets/*/versions/*`. SecretVersion IDs in a Secret start at 1 and are
         # incremented for each subsequent version of the secret.
@@ -906,6 +941,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @destroy_time = args[:destroy_time] if args.key?(:destroy_time)
+          @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @replication_status = args[:replication_status] if args.key?(:replication_status)
           @state = args[:state] if args.key?(:state)
