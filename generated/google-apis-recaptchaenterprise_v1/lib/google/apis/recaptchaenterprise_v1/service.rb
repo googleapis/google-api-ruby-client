@@ -1,0 +1,370 @@
+# Copyright 2020 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+require 'google/apis/core/base_service'
+require 'google/apis/core/json_representation'
+require 'google/apis/core/hashable'
+require 'google/apis/errors'
+
+module Google
+  module Apis
+    module RecaptchaenterpriseV1
+      # reCAPTCHA Enterprise API
+      #
+      # 
+      #
+      # @example
+      #    require 'google/apis/recaptchaenterprise_v1'
+      #
+      #    Recaptchaenterprise = Google::Apis::RecaptchaenterpriseV1 # Alias the module
+      #    service = Recaptchaenterprise::RecaptchaEnterpriseService.new
+      #
+      # @see https://cloud.google.com/recaptcha-enterprise/
+      class RecaptchaEnterpriseService < Google::Apis::Core::BaseService
+        # @return [String]
+        #  API key. Your API key identifies your project and provides you with API access,
+        #  quota, and reports. Required unless you provide an OAuth 2.0 token.
+        attr_accessor :key
+
+        # @return [String]
+        #  Available to use for quota purposes for server-side applications. Can be any
+        #  arbitrary string assigned to a user, but should not exceed 40 characters.
+        attr_accessor :quota_user
+
+        def initialize
+          super('https://recaptchaenterprise.googleapis.com/', '',
+                client_name: 'google-apis-recaptchaenterprise_v1',
+                client_version: Google::Apis::RecaptchaenterpriseV1::GEM_VERSION)
+          @batch_path = 'batch'
+        end
+        
+        # Annotates a previously created Assessment to provide additional information on
+        # whether the event turned out to be authentic or fraudulent.
+        # @param [String] name
+        #   Required. The resource name of the Assessment, in the format "projects/`
+        #   project`/assessments/`assessment`".
+        # @param [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest] google_cloud_recaptchaenterprise_v1_annotate_assessment_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def annotate_project_assessment(name, google_cloud_recaptchaenterprise_v1_annotate_assessment_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:annotate', options)
+          command.request_representation = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest::Representation
+          command.request_object = google_cloud_recaptchaenterprise_v1_annotate_assessment_request_object
+          command.response_representation = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse::Representation
+          command.response_class = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an Assessment of the likelihood an event is legitimate.
+        # @param [String] parent
+        #   Required. The name of the project in which the assessment will be created, in
+        #   the format "projects/`project`".
+        # @param [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Assessment] google_cloud_recaptchaenterprise_v1_assessment_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Assessment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Assessment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_assessment(parent, google_cloud_recaptchaenterprise_v1_assessment_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/assessments', options)
+          command.request_representation = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Assessment::Representation
+          command.request_object = google_cloud_recaptchaenterprise_v1_assessment_object
+          command.response_representation = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Assessment::Representation
+          command.response_class = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Assessment
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new reCAPTCHA Enterprise key.
+        # @param [String] parent
+        #   Required. The name of the project in which the key will be created, in the
+        #   format "projects/`project`".
+        # @param [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Key] google_cloud_recaptchaenterprise_v1_key_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Key] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Key]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_key(parent, google_cloud_recaptchaenterprise_v1_key_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/keys', options)
+          command.request_representation = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Key::Representation
+          command.request_object = google_cloud_recaptchaenterprise_v1_key_object
+          command.response_representation = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Key::Representation
+          command.response_class = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Key
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified key.
+        # @param [String] name
+        #   Required. The name of the key to be deleted, in the format "projects/`project`/
+        #   keys/`key`".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RecaptchaenterpriseV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_key(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::RecaptchaenterpriseV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::RecaptchaenterpriseV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the specified key.
+        # @param [String] name
+        #   Required. The name of the requested key, in the format "projects/`project`/
+        #   keys/`key`".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Key] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Key]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_key(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Key::Representation
+          command.response_class = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Key
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get some aggregated metrics for a Key. This data can be used to build
+        # dashboards.
+        # @param [String] name
+        #   Required. The name of the requested metrics, in the format "projects/`project`/
+        #   keys/`key`/metrics".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Metrics] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Metrics]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_key_metrics(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Metrics::Representation
+          command.response_class = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Metrics
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the list of all keys that belong to a project.
+        # @param [String] parent
+        #   Required. The name of the project that contains the keys that will be listed,
+        #   in the format "projects/`project`".
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of keys to return. Default is 10. Max limit is
+        #   1000.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from a previous. ListKeysRequest,
+        #   if any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ListKeysResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ListKeysResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_keys(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/keys', options)
+          command.response_representation = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ListKeysResponse::Representation
+          command.response_class = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ListKeysResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Migrates an existing key from reCAPTCHA to reCAPTCHA Enterprise. Once a key is
+        # migrated, it can be used from either product. SiteVerify requests will be
+        # billed as CreateAssessment calls.
+        # @param [String] name
+        #   Required. The name of the key to be migrated, in the format "projects/`project`
+        #   /keys/`key`".
+        # @param [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest] google_cloud_recaptchaenterprise_v1_migrate_key_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Key] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Key]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def migrate_project_key(name, google_cloud_recaptchaenterprise_v1_migrate_key_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:migrate', options)
+          command.request_representation = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest::Representation
+          command.request_object = google_cloud_recaptchaenterprise_v1_migrate_key_request_object
+          command.response_representation = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Key::Representation
+          command.response_class = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Key
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified key.
+        # @param [String] name
+        #   The resource name for the Key in the format "projects/`project`/keys/`key`".
+        # @param [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Key] google_cloud_recaptchaenterprise_v1_key_object
+        # @param [String] update_mask
+        #   Optional. The mask to control which field of the key get updated. If the mask
+        #   is not present, all fields will be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Key] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Key]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_key(name, google_cloud_recaptchaenterprise_v1_key_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Key::Representation
+          command.request_object = google_cloud_recaptchaenterprise_v1_key_object
+          command.response_representation = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Key::Representation
+          command.response_class = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Key
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+
+        protected
+
+        def apply_command_defaults(command)
+          command.query['key'] = key unless key.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+        end
+      end
+    end
+  end
+end
