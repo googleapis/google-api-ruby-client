@@ -2933,6 +2933,39 @@ module Google
         end
       end
       
+      # ListAssets response.
+      class ListAssetsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Assets.
+        # Corresponds to the JSON property `assets`
+        # @return [Array<Google::Apis::CloudassetV1::Asset>]
+        attr_accessor :assets
+      
+        # Token to retrieve the next page of results. It expires 72 hours after the page
+        # token for the first page is generated. Set to empty if there are no remaining
+        # results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Time the snapshot was taken.
+        # Corresponds to the JSON property `readTime`
+        # @return [String]
+        attr_accessor :read_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assets = args[:assets] if args.key?(:assets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @read_time = args[:read_time] if args.key?(:read_time)
+        end
+      end
+      
       # 
       class ListFeedsResponse
         include Google::Apis::Core::Hashable
@@ -3443,8 +3476,10 @@ module Google
         # The create timestamp of this resource, at which the resource was created. The
         # granularity is in seconds. Timestamp.nanos will always be 0. This field is
         # available only when the resource's proto contains it. To search against `
-        # create_time`: * use a field query (value in seconds). Example: `createTime >=
-        # 1594294238`
+        # create_time`: * use a field query. - value in seconds since unix epoch.
+        # Example: `createTime > 1609459200` - value in date string. Example: `
+        # createTime > 2021-01-01` - value in date-time string (must be quoted). Example:
+        # `createTime > "2021-01-01T00:00:00"`
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -3580,8 +3615,10 @@ module Google
         # The last update timestamp of this resource, at which the resource was last
         # modified or deleted. The granularity is in seconds. Timestamp.nanos will
         # always be 0. This field is available only when the resource's proto contains
-        # it. To search against `update_time`: * use a field query (value in seconds).
-        # Example: `updateTime < 1594294238`
+        # it. To search against `update_time`: * use a field query. - value in seconds
+        # since unix epoch. Example: `updateTime < 1609459200` - value in date string.
+        # Example: `updateTime < 2021-01-01` - value in date-time string (must be quoted)
+        # . Example: `updateTime < "2021-01-01T00:00:00"`
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time

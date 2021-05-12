@@ -49,6 +49,73 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Lists assets with time and resource types and returns paged results in
+        # response.
+        # @param [String] parent
+        #   Required. Name of the organization or project the assets belong to. Format: "
+        #   organizations/[organization-number]" (such as "organizations/123"), "projects/[
+        #   project-number]" (such as "projects/my-project-id"), or "projects/[project-id]"
+        #   (such as "projects/12345").
+        # @param [Array<String>, String] asset_types
+        #   A list of asset types to take a snapshot for. For example: "compute.googleapis.
+        #   com/Disk". Regular expression is also supported. For example: * "compute.
+        #   googleapis.com.*" snapshots resources whose asset type starts with "compute.
+        #   googleapis.com". * ".*Instance" snapshots resources whose asset type ends with
+        #   "Instance". * ".*Instance.*" snapshots resources whose asset type contains "
+        #   Instance". See [RE2](https://github.com/google/re2/wiki/Syntax) for all
+        #   supported regular expression syntax. If the regular expression does not match
+        #   any supported asset type, an INVALID_ARGUMENT error will be returned. If
+        #   specified, only matching assets will be returned, otherwise, it will snapshot
+        #   all asset types. See [Introduction to Cloud Asset Inventory](https://cloud.
+        #   google.com/asset-inventory/docs/overview) for all supported asset types.
+        # @param [String] content_type
+        #   Asset content type. If not specified, no content but the asset name will be
+        #   returned.
+        # @param [Fixnum] page_size
+        #   The maximum number of assets to be returned in a single response. Default is
+        #   100, minimum is 1, and maximum is 1000.
+        # @param [String] page_token
+        #   The `next_page_token` returned from the previous `ListAssetsResponse`, or
+        #   unspecified for the first `ListAssetsRequest`. It is a continuation of a prior
+        #   `ListAssets` call, and the API should return the next page of assets.
+        # @param [String] read_time
+        #   Timestamp to take an asset snapshot. This can only be set to a timestamp
+        #   between the current time and the current time minus 35 days (inclusive). If
+        #   not specified, the current time will be used. Due to delays in resource data
+        #   collection and indexing, there is a volatile window during which running the
+        #   same query may get different results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudassetV1::ListAssetsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudassetV1::ListAssetsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_assets(parent, asset_types: nil, content_type: nil, page_size: nil, page_token: nil, read_time: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/assets', options)
+          command.response_representation = Google::Apis::CloudassetV1::ListAssetsResponse::Representation
+          command.response_class = Google::Apis::CloudassetV1::ListAssetsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['assetTypes'] = asset_types unless asset_types.nil?
+          command.query['contentType'] = content_type unless content_type.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['readTime'] = read_time unless read_time.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a feed in a parent project/folder/organization to listen to its asset
         # updates.
         # @param [String] parent

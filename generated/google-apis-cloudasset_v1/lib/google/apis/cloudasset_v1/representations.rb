@@ -412,6 +412,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAssetsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListFeedsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1230,6 +1236,16 @@ module Google
           property :origin_type, as: 'originType'
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ListAssetsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assets, as: 'assets', class: Google::Apis::CloudassetV1::Asset, decorator: Google::Apis::CloudassetV1::Asset::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          property :read_time, as: 'readTime'
         end
       end
       
