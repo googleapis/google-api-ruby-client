@@ -1741,6 +1741,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
+        # The index of the parent revisions corresponding collection of items (eg. list
+        # of entities, properties within entities, etc.)
+        # Corresponds to the JSON property `index`
+        # @return [Fixnum]
+        attr_accessor :index
+      
         # The index of the [Document.revisions] identifying the parent revision.
         # Corresponds to the JSON property `revision`
         # @return [Fixnum]
@@ -1753,6 +1759,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
+          @index = args[:index] if args.key?(:index)
           @revision = args[:revision] if args.key?(:revision)
         end
       end
@@ -3482,6 +3489,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
+        # The index of the parent revisions corresponding collection of items (eg. list
+        # of entities, properties within entities, etc.)
+        # Corresponds to the JSON property `index`
+        # @return [Fixnum]
+        attr_accessor :index
+      
         # The index of the [Document.revisions] identifying the parent revision.
         # Corresponds to the JSON property `revision`
         # @return [Fixnum]
@@ -3494,6 +3507,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
+          @index = args[:index] if args.key?(:index)
           @revision = args[:revision] if args.key?(:revision)
         end
       end
