@@ -344,10 +344,10 @@ module Google
         # @param [String] response_date_time_render_option
         #   Determines how dates, times, and durations in the response should be rendered.
         #   This is ignored if response_value_render_option is FORMATTED_VALUE. The
-        #   default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
+        #   default dateTime render option is SERIAL_NUMBER.
         # @param [String] response_value_render_option
         #   Determines how values in the response should be rendered. The default render
-        #   option is ValueRenderOption.FORMATTED_VALUE.
+        #   option is FORMATTED_VALUE.
         # @param [String] value_input_option
         #   How the input data should be interpreted.
         # @param [String] fields
@@ -465,7 +465,7 @@ module Google
         # @param [String] date_time_render_option
         #   How dates, times, and durations should be represented in the output. This is
         #   ignored if value_render_option is FORMATTED_VALUE. The default dateTime render
-        #   option is [DateTimeRenderOption.SERIAL_NUMBER].
+        #   option is SERIAL_NUMBER.
         # @param [String] major_dimension
         #   The major dimension that results should use. For example, if the spreadsheet
         #   data is: `A1=1,B1=2,A2=3,B2=4`, then requesting `range=A1:B2,majorDimension=
@@ -657,7 +657,7 @@ module Google
         # @param [String] date_time_render_option
         #   How dates, times, and durations should be represented in the output. This is
         #   ignored if value_render_option is FORMATTED_VALUE. The default dateTime render
-        #   option is [DateTimeRenderOption.SERIAL_NUMBER].
+        #   option is SERIAL_NUMBER.
         # @param [String] major_dimension
         #   The major dimension that results should use. For example, if the spreadsheet
         #   data is: `A1=1,B1=2,A2=3,B2=4`, then requesting `range=A1:B2,majorDimension=
@@ -665,7 +665,7 @@ module Google
         #   COLUMNS` returns `[[1,3],[2,4]]`.
         # @param [String] value_render_option
         #   How values should be represented in the output. The default render option is
-        #   ValueRenderOption.FORMATTED_VALUE.
+        #   FORMATTED_VALUE.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -713,10 +713,10 @@ module Google
         # @param [String] response_date_time_render_option
         #   Determines how dates, times, and durations in the response should be rendered.
         #   This is ignored if response_value_render_option is FORMATTED_VALUE. The
-        #   default dateTime render option is DateTimeRenderOption.SERIAL_NUMBER.
+        #   default dateTime render option is SERIAL_NUMBER.
         # @param [String] response_value_render_option
         #   Determines how values in the response should be rendered. The default render
-        #   option is ValueRenderOption.FORMATTED_VALUE.
+        #   option is FORMATTED_VALUE.
         # @param [String] value_input_option
         #   How the input data should be interpreted.
         # @param [String] fields
