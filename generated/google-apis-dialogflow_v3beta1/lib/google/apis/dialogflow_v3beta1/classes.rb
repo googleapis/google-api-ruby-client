@@ -7562,6 +7562,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Represents configuration for a [Service Directory](https://cloud.google.com/
+        # service-directory) service.
+        # Corresponds to the JSON property `serviceDirectory`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig]
+        attr_accessor :service_directory
+      
         # Webhook execution timeout. Execution is considered failed if Dialogflow doesn'
         # t receive a response from webhook at the end of the timeout period. Defaults
         # to 5 seconds, maximum allowed timeout is 30 seconds.
@@ -7579,6 +7585,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @generic_web_service = args[:generic_web_service] if args.key?(:generic_web_service)
           @name = args[:name] if args.key?(:name)
+          @service_directory = args[:service_directory] if args.key?(:service_directory)
           @timeout = args[:timeout] if args.key?(:timeout)
         end
       end
@@ -7905,6 +7912,35 @@ module Google
         def update!(**args)
           @merge_behavior = args[:merge_behavior] if args.key?(:merge_behavior)
           @messages = args[:messages] if args.key?(:messages)
+        end
+      end
+      
+      # Represents configuration for a [Service Directory](https://cloud.google.com/
+      # service-directory) service.
+      class GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig
+        include Google::Apis::Core::Hashable
+      
+        # Represents configuration for a generic web service.
+        # Corresponds to the JSON property `genericWebService`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1WebhookGenericWebService]
+        attr_accessor :generic_web_service
+      
+        # Required. The name of [Service Directory](https://cloud.google.com/service-
+        # directory) service. Format: `projects//locations//namespaces//services/`. `
+        # Location ID` of the service directory must be the same as the location of the
+        # agent.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generic_web_service = args[:generic_web_service] if args.key?(:generic_web_service)
+          @service = args[:service] if args.key?(:service)
         end
       end
       
