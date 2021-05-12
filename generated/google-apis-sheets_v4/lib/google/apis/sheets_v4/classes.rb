@@ -1595,7 +1595,7 @@ module Google
       
         # How dates, times, and durations should be represented in the output. This is
         # ignored if value_render_option is FORMATTED_VALUE. The default dateTime render
-        # option is [DateTimeRenderOption.SERIAL_NUMBER].
+        # option is SERIAL_NUMBER.
         # Corresponds to the JSON property `dateTimeRenderOption`
         # @return [String]
         attr_accessor :date_time_render_option
@@ -1609,7 +1609,7 @@ module Google
         attr_accessor :major_dimension
       
         # How values should be represented in the output. The default render option is
-        # ValueRenderOption.FORMATTED_VALUE.
+        # FORMATTED_VALUE.
         # Corresponds to the JSON property `valueRenderOption`
         # @return [String]
         attr_accessor :value_render_option
@@ -1779,13 +1779,13 @@ module Google
       
         # Determines how dates, times, and durations in the response should be rendered.
         # This is ignored if response_value_render_option is FORMATTED_VALUE. The
-        # default dateTime render option is DateTimeRenderOption.SERIAL_NUMBER.
+        # default dateTime render option is SERIAL_NUMBER.
         # Corresponds to the JSON property `responseDateTimeRenderOption`
         # @return [String]
         attr_accessor :response_date_time_render_option
       
         # Determines how values in the response should be rendered. The default render
-        # option is ValueRenderOption.FORMATTED_VALUE.
+        # option is FORMATTED_VALUE.
         # Corresponds to the JSON property `responseValueRenderOption`
         # @return [String]
         attr_accessor :response_value_render_option
@@ -1880,13 +1880,13 @@ module Google
       
         # Determines how dates, times, and durations in the response should be rendered.
         # This is ignored if response_value_render_option is FORMATTED_VALUE. The
-        # default dateTime render option is DateTimeRenderOption.SERIAL_NUMBER.
+        # default dateTime render option is SERIAL_NUMBER.
         # Corresponds to the JSON property `responseDateTimeRenderOption`
         # @return [String]
         attr_accessor :response_date_time_render_option
       
         # Determines how values in the response should be rendered. The default render
-        # option is ValueRenderOption.FORMATTED_VALUE.
+        # option is FORMATTED_VALUE.
         # Corresponds to the JSON property `responseValueRenderOption`
         # @return [String]
         attr_accessor :response_value_render_option
@@ -2498,7 +2498,10 @@ module Google
       
         # A hyperlink this cell points to, if any. If the cell contains multiple
         # hyperlinks, this field will be empty. This field is read-only. To set it, use
-        # a `=HYPERLINK` formula in the userEnteredValue.formulaValue field.
+        # a `=HYPERLINK` formula in the userEnteredValue.formulaValue field. A cell-
+        # level link can also be set from the userEnteredFormat.textFormat field.
+        # Alternatively, set a hyperlink in the textFormatRun.format.link field that
+        # spans the entire cell.
         # Corresponds to the JSON property `hyperlink`
         # @return [String]
         attr_accessor :hyperlink
@@ -4747,8 +4750,8 @@ module Google
       class DeleteSheetRequest
         include Google::Apis::Core::Hashable
       
-        # The ID of the sheet to delete. If the sheet is of SheetType.DATA_SOURCE type,
-        # the associated DataSource is also deleted.
+        # The ID of the sheet to delete. If the sheet is of DATA_SOURCE type, the
+        # associated DataSource is also deleted.
         # Corresponds to the JSON property `sheetId`
         # @return [Fixnum]
         attr_accessor :sheet_id
@@ -5383,7 +5386,7 @@ module Google
         attr_accessor :formula_value
       
         # Represents a double value. Note: Dates, Times and DateTimes are represented as
-        # doubles in "serial number" format.
+        # doubles in SERIAL_NUMBER format.
         # Corresponds to the JSON property `numberValue`
         # @return [Float]
         attr_accessor :number_value
