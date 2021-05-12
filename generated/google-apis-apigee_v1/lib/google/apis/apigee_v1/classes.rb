@@ -5803,7 +5803,8 @@ module Google
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1UpdateError>]
         attr_accessor :errors
       
-        # The json content of the resource revision.
+        # The json content of the resource revision. Large specs should be sent
+        # individually via the spec field to avoid hitting request size limits.
         # Corresponds to the JSON property `jsonSpec`
         # @return [String]
         attr_accessor :json_spec
