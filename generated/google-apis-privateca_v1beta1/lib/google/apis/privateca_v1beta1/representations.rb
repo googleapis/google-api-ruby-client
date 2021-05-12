@@ -817,6 +817,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :delete_resource, as: 'deleteResource'
+          property :exclusive_action, as: 'exclusiveAction'
         end
       end
       

@@ -1771,12 +1771,16 @@ module Google
       class ReconciliationOperationMetadata
         include Google::Apis::Core::Hashable
       
-        # If set to TRUE, the resource has to be deleted. When using this bit, the CLH
-        # should fail the operation.
+        # DEPRECATED. Use exclusive_action instead.
         # Corresponds to the JSON property `deleteResource`
         # @return [Boolean]
         attr_accessor :delete_resource
         alias_method :delete_resource?, :delete_resource
+      
+        # 
+        # Corresponds to the JSON property `exclusiveAction`
+        # @return [String]
+        attr_accessor :exclusive_action
       
         def initialize(**args)
            update!(**args)
@@ -1785,6 +1789,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @delete_resource = args[:delete_resource] if args.key?(:delete_resource)
+          @exclusive_action = args[:exclusive_action] if args.key?(:exclusive_action)
         end
       end
       

@@ -1,8 +1,8 @@
 # Release history for google-apis-privateca_v1beta1
 
-### v0.6.0 (2021-04-28)
+### v0.6.0 (2021-05-12)
 
-* Regenerated from discovery document revision 20210426
+* Regenerated from discovery document revision 20210506
 
 ### v0.5.0 (2021-03-18)
 
