@@ -335,7 +335,7 @@ module Google
         # Update the configuration of a single connection profile.
         # @param [String] name
         #   The name of this connection profile resource in the form of projects/`project`/
-        #   locations/`location`/instances/`instance`.
+        #   locations/`location`/connectionProfiles/`instance`.
         # @param [Google::Apis::DatamigrationV1::ConnectionProfile] connection_profile_object
         # @param [String] request_id
         #   A unique id used to identify the request. If the server receives two requests
