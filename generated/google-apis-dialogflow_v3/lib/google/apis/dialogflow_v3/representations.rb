@@ -922,6 +922,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1AudioInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3624,6 +3630,8 @@ module Google
           property :generic_web_service, as: 'genericWebService', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3WebhookGenericWebService, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3WebhookGenericWebService::Representation
       
           property :name, as: 'name'
+          property :service_directory, as: 'serviceDirectory', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig::Representation
+      
           property :timeout, as: 'timeout'
         end
       end
@@ -3718,6 +3726,15 @@ module Google
           property :merge_behavior, as: 'mergeBehavior'
           collection :messages, as: 'messages', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessage, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessage::Representation
       
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :generic_web_service, as: 'genericWebService', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3WebhookGenericWebService, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3WebhookGenericWebService::Representation
+      
+          property :service, as: 'service'
         end
       end
       
