@@ -298,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Warning
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ArtifactObjects
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -363,6 +369,8 @@ module Google
           collection :tags, as: 'tags'
           property :timeout, as: 'timeout'
           hash :timing, as: 'timing', class: Google::Apis::CloudbuildV1::TimeSpan, decorator: Google::Apis::CloudbuildV1::TimeSpan::Representation
+      
+          collection :warnings, as: 'warnings', class: Google::Apis::CloudbuildV1::Warning, decorator: Google::Apis::CloudbuildV1::Warning::Representation
       
         end
       end
@@ -798,6 +806,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :path, as: 'path'
+        end
+      end
+      
+      class Warning
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :priority, as: 'priority'
+          property :text, as: 'text'
         end
       end
     end
