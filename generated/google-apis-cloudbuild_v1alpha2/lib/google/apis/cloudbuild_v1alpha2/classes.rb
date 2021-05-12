@@ -285,6 +285,11 @@ module Google
         # @return [Hash<String,Google::Apis::CloudbuildV1alpha2::TimeSpan>]
         attr_accessor :timing
       
+        # Output only. Non-fatal problems encountered during the execution of the build.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::CloudbuildV1alpha2::Warning>]
+        attr_accessor :warnings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -317,6 +322,7 @@ module Google
           @tags = args[:tags] if args.key?(:tags)
           @timeout = args[:timeout] if args.key?(:timeout)
           @timing = args[:timing] if args.key?(:timing)
+          @warnings = args[:warnings] if args.key?(:warnings)
         end
       end
       
@@ -1558,6 +1564,31 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @path = args[:path] if args.key?(:path)
+        end
+      end
+      
+      # A non-fatal problem encountered during the execution of the build.
+      class Warning
+        include Google::Apis::Core::Hashable
+      
+        # The priority for this warning.
+        # Corresponds to the JSON property `priority`
+        # @return [String]
+        attr_accessor :priority
+      
+        # Explanation of the warning generated.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @priority = args[:priority] if args.key?(:priority)
+          @text = args[:text] if args.key?(:text)
         end
       end
       
