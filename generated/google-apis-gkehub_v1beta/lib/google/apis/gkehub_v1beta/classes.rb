@@ -181,7 +181,8 @@ module Google
       class CommonFeatureSpec
         include Google::Apis::Core::Hashable
       
-        # FeatureSpec contains the input for the MultiClusterIngress feature.
+        # **Multi-cluster Ingress**: The configuration for the MultiClusterIngress
+        # feature.
         # Corresponds to the JSON property `multiclusteringress`
         # @return [Google::Apis::GkehubV1beta::MultiClusterIngressFeatureSpec]
         attr_accessor :multiclusteringress
@@ -720,8 +721,8 @@ module Google
         end
       end
       
-      # Configuration for a single cluster. Intended to parallel the ConfigManagement
-      # CR.
+      # **Anthos Config Management**: Configuration for a single cluster. Intended to
+      # parallel the ConfigManagement CR.
       class ConfigManagementMembershipSpec
         include Google::Apis::Core::Hashable
       
@@ -764,7 +765,7 @@ module Google
         end
       end
       
-      # State for Anthos Config Management
+      # **Anthos Config Management**: State for a single cluster.
       class ConfigManagementMembershipState
         include Google::Apis::Core::Hashable
       
@@ -791,8 +792,8 @@ module Google
         # @return [Google::Apis::GkehubV1beta::ConfigManagementHierarchyControllerState]
         attr_accessor :hierarchy_controller_state
       
-        # Configuration for a single cluster. Intended to parallel the ConfigManagement
-        # CR.
+        # **Anthos Config Management**: Configuration for a single cluster. Intended to
+        # parallel the ConfigManagement CR.
         # Corresponds to the JSON property `membershipSpec`
         # @return [Google::Apis::GkehubV1beta::ConfigManagementMembershipSpec]
         attr_accessor :membership_spec
@@ -1429,8 +1430,8 @@ module Google
       class MembershipFeatureSpec
         include Google::Apis::Core::Hashable
       
-        # Configuration for a single cluster. Intended to parallel the ConfigManagement
-        # CR.
+        # **Anthos Config Management**: Configuration for a single cluster. Intended to
+        # parallel the ConfigManagement CR.
         # Corresponds to the JSON property `configmanagement`
         # @return [Google::Apis::GkehubV1beta::ConfigManagementMembershipSpec]
         attr_accessor :configmanagement
@@ -1450,12 +1451,12 @@ module Google
       class MembershipFeatureState
         include Google::Apis::Core::Hashable
       
-        # State for Anthos Config Management
+        # **Anthos Config Management**: State for a single cluster.
         # Corresponds to the JSON property `configmanagement`
         # @return [Google::Apis::GkehubV1beta::ConfigManagementMembershipState]
         attr_accessor :configmanagement
       
-        # Metering per-Membership Feature State.
+        # **Metering**: Per-Membership Feature State.
         # Corresponds to the JSON property `metering`
         # @return [Google::Apis::GkehubV1beta::MeteringMembershipState]
         attr_accessor :metering
@@ -1479,7 +1480,7 @@ module Google
         end
       end
       
-      # Metering per-Membership Feature State.
+      # **Metering**: Per-Membership Feature State.
       class MeteringMembershipState
         include Google::Apis::Core::Hashable
       
@@ -1506,7 +1507,8 @@ module Google
         end
       end
       
-      # FeatureSpec contains the input for the MultiClusterIngress feature.
+      # **Multi-cluster Ingress**: The configuration for the MultiClusterIngress
+      # feature.
       class MultiClusterIngressFeatureSpec
         include Google::Apis::Core::Hashable
       
